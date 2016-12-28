@@ -78,17 +78,12 @@ const setup = () => new Promise(
     }
 );
 
-const speak = (synthesizer, text) => new Promise(
+const speak = (synthesizer = null, text = "", language = null) => new Promise(
     (resolve, reject) => {
         log("Start", `Speak text (length ${text.length}): "${text}"`);
 
-        if (synthesizer.speaking) {
-            // Clear all old text.
-            synthesizer.cancel();
-        }
-
         const utterance = new SpeechSynthesisUtterance(text);
-        // utterance.lang = "en-US";
+        utterance.lang = language;
         // utterance.pitch = [0,2];
         // utterance.rate = [0,2];
         // utterance.voice = synthesizer.getVoices()[4];
@@ -151,7 +146,7 @@ chain(
         .then(() => synthesizer);
     })
     .then((synthesizer) => {
-        const speakSelection = (tab) => {
+        const speakSelection = () => {
             try {
                 log("Start", "Speaking selection");
 
@@ -161,32 +156,42 @@ chain(
                     log("Variable", `selections (length ${selections && selections.length || 0}) ${selections}`);
 
                     if (selections) {
-                        const text = selections.join("\n\n");
+                        selections.forEach((selection) => {
+                            log("Text", "Speaking selection:", selection);
 
-                        log("Text", "Speaking selection(s): " + text);
-
-                        chain(speak(synthesizer, text));
+                            chain(speak(synthesizer, selection.text, selection.language));
+                        });
                     }
 
                     log("Done", "Speaking all selections");
-
                 };
 
                 chrome.tabs.executeScript(
                     {
                         allFrames: true,
                         matchAboutBlank: true,
-                        code: 'document.getSelection().toString()'
+                        code: 'var t = { text: document.getSelection().toString(), language: document.getElementsByTagName("html")[0].getAttribute("lang") }; t'
                     },
                     speakAllSelections
                 );
 
                 log("Done", "Speaking selection");
             } catch(error) {
+                log("Error", "speakSelection", error);
+
                 debugger;
             }
         };
 
-        chrome.browserAction.onClicked.addListener(speakSelection);
+        const handleIconClick = (tab) => {
+            // Clear all old text.
+            synthesizer.cancel();
+
+            if (!synthesizer.speaking) {
+                speakSelection();
+            }
+        };
+
+        chrome.browserAction.onClicked.addListener(handleIconClick);
     })
 );
