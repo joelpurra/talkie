@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "version": "0.0.0",
+    "name": "Talkie",
+    "short_name": "Talkie",
+    "description": "Select text on any web page, and have the computer speak it out loud for you by simply clicking the Talkie icon.",
+    "author": "Joel Purra",
+    "homepage_url": "https://github.com/joelpurra/talkie",
+    "background": {
+        "scripts": [
+            "src/background.js"
+        ],
+        "persistent": false
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "requirements": {
+    },
+    "offline_enabled": true,
+    "browser_action": {
+        "default_title": "Speak text selection",
+        "default_icon": "src/resource/icon/icon-19x19.png"
+    }
+}
