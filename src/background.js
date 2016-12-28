@@ -29,17 +29,21 @@ const log = (...args) => {
     console.log(now, extensionName, ...args);
 };
 
+log("Start", "Loading");
+
 const setup = () => new Promise(
     (resolve, reject) => {
         log("Start", "Setup");
 
-        const synthesizer = window.speechSynthesis || window.webkitSpeechSynthesis || window.mozSpeechSynthesis || window.oSpeechSynthesis || window.msSpeechSynthesis;
+        const synthesizer = window.speechSynthesis;
 
         const handleVoicesChanged = (event) => {
-            synthesizer.onerror = null;
-            synthesizer.onvoiceschanged = null;
+            delete synthesizer.onerror;
+            delete synthesizer.onvoiceschanged;
 
-            document.onbeforeunload = (e) => {
+            log("Variable", "synthesizer", synthesizer);
+
+            const unload = (e) => {
                 log("Start", "Unloading");
 
                 if(synthesizer.speaking) {
@@ -54,10 +58,14 @@ const setup = () => new Promise(
                 log("Done", "Unloading");
             };
 
-            const voices = synthesizer.getVoices();
+            document.onbeforeunload = unload;
 
-            log("Variable", "synthesizer", synthesizer);
-            log("Variable", "voices", voices);
+            const voices = synthesizer.getVoices();
+            log("Variable", "voices[]", voices.length, voices.map(voice => {
+                return {
+                    name: voice.name, lang: voice.lang,
+                };
+            }));
 
             log("Done", "Setup");
 
@@ -65,16 +73,14 @@ const setup = () => new Promise(
         };
 
         const handleError = (event) => {
-            synthesizer.onerror = null;
-            synthesizer.onvoiceschanged = null;
+            delete synthesizer.onerror;
+            delete synthesizer.onvoiceschanged;
 
             reject();
         };
 
         synthesizer.onerror = reject;
         synthesizer.onvoiceschanged = handleVoicesChanged;
-
-        log("Variable", "synthesizer", synthesizer);
     }
 );
 
@@ -91,8 +97,8 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
         log("Variable", "utterance", utterance);
 
         const handleEnd = (event) => {
-            utterance.onend = null;
-            utterance.onerror = null;
+            delete utterance.onend;
+            delete utterance.onerror;
 
             log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
@@ -100,8 +106,8 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
         };
 
         const handleError = (event) => {
-            utterance.onend = null;
-            utterance.onerror = null;
+            delete utterance.onend;
+            delete utterance.onerror;
 
             log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
@@ -123,9 +129,8 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
     }
 );
 
-log("Done", "Loading");
-
 let rootChain = Promise.resolve();
+
 const rootChainCatcher = (e) => {
     log("Error", e);
 };
@@ -137,14 +142,7 @@ const chain = (promise) => {
 }
 
 chain(
-    setup()
-    .then((synthesizer) => {
-        // const text = $$(".entry-content p").map(e => e.textContent).join("\n\n");
-        const text = "Testing testing testing!";
-
-        return speak(synthesizer, text)
-        .then(() => synthesizer);
-    })
+    () => setup()
     .then((synthesizer) => {
         const speakSelection = () => {
             try {
@@ -159,7 +157,7 @@ chain(
                         selections.forEach((selection) => {
                             log("Text", "Speaking selection:", selection);
 
-                            chain(speak(synthesizer, selection.text, selection.language));
+                            chain(() => speak(synthesizer, selection.text, selection.language));
                         });
                     }
 
@@ -195,3 +193,5 @@ chain(
         chrome.browserAction.onClicked.addListener(handleIconClick);
     })
 );
+
+log("Done", "Loading");
