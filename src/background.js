@@ -29,6 +29,12 @@ const log = (...args) => {
     console.log(now, extensionName, ...args);
 };
 
+const logError = (...args) => {
+    const now = new Date().toISOString();
+
+    console.error(now, extensionName, ...args);
+};
+
 log("Start", "Loading");
 
 const setup = () => new Promise(
@@ -61,6 +67,7 @@ const setup = () => new Promise(
             document.onbeforeunload = unload;
 
             const voices = synthesizer.getVoices();
+
             log("Variable", "voices[]", voices.length, voices.map(voice => {
                 return {
                     name: voice.name, lang: voice.lang,
@@ -131,8 +138,8 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
 
 let rootChain = Promise.resolve();
 
-const rootChainCatcher = (e) => {
-    log("Error", e);
+const rootChainCatcher = (error) => {
+    logError(error);
 };
 
 const chain = (promise) => {
@@ -148,44 +155,83 @@ chain(
             try {
                 log("Start", "Speaking selection");
 
-                const speakAllSelections = (selections) => {
+                const speakAllSelections = (selections = [], detectedPageLanguage = null) => {
                     log("Start", "Speaking all selections");
 
                     log("Variable", `selections (length ${selections && selections.length || 0}) ${selections}`);
 
-                    if (selections) {
-                        selections.forEach((selection) => {
-                            log("Text", "Speaking selection:", selection);
+                    let result = [];
 
-                            chain(() => speak(synthesizer, selection.text, selection.language));
-                        });
-                    }
+                    result = selections.map((selection) => {
+                        log("Text", "Speaking selection:", selection);
+
+                        const text = selection.text;
+                        const language = selection.language || detectedPageLanguage || null;
+
+                        return speak(synthesizer, text, language);
+                    });
 
                     log("Done", "Speaking all selections");
+
+                    return result;
                 };
 
-                chrome.tabs.executeScript(
-                    {
-                        allFrames: true,
-                        matchAboutBlank: true,
-                        code: 'var t = { text: document.getSelection().toString(), language: document.getElementsByTagName("html")[0].getAttribute("lang") }; t'
-                    },
-                    speakAllSelections
+                const detectPageLanguage = () => new Promise(
+                    (resolve, reject) => {
+                        chrome.tabs.detectLanguage((language) => {
+                            // https://developer.chrome.com/extensions/tabs#method-detectLanguage
+                            log("DEBUG", "detectLanguage", language);
+
+                            // language default value is "und".
+                            if (!language || typeof language !== "string" || language === "und") {
+                                return null;
+                            }
+
+                            return language;
+                        });
+                    }
+                );
+
+                const getFramesSelectionTextAndPageLanguage = () => new Promise(
+                    (resolve, reject) => {
+                        const getTabVariablesCode = `var t = { text: document.getSelection().toString(), language: document.getElementsByTagName("html")[0].getAttribute("lang") }; t`;
+
+                        chrome.tabs.executeScript(
+                            {
+                                allFrames: true,
+                                matchAboutBlank: true,
+                                code: getTabVariablesCode,
+                            },
+                            resolve
+                        );
+                    }
+                );
+
+                chain(
+                    () => Promise.all(
+                        [
+                            getFramesSelectionTextAndPageLanguage(),
+                            detectPageLanguage(),
+                        ]
+                    )
+                    .then(([framesSelectionTextAndPageLanguage, detectedPageLanguage]) => {
+                        return speakAllSelections(framesSelectionTextAndPageLanguage, detectedPageLanguage);
+                    })
                 );
 
                 log("Done", "Speaking selection");
             } catch(error) {
-                log("Error", "speakSelection", error);
-
-                debugger;
+                logError("speakSelection", error);
             }
         };
 
         const handleIconClick = (tab) => {
+            const wasSpeaking = synthesizer.speaking;
+
             // Clear all old text.
             synthesizer.cancel();
 
-            if (!synthesizer.speaking) {
+            if (!wasSpeaking) {
                 speakSelection();
             }
         };
