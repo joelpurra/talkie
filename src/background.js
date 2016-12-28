@@ -76,14 +76,14 @@ const setup = () => new Promise(
 
             log("Done", "Setup");
 
-            resolve(synthesizer);
+            return resolve(synthesizer);
         };
 
         const handleError = (event) => {
             delete synthesizer.onerror;
             delete synthesizer.onvoiceschanged;
 
-            reject();
+            return reject();
         };
 
         synthesizer.onerror = reject;
@@ -109,16 +109,18 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
 
             log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
-            resolve();
+            return setIconModePaused()
+            .then(() => resolve());
         };
 
         const handleError = (event) => {
             delete utterance.onend;
             delete utterance.onerror;
 
-            log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
+            log("Error", `Speak text (length ${text.length})`, event);
 
-            resolve();
+            return setIconModePaused()
+            .then(() => resolve());
         };
 
         utterance.onend = handleEnd;
@@ -147,7 +149,7 @@ const detectPageLanguage = () => new Promise(
                 return null;
             }
 
-            resolve(language);
+            return resolve(language);
         });
     }
 );
@@ -167,48 +169,89 @@ const getFramesSelectionTextAndLanguage = () => new Promise(
     }
 );
 
-const speakSelection = (synthesizer) => {
-    try {
-        log("Start", "Speaking selection");
+const speakSelection = (synthesizer) => new Promise(
+    (resolve, reject) => {
+        try {
+            log("Start", "Speaking selection");
 
-        const speakAllSelections = (selections = [], detectedPageLanguage = null) => {
-            log("Start", "Speaking all selections");
+            const speakAllSelections = (selections = [], detectedPageLanguage = null) => {
+                log("Start", "Speaking all selections");
 
-            log("Variable", `selections (length ${selections && selections.length || 0}) ${selections}`);
+                log("Variable", `selections (length ${selections && selections.length || 0}) ${selections}`);
 
-            let result = [];
+                let result = [];
 
-            result = selections.map((selection) => {
-                log("Text", "Speaking selection:", selection);
+                result = selections.map((selection) => {
+                    log("Text", "Speaking selection:", selection);
 
-                const text = selection.text;
-                const language = selection.language || detectedPageLanguage || null;
+                    const text = selection.text;
+                    const language = selection.language || detectedPageLanguage || null;
 
-                log("Language", language);
+                    log("Language", language);
 
-                return speak(synthesizer, text, language);
-            });
+                    return speak(synthesizer, text, language);
+                });
 
-            log("Done", "Speaking all selections");
+                log("Done", "Speaking all selections");
 
-            return result;
+                return result;
+            };
+
+            log("Done", "Speaking selection");
+
+            return resolve(Promise.all(
+                [
+                    getFramesSelectionTextAndLanguage(),
+                    detectPageLanguage(),
+                ]
+            )
+            .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
+                return speakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
+            }));
+        } catch(error) {
+            logError("speakSelection", error);
+
+            return reject(error);
+        }
+    }
+);
+
+const getIconModePaths = (name) => {
+    return {
+        "16": `src/resource/icon/icon-${name}/icon-16x16.png`,
+        "32": `src/resource/icon/icon-${name}/icon-32x32.png`,
+        "48": `src/resource/icon/icon-${name}/icon-48x48.png`,
+        "64": `src/resource/icon/icon-${name}/icon-64x64.png`,
+        "128": `src/resource/icon/icon-${name}/icon-128x128.png`,
+        "256": `src/resource/icon/icon-${name}/icon-256x256.png`,
+        "512": `src/resource/icon/icon-${name}/icon-512x512.png`,
+        "1024": `src/resource/icon/icon-${name}/icon-1024x1024.png`
+    };
+}
+
+const setIconMode = (name) => new Promise(
+    (resolve, reject) =>
+    {
+        log("Start", "Changing icon to", name);
+
+        const paths = getIconModePaths(name);
+        const details = {
+            path: paths,
         };
 
-        return Promise.all(
-            [
-                getFramesSelectionTextAndLanguage(),
-                detectPageLanguage(),
-            ]
-        )
-        .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
-            return speakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
-        });
+        chrome.browserAction.setIcon(
+            details,
+            () => {
+                log("Done", "Changing icon to", name);
 
-        log("Done", "Speaking selection");
-    } catch(error) {
-        logError("speakSelection", error);
+                resolve();
+            }
+        );
     }
-};
+);
+
+const setIconModePlaying = () => setIconMode("pause");
+const setIconModePaused = () => setIconMode("play");
 
 let rootChain = Promise.resolve();
 
@@ -225,16 +268,21 @@ const chain = (promise) => {
 chain(
     () => setup()
     .then((synthesizer) => {
-        const handleIconClick = (tab) => {
-            const wasSpeaking = synthesizer.speaking;
+        const handleIconClick = (tab) => chain(() => new Promise(
+            (resolve, reject) => {
+                const wasSpeaking = synthesizer.speaking;
 
-            // Clear all old text.
-            synthesizer.cancel();
+                // Clear all old text.
+                synthesizer.cancel();
 
-            if (!wasSpeaking) {
-                chain(speakSelection(synthesizer));
+                if (!wasSpeaking) {
+                    return setIconModePlaying()
+                    .then(() => speakSelection(synthesizer));
+                }
+
+                return setIconModePaused();
             }
-        };
+        ));
 
         chrome.browserAction.onClicked.addListener(handleIconClick);
     })

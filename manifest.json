@@ -20,7 +20,16 @@
     "offline_enabled": true,
     "browser_action": {
         "default_title": "Speak text selection",
-        "default_icon": "src/resource/icon/icon-play/icon-32x32.png"
+        "default_icon": {
+            "16": "src/resource/icon/icon-play/icon-16x16.png",
+            "32": "src/resource/icon/icon-play/icon-32x32.png",
+            "48": "src/resource/icon/icon-play/icon-48x48.png",
+            "64": "src/resource/icon/icon-play/icon-64x64.png",
+            "128": "src/resource/icon/icon-play/icon-128x128.png",
+            "256": "src/resource/icon/icon-play/icon-256x256.png",
+            "512": "src/resource/icon/icon-play/icon-512x512.png",
+            "1024": "src/resource/icon/icon-play/icon-1024x1024.png"
+        }
     },
     "icons": {
         "16": "src/resource/icon/icon-play/icon-16x16.png",
