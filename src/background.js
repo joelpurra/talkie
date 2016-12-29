@@ -258,14 +258,14 @@ const speakUserSelection = (synthesizer) => promiseTry(() => {
 
 const getIconModePaths = (name) => {
     return {
-        "16": `src/resource/icon/icon-${name}/icon-16x16.png`,
-        "32": `src/resource/icon/icon-${name}/icon-32x32.png`,
-        "48": `src/resource/icon/icon-${name}/icon-48x48.png`,
-        "64": `src/resource/icon/icon-${name}/icon-64x64.png`,
-        "128": `src/resource/icon/icon-${name}/icon-128x128.png`,
-        "256": `src/resource/icon/icon-${name}/icon-256x256.png`,
-        "512": `src/resource/icon/icon-${name}/icon-512x512.png`,
-        "1024": `src/resource/icon/icon-${name}/icon-1024x1024.png`
+        "16": `resources/icon/icon-${name}/icon-16x16.png`,
+        "32": `resources/icon/icon-${name}/icon-32x32.png`,
+        "48": `resources/icon/icon-${name}/icon-48x48.png`,
+        "64": `resources/icon/icon-${name}/icon-64x64.png`,
+        "128": `resources/icon/icon-${name}/icon-128x128.png`,
+        "256": `resources/icon/icon-${name}/icon-256x256.png`,
+        "512": `resources/icon/icon-${name}/icon-512x512.png`,
+        "1024": `resources/icon/icon-${name}/icon-1024x1024.png`
     };
 }
 
@@ -289,8 +289,8 @@ const setIconMode = (name) => new Promise(
     }
 );
 
-const setIconModePlaying = () => setIconMode("pause");
-const setIconModePaused = () => setIconMode("play");
+const setIconModePlaying = () => setIconMode("stop");
+const setIconModeStopped = () => setIconMode("play");
 
 let rootChain = Promise.resolve();
 
@@ -320,10 +320,10 @@ chain(
                         speakUserSelection(synthesizer),
                     ]
                 )
-                .then(() => setIconModePaused());
+                .then(() => setIconModeStopped());
             }
 
-            return setIconModePaused();
+            return setIconModeStopped();
         }));
 
         chrome.browserAction.onClicked.addListener(handleIconClick);
