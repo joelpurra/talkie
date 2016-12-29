@@ -117,7 +117,7 @@ const setup = () => new Promise(
     }
 );
 
-const speak = (synthesizer, text = "", language) => new Promise(
+const speak = (synthesizer, text, language) => new Promise(
     (resolve, reject) => {
         try {
             log("Start", `Speak text (length ${text.length}): "${text}"`);
@@ -169,7 +169,7 @@ const speak = (synthesizer, text = "", language) => new Promise(
 const getFramesSelectionTextAndLanguage = () => new Promise(
     (resolve, reject) => {
         try {
-            const getTabVariablesCode = `var t = { text: document.getSelection().toString(), language: document.getElementsByTagName("html")[0].getAttribute("lang") }; t`;
+            const getTabVariablesCode = `function getParentElementLanguages(element) { return [].concat(element && element.getAttribute("lang")).concat(element.parentElement && getParentElementLanguages(element.parentElement)); }; var t = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName("html")[0].getAttribute("lang"), parentElementsLanguages: getParentElementLanguages(document.getSelection().getRangeAt(0).startContainer.parentElement) }; t`;
 
             chrome.tabs.executeScript(
                 {
@@ -177,12 +177,14 @@ const getFramesSelectionTextAndLanguage = () => new Promise(
                     matchAboutBlank: true,
                     code: getTabVariablesCode,
                 },
-                (results) => {
+                (framesSelectionTextAndLanguage) => {
                     if (chrome.runtime.lastError) {
                         return reject(chrome.runtime.lastError);
                     }
 
-                    return resolve(results);
+                    log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
+
+                    return resolve(framesSelectionTextAndLanguage);
                 }
             );
         } catch(error) {
@@ -195,11 +197,11 @@ const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
         try {
             chrome.tabs.detectLanguage((language) => {
+                // https://developer.chrome.com/extensions/tabs#method-detectLanguage
                 if (chrome.runtime.lastError) {
                     return reject(chrome.runtime.lastError);
                 }
 
-                // https://developer.chrome.com/extensions/tabs#method-detectLanguage
                 log("detectLanguage", "Browser detected primary page language", language);
 
                 // The language fallback value is "und", so treat it as no language.
@@ -215,8 +217,12 @@ const detectPageLanguage = () => new Promise(
     }
 );
 
-const cleanupSelections = (detectedPageLanguage, selections) => {
+const cleanupSelections = (allVoices, detectedPageLanguage, selections) => {
+    const isNonNullObject = (selection) => !!selection && typeof selection === "object";
+
     const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+
+    const isValidString = (str) => !isUndefinedOrNullOrEmptyOrWhitespace(str);
 
     const trimText = (selection) => {
         var copy = shallowCopy(selection);
@@ -226,19 +232,58 @@ const cleanupSelections = (detectedPageLanguage, selections) => {
         return copy;
     };
 
-    const setEffectiveLanguage = (selection) => {
+    const isKnownVoiceLanguage = (elementLanguage) => allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
+
+    // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
+    // https://en.wikipedia.org/wiki/ISO_639-1
+    // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+    // http://xml.coverpages.org/iso639a.html
+    // NOTE: Discovered because Twitter seems to still use "iw".
+    const iso639Dash1Aliases1988To2002 = {
+        "in": "id",
+        "iw": "he",
+        "ji": "yi",
+    };
+
+    const mapIso639Aliases = (language) => {
+        return iso639Dash1Aliases1988To2002[language] || language;
+    };
+
+    const cleanupParentElementsLanguages = (selection) => {
         var copy = shallowCopy(selection);
 
-        copy.language = copy.language || detectedPageLanguage || null;
+        copy.parentElementsLanguages = copy.parentElementsLanguages || [];
+        copy.parentElementsLanguages = copy.parentElementsLanguages
+        .filter(isValidString)
+        .map(mapIso639Aliases)
+        .filter(isKnownVoiceLanguage);
 
         return copy;
     };
 
+    const setEffectiveLanguage = (selection) => {
+        var copy = shallowCopy(selection);
+
+        copy.effectiveLanguage = copy.parentElementsLanguages[0] || copy.htmlTagLanguage || detectedPageLanguage || null;
+
+        return copy;
+    };
+
+    const mapResults = (selection) => {
+        return {
+            text: selection.text,
+            effectiveLanguage: selection.effectiveLanguage,
+        };
+    };
+
     const cleanedupSelections = selections
+    .filter(isNonNullObject)
     .filter(hasValidText)
     .map(trimText)
     .filter(hasValidText)
-    .map(setEffectiveLanguage);
+    .map(cleanupParentElementsLanguages)
+    .map(setEffectiveLanguage)
+    .map(mapResults);
 
     if (cleanedupSelections.length === 0) {
         log("Empty filtered selections");
@@ -254,12 +299,15 @@ const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => {
 
     log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
 
-    const cleanedupSelections = cleanupSelections(detectedPageLanguage, selections);
+    const allVoices = synthesizer.getVoices();
+    const cleanedupSelections = cleanupSelections(allVoices, detectedPageLanguage, selections);
+
+    log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
 
     const speakPromises = cleanedupSelections.map((selection) => {
-        log("Text", `Speaking selection (length ${selection.text.length}, language ${selection.language})`, selection);
+        log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
-        return speak(synthesizer, selection.text, selection.language);
+        return speak(synthesizer, selection.text, selection.effectiveLanguage);
     });
 
     log("Done", "Speaking all selections");
