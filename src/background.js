@@ -60,132 +60,158 @@ const noTextSelectedMessage = {
 
 const setup = () => new Promise(
     (resolve, reject) => {
-        log("Start", "Setup");
+        try {
+            log("Start", "Setup");
 
-        const synthesizer = window.speechSynthesis;
+            const synthesizer = window.speechSynthesis;
 
-        const handleVoicesChanged = (event) => {
-            delete synthesizer.onerror;
-            delete synthesizer.onvoiceschanged;
+            const handleVoicesChanged = (event) => {
+                delete synthesizer.onerror;
+                delete synthesizer.onvoiceschanged;
 
-            log("Variable", "synthesizer", synthesizer);
+                log("Variable", "synthesizer", synthesizer);
 
-            const unload = (e) => {
-                log("Start", "Unloading");
+                const unload = (e) => {
+                    log("Start", "Unloading");
 
-                if(synthesizer.speaking) {
-                    // Clear all text.
-                    // TODO: check if the text was added by this extension, or something else.
-                    synthesizer.cancel();
+                    if(synthesizer.speaking) {
+                        // Clear all text.
+                        // TODO: check if the text was added by this extension, or something else.
+                        synthesizer.cancel();
 
-                    // Reset the system to resume playback, just to be nice to the world.
-                    synthesizer.resume();
-                }
+                        // Reset the system to resume playback, just to be nice to the world.
+                        synthesizer.resume();
+                    }
 
-                log("Done", "Unloading");
+                    log("Done", "Unloading");
+                };
+
+                document.onbeforeunload = unload;
+
+                const voices = synthesizer.getVoices();
+
+                log("Variable", "voices[]", voices.length, voices.map(voice => {
+                    return {
+                        name: voice.name,
+                        lang: voice.lang,
+                    };
+                }));
+
+                log("Done", "Setup");
+
+                return resolve(synthesizer);
             };
 
-            document.onbeforeunload = unload;
+            const handleError = (event) => {
+                delete synthesizer.onerror;
+                delete synthesizer.onvoiceschanged;
 
-            const voices = synthesizer.getVoices();
+                return reject(null);
+            };
 
-            log("Variable", "voices[]", voices.length, voices.map(voice => {
-                return {
-                    name: voice.name,
-                    lang: voice.lang,
-                };
-            }));
-
-            log("Done", "Setup");
-
-            return resolve(synthesizer);
-        };
-
-        const handleError = (event) => {
-            delete synthesizer.onerror;
-            delete synthesizer.onvoiceschanged;
-
-            return reject(null);
-        };
-
-        synthesizer.onerror = handleError;
-        synthesizer.onvoiceschanged = handleVoicesChanged;
+            synthesizer.onerror = handleError;
+            synthesizer.onvoiceschanged = handleVoicesChanged;
+        } catch(error) {
+            return reject(error);
+        }
     }
 );
 
 const speak = (synthesizer, text = "", language) => new Promise(
     (resolve, reject) => {
-        log("Start", `Speak text (length ${text.length}): "${text}"`);
+        try {
+            log("Start", `Speak text (length ${text.length}): "${text}"`);
 
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = language;
-        // utterance.pitch = [0,2];
-        // utterance.rate = [0,2];
-        // utterance.voice = synthesizer.getVoices()[4];
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = language;
+            // utterance.pitch = [0,2];
+            // utterance.rate = [0,2];
+            // utterance.voice = synthesizer.getVoices()[4];
 
-        log("Variable", "utterance", utterance);
+            log("Variable", "utterance", utterance);
 
-        const handleEnd = (event) => {
-            delete utterance.onend;
-            delete utterance.onerror;
+            const handleEnd = (event) => {
+                delete utterance.onend;
+                delete utterance.onerror;
 
-            log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
+                log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
-            return resolve();
-        };
+                return resolve();
+            };
 
-        const handleError = (event) => {
-            delete utterance.onend;
-            delete utterance.onerror;
+            const handleError = (event) => {
+                delete utterance.onend;
+                delete utterance.onerror;
 
-            log("Error", `Speak text (length ${text.length})`, event);
+                log("Error", `Speak text (length ${text.length})`, event);
 
-            return reject();
-        };
+                return reject();
+            };
 
-        utterance.onend = handleEnd;
-        utterance.onerror = handleError;
+            utterance.onend = handleEnd;
+            utterance.onerror = handleError;
 
-        synthesizer.speak(utterance);
+            synthesizer.speak(utterance);
 
-        if (synthesizer.paused) {
-            synthesizer.resume();
+            if (synthesizer.paused) {
+                synthesizer.resume();
+            }
+
+            log("Variable", "synthesizer", synthesizer);
+
+            log("Done", `Speak text (length ${text.length})`);
+        } catch(error) {
+            return reject(error);
         }
-
-        log("Variable", "synthesizer", synthesizer);
-
-        log("Done", `Speak text (length ${text.length})`);
     }
 );
 
 const getFramesSelectionTextAndLanguage = () => new Promise(
     (resolve, reject) => {
-        const getTabVariablesCode = `var t = { text: document.getSelection().toString(), language: document.getElementsByTagName("html")[0].getAttribute("lang") }; t`;
+        try {
+            const getTabVariablesCode = `var t = { text: document.getSelection().toString(), language: document.getElementsByTagName("html")[0].getAttribute("lang") }; t`;
 
-        chrome.tabs.executeScript(
-            {
-                allFrames: true,
-                matchAboutBlank: true,
-                code: getTabVariablesCode,
-            },
-            (results) => resolve(results)
-        );
+            chrome.tabs.executeScript(
+                {
+                    allFrames: true,
+                    matchAboutBlank: true,
+                    code: getTabVariablesCode,
+                },
+                (results) => {
+                    if (chrome.runtime.lastError) {
+                        return reject(chrome.runtime.lastError);
+                    }
+
+                    return resolve(results);
+                }
+            );
+        } catch(error) {
+            return reject(error);
+        }
     }
 );
 
 const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
-        chrome.tabs.detectLanguage((language) => {
-            // https://developer.chrome.com/extensions/tabs#method-detectLanguage
-            log("detectLanguage", "Browser detected primary page language", language);
+        try {
+            chrome.tabs.detectLanguage((language) => {
+                if (chrome.runtime.lastError) {
+                    return reject(chrome.runtime.lastError);
+                }
 
-            // The language fallback value is "und", so treat it as no language.
-            if (!language || typeof language !== "string" || language === "und") {
-                return resolve(null);
-            }
+                // https://developer.chrome.com/extensions/tabs#method-detectLanguage
+                log("detectLanguage", "Browser detected primary page language", language);
 
-            return resolve(language);
-        });
+                // The language fallback value is "und", so treat it as no language.
+                if (!language || typeof language !== "string" || language === "und") {
+                    return resolve(null);
+                }
+
+                return resolve(language);
+            });
+        } catch(error) {
+            return reject(error);
+        }
     }
 );
 
@@ -271,63 +297,83 @@ const getIconModePaths = (name) => {
 
 const setIconMode = (name) => new Promise(
     (resolve, reject) => {
-        log("Start", "Changing icon to", name);
+        try {
+            log("Start", "Changing icon to", name);
 
-        const paths = getIconModePaths(name);
-        const details = {
-            path: paths,
-        };
+            const paths = getIconModePaths(name);
+            const details = {
+                path: paths,
+            };
 
-        chrome.browserAction.setIcon(
-            details,
-            () => {
-                log("Done", "Changing icon to", name);
+            chrome.browserAction.setIcon(
+                details,
+                () => {
+                    if (chrome.runtime.lastError) {
+                        return reject(chrome.runtime.lastError);
+                    }
 
-                resolve();
-            }
-        );
+                    log("Done", "Changing icon to", name);
+
+                    resolve();
+                }
+            );
+        } catch(error) {
+            return reject(error);
+        }
     }
 );
 
 const setIconModePlaying = () => setIconMode("stop");
 const setIconModeStopped = () => setIconMode("play");
 
-let rootChain = Promise.resolve();
+(function main() {
+    let rootChain = Promise.resolve();
 
-const rootChainCatcher = (error) => {
-    logError(error);
-};
+    const rootChainCatcher = (error) => {
+        logError(error);
+    };
 
-const chain = (promise) => {
-    rootChain = rootChain
-    .then(promise)
-    .catch(rootChainCatcher);
-}
+    const chain = (promise) => {
+        rootChain = rootChain
+        .then(promise)
+        .catch(rootChainCatcher);
+    }
 
-chain(
-    () => setup()
-    .then((synthesizer) => {
-        const handleIconClick = (tab) => chain(() => promiseTry(() => {
-            const wasSpeaking = synthesizer.speaking;
+    let synthesizer = null;
 
-            // Clear all old text.
-            synthesizer.cancel();
+    chain(
+        () => setup()
+        .then((result) => {
+            synthesizer = result;
+        })
+    );
 
-            if (!wasSpeaking) {
-                return Promise.all(
-                    [
-                        setIconModePlaying(),
-                        speakUserSelection(synthesizer),
-                    ]
-                )
-                .then(() => setIconModeStopped());
-            }
+    const handleIconClick = (tab) => {
+        const wasSpeaking = synthesizer.speaking;
 
-            return setIconModeStopped();
-        }));
+        // Clear all old text.
+        synthesizer.cancel();
 
-        chrome.browserAction.onClicked.addListener(handleIconClick);
-    })
-);
+        if (!wasSpeaking) {
+            return chain(() => Promise.all(
+                [
+                    setIconModePlaying(),
+                    speakUserSelection(synthesizer),
+                ]
+            )
+            .then(() => setIconModeStopped())
+            .catch((error) => {
+                return setIconModeStopped()
+                .then(() => {
+                    throw error;
+                });
+            }));
+        }
+
+        return chain(() => setIconModeStopped());
+    };
+
+    chrome.browserAction.onClicked.addListener(handleIconClick);
+}());
 
 log("Done", "Loading");
