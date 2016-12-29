@@ -37,6 +37,27 @@ const logError = (...args) => {
 
 log("Start", "Loading");
 
+const promiseTry = (fn) => new Promise(
+    (resolve, reject) => {
+        try {
+            const result = fn();
+
+            resolve(result);
+        } catch (error) {
+            reject(error);
+        }
+    }
+);
+
+const shallowCopy = (...objs) => Object.assign({}, ...objs);
+
+const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
+
+const noTextSelectedMessage = {
+    text: "Please select desired text on the website first!",
+    language: "en",
+};
+
 const setup = () => new Promise(
     (resolve, reject) => {
         log("Start", "Setup");
@@ -70,7 +91,8 @@ const setup = () => new Promise(
 
             log("Variable", "voices[]", voices.length, voices.map(voice => {
                 return {
-                    name: voice.name, lang: voice.lang,
+                    name: voice.name,
+                    lang: voice.lang,
                 };
             }));
 
@@ -83,15 +105,15 @@ const setup = () => new Promise(
             delete synthesizer.onerror;
             delete synthesizer.onvoiceschanged;
 
-            return reject();
+            return reject(null);
         };
 
-        synthesizer.onerror = reject;
+        synthesizer.onerror = handleError;
         synthesizer.onvoiceschanged = handleVoicesChanged;
     }
 );
 
-const speak = (synthesizer = null, text = "", language = null) => new Promise(
+const speak = (synthesizer, text = "", language) => new Promise(
     (resolve, reject) => {
         log("Start", `Speak text (length ${text.length}): "${text}"`);
 
@@ -109,8 +131,7 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
 
             log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
-            return setIconModePaused()
-            .then(() => resolve());
+            return resolve();
         };
 
         const handleError = (event) => {
@@ -119,8 +140,7 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
 
             log("Error", `Speak text (length ${text.length})`, event);
 
-            return setIconModePaused()
-            .then(() => resolve());
+            return reject();
         };
 
         utterance.onend = handleEnd;
@@ -135,22 +155,6 @@ const speak = (synthesizer = null, text = "", language = null) => new Promise(
         log("Variable", "synthesizer", synthesizer);
 
         log("Done", `Speak text (length ${text.length})`);
-    }
-);
-
-const detectPageLanguage = () => new Promise(
-    (resolve, reject) => {
-        chrome.tabs.detectLanguage((language) => {
-            // https://developer.chrome.com/extensions/tabs#method-detectLanguage
-            log("detectLanguage", language);
-
-            // language default value is "und".
-            if (!language || typeof language !== "string" || language === "und") {
-                return null;
-            }
-
-            return resolve(language);
-        });
     }
 );
 
@@ -169,52 +173,88 @@ const getFramesSelectionTextAndLanguage = () => new Promise(
     }
 );
 
-const speakSelection = (synthesizer) => new Promise(
+const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
-        try {
-            log("Start", "Speaking selection");
+        chrome.tabs.detectLanguage((language) => {
+            // https://developer.chrome.com/extensions/tabs#method-detectLanguage
+            log("detectLanguage", "Browser detected primary page language", language);
 
-            const speakAllSelections = (selections = [], detectedPageLanguage = null) => {
-                log("Start", "Speaking all selections");
+            // The language fallback value is "und", so treat it as no language.
+            if (!language || typeof language !== "string" || language === "und") {
+                return resolve(null);
+            }
 
-                log("Variable", `selections (length ${selections && selections.length || 0}) ${selections}`);
-
-                let result = [];
-
-                result = selections.map((selection) => {
-                    log("Text", "Speaking selection:", selection);
-
-                    const text = selection.text;
-                    const language = selection.language || detectedPageLanguage || null;
-
-                    log("Language", language);
-
-                    return speak(synthesizer, text, language);
-                });
-
-                log("Done", "Speaking all selections");
-
-                return result;
-            };
-
-            log("Done", "Speaking selection");
-
-            return resolve(Promise.all(
-                [
-                    getFramesSelectionTextAndLanguage(),
-                    detectPageLanguage(),
-                ]
-            )
-            .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
-                return speakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
-            }));
-        } catch(error) {
-            logError("speakSelection", error);
-
-            return reject(error);
-        }
+            return resolve(language);
+        });
     }
 );
+
+const cleanupSelections = (detectedPageLanguage, selections) => {
+    const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+
+    const trimText = (selection) => {
+        var copy = shallowCopy(selection);
+
+        copy.text = copy.text.trim();
+
+        return copy;
+    };
+
+    const setEffectiveLanguage = (selection) => {
+        var copy = shallowCopy(selection);
+
+        copy.language = copy.language || detectedPageLanguage || null;
+
+        return copy;
+    };
+
+    const cleanedupSelections = selections
+    .filter(hasValidText)
+    .map(trimText)
+    .filter(hasValidText)
+    .map(setEffectiveLanguage);
+
+    if (cleanedupSelections.length === 0) {
+        log("Empty filtered selections");
+
+        cleanedupSelections.push(noTextSelectedMessage);
+    }
+
+    return cleanedupSelections;
+};
+
+const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => {
+    log("Start", "Speaking all selections");
+
+    log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
+
+    const cleanedupSelections = cleanupSelections(detectedPageLanguage, selections);
+
+    const speakPromises = cleanedupSelections.map((selection) => {
+        log("Text", `Speaking selection (length ${selection.text.length}, language ${selection.language})`, selection);
+
+        return speak(synthesizer, selection.text, selection.language);
+    });
+
+    log("Done", "Speaking all selections");
+
+    return Promise.all(speakPromises);
+};
+
+const speakUserSelection = (synthesizer) => promiseTry(() => {
+    log("Start", "Speaking selection");
+
+    return Promise.all(
+        [
+            getFramesSelectionTextAndLanguage(),
+            detectPageLanguage(),
+        ]
+    )
+    .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
+        return speakAllSelections(synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
+    })
+    .then(() => log("Done", "Speaking selection"));
+});
 
 const getIconModePaths = (name) => {
     return {
@@ -230,8 +270,7 @@ const getIconModePaths = (name) => {
 }
 
 const setIconMode = (name) => new Promise(
-    (resolve, reject) =>
-    {
+    (resolve, reject) => {
         log("Start", "Changing icon to", name);
 
         const paths = getIconModePaths(name);
@@ -268,21 +307,24 @@ const chain = (promise) => {
 chain(
     () => setup()
     .then((synthesizer) => {
-        const handleIconClick = (tab) => chain(() => new Promise(
-            (resolve, reject) => {
-                const wasSpeaking = synthesizer.speaking;
+        const handleIconClick = (tab) => chain(() => promiseTry(() => {
+            const wasSpeaking = synthesizer.speaking;
 
-                // Clear all old text.
-                synthesizer.cancel();
+            // Clear all old text.
+            synthesizer.cancel();
 
-                if (!wasSpeaking) {
-                    return setIconModePlaying()
-                    .then(() => speakSelection(synthesizer));
-                }
-
-                return setIconModePaused();
+            if (!wasSpeaking) {
+                return Promise.all(
+                    [
+                        setIconModePlaying(),
+                        speakUserSelection(synthesizer),
+                    ]
+                )
+                .then(() => setIconModePaused());
             }
-        ));
+
+            return setIconModePaused();
+        }));
 
         chrome.browserAction.onClicked.addListener(handleIconClick);
     })
