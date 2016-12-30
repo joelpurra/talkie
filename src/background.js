@@ -212,7 +212,7 @@ const speak = (synthesizer, text, language) => new Promise(
 const getFramesSelectionTextAndLanguage = () => new Promise(
     (resolve, reject) => {
         try {
-            const getTabVariablesCode = "function getParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && getParentElementLanguages(element.parentElement)); }; var t = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: getParentElementLanguages(document.getSelection().getRangeAt(0).startContainer.parentElement) }; t";
+            const getTabVariablesCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
 
             chrome.tabs.executeScript(
                 {
