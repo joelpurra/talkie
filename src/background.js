@@ -149,7 +149,7 @@ const setup = () => promiseTry(
             log("Done", "Unloading");
         };
 
-        document.onbeforeunload = unload;
+        chrome.runtime.onSuspend.addListener(unload);
 
         return synthesizer;
     }
