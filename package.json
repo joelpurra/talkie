@@ -1,0 +1,38 @@
+{
+  "name": "talkie",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Text-to-speech browser extension button.",
+  "scripts": {
+    "test": "npm run --silent lint",
+    "lint": "npm run --silent eslint --",
+    "eslint": "eslint ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelpurra/talkie.git"
+  },
+  "keywords": [
+    "tts",
+    "text-to-speech",
+    "browser",
+    "extension"
+  ],
+  "author": {
+    "name": "Joel Purra",
+    "email": "code+github@joelpurra.com",
+    "url": "https://joelpurra.com/"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/joelpurra/talkie/issues"
+  },
+  "homepage": "https://github.com/joelpurra/talkie#readme",
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "pre-commit": "^1.2.2"
+  }
+}
