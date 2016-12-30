@@ -155,7 +155,9 @@ const setup = () => promiseTry(
     }
 );
 
-const speak = (synthesizer, text, language) => new Promise(
+const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers()
+.then(() => executeSetTalkieIsSpeaking())
+.then(() => new Promise(
     (resolve, reject) => {
         try {
             log("Start", `Speak text (length ${text.length}): "${text}"`);
@@ -206,28 +208,27 @@ const speak = (synthesizer, text, language) => new Promise(
         } catch (error) {
             return reject(error);
         }
-    }
+    }))
+    .then(() => executeSetTalkieIsNotSpeaking()
 );
 
-const getFramesSelectionTextAndLanguage = () => new Promise(
+const executeScript = (code) => new Promise(
     (resolve, reject) => {
         try {
-            const getTabVariablesCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
+            log("About to execute code in page context", code);
 
             chrome.tabs.executeScript(
                 {
                     allFrames: true,
                     matchAboutBlank: true,
-                    code: getTabVariablesCode,
+                    code: code,
                 },
-                (framesSelectionTextAndLanguage) => {
+                (result) => {
                     if (chrome.runtime.lastError) {
                         return reject(chrome.runtime.lastError);
                     }
 
-                    log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
-
-                    return resolve(framesSelectionTextAndLanguage);
+                    return resolve(result);
                 }
             );
         } catch (error) {
@@ -235,6 +236,22 @@ const getFramesSelectionTextAndLanguage = () => new Promise(
         }
     }
 );
+
+const executeSetTalkieIsSpeakingCode = "window.talkieIsSpeaking = true;";
+const executeSetTalkieIsSpeaking = () => executeScript(executeSetTalkieIsSpeakingCode);
+
+const executeSetTalkieIsNotSpeakingCode = "window.talkieIsSpeaking = false;";
+const executeSetTalkieIsNotSpeaking = () => executeScript(executeSetTalkieIsNotSpeakingCode);
+
+const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { window.talkieIsSpeaking === true && window.speechSynthesis.cancel(); });";
+const executeAddOnBeforeUnloadHandlers = () => executeScript(executeAddOnBeforeUnloadHandlersCode);
+
+const executeGetFramesSelectionTextAndLanguageCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
+const executeGetFramesSelectionTextAndLanguage = () => executeScript(executeGetFramesSelectionTextAndLanguageCode).then((framesSelectionTextAndLanguage) => {
+    log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
+
+    return framesSelectionTextAndLanguage;
+});
 
 const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
@@ -455,7 +472,7 @@ const speakUserSelection = (synthesizer) => promiseTry(() => {
 
     return Promise.all(
         [
-            getFramesSelectionTextAndLanguage(),
+            executeGetFramesSelectionTextAndLanguage(),
             detectPageLanguage(),
         ]
     )
