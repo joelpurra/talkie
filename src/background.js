@@ -18,6 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/* global chrome:false, window:false, console:false, Promise:false, SpeechSynthesisUtterance:false */
+
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
@@ -26,13 +28,17 @@ const extensionName = "Talkie";
 const log = (...args) => {
     const now = new Date().toISOString();
 
+    /* eslint-disable no-console */
     console.log(now, extensionName, ...args);
+    /* eslint-enable no-console */
 };
 
 const logError = (...args) => {
     const now = new Date().toISOString();
 
+    /* eslint-disable no-console */
     console.error(now, extensionName, ...args);
+    /* eslint-enable no-console */
 };
 
 log("Start", "Loading code");
@@ -80,7 +86,7 @@ const setup = () => promiseTry(
                 // NOTE: the speech synthesizer can only be used after the voices have been loaded.
                 const synthesizer = window.speechSynthesis;
 
-                const handleVoicesChanged = (event) => {
+                const handleVoicesChanged = () => {
                     delete synthesizer.onerror;
                     delete synthesizer.onvoiceschanged;
 
@@ -95,12 +101,14 @@ const setup = () => promiseTry(
                     delete synthesizer.onerror;
                     delete synthesizer.onvoiceschanged;
 
+                    logError("Error", "Speech synthesizer check", event);
+
                     return reject(null);
                 };
 
                 synthesizer.onerror = handleError;
                 synthesizer.onvoiceschanged = handleVoicesChanged;
-            } catch(error) {
+            } catch (error) {
                 return reject(error);
             }
         }
@@ -126,10 +134,10 @@ const setup = () => promiseTry(
         return synthesizer;
     })
     .then((synthesizer) => {
-        const unload = (e) => {
+        const unload = () => {
             log("Start", "Unloading");
 
-            if(synthesizer.speaking) {
+            if (synthesizer.speaking) {
                 // Clear all text.
                 // TODO: check if the text was added by this extension, or something else.
                 synthesizer.cancel();
@@ -177,7 +185,7 @@ const speak = (synthesizer, text, language) => new Promise(
                 delete utterance.onend;
                 delete utterance.onerror;
 
-                log("Error", `Speak text (length ${text.length})`, event);
+                logError("Error", `Speak text (length ${text.length})`, event);
 
                 return reject();
             };
@@ -195,7 +203,7 @@ const speak = (synthesizer, text, language) => new Promise(
             log("Variable", "synthesizer", synthesizer);
 
             log("Done", `Speak text (length ${text.length})`);
-        } catch(error) {
+        } catch (error) {
             return reject(error);
         }
     }
@@ -204,7 +212,7 @@ const speak = (synthesizer, text, language) => new Promise(
 const getFramesSelectionTextAndLanguage = () => new Promise(
     (resolve, reject) => {
         try {
-            const getTabVariablesCode = `function getParentElementLanguages(element) { return [].concat(element && element.getAttribute("lang")).concat(element.parentElement && getParentElementLanguages(element.parentElement)); }; var t = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName("html")[0].getAttribute("lang"), parentElementsLanguages: getParentElementLanguages(document.getSelection().getRangeAt(0).startContainer.parentElement) }; t`;
+            const getTabVariablesCode = "function getParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && getParentElementLanguages(element.parentElement)); }; var t = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: getParentElementLanguages(document.getSelection().getRangeAt(0).startContainer.parentElement) }; t";
 
             chrome.tabs.executeScript(
                 {
@@ -222,7 +230,7 @@ const getFramesSelectionTextAndLanguage = () => new Promise(
                     return resolve(framesSelectionTextAndLanguage);
                 }
             );
-        } catch(error) {
+        } catch (error) {
             return reject(error);
         }
     }
@@ -246,7 +254,7 @@ const detectPageLanguage = () => new Promise(
 
                 return resolve(language);
             });
-        } catch(error) {
+        } catch (error) {
             return reject(error);
         }
     }
@@ -282,7 +290,7 @@ const detectTextLanguage = (text) => new Promise(
 
                 return resolve(primaryDetectedTextLanguage);
             });
-        } catch(error) {
+        } catch (error) {
             return reject(error);
         }
     }
@@ -295,7 +303,7 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
         const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
 
         const trimText = (selection) => {
-            var copy = shallowCopy(selection);
+            const copy = shallowCopy(selection);
 
             copy.text = copy.text.trim();
 
@@ -313,7 +321,7 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
     .then((selectionsWithValidText) => Promise.all(
         selectionsWithValidText.map(
             (selection) => {
-                var copy = shallowCopy(selection);
+                const copy = shallowCopy(selection);
 
                 return detectTextLanguage(copy.text)
                 .then((detectedTextLanguage) => {
@@ -354,7 +362,7 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
         };
 
         const cleanupParentElementsLanguages = (selection) => {
-            var copy = shallowCopy(selection);
+            const copy = shallowCopy(selection);
 
             copy.parentElementsLanguages = cleanupLanguagesArray(copy.parentElementsLanguages);
 
@@ -366,9 +374,9 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
         };
 
         const setEffectiveLanguage = (selection) => {
-            var copy = shallowCopy(selection);
+            const copy = shallowCopy(selection);
 
-            var detectedLanguages = [
+            const detectedLanguages = [
                 copy.detectedTextLanguage,
                 copy.parentElementsLanguages[0] || null,
                 copy.htmlTagLanguage,
@@ -377,7 +385,7 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
 
             log("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
 
-            var cleanedLanguages = cleanupLanguagesArray(detectedLanguages);
+            const cleanedLanguages = cleanupLanguagesArray(detectedLanguages);
 
             log("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
 
@@ -466,9 +474,9 @@ const getIconModePaths = (name) => {
         "128": `resources/icon/icon-${name}/icon-128x128.png`,
         "256": `resources/icon/icon-${name}/icon-256x256.png`,
         "512": `resources/icon/icon-${name}/icon-512x512.png`,
-        "1024": `resources/icon/icon-${name}/icon-1024x1024.png`
+        "1024": `resources/icon/icon-${name}/icon-1024x1024.png`,
     };
-}
+};
 
 const setIconMode = (name) => new Promise(
     (resolve, reject) => {
@@ -492,7 +500,7 @@ const setIconMode = (name) => new Promise(
                     resolve();
                 }
             );
-        } catch(error) {
+        } catch (error) {
             return reject(error);
         }
     }
@@ -513,7 +521,7 @@ const setIconModeStopped = () => setIconMode("play");
         rootChain = rootChain
         .then(promise)
         .catch(rootChainCatcher);
-    }
+    };
 
     // NOTE: while not strictly necessary, keep and pass a reference to the global (initialized) synthesizer.
     let synthesizer = null;
@@ -522,10 +530,12 @@ const setIconModeStopped = () => setIconMode("play");
         () => setup()
         .then((result) => {
             synthesizer = result;
+
+            return undefined;
         })
     );
 
-    const handleIconClick = (tab) => {
+    const handleIconClick = () => {
         const wasSpeaking = synthesizer.speaking;
 
         // Clear all old text.
