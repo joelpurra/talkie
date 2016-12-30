@@ -35,7 +35,7 @@ const logError = (...args) => {
     console.error(now, extensionName, ...args);
 };
 
-log("Start", "Loading");
+log("Start", "Loading code");
 
 const promiseTry = (fn) => new Promise(
     (resolve, reject) => {
@@ -58,62 +58,92 @@ const noTextSelectedMessage = {
     language: "en",
 };
 
-const setup = () => new Promise(
-    (resolve, reject) => {
-        try {
-            log("Start", "Setup");
+const setup = () => promiseTry(
+    () => {
+        log("Start", "Pre-requisites check");
 
-            const synthesizer = window.speechSynthesis;
+        if (!("speechSynthesis" in window) || typeof window.speechSynthesis.getVoices !== "function" || typeof window.speechSynthesis.speak !== "function") {
+            throw new Error("The browser does not support speechSynthesis.");
+        }
 
-            const handleVoicesChanged = (event) => {
-                delete synthesizer.onerror;
-                delete synthesizer.onvoiceschanged;
+        if (!("SpeechSynthesisUtterance" in window)) {
+            throw new Error("The browser does not support SpeechSynthesisUtterance.");
+        }
 
-                log("Variable", "synthesizer", synthesizer);
+        log("Done", "Pre-requisites check");
+    })
+    .then(() => new Promise(
+        (resolve, reject) => {
+            try {
+                log("Start", "Speech synthesizer check");
 
-                const unload = (e) => {
-                    log("Start", "Unloading");
+                // NOTE: the speech synthesizer can only be used after the voices have been loaded.
+                const synthesizer = window.speechSynthesis;
 
-                    if(synthesizer.speaking) {
-                        // Clear all text.
-                        // TODO: check if the text was added by this extension, or something else.
-                        synthesizer.cancel();
+                const handleVoicesChanged = (event) => {
+                    delete synthesizer.onerror;
+                    delete synthesizer.onvoiceschanged;
 
-                        // Reset the system to resume playback, just to be nice to the world.
-                        synthesizer.resume();
-                    }
+                    log("Variable", "synthesizer", synthesizer);
 
-                    log("Done", "Unloading");
+                    log("Done", "Speech synthesizer check");
+
+                    return resolve(synthesizer);
                 };
 
-                document.onbeforeunload = unload;
+                const handleError = (event) => {
+                    delete synthesizer.onerror;
+                    delete synthesizer.onvoiceschanged;
 
-                const voices = synthesizer.getVoices();
+                    return reject(null);
+                };
 
-                log("Variable", "voices[]", voices.length, voices.map(voice => {
-                    return {
-                        name: voice.name,
-                        lang: voice.lang,
-                    };
-                }));
-
-                log("Done", "Setup");
-
-                return resolve(synthesizer);
-            };
-
-            const handleError = (event) => {
-                delete synthesizer.onerror;
-                delete synthesizer.onvoiceschanged;
-
-                return reject(null);
-            };
-
-            synthesizer.onerror = handleError;
-            synthesizer.onvoiceschanged = handleVoicesChanged;
-        } catch(error) {
-            return reject(error);
+                synthesizer.onerror = handleError;
+                synthesizer.onvoiceschanged = handleVoicesChanged;
+            } catch(error) {
+                return reject(error);
+            }
         }
+    ))
+    .then((synthesizer) => {
+        log("Start", "Voices check");
+
+        const voices = synthesizer.getVoices();
+
+        if (!voices || voices.length === 0) {
+            throw new Error("The browser does not have any voices installed.");
+        }
+
+        log("Variable", "voices[]", voices.length, voices.map(voice => {
+            return {
+                name: voice.name,
+                lang: voice.lang,
+            };
+        }));
+
+        log("Done", "Voices check");
+
+        return synthesizer;
+    })
+    .then((synthesizer) => {
+        const unload = (e) => {
+            log("Start", "Unloading");
+
+            if(synthesizer.speaking) {
+                // Clear all text.
+                // TODO: check if the text was added by this extension, or something else.
+                synthesizer.cancel();
+
+                // Reset the system to resume playback, just to be nice to the world.
+                synthesizer.resume();
+            }
+
+            log("Done", "Unloading");
+        };
+
+        document.onbeforeunload = unload;
+
+        return synthesizer;
     }
 );
 
@@ -123,9 +153,13 @@ const speak = (synthesizer, text, language) => new Promise(
             log("Start", `Speak text (length ${text.length}): "${text}"`);
 
             const utterance = new SpeechSynthesisUtterance(text);
+
+            // NOTE: while there might be more than one voice for the particular lanugage, let the browser pick which one.
             utterance.lang = language;
+
+            // TODO: options for per-language voice , pitch, rate?
             // utterance.pitch = [0,2];
-            // utterance.rate = [0,2];
+            // utterance.rate = [0.1,10];
             // utterance.voice = synthesizer.getVoices()[4];
 
             log("Variable", "utterance", utterance);
@@ -151,6 +185,7 @@ const speak = (synthesizer, text, language) => new Promise(
             utterance.onend = handleEnd;
             utterance.onerror = handleError;
 
+            // The actual act of speaking the text.
             synthesizer.speak(utterance);
 
             if (synthesizer.paused) {
@@ -202,7 +237,7 @@ const detectPageLanguage = () => new Promise(
                     return reject(chrome.runtime.lastError);
                 }
 
-                log("detectLanguage", "Browser detected primary page language", language);
+                log("detectPageLanguage", "Browser detected primary page language", language);
 
                 // The language fallback value is "und", so treat it as no language.
                 if (!language || typeof language !== "string" || language === "und") {
@@ -238,7 +273,7 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => {
     // https://en.wikipedia.org/wiki/ISO_639-1
     // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
     // http://xml.coverpages.org/iso639a.html
-    // NOTE: Discovered because Twitter seems to still use "iw".
+    // NOTE: discovered because Twitter seems to still use "iw".
     const iso639Dash1Aliases1988To2002 = {
         "in": "id",
         "iw": "he",
@@ -375,6 +410,7 @@ const setIconModePlaying = () => setIconMode("stop");
 const setIconModeStopped = () => setIconMode("play");
 
 (function main() {
+    // NOTE: using a chainer to be able to add click-driven speech events one after another.
     let rootChain = Promise.resolve();
 
     const rootChainCatcher = (error) => {
@@ -387,6 +423,7 @@ const setIconModeStopped = () => setIconMode("play");
         .catch(rootChainCatcher);
     }
 
+    // NOTE: while not strictly necessary, keep and pass a reference to the global (initialized) synthesizer.
     let synthesizer = null;
 
     chain(
@@ -424,4 +461,4 @@ const setIconModeStopped = () => setIconMode("play");
     chrome.browserAction.onClicked.addListener(handleIconClick);
 }());
 
-log("Done", "Loading");
+log("Done", "Loading code");
