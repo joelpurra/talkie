@@ -252,103 +252,195 @@ const detectPageLanguage = () => new Promise(
     }
 );
 
-const cleanupSelections = (allVoices, detectedPageLanguage, selections) => {
-    const isNonNullObject = (selection) => !!selection && typeof selection === "object";
+const detectTextLanguage = (text) => new Promise(
+    (resolve, reject) => {
+        try {
+            if (!("detectLanguage" in chrome.i18n)) {
+                // NOTE: text-based language detection is only used as a fallback.
+                log("detectTextLanguage", "Browser does not support detecting text language");
 
-    const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+                return resolve(null);
+            }
 
-    const isValidString = (str) => !isUndefinedOrNullOrEmptyOrWhitespace(str);
+            chrome.i18n.detectLanguage(text, (result) => {
+                // https://developer.chrome.com/extensions/i18n#method-detectLanguage
+                if (chrome.runtime.lastError) {
+                    return reject(chrome.runtime.lastError);
+                }
 
-    const trimText = (selection) => {
-        var copy = shallowCopy(selection);
+                // The language fallback value is "und", so treat it as no language.
+                if (!result.isReliable && result.languages.length > 0 && result.languages[0].language !== "und") {
+                    // NOTE: text-based language detection is only used as a fallback.
+                    log("detectTextLanguage", "Browser did not detect reliable text language", result);
 
-        copy.text = copy.text.trim();
+                    return resolve(null);
+                }
 
-        return copy;
-    };
+                const primaryDetectedTextLanguage = result.languages[0].language;
 
-    const isKnownVoiceLanguage = (elementLanguage) => allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
+                log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
 
-    // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
-    // https://en.wikipedia.org/wiki/ISO_639-1
-    // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-    // http://xml.coverpages.org/iso639a.html
-    // NOTE: discovered because Twitter seems to still use "iw".
-    const iso639Dash1Aliases1988To2002 = {
-        "in": "id",
-        "iw": "he",
-        "ji": "yi",
-    };
-
-    const mapIso639Aliases = (language) => {
-        return iso639Dash1Aliases1988To2002[language] || language;
-    };
-
-    const cleanupParentElementsLanguages = (selection) => {
-        var copy = shallowCopy(selection);
-
-        copy.parentElementsLanguages = copy.parentElementsLanguages || [];
-        copy.parentElementsLanguages = copy.parentElementsLanguages
-        .filter(isValidString)
-        .map(mapIso639Aliases)
-        .filter(isKnownVoiceLanguage);
-
-        return copy;
-    };
-
-    const setEffectiveLanguage = (selection) => {
-        var copy = shallowCopy(selection);
-
-        copy.effectiveLanguage = copy.parentElementsLanguages[0] || copy.htmlTagLanguage || detectedPageLanguage || null;
-
-        return copy;
-    };
-
-    const mapResults = (selection) => {
-        return {
-            text: selection.text,
-            effectiveLanguage: selection.effectiveLanguage,
-        };
-    };
-
-    const cleanedupSelections = selections
-    .filter(isNonNullObject)
-    .filter(hasValidText)
-    .map(trimText)
-    .filter(hasValidText)
-    .map(cleanupParentElementsLanguages)
-    .map(setEffectiveLanguage)
-    .map(mapResults);
-
-    if (cleanedupSelections.length === 0) {
-        log("Empty filtered selections");
-
-        cleanedupSelections.push(noTextSelectedMessage);
+                return resolve(primaryDetectedTextLanguage);
+            });
+        } catch(error) {
+            return reject(error);
+        }
     }
+);
 
-    return cleanedupSelections;
-};
+const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promiseTry(
+    () => {
+        const isNonNullObject = (selection) => !!selection && typeof selection === "object";
 
-const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => {
+        const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+
+        const trimText = (selection) => {
+            var copy = shallowCopy(selection);
+
+            copy.text = copy.text.trim();
+
+            return copy;
+        };
+
+        const selectionsWithValidText = selections
+        .filter(isNonNullObject)
+        .filter(hasValidText)
+        .map(trimText)
+        .filter(hasValidText);
+
+        return selectionsWithValidText;
+    })
+    .then((selectionsWithValidText) => Promise.all(
+        selectionsWithValidText.map(
+            (selection) => {
+                var copy = shallowCopy(selection);
+
+                return detectTextLanguage(copy.text)
+                .then((detectedTextLanguage) => {
+                    copy.detectedTextLanguage = detectedTextLanguage;
+
+                    return copy;
+                });
+            })
+        )
+    )
+    .then((selectionsWithValidTextAndDetectedLanguage) => {
+        const isKnownVoiceLanguage = (elementLanguage) => allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
+
+        // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
+        // https://en.wikipedia.org/wiki/ISO_639-1
+        // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+        // http://xml.coverpages.org/iso639a.html
+        // NOTE: discovered because Twitter seems to still use "iw".
+        const iso639Dash1Aliases1988To2002 = {
+            "in": "id",
+            "iw": "he",
+            "ji": "yi",
+        };
+
+        const mapIso639Aliases = (language) => {
+            return iso639Dash1Aliases1988To2002[language] || language;
+        };
+
+        const isValidString = (str) => !isUndefinedOrNullOrEmptyOrWhitespace(str);
+
+        const cleanupLanguagesArray = (languages) => {
+            const copy = (languages || [])
+            .filter(isValidString)
+            .map(mapIso639Aliases)
+            .filter(isKnownVoiceLanguage);
+
+            return copy;
+        };
+
+        const cleanupParentElementsLanguages = (selection) => {
+            var copy = shallowCopy(selection);
+
+            copy.parentElementsLanguages = cleanupLanguagesArray(copy.parentElementsLanguages);
+
+            return copy;
+        };
+
+        const getMoreSpecificLanguagesWithPrefix = (prefix) => {
+            return (language) => language.startsWith(prefix) && language.length > prefix.length;
+        };
+
+        const setEffectiveLanguage = (selection) => {
+            var copy = shallowCopy(selection);
+
+            var detectedLanguages = [
+                copy.detectedTextLanguage,
+                copy.parentElementsLanguages[0] || null,
+                copy.htmlTagLanguage,
+                detectedPageLanguage,
+            ];
+
+            log("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
+
+            var cleanedLanguages = cleanupLanguagesArray(detectedLanguages);
+
+            log("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
+
+            const primaryLanguagePrefix = cleanedLanguages[0] || null;
+
+            log("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
+
+            // NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
+            const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
+
+            log("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
+
+            const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
+
+            log("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
+
+            copy.effectiveLanguage = effectiveLanguage;
+
+            return copy;
+        };
+
+        const mapResults = (selection) => {
+            return {
+                text: selection.text,
+                effectiveLanguage: selection.effectiveLanguage,
+            };
+        };
+
+        const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage.map(cleanupParentElementsLanguages)
+        .map(setEffectiveLanguage)
+        .map(mapResults);
+
+        if (selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage.length === 0) {
+            log("Empty filtered selections");
+
+            selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage.push(noTextSelectedMessage);
+        }
+
+        return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
+    }
+);
+
+const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => promiseTry(() => {
     log("Start", "Speaking all selections");
 
     log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
 
-    const allVoices = synthesizer.getVoices();
-    const cleanedupSelections = cleanupSelections(allVoices, detectedPageLanguage, selections);
+    return promiseTry(() => synthesizer.getVoices())
+    .then((allVoices) => cleanupSelections(allVoices, detectedPageLanguage, selections))
+    .then((cleanedupSelections) => {
+        log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
 
-    log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
+        const speakPromises = cleanedupSelections.map((selection) => {
+            log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
-    const speakPromises = cleanedupSelections.map((selection) => {
-        log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
+            return speak(synthesizer, selection.text, selection.effectiveLanguage);
+        });
 
-        return speak(synthesizer, selection.text, selection.effectiveLanguage);
+        log("Done", "Speaking all selections");
+
+        return Promise.all(speakPromises);
     });
-
-    log("Done", "Speaking all selections");
-
-    return Promise.all(speakPromises);
-};
+});
 
 const speakUserSelection = (synthesizer) => promiseTry(() => {
     log("Start", "Speaking selection");
