@@ -17,5 +17,13 @@
     },
     "noTextSelectedMessage": {
         "message": "Vänligen markera önskad text först!"
+    },
+    "noVoiceForLanguageDetectedMessage": {
+        "message": "Sorry, no available voice language detected for the selected text.",
+        "description": "This is a fallback message. For this reason it is always in English."
+    },
+    "noVoiceForLanguageDetectedMessageLanguage": {
+        "message": "en",
+        "description": "This is a fallback message. For this reason it is always in English."
     }
 }

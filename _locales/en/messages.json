@@ -17,5 +17,13 @@
     },
     "noTextSelectedMessage": {
         "message": "Please select desired text on the website first!"
+    },
+    "noVoiceForLanguageDetectedMessage": {
+        "message": "Sorry, no available voice language detected for the selected text.",
+        "description": "This is a fallback message. For this reason it is always in English."
+    },
+    "noVoiceForLanguageDetectedMessageLanguage": {
+        "message": "en",
+        "description": "This is a fallback message. For this reason it is always in English."
     }
 }

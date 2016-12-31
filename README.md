@@ -19,7 +19,7 @@
 
 ## Features
 
-- Uses your browser's built-in [Web Speech API for text-to-speech](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
+- Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
 - Privacy aware.
   - All text and speech is processed internally by your browser. While ultimately depending on your specific browser, all processing is expected to be done on your own machine and not use a server.
   - Sound is only produced, never recorded.
