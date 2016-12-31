@@ -52,7 +52,8 @@ git flow release finish -s <version>
 # Create a zip file with the extension package.
 npm run --silent package
 
-# Upload the package to publish.
+# Upload and publish the package.
+npm run --silent chromestore
 ```
 
 
