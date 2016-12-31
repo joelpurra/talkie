@@ -66,6 +66,11 @@ const noTextSelectedMessage = {
     effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
 };
 
+const noVoiceForLanguageDetectedMessage = {
+    text: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
+    effectiveLanguage: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
+};
+
 const setup = () => promiseTry(
     () => {
         log("Start", "Pre-requisites check");
@@ -440,8 +445,17 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
             };
         };
 
+        const fallbackMessageForNoLanguageDetected = (selection) => {
+            if (selection.effectiveLanguage === null) {
+                return noVoiceForLanguageDetectedMessage;
+            }
+
+            return selection;
+        };
+
         const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage.map(cleanupParentElementsLanguages)
         .map(setEffectiveLanguage)
+        .map(fallbackMessageForNoLanguageDetected)
         .map(mapResults);
 
         if (selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage.length === 0) {
