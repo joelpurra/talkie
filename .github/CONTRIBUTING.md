@@ -30,6 +30,33 @@
 
 
 
+## Release procedure
+
+```bash
+# Finish up any features, switch to develop.
+git checkout develop
+
+# Fix any warnings and errors.
+npm run --silent test
+
+# The "<version>" needs to follow semantic versioning, such as "v1.0.0".
+# http://semver.org/
+git flow release start <version>
+
+# Update files to contain the version number.
+npm run --silent version:update
+
+# Finish the release and sign the tag.
+git flow release finish -s <version>
+
+# Create a zip file with the extension package.
+npm run --silent package
+
+# Upload the package to publish.
+```
+
+
+
 ---
 
 <a href="https://github.com/joelpurra/talkie"><img src="../resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).
