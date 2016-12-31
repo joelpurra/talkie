@@ -1,16 +1,19 @@
 {
   "name": "talkie",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Text-to-speech browser extension button.",
   "scripts": {
-    "package": "rimraf .package && mkdir -p .package/ && cp -r _locales resources src CLA.md LICENSE README.md manifest.json .package/ && cd .package/ && zip -vr ../talkie-joelpurra.com-${npm_package_version}.zip .",
+    "package": "rimraf .package && mkdir -p .package/ && cp -r _locales resources src CLA.md LICENSE README.md manifest.json .package/ && cd .package/ && zip -vr \"../talkie-joelpurra.com-${npm_package_version}.zip\" .",
     "version:get": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/__ p'",
     "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file -- package.json && git add manifest.json package.json && git commit -m \"${TALKIE_VERSION}\"",
     "version:update:file": "json -Ie \"this.version='${TALKIE_VERSION}'\" -f",
     "test": "npm run --silent lint",
     "lint": "npm run --silent eslint --",
-    "eslint": "eslint ./src"
+    "eslint": "eslint ./src",
+    "chromestore": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run chromestore:update && npm run chromestore:publish",
+    "chromestore:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"talkie-joelpurra.com-${npm_package_version}.zip\"",
+    "chromestore:publish": "chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk"
   },
   "repository": {
     "type": "git",
@@ -33,6 +36,7 @@
   },
   "homepage": "https://github.com/joelpurra/talkie#readme",
   "devDependencies": {
+    "chrome-webstore-manager": "^0.4.1",
     "eslint": "^3.12.2",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",

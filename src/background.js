@@ -296,7 +296,14 @@ const detectTextLanguage = (text) => new Promise(
                 }
 
                 // The language fallback value is "und", so treat it as no language.
-                if (!result.isReliable && result.languages.length > 0 && result.languages[0].language !== "und") {
+                if (
+                    !result.isReliable
+                    || !result.languages
+                    || !(result.languages.length > 0)
+                    || typeof result.languages[0].language !== "string"
+                    || !(result.languages[0].language.trim().length > 0)
+                    || result.languages[0].language === "und"
+                ) {
                     // NOTE: text-based language detection is only used as a fallback.
                     log("detectTextLanguage", "Browser did not detect reliable text language", result);
 
