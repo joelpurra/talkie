@@ -1,7 +1,7 @@
 {
   "name": "talkie",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Text-to-speech browser extension button.",
   "scripts": {
     "package": "rimraf .package && mkdir -p .package/ && cp -r _locales resources src CLA.md LICENSE README.md manifest.json .package/ && cd .package/ && zip -vr \"../talkie-joelpurra.com-${npm_package_version}.zip\" .",
