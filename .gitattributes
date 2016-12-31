@@ -1,0 +1,15 @@
+* text=auto eol=lf
+
+*.gitattributes text
+.gitignore text
+LICENSE text
+*.md text
+*.js text
+*.json text
+*.svg text
+
+*.css text diff=css
+*.html text diff=html
+
+*.ico binary
+*.png binary
