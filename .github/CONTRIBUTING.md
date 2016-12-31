@@ -24,7 +24,7 @@
 
 ## Have a patch?
 
-
+- Translations can be done by editing or adding `messages.json` for the desired locale in the `_locales` directory.
 - Follow [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/) and use the `develop` branch as the base for your patch.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](../CLA.md).
 

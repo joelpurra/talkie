@@ -23,13 +23,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-const extensionName = "Talkie";
+const extensionShortName = chrome.i18n.getMessage("extensionShortName");
 
 const log = (...args) => {
     const now = new Date().toISOString();
 
     /* eslint-disable no-console */
-    console.log(now, extensionName, ...args);
+    console.log(now, extensionShortName, ...args);
     /* eslint-enable no-console */
 };
 
@@ -37,11 +37,13 @@ const logError = (...args) => {
     const now = new Date().toISOString();
 
     /* eslint-disable no-console */
-    console.error(now, extensionName, ...args);
+    console.error(now, extensionShortName, ...args);
     /* eslint-enable no-console */
 };
 
 log("Start", "Loading code");
+
+log("Locale", chrome.i18n.getMessage("@@ui_locale"));
 
 const promiseTry = (fn) => new Promise(
     (resolve, reject) => {
@@ -60,8 +62,8 @@ const shallowCopy = (...objs) => Object.assign({}, ...objs);
 const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
 
 const noTextSelectedMessage = {
-    text: "Please select desired text on the website first!",
-    language: "en",
+    text: chrome.i18n.getMessage("noTextSelectedMessage"),
+    effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
 };
 
 const setup = () => promiseTry(

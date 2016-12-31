@@ -1,0 +1,21 @@
+{
+    "extensionLocale": {
+        "message": "en",
+        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
+    },
+    "extensionName": {
+        "message": "Talkie"
+    },
+    "extensionShortName": {
+        "message": "Talkie"
+    },
+    "extensionDescription": {
+        "message": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+    },
+    "buttonDefaultTitle": {
+        "message": "Read text selection out loud"
+    },
+    "noTextSelectedMessage": {
+        "message": "Please select desired text on the website first!"
+    }
+}
