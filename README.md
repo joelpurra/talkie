@@ -15,49 +15,95 @@
 
 ## Installation
 
-- Easy option: <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk">add Talkie to Chrome</a> in the Chrome Web Store.
-- Developer option: use the source code directly.
+- **Easy option:** <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk">add Talkie to Chrome</a> in the Chrome Web Store.
+- Developer option: [use the source code](DEVELOP.md) directly.
 
 ## Usage
 
-1. Select desired text on any web page.
-1. Click the Talkie button in your browser bar <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
+1. **Select desired text** on any web page.
+1. **Click the Talkie button** in your browser bar <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
 
 
 
 ## Features
 
-- Free!
-- Lets you listen to the selected text on any part of a page -- short snippets or entire news articles. Just highlight what you want to hear read aloud and hit play.
-- Automatically detects the text language per-page, and chooses a voice in the same language to match it.
-- Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
-- Privacy aware -- no unnecessary tracking or external services.
-  - All text and speech is processed internally by your browser. While ultimately depending on your specific browser, all processing is expected to be done on your own machine and not use a server.
-  - Sound is only produced, never recorded.
+- **Free!**
+- Lets you listen to the selected text on any part of a page -- **short snippets or entire news articles**. Just highlight what you want to hear read aloud and hit play.
+- Automatically **detects the text language** per-page, and chooses a voice in the same language to match it.
+- **Privacy aware** -- no unnecessary tracking or external services.
 
 
 
 ## Notes
 
-- As the Web Speech API is implemented by your browser, your browser and browser settings may affect Talkie.
-- Not all languages are supported; consult your browser's voice documentation.
-- The language detection is done in three steps, where the first valid value is chosen.
-  1. Using the first available `lang="..."` attribute from the selected text's parent HTML elements.
-  1. Using the `<html lang="...">` attribute from the current page (or frame).
-  1. Your browser's page primary language detection.
-  1. The default language, as determined by your browser's Web Speech API.
-- While the Web Speech API can use more than one voice per language (currently over 20 for `en-US` in my browser), as well as modify speech rate and pitch, these kinds of options have not been implemented. I am *considering* to develop it as a paid feature for those who install the extension through the Chrome Web Store.
+<details>
+  <summary><em>Web Speech API</em></summary>
+
+  <p>
+    Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
+  </p>
+
+  <ul>
+    <li>
+      As the Web Speech API is implemented by your browser, your browser selection and settings may affect Talkie.
+    </li>
+    <li>
+      All text and speech is processed internally by your browser. While ultimately depending on your specific browser, processing is expected to be done on your own machine and not use a server.
+    </li>
+    <li>
+      Sound is only produced, never recorded.
+    </li>
+  </ul>
+</details>
 
 
-
-## Voices
-
-The voices for each language are provided by your browser. For this reason the list may differ depending on your browser, browser version, operating system, and any other installed extensions/software.
 
 <details>
-  <summary>Example list of voices available in Google Chrome version 55</summary>
+  <summary><em>Language detection</em></summary>
 
-The total number of voices is 83.
+  <p>
+    Not all languages are supported; consult your browser's voice documentation.
+  </p>
+
+  <p>
+    The language detection is done in four steps, where the first valid value is chosen. If no language was detected, a notice is spoken (in English).
+  </p>
+
+  <ol>
+    <li>
+      Your browser's text language detection for the selection, using word and sentence analysis.
+    </li>
+    <li>
+      The first available `lang="..."` attribute from the selected text's parent HTML elements.
+    </li>
+    <li>
+      The `<html lang="...">` attribute from the current page (or frame).
+    </li>
+    <li>
+      Your browser's page primary language detection.
+    </li>
+  </ol>
+
+  <p>
+    While the Web Speech API can use more than one voice per language (currently over 20 for `en-US` in Google Chrome version 55), as well as modify speech rate and pitch, these kinds of options have not been implemented. I am *considering* to develop it as a paid feature for those who install the extension through the Chrome Web Store.
+  </p>
+</details>
+
+
+
+<details>
+  <summary><em>Voices</em></summary>
+
+  <p>
+    The voices for each language are provided by your browser. For this reason the list may differ depending on your browser, browser version, operating system, and any other installed extensions/software.
+  </p>
+
+<details>
+  <summary><em>Example list of voices available in Google Chrome version 55</em></summary>
+
+  <p>
+    The total number of voices is 83.
+  </p>
 
   <ul>
     <li><strong>ar-SA:</strong> Tarik</li>
@@ -101,9 +147,9 @@ The total number of voices is 83.
     <li><strong>zh-CN:</strong> Google 普通话（中国大陆）, Ting-Ting</li>
     <li><strong>zh-HK:</strong> Google 粤語（香港）, Sin-ji</li>
     <li><strong>zh-TW:</strong> Google 國語（臺灣）, Mei-Jia</li>
-    </ul>
+  </ul>
 </details>
-
+</details>
 
 
 ## Acknowledgements
