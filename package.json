@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
-    "package": "rimraf .package && mkdir -p .package/ && cp -r _locales resources src CLA.md LICENSE README.md manifest.json .package/ && cd .package/ && zip -vr \"../talkie-joelpurra.com-${npm_package_version}.zip\" .",
+    "package": "rimraf .package && mkdir -p .package/ && rsync -a --files-from extension-files.txt . .package/ && cd .package/ && zip -vr \"../talkie-joelpurra.com-${npm_package_version}.zip\" .",
     "version:get": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/__ p'",
     "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file -- package.json && git add manifest.json package.json && git commit -m \"${TALKIE_VERSION}\"",
     "version:update:file": "json -Ie \"this.version='${TALKIE_VERSION}'\" -f",
