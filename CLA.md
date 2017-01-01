@@ -7,6 +7,9 @@
 <p align="center">
   Text-to-speech browser extension button
 </p>
+<p align="center">
+  <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="resources/chrome-web-store/ChromeWebStore_Badge_v2_340x96.png" alt="Talkie is available for installation from the Chrome Web Store" width="340" height="96" border="0" /></a>
+</p>
 
 
 

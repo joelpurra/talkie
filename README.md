@@ -7,8 +7,16 @@
 <p align="center">
   Text-to-speech browser extension button
 </p>
+<p align="center">
+  <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="resources/chrome-web-store/ChromeWebStore_Badge_v2_340x96.png" alt="Talkie is available for installation from the Chrome Web Store" width="340" height="96" border="0" /></a>
+</p>
 
 
+
+## Installation
+
+- Easy option: <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk">add Talkie to Chrome</a> in the Chrome Web Store.
+- Developer option: use the source code directly.
 
 ## Usage
 
@@ -19,11 +27,13 @@
 
 ## Features
 
+- Free!
+- Lets you listen to the selected text on any part of a page -- short snippets or entire news articles. Just highlight what you want to hear read aloud and hit play.
+- Automatically detects the text language per-page, and chooses a voice in the same language to match it.
 - Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
-- Privacy aware.
+- Privacy aware -- no unnecessary tracking or external services.
   - All text and speech is processed internally by your browser. While ultimately depending on your specific browser, all processing is expected to be done on your own machine and not use a server.
   - Sound is only produced, never recorded.
-- Automatically detects the text language per-page, and chooses a voice in the same language to match it.
 
 
 
@@ -42,7 +52,7 @@
 
 ## Acknowledgements
 
-- Thanks to [Liron Tocker](http://liron.de/) for the fancy icons: <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> <img src="resources/icon/icon-stop/icon-16x16.png" alt="Talkie stop button" width="16" height="16" border="0" />
+- Thanks to [Liron Tocker](http://liron.de/) for the fancy icons and promotional graphics: <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> <img src="resources/icon/icon-stop/icon-16x16.png" alt="Talkie stop button" width="16" height="16" border="0" />
 
 
 
