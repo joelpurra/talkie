@@ -50,6 +50,62 @@
 
 
 
+## Voices
+
+The voices for each language are provided by your browser. For this reason the list may differ depending on your browser, browser version, operating system, and any other installed extensions/software.
+
+<details>
+  <summary>Example list of voices available in Google Chrome version 55</summary>
+
+The total number of voices is 83.
+
+  <ul>
+    <li><strong>ar-SA:</strong> Tarik</li>
+    <li><strong>cs-CZ:</strong> Zuzana</li>
+    <li><strong>da-DK:</strong> Sara</li>
+    <li><strong>de-DE:</strong> Anna, Google Deutsch</li>
+    <li><strong>el-GR:</strong> Melina</li>
+    <li><strong>en: Fi</strong>ona</li>
+    <li><strong>en-AU:</strong> Karen</li>
+    <li><strong>en-GB:</strong> Daniel, Google UK English Female, Google UK English Male</li>
+    <li><strong>en-IE:</strong> Moira</li>
+    <li><strong>en-IN:</strong> Veena</li>
+    <li><strong>en-US:</strong> Agnes, Albert, Alex, Bad News, Bahh, Bells, Boing, Bruce, Bubbles, Cellos, Deranged, Fred, Good News, Google US English, Hysterical, Junior, Kathy, Pipe Organ, Princess, Ralph, Samantha, Trinoids, Vicki, Victoria, Whisper, Zarvox</li>
+    <li><strong>en-ZA:</strong> Tessa</li>
+    <li><strong>es-AR:</strong> Diego</li>
+    <li><strong>es-ES:</strong> Google español, Monica</li>
+    <li><strong>es-MX:</strong> Paulina</li>
+    <li><strong>es-US:</strong> Google español de Estados Unidos</li>
+    <li><strong>fi-FI:</strong> Satu</li>
+    <li><strong>fr-CA:</strong> Amelie</li>
+    <li><strong>fr-FR:</strong> Google français, Thomas</li>
+    <li><strong>he-IL:</strong> Carmit</li>
+    <li><strong>hi-IN:</strong> Google हिन्दी, Lekha</li>
+    <li><strong>hu-HU:</strong> Mariska</li>
+    <li><strong>id-ID:</strong> Damayanti, Google Bahasa Indonesia</li>
+    <li><strong>it-IT:</strong> Alice, Google italiano</li>
+    <li><strong>ja-JP:</strong> Google 日本語, Kyoko</li>
+    <li><strong>ko-KR:</strong> Google 한국의, Yuna</li>
+    <li><strong>nb-NO:</strong> Nora</li>
+    <li><strong>nl-BE:</strong> Ellen</li>
+    <li><strong>nl-NL:</strong> Google Nederlands, Xander</li>
+    <li><strong>pl-PL:</strong> Google polski, Zosia</li>
+    <li><strong>pt-BR:</strong> Google português do Brasil, Luciana</li>
+    <li><strong>pt-PT:</strong> Joana</li>
+    <li><strong>ro-RO:</strong> Ioana</li>
+    <li><strong>ru-RU:</strong> Google русский, Milena</li>
+    <li><strong>sk-SK:</strong> Laura</li>
+    <li><strong>sv-SE:</strong> Alva</li>
+    <li><strong>th-TH:</strong> Kanya</li>
+    <li><strong>tr-TR:</strong> Yelda</li>
+    <li><strong>zh-CN:</strong> Google 普通话（中国大陆）, Ting-Ting</li>
+    <li><strong>zh-HK:</strong> Google 粤語（香港）, Sin-ji</li>
+    <li><strong>zh-TW:</strong> Google 國語（臺灣）, Mei-Jia</li>
+    </ul>
+</details>
+
+
+
 ## Acknowledgements
 
 - Thanks to [Liron Tocker](http://liron.de/) for the fancy icons and promotional graphics: <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> <img src="resources/icon/icon-stop/icon-16x16.png" alt="Talkie stop button" width="16" height="16" border="0" />
