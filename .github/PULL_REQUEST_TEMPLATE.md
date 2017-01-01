@@ -1,0 +1,44 @@
+*Please fill out the following to help us help you. Replace `...` with your own values, where applicable. Tick of the applicable items in the checklists with `[x]`.*
+
+
+
+### Description
+
+...
+
+
+
+### Steps to verify functionality
+
+...
+
+
+
+### General checklist
+
+- [ ] The code works as expected.
+- [ ] All tests pass.
+- [ ] The pull request follows the steps for a [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/) feature.
+- [ ] The pull request has been made against the `develop` branch.
+
+
+
+### Translation checklist
+
+- [ ] All messages shown or spoken to the user are using `chrome.i18n.getMessage("myMessageName").`
+- [ ] Any new or changed message string have been updated in `_locales/en/messages.json`.
+- [ ] Any new or changed message string have been updated in `_locales/*/messages.json` for languages you know.
+
+
+
+### Code checklist
+
+- [ ] The code has sanity checks (null values, string lengths, etcetera).
+- [ ] Relevant functions and passages uses `promiseTry(() => { ... })` with `return` and `throw` statements.
+- [ ] Errors are handled gracefully.
+
+
+
+### Additional information
+
+...

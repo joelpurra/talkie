@@ -27,37 +27,10 @@
 
 ## Have a patch?
 
-- Translations can be done by editing or adding `messages.json` for the desired locale in the `_locales` directory.
-- Follow [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/) and use the `develop` branch as the base for your patch.
+- Translations, bug fixes, and new features are very welcome!
+- See the [developer documentation](../DEVELOP.md).
+- Follow [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/) and use the `develop` branch as the base for your pull request.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](../CLA.md).
-
-
-
-## Release procedure
-
-```bash
-# Finish up any features, switch to develop.
-git checkout develop
-
-# Fix any warnings and errors.
-npm run --silent test
-
-# The "<version>" needs to follow semantic versioning, such as "v1.0.0".
-# http://semver.org/
-git flow release start <version>
-
-# Update files to contain the version number.
-npm run --silent version:update
-
-# Finish the release and sign the tag.
-git flow release finish -s <version>
-
-# Create a zip file with the extension package.
-npm run --silent package
-
-# Upload and publish the package.
-npm run --silent chromestore
-```
 
 
 
