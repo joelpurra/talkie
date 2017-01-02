@@ -1,0 +1,29 @@
+{
+    "extensionLocale": {
+        "message": "de",
+        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
+    },
+    "extensionName": {
+        "message": "Talkie"
+    },
+    "extensionShortName": {
+        "message": "Talkie"
+    },
+    "extensionDescription": {
+        "message": "Wählen Sie Text auf jeder Webseite, und haben Sie den Computer lesen Sie es laut für Sie, indem Sie einfach auf die Talkie-Taste."
+    },
+    "buttonDefaultTitle": {
+        "message": "Lesen Sie die Textauswahl laut"
+    },
+    "noTextSelectedMessage": {
+        "message": "Bitte wählen Sie zuerst den gewünschten Text auf der Webseite aus!"
+    },
+    "noVoiceForLanguageDetectedMessage": {
+        "message": "Sorry, no available voice language detected for the selected text.",
+        "description": "This is a fallback message. For this reason it is always in English."
+    },
+    "noVoiceForLanguageDetectedMessageLanguage": {
+        "message": "en",
+        "description": "This is a fallback message. For this reason it is always in English."
+    }
+}

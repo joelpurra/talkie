@@ -1,0 +1,29 @@
+{
+    "extensionLocale": {
+        "message": "nb",
+        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
+    },
+    "extensionName": {
+        "message": "Talkie"
+    },
+    "extensionShortName": {
+        "message": "Talkie"
+    },
+    "extensionDescription": {
+        "message": "Velg tekst på en nettside, og har datamaskinen lese den høyt for deg ved å klikke på Talkie-knappen."
+    },
+    "buttonDefaultTitle": {
+        "message": "Les teksten utvalg høyt"
+    },
+    "noTextSelectedMessage": {
+        "message": "Vennligst velg ønsket tekst på nettsiden først!"
+    },
+    "noVoiceForLanguageDetectedMessage": {
+        "message": "Sorry, no available voice language detected for the selected text.",
+        "description": "This is a fallback message. For this reason it is always in English."
+    },
+    "noVoiceForLanguageDetectedMessageLanguage": {
+        "message": "en",
+        "description": "This is a fallback message. For this reason it is always in English."
+    }
+}
