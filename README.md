@@ -98,6 +98,10 @@
     The voices for each language are provided by your browser. For this reason the list may differ depending on your browser, browser version, operating system, and any other installed extensions/software.
   </p>
 
+  <p>
+    In case you have no voices for TTS installed at all, try installing [US English Female Text-to-speech (by Google)](https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb). This should enable at least US English websites to be spoken by Talkie.
+  </p>
+
 <details>
   <summary><em>Example list of voices available in Google Chrome version 55</em></summary>
 
