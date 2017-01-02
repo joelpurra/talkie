@@ -111,7 +111,7 @@
     <li><strong>da-DK:</strong> Sara</li>
     <li><strong>de-DE:</strong> Anna, Google Deutsch</li>
     <li><strong>el-GR:</strong> Melina</li>
-    <li><strong>en: Fi</strong>ona</li>
+    <li><strong>en:</strong> Fiona</li>
     <li><strong>en-AU:</strong> Karen</li>
     <li><strong>en-GB:</strong> Daniel, Google UK English Female, Google UK English Male</li>
     <li><strong>en-IE:</strong> Moira</li>
