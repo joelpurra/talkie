@@ -1,5 +1,15 @@
+_locales/da/messages.json
+_locales/de/messages.json
 _locales/en/messages.json
+_locales/es/messages.json
+_locales/fr/messages.json
+_locales/he/messages.json
+_locales/it/messages.json
+_locales/nb/messages.json
+_locales/nl/messages.json
+_locales/ru/messages.json
 _locales/sv/messages.json
+_locales/zh/messages.json
 CLA.md
 resources/icon/icon-play/icon-16x16.png
 resources/icon/icon-play/icon-32x32.png
