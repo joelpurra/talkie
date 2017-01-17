@@ -169,6 +169,8 @@ const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers(
         try {
             log("Start", `Speak text (length ${text.length}): "${text}"`);
 
+            executeLogToPage(`Speaking text: ${text}`);
+
             const utterance = new SpeechSynthesisUtterance(text);
 
             // NOTE: while there might be more than one voice for the particular lanugage, let the browser pick which one.
@@ -219,7 +221,32 @@ const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers(
     .then(() => executeSetTalkieIsNotSpeaking()
 );
 
-const executeScript = (code) => new Promise(
+const executeScriptInTopFrame = (code) => new Promise(
+    (resolve, reject) => {
+        try {
+            log("About to execute code in page context", code);
+
+            chrome.tabs.executeScript(
+                {
+                    allFrames: false,
+                    matchAboutBlank: false,
+                    code: code,
+                },
+                (result) => {
+                    if (chrome.runtime.lastError) {
+                        return reject(chrome.runtime.lastError);
+                    }
+
+                    return resolve(result);
+                }
+            );
+        } catch (error) {
+            return reject(error);
+        }
+    }
+);
+
+const executeScriptInAllFrames = (code) => new Promise(
     (resolve, reject) => {
         try {
             log("About to execute code in page context", code);
@@ -245,20 +272,53 @@ const executeScript = (code) => new Promise(
 );
 
 const executeSetTalkieIsSpeakingCode = "window.talkieIsSpeaking = true;";
-const executeSetTalkieIsSpeaking = () => executeScript(executeSetTalkieIsSpeakingCode);
+const executeSetTalkieIsSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsSpeakingCode);
 
 const executeSetTalkieIsNotSpeakingCode = "window.talkieIsSpeaking = false;";
-const executeSetTalkieIsNotSpeaking = () => executeScript(executeSetTalkieIsNotSpeakingCode);
+const executeSetTalkieIsNotSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsNotSpeakingCode);
 
 const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { window.talkieIsSpeaking === true && window.speechSynthesis.cancel(); });";
-const executeAddOnBeforeUnloadHandlers = () => executeScript(executeAddOnBeforeUnloadHandlersCode);
+const executeAddOnBeforeUnloadHandlers = () => executeScriptInTopFrame(executeAddOnBeforeUnloadHandlersCode);
 
 const executeGetFramesSelectionTextAndLanguageCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
-const executeGetFramesSelectionTextAndLanguage = () => executeScript(executeGetFramesSelectionTextAndLanguageCode).then((framesSelectionTextAndLanguage) => {
+const executeGetFramesSelectionTextAndLanguage = () => executeScriptInAllFrames(executeGetFramesSelectionTextAndLanguageCode).then((framesSelectionTextAndLanguage) => {
     log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
 
     return framesSelectionTextAndLanguage;
 });
+
+const variableToSafeString = (v) => {
+    if (v === undefined) {
+        return "undefined";
+    }
+
+    if (v === null) {
+        return "null";
+    }
+
+    return v.toString();
+};
+
+const executeLogToPageCode = "console.log(%a);";
+
+const executeLogToPage = (...args) => promiseTry(
+    () => {
+        const now = new Date().toISOString();
+
+        const logValues = [
+            now,
+            extensionShortName,
+            ...args.map((arg) => variableToSafeString(arg)),
+        ]
+            .map((arg) => arg.replace(/"/g, "\\\""))
+            .map((arg) => `"${arg}"`)
+            .join(", ");
+
+        const code = executeLogToPageCode.replace("%a", logValues);
+
+        return executeScriptInTopFrame(code);
+    }
+);
 
 const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
@@ -434,6 +494,12 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
             log("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
 
             copy.effectiveLanguage = effectiveLanguage;
+
+            executeLogToPage("Language", "Selected text language:", copy.detectedTextLanguage);
+            executeLogToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
+            executeLogToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
+            executeLogToPage("Language", "Detected page language:", detectedPageLanguage);
+            executeLogToPage("Language", "Effective language:", copy.effectiveLanguage);
 
             return copy;
         };
