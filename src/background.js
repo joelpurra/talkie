@@ -369,7 +369,8 @@ const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers(
         }
     ))
     .then(() => log("Done", `Speak text (length ${text.length})`))
-    .then(() => executeSetTalkieIsNotSpeaking()
+    .then(() => executeSetTalkieIsNotSpeaking())
+    .then(() => executePlugOnce()
 );
 
 const executeScriptInTopFrame = (code) => new Promise(
@@ -484,6 +485,61 @@ const executeLogToPage = (...args) => promiseTry(
         return executeScriptInTopFrame(code);
     }
 );
+const executeLogToPageWithColorCode = "console.log(%a);";
+
+const executeLogToPageWithColor = (...args) => promiseTry(
+    () => {
+        const now = new Date().toISOString();
+
+        const logValues = "\"" + [
+            now,
+            extensionShortName,
+            "%c",
+            ...args,
+            " ",
+        ]
+            .map((arg) => variableToSafeString(arg))
+            .map((arg) => arg.replace(/\\/g, "\\\\"))
+            .map((arg) => arg.replace(/"/g, "\\\""))
+            .map((arg) => arg.replace(/\n/g, "\\\\n"))
+            .map((arg) => `${arg}`)
+            .join(" ") + "\", \"background: #007F41; color: #FFFFFF; padding: 0.3em;\"";
+
+        const code = executeLogToPageWithColorCode.replace("%a", logValues);
+
+        return executeScriptInTopFrame(code);
+    }
+);
+
+const executePlug = () => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => executeLogToPageWithColor("Thank you for using Talkie!"))
+            .then(() => executeLogToPageWithColor("https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"))
+            .then(() => executeLogToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
+            .then(() => executeLogToPageWithColor("https://joelpurra.com/"))
+            .then(() => executeLogToPageWithColor("If you like Talkie, send a link to your friends -- and consider donating to support further open source development."))
+            .then(() => executeLogToPageWithColor("https://joelpurra.com/donate/"));
+    }
+);
+
+const executeGetTalkieWasPluggedCode = "window.talkieWasPlugged;";
+const executeGetTalkieWasPlugged = () => executeScriptInTopFrame(executeGetTalkieWasPluggedCode);
+
+const executeSetTalkieWasPluggedCode = "window.talkieWasPlugged = true;";
+const executeSetTalkieWasPlugged = () => executeScriptInTopFrame(executeSetTalkieWasPluggedCode);
+
+const executePlugOnce = () => {
+    return executeGetTalkieWasPlugged()
+        .then((talkieWasPlugged) => {
+            if (talkieWasPlugged && talkieWasPlugged.toString() !== "true") {
+                return executePlug()
+                    .then(() => executeSetTalkieWasPlugged());
+            }
+
+            return true;
+        });
+};
 
 const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
