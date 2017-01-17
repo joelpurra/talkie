@@ -27,7 +27,7 @@
 
 ## Features
 
-- **Free!**
+- **Free** but [your donations are highly appreciated](https://joelpurra.com/donate/)!
 - Lets you listen to the selected text on any part of a page -- **short snippets or entire news articles**. Just highlight what you want to hear read aloud and hit play.
 - Automatically **detects the text language** per-page, and chooses a voice in the same language to match it.
 - **Privacy aware** -- no unnecessary tracking or external services.
@@ -164,4 +164,4 @@
 
 ---
 
-<a href="https://github.com/joelpurra/talkie"><img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).
+<a href="https://github.com/joelpurra/talkie"><img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
