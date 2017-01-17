@@ -163,8 +163,8 @@ const setup = () => promiseTry(
 );
 
 const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers()
-.then(() => executeSetTalkieIsSpeaking())
-.then(() => new Promise(
+    .then(() => executeSetTalkieIsSpeaking())
+    .then(() => new Promise(
     (resolve, reject) => {
         try {
             log("Start", `Speak text (length ${text.length}): "${text}"`);
@@ -355,11 +355,11 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
                 const copy = shallowCopy(selection);
 
                 return detectTextLanguage(copy.text)
-                .then((detectedTextLanguage) => {
-                    copy.detectedTextLanguage = detectedTextLanguage;
+                    .then((detectedTextLanguage) => {
+                        copy.detectedTextLanguage = detectedTextLanguage;
 
-                    return copy;
-                });
+                        return copy;
+                    });
             })
         )
     )
@@ -474,20 +474,20 @@ const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => pr
     log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
 
     return promiseTry(() => synthesizer.getVoices())
-    .then((allVoices) => cleanupSelections(allVoices, detectedPageLanguage, selections))
-    .then((cleanedupSelections) => {
-        log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
+        .then((allVoices) => cleanupSelections(allVoices, detectedPageLanguage, selections))
+        .then((cleanedupSelections) => {
+            log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
 
-        const speakPromises = cleanedupSelections.map((selection) => {
-            log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
+            const speakPromises = cleanedupSelections.map((selection) => {
+                log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
-            return speak(synthesizer, selection.text, selection.effectiveLanguage);
+                return speak(synthesizer, selection.text, selection.effectiveLanguage);
+            });
+
+            log("Done", "Speaking all selections");
+
+            return Promise.all(speakPromises);
         });
-
-        log("Done", "Speaking all selections");
-
-        return Promise.all(speakPromises);
-    });
 });
 
 const speakUserSelection = (synthesizer) => promiseTry(() => {
@@ -499,10 +499,10 @@ const speakUserSelection = (synthesizer) => promiseTry(() => {
             detectPageLanguage(),
         ]
     )
-    .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
-        return speakAllSelections(synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
-    })
-    .then(() => log("Done", "Speaking selection"));
+        .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
+            return speakAllSelections(synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
+        })
+        .then(() => log("Done", "Speaking selection"));
 });
 
 const getIconModePaths = (name) => {
@@ -568,11 +568,11 @@ const setIconModeStopped = () => setIconMode("play");
 
     chain(
         () => setup()
-        .then((result) => {
-            synthesizer = result;
+            .then((result) => {
+                synthesizer = result;
 
-            return undefined;
-        })
+                return undefined;
+            })
     );
 
     const handleIconClick = () => {
@@ -588,13 +588,13 @@ const setIconModeStopped = () => setIconMode("play");
                     speakUserSelection(synthesizer),
                 ]
             )
-            .then(() => setIconModeStopped())
-            .catch((error) => {
-                return setIconModeStopped()
-                .then(() => {
-                    throw error;
-                });
-            }));
+                .then(() => setIconModeStopped())
+                .catch((error) => {
+                    return setIconModeStopped()
+                        .then(() => {
+                            throw error;
+                        });
+                }));
         }
 
         return chain(() => setIconModeStopped());

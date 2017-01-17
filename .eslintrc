@@ -17,7 +17,7 @@
         "eol-last": "off",
         "eqeqeq": "error",
         "guard-for-in": "off",
-        "indent": ["error", 4],
+        "indent": ["error", 4, { "MemberExpression": 1 }],
         "jsx-quotes": ["error", "prefer-double"],
         "max-depth": ["off", 4],
         "max-len": ["off", 80, 4],
