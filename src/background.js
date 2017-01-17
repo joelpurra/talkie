@@ -45,6 +45,54 @@ log("Start", "Loading code");
 
 log("Locale", chrome.i18n.getMessage("@@ui_locale"));
 
+const MAX_UTTERANCE_TEXT_LENGTH = 100;
+
+const shallowCopy = (...objs) => Object.assign({}, ...objs);
+
+const last = (indexable) => indexable[indexable.length - 1];
+
+const flatten = (deepArray) => {
+    if (!Array.isArray(deepArray)) {
+        return deepArray;
+    }
+
+    if (deepArray.length === 0) {
+        return [];
+    }
+
+    if (deepArray.length === 1) {
+        return [].concat(flatten(deepArray[0]));
+    }
+
+    return [].concat(flatten(deepArray[0])).concat(flatten(deepArray.slice(1)));
+};
+
+const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
+
+const getRandomInt = (min, max) => {
+    if (typeof min === "undefined") {
+        min = Number.MIN_VALUE;
+        max = Number.MAX_VALUE;
+    }
+
+    if (typeof max === "undefined") {
+        max = min;
+        min = 0;
+    }
+
+    if (max === min) {
+        return min;
+    }
+
+    if (min > max) {
+        const t = min;
+        min = max;
+        max = t;
+    }
+
+    return min + Math.floor(Math.random() * (max - min));
+};
+
 const promiseTry = (fn) => new Promise(
     (resolve, reject) => {
         try {
@@ -57,9 +105,67 @@ const promiseTry = (fn) => new Promise(
     }
 );
 
-const shallowCopy = (...objs) => Object.assign({}, ...objs);
+const promiseSeries = (promises, state) => promiseTry(
+    () => {
+        if (promises.length === 0) {
+            return undefined;
+        }
 
-const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
+        const first = promises[0];
+
+        if (promises.length === 1) {
+            return Promise.resolve(first(state));
+        }
+
+        const rest = promises.slice(1);
+
+        return Promise.resolve(first(state))
+            .then((result) => promiseSeries(rest, result));
+    }
+);
+
+const splitTextToParagraphs = (text) => {
+    // NOTE: in effect discarding empty paragraphs.
+    return text.split(/\n+/);
+};
+
+const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
+    // NOTE: in effect merging multiple spaces in row to a single space.
+    const spacedTextParts = text.split(/ +/);
+
+    const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
+
+    const textParts = spacedTextParts.reduce((newParts, spacedTextPart) => {
+        const appendToText = (ttt) => {
+            if (last(newParts) === "") {
+                newParts[newParts.length - 1] = ttt;
+            } else {
+                newParts[newParts.length - 1] += " " + ttt;
+            }
+        };
+
+        const appendPart = (ttt) => {
+            newParts[newParts.length] = ttt;
+        };
+
+        if (naturalPauseRx.test(spacedTextPart)) {
+            appendToText(spacedTextPart);
+
+            appendPart("");
+        } else if ((last(newParts).length + 1 + spacedTextPart.length) < maxPartLength) {
+            appendToText(spacedTextPart);
+        } else {
+            appendPart(spacedTextPart);
+        }
+
+        return newParts;
+    }, [""]);
+
+    // NOTE: cleaning empty strings "just in case".
+    const cleanTextParts = textParts.filter((textPart) => textPart.trim().length > 0);
+
+    return cleanTextParts;
+};
 
 const noTextSelectedMessage = {
     text: chrome.i18n.getMessage("noTextSelectedMessage"),
@@ -144,16 +250,28 @@ const setup = () => promiseTry(
         const unload = () => {
             log("Start", "Unloading");
 
-            if (synthesizer.speaking) {
-                // Clear all text.
-                // TODO: check if the text was added by this extension, or something else.
-                synthesizer.cancel();
+            return executeGetTalkieIsSpeakingId()
+                .then((talkieIsSpeakingId) => {
+                    // Clear all text if Talkie was speaking.
+                    if (typeof talkieIsSpeakingId === "number") {
+                        return executeSetTalkieIsNotSpeaking()
+                            .then(() => {
+                                synthesizer.cancel();
 
-                // Reset the system to resume playback, just to be nice to the world.
-                synthesizer.resume();
-            }
+                                return undefined;
+                            });
+                    }
 
-            log("Done", "Unloading");
+                    return undefined;
+                })
+                .then(() => {
+                    // Reset the system to resume playback, just to be nice to the world.
+                    synthesizer.resume();
+
+                    log("Done", "Unloading");
+
+                    return undefined;
+                });
         };
 
         chrome.runtime.onSuspend.addListener(unload);
@@ -162,16 +280,14 @@ const setup = () => promiseTry(
     }
 );
 
-const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers()
-    .then(() => executeSetTalkieIsSpeaking())
-    .then(() => new Promise(
+const speakPartOfText = (synthesizer, textPart, language) => new Promise(
     (resolve, reject) => {
         try {
-            log("Start", `Speak text (length ${text.length}): "${text}"`);
+            log("Start", `Speak text part (length ${textPart.length}): "${textPart}"`);
 
-            executeLogToPage(`Speaking text: ${text}`);
+            // executeLogToPage(`Speaking text part: ${textPart}`);
 
-            const utterance = new SpeechSynthesisUtterance(text);
+            const utterance = new SpeechSynthesisUtterance(textPart);
 
             // NOTE: while there might be more than one voice for the particular lanugage, let the browser pick which one.
             utterance.lang = language;
@@ -187,7 +303,7 @@ const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers(
                 delete utterance.onend;
                 delete utterance.onerror;
 
-                log("End", `Speak text (length ${text.length}) spoken in ${event.elapsedTime} milliseconds.`);
+                log("End", `Speak text part (length ${textPart.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
                 return resolve();
             };
@@ -196,7 +312,7 @@ const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers(
                 delete utterance.onend;
                 delete utterance.onerror;
 
-                logError("Error", `Speak text (length ${text.length})`, event);
+                logError("Error", `Speak text part (length ${textPart.length})`, event);
 
                 return reject();
             };
@@ -213,11 +329,46 @@ const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers(
 
             log("Variable", "synthesizer", synthesizer);
 
-            log("Done", `Speak text (length ${text.length})`);
+            log("Done", `Speak text part (length ${textPart.length})`);
         } catch (error) {
             return reject(error);
         }
-    }))
+    }
+);
+
+const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers()
+    .then(() => promiseTry(
+        () => {
+            const talkieIsSpeakingId = getRandomInt(10000, 99999);
+
+            return executeSetTalkieIsSpeakingId(talkieIsSpeakingId)
+                .then(() => promiseTry(
+                    () => {
+                        log("Start", `Speak text (length ${text.length}): "${text}"`);
+
+                        executeLogToPage(`Speaking text: ${text}`);
+
+                        const paragraphs = splitTextToParagraphs(text);
+                        const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
+                        const textParts = flatten(cleanTextParts);
+
+                        const textPartsPromises = textParts.map((textPart) => () => {
+                            return executeGetTalkieIsSpeakingId()
+                                .then((currentSpeakingId) => {
+                                    if (currentSpeakingId === talkieIsSpeakingId) {
+                                        return speakPartOfText(synthesizer, textPart, language);
+                                    }
+
+                                    return undefined;
+                                });
+                        });
+
+                        return promiseSeries(textPartsPromises);
+                    }
+        ));
+        }
+    ))
+    .then(() => log("Done", `Speak text (length ${text.length})`))
     .then(() => executeSetTalkieIsNotSpeaking()
 );
 
@@ -271,13 +422,25 @@ const executeScriptInAllFrames = (code) => new Promise(
     }
 );
 
-const executeSetTalkieIsSpeakingCode = "window.talkieIsSpeaking = true;";
-const executeSetTalkieIsSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsSpeakingCode);
+const executeGetTalkieIsSpeakingIdCode = "window.talkieIsSpeaking;";
+const executeGetTalkieIsSpeakingId = () => executeScriptInTopFrame(executeGetTalkieIsSpeakingIdCode)
+    .then((talkieIsSpeaking) => {
+        const num = parseInt(talkieIsSpeaking, 10);
 
-const executeSetTalkieIsNotSpeakingCode = "window.talkieIsSpeaking = false;";
+        if (!isNaN(num)) {
+            return num;
+        }
+
+        return talkieIsSpeaking;
+    });
+
+const executeSetTalkieIsSpeakingIdCode = "window.talkieIsSpeaking = %i;";
+const executeSetTalkieIsSpeakingId = (id) => executeScriptInTopFrame(executeSetTalkieIsSpeakingIdCode.replace("%i", id));
+
+const executeSetTalkieIsNotSpeakingCode = "window.talkieIsSpeaking = null;";
 const executeSetTalkieIsNotSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsNotSpeakingCode);
 
-const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { window.talkieIsSpeaking === true && window.speechSynthesis.cancel(); });";
+const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { typeof window.talkieIsSpeaking === \"number\" && window.speechSynthesis.cancel(); });";
 const executeAddOnBeforeUnloadHandlers = () => executeScriptInTopFrame(executeAddOnBeforeUnloadHandlersCode);
 
 const executeGetFramesSelectionTextAndLanguageCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
@@ -310,7 +473,9 @@ const executeLogToPage = (...args) => promiseTry(
             extensionShortName,
             ...args.map((arg) => variableToSafeString(arg)),
         ]
+            .map((arg) => arg.replace(/\\/g, "\\\\"))
             .map((arg) => arg.replace(/"/g, "\\\""))
+            .map((arg) => arg.replace(/\n/g, "\\\\n"))
             .map((arg) => `"${arg}"`)
             .join(", ");
 
@@ -645,25 +810,28 @@ const setIconModeStopped = () => setIconMode("play");
         const wasSpeaking = synthesizer.speaking;
 
         // Clear all old text.
-        synthesizer.cancel();
+        return executeSetTalkieIsNotSpeaking()
+            .then(() => {
+                synthesizer.cancel();
 
-        if (!wasSpeaking) {
-            return chain(() => Promise.all(
-                [
-                    setIconModePlaying(),
-                    speakUserSelection(synthesizer),
-                ]
-            )
-                .then(() => setIconModeStopped())
-                .catch((error) => {
-                    return setIconModeStopped()
-                        .then(() => {
-                            throw error;
-                        });
-                }));
-        }
+                if (!wasSpeaking) {
+                    return chain(() => Promise.all(
+                        [
+                            setIconModePlaying(),
+                            speakUserSelection(synthesizer),
+                        ]
+                    )
+                        .then(() => setIconModeStopped())
+                        .catch((error) => {
+                            return setIconModeStopped()
+                                .then(() => {
+                                    throw error;
+                                });
+                        }));
+                }
 
-        return chain(() => setIconModeStopped());
+                return chain(() => setIconModeStopped());
+            });
     };
 
     chrome.browserAction.onClicked.addListener(handleIconClick);
