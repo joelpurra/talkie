@@ -10,6 +10,12 @@
 <p align="center">
   <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="resources/chrome-web-store/ChromeWebStore_Badge_v2_340x96.png" alt="Talkie is available for installation from the Chrome Web Store" width="340" height="96" border="0" /></a>
 </p>
+<p align="center" class="donate">
+  <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd>Donate $5 now</kbd></a>
+  <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd>Donate $25 now</kbd></a>
+  <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd>Donate $100 now</kbd></a>
+  <a href="https://joelpurra.com/donate/"><kbd>More options</kbd></a>
+</p>
 
 
 
