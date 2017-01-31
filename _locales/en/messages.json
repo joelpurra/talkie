@@ -25,5 +25,9 @@
     "noVoiceForLanguageDetectedMessageLanguage": {
         "message": "en",
         "description": "This is a fallback message. For this reason it is always in English."
+    },
+    "notAbleToSpeakTextFromThisSpecialTab": {
+        "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry.",
+        "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users."
     }
 }

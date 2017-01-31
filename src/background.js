@@ -18,29 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global chrome:false, window:false, console:false, Promise:false, SpeechSynthesisUtterance:false */
+/* global chrome:false, window:false, console:false, Promise:false, extensionShortName:false, log:false, logError:false, SpeechSynthesisUtterance:false */
 
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-const extensionShortName = chrome.i18n.getMessage("extensionShortName");
-
-const log = (...args) => {
-    const now = new Date().toISOString();
-
-    /* eslint-disable no-console */
-    console.log(now, extensionShortName, ...args);
-    /* eslint-enable no-console */
-};
-
-const logError = (...args) => {
-    const now = new Date().toISOString();
-
-    /* eslint-disable no-console */
-    console.error(now, extensionShortName, ...args);
-    /* eslint-enable no-console */
-};
-
 log("Start", "Loading code");
 
 log("Locale", chrome.i18n.getMessage("@@ui_locale"));
@@ -175,6 +157,11 @@ const noTextSelectedMessage = {
 const noVoiceForLanguageDetectedMessage = {
     text: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
     effectiveLanguage: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
+};
+
+const notAbleToSpeakTextFromThisSpecialTab = {
+    text: chrome.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
+    effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
 };
 
 const setup = () => promiseTry(
@@ -335,6 +322,8 @@ const speakPartOfText = (synthesizer, textPart, language) => new Promise(
         }
     }
 );
+
+const fallbackSpeak = speakPartOfText;
 
 const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers()
     .then(() => promiseTry(
@@ -563,6 +552,73 @@ const detectPageLanguage = () => new Promise(
             return reject(error);
         }
     }
+);
+
+const getCurrentActiveTab = () => new Promise(
+    (resolve, reject) => {
+        try {
+            const queryOptions = {
+                "active": true,
+                "currentWindow": true,
+                "windowType": "normal",
+                "status": "complete",
+            };
+
+            chrome.tabs.query(queryOptions, (tabs) => {
+                // https://developer.chrome.com/extensions/tabs#method-query
+                if (chrome.runtime.lastError) {
+                    return reject(chrome.runtime.lastError);
+                }
+
+                const singleTabResult = tabs.length === 1;
+
+                const tab = tabs[0] || null;
+
+                log("getCurrentActiveTab", tabs, tab, singleTabResult);
+
+                if (singleTabResult) {
+                    return resolve(tab);
+                }
+
+                return resolve(null);
+            });
+        } catch (error) {
+            return reject(error);
+        }
+    }
+);
+
+const canTalkieRunInTab = () => promiseTry(
+    () => getCurrentActiveTab()
+        .then((tab) => {
+            if (tab) {
+                const url = tab.url;
+
+                if (typeof url === "string" && url.length > 0) {
+                    if (url.startsWith("chrome://")) {
+                        return false;
+                    }
+
+                    if (url.startsWith("chrome-extension://")) {
+                        return false;
+                    }
+
+                    if (url.startsWith("https://chrome.google.com/")) {
+                        return false;
+                    }
+
+                    if (url.startsWith("about:")) {
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+        })
 );
 
 const detectTextLanguage = (text) => new Promise(
@@ -865,28 +921,39 @@ const setIconModeStopped = () => setIconMode("play");
     const handleIconClick = () => {
         const wasSpeaking = synthesizer.speaking;
 
-        // Clear all old text.
-        return executeSetTalkieIsNotSpeaking()
-            .then(() => {
-                synthesizer.cancel();
+        return Promise.resolve()
+            .then(() => canTalkieRunInTab())
+            .then((canRun) => {
+                // NOTE: can't perform (most) actions if it's not a "normal" tab.
+                if (!canRun) {
+                    log("speakAction", "Did not detect a normal tab, skipping.");
 
-                if (!wasSpeaking) {
-                    return chain(() => Promise.all(
-                        [
-                            setIconModePlaying(),
-                            speakUserSelection(synthesizer),
-                        ]
-                    )
-                        .then(() => setIconModeStopped())
-                        .catch((error) => {
-                            return setIconModeStopped()
-                                .then(() => {
-                                    throw error;
-                                });
-                        }));
+                    return fallbackSpeak(synthesizer, notAbleToSpeakTextFromThisSpecialTab.text, notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage);
                 }
 
-                return chain(() => setIconModeStopped());
+                // Clear all old text.
+                return executeSetTalkieIsNotSpeaking()
+                    .then(() => {
+                        synthesizer.cancel();
+
+                        if (!wasSpeaking) {
+                            return chain(() => Promise.all(
+                                [
+                                    setIconModePlaying(),
+                                    speakUserSelection(synthesizer),
+                                ]
+                    )
+                                .then(() => setIconModeStopped())
+                                .catch((error) => {
+                                    return setIconModeStopped()
+                                        .then(() => {
+                                            throw error;
+                                        });
+                                }));
+                        }
+
+                        return chain(() => setIconModeStopped());
+                    });
             });
     };
 
