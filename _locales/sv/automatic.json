@@ -1,33 +1,15 @@
 {
   "buttonDefaultTitle": {
-    "message": "Läs upp markerad text"
+    "message": "Läs textval högt"
   },
   "buttonStopTitle": {
     "message": "Sluta prata"
   },
   "extensionDescription": {
-    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
-  },
-  "extensionLocale": {
-    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
-    "message": "sv"
-  },
-  "extensionName": {
-    "message": "Talkie"
-  },
-  "extensionShortName": {
-    "message": "Talkie"
+    "message": "Markera text på en webbsida, och har datorn läsa den högt för dig genom att klicka på Talkie knappen."
   },
   "noTextSelectedMessage": {
-    "message": "Vänligen markera önskad text först!"
-  },
-  "noVoiceForLanguageDetectedMessage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "Sorry, no available voice language detected for the selected text."
-  },
-  "noVoiceForLanguageDetectedMessageLanguage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "en"
+    "message": "Välj önskad text på hemsidan först!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",

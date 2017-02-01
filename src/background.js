@@ -49,7 +49,11 @@ window:false,
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
 log("Start", "Loading code");
 
-log("Locale", chrome.i18n.getMessage("@@ui_locale"));
+const uiLocale = chrome.i18n.getMessage("@@ui_locale");
+const messagesLocale = chrome.i18n.getMessage("extensionLocale");
+
+log("Locale (@@ui_locale)", uiLocale);
+log("Locale (messages.json)", messagesLocale);
 
 const MAX_UTTERANCE_TEXT_LENGTH = 100;
 
@@ -58,7 +62,7 @@ const buttonStopTitle = chrome.i18n.getMessage("buttonStopTitle");
 
 const noTextSelectedMessage = {
     text: chrome.i18n.getMessage("noTextSelectedMessage"),
-    effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
+    effectiveLanguage: messagesLocale,
 };
 
 const noVoiceForLanguageDetectedMessage = {
@@ -68,7 +72,7 @@ const noVoiceForLanguageDetectedMessage = {
 
 const notAbleToSpeakTextFromThisSpecialTab = {
     text: chrome.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
-    effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
+    effectiveLanguage: messagesLocale,
 };
 
 const setup = () => promiseTry(
