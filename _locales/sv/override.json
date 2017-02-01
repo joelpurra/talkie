@@ -1,0 +1,11 @@
+{
+  "buttonDefaultTitle": {
+    "message": "Läs upp markerad text"
+  },
+  "extensionDescription": {
+    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
+  },
+  "noTextSelectedMessage": {
+    "message": "Vänligen markera önskad text först!"
+  }
+}

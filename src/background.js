@@ -18,140 +18,51 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global chrome:false, window:false, console:false, Promise:false, extensionShortName:false, log:false, logError:false, SpeechSynthesisUtterance:false */
+/* global
+Broadcaster:false,
+canTalkieRunInTab:false,
+chrome:false,
+console:false,
+executeLogToPage:false,
+executePlugOnce:false,
+executeScriptInAllFrames:false,
+executeScriptInTopFrame:false,
+flatten:false,
+getRandomInt:false,
+isCurrentPageInternalToTalkie:false,
+isUndefinedOrNullOrEmptyOrWhitespace:false,
+knownEvents:false,
+last:false,
+log:false,
+logError:false,
+Promise:false,
+promiseSeries:false,
+promiseTry:false,
+shallowCopy:false,
+SpeechSynthesisUtterance:false,
+TalkieProgress:false,
+window:false,
+*/
 
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
 log("Start", "Loading code");
 
-log("Locale", chrome.i18n.getMessage("@@ui_locale"));
+const uiLocale = chrome.i18n.getMessage("@@ui_locale");
+const messagesLocale = chrome.i18n.getMessage("extensionLocale");
+
+log("Locale (@@ui_locale)", uiLocale);
+log("Locale (messages.json)", messagesLocale);
 
 const MAX_UTTERANCE_TEXT_LENGTH = 100;
 
-const shallowCopy = (...objs) => Object.assign({}, ...objs);
-
-const last = (indexable) => indexable[indexable.length - 1];
-
-const flatten = (deepArray) => {
-    if (!Array.isArray(deepArray)) {
-        return deepArray;
-    }
-
-    if (deepArray.length === 0) {
-        return [];
-    }
-
-    if (deepArray.length === 1) {
-        return [].concat(flatten(deepArray[0]));
-    }
-
-    return [].concat(flatten(deepArray[0])).concat(flatten(deepArray.slice(1)));
-};
-
-const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
-
-const getRandomInt = (min, max) => {
-    if (typeof min === "undefined") {
-        min = Number.MIN_VALUE;
-        max = Number.MAX_VALUE;
-    }
-
-    if (typeof max === "undefined") {
-        max = min;
-        min = 0;
-    }
-
-    if (max === min) {
-        return min;
-    }
-
-    if (min > max) {
-        const t = min;
-        min = max;
-        max = t;
-    }
-
-    return min + Math.floor(Math.random() * (max - min));
-};
-
-const promiseTry = (fn) => new Promise(
-    (resolve, reject) => {
-        try {
-            const result = fn();
-
-            resolve(result);
-        } catch (error) {
-            reject(error);
-        }
-    }
-);
-
-const promiseSeries = (promises, state) => promiseTry(
-    () => {
-        if (promises.length === 0) {
-            return undefined;
-        }
-
-        const first = promises[0];
-
-        if (promises.length === 1) {
-            return Promise.resolve(first(state));
-        }
-
-        const rest = promises.slice(1);
-
-        return Promise.resolve(first(state))
-            .then((result) => promiseSeries(rest, result));
-    }
-);
-
-const splitTextToParagraphs = (text) => {
-    // NOTE: in effect discarding empty paragraphs.
-    return text.split(/\n+/);
-};
-
-const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
-    // NOTE: in effect merging multiple spaces in row to a single space.
-    const spacedTextParts = text.split(/ +/);
-
-    const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
-
-    const textParts = spacedTextParts.reduce((newParts, spacedTextPart) => {
-        const appendToText = (ttt) => {
-            if (last(newParts) === "") {
-                newParts[newParts.length - 1] = ttt;
-            } else {
-                newParts[newParts.length - 1] += " " + ttt;
-            }
-        };
-
-        const appendPart = (ttt) => {
-            newParts[newParts.length] = ttt;
-        };
-
-        if (naturalPauseRx.test(spacedTextPart)) {
-            appendToText(spacedTextPart);
-
-            appendPart("");
-        } else if ((last(newParts).length + 1 + spacedTextPart.length) < maxPartLength) {
-            appendToText(spacedTextPart);
-        } else {
-            appendPart(spacedTextPart);
-        }
-
-        return newParts;
-    }, [""]);
-
-    // NOTE: cleaning empty strings "just in case".
-    const cleanTextParts = textParts.filter((textPart) => textPart.trim().length > 0);
-
-    return cleanTextParts;
-};
+const buttonDefaultTitle = chrome.i18n.getMessage("buttonDefaultTitle");
+const buttonStopTitle = chrome.i18n.getMessage("buttonStopTitle");
 
 const noTextSelectedMessage = {
     text: chrome.i18n.getMessage("noTextSelectedMessage"),
-    effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
+    effectiveLanguage: messagesLocale,
 };
 
 const noVoiceForLanguageDetectedMessage = {
@@ -161,7 +72,7 @@ const noVoiceForLanguageDetectedMessage = {
 
 const notAbleToSpeakTextFromThisSpecialTab = {
     text: chrome.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
-    effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
+    effectiveLanguage: messagesLocale,
 };
 
 const setup = () => promiseTry(
@@ -325,90 +236,104 @@ const speakPartOfText = (synthesizer, textPart, language) => new Promise(
 
 const fallbackSpeak = speakPartOfText;
 
-const speak = (synthesizer, text, language) => executeAddOnBeforeUnloadHandlers()
-    .then(() => promiseTry(
-        () => {
-            const talkieIsSpeakingId = getRandomInt(10000, 99999);
+const splitTextToParagraphs = (text) => {
+    // NOTE: in effect discarding empty paragraphs.
+    return text.split(/\n+/);
+};
 
-            return executeSetTalkieIsSpeakingId(talkieIsSpeakingId)
-                .then(() => promiseTry(
-                    () => {
-                        log("Start", `Speak text (length ${text.length}): "${text}"`);
+const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
+    // NOTE: in effect merging multiple spaces in row to a single space.
+    const spacedTextParts = text.split(/ +/);
 
-                        executeLogToPage(`Speaking text: ${text}`);
+    const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
 
-                        const paragraphs = splitTextToParagraphs(text);
-                        const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
-                        const textParts = flatten(cleanTextParts);
+    const textParts = spacedTextParts.reduce((newParts, spacedTextPart) => {
+        const appendToText = (ttt) => {
+            if (last(newParts) === "") {
+                newParts[newParts.length - 1] = ttt;
+            } else {
+                newParts[newParts.length - 1] += " " + ttt;
+            }
+        };
 
-                        const textPartsPromises = textParts.map((textPart) => () => {
-                            return executeGetTalkieIsSpeakingId()
-                                .then((currentSpeakingId) => {
-                                    if (currentSpeakingId === talkieIsSpeakingId) {
-                                        return speakPartOfText(synthesizer, textPart, language);
-                                    }
+        const appendPart = (ttt) => {
+            newParts[newParts.length] = ttt;
+        };
 
-                                    return undefined;
-                                });
-                        });
+        if (naturalPauseRx.test(spacedTextPart)) {
+            appendToText(spacedTextPart);
 
-                        return promiseSeries(textPartsPromises);
-                    }
-        ));
+            appendPart("");
+        } else if ((last(newParts).length + 1 + spacedTextPart.length) < maxPartLength) {
+            appendToText(spacedTextPart);
+        } else {
+            appendPart(spacedTextPart);
         }
-    ))
-    .then(() => log("Done", `Speak text (length ${text.length})`))
-    .then(() => executeSetTalkieIsNotSpeaking())
-    .then(() => executePlugOnce()
-);
 
-const executeScriptInTopFrame = (code) => new Promise(
-    (resolve, reject) => {
-        try {
-            log("About to execute code in page context", code);
+        return newParts;
+    }, [""]);
 
-            chrome.tabs.executeScript(
-                {
-                    allFrames: false,
-                    matchAboutBlank: false,
-                    code: code,
-                },
-                (result) => {
-                    if (chrome.runtime.lastError) {
-                        return reject(chrome.runtime.lastError);
+    // NOTE: cleaning empty strings "just in case".
+    const cleanTextParts = textParts.filter((textPart) => textPart.trim().length > 0);
+
+    return cleanTextParts;
+};
+
+const splitAndSpeak = (broadcaster, synthesizer, text, language, talkieIsSpeakingId) => promiseTry(
+    () => {
+        log("Start", `Speak text (length ${text.length}): "${text}"`);
+
+        executeLogToPage(`Speaking text: ${text}`);
+
+        const paragraphs = splitTextToParagraphs(text);
+        const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
+        const textParts = flatten(cleanTextParts);
+
+        const textPartsPromises = textParts.map((textPart) => () => {
+            const eventData = {
+                textPart: textPart,
+                language: language,
+            };
+
+            return executeGetTalkieIsSpeakingId()
+                .then((currentSpeakingId) => {
+                    if (currentSpeakingId === talkieIsSpeakingId) {
+                        return Promise.resolve()
+                            .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, eventData))
+                            .then(() => speakPartOfText(synthesizer, textPart, language))
+                            .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, eventData));
                     }
 
-                    return resolve(result);
-                }
-            );
-        } catch (error) {
-            return reject(error);
-        }
+                    return undefined;
+                });
+        });
+
+        return promiseSeries(textPartsPromises);
     }
 );
 
-const executeScriptInAllFrames = (code) => new Promise(
-    (resolve, reject) => {
-        try {
-            log("About to execute code in page context", code);
+const speak = (broadcaster, synthesizer, text, language) => promiseTry(
+    () => {
+        const eventData = {
+            text: text,
+            language: language,
+        };
 
-            chrome.tabs.executeScript(
-                {
-                    allFrames: true,
-                    matchAboutBlank: true,
-                    code: code,
-                },
-                (result) => {
-                    if (chrome.runtime.lastError) {
-                        return reject(chrome.runtime.lastError);
-                    }
+        return Promise.resolve()
+            .then(() => executeAddOnBeforeUnloadHandlers())
+            .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeaking, eventData))
+            .then(() => promiseTry(
+                () => {
+                    const talkieIsSpeakingId = getRandomInt(10000, 99999);
 
-                    return resolve(result);
+                    return executeSetTalkieIsSpeakingId(talkieIsSpeakingId)
+                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, language, talkieIsSpeakingId));
                 }
-            );
-        } catch (error) {
-            return reject(error);
-        }
+            ))
+            .then(() => log("Done", `Speak text (length ${text.length})`))
+            .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeaking, eventData))
+            .then(() => executeSetTalkieIsNotSpeaking())
+            .then(() => executePlugOnce());
     }
 );
 
@@ -440,96 +365,6 @@ const executeGetFramesSelectionTextAndLanguage = () => executeScriptInAllFrames(
     return framesSelectionTextAndLanguage;
 });
 
-const variableToSafeString = (v) => {
-    if (v === undefined) {
-        return "undefined";
-    }
-
-    if (v === null) {
-        return "null";
-    }
-
-    return v.toString();
-};
-
-const executeLogToPageCode = "console.log(%a);";
-
-const executeLogToPage = (...args) => promiseTry(
-    () => {
-        const now = new Date().toISOString();
-
-        const logValues = [
-            now,
-            extensionShortName,
-            ...args.map((arg) => variableToSafeString(arg)),
-        ]
-            .map((arg) => arg.replace(/\\/g, "\\\\"))
-            .map((arg) => arg.replace(/"/g, "\\\""))
-            .map((arg) => arg.replace(/\n/g, "\\\\n"))
-            .map((arg) => `"${arg}"`)
-            .join(", ");
-
-        const code = executeLogToPageCode.replace("%a", logValues);
-
-        return executeScriptInTopFrame(code);
-    }
-);
-const executeLogToPageWithColorCode = "console.log(%a);";
-
-const executeLogToPageWithColor = (...args) => promiseTry(
-    () => {
-        const now = new Date().toISOString();
-
-        const logValues = "\"" + [
-            now,
-            extensionShortName,
-            "%c",
-            ...args,
-            " ",
-        ]
-            .map((arg) => variableToSafeString(arg))
-            .map((arg) => arg.replace(/\\/g, "\\\\"))
-            .map((arg) => arg.replace(/"/g, "\\\""))
-            .map((arg) => arg.replace(/\n/g, "\\\\n"))
-            .map((arg) => `${arg}`)
-            .join(" ") + "\", \"background: #007F41; color: #FFFFFF; padding: 0.3em;\"";
-
-        const code = executeLogToPageWithColorCode.replace("%a", logValues);
-
-        return executeScriptInTopFrame(code);
-    }
-);
-
-const executePlug = () => promiseTry(
-    () => {
-        return Promise.resolve()
-            .then(() => executeLogToPageWithColor("Thank you for using Talkie!"))
-            .then(() => executeLogToPageWithColor("https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"))
-            .then(() => executeLogToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
-            .then(() => executeLogToPageWithColor("https://joelpurra.com/"))
-            .then(() => executeLogToPageWithColor("If you like Talkie, send a link to your friends -- and consider donating to support further open source development."))
-            .then(() => executeLogToPageWithColor("https://joelpurra.com/donate/"));
-    }
-);
-
-const executeGetTalkieWasPluggedCode = "window.talkieWasPlugged;";
-const executeGetTalkieWasPlugged = () => executeScriptInTopFrame(executeGetTalkieWasPluggedCode);
-
-const executeSetTalkieWasPluggedCode = "window.talkieWasPlugged = true;";
-const executeSetTalkieWasPlugged = () => executeScriptInTopFrame(executeSetTalkieWasPluggedCode);
-
-const executePlugOnce = () => {
-    return executeGetTalkieWasPlugged()
-        .then((talkieWasPlugged) => {
-            if (talkieWasPlugged && talkieWasPlugged.toString() !== "true") {
-                return executePlug()
-                    .then(() => executeSetTalkieWasPlugged());
-            }
-
-            return true;
-        });
-};
-
 const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
         try {
@@ -552,73 +387,6 @@ const detectPageLanguage = () => new Promise(
             return reject(error);
         }
     }
-);
-
-const getCurrentActiveTab = () => new Promise(
-    (resolve, reject) => {
-        try {
-            const queryOptions = {
-                "active": true,
-                "currentWindow": true,
-                "windowType": "normal",
-                "status": "complete",
-            };
-
-            chrome.tabs.query(queryOptions, (tabs) => {
-                // https://developer.chrome.com/extensions/tabs#method-query
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
-                }
-
-                const singleTabResult = tabs.length === 1;
-
-                const tab = tabs[0] || null;
-
-                log("getCurrentActiveTab", tabs, tab, singleTabResult);
-
-                if (singleTabResult) {
-                    return resolve(tab);
-                }
-
-                return resolve(null);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
-);
-
-const canTalkieRunInTab = () => promiseTry(
-    () => getCurrentActiveTab()
-        .then((tab) => {
-            if (tab) {
-                const url = tab.url;
-
-                if (typeof url === "string" && url.length > 0) {
-                    if (url.startsWith("chrome://")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("chrome-extension://")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("https://chrome.google.com/")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("about:")) {
-                        return false;
-                    }
-
-                    return true;
-                }
-
-                return false;
-            }
-
-            return false;
-        })
 );
 
 const detectTextLanguage = (text) => new Promise(
@@ -811,7 +579,7 @@ const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promi
     }
 );
 
-const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => promiseTry(() => {
+const speakAllSelections = (broadcaster, synthesizer, selections, detectedPageLanguage) => promiseTry(() => {
     log("Start", "Speaking all selections");
 
     log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
@@ -824,7 +592,7 @@ const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => pr
             const speakPromises = cleanedupSelections.map((selection) => {
                 log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
-                return speak(synthesizer, selection.text, selection.effectiveLanguage);
+                return speak(broadcaster, synthesizer, selection.text, selection.effectiveLanguage);
             });
 
             log("Done", "Speaking all selections");
@@ -833,7 +601,7 @@ const speakAllSelections = (synthesizer, selections, detectedPageLanguage) => pr
         });
 });
 
-const speakUserSelection = (synthesizer) => promiseTry(() => {
+const speakUserSelection = (broadcaster, synthesizer) => promiseTry(() => {
     log("Start", "Speaking selection");
 
     return Promise.all(
@@ -843,7 +611,7 @@ const speakUserSelection = (synthesizer) => promiseTry(() => {
         ]
     )
         .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
-            return speakAllSelections(synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
+            return speakAllSelections(broadcaster, synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
         })
         .then(() => log("Done", "Speaking selection"));
 });
@@ -892,24 +660,52 @@ const setIconMode = (name) => new Promise(
 const setIconModePlaying = () => setIconMode("stop");
 const setIconModeStopped = () => setIconMode("play");
 
-(function main() {
-    // NOTE: using a chainer to be able to add click-driven speech events one after another.
-    let rootChain = Promise.resolve();
-
-    const rootChainCatcher = (error) => {
-        logError(error);
+const disablePopup = () => {
+    const disablePopupOptions = {
+        popup: "",
     };
 
-    const chain = (promise) => {
-        rootChain = rootChain
+    chrome.browserAction.setPopup(disablePopupOptions);
+
+    const disableIconTitleOptions = {
+        title: buttonStopTitle,
+    };
+
+    chrome.browserAction.setTitle(disableIconTitleOptions);
+};
+
+const enablePopup = () => {
+    const enablePopupOptions = {
+        popup: "src/popup-start.html",
+    };
+
+    chrome.browserAction.setPopup(enablePopupOptions);
+
+    const enableIconTitleOptions = {
+        title: buttonDefaultTitle,
+    };
+
+    chrome.browserAction.setTitle(enableIconTitleOptions);
+};
+
+(function main() {
+    // NOTE: using a chainer to be able to add click-driven speech events one after another.
+    let rootChainPromise = Promise.resolve();
+
+    const rootChainPromiseCatcher = (error) => {
+        logError("rootChainPromiseCatcher", error);
+    };
+
+    const rootChain = (promise) => {
+        rootChainPromise = rootChainPromise
         .then(promise)
-        .catch(rootChainCatcher);
+        .catch(rootChainPromiseCatcher);
     };
 
     // NOTE: while not strictly necessary, keep and pass a reference to the global (initialized) synthesizer.
     let synthesizer = null;
 
-    chain(
+    rootChain(
         () => setup()
             .then((result) => {
                 synthesizer = result;
@@ -918,46 +714,82 @@ const setIconModeStopped = () => setIconMode("play");
             })
     );
 
-    const handleIconClick = () => {
-        const wasSpeaking = synthesizer.speaking;
+    const iconClickAction = () => promiseTry(
+        () => {
+            const wasSpeaking = synthesizer.speaking;
 
-        return Promise.resolve()
-            .then(() => canTalkieRunInTab())
-            .then((canRun) => {
+            return Promise.all([
+                canTalkieRunInTab(),
+                isCurrentPageInternalToTalkie(),
+            ])
+                .then(([canRun, isInternalPage]) => {
                 // NOTE: can't perform (most) actions if it's not a "normal" tab.
-                if (!canRun) {
-                    log("speakAction", "Did not detect a normal tab, skipping.");
+                    if (!canRun) {
+                        log("iconClickAction", "Did not detect a normal tab, skipping.");
 
-                    return fallbackSpeak(synthesizer, notAbleToSpeakTextFromThisSpecialTab.text, notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage);
-                }
+                    // NOTE: don't "warn" about internal pages opening.
+                        if (isInternalPage) {
+                            log("iconClickAction", "Detected internal page, skipping warning.");
 
-                // Clear all old text.
-                return executeSetTalkieIsNotSpeaking()
-                    .then(() => {
-                        synthesizer.cancel();
-
-                        if (!wasSpeaking) {
-                            return chain(() => Promise.all(
-                                [
-                                    setIconModePlaying(),
-                                    speakUserSelection(synthesizer),
-                                ]
-                    )
-                                .then(() => setIconModeStopped())
-                                .catch((error) => {
-                                    return setIconModeStopped()
-                                        .then(() => {
-                                            throw error;
-                                        });
-                                }));
+                            return undefined;
                         }
 
-                        return chain(() => setIconModeStopped());
-                    });
-            });
-    };
+                        return fallbackSpeak(synthesizer, notAbleToSpeakTextFromThisSpecialTab.text, notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage);
+                    }
 
-    chrome.browserAction.onClicked.addListener(handleIconClick);
+                    const reset = () => Promise.all([
+                        setIconModeStopped(),
+                        enablePopup(),
+                    ]);
+
+                    // Clear all old text.
+                    return executeSetTalkieIsNotSpeaking()
+                        .then(() => {
+                            synthesizer.cancel();
+
+                            if (!wasSpeaking) {
+                                return rootChain(() => Promise.all(
+                                    [
+                                        setIconModePlaying(),
+                                        disablePopup(),
+                                        speakUserSelection(broadcaster, synthesizer),
+                                    ]
+                            )
+                                    .then(reset)
+                                    .catch((error) => {
+                                        return Promise.resolve()
+                                            .then(reset)
+                                            .then(() => {
+                                                throw error;
+                                            });
+                                    }));
+                            }
+
+                            return rootChain(reset);
+                        });
+                });
+        }
+    );
+
+    const broadcaster = new Broadcaster();
+    broadcaster.start();
+
+    const progress = new TalkieProgress(broadcaster);
+
+    progress.start()
+        .then((result) => log("Done", "progress.start()", result))
+        .catch((error) => logError("Error", "progress.start()", error));
+
+    window.broadcaster = broadcaster;
+    window.iconClick = iconClickAction;
+    window.log = log;
+    window.logError = logError;
+    window.progress = progress;
+
+    // NOTE: used when the popup has been disabled.
+    chrome.browserAction.onClicked.addListener(iconClickAction);
+
+    enablePopup();
 }());
 
 log("Done", "Loading code");

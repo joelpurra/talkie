@@ -62,8 +62,32 @@ npm run --silent test
 
 ## Translations
 
-- Translations can be done by editing or adding `messages.json` for the desired locale in the `_locales` directory.
-- In case of doubt, please refer to `_locales/en/messages.json` as the one source of truth when it comes to message strings and descriptions.
+In order to offer Talkie in as many languages as possible, translations are automated. It is still possible &mdash; and preferred &mdash; to add overrides with human translations.
+
+
+### Automated file mangling
+
+- All base strings in `_locales/en/base.json` are automatically translated by `tools/automate-translations.sh` and `tools/translate-messages.sh`.
+- Translation scripts require [Translate Shell `trans`](https://github.com/soimort/translate-shell), [`jq`](https://stedolan.github.io/jq/manual/), and some [`gawk`](https://www.gnu.org/software/gawk/) magic.
+- Automated file mangling is done by package maintainers before each release where the have been text changes.
+
+
+### Human translations
+
+- Translations can be done by editing or adding `override.json` for the desired locale in the `_locales` directory.
+- In case of doubt, please refer to `_locales/en/base.json` as the one source of truth when it comes to original message strings and descriptions.
+
+
+### Translation file order
+
+Translation files are merged in this order. The last value for a specific key/name wins, which means the `override.json` are the most important.
+
+1. Non-translated strings from `_locales/en/untranslated.json`.
+1. Depends on the language; English has no modifications and uses the base:
+  - Non-translated strings from `_locales/en/base.json`.
+  - Translated strings from `_locales/*/automatic.json`.
+1. Manual entries from `_locales/*/manual.json`.
+1. Overrides from `_locales/*/override.json`.
 
 
 
@@ -112,6 +136,14 @@ git checkout develop
 
 # Fix any warnings and errors before committing.
 npm run --silent test
+
+# Ensure all strings have been translated.
+# Check the diff as well as the final per-key message string count.
+npm run --silent messages:translate
+
+# Ensure all files are included -- or excluded -- in the packaged extension.
+# This includes new code files/translations/resources added/removed since the last release.
+cat extension-files.txt
 
 # The "<release-version>" needs to follow semantic versioning, such as "v1.0.0".
 # http://semver.org/

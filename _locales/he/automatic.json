@@ -1,33 +1,15 @@
 {
   "buttonDefaultTitle": {
-    "message": "קרא את הטקסט הנבחר בקול רם"
+    "message": "                                                                                              םר לוקב טסקט תריחב וארק"
   },
   "buttonStopTitle": {
     "message": "                                                                                                           רבדל קיספת"
   },
   "extensionDescription": {
-    "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
-  },
-  "extensionLocale": {
-    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
-    "message": "he"
-  },
-  "extensionName": {
-    "message": "Talkie"
-  },
-  "extensionShortName": {
-    "message": "Talkie"
+    "message": "           .Talkie רותפכ לע הציחל ידי לע טושפ ךליבשב םר לוקב הז תא אורקל בשחמה תא םהל שיו​​ ,והשלכ טנרטניא ףדב טסקט רחב"
   },
   "noTextSelectedMessage": {
-    "message": "אנא בחר טסקט רצוי באתר כלשהו"
-  },
-  "noVoiceForLanguageDetectedMessage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "Sorry, no available voice language detected for the selected text."
-  },
-  "noVoiceForLanguageDetectedMessageLanguage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "en"
+    "message": "                                                                                        !ןושאר רתאב יוצר טסקט רחב אנא"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",

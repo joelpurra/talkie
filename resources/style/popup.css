@@ -1,0 +1,69 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+body {
+    font-family: "Open Sans", "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+    min-width: 300px;
+    max-width: 500px;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+    font-size: 0.7em;
+}
+
+span.icon {
+    vertical-align: middle;
+}
+
+span.icon:before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../icon/icon-play/icon-16x16.png");
+    margin-right: 0.5em;
+}
+
+#progress {
+    width: 100%;
+    /*width: 0%;*/
+    height: 5px;
+    /*background-color: #0000ff;*/
+    /*back*/
+}
+
+table {
+    width: 100%;
+}
+
+table tbody tr td {
+    padding: 0.5em;
+}
+
+.donate kbd {
+    width: 100%;
+}
+
+.donate kbd {
+    display: inline-block;
+    color: #555;
+    vertical-align: middle;
+    padding: 0.1em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
+    border-radius: 0.3em;
+    box-shadow: inset 0 -1px 0 #bbb;
+    font-family: Helvetica, Verdana, sans-serif;
+}
