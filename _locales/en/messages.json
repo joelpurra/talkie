@@ -15,6 +15,9 @@
     "buttonDefaultTitle": {
         "message": "Read text selection out loud"
     },
+    "buttonStopTitle": {
+        "message": "Stop talking"
+    },
     "noTextSelectedMessage": {
         "message": "Please select desired text on the website first!"
     },
@@ -29,5 +32,26 @@
     "notAbleToSpeakTextFromThisSpecialTab": {
         "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry.",
         "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users."
+    },
+    "popup_yourDonationsAreAppreciated": {
+        "message": "Your donations are appreciated!"
+    },
+    "popup_supportAndFeedback": {
+        "message": "Support and feedback"
+    },
+    "popup_rateIt": {
+        "message": "Rate it"
+    },
+    "popup_donate_usd5Now": {
+        "message": "Donate $$5 now"
+    },
+    "popup_donate_usd25Now": {
+        "message": "Donate $$25 now"
+    },
+    "popup_donate_usd100Now": {
+        "message": "Donate $$100 now"
+    },
+    "popup_donate_moreOptions": {
+        "message": "More options"
     }
 }

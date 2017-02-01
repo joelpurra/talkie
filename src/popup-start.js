@@ -71,6 +71,7 @@ const start = () => promiseTry(
         progressBar = document.getElementById("progress");
 
         return Promise.resolve()
+            .then(() => translate())
             .then(() => broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
             .then(() => passClickToBackground());
     }
@@ -111,6 +112,35 @@ const onUnload = () => promiseTry(
 
             throw error;
         }
+    }
+);
+
+const translate = () => promiseTry(
+    () => {
+        dualLog("Start", "translate");
+
+        const translateAttributeName = "data-translate";
+        const translatableElements = document.querySelectorAll(`[${translateAttributeName}]`);
+
+        dualLog("translate", "Translatable elements", translatableElements);
+
+        translatableElements.forEach((element) => {
+            const translationId = element.getAttribute(translateAttributeName);
+
+            if (typeof translationId === "string" && translationId.length > 0) {
+                const translated = chrome.i18n.getMessage(translationId);
+
+                if (typeof translated === "string") {
+                    element.textContent = translated;
+                } else {
+                    dualLogError("Could not translate element", "Translated message not found", element, translationId, translated);
+                }
+            } else {
+                dualLogError("Could not translate element", "Invalid translation id", element, translationId);
+            }
+        });
+
+        dualLog("Done", "translate");
     }
 );
 

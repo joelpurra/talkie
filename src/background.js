@@ -53,6 +53,9 @@ log("Locale", chrome.i18n.getMessage("@@ui_locale"));
 
 const MAX_UTTERANCE_TEXT_LENGTH = 100;
 
+const buttonDefaultTitle = chrome.i18n.getMessage("buttonDefaultTitle");
+const buttonStopTitle = chrome.i18n.getMessage("buttonStopTitle");
+
 const noTextSelectedMessage = {
     text: chrome.i18n.getMessage("noTextSelectedMessage"),
     effectiveLanguage: chrome.i18n.getMessage("@@ui_locale"),
@@ -659,6 +662,12 @@ const disablePopup = () => {
     };
 
     chrome.browserAction.setPopup(disablePopupOptions);
+
+    const disableIconTitleOptions = {
+        title: buttonStopTitle,
+    };
+
+    chrome.browserAction.setTitle(disableIconTitleOptions);
 };
 
 const enablePopup = () => {
@@ -667,6 +676,12 @@ const enablePopup = () => {
     };
 
     chrome.browserAction.setPopup(enablePopupOptions);
+
+    const enableIconTitleOptions = {
+        title: buttonDefaultTitle,
+    };
+
+    chrome.browserAction.setTitle(enableIconTitleOptions);
 };
 
 (function main() {
