@@ -72,6 +72,7 @@ const start = () => promiseTry(
 
         return Promise.resolve()
             .then(() => translate())
+            .then(() => reflow())
             .then(() => broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
             .then(() => passClickToBackground());
     }
@@ -141,6 +142,14 @@ const translate = () => promiseTry(
         });
 
         dualLog("Done", "translate");
+    }
+);
+
+const reflow = () => promiseTry(
+    () => {
+        const bodyElement = document.getElementsByTagName("body")[0];
+
+        bodyElement.style.marginBottom = "0";
     }
 );
 
