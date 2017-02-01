@@ -157,6 +157,27 @@ const getCurrentActiveTab = () => new Promise(
     }
 );
 
+const getBackgroundPage = () => new Promise(
+    (resolve, reject) => {
+        try {
+            chrome.runtime.getBackgroundPage((backgroundPage) => {
+                // https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
+                if (chrome.runtime.lastError) {
+                    return reject(chrome.runtime.lastError);
+                }
+
+                if (backgroundPage) {
+                    return resolve(backgroundPage);
+                }
+
+                return resolve(null);
+            });
+        } catch (error) {
+            return reject(error);
+        }
+    }
+);
+
 const isCurrentPageInternalToTalkie = () => promiseTry(
     () => getCurrentActiveTab()
         .then((tab) => {
@@ -697,35 +718,36 @@ const knownEvents = {
 
 /* eslint-disable no-unused-vars */
 const api = {
-    extensionShortName,
-    log,
-    logError,
-    logDebug,
-    shallowCopy,
-    last,
-    flatten,
-    isUndefinedOrNullOrEmptyOrWhitespace,
-    getRandomInt,
-    promiseTry,
-    promiseSeries,
-    getCurrentActiveTab,
-    isCurrentPageInternalToTalkie,
-    getCurrentActiveNormalLoadedTab,
-    canTalkieRunInTab,
-    executeScriptInTopFrame,
-    executeScriptInAllFrames,
-    executeLogToPageCode,
-    executeLogToPage,
-    executeLogToPageWithColorCode,
-    executeLogToPageWithColor,
-    executePlug,
-    executeGetTalkieWasPluggedCode,
-    executeGetTalkieWasPlugged,
-    executeSetTalkieWasPluggedCode,
-    executeSetTalkieWasPlugged,
-    executePlugOnce,
-    knownEvents,
     Broadcaster,
+    canTalkieRunInTab,
+    executeGetTalkieWasPlugged,
+    executeGetTalkieWasPluggedCode,
+    executeLogToPage,
+    executeLogToPageCode,
+    executeLogToPageWithColor,
+    executeLogToPageWithColorCode,
+    executePlug,
+    executePlugOnce,
+    executeScriptInAllFrames,
+    executeScriptInTopFrame,
+    executeSetTalkieWasPlugged,
+    executeSetTalkieWasPluggedCode,
+    extensionShortName,
+    flatten,
+    getBackgroundPage,
+    getCurrentActiveNormalLoadedTab,
+    getCurrentActiveTab,
+    getRandomInt,
+    isCurrentPageInternalToTalkie,
+    isUndefinedOrNullOrEmptyOrWhitespace,
+    knownEvents,
+    last,
+    log,
+    logDebug,
+    logError,
+    promiseSeries,
+    promiseTry,
+    shallowCopy,
     TalkieProgress,
 };
 /* eslint-enable no-unused-vars */

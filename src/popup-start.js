@@ -21,6 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 /* global
 chrome:false,
 console:false,
+getBackgroundPage:false,
 knownEvents:false,
 log:false,
 logError:false,
@@ -28,18 +29,24 @@ Promise:false,
 promiseTry:false,
 window:false,
 */
-const background = chrome.extension.getBackgroundPage();
+let background = null;
 
 const localScriptName = "pop-start.js";
 
 const dualLog = (...args) => {
     log(localScriptName, ...args);
-    background.log(localScriptName, ...args);
+
+    if (background) {
+        background.log(localScriptName, ...args);
+    }
 };
 
 const dualLogError = (...args) => {
     logError(localScriptName, ...args);
-    background.logError(localScriptName, ...args);
+
+    if (background) {
+        background.logError(localScriptName, ...args);
+    }
 };
 
 dualLog("Start", "Loading code");
@@ -61,19 +68,24 @@ const passClickToBackground = () => promiseTry(
 );
 
 const updateProgress = (data) => {
-    // progressBar.style.width = `${progress.getPercent()}%`;
+    const progressBar = document.getElementById("progress");
+
     progressBar.max = data.max - data.min;
     progressBar.value = data.current;
 };
 
 const start = () => promiseTry(
     () => {
-        progressBar = document.getElementById("progress");
-
         return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((backgroundPage) => {
+                background = backgroundPage;
+
+                return undefined;
+            })
             .then(() => translate())
             .then(() => reflow())
-            .then(() => broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
+            .then(() => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
             .then(() => passClickToBackground());
     }
 );
@@ -152,9 +164,6 @@ const reflow = () => promiseTry(
         bodyElement.style.marginBottom = "0";
     }
 );
-
-const broadcaster = background.broadcaster;
-let progressBar = null;
 
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 window.addEventListener("unload", onUnload);
