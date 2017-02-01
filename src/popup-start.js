@@ -84,6 +84,7 @@ const start = () => promiseTry(
                 return undefined;
             })
             .then(() => translate())
+            .then(() => addLinkClickHandlers())
             .then(() => reflow())
             .then(() => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
             .then(() => passClickToBackground());
@@ -154,6 +155,23 @@ const translate = () => promiseTry(
         });
 
         dualLog("Done", "translate");
+    }
+);
+
+const addLinkClickHandlers = () => promiseTry(
+    () => {
+    // https://stackoverflow.com/questions/8915845/chrome-extension-open-a-link-from-popup-html-in-a-new-tab
+    // http://stackoverflow.com/a/17732667
+        const links = document.getElementsByTagName("a");
+
+        for (let i = 0; i < links.length; i++) {
+            const ln = links[i];
+            const location = ln.href;
+
+            ln.onclick = function() {
+                chrome.tabs.create({active: true, url: location});
+            };
+        }
     }
 );
 
