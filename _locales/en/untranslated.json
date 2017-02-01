@@ -1,0 +1,16 @@
+{
+  "extensionName": {
+    "message": "Talkie"
+  },
+  "extensionShortName": {
+    "message": "Talkie"
+  },
+  "noVoiceForLanguageDetectedMessage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "Sorry, no available voice language detected for the selected text."
+  },
+  "noVoiceForLanguageDetectedMessageLanguage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "en"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "buttonDefaultTitle": {
+    "message": "קרא את הטקסט הנבחר בקול רם"
+  },
+  "extensionDescription": {
+    "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
+  },
+  "noTextSelectedMessage": {
+    "message": "אנא בחר טסקט רצוי באתר כלשהו"
+  }
+}

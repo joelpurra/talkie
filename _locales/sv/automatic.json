@@ -1,0 +1,39 @@
+{
+  "buttonDefaultTitle": {
+    "message": "Läs textval högt"
+  },
+  "buttonStopTitle": {
+    "message": "Sluta prata"
+  },
+  "extensionDescription": {
+    "message": "Markera text på en webbsida, och har datorn läsa den högt för dig genom att klicka på Talkie knappen."
+  },
+  "noTextSelectedMessage": {
+    "message": "Välj önskad text på hemsidan först!"
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar in i av webbläsaren.  Jag ber om ursäkt för besväret."
+  },
+  "popup_donate_moreOptions": {
+    "message": "Fler alternativ"
+  },
+  "popup_donate_usd100Now": {
+    "message": "Donera USD 100 nu"
+  },
+  "popup_donate_usd25Now": {
+    "message": "Donera USD 25 nu"
+  },
+  "popup_donate_usd5Now": {
+    "message": "Donera USD 5 nu"
+  },
+  "popup_rateIt": {
+    "message": "Betygsätt det"
+  },
+  "popup_supportAndFeedback": {
+    "message": "Stöd och feedback"
+  },
+  "popup_yourDonationsAreAppreciated": {
+    "message": "Dina donationer uppskattas!"
+  }
+}

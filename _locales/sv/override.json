@@ -8,26 +8,8 @@
   "extensionDescription": {
     "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
   },
-  "extensionLocale": {
-    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
-    "message": "sv"
-  },
-  "extensionName": {
-    "message": "Talkie"
-  },
-  "extensionShortName": {
-    "message": "Talkie"
-  },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först!"
-  },
-  "noVoiceForLanguageDetectedMessage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "Sorry, no available voice language detected for the selected text."
-  },
-  "noVoiceForLanguageDetectedMessageLanguage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "en"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",

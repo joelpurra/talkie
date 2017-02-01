@@ -8,26 +8,8 @@
   "extensionDescription": {
     "message": "Wählen Sie Text auf jeder Web-Seite, und haben Sie den Computer lesen Sie es laut für Sie, indem Sie einfach auf die Talkie-Taste."
   },
-  "extensionLocale": {
-    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
-    "message": "de"
-  },
-  "extensionName": {
-    "message": "Talkie"
-  },
-  "extensionShortName": {
-    "message": "Talkie"
-  },
   "noTextSelectedMessage": {
     "message": "Bitte wählen Sie zuerst den gewünschten Text auf der Webseite aus!"
-  },
-  "noVoiceForLanguageDetectedMessage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "Sorry, no available voice language detected for the selected text."
-  },
-  "noVoiceForLanguageDetectedMessageLanguage": {
-    "description": "This is a fallback message. For this reason it is always in English.",
-    "message": "en"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
