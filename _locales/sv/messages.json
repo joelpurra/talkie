@@ -1,29 +1,29 @@
 {
-    "extensionLocale": {
-        "message": "sv",
-        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
-    },
-    "extensionName": {
-        "message": "Talkie"
-    },
-    "extensionShortName": {
-        "message": "Talkie"
-    },
-    "extensionDescription": {
-        "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
-    },
-    "buttonDefaultTitle": {
-        "message": "Läs upp markerad text"
-    },
-    "noTextSelectedMessage": {
-        "message": "Vänligen markera önskad text först!"
-    },
-    "noVoiceForLanguageDetectedMessage": {
-        "message": "Sorry, no available voice language detected for the selected text.",
-        "description": "This is a fallback message. For this reason it is always in English."
-    },
-    "noVoiceForLanguageDetectedMessageLanguage": {
-        "message": "en",
-        "description": "This is a fallback message. For this reason it is always in English."
-    }
+  "buttonDefaultTitle": {
+    "message": "Läs upp markerad text"
+  },
+  "extensionDescription": {
+    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
+  },
+  "extensionLocale": {
+    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
+    "message": "sv"
+  },
+  "extensionName": {
+    "message": "Talkie"
+  },
+  "extensionShortName": {
+    "message": "Talkie"
+  },
+  "noTextSelectedMessage": {
+    "message": "Vänligen markera önskad text först!"
+  },
+  "noVoiceForLanguageDetectedMessage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "Sorry, no available voice language detected for the selected text."
+  },
+  "noVoiceForLanguageDetectedMessageLanguage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "en"
+  }
 }

@@ -1,29 +1,29 @@
 {
-    "extensionLocale": {
-        "message": "he",
-        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
-    },
-    "extensionName": {
-        "message": "Talkie"
-    },
-    "extensionShortName": {
-        "message": "Talkie"
-    },
-    "extensionDescription": {
-        "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
-    },
-    "buttonDefaultTitle": {
-        "message": "קרא את הטקסט הנבחר בקול רם"
-    },
-    "noTextSelectedMessage": {
-        "message": "אנא בחר טסקט רצוי באתר כלשהו"
-    },
-    "noVoiceForLanguageDetectedMessage": {
-        "message": "Sorry, no available voice language detected for the selected text.",
-        "description": "This is a fallback message. For this reason it is always in English."
-    },
-    "noVoiceForLanguageDetectedMessageLanguage": {
-        "message": "en",
-        "description": "This is a fallback message. For this reason it is always in English."
-    }
+  "buttonDefaultTitle": {
+    "message": "קרא את הטקסט הנבחר בקול רם"
+  },
+  "extensionDescription": {
+    "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
+  },
+  "extensionLocale": {
+    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
+    "message": "he"
+  },
+  "extensionName": {
+    "message": "Talkie"
+  },
+  "extensionShortName": {
+    "message": "Talkie"
+  },
+  "noTextSelectedMessage": {
+    "message": "אנא בחר טסקט רצוי באתר כלשהו"
+  },
+  "noVoiceForLanguageDetectedMessage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "Sorry, no available voice language detected for the selected text."
+  },
+  "noVoiceForLanguageDetectedMessageLanguage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "en"
+  }
 }

@@ -1,29 +1,29 @@
 {
-    "extensionLocale": {
-        "message": "da",
-        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
-    },
-    "extensionName": {
-        "message": "Talkie"
-    },
-    "extensionShortName": {
-        "message": "Talkie"
-    },
-    "extensionDescription": {
-        "message": "Vælg tekst på en webside, og få computeren læste det højt for dig ved blot at klikke på knappen Talkie."
-    },
-    "buttonDefaultTitle": {
-        "message": "Læs tekst udvælgelse højt"
-    },
-    "noTextSelectedMessage": {
-        "message": "Vælg den ønskede tekst på hjemmesiden først!"
-    },
-    "noVoiceForLanguageDetectedMessage": {
-        "message": "Sorry, no available voice language detected for the selected text.",
-        "description": "This is a fallback message. For this reason it is always in English."
-    },
-    "noVoiceForLanguageDetectedMessageLanguage": {
-        "message": "en",
-        "description": "This is a fallback message. For this reason it is always in English."
-    }
+  "buttonDefaultTitle": {
+    "message": "Læs tekst udvælgelse højt"
+  },
+  "extensionDescription": {
+    "message": "Vælg tekst på en webside, og få computeren læste det højt for dig ved blot at klikke på knappen Talkie."
+  },
+  "extensionLocale": {
+    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
+    "message": "da"
+  },
+  "extensionName": {
+    "message": "Talkie"
+  },
+  "extensionShortName": {
+    "message": "Talkie"
+  },
+  "noTextSelectedMessage": {
+    "message": "Vælg den ønskede tekst på hjemmesiden først!"
+  },
+  "noVoiceForLanguageDetectedMessage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "Sorry, no available voice language detected for the selected text."
+  },
+  "noVoiceForLanguageDetectedMessageLanguage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "en"
+  }
 }

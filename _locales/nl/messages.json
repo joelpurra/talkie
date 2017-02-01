@@ -1,29 +1,29 @@
 {
-    "extensionLocale": {
-        "message": "nl",
-        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
-    },
-    "extensionName": {
-        "message": "Talkie"
-    },
-    "extensionShortName": {
-        "message": "Talkie"
-    },
-    "extensionDescription": {
-        "message": "Selecteer tekst op een webpagina, en hebben de computer leest het hardop voor u door simpelweg te klikken op de knop Talkie."
-    },
-    "buttonDefaultTitle": {
-        "message": "Lees geselecteerde tekst hardop"
-    },
-    "noTextSelectedMessage": {
-        "message": "Selecteer de gewenste tekst op de website eerste!"
-    },
-    "noVoiceForLanguageDetectedMessage": {
-        "message": "Sorry, no available voice language detected for the selected text.",
-        "description": "This is a fallback message. For this reason it is always in English."
-    },
-    "noVoiceForLanguageDetectedMessageLanguage": {
-        "message": "en",
-        "description": "This is a fallback message. For this reason it is always in English."
-    }
+  "buttonDefaultTitle": {
+    "message": "Lees geselecteerde tekst hardop"
+  },
+  "extensionDescription": {
+    "message": "Selecteer tekst op een webpagina, en hebben de computer leest het hardop voor u door simpelweg te klikken op de knop Talkie."
+  },
+  "extensionLocale": {
+    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
+    "message": "nl"
+  },
+  "extensionName": {
+    "message": "Talkie"
+  },
+  "extensionShortName": {
+    "message": "Talkie"
+  },
+  "noTextSelectedMessage": {
+    "message": "Selecteer de gewenste tekst op de website eerste!"
+  },
+  "noVoiceForLanguageDetectedMessage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "Sorry, no available voice language detected for the selected text."
+  },
+  "noVoiceForLanguageDetectedMessageLanguage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "en"
+  }
 }

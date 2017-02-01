@@ -1,29 +1,29 @@
 {
-    "extensionLocale": {
-        "message": "ru",
-        "description": "Used to check which locale is loaded, as it might be different from @@ui_locale."
-    },
-    "extensionName": {
-        "message": "Talkie"
-    },
-    "extensionShortName": {
-        "message": "Talkie"
-    },
-    "extensionDescription": {
-        "message": "Выделите текст на любой веб-странице, и есть компьютер читать вслух для вас, просто нажав на кнопку Talkie."
-    },
-    "buttonDefaultTitle": {
-        "message": "Читать выделенный текст вслух"
-    },
-    "noTextSelectedMessage": {
-        "message": "Пожалуйста, выберите нужный текст на сайте первым!"
-    },
-    "noVoiceForLanguageDetectedMessage": {
-        "message": "Sorry, no available voice language detected for the selected text.",
-        "description": "This is a fallback message. For this reason it is always in English."
-    },
-    "noVoiceForLanguageDetectedMessageLanguage": {
-        "message": "en",
-        "description": "This is a fallback message. For this reason it is always in English."
-    }
+  "buttonDefaultTitle": {
+    "message": "Читать выделенный текст вслух"
+  },
+  "extensionDescription": {
+    "message": "Выделите текст на любой веб-странице, и есть компьютер читать вслух для вас, просто нажав на кнопку Talkie."
+  },
+  "extensionLocale": {
+    "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
+    "message": "ru"
+  },
+  "extensionName": {
+    "message": "Talkie"
+  },
+  "extensionShortName": {
+    "message": "Talkie"
+  },
+  "noTextSelectedMessage": {
+    "message": "Пожалуйста, выберите нужный текст на сайте первым!"
+  },
+  "noVoiceForLanguageDetectedMessage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "Sorry, no available voice language detected for the selected text."
+  },
+  "noVoiceForLanguageDetectedMessageLanguage": {
+    "description": "This is a fallback message. For this reason it is always in English.",
+    "message": "en"
+  }
 }
