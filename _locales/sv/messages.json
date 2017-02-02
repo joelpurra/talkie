@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "alternativ"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Källkod på Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Om: text-till-tal webbläsartillägg knapp"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Handla om"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Användande"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Om nyckeln inte fungerar, kontrollera att det inte redan används av en annan anknytning."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Hur kan man kontrollera eller ändra Talkie kortkommando."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Du kan också använda Talkie kortkommando:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Välj önskad text på en webbsida."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klicka på Talkie knappen i webbläsarens adressfält"
+  },
+  "frontend_donateLinkText": {
+    "message": "Donera"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Fler donationsalternativ"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Donera USD 100 nu"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Donera USD 25 nu"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Donera USD 5 nu"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Göm donation knappar i popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Det är inte som jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmänhet - jag bara inte vill att du ska vara irriterad när du använder Talkie i första hand.  Om du inaktiverar de donationsknappar i popup, hoppas jag att ni också kommer att stödja Talkie på något sätt!  Knapparna kommer alltid att finnas här bland alternativen, för säkerhets skull."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donera: stödja öppen källkod"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alla bidrag till Talkie görs under skribent Licensavtalet (CLA)."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Licens: öppen källkod"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licens"
+  },
+  "frontend_rateIt": {
+    "message": "Betygsätt Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie utvecklades ett par dagar före nyår 2016/2017, på en utmaning från en vän.  Utmaningen började med frågan: medan pendling till arbete, är det möjligt att lyssna på en artikel istället för att läsa det?  Lätt, sa jag, och bestämde sig för att bevisa det - eller åtminstone att göra min webbläsare tala ut text med en dum datorröst.  Basversionen, utan något användargränssnitt, visade sig vara trivialt att skapa.  Lägga ett användargränssnitt, tog lite längre tid.  Lägga korrekt språkidentifiering en massa mer kod.  Att övervinna buggar i webbläsaren ännu mer arbete.  Listan över förbättringar och funktioner går på - och några tusen rader kod senare, du tittar på slutresultatet."
+  },
+  "frontend_storyHeading": {
+    "message": "Story: hur Talkie kommit igång"
+  },
+  "frontend_storyLinkText": {
+    "message": "Berättelse"
+  },
+  "frontend_storyThankYou": {
+    "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Hjälp och feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie i Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Dina donationer uppskattas!"
+  },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först!"
   },
@@ -47,26 +146,5 @@
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
     "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren.  Jag ber om ursäkt för besväret."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Fler alternativ"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Donera USD 100 nu"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Donera USD 25 nu"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Donera USD 5 nu"
-  },
-  "popup_rateIt": {
-    "message": "Betygsätt"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Hjälp och feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Dina donationer uppskattas!"
   }
 }

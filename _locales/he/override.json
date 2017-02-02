@@ -1,11 +1,14 @@
 {
   "buttonDefaultTitle": {
-    "message": "קרא את הטקסט הנבחר בקול רם"
+    "message": "קרא את הטקסט הנבחר בקול רם",
+    "original": "Read text selection out loud"
   },
   "extensionDescription": {
-    "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
+    "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "noTextSelectedMessage": {
-    "message": "אנא בחר טסקט רצוי באתר כלשהו"
+    "message": "אנא בחר טסקט רצוי באתר כלשהו",
+    "original": "Please select desired text on the website first!"
   }
 }

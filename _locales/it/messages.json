@@ -6,7 +6,7 @@
     "message": "Smetti di parlare"
   },
   "commandBrowserActionDescription": {
-    "message": "Smetti di parlare"
+    "message": "Leggi la selezione del testo ad alta voce"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Aprire la pagina Chrome Web Store"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "Opzioni"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Il codice sorgente su GitHub"
+  },
+  "frontend_aboutHeading": {
+    "message": "A proposito di: text-to-speech pulsante un'estensione del browser"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Di"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Grazie per aver scelto Talkie - se ti piace, dire ai tuoi amici!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "uso"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Se la chiave non funziona, si prega di controllare che non sia già in uso da un altro interno."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Come controllare o modificare la chiave di Talkie di scelta rapida."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "È inoltre possibile utilizzare la scorciatoia Talkie chiave:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Selezionare il testo desiderato in qualsiasi pagina web."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Fare clic sul pulsante Talkie nella barra del browser"
+  },
+  "frontend_donateLinkText": {
+    "message": "Donare"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Altre opzioni di donazione"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Dona ora USD 100"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Dona ora USD 25"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Dona ora USD 5"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Pulsanti Nascondi donazione nel popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Non è che io non voglio che tu a donare per sostenere Talkie e di sviluppo open source in generale - solo che non voglio che tu sia infastidito quando si utilizza Talkie, in primo luogo.  Se si disattiva i pulsanti di donazione nel popup, spero che sarà anche sostenere Talkie in qualche modo!  I pulsanti saranno sempre disponibili qui tra le opzioni, per ogni evenienza."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donare: sostenere lo sviluppo open source"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Tutti i contributi alla Talkie sono realizzati ai sensi del Contratto di licenza Contributor (CLA)."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Licenza: software open-source"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licenza"
+  },
+  "frontend_rateIt": {
+    "message": "tasso Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie è stato sviluppato un paio di giorni prima del nuovo anno 2016/2017, una sfida da un amico.  La sfida è iniziato con la domanda: mentre il pendolarismo per lavoro, è possibile ascoltare un articolo invece di leggerlo?  Facile, ho detto, e partì per dimostrarlo - o almeno di fare il mio browser parlare testo utilizzando una voce sintetizzata sciocco.  La versione base, senza alcuna interfaccia utente, si è rivelato essere banale per creare.  L'aggiunta di una interfaccia utente, ha preso un po 'più a lungo.  L'aggiunta di rilevamento linguaggio corretto un codice mucchio di più.  Superare bug nel browser ancora più lavoro.  L'elenco dei miglioramenti e caratteristiche prosegue - e qualche migliaio di righe di codice successive, si sta guardando il risultato finale."
+  },
+  "frontend_storyHeading": {
+    "message": "Storia: come è cominciato Talkie"
+  },
+  "frontend_storyLinkText": {
+    "message": "Storia"
+  },
+  "frontend_storyThankYou": {
+    "message": "Grazie per aver scelto Talkie - se ti piace, dire ai tuoi amici!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Supporto e feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie nel Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Le vostre donazioni sono apprezzati!"
+  },
   "noTextSelectedMessage": {
     "message": "Si prega di selezionare il testo desiderato sul sito prima!"
   },
@@ -46,27 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie non può accedere al testo selezionato da questo tipo di pagina.  È una pagina molto speciale, e ci sono limitazioni di sicurezza messe in dal browser.  Mi scuso per l'inconveniente."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Più opzioni"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Dona ora USD 100"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Dona ora USD 25"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Dona ora USD 5"
-  },
-  "popup_rateIt": {
-    "message": "Valutarlo"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Supporto e feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Le vostre donazioni sono apprezzati!"
+    "message": "Talkie non può accedere al testo selezionato da questo tipo di pagina.  È una pagina molto speciale, e ci sono limitazioni di sicurezza messe in dal browser.  Scusa per l'incoveniente."
   }
 }

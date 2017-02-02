@@ -23,32 +23,32 @@
   "extensionDescription": {
     "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
   },
+  "frontend_donate_moreOptions": {
+    "message": "Fler donationsalternativ"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Donera USD 100 nu"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Donera USD 25 nu"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Donera USD 5 nu"
+  },
+  "frontend_rateIt": {
+    "message": "Betygsätt Talkie"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Hjälp och feedback"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Dina donationer uppskattas!"
+  },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
     "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren.  Jag ber om ursäkt för besväret."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Fler alternativ"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Donera USD 100 nu"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Donera USD 25 nu"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Donera USD 5 nu"
-  },
-  "popup_rateIt": {
-    "message": "Betygsätt"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Hjälp och feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Dina donationer uppskattas!"
   }
 }

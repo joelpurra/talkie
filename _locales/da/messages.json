@@ -6,7 +6,7 @@
     "message": "Stop med at snakke"
   },
   "commandBrowserActionDescription": {
-    "message": "Stop med at snakke"
+    "message": "Læs tekst udvælgelse højt"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Åbn Chrome Webshop side"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "Muligheder"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Kilde kode på Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Om: tekst-til-tale browserudvidelse knap"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Om"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Usage"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Sådan kontrolleres eller ændres Talkie genvejstast."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Du kan også bruge Talkie genvejstast:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Vælg den ønskede tekst på en webside."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klik på knappen Talkie i din browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "Doner"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Flere donation muligheder"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Doner USD 100 nu"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Doner USD 25 nu"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Doner USD 5 nu"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Skjul donation knapper i popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Det er ikke ligesom jeg vil ikke have dig til at donere til støtte Talkie og open source udvikling generelt - jeg vil bare ikke have dig til at være irriteret, når du bruger Talkie i første omgang.  Hvis du deaktiverer knapperne donation i popup, jeg håber at du også vil støtte Talkie på en eller anden måde!  Knapperne vil altid være tilgængelige her blandt indstillingerne, bare i tilfælde."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donér: støtte open source udvikling"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alle bidrag til Talkie er lavet under bidragyder License Agreement (CLA)."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Licens: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licens"
+  },
+  "frontend_rateIt": {
+    "message": "rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie blev udviklet et par dage før nytår 2016/2017, på en udfordring fra en ven.  Udfordringen startede med spørgsmålet: mens pendling til arbejde, er det muligt at lytte til en artikel i stedet for at læse den?  Nemt, sagde jeg, og satte sig for at bevise det - eller i hvert fald at gøre min browser tale tekst ved hjælp af en fjollet computerstemme.  Den grundlæggende version, uden nogen brugergrænseflade, viste sig at være trivielt at skabe.  Tilføjelse af en brugergrænseflade, tog lidt længere tid.  Tilføjelse ordentlig sprog detektering en masse mere kode.  At overvinde fejl i browseren endnu mere arbejde.  Listen over forbedringer og funktioner fortsætter - og et par tusinde linjer kode senere, er du kigger på det endelige resultat."
+  },
+  "frontend_storyHeading": {
+    "message": "Story: hvordan Talkie fik startet"
+  },
+  "frontend_storyLinkText": {
+    "message": "Historie"
+  },
+  "frontend_storyThankYou": {
+    "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Støtte og feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie i Chrome Webshop"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Dine donationer er værdsat!"
+  },
   "noTextSelectedMessage": {
     "message": "Vælg den ønskede tekst på hjemmesiden først!"
   },
@@ -46,27 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Jeg beklager ulejligheden."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Flere muligheder"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Doner USD 100 nu"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Doner USD 25 nu"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Doner USD 5 nu"
-  },
-  "popup_rateIt": {
-    "message": "Bedøm det"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Støtte og feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Dine donationer er værdsat!"
+    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Undskyld ulejligheden."
   }
 }

@@ -6,7 +6,7 @@
     "message": "Stop met praten"
   },
   "commandBrowserActionDescription": {
-    "message": "Stop met praten"
+    "message": "Lees geselecteerde tekst hardop"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Open de Chrome Web Store-pagina"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "opties"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Source code op GitHub"
+  },
+  "frontend_aboutHeading": {
+    "message": "Over: text-to-speech browser extensie knop"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Over"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Dank u voor het gebruik van Talkie - als je het leuk vindt, vertel je vrienden!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Gebruik"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Als de sleutel niet werkt, controleer dan of deze niet al in gebruik is door een ander toestel."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Hoe om te controleren of wijzigen van de Talkie sneltoets."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "U kunt ook gebruik maken van de Talkie sneltoets:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Selecteer de gewenste tekst op een webpagina."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klik op de Talkie-knop in uw browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "schenken"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Meer donatie opties"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Doneer nu USD 100"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Doneer nu USD 25"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Doneer nu USD 5"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Hide donatie knoppen in de pop-up"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Het is niet alsof ik wil niet dat je om te doneren aan Talkie en open source ontwikkeling te ondersteunen in het algemeen - Ik wil niet dat je geïrriteerd te zijn bij het gebruik van Talkie in de eerste plaats.  Als u de schenking knoppen in de pop-up uit te schakelen, ik hoop dat u ook Talkie zal steunen op een bepaalde manier!  De knoppen zullen altijd hier als een van de opties, voor het geval."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Doneren: ondersteuning van open source ontwikkeling"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alle bijdragen aan Talkie zijn gemaakt in het kader van de Inzender License Agreement (CLA)."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Licentie: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licentie"
+  },
+  "frontend_rateIt": {
+    "message": "rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie werd enkele dagen ontwikkeld voor het nieuwe jaar 2016/2017, op een uitdaging van een vriend.  De uitdaging begon met de vraag: terwijl het woon-werkverkeer te werken, is het mogelijk om een ​​artikel te luisteren in plaats van het lezen?  Makkelijk, zei ik, en om het te bewijzen uiteengezet - of op zijn minst om mijn browser uit te spreken tekst met behulp van een domme computer stem.  De basisuitvoering zonder gebruikersinterface, bleek triviaal maken zijn.  Het toevoegen van een user interface, duurde een beetje langer.  Het toevoegen van de juiste taal detectie een bos meer code.  Het overwinnen van bugs in de browser nog meer werk.  De lijst van verbeteringen en features gaat - en een paar duizend regels code later, bent u op zoek naar het eindresultaat."
+  },
+  "frontend_storyHeading": {
+    "message": "Story: hoe Talkie begonnen"
+  },
+  "frontend_storyLinkText": {
+    "message": "Verhaal"
+  },
+  "frontend_storyThankYou": {
+    "message": "Dank u voor het gebruik van Talkie - als je het leuk vindt, vertel je vrienden!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Ondersteuning en feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie in de Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Uw donatie wordt op prijs gesteld!"
+  },
   "noTextSelectedMessage": {
     "message": "Selecteer de gewenste tekst op de website eerste!"
   },
@@ -46,27 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie geen toegang tot de geselecteerde tekst uit dit soort pagina.  Het is een heel speciale pagina, en er zijn security beperkingen gesteld door de browser.  Excuses voor het ongemak."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Meer opties"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Doneer nu USD 100"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Doneer nu USD 25"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Doneer nu USD 5"
-  },
-  "popup_rateIt": {
-    "message": "Beoordeel het"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Ondersteuning en feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Uw donatie wordt op prijs gesteld!"
+    "message": "Talkie geen toegang tot de geselecteerde tekst uit dit soort pagina.  Het is een heel speciale pagina, en er zijn security beperkingen gesteld door de browser.  Het spijt me voor het ongemak."
   }
 }

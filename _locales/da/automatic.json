@@ -1,54 +1,163 @@
 {
   "buttonDefaultTitle": {
-    "message": "Læs tekst udvælgelse højt"
+    "message": "Læs tekst udvælgelse højt",
+    "original": "Read text selection out loud"
   },
   "buttonStopTitle": {
-    "message": "Stop med at snakke"
+    "message": "Stop med at snakke",
+    "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "Stop med at snakke"
+    "message": "Læs tekst udvælgelse højt",
+    "original": "Read text selection out loud"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Åbn Chrome Webshop side"
+    "message": "Åbn Chrome Webshop side",
+    "original": "Open the Chrome Web Store page"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Åbn donation siden"
+    "message": "Åbn donation siden",
+    "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Åbn hjemmesiden"
+    "message": "Åbn hjemmesiden",
+    "original": "Open the website"
   },
   "commandStartStopDescription": {
-    "message": "Start/stop læsning udvælgelse"
+    "message": "Start/stop læsning udvælgelse",
+    "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "Vælg tekst på en webside, og få computeren læste det højt for dig ved blot at klikke på knappen Talkie."
+    "message": "Vælg tekst på en webside, og få computeren læste det højt for dig ved blot at klikke på knappen Talkie.",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  },
+  "frontend_Options": {
+    "message": "Muligheder",
+    "original": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Kilde kode på Github",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Om: tekst-til-tale browserudvidelse knap",
+    "original": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Om",
+    "original": "About"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Usage",
+    "original": "Usage"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Sådan kontrolleres eller ændres Talkie genvejstast.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Du kan også bruge Talkie genvejstast:",
+    "original": "You can also use the Talkie shortcut key:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Vælg den ønskede tekst på en webside.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klik på knappen Talkie i din browser bar",
+    "original": "Click the Talkie button in your browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "Doner",
+    "original": "Donate"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Flere donation muligheder",
+    "original": "More donation options"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Doner USD 100 nu",
+    "original": "Donate $$100 now"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Doner USD 25 nu",
+    "original": "Donate $$25 now"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Doner USD 5 nu",
+    "original": "Donate $$5 now"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Skjul donation knapper i popup",
+    "original": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Det er ikke ligesom jeg vil ikke have dig til at donere til støtte Talkie og open source udvikling generelt - jeg vil bare ikke have dig til at være irriteret, når du bruger Talkie i første omgang.  Hvis du deaktiverer knapperne donation i popup, jeg håber at du også vil støtte Talkie på en eller anden måde!  Knapperne vil altid være tilgængelige her blandt indstillingerne, bare i tilfælde.",
+    "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donér: støtte open source udvikling",
+    "original": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alle bidrag til Talkie er lavet under bidragyder License Agreement (CLA).",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Licens: open-source software",
+    "original": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licens",
+    "original": "License"
+  },
+  "frontend_rateIt": {
+    "message": "rate Talkie",
+    "original": "Rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie blev udviklet et par dage før nytår 2016/2017, på en udfordring fra en ven.  Udfordringen startede med spørgsmålet: mens pendling til arbejde, er det muligt at lytte til en artikel i stedet for at læse den?  Nemt, sagde jeg, og satte sig for at bevise det - eller i hvert fald at gøre min browser tale tekst ved hjælp af en fjollet computerstemme.  Den grundlæggende version, uden nogen brugergrænseflade, viste sig at være trivielt at skabe.  Tilføjelse af en brugergrænseflade, tog lidt længere tid.  Tilføjelse ordentlig sprog detektering en masse mere kode.  At overvinde fejl i browseren endnu mere arbejde.  Listen over forbedringer og funktioner fortsætter - og et par tusinde linjer kode senere, er du kigger på det endelige resultat.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Story: hvordan Talkie fik startet",
+    "original": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "Historie",
+    "original": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Støtte og feedback",
+    "original": "Support and feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie i Chrome Webshop",
+    "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Dine donationer er værdsat!",
+    "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Vælg den ønskede tekst på hjemmesiden først!"
+    "message": "Vælg den ønskede tekst på hjemmesiden først!",
+    "original": "Please select desired text on the website first!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Jeg beklager ulejligheden."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Flere muligheder"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Doner USD 100 nu"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Doner USD 25 nu"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Doner USD 5 nu"
-  },
-  "popup_rateIt": {
-    "message": "Bedøm det"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Støtte og feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Dine donationer er værdsat!"
+    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Undskyld ulejligheden.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
   }
 }

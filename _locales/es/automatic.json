@@ -1,54 +1,163 @@
 {
   "buttonDefaultTitle": {
-    "message": "Leer la selección de texto en voz alta"
+    "message": "Leer la selección de texto en voz alta",
+    "original": "Read text selection out loud"
   },
   "buttonStopTitle": {
-    "message": "Deja de hablar"
+    "message": "Deja de hablar",
+    "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "Deja de hablar"
+    "message": "Leer la selección de texto en voz alta",
+    "original": "Read text selection out loud"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Abrir la página Chrome Web Store"
+    "message": "Abrir la página Chrome Web Store",
+    "original": "Open the Chrome Web Store page"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Abrir la página de donaciones"
+    "message": "Abrir la página de donaciones",
+    "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Abrir el sitio web"
+    "message": "Abrir el sitio web",
+    "original": "Open the website"
   },
   "commandStartStopDescription": {
-    "message": "Iniciar/detener la selección de lectura"
+    "message": "Iniciar/detener la selección de lectura",
+    "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "Seleccione el texto en cualquier página web y haga que la computadora lo lea en voz alta para usted simplemente haciendo clic en el botón Talkie."
+    "message": "Seleccione el texto en cualquier página web y haga que la computadora lo lea en voz alta para usted simplemente haciendo clic en el botón Talkie.",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  },
+  "frontend_Options": {
+    "message": "Opciones",
+    "original": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Código fuente en Github",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Acerca de: botón de extensión de navegador de texto a voz",
+    "original": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Acerca de",
+    "original": "About"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Gracias por usar Talkie - si te gusta, dile a tus amigos!",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Uso",
+    "original": "Usage"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Si la clave no funciona, compruebe que no esté ya en uso por otra extensión.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Cómo comprobar o cambiar la tecla de acceso directo Talkie.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "También puede utilizar la tecla de acceso directo Talkie:",
+    "original": "You can also use the Talkie shortcut key:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Seleccione el texto deseado en cualquier página web.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Haga clic en el botón Talkie en la barra del navegador",
+    "original": "Click the Talkie button in your browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "Donar",
+    "original": "Donate"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Más opciones de donación",
+    "original": "More donation options"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Donar USD 100 ahora",
+    "original": "Donate $$100 now"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Donar USD 25 ahora",
+    "original": "Donate $$25 now"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Donar USD 5 ahora",
+    "original": "Donate $$5 now"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Ocultar los botones de donación en el menú emergente",
+    "original": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "No es que no quiera que donen para apoyar el desarrollo de Talkie y código abierto en general. Simplemente no quiero que se molesten al usar Talkie en primer lugar.  Si deshabilitas los botones de donación en la ventana emergente, ¡espero que también apoyes a Talkie de alguna manera!  Los botones siempre estarán disponibles aquí entre las opciones, por si acaso.",
+    "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donar: apoyar el desarrollo de código abierto",
+    "original": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Todas las contribuciones a Talkie se realizan bajo el Acuerdo de Licencia de Colaborador (CLA).",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Licencia: open-source software",
+    "original": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licencia",
+    "original": "License"
+  },
+  "frontend_rateIt": {
+    "message": "Calificar Talkie",
+    "original": "Rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie se desarrolló unos días antes del Año Nuevo 2016/2017, en un reto de un amigo.  El reto se inició con la pregunta: mientras se trabaja para trabajar, ¿es posible escuchar un artículo en lugar de leerlo?  Fácil, le dije, y me dispuse a demostrarlo, o al menos a hacer que mi navegador hablara el texto usando una voz de computadora tonta.  La versión básica, sin ninguna interfaz de usuario, resultó ser trivial para crear.  La adición de una interfaz de usuario, tomó un poco más.  Adición de detección de idioma adecuado un montón más código.  Superar los errores en el navegador aún más trabajo.  La lista de mejoras y características continúa - y unas pocas miles de líneas de código más tarde, estás mirando el resultado final.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Historia: cómo empezó Talkie",
+    "original": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "Historia",
+    "original": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "Gracias por usar Talkie - si te gusta, dile a tus amigos!",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Soporte y comentarios",
+    "original": "Support and feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie en la Chrome Web Store",
+    "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Sus donaciones son apreciadas!",
+    "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Por favor, seleccione el texto deseado en el sitio web en primer lugar!"
+    "message": "Por favor, seleccione el texto deseado en el sitio web en primer lugar!",
+    "original": "Please select desired text on the website first!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie no puede acceder al texto seleccionado de este tipo de página.  Es una página muy especial, y hay limitaciones de seguridad introducidas por el navegador.  Lo siento por las molestias."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Mas opciones"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Donar USD 100 ahora"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Donar USD 25 ahora"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Donar USD 5 ahora"
-  },
-  "popup_rateIt": {
-    "message": "Puntúalo"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Soporte y comentarios"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Sus donaciones son apreciadas!"
+    "message": "Talkie no puede acceder al texto seleccionado de este tipo de página.  Es una página muy especial, y hay limitaciones de seguridad introducidas por el navegador.  Lo siento por las molestias.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
   }
 }

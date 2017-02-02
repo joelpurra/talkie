@@ -24,81 +24,83 @@ console:false,
 dualLog:false,
 dualLogError:false,
 eventToPromise:false,
-getBackgroundPage:false,
 getStoredValue:false,
-knownEvents:false,
 Promise:false,
 promiseTry:false,
+setStoredValue:false,
 startFrontend:false,
 stopFrontend:false,
+Tabrow:false,
 window:false,
 */
 
 /* eslint-disable no-undef */
-localScriptName = "popup-start.js";
+localScriptName = "options.js";
 /* eslint-enable no-undef */
 
 dualLog("Start", "Loading code");
 
-const loadOptionsAndApply = () => promiseTry(
+const initializeTabrow = () => promiseTry(
     () => {
-        const hideDonationsOptionId = "options-popup-donate-buttons-hide";
+        const optionsTabrow = new Tabrow("options-tabrow");
+        optionsTabrow.initialize();
+    }
+);
+
+const loadOptionAndStartListeners = () => promiseTry(
+    () => {
+        const hideDonationsId = "options-popup-donate-buttons-hide";
 
         return Promise.resolve()
-            .then(() => getStoredValue(hideDonationsOptionId))
+            .then(() => getStoredValue(hideDonationsId))
             .then((hideDonations) => {
                 hideDonations = hideDonations === true;
 
-                if (hideDonations) {
-                    const elementsToHide = []
-                        .concat(Array.from(document.getElementsByTagName("footer")))
-                        .concat(Array.from(document.getElementsByTagName("hr")));
+                const hideDonationsElement = document.getElementById(hideDonationsId);
+                hideDonationsElement.checked = hideDonations === true;
 
-                    elementsToHide.forEach((element) => {
-                        element.style.display = "none";
-                    });
-                }
+                hideDonationsElement.onclick = () => {
+                    return setStoredValue(hideDonationsId, hideDonationsElement.checked === true);
+                };
 
                 return undefined;
             });
     }
 );
 
-const passClickToBackground = (background) => promiseTry(
-        () => {
-            try {
-                dualLog("Start", "passClickToBackground");
-                background.iconClick();
-                dualLog("Done", "passClickToBackground");
-            } catch (error) {
-                dualLogError("Error", "passClickToBackground", error);
-                throw error;
-            }
-        }
-);
-
-const updateProgress = (data) => {
-    const progressBar = document.getElementById("progress");
-    progressBar.max = data.max - data.min;
-    progressBar.value = data.current;
-};
-
 const start = () => promiseTry(
     () => {
+        dualLog("Start", "start");
+
         return Promise.resolve()
             .then(() => startFrontend())
-            .then(() => loadOptionsAndApply())
-            .then(() => getBackgroundPage())
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
-            .then(() => getBackgroundPage())
-            .then((background) => passClickToBackground(background));
+            .then(() => initializeTabrow())
+            .then(() => loadOptionAndStartListeners())
+            .then(() => {
+                dualLog("Done", "start");
+
+                return undefined;
+            })
+            .catch((error) => {
+                dualLogError("Error", "Start", error);
+            });
     }
 );
 
 const stop = () => promiseTry(
     () => {
+        dualLog("Start", "stop");
+
         return Promise.resolve()
-            .then(() => stopFrontend());
+            .then(() => stopFrontend())
+            .then(() => {
+                dualLog("Done", "stop");
+
+                return undefined;
+            })
+            .catch((error) => {
+                dualLogError("Stop", "Stop", error);
+            });
     }
 );
 
