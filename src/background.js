@@ -35,6 +35,7 @@ knownEvents:false,
 last:false,
 log:false,
 logError:false,
+openUrlFromConfigurationInNewTab:false,
 Promise:false,
 promiseSeries:false,
 promiseTry:false,
@@ -771,8 +772,36 @@ const enablePopup = () => {
         }
     );
 
+    const commandMap = {
+        // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
+        // Handled by the popup handler (popup contents) and icon click handler.
+        // "_execute_browser_action": iconClickAction,
+        "start-stop": iconClickAction,
+        "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
+        "open-website-chromewebstore": () => openUrlFromConfigurationInNewTab("chromewebstore"),
+        "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
+    };
+
     const shortcutKeyCommandHandler = (command) => {
         log("Start", "shortcutKeyCommandHandler", command);
+
+        const commandAction = commandMap[command];
+
+        if (typeof commandAction !== "function") {
+            throw new Error("Bad command action for command: " + command);
+        }
+
+        return commandAction()
+            .then((result) => {
+                log("Done", "shortcutKeyCommandHandler", command, result);
+
+                return undefined;
+            })
+            .catch((error) => {
+                logError("Error", "shortcutKeyCommandHandler", command, error);
+
+                throw error;
+            });
     };
 
     const broadcaster = new Broadcaster();

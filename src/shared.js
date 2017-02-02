@@ -48,6 +48,44 @@ const logDebug = (...args) => {
 
 log("Start", "Loading shared code");
 
+// TODO: move to a file?
+// TODO: read from manifest.json?
+// TODO: allow overrides?
+const configuration = {
+    urls: {
+        "main": "https://github.com/joelpurra/talkie",
+        "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+        "donate": "https://joelpurra.com/donate",
+    },
+};
+
+const openUrlInNewTab = (url) => promiseTry(
+    () => {
+        if (typeof url !== "string") {
+            throw new Error("Bad url: " + url);
+        }
+
+        // NOTE: only https urls.
+        if (!url.startsWith("https://")) {
+            throw new Error("Bad url, only https:// allowed: " + url);
+        }
+
+        chrome.tabs.create({active: true, url: url});
+    }
+);
+
+const openUrlFromConfigurationInNewTab = (id) => promiseTry(
+    () => {
+        const url = configuration.urls[id];
+
+        if (typeof url !== "string") {
+            throw new Error("Bad url for id: " + id);
+        }
+
+        return openUrlInNewTab(url);
+    }
+);
+
 const shallowCopy = (...objs) => Object.assign({}, ...objs);
 
 const last = (indexable) => indexable[indexable.length - 1];
@@ -745,6 +783,7 @@ const api = {
     log,
     logDebug,
     logError,
+    openUrlFromConfigurationInNewTab,
     promiseSeries,
     promiseTry,
     shallowCopy,

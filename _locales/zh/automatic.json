@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "停止说话"
   },
+  "commandBrowserActionDescription": {
+    "message": "停止说话"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "打开Chrome网上应用店页面"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "打开捐款页面"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "打开网站"
+  },
+  "commandStartStopDescription": {
+    "message": "开始/停止读取选择"
+  },
   "extensionDescription": {
     "message": "在任何网页上选择文字，并让计算机大声读出它，只需点击对讲机按钮。"
   },
