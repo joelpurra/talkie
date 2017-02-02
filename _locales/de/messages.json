@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "Hör auf zu reden"
   },
+  "commandBrowserActionDescription": {
+    "message": "Hör auf zu reden"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Öffnen Sie die Chrome Web Store-Seite"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Öffnen Sie die Spendenseite"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Öffnen Sie die Website"
+  },
+  "commandStartStopDescription": {
+    "message": "Start/Stop Lesevorgang"
+  },
   "extensionDescription": {
     "message": "Wählen Sie Text auf jeder Web-Seite, und haben Sie den Computer lesen Sie es laut für Sie, indem Sie einfach auf die Talkie-Taste."
   },
@@ -52,6 +67,6 @@
     "message": "Unterstützung und Feedback"
   },
   "popup_yourDonationsAreAppreciated": {
-    "message": "Ihre Spenden sind willkommen!"
+    "message": "Ihre Spenden werden geschätzt!"
   }
 }

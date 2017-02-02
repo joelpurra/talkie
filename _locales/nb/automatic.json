@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "Slutt å snakke"
   },
+  "commandBrowserActionDescription": {
+    "message": "Slutt å snakke"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Åpne Chrome Nettmarked side"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Åpne donasjon siden"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Åpne nettsiden"
+  },
+  "commandStartStopDescription": {
+    "message": "Starte/stoppe lesingen utvalg"
+  },
   "extensionDescription": {
     "message": "Velg tekst på en nettside, og har datamaskinen lese den høyt for deg ved å klikke på Talkie-knappen."
   },

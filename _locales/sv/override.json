@@ -3,7 +3,22 @@
     "message": "Läs upp markerad text"
   },
   "buttonStopTitle": {
-    "message": "Sluta prata"
+    "message": "Sluta läsa upp"
+  },
+  "commandBrowserActionDescription": {
+    "message": "Sluta läsa upp"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Öppna Chrome Web Store-sidan"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Öppna donationssidan"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Öppna hemsidan"
+  },
+  "commandStartStopDescription": {
+    "message": "Börja/sluta läsa upp markerad text"
   },
   "extensionDescription": {
     "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."

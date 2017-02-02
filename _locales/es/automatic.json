@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "Deja de hablar"
   },
+  "commandBrowserActionDescription": {
+    "message": "Deja de hablar"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Abrir la página Chrome Web Store"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Abrir la página de donaciones"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Abrir el sitio web"
+  },
+  "commandStartStopDescription": {
+    "message": "Iniciar/detener la selección de lectura"
+  },
   "extensionDescription": {
     "message": "Seleccione el texto en cualquier página web y haga que la computadora lo lea en voz alta para usted simplemente haciendo clic en el botón Talkie."
   },
@@ -31,7 +46,7 @@
     "message": "Puntúalo"
   },
   "popup_supportAndFeedback": {
-    "message": "Soporte y retroalimentación"
+    "message": "Soporte y comentarios"
   },
   "popup_yourDonationsAreAppreciated": {
     "message": "Sus donaciones son apreciadas!"

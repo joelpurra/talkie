@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "Sluta prata"
   },
+  "commandBrowserActionDescription": {
+    "message": "Sluta prata"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Öppna Chrome Web Store sida"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Öppna donationssida"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Öppna hemsidan"
+  },
+  "commandStartStopDescription": {
+    "message": "Start/stopp läsa val"
+  },
   "extensionDescription": {
     "message": "Markera text på en webbsida, och har datorn läsa den högt för dig genom att klicka på Talkie knappen."
   },

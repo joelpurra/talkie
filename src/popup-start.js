@@ -25,6 +25,7 @@ getBackgroundPage:false,
 knownEvents:false,
 log:false,
 logError:false,
+openUrlInNewTab:false,
 Promise:false,
 promiseTry:false,
 window:false,
@@ -169,7 +170,7 @@ const addLinkClickHandlers = () => promiseTry(
             const location = ln.href;
 
             ln.onclick = function() {
-                chrome.tabs.create({active: true, url: location});
+                openUrlInNewTab(location);
             };
         }
     }

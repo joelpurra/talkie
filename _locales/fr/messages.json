@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "Arrêter de parler"
   },
+  "commandBrowserActionDescription": {
+    "message": "Arrêter de parler"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Ouvrez la page Chrome Web Store"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Ouvrir la page de don"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Ouvrir le site"
+  },
+  "commandStartStopDescription": {
+    "message": "Commencer/arrêter la lecture de la sélection"
+  },
   "extensionDescription": {
     "message": "Sélectionnez un texte sur n'importe quelle page Web et demandez à l'ordinateur de le lire à haute voix pour vous en cliquant simplement sur le bouton Talkie."
   },
