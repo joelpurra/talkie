@@ -771,6 +771,10 @@ const enablePopup = () => {
         }
     );
 
+    const shortcutKeyCommandHandler = (command) => {
+        log("Start", "shortcutKeyCommandHandler", command);
+    };
+
     const broadcaster = new Broadcaster();
     broadcaster.start();
 
@@ -788,6 +792,8 @@ const enablePopup = () => {
 
     // NOTE: used when the popup has been disabled.
     chrome.browserAction.onClicked.addListener(iconClickAction);
+
+    chrome.commands.onCommand.addListener(shortcutKeyCommandHandler);
 
     enablePopup();
 }());

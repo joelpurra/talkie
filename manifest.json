@@ -16,6 +16,17 @@
   "permissions": [
     "activeTab"
   ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+A",
+        "mac": "Command+Shift+A",
+        "chromeos": "Ctrl+Shift+A",
+        "linux": "Ctrl+Shift+A"
+      },
+      "description": "__MSG_buttonDefaultTitle__"
+    }
+  },
   "requirements": {},
   "offline_enabled": true,
   "default_locale": "en",
