@@ -73,6 +73,7 @@ cat "$MESSAGESTMP" \
     } ' \
     | sed 's/_______/USD /g' \
     | sed "s/======/'/g" \
+    | sed "s_ / _/_g" \
     | sed 's/[Tt][Aa][Ll][Kk][Ii][Ee]/Talkie/g' \
     | paste -d\	 "$MESSAGESTMP" - \
     | jq '

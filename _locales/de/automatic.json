@@ -18,7 +18,7 @@
     "message": "Öffnen Sie die Website"
   },
   "commandStartStopDescription": {
-    "message": "Start / Stop Lesevorgang"
+    "message": "Start/Stop Lesevorgang"
   },
   "extensionDescription": {
     "message": "Wählen Sie Text auf jeder Web-Seite, und haben Sie den Computer lesen Sie es laut für Sie, indem Sie einfach auf die Talkie-Taste."
@@ -49,6 +49,6 @@
     "message": "Unterstützung und Feedback"
   },
   "popup_yourDonationsAreAppreciated": {
-    "message": "Ihre Spenden sind willkommen!"
+    "message": "Ihre Spenden werden geschätzt!"
   }
 }
