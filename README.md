@@ -29,6 +29,33 @@
 1. **Select desired text** on any web page.
 1. **Click the Talkie button** in your browser bar <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
 
+You can also use the **Talkie shortcut key**:
+
+- <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on macOS
+- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on Windows, Linux, Chrome OS
+- If the key does not work, please check that it is not already in use by another extension.
+
+<details>
+  <summary><em>How to check or change the Talkie shortcut key</em></summary>
+  <ol>
+    <li>
+      In Chrome, click *<a href="chrome://extensions/">Extensions</a>* in the *Window* menu.
+    </li>
+    <li>
+      At the bottom of the extensions list, click *Keyboard shortcuts* in the lower right corner.
+      <p align="center">
+        <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-01.png" alt="Screenshot of Chrome's list of installed extensions, focusing on Talkie" title="Chrome's installed extensions" />
+      </p>
+    </li>
+    <li>
+      From the *Keyboard Shortcuts for Extensions and Apps* window you can check or change keyboard shortcuts for all Chrome extensions and apps. This way you also can verify that there are no shortcut key collisions between extensions.
+      <p align="center">
+        <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-02.png" alt="Screenshot of the Keyboard Shortcuts for Extensions and Apps window in Chrome, focusing on Talkie shortcuts" title="Talkie shortcuts in Chrome" />
+      </p>
+    </li>
+  </ol>
+</details>
+
 
 
 ## Features
