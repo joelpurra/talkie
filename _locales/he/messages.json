@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "                                                                                                           רבדל קיספת"
   },
+  "commandBrowserActionDescription": {
+    "message": "                                                                                                           רבדל קיספת"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "                                                                                    Chrome לש טנרטניאה תונח ףד תא חתפ"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "                                                                                                     המורתה ףד תא חתפ"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "                                                                                                          רתאה תא חתפ"
+  },
+  "commandStartStopDescription": {
+    "message": "                                                                                            הריחב אורקל קיספהל / לחתה"
+  },
   "extensionDescription": {
     "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
   },

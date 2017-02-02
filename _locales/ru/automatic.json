@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "Перестаньте разговаривать"
   },
+  "commandBrowserActionDescription": {
+    "message": "Перестаньте разговаривать"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "Откройте страницу Интернет-магазин Chrome"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Открыть страницу пожертвований"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Откройте веб-сайт"
+  },
+  "commandStartStopDescription": {
+    "message": "Старт / Стоп чтение выбор"
+  },
   "extensionDescription": {
     "message": "Выделите текст на любой веб-странице, и есть компьютер читать вслух для вас, просто нажав на кнопку Talkie."
   },

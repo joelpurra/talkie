@@ -5,6 +5,21 @@
   "buttonStopTitle": {
     "message": "                                                                                                           רבדל קיספת"
   },
+  "commandBrowserActionDescription": {
+    "message": "                                                                                                           רבדל קיספת"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription": {
+    "message": "                                                                                    Chrome לש טנרטניאה תונח ףד תא חתפ"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "                                                                                                     המורתה ףד תא חתפ"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "                                                                                                          רתאה תא חתפ"
+  },
+  "commandStartStopDescription": {
+    "message": "                                                                                            הריחב אורקל קיספהל / לחתה"
+  },
   "extensionDescription": {
     "message": "           .Talkie רותפכ לע הציחל ידי לע טושפ ךליבשב םר לוקב הז תא אורקל בשחמה תא םהל שיו​​ ,והשלכ טנרטניא ףדב טסקט רחב"
   },
