@@ -3,22 +3,22 @@
     "message": "קרא את הטקסט הנבחר בקול רם"
   },
   "buttonStopTitle": {
-    "message": "                                                                                                           רבדל קיספת"
+    "message": "רבדל קיספת"
   },
   "commandBrowserActionDescription": {
-    "message": "                                                                                                           רבדל קיספת"
+    "message": "םר לוקב טסקט תריחב וארק"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "                                                                                    Chrome לש טנרטניאה תונח ףד תא חתפ"
+    "message": "Chrome לש טנרטניאה תונח ףד תא חתפ"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "                                                                                                     המורתה ףד תא חתפ"
+    "message": "המורתה ףד תא חתפ"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "                                                                                                          רתאה תא חתפ"
+    "message": "רתאה תא חתפ"
   },
   "commandStartStopDescription": {
-    "message": "                                                                                            הריחב אורקל קיספהל/לחתה"
+    "message": "הריחב אורקל קיספהל/לחתה"
   },
   "extensionDescription": {
     "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "תויורשפא"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Github לע רוקמה דוק"
+  },
+  "frontend_aboutHeading": {
+    "message": "ןצחל ןפדפד תבחרה רובידל טסקט :תודוא"
+  },
+  "frontend_aboutLinkText": {
+    "message": "תודוא לע"
+  },
+  "frontend_aboutThankYou": {
+    "message": "!ךלש םירבחל דיגת ,הז תא בהוא התא םא - רישכמב שומישה לע הדות"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "גָהֹונ"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": ".תרחא החולש ידי לע שומישב רבכ תאצמנ הניא איהש קודב ,דבוע אל חתפמה םא"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": ".Talkie רוציק שקמ תא תונשל וא קודבל דציכ"
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": ":חתפמ Talkie רוציקב שמתשהל םג לוכי התא"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": ".והשלכ טנרטניא ףדב יוצר טסקט רחב"
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "ןפדפדב תבותכה תרושב Talkie רותפכ לע ץחל"
+  },
+  "frontend_donateLinkText": {
+    "message": "םֹורְתִל"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "המורת תויורשפא דוע"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "וישכע 100USD  םורת"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "וישכע 25USD  םורת"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "וישכע 5USD  םורת"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "ץפוקה ןולחב רתס תמורת ינצחל"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": ".הרקמל קר ,תויורשפאה ןיב ןאכ םינימז ויהי דימת םירותפכה  !יהשלכ ךרדב Talkie ךומתת םג התאש הווקמ ינא ,ץפוקה לש המורתה ינצחל תא לטבת םא  .הליחתכלמ רישכמב שומיש תעב דרטומ תויהל הצור אל טושפ ינא - ללכב חותפ דוק חותיפו Talkie ךומתל םורתל הצור אל ינאש ומכ אל הז"
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "חותפ דוק חותיפב ךומתל :םורת"
+  },
+  "frontend_licenseCLADescription": {
+    "message": ".(CLA) םימרותל ןוישירה םכסה תחת תישענ Talkie םכתמורת"
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "חותפ דוק תונכות :ןוישיר"
+  },
+  "frontend_licenseLinkText": {
+    "message": "ןוישיר"
+  },
+  "frontend_rateIt": {
+    "message": "Talkie גרד"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie תיפוסה האצותה לע לכתסמ התא ,רתוי רחואמ דוק תורוש ףלא המכו - הכישממ תונוכתהו םירופישה תמישר  .הדובע רתוי וליפא ןפדפדב םיגאב לע תורבגתה  .הרובח רתוי דוק התואנ הפש יוהיז תפסוה  .ןמז רתוי תצק חקל ,שמתשמ קשממ תפסוה  .רוציל ילאיווירט תויהל הררבתה ,שמתשמ קשממ לכ אלל ,תיסיסבה הסרגה  .ישפיט בשחוממ לוק תועצמאב טסקט רבדל ילש ןפדפדב תושעל תוחפל וא - הז תא חיכוהל ידכ יתאציו ,יתרמא ,לק  ?ותוא אורקל םוקמב רמאמ בישקהל ירשפא הז םאה ,הדובעל הנממו הדובעל העיסנ תעב :הלאשה םע ליחתה רגתאה  .דידימ רגתא לע ,2016/2017 תנש שאר ינפל םימי המכ חתופ."
+  },
+  "frontend_storyHeading": {
+    "message": "ליחתה Talkie ךיא :רופיס"
+  },
+  "frontend_storyLinkText": {
+    "message": "הָבָתַּכ"
+  },
+  "frontend_storyThankYou": {
+    "message": "!ךלש םירבחל דיגת ,הז תא בהוא התא םא - רישכמב שומישה לע הדות"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "בושמו הכימת"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie לש טנרטניאה תונחב Chrome"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "!הכרעהל תוכוז ךלש תומורתה"
+  },
   "noTextSelectedMessage": {
     "message": "אנא בחר טסקט רצוי באתר כלשהו"
   },
@@ -46,27 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": ".תוחונה יא לע רעטצמ ינא  .ןפדפדה ידי לע םישל החטבא תולבגמ שיו ,דואמ דחוימ ףד והז  .ףד לש הז גוס ךותמ רחבנה טסקטל תשגל"
-  },
-  "popup_donate_moreOptions": {
-    "message": "                                                                                                      תופסונ תויורשפא"
-  },
-  "popup_donate_usd100Now": {
-    "message": "                                                                                                וישכע 100USD  םורת"
-  },
-  "popup_donate_usd25Now": {
-    "message": "                                                                                                 וישכע 25USD  םורת"
-  },
-  "popup_donate_usd5Now": {
-    "message": "                                                                                                  וישכע 5USD  םורת"
-  },
-  "popup_rateIt": {
-    "message": "                                                                                                            ותוא גרדל"
-  },
-  "popup_supportAndFeedback": {
-    "message": "                                                                                                          בושמו הכימת"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "                                                                                            !הכרעהל תוכוז ךלש תומורתה"
+    "message": ".תוחונה יא לע לצנתמ ינא  .ןפדפדה ידי לע םישל החטבא תולבגמ שיו ,דואמ דחוימ ףד והז  .ףד לש הז גוס ךותמ רחבנה טסקטל תשגל לוכי אל יקוט"
   }
 }

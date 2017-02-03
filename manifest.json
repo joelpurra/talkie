@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "1.7.0",
+  "version": "1.8.0",
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
@@ -44,6 +44,10 @@
     "open-website-donate": {
       "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "chrome_style": true
   },
   "requirements": {},
   "offline_enabled": true,

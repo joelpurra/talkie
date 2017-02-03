@@ -1,54 +1,163 @@
 {
   "buttonDefaultTitle": {
-    "message": "大声读出文本选择"
+    "message": "大声读出文本选择",
+    "original": "Read text selection out loud"
   },
   "buttonStopTitle": {
-    "message": "停止说话"
+    "message": "停止说话",
+    "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "停止说话"
+    "message": "大声读出文本选择",
+    "original": "Read text selection out loud"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "打开Chrome网上应用店页面"
+    "message": "打开Chrome网上应用店页面",
+    "original": "Open the Chrome Web Store page"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "打开捐款页面"
+    "message": "打开捐款页面",
+    "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "打开网站"
+    "message": "打开网站",
+    "original": "Open the website"
   },
   "commandStartStopDescription": {
-    "message": "开始/停止读取选择"
+    "message": "开始/停止读取选择",
+    "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "在任何网页上选择文字，并让计算机大声读出它，只需点击对讲机按钮。"
+    "message": "在任何网页上选择文字，并让计算机大声读出它，只需点击对讲机按钮。",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  },
+  "frontend_Options": {
+    "message": "选项",
+    "original": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Github上的源代码",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "关于：文字转语音浏览器扩充功能按钮",
+    "original": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "关于",
+    "original": "About"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Talkieie  - 如果你喜欢它，告诉你的朋友！",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "用法",
+    "original": "Usage"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "如果密钥不起作用，请检查其是否已由另一分机使用。",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Talkieie快捷键。",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "您还可以使用Talkie快捷键：",
+    "original": "You can also use the Talkie shortcut key:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "在任何网页上选择所需的文字。",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "单击浏览器栏中的Talkie按钮",
+    "original": "Click the Talkie button in your browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "捐",
+    "original": "Donate"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "更多捐赠选项",
+    "original": "More donation options"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "现在捐赠USD 100",
+    "original": "Donate $$100 now"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "现在捐赠USD 25",
+    "original": "Donate $$25 now"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "现在捐赠USD 5",
+    "original": "Donate $$5 now"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "隐藏弹出式窗口中的捐赠按钮",
+    "original": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "这不是我不想让你捐赠支持Talkie和一般的开源开发 - 我只是不想让你在使用TalkieTalkieie！ 这些按钮将始终在这些选项之间可用，以防万一。",
+    "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "捐赠：支持开源开发",
+    "original": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Talkieie的贡献都是根据贡献者许可协议（CLA）。",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "许可证：开源软件",
+    "original": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "执照",
+    "original": "License"
+  },
+  "frontend_rateIt": {
+    "message": "价格对话",
+    "original": "Rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Talkieie如何开始",
+    "original": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "故事",
+    "original": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "Talkieie  - 如果你喜欢它，告诉你的朋友！",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "支持和反馈",
+    "original": "Support and feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie在Chrome网上应用店中",
+    "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "您的捐款感谢！",
+    "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "请先在网站上选择所需的文字！"
+    "message": "请先在网站上选择所需的文字！",
+    "original": "Please select desired text on the website first!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie无法访问此类页面中选定的文本。 这是一个非常特殊的页面，并且有浏览器提出的安全限制。 我很抱歉给您带来不便。"
-  },
-  "popup_donate_moreOptions": {
-    "message": "更多的选择"
-  },
-  "popup_donate_usd100Now": {
-    "message": "现在捐赠USD 100"
-  },
-  "popup_donate_usd25Now": {
-    "message": "现在捐赠USD 25"
-  },
-  "popup_donate_usd5Now": {
-    "message": "现在捐赠USD 5"
-  },
-  "popup_rateIt": {
-    "message": "评分"
-  },
-  "popup_supportAndFeedback": {
-    "message": "支持和反馈"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "您的捐款感谢！"
+    "message": "Talkie无法访问此类页面中选定的文本。 这是一个非常特殊的页面，并且有浏览器提出的安全限制。 对不起给您带来不便。",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
   }
 }

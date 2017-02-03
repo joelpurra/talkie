@@ -73,7 +73,8 @@ do
 
     # Merge translation files/json objects.
     # NOTE: If there's a key/name collision, the last object wins. This allows for overrides.
-    jq --slurp --sort-keys 'add' "$MERGE" > "$MESSAGES"
+    # NOTE: discards translation fields other than message and description.
+    jq --slurp --sort-keys 'map(with_entries( { key: .key, value: (.value | { message: .message } + if .description then { description: .description } else {} end ) } )) | add' "$MERGE" > "$MESSAGES"
 
     # Display the output.
     jq '.' "$MESSAGES"
