@@ -1,54 +1,71 @@
 {
   "buttonDefaultTitle": {
-    "message": "Läs upp markerad text"
+    "message": "Läs upp markerad text",
+    "original": "Read text selection out loud"
   },
   "buttonStopTitle": {
-    "message": "Sluta läsa upp"
+    "message": "Sluta läsa upp",
+    "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "Sluta läsa upp"
+    "message": "Sluta läsa upp",
+    "original": "Read text selection out loud"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Öppna Chrome Web Store-sidan"
+    "message": "Öppna Chrome Web Store-sidan",
+    "original": "Open the Chrome Web Store page"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Öppna donationssidan"
+    "message": "Öppna donationssidan",
+    "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öppna hemsidan"
+    "message": "Öppna hemsidan",
+    "original": "Open the website"
   },
   "commandStartStopDescription": {
-    "message": "Börja/sluta läsa upp markerad text"
+    "message": "Börja/sluta läsa upp markerad text",
+    "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
+    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen.",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_donate_moreOptions": {
-    "message": "Fler donationsalternativ"
+    "message": "Fler donationsalternativ",
+    "original": "More donation options"
   },
   "frontend_donate_usd100Now": {
-    "message": "Donera USD 100 nu"
+    "message": "Donera USD 100 nu",
+    "original": "Donate $$100 now"
   },
   "frontend_donate_usd25Now": {
-    "message": "Donera USD 25 nu"
+    "message": "Donera USD 25 nu",
+    "original": "Donate $$25 now"
   },
   "frontend_donate_usd5Now": {
-    "message": "Donera USD 5 nu"
+    "message": "Donera USD 5 nu",
+    "original": "Donate $$5 now"
   },
   "frontend_rateIt": {
-    "message": "Betygsätt Talkie"
+    "message": "Betygsätt Talkie",
+    "original": "Rate Talkie"
   },
   "frontend_supportAndFeedback": {
-    "message": "Hjälp och feedback"
+    "message": "Hjälp och feedback",
+    "original": "Support and feedback"
   },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "Dina donationer uppskattas!"
+    "message": "Dina donationer uppskattas!",
+    "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Vänligen markera önskad text först!"
+    "message": "Vänligen markera önskad text först!",
+    "original": "Please select desired text on the website first!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren.  Jag ber om ursäkt för besväret."
+    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren.  Jag ber om ursäkt för besväret.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
   }
 }

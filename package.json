@@ -14,8 +14,9 @@
     "chromestore": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run chromestore:update && npm run chromestore:publish",
     "chromestore:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"talkie-joelpurra.com-${npm_package_version}.zip\"",
     "chromestore:publish": "chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk",
-    "messages:translate": "npm run --silent messages:sort && ./tools/automate-translations.sh && npm run --silent messages:sort && npm run --silent messages:count",
+    "messages:translate": "npm run --silent messages:sort && ./tools/automate-translations.sh && npm run --silent messages:sort && npm run --silent messages:override:refresh && npm run --silent messages:count",
     "messages:sort": "for MESSAGES in $(find ./_locales -name '*.json'); do jq --sort-keys '.' \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done",
+    "messages:override:refresh": "for MESSAGES in $(find ./_locales \\( -name 'override.json' -or -name 'manual.json' \\)); do jq --slurp --sort-keys '.[0] as $en | .[1] | with_entries(.key as $key | .value |= (.original = $en[$key].message) + if $en[$key].description then { description: $en[$key].description } else {} end)' \"./_locales/en/messages.json\" \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done",
     "messages:count": "for MESSAGES in $(find ./_locales -name 'messages.json'); do jq 'to_entries | .[].key' \"$MESSAGES\"; done | sort | uniq -c"
   },
   "repository": {
