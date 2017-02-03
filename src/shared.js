@@ -18,7 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global chrome:false, window:false, console:false, Promise:false */
+/* global
+chrome:false,
+window:false,
+console:false,
+Promise:false
+*/
 
 const extensionShortName = chrome.i18n.getMessage("extensionShortName");
 
@@ -53,9 +58,10 @@ log("Start", "Loading shared code");
 // TODO: allow overrides?
 const configuration = {
     urls: {
-        "main": "https://github.com/joelpurra/talkie",
-        "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-        "donate": "https://joelpurra.com/donate",
+        options: "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
+        main: "https://github.com/joelpurra/talkie",
+        chromewebstore: "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+        donate: "https://joelpurra.com/donate",
     },
 };
 
@@ -185,27 +191,6 @@ const getCurrentActiveTab = () => new Promise(
 
                 if (singleTabResult) {
                     return resolve(tab);
-                }
-
-                return resolve(null);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
-);
-
-const getBackgroundPage = () => new Promise(
-    (resolve, reject) => {
-        try {
-            chrome.runtime.getBackgroundPage((backgroundPage) => {
-                // https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
-                }
-
-                if (backgroundPage) {
-                    return resolve(backgroundPage);
                 }
 
                 return resolve(null);
@@ -754,8 +739,92 @@ const knownEvents = {
     finishProgress: "finishProgress",
 };
 
-/* eslint-disable no-unused-vars */
-const api = {
+const getBackgroundPage = () => new Promise(
+    (resolve, reject) => {
+        try {
+            chrome.runtime.getBackgroundPage((backgroundPage) => {
+                // https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
+                if (chrome.runtime.lastError) {
+                    return reject(chrome.runtime.lastError);
+                }
+
+                if (backgroundPage) {
+                    return resolve(backgroundPage);
+                }
+
+                return resolve(null);
+            });
+        } catch (error) {
+            return reject(error);
+        }
+    }
+);
+
+const currentStorageFormatVersion = "v1.0.0";
+
+const getStorageKey = (storageFormatVersion, key) => {
+    if (!allKnownStorageKeys[storageFormatVersion][key]) {
+        throw new Error(`Unknown storage key (${storageFormatVersion}): ${key}`);
+    }
+
+    return `${storageFormatVersion}_${key}`;
+};
+
+const allKnownStorageKeys = {};
+
+allKnownStorageKeys["v1.0.0"] = {
+    "options-popup-donate-buttons-hide": "options-popup-donate-buttons-hide",
+};
+
+const knownStorageKeys = allKnownStorageKeys[currentStorageFormatVersion];
+
+const setStoredValue = (key, value) => promiseTry(
+    () => {
+        log("Start", "setStoredValue", key, typeof value, value);
+
+        const storageKey = getStorageKey(currentStorageFormatVersion, key);
+
+        const valueJson = JSON.stringify(value);
+
+        return getBackgroundPage()
+            .then((background) => {
+                background.localStorage.setItem(storageKey, valueJson);
+
+                log("Done", "setStoredValue", key, typeof value, value);
+
+                return undefined;
+            });
+    }
+);
+
+const getStoredValue = (key) => promiseTry(
+    () => {
+        log("Start", "getStoredValue", key);
+
+        const storageKey = getStorageKey(currentStorageFormatVersion, key);
+
+        return getBackgroundPage()
+            .then((background) => {
+                const valueJson = background.localStorage.getItem(storageKey);
+
+                if (valueJson === null) {
+                    log("Done", "getStoredValue", key, null);
+
+                    return null;
+                }
+
+                const value = JSON.parse(valueJson);
+
+                log("Done", "getStoredValue", key, value);
+
+                return value;
+            });
+    }
+);
+
+const api = {};
+
+api.shared = {
     Broadcaster,
     canTalkieRunInTab,
     executeGetTalkieWasPlugged,
@@ -772,13 +841,14 @@ const api = {
     executeSetTalkieWasPluggedCode,
     extensionShortName,
     flatten,
-    getBackgroundPage,
     getCurrentActiveNormalLoadedTab,
     getCurrentActiveTab,
     getRandomInt,
+    getStoredValue,
     isCurrentPageInternalToTalkie,
     isUndefinedOrNullOrEmptyOrWhitespace,
     knownEvents,
+    knownStorageKeys,
     last,
     log,
     logDebug,
@@ -786,9 +856,9 @@ const api = {
     openUrlFromConfigurationInNewTab,
     promiseSeries,
     promiseTry,
+    setStoredValue,
     shallowCopy,
     TalkieProgress,
 };
-/* eslint-enable no-unused-vars */
 
 log("Done", "Loading shared code");

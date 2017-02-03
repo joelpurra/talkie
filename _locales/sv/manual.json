@@ -1,6 +1,7 @@
 {
   "extensionLocale": {
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
-    "message": "sv"
+    "message": "sv",
+    "original": "en"
   }
 }

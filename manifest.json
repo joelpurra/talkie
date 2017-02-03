@@ -45,6 +45,10 @@
       "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }
   },
+  "options_ui": {
+    "page": "src/options.html",
+    "chrome_style": true
+  },
   "requirements": {},
   "offline_enabled": true,
   "default_locale": "en",

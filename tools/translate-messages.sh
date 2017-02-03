@@ -34,7 +34,7 @@ shift
 # paste is effectively joining on implicit key = line_number
 
 cat - \
-    | jq -c '.' >"$MESSAGESTMP"
+    | jq --compact-output '.' >"$MESSAGESTMP"
 
 # convert contained dates to pipe separated string in jq
 # convert to space separated epochs in awk
@@ -49,38 +49,33 @@ export LOCNAME
 #  - single quotes (')
 #  - already escaped (doubled) dollar signs ($$)
 
+# TODO: use '\0' instead of '\n' or '|' as the message separator.
+
 cat "$MESSAGESTMP" \
-    | jq -r '
+    | jq --raw-output '
         to_entries
         | map(.value.message)
-        | reduce .[] as $d (
-            "";
-            . + $d + "|"
-        )
+        | .[]
+        | gsub("[$]{2}"; "_______")
       ' \
-    | sed 's/\$\$/_______/g' \
-    | sed "s/I'm/I am /g" \
-    | sed "s/'/======/g" \
-    | gawk -F\| ' {
-    for (i=1; i<NF; i++) {
-        printf "\"";
-        "echo " $(i)  " | trans -brief -source en -target $LOCNAME" | getline d;
-        printf d;
-        printf "\"";
-        printf "	";
-    }
-    printf "\n";
-    } ' \
-    | sed 's/_______/USD /g' \
-    | sed "s/======/'/g" \
-    | sed "s_ / _/_g" \
-    | sed 's/[Tt][Aa][Ll][Kk][Ii][Ee]/Talkie/g' \
-    | paste -d\	 "$MESSAGESTMP" - \
+    | parallel --pipe --group --keep-order --jobs 2 -N 1 "trans -brief -width 10000 -source en -target $LOCNAME" \
+    | sed 's/^\(.*\)$/"\1"/' \
+    | tr '\n' '\t' \
+    | paste -d '	' "$MESSAGESTMP" - \
     | jq '
         to_entries
         | map(
-            .value += {
-                message: input
+            .value.message as $originalMessage
+            | .value += {
+                original: $originalMessage,
+                message: (
+                    input
+                    | gsub("^\\s+"; "")
+                    | gsub("\\s+$"; "")
+                    | gsub("_______"; "USD ")
+                    | gsub(" / "; "/")
+                    | gsub("talkie"; "Talkie"; "i")
+                )
             }
         )
         | from_entries

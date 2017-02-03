@@ -6,7 +6,7 @@
     "message": "Перестаньте разговаривать"
   },
   "commandBrowserActionDescription": {
-    "message": "Перестаньте разговаривать"
+    "message": "Читать выделенный текст вслух"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Откройте страницу Интернет-магазин Chrome"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "Опции"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Исходный код на Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "О: преобразование текста в речь кнопки расширение для браузера"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Около"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Благодарим Вас за использование Talkie - если вам это нравится, расскажите своим друзьям!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Применение"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Если ключ не работает, пожалуйста, проверьте, что это уже не используется другим расширением."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Как проверить или изменить клавишу быстрого вызова Talkie."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Вы можете также использовать ярлык Talkie ключа:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Выберите нужный текст на любой веб-странице."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Нажмите кнопку Talkie в панели браузера"
+  },
+  "frontend_donateLinkText": {
+    "message": "жертвовать"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Другие варианты пожертвования"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Donate USD 100 прямо сейчас"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Donate USD 25 прямо сейчас"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Donate USD 5 прямо сейчас"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Кнопки Скрыть пожертвования в всплывающем окне"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Это не так, как я не хочу, чтобы вы пожертвовать для поддержки Talkie и разработки открытого исходного кода в целом - я просто не хочу, чтобы ты был раздражен при использовании Talkie в первую очередь.  Если отключить кнопки пожертвования во всплывающем окне, я надеюсь, что вы также будете поддерживать Talkie в некотором роде!  Кнопки всегда будут доступны здесь среди вариантов, на всякий случай."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Пожертвуйте: поддержка разработки с открытым исходным кодом"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Все вклады в Talkie производятся в соответствии с Соглашением о Contributor License (CLA)."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Лицензия: с открытым исходным кодом"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Лицензия"
+  },
+  "frontend_rateIt": {
+    "message": "Оценить Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie был разработан за несколько дней до Нового года воздействию 2016-2017, на вызов от друга.  Проблема началась с вопроса: во время поездок на работу, можно ли слушать статью, а не читать его?  Легко, я сказал, и отправился, чтобы доказать это - или по крайней мере сделать мой браузер говорить текст, используя глупый компьютерный голос.  Базовая версия, без какого-либо интерфейса пользователя, оказался тривиальным создать.  Добавление пользовательского интерфейса, взял немного дольше.  Добавление правильного определения языка связка больше кода.  Преодоление ошибок в браузере еще больше работы.  Список улучшений и функций продолжается - и несколько тысяч строк кода позже, вы смотрите на конечный результат."
+  },
+  "frontend_storyHeading": {
+    "message": "История: как Talkie началась"
+  },
+  "frontend_storyLinkText": {
+    "message": "История"
+  },
+  "frontend_storyThankYou": {
+    "message": "Благодарим Вас за использование Talkie - если вам это нравится, расскажите своим друзьям!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Поддержка и обратная связь"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie в Интернет-магазине Chrome"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Ваши пожертвования приветствуются!"
+  },
   "noTextSelectedMessage": {
     "message": "Пожалуйста, выберите нужный текст на сайте первым!"
   },
@@ -46,27 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie не может получить доступ выделенный текст из этого типа страницы.  Это очень специальная страница, и есть ограничения безопасности положить в браузере.  Извиняюсь за неудобства."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Больше вариантов"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Donate USD 100 прямо сейчас"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Donate USD 25 прямо сейчас"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Donate USD 5 прямо сейчас"
-  },
-  "popup_rateIt": {
-    "message": "Оценить"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Поддержка и обратная связь"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Ваши пожертвования приветствуются!"
+    "message": "Talkie не может получить доступ выделенный текст из этого типа страницы.  Это очень специальная страница, и есть ограничения безопасности положить в браузере.  Извините за неудобства."
   }
 }

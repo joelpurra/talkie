@@ -6,7 +6,7 @@
     "message": "Slutt å snakke"
   },
   "commandBrowserActionDescription": {
-    "message": "Slutt å snakke"
+    "message": "Les teksten utvalg høyt"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Åpne Chrome Nettmarked side"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "alternativer"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Kildekode på Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Om: tekst-til-tale webleserutvidelse knappen"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Handle om"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Takk for at du bruker Talkie - hvis du liker det, fortell dine venner!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "bruk"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Hvis nøkkelen ikke fungerer, må du kontrollere at det ikke allerede er i bruk av en annen forlengelse."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Hvordan sjekke eller endre Talkie hurtigtast."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Du kan også bruke Talkie hurtigtast:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Velg ønsket tekst på en nettside."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klikk på Talkie-knappen i nettleseren din bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "Donere"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Flere donasjonsmuligheter"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Donere USD 100 nå"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Donere USD 25 nå"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Donere USD 5 nå"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Skjul donasjon knapper i popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Det er ikke som jeg ikke vil at du skal donere til å støtte Talkie og åpen kildekode generelt - Jeg vil ikke at du skal være irritert når du bruker Talkie i første omgang.  Hvis du deaktiverer donasjon knappene i popup, håper jeg at du også vil støtte Talkie på noen måte!  Knappene vil alltid være tilgjengelig her blant alternativene, bare i tilfelle."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donere: støtte åpen kildekode"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alle bidrag til Talkie er gjort under bidragsyter License Agreement (CLA)."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Lisens: open-source programvare"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Tillatelse"
+  },
+  "frontend_rateIt": {
+    "message": "Rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie ble utviklet noen dager før nyttår 2016/2017, på en utfordring fra en venn.  Utfordringen startet med spørsmålet: mens du pendler til arbeid, er det mulig å lytte til en artikkel i stedet for å lese den?  Enkel, sa jeg, og satt ut for å bevise det - eller i det minste å gjøre nettleseren min snakke ut tekst ved hjelp av en dum datastemme.  Den grunnleggende versjonen, uten noen brukergrensesnittet, viste seg å være trivielt å lage.  Legge til et brukergrensesnitt, tok litt lenger.  Legge til rette språkgjenkjenning en haug mer kode.  Overvinne bugs i nettleseren enda mer arbeid.  Listen over forbedringer og funksjoner går videre - og noen tusen linjer med kode senere, du ser på sluttresultatet."
+  },
+  "frontend_storyHeading": {
+    "message": "Story: hvordan Talkie kom i gang"
+  },
+  "frontend_storyLinkText": {
+    "message": "Historie"
+  },
+  "frontend_storyThankYou": {
+    "message": "Takk for at du bruker Talkie - hvis du liker det, fortell dine venner!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Support og tilbakemeldinger"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie i Chrome Nettmarked"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Dine donasjoner er verdsatt!"
+  },
   "noTextSelectedMessage": {
     "message": "Vennligst velg ønsket tekst på nettsiden først!"
   },
@@ -46,27 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie får ikke tilgang til den merkede teksten fra denne type side.  Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt i av nettleseren.  Jeg beklager det inntrufne."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Flere valg"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Donere USD 100 nå"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Donere USD 25 nå"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Donere USD 5 nå"
-  },
-  "popup_rateIt": {
-    "message": "Rangere det"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Support og tilbakemeldinger"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Dine donasjoner er verdsatt!"
+    "message": "Talkie får ikke tilgang til den merkede teksten fra denne type side.  Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt i av nettleseren.  Jeg beklager bryet."
   }
 }

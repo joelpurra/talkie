@@ -6,7 +6,7 @@
     "message": "Hör auf zu reden"
   },
   "commandBrowserActionDescription": {
-    "message": "Hör auf zu reden"
+    "message": "Lesen Sie die Textauswahl laut"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Öffnen Sie die Chrome Web Store-Seite"
@@ -33,6 +33,105 @@
   "extensionShortName": {
     "message": "Talkie"
   },
+  "frontend_Options": {
+    "message": "Optionen"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Quellcode auf Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Info: Text-to-Speech Browser-Erweiterungstaste"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Über"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Vielen Dank für die Verwendung von Talkie - wenn Sie es mögen, sagen Sie Ihren Freunden!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Verwendung"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Wenn die Taste nicht funktioniert, überprüfen Sie bitte, dass sie nicht bereits von einer anderen Erweiterung verwendet wird."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Wie die Talkie-Tastenkombination zu überprüfen oder zu ändern."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Sie können auch die Talkie-Shortcut-Taste:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Wählen Sie den gewünschten Text auf jeder Webseite aus."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klicken Sie in Ihrer Browserleiste auf die Schaltfläche Talkie"
+  },
+  "frontend_donateLinkText": {
+    "message": "Spenden"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Weitere Spendenoptionen"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Spenden USD 100 jetzt"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Spenden USD 25 jetzt"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Spende jetzt USD 5"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Spendenknöpfe im Popup ausblenden"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Es ist nicht, wie ich möchte nicht, dass Sie spenden, um Talkie und Open-Source-Entwicklung im Allgemeinen zu unterstützen - ich möchte einfach nicht, dass Sie verärgert werden, wenn mit Talkie in den ersten Platz.  Wenn Sie die Spendenknöpfe im Popup deaktivieren, hoffe ich, dass Sie auch Talkie in irgendeiner Weise unterstützen!  Die Schaltflächen sind hier unter den Optionen immer verfügbar, nur für den Fall."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Spenden: Unterstützung der Open Source Entwicklung"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alle Beiträge zu Talkie werden im Rahmen des Contributor License Agreement (CLA) erstellt."
+  },
+  "frontend_licenseCLALinkText": {
+    "message": "Contributor License Agreement (CLA)"
+  },
+  "frontend_licenseGPLDescription": {
+    "message": "Copyright © 2016, 2017 Joel Purra. Talkie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Talkie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
+  },
+  "frontend_licenseGPLLinkText": {
+    "message": "GNU General Public License version 3.0 (GPL-3.0)"
+  },
+  "frontend_licenseHeading": {
+    "message": "Lizenz: Open-Source-Software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Lizenz"
+  },
+  "frontend_rateIt": {
+    "message": "Bewerten Sie Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie wurde ein paar Tage vor dem Neujahr 2016/2017, auf eine Herausforderung von einem Freund entwickelt.  Die Herausforderung begann mit der Frage: beim Pendeln zur Arbeit ist es möglich, einen Artikel zu hören, anstatt ihn zu lesen?  Einfach, sagte ich, und machte sich daran, es zu beweisen - oder zumindest, um meinen Browser aussprechen Text mit einer dummen Computer-Stimme.  Die Basisversion, ohne jede Benutzeroberfläche, erwies sich als trivial zu erstellen.  Das Hinzufügen einer Benutzeroberfläche dauerte etwas länger.  Hinzufügen der richtigen Sprache Erkennung ein Bündel mehr Code.  Überwindung von Fehlern im Browser noch mehr Arbeit.  Die Liste der Verbesserungen und Funktionen geht weiter - und ein paar tausend Zeilen Code später, Sie sehen das Endergebnis."
+  },
+  "frontend_storyHeading": {
+    "message": "Geschichte: wie Talkie begann"
+  },
+  "frontend_storyLinkText": {
+    "message": "Geschichte"
+  },
+  "frontend_storyThankYou": {
+    "message": "Vielen Dank für die Verwendung von Talkie - wenn Sie es mögen, sagen Sie Ihren Freunden!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Unterstützung und Feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie im Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Ihre Spenden werden geschätzt!"
+  },
   "noTextSelectedMessage": {
     "message": "Bitte wählen Sie zuerst den gewünschten Text auf der Webseite aus!"
   },
@@ -47,26 +146,5 @@
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
     "message": "Talkie kann nicht auf den ausgewählten Text von dieser Art von Seite zugreifen.  Es ist eine ganz besondere Seite, und es gibt Sicherheitsbeschränkungen durch den Browser.  Ich entschuldige mich für die Unannehmlichkeiten."
-  },
-  "popup_donate_moreOptions": {
-    "message": "Mehr Optionen"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Spenden USD 100 jetzt"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Spenden USD 25 jetzt"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Spende jetzt USD 5"
-  },
-  "popup_rateIt": {
-    "message": "Bewerte es"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Unterstützung und Feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Ihre Spenden werden geschätzt!"
   }
 }

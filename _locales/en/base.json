@@ -23,32 +23,101 @@
   "extensionDescription": {
     "message": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
+  "frontend_Options": {
+    "message": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "About"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Usage"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "You can also use the Talkie shortcut key:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Select desired text on any web page."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Click the Talkie button in your browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "Donate"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "More donation options"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Donate $$100 now"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Donate $$25 now"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Donate $$5 now"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "License"
+  },
+  "frontend_rateIt": {
+    "message": "Rate Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Support and feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie in the Chrome Web Store"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Your donations are appreciated!"
+  },
   "noTextSelectedMessage": {
     "message": "Please select desired text on the website first!"
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
     "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
-  },
-  "popup_donate_moreOptions": {
-    "message": "More options"
-  },
-  "popup_donate_usd100Now": {
-    "message": "Donate $$100 now"
-  },
-  "popup_donate_usd25Now": {
-    "message": "Donate $$25 now"
-  },
-  "popup_donate_usd5Now": {
-    "message": "Donate $$5 now"
-  },
-  "popup_rateIt": {
-    "message": "Rate it"
-  },
-  "popup_supportAndFeedback": {
-    "message": "Support and feedback"
-  },
-  "popup_yourDonationsAreAppreciated": {
-    "message": "Your donations are appreciated!"
   }
 }
