@@ -34,37 +34,37 @@
     "message": "Talkie"
   },
   "frontend_Options": {
-    "message": "alternativ"
+    "message": "Alternativ"
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Källkod på Github"
   },
   "frontend_aboutHeading": {
-    "message": "Om: text-till-tal webbläsartillägg knapp"
+    "message": "Om: text-till-tal webbläsartilläggsknapp"
   },
   "frontend_aboutLinkText": {
-    "message": "Handla om"
+    "message": "Alternativ"
   },
   "frontend_aboutThankYou": {
     "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!"
   },
   "frontend_aboutUsageHeading": {
-    "message": "Användande"
+    "message": "Användning"
   },
   "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Om nyckeln inte fungerar, kontrollera att det inte redan används av en annan anknytning."
+    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg."
   },
   "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Hur kan man kontrollera eller ändra Talkie kortkommando."
+    "message": "Steg för att kontrollera eller ändra Talkies kortkommando."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Du kan också använda Talkie kortkommando:"
+    "message": "Du kan även använda Talkie-kortkommandot:"
   },
   "frontend_aboutUsageStep01": {
-    "message": "Välj önskad text på en webbsida."
+    "message": "Markera önskad text på valfri hemsida."
   },
   "frontend_aboutUsageStep02": {
-    "message": "Klicka på Talkie knappen i webbläsarens adressfält"
+    "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält"
   },
   "frontend_donateLinkText": {
     "message": "Donera"
@@ -82,16 +82,16 @@
     "message": "Donera USD 5 nu"
   },
   "frontend_hideDonateButtonsInPopup": {
-    "message": "Göm donation knappar i popup"
+    "message": "Dölj donationsknapparna i bubblan"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Det är inte som jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmänhet - jag bara inte vill att du ska vara irriterad när du använder Talkie i första hand.  Om du inaktiverar de donationsknappar i popup, hoppas jag att ni också kommer att stödja Talkie på något sätt!  Knapparna kommer alltid att finnas här bland alternativen, för säkerhets skull."
+    "message": "Det är inte som att jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmämhet - jag vill bara inte att du ska bli irriterad när du använder Talkie till att börja med. Om du inakiverar donationsknapparna i bubblan, hoppas jag att du även stödjer Talkie på något sätt! Knapparna kommer alltid vara tillgängliga här bland alternativen, utifall att."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Donera: stödja öppen källkod"
+    "message": "Donera: stöd öppen källkodsutveckling"
   },
   "frontend_licenseCLADescription": {
-    "message": "Alla bidrag till Talkie görs under skribent Licensavtalet (CLA)."
+    "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA)."
   },
   "frontend_licenseCLALinkText": {
     "message": "Contributor License Agreement (CLA)"
@@ -103,7 +103,7 @@
     "message": "GNU General Public License version 3.0 (GPL-3.0)"
   },
   "frontend_licenseHeading": {
-    "message": "Licens: öppen källkod"
+    "message": "Licens: öppen källkodsmjukvara"
   },
   "frontend_licenseLinkText": {
     "message": "Licens"
@@ -112,10 +112,10 @@
     "message": "Betygsätt Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie utvecklades ett par dagar före nyår 2016/2017, på en utmaning från en vän.  Utmaningen började med frågan: medan pendling till arbete, är det möjligt att lyssna på en artikel istället för att läsa det?  Lätt, sa jag, och bestämde sig för att bevisa det - eller åtminstone att göra min webbläsare tala ut text med en dum datorröst.  Basversionen, utan något användargränssnitt, visade sig vara trivialt att skapa.  Lägga ett användargränssnitt, tog lite längre tid.  Lägga korrekt språkidentifiering en massa mer kod.  Att övervinna buggar i webbläsaren ännu mer arbete.  Listan över förbättringar och funktioner går på - och några tusen rader kod senare, du tittar på slutresultatet."
+    "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det - eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande versionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer - och ett par tusen rader kod senare, ser du resultatet."
   },
   "frontend_storyHeading": {
-    "message": "Story: hur Talkie kommit igång"
+    "message": "Berättelse: hur Talkie kom till"
   },
   "frontend_storyLinkText": {
     "message": "Berättelse"

@@ -31,6 +31,54 @@
     "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen.",
     "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
+  "frontend_Options": {
+    "message": "Alternativ",
+    "original": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Källkod på Github",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Om: text-till-tal webbläsartilläggsknapp",
+    "original": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Alternativ",
+    "original": "About"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
+  "frontend_aboutUsageHeading": {
+    "message": "Användning",
+    "original": "Usage"
+  },
+  "frontend_aboutUsageShortcutKeyAlternative03": {
+    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_aboutUsageShortcutKeyAlternative04": {
+    "message": "Steg för att kontrollera eller ändra Talkies kortkommando.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_aboutUsageShortcutKeyDescription": {
+    "message": "Du kan även använda Talkie-kortkommandot:",
+    "original": "You can also use the Talkie shortcut key:"
+  },
+  "frontend_aboutUsageStep01": {
+    "message": "Markera önskad text på valfri hemsida.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_aboutUsageStep02": {
+    "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält",
+    "original": "Click the Talkie button in your browser bar"
+  },
+  "frontend_donateLinkText": {
+    "message": "Donera",
+    "original": "Donate"
+  },
   "frontend_donate_moreOptions": {
     "message": "Fler donationsalternativ",
     "original": "More donation options"
@@ -47,13 +95,57 @@
     "message": "Donera USD 5 nu",
     "original": "Donate $$5 now"
   },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Dölj donationsknapparna i bubblan",
+    "original": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Det är inte som att jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmämhet - jag vill bara inte att du ska bli irriterad när du använder Talkie till att börja med. Om du inakiverar donationsknapparna i bubblan, hoppas jag att du även stödjer Talkie på något sätt! Knapparna kommer alltid vara tillgängliga här bland alternativen, utifall att.",
+    "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Donera: stöd öppen källkodsutveckling",
+    "original": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Licens: öppen källkodsmjukvara",
+    "original": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Licens",
+    "original": "License"
+  },
   "frontend_rateIt": {
     "message": "Betygsätt Talkie",
     "original": "Rate Talkie"
   },
+  "frontend_storyDescription": {
+    "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det - eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande versionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer - och ett par tusen rader kod senare, ser du resultatet.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Berättelse: hur Talkie kom till",
+    "original": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "Berättelse",
+    "original": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!",
+    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+  },
   "frontend_supportAndFeedback": {
     "message": "Hjälp och feedback",
     "original": "Support and feedback"
+  },
+  "frontend_talkieInTheChromeWebStore": {
+    "message": "Talkie i Chrome Web Store",
+    "original": "Talkie in the Chrome Web Store"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dina donationer uppskattas!",
