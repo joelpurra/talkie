@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 /* global
+chrome:false,
 dualLog:false,
 dualLogError:false,
 eventToPromise:false,
@@ -139,8 +140,7 @@ const loadVoicesAndLanguages = () => promiseTry(
                     allLanguageOption.talkie.language = null;
                     allLanguageOption.talkie.voices = allVoices;
 
-                    // TODO: translate.
-                    allLanguageOption.textContent = "All";
+                    allLanguageOption.textContent = chrome.i18n.getMessage("frontend_voicesShowAllVoices");
                     allLanguageOption.selected = true;
 
                     voicesLanguagesListElement.appendChild(allLanguageOption);
