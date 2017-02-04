@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 /* global
-console:false,
 dualLog:false,
 dualLogError:false,
 eventToPromise:false,
@@ -45,6 +44,15 @@ const initializeTabrow = () => promiseTry(
     () => {
         const optionsTabrow = new Tabrow("options-tabrow");
         optionsTabrow.initialize();
+    }
+);
+
+const speak = (text, voice) => promiseTry(
+    () => {
+        return getBackgroundPage()
+            .then((background) => background.stopSpeakFromFrontend()
+                .then(() => background.startSpeakFromFrontend(text, voice))
+            );
     }
 );
 
@@ -94,15 +102,6 @@ const loadVoicesAndLanguages = () => promiseTry(
                 };
 
                 displayVoicesInSelectElement(allVoices);
-
-                const speak = (text, voice) => promiseTry(
-                    () => {
-                        return getBackgroundPage()
-                            .then((background) => background.stopSpeakFromFrontend()
-                                .then(() => background.startSpeakFromFrontend(text, voice))
-                            );
-                    }
-                );
 
                 const speakSelectedVoiceAndText = (selectElement, textElement) => promiseTry(
                     () => {
@@ -189,21 +188,21 @@ const loadVoicesAndLanguages = () => promiseTry(
 
                             if (voicesVoicesListElement.children.length > 0) {
                                 voicesVoicesListElement.children[0].selected = true;
-                            }
 
-                            speakSelectedVoiceAndText(voicesVoicesListElement, voicesSampleTextElement);
+                                return speakSelectedVoiceAndText(voicesVoicesListElement, voicesSampleTextElement);
+                            }
                         } else {
                             displayVoicesInSelectElement(allVoices);
                         }
                     }
-            );
+                );
 
-                voicesLanguagesListElement.onchange = eventToPromise.bind(this, languageListElementOnChangeHandler);
-                voicesVoicesListElement.onchange = eventToPromise.bind(this, voiceListElementOnChangeHandler);
+                voicesLanguagesListElement.addEventListener("change", eventToPromise.bind(this, languageListElementOnChangeHandler));
+                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(this, voiceListElementOnChangeHandler));
 
-                voicesSampleTextElement.onfocus = () => {
+                voicesSampleTextElement.addEventListener("focus", () => {
                     voicesSampleTextElement.select();
-                };
+                });
 
                 return undefined;
             });
@@ -222,12 +221,32 @@ const loadOptionAndStartListeners = () => promiseTry(
                 const hideDonationsElement = document.getElementById(hideDonationsId);
                 hideDonationsElement.checked = hideDonations === true;
 
-                hideDonationsElement.onclick = () => {
+                hideDonationsElement.addEventListener("click", () => {
                     return setStoredValue(hideDonationsId, hideDonationsElement.checked === true);
-                };
+                });
 
                 return undefined;
             });
+    }
+);
+
+const speakLegalese = () => promiseTry(
+    () => {
+        const legaleseTextElement = document.getElementById("license-gpl-legalese");
+
+        const legaleseClickHandler = () => promiseTry(
+            () => {
+                const legaleseText = legaleseTextElement.textContent;
+                const legaleseVoice = {
+                    name: "Zarvox",
+                    lang: "en-US",
+                };
+
+                return speak(legaleseText, legaleseVoice);
+            }
+        );
+
+        legaleseTextElement.addEventListener("click", eventToPromise.bind(this, legaleseClickHandler));
     }
 );
 
@@ -240,6 +259,7 @@ const start = () => promiseTry(
             .then(() => initializeTabrow())
             .then(() => loadVoicesAndLanguages())
             .then(() => loadOptionAndStartListeners())
+            .then(() => speakLegalese())
             .then(() => {
                 dualLog("Done", "start");
 

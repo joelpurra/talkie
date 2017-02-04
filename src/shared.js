@@ -730,6 +730,7 @@ class TalkieProgress {
 
 const knownEvents = {
     beforeSpeaking: "beforeSpeaking",
+    stopSpeaking: "stopSpeaking",
     afterSpeaking: "afterSpeaking",
     beforeSpeakingPart: "beforeSpeakingPart",
     afterSpeakingPart: "afterSpeakingPart",

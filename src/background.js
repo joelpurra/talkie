@@ -24,12 +24,11 @@ canTalkieRunInTab:false,
 chrome:false,
 console:false,
 executeLogToPage:false,
-executePlugOnce:false,
 executeScriptInAllFrames:false,
 executeScriptInTopFrame:false,
+executePlugOnce:false,
 flatten:false,
 getMappedVoices:false,
-getRandomInt:false,
 getVoices:false,
 isCurrentPageInternalToTalkie:false,
 isUndefinedOrNullOrEmptyOrWhitespace:false,
@@ -143,16 +142,12 @@ const setup = () => promiseTry(
         const unload = () => {
             log("Start", "Unloading");
 
-            return executeGetTalkieIsSpeakingId()
-                .then((talkieIsSpeakingId) => {
+            return executeGetTalkieIsSpeaking()
+                .then((talkieIsSpeaking) => {
                     // Clear all text if Talkie was speaking.
-                    if (typeof talkieIsSpeakingId === "number") {
-                        return executeSetTalkieIsNotSpeaking()
-                            .then(() => {
-                                synthesizer.cancel();
-
-                                return undefined;
-                            });
+                    if (talkieIsSpeaking) {
+                        // TODO: use stopSpeaking()?
+                        synthesizer.cancel();
                     }
 
                     return undefined;
@@ -170,6 +165,20 @@ const setup = () => promiseTry(
         chrome.runtime.onSuspend.addListener(unload);
 
         return synthesizer;
+    }
+);
+
+const stopSpeaking = (broadcaster, synthesizer) => promiseTry(
+    () => {
+        const eventData = {};
+
+        return Promise.resolve()
+            .then(() => broadcaster.broadcastEvent(knownEvents.stopSpeaking, eventData))
+            .then(() => {
+                synthesizer.cancel();
+
+                return undefined;
+            });
     }
 );
 
@@ -309,14 +318,22 @@ const splitAndSpeak = (broadcaster, synthesizer, text, voice, shouldContinueSpea
     () => {
         log("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
-        return getActualVoice(voice)
+        const speakingEventData = {
+            text: text,
+            voice: voice.name,
+            language: voice.lang,
+        };
+
+        return Promise.resolve()
+            .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeaking, speakingEventData))
+            .then(() => getActualVoice(voice))
             .then((actualVoice) => {
                 const paragraphs = splitTextToParagraphs(text);
                 const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
                 const textParts = flatten(cleanTextParts);
 
                 const textPartsPromises = textParts.map((textPart) => () => {
-                    const eventData = {
+                    const speakingPartEventData = {
                         textPart: textPart,
                         voice: voice.name,
                         language: voice.lang,
@@ -326,9 +343,9 @@ const splitAndSpeak = (broadcaster, synthesizer, text, voice, shouldContinueSpea
                         .then((shouldContinueSpeaking) => {
                             if (shouldContinueSpeaking) {
                                 return Promise.resolve()
-                                    .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, eventData))
+                                    .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
                                     .then(() => speakPartOfText(synthesizer, textPart, actualVoice))
-                                    .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, eventData));
+                                    .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData));
                             }
 
                             return undefined;
@@ -336,11 +353,12 @@ const splitAndSpeak = (broadcaster, synthesizer, text, voice, shouldContinueSpea
                 });
 
                 return promiseSeries(textPartsPromises);
-            });
+            })
+            .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeaking, speakingEventData));
     }
 );
 
-const fallbackSpeak = splitAndSpeak;
+const speakWithoutPageContext = splitAndSpeak;
 
 const speakInPageContext = (broadcaster, synthesizer, text, language) => promiseTry(
     () => {
@@ -349,62 +367,56 @@ const speakInPageContext = (broadcaster, synthesizer, text, language) => promise
             lang: language,
         };
 
-        const eventData = {
-            text: text,
-            voice: voice.name,
-            language: voice.lang,
-        };
-
         return Promise.resolve()
             .then(() => executeAddOnBeforeUnloadHandlers())
-            .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeaking, eventData))
             .then(() => promiseTry(
                 () => {
-                    const talkieIsSpeakingId = getRandomInt(10000, 99999);
-
-                    const shouldContinueSpeakingProvider = () => {
-                        return executeGetTalkieIsSpeakingId()
-                            .then((currentSpeakingId) => currentSpeakingId === talkieIsSpeakingId);
-                    };
-
                     executeLogToPage(`Speaking text: ${text}`);
 
-                    return executeSetTalkieIsSpeakingId(talkieIsSpeakingId)
-                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, voice, shouldContinueSpeakingProvider));
+                    return executeSetTalkieIsSpeaking()
+                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider()));
                 }
             ))
-            .then(() => log("Done", "speakInPageContext", `Speak text (length ${text.length})`))
-            .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeaking, eventData))
-            .then(() => executeSetTalkieIsNotSpeaking())
-            .then(() => executePlugOnce());
+            .then(() => log("Done", "speakInPageContext", `Speak text (length ${text.length})`));
     }
 );
 
-const shouldAlwaysContinueSpeakingProvider = () => promiseTry(
-    () => {
-        return true;
-    }
-);
+let lastCallerId = 0;
 
-const executeGetTalkieIsSpeakingIdCode = "window.talkieIsSpeaking;";
-const executeGetTalkieIsSpeakingId = () => executeScriptInTopFrame(executeGetTalkieIsSpeakingIdCode)
-    .then((talkieIsSpeaking) => {
-        const num = parseInt(talkieIsSpeaking, 10);
+const incrementCallerId = () => {
+    lastCallerId++;
+};
 
-        if (!isNaN(num)) {
-            return num;
+const onlyLastCallerContinueSpeakingProvider = () => {
+    incrementCallerId();
+    const callerOnTheAirId = lastCallerId;
+
+    log("Start", "onlyLastCallerContinueSpeakingProvider", callerOnTheAirId);
+
+    return () => promiseTry(
+        () => {
+            const isLastCallerOnTheAir = callerOnTheAirId === lastCallerId;
+
+            log("Status", "onlyLastCallerContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
+
+            return isLastCallerOnTheAir;
         }
+    );
+};
 
-        return talkieIsSpeaking;
+const executeGetTalkieIsSpeakingCode = "window.talkieIsSpeaking;";
+const executeGetTalkieIsSpeaking = () => executeScriptInTopFrame(executeGetTalkieIsSpeakingCode)
+    .then((talkieIsSpeaking) => {
+        return talkieIsSpeaking === "true";
     });
 
-const executeSetTalkieIsSpeakingIdCode = "window.talkieIsSpeaking = %i;";
-const executeSetTalkieIsSpeakingId = (id) => executeScriptInTopFrame(executeSetTalkieIsSpeakingIdCode.replace("%i", id));
+const executeSetTalkieIsSpeakingCode = "window.talkieIsSpeaking = true;";
+const executeSetTalkieIsSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsSpeakingCode);
 
 const executeSetTalkieIsNotSpeakingCode = "window.talkieIsSpeaking = null;";
 const executeSetTalkieIsNotSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsNotSpeakingCode);
 
-const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { typeof window.talkieIsSpeaking === \"number\" && window.speechSynthesis.cancel(); });";
+const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { window.talkieIsSpeaking && window.speechSynthesis.cancel(); });";
 const executeAddOnBeforeUnloadHandlers = () => executeScriptInTopFrame(executeAddOnBeforeUnloadHandlersCode);
 
 const executeGetFramesSelectionTextAndLanguageCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
@@ -763,20 +775,18 @@ const enablePopup = () => {
             })
     );
 
-    const iconClickAction = () => promiseTry(
+    const speakSelectionOnPage = () => promiseTry(
         () => {
-            const wasSpeaking = synthesizer.speaking;
-
             return Promise.all([
                 canTalkieRunInTab(),
                 isCurrentPageInternalToTalkie(),
             ])
                 .then(([canRun, isInternalPage]) => {
-                // NOTE: can't perform (most) actions if it's not a "normal" tab.
+                    // NOTE: can't perform (most) actions if it's not a "normal" tab.
                     if (!canRun) {
                         log("iconClickAction", "Did not detect a normal tab, skipping.");
 
-                    // NOTE: don't "warn" about internal pages opening.
+                        // NOTE: don't "warn" about internal pages opening.
                         if (isInternalPage) {
                             log("iconClickAction", "Detected internal page, skipping warning.");
 
@@ -790,42 +800,31 @@ const enablePopup = () => {
                             lang: notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage,
                         };
 
-                        return fallbackSpeak(broadcaster, synthesizer, text, voice, shouldAlwaysContinueSpeakingProvider);
+                        return speakWithoutPageContext(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider());
                     }
 
-                    const reset = () => Promise.all([
-                        setIconModeStopped(),
-                        enablePopup(),
-                    ]);
-
-                    // Clear all old text.
-                    return executeSetTalkieIsNotSpeaking()
-                        .then(() => {
-                            synthesizer.cancel();
-
-                            if (!wasSpeaking) {
-                                return rootChain(() => Promise.all(
-                                    [
-                                        setIconModePlaying(),
-                                        disablePopup(),
-                                        speakUserSelection(broadcaster, synthesizer),
-                                    ]
-                            )
-                                    .then(reset)
-                                    .catch((error) => {
-                                        return Promise.resolve()
-                                            .then(reset)
-                                            .then(() => {
-                                                throw error;
-                                            });
-                                    }));
-                            }
-
-                            return rootChain(reset);
-                        });
+                    return speakUserSelection(broadcaster, synthesizer);
                 });
         }
     );
+
+    const startStopSpeakSelectionOnPage = () => promiseTry(
+        () => {
+            // TODO: internal check to see if Talkie was speaking?
+            const wasSpeaking = synthesizer.speaking === true;
+
+            return stopSpeaking(broadcaster, synthesizer)
+                .then(() => {
+                    if (!wasSpeaking) {
+                        return rootChain(() => speakSelectionOnPage());
+                    }
+
+                    return undefined;
+                });
+        }
+    );
+
+    const iconClickAction = () => startStopSpeakSelectionOnPage();
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -862,6 +861,20 @@ const enablePopup = () => {
     const broadcaster = new Broadcaster();
     broadcaster.start();
 
+    broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => incrementCallerId());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => incrementCallerId());
+
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executePlugOnce());
+
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => executeSetTalkieIsSpeaking());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executeSetTalkieIsNotSpeaking());
+
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => setIconModePlaying());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => setIconModeStopped());
+
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => disablePopup());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => enablePopup());
+
     const progress = new TalkieProgress(broadcaster);
 
     progress.start()
@@ -876,13 +889,14 @@ const enablePopup = () => {
 
     window.stopSpeakFromFrontend = () => promiseTry(
         () => {
-            synthesizer.cancel();
+            return stopSpeaking(broadcaster, synthesizer);
         }
     );
 
     window.startSpeakFromFrontend = (text, voice) => promiseTry(
         () => {
-            return fallbackSpeak(broadcaster, synthesizer, text, voice, shouldAlwaysContinueSpeakingProvider);
+            return stopSpeaking(broadcaster, synthesizer)
+            .then(() => rootChain(() => speakWithoutPageContext(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider())));
         }
     );
 
