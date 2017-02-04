@@ -72,6 +72,10 @@ const loadVoicesAndLanguages = () => promiseTry(
                 const voicesLanguagesListElement = document.getElementById("voices-languages-list");
                 const voicesVoicesListElement = document.getElementById("voices-voices-list");
                 const voicesSampleTextElement = document.getElementById("voices-sample-text");
+                const voicesAvailableLanguagesCount = document.getElementById("voices-available-languages-count");
+                const voicesAvailableVoicesCount = document.getElementById("voices-available-voices-count");
+
+                voicesAvailableLanguagesCount.textContent = ` (${allLanguages.length})`;
 
                 const displayVoicesInSelectElement = (selectedVoices) => {
                     Array.from(voicesVoicesListElement.children).forEach((child) => child.remove());
@@ -85,6 +89,8 @@ const loadVoicesAndLanguages = () => promiseTry(
 
                         voicesVoicesListElement.appendChild(option);
                     });
+
+                    voicesAvailableVoicesCount.textContent = ` (${selectedVoices.length})`;
                 };
 
                 displayVoicesInSelectElement(allVoices);
@@ -131,18 +137,28 @@ const loadVoicesAndLanguages = () => promiseTry(
                 }
 
                 allLanguagesGroups.forEach((languageGroup) => {
-                    const optgroup = document.createElement("optgroup");
-                    optgroup.label = languageGroup;
-
                     const languagesPerGroupKeys = Object.keys(allVoicesByLanguageGroup[languageGroup]);
                     languagesPerGroupKeys.sort();
+
+                    const optgroup = document.createElement("optgroup");
+
+                    if (languagesPerGroupKeys.length > 1) {
+                        optgroup.label = `${languageGroup} (${languagesPerGroupKeys.length})`;
+                    } else {
+                        optgroup.label = languageGroup;
+                    }
 
                     languagesPerGroupKeys.forEach((language) => {
                         const option = document.createElement("option");
                         option.talkie = {};
                         option.talkie.language = language;
                         option.talkie.voices = allVoicesByLanguage[language];
-                        option.textContent = language;
+
+                        if (allVoicesByLanguage[language].length > 1) {
+                            option.textContent = `${language} (${allVoicesByLanguage[language].length})`;
+                        } else {
+                            option.textContent = language;
+                        }
 
                         optgroup.appendChild(option);
                     });
