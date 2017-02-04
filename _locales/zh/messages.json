@@ -112,7 +112,7 @@
     "message": "价格对话"
   },
   "frontend_storyDescription": {
-    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。"
+    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误甚至更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。"
   },
   "frontend_storyHeading": {
     "message": "Talkieie如何开始"
@@ -128,6 +128,31 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie在Chrome网上应用店中"
+  },
+  "frontend_voicesAvailableLanguages": {
+    "message": "可用语言"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "可用语音"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie会自动检测语言，但并非所有语言都可在每个浏览器中使用。 在这里，您可以查看和测试每种语言的安装语音。"
+  },
+  "frontend_voicesHeading": {
+    "message": "声音：测试您的浏览器"
+  },
+  "frontend_voicesLinkText": {
+    "message": "声音"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "敏捷的棕色狐狸跳过了懒狗。"
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Talkie的示例文本大声读出"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "显示所有声音"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "您的捐款感谢！"

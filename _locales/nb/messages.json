@@ -129,6 +129,31 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Nettmarked"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "tilgjengelige språk"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "tilgjengelige stemmene"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie gjør automatisk gjenkjenning av språk, men ikke alle språk er tilgjengelig i hver nettleser.  Her kan du se og teste installerte stemmer for hvert språk."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stemmer: teste nettleseren din"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Den raske brune reven hopper over den late hunden."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Eksempeltekst for Talkie å lese høyt"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Vis alle stemmer"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dine donasjoner er verdsatt!"
   },

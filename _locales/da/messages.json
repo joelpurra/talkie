@@ -129,11 +129,30 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Webshop"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Ledige sprog"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Ledige stemmer"
+  },
   "frontend_voicesDescription": {
-    "message": "Ikke alle sprog er tilgængelige i hver browser.  Her kan du angive, test, og vælg din foretrukne stemme per sprog."
+    "message": "Talkie gør automatisk registrering af sprog, men ikke alle sprog er tilgængelige i hver browser.  Her kan du se og teste installerede stemmer for hvert sprog."
   },
   "frontend_voicesHeading": {
-    "message": "Stemmer: tilgængelige sprog i din browser"
+    "message": "Stemmer: teste din browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Den hurtige brune ræv hopper over den dovne hund."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Prøve tekst til Talkie til at læse højt"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Vis alle stemmer"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dine donationer er værdsat!"

@@ -112,7 +112,7 @@
     "message": "Évaluer Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie a été développé quelques jours avant la nouvelle année 2016/2017, sur un défi d'un ami.  Le défi a commencé par la question suivante: pendant le déplacement au travail, est-il possible d'écouter un article plutôt que de le lire?  Facile, dis-je, et je me suis mis à le prouver - ou du moins à faire parler mon navigateur par une voix d'ordinateur stupide.  La version de base, sans aucune interface utilisateur, s'est avéré être trivial à créer.  Ajout d'une interface utilisateur, a pris un peu plus longtemps.  Ajout de la détection de langue appropriée un tas plus de code.  Surmonter les bugs dans le navigateur encore plus de travail.  La liste des améliorations et des fonctionnalités se poursuit - et quelques milliers de lignes de code plus tard, vous regardez le résultat final."
+    "message": "Talkie a été développé quelques jours avant la nouvelle année 2016/2017, sur un défi d'un ami.  Le défi a commencé par la question suivante: pendant le déplacement au travail, est-il possible d'écouter un article au lieu de le lire?  Facile, dis-je, et je me suis mis à le prouver - ou du moins à faire parler mon navigateur par une voix d'ordinateur stupide.  La version de base, sans aucune interface utilisateur, s'est avéré être trivial à créer.  Ajout d'une interface utilisateur, a pris un peu plus longtemps.  Ajout de la détection de langue appropriée un tas plus de code.  Surmonter les bugs dans le navigateur encore plus de travail.  La liste des améliorations et des fonctionnalités se poursuit - et quelques milliers de lignes de code plus tard, vous regardez le résultat final."
   },
   "frontend_storyHeading": {
     "message": "Story: comment Talkie a commencé"
@@ -128,6 +128,31 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie dans le Chrome Web Store"
+  },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Langues disponibles"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Disponible voix"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie effectue la détection automatique de langue, mais pas toutes les langues sont disponibles dans chaque navigateur.  Ici, vous pouvez voir et tester les voix installées pour chaque langue."
+  },
+  "frontend_voicesHeading": {
+    "message": "Voices: testez votre navigateur"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voix"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Le renard brun rapide saute sur le chien paresseux."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Exemple de texte pour Talkie à lire à haute voix"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Afficher toutes les voix"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Vos dons sont appréciés!"
