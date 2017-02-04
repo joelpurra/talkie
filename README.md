@@ -132,6 +132,10 @@ You can also use the **Talkie shortcut key**:
   </p>
 
   <p>
+    You can see the list of languages/voices available in your specific browser, as well as speak out sample text, in the Talkie options. This is a good start in figuring out why a certain language might not be read out loud as expected.
+  </p>
+
+  <p>
     In case you have no voices for TTS installed at all, try installing [US English Female Text-to-speech (by Google)](https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb). This should enable at least US English websites to be spoken by Talkie.
   </p>
 
