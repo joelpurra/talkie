@@ -58,7 +58,7 @@ cat "$MESSAGESTMP" \
         | .[]
         | gsub("[$]{2}"; "_______")
       ' \
-    | parallel --pipe --group --keep-order --jobs 2 -N 1 "trans -brief -width 10000 -source en -target $LOCNAME" \
+    | parallel --pipe --group --keep-order --jobs 2 -N 1 "trans -brief -no-bidi -source en -target $LOCNAME" \
     | sed 's/^\(.*\)$/"\1"/' \
     | tr '\n' '\t' \
     | paste -d '	' "$MESSAGESTMP" - \

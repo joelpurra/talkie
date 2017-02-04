@@ -3,22 +3,22 @@
     "message": "קרא את הטקסט הנבחר בקול רם"
   },
   "buttonStopTitle": {
-    "message": "רבדל קיספת"
+    "message": "תפסיק לדבר"
   },
   "commandBrowserActionDescription": {
-    "message": "םר לוקב טסקט תריחב וארק"
+    "message": "קראו בחירת טקסט בקול רם"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Chrome לש טנרטניאה תונח ףד תא חתפ"
+    "message": "פתח את דף חנות האינטרנט של Chrome"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "המורתה ףד תא חתפ"
+    "message": "פתח את דף התרומה"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "רתאה תא חתפ"
+    "message": "פתח את האתר"
   },
   "commandStartStopDescription": {
-    "message": "הריחב אורקל קיספהל/לחתה"
+    "message": "התחל/להפסיק לקרוא בחירה"
   },
   "extensionDescription": {
     "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
@@ -34,64 +34,64 @@
     "message": "Talkie"
   },
   "frontend_Options": {
-    "message": "תויורשפא"
+    "message": "אפשרויות"
   },
   "frontend_aboutCodeOnGithubLinkText": {
-    "message": "Github לע רוקמה דוק"
+    "message": "קוד המקור על Github"
   },
   "frontend_aboutHeading": {
-    "message": "ןצחל ןפדפד תבחרה רובידל טסקט :תודוא"
+    "message": "אודות: טקסט לדיבור הרחבת דפדפן לחצן"
   },
   "frontend_aboutLinkText": {
-    "message": "תודוא לע"
+    "message": "על אודות"
   },
   "frontend_aboutThankYou": {
-    "message": "!ךלש םירבחל דיגת ,הז תא בהוא התא םא - רישכמב שומישה לע הדות"
+    "message": "תודה על השימוש במכשיר - אם אתה אוהב את זה, תגיד לחברים שלך!"
   },
   "frontend_aboutUsageHeading": {
-    "message": "גָהֹונ"
+    "message": "נוֹהָג"
   },
   "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": ".תרחא החולש ידי לע שומישב רבכ תאצמנ הניא איהש קודב ,דבוע אל חתפמה םא"
+    "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת."
   },
   "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": ".Talkie רוציק שקמ תא תונשל וא קודבל דציכ"
+    "message": "כיצד לבדוק או לשנות את מקש קיצור Talkie."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": ":חתפמ Talkie רוציקב שמתשהל םג לוכי התא"
+    "message": "אתה יכול גם להשתמש בקיצור Talkie מפתח:"
   },
   "frontend_aboutUsageStep01": {
-    "message": ".והשלכ טנרטניא ףדב יוצר טסקט רחב"
+    "message": "בחר טקסט רצוי בדף אינטרנט כלשהו."
   },
   "frontend_aboutUsageStep02": {
-    "message": "ןפדפדב תבותכה תרושב Talkie רותפכ לע ץחל"
+    "message": "לחץ על כפתור Talkie בשורת הכתובת בדפדפן"
   },
   "frontend_donateLinkText": {
-    "message": "םֹורְתִל"
+    "message": "לִתְרוֹם"
   },
   "frontend_donate_moreOptions": {
-    "message": "המורת תויורשפא דוע"
+    "message": "עוד אפשרויות תרומה"
   },
   "frontend_donate_usd100Now": {
-    "message": "וישכע 100USD  םורת"
+    "message": "תרום USD 100 עכשיו"
   },
   "frontend_donate_usd25Now": {
-    "message": "וישכע 25USD  םורת"
+    "message": "תרום USD 25 עכשיו"
   },
   "frontend_donate_usd5Now": {
-    "message": "וישכע 5USD  םורת"
+    "message": "תרום USD 5 עכשיו"
   },
   "frontend_hideDonateButtonsInPopup": {
-    "message": "ץפוקה ןולחב רתס תמורת ינצחל"
+    "message": "לחצני תרומת סתר בחלון הקופץ"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": ".הרקמל קר ,תויורשפאה ןיב ןאכ םינימז ויהי דימת םירותפכה  !יהשלכ ךרדב Talkie ךומתת םג התאש הווקמ ינא ,ץפוקה לש המורתה ינצחל תא לטבת םא  .הליחתכלמ רישכמב שומיש תעב דרטומ תויהל הצור אל טושפ ינא - ללכב חותפ דוק חותיפו Talkie ךומתל םורתל הצור אל ינאש ומכ אל הז"
+    "message": "זה לא כמו שאני לא רוצה לתרום לתמוך Talkie ופיתוח קוד פתוח בכלל - אני פשוט לא רוצה להיות מוטרד בעת שימוש במכשיר מלכתחילה.  אם תבטל את לחצני התרומה של הקופץ, אני מקווה שאתה גם תתמוך Talkie בדרך כלשהי!  הכפתורים תמיד יהיו זמינים כאן בין האפשרויות, רק למקרה."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "חותפ דוק חותיפב ךומתל :םורת"
+    "message": "תרום: לתמוך בפיתוח קוד פתוח"
   },
   "frontend_licenseCLADescription": {
-    "message": ".(CLA) םימרותל ןוישירה םכסה תחת תישענ Talkie םכתמורת"
+    "message": "תרומתכם Talkie נעשית תחת הסכם הרישיון לתורמים (CLA)."
   },
   "frontend_licenseCLALinkText": {
     "message": "Contributor License Agreement (CLA)"
@@ -103,34 +103,34 @@
     "message": "GNU General Public License version 3.0 (GPL-3.0)"
   },
   "frontend_licenseHeading": {
-    "message": "חותפ דוק תונכות :ןוישיר"
+    "message": "רישיון: תוכנות קוד פתוח"
   },
   "frontend_licenseLinkText": {
-    "message": "ןוישיר"
+    "message": "רישיון"
   },
   "frontend_rateIt": {
-    "message": "Talkie גרד"
+    "message": "Talkie דרג"
   },
   "frontend_storyDescription": {
-    "message": "Talkie תיפוסה האצותה לע לכתסמ התא ,רתוי רחואמ דוק תורוש ףלא המכו - הכישממ תונוכתהו םירופישה תמישר  .הדובע רתוי וליפא ןפדפדב םיגאב לע תורבגתה  .הרובח רתוי דוק התואנ הפש יוהיז תפסוה  .ןמז רתוי תצק חקל ,שמתשמ קשממ תפסוה  .רוציל ילאיווירט תויהל הררבתה ,שמתשמ קשממ לכ אלל ,תיסיסבה הסרגה  .ישפיט בשחוממ לוק תועצמאב טסקט רבדל ילש ןפדפדב תושעל תוחפל וא - הז תא חיכוהל ידכ יתאציו ,יתרמא ,לק  ?ותוא אורקל םוקמב רמאמ בישקהל ירשפא הז םאה ,הדובעל הנממו הדובעל העיסנ תעב :הלאשה םע ליחתה רגתאה  .דידימ רגתא לע ,2016/2017 תנש שאר ינפל םימי המכ חתופ."
+    "message": "Talkie פותח כמה ימים לפני ראש שנת 2016/2017, על אתגר מידיד.  האתגר התחיל עם השאלה: בעת נסיעה לעבודה וממנה לעבודה, האם זה אפשרי להקשיב מאמר במקום לקרוא אותו?  קל, אמרתי, ויצאתי כדי להוכיח את זה - או לפחות לעשות בדפדפן שלי לדבר טקסט באמצעות קול ממוחשב טיפשי.  הגרסה הבסיסית, ללא כל ממשק משתמש, התבררה להיות טריוויאלי ליצור.  הוספת ממשק משתמש, לקח קצת יותר זמן.  הוספת זיהוי שפה נאותה קוד יותר חבורה.  התגברות על באגים בדפדפן אפילו יותר עבודה.  רשימת השיפורים והתכונות ממשיכה - וכמה אלף שורות קוד מאוחר יותר, אתה מסתכל על התוצאה הסופית."
   },
   "frontend_storyHeading": {
-    "message": "ליחתה Talkie ךיא :רופיס"
+    "message": "סיפור: איך Talkie התחיל"
   },
   "frontend_storyLinkText": {
-    "message": "הָבָתַּכ"
+    "message": "כַּתָבָה"
   },
   "frontend_storyThankYou": {
-    "message": "!ךלש םירבחל דיגת ,הז תא בהוא התא םא - רישכמב שומישה לע הדות"
+    "message": "תודה על השימוש במכשיר - אם אתה אוהב את זה, תגיד לחברים שלך!"
   },
   "frontend_supportAndFeedback": {
-    "message": "בושמו הכימת"
+    "message": "תמיכה ומשוב"
   },
   "frontend_talkieInTheChromeWebStore": {
-    "message": "Talkie לש טנרטניאה תונחב Chrome"
+    "message": "Talkie בחנות האינטרנט של Chrome"
   },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "!הכרעהל תוכוז ךלש תומורתה"
+    "message": "התרומות שלך זוכות להערכה!"
   },
   "noTextSelectedMessage": {
     "message": "אנא בחר טסקט רצוי באתר כלשהו"
@@ -145,6 +145,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": ".תוחונה יא לע לצנתמ ינא  .ןפדפדה ידי לע םישל החטבא תולבגמ שיו ,דואמ דחוימ ףד והז  .ףד לש הז גוס ךותמ רחבנה טסקטל תשגל לוכי אל יקוט"
+    "message": "טוקי לא יכול לגשת לטקסט הנבחר מתוך סוג זה של דף.  זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן.  אני מתנצל על אי הנוחות."
   }
 }
