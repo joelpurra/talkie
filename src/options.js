@@ -95,30 +95,43 @@ const loadVoicesAndLanguages = () => promiseTry(
 
                 displayVoicesInSelectElement(allVoices);
 
-                const voiceListElementOnChangeHandler = (event) => promiseTry(
+                const speak = (text, lang) => promiseTry(
                     () => {
-                        const selectElement = event.target;
-                        const selectedOption = Array.from(selectElement.querySelectorAll("option")).filter((option) => option.selected === true)[0] || null;
-
-                        const sampleText = voicesSampleTextElement.textContent.trim();
-
-                        if (sampleText.length === 0) {
-                            return;
-                        }
-
                         return getBackgroundPage()
                             .then((background) => {
                             // TODO: use proper Talkie function.
                                 background.speechSynthesis.cancel();
 
-                                if (selectedOption && selectedOption && selectedOption.talkie && typeof Array.isArray(selectedOption.talkie.voices)) {
-                                    const lang = selectedOption.talkie.voices[0].lang;
-
-                                    return background.fallbackSpeak(background.speechSynthesis, sampleText, lang);
-                                }
-
-                                return undefined;
+                                return background.fallbackSpeak(background.speechSynthesis, text, lang);
                             });
+                    }
+                );
+
+                const speakSelectedVoiceAndText = (selectElement, textElement) => promiseTry(
+                    () => {
+                        const selectedOption = Array.from(selectElement.querySelectorAll("option")).filter((option) => option.selected === true)[0] || null;
+
+                        const sampleText = textElement.value.trim();
+
+                        if (sampleText.length === 0) {
+                            return;
+                        }
+
+                        if (selectedOption && selectedOption && selectedOption.talkie && typeof Array.isArray(selectedOption.talkie.voices)) {
+                            const lang = selectedOption.talkie.voices[0].lang;
+
+                            return speak(sampleText, lang);
+                        }
+
+                        return undefined;
+                    }
+                );
+
+                const voiceListElementOnChangeHandler = (event) => promiseTry(
+                    () => {
+                        const selectElement = event.target;
+
+                        return speakSelectedVoiceAndText(selectElement, voicesSampleTextElement);
                     }
                 );
 
@@ -130,8 +143,9 @@ const loadVoicesAndLanguages = () => promiseTry(
                     allLanguageOption.talkie.language = null;
                     allLanguageOption.talkie.voices = allVoices;
 
-                // TODO: translate.
+                    // TODO: translate.
                     allLanguageOption.textContent = "All";
+                    allLanguageOption.selected = true;
 
                     voicesLanguagesListElement.appendChild(allLanguageOption);
                 }
@@ -175,6 +189,12 @@ const loadVoicesAndLanguages = () => promiseTry(
                             const voicesForLanguage = selectedOption.talkie.voices;
 
                             displayVoicesInSelectElement(voicesForLanguage);
+
+                            if (voicesVoicesListElement.children.length > 0) {
+                                voicesVoicesListElement.children[0].selected = true;
+                            }
+
+                            speakSelectedVoiceAndText(voicesVoicesListElement, voicesSampleTextElement);
                         } else {
                             displayVoicesInSelectElement(allVoices);
                         }
