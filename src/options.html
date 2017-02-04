@@ -37,6 +37,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
                     <a href="#about" data-translate="frontend_aboutLinkText"></a>
                 </li>
                 <li>
+                    <a href="#voices" data-translate="frontend_voicesLinkText"></a>
+                </li>
+                <li>
                     <a href="#donate" data-translate="frontend_donateLinkText"></a>
                 </li>
                 <li>
@@ -92,6 +95,46 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
                     <a href="https://github.com/joelpurra/talkie#usage" data-translate="frontend_aboutUsageShortcutKeyAlternative04"></a>
                 </li>
             </ul>
+        </section>
+        <section id="voices">
+            <h2 data-translate="frontend_voicesHeading"></h2>
+            <p data-translate="frontend_voicesDescription"></p>
+            <table>
+                <colgroup>
+                    <col width="50%" />
+                    <col width="50%" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="col">
+                            Available languages
+                        </th>
+                        <th scope="col">
+                            Available voices
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="voices-languages-list" size="5"></select>
+                        </td>
+                        <td>
+                            <select id="voices-voices-list" size="5"></select>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th colspan="2" scope="col">
+                            Sample text to read
+                        </th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea id="voices-sample-text" rows="4" data-translate="frontend_voicesSampleText"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
         <section id="donate">
             <h2 data-translate="frontend_hideDonateButtonsInPopupHeading"></h2>

@@ -129,6 +129,12 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Webshop"
   },
+  "frontend_voicesDescription": {
+    "message": "Ikke alle sprog er tilgængelige i hver browser.  Her kan du angive, test, og vælg din foretrukne stemme per sprog."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stemmer: tilgængelige sprog i din browser"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dine donationer er værdsat!"
   },

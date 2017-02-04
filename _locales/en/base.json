@@ -110,6 +110,18 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesDescription": {
+    "message": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Voices: available in your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "message": "The quick brown fox jumps over the lazy dog."
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Your donations are appreciated!"
   },

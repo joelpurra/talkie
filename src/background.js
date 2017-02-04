@@ -28,6 +28,7 @@ executePlugOnce:false,
 executeScriptInAllFrames:false,
 executeScriptInTopFrame:false,
 flatten:false,
+getMappedVoices:false,
 getRandomInt:false,
 isCurrentPageInternalToTalkie:false,
 isUndefinedOrNullOrEmptyOrWhitespace:false,
@@ -128,22 +129,14 @@ const setup = () => promiseTry(
     .then((synthesizer) => {
         log("Start", "Voices check");
 
-        const voices = synthesizer.getVoices();
+        return getMappedVoices()
+            .then((voices) => {
+                log("Variable", "voices[]", voices.length, voices);
 
-        if (!voices || voices.length === 0) {
-            throw new Error("The browser does not have any voices installed.");
-        }
+                log("Done", "Voices check");
 
-        log("Variable", "voices[]", voices.length, voices.map(voice => {
-            return {
-                name: voice.name,
-                lang: voice.lang,
-            };
-        }));
-
-        log("Done", "Voices check");
-
-        return synthesizer;
+                return synthesizer;
+            });
     })
     .then((synthesizer) => {
         const unload = () => {
@@ -818,6 +811,7 @@ const enablePopup = () => {
     window.log = log;
     window.logError = logError;
     window.progress = progress;
+    window.fallbackSpeak = fallbackSpeak;
 
     // NOTE: used when the popup has been disabled.
     chrome.browserAction.onClicked.addListener(iconClickAction);
