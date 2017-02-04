@@ -147,8 +147,41 @@
     "message": "Talkie im Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Verfügbare Sprachen",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Verfügbare Stimmen",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie macht automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar.  Hier können Sie installierte Stimmen für jede Sprache sehen und testen.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stimmen: Testen Sie Ihren Browser",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Stimmen",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Der schnelle braune Fuchs springt über den faulen Hund.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Beispieltext für Talkie zum Auslesen laut",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Alle Stimmen anzeigen",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "Ihre Spenden werden geschätzt!",
+    "message": "Ihre Spenden sind willkommen!",
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {

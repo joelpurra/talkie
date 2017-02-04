@@ -730,6 +730,7 @@ class TalkieProgress {
 
 const knownEvents = {
     beforeSpeaking: "beforeSpeaking",
+    stopSpeaking: "stopSpeaking",
     afterSpeaking: "afterSpeaking",
     beforeSpeakingPart: "beforeSpeakingPart",
     afterSpeakingPart: "afterSpeakingPart",
@@ -822,6 +823,37 @@ const getStoredValue = (key) => promiseTry(
     }
 );
 
+const getVoices = () => promiseTry(
+    () => {
+        return getBackgroundPage()
+            .then((background) => {
+                const voices = background.speechSynthesis.getVoices();
+
+                if (!voices || voices.length === 0) {
+                    throw new Error("The browser does not have any voices installed.");
+                }
+
+                return voices;
+            });
+    }
+);
+
+const getMappedVoices = () => promiseTry(
+    () => {
+        return getVoices()
+            .then((voices) => {
+                const mappedVoices = voices.map(voice => {
+                    return {
+                        name: voice.name,
+                        lang: voice.lang,
+                    };
+                });
+
+                return mappedVoices;
+            });
+    }
+);
+
 const api = {};
 
 api.shared = {
@@ -843,8 +875,10 @@ api.shared = {
     flatten,
     getCurrentActiveNormalLoadedTab,
     getCurrentActiveTab,
+    getMappedVoices,
     getRandomInt,
     getStoredValue,
+    getVoices,
     isCurrentPageInternalToTalkie,
     isUndefinedOrNullOrEmptyOrWhitespace,
     knownEvents,

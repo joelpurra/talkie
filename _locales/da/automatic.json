@@ -147,6 +147,39 @@
     "message": "Talkie i Chrome Webshop",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Ledige sprog",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Ledige stemmer",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie gør automatisk registrering af sprog, men ikke alle sprog er tilgængelige i hver browser.  Her kan du se og teste installerede stemmer for hvert sprog.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stemmer: teste din browser",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voices",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Den hurtige brune ræv hopper over den dovne hund.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Prøve tekst til Talkie til at læse højt",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Vis alle stemmer",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dine donationer er værdsat!",
     "original": "Your donations are appreciated!"

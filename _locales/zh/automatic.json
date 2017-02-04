@@ -147,6 +147,39 @@
     "message": "Talkie在Chrome网上应用店中",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "可用语言",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "可用语音",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie会自动检测语言，但并非所有语言都可在每个浏览器中使用。 在这里，您可以查看和测试每种语言的安装语音。",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "声音：测试您的浏览器",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "声音",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "敏捷的棕色狐狸跳过了懒狗。",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Talkie的示例文本大声读出",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "显示所有声音",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "您的捐款感谢！",
     "original": "Your donations are appreciated!"

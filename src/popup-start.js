@@ -19,8 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 /* global
-chrome:false,
-console:false,
 dualLog:false,
 dualLogError:false,
 eventToPromise:false,

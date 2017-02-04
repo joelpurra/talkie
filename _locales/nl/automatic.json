@@ -147,6 +147,39 @@
     "message": "Talkie in de Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Beschikbare talen",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "beschikbare stemmen",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie doet automatische taaldetectie, maar niet alle talen zijn beschikbaar in elke browser.  Hier kunt u zien en testen van geïnstalleerde stemmen voor elke taal.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stemmen: test uw browser",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voices",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "De snelle bruine vos springt over de luie hond.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Voorbeeld tekst voor Talkie hardop lezen",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Toon alle stemmen",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Uw donatie wordt op prijs gesteld!",
     "original": "Your donations are appreciated!"

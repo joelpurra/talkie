@@ -147,6 +147,39 @@
     "message": "Talkie en la Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Idiomas Disponibles",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Voces disponibles",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie realiza la detección automática del idioma, pero no todos los idiomas están disponibles en cada navegador.  Aquí puede ver y probar voces instaladas para cada idioma.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Voces: prueba tu navegador",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voces",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "El zorro marrón rápido salta sobre el perro perezoso.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Ejemplo de texto para que Talkie lea en voz alta",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Mostrar todas las voces",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Sus donaciones son apreciadas!",
     "original": "Your donations are appreciated!"

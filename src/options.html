@@ -37,6 +37,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
                     <a href="#about" data-translate="frontend_aboutLinkText"></a>
                 </li>
                 <li>
+                    <a href="#voices" data-translate="frontend_voicesLinkText"></a>
+                </li>
+                <li>
                     <a href="#donate" data-translate="frontend_donateLinkText"></a>
                 </li>
                 <li>
@@ -93,6 +96,44 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
                 </li>
             </ul>
         </section>
+        <section id="voices">
+            <h2 data-translate="frontend_voicesHeading"></h2>
+            <p data-translate="frontend_voicesDescription"></p>
+            <table>
+                <colgroup>
+                    <col width="50%" />
+                    <col width="50%" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="col">
+                            <span data-translate="frontend_voicesAvailableLanguages"></span> <span id="voices-available-languages-count"></span>
+                        </th>
+                        <th scope="col">
+                            <span data-translate="frontend_voicesAvailableVoices"></span> <span id="voices-available-voices-count"></span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="voices-languages-list" size="5"></select>
+                        </td>
+                        <td>
+                            <select id="voices-voices-list" size="5"></select>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th colspan="2" scope="col" data-translate="frontend_voicesSampleTextHeading"></th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea id="voices-sample-text" rows="4" data-translate="frontend_voicesSampleText"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         <section id="donate">
             <h2 data-translate="frontend_hideDonateButtonsInPopupHeading"></h2>
             <p>
@@ -134,7 +175,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
         <section id="license">
             <h2 data-translate="frontend_licenseHeading"></h2>
             <p>
-                <span data-translate="frontend_licenseGPLDescription"></span>
+                <span id="license-gpl-legalese" data-translate="frontend_licenseGPLDescription"></span>
                 <br />
                 <a href="https://www.gnu.org/licenses/gpl.html" data-translate="frontend_licenseGPLLinkText"></a>
             </p>

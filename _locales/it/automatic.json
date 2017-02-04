@@ -147,6 +147,39 @@
     "message": "Talkie nel Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "lingue disponibili",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "voci disponibili",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie fa rilevamento automatico della lingua, ma non tutte le lingue sono disponibili in ogni browser.  Qui potete vedere e testare voci installate per ogni lingua.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Voci: testare il browser",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "voci",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "The quick brown fox jumps over the lazy dog.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Testo di esempio per Talkie per leggere ad alta voce",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Mostra tutte le voci",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Le vostre donazioni sono apprezzati!",
     "original": "Your donations are appreciated!"
