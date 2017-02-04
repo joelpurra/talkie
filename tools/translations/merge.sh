@@ -23,7 +23,7 @@ set -u
 set -o pipefail
 
 declare -r SCRIPT_FOLDER="${BASH_SOURCE%/*}"
-declare -r ROOT_FOLDER="${SCRIPT_FOLDER}/.."
+declare -r ROOT_FOLDER="${SCRIPT_FOLDER}/../.."
 
 declare -a LOCS=( "$(find "${ROOT_FOLDER}/_locales" -mindepth 1 -type d)" )
 
@@ -54,10 +54,9 @@ do
         cat "$BASE" >> "$MERGE"
     fi
 
-    # NOTE: translate non-english languages automatically.
+    # NOTE: translations in $AUTOMATIC are done in another script.
     if [[ ! -f "$BASE" ]];
     then
-        cat "$EN_BASE" | "${SCRIPT_FOLDER}/translate-messages.sh" "$LOCNAME" > "$AUTOMATIC"
         cat "$AUTOMATIC" >> "$MERGE"
     fi
 

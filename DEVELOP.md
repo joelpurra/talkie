@@ -65,22 +65,24 @@ npm run --silent test
 In order to offer Talkie in as many languages as possible, translations are automated. It is still possible &mdash; and preferred &mdash; to add overrides with human translations.
 
 
-### Automated file mangling
-
-- All base strings in `_locales/en/base.json` are automatically translated by `tools/automate-translations.sh` and `tools/translate-messages.sh`.
-- Translation scripts require [Translate Shell `trans`](https://github.com/soimort/translate-shell), [`jq`](https://stedolan.github.io/jq/manual/), and some [`gawk`](https://www.gnu.org/software/gawk/) magic.
-- Automated file mangling is done by package maintainers before each release where the have been text changes.
-
-
 ### Human translations
 
+- All message changes have to be reflected in `_locales/en/base.json`, which is the base for all other languages.
 - Translations can be done by editing or adding `override.json` for the desired locale in the `_locales` directory.
 - In case of doubt, please refer to `_locales/en/base.json` as the one source of truth when it comes to original message strings and descriptions.
 
 
+### Automated file mangling
+
+- The `messages.json` for each language is assembled by `npm run --silent messages:refresh`. It is fast enough for development change-test-change cycles.
+- All English base strings in `_locales/en/base.json` are automatically translated to all other languages by `npm run --silent messages:download`. It takes 1-3 minutes to translate all languages, and is too slow to use repeatedly during development. English is the easiest language to use during development.
+- Translation scripts require [Translate Shell `trans`](https://github.com/soimort/translate-shell), [`jq`](https://stedolan.github.io/jq/manual/), and some [`parallel`](https://www.gnu.org/software/parallel/) magic.
+- Automated file mangling is done by package maintainers using `npm run --silent messages:translate` before each release where the have been text changes.
+
+
 ### Translation file order
 
-Translation files are merged in this order. The last value for a specific key/name wins, which means the `override.json` are the most important.
+Translation files are merged in this order. The last value for a specific key/name wins, which means the messages in `override.json` are the most important.
 
 1. Non-translated strings from `_locales/en/untranslated.json`.
 1. Depends on the language; English has no modifications and uses the base:
