@@ -41,8 +41,8 @@ do
     if [[ ! -f "$BASE" ]];
     then
         cat "$EN_BASE" | "${SCRIPT_FOLDER}/download-single-language.sh" "$LOCNAME" > "$AUTOMATIC"
-    fi
 
-    # Display the output.
-    jq '.' "$AUTOMATIC"
+        # Display the output.
+        jq '.' "$AUTOMATIC"
+    fi
 done
