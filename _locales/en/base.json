@@ -110,6 +110,12 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Available voices"
+  },
   "frontend_voicesDescription": {
     "message": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
   },
@@ -123,39 +129,18 @@
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
     "message": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Your donations are appreciated!"
-  },
-
-
-
-
-
-
-
-
-
-
-  "frontend_voicesAvailableLanguages": {
-    "message": "Available languages"
-  },
-
-  "frontend_voicesAvailableVoices": {
-    "message": "Available voices"
-  },
-
   "frontend_voicesSampleTextHeading": {
     "message": "Sample text for Talkie to read out loud"
   },
-
   "frontend_voicesShowAllVoices": {
     "message": "Show all voices"
   },
-
-
-
-
-
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Your donations are appreciated!"
+  },
+  "noTextSelectedMessage": {
+    "message": "Please select desired text on the website first!"
+  },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
     "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
