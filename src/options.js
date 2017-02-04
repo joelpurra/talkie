@@ -95,15 +95,12 @@ const loadVoicesAndLanguages = () => promiseTry(
 
                 displayVoicesInSelectElement(allVoices);
 
-                const speak = (text, lang) => promiseTry(
+                const speak = (text, voice) => promiseTry(
                     () => {
                         return getBackgroundPage()
-                            .then((background) => {
-                            // TODO: use proper Talkie function.
-                                background.speechSynthesis.cancel();
-
-                                return background.fallbackSpeak(background.speechSynthesis, text, lang);
-                            });
+                            .then((background) => background.stopSpeakFromFrontend()
+                                .then(() => background.startSpeakFromFrontend(text, voice))
+                            );
                     }
                 );
 
@@ -118,9 +115,9 @@ const loadVoicesAndLanguages = () => promiseTry(
                         }
 
                         if (selectedOption && selectedOption && selectedOption.talkie && typeof Array.isArray(selectedOption.talkie.voices)) {
-                            const lang = selectedOption.talkie.voices[0].lang;
+                            const voice = selectedOption.talkie.voices[0];
 
-                            return speak(sampleText, lang);
+                            return speak(sampleText, voice);
                         }
 
                         return undefined;

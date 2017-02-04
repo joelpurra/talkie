@@ -175,9 +175,7 @@ const setup = () => promiseTry(
 const speakPartOfText = (synthesizer, textPart, language) => new Promise(
     (resolve, reject) => {
         try {
-            log("Start", `Speak text part (length ${textPart.length}): "${textPart}"`);
-
-            // executeLogToPage(`Speaking text part: ${textPart}`);
+            log("Start", "speakPartOfText", `Speak text part (length ${textPart.length}): "${textPart}"`);
 
             const utterance = new SpeechSynthesisUtterance(textPart);
 
@@ -195,7 +193,7 @@ const speakPartOfText = (synthesizer, textPart, language) => new Promise(
                 delete utterance.onend;
                 delete utterance.onerror;
 
-                log("End", `Speak text part (length ${textPart.length}) spoken in ${event.elapsedTime} milliseconds.`);
+                log("End", "speakPartOfText", `Speak text part (length ${textPart.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
                 return resolve();
             };
@@ -204,7 +202,7 @@ const speakPartOfText = (synthesizer, textPart, language) => new Promise(
                 delete utterance.onend;
                 delete utterance.onerror;
 
-                logError("Error", `Speak text part (length ${textPart.length})`, event);
+                logError("Error", "speakPartOfText", `Speak text part (length ${textPart.length})`, event);
 
                 return reject();
             };
@@ -221,14 +219,12 @@ const speakPartOfText = (synthesizer, textPart, language) => new Promise(
 
             log("Variable", "synthesizer", synthesizer);
 
-            log("Done", `Speak text part (length ${textPart.length})`);
+            log("Done", "speakPartOfText", `Speak text part (length ${textPart.length})`);
         } catch (error) {
             return reject(error);
         }
     }
 );
-
-const fallbackSpeak = speakPartOfText;
 
 const splitTextToParagraphs = (text) => {
     // NOTE: in effect discarding empty paragraphs.
@@ -273,11 +269,9 @@ const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
     return cleanTextParts;
 };
 
-const splitAndSpeak = (broadcaster, synthesizer, text, language, talkieIsSpeakingId) => promiseTry(
+const splitAndSpeak = (broadcaster, synthesizer, text, language, shouldContinueSpeakingProvider) => promiseTry(
     () => {
-        log("Start", `Speak text (length ${text.length}): "${text}"`);
-
-        executeLogToPage(`Speaking text: ${text}`);
+        log("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
         const paragraphs = splitTextToParagraphs(text);
         const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
@@ -289,9 +283,9 @@ const splitAndSpeak = (broadcaster, synthesizer, text, language, talkieIsSpeakin
                 language: language,
             };
 
-            return executeGetTalkieIsSpeakingId()
-                .then((currentSpeakingId) => {
-                    if (currentSpeakingId === talkieIsSpeakingId) {
+            return shouldContinueSpeakingProvider()
+                .then((shouldContinueSpeaking) => {
+                    if (shouldContinueSpeaking) {
                         return Promise.resolve()
                             .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, eventData))
                             .then(() => speakPartOfText(synthesizer, textPart, language))
@@ -306,7 +300,9 @@ const splitAndSpeak = (broadcaster, synthesizer, text, language, talkieIsSpeakin
     }
 );
 
-const speak = (broadcaster, synthesizer, text, language) => promiseTry(
+const fallbackSpeak = splitAndSpeak;
+
+const speakInPageContext = (broadcaster, synthesizer, text, language) => promiseTry(
     () => {
         const eventData = {
             text: text,
@@ -320,14 +316,27 @@ const speak = (broadcaster, synthesizer, text, language) => promiseTry(
                 () => {
                     const talkieIsSpeakingId = getRandomInt(10000, 99999);
 
+                    const shouldContinueSpeakingProvider = () => {
+                        return executeGetTalkieIsSpeakingId()
+                            .then((currentSpeakingId) => currentSpeakingId === talkieIsSpeakingId);
+                    };
+
+                    executeLogToPage(`Speaking text: ${text}`);
+
                     return executeSetTalkieIsSpeakingId(talkieIsSpeakingId)
-                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, language, talkieIsSpeakingId));
+                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, language, shouldContinueSpeakingProvider));
                 }
             ))
-            .then(() => log("Done", `Speak text (length ${text.length})`))
+            .then(() => log("Done", "speakInPageContext", `Speak text (length ${text.length})`))
             .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeaking, eventData))
             .then(() => executeSetTalkieIsNotSpeaking())
             .then(() => executePlugOnce());
+    }
+);
+
+const shouldAlwaysContinueSpeakingProvider = () => promiseTry(
+    () => {
+        return true;
     }
 );
 
@@ -586,7 +595,7 @@ const speakAllSelections = (broadcaster, synthesizer, selections, detectedPageLa
             const speakPromises = cleanedupSelections.map((selection) => {
                 log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
-                return speak(broadcaster, synthesizer, selection.text, selection.effectiveLanguage);
+                return speakInPageContext(broadcaster, synthesizer, selection.text, selection.effectiveLanguage);
             });
 
             log("Done", "Speaking all selections");
@@ -728,7 +737,7 @@ const enablePopup = () => {
                             return undefined;
                         }
 
-                        return fallbackSpeak(synthesizer, notAbleToSpeakTextFromThisSpecialTab.text, notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage);
+                        return fallbackSpeak(broadcaster, synthesizer, notAbleToSpeakTextFromThisSpecialTab.text, notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage, shouldAlwaysContinueSpeakingProvider);
                     }
 
                     const reset = () => Promise.all([
@@ -811,7 +820,18 @@ const enablePopup = () => {
     window.log = log;
     window.logError = logError;
     window.progress = progress;
-    window.fallbackSpeak = fallbackSpeak;
+
+    window.stopSpeakFromFrontend = () => promiseTry(
+        () => {
+            synthesizer.cancel();
+        }
+    );
+
+    window.startSpeakFromFrontend = (text, voice) => promiseTry(
+        () => {
+            return fallbackSpeak(broadcaster, synthesizer, text, voice.lang, shouldAlwaysContinueSpeakingProvider);
+        }
+    );
 
     // NOTE: used when the popup has been disabled.
     chrome.browserAction.onClicked.addListener(iconClickAction);
