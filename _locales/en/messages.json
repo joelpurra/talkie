@@ -139,7 +139,7 @@
     "message": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
   },
   "frontend_voicesHeading": {
-    "message": "Voices: available in your browser"
+    "message": "Voices: test your browser"
   },
   "frontend_voicesLinkText": {
     "message": "Voices"
