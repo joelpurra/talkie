@@ -129,6 +129,31 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Tillgängliga språk"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Tillgängliga röster"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk."
+  },
+  "frontend_voicesHeading": {
+    "message": "Röster: testa din webbläsare"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Röster"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Flygande bäckasiner söka hwila på mjuka tuvor."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Exempeltext för Talkie att läsa upp"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Visa alla röster"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dina donationer uppskattas!"
   },

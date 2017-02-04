@@ -112,13 +112,14 @@ class Tabrow {
     }
 
     initialize() {
+        const self = this;
         let initialSelectedIndex = 0;
 
         // Find and set initially selected tab, if a #tabtoselect is given in URL
         if (document.location && typeof document.location.hash === "string" && document.location.hash.length > 0) {
             const locationHash = "#" + decodeURIComponent(document.location.hash.replace("#", ""));
 
-            this.getTabLinks().forEach((tabLinkElement, index) => {
+            self.getTabLinks().forEach((tabLinkElement, index) => {
                 if (tabLinkElement.getAttribute("href") === locationHash) {
                     initialSelectedIndex = index;
                 }
@@ -126,15 +127,17 @@ class Tabrow {
         }
 
         // Setup click events on tabs
-        this.getTabLinks().forEach((tabLinkElement, index) => {
-            tabLinkElement.onclick = (event) => this.tabLinkClick(event.target).bind(this);
+        self.getTabLinks().forEach((tabLinkElement, index) => {
+            tabLinkElement.addEventListener("click", (event) => {
+                self.tabLinkClick(event.target);
+            });
 
             if (index !== initialSelectedIndex) {
-                this.getLinkedTabContentElement(tabLinkElement).style.display = "none";
+                self.getLinkedTabContentElement(tabLinkElement).style.display = "none";
             } else {
-                this.selectedTabLinkContainerElement = tabLinkElement.parentNode;
-                this.selectedTabLinkContainerElement.classList.add(this.tabrowSelectedClassName);
-                this.selectedTabContentElement = this.getLinkedTabContentElement(tabLinkElement);
+                self.selectedTabLinkContainerElement = tabLinkElement.parentNode;
+                self.selectedTabLinkContainerElement.classList.add(self.tabrowSelectedClassName);
+                self.selectedTabContentElement = self.getLinkedTabContentElement(tabLinkElement);
             }
         });
     };

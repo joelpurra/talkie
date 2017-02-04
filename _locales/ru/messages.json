@@ -129,6 +129,31 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie в Интернет-магазине Chrome"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Доступные языки"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Доступные голоса"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie делает автоматическое определение языка, но не все языки доступны в каждом браузере.  Здесь вы можете увидеть и протестировать установленные голоса для каждого языка."
+  },
+  "frontend_voicesHeading": {
+    "message": "Кол-во голосов: проверить свой браузер"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Кол-во голосов"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Быстрая коричневая лиса прыгает через ленивую собаку."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Пример текста для Talkie читать вслух"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Показать все голоса"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Ваши пожертвования приветствуются!"
   },

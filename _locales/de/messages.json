@@ -129,8 +129,33 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie im Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Verfügbare Sprachen"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Verfügbare Stimmen"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie macht automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar.  Hier können Sie installierte Stimmen für jede Sprache sehen und testen."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stimmen: Testen Sie Ihren Browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Stimmen"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Der schnelle braune Fuchs springt über den faulen Hund."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Beispieltext für Talkie zum Auslesen laut"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Alle Stimmen anzeigen"
+  },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "Ihre Spenden werden geschätzt!"
+    "message": "Ihre Spenden sind willkommen!"
   },
   "noTextSelectedMessage": {
     "message": "Bitte wählen Sie zuerst den gewünschten Text auf der Webseite aus!"

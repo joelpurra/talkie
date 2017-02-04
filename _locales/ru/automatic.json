@@ -147,6 +147,39 @@
     "message": "Talkie в Интернет-магазине Chrome",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Доступные языки",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Доступные голоса",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie делает автоматическое определение языка, но не все языки доступны в каждом браузере.  Здесь вы можете увидеть и протестировать установленные голоса для каждого языка.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Кол-во голосов: проверить свой браузер",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Кол-во голосов",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Быстрая коричневая лиса прыгает через ленивую собаку.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Пример текста для Talkie читать вслух",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Показать все голоса",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Ваши пожертвования приветствуются!",
     "original": "Your donations are appreciated!"

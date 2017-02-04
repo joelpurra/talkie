@@ -124,7 +124,7 @@
     "original": "Rate Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。",
+    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误甚至更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
@@ -146,6 +146,39 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie在Chrome网上应用店中",
     "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_voicesAvailableLanguages": {
+    "message": "可用语言",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "可用语音",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie会自动检测语言，但并非所有语言都可在每个浏览器中使用。 在这里，您可以查看和测试每种语言的安装语音。",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "声音：测试您的浏览器",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "声音",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "敏捷的棕色狐狸跳过了懒狗。",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Talkie的示例文本大声读出",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "显示所有声音",
+    "original": "Show all voices"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "您的捐款感谢！",

@@ -23,12 +23,11 @@ set -u
 set -o pipefail
 
 declare -r SCRIPT_FOLDER="${BASH_SOURCE%/*}"
-declare -r ROOT_FOLDER="${SCRIPT_FOLDER}/.."
+declare -r ROOT_FOLDER="${SCRIPT_FOLDER}/../.."
 
 declare -a LOCS=( "$(find "${ROOT_FOLDER}/_locales" -mindepth 1 -type d)" )
 
 declare -r EN_BASE="${ROOT_FOLDER}/_locales/en/base.json"
-declare UNTRANSLATED="${ROOT_FOLDER}/_locales/en/untranslated.json"
 
 for LOC in $LOCS;
 do
@@ -37,45 +36,13 @@ do
 
     declare BASE="${LOC}/base.json"
     declare AUTOMATIC="${LOC}/automatic.json"
-    declare MANUAL="${LOC}/manual.json"
-    declare OVERRIDE="${LOC}/override.json"
-    declare MERGE="${LOC}/merge.json~"
-    declare MESSAGES="${LOC}/messages.json"
-
-    rm -f "$MERGE"
-    touch "$MERGE"
-
-    cat "$UNTRANSLATED" >> "$MERGE"
-
-    # NOTE: this will only apply to the english base file.
-    # Needed to complete en/messages.json
-    if [[ -f "$BASE" ]];
-    then
-        cat "$BASE" >> "$MERGE"
-    fi
 
     # NOTE: translate non-english languages automatically.
     if [[ ! -f "$BASE" ]];
     then
-        cat "$EN_BASE" | "${SCRIPT_FOLDER}/translate-messages.sh" "$LOCNAME" > "$AUTOMATIC"
-        cat "$AUTOMATIC" >> "$MERGE"
+        cat "$EN_BASE" | "${SCRIPT_FOLDER}/download-single-language.sh" "$LOCNAME" > "$AUTOMATIC"
+
+        # Display the output.
+        jq '.' "$AUTOMATIC"
     fi
-
-    if [[ -f "$MANUAL" ]];
-    then
-        cat "$MANUAL" >> "$MERGE"
-    fi
-
-    if [[ -f "$OVERRIDE" ]];
-    then
-        cat "$OVERRIDE" >> "$MERGE"
-    fi
-
-    # Merge translation files/json objects.
-    # NOTE: If there's a key/name collision, the last object wins. This allows for overrides.
-    # NOTE: discards translation fields other than message and description.
-    jq --slurp --sort-keys 'map(with_entries( { key: .key, value: (.value | { message: .message } + if .description then { description: .description } else {} end ) } )) | add' "$MERGE" > "$MESSAGES"
-
-    # Display the output.
-    jq '.' "$MESSAGES"
 done

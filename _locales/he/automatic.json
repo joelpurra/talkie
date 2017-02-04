@@ -147,6 +147,39 @@
     "message": "Talkie בחנות האינטרנט של Chrome",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "שפות זמינות",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "קולות זמינים",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie עושה זיהוי שפה אוטומטי, אבל לא כל השפות זמינות בכל דפדפן.  כאן אתה יכול לראות ולבחון קולות המותקנים בכל שפה.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "קולות: לבדוק בדפדפן שלך",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "קולות",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "השועל ראה דרכיה הכלב העצלן.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "טקסט לדוגמה עבור Talkie לקרוא בקול רם",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "הצג את כל הקולות",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "התרומות שלך זוכות להערכה!",
     "original": "Your donations are appreciated!"

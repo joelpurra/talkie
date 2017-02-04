@@ -129,6 +129,31 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie in de Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Beschikbare talen"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "beschikbare stemmen"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie doet automatische taaldetectie, maar niet alle talen zijn beschikbaar in elke browser.  Hier kunt u zien en testen van geïnstalleerde stemmen voor elke taal."
+  },
+  "frontend_voicesHeading": {
+    "message": "Stemmen: test uw browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "De snelle bruine vos springt over de luie hond."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Voorbeeld tekst voor Talkie hardop lezen"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Toon alle stemmen"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Uw donatie wordt op prijs gesteld!"
   },

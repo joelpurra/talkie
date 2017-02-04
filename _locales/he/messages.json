@@ -129,6 +129,31 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie בחנות האינטרנט של Chrome"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "שפות זמינות"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "קולות זמינים"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie עושה זיהוי שפה אוטומטי, אבל לא כל השפות זמינות בכל דפדפן.  כאן אתה יכול לראות ולבחון קולות המותקנים בכל שפה."
+  },
+  "frontend_voicesHeading": {
+    "message": "קולות: לבדוק בדפדפן שלך"
+  },
+  "frontend_voicesLinkText": {
+    "message": "קולות"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "השועל ראה דרכיה הכלב העצלן."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "טקסט לדוגמה עבור Talkie לקרוא בקול רם"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "הצג את כל הקולות"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "התרומות שלך זוכות להערכה!"
   },
