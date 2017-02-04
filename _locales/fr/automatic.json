@@ -147,6 +147,39 @@
     "message": "Talkie dans le Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Langues disponibles",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Disponible voix",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Talkie effectue la détection automatique de langue, mais pas toutes les langues sont disponibles dans chaque navigateur.  Ici, vous pouvez voir et tester les voix installées pour chaque langue.",
+    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+  },
+  "frontend_voicesHeading": {
+    "message": "Voices: testez votre navigateur",
+    "original": "Voices: test your browser"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Voix",
+    "original": "Voices"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Le renard brun rapide saute sur le chien paresseux.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Exemple de texte pour Talkie à lire à haute voix",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Afficher toutes les voix",
+    "original": "Show all voices"
+  },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Vos dons sont appréciés!",
     "original": "Your donations are appreciated!"
