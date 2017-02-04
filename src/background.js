@@ -30,6 +30,7 @@ executeScriptInTopFrame:false,
 flatten:false,
 getMappedVoices:false,
 getRandomInt:false,
+getVoices:false,
 isCurrentPageInternalToTalkie:false,
 isUndefinedOrNullOrEmptyOrWhitespace:false,
 knownEvents:false,
@@ -172,20 +173,17 @@ const setup = () => promiseTry(
     }
 );
 
-const speakPartOfText = (synthesizer, textPart, language) => new Promise(
+const speakPartOfText = (synthesizer, textPart, voice) => new Promise(
     (resolve, reject) => {
         try {
             log("Start", "speakPartOfText", `Speak text part (length ${textPart.length}): "${textPart}"`);
 
             const utterance = new SpeechSynthesisUtterance(textPart);
 
-            // NOTE: while there might be more than one voice for the particular lanugage, let the browser pick which one.
-            utterance.lang = language;
-
             // TODO: options for per-language voice , pitch, rate?
             // utterance.pitch = [0,2];
             // utterance.rate = [0.1,10];
-            // utterance.voice = synthesizer.getVoices()[4];
+            utterance.voice = voice;
 
             log("Variable", "utterance", utterance);
 
@@ -269,34 +267,76 @@ const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
     return cleanTextParts;
 };
 
-const splitAndSpeak = (broadcaster, synthesizer, text, language, shouldContinueSpeakingProvider) => promiseTry(
+const getActualVoice = (mappedVoice) => promiseTry(
+    () => {
+        log("Start", "getActualVoice", mappedVoice);
+
+        return getVoices()
+            .then((voices) => {
+                const actualMatchingVoicesByName = voices.filter((voice) => mappedVoice.name && (voice.name === mappedVoice.name));
+                const actualMatchingVoicesByLanguage = voices.filter((voice) => mappedVoice.lang && (voice.lang === mappedVoice.lang));
+                const actualMatchingVoicesByLanguagePrefix = voices.filter((voice) => mappedVoice.lang && (voice.lang.substr(0, 2) === mappedVoice.lang.substr(0, 2)));
+
+                const actualVoices = []
+                    .concat(actualMatchingVoicesByName)
+                    .concat(actualMatchingVoicesByLanguage)
+                    .concat(actualMatchingVoicesByLanguagePrefix);
+
+                if (actualVoices.length === 0) {
+                    throw new Error(`Could not find any matching voice: ${JSON.stringify(mappedVoice)}`);
+                }
+
+                // NOTE: while there might be more than one voice for the particular voice name/language/language prefix, just consistently pick the first one.
+                // if (actualMatchingVoices.length !== 1) {
+                //     throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
+                // }
+
+                const actualVoice = actualVoices[0];
+
+                log("Done", "getActualVoice", mappedVoice, actualVoice);
+
+                return actualVoice;
+            })
+            .catch((error) => {
+                logError("Error", "getActualVoice", mappedVoice, error);
+
+                throw error;
+            });
+    }
+);
+
+const splitAndSpeak = (broadcaster, synthesizer, text, voice, shouldContinueSpeakingProvider) => promiseTry(
     () => {
         log("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
-        const paragraphs = splitTextToParagraphs(text);
-        const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
-        const textParts = flatten(cleanTextParts);
+        return getActualVoice(voice)
+            .then((actualVoice) => {
+                const paragraphs = splitTextToParagraphs(text);
+                const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, MAX_UTTERANCE_TEXT_LENGTH));
+                const textParts = flatten(cleanTextParts);
 
-        const textPartsPromises = textParts.map((textPart) => () => {
-            const eventData = {
-                textPart: textPart,
-                language: language,
-            };
+                const textPartsPromises = textParts.map((textPart) => () => {
+                    const eventData = {
+                        textPart: textPart,
+                        voice: voice.name,
+                        language: voice.lang,
+                    };
 
-            return shouldContinueSpeakingProvider()
-                .then((shouldContinueSpeaking) => {
-                    if (shouldContinueSpeaking) {
-                        return Promise.resolve()
-                            .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, eventData))
-                            .then(() => speakPartOfText(synthesizer, textPart, language))
-                            .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, eventData));
-                    }
+                    return shouldContinueSpeakingProvider()
+                        .then((shouldContinueSpeaking) => {
+                            if (shouldContinueSpeaking) {
+                                return Promise.resolve()
+                                    .then(() => broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, eventData))
+                                    .then(() => speakPartOfText(synthesizer, textPart, actualVoice))
+                                    .then(() => broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, eventData));
+                            }
 
-                    return undefined;
+                            return undefined;
+                        });
                 });
-        });
 
-        return promiseSeries(textPartsPromises);
+                return promiseSeries(textPartsPromises);
+            });
     }
 );
 
@@ -304,9 +344,15 @@ const fallbackSpeak = splitAndSpeak;
 
 const speakInPageContext = (broadcaster, synthesizer, text, language) => promiseTry(
     () => {
+        const voice = {
+            name: null,
+            lang: language,
+        };
+
         const eventData = {
             text: text,
-            language: language,
+            voice: voice.name,
+            language: voice.lang,
         };
 
         return Promise.resolve()
@@ -324,7 +370,7 @@ const speakInPageContext = (broadcaster, synthesizer, text, language) => promise
                     executeLogToPage(`Speaking text: ${text}`);
 
                     return executeSetTalkieIsSpeakingId(talkieIsSpeakingId)
-                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, language, shouldContinueSpeakingProvider));
+                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, voice, shouldContinueSpeakingProvider));
                 }
             ))
             .then(() => log("Done", "speakInPageContext", `Speak text (length ${text.length})`))
@@ -587,7 +633,7 @@ const speakAllSelections = (broadcaster, synthesizer, selections, detectedPageLa
 
     log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
 
-    return promiseTry(() => synthesizer.getVoices())
+    return promiseTry(() => getVoices())
         .then((allVoices) => cleanupSelections(allVoices, detectedPageLanguage, selections))
         .then((cleanedupSelections) => {
             log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
@@ -737,7 +783,14 @@ const enablePopup = () => {
                             return undefined;
                         }
 
-                        return fallbackSpeak(broadcaster, synthesizer, notAbleToSpeakTextFromThisSpecialTab.text, notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage, shouldAlwaysContinueSpeakingProvider);
+                        const text = notAbleToSpeakTextFromThisSpecialTab.text;
+
+                        const voice = {
+                            name: null,
+                            lang: notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage,
+                        };
+
+                        return fallbackSpeak(broadcaster, synthesizer, text, voice, shouldAlwaysContinueSpeakingProvider);
                     }
 
                     const reset = () => Promise.all([
@@ -829,7 +882,7 @@ const enablePopup = () => {
 
     window.startSpeakFromFrontend = (text, voice) => promiseTry(
         () => {
-            return fallbackSpeak(broadcaster, synthesizer, text, voice.lang, shouldAlwaysContinueSpeakingProvider);
+            return fallbackSpeak(broadcaster, synthesizer, text, voice, shouldAlwaysContinueSpeakingProvider);
         }
     );
 
