@@ -110,7 +110,7 @@ You can also use the **Talkie shortcut key**:
       The first available `lang="..."` attribute from the selected text's parent HTML elements.
     </li>
     <li>
-      The `<html lang="...">` attribute from the current page (or frame).
+      The `lang="..."` attribute from the HTML root element of the current page (or frame).
     </li>
     <li>
       Your browser's page primary language detection.
