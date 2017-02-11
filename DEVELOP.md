@@ -24,7 +24,7 @@
 - Use the `develop` branch as the base for your pull request.
 - Follow git-flow, preferably using  [`git-flow`](http://danielkummer.github.io/git-flow-cheatsheet/).
 - It is recommended to use [`hub`](https://hub.github.com/) for forking and creating pull requests on github.
-- All project contributors need to agree to the the [Contributor License Agreement (CLA)](../CLA.md).
+- All project contributors need to agree to the the [Contributor License Agreement (CLA)](CLA.md).
 
 
 
