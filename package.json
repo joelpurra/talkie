@@ -1,7 +1,7 @@
 {
   "name": "talkie",
   "private": true,
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
     "package": "rimraf .package && mkdir -p .package/ && rsync -a --files-from extension-files.txt . .package/ && cd .package/ && zip -vr \"../talkie-joelpurra.com-${npm_package_version}.zip\" .",
