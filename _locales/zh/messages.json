@@ -20,6 +20,9 @@
   "commandStartStopDescription": {
     "message": "开始/停止读取选择"
   },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionDescription": {
     "message": "在任何网页上选择文字，并让计算机大声读出它，只需点击对讲机按钮。"
   },

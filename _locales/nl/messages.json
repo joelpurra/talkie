@@ -20,6 +20,9 @@
   "commandStartStopDescription": {
     "message": "Start/stop het lezen van selectie"
   },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionDescription": {
     "message": "Selecteer tekst op een webpagina, en hebben de computer leest het hardop voor u door simpelweg te klikken op de knop Talkie."
   },

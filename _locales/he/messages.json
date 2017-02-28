@@ -20,6 +20,9 @@
   "commandStartStopDescription": {
     "message": "התחל/להפסיק לקרוא בחירה"
   },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionDescription": {
     "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
   },

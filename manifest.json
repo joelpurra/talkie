@@ -9,12 +9,14 @@
   "background": {
     "scripts": [
       "src/shared.js",
+      "src/language.js",
       "src/background.js"
     ],
     "persistent": false
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "contextMenus"
   ],
   "commands": {
     "_execute_browser_action": {

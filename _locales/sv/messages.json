@@ -20,6 +20,9 @@
   "commandStartStopDescription": {
     "message": "Börja/sluta läsa upp markerad text"
   },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionDescription": {
     "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
   },

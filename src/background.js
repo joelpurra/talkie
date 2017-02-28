@@ -22,25 +22,26 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 Broadcaster:false,
 canTalkieRunInTab:false,
 chrome:false,
+cleanupSelections:false,
 console:false,
+detectPageLanguage:false,
 executeLogToPage:false,
+executePlugOnce:false,
 executeScriptInAllFrames:false,
 executeScriptInTopFrame:false,
-executePlugOnce:false,
 flatten:false,
 getMappedVoices:false,
 getVoices:false,
 isCurrentPageInternalToTalkie:false,
-isUndefinedOrNullOrEmptyOrWhitespace:false,
 knownEvents:false,
 last:false,
 log:false,
 logError:false,
+messagesLocale:false,
 openUrlFromConfigurationInNewTab:false,
 Promise:false,
 promiseSeries:false,
 promiseTry:false,
-shallowCopy:false,
 SpeechSynthesisUtterance:false,
 TalkieProgress:false,
 window:false,
@@ -51,26 +52,10 @@ window:false,
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
 log("Start", "Loading code");
 
-const uiLocale = chrome.i18n.getMessage("@@ui_locale");
-const messagesLocale = chrome.i18n.getMessage("extensionLocale");
-
-log("Locale (@@ui_locale)", uiLocale);
-log("Locale (messages.json)", messagesLocale);
-
 const MAX_UTTERANCE_TEXT_LENGTH = 100;
 
 const buttonDefaultTitle = chrome.i18n.getMessage("buttonDefaultTitle");
 const buttonStopTitle = chrome.i18n.getMessage("buttonStopTitle");
-
-const noTextSelectedMessage = {
-    text: chrome.i18n.getMessage("noTextSelectedMessage"),
-    effectiveLanguage: messagesLocale,
-};
-
-const noVoiceForLanguageDetectedMessage = {
-    text: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
-    effectiveLanguage: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
-};
 
 const notAbleToSpeakTextFromThisSpecialTab = {
     text: chrome.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
@@ -358,9 +343,19 @@ const splitAndSpeak = (broadcaster, synthesizer, text, voice, shouldContinueSpea
     }
 );
 
-const speakWithoutPageContext = splitAndSpeak;
+const speakTextInVoice = (broadcaster, synthesizer, text, voice) => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => {
+                executeLogToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
 
-const speakInPageContext = (broadcaster, synthesizer, text, language) => promiseTry(
+                return splitAndSpeak(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider());
+            })
+            .then(() => log("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${voice.name}, ${voice.lang})`));
+    }
+);
+
+const speakTextInLanguage = (broadcaster, synthesizer, text, language) => promiseTry(
     () => {
         const voice = {
             name: null,
@@ -368,16 +363,10 @@ const speakInPageContext = (broadcaster, synthesizer, text, language) => promise
         };
 
         return Promise.resolve()
-            .then(() => executeAddOnBeforeUnloadHandlers())
-            .then(() => promiseTry(
-                () => {
-                    executeLogToPage(`Speaking text: ${text}`);
-
-                    return executeSetTalkieIsSpeaking()
-                        .then(() => splitAndSpeak(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider()));
-                }
-            ))
-            .then(() => log("Done", "speakInPageContext", `Speak text (length ${text.length})`));
+            .then(() => {
+                return speakTextInVoice(broadcaster, synthesizer, text, voice);
+            })
+            .then(() => log("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`));
     }
 );
 
@@ -426,221 +415,7 @@ const executeGetFramesSelectionTextAndLanguage = () => executeScriptInAllFrames(
     return framesSelectionTextAndLanguage;
 });
 
-const detectPageLanguage = () => new Promise(
-    (resolve, reject) => {
-        try {
-            chrome.tabs.detectLanguage((language) => {
-                // https://developer.chrome.com/extensions/tabs#method-detectLanguage
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
-                }
-
-                log("detectPageLanguage", "Browser detected primary page language", language);
-
-                // The language fallback value is "und", so treat it as no language.
-                if (!language || typeof language !== "string" || language === "und") {
-                    return resolve(null);
-                }
-
-                return resolve(language);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
-);
-
-const detectTextLanguage = (text) => new Promise(
-    (resolve, reject) => {
-        try {
-            if (!("detectLanguage" in chrome.i18n)) {
-                // NOTE: text-based language detection is only used as a fallback.
-                log("detectTextLanguage", "Browser does not support detecting text language");
-
-                return resolve(null);
-            }
-
-            chrome.i18n.detectLanguage(text, (result) => {
-                // https://developer.chrome.com/extensions/i18n#method-detectLanguage
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
-                }
-
-                // The language fallback value is "und", so treat it as no language.
-                if (
-                    !result.isReliable
-                    || !result.languages
-                    || !(result.languages.length > 0)
-                    || typeof result.languages[0].language !== "string"
-                    || !(result.languages[0].language.trim().length > 0)
-                    || result.languages[0].language === "und"
-                ) {
-                    // NOTE: text-based language detection is only used as a fallback.
-                    log("detectTextLanguage", "Browser did not detect reliable text language", result);
-
-                    return resolve(null);
-                }
-
-                const primaryDetectedTextLanguage = result.languages[0].language;
-
-                log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
-
-                return resolve(primaryDetectedTextLanguage);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
-);
-
-const cleanupSelections = (allVoices, detectedPageLanguage, selections) => promiseTry(
-    () => {
-        const isNonNullObject = (selection) => !!selection && typeof selection === "object";
-
-        const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
-
-        const trimText = (selection) => {
-            const copy = shallowCopy(selection);
-
-            copy.text = copy.text.trim();
-
-            return copy;
-        };
-
-        const selectionsWithValidText = selections
-        .filter(isNonNullObject)
-        .filter(hasValidText)
-        .map(trimText)
-        .filter(hasValidText);
-
-        return selectionsWithValidText;
-    })
-    .then((selectionsWithValidText) => Promise.all(
-        selectionsWithValidText.map(
-            (selection) => {
-                const copy = shallowCopy(selection);
-
-                return detectTextLanguage(copy.text)
-                    .then((detectedTextLanguage) => {
-                        copy.detectedTextLanguage = detectedTextLanguage;
-
-                        return copy;
-                    });
-            })
-        )
-    )
-    .then((selectionsWithValidTextAndDetectedLanguage) => {
-        const isKnownVoiceLanguage = (elementLanguage) => allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
-
-        // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
-        // https://en.wikipedia.org/wiki/ISO_639-1
-        // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-        // http://xml.coverpages.org/iso639a.html
-        // NOTE: discovered because Twitter seems to still use "iw".
-        const iso639Dash1Aliases1988To2002 = {
-            "in": "id",
-            "iw": "he",
-            "ji": "yi",
-        };
-
-        const mapIso639Aliases = (language) => {
-            return iso639Dash1Aliases1988To2002[language] || language;
-        };
-
-        const isValidString = (str) => !isUndefinedOrNullOrEmptyOrWhitespace(str);
-
-        const cleanupLanguagesArray = (languages) => {
-            const copy = (languages || [])
-            .filter(isValidString)
-            .map(mapIso639Aliases)
-            .filter(isKnownVoiceLanguage);
-
-            return copy;
-        };
-
-        const cleanupParentElementsLanguages = (selection) => {
-            const copy = shallowCopy(selection);
-
-            copy.parentElementsLanguages = cleanupLanguagesArray(copy.parentElementsLanguages);
-
-            return copy;
-        };
-
-        const getMoreSpecificLanguagesWithPrefix = (prefix) => {
-            return (language) => language.startsWith(prefix) && language.length > prefix.length;
-        };
-
-        const setEffectiveLanguage = (selection) => {
-            const copy = shallowCopy(selection);
-
-            const detectedLanguages = [
-                copy.detectedTextLanguage,
-                copy.parentElementsLanguages[0] || null,
-                copy.htmlTagLanguage,
-                detectedPageLanguage,
-            ];
-
-            log("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
-
-            const cleanedLanguages = cleanupLanguagesArray(detectedLanguages);
-
-            log("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
-
-            const primaryLanguagePrefix = cleanedLanguages[0] || null;
-
-            log("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
-
-            // NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
-            const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
-
-            log("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
-
-            const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
-
-            log("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
-
-            copy.effectiveLanguage = effectiveLanguage;
-
-            executeLogToPage("Language", "Selected text language:", copy.detectedTextLanguage);
-            executeLogToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
-            executeLogToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
-            executeLogToPage("Language", "Detected page language:", detectedPageLanguage);
-            executeLogToPage("Language", "Effective language:", copy.effectiveLanguage);
-
-            return copy;
-        };
-
-        const mapResults = (selection) => {
-            return {
-                text: selection.text,
-                effectiveLanguage: selection.effectiveLanguage,
-            };
-        };
-
-        const fallbackMessageForNoLanguageDetected = (selection) => {
-            if (selection.effectiveLanguage === null) {
-                return noVoiceForLanguageDetectedMessage;
-            }
-
-            return selection;
-        };
-
-        const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage.map(cleanupParentElementsLanguages)
-        .map(setEffectiveLanguage)
-        .map(fallbackMessageForNoLanguageDetected)
-        .map(mapResults);
-
-        if (selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage.length === 0) {
-            log("Empty filtered selections");
-
-            selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage.push(noTextSelectedMessage);
-        }
-
-        return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
-    }
-);
-
-const speakAllSelections = (broadcaster, synthesizer, selections, detectedPageLanguage) => promiseTry(() => {
+const detectLanguagesAndSpeakAllSelections = (broadcaster, synthesizer, selections, detectedPageLanguage) => promiseTry(() => {
     log("Start", "Speaking all selections");
 
     log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
@@ -653,7 +428,7 @@ const speakAllSelections = (broadcaster, synthesizer, selections, detectedPageLa
             const speakPromises = cleanedupSelections.map((selection) => {
                 log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
-                return speakInPageContext(broadcaster, synthesizer, selection.text, selection.effectiveLanguage);
+                return speakTextInLanguage(broadcaster, synthesizer, selection.text, selection.effectiveLanguage);
             });
 
             log("Done", "Speaking all selections");
@@ -672,7 +447,7 @@ const speakUserSelection = (broadcaster, synthesizer) => promiseTry(() => {
         ]
     )
         .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
-            return speakAllSelections(broadcaster, synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
+            return detectLanguagesAndSpeakAllSelections(broadcaster, synthesizer, framesSelectionTextAndLanguage, detectedPageLanguage);
         })
         .then(() => log("Done", "Speaking selection"));
 });
@@ -725,6 +500,29 @@ const setIconMode = (name) => new Promise(
 
 const setIconModePlaying = () => setIconMode("stop");
 const setIconModeStopped = () => setIconMode("play");
+
+const createContextMenu = (contextMenuOptions) => new Promise(
+    (resolve, reject) => {
+        try {
+            log("Start", "Creating context menu", contextMenuOptions);
+
+            chrome.contextMenus.create(
+                contextMenuOptions,
+                () => {
+                    if (chrome.runtime.lastError) {
+                        return reject(chrome.runtime.lastError);
+                    }
+
+                    log("Done", "Creating context menu", contextMenuOptions);
+
+                    resolve();
+                }
+            );
+        } catch (error) {
+            return reject(error);
+        }
+    }
+);
 
 const disablePopup = () => {
     const disablePopupOptions = {
@@ -799,13 +597,9 @@ const enablePopup = () => {
                         }
 
                         const text = notAbleToSpeakTextFromThisSpecialTab.text;
+                        const lang = notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
 
-                        const voice = {
-                            name: null,
-                            lang: notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage,
-                        };
-
-                        return speakWithoutPageContext(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider());
+                        return speakTextInLanguage(broadcaster, synthesizer, text, lang);
                     }
 
                     return speakUserSelection(broadcaster, synthesizer);
@@ -813,19 +607,22 @@ const enablePopup = () => {
         }
     );
 
+    // TODO: internal check to see if Talkie was speaking?
+    const isSpeaking = () => promiseTry(
+        () => synthesizer.speaking === true
+    );
+
     const startStopSpeakSelectionOnPage = () => promiseTry(
         () => {
-            // TODO: internal check to see if Talkie was speaking?
-            const wasSpeaking = synthesizer.speaking === true;
+            return isSpeaking()
+                .then((wasSpeaking) => stopSpeaking(broadcaster, synthesizer)
+                    .then(() => {
+                        if (!wasSpeaking) {
+                            return rootChain(() => speakSelectionOnPage());
+                        }
 
-            return stopSpeaking(broadcaster, synthesizer)
-                .then(() => {
-                    if (!wasSpeaking) {
-                        return rootChain(() => speakSelectionOnPage());
-                    }
-
-                    return undefined;
-                });
+                        return undefined;
+                    }));
         }
     );
 
@@ -841,8 +638,8 @@ const enablePopup = () => {
         "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 
-    const shortcutKeyCommandHandler = (command) => {
-        log("Start", "shortcutKeyCommandHandler", command);
+    const commandHandler = (command) => {
+        log("Start", "commandHandler", command);
 
         const commandAction = commandMap[command];
 
@@ -851,6 +648,117 @@ const enablePopup = () => {
         }
 
         return commandAction()
+            .then((result) => {
+                log("Done", "commandHandler", command, result);
+
+                return undefined;
+            })
+            .catch((error) => {
+                logError("Error", "commandHandler", command, error);
+
+                throw error;
+            });
+    };
+
+    const stopSpeakingAction = () => promiseTry(
+        () => {
+            return stopSpeaking(broadcaster, synthesizer);
+        }
+    );
+
+    const startSpeakingTextInVoiceAction = (text, voice) => promiseTry(
+        () => {
+            return stopSpeaking(broadcaster, synthesizer)
+                .then(() => rootChain(() => speakTextInVoice(broadcaster, synthesizer, text, voice)));
+        }
+    );
+
+    const startSpeakingCustomTextDetectLanguage = (text) => promiseTry(
+        () => canTalkieRunInTab()
+            .then((canRun) => {
+                if (canRun) {
+                    return detectPageLanguage();
+                }
+
+                log("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab, skipping page language detection.");
+
+                return null;
+            })
+            .then((detectedPageLanguage) => {
+                const selections = [
+                    {
+                        text: text,
+                        htmlTagLanguage: null,
+                        parentElementsLanguages: [],
+                    },
+                ];
+
+                return detectLanguagesAndSpeakAllSelections(broadcaster, synthesizer, selections, detectedPageLanguage);
+            })
+    );
+
+    const contextMenuOptions = {
+        startStop: {
+            id: "talkie-context-menu-start-stop",
+            title: chrome.i18n.getMessage("contextMenuStartStopText"),
+            contexts: [
+                "selection",
+            ],
+        },
+    };
+
+    const contextMenuClickAction = (info) => promiseTry(
+        () => {
+            log("Start", "contextMenuClickAction", info);
+
+            if (!info) {
+                throw new Error("Unknown context menu click action info object.");
+            }
+
+            return promiseTry(
+                () => {
+                    const id = info.menuItemId;
+                    const selection = info.selectionText || null;
+
+                    if (id === contextMenuOptions.startStop.id) {
+                        if (!selection || typeof selection !== "string" || selection.length === 0) {
+                            throw new Error("Unknown context menu click action selection was empty.");
+                        }
+
+                        return stopSpeakingAction()
+                            .then(() => startSpeakingCustomTextDetectLanguage(selection));
+                    }
+
+                    throw new Error("Unknown context menu click action id.");
+                }
+            )
+                .then(() => {
+                    log("Done", "contextMenuClickAction", info);
+
+                    return undefined;
+                });
+        }
+    );
+
+    const createContextMenus = () => {
+        const contextMenuOptionsPromises = Object.keys(contextMenuOptions).map((contextMenuOptionsKey) => {
+            const contextMenuOption = contextMenuOptions[contextMenuOptionsKey];
+
+            return createContextMenu(contextMenuOption);
+        });
+
+        return Promise.all(contextMenuOptionsPromises);
+    };
+
+    const onInstalledHandler = () => {
+        createContextMenus();
+    };
+
+    const shortcutKeyCommandHandler = (command) => {
+        log("Start", "shortcutKeyCommandHandler", command);
+
+        // NOTE: straight mapping from command to action.
+        return commandHandler(command)
             .then((result) => {
                 log("Done", "shortcutKeyCommandHandler", command, result);
 
@@ -871,6 +779,7 @@ const enablePopup = () => {
 
     broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executePlugOnce());
 
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => executeAddOnBeforeUnloadHandlers());
     broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => executeSetTalkieIsSpeaking());
     broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executeSetTalkieIsNotSpeaking());
 
@@ -893,24 +802,17 @@ const enablePopup = () => {
     window.logError = logError;
     window.progress = progress;
 
-    window.stopSpeakFromFrontend = () => promiseTry(
-        () => {
-            return stopSpeaking(broadcaster, synthesizer);
-        }
-    );
+    window.stopSpeakFromFrontend = stopSpeakingAction;
+    window.startSpeakFromFrontend = startSpeakingTextInVoiceAction;
 
-    window.startSpeakFromFrontend = (text, voice) => promiseTry(
-        () => {
-            return stopSpeaking(broadcaster, synthesizer)
-            .then(() => rootChain(() => speakWithoutPageContext(broadcaster, synthesizer, text, voice, onlyLastCallerContinueSpeakingProvider())));
-        }
-    );
+    chrome.runtime.onInstalled.addListener(onInstalledHandler);
 
     // NOTE: used when the popup has been disabled.
     chrome.browserAction.onClicked.addListener(iconClickAction);
 
     chrome.commands.onCommand.addListener(shortcutKeyCommandHandler);
 
+    chrome.contextMenus.onClicked.addListener(contextMenuClickAction);
     enablePopup();
 }());
 

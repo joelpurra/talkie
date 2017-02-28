@@ -20,6 +20,9 @@
   "commandStartStopDescription": {
     "message": "Start/stop reading selection"
   },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionDescription": {
     "message": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
@@ -158,7 +161,7 @@
     "message": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Please select desired text on the website first!"
+    "message": "Please select desired text on the website first. You can also select text, then right click on it, and select Talkie."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",

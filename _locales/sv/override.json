@@ -186,7 +186,7 @@
   },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först!",
-    "original": "Please select desired text on the website first!"
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and select Talkie."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
