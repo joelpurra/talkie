@@ -15,7 +15,7 @@
     "message": "Åpne donasjon siden"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Åpne nettsiden"
+    "message": "Åpne Talkie nettsiden"
   },
   "commandStartStopDescription": {
     "message": "Starte/stoppe lesingen utvalg"
@@ -54,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "bruk"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "Du kan også velge teksten, deretter høyreklikk på den og velg Talkie i menyen.  På denne måten fungerer også i PDF-filer og noen spesielle typer sider i Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Hvis nøkkelen ikke fungerer, må du kontrollere at det ikke allerede er i bruk av en annen forlengelse."
   },
@@ -61,7 +64,7 @@
     "message": "Hvordan sjekke eller endre Talkie hurtigtast."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Du kan også bruke Talkie hurtigtast:"
+    "message": "En praktisk alternativ er å bruke Talkie hurtigtast:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Velg ønsket tekst på en nettside."
@@ -161,7 +164,7 @@
     "message": "Dine donasjoner er verdsatt!"
   },
   "noTextSelectedMessage": {
-    "message": "Vennligst velg ønsket tekst på nettsiden først!"
+    "message": "Vennligst velg ønsket tekst på nettsiden først.  Du kan også velge tekst, og deretter høyreklikk på den og velg Talkie i menyen."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -173,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie får ikke tilgang til den merkede teksten fra denne type side.  Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt i av nettleseren.  Jeg beklager bryet."
+    "message": "Talkie får ikke tilgang til den merkede teksten fra denne type side.  Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt i av nettleseren.  Du kan også prøve å velge tekst, og deretter høyreklikk på den og velg Talkie i menyen.  Jeg beklager bryet."
   }
 }

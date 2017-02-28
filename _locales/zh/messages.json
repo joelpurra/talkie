@@ -15,7 +15,7 @@
     "message": "打开捐款页面"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "打开网站"
+    "message": "打开Talkie网站"
   },
   "commandStartStopDescription": {
     "message": "开始/停止读取选择"
@@ -24,7 +24,7 @@
     "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
-    "message": "在任何网页上选择文字，并让计算机大声读出它，只需点击对讲机按钮。"
+    "message": "在任何网页上选择文字，并让计算机大声读出来，只需点击对讲机按钮。"
   },
   "extensionLocale": {
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
@@ -54,14 +54,17 @@
   "frontend_aboutUsageHeading": {
     "message": "用法"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "您还可以选择文本，然后右键单击它，并在菜单中选择Talkie。 这种方式也适用于PDF文件和Chrome中的一些特殊类型的页面。"
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "如果密钥不起作用，请检查其是否已由另一分机使用。"
+    "message": "如果密钥不起作用，请检查其是否已被另一分机使用。"
   },
   "frontend_aboutUsageShortcutKeyAlternative04": {
     "message": "Talkieie快捷键。"
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "您还可以使用Talkie快捷键："
+    "message": "一个方便的选择是使用Talkie快捷键："
   },
   "frontend_aboutUsageStep01": {
     "message": "在任何网页上选择所需的文字。"
@@ -115,7 +118,7 @@
     "message": "价格对话"
   },
   "frontend_storyDescription": {
-    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误甚至更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。"
+    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。"
   },
   "frontend_storyHeading": {
     "message": "Talkieie如何开始"
@@ -161,7 +164,7 @@
     "message": "您的捐款感谢！"
   },
   "noTextSelectedMessage": {
-    "message": "请先在网站上选择所需的文字！"
+    "message": "请先在网站上选择所需的文字。 您还可以选择文本，然后右键单击它，并在菜单中选择对讲机。"
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -173,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie无法访问此类页面中选定的文本。 这是一个非常特殊的页面，并且有浏览器提出的安全限制。 对不起给您带来不便。"
+    "message": "Talkie无法访问此类页面中选定的文本。 这是一个非常特殊的页面，并且有浏览器提出的安全限制。 您还可以尝试选择文本，然后右键单击它，并在菜单中选择对讲机。 对不起给您带来不便。"
   }
 }

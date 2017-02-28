@@ -20,15 +20,15 @@
     "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "打开网站",
-    "original": "Open the website"
+    "message": "打开Talkie网站",
+    "original": "Open the Talkie website"
   },
   "commandStartStopDescription": {
     "message": "开始/停止读取选择",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "在任何网页上选择文字，并让计算机大声读出它，只需点击对讲机按钮。",
+    "message": "在任何网页上选择文字，并让计算机大声读出来，只需点击对讲机按钮。",
     "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
@@ -55,8 +55,12 @@
     "message": "用法",
     "original": "Usage"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "您还可以选择文本，然后右键单击它，并在菜单中选择Talkie。 这种方式也适用于PDF文件和Chrome中的一些特殊类型的页面。",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "如果密钥不起作用，请检查其是否已由另一分机使用。",
+    "message": "如果密钥不起作用，请检查其是否已被另一分机使用。",
     "original": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_aboutUsageShortcutKeyAlternative04": {
@@ -64,8 +68,8 @@
     "original": "How to check or change the Talkie shortcut key."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "您还可以使用Talkie快捷键：",
-    "original": "You can also use the Talkie shortcut key:"
+    "message": "一个方便的选择是使用Talkie快捷键：",
+    "original": "A convenient option is to use the Talkie shortcut key:"
   },
   "frontend_aboutUsageStep01": {
     "message": "在任何网页上选择所需的文字。",
@@ -124,7 +128,7 @@
     "original": "Rate Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误甚至更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。",
+    "message": "Talkie是在2016/2017新年前几天开发的，来自朋友的挑战。 挑战从一个问题开始：在上下班工作时，是否有可能听一篇文章而不是阅读它？ 很容易，我说，并开始证明它 - 或至少使我的浏览器说出一个愚蠢的计算机语音的文本。 基本版本，没有任何用户界面，原来是微不足道的创建。 添加一个用户界面，花了一点时间。 添加适当的语言检测一堆更多的代码。 克服浏览器中的错误更多的工作。 改进和功能的列表，以及几千行代码，以后，你看的最终结果。",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
@@ -185,12 +189,12 @@
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "请先在网站上选择所需的文字！",
-    "original": "Please select desired text on the website first!"
+    "message": "请先在网站上选择所需的文字。 您还可以选择文本，然后右键单击它，并在菜单中选择对讲机。",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie无法访问此类页面中选定的文本。 这是一个非常特殊的页面，并且有浏览器提出的安全限制。 对不起给您带来不便。",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
+    "message": "Talkie无法访问此类页面中选定的文本。 这是一个非常特殊的页面，并且有浏览器提出的安全限制。 您还可以尝试选择文本，然后右键单击它，并在菜单中选择对讲机。 对不起给您带来不便。",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

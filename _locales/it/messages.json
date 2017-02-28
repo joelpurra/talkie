@@ -15,7 +15,7 @@
     "message": "Aprire la pagina delle donazioni"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Aprire il sito web"
+    "message": "Aprire il sito Talkie"
   },
   "commandStartStopDescription": {
     "message": "Start/smettere di leggere selezione"
@@ -54,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "uso"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "È inoltre possibile selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu.  In questo modo funziona anche in file PDF e alcuni particolari tipi di pagine in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Se la chiave non funziona, si prega di controllare che non sia già in uso da un altro interno."
   },
@@ -61,7 +64,7 @@
     "message": "Come controllare o modificare la chiave di Talkie di scelta rapida."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "È inoltre possibile utilizzare la scorciatoia Talkie chiave:"
+    "message": "Un'opzione conveniente è quello di utilizzare il tasto di scelta rapida Talkie:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Selezionare il testo desiderato in qualsiasi pagina web."
@@ -161,7 +164,7 @@
     "message": "Le vostre donazioni sono apprezzati!"
   },
   "noTextSelectedMessage": {
-    "message": "Si prega di selezionare il testo desiderato sul sito prima!"
+    "message": "Si prega di selezionare il testo desiderato sul sito web prima.  È inoltre possibile selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -173,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie non può accedere al testo selezionato da questo tipo di pagina.  È una pagina molto speciale, e ci sono limitazioni di sicurezza messe in dal browser.  Scusa per l'incoveniente."
+    "message": "Talkie non può accedere al testo selezionato da questo tipo di pagina.  È una pagina molto speciale, e ci sono limitazioni di sicurezza messe in dal browser.  Si può anche provare a selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu.  Scusa per l'incoveniente."
   }
 }

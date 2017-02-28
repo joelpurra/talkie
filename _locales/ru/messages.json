@@ -15,7 +15,7 @@
     "message": "Открыть страницу пожертвований"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Откройте веб-сайт"
+    "message": "Откройте веб-сайт Talkie"
   },
   "commandStartStopDescription": {
     "message": "Старт/Стоп чтение выбор"
@@ -54,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "Применение"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "Можно также выбрать текст, а затем щелкните правой кнопкой мыши на нем и выберите Talkie в меню.  Таким образом, также работает в PDF-файлов и некоторых специальных типов страниц в Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Если ключ не работает, пожалуйста, проверьте, что это уже не используется другим расширением."
   },
@@ -61,7 +64,7 @@
     "message": "Как проверить или изменить клавишу быстрого вызова Talkie."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Вы можете также использовать ярлык Talkie ключа:"
+    "message": "Удобный вариант заключается в использовании клавиши быстрого вызова Talkie:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Выберите нужный текст на любой веб-странице."
@@ -161,7 +164,7 @@
     "message": "Ваши пожертвования приветствуются!"
   },
   "noTextSelectedMessage": {
-    "message": "Пожалуйста, выберите нужный текст на сайте первым!"
+    "message": "Пожалуйста, выберите нужный текст на веб-сайте в первую очередь.  Можно также выбрать текст, а затем щелкните правой кнопкой мыши на нем и выберите Talkie в меню."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -173,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie не может получить доступ выделенный текст из этого типа страницы.  Это очень специальная страница, и есть ограничения безопасности положить в браузере.  Извините за неудобства."
+    "message": "Talkie не может получить доступ выделенный текст из этого типа страницы.  Это очень специальная страница, и есть ограничения безопасности положить в браузере.  Кроме того, можно попытаться выделить текст, а затем щелкните правой кнопкой мыши на нем и выберите Talkie в меню.  Извините за неудобства."
   }
 }

@@ -30,11 +30,12 @@
 1. **Click the Talkie button** in your browser bar <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
 
 
-- Another convenient option is to **select the text, then right click on it**, and click on <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie. This way works even in PDF-files in Chrome!
-- You can also use the **Talkie shortcut key**:
-  - <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on macOS
-  - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on Windows, Linux, Chrome OS
-  - If the key does not work, please check that it is not already in use by another extension.
+You can also **select the text, then right click on it**, and choose <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome.
+
+A convenient option is to use the **Talkie shortcut key**:
+- <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on macOS
+- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on Windows, Linux, Chrome OS
+- If the key does not work, please check that it is not already in use by another extension.
 
 <details>
   <summary><em>How to check or change the Talkie shortcut key</em></summary>

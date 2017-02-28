@@ -15,7 +15,7 @@
     "message": "Abrir la página de donaciones"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Abrir el sitio web"
+    "message": "Abrir el sitio web de Talkie"
   },
   "commandStartStopDescription": {
     "message": "Iniciar/detener la selección de lectura"
@@ -24,7 +24,7 @@
     "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
-    "message": "Seleccione el texto en cualquier página web y haga que la computadora lo lea en voz alta para usted simplemente haciendo clic en el botón Talkie."
+    "message": "Seleccione texto en cualquier página web y haga que la computadora lo lea en voz alta para usted simplemente haciendo clic en el botón Talkie."
   },
   "extensionLocale": {
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
@@ -54,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "Uso"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "También puede seleccionar el texto, luego hacer clic con el botón derecho en él y elegir Talkie en el menú.  De esta manera también funciona en archivos PDF y algunos tipos especiales de páginas en Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Si la clave no funciona, compruebe que no esté ya en uso por otra extensión."
   },
@@ -61,7 +64,7 @@
     "message": "Cómo comprobar o cambiar la tecla de acceso directo Talkie."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "También puede utilizar la tecla de acceso directo Talkie:"
+    "message": "Una opción conveniente es usar la tecla de atajo de Talkie:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Seleccione el texto deseado en cualquier página web."
@@ -88,7 +91,7 @@
     "message": "Ocultar los botones de donación en el menú emergente"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "No es que no quiera que donen para apoyar el desarrollo de Talkie y código abierto en general. Simplemente no quiero que se molesten al usar Talkie en primer lugar.  Si deshabilitas los botones de donación en la ventana emergente, ¡espero que también apoyes a Talkie de alguna manera!  Los botones siempre estarán disponibles aquí entre las opciones, por si acaso."
+    "message": "No es que no quiera que donen para apoyar el desarrollo de Talkie y de código abierto en general. Simplemente no quiero que se molesten al usar Talkie en primer lugar.  Si deshabilitas los botones de donación en la ventana emergente, ¡espero que también apoyes a Talkie de alguna manera!  Los botones siempre estarán disponibles aquí entre las opciones, por si acaso."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Donar: apoyar el desarrollo de código abierto"
@@ -115,7 +118,7 @@
     "message": "Calificar Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie se desarrolló unos días antes del Año Nuevo 2016/2017, en un reto de un amigo.  El reto se inició con la pregunta: mientras se trabaja para trabajar, ¿es posible escuchar un artículo en lugar de leerlo?  Fácil, le dije, y me dispuse a demostrarlo, o al menos a hacer que mi navegador hablara el texto usando una voz de computadora tonta.  La versión básica, sin ninguna interfaz de usuario, resultó ser trivial para crear.  La adición de una interfaz de usuario, tomó un poco más.  Adición de detección de idioma adecuado un montón más código.  Superar los errores en el navegador aún más trabajo.  La lista de mejoras y características continúa - y unas pocas miles de líneas de código más tarde, estás mirando el resultado final."
+    "message": "Talkie se desarrolló unos días antes del Año Nuevo 2016/2017, en un reto de un amigo.  El reto se inició con la pregunta: mientras se trabaja para trabajar, ¿es posible escuchar un artículo en lugar de leerlo?  Fácil, le dije, y me dispuse a demostrarlo, o al menos a hacer que mi navegador hablara el texto usando una voz de computadora tonta.  La versión básica, sin ninguna interfaz de usuario, resultó ser trivial para crear.  Añadir una interfaz de usuario, tardó un poco más.  Adición de detección de idioma adecuado un montón más código.  Superar los errores en el navegador aún más trabajo.  La lista de mejoras y características continúa - y unas pocas miles de líneas de código más tarde, está buscando el resultado final."
   },
   "frontend_storyHeading": {
     "message": "Historia: cómo empezó Talkie"
@@ -127,7 +130,7 @@
     "message": "Gracias por usar Talkie - si te gusta, dile a tus amigos!"
   },
   "frontend_supportAndFeedback": {
-    "message": "Soporte y retroalimentación"
+    "message": "Soporte y comentarios"
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie en la Chrome Web Store"
@@ -139,7 +142,7 @@
     "message": "Voces disponibles"
   },
   "frontend_voicesDescription": {
-    "message": "Talkie realiza la detección automática del idioma, pero no todos los idiomas están disponibles en cada navegador.  Aquí puede ver y probar voces instaladas para cada idioma."
+    "message": "Talkie hace la detección automática del idioma, pero no todos los idiomas están disponibles en cada navegador.  Aquí puede ver y probar voces instaladas para cada idioma."
   },
   "frontend_voicesHeading": {
     "message": "Voces: prueba tu navegador"
@@ -161,7 +164,7 @@
     "message": "Sus donaciones son apreciadas!"
   },
   "noTextSelectedMessage": {
-    "message": "Por favor, seleccione el texto deseado en el sitio web en primer lugar!"
+    "message": "Seleccione primero el texto deseado en el sitio web.  También puede seleccionar texto, luego hacer clic con el botón derecho en él y elegir Talkie en el menú."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -173,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie no puede acceder al texto seleccionado de este tipo de página.  Es una página muy especial, y hay limitaciones de seguridad introducidas por el navegador.  Lo siento por las molestias."
+    "message": "Talkie no puede acceder al texto seleccionado de este tipo de página.  Es una página muy especial, y hay limitaciones de seguridad introducidas por el navegador.  También puede intentar seleccionar texto, luego haga clic con el botón derecho en él y elija Talkie en el menú.  Lo siento por las molestias."
   }
 }

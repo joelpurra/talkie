@@ -15,7 +15,7 @@
     "message": "פתח את דף התרומה"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "פתח את האתר"
+    "message": "פתח את אתר האינטרנט Talkie"
   },
   "commandStartStopDescription": {
     "message": "התחל/להפסיק לקרוא בחירה"
@@ -54,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "נוֹהָג"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "אתה יכול גם לבחור את הטקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  גם בדרך זו עובדת-קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת."
   },
@@ -61,7 +64,7 @@
     "message": "כיצד לבדוק או לשנות את מקש קיצור Talkie."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "אתה יכול גם להשתמש בקיצור Talkie מפתח:"
+    "message": "אפשרות נוחה היא להשתמש מקש קיצור Talkie:"
   },
   "frontend_aboutUsageStep01": {
     "message": "בחר טקסט רצוי בדף אינטרנט כלשהו."
@@ -173,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "טוקי לא יכול לגשת לטקסט הנבחר מתוך סוג זה של דף.  זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן.  אני מתנצל על אי הנוחות."
+    "message": "טוקי לא יכול לגשת לטקסט הנבחר מתוך סוג זה של דף.  זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן.  אתה יכול גם לנסות לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  אני מתנצל על אי הנוחות."
   }
 }
