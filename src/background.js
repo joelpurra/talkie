@@ -28,6 +28,7 @@ detectPageLanguage:false,
 executeLogToPage:false,
 executePlugOnce:false,
 executeScriptInAllFrames:false,
+executeScriptInTopFrame:false,
 flatten:false,
 getCurrentActiveTab:false,
 getCurrentActiveTabId:false,
@@ -419,28 +420,72 @@ const setActiveTabAsSpeaking = () => getCurrentActiveTab()
 const isActiveTabSpeaking = () => getCurrentActiveTabId()
     .then((activeTabId) => isSpeakingTabId(activeTabId));
 
-let preventSuspensionPort = null;
+let preventSuspensionProducingPort = null;
+let preventSuspensionIntervalId = null;
+const preventSuspensionPortName = "talkie-prevents-suspension";
+const preventSuspensionConnectOptions = {
+    name: preventSuspensionPortName,
+};
 
-const preventSuspend = () => promiseTry(
+const executeConnectFromContentCode = `var talkiePreventSuspensionPort = chrome.runtime.connect(${JSON.stringify(preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
+const executeConnectFromContent = () => executeScriptInTopFrame(executeConnectFromContentCode).then((preventExtensionSuspendConnectFromContentResult) => {
+    log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
+
+    return preventExtensionSuspendConnectFromContentResult;
+});
+
+const preventExtensionSuspend = () => promiseTry(
     () => {
-        const connectOptions = {
-            name: "Talkie prevents suspension!",
+        log("Start", "preventExtensionSuspend");
+
+        const onMessageProducingHandler = (msg) => {
+            log("preventExtensionSuspend", "onMessageProducingHandler", msg);
         };
 
-        preventSuspensionPort = chrome.runtime.connect(connectOptions);
+        const messageProducer = () => {
+            preventSuspensionProducingPort.postMessage("Ah, ha, ha, ha, stayin' alive, stayin' alive");
+        };
+
+        const onConnectProducingHandler = (port) => {
+            log("preventExtensionSuspend", "onConnectProducingHandler", port);
+
+            if (port.name !== preventSuspensionPortName) {
+                return;
+            }
+
+            if (preventSuspensionProducingPort) {
+                throw new Error("The preventSuspensionProducingPort was already set.");
+            }
+
+            preventSuspensionProducingPort = port;
+
+            preventSuspensionProducingPort.onMessage.addListener(onMessageProducingHandler);
+
+            preventSuspensionIntervalId = setInterval(messageProducer, 1000);
+        };
+
+        chrome.runtime.onConnect.addListener(onConnectProducingHandler);
+
+        log("Done", "preventExtensionSuspend");
+
+        return executeConnectFromContent();
     }
 );
 
-const allowSuspend = () => promiseTry(
+const allowExtensionSuspend = () => promiseTry(
     () => {
-        if (!preventSuspensionPort) {
-            throw new Error("No suspension prevention port set.");
+        log("Start", "allowExtensionSuspend");
+
+        if (preventSuspensionProducingPort) {
+            // https://developer.chrome.com/extensions/runtime#type-Port
+            preventSuspensionProducingPort.disconnect();
+            preventSuspensionProducingPort = null;
         }
 
-        // https://developer.chrome.com/extensions/runtime#type-Port
-        preventSuspensionPort.disconnect();
+        clearInterval(preventSuspensionIntervalId);
+        preventSuspensionIntervalId = null;
 
-        preventSuspensionPort = null;
+        log("Done", "allowExtensionSuspend");
     }
 );
 
@@ -888,8 +933,8 @@ const enablePopup = () => {
     broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => disablePopup());
     broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => enablePopup());
 
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => preventSuspend());
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => allowSuspend());
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => preventExtensionSuspend());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => allowExtensionSuspend());
 
     const progress = new TalkieProgress(broadcaster);
 
