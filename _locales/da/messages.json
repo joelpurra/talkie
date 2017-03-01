@@ -15,10 +15,13 @@
     "message": "Åbn donation siden"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Åbn hjemmesiden"
+    "message": "Åbn Talkie hjemmeside"
   },
   "commandStartStopDescription": {
     "message": "Start/stop læsning udvælgelse"
+  },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
     "message": "Vælg tekst på en webside, og få computeren læste det højt for dig ved blot at klikke på knappen Talkie."
@@ -51,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "Usage"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "Du kan også markere teksten og derefter højreklikke på den og vælge Talkie i menuen.  Denne måde fungerer også i PDF-filer og nogle særlige typer af sider i Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse."
   },
@@ -58,7 +64,7 @@
     "message": "Sådan kontrolleres eller ændres Talkie genvejstast."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Du kan også bruge Talkie genvejstast:"
+    "message": "En bekvem mulighed er at bruge Talkie genvejstast:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Vælg den ønskede tekst på en webside."
@@ -158,7 +164,7 @@
     "message": "Dine donationer er værdsat!"
   },
   "noTextSelectedMessage": {
-    "message": "Vælg den ønskede tekst på hjemmesiden først!"
+    "message": "Vælg ønskede tekst på hjemmesiden først.  Du kan også vælge tekst, derefter højreklikke på den og vælge Talkie i menuen."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -170,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Undskyld ulejligheden."
+    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Du kan også prøve at markere tekst, derefter højreklikke på den og vælge Talkie i menuen.  Undskyld ulejligheden."
   }
 }

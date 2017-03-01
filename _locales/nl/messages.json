@@ -15,10 +15,13 @@
     "message": "Open de donatie pagina"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Open de website"
+    "message": "Open de Talkie website"
   },
   "commandStartStopDescription": {
     "message": "Start/stop het lezen van selectie"
+  },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
     "message": "Selecteer tekst op een webpagina, en hebben de computer leest het hardop voor u door simpelweg te klikken op de knop Talkie."
@@ -51,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "Gebruik"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "U kunt ook de tekst selecteren en klik met de rechtermuisknop op en kies Talkie in het menu.  Op deze manier werkt ook in PDF-bestanden en een aantal speciale soorten pagina's in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Als de sleutel niet werkt, controleer dan of deze niet al in gebruik is door een ander toestel."
   },
@@ -58,7 +64,7 @@
     "message": "Hoe om te controleren of wijzigen van de Talkie sneltoets."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "U kunt ook gebruik maken van de Talkie sneltoets:"
+    "message": "Een handige optie is om de Talkie sneltoets te gebruiken:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Selecteer de gewenste tekst op een webpagina."
@@ -158,7 +164,7 @@
     "message": "Uw donatie wordt op prijs gesteld!"
   },
   "noTextSelectedMessage": {
-    "message": "Selecteer de gewenste tekst op de website eerste!"
+    "message": "Selecteer de gewenste tekst op de website eerste.  U kunt ook tekst selecteren en klik met de rechtermuisknop op en kies Talkie in het menu."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -170,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie geen toegang tot de geselecteerde tekst uit dit soort pagina.  Het is een heel speciale pagina, en er zijn security beperkingen gesteld door de browser.  Het spijt me voor het ongemak."
+    "message": "Talkie geen toegang tot de geselecteerde tekst uit dit soort pagina.  Het is een heel speciale pagina, en er zijn security beperkingen gesteld door de browser.  U kunt ook proberen om tekst te selecteren, klik op de rechtermuisknop op en kies Talkie in het menu.  Het spijt me voor het ongemak."
   }
 }

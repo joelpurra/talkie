@@ -1,4 +1,7 @@
 {
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionName": {
     "message": "Talkie"
   },

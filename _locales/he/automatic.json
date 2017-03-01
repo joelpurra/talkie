@@ -20,8 +20,8 @@
     "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "פתח את האתר",
-    "original": "Open the website"
+    "message": "פתח את אתר האינטרנט Talkie",
+    "original": "Open the Talkie website"
   },
   "commandStartStopDescription": {
     "message": "התחל/להפסיק לקרוא בחירה",
@@ -55,6 +55,10 @@
     "message": "נוֹהָג",
     "original": "Usage"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "אתה יכול גם לבחור את הטקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  גם בדרך זו עובדת-קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת.",
     "original": "If the key does not work, please check that it is not already in use by another extension."
@@ -64,8 +68,8 @@
     "original": "How to check or change the Talkie shortcut key."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "אתה יכול גם להשתמש בקיצור Talkie מפתח:",
-    "original": "You can also use the Talkie shortcut key:"
+    "message": "אפשרות נוחה היא להשתמש מקש קיצור Talkie:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
   },
   "frontend_aboutUsageStep01": {
     "message": "בחר טקסט רצוי בדף אינטרנט כלשהו.",
@@ -185,12 +189,12 @@
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "אנא בחר טקסט רצוי באתר ראשון!",
-    "original": "Please select desired text on the website first!"
+    "message": "אנא בחר טקסט רצוי על אתר האינטרנט ראשון.  ניתן גם לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "טוקי לא יכול לגשת לטקסט הנבחר מתוך סוג זה של דף.  זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן.  אני מתנצל על אי הנוחות.",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
+    "message": "טוקי לא יכול לגשת לטקסט הנבחר מתוך סוג זה של דף.  זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן.  אתה יכול גם לנסות לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  אני מתנצל על אי הנוחות.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }
