@@ -698,11 +698,39 @@ const enablePopup = () => {
     );
 
     const contextMenuOptions = {
-        startStop: {
+        selectionContextMenuStartStop: {
             id: "talkie-context-menu-start-stop",
             title: chrome.i18n.getMessage("contextMenuStartStopText"),
             contexts: [
                 "selection",
+            ],
+        },
+        buttonContextMenuStartStopDescription: {
+            id: "start-stop",
+            title: chrome.i18n.getMessage("commandStartStopDescription"),
+            contexts: [
+                "browser_action",
+            ],
+        },
+        buttonContextMenuOpenWebsiteMainDescription: {
+            id: "open-website-main",
+            title: chrome.i18n.getMessage("commandOpenWebsiteMainDescription"),
+            contexts: [
+                "browser_action",
+            ],
+        },
+        buttonContextMenuOpenWebsiteChromeWebStoreDescription: {
+            id: "open-website-chromewebstore",
+            title: chrome.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription"),
+            contexts: [
+                "browser_action",
+            ],
+        },
+        buttonContextMenuOpenWebsiteDonateDescription: {
+            id: "open-website-donate",
+            title: chrome.i18n.getMessage("commandOpenWebsiteDonateDescription"),
+            contexts: [
+                "browser_action",
             ],
         },
     };
@@ -720,7 +748,7 @@ const enablePopup = () => {
                     const id = info.menuItemId;
                     const selection = info.selectionText || null;
 
-                    if (id === contextMenuOptions.startStop.id) {
+                    if (id === contextMenuOptions.selectionContextMenuStartStop.id) {
                         if (!selection || typeof selection !== "string" || selection.length === 0) {
                             throw new Error("Unknown context menu click action selection was empty.");
                         }
@@ -729,7 +757,8 @@ const enablePopup = () => {
                             .then(() => startSpeakingCustomTextDetectLanguage(selection));
                     }
 
-                    throw new Error("Unknown context menu click action id.");
+                    // NOTE: context menu items default to being commands.
+                    return commandHandler(id);
                 }
             )
                 .then(() => {
