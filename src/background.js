@@ -30,6 +30,8 @@ executePlugOnce:false,
 executeScriptInAllFrames:false,
 executeScriptInTopFrame:false,
 flatten:false,
+getCurrentActiveTab:false,
+getCurrentActiveTabId:false,
 getMappedVoices:false,
 getVoices:false,
 isCurrentPageInternalToTalkie:false,
@@ -50,7 +52,7 @@ window:false,
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
 // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-log("Start", "Loading code");
+log("Start", "Loading backgrund code");
 
 const MAX_UTTERANCE_TEXT_LENGTH = 100;
 
@@ -122,34 +124,6 @@ const setup = () => promiseTry(
 
                 return synthesizer;
             });
-    })
-    .then((synthesizer) => {
-        const unload = () => {
-            log("Start", "Unloading");
-
-            return executeGetTalkieIsSpeaking()
-                .then((talkieIsSpeaking) => {
-                    // Clear all text if Talkie was speaking.
-                    if (talkieIsSpeaking) {
-                        // TODO: use stopSpeaking()?
-                        synthesizer.cancel();
-                    }
-
-                    return undefined;
-                })
-                .then(() => {
-                    // Reset the system to resume playback, just to be nice to the world.
-                    synthesizer.resume();
-
-                    log("Done", "Unloading");
-
-                    return undefined;
-                });
-        };
-
-        chrome.runtime.onSuspend.addListener(unload);
-
-        return synthesizer;
     }
 );
 
@@ -393,20 +367,127 @@ const onlyLastCallerContinueSpeakingProvider = () => {
     );
 };
 
-const executeGetTalkieIsSpeakingCode = "window.talkieIsSpeaking;";
-const executeGetTalkieIsSpeaking = () => executeScriptInTopFrame(executeGetTalkieIsSpeakingCode)
-    .then((talkieIsSpeaking) => {
-        return talkieIsSpeaking === "true";
+let currentSpeakingTab = null;
+
+const getSpeakingTabId = () => promiseTry(
+    () => currentSpeakingTab
+);
+
+const setSpeakingTabId = (tabId) => isSpeakingTabId(tabId)
+    .then((isTabSpeaking) => {
+        if (isTabSpeaking) {
+            throw new Error(`Tried to set tab ${tabId} as speaking, but another tab was already speaking.`);
+        }
+
+        currentSpeakingTab = tabId;
+
+        return undefined;
     });
 
-const executeSetTalkieIsSpeakingCode = "window.talkieIsSpeaking = true;";
-const executeSetTalkieIsSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsSpeakingCode);
+const setTabIsDoneSpeaking = (tabId) => isSpeakingTabId(tabId)
+    .then((isTabSpeaking) => {
+        // TODO: throw if it's not the same tabId as the currently speaking tab?
+        if (isTabSpeaking) {
+            currentSpeakingTab = null;
+        }
 
-const executeSetTalkieIsNotSpeakingCode = "window.talkieIsSpeaking = null;";
-const executeSetTalkieIsNotSpeaking = () => executeScriptInTopFrame(executeSetTalkieIsNotSpeakingCode);
+        return undefined;
+    });
 
-const executeAddOnBeforeUnloadHandlersCode = "window.talkieIsSpeaking === undefined && window.addEventListener(\"beforeunload\", function () { window.talkieIsSpeaking && window.speechSynthesis.cancel(); });";
-const executeAddOnBeforeUnloadHandlers = () => executeScriptInTopFrame(executeAddOnBeforeUnloadHandlersCode);
+const isSpeakingTabId = (tabId) => promiseTry(
+    () => currentSpeakingTab !== null && tabId === currentSpeakingTab
+);
+
+const isSpeaking = () => getSpeakingTabId()
+    // TODO: check synthesizer.speaking === true?
+    .then((speakingTabId) => speakingTabId !== null);
+
+const setActiveTabIsDoneSpeaking = () => getCurrentActiveTabId()
+    .then((activeTabId) => setTabIsDoneSpeaking(activeTabId));
+
+const setActiveTabAsSpeaking = () => getCurrentActiveTab()
+    .then((activeTab) => {
+        // NOTE: some tabs can't be retreived.
+        if (!activeTab) {
+            return undefined;
+        }
+
+        const activeTabId = activeTab.id;
+
+        return setSpeakingTabId(activeTabId);
+    });
+
+const isActiveTabSpeaking = () => getCurrentActiveTabId()
+    .then((activeTabId) => isSpeakingTabId(activeTabId));
+
+let preventSuspensionProducingPort = null;
+let preventSuspensionIntervalId = null;
+const preventSuspensionPortName = "talkie-prevents-suspension";
+const preventSuspensionConnectOptions = {
+    name: preventSuspensionPortName,
+};
+
+const executeConnectFromContentCode = `var talkiePreventSuspensionPort = chrome.runtime.connect(${JSON.stringify(preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
+const executeConnectFromContent = () => executeScriptInTopFrame(executeConnectFromContentCode).then((preventExtensionSuspendConnectFromContentResult) => {
+    log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
+
+    return preventExtensionSuspendConnectFromContentResult;
+});
+
+const preventExtensionSuspend = () => promiseTry(
+    () => {
+        log("Start", "preventExtensionSuspend");
+
+        const onMessageProducingHandler = (msg) => {
+            log("preventExtensionSuspend", "onMessageProducingHandler", msg);
+        };
+
+        const messageProducer = () => {
+            preventSuspensionProducingPort.postMessage("Ah, ha, ha, ha, stayin' alive, stayin' alive");
+        };
+
+        const onConnectProducingHandler = (port) => {
+            log("preventExtensionSuspend", "onConnectProducingHandler", port);
+
+            if (port.name !== preventSuspensionPortName) {
+                return;
+            }
+
+            if (preventSuspensionProducingPort) {
+                throw new Error("The preventSuspensionProducingPort was already set.");
+            }
+
+            preventSuspensionProducingPort = port;
+
+            preventSuspensionProducingPort.onMessage.addListener(onMessageProducingHandler);
+
+            preventSuspensionIntervalId = setInterval(messageProducer, 1000);
+        };
+
+        chrome.runtime.onConnect.addListener(onConnectProducingHandler);
+
+        log("Done", "preventExtensionSuspend");
+
+        return executeConnectFromContent();
+    }
+);
+
+const allowExtensionSuspend = () => promiseTry(
+    () => {
+        log("Start", "allowExtensionSuspend");
+
+        if (preventSuspensionProducingPort) {
+            // https://developer.chrome.com/extensions/runtime#type-Port
+            preventSuspensionProducingPort.disconnect();
+            preventSuspensionProducingPort = null;
+        }
+
+        clearInterval(preventSuspensionIntervalId);
+        preventSuspensionIntervalId = null;
+
+        log("Done", "allowExtensionSuspend");
+    }
+);
 
 const executeGetFramesSelectionTextAndLanguageCode = "function talkieGetParentElementLanguages(element) { return [].concat(element && element.getAttribute(\"lang\")).concat(element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: document.getSelection().toString(), htmlTagLanguage: document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages(document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
 const executeGetFramesSelectionTextAndLanguage = () => executeScriptInAllFrames(executeGetFramesSelectionTextAndLanguageCode).then((framesSelectionTextAndLanguage) => {
@@ -569,15 +650,6 @@ const enablePopup = () => {
     // NOTE: while not strictly necessary, keep and pass a reference to the global (initialized) synthesizer.
     let synthesizer = null;
 
-    rootChain(
-        () => setup()
-            .then((result) => {
-                synthesizer = result;
-
-                return undefined;
-            })
-    );
-
     const speakSelectionOnPage = () => promiseTry(
         () => {
             return Promise.all([
@@ -605,11 +677,6 @@ const enablePopup = () => {
                     return speakUserSelection(broadcaster, synthesizer);
                 });
         }
-    );
-
-    // TODO: internal check to see if Talkie was speaking?
-    const isSpeaking = () => promiseTry(
-        () => synthesizer.speaking === true
     );
 
     const startStopSpeakSelectionOnPage = () => promiseTry(
@@ -779,7 +846,7 @@ const enablePopup = () => {
         return Promise.all(contextMenuOptionsPromises);
     };
 
-    const onInstalledHandler = () => {
+    const onExtensionInstalledHandler = () => {
         createContextMenus();
     };
 
@@ -800,6 +867,54 @@ const enablePopup = () => {
             });
     };
 
+    const onTabRemovedHandler = (tabId) => {
+        return isSpeakingTabId(tabId)
+            .then((isTabSpeaking) => {
+                if (isTabSpeaking) {
+                    return stopSpeaking(broadcaster, synthesizer)
+                        .then(() => setTabIsDoneSpeaking(tabId));
+                }
+
+                return undefined;
+            });
+    };
+
+    const onTabUpdatedHandler = (tabId, changeInfo) => {
+        return isSpeakingTabId(tabId)
+            .then((isTabSpeaking) => {
+                // NOTE: changeInfo only has properties which have changed.
+                // https://developer.chrome.com/extensions/tabs#event-onUpdated
+                if (isTabSpeaking && changeInfo.url) {
+                    return stopSpeaking(broadcaster, synthesizer)
+                        .then(() => setTabIsDoneSpeaking(tabId));
+                }
+
+                return undefined;
+            });
+    };
+
+    const onExtensionSuspendHandler = () => {
+        log("Start", "onExtensionSuspendHandler");
+
+        return isSpeaking()
+            .then((talkieIsSpeaking) => {
+                // Clear all text if Talkie was speaking.
+                if (talkieIsSpeaking) {
+                    return stopSpeaking();
+                }
+
+                return undefined;
+            })
+            .then(() => {
+                // Reset the system to resume playback, just to be nice to the world.
+                synthesizer.resume();
+
+                log("Done", "onExtensionSuspendHandler");
+
+                return undefined;
+            });
+    };
+
     const broadcaster = new Broadcaster();
     broadcaster.start();
 
@@ -808,9 +923,8 @@ const enablePopup = () => {
 
     broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executePlugOnce());
 
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => executeAddOnBeforeUnloadHandlers());
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => executeSetTalkieIsSpeaking());
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executeSetTalkieIsNotSpeaking());
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => setActiveTabAsSpeaking());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => setActiveTabIsDoneSpeaking());
 
     // NOTE: setting icons async.
     broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => setIconModePlaying(), 10); return undefined; });
@@ -818,6 +932,9 @@ const enablePopup = () => {
 
     broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => disablePopup());
     broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => enablePopup());
+
+    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => preventExtensionSuspend());
+    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => allowExtensionSuspend());
 
     const progress = new TalkieProgress(broadcaster);
 
@@ -834,7 +951,11 @@ const enablePopup = () => {
     window.stopSpeakFromFrontend = stopSpeakingAction;
     window.startSpeakFromFrontend = startSpeakingTextInVoiceAction;
 
-    chrome.runtime.onInstalled.addListener(onInstalledHandler);
+    chrome.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+
+    chrome.tabs.onRemoved.addListener(onTabRemovedHandler);
+    chrome.tabs.onUpdated.addListener(onTabUpdatedHandler);
+    chrome.runtime.onSuspend.addListener(onExtensionSuspendHandler);
 
     // NOTE: used when the popup has been disabled.
     chrome.browserAction.onClicked.addListener(iconClickAction);
@@ -843,6 +964,15 @@ const enablePopup = () => {
 
     chrome.contextMenus.onClicked.addListener(contextMenuClickAction);
     enablePopup();
+
+    rootChain(
+        () => setup()
+            .then((result) => {
+                synthesizer = result;
+
+                return undefined;
+            })
+    );
 }());
 
-log("Done", "Loading code");
+log("Done", "Loading backgrund code");

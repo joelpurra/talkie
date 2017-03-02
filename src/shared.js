@@ -207,6 +207,16 @@ const getCurrentActiveTab = () => new Promise(
     }
 );
 
+const getCurrentActiveTabId = () => getCurrentActiveTab()
+    .then((activeTab) => {
+        if (activeTab) {
+            return activeTab.id;
+        }
+
+        // NOTE: some tabs can't be retreived.
+        return null;
+    });
+
 const isCurrentPageInternalToTalkie = () => promiseTry(
     () => getCurrentActiveTab()
         .then((tab) => {
@@ -881,6 +891,7 @@ api.shared = {
     flatten,
     getCurrentActiveNormalLoadedTab,
     getCurrentActiveTab,
+    getCurrentActiveTabId,
     getMappedVoices,
     getRandomInt,
     getStoredValue,
