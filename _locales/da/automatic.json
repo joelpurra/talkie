@@ -20,8 +20,8 @@
     "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Åbn hjemmesiden",
-    "original": "Open the website"
+    "message": "Åbn Talkie hjemmeside",
+    "original": "Open the Talkie website"
   },
   "commandStartStopDescription": {
     "message": "Start/stop læsning udvælgelse",
@@ -55,6 +55,10 @@
     "message": "Usage",
     "original": "Usage"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "Du kan også markere teksten og derefter højreklikke på den og vælge Talkie i menuen.  Denne måde fungerer også i PDF-filer og nogle særlige typer af sider i Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse.",
     "original": "If the key does not work, please check that it is not already in use by another extension."
@@ -64,8 +68,8 @@
     "original": "How to check or change the Talkie shortcut key."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Du kan også bruge Talkie genvejstast:",
-    "original": "You can also use the Talkie shortcut key:"
+    "message": "En bekvem mulighed er at bruge Talkie genvejstast:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Vælg den ønskede tekst på en webside.",
@@ -185,12 +189,12 @@
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Vælg den ønskede tekst på hjemmesiden først!",
-    "original": "Please select desired text on the website first!"
+    "message": "Vælg ønskede tekst på hjemmesiden først.  Du kan også vælge tekst, derefter højreklikke på den og vælge Talkie i menuen.",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Undskyld ulejligheden.",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
+    "message": "Talkie kan ikke få adgang til valgte tekst fra denne type side.  Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren.  Du kan også prøve at markere tekst, derefter højreklikke på den og vælge Talkie i menuen.  Undskyld ulejligheden.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

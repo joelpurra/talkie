@@ -15,10 +15,13 @@
     "message": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Open the website"
+    "message": "Open the Talkie website"
   },
   "commandStartStopDescription": {
     "message": "Start/stop reading selection"
+  },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
     "message": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
@@ -51,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "Usage"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "If the key does not work, please check that it is not already in use by another extension."
   },
@@ -58,7 +64,7 @@
     "message": "How to check or change the Talkie shortcut key."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "You can also use the Talkie shortcut key:"
+    "message": "A convenient option is to use the Talkie shortcut key:"
   },
   "frontend_aboutUsageStep01": {
     "message": "Select desired text on any web page."
@@ -158,7 +164,7 @@
     "message": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Please select desired text on the website first!"
+    "message": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -170,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
+    "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

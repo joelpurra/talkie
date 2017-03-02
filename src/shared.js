@@ -65,6 +65,12 @@ const configuration = {
     },
 };
 
+const uiLocale = chrome.i18n.getMessage("@@ui_locale");
+const messagesLocale = chrome.i18n.getMessage("extensionLocale");
+
+log("Locale (@@ui_locale)", uiLocale);
+log("Locale (messages.json)", messagesLocale);
+
 const openUrlInNewTab = (url) => promiseTry(
     () => {
         if (typeof url !== "string") {
@@ -200,6 +206,16 @@ const getCurrentActiveTab = () => new Promise(
         }
     }
 );
+
+const getCurrentActiveTabId = () => getCurrentActiveTab()
+    .then((activeTab) => {
+        if (activeTab) {
+            return activeTab.id;
+        }
+
+        // NOTE: some tabs can't be retreived.
+        return null;
+    });
 
 const isCurrentPageInternalToTalkie = () => promiseTry(
     () => getCurrentActiveTab()
@@ -875,6 +891,7 @@ api.shared = {
     flatten,
     getCurrentActiveNormalLoadedTab,
     getCurrentActiveTab,
+    getCurrentActiveTabId,
     getMappedVoices,
     getRandomInt,
     getStoredValue,
@@ -887,12 +904,14 @@ api.shared = {
     log,
     logDebug,
     logError,
+    messagesLocale,
     openUrlFromConfigurationInNewTab,
     promiseSeries,
     promiseTry,
     setStoredValue,
     shallowCopy,
     TalkieProgress,
+    uiLocale,
 };
 
 log("Done", "Loading shared code");

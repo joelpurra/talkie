@@ -15,13 +15,16 @@
     "message": "Öppna donationssidan"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öppna hemsidan"
+    "message": "Öppna Talkie-webbplatsen"
   },
   "commandStartStopDescription": {
     "message": "Börja/sluta läsa upp markerad text"
   },
+  "contextMenuStartStopText": {
+    "message": "Talkie: \"%s\""
+  },
   "extensionDescription": {
-    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
+    "message": "Markera text på valfri webbplats, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen."
   },
   "extensionLocale": {
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
@@ -51,6 +54,9 @@
   "frontend_aboutUsageHeading": {
     "message": "Användning"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg."
   },
@@ -58,10 +64,10 @@
     "message": "Steg för att kontrollera eller ändra Talkies kortkommando."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Du kan även använda Talkie-kortkommandot:"
+    "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:"
   },
   "frontend_aboutUsageStep01": {
-    "message": "Markera önskad text på valfri hemsida."
+    "message": "Markera önskad text på valfri webbplats."
   },
   "frontend_aboutUsageStep02": {
     "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält"
@@ -158,7 +164,7 @@
     "message": "Dina donationer uppskattas!"
   },
   "noTextSelectedMessage": {
-    "message": "Vänligen markera önskad text först!"
+    "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -170,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren.  Jag ber om ursäkt för besväret."
+    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida. Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren. Du kan även testa att markera text, sedan högerklicka på den, och välja Talkie i menyn. Jag ber om ursäkt för besväret."
   }
 }

@@ -36,6 +36,7 @@ resources/style/options.css
 resources/style/popup.css
 resources/style/shared.css
 src/background.js
+src/language.js
 src/options.html
 src/options.js
 src/popup-start.html

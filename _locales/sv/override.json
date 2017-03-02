@@ -20,15 +20,15 @@
     "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öppna hemsidan",
-    "original": "Open the website"
+    "message": "Öppna Talkie-webbplatsen",
+    "original": "Open the Talkie website"
   },
   "commandStartStopDescription": {
     "message": "Börja/sluta läsa upp markerad text",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "Markera text på valfri hemsida, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen.",
+    "message": "Markera text på valfri webbplats, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen.",
     "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
@@ -55,6 +55,10 @@
     "message": "Användning",
     "original": "Usage"
   },
+  "frontend_aboutUsageSelectionContextMenuDescription": {
+    "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
   "frontend_aboutUsageShortcutKeyAlternative03": {
     "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg.",
     "original": "If the key does not work, please check that it is not already in use by another extension."
@@ -64,11 +68,11 @@
     "original": "How to check or change the Talkie shortcut key."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Du kan även använda Talkie-kortkommandot:",
-    "original": "You can also use the Talkie shortcut key:"
+    "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
   },
   "frontend_aboutUsageStep01": {
-    "message": "Markera önskad text på valfri hemsida.",
+    "message": "Markera önskad text på valfri webbplats.",
     "original": "Select desired text on any web page."
   },
   "frontend_aboutUsageStep02": {
@@ -185,12 +189,12 @@
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "Vänligen markera önskad text först!",
-    "original": "Please select desired text on the website first!"
+    "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida.  Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren.  Jag ber om ursäkt för besväret.",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. I'm sorry for the inconvenience."
+    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida. Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren. Du kan även testa att markera text, sedan högerklicka på den, och välja Talkie i menyn. Jag ber om ursäkt för besväret.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

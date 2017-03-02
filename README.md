@@ -29,8 +29,10 @@
 1. **Select desired text** on any web page.
 1. **Click the Talkie button** in your browser bar <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
 
-You can also use the **Talkie shortcut key**:
 
+You can also **select the text, then right click on it**, and choose <img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome.
+
+A convenient option is to use the **Talkie shortcut key**:
 - <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on macOS
 - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on Windows, Linux, Chrome OS
 - If the key does not work, please check that it is not already in use by another extension.

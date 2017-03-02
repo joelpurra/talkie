@@ -9,6 +9,6 @@
   },
   "noTextSelectedMessage": {
     "message": "אנא בחר טסקט רצוי באתר כלשהו",
-    "original": "Please select desired text on the website first!"
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   }
 }
