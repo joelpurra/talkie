@@ -24,6 +24,7 @@ chrome:false,
 executeLogToPage:false,
 isUndefinedOrNullOrEmptyOrWhitespace:false,
 log:false,
+logError:false,
 messagesLocale:false,
 promiseTry:false,
 shallowCopy:false,
@@ -48,7 +49,13 @@ const detectPageLanguage = () => new Promise(
             chrome.tabs.detectLanguage((language) => {
                 // https://developer.chrome.com/extensions/tabs#method-detectLanguage
                 if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
+                    // https://github.com/joelpurra/talkie/issues/3
+                    // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
+                    // As this is not critical, just log the error and resolve with null.
+                    // return reject(chrome.runtime.lastError);
+                    logError("detectPageLanguage", chrome.runtime.lastError);
+
+                    return resolve(null);
                 }
 
                 log("detectPageLanguage", "Browser detected primary page language", language);

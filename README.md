@@ -44,7 +44,7 @@ A convenient option is to use the **Talkie shortcut key**:
       In Chrome, click *<a href="chrome://extensions/">Extensions</a>* in the *Window* menu.
     </li>
     <li>
-      At the bottom of the extensions list, click *Keyboard shortcuts* in the lower right corner.
+      At the bottom of the extensions list, click *<a href="chrome://extensions/configureCommands">Keyboard shortcuts</a>* in the lower right corner.
       <p align="center">
         <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-01.png" alt="Screenshot of Chrome's list of installed extensions, focusing on Talkie" title="Chrome's installed extensions" />
       </p>
@@ -56,6 +56,9 @@ A convenient option is to use the **Talkie shortcut key**:
       </p>
     </li>
   </ol>
+  <p>
+    You can also reach the extensions page directly with [`chrome://extensions/`](chrome://extensions/) and the keyboard shortcut configuration with [`chrome://extensions/configureCommands`](chrome://extensions/configureCommands), but you might have to copy-paste the address manually.
+  </p>
 </details>
 
 

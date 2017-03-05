@@ -453,8 +453,10 @@ const preventExtensionSuspend = () => promiseTry(
                 return;
             }
 
-            if (preventSuspensionProducingPort) {
-                throw new Error("The preventSuspensionProducingPort was already set.");
+            // NOTE: the chrome.runtime.onConnect event is triggered once per frame on the page.
+            // Save the first port, ignore the rest.
+            if (preventSuspensionProducingPort !== null) {
+                return;
             }
 
             preventSuspensionProducingPort = port;
@@ -476,9 +478,15 @@ const allowExtensionSuspend = () => promiseTry(
     () => {
         log("Start", "allowExtensionSuspend");
 
-        if (preventSuspensionProducingPort) {
-            // https://developer.chrome.com/extensions/runtime#type-Port
-            preventSuspensionProducingPort.disconnect();
+        if (preventSuspensionProducingPort !== null) {
+            try {
+                // https://developer.chrome.com/extensions/runtime#type-Port
+                // NOTE: should work irregardless if the port was connected or not.
+                preventSuspensionProducingPort.disconnect();
+            } catch (error) {
+                logError("Error", "allowExtensionSuspend", error);
+            }
+
             preventSuspensionProducingPort = null;
         }
 

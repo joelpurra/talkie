@@ -284,6 +284,10 @@ const canTalkieRunInTab = () => promiseTry(
                         return false;
                     }
 
+                    if (url.startsWith("vivaldi://")) {
+                        return false;
+                    }
+
                     if (url.startsWith("chrome-extension://")) {
                         return false;
                     }
