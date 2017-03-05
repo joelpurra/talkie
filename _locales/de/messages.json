@@ -1,30 +1,30 @@
 {
   "buttonDefaultTitle": {
-    "message": "Lesen Sie die Textauswahl laut"
+    "message": "Textauswahl laut vorlesen"
   },
   "buttonStopTitle": {
-    "message": "Hör auf zu reden"
+    "message": "Vorlesen unterbrechen"
   },
   "commandBrowserActionDescription": {
-    "message": "Lesen Sie die Textauswahl laut"
+    "message": "Textauswahl laut vorlesen"
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Öffnen Sie die Chrome Web Store Seite"
+    "message": "Chrome Web Store Seite öffnen"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Öffnen Sie die Spendenseite"
+    "message": "Spendenseite öffnen"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öffnen Sie die Talkie-Website"
+    "message": "Talkie-Website öffnen"
   },
   "commandStartStopDescription": {
-    "message": "Start/Stop Leseauswahl"
+    "message": "Start/Stop Vorlesen der Auswahl"
   },
   "contextMenuStartStopText": {
     "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
-    "message": "Wählen Sie Text auf einer beliebigen Webseite aus und lassen Sie den Computer laut für Sie lesen, indem Sie einfach auf die Schaltfläche Talkie klicken."
+    "message": "Wähle den Text auf einer beliebigen Webseite aus und lass ihn dir vom Computer laut vorlesen. Klicke hierfür einfach auf den Talkie-Button."
   },
   "extensionLocale": {
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
@@ -43,34 +43,34 @@
     "message": "Quellcode auf Github"
   },
   "frontend_aboutHeading": {
-    "message": "Über: Text-to-Speech Browser Erweiterung Taste"
+    "message": "Über: Browser Erweiterung für Text-nach-Sprache Konverter"
   },
   "frontend_aboutLinkText": {
     "message": "Über"
   },
   "frontend_aboutThankYou": {
-    "message": "Vielen Dank für die Verwendung von Talkie - wenn es dir gefällt, sag deinen Freunden!"
+    "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!"
   },
   "frontend_aboutUsageHeading": {
     "message": "Verwendung"
   },
   "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Sie können auch den Text auswählen, dann mit der rechten Maustaste darauf klicken und im Menü Talkie wählen.  Auf diese Weise funktioniert auch in PDF-Dateien und einige spezielle Arten von Seiten in Chrome."
+    "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen.  Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome."
   },
   "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Wenn der Schlüssel nicht funktioniert, überprüfen Sie bitte, dass er noch nicht von einer anderen Erweiterung benutzt wird."
+    "message": "Wenn die Tastenkombination nicht funktioniert, stelle bitte sicher, dass sie nicht bereits durch eine andere Erweiterung belegt ist."
   },
   "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "So überprüfen oder ändern Sie die Talkie-Tastenkombination."
+    "message": "So überprüfst oder änderst du die Talkie-Tastenkombination."
   },
   "frontend_aboutUsageShortcutKeyDescription": {
     "message": "Eine bequeme Option ist, die Talkie-Tastenkombination zu verwenden:"
   },
   "frontend_aboutUsageStep01": {
-    "message": "Wählen Sie den gewünschten Text auf einer beliebigen Webseite aus."
+    "message": "Markiere den gewünschten Text auf einer beliebigen Webseite."
   },
   "frontend_aboutUsageStep02": {
-    "message": "Klicken Sie in der Browserleiste auf die Schaltfläche Talkie"
+    "message": "Klicke in der Browserleiste auf den Talkie-Button"
   },
   "frontend_donateLinkText": {
     "message": "Spenden"
@@ -79,25 +79,25 @@
     "message": "Weitere Spendenoptionen"
   },
   "frontend_donate_usd100Now": {
-    "message": "Spende USD 100 jetzt"
+    "message": "Jetzt USD 100 spenden"
   },
   "frontend_donate_usd25Now": {
-    "message": "Spende USD 25 jetzt"
+    "message": "Jetzt USD 25 spenden"
   },
   "frontend_donate_usd5Now": {
-    "message": "Spende USD 5 jetzt"
+    "message": "Jetzt USD 5 spenden"
   },
   "frontend_hideDonateButtonsInPopup": {
-    "message": "Spenden-Schaltflächen im Popup ausblenden"
+    "message": "Spenden-Buttons im Popup ausblenden"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Es ist nicht so, dass ich nicht will, dass du spende, um Talkie und Open Source Entwicklung im Allgemeinen zu unterstützen - ich möchte einfach nicht, dass du dich ärgern würdest, wenn du Talkie an erster Stelle verwende.  Wenn du die Spenden-Buttons im Popup deaktivierst, hoffe ich, dass du auch Talkie in irgendeiner Weise unterstützen wirst!  Die Tasten sind immer hier unter den Optionen verfügbar, nur für den Fall."
+    "message": "Es ist nicht so, dass ich nicht wollte dass du Talkie und Open Source Entwicklung im Allgemeinen durch eine Spende unterstützt - du sollst dich nur einfach bei der Nutzung von Talkie belästigt fühlen.  Wenn du daher die Spenden-Buttons im Popup deaktivierst, hoffe ich, dass du Talkie irgendwie anders unterstützst!  Die Spenden-Buttons sind immer hier unter den Optionen zu finden, nur für den Fall."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Spenden: Unterstützung der Open Source Entwicklung"
+    "message": "Spenden: unterstütze Open Source Entwicklung"
   },
   "frontend_licenseCLADescription": {
-    "message": "Alle Beiträge zu Talkie werden unter dem Contributor License Agreement (CLA) erstellt."
+    "message": "Alle Beiträge zu Talkie wurden unter dem Contributor License Agreement (CLA) erstellt."
   },
   "frontend_licenseCLALinkText": {
     "message": "Contributor License Agreement (CLA)"
@@ -118,16 +118,16 @@
     "message": "Bewerte Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie wurde ein paar Tage vor dem neuen Jahr 2016/2017 entwickelt, auf eine Herausforderung von einem Freund.  Die Herausforderung begann mit der Frage: Beim Pendeln zur Arbeit ist es möglich, einen Artikel zu hören, anstatt es zu lesen?  Einfach, sagte ich und machte sich darum, es zu beweisen - oder zumindest, um meinen Browser mit einer dummen Computerstimme auszudrücken.  Die Basisversion, ohne Benutzeroberfläche, erwies sich als trivial zu erstellen.  Hinzufügen einer Benutzeroberfläche, dauerte etwas länger.  Hinzufügen der richtigen Sprache Erkennung ein Bündel mehr Code.  Überwindung von Bugs im Browser noch mehr Arbeit.  Die Liste der Verbesserungen und Features geht weiter - und ein paar tausend Zeilen Code später, du siehst das Endergebnis."
+    "message": "Ich habe Talkie ein paar Tage vor Silvester 2016/2017 entwickelt, auf eine Bemerkung eines Freunds hin.  Er begann mit der herausfordernden Frage: Ist es eigentlich beim Pendeln zur Arbeit möglich, einen Artikel anzuhören anstatt ihn zu lesen?  Nichts einfacher als das, sagte ich und machte mich daran, das zu beweisen - oder zumindest ließ ich meinen Browser Texte in einer albernen Computerstimme vorlesen.  Die Entwicklung einer ersten einfachen Version ohne Benutzeroberfläche war einfach.  Das Hinzufügen einer Benutzeroberfläche dauerte etwas länger. Eine ordentliche Spracherkennung, nur ein bisschen mehr Code.  Bugs im Browser zu entfernen war noch mehr Arbeit.  Die Liste der Verbesserungen und Features geht weiter - und ein paar tausend Zeilen Code später siehst du hier das Endergebnis."
   },
   "frontend_storyHeading": {
-    "message": "Geschichte: Wie hat Talkie angefangen"
+    "message": "Geschichte: so hat alles mit Talkie angefangen"
   },
   "frontend_storyLinkText": {
     "message": "Geschichte"
   },
   "frontend_storyThankYou": {
-    "message": "Vielen Dank für die Verwendung von Talkie - wenn es dir gefällt, sag deinen Freunden!"
+    "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!"
   },
   "frontend_supportAndFeedback": {
     "message": "Unterstützung und Feedback"
@@ -142,29 +142,29 @@
     "message": "Verfügbare Stimmen"
   },
   "frontend_voicesDescription": {
-    "message": "Talkie macht automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar.  Hier sehen und testen Sie installierte Stimmen für jede Sprache."
+    "message": "Talkie hat eine automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar. Hier kannst du alle installierten Stimmen für jede Sprache sehen und testen."
   },
   "frontend_voicesHeading": {
-    "message": "Stimmen: testen Sie Ihren Browser"
+    "message": "Stimmen: teste deinen Browser"
   },
   "frontend_voicesLinkText": {
     "message": "Stimmen"
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
-    "message": "Der schnelle braune Fuchs springt über den faulen Hund."
+    "message": "Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich."
   },
   "frontend_voicesSampleTextHeading": {
-    "message": "Beispieltext für Talkie laut zu lesen"
+    "message": "Beispieltext für Talkie zum Vorlesen"
   },
   "frontend_voicesShowAllVoices": {
-    "message": "Zeige alle Stimmen"
+    "message": "Alle Stimmen anzeigen"
   },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "Ihre Spenden werden geschätzt!"
+    "message": "Ich freue mich über jede Spende!"
   },
   "noTextSelectedMessage": {
-    "message": "Bitte wählen Sie zuerst den gewünschten Text auf der Website aus.  Sie können auch Text auswählen, dann mit der rechten Maustaste darauf klicken und im Menü Talkie wählen."
+    "message": "Bitte wähle zuerst den gewünschten Text auf der Website aus. Du kannst auch Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
@@ -176,6 +176,6 @@
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
-    "message": "Talkie kann nicht auf den ausgewählten Text von dieser Art von Seite zugreifen.  Es ist eine ganz besondere Seite, und es gibt Sicherheitsbeschränkungen, die vom Browser eingefügt werden.  Sie können auch versuchen, Text auszuwählen, dann klicken Sie mit der rechten Maustaste darauf und wählen Sie im Menü Talkie.  Ich entschuldige mich für die Unannehmlichkeiten."
+    "message": "Talkie kann nicht auf den ausgewählten Text von dieser bestimmten Seite zugreifen. Auf dieser speziellen Seite wurden Sicherheitsbeschränkungen durch den Browser eingefügt. Du kannst auch versuchen Text zu markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Ich entschuldige mich für die Unannehmlichkeiten."
   }
 }
