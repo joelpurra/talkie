@@ -56,7 +56,7 @@
     "original": "Usage"
   },
   "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen.  Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome.",
+    "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
   },
   "frontend_aboutUsageShortcutKeyAlternative03": {
@@ -104,7 +104,7 @@
     "original": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Es ist nicht so, dass ich nicht wollte dass du Talkie und Open Source Entwicklung im Allgemeinen durch eine Spende unterstützt - du sollst dich nur einfach bei der Nutzung von Talkie belästigt fühlen.  Wenn du daher die Spenden-Buttons im Popup deaktivierst, hoffe ich, dass du Talkie irgendwie anders unterstützst!  Die Spenden-Buttons sind immer hier unter den Optionen zu finden, nur für den Fall.",
+    "message": "Es ist nicht so, dass ich nicht wollte dass du Talkie und Open Source Entwicklung im Allgemeinen durch eine Spende unterstützt - du sollst dich nur einfach bei der Nutzung von Talkie nicht belästigt fühlen. Wenn du daher die Spenden-Buttons im Popup deaktivierst, hoffe ich, dass du Talkie irgendwie anders unterstützst! Die Spenden-Buttons sind immer hier unter den Optionen zu finden, nur für den Fall.",
     "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
@@ -128,7 +128,7 @@
     "original": "Rate Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Ich habe Talkie ein paar Tage vor Silvester 2016/2017 entwickelt, auf eine Bemerkung eines Freunds hin.  Er begann mit der herausfordernden Frage: Ist es eigentlich beim Pendeln zur Arbeit möglich, einen Artikel anzuhören anstatt ihn zu lesen?  Nichts einfacher als das, sagte ich und machte mich daran, das zu beweisen - oder zumindest ließ ich meinen Browser Texte in einer albernen Computerstimme vorlesen.  Die Entwicklung einer ersten einfachen Version ohne Benutzeroberfläche war einfach.  Das Hinzufügen einer Benutzeroberfläche dauerte etwas länger. Eine ordentliche Spracherkennung, nur ein bisschen mehr Code.  Bugs im Browser zu entfernen war noch mehr Arbeit.  Die Liste der Verbesserungen und Features geht weiter - und ein paar tausend Zeilen Code später siehst du hier das Endergebnis.",
+    "message": "Ich habe Talkie ein paar Tage vor Silvester 2016/2017 entwickelt, auf eine Bemerkung eines Freunds hin. Er begann mit der herausfordernden Frage: Ist es eigentlich beim Pendeln zur Arbeit möglich, einen Artikel anzuhören anstatt ihn zu lesen? Nichts einfacher als das, sagte ich und machte mich daran, das zu beweisen - oder zumindest ließ ich meinen Browser Texte in einer albernen Computerstimme vorlesen. Die Entwicklung einer ersten einfachen Version ohne Benutzeroberfläche war einfach. Das Hinzufügen einer Benutzeroberfläche dauerte etwas länger. Eine ordentliche Spracherkennung, nur ein bisschen mehr Code. Bugs im Browser zu entfernen war noch mehr Arbeit. Die Liste der Verbesserungen und Features geht weiter - und ein paar tausend Zeilen Code später siehst du hier das Endergebnis.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
