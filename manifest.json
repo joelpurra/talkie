@@ -8,9 +8,16 @@
   "homepage_url": "https://github.com/joelpurra/talkie",
   "background": {
     "scripts": [
-      "src/shared.js",
-      "src/language.js",
-      "src/background.js"
+      "src/shared/shared.js",
+      "src/background/activity.js",
+      "src/background/button-popup.js",
+      "src/background/commands.js",
+      "src/background/context-menu.js",
+      "src/background/icons.js",
+      "src/background/language.js",
+      "src/background/speak.js",
+      "src/background/text.js",
+      "src/background/background.js"
     ],
     "persistent": false
   },
@@ -48,7 +55,7 @@
     }
   },
   "options_ui": {
-    "page": "src/options.html",
+    "page": "src/options/options.html",
     "chrome_style": true
   },
   "requirements": {},
