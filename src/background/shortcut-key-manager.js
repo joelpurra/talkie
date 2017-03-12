@@ -23,32 +23,32 @@ import {
 } from "../shared/promise";
 
 import {
-    urls,
-} from "./configuration";
+    log,
+    logError,
+} from "../shared/log";
 
-export const openUrlInNewTab = (url) => promiseTry(
-    () => {
-        if (typeof url !== "string") {
-            throw new Error("Bad url: " + url);
-        }
-
-        // NOTE: only https urls.
-        if (!url.startsWith("https://")) {
-            throw new Error("Bad url, only https:// allowed: " + url);
-        }
-
-        chrome.tabs.create({active: true, url: url});
+export default class ShortcutKeyManager {
+    constructor(commandHandler) {
+        this.commandHandler = commandHandler;
     }
-);
 
-export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
-    () => {
-        const url = urls[id];
+    handler(command) {
+        return promiseTry(
+            () => {
+                log("Start", "handler", command);
 
-        if (typeof url !== "string") {
-            throw new Error("Bad url for id: " + id);
-        }
+                // NOTE: straight mapping from command to action.
+                return this.commandHandler.handle(command)
+                    .then((result) => {
+                        log("Done", "handler", command, result);
 
-        return openUrlInNewTab(url);
+                        return undefined;
+                    })
+                    .catch((error) => {
+                        logError("Error", "handler", command, error);
+
+                        throw error;
+                    });
+            });
     }
-);
+}

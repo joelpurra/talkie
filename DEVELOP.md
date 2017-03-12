@@ -108,7 +108,15 @@ git checkout develop
 # Start a new feature. Us a descriptive "<feature-name>", such as "automatic-language-detection".
 git flow feature start <feature-name>
 
+# Watch the source files for changes; one command per terminal.
+npm run --silent watch:background
+npm run --silent watch:popup
+npm run --silent watch:options
+
 # Code your feature and add the files.
+
+# Make sure the code builds.
+npm run --silent rebuild
 
 # Fix any warnings and errors before committing.
 npm run --silent test
@@ -135,6 +143,9 @@ These steps are only done by the project owner.
 ```bash
 # Finish up any features, switch to develop.
 git checkout develop
+
+# Make sure the code builds.
+npm run --silent rebuild
 
 # Fix any warnings and errors before committing.
 npm run --silent test

@@ -18,20 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-api:false,
-chrome:false,
-executeLogToPage:false,
-isUndefinedOrNullOrEmptyOrWhitespace:false,
-log:false,
-logError:false,
-messagesLocale:false,
-promiseTry:false,
-shallowCopy:false,
-window:false,
-*/
+import {
+    log,
+    logError,
+} from "../shared/log";
 
-log("Start", "Loading language code");
+import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
+    isUndefinedOrNullOrEmptyOrWhitespace,
+    shallowCopy,
+} from "../shared/basic";
+
+import {
+    executeLogToPage,
+} from "../shared/execute";
+
+import {
+    messagesLocale,
+} from "../shared/configuration";
 
 const noTextSelectedMessage = {
     text: chrome.i18n.getMessage("noTextSelectedMessage"),
@@ -43,7 +50,7 @@ const noVoiceForLanguageDetectedMessage = {
     effectiveLanguage: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
 };
 
-const detectPageLanguage = () => new Promise(
+export const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
         try {
             chrome.tabs.detectLanguage((language) => {
@@ -277,15 +284,8 @@ const useFallbackMessageIfNoLanguageDetected = (selectionsWithValidTextAndDetect
     }
 );
 
-const cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
+export const cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
     .then(() => getSelectionsWithValidText(selections))
     .then((selectionsWithValidText) => detectAndAddLanguageForSelections(selectionsWithValidText))
     .then((selectionsWithValidTextAndDetectedLanguage) => getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage))
     .then((selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) => useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage));
-
-api.language = {
-    detectPageLanguage,
-    cleanupSelections,
-};
-
-log("Done", "Loading language code");

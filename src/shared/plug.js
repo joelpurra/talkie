@@ -18,6 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
+    executeScriptInTopFrame,
+    executeLogToPageWithColor,
+} from "../shared/execute";
+
 const executePlug = () => promiseTry(
     () => {
         return Promise.resolve()
@@ -36,7 +45,7 @@ const executeGetTalkieWasPlugged = () => executeScriptInTopFrame(executeGetTalki
 const executeSetTalkieWasPluggedCode = "window.talkieWasPlugged = true;";
 const executeSetTalkieWasPlugged = () => executeScriptInTopFrame(executeSetTalkieWasPluggedCode);
 
-const executePlugOnce = () => {
+export const executePlugOnce = () => {
     return executeGetTalkieWasPlugged()
         .then((talkieWasPlugged) => {
             if (talkieWasPlugged && talkieWasPlugged.toString() !== "true") {

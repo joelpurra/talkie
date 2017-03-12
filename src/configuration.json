@@ -1,0 +1,8 @@
+{
+  "urls": {
+    "options": "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
+    "main": "https://github.com/joelpurra/talkie",
+    "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+    "donate": "https://joelpurra.com/donate"
+  }
+}

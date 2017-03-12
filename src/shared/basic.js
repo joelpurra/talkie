@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const shallowCopy = (...objs) => Object.assign({}, ...objs);
+export const shallowCopy = (...objs) => Object.assign({}, ...objs);
 
-const last = (indexable) => indexable[indexable.length - 1];
+export const last = (indexable) => indexable[indexable.length - 1];
 
-const flatten = (deepArray) => {
+export const flatten = (deepArray) => {
     if (!Array.isArray(deepArray)) {
         return deepArray;
     }
@@ -38,9 +38,9 @@ const flatten = (deepArray) => {
     return [].concat(flatten(deepArray[0])).concat(flatten(deepArray.slice(1)));
 };
 
-const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
+export const isUndefinedOrNullOrEmptyOrWhitespace = (str) => !(str && typeof str === "string" && str.length > 0 && str.trim().length > 0);
 
-const getRandomInt = (min, max) => {
+export const getRandomInt = (min, max) => {
     if (typeof min === "undefined") {
         min = Number.MIN_VALUE;
         max = Number.MAX_VALUE;

@@ -1,4 +1,28 @@
-class TalkieProgress {
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://github.com/joelpurra/talkie>
+
+Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+import {
+    knownEvents,
+} from "../shared/events";
+
+export default class TalkieProgress {
     constructor(broadcaster, min, max, current) {
         this.broadcaster = broadcaster;
         this.interval = null;
@@ -116,15 +140,5 @@ class TalkieProgress {
         this.broadcastEvent(knownEvents.finishProgress);
 
         this.updateProgress();
-    }
-
-    start() {
-        const self = this;
-
-        return Promise.resolve()
-            .then(() => self.broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => self.resetProgress(0, actionData.text.length, 0)))
-            .then(() => self.broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => self.startSegment(actionData.textPart.length)))
-            .then(() => self.broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => self.endSegment()))
-            .then(() => self.broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => self.finishProgress()));
     }
 }

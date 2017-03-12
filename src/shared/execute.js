@@ -18,7 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const executeScriptInTopFrame = (code) => new Promise(
+import {
+    log,
+} from "../shared/log";
+
+import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
+    extensionShortName,
+} from "./configuration";
+
+export const executeScriptInTopFrame = (code) => new Promise(
     (resolve, reject) => {
         try {
             log("About to execute code in page context", code);
@@ -43,7 +55,7 @@ const executeScriptInTopFrame = (code) => new Promise(
     }
 );
 
-const executeScriptInAllFrames = (code) => new Promise(
+export const executeScriptInAllFrames = (code) => new Promise(
     (resolve, reject) => {
         try {
             log("About to execute code in page context", code);
@@ -82,7 +94,7 @@ const variableToSafeString = (v) => {
 
 const executeLogToPageCode = "console.log(%a);";
 
-const executeLogToPage = (...args) => promiseTry(
+export const executeLogToPage = (...args) => promiseTry(
     () => {
         const now = new Date().toISOString();
 
@@ -105,7 +117,7 @@ const executeLogToPage = (...args) => promiseTry(
 
 const executeLogToPageWithColorCode = "console.log(%a);";
 
-const executeLogToPageWithColor = (...args) => promiseTry(
+export const executeLogToPageWithColor = (...args) => promiseTry(
     () => {
         const now = new Date().toISOString();
 

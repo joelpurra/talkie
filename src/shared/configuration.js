@@ -18,19 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// TODO: move to a file?
-// TODO: read from manifest.json?
-// TODO: allow overrides?
-const configuration = {
-    urls: {
-        options: "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
-        main: "https://github.com/joelpurra/talkie",
-        chromewebstore: "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-        donate: "https://joelpurra.com/donate",
-    },
-};
+import configuration from "../configuration.json";
 
-const extensionShortName = chrome.i18n.getMessage("extensionShortName");
+export const extensionShortName = chrome.i18n.getMessage("extensionShortName");
 
-const uiLocale = chrome.i18n.getMessage("@@ui_locale");
-const messagesLocale = chrome.i18n.getMessage("extensionLocale");
+export const uiLocale = chrome.i18n.getMessage("@@ui_locale");
+export const messagesLocale = chrome.i18n.getMessage("extensionLocale");
+
+export const urls = configuration.urls;

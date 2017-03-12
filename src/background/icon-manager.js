@@ -18,36 +18,36 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-api:false,
-log:false,
-chrome:false,
-*/
+import {
+    log,
+} from "../shared/log";
 
-const getIconModePaths = (name) => {
-    return {
+export default class IconManager {
+    getIconModePaths(name) {
+        return {
         // NOTE: icons in use before Chrome 53 were 19x19 and 38x38.
         // NOTE: icons in use from Chrome 53 (switching to Material design) are 16x16 and 32x32.
         // NOTE: keeping larger icons to accomodate future changes.
-        "16": `resources/icon/icon-${name}/icon-16x16.png`,
-        "32": `resources/icon/icon-${name}/icon-32x32.png`,
-        "48": `resources/icon/icon-${name}/icon-48x48.png`,
-        "64": `resources/icon/icon-${name}/icon-64x64.png`,
+            "16": `resources/icon/icon-${name}/icon-16x16.png`,
+            "32": `resources/icon/icon-${name}/icon-32x32.png`,
+            "48": `resources/icon/icon-${name}/icon-48x48.png`,
+            "64": `resources/icon/icon-${name}/icon-64x64.png`,
 
         // NOTE: passing the larger icons slowed down the UI by several hundred milliseconds per icon switch.
         // "128": `resources/icon/icon-${name}/icon-128x128.png`,
         // "256": `resources/icon/icon-${name}/icon-256x256.png`,
         // "512": `resources/icon/icon-${name}/icon-512x512.png`,
         // "1024": `resources/icon/icon-${name}/icon-1024x1024.png`,
+        };
     };
-};
 
-const setIconMode = (name) => new Promise(
+    setIconMode(name) {
+        return new Promise(
     (resolve, reject) => {
         try {
             log("Start", "Changing icon to", name);
 
-            const paths = getIconModePaths(name);
+            const paths = this.getIconModePaths(name);
             const details = {
                 path: paths,
             };
@@ -69,11 +69,12 @@ const setIconMode = (name) => new Promise(
         }
     }
 );
+    }
 
-const setIconModePlaying = () => setIconMode("stop");
-const setIconModeStopped = () => setIconMode("play");
-
-api.icons = {
-    setIconModePlaying,
-    setIconModeStopped,
-};
+    setIconModePlaying() {
+        return this.setIconMode("stop");
+    }
+    setIconModeStopped() {
+        return this.setIconMode("play");
+    }
+}

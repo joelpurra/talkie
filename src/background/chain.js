@@ -18,33 +18,36 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const promiseTry = (fn) => new Promise(
-    (resolve, reject) => {
-        try {
-            const result = fn();
+import {
+    log,
+    logError,
+} from "../shared/log";
 
-            resolve(result);
-        } catch (error) {
-            reject(error);
-        }
+export default class Chain {
+    constructor() {
+        this.chainPromise = Promise.resolve();
+        this.length = 0;
     }
-);
 
-export const promiseSeries = (promises, state) => promiseTry(
-    () => {
-        if (promises.length === 0) {
-            return undefined;
-        }
+    link(promise) {
+        this.length++;
+        const currentLength = this.length;
 
-        const first = promises[0];
+        log("Start", "Chain", currentLength);
 
-        if (promises.length === 1) {
-            return Promise.resolve(first(state));
-        }
+        this.chainPromise = this.chainPromise
+            .then(promise)
+            .then((result) => {
+                log("Done", "Chain", currentLength);
 
-        const rest = promises.slice(1);
+                return result;
+            })
+            .catch((error) => {
+                logError("Error", "Chain", currentLength, error);
 
-        return Promise.resolve(first(state))
-            .then((result) => promiseSeries(rest, result));
+                throw error;
+            });
+
+        return this.chainPromise;
     }
-);
+}

@@ -18,17 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-api:false,
-last:false,
-*/
+import {
+    last,
+} from "../shared/basic";
 
-const splitTextToParagraphs = (text) => {
+export const splitTextToParagraphs = (text) => {
     // NOTE: in effect discarding empty paragraphs.
     return text.split(/\n+/);
 };
 
-const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
+export const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
     // NOTE: in effect merging multiple spaces in row to a single space.
     const spacedTextParts = text.split(/ +/);
 
@@ -64,9 +63,4 @@ const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
     const cleanTextParts = textParts.filter((textPart) => textPart.trim().length > 0);
 
     return cleanTextParts;
-};
-
-api.text = {
-    splitTextToParagraphs,
-    splitTextToSentencesOfMaxLength,
 };

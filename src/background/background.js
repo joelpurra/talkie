@@ -18,323 +18,160 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-allowExtensionSuspend:false,
-Broadcaster:false,
-canTalkieRunInTab:false,
-chrome:false,
-commandHandler:false,
-console:false,
-contextMenuOptionsCollection:false,
-createContextMenu:false,
-detectLanguagesAndSpeakAllSelections:false,
-detectPageLanguage:false,
-disablePopup:false,
-enablePopup:false,
-executePlugOnce:false,
-getSynthesizer:false,
-incrementCallerId:false,
-isCurrentPageInternalToTalkie:false,
-isSpeaking:false,
-isSpeakingTabId:false,
-knownEvents:false,
-log:false,
-logError:false,
-messagesLocale:false,
-openUrlFromConfigurationInNewTab:false,
-preventExtensionSuspend:false,
-Promise:false,
-promiseTry:false,
-setActiveTabAsSpeaking:false,
-setActiveTabIsDoneSpeaking:false,
-setIconModePlaying:false,
-setIconModeStopped:false,
-setTabIsDoneSpeaking:false,
-shortcutKeyCommandHandler:false,
-speakTextInLanguage:false,
-speakTextInVoice:false,
-speakUserSelection:false,
-stopSpeaking:false,
-TalkieProgress:false,
-window:false,
-*/
+import {
+    promiseTry,
+} from "../shared/promise";
 
-// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
-// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
-// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-log("Start", "Loading backgrund code");
+import {
+    log,
+    logError,
+    logDebug,
+} from "../shared/log";
 
-log("Locale (@@ui_locale)", uiLocale);
-log("Locale (messages.json)", messagesLocale);
+import {
+    uiLocale,
+    messagesLocale,
+} from "../shared/configuration";
 
-const notAbleToSpeakTextFromThisSpecialTab = {
-    text: chrome.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
-    effectiveLanguage: messagesLocale,
-};
+import {
+    knownEvents,
+} from "../shared/events";
+
+import {
+    openUrlFromConfigurationInNewTab,
+} from "../shared/urls";
+
+import TalkieProgress from "../shared/talkie-progress";
+
+import Broadcaster from "../shared/broadcaster";
+
+import {
+    executePlugOnce,
+} from "../shared/plug";
+
+import SuspensionManager from "./suspension-manager";
+
+import TalkieSpeaker from "./talkie-speaker";
+
+import SpeakingStatus from "./speaking-status";
+
+import IconManager from "./icon-manager";
+
+import ButtonPopupManager from "./button-popup-manager";
+
+import CommandHandler from "./command-handler";
+
+import OnlyLastCaller from "./only-last-caller";
+
+import Chain from "./chain";
+
+import TalkieBackground from "./talkie-background";
+
+import ContextMenuManager from "./context-menu-manager";
+
+import ShortcutKeyManager from "./shortcut-key-manager";
+
+log("Start", "Loading background code");
 
 (function main() {
+    log("Locale (@@ui_locale)", uiLocale);
+    log("Locale (messages.json)", messagesLocale);
+
     // NOTE: using a chainer to be able to add click-driven speech events one after another.
-    let rootChainPromise = Promise.resolve();
+    const rootChain = new Chain();
 
-    const rootChainPromiseCatcher = (error) => {
-        logError("rootChainPromiseCatcher", error);
-    };
+    const broadcaster = new Broadcaster();
 
-    const rootChain = (promise) => {
-        rootChainPromise = rootChainPromise
-        .then(promise)
-        .catch(rootChainPromiseCatcher);
-    };
+    const onlyLastCaller = new OnlyLastCaller();
+    const shouldContinueSpeakingProvider = onlyLastCaller;
+    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider);
+    const speakingStatus = new SpeakingStatus();
 
-    // NOTE: while not strictly necessary, keep and pass a reference to the global (initialized) synthesizer.
-    let synthesizer = null;
-
-    const speakSelectionOnPage = () => promiseTry(
-        () => {
-            return Promise.all([
-                canTalkieRunInTab(),
-                isCurrentPageInternalToTalkie(),
-            ])
-                .then(([canRun, isInternalPage]) => {
-                    // NOTE: can't perform (most) actions if it's not a "normal" tab.
-                    if (!canRun) {
-                        log("iconClickAction", "Did not detect a normal tab, skipping.");
-
-                        // NOTE: don't "warn" about internal pages opening.
-                        if (isInternalPage) {
-                            log("iconClickAction", "Detected internal page, skipping warning.");
-
-                            return undefined;
-                        }
-
-                        const text = notAbleToSpeakTextFromThisSpecialTab.text;
-                        const lang = notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
-
-                        return speakTextInLanguage(broadcaster, synthesizer, text, lang);
-                    }
-
-                    return speakUserSelection(broadcaster, synthesizer);
-                });
-        }
-    );
-
-    const startStopSpeakSelectionOnPage = () => promiseTry(
-        () => {
-            return isSpeaking()
-                .then((wasSpeaking) => stopSpeaking(broadcaster, synthesizer)
-                    .then(() => {
-                        if (!wasSpeaking) {
-                            return rootChain(() => speakSelectionOnPage());
-                        }
-
-                        return undefined;
-                    }));
-        }
-    );
-
-    const iconClickAction = () => startStopSpeakSelectionOnPage();
+    const talkieBackground = new TalkieBackground(rootChain, talkieSpeaker, speakingStatus);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
         // Handled by the popup handler (popup contents) and icon click handler.
-        // "_execute_browser_action": iconClickAction,
-        "start-stop": iconClickAction,
+        // "_execute_browser_action": talkieBackground.startStopSpeakSelectionOnPage(),
+        "start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
+        "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
         "open-website-chromewebstore": () => openUrlFromConfigurationInNewTab("chromewebstore"),
         "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 
-    const stopSpeakingAction = () => promiseTry(
-        () => {
-            return stopSpeaking(broadcaster, synthesizer);
-        }
-    );
+    const commandHandler = new CommandHandler(commandMap);
+    const contextMenuManager = new ContextMenuManager(commandHandler);
+    const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
-    const startSpeakingTextInVoiceAction = (text, voice) => promiseTry(
-        () => {
-            return stopSpeaking(broadcaster, synthesizer)
-                .then(() => rootChain(() => speakTextInVoice(broadcaster, synthesizer, text, voice)));
-        }
-    );
-
-    const startSpeakingCustomTextDetectLanguage = (text) => promiseTry(
-        () => canTalkieRunInTab()
-            .then((canRun) => {
-                if (canRun) {
-                    return detectPageLanguage();
-                }
-
-                log("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab, skipping page language detection.");
-
-                return null;
-            })
-            .then((detectedPageLanguage) => {
-                const selections = [
-                    {
-                        text: text,
-                        htmlTagLanguage: null,
-                        parentElementsLanguages: [],
-                    },
-                ];
-
-                return detectLanguagesAndSpeakAllSelections(broadcaster, synthesizer, selections, detectedPageLanguage);
-            })
-    );
-
-    const contextMenuClickAction = (info) => promiseTry(
-        () => {
-            log("Start", "contextMenuClickAction", info);
-
-            if (!info) {
-                throw new Error("Unknown context menu click action info object.");
-            }
-
-            return promiseTry(
-                () => {
-                    const id = info.menuItemId;
-                    const selection = info.selectionText || null;
-
-                    if (id === contextMenuOptionsCollection.selectionContextMenuStartStop.id) {
-                        if (!selection || typeof selection !== "string" || selection.length === 0) {
-                            throw new Error("Unknown context menu click action selection was empty.");
-                        }
-
-                        return stopSpeakingAction()
-                            .then(() => startSpeakingCustomTextDetectLanguage(selection));
-                    }
-
-                    // NOTE: context menu items default to being commands.
-                    return commandHandler(commandMap, id);
-                }
-            )
-                .then(() => {
-                    log("Done", "contextMenuClickAction", info);
-
-                    return undefined;
-                });
-        }
-    );
-
-    const createContextMenus = () => {
-        const contextMenuOptionsCollectionPromises = Object.keys(contextMenuOptionsCollection).map((contextMenuOptionsCollectionKey) => {
-            const contextMenuOption = contextMenuOptionsCollection[contextMenuOptionsCollectionKey];
-
-            return createContextMenu(contextMenuOption);
-        });
-
-        return Promise.all(contextMenuOptionsCollectionPromises);
-    };
-
-    const onExtensionInstalledHandler = () => {
-        createContextMenus();
-    };
-
-    const onTabRemovedHandler = (tabId) => {
-        return isSpeakingTabId(tabId)
-            .then((isTabSpeaking) => {
-                if (isTabSpeaking) {
-                    return stopSpeaking(broadcaster, synthesizer)
-                        .then(() => setTabIsDoneSpeaking(tabId));
-                }
-
-                return undefined;
-            });
-    };
-
-    const onTabUpdatedHandler = (tabId, changeInfo) => {
-        return isSpeakingTabId(tabId)
-            .then((isTabSpeaking) => {
-                // NOTE: changeInfo only has properties which have changed.
-                // https://developer.chrome.com/extensions/tabs#event-onUpdated
-                if (isTabSpeaking && changeInfo.url) {
-                    return stopSpeaking(broadcaster, synthesizer)
-                        .then(() => setTabIsDoneSpeaking(tabId));
-                }
-
-                return undefined;
-            });
-    };
-
-    const onExtensionSuspendHandler = () => {
-        log("Start", "onExtensionSuspendHandler");
-
-        return isSpeaking()
-            .then((talkieIsSpeaking) => {
-                // Clear all text if Talkie was speaking.
-                if (talkieIsSpeaking) {
-                    return stopSpeaking();
-                }
-
-                return undefined;
-            })
-            .then(() => {
-                // Reset the system to resume playback, just to be nice to the world.
-                synthesizer.resume();
-
-                log("Done", "onExtensionSuspendHandler");
-
-                return undefined;
-            });
-    };
-
-    const broadcaster = new Broadcaster();
-    broadcaster.start();
-
-    broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => incrementCallerId());
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => incrementCallerId());
-
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executePlugOnce());
-
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => setActiveTabAsSpeaking());
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => setActiveTabIsDoneSpeaking());
-
-    // NOTE: setting icons async.
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => setIconModePlaying(), 10); return undefined; });
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => setIconModeStopped(), 10); return undefined; });
-
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => disablePopup());
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => enablePopup());
-
-    broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => preventExtensionSuspend());
-    broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => allowExtensionSuspend());
+    const suspensionManager = new SuspensionManager();
+    const iconManager = new IconManager();
+    const buttonPopupManager = new ButtonPopupManager();
 
     const progress = new TalkieProgress(broadcaster);
 
-    progress.start()
-        .then((result) => log("Done", "progress.start()", result))
-        .catch((error) => logError("Error", "progress.start()", error));
+    (function addChromeOnInstalledListeners() {
+        const onExtensionInstalledHandler = () => promiseTry(
+                () => contextMenuManager.createContextMenus()
+            );
 
-    window.broadcaster = broadcaster;
-    window.iconClick = iconClickAction;
-    window.log = log;
-    window.logError = logError;
-    window.progress = progress;
+        // NOTE: the onInstalled listener can't be added asynchronously
+        chrome.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+    }());
 
-    window.stopSpeakFromFrontend = stopSpeakingAction;
-    window.startSpeakFromFrontend = startSpeakingTextInVoiceAction;
+    (function registerBroadcastListeners() {
+        broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
 
-    chrome.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executePlugOnce());
 
-    chrome.tabs.onRemoved.addListener(onTabRemovedHandler);
-    chrome.tabs.onUpdated.addListener(onTabUpdatedHandler);
-    chrome.runtime.onSuspend.addListener(onExtensionSuspendHandler);
+        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setActiveTabIsDoneSpeaking());
 
-    // NOTE: used when the popup has been disabled.
-    chrome.browserAction.onClicked.addListener(iconClickAction);
+            // NOTE: setting icons async.
+        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; });
 
-    chrome.commands.onCommand.addListener(shortcutKeyCommandHandler);
+        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup());
 
-    chrome.contextMenus.onClicked.addListener(contextMenuClickAction);
-    enablePopup();
+        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend());
 
-    rootChain(
-        () => getSynthesizer()
-            .then((result) => {
-                synthesizer = result;
+        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0));
+        broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length));
+        broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress());
+    }());
 
-                return undefined;
-            })
-    );
+    (function addChromeListeners() {
+        chrome.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
+        chrome.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+        chrome.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+
+        // NOTE: used when the popup has been disabled.
+        chrome.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
+
+        chrome.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
+
+        chrome.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+    }());
+
+    (function exportBackgroundFunctions() {
+        window.broadcaster = broadcaster;
+        window.progress = progress;
+
+        window.log = log;
+        window.logError = logError;
+        window.logDebug = logDebug;
+
+        window.getAllVoices = () => talkieSpeaker.getAllVoices();
+        window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
+        window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
+        window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+    }());
+
+    buttonPopupManager.enablePopup();
 }());
 
-log("Done", "Loading backgrund code");
+log("Done", "Loading background code");

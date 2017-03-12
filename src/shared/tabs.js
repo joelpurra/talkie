@@ -18,7 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const getBackgroundPage = () => new Promise(
+import {
+    log,
+} from "../shared/log";
+
+import {
+    promiseTry,
+} from "../shared/promise";
+
+export const getBackgroundPage = () => new Promise(
     (resolve, reject) => {
         try {
             chrome.runtime.getBackgroundPage((backgroundPage) => {
@@ -39,7 +47,7 @@ const getBackgroundPage = () => new Promise(
     }
 );
 
-const getCurrentActiveTab = () => new Promise(
+export const getCurrentActiveTab = () => new Promise(
     (resolve, reject) => {
         try {
             const queryOptions = {
@@ -71,7 +79,7 @@ const getCurrentActiveTab = () => new Promise(
     }
 );
 
-const getCurrentActiveTabId = () => getCurrentActiveTab()
+export const getCurrentActiveTabId = () => getCurrentActiveTab()
     .then((activeTab) => {
         if (activeTab) {
             return activeTab.id;
@@ -81,7 +89,7 @@ const getCurrentActiveTabId = () => getCurrentActiveTab()
         return null;
     });
 
-const isCurrentPageInternalToTalkie = () => promiseTry(
+export const isCurrentPageInternalToTalkie = () => promiseTry(
     () => getCurrentActiveTab()
         .then((tab) => {
             if (tab) {
@@ -137,7 +145,7 @@ const getCurrentActiveNormalLoadedTab = () => new Promise(
     }
 );
 
-const canTalkieRunInTab = () => promiseTry(
+export const canTalkieRunInTab = () => promiseTry(
     () => getCurrentActiveNormalLoadedTab()
         .then((tab) => {
             if (tab) {

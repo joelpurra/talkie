@@ -18,33 +18,37 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const promiseTry = (fn) => new Promise(
-    (resolve, reject) => {
-        try {
-            const result = fn();
+import {
+    promiseTry,
+} from "../shared/promise";
 
-            resolve(result);
-        } catch (error) {
-            reject(error);
-        }
+import {
+    log,
+} from "../shared/log";
+
+export default class OnlyLastCaller {
+    constructor() {
+        this.lastCallerId = 0;
     }
-);
 
-export const promiseSeries = (promises, state) => promiseTry(
-    () => {
-        if (promises.length === 0) {
-            return undefined;
-        }
-
-        const first = promises[0];
-
-        if (promises.length === 1) {
-            return Promise.resolve(first(state));
-        }
-
-        const rest = promises.slice(1);
-
-        return Promise.resolve(first(state))
-            .then((result) => promiseSeries(rest, result));
+    incrementCallerId() {
+        this.lastCallerId++;
     }
-);
+
+    getShouldContinueSpeakingProvider() {
+        this.incrementCallerId();
+        const callerOnTheAirId = this.lastCallerId;
+
+        log("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
+
+        return () => promiseTry(
+            () => {
+                const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
+
+                log("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
+
+                return isLastCallerOnTheAir;
+            }
+        );
+    };
+}

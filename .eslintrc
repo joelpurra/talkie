@@ -1,10 +1,16 @@
 {
     "env": {
+        "browser": true,
         "es6": true
     },
     "plugins": [
     ],
-    "extends": ["standard"],
+    "extends": [
+        "standard"
+    ],
+    "globals": {
+        "chrome": false,
+    },
     "rules": {
         "block-scoped-var": "error",
         "brace-style": "off",

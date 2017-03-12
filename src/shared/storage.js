@@ -18,6 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+    log,
+} from "../shared/log";
+
+import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
+    getBackgroundPage,
+} from "../shared/tabs";
+
 const currentStorageFormatVersion = "v1.0.0";
 
 const getStorageKey = (storageFormatVersion, key) => {
@@ -34,9 +46,7 @@ allKnownStorageKeys["v1.0.0"] = {
     "options-popup-donate-buttons-hide": "options-popup-donate-buttons-hide",
 };
 
-const knownStorageKeys = allKnownStorageKeys[currentStorageFormatVersion];
-
-const setStoredValue = (key, value) => promiseTry(
+export const setStoredValue = (key, value) => promiseTry(
     () => {
         log("Start", "setStoredValue", key, typeof value, value);
 
@@ -55,7 +65,7 @@ const setStoredValue = (key, value) => promiseTry(
     }
 );
 
-const getStoredValue = (key) => promiseTry(
+export const getStoredValue = (key) => promiseTry(
     () => {
         log("Start", "getStoredValue", key);
 

@@ -18,16 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-promiseTry:false,
-getBackgroundPage:false,
-*/
+import {
+    promiseTry,
+} from "../shared/promise";
 
-const getVoices = () => promiseTry(
+import {
+    getBackgroundPage,
+} from "../shared/tabs";
+
+export const getVoices = () => promiseTry(
     () => {
         return getBackgroundPage()
             .then((background) => {
-                const voices = background.speechSynthesis.getVoices();
+                const voices = background.getAllVoices();
 
                 if (!voices || voices.length === 0) {
                     throw new Error("The browser does not have any voices installed.");
@@ -38,7 +41,7 @@ const getVoices = () => promiseTry(
     }
 );
 
-const getMappedVoices = () => promiseTry(
+export const getMappedVoices = () => promiseTry(
     () => {
         return getVoices()
             .then((voices) => {
@@ -53,3 +56,20 @@ const getMappedVoices = () => promiseTry(
             });
     }
 );
+
+// TODO: check if there are any voices installed, alert user if not.
+// checkVoices() {
+//     return this.getSynthesizer()
+//         .then((synthesizer) => {
+//             log("Start", "Voices check");
+//
+//             return getMappedVoices()
+//                 .then((voices) => {
+//                     log("Variable", "voices[]", voices.length, voices);
+//
+//                     log("Done", "Voices check");
+//
+//                     return synthesizer;
+//                 });
+//         });
+// }

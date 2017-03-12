@@ -18,7 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-class Broadcaster {
+import {
+    logError,
+} from "../shared/log";
+
+import {
+    promiseTry,
+} from "../shared/promise";
+
+export default class Broadcaster {
     constructor() {
         this.actionRespondingMap = {};
         this.actionListeningMap = {};
@@ -26,14 +34,14 @@ class Broadcaster {
 
     registerRespondingAction(actionName, respondingActionHandler) {
         return promiseTry(
-    () => {
-        if (this.actionRespondingMap[actionName]) {
-            throw new Error("Only one responding handler allowed at the moment: " + actionName);
-        }
+            () => {
+                if (this.actionRespondingMap[actionName]) {
+                    throw new Error("Only one responding handler allowed at the moment: " + actionName);
+                }
 
-        this.actionRespondingMap[actionName] = respondingActionHandler;
-    }
-);
+                this.actionRespondingMap[actionName] = respondingActionHandler;
+            }
+        );
     }
 
     registerListeningAction(actionName, listeningActionHandler) {
@@ -93,8 +101,5 @@ class Broadcaster {
                 }
             }
         );
-    }
-
-    start() {
     }
 }

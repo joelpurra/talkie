@@ -18,7 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const log = (...args) => {
+import {
+    extensionShortName,
+} from "./configuration";
+
+export const log = (...args) => {
     const now = new Date().toISOString();
 
     /* eslint-disable no-console */
@@ -26,7 +30,7 @@ const log = (...args) => {
     /* eslint-enable no-console */
 };
 
-const logError = (...args) => {
+export const logError = (...args) => {
     const now = new Date().toISOString();
 
     /* eslint-disable no-console */
@@ -34,7 +38,7 @@ const logError = (...args) => {
     /* eslint-enable no-console */
 };
 
-const logDebug = (...args) => {
+export const logDebug = (...args) => {
     const now = new Date().toISOString();
 
     /* eslint-disable no-console */
