@@ -4,6 +4,7 @@
         "es6": true
     },
     "plugins": [
+        "compat"
     ],
     "extends": [
         "standard"
@@ -16,6 +17,7 @@
         "brace-style": "off",
         "camelcase": "error",
         "comma-dangle": ["error", "always-multiline"],
+        "compat/compat": "error",
         "complexity": ["off", 5],
         "consistent-this": ["error", "self"],
         "curly": "error",
