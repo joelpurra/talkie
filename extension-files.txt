@@ -14,6 +14,7 @@ CLA.md
 dist/background.js
 dist/options.js
 dist/popup.js
+lib/browser-polyfill.js
 LICENSE
 manifest.json
 README.md
