@@ -73,7 +73,7 @@ import ShortcutKeyManager from "./shortcut-key-manager";
 
 log("Start", "Loading background code");
 
-(function main() {
+function main() {
     log("Locale (@@ui_locale)", uiLocale);
     log("Locale (messages.json)", messagesLocale);
 
@@ -113,10 +113,17 @@ log("Start", "Loading background code");
     (function addChromeOnInstalledListeners() {
         const onExtensionInstalledHandler = () => promiseTry(
                 () => contextMenuManager.createContextMenus()
+                    .catch((error) => logError("onExtensionInstalledHandler", error))
             );
 
-        // NOTE: the onInstalled listener can't be added asynchronously
-        chrome.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+        // NOTE: "This event is not triggered for temporarily installed add-ons."
+        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onInstalled#Compatibility_notes
+        if (chrome.runtime.onInstalled) {
+            // NOTE: the onInstalled listener can't be added asynchronously
+            chrome.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+        } else {
+            onExtensionInstalledHandler();
+        }
     }());
 
     (function registerBroadcastListeners() {
@@ -128,7 +135,7 @@ log("Start", "Loading background code");
         broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setActiveTabIsDoneSpeaking());
 
-            // NOTE: setting icons async.
+        // NOTE: setting icons async.
         broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; });
 
@@ -147,14 +154,26 @@ log("Start", "Loading background code");
     (function addChromeListeners() {
         chrome.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
         chrome.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
-        chrome.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+
+        // NOTE: not supported in Firefox (2017-03-15).
+        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+        if (chrome.runtime.onSuspend) {
+            chrome.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+        }
 
         // NOTE: used when the popup has been disabled.
         chrome.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
 
         chrome.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
 
-        chrome.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+        // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
+        // Does not seem to happen in Chrome.
+        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
+        try {
+            chrome.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+        } catch (error) {
+            logError("chrome.commands.onCommand.addListener(...)", error);
+        }
     }());
 
     (function exportBackgroundFunctions() {
@@ -172,6 +191,12 @@ log("Start", "Loading background code");
     }());
 
     buttonPopupManager.enablePopup();
-}());
+}
+
+try {
+    main();
+} catch (error) {
+    logError("onExtensionInstalledHandler", error);
+}
 
 log("Done", "Loading background code");

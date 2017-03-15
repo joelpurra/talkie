@@ -19,29 +19,33 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "windows": "Ctrl+Shift+A",
-        "mac": "Command+Shift+A",
-        "chromeos": "Ctrl+Shift+A",
-        "linux": "Ctrl+Shift+A"
+        "default": "Ctrl+Shift+A",
+        "mac": "Command+Shift+A"
       },
       "description": "__MSG_commandBrowserActionDescription__"
     },
     "start-stop": {
       "suggested_key": {
-        "windows": "Alt+Shift+A",
-        "mac": "Alt+Shift+A",
-        "chromeos": "Alt+Shift+A",
-        "linux": "Alt+Shift+A"
+        "default": "Alt+Shift+A"
       },
       "description": "__MSG_commandStartStopDescription__"
     },
     "open-website-main": {
+      "suggested_key": {
+        "default": "Alt+Shift+0"
+      },
       "description": "__MSG_commandOpenWebsiteMainDescription__"
     },
     "open-website-chromewebstore": {
+      "suggested_key": {
+        "default": "Alt+Shift+9"
+      },
       "description": "__MSG_commandOpenWebsiteChromeWebStoreDescription__"
     },
     "open-website-donate": {
+      "suggested_key": {
+        "default": "Alt+Shift+8"
+      },
       "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }
   },

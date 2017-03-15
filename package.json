@@ -63,6 +63,7 @@
     "rollup-watch": "^3.2.2"
   },
   "browserslist": [
-    "last 5 Chrome versions"
+    "last 5 Chrome versions",
+    "last 5 Firefox versions"
   ]
 }
