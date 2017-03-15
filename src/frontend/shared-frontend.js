@@ -51,7 +51,7 @@ const translateWindow = () => promiseTry(
             const translationId = element.getAttribute(translateAttributeName);
 
             if (typeof translationId === "string" && translationId.length > 0) {
-                const translated = chrome.i18n.getMessage(translationId);
+                const translated = browser.i18n.getMessage(translationId);
 
                 if (typeof translated === "string") {
                     element.textContent = translated;
@@ -96,14 +96,14 @@ const addLinkClickHandlers = () => promiseTry(
 
 const addOptionsLinkClickHandlers = () => promiseTry(
     () => {
-        // https://developer.chrome.com/extensions/optionsV2#linking
+        // https://developer.browser.com/extensions/optionsV2#linking
         const optionsLinks = Array.from(document.querySelectorAll("[href='" + urls.options + "']"));
 
         optionsLinks.forEach((optionsLink) => {
             optionsLink.onclick = (event) => {
                 event.preventDefault();
 
-                chrome.runtime.openOptionsPage();
+                browser.runtime.openOptionsPage();
 
                 return false;
             };

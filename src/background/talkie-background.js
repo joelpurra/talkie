@@ -46,7 +46,7 @@ export default class TalkieBackground {
         this.speakingStatus = speakingStatus;
 
         this.notAbleToSpeakTextFromThisSpecialTab = {
-            text: chrome.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
+            text: browser.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
             effectiveLanguage: messagesLocale,
         };
     }
@@ -155,7 +155,7 @@ export default class TalkieBackground {
         return this.speakingStatus.isSpeakingTabId(tabId)
             .then((isTabSpeaking) => {
                 // NOTE: changeInfo only has properties which have changed.
-                // https://developer.chrome.com/extensions/tabs#event-onUpdated
+                // https://developer.browser.com/extensions/tabs#event-onUpdated
                 if (isTabSpeaking && changeInfo.url) {
                     return this.talkieSpeaker.stopSpeaking()
                         .then(() => this.speakingStatus.setTabIsDoneSpeaking(tabId));

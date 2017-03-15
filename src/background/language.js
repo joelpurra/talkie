@@ -41,26 +41,26 @@ import {
 } from "../shared/configuration";
 
 const noTextSelectedMessage = {
-    text: chrome.i18n.getMessage("noTextSelectedMessage"),
+    text: browser.i18n.getMessage("noTextSelectedMessage"),
     effectiveLanguage: messagesLocale,
 };
 
 const noVoiceForLanguageDetectedMessage = {
-    text: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
-    effectiveLanguage: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
+    text: browser.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
+    effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
 };
 
 export const detectPageLanguage = () => new Promise(
     (resolve, reject) => {
         try {
-            chrome.tabs.detectLanguage((language) => {
-                // https://developer.chrome.com/extensions/tabs#method-detectLanguage
-                if (chrome.runtime.lastError) {
+            browser.tabs.detectLanguage((language) => {
+                // https://developer.browser.com/extensions/tabs#method-detectLanguage
+                if (browser.runtime.lastError) {
                     // https://github.com/joelpurra/talkie/issues/3
                     // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
                     // As this is not critical, just log the error and resolve with null.
-                    // return reject(chrome.runtime.lastError);
-                    logError("detectPageLanguage", chrome.runtime.lastError);
+                    // return reject(browser.runtime.lastError);
+                    logError("detectPageLanguage", browser.runtime.lastError);
 
                     return resolve(null);
                 }
@@ -83,17 +83,17 @@ export const detectPageLanguage = () => new Promise(
 const detectTextLanguage = (text) => new Promise(
     (resolve, reject) => {
         try {
-            if (!("detectLanguage" in chrome.i18n)) {
+            if (!("detectLanguage" in browser.i18n)) {
                 // NOTE: text-based language detection is only used as a fallback.
                 log("detectTextLanguage", "Browser does not support detecting text language");
 
                 return resolve(null);
             }
 
-            chrome.i18n.detectLanguage(text, (result) => {
-                // https://developer.chrome.com/extensions/i18n#method-detectLanguage
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
+            browser.i18n.detectLanguage(text, (result) => {
+                // https://developer.browser.com/extensions/i18n#method-detectLanguage
+                if (browser.runtime.lastError) {
+                    return reject(browser.runtime.lastError);
                 }
 
                 // The language fallback value is "und", so treat it as no language.

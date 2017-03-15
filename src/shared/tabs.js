@@ -29,10 +29,10 @@ import {
 export const getBackgroundPage = () => new Promise(
     (resolve, reject) => {
         try {
-            chrome.runtime.getBackgroundPage((backgroundPage) => {
-                // https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
+            browser.runtime.getBackgroundPage((backgroundPage) => {
+                // https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
+                if (browser.runtime.lastError) {
+                    return reject(browser.runtime.lastError);
                 }
 
                 if (backgroundPage) {
@@ -55,10 +55,10 @@ export const getCurrentActiveTab = () => new Promise(
                 "currentWindow": true,
             };
 
-            chrome.tabs.query(queryOptions, (tabs) => {
-                // https://developer.chrome.com/extensions/tabs#method-query
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
+            browser.tabs.query(queryOptions, (tabs) => {
+                // https://developer.browser.com/extensions/tabs#method-query
+                if (browser.runtime.lastError) {
+                    return reject(browser.runtime.lastError);
                 }
 
                 const singleTabResult = tabs.length === 1;
@@ -121,10 +121,10 @@ const getCurrentActiveNormalLoadedTab = () => new Promise(
                 "status": "complete",
             };
 
-            chrome.tabs.query(queryOptions, (tabs) => {
-                // https://developer.chrome.com/extensions/tabs#method-query
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
+            browser.tabs.query(queryOptions, (tabs) => {
+                // https://developer.browser.com/extensions/tabs#method-query
+                if (browser.runtime.lastError) {
+                    return reject(browser.runtime.lastError);
                 }
 
                 const singleTabResult = tabs.length === 1;

@@ -42,7 +42,7 @@ export default class SuspensionManager {
             name: this.preventSuspensionPortName,
         };
 
-        this.executeConnectFromContentCode = `var talkiePreventSuspensionPort = chrome.runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
+        this.executeConnectFromContentCode = `var talkiePreventSuspensionPort = browser.runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
     }
 
     executeConnectFromContent() {
@@ -74,7 +74,7 @@ export default class SuspensionManager {
                         return;
                     }
 
-                    // NOTE: the chrome.runtime.onConnect event is triggered once per frame on the page.
+                    // NOTE: the browser.runtime.onConnect event is triggered once per frame on the page.
                     // Save the first port, ignore the rest.
                     if (this.preventSuspensionProducingPort !== null) {
                         return;
@@ -87,7 +87,7 @@ export default class SuspensionManager {
                     this.preventSuspensionIntervalId = setInterval(messageProducer, 1000);
                 };
 
-                chrome.runtime.onConnect.addListener(onConnectProducingHandler);
+                browser.runtime.onConnect.addListener(onConnectProducingHandler);
 
                 log("Done", "preventExtensionSuspend");
 
@@ -103,7 +103,7 @@ export default class SuspensionManager {
 
                 if (this.preventSuspensionProducingPort !== null) {
                     try {
-                        // https://developer.chrome.com/extensions/runtime#type-Port
+                        // https://developer.browser.com/extensions/runtime#type-Port
                         // NOTE: should work irregardless if the port was connected or not.
                         this.preventSuspensionProducingPort.disconnect();
                     } catch (error) {

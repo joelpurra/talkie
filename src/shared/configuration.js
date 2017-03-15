@@ -20,9 +20,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import configuration from "../configuration.json";
 
-export const extensionShortName = chrome.i18n.getMessage("extensionShortName");
+export const extensionShortName = browser.i18n.getMessage("extensionShortName");
 
-export const uiLocale = chrome.i18n.getMessage("@@ui_locale");
-export const messagesLocale = chrome.i18n.getMessage("extensionLocale");
+export const uiLocale = browser.i18n.getMessage("@@ui_locale");
+export const messagesLocale = browser.i18n.getMessage("extensionLocale");
 
 export const urls = configuration.urls;

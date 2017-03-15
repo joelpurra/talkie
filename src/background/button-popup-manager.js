@@ -20,8 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 export default class ButtonPopupManager {
     constructor() {
-        this.buttonDefaultTitle = chrome.i18n.getMessage("buttonDefaultTitle");
-        this.buttonStopTitle = chrome.i18n.getMessage("buttonStopTitle");
+        this.buttonDefaultTitle = browser.i18n.getMessage("buttonDefaultTitle");
+        this.buttonStopTitle = browser.i18n.getMessage("buttonStopTitle");
     }
 
     disablePopup() {
@@ -29,13 +29,13 @@ export default class ButtonPopupManager {
             popup: "",
         };
 
-        chrome.browserAction.setPopup(disablePopupOptions);
+        browser.browserAction.setPopup(disablePopupOptions);
 
         const disableIconTitleOptions = {
             title: this.buttonStopTitle,
         };
 
-        chrome.browserAction.setTitle(disableIconTitleOptions);
+        browser.browserAction.setTitle(disableIconTitleOptions);
     };
 
     enablePopup() {
@@ -43,12 +43,12 @@ export default class ButtonPopupManager {
             popup: "src/popup/popup.html",
         };
 
-        chrome.browserAction.setPopup(enablePopupOptions);
+        browser.browserAction.setPopup(enablePopupOptions);
 
         const enableIconTitleOptions = {
             title: this.buttonDefaultTitle,
         };
 
-        chrome.browserAction.setTitle(enableIconTitleOptions);
+        browser.browserAction.setTitle(enableIconTitleOptions);
     };
 }

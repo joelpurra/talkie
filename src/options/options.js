@@ -146,7 +146,7 @@ const loadVoicesAndLanguages = () => promiseTry(
                     allLanguageOption.talkie.language = null;
                     allLanguageOption.talkie.voices = allVoices;
 
-                    allLanguageOption.textContent = chrome.i18n.getMessage("frontend_voicesShowAllVoices");
+                    allLanguageOption.textContent = browser.i18n.getMessage("frontend_voicesShowAllVoices");
                     allLanguageOption.selected = true;
 
                     voicesLanguagesListElement.appendChild(allLanguageOption);

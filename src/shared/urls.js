@@ -37,7 +37,7 @@ export const openUrlInNewTab = (url) => promiseTry(
             throw new Error("Bad url, only https:// allowed: " + url);
         }
 
-        chrome.tabs.create({active: true, url: url});
+        browser.tabs.create({active: true, url: url});
     }
 );
 

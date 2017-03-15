@@ -10,7 +10,7 @@
         "standard"
     ],
     "globals": {
-        "chrome": false,
+        "browser": false,
     },
     "rules": {
         "block-scoped-var": "error",

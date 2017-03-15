@@ -35,15 +35,15 @@ export const executeScriptInTopFrame = (code) => new Promise(
         try {
             log("About to execute code in page context", code);
 
-            chrome.tabs.executeScript(
+            browser.tabs.executeScript(
                 {
                     allFrames: false,
                     matchAboutBlank: false,
                     code: code,
                 },
                 (result) => {
-                    if (chrome.runtime.lastError) {
-                        return reject(chrome.runtime.lastError);
+                    if (browser.runtime.lastError) {
+                        return reject(browser.runtime.lastError);
                     }
 
                     return resolve(result);
@@ -60,15 +60,15 @@ export const executeScriptInAllFrames = (code) => new Promise(
         try {
             log("About to execute code in page context", code);
 
-            chrome.tabs.executeScript(
+            browser.tabs.executeScript(
                 {
                     allFrames: true,
                     matchAboutBlank: true,
                     code: code,
                 },
                 (result) => {
-                    if (chrome.runtime.lastError) {
-                        return reject(chrome.runtime.lastError);
+                    if (browser.runtime.lastError) {
+                        return reject(browser.runtime.lastError);
                     }
 
                     return resolve(result);

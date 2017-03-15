@@ -33,35 +33,35 @@ export default class ContextMenuManager {
         this.contextMenuOptionsCollection = {
             selectionContextMenuStartStop: {
                 id: "talkie-context-menu-start-stop",
-                title: chrome.i18n.getMessage("contextMenuStartStopText"),
+                title: browser.i18n.getMessage("contextMenuStartStopText"),
                 contexts: [
                     "selection",
                 ],
             },
             buttonContextMenuStartStopDescription: {
                 id: "start-stop",
-                title: chrome.i18n.getMessage("commandStartStopDescription"),
+                title: browser.i18n.getMessage("commandStartStopDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
             buttonContextMenuOpenWebsiteMainDescription: {
                 id: "open-website-main",
-                title: chrome.i18n.getMessage("commandOpenWebsiteMainDescription"),
+                title: browser.i18n.getMessage("commandOpenWebsiteMainDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
             buttonContextMenuOpenWebsiteChromeWebStoreDescription: {
                 id: "open-website-chromewebstore",
-                title: chrome.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription"),
+                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
             buttonContextMenuOpenWebsiteDonateDescription: {
                 id: "open-website-donate",
-                title: chrome.i18n.getMessage("commandOpenWebsiteDonateDescription"),
+                title: browser.i18n.getMessage("commandOpenWebsiteDonateDescription"),
                 contexts: [
                     "browser_action",
                 ],
@@ -75,11 +75,11 @@ export default class ContextMenuManager {
                 try {
                     log("Start", "Creating context menu", contextMenuOptions);
 
-                    chrome.contextMenus.create(
+                    browser.contextMenus.create(
                         contextMenuOptions,
                         () => {
-                            if (chrome.runtime.lastError) {
-                                return reject(chrome.runtime.lastError);
+                            if (browser.runtime.lastError) {
+                                return reject(browser.runtime.lastError);
                             }
 
                             log("Done", "Creating context menu", contextMenuOptions);

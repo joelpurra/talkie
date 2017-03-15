@@ -52,11 +52,11 @@ export default class IconManager {
                 path: paths,
             };
 
-            chrome.browserAction.setIcon(
+            browser.browserAction.setIcon(
                 details,
                 () => {
-                    if (chrome.runtime.lastError) {
-                        return reject(chrome.runtime.lastError);
+                    if (browser.runtime.lastError) {
+                        return reject(browser.runtime.lastError);
                     }
 
                     log("Done", "Changing icon to", name);

@@ -118,9 +118,9 @@ function main() {
 
         // NOTE: "This event is not triggered for temporarily installed add-ons."
         // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onInstalled#Compatibility_notes
-        if (chrome.runtime.onInstalled) {
+        if (browser.runtime.onInstalled) {
             // NOTE: the onInstalled listener can't be added asynchronously
-            chrome.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+            browser.runtime.onInstalled.addListener(onExtensionInstalledHandler);
         } else {
             onExtensionInstalledHandler();
         }
@@ -152,27 +152,27 @@ function main() {
     }());
 
     (function addChromeListeners() {
-        chrome.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
-        chrome.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+        browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
+        browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
 
         // NOTE: not supported in Firefox (2017-03-15).
         // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-        if (chrome.runtime.onSuspend) {
-            chrome.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+        if (browser.runtime.onSuspend) {
+            browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
         }
 
         // NOTE: used when the popup has been disabled.
-        chrome.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
+        browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
 
-        chrome.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
+        browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
 
         // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
         // Does not seem to happen in Chrome.
         // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
         try {
-            chrome.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+            browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
         } catch (error) {
-            logError("chrome.commands.onCommand.addListener(...)", error);
+            logError("browser.commands.onCommand.addListener(...)", error);
         }
     }());
 
