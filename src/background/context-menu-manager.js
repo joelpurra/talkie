@@ -70,26 +70,16 @@ export default class ContextMenuManager {
     }
 
     createContextMenu(contextMenuOptions) {
-        return new Promise(
-            (resolve, reject) => {
-                try {
-                    log("Start", "Creating context menu", contextMenuOptions);
+        return promiseTry(
+            () => {
+                log("Start", "Creating context menu", contextMenuOptions);
 
-                    browser.contextMenus.create(
-                        contextMenuOptions,
-                        () => {
-                            if (browser.runtime.lastError) {
-                                return reject(browser.runtime.lastError);
-                            }
+                return browser.contextMenus.create(contextMenuOptions)
+                    .then((result) => {
+                        log("Done", "Creating context menu", contextMenuOptions);
 
-                            log("Done", "Creating context menu", contextMenuOptions);
-
-                            resolve();
-                        }
-                    );
-                } catch (error) {
-                    return reject(error);
-                }
+                        return result;
+                    });
             }
         );
     }

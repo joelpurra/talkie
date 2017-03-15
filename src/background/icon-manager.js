@@ -19,6 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
     log,
 } from "../shared/log";
 
@@ -42,33 +46,23 @@ export default class IconManager {
     };
 
     setIconMode(name) {
-        return new Promise(
-    (resolve, reject) => {
-        try {
-            log("Start", "Changing icon to", name);
+        return promiseTry(
+            () => {
+                log("Start", "Changing icon to", name);
 
-            const paths = this.getIconModePaths(name);
-            const details = {
-                path: paths,
-            };
+                const paths = this.getIconModePaths(name);
+                const details = {
+                    path: paths,
+                };
 
-            browser.browserAction.setIcon(
-                details,
-                () => {
-                    if (browser.runtime.lastError) {
-                        return reject(browser.runtime.lastError);
-                    }
+                return browser.browserAction.setIcon(details)
+                    .then((result) => {
+                        log("Done", "Changing icon to", name);
 
-                    log("Done", "Changing icon to", name);
-
-                    resolve();
-                }
-            );
-        } catch (error) {
-            return reject(error);
-        }
-    }
-);
+                        return result;
+                    });
+            }
+        );
     }
 
     setIconModePlaying() {

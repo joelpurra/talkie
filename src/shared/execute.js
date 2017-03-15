@@ -30,53 +30,31 @@ import {
     extensionShortName,
 } from "./configuration";
 
-export const executeScriptInTopFrame = (code) => new Promise(
-    (resolve, reject) => {
-        try {
-            log("About to execute code in page context", code);
+export const executeScriptInTopFrame = (code) => promiseTry(
+    () => {
+        log("About to execute code in page context", code);
 
-            browser.tabs.executeScript(
-                {
-                    allFrames: false,
-                    matchAboutBlank: false,
-                    code: code,
-                },
-                (result) => {
-                    if (browser.runtime.lastError) {
-                        return reject(browser.runtime.lastError);
-                    }
-
-                    return resolve(result);
-                }
-            );
-        } catch (error) {
-            return reject(error);
-        }
+        return browser.tabs.executeScript(
+            {
+                allFrames: false,
+                matchAboutBlank: false,
+                code: code,
+            }
+        );
     }
 );
 
-export const executeScriptInAllFrames = (code) => new Promise(
-    (resolve, reject) => {
-        try {
-            log("About to execute code in page context", code);
+export const executeScriptInAllFrames = (code) => promiseTry(
+    () => {
+        log("About to execute code in page context", code);
 
-            browser.tabs.executeScript(
-                {
-                    allFrames: true,
-                    matchAboutBlank: true,
-                    code: code,
-                },
-                (result) => {
-                    if (browser.runtime.lastError) {
-                        return reject(browser.runtime.lastError);
-                    }
-
-                    return resolve(result);
-                }
-            );
-        } catch (error) {
-            return reject(error);
-        }
+        return browser.tabs.executeScript(
+            {
+                allFrames: true,
+                matchAboutBlank: true,
+                code: code,
+            }
+        );
     }
 );
 

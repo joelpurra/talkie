@@ -26,41 +26,28 @@ import {
     promiseTry,
 } from "../shared/promise";
 
-export const getBackgroundPage = () => new Promise(
-    (resolve, reject) => {
-        try {
-            browser.runtime.getBackgroundPage((backgroundPage) => {
-                // https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
-                if (browser.runtime.lastError) {
-                    return reject(browser.runtime.lastError);
-                }
+export const getBackgroundPage = () => promiseTry(
+    // https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
+    () => browser.runtime.getBackgroundPage()
+        .then((backgroundPage) => {
+            if (backgroundPage) {
+                return backgroundPage;
+            }
 
-                if (backgroundPage) {
-                    return resolve(backgroundPage);
-                }
-
-                return resolve(null);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
+            return null;
+        })
 );
 
-export const getCurrentActiveTab = () => new Promise(
-    (resolve, reject) => {
-        try {
-            const queryOptions = {
-                "active": true,
-                "currentWindow": true,
-            };
+export const getCurrentActiveTab = () => promiseTry(
+    () => {
+        const queryOptions = {
+            "active": true,
+            "currentWindow": true,
+        };
 
-            browser.tabs.query(queryOptions, (tabs) => {
-                // https://developer.browser.com/extensions/tabs#method-query
-                if (browser.runtime.lastError) {
-                    return reject(browser.runtime.lastError);
-                }
-
+        // https://developer.browser.com/extensions/tabs#method-query
+        return browser.tabs.query(queryOptions)
+            .then((tabs) => {
                 const singleTabResult = tabs.length === 1;
 
                 const tab = tabs[0] || null;
@@ -68,14 +55,11 @@ export const getCurrentActiveTab = () => new Promise(
                 log("getCurrentActiveTab", tabs, tab, singleTabResult);
 
                 if (singleTabResult) {
-                    return resolve(tab);
+                    return tab;
                 }
 
-                return resolve(null);
+                return null;
             });
-        } catch (error) {
-            return reject(error);
-        }
     }
 );
 
@@ -111,22 +95,18 @@ export const isCurrentPageInternalToTalkie = () => promiseTry(
         })
 );
 
-const getCurrentActiveNormalLoadedTab = () => new Promise(
-    (resolve, reject) => {
-        try {
-            const queryOptions = {
-                "active": true,
-                "currentWindow": true,
-                "windowType": "normal",
-                "status": "complete",
-            };
+const getCurrentActiveNormalLoadedTab = () => promiseTry(
+    () => {
+        const queryOptions = {
+            "active": true,
+            "currentWindow": true,
+            "windowType": "normal",
+            "status": "complete",
+        };
 
-            browser.tabs.query(queryOptions, (tabs) => {
-                // https://developer.browser.com/extensions/tabs#method-query
-                if (browser.runtime.lastError) {
-                    return reject(browser.runtime.lastError);
-                }
-
+        // https://developer.browser.com/extensions/tabs#method-query
+        return browser.tabs.query(queryOptions)
+            .then((tabs) => {
                 const singleTabResult = tabs.length === 1;
 
                 const tab = tabs[0] || null;
@@ -134,14 +114,11 @@ const getCurrentActiveNormalLoadedTab = () => new Promise(
                 log("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
 
                 if (singleTabResult) {
-                    return resolve(tab);
+                    return tab;
                 }
 
-                return resolve(null);
+                return null;
             });
-        } catch (error) {
-            return reject(error);
-        }
     }
 );
 

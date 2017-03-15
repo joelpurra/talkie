@@ -50,52 +50,43 @@ const noVoiceForLanguageDetectedMessage = {
     effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
 };
 
-export const detectPageLanguage = () => new Promise(
-    (resolve, reject) => {
-        try {
-            browser.tabs.detectLanguage((language) => {
+export const detectPageLanguage = () => promiseTry(
+            () => {
                 // https://developer.browser.com/extensions/tabs#method-detectLanguage
-                if (browser.runtime.lastError) {
-                    // https://github.com/joelpurra/talkie/issues/3
-                    // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
-                    // As this is not critical, just log the error and resolve with null.
-                    // return reject(browser.runtime.lastError);
-                    logError("detectPageLanguage", browser.runtime.lastError);
-
-                    return resolve(null);
-                }
-
-                log("detectPageLanguage", "Browser detected primary page language", language);
+                return browser.tabs.detectLanguage()
+                    .then((language) => {
+                        log("detectPageLanguage", "Browser detected primary page language", language);
 
                 // The language fallback value is "und", so treat it as no language.
-                if (!language || typeof language !== "string" || language === "und") {
-                    return resolve(null);
-                }
+                        if (!language || typeof language !== "string" || language === "und") {
+                            return null;
+                        }
 
-                return resolve(language);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
+                        return language;
+                    })
+                    .catch((error) => {
+                        // https://github.com/joelpurra/talkie/issues/3
+                        // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
+                        // As this is not critical, just log the error and resolve with null.
+                        logError("detectPageLanguage", error);
+
+                        return null;
+                    });
+            }
 );
 
-const detectTextLanguage = (text) => new Promise(
-    (resolve, reject) => {
-        try {
-            if (!("detectLanguage" in browser.i18n)) {
-                // NOTE: text-based language detection is only used as a fallback.
-                log("detectTextLanguage", "Browser does not support detecting text language");
+const detectTextLanguage = (text) => promiseTry(
+    () => {
+        if (!("detectLanguage" in browser.i18n)) {
+            // NOTE: text-based language detection is only used as a fallback.
+            log("detectTextLanguage", "Browser does not support detecting text language");
 
-                return resolve(null);
-            }
+            return null;
+        }
 
-            browser.i18n.detectLanguage(text, (result) => {
-                // https://developer.browser.com/extensions/i18n#method-detectLanguage
-                if (browser.runtime.lastError) {
-                    return reject(browser.runtime.lastError);
-                }
-
+        // https://developer.browser.com/extensions/i18n#method-detectLanguage
+        return browser.i18n.detectLanguage(text)
+            .then((result) => {
                 // The language fallback value is "und", so treat it as no language.
                 if (
                     !result.isReliable
@@ -108,18 +99,15 @@ const detectTextLanguage = (text) => new Promise(
                     // NOTE: text-based language detection is only used as a fallback.
                     log("detectTextLanguage", "Browser did not detect reliable text language", result);
 
-                    return resolve(null);
+                    return null;
                 }
 
                 const primaryDetectedTextLanguage = result.languages[0].language;
 
                 log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
 
-                return resolve(primaryDetectedTextLanguage);
+                return primaryDetectedTextLanguage;
             });
-        } catch (error) {
-            return reject(error);
-        }
     }
 );
 
