@@ -144,12 +144,6 @@ These steps are only done by the project owner.
 # Finish up any features, switch to develop.
 git checkout develop
 
-# Make sure the code builds.
-npm run --silent rebuild
-
-# Fix any warnings and errors before committing.
-npm run --silent test
-
 # Ensure all strings have been translated.
 # Check the diff as well as the final per-key message string count.
 npm run --silent messages:translate
@@ -157,6 +151,9 @@ npm run --silent messages:translate
 # Ensure all files are included -- or excluded -- in the packaged extension.
 # This includes new code files/translations/resources added/removed since the last release.
 cat extension-files.txt
+
+# Fix any warnings and errors before committing.
+npm run --silent prepackage
 
 # The "<release-version>" needs to follow semantic versioning, such as "v1.0.0".
 # http://semver.org/
