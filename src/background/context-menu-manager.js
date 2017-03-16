@@ -69,17 +69,44 @@ export default class ContextMenuManager {
         };
     }
 
-    createContextMenu(contextMenuOptions) {
+    removeAll() {
         return promiseTry(
             () => {
-                log("Start", "Creating context menu", contextMenuOptions);
+                log("Start", "Removing all context menus");
 
-                return browser.contextMenus.create(contextMenuOptions)
+                return browser.contextMenus.removeAll()
                     .then((result) => {
-                        log("Done", "Creating context menu", contextMenuOptions);
+                        log("Done", "Removing all context menus");
 
                         return result;
                     });
+            }
+        );
+    }
+
+    createContextMenu(contextMenuOptions) {
+        return new Promise(
+            (resolve, reject) => {
+                try {
+                    log("Start", "Creating context menu", contextMenuOptions);
+
+                    // NOTE: Can't directly use a promise chain here, as the id is returned instead.
+                    // https://github.com/mozilla/webextension-polyfill/pull/26
+                    const contextMenuId = browser.contextMenus.create(
+                        contextMenuOptions,
+                        () => {
+                            if (browser.runtime.lastError) {
+                                return reject(browser.runtime.lastError);
+                            }
+
+                            log("Done", "Creating context menu", contextMenuOptions);
+
+                            return resolve(contextMenuId);
+                        }
+                    );
+                } catch (error) {
+                    return reject(error);
+                }
             }
         );
     }

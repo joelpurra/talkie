@@ -71,9 +71,9 @@ import ContextMenuManager from "./context-menu-manager";
 
 import ShortcutKeyManager from "./shortcut-key-manager";
 
-log("Start", "Loading background code");
-
 function main() {
+    log("Start", "Main background function");
+
     log("Locale (@@ui_locale)", uiLocale);
     log("Locale (messages.json)", messagesLocale);
 
@@ -116,13 +116,21 @@ function main() {
                     .catch((error) => logError("onExtensionInstalledHandler", error))
             );
 
+        const onExtensionInstalledFallback = () => promiseTry(
+                () => contextMenuManager.removeAll()
+                    .then(() => onExtensionInstalledHandler())
+                    .catch((error) => logError("onExtensionInstalledFallback", error))
+            );
+
         // NOTE: "This event is not triggered for temporarily installed add-ons."
         // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onInstalled#Compatibility_notes
+        // NOTE: When using the WebExtensions polyfill, this check doesn't seem to work as browser.runtime.onInstalled always exists.
+        // https://github.com/mozilla/webextension-polyfill
         if (browser.runtime.onInstalled) {
             // NOTE: the onInstalled listener can't be added asynchronously
             browser.runtime.onInstalled.addListener(onExtensionInstalledHandler);
         } else {
-            onExtensionInstalledHandler();
+            onExtensionInstalledFallback();
         }
     }());
 
@@ -191,6 +199,8 @@ function main() {
     }());
 
     buttonPopupManager.enablePopup();
+
+    log("Done", "Main background function");
 }
 
 try {
@@ -198,5 +208,3 @@ try {
 } catch (error) {
     logError("onExtensionInstalledHandler", error);
 }
-
-log("Done", "Loading background code");
