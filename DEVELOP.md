@@ -31,21 +31,16 @@
 ## Manual installation
 
 - Clone the repository.
-- From the Google Chrome extensions settings page:
+- Build the code using commands below.
+- From the browser extensions settings page:
   - Enable developer mode.
-  - Load the repository folder as an unpacked extension.
+  - Load one of the package folders as an unpacked extension.
+    - `package/chrome/` for Google Chrome, Chromium, Vivaldi, and similar browser.
+    - `package/webextension/` for Firefox, and other browsers.
 
 
 
-## Debugging
-
-- From the Google Chrome extensions settings page:
-  - Inspect the Talkie background page view to see console output.
-  - Optionally add breakpoints in the source code.
-
-
-
-## Development
+## Building
 
 ```bash
 # Go to the directory where you cloned the repository.
@@ -54,9 +49,19 @@ cd talkie
 # Install local development tools.
 npm install
 
-# Fix any warnings and errors before committing.
-npm run --silent test
+# Do a clean build.
+npm run --silent rebuild
 ```
+
+
+
+## Debugging
+
+- From the browser extensions settings page:
+  - Enable developer mode.
+  - Inspect the Talkie background page view to see console output.
+- You can also inspect the popup and options pages separately.
+- Optionally add breakpoints in the source code.
 
 
 
@@ -108,7 +113,28 @@ git checkout develop
 # Start a new feature. Us a descriptive "<feature-name>", such as "automatic-language-detection".
 git flow feature start <feature-name>
 
+# Watch the source files for changes; one command per terminal.
+npm run --silent watch:background
+npm run --silent watch:popup
+npm run --silent watch:options
+npm run --silent watch:chrome
+npm run --silent watch:webextension
+
 # Code your feature and add the files.
+# Manually reload and test the code in the browser.
+# Manually test all Talkie features:
+#   - The Talkie button
+#   - Shortcut keys
+#   - Options page
+#   - Language detection in more than one language
+#   - Any feature change you may have made
+# in the supported browsers:
+#   - Google Chrome
+#   - Firefox
+#   - Preferably other browsers as well.
+
+# Make sure the code builds.
+npm run --silent rebuild
 
 # Fix any warnings and errors before committing.
 npm run --silent test
@@ -136,9 +162,6 @@ These steps are only done by the project owner.
 # Finish up any features, switch to develop.
 git checkout develop
 
-# Fix any warnings and errors before committing.
-npm run --silent test
-
 # Ensure all strings have been translated.
 # Check the diff as well as the final per-key message string count.
 npm run --silent messages:translate
@@ -146,6 +169,9 @@ npm run --silent messages:translate
 # Ensure all files are included -- or excluded -- in the packaged extension.
 # This includes new code files/translations/resources added/removed since the last release.
 cat extension-files.txt
+
+# Fix any warnings and errors before committing.
+npm run --silent prepackage
 
 # The "<release-version>" needs to follow semantic versioning, such as "v1.0.0".
 # http://semver.org/

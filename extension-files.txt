@@ -11,6 +11,10 @@ _locales/ru/messages.json
 _locales/sv/messages.json
 _locales/zh/messages.json
 CLA.md
+dist/background.js
+dist/options.js
+dist/popup.js
+lib/browser-polyfill.js
 LICENSE
 manifest.json
 README.md
@@ -35,12 +39,5 @@ resources/icon/icon-stop/icon-96x96.png
 resources/style/options.css
 resources/style/popup.css
 resources/style/shared.css
-src/background.js
-src/language.js
-src/options.html
-src/options.js
-src/popup-start.html
-src/popup-start.js
-src/shared-frontend.js
-src/shared.js
-src/tabrow.js
+src/options/options.html
+src/popup/popup.html

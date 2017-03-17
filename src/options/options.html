@@ -25,14 +25,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Options &mdash; Talkie</title>
-    <link rel="stylesheet" type="text/css" href="../resources/style/shared.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/style/options.css" />
+    <link rel="stylesheet" type="text/css" href="../../resources/style/shared.css" />
+    <link rel="stylesheet" type="text/css" href="../../resources/style/options.css" />
 </head>
 
 <body>
     <header>
         <nav id="options-tabrow">
             <ol>
+                <li>
+                    <a href="#usage" data-translate="frontend_usageLinkText"></a>
+                </li>
                 <li>
                     <a href="#about" data-translate="frontend_aboutLinkText"></a>
                 </li>
@@ -53,8 +56,36 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
         <hr />
     </header>
     <main>
+        <section id="usage">
+            <h3 data-translate="frontend_usageHeading"></h3>
+            <ul>
+                <li>
+                    <span data-translate="frontend_usageStep01"></span>
+                </li>
+                <li>
+                    <span data-translate="frontend_usageStep02"></span> <span class="icon inline talkie"></span>
+                </li>
+            </ul>
+            <p data-translate="frontend_usageSelectionContextMenuDescription"></p>
+            <p data-translate="frontend_usageShortcutKeyDescription"></p>
+            <ul>
+                <li>
+                    <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (macOS)
+                </li>
+                <li>
+                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (Windows, Linux, Chrome OS)
+                </li>
+                <li>
+                    <span data-translate="frontend_usageShortcutKeyAlternative03"></span>
+                </li>
+                <li>
+                    <a href="https://github.com/joelpurra/talkie#usage" data-translate="frontend_usageShortcutKeyAlternative04"></a>
+                </li>
+            </ul>
+        </section>
         <section id="about">
             <h2 data-translate="frontend_aboutHeading"></h2>
+            <p>Talkie <span id="version-name"></span></p>
             <p data-translate="frontend_aboutThankYou"></p>
             <ul>
                 <li>
@@ -69,31 +100,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
                 <li>
                     <a href="https://github.com/joelpurra/talkie" data-translate="frontend_aboutCodeOnGithubLinkText"></a>
                 </li>
-                </li>
-            </ul>
-            <h3 data-translate="frontend_aboutUsageHeading"></h3>
-            <ul>
-                <li>
-                    <span data-translate="frontend_aboutUsageStep01"></span>
-                </li>
-                <li>
-                    <span data-translate="frontend_aboutUsageStep02"></span> <span class="icon inline talkie"></span>
-                </li>
-            </ul>
-            <p data-translate="frontend_aboutUsageSelectionContextMenuDescription"></p>
-            <p data-translate="frontend_aboutUsageShortcutKeyDescription"></p>
-            <ul>
-                <li>
-                    <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (macOS)
-                </li>
-                <li>
-                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (Windows, Linux, Chrome OS)
-                </li>
-                <li>
-                    <span data-translate="frontend_aboutUsageShortcutKeyAlternative03"></span>
-                </li>
-                <li>
-                    <a href="https://github.com/joelpurra/talkie#usage" data-translate="frontend_aboutUsageShortcutKeyAlternative04"></a>
                 </li>
             </ul>
         </section>
@@ -187,10 +193,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
             </p>
         </section>
     </main>
-    <script src="shared.js"></script>
-    <script src="shared-frontend.js"></script>
-    <script src="tabrow.js"></script>
-    <script src="options.js"></script>
+    <script src="../../lib/browser-polyfill.js"></script>
+    <script src="../../dist/options.js"></script>
 </body>
 
 </html>

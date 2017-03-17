@@ -51,27 +51,6 @@
   "frontend_aboutThankYou": {
     "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Användning"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Steg för att kontrollera eller ändra Talkies kortkommando."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Markera önskad text på valfri webbplats."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält"
-  },
   "frontend_donateLinkText": {
     "message": "Donera"
   },
@@ -134,6 +113,30 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "Användning"
+  },
+  "frontend_usageLinkText": {
+    "message": "Användning"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Steg för att kontrollera eller ändra Talkies kortkommando."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:"
+  },
+  "frontend_usageStep01": {
+    "message": "Markera önskad text på valfri webbplats."
+  },
+  "frontend_usageStep02": {
+    "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Tillgängliga språk"

@@ -1,0 +1,53 @@
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://github.com/joelpurra/talkie>
+
+Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+import {
+    log,
+    logError,
+} from "../shared/log";
+
+export default class Chain {
+    constructor() {
+        this.chainPromise = Promise.resolve();
+        this.length = 0;
+    }
+
+    link(promise) {
+        this.length++;
+        const currentLength = this.length;
+
+        log("Start", "Chain", currentLength);
+
+        this.chainPromise = this.chainPromise
+            .then(promise)
+            .then((result) => {
+                log("Done", "Chain", currentLength);
+
+                return result;
+            })
+            .catch((error) => {
+                logError("Error", "Chain", currentLength, error);
+
+                throw error;
+            });
+
+        return this.chainPromise;
+    }
+}

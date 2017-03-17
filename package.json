@@ -1,16 +1,33 @@
 {
   "name": "talkie",
   "private": true,
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
-    "package": "rimraf .package && mkdir -p .package/ && rsync -a --files-from extension-files.txt . .package/ && cd .package/ && zip -vr \"../talkie-joelpurra.com-${npm_package_version}.zip\" .",
+    "clean": "rimraf package/ && rimraf dist/",
+    "build": "rollup --config rollup.config.background.js && rollup --config rollup.config.popup.js && rollup --config rollup.config.options.js && npm run --silent build:chrome && npm run --silent build:webextension",
+    "build:chrome": "mkdir -p package/chrome/ && rsync -a --files-from extension-files.txt . package/chrome/ && npm run --silent package:chrome:patch",
+    "build:webextension": "mkdir -p package/webextension/ && rsync -a --files-from extension-files.txt . package/webextension/ && npm run --silent package:webextension:patch",
+    "rebuild": "npm run --silent clean && npm run --silent build",
+    "watch:background": "rollup --watch --config rollup.config.background.js",
+    "watch:popup": "rollup --watch --config rollup.config.popup.js",
+    "watch:options": "rollup --watch --config rollup.config.options.js",
+    "watch:chrome": "watch --interval 10 --differences --beep npm run --silent build:chrome",
+    "watch:webextension": "watch --interval 10 --differences --beep npm run --silent build:webextension",
+    "prepackage": "npm run --silent test && npm run --silent rebuild && npm run --silent messages:refresh && npm run --silent messages:count",
+    "package": "npm run --silent package:chome && npm run --silent package:webextension",
+    "package:chrome": "cd package/chrome/ && zip -vr \"../../talkie-joelpurra.com-${npm_package_version}-chrome.zip\" .",
+    "package:chrome:patch": "json -Ie '[\"open-website-main\", \"open-website-chromewebstore\", \"open-website-donate\"].forEach((command) => delete this.commands[command].suggested_key)' -f package/chrome/manifest.json",
+    "package:webextension": "cd package/webextension/ && zip -vr \"../../talkie-joelpurra.com-${npm_package_version}-webextension.zip\" .",
+    "package:webextension:patch": "echo >/dev/null",
     "version:get": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/__ p'",
-    "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file -- package.json && git add manifest.json package.json && git commit -m \"${TALKIE_VERSION}\"",
+    "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && export TALKIE_BUILD_DATETIME=$(date -u +%F) && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file:name -- manifest.json && npm run --silent version:update:file -- package.json && git add manifest.json package.json && git commit -m \"${TALKIE_VERSION}\"",
     "version:update:file": "json -Ie \"this.version='${TALKIE_VERSION}'\" -f",
+    "version:update:file:name": "json -Ie \"this.version_name='v${TALKIE_VERSION} (${TALKIE_BUILD_DATETIME})'\" -f",
     "test": "npm run --silent lint",
     "lint": "npm run --silent eslint --",
     "eslint": "eslint ./src",
+    "eslint:fix": "eslint --fix ./src",
     "chromestore": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run chromestore:update && npm run chromestore:publish",
     "chromestore:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"talkie-joelpurra.com-${npm_package_version}.zip\"",
     "chromestore:publish": "chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk",
@@ -45,10 +62,19 @@
     "chrome-webstore-manager": "^0.4.1",
     "eslint": "^3.12.2",
     "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-compat": "^1.0.2",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "json": "^9.0.4",
     "pre-commit": "^1.2.2",
-    "rimraf": "^2.5.4"
-  }
+    "rimraf": "^2.5.4",
+    "rollup": "^0.41.5",
+    "rollup-plugin-json": "^2.1.0",
+    "rollup-watch": "^3.2.2",
+    "webextension-polyfill": "git+https://github.com/mozilla/webextension-polyfill.git"
+  },
+  "browserslist": [
+    "last 5 Chrome versions",
+    "last 5 Firefox versions"
+  ]
 }

@@ -51,34 +51,6 @@
     "message": "Dank u voor het gebruik van Talkie - als je het leuk vindt, vertel je vrienden!",
     "original": "Thank you for using Talkie - if you like it, tell your friends!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Gebruik",
-    "original": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "U kunt ook de tekst selecteren en klik met de rechtermuisknop op en kies Talkie in het menu.  Op deze manier werkt ook in PDF-bestanden en een aantal speciale soorten pagina's in Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Als de sleutel niet werkt, controleer dan of deze niet al in gebruik is door een ander toestel.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Hoe om te controleren of wijzigen van de Talkie sneltoets.",
-    "original": "How to check or change the Talkie shortcut key."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Een handige optie is om de Talkie sneltoets te gebruiken:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Selecteer de gewenste tekst op een webpagina.",
-    "original": "Select desired text on any web page."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Klik op de Talkie-knop in uw browser bar",
-    "original": "Click the Talkie button in your browser bar"
-  },
   "frontend_donateLinkText": {
     "message": "schenken",
     "original": "Donate"
@@ -150,6 +122,38 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie in de Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "Gebruik",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "Gebruik",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "U kunt ook de tekst selecteren en klik met de rechtermuisknop op en kies Talkie in het menu.  Op deze manier werkt ook in PDF-bestanden en een aantal speciale soorten pagina's in Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Als de sleutel niet werkt, controleer dan of deze niet al in gebruik is door een ander toestel.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Hoe om te controleren of wijzigen van de Talkie sneltoets.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Een handige optie is om de Talkie sneltoets te gebruiken:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
+  },
+  "frontend_usageStep01": {
+    "message": "Selecteer de gewenste tekst op een webpagina.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Klik op de Talkie-knop in uw browser bar",
+    "original": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Beschikbare talen",

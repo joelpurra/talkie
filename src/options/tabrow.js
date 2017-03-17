@@ -67,7 +67,7 @@ window:false,
 *
 */
 
-class Tabrow {
+export default class Tabrow {
     constructor(tabContainerId) {
         this.tabContainerId = tabContainerId;
         this.selectedTabContentElement = null;

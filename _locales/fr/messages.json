@@ -51,27 +51,6 @@
   "frontend_aboutThankYou": {
     "message": "Merci d'utiliser Talkie - si vous l'aimez, parlez-en à vos amis!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Vous pouvez également sélectionner le texte, puis cliquer droit dessus et choisir Talkie dans le menu. Cette fonction s'applique également dans les fichiers PDF et sur certains types de pages spécifiques dans Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Si la touche de raccourci ne fonctionne pas, vérifiez qu'elle n'est pas déjà utilisée par une autre extension."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Vérifier ou modifier la touche de raccourci Talkie."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Une option pratique est d'utiliser la touche de raccourci Talkie:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Sélectionnez le texte souhaité sur n'importe quelle page Web."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Cliquez sur le bouton Talkie dans la barre de navigation"
-  },
   "frontend_donateLinkText": {
     "message": "Faire un don"
   },
@@ -134,6 +113,30 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie dans le Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Vous pouvez également sélectionner le texte, puis cliquer droit dessus et choisir Talkie dans le menu. Cette fonction s'applique également dans les fichiers PDF et sur certains types de pages spécifiques dans Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Si la touche de raccourci ne fonctionne pas, vérifiez qu'elle n'est pas déjà utilisée par une autre extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Vérifier ou modifier la touche de raccourci Talkie."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Une option pratique est d'utiliser la touche de raccourci Talkie:"
+  },
+  "frontend_usageStep01": {
+    "message": "Sélectionnez le texte souhaité sur n'importe quelle page Web."
+  },
+  "frontend_usageStep02": {
+    "message": "Cliquez sur le bouton Talkie dans la barre de navigation"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Langues disponibles"
