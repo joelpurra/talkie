@@ -51,34 +51,6 @@
     "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!",
     "original": "Thank you for using Talkie - if you like it, tell your friends!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Användande",
-    "original": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Du kan också markera texten, högerklicka på den och välj Talkie i menyn.  På så sätt fungerar även i PDF-filer och vissa speciella typer av sidor i Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Om nyckeln inte fungerar, kontrollera att det inte redan används av en annan anknytning.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Hur kan man kontrollera eller ändra Talkie kortkommando.",
-    "original": "How to check or change the Talkie shortcut key."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Ett bekvämt alternativ är att använda Talkie kortkommando:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Välj önskad text på en webbsida.",
-    "original": "Select desired text on any web page."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Klicka på Talkie knappen i webbläsarens adressfält",
-    "original": "Click the Talkie button in your browser bar"
-  },
   "frontend_donateLinkText": {
     "message": "Donera",
     "original": "Donate"
@@ -150,6 +122,38 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "Användande",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "Användande",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Du kan också markera texten, högerklicka på den och välj Talkie i menyn.  På så sätt fungerar även i PDF-filer och vissa speciella typer av sidor i Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Om nyckeln inte fungerar, kontrollera att det inte redan används av en annan anknytning.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Hur kan man kontrollera eller ändra Talkie kortkommando.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Ett bekvämt alternativ är att använda Talkie kortkommando:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
+  },
+  "frontend_usageStep01": {
+    "message": "Välj önskad text på en webbsida.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Klicka på Talkie knappen i webbläsarens adressfält",
+    "original": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "tillgängliga språk",

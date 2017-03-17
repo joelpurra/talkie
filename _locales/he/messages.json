@@ -1,6 +1,6 @@
 {
   "buttonDefaultTitle": {
-    "message": "קראו בחירת טקסט בקול רם"
+    "message": "קרא את בחירת הטקסט בקול רם"
   },
   "buttonStopTitle": {
     "message": "תפסיק לדבר"
@@ -51,27 +51,6 @@
   "frontend_aboutThankYou": {
     "message": "תודה על השימוש במכשיר - אם אתה אוהב את זה, תגיד לחברים שלך!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "נוֹהָג"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "אתה יכול גם לבחור את הטקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  גם בדרך זו עובדת-קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "כיצד לבדוק או לשנות את מקש קיצור Talkie."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "אפשרות נוחה היא להשתמש מקש קיצור Talkie:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "בחר טקסט רצוי בדף אינטרנט כלשהו."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "לחץ על כפתור Talkie בשורת הכתובת בדפדפן"
-  },
   "frontend_donateLinkText": {
     "message": "לִתְרוֹם"
   },
@@ -82,7 +61,7 @@
     "message": "תרום USD 100 עכשיו"
   },
   "frontend_donate_usd25Now": {
-    "message": "תרום USD 25 עכשיו"
+    "message": "לתרום USD 25 עכשיו"
   },
   "frontend_donate_usd5Now": {
     "message": "תרום USD 5 עכשיו"
@@ -94,7 +73,7 @@
     "message": "זה לא כמו שאני לא רוצה לתרום לתמוך Talkie ופיתוח קוד פתוח בכלל - אני פשוט לא רוצה להיות מוטרד בעת שימוש במכשיר מלכתחילה.  אם תבטל את לחצני התרומה של הקופץ, אני מקווה שאתה גם תתמוך Talkie בדרך כלשהי!  הכפתורים תמיד יהיו זמינים כאן בין האפשרויות, רק למקרה."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "תרום: לתמוך בפיתוח קוד פתוח"
+    "message": "לתרום: תמיכה בפיתוח קוד פתוח"
   },
   "frontend_licenseCLADescription": {
     "message": "תרומתכם Talkie נעשית תחת הסכם הרישיון לתורמים (CLA)."
@@ -135,6 +114,30 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie בחנות האינטרנט של Chrome"
   },
+  "frontend_usageHeading": {
+    "message": "נוֹהָג"
+  },
+  "frontend_usageLinkText": {
+    "message": "נוֹהָג"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "אתה יכול גם לבחור את הטקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  גם בדרך זו עובדת-קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "כיצד לבדוק או לשנות את מקש קיצור Talkie."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "אפשרות נוחה היא להשתמש מקש קיצור Talkie:"
+  },
+  "frontend_usageStep01": {
+    "message": "בחר טקסט רצוי בדף אינטרנט כלשהו."
+  },
+  "frontend_usageStep02": {
+    "message": "לחץ על כפתור Talkie בשורת הכתובת בדפדפן"
+  },
   "frontend_voicesAvailableLanguages": {
     "message": "שפות זמינות"
   },
@@ -161,7 +164,7 @@
     "message": "הצג את כל הקולות"
   },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "התרומות שלך זוכות להערכה!"
+    "message": "התרומות שלך מוערכים!"
   },
   "noTextSelectedMessage": {
     "message": "אנא בחר טקסט רצוי על אתר האינטרנט ראשון.  ניתן גם לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט."

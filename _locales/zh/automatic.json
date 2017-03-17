@@ -51,34 +51,6 @@
     "message": "Talkieie  - 如果你喜欢它，告诉你的朋友！",
     "original": "Thank you for using Talkie - if you like it, tell your friends!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "用法",
-    "original": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "您还可以选择文本，然后右键单击它，并在菜单中选择Talkie。 这种方式也适用于PDF文件和Chrome中的一些特殊类型的页面。",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "如果密钥不起作用，请检查其是否已被另一分机使用。",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Talkieie快捷键。",
-    "original": "How to check or change the Talkie shortcut key."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "一个方便的选择是使用Talkie快捷键：",
-    "original": "A convenient option is to use the Talkie shortcut key:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "在任何网页上选择所需的文字。",
-    "original": "Select desired text on any web page."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "单击浏览器栏中的Talkie按钮",
-    "original": "Click the Talkie button in your browser bar"
-  },
   "frontend_donateLinkText": {
     "message": "捐",
     "original": "Donate"
@@ -151,6 +123,38 @@
     "message": "Talkie在Chrome网上应用店中",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_usageHeading": {
+    "message": "用法",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "用法",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "您还可以选择文本，然后右键单击它，并在菜单中选择Talkie。 这种方式也适用于PDF文件和Chrome中的一些特殊类型的页面。",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "如果密钥不起作用，请检查其是否已被另一分机使用。",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Talkieie快捷键。",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "一个方便的选择是使用Talkie快捷键：",
+    "original": "A convenient option is to use the Talkie shortcut key:"
+  },
+  "frontend_usageStep01": {
+    "message": "在任何网页上选择所需的文字。",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "单击浏览器栏中的Talkie按钮",
+    "original": "Click the Talkie button in your browser bar"
+  },
   "frontend_voicesAvailableLanguages": {
     "message": "可用语言",
     "original": "Available languages"
@@ -189,7 +193,7 @@
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "请先在网站上选择所需的文字。 您还可以选择文本，然后右键单击它，并在菜单中选择对讲机。",
+    "message": "请先在网站上选择所需的文字。 您也可以选择文本，然后右键单击它，并在菜单中选择对讲机。",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {

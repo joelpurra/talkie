@@ -51,27 +51,6 @@
   "frontend_aboutThankYou": {
     "message": "Gracias por usar Talkie - si te gusta, dile a tus amigos!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Uso"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "También puede seleccionar el texto, luego hacer clic con el botón derecho en él y elegir Talkie en el menú.  De esta manera también funciona en archivos PDF y algunos tipos especiales de páginas en Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Si la clave no funciona, compruebe que no esté ya en uso por otra extensión."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Cómo comprobar o cambiar la tecla de acceso directo Talkie."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Una opción conveniente es usar la tecla de atajo de Talkie:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Seleccione el texto deseado en cualquier página web."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Haga clic en el botón Talkie en la barra del navegador"
-  },
   "frontend_donateLinkText": {
     "message": "Donar"
   },
@@ -134,6 +113,30 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie en la Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "Uso"
+  },
+  "frontend_usageLinkText": {
+    "message": "Uso"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "También puede seleccionar el texto, luego hacer clic con el botón derecho en él y elegir Talkie en el menú.  De esta manera también funciona en archivos PDF y algunos tipos especiales de páginas en Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Si la clave no funciona, compruebe que no esté ya en uso por otra extensión."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Cómo comprobar o cambiar la tecla de acceso directo Talkie."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Una opción conveniente es usar la tecla de atajo de Talkie:"
+  },
+  "frontend_usageStep01": {
+    "message": "Seleccione el texto deseado en cualquier página web."
+  },
+  "frontend_usageStep02": {
+    "message": "Haga clic en el botón Talkie en la barra del navegador"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Idiomas Disponibles"

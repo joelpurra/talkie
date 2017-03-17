@@ -51,27 +51,6 @@
   "frontend_aboutThankYou": {
     "message": "Grazie per aver scelto Talkie - se ti piace, dire ai tuoi amici!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "uso"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "È inoltre possibile selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu.  In questo modo funziona anche in file PDF e alcuni particolari tipi di pagine in Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Se la chiave non funziona, si prega di controllare che non sia già in uso da un altro interno."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Come controllare o modificare la chiave di Talkie di scelta rapida."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Un'opzione conveniente è quello di utilizzare il tasto di scelta rapida Talkie:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Selezionare il testo desiderato in qualsiasi pagina web."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Fare clic sul pulsante Talkie nella barra del browser"
-  },
   "frontend_donateLinkText": {
     "message": "Donare"
   },
@@ -134,6 +113,30 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie nel Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "uso"
+  },
+  "frontend_usageLinkText": {
+    "message": "uso"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "È inoltre possibile selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu.  In questo modo funziona anche in file PDF e alcuni particolari tipi di pagine in Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Se la chiave non funziona, si prega di controllare che non sia già in uso da un altro interno."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Come controllare o modificare la chiave di Talkie di scelta rapida."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Un'opzione conveniente è quello di utilizzare il tasto di scelta rapida Talkie:"
+  },
+  "frontend_usageStep01": {
+    "message": "Selezionare il testo desiderato in qualsiasi pagina web."
+  },
+  "frontend_usageStep02": {
+    "message": "Fare clic sul pulsante Talkie nella barra del browser"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "lingue disponibili"

@@ -1,6 +1,6 @@
 {
   "buttonDefaultTitle": {
-    "message": "קראו בחירת טקסט בקול רם",
+    "message": "קרא את בחירת הטקסט בקול רם",
     "original": "Read text selection out loud"
   },
   "buttonStopTitle": {
@@ -51,34 +51,6 @@
     "message": "תודה על השימוש במכשיר - אם אתה אוהב את זה, תגיד לחברים שלך!",
     "original": "Thank you for using Talkie - if you like it, tell your friends!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "נוֹהָג",
-    "original": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "אתה יכול גם לבחור את הטקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  גם בדרך זו עובדת-קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "כיצד לבדוק או לשנות את מקש קיצור Talkie.",
-    "original": "How to check or change the Talkie shortcut key."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "אפשרות נוחה היא להשתמש מקש קיצור Talkie:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "בחר טקסט רצוי בדף אינטרנט כלשהו.",
-    "original": "Select desired text on any web page."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "לחץ על כפתור Talkie בשורת הכתובת בדפדפן",
-    "original": "Click the Talkie button in your browser bar"
-  },
   "frontend_donateLinkText": {
     "message": "לִתְרוֹם",
     "original": "Donate"
@@ -92,7 +64,7 @@
     "original": "Donate $$100 now"
   },
   "frontend_donate_usd25Now": {
-    "message": "תרום USD 25 עכשיו",
+    "message": "לתרום USD 25 עכשיו",
     "original": "Donate $$25 now"
   },
   "frontend_donate_usd5Now": {
@@ -108,7 +80,7 @@
     "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "תרום: לתמוך בפיתוח קוד פתוח",
+    "message": "לתרום: תמיכה בפיתוח קוד פתוח",
     "original": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
@@ -151,6 +123,38 @@
     "message": "Talkie בחנות האינטרנט של Chrome",
     "original": "Talkie in the Chrome Web Store"
   },
+  "frontend_usageHeading": {
+    "message": "נוֹהָג",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "נוֹהָג",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "אתה יכול גם לבחור את הטקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט.  גם בדרך זו עובדת-קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "אם המפתח לא עובד, בדוק שהיא אינה נמצאת כבר בשימוש על ידי שלוחה אחרת.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "כיצד לבדוק או לשנות את מקש קיצור Talkie.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "אפשרות נוחה היא להשתמש מקש קיצור Talkie:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
+  },
+  "frontend_usageStep01": {
+    "message": "בחר טקסט רצוי בדף אינטרנט כלשהו.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "לחץ על כפתור Talkie בשורת הכתובת בדפדפן",
+    "original": "Click the Talkie button in your browser bar"
+  },
   "frontend_voicesAvailableLanguages": {
     "message": "שפות זמינות",
     "original": "Available languages"
@@ -185,7 +189,7 @@
     "original": "Show all voices"
   },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "התרומות שלך זוכות להערכה!",
+    "message": "התרומות שלך מוערכים!",
     "original": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {

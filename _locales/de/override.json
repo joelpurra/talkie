@@ -51,34 +51,6 @@
     "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!",
     "original": "Thank you for using Talkie - if you like it, tell your friends!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Verwendung",
-    "original": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Wenn die Tastenkombination nicht funktioniert, stelle bitte sicher, dass sie nicht bereits durch eine andere Erweiterung belegt ist.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "So überprüfst oder änderst du die Talkie-Tastenkombination.",
-    "original": "How to check or change the Talkie shortcut key."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "Eine bequeme Option ist, die Talkie-Tastenkombination zu verwenden:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Markiere den gewünschten Text auf einer beliebigen Webseite.",
-    "original": "Select desired text on any web page."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Klicke in der Browserleiste auf den Talkie-Button",
-    "original": "Click the Talkie button in your browser bar"
-  },
   "frontend_donateLinkText": {
     "message": "Spenden",
     "original": "Donate"
@@ -150,6 +122,38 @@
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie im Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "Verwendung",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "Verwendung",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Wenn die Tastenkombination nicht funktioniert, stelle bitte sicher, dass sie nicht bereits durch eine andere Erweiterung belegt ist.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "So überprüfst oder änderst du die Talkie-Tastenkombination.",
+    "original": "How to check or change the Talkie shortcut key."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Eine bequeme Option ist, die Talkie-Tastenkombination zu verwenden:",
+    "original": "A convenient option is to use the Talkie shortcut key:"
+  },
+  "frontend_usageStep01": {
+    "message": "Markiere den gewünschten Text auf einer beliebigen Webseite.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Klicke in der Browserleiste auf den Talkie-Button",
+    "original": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Verfügbare Sprachen",

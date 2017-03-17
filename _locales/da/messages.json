@@ -51,27 +51,6 @@
   "frontend_aboutThankYou": {
     "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!"
   },
-  "frontend_aboutUsageHeading": {
-    "message": "Usage"
-  },
-  "frontend_aboutUsageSelectionContextMenuDescription": {
-    "message": "Du kan også markere teksten og derefter højreklikke på den og vælge Talkie i menuen.  Denne måde fungerer også i PDF-filer og nogle særlige typer af sider i Chrome."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative03": {
-    "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse."
-  },
-  "frontend_aboutUsageShortcutKeyAlternative04": {
-    "message": "Sådan kontrolleres eller ændres Talkie genvejstast."
-  },
-  "frontend_aboutUsageShortcutKeyDescription": {
-    "message": "En bekvem mulighed er at bruge Talkie genvejstast:"
-  },
-  "frontend_aboutUsageStep01": {
-    "message": "Vælg den ønskede tekst på en webside."
-  },
-  "frontend_aboutUsageStep02": {
-    "message": "Klik på knappen Talkie i din browser bar"
-  },
   "frontend_donateLinkText": {
     "message": "Doner"
   },
@@ -134,6 +113,30 @@
   },
   "frontend_talkieInTheChromeWebStore": {
     "message": "Talkie i Chrome Webshop"
+  },
+  "frontend_usageHeading": {
+    "message": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Du kan også markere teksten og derefter højreklikke på den og vælge Talkie i menuen.  Denne måde fungerer også i PDF-filer og nogle særlige typer af sider i Chrome."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Sådan kontrolleres eller ændres Talkie genvejstast."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "En bekvem mulighed er at bruge Talkie genvejstast:"
+  },
+  "frontend_usageStep01": {
+    "message": "Vælg den ønskede tekst på en webside."
+  },
+  "frontend_usageStep02": {
+    "message": "Klik på knappen Talkie i din browser bar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Ledige sprog"
