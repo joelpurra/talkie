@@ -1,6 +1,6 @@
 {
   "buttonDefaultTitle": {
-    "message": "קרא את הטקסט הנבחר בקול רם"
+    "message": "קראו בחירת טקסט בקול רם"
   },
   "buttonStopTitle": {
     "message": "תפסיק לדבר"
@@ -24,7 +24,7 @@
     "message": "Talkie: \"%s\""
   },
   "extensionDescription": {
-    "message": "בחר טקסט מכל אתר ו-Talkie יקרא אותו עבורך בקול רם בלחיצת כפתור"
+    "message": "בחר טקסט בדף אינטרנט כלשהו, ​​ויש להם את המחשב לקרוא את זה בקול רם בשבילך פשוט על ידי לחיצה על כפתור Talkie."
   },
   "extensionLocale": {
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
@@ -164,7 +164,7 @@
     "message": "התרומות שלך זוכות להערכה!"
   },
   "noTextSelectedMessage": {
-    "message": "אנא בחר טסקט רצוי באתר כלשהו"
+    "message": "אנא בחר טקסט רצוי על אתר האינטרנט ראשון.  ניתן גם לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על זה, ולבחור Talkie בתפריט."
   },
   "noVoiceForLanguageDetectedMessage": {
     "description": "This is a fallback message. For this reason it is always in English.",
