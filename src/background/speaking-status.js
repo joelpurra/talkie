@@ -51,12 +51,20 @@ export default class SpeakingStatus {
             });
     }
 
+    setDoneSpeaking() {
+        return promiseTry(
+            () => {
+                this.currentSpeakingTab = null;
+            }
+        );
+    }
+
     setTabIsDoneSpeaking(tabId) {
         return this.isSpeakingTabId(tabId)
             .then((isTabSpeaking) => {
                 // TODO: throw if it's not the same tabId as the currently speaking tab?
                 if (isTabSpeaking) {
-                    this.currentSpeakingTab = null;
+                    return this.setDoneSpeaking();
                 }
 
                 return undefined;

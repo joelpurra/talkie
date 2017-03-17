@@ -44,7 +44,7 @@ export default class SuspensionManager {
     }
 
     executeConnectFromContent() {
-        return Execute.scriptInTopFrame(this.executeConnectFromContentCode)
+        return Execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 100)
             .then((preventExtensionSuspendConnectFromContentResult) => {
                 log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
 

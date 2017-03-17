@@ -70,10 +70,16 @@ export default class TalkieBackground {
                         const text = this.notAbleToSpeakTextFromThisSpecialTab.text;
                         const lang = this.notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
 
-                        return this.talkieSpeaker.speakTextInLanguage(text, lang);
+                        // NOTE: keeping the root chain separate from this chain.
+                        this.rootChain.link(() => this.talkieSpeaker.speakTextInLanguage(text, lang));
+
+                        return undefined;
                     }
 
-                    return this.talkieSpeaker.speakUserSelection();
+                    // NOTE: keeping the root chain separate from this chain.
+                    this.rootChain.link(() => this.talkieSpeaker.speakUserSelection());
+
+                    return undefined;
                 })
         );
     }
@@ -84,8 +90,7 @@ export default class TalkieBackground {
                 .then((wasSpeaking) => this.talkieSpeaker.stopSpeaking()
                     .then(() => {
                         if (!wasSpeaking) {
-                            // NOTE: keeping the root chain separate from this chain.
-                            this.rootChain.link(() => this.speakSelectionOnPage());
+                            return this.speakSelectionOnPage();
                         }
 
                         return undefined;
@@ -113,7 +118,8 @@ export default class TalkieBackground {
 
     startSpeakingCustomTextDetectLanguage(text) {
         return promiseTry(
-            () => canTalkieRunInTab()
+            () => this.talkieSpeaker.stopSpeaking()
+                .then(() => canTalkieRunInTab())
                 .then((canRun) => {
                     if (canRun) {
                         return LanguageHelper.detectPageLanguage();
@@ -132,7 +138,10 @@ export default class TalkieBackground {
                         },
                     ];
 
-                    return this.talkieSpeaker.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
+                    // NOTE: keeping the root chain separate from this chain.
+                    this.rootChain.link(() => this.talkieSpeaker.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage));
+
+                    return undefined;
                 })
         );
     }

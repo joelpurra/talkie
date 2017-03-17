@@ -48,6 +48,10 @@ export const getCurrentActiveTab = () => promiseTry(
         // https://developer.browser.com/extensions/tabs#method-query
         return browser.tabs.query(queryOptions)
             .then((tabs) => {
+                if (!tabs) {
+                    return null;
+                }
+
                 const singleTabResult = tabs.length === 1;
 
                 const tab = tabs[0] || null;

@@ -48,3 +48,22 @@ export const promiseSeries = (promises, state) => promiseTry(
             .then((result) => promiseSeries(rest, result));
     }
 );
+
+const createTimeout = (limit) => new Promise((resolve) => {
+    setTimeout(() => resolve(), limit);
+});
+
+export const promiseTimeout = (promise, limit) => {
+    const timeout = createTimeout(limit)
+        .then(() => {
+            const timeoutError = new Error(`Timeout after ${limit} milliseconds.`);
+            timeoutError.name = "PromiseTimeout";
+
+            throw timeoutError;
+        });
+
+    return Promise.race([
+        promise,
+        timeout,
+    ]);
+};

@@ -20,10 +20,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     log,
+    logError,
 } from "../shared/log";
 
 import {
     promiseTry,
+    promiseTimeout,
 } from "../shared/promise";
 
 import {
@@ -34,29 +36,93 @@ export default class Execute {}
 
 Execute.scriptInTopFrame = (code) => promiseTry(
     () => {
-        log("About to execute code in page context", code);
+        log("Start", "scriptInTopFrame", code.length, code);
 
         return browser.tabs.executeScript(
             {
                 allFrames: false,
-                matchAboutBlank: false,
                 code: code,
             }
-        );
+        )
+        .then((result) => {
+            log("Done", "scriptInTopFrame", code.length);
+
+            return result;
+        })
+        .catch((error) => {
+            logError("Error", "scriptInTopFrame", code.length, error);
+
+            throw error;
+        });
     }
 );
 
 Execute.scriptInAllFrames = (code) => promiseTry(
     () => {
-        log("About to execute code in page context", code);
+        log("Start", "scriptInAllFrames", code.length, code);
 
         return browser.tabs.executeScript(
             {
                 allFrames: true,
-                matchAboutBlank: true,
                 code: code,
             }
-        );
+        )
+        .then((result) => {
+            log("Done", "scriptInAllFrames", code.length);
+
+            return result;
+        })
+        .catch((error) => {
+            logError("Error", "scriptInAllFrames", code.length, error);
+
+            throw error;
+        });
+    }
+);
+
+Execute.scriptInTopFrameWithTimeout = (code, timeout) => promiseTry(
+    () => {
+        log("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+
+        return promiseTimeout(
+            Execute.scriptInTopFrame(code),
+            timeout
+        )
+        .then((result) => {
+            log("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+
+            return result;
+        })
+        .catch((error) => {
+            if (error && typeof error.name === "PromiseTimeout") {
+                // NOTE: this is how to check for a timeout.
+            }
+
+            throw error;
+        });
+    }
+);
+
+Execute.scriptInAllFramesWithTimeout = (code, timeout) => promiseTry(
+    () => {
+        log("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+
+        return promiseTimeout(
+            Execute.scriptInAllFrames(code),
+            timeout
+        )
+        .then((result) => {
+            log("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+
+            return result;
+        })
+        .catch((error) => {
+            if (error && typeof error.name === "PromiseTimeout") {
+                // NOTE: this is how to check for a timeout.
+            }
+
+            throw error;
+        });
     }
 );
 
@@ -91,7 +157,12 @@ Execute.logToPage = (...args) => promiseTry(
 
         const code = executeLogToPageCode.replace("%a", logValues);
 
-        return Execute.scriptInTopFrame(code);
+        return Execute.scriptInTopFrame(code)
+            .catch((error) => {
+                logError("Error", "Execute.logToPage", ...args);
+
+                throw error;
+            });
     }
 );
 
@@ -117,6 +188,11 @@ Execute.logToPageWithColor = (...args) => promiseTry(
 
         const code = executeLogToPageWithColorCode.replace("%a", logValues);
 
-        return Execute.scriptInTopFrame(code);
+        return Execute.scriptInTopFrame(code)
+            .catch((error) => {
+                logError("Error", "Execute.logToPageWithColor", ...args);
+
+                throw error;
+            });
     }
 );

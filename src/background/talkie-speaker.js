@@ -58,7 +58,22 @@ export default class TalkieSpeaker {
 
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
 
-        this.executeGetFramesSelectionTextAndLanguageCode = "function talkieGetParentElementLanguages(element) { return [].concat((element || null) && element.getAttribute(\"lang\")).concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement)); }; var talkieSelectionData = { text: (document.getSelection() || null) && document.getSelection().toString(), htmlTagLanguage: (document.getElementsByTagName(\"html\").length > 0 || null) && document.getElementsByTagName(\"html\")[0].getAttribute(\"lang\"), parentElementsLanguages: talkieGetParentElementLanguages((document.getSelection() || null) && document.getSelection().rangeCount > 0 && document.getSelection().getRangeAt(0).startContainer.parentElement) }; talkieSelectionData";
+        this.executeGetFramesSelectionTextAndLanguageCode = `
+            function talkieGetParentElementLanguages(element) {
+                return []
+                    .concat((element || null) && element.getAttribute && element.getAttribute("lang"))
+                    .concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
+            };
+
+            var talkieSelectionData = {
+                text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
+                htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.getElementsByTagName("html") || null) && (document.getElementsByTagName("html").length > 0 || null) && (document.getElementsByTagName("html")[0].getAttribute("lang") || null)),
+                parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null) && (document.getSelection().getRangeAt(0).startContainer.parentElement || null))),
+            };
+
+            talkieSelectionData;`
+            .replace(/\n/g, "")
+            .replace(/\s{2,}/g, " ");
     }
 
     getSynthesizerFromBrowser() {
@@ -355,7 +370,7 @@ export default class TalkieSpeaker {
     }
 
     executeGetFramesSelectionTextAndLanguage() {
-        return Execute.scriptInAllFrames(this.executeGetFramesSelectionTextAndLanguageCode)
+        return Execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 500)
             .then((framesSelectionTextAndLanguage) => {
                 log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
 

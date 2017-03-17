@@ -136,10 +136,16 @@ function main() {
         broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
 
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => Plug.once());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => Plug.once()
+            .catch((error) => {
+                // NOTE: swallowing any Plug.once() errors.
+                logError("Error", "Plug.once", "Error swallowed", error);
+
+                return undefined;
+            }));
 
         broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setActiveTabIsDoneSpeaking());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking());
 
         // NOTE: setting icons async.
         broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
