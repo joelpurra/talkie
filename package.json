@@ -15,7 +15,7 @@
     "watch:chrome": "watch --interval 10 --differences --beep npm run --silent build:chrome",
     "watch:webextension": "watch --interval 10 --differences --beep npm run --silent build:webextension",
     "prepackage": "npm run --silent test && npm run --silent rebuild && npm run --silent messages:refresh && npm run --silent messages:count",
-    "package": "npm run --silent package:chome && npm run --silent package:webextension",
+    "package": "npm run --silent package:chrome && npm run --silent package:webextension",
     "package:chrome": "cd package/chrome/ && zip -vr \"../../talkie-joelpurra.com-${npm_package_version}-chrome.zip\" .",
     "package:chrome:patch": "json -Ie '[\"open-website-main\", \"open-website-chromewebstore\", \"open-website-donate\"].forEach((command) => delete this.commands[command].suggested_key)' -f package/chrome/manifest.json",
     "package:webextension": "cd package/webextension/ && zip -vr \"../../talkie-joelpurra.com-${npm_package_version}-webextension.zip\" .",
