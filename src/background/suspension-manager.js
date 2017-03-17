@@ -40,11 +40,11 @@ export default class SuspensionManager {
             name: this.preventSuspensionPortName,
         };
 
-        this.executeConnectFromContentCode = `var talkiePreventSuspensionPort = browser.runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
+        this.executeConnectFromContentCode = `var talkiePreventSuspensionPort = (window.browser || window.chrome || null).runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
     }
 
     executeConnectFromContent() {
-        return Execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 100)
+        return Execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
             .then((preventExtensionSuspendConnectFromContentResult) => {
                 log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
 

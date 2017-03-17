@@ -39,10 +39,10 @@ const executePlug = () => promiseTry(
 );
 
 const executeGetTalkieWasPluggedCode = "window.talkieWasPlugged;";
-const executeGetTalkieWasPlugged = () => Execute.scriptInTopFrameWithTimeout(executeGetTalkieWasPluggedCode, 100);
+const executeGetTalkieWasPlugged = () => Execute.scriptInTopFrameWithTimeout(executeGetTalkieWasPluggedCode, 1000);
 
 const executeSetTalkieWasPluggedCode = "window.talkieWasPlugged = true;";
-const executeSetTalkieWasPlugged = () => Execute.scriptInTopFrameWithTimeout(executeSetTalkieWasPluggedCode, 100);
+const executeSetTalkieWasPlugged = () => Execute.scriptInTopFrameWithTimeout(executeSetTalkieWasPluggedCode, 1000);
 
 Plug.once = () => {
     return executeGetTalkieWasPlugged()

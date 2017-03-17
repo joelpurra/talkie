@@ -26,6 +26,7 @@ import {
 import {
     promiseTry,
     promiseSeries,
+    promiseTimeout,
 } from "../shared/promise";
 
 import {
@@ -59,19 +60,21 @@ export default class TalkieSpeaker {
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
 
         this.executeGetFramesSelectionTextAndLanguageCode = `
-            function talkieGetParentElementLanguages(element) {
-                return []
-                    .concat((element || null) && element.getAttribute && element.getAttribute("lang"))
-                    .concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
-            };
+            (function() {
+                function talkieGetParentElementLanguages(element) {
+                    return []
+                        .concat((element || null) && element.getAttribute && element.getAttribute("lang"))
+                        .concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
+                };
 
-            var talkieSelectionData = {
-                text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
-                htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.getElementsByTagName("html") || null) && (document.getElementsByTagName("html").length > 0 || null) && (document.getElementsByTagName("html")[0].getAttribute("lang") || null)),
-                parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null) && (document.getSelection().getRangeAt(0).startContainer.parentElement || null))),
-            };
+                var talkieSelectionData = {
+                    text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
+                    htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.getElementsByTagName("html") || null) && (document.getElementsByTagName("html").length > 0 || null) && (document.getElementsByTagName("html")[0].getAttribute("lang") || null)),
+                    parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null) && (document.getSelection().getRangeAt(0).startContainer.parentElement || null))),
+                };
 
-            talkieSelectionData;`
+                return talkieSelectionData;
+            }());`
             .replace(/\n/g, "")
             .replace(/\s{2,}/g, " ");
     }
@@ -79,7 +82,7 @@ export default class TalkieSpeaker {
     getSynthesizerFromBrowser() {
         return promiseTry(
             () => {
-                log("Start", "Pre-requisites check");
+                log("Start", "getSynthesizerFromBrowser", "Pre-requisites check");
 
                 if (!("speechSynthesis" in window) || typeof window.speechSynthesis.getVoices !== "function" || typeof window.speechSynthesis.speak !== "function") {
                     throw new Error("The browser does not support speechSynthesis.");
@@ -89,53 +92,84 @@ export default class TalkieSpeaker {
                     throw new Error("The browser does not support SpeechSynthesisUtterance.");
                 }
 
-                log("Done", "Pre-requisites check");
+                log("Done", "getSynthesizerFromBrowser", "Pre-requisites check");
             })
-            .then(() => new Promise(
-                (resolve, reject) => {
-                    try {
-                        log("Start", "Speech synthesizer check");
+            .then(() => {
+                log("Start", "getSynthesizerFromBrowser");
 
-                        // NOTE: the speech synthesizer can only be used after the voices have been loaded.
-                        const synthesizer = window.speechSynthesis;
+                // NOTE: the speech synthesizer can only be used after the voices have been loaded.
+                const synthesizer = window.speechSynthesis;
 
-                        // https://github.com/mdn/web-speech-api/blob/gh-pages/speak-easy-synthesis/script.js#L33-L36
-                        // NOTE: The synthesizer will work right away in Firefox.
-                        if (!synthesizer.onvoiceschanged) {
-                            log("Done", "Speech synthesizer check (direct)");
+                // https://github.com/mdn/web-speech-api/blob/gh-pages/speak-easy-synthesis/script.js#L33-L36
+                // NOTE: The synthesizer will work right away in Firefox.
+                const voices = synthesizer.getVoices();
 
-                            return resolve(synthesizer);
+                if (Array.isArray(voices) && voices.length > 0) {
+                    log("Done", "getSynthesizerFromBrowser (direct)");
+
+                    return synthesizer;
+                }
+
+                const asyncSynthesizerInitialization = new Promise(
+                    (resolve, reject) => {
+                        try {
+                            log("Start", "getSynthesizerFromBrowser (event-based)");
+
+                            const handleVoicesChanged = () => {
+                                delete synthesizer.onerror;
+                                delete synthesizer.onvoiceschanged;
+
+                                log("Variable", "synthesizer", synthesizer);
+
+                                log("Done", "getSynthesizerFromBrowser (event-based)");
+
+                                return resolve(synthesizer);
+                            };
+
+                            const handleError = (event) => {
+                                delete synthesizer.onerror;
+                                delete synthesizer.onvoiceschanged;
+
+                                logError("Error", "getSynthesizerFromBrowser", event);
+
+                                return reject(null);
+                            };
+
+                            // NOTE: Chrome needs to wait for the onvoiceschanged event before using the synthesizer.
+                            synthesizer.onvoiceschanged = handleVoicesChanged;
+                            synthesizer.onerror = handleError;
+                        } catch (error) {
+                            return reject(error);
+                        }
+                    }
+                );
+
+                return promiseTimeout(asyncSynthesizerInitialization, 1000)
+                    .catch((error) => {
+                        delete synthesizer.onerror;
+                        delete synthesizer.onvoiceschanged;
+
+                        if (error && error.name === "PromiseTimeout") {
+                            log("Done", "getSynthesizerFromBrowser (timeout)", "asyncSynthesizerInitialization", error);
+
+                            // NOTE: assume the synthesizer has somehow been initialized without triggering the onvoiceschanged event.
+                            return synthesizer;
                         }
 
-                        const handleVoicesChanged = () => {
-                            delete synthesizer.onerror;
-                            delete synthesizer.onvoiceschanged;
+                        logError("Error", "getSynthesizerFromBrowser", "asyncSynthesizerInitialization", error);
 
-                            log("Variable", "synthesizer", synthesizer);
+                        throw error;
+                    });
+            }
+        )
+            .then((synthesizer) => {
+                // NOTE: only for logging purposes.
+                const voices = synthesizer.getVoices();
 
-                            log("Done", "Speech synthesizer check (event-based)");
+                log("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
 
-                            return resolve(synthesizer);
-                        };
-
-                        const handleError = (event) => {
-                            delete synthesizer.onerror;
-                            delete synthesizer.onvoiceschanged;
-
-                            logError("Error", "Speech synthesizer check", event);
-
-                            return reject(null);
-                        };
-
-                        // NOTE: Chrome needs to wait for the onvoiceschanged event before using the synthesizer.
-                        synthesizer.onvoiceschanged = handleVoicesChanged;
-                        synthesizer.onerror = handleError;
-                    } catch (error) {
-                        return reject(error);
-                    }
-                }
-            )
-        );
+                return synthesizer;
+            });
     }
 
     getSynthesizer() {
@@ -370,7 +404,7 @@ export default class TalkieSpeaker {
     }
 
     executeGetFramesSelectionTextAndLanguage() {
-        return Execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 500)
+        return Execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 1000)
             .then((framesSelectionTextAndLanguage) => {
                 log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
 
