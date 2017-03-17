@@ -18,9 +18,37 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#progress {
-    width: 100%;
-    height: 5px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
+    urls,
+} from "./configuration";
+
+export const openUrlInNewTab = (url) => promiseTry(
+    () => {
+        if (typeof url !== "string") {
+            throw new Error("Bad url: " + url);
+        }
+
+        // NOTE: only https urls.
+        if (!url.startsWith("https://")) {
+            throw new Error("Bad url, only https:// allowed: " + url);
+        }
+
+        browser.tabs.create({active: true, url: url});
+    }
+);
+
+export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
+    () => {
+        const url = urls[id];
+
+        if (typeof url !== "string") {
+            throw new Error("Bad url for id: " + id);
+        }
+
+        return openUrlInNewTab(url);
+    }
+);

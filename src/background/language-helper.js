@@ -18,77 +18,75 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-api:false,
-chrome:false,
-executeLogToPage:false,
-isUndefinedOrNullOrEmptyOrWhitespace:false,
-log:false,
-logError:false,
-messagesLocale:false,
-promiseTry:false,
-shallowCopy:false,
-window:false,
-*/
+import {
+    log,
+    logError,
+} from "../shared/log";
 
-log("Start", "Loading language code");
+import {
+    promiseTry,
+} from "../shared/promise";
+
+import {
+    isUndefinedOrNullOrEmptyOrWhitespace,
+    shallowCopy,
+} from "../shared/basic";
+
+import Execute from "../shared/execute";
+
+import {
+    messagesLocale,
+} from "../shared/configuration";
 
 const noTextSelectedMessage = {
-    text: chrome.i18n.getMessage("noTextSelectedMessage"),
+    text: browser.i18n.getMessage("noTextSelectedMessage"),
     effectiveLanguage: messagesLocale,
 };
 
 const noVoiceForLanguageDetectedMessage = {
-    text: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
-    effectiveLanguage: chrome.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
+    text: browser.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
+    effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
 };
 
-const detectPageLanguage = () => new Promise(
-    (resolve, reject) => {
-        try {
-            chrome.tabs.detectLanguage((language) => {
-                // https://developer.chrome.com/extensions/tabs#method-detectLanguage
-                if (chrome.runtime.lastError) {
-                    // https://github.com/joelpurra/talkie/issues/3
-                    // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
-                    // As this is not critical, just log the error and resolve with null.
-                    // return reject(chrome.runtime.lastError);
-                    logError("detectPageLanguage", chrome.runtime.lastError);
+export default class LanguageHelper {}
 
-                    return resolve(null);
-                }
-
-                log("detectPageLanguage", "Browser detected primary page language", language);
+LanguageHelper.detectPageLanguage = () => promiseTry(
+            () => {
+                // https://developer.browser.com/extensions/tabs#method-detectLanguage
+                return browser.tabs.detectLanguage()
+                    .then((language) => {
+                        log("detectPageLanguage", "Browser detected primary page language", language);
 
                 // The language fallback value is "und", so treat it as no language.
-                if (!language || typeof language !== "string" || language === "und") {
-                    return resolve(null);
-                }
+                        if (!language || typeof language !== "string" || language === "und") {
+                            return null;
+                        }
 
-                return resolve(language);
-            });
-        } catch (error) {
-            return reject(error);
-        }
-    }
+                        return language;
+                    })
+                    .catch((error) => {
+                        // https://github.com/joelpurra/talkie/issues/3
+                        // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
+                        // As this is not critical, just log the error and resolve with null.
+                        logError("detectPageLanguage", error);
+
+                        return null;
+                    });
+            }
 );
 
-const detectTextLanguage = (text) => new Promise(
-    (resolve, reject) => {
-        try {
-            if (!("detectLanguage" in chrome.i18n)) {
-                // NOTE: text-based language detection is only used as a fallback.
-                log("detectTextLanguage", "Browser does not support detecting text language");
+const detectTextLanguage = (text) => promiseTry(
+    () => {
+        if (!("detectLanguage" in browser.i18n)) {
+            // NOTE: text-based language detection is only used as a fallback.
+            log("detectTextLanguage", "Browser does not support detecting text language");
 
-                return resolve(null);
-            }
+            return null;
+        }
 
-            chrome.i18n.detectLanguage(text, (result) => {
-                // https://developer.chrome.com/extensions/i18n#method-detectLanguage
-                if (chrome.runtime.lastError) {
-                    return reject(chrome.runtime.lastError);
-                }
-
+        // https://developer.browser.com/extensions/i18n#method-detectLanguage
+        return browser.i18n.detectLanguage(text)
+            .then((result) => {
                 // The language fallback value is "und", so treat it as no language.
                 if (
                     !result.isReliable
@@ -101,18 +99,15 @@ const detectTextLanguage = (text) => new Promise(
                     // NOTE: text-based language detection is only used as a fallback.
                     log("detectTextLanguage", "Browser did not detect reliable text language", result);
 
-                    return resolve(null);
+                    return null;
                 }
 
                 const primaryDetectedTextLanguage = result.languages[0].language;
 
                 log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
 
-                return resolve(primaryDetectedTextLanguage);
+                return primaryDetectedTextLanguage;
             });
-        } catch (error) {
-            return reject(error);
-        }
     }
 );
 
@@ -229,11 +224,11 @@ const getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = (allVo
 
             copy.effectiveLanguage = effectiveLanguage;
 
-            executeLogToPage("Language", "Selected text language:", copy.detectedTextLanguage);
-            executeLogToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
-            executeLogToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
-            executeLogToPage("Language", "Detected page language:", detectedPageLanguage);
-            executeLogToPage("Language", "Effective language:", copy.effectiveLanguage);
+            Execute.logToPage("Language", "Selected text language:", copy.detectedTextLanguage);
+            Execute.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
+            Execute.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
+            Execute.logToPage("Language", "Detected page language:", detectedPageLanguage);
+            Execute.logToPage("Language", "Effective language:", copy.effectiveLanguage);
 
             return copy;
         };
@@ -277,15 +272,8 @@ const useFallbackMessageIfNoLanguageDetected = (selectionsWithValidTextAndDetect
     }
 );
 
-const cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
+LanguageHelper.cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
     .then(() => getSelectionsWithValidText(selections))
     .then((selectionsWithValidText) => detectAndAddLanguageForSelections(selectionsWithValidText))
     .then((selectionsWithValidTextAndDetectedLanguage) => getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage))
     .then((selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) => useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage));
-
-api.language = {
-    detectPageLanguage,
-    cleanupSelections,
-};
-
-log("Done", "Loading language code");

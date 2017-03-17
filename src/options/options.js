@@ -18,28 +18,34 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-chrome:false,
-dualLog:false,
-dualLogError:false,
-eventToPromise:false,
-getBackgroundPage:false,
-getStoredValue:false,
-getMappedVoices:false,
-Promise:false,
-promiseTry:false,
-setStoredValue:false,
-startFrontend:false,
-stopFrontend:false,
-Tabrow:false,
-window:false,
-*/
+import {
+    promiseTry,
+} from "../shared/promise";
 
-/* eslint-disable no-undef */
-localScriptName = "options.js";
-/* eslint-enable no-undef */
+import {
+    getMappedVoices,
+} from "../shared/voices";
 
-dualLog("Start", "Loading code");
+import {
+    getBackgroundPage,
+} from "../shared/tabs";
+
+import {
+    getStoredValue,
+    setStoredValue,
+} from "../shared/storage";
+
+import {
+    eventToPromise,
+    startFrontend,
+    stopFrontend,
+} from "../frontend/shared-frontend";
+
+import Tabrow from "./tabrow";
+
+import DualLogger from "../frontend/dual-log";
+
+const dualLogger = new DualLogger("options.js");
 
 const initializeTabrow = () => promiseTry(
     () => {
@@ -66,17 +72,17 @@ const loadVoicesAndLanguages = () => promiseTry(
                 const allVoicesByLanguage = allVoices.reduce((obj, voice) => { obj[voice.lang] = (obj[voice.lang] || []).concat(voice); return obj; }, {});
                 const allLanguages = Object.keys(allVoicesByLanguage);
                 allLanguages.sort();
-                dualLog("loadVoicesAndLanguages", "allVoicesByLanguage", allVoicesByLanguage);
+                dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguage", allVoicesByLanguage);
 
                 const allVoicesByLanguageGroup = allVoices.reduce((obj, voice) => { const group = voice.lang.substr(0, 2); obj[group] = (obj[group] || {}); obj[group][voice.lang] = allVoicesByLanguage[voice.lang]; return obj; }, {});
                 const allLanguagesGroups = Object.keys(allVoicesByLanguageGroup);
                 allLanguagesGroups.sort();
-                dualLog("loadVoicesAndLanguages", "allLanguagesGroups", allLanguagesGroups);
+                dualLogger.dualLog("loadVoicesAndLanguages", "allLanguagesGroups", allLanguagesGroups);
 
                 const allVoicesByVoiceName = allVoices.reduce((obj, voice) => { obj[voice.name] = (obj[voice.name] || []).concat(voice); return obj; }, {});
                 const allVoiceNames = Object.keys(allVoicesByVoiceName);
                 allVoiceNames.sort();
-                dualLog("loadVoicesAndLanguages", "allVoicesByLanguageGroup", allVoicesByLanguageGroup);
+                dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguageGroup", allVoicesByLanguageGroup);
 
                 const voicesLanguagesListElement = document.getElementById("voices-languages-list");
                 const voicesVoicesListElement = document.getElementById("voices-voices-list");
@@ -140,7 +146,7 @@ const loadVoicesAndLanguages = () => promiseTry(
                     allLanguageOption.talkie.language = null;
                     allLanguageOption.talkie.voices = allVoices;
 
-                    allLanguageOption.textContent = chrome.i18n.getMessage("frontend_voicesShowAllVoices");
+                    allLanguageOption.textContent = browser.i18n.getMessage("frontend_voicesShowAllVoices");
                     allLanguageOption.selected = true;
 
                     voicesLanguagesListElement.appendChild(allLanguageOption);
@@ -197,8 +203,8 @@ const loadVoicesAndLanguages = () => promiseTry(
                     }
                 );
 
-                voicesLanguagesListElement.addEventListener("change", eventToPromise.bind(this, languageListElementOnChangeHandler));
-                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(this, voiceListElementOnChangeHandler));
+                voicesLanguagesListElement.addEventListener("change", eventToPromise.bind(null, languageListElementOnChangeHandler));
+                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeHandler));
 
                 voicesSampleTextElement.addEventListener("focus", () => {
                     voicesSampleTextElement.select();
@@ -246,13 +252,13 @@ const speakLegalese = () => promiseTry(
             }
         );
 
-        legaleseTextElement.addEventListener("click", eventToPromise.bind(this, legaleseClickHandler));
+        legaleseTextElement.addEventListener("click", eventToPromise.bind(null, legaleseClickHandler));
     }
 );
 
 const start = () => promiseTry(
     () => {
-        dualLog("Start", "start");
+        dualLogger.dualLog("Start", "start");
 
         return Promise.resolve()
             .then(() => startFrontend())
@@ -261,34 +267,32 @@ const start = () => promiseTry(
             .then(() => loadOptionAndStartListeners())
             .then(() => speakLegalese())
             .then(() => {
-                dualLog("Done", "start");
+                dualLogger.dualLog("Done", "start");
 
                 return undefined;
             })
             .catch((error) => {
-                dualLogError("Error", "Start", error);
+                dualLogger.dualLogError("Error", "Start", error);
             });
     }
 );
 
 const stop = () => promiseTry(
     () => {
-        dualLog("Start", "stop");
+        dualLogger.dualLog("Start", "stop");
 
         return Promise.resolve()
             .then(() => stopFrontend())
             .then(() => {
-                dualLog("Done", "stop");
+                dualLogger.dualLog("Done", "stop");
 
                 return undefined;
             })
             .catch((error) => {
-                dualLogError("Stop", "Stop", error);
+                dualLogger.dualLogError("Stop", "Stop", error);
             });
     }
 );
 
-document.addEventListener("DOMContentLoaded", eventToPromise.bind(this, start));
-window.addEventListener("unload", eventToPromise.bind(this, stop));
-
-dualLog("Done", "Loading code");
+document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
+window.addEventListener("unload", eventToPromise.bind(null, stop));

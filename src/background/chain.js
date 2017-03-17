@@ -18,9 +18,36 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#progress {
-    width: 100%;
-    height: 5px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+import {
+    log,
+    logError,
+} from "../shared/log";
+
+export default class Chain {
+    constructor() {
+        this.chainPromise = Promise.resolve();
+        this.length = 0;
+    }
+
+    link(promise) {
+        this.length++;
+        const currentLength = this.length;
+
+        log("Start", "Chain", currentLength);
+
+        this.chainPromise = this.chainPromise
+            .then(promise)
+            .then((result) => {
+                log("Done", "Chain", currentLength);
+
+                return result;
+            })
+            .catch((error) => {
+                logError("Error", "Chain", currentLength, error);
+
+                throw error;
+            });
+
+        return this.chainPromise;
+    }
 }

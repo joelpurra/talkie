@@ -18,9 +18,30 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#progress {
-    width: 100%;
-    height: 5px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+import {
+    extensionShortName,
+} from "./configuration";
+
+export const log = (...args) => {
+    const now = new Date().toISOString();
+
+    /* eslint-disable no-console */
+    console.log(now, extensionShortName, ...args);
+    /* eslint-enable no-console */
+};
+
+export const logError = (...args) => {
+    const now = new Date().toISOString();
+
+    /* eslint-disable no-console */
+    console.error(now, extensionShortName, ...args);
+    /* eslint-enable no-console */
+};
+
+export const logDebug = (...args) => {
+    const now = new Date().toISOString();
+
+    /* eslint-disable no-console */
+    console.info(now, extensionShortName, ...args);
+    /* eslint-enable no-console */
+};

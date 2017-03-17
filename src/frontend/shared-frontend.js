@@ -18,70 +18,52 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-api:false,
-chrome:false,
-configuration:false,
-console:false,
-getBackgroundPage:false,
-log:false,
-logError:false,
-openUrlInNewTab:false,
-Promise:false,
-promiseTry:false,
-window:false,
-*/
+import {
+    promiseTry,
+} from "../shared/promise";
 
-// NOTE: to be overridden.
-let localScriptName = null;
-localScriptName = "shared-frontend.js";
+import {
+    openUrlInNewTab,
+} from "../shared/urls";
 
-let background = null;
+import {
+    getBackgroundPage,
+} from "../shared/tabs";
 
-const dualLog = (...args) => {
-    log(localScriptName, ...args);
+import {
+    urls,
+} from "../shared/configuration";
 
-    if (background) {
-        background.log(localScriptName, ...args);
-    }
-};
+import DualLogger from "./dual-log";
 
-const dualLogError = (...args) => {
-    logError(localScriptName, ...args);
-
-    if (background) {
-        background.logError(localScriptName, ...args);
-    }
-};
-
-log("Start", "Loading shared frontend code");
+const dualLogger = new DualLogger("shared-frontend.js");
 
 const translateWindow = () => promiseTry(
     () => {
-        dualLog("Start", "translate");
+        dualLogger.dualLog("Start", "translate");
 
         const translateAttributeName = "data-translate";
         const translatableElements = document.querySelectorAll(`[${translateAttributeName}]`);
 
-        dualLog("translate", "Translatable elements", translatableElements);
+        dualLogger.dualLog("translate", "Translatable elements", translatableElements);
 
         translatableElements.forEach((element) => {
             const translationId = element.getAttribute(translateAttributeName);
 
             if (typeof translationId === "string" && translationId.length > 0) {
-                const translated = chrome.i18n.getMessage(translationId);
+                const translated = browser.i18n.getMessage(translationId);
 
                 if (typeof translated === "string") {
                     element.textContent = translated;
                 } else {
-                    dualLogError("Could not translate element", "Translated message not found", element, translationId, translated);
+                    dualLogger.dualLogError("Could not translate element", "Translated message not found", element, translationId, translated);
                 }
             } else {
-                dualLogError("Could not translate element", "Invalid translation id", element, translationId);
+                dualLogger.dualLogError("Could not translate element", "Invalid translation id", element, translationId);
             }
         });
 
-        dualLog("Done", "translate");
+        dualLogger.dualLog("Done", "translate");
     }
 );
 
@@ -96,7 +78,7 @@ const addLinkClickHandlers = () => promiseTry(
 
             // NOTE: skipping non-https urls -- presumably empty hrefs for special links.
             if (typeof location !== "string" || !location.startsWith("https://")) {
-                dualLog("addLinkClickHandlers", "Skipping non-https URL", link, location);
+                dualLogger.dualLog("addLinkClickHandlers", "Skipping non-https URL", link, location);
 
                 return;
             }
@@ -114,14 +96,14 @@ const addLinkClickHandlers = () => promiseTry(
 
 const addOptionsLinkClickHandlers = () => promiseTry(
     () => {
-        // https://developer.chrome.com/extensions/optionsV2#linking
-        const optionsLinks = Array.from(document.querySelectorAll("[href='" + configuration.urls.options + "']"));
+        // https://developer.browser.com/extensions/optionsV2#linking
+        const optionsLinks = Array.from(document.querySelectorAll("[href='" + urls.options + "']"));
 
         optionsLinks.forEach((optionsLink) => {
             optionsLink.onclick = (event) => {
                 event.preventDefault();
 
-                chrome.runtime.openOptionsPage();
+                browser.runtime.openOptionsPage();
 
                 return false;
             };
@@ -137,32 +119,26 @@ const reflow = () => promiseTry(
     }
 );
 
-const eventToPromise = (eventHandler, event) => promiseTry(
+export const eventToPromise = (eventHandler, event) => promiseTry(
     () => {
         try {
-            dualLog("Start", "eventToPromise", event);
+            dualLogger.dualLog("Start", "eventToPromise", event);
 
             Promise.resolve()
                 .then(() => eventHandler(event))
-                .then((result) => dualLog("Done", "eventToPromise", event, result))
-                .catch((error) => dualLogError("Error", "eventToPromise", event, error));
+                .then((result) => dualLogger.dualLog("Done", "eventToPromise", event, result))
+                .catch((error) => dualLogger.dualLogError("Error", "eventToPromise", event, error));
         } catch (error) {
-            dualLogError("Error", "eventToPromise", event, error);
+            dualLogger.dualLogError("Error", "eventToPromise", event, error);
 
             throw error;
         }
     }
 );
 
-const startFrontend = () => promiseTry(
+export const startFrontend = () => promiseTry(
     () => {
         return Promise.resolve()
-            .then(() => getBackgroundPage())
-            .then((backgroundPage) => {
-                background = backgroundPage;
-
-                return undefined;
-            })
             .then(() => getBackgroundPage())
             .then(() => translateWindow())
             .then(() => addLinkClickHandlers())
@@ -171,21 +147,8 @@ const startFrontend = () => promiseTry(
     }
 );
 
-const stopFrontend = () => promiseTry(
+export const stopFrontend = () => promiseTry(
     () => {
         // TODO: unregister listeners.
     }
 );
-
-api.frontEnd = {
-    addLinkClickHandlers,
-    dualLog,
-    dualLogError,
-    eventToPromise,
-    reflow,
-    startFrontend,
-    stopFrontend,
-    translateWindow,
-};
-
-log("Done", "Loading shared frontend code");

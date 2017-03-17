@@ -18,25 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* global
-dualLog:false,
-dualLogError:false,
-eventToPromise:false,
-getBackgroundPage:false,
-getStoredValue:false,
-knownEvents:false,
-Promise:false,
-promiseTry:false,
-startFrontend:false,
-stopFrontend:false,
-window:false,
-*/
+import {
+    promiseTry,
+} from "../shared/promise";
 
-/* eslint-disable no-undef */
-localScriptName = "popup-start.js";
-/* eslint-enable no-undef */
+import {
+    getBackgroundPage,
+} from "../shared/tabs";
 
-dualLog("Start", "Loading code");
+import {
+    knownEvents,
+} from "../shared/events";
+
+import {
+    getStoredValue,
+} from "../shared/storage";
+
+import {
+    eventToPromise,
+    startFrontend,
+    stopFrontend,
+} from "../frontend/shared-frontend";
+
+import DualLogger from "../frontend/dual-log";
+
+const dualLogger = new DualLogger("popup.js");
 
 const loadOptionsAndApply = () => promiseTry(
     () => {
@@ -65,11 +71,11 @@ const loadOptionsAndApply = () => promiseTry(
 const passClickToBackground = (background) => promiseTry(
         () => {
             try {
-                dualLog("Start", "passClickToBackground");
+                dualLogger.dualLog("Start", "passClickToBackground");
                 background.iconClick();
-                dualLog("Done", "passClickToBackground");
+                dualLogger.dualLog("Done", "passClickToBackground");
             } catch (error) {
-                dualLogError("Error", "passClickToBackground", error);
+                dualLogger.dualLogError("Error", "passClickToBackground", error);
                 throw error;
             }
         }
@@ -87,7 +93,7 @@ const start = () => promiseTry(
             .then(() => startFrontend())
             .then(() => loadOptionsAndApply())
             .then(() => getBackgroundPage())
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (actionName, actionData) => updateProgress(actionData)))
+            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
             .then(() => getBackgroundPage())
             .then((background) => passClickToBackground(background));
     }
@@ -100,7 +106,5 @@ const stop = () => promiseTry(
     }
 );
 
-document.addEventListener("DOMContentLoaded", eventToPromise.bind(this, start));
-window.addEventListener("unload", eventToPromise.bind(this, stop));
-
-dualLog("Done", "Loading code");
+document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
+window.addEventListener("unload", eventToPromise.bind(null, stop));

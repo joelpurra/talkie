@@ -18,9 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#progress {
-    width: 100%;
-    height: 5px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+import configuration from "../configuration.json";
+
+export const extensionShortName = browser.i18n.getMessage("extensionShortName");
+
+export const uiLocale = browser.i18n.getMessage("@@ui_locale");
+export const messagesLocale = browser.i18n.getMessage("extensionLocale");
+
+export const urls = configuration.urls;
