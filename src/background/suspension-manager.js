@@ -27,9 +27,7 @@ import {
     logError,
 } from "../shared/log";
 
-import {
-    executeScriptInTopFrame,
-} from "../shared/execute";
+import Execute from "../shared/execute";
 
 export default class SuspensionManager {
     constructor() {
@@ -46,7 +44,7 @@ export default class SuspensionManager {
     }
 
     executeConnectFromContent() {
-        return executeScriptInTopFrame(this.executeConnectFromContentCode)
+        return Execute.scriptInTopFrame(this.executeConnectFromContentCode)
             .then((preventExtensionSuspendConnectFromContentResult) => {
                 log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
 

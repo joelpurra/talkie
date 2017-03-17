@@ -22,12 +22,14 @@ import {
     last,
 } from "../shared/basic";
 
-export const splitTextToParagraphs = (text) => {
+export default class TextHelper {}
+
+TextHelper.splitTextToParagraphs = (text) => {
     // NOTE: in effect discarding empty paragraphs.
     return text.split(/\n+/);
 };
 
-export const splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
+TextHelper.splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
     // NOTE: in effect merging multiple spaces in row to a single space.
     const spacedTextParts = text.split(/ +/);
 

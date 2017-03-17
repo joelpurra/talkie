@@ -32,9 +32,7 @@ import {
     shallowCopy,
 } from "../shared/basic";
 
-import {
-    executeLogToPage,
-} from "../shared/execute";
+import Execute from "../shared/execute";
 
 import {
     messagesLocale,
@@ -50,7 +48,9 @@ const noVoiceForLanguageDetectedMessage = {
     effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
 };
 
-export const detectPageLanguage = () => promiseTry(
+export default class LanguageHelper {}
+
+LanguageHelper.detectPageLanguage = () => promiseTry(
             () => {
                 // https://developer.browser.com/extensions/tabs#method-detectLanguage
                 return browser.tabs.detectLanguage()
@@ -224,11 +224,11 @@ const getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = (allVo
 
             copy.effectiveLanguage = effectiveLanguage;
 
-            executeLogToPage("Language", "Selected text language:", copy.detectedTextLanguage);
-            executeLogToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
-            executeLogToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
-            executeLogToPage("Language", "Detected page language:", detectedPageLanguage);
-            executeLogToPage("Language", "Effective language:", copy.effectiveLanguage);
+            Execute.logToPage("Language", "Selected text language:", copy.detectedTextLanguage);
+            Execute.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
+            Execute.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
+            Execute.logToPage("Language", "Detected page language:", detectedPageLanguage);
+            Execute.logToPage("Language", "Effective language:", copy.effectiveLanguage);
 
             return copy;
         };
@@ -272,7 +272,7 @@ const useFallbackMessageIfNoLanguageDetected = (selectionsWithValidTextAndDetect
     }
 );
 
-export const cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
+LanguageHelper.cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
     .then(() => getSelectionsWithValidText(selections))
     .then((selectionsWithValidText) => detectAndAddLanguageForSelections(selectionsWithValidText))
     .then((selectionsWithValidTextAndDetectedLanguage) => getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage))

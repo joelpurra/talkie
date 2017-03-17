@@ -35,9 +35,7 @@ import {
     isCurrentPageInternalToTalkie,
 } from "../shared/tabs";
 
-import {
-    detectPageLanguage,
-} from "./language";
+import LanguageHelper from "./language-helper";
 
 export default class TalkieBackground {
     constructor(rootChain, talkieSpeaker, speakingStatus) {
@@ -118,7 +116,7 @@ export default class TalkieBackground {
             () => canTalkieRunInTab()
                 .then((canRun) => {
                     if (canRun) {
-                        return detectPageLanguage();
+                        return LanguageHelper.detectPageLanguage();
                     }
 
                     log("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab, skipping page language detection.");

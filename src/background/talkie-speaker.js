@@ -40,20 +40,11 @@ import {
     getVoices,
 } from "../shared/voices";
 
-import {
-    executeLogToPage,
-    executeScriptInAllFrames,
-} from "../shared/execute";
+import Execute from "../shared/execute";
 
-import {
-    splitTextToParagraphs,
-    splitTextToSentencesOfMaxLength,
-} from "./text";
+import TextHelper from "./text-helper";
 
-import {
-    detectPageLanguage,
-    cleanupSelections,
-} from "./language";
+import LanguageHelper from "./language-helper";
 
 export default class TalkieSpeaker {
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
@@ -297,8 +288,8 @@ export default class TalkieSpeaker {
                     .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeaking, speakingEventData))
                     .then(() => this.getActualVoice(voice))
                     .then((actualVoice) => {
-                        const paragraphs = splitTextToParagraphs(text);
-                        const cleanTextParts = paragraphs.map((paragraph) => splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
+                        const paragraphs = TextHelper.splitTextToParagraphs(text);
+                        const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
                         const textParts = flatten(cleanTextParts);
 
                         const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
@@ -334,7 +325,7 @@ export default class TalkieSpeaker {
         return promiseTry(
             () => Promise.resolve()
                 .then(() => {
-                    executeLogToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
+                    Execute.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
 
                     return this.splitAndSpeak(text, voice);
                 })
@@ -364,7 +355,7 @@ export default class TalkieSpeaker {
     }
 
     executeGetFramesSelectionTextAndLanguage() {
-        return executeScriptInAllFrames(this.executeGetFramesSelectionTextAndLanguageCode)
+        return Execute.scriptInAllFrames(this.executeGetFramesSelectionTextAndLanguageCode)
             .then((framesSelectionTextAndLanguage) => {
                 log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
 
@@ -381,7 +372,7 @@ export default class TalkieSpeaker {
             return promiseTry(
                 () => getVoices()
             )
-                .then((allVoices) => cleanupSelections(allVoices, detectedPageLanguage, selections))
+                .then((allVoices) => LanguageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections))
                 .then((cleanedupSelections) => {
                     log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
 
@@ -406,7 +397,7 @@ export default class TalkieSpeaker {
                 return Promise.all(
                     [
                         this.executeGetFramesSelectionTextAndLanguage(),
-                        detectPageLanguage(),
+                        LanguageHelper.detectPageLanguage(),
                     ]
             )
                     .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {

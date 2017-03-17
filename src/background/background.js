@@ -45,9 +45,7 @@ import TalkieProgress from "../shared/talkie-progress";
 
 import Broadcaster from "../shared/broadcaster";
 
-import {
-    executePlugOnce,
-} from "../shared/plug";
+import Plug from "../shared/plug";
 
 import SuspensionManager from "./suspension-manager";
 
@@ -138,7 +136,7 @@ function main() {
         broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
 
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => executePlugOnce());
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => Plug.once());
 
         broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setActiveTabIsDoneSpeaking());

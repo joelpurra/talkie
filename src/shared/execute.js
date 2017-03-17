@@ -30,7 +30,9 @@ import {
     extensionShortName,
 } from "./configuration";
 
-export const executeScriptInTopFrame = (code) => promiseTry(
+export default class Execute {}
+
+Execute.scriptInTopFrame = (code) => promiseTry(
     () => {
         log("About to execute code in page context", code);
 
@@ -44,7 +46,7 @@ export const executeScriptInTopFrame = (code) => promiseTry(
     }
 );
 
-export const executeScriptInAllFrames = (code) => promiseTry(
+Execute.scriptInAllFrames = (code) => promiseTry(
     () => {
         log("About to execute code in page context", code);
 
@@ -72,7 +74,7 @@ const variableToSafeString = (v) => {
 
 const executeLogToPageCode = "console.log(%a);";
 
-export const executeLogToPage = (...args) => promiseTry(
+Execute.logToPage = (...args) => promiseTry(
     () => {
         const now = new Date().toISOString();
 
@@ -89,13 +91,13 @@ export const executeLogToPage = (...args) => promiseTry(
 
         const code = executeLogToPageCode.replace("%a", logValues);
 
-        return executeScriptInTopFrame(code);
+        return Execute.scriptInTopFrame(code);
     }
 );
 
 const executeLogToPageWithColorCode = "console.log(%a);";
 
-export const executeLogToPageWithColor = (...args) => promiseTry(
+Execute.logToPageWithColor = (...args) => promiseTry(
     () => {
         const now = new Date().toISOString();
 
@@ -115,6 +117,6 @@ export const executeLogToPageWithColor = (...args) => promiseTry(
 
         const code = executeLogToPageWithColorCode.replace("%a", logValues);
 
-        return executeScriptInTopFrame(code);
+        return Execute.scriptInTopFrame(code);
     }
 );

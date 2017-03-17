@@ -22,30 +22,29 @@ import {
     promiseTry,
 } from "../shared/promise";
 
-import {
-    executeScriptInTopFrame,
-    executeLogToPageWithColor,
-} from "../shared/execute";
+import Execute from "../shared/execute";
+
+export default class Plug {}
 
 const executePlug = () => promiseTry(
     () => {
         return Promise.resolve()
-            .then(() => executeLogToPageWithColor("Thank you for using Talkie!"))
-            .then(() => executeLogToPageWithColor("https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"))
-            .then(() => executeLogToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
-            .then(() => executeLogToPageWithColor("https://joelpurra.com/"))
-            .then(() => executeLogToPageWithColor("If you like Talkie, send a link to your friends -- and consider donating to support further open source development."))
-            .then(() => executeLogToPageWithColor("https://joelpurra.com/donate/"));
+            .then(() => Execute.logToPageWithColor("Thank you for using Talkie!"))
+            .then(() => Execute.logToPageWithColor("https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"))
+            .then(() => Execute.logToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
+            .then(() => Execute.logToPageWithColor("https://joelpurra.com/"))
+            .then(() => Execute.logToPageWithColor("If you like Talkie, send a link to your friends -- and consider donating to support further open source development."))
+            .then(() => Execute.logToPageWithColor("https://joelpurra.com/donate/"));
     }
 );
 
 const executeGetTalkieWasPluggedCode = "window.talkieWasPlugged;";
-const executeGetTalkieWasPlugged = () => executeScriptInTopFrame(executeGetTalkieWasPluggedCode);
+const executeGetTalkieWasPlugged = () => Execute.scriptInTopFrame(executeGetTalkieWasPluggedCode);
 
 const executeSetTalkieWasPluggedCode = "window.talkieWasPlugged = true;";
-const executeSetTalkieWasPlugged = () => executeScriptInTopFrame(executeSetTalkieWasPluggedCode);
+const executeSetTalkieWasPlugged = () => Execute.scriptInTopFrame(executeSetTalkieWasPluggedCode);
 
-export const executePlugOnce = () => {
+Plug.once = () => {
     return executeGetTalkieWasPlugged()
         .then((talkieWasPlugged) => {
             if (talkieWasPlugged && talkieWasPlugged.toString() !== "true") {
