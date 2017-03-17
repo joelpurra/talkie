@@ -236,6 +236,20 @@ const loadOptionAndStartListeners = () => promiseTry(
     }
 );
 
+const loadVersion = () => promiseTry(
+    () => {
+        const versionElement = document.getElementById("version-name");
+
+        return getBackgroundPage()
+            .then((background) => background.getVersionName())
+            .then((versionName) => {
+                versionElement.textContent = versionName;
+
+                return undefined;
+            });
+    }
+);
+
 const speakLegalese = () => promiseTry(
     () => {
         const legaleseTextElement = document.getElementById("license-gpl-legalese");
@@ -262,10 +276,13 @@ const start = () => promiseTry(
 
         return Promise.resolve()
             .then(() => startFrontend())
-            .then(() => initializeTabrow())
-            .then(() => loadVoicesAndLanguages())
-            .then(() => loadOptionAndStartListeners())
-            .then(() => speakLegalese())
+            .then(() => Promise.all([
+                initializeTabrow(),
+                loadVoicesAndLanguages(),
+                loadOptionAndStartListeners(),
+                speakLegalese(),
+                loadVersion(),
+            ]))
             .then(() => {
                 dualLogger.dualLog("Done", "start");
 

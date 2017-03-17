@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "version": "2.0.2",
+  "version_name": "v2.0.2 (2017-03-17)",
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",

@@ -69,6 +69,8 @@ import ContextMenuManager from "./context-menu-manager";
 
 import ShortcutKeyManager from "./shortcut-key-manager";
 
+import MetadataManager from "./metadata-manager";
+
 function main() {
     log("Start", "Main background function");
 
@@ -107,6 +109,8 @@ function main() {
     const buttonPopupManager = new ButtonPopupManager();
 
     const progress = new TalkieProgress(broadcaster);
+
+    const metadataManager = new MetadataManager();
 
     (function addChromeOnInstalledListeners() {
         const onExtensionInstalledHandler = () => promiseTry(
@@ -200,6 +204,7 @@ function main() {
         window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
         window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
         window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+        window.getVersionName = () => metadataManager.getVersionName();
     }());
 
     buttonPopupManager.enablePopup();
