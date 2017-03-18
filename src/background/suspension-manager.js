@@ -40,13 +40,30 @@ export default class SuspensionManager {
             name: this.preventSuspensionPortName,
         };
 
-        this.executeConnectFromContentCode = `var talkiePreventSuspensionPort = (window.browser || window.chrome || null).runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
+        this.executeConnectFromContentCode = `
+            (function(){
+                try {
+                    var talkiePreventSuspensionPort = (window.chrome || browser || chrome || null).runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)});
+                    var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name };
+
+                    return preventExtensionSuspendConnectFromContentResult;
+                } catch(error) {
+                    return null;
+                }
+            }());
+            `
+            .replace(/\n/g, "")
+            .replace(/\s{2,}/g, " ");
     }
 
     executeConnectFromContent() {
         return Execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
             .then((preventExtensionSuspendConnectFromContentResult) => {
                 log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
+
+                if (!preventExtensionSuspendConnectFromContentResult || !Array.isArray(preventExtensionSuspendConnectFromContentResult) || preventExtensionSuspendConnectFromContentResult.length !== 1 || !preventExtensionSuspendConnectFromContentResult[0]) {
+                    throw new Error("preventExtensionSuspendConnectFromContentResult");
+                }
 
                 return preventExtensionSuspendConnectFromContentResult;
             });
@@ -89,7 +106,12 @@ export default class SuspensionManager {
 
                 log("Done", "preventExtensionSuspend");
 
-                return this.executeConnectFromContent();
+                return this.executeConnectFromContent()
+                    .catch((error) => {
+                        logError("Error", "preventExtensionSuspend", "Error swallowed", error);
+
+                        return undefined;
+                    });
             }
         );
     }

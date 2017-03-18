@@ -149,6 +149,10 @@ export const canTalkieRunInTab = () => promiseTry(
                         return false;
                     }
 
+                    if (url.startsWith("https://addons.mozilla.org/")) {
+                        return false;
+                    }
+
                     if (url.startsWith("about:")) {
                         return false;
                     }

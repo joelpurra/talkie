@@ -138,7 +138,7 @@ const variableToSafeString = (v) => {
     return v.toString();
 };
 
-const executeLogToPageCode = "console.log(%a);";
+const executeLogToPageCode = "(function(){ console.log(%a); }());";
 
 Execute.logToPage = (...args) => promiseTry(
     () => {
@@ -166,7 +166,7 @@ Execute.logToPage = (...args) => promiseTry(
     }
 );
 
-const executeLogToPageWithColorCode = "console.log(%a);";
+const executeLogToPageWithColorCode = "(function(){ console.log(%a); }());";
 
 Execute.logToPageWithColor = (...args) => promiseTry(
     () => {
