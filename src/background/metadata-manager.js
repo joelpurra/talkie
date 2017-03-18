@@ -52,4 +52,26 @@ export default class MetadataManager {
                 })
         );
     }
+
+    isPremiumVersion() {
+        return promiseTry(
+            () => this.getVersionName()
+                .then((versionName) => {
+                    if (typeof versionName === "string" && versionName.includes(" Premium ")) {
+                        return true;
+                    }
+
+                    return false;
+                })
+        );
+    }
+
+    isFreeVersion() {
+        return promiseTry(
+            () => this.isPremiumVersion()
+                .then((isPremium) => {
+                    return !isPremium;
+                })
+        );
+    }
 }

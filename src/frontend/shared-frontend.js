@@ -111,6 +111,25 @@ const addOptionsLinkClickHandlers = () => promiseTry(
     }
 );
 
+const checkPremiumVersion = () => promiseTry(
+    () => {
+        const bodyElement = document.getElementsByTagName("body")[0];
+
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                if (isPremium) {
+                    bodyElement.classList.add("talkie-premium");
+                } else {
+                    bodyElement.classList.add("talkie-free");
+                }
+
+                return undefined;
+            });
+    }
+);
+
 const reflow = () => promiseTry(
     () => {
         const bodyElement = document.getElementsByTagName("body")[0];
@@ -143,6 +162,7 @@ export const startFrontend = () => promiseTry(
             .then(() => translateWindow())
             .then(() => addLinkClickHandlers())
             .then(() => addOptionsLinkClickHandlers())
+            .then(() => checkPremiumVersion())
             .then(() => reflow());
     }
 );

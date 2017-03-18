@@ -205,6 +205,8 @@ function main() {
         window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
         window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
         window.getVersionName = () => metadataManager.getVersionName();
+        window.isFreeVersion = () => metadataManager.isFreeVersion();
+        window.isPremiumVersion = () => metadataManager.isPremiumVersion();
     }());
 
     buttonPopupManager.enablePopup();

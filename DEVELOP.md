@@ -64,6 +64,15 @@ npm run --silent rebuild
 - Optionally add breakpoints in the source code.
 
 
+```bash
+# Open a new instance of Firefox, with an empty profile, and load Talkie in debugging mode.
+npm run --silent run:firefox:free
+
+# You might need to set the path to Firefox.
+#WEB_EXT_FIREFOX="$HOME/Applications/Firefox.app/Contents/MacOS/firefox-bin" npm run --silent run:firefox:free
+```
+
+
 
 ## Translations
 
