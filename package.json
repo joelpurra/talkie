@@ -7,7 +7,7 @@
     "clean": "rimraf package/ && rimraf dist/ && rimraf web-ext-artifacts/",
     "build": "rollup --config rollup.config.background.js && rollup --config rollup.config.popup.js && rollup --config rollup.config.options.js && npm run --silent build:chrome && npm run --silent build:webextension",
     "build:chrome": "mkdir -p package/chrome/ && rsync -a --files-from extension-files.txt . package/chrome/ && npm run --silent build:chrome:patch",
-    "build:chrome:patch": "json -Ie '[\"open-website-main\", \"open-website-chromewebstore\", \"open-website-donate\"].forEach((command) => delete this.commands[command].suggested_key)' -f package/chrome/manifest.json",
+    "build:chrome:patch": "json -Ie '[\"open-website-main\", \"open-website-chromewebstore\", \"open-website-donate\"].forEach((command) => delete this.commands[command].suggested_key); delete this.applications;' -f package/chrome/manifest.json",
     "build:webextension": "mkdir -p package/webextension/ && rsync -a --files-from extension-files.txt . package/webextension/ && npm run --silent build:webextension:patch",
     "build:webextension:patch": "echo >/dev/null",
     "rebuild": "npm run --silent clean && npm run --silent build",
