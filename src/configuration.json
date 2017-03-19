@@ -1,8 +1,26 @@
 {
-  "urls": {
-    "options": "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
-    "main": "https://github.com/joelpurra/talkie",
-    "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-    "donate": "https://joelpurra.com/donate"
+  "shared":{
+    "urls": {
+      "main": "https://github.com/joelpurra/talkie",
+      "donate": "https://joelpurra.com/donate",
+      "chromewebstore-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "chromewebstore-premium": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"
+    }
+  },
+  "free": {
+    "urls": {
+      "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "options": "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "rate": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews",
+      "support-feedback": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/support"
+    }
+  },
+  "premium": {
+    "urls": {
+      "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "options": "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "rate": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews",
+      "support-feedback": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/support"
+    }
   }
 }

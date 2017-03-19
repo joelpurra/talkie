@@ -5,8 +5,20 @@
   "extensionName": {
     "message": "Talkie"
   },
+  "extensionName_Free": {
+    "message": "Talkie"
+  },
+  "extensionName_Premium": {
+    "message": "Talkie Premium"
+  },
   "extensionShortName": {
     "message": "Talkie"
+  },
+  "extensionShortName_Free": {
+    "message": "Talkie"
+  },
+  "extensionShortName_Premium": {
+    "message": "Talkie Premium"
   },
   "frontend_licenseCLALinkText": {
     "message": "Contributor License Agreement (CLA)"

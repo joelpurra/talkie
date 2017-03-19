@@ -8,8 +8,11 @@
   "commandBrowserActionDescription": {
     "message": "Read text selection out loud"
   },
-  "commandOpenWebsiteChromeWebStoreDescription": {
+  "commandOpenWebsiteChromeWebStoreDescription_Free": {
     "message": "Open the Chrome Web Store page"
+  },
+  "commandOpenWebsiteChromeWebStoreDescription_Premium": {
+    "message": "Open the Premium Chrome Web Store page"
   },
   "commandOpenWebsiteDonateDescription": {
     "message": "Open the donation page"
@@ -41,6 +44,9 @@
   "frontend_donateLinkText": {
     "message": "Donate"
   },
+  "frontend_donate_alreadyHavePremium": {
+    "message": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
+  },
   "frontend_donate_moreOptions": {
     "message": "More donation options"
   },
@@ -53,11 +59,62 @@
   "frontend_donate_usd5Now": {
     "message": "Donate $$5 now"
   },
+  "frontend_featuresFreeHeading": {
+    "message": "Features in Talkie"
+  },
+  "frontend_featuresFree_List01": {
+    "message": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "Free!"
+  },
+  "frontend_featuresHeading": {
+    "message": "Features: what Talkie is good at"
+  },
+  "frontend_featuresLinkText": {
+    "message": "Features"
+  },
+  "frontend_featuresPremiumHeading": {
+    "message": "Features in Talkie 🌟 Premium"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "Future Premium updates included for free."
+  },
+  "frontend_featuresVersion_Free": {
+    "message": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+  },
+  "frontend_featuresVersion_Premium": {
+    "message": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresVersions": {
+    "message": "Talkie comes in two versions: Talkie Free and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+  },
+  "frontend_getPremiumLinkText": {
+    "message": "Get Talkie 🌟 Premium!"
+  },
   "frontend_hideDonateButtonsInPopup": {
     "message": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "message": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Donate: support open source development"
@@ -89,8 +146,11 @@
   "frontend_supportAndFeedback": {
     "message": "Support and feedback"
   },
-  "frontend_talkieInTheChromeWebStore": {
+  "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie in the Chrome Web Store"
+  },
+  "frontend_talkieInTheChromeWebStore_Premium": {
+    "message": "Talkie 🌟 Premium in the Chrome Web Store"
   },
   "frontend_usageHeading": {
     "message": "Usage"
@@ -123,10 +183,10 @@
     "message": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+    "message": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language."
   },
   "frontend_voicesHeading": {
-    "message": "Voices: test your browser"
+    "message": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
     "message": "Voices"
@@ -138,11 +198,50 @@
   "frontend_voicesSampleTextHeading": {
     "message": "Sample text for Talkie to read out loud"
   },
+  "frontend_voicesSetAsLanguageEmptySelection_Free": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
+    "message": "🌟 Premium: Upgrade to change default voice"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+    "message": "Use as default voice for language"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
   "frontend_voicesShowAllVoices": {
     "message": "Show all voices"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Your donations are appreciated!"
+  },
+  "frontend_yourDonationsAreAppreciatedShort": {
+    "message": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

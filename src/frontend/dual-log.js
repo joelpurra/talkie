@@ -31,8 +31,6 @@ import {
 export default class DualLogger {
     constructor(localScriptName) {
         this.localScriptName = localScriptName;
-
-        this.background = null;
     }
 
     dualLog(...args) {
@@ -42,6 +40,11 @@ export default class DualLogger {
             getBackgroundPage()
                 .then((background) => {
                     background.log(this.localScriptName, ...args);
+
+                    return undefined;
+                })
+                .catch((error) => {
+                    logError(this.localScriptName, "Error", "dualLog", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
 
                     return undefined;
                 }),
@@ -55,6 +58,11 @@ export default class DualLogger {
             getBackgroundPage()
                 .then((background) => {
                     background.logError(this.localScriptName, ...args);
+
+                    return undefined;
+                })
+                .catch((error) => {
+                    logError(this.localScriptName, "Error", "dualLogError", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
 
                     return undefined;
                 }),

@@ -31,11 +31,6 @@ import {
 } from "../shared/tabs";
 
 import {
-    getStoredValue,
-    setStoredValue,
-} from "../shared/storage";
-
-import {
     eventToPromise,
     startFrontend,
     stopFrontend,
@@ -63,6 +58,132 @@ const speak = (text, voice) => promiseTry(
     }
 );
 
+const getSelectedListOption = (selectElement) => {
+    const options = Array.from(selectElement.querySelectorAll(":scope option"));
+    const selected = options.filter((option) => option.selected === true);
+
+    let result = null;
+
+    if (selected.length > 0) {
+        result = selected[0] || null;
+    }
+
+    return result;
+};
+
+const speakSelectedVoiceAndText = (selectedVoiceOption, textElement) => promiseTry(
+    () => {
+        const sampleText = textElement.value.trim();
+
+        if (sampleText.length === 0) {
+            return;
+        }
+
+        if (selectedVoiceOption && selectedVoiceOption && selectedVoiceOption.talkie && typeof Array.isArray(selectedVoiceOption.talkie.voices)) {
+            const voice = selectedVoiceOption.talkie.voices[0];
+
+            return speak(sampleText, voice);
+        }
+
+        return undefined;
+    }
+);
+
+const disabledVoiceDefaultToggleButton = (voicesDefaultToggleButton) => promiseTry(
+    () => {
+        voicesDefaultToggleButton.disabled = true;
+
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                let buttonText = null;
+
+                if (isPremium) {
+                    buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection_Premium");
+                } else {
+                    buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection_Free");
+                }
+
+                voicesDefaultToggleButton.textContent = buttonText;
+
+                return undefined;
+            });
+    }
+);
+
+const enabledVoiceDefaultToggleButton = (voicesDefaultToggleButton, languageName, voiceName) => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                const messageDetails = [
+                    `<strong>${languageName}</strong>`,
+                    `<strong>${voiceName}</strong>`,
+                ];
+
+                let buttonText = null;
+
+                if (isPremium) {
+                    voicesDefaultToggleButton.disabled = false;
+                    buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium", messageDetails);
+                } else {
+                    voicesDefaultToggleButton.disabled = true;
+                    buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Free", messageDetails);
+                }
+
+                // TODO: prevent translation HTML injection.
+                voicesDefaultToggleButton.innerHTML = buttonText;
+
+                return undefined;
+            });
+    }
+);
+
+const updateToggleLanguageVoiceOverrideNameButton = (selectedLanguageOption, selectedVoiceOption, voicesDefaultToggleButton) => promiseTry(
+    () => {
+        if (selectedLanguageOption === null || selectedVoiceOption === null) {
+            return disabledVoiceDefaultToggleButton(voicesDefaultToggleButton);
+        }
+
+        if (!selectedLanguageOption.talkie || !selectedVoiceOption.talkie) {
+            return disabledVoiceDefaultToggleButton(voicesDefaultToggleButton);
+        }
+
+        const languageName = selectedLanguageOption.talkie.language;
+        const voiceName = selectedVoiceOption.talkie.voiceName;
+
+        if (languageName === null || voiceName === null) {
+            return disabledVoiceDefaultToggleButton(voicesDefaultToggleButton);
+        }
+
+        return enabledVoiceDefaultToggleButton(voicesDefaultToggleButton, languageName, voiceName);
+    }
+);
+
+const toggleLanguageVoiceOverrideNameClick = (selectedLanguageOption, selectedVoiceOption) => promiseTry(
+    () => {
+        if (selectedLanguageOption === null || selectedVoiceOption === null) {
+            throw new Error("toggleLanguageVoiceOverrideNameClick 1");
+        }
+
+        if (!selectedLanguageOption.talkie || !selectedVoiceOption.talkie) {
+            throw new Error("toggleLanguageVoiceOverrideNameClick 2");
+        }
+
+        const languageName = selectedLanguageOption.talkie.language;
+        const voiceName = selectedVoiceOption.talkie.voiceName;
+
+        if (languageName === null || voiceName === null) {
+            throw new Error("toggleLanguageVoiceOverrideNameClick 3");
+        }
+
+        return getBackgroundPage()
+            .then((background) => background.toggleLanguageVoiceOverrideName(languageName, voiceName));
+    }
+);
+
 const loadVoicesAndLanguages = () => promiseTry(
     () => {
         return getMappedVoices()
@@ -74,25 +195,34 @@ const loadVoicesAndLanguages = () => promiseTry(
                 allLanguages.sort();
                 dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguage", allVoicesByLanguage);
 
-                const allVoicesByLanguageGroup = allVoices.reduce((obj, voice) => { const group = voice.lang.substr(0, 2); obj[group] = (obj[group] || {}); obj[group][voice.lang] = allVoicesByLanguage[voice.lang]; return obj; }, {});
-                const allLanguagesGroups = Object.keys(allVoicesByLanguageGroup);
+                const allVoicesByLanguageGroup = allVoices.reduce((obj, voice) => { const group = voice.lang.substr(0, 2); obj[group] = (obj[group] || []).concat(voice); return obj; }, {});
+                dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguageGroup", allVoicesByLanguageGroup);
+
+                const allLanguagesByLanguageGroup = allVoices.reduce((obj, voice) => { const group = voice.lang.substr(0, 2); obj[group] = (obj[group] || {}); obj[group][voice.lang] = allVoicesByLanguage[voice.lang]; return obj; }, {});
+                const allLanguagesGroups = Object.keys(allLanguagesByLanguageGroup);
                 allLanguagesGroups.sort();
                 dualLogger.dualLog("loadVoicesAndLanguages", "allLanguagesGroups", allLanguagesGroups);
 
                 const allVoicesByVoiceName = allVoices.reduce((obj, voice) => { obj[voice.name] = (obj[voice.name] || []).concat(voice); return obj; }, {});
                 const allVoiceNames = Object.keys(allVoicesByVoiceName);
                 allVoiceNames.sort();
-                dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguageGroup", allVoicesByLanguageGroup);
+                dualLogger.dualLog("loadVoicesAndLanguages", "allLanguagesByLanguageGroup", allLanguagesByLanguageGroup);
 
                 const voicesLanguagesListElement = document.getElementById("voices-languages-list");
                 const voicesVoicesListElement = document.getElementById("voices-voices-list");
                 const voicesSampleTextElement = document.getElementById("voices-sample-text");
                 const voicesAvailableLanguagesCount = document.getElementById("voices-available-languages-count");
                 const voicesAvailableVoicesCount = document.getElementById("voices-available-voices-count");
+                const voicesDefaultToggleButton = document.getElementById("voices-default-toggle");
+
+                const getSelectedLanguageOption = () => getSelectedListOption(voicesLanguagesListElement);
+                const getSelectedVoiceOption = () => getSelectedListOption(voicesVoicesListElement);
+
+                disabledVoiceDefaultToggleButton(voicesDefaultToggleButton);
 
                 voicesAvailableLanguagesCount.textContent = ` (${allLanguages.length})`;
 
-                const displayVoicesInSelectElement = (selectedVoices) => {
+                const displayVoicesInSelectElement = (selectedVoices, effectiveVoiceNameForLanguage) => {
                     Array.from(voicesVoicesListElement.children).forEach((child) => child.remove());
 
                     selectedVoices.forEach((voice) => {
@@ -102,39 +232,66 @@ const loadVoicesAndLanguages = () => promiseTry(
                         option.talkie.voices = [voice];
                         option.textContent = voice.name;
 
+                        if (voice.name === effectiveVoiceNameForLanguage) {
+                            option.textContent += " ✓";
+                        }
+
                         voicesVoicesListElement.appendChild(option);
                     });
 
                     voicesAvailableVoicesCount.textContent = ` (${selectedVoices.length})`;
                 };
 
+                const displayVoicesAndSelectVoiceInSelectElement = (selectedLanguageOption, effectiveVoiceNameForLanguage) => {
+                    const voicesForLanguage = selectedLanguageOption.talkie.voices;
+
+                    displayVoicesInSelectElement(voicesForLanguage, effectiveVoiceNameForLanguage);
+
+                    Array.from(voicesVoicesListElement.children).forEach((option) => {
+                        option.classList.remove("effective-voice");
+
+                        if (option.talkie && option.talkie.voiceName === effectiveVoiceNameForLanguage) {
+                            option.selected = true;
+                            option.classList.add("effective-voice");
+
+                            if (typeof option.scrollIntoViewIfNeeded === "function") {
+                                option.scrollIntoViewIfNeeded(true);
+                            }
+
+                            voicesVoicesListElement.dispatchEvent(new Event("change"));
+                        }
+                    });
+
+                    return undefined;
+                };
+
                 displayVoicesInSelectElement(allVoices);
 
-                const speakSelectedVoiceAndText = (selectElement, textElement) => promiseTry(
+                const voiceListElementOnChangeSpeakSampleHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
                     () => {
-                        const selectedOption = Array.from(selectElement.querySelectorAll("option")).filter((option) => option.selected === true)[0] || null;
+                        const selectedVoiceOption = getSelectedVoiceOption();
 
-                        const sampleText = textElement.value.trim();
-
-                        if (sampleText.length === 0) {
-                            return;
-                        }
-
-                        if (selectedOption && selectedOption && selectedOption.talkie && typeof Array.isArray(selectedOption.talkie.voices)) {
-                            const voice = selectedOption.talkie.voices[0];
-
-                            return speak(sampleText, voice);
-                        }
-
-                        return undefined;
+                        return speakSelectedVoiceAndText(selectedVoiceOption, voicesSampleTextElement);
                     }
                 );
 
-                const voiceListElementOnChangeHandler = (event) => promiseTry(
+                const voiceListElementOnChangeButtonHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
                     () => {
-                        const selectElement = event.target;
+                        const selectedLanguageOption = getSelectedLanguageOption();
+                        const selectedVoiceOption = getSelectedVoiceOption();
 
-                        return speakSelectedVoiceAndText(selectElement, voicesSampleTextElement);
+                        return updateToggleLanguageVoiceOverrideNameButton(selectedLanguageOption, selectedVoiceOption, voicesDefaultToggleButton);
+                    }
+                );
+
+                const voicesDefaultToggleButtonOnClickToggleLanguageVoiceOverrideNameHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                    () => {
+                        const selectedLanguageOption = getSelectedLanguageOption();
+                        const selectedVoiceOption = getSelectedVoiceOption();
+
+                        return toggleLanguageVoiceOverrideNameClick(selectedLanguageOption, selectedVoiceOption)
+                            .then(() => updateToggleLanguageVoiceOverrideNameButton(selectedLanguageOption, selectedVoiceOption, voicesDefaultToggleButton))
+                            .then(() => displayVoicesAndSelectVoiceInSelectElement(selectedLanguageOption, selectedVoiceOption.talkie.voiceName));
                     }
                 );
 
@@ -149,62 +306,70 @@ const loadVoicesAndLanguages = () => promiseTry(
                     allLanguageOption.textContent = browser.i18n.getMessage("frontend_voicesShowAllVoices");
                     allLanguageOption.selected = true;
 
+                    allLanguageOption.classList.add("group");
+
                     voicesLanguagesListElement.appendChild(allLanguageOption);
                 }
 
                 allLanguagesGroups.forEach((languageGroup) => {
-                    const languagesPerGroupKeys = Object.keys(allVoicesByLanguageGroup[languageGroup]);
+                    const allVoicesByLanguageGroupKeys = Object.keys(allVoicesByLanguageGroup[languageGroup]);
+
+                    const languagesPerGroupKeys = Object.keys(allLanguagesByLanguageGroup[languageGroup]);
                     languagesPerGroupKeys.sort();
 
-                    const optgroup = document.createElement("optgroup");
+                    const languageGroupOptionElement = document.createElement("option");
 
-                    if (languagesPerGroupKeys.length > 1) {
-                        optgroup.label = `${languageGroup} (${languagesPerGroupKeys.length})`;
+                    languageGroupOptionElement.classList.add("group");
+
+                    if (languagesPerGroupKeys.length > 1 || allVoicesByLanguageGroupKeys.length > 1) {
+                        languageGroupOptionElement.textContent = `${languageGroup} (${languagesPerGroupKeys.length}, ${allVoicesByLanguageGroupKeys.length})`;
                     } else {
-                        optgroup.label = languageGroup;
+                        languageGroupOptionElement.textContent = languageGroup;
                     }
+                    languageGroupOptionElement.talkie = {};
+                    languageGroupOptionElement.talkie.language = languageGroup;
+                    languageGroupOptionElement.talkie.voices = allVoicesByLanguageGroup[languageGroup];
 
-                    languagesPerGroupKeys.forEach((language) => {
-                        const option = document.createElement("option");
-                        option.talkie = {};
-                        option.talkie.language = language;
-                        option.talkie.voices = allVoicesByLanguage[language];
+                    voicesLanguagesListElement.appendChild(languageGroupOptionElement);
 
-                        if (allVoicesByLanguage[language].length > 1) {
-                            option.textContent = `${language} (${allVoicesByLanguage[language].length})`;
-                        } else {
-                            option.textContent = language;
-                        }
+                    languagesPerGroupKeys
+                        .filter((language) => language !== languageGroup)
+                        .forEach((language) => {
+                            const languageOptionElement = document.createElement("option");
+                            languageOptionElement.talkie = {};
+                            languageOptionElement.talkie.language = language;
+                            languageOptionElement.talkie.voices = allVoicesByLanguage[language];
 
-                        optgroup.appendChild(option);
-                    });
+                            if (allVoicesByLanguage[language].length > 1) {
+                                languageOptionElement.textContent = `${language} (${allVoicesByLanguage[language].length})`;
+                            } else {
+                                languageOptionElement.textContent = language;
+                            }
 
-                    voicesLanguagesListElement.appendChild(optgroup);
+                            voicesLanguagesListElement.appendChild(languageOptionElement);
+                        });
                 });
 
-                const languageListElementOnChangeHandler = (event) => promiseTry(
+                const languageListElementOnChangeUpdateVoiceListHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
                     () => {
-                        const selectElement = event.target;
-                        const selectedOption = Array.from(selectElement.querySelectorAll("option")).filter((option) => option.selected === true)[0] || null;
+                        const selectedLanguageOption = getSelectedLanguageOption();
 
-                        if (selectedOption && selectedOption && selectedOption.talkie && Array.isArray(selectedOption.talkie.voices)) {
-                            const voicesForLanguage = selectedOption.talkie.voices;
-
-                            displayVoicesInSelectElement(voicesForLanguage);
-
-                            if (voicesVoicesListElement.children.length > 0) {
-                                voicesVoicesListElement.children[0].selected = true;
-
-                                return speakSelectedVoiceAndText(voicesVoicesListElement, voicesSampleTextElement);
-                            }
-                        } else {
-                            displayVoicesInSelectElement(allVoices);
+                        if (selectedLanguageOption && selectedLanguageOption && selectedLanguageOption.talkie && Array.isArray(selectedLanguageOption.talkie.voices) && typeof selectedLanguageOption.talkie.language === "string") {
+                            return getBackgroundPage()
+                                .then((background) => background.getEffectiveVoiceForLanguage(selectedLanguageOption.talkie.language))
+                                .then((effectiveVoiceForLanguage) => displayVoicesAndSelectVoiceInSelectElement(selectedLanguageOption, effectiveVoiceForLanguage.name));
                         }
+
+                        displayVoicesInSelectElement(allVoices);
                     }
                 );
 
-                voicesLanguagesListElement.addEventListener("change", eventToPromise.bind(null, languageListElementOnChangeHandler));
-                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeHandler));
+                voicesLanguagesListElement.addEventListener("change", eventToPromise.bind(null, languageListElementOnChangeUpdateVoiceListHandler));
+                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeSpeakSampleHandler));
+
+                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeButtonHandler));
+
+                voicesDefaultToggleButton.addEventListener("click", eventToPromise.bind(null, voicesDefaultToggleButtonOnClickToggleLanguageVoiceOverrideNameHandler));
 
                 voicesSampleTextElement.addEventListener("focus", () => {
                     voicesSampleTextElement.select();
@@ -217,19 +382,25 @@ const loadVoicesAndLanguages = () => promiseTry(
 
 const loadOptionAndStartListeners = () => promiseTry(
     () => {
+        const hideDonationsOptionId = "options-popup-donate-buttons-hide";
         const hideDonationsId = "options-popup-donate-buttons-hide";
 
-        return Promise.resolve()
-            .then(() => getStoredValue(hideDonationsId))
+        return getBackgroundPage()
+            .then((background) => background.getStoredValue(hideDonationsOptionId))
             .then((hideDonations) => {
                 hideDonations = hideDonations === true;
 
                 const hideDonationsElement = document.getElementById(hideDonationsId);
                 hideDonationsElement.checked = hideDonations === true;
 
-                hideDonationsElement.addEventListener("click", () => {
-                    return setStoredValue(hideDonationsId, hideDonationsElement.checked === true);
-                });
+                const hideDonationsClickHandler = () => promiseTry(
+                    () => {
+                        return getBackgroundPage()
+                            .then((background) => background.setStoredValue(hideDonationsOptionId, hideDonationsElement.checked === true));
+                    }
+                );
+
+                hideDonationsElement.addEventListener("click", eventToPromise.bind(null, hideDonationsClickHandler));
 
                 return undefined;
             });

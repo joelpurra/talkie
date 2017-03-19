@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "version": "2.1.2",
-  "version_name": "v2.1.2 (2017-03-17)",
+  "version_name": "v2.1.2 Free (2017-03-17)",
   "applications": {
     "gecko": {
       "strict_min_version": "52.0"
@@ -43,15 +43,21 @@
       },
       "description": "__MSG_commandOpenWebsiteMainDescription__"
     },
-    "open-website-chromewebstore": {
+    "open-website-chromewebstore-free": {
       "suggested_key": {
         "default": "Alt+Shift+9"
       },
-      "description": "__MSG_commandOpenWebsiteChromeWebStoreDescription__"
+      "description": "__MSG_commandOpenWebsiteChromeWebStoreDescription_Free__"
+    },
+    "open-website-chromewebstore-premium": {
+      "suggested_key": {
+        "default": "Alt+Shift+8"
+      },
+      "description": "__MSG_commandOpenWebsiteChromeWebStoreDescription_Premium__"
     },
     "open-website-donate": {
       "suggested_key": {
-        "default": "Alt+Shift+8"
+        "default": "Alt+Shift+7"
       },
       "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }

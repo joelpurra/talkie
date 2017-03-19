@@ -38,28 +38,35 @@ export default class ContextMenuManager {
                     "selection",
                 ],
             },
-            buttonContextMenuStartStopDescription: {
+            buttonContextMenuStartStop: {
                 id: "start-stop",
                 title: browser.i18n.getMessage("commandStartStopDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteMainDescription: {
+            buttonContextMenuOpenWebsiteMain: {
                 id: "open-website-main",
                 title: browser.i18n.getMessage("commandOpenWebsiteMainDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteChromeWebStoreDescription: {
-                id: "open-website-chromewebstore",
-                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription"),
+            buttonContextMenuOpenWebsiteChromeWebStoreFree: {
+                id: "open-website-chromewebstore-free",
+                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription_Free"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteDonateDescription: {
+            buttonContextMenuOpenWebsiteChromeWebStorePremium: {
+                id: "open-website-chromewebstore-premium",
+                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription_Premium"),
+                contexts: [
+                    "browser_action",
+                ],
+            },
+            buttonContextMenuOpenWebsiteDonate: {
                 id: "open-website-donate",
                 title: browser.i18n.getMessage("commandOpenWebsiteDonateDescription"),
                 contexts: [

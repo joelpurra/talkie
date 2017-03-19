@@ -24,7 +24,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Popup (start) &mdash; Talkie</title>
+    <title>Popup &mdash; Talkie</title>
     <link rel="stylesheet" type="text/css" href="../../resources/style/shared.css" />
     <link rel="stylesheet" type="text/css" href="../../resources/style/popup.css" />
 </head>
@@ -33,19 +33,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
     <header>
         <p>
             <span class="icon inline talkie"></span>
-            <a href="https://github.com/joelpurra/talkie" data-translate="extensionShortName"></a>
+            <a data-configure-href="urls.main" data-translate="extensionShortName"></a>
         </p>
         <progress id="progress" value="0" max="100"></progress>
         <nav>
             <ol>
                 <li>
-                    <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/support" data-translate="frontend_supportAndFeedback"></a>
+                    <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback"></a>
                 </li>
                 <li>
-                    <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews" data-translate="frontend_rateIt"></a>
+                    <a data-configure-href="urls.rate" data-translate="frontend_rateIt"></a>
                 </li>
                 <li>
-                    <a id="go-to-options" href="chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk" data-translate="frontend_Options"></a>
+                    <a data-configure-href="urls.options" data-translate="frontend_Options"></a>
                 </li>
             </ol>
         </nav>
@@ -57,7 +57,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
     -->
     <footer>
         <p>
-            <span data-translate="frontend_yourDonationsAreAppreciated"></span>
+            <span class="talkie-free-only talkie-inline"><a data-configure-href="urls.chromewebstore-premium" data-translate="frontend_getPremiumLinkText"></a> — </span><span data-translate="frontend_yourDonationsAreAppreciatedShort"></span>
         </p>
         <table class="donate">
             <tbody>

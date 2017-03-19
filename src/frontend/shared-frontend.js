@@ -30,40 +30,181 @@ import {
     getBackgroundPage,
 } from "../shared/tabs";
 
-import {
-    urls,
-} from "../shared/configuration";
-
 import DualLogger from "./dual-log";
 
 const dualLogger = new DualLogger("shared-frontend.js");
 
-const translateWindow = () => promiseTry(
+const reduceFlatten = (items, item) => {
+    return items.concat(item);
+};
+
+const filterElementsWithAttributesPrefixAndGroupPerSuffix = (elements, attributePrefix) => {
+    const elementsPerAttributesSuffix = elements.map((element) => {
+        const attributes = Array.from(element.attributes);
+
+        const attributesWithPrefix = attributes.filter((attribute) => {
+            return attribute.name.startsWith(attributePrefix);
+        });
+
+        if (attributesWithPrefix.length === 0) {
+            return null;
+        }
+
+        return attributesWithPrefix.map((attribute) => {
+            const attributeObject = {
+                attributeName: attribute.name,
+                attributePrefix: attributePrefix,
+                attributeSuffix: attribute.name.replace(attributePrefix, ""),
+                element: element,
+            };
+
+            return attributeObject;
+        });
+    })
+    .filter((attributeObject) => attributeObject !== null)
+    .reduce(reduceFlatten, [])
+    .reduce((attributeObjects, attributeObject) => {
+        if (!attributeObjects[attributeObject.attributeSuffix]) {
+            attributeObjects[attributeObject.attributeSuffix] = [];
+        }
+
+        // NOTE: only keeping the element.
+        attributeObjects[attributeObject.attributeSuffix].push(attributeObject.element);
+
+        return attributeObjects;
+    },
+    {});
+
+    return elementsPerAttributesSuffix;
+};
+
+const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) => promiseTry(
+    () => {
+        dualLogger.dualLog("Start", "handleElementsPerAttributePrefix", attributePrefix);
+
+        const suffixesAndElements = filterElementsWithAttributesPrefixAndGroupPerSuffix(elements, attributePrefix);
+
+        dualLogger.dualLog("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
+
+        const attributeSuffixes = Object.keys(suffixesAndElements);
+
+        const attributeSuffixPromises = attributeSuffixes.map((attributeSuffix) => {
+            const elementsPerSuffix = suffixesAndElements[attributeSuffix];
+
+            const handlerPromises = elementsPerSuffix.map((element) => promiseTry(
+                () => {
+                    const attributeName = attributePrefix + attributeSuffix;
+                    const attributeValue = element.getAttribute(attributeName);
+
+                    if (typeof attributeValue !== "string") {
+                        dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", "Invalid attribute value", [ element ], attributeName, attributeValue);
+
+                        throw new Error(`Handleable attribute not found: ${attributeName} on ${element}`);
+                    }
+
+                    return handler(element, attributeSuffix, attributeValue)
+                        .then((result) => {
+                            dualLogger.dualLog("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
+
+                            return result;
+                        })
+                        .catch((error) => {
+                            dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", "Handling not successful", [ element ], attributeName, attributeValue, error);
+
+                            throw error;
+                        });
+                }
+            ));
+
+            return Promise.all(handlerPromises);
+        });
+
+        return Promise.all(attributeSuffixPromises)
+            .then((result) => {
+                dualLogger.dualLog("Done", "handleElementsPerAttributePrefix", attributePrefix);
+
+                return result;
+            })
+            .catch((error) => {
+                dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", attributePrefix);
+
+                throw error;
+            });
+    }
+);
+
+const configureWindowContents = () => promiseTry(
+    () => {
+        dualLogger.dualLog("Start", "configure");
+
+        const allElements = Array.from(document.querySelectorAll(":scope *"));
+        const configureAttributePrefix = "data-configure";
+
+        const configurationHandler = (element, attributeSuffix, attributeValue) => promiseTry(
+            () => {
+                const target = attributeSuffix.replace(/^-/, "");
+                const configurationPath = attributeValue;
+
+                return getBackgroundPage()
+                    .then((background) => background.getConfigurationValue(configurationPath))
+                    .then((configured) => {
+                        if (typeof configured !== "string") {
+                            throw new Error(`Configuration value not found: ${configurationPath}`);
+                        }
+
+                        if (target === "") {
+                            element.textContent = configured;
+                        } else {
+                            element.setAttribute(target, configured);
+                        }
+
+                        return;
+                    });
+            }
+        );
+
+        return handleElementsPerAttributePrefix(allElements, configureAttributePrefix, configurationHandler)
+            .then(() => {
+                dualLogger.dualLog("Done", "configure");
+
+                return undefined;
+            });
+    }
+);
+
+const translateWindowContents = () => promiseTry(
     () => {
         dualLogger.dualLog("Start", "translate");
 
-        const translateAttributeName = "data-translate";
-        const translatableElements = document.querySelectorAll(`[${translateAttributeName}]`);
+        const allElements = Array.from(document.querySelectorAll(":scope *"));
+        const translateAttributePrefix = "data-translate";
 
-        dualLogger.dualLog("translate", "Translatable elements", translatableElements);
-
-        translatableElements.forEach((element) => {
-            const translationId = element.getAttribute(translateAttributeName);
-
-            if (typeof translationId === "string" && translationId.length > 0) {
+        const translationHandler = (element, attributeSuffix, attributeValue) => promiseTry(
+            () => {
+                const target = attributeSuffix.replace(/^-/, "");
+                const translationId = attributeValue;
                 const translated = browser.i18n.getMessage(translationId);
 
-                if (typeof translated === "string") {
+                if (typeof translated !== "string") {
+                    throw new Error(`Translated message not found: ${translationId}`);
+                }
+
+                if (target === "") {
                     element.textContent = translated;
                 } else {
-                    dualLogger.dualLogError("Could not translate element", "Translated message not found", element, translationId, translated);
+                    element.setAttribute(target, translated);
                 }
-            } else {
-                dualLogger.dualLogError("Could not translate element", "Invalid translation id", element, translationId);
-            }
-        });
 
-        dualLogger.dualLog("Done", "translate");
+                return;
+            }
+        );
+
+        return handleElementsPerAttributePrefix(allElements, translateAttributePrefix, translationHandler)
+            .then(() => {
+                dualLogger.dualLog("Done", "translate");
+
+                return undefined;
+            });
     }
 );
 
@@ -78,7 +219,7 @@ const addLinkClickHandlers = () => promiseTry(
 
             // NOTE: skipping non-https urls -- presumably empty hrefs for special links.
             if (typeof location !== "string" || !location.startsWith("https://")) {
-                dualLogger.dualLog("addLinkClickHandlers", "Skipping non-https URL", link, location);
+                dualLogger.dualLog("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
 
                 return;
             }
@@ -95,23 +236,27 @@ const addLinkClickHandlers = () => promiseTry(
 );
 
 const addOptionsLinkClickHandlers = () => promiseTry(
-    () => {
-        // https://developer.browser.com/extensions/optionsV2#linking
-        const optionsLinks = Array.from(document.querySelectorAll("[href='" + urls.options + "']"));
+    () => getBackgroundPage()
+        .then((background) => background.getConfigurationValue("urls.options"))
+        .then((optionsUrl) => {
+            // https://developer.browser.com/extensions/optionsV2#linking
+            const optionsLinks = Array.from(document.querySelectorAll(":scope [href='" + optionsUrl + "']"));
 
-        optionsLinks.forEach((optionsLink) => {
-            optionsLink.onclick = (event) => {
-                event.preventDefault();
+            optionsLinks.forEach((optionsLink) => {
+                optionsLink.onclick = (event) => {
+                    event.preventDefault();
 
-                browser.runtime.openOptionsPage();
+                    browser.runtime.openOptionsPage();
 
-                return false;
-            };
-        });
-    }
+                    return false;
+                };
+            });
+
+            return undefined;
+        })
 );
 
-const checkPremiumVersion = () => promiseTry(
+const checkVersion = () => promiseTry(
     () => {
         const bodyElement = document.getElementsByTagName("body")[0];
 
@@ -141,28 +286,40 @@ const reflow = () => promiseTry(
 export const eventToPromise = (eventHandler, event) => promiseTry(
     () => {
         try {
-            dualLogger.dualLog("Start", "eventToPromise", event);
+            dualLogger.dualLog("Start", "eventToPromise", event.type, event);
 
             Promise.resolve()
                 .then(() => eventHandler(event))
-                .then((result) => dualLogger.dualLog("Done", "eventToPromise", event, result))
-                .catch((error) => dualLogger.dualLogError("Error", "eventToPromise", event, error));
+                .then((result) => dualLogger.dualLog("Done", "eventToPromise", event.type, event, result))
+                .catch((error) => dualLogger.dualLogError("Error", "eventToPromise", event.type, event, error));
         } catch (error) {
-            dualLogger.dualLogError("Error", "eventToPromise", event, error);
+            dualLogger.dualLogError("Error", "eventToPromise", event.type, event, error);
 
             throw error;
         }
     }
 );
 
+const focusFirstLink = () => promiseTry(
+    () => {
+        const firstLinkElement = document.getElementsByTagName("a")[0];
+
+        firstLinkElement.focus();
+    }
+);
+
 export const startFrontend = () => promiseTry(
     () => {
         return Promise.resolve()
-            .then(() => getBackgroundPage())
-            .then(() => translateWindow())
-            .then(() => addLinkClickHandlers())
-            .then(() => addOptionsLinkClickHandlers())
-            .then(() => checkPremiumVersion())
+            .then(() => Promise.all([
+                getBackgroundPage(),
+                checkVersion(),
+                configureWindowContents(),
+                translateWindowContents(),
+                addLinkClickHandlers(),
+                addOptionsLinkClickHandlers(),
+                focusFirstLink(),
+            ]))
             .then(() => reflow());
     }
 );
@@ -172,3 +329,25 @@ export const stopFrontend = () => promiseTry(
         // TODO: unregister listeners.
     }
 );
+
+// https://stackoverflow.com/questions/1219860/html-encoding-lost-when-attribute-read-from-input-field
+export const htmlEscape = (str) => {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\//g, "&#x2F;");
+};
+
+// https://stackoverflow.com/questions/1219860/html-encoding-lost-when-attribute-read-from-input-field
+export const htmlUnescape = (str) => {
+    return str
+        .replace(/&quot;/g, "\"")
+        .replace(/&#39;/g, "'")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&")
+        .replace(/&#x2F;/g, "/");
+};

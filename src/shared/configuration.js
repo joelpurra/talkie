@@ -18,11 +18,57 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import configuration from "../configuration.json";
+import configurationJson from "../configuration.json";
 
-export const extensionShortName = browser.i18n.getMessage("extensionShortName");
+import {
+    promiseTry,
+} from "../shared/promise";
 
-export const uiLocale = browser.i18n.getMessage("@@ui_locale");
-export const messagesLocale = browser.i18n.getMessage("extensionLocale");
+export default class Configuration {
+    constructor(metadataManager) {
+        this.metadataManager = metadataManager;
 
-export const urls = configuration.urls;
+        this.extensionShortName = browser.i18n.getMessage("extensionShortName");
+        this.uiLocale = browser.i18n.getMessage("@@ui_locale");
+        this.messagesLocale = browser.i18n.getMessage("extensionLocale");
+    }
+
+    _resolvePath(obj, path) {
+        // NOTE: doesn't handle arrays nor properties of "any" non-object objects.
+        if (!obj || typeof obj !== "object") {
+            throw new Error();
+        }
+
+        if (!path || typeof path !== "string" || path.length === 0) {
+            throw new Error();
+        }
+
+        // NOTE: doesn't handle path["subpath"].
+        const parts = path.split(".");
+        const part = parts.shift();
+
+        if (({}).hasOwnProperty.call(obj, part)) {
+            if (parts.length === 0) {
+                return obj[part];
+            }
+            return this._resolvePath(obj[part], parts.join("."));
+        }
+
+        return null;
+    }
+
+    get(path) {
+        return promiseTry(
+            () => this.metadataManager.getVersionType()
+                .then((versionType) => Promise.all([
+                    this._resolvePath(configurationJson[versionType], path),
+                    this._resolvePath(configurationJson.shared, path),
+                ]))
+                .then(([versionedValue, sharedValue]) => {
+                    const value = versionedValue || sharedValue || null;
+
+                    return value;
+                })
+            );
+    }
+}

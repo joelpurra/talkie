@@ -23,6 +23,11 @@ import {
 } from "../shared/promise";
 
 export default class MetadataManager {
+    constructor() {
+        this.VersionNamePremium = "premium";
+        this.VersionNameFree = "free";
+    }
+
     getExtensionId() {
         return promiseTry(
             () => browser.runtime.id
@@ -71,6 +76,19 @@ export default class MetadataManager {
             () => this.isPremiumVersion()
                 .then((isPremium) => {
                     return !isPremium;
+                })
+        );
+    }
+
+    getVersionType() {
+        return promiseTry(
+            () => this.isPremiumVersion()
+                .then((isPremium) => {
+                    if (isPremium) {
+                        return this.VersionNamePremium;
+                    }
+
+                    return this.VersionNameFree;
                 })
         );
     }

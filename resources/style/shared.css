@@ -121,14 +121,27 @@ kbd,
     font-family: Helvetica, Verdana, sans-serif;
 }
 
+.talkie-free-only,
 .talkie-premium-only {
     display: none;
 }
 
+.talkie-free .talkie-free-only.talkie-block,
 .talkie-premium .talkie-premium-only.talkie-block {
     display: block;
 }
 
+.talkie-free .talkie-free-only.talkie-inline,
+.talkie-premium .talkie-premium-only.talkie-inline {
+    display: inline;
+}
+
+.talkie-free .talkie-free-only.talkie-inline-block,
 .talkie-premium .talkie-premium-only.talkie-inline-block {
     display: inline-block;
+}
+
+.talkie-free .talkie-free-only.talkie-list-item,
+.talkie-premium .talkie-premium-only.talkie-list-item {
+    display: list-item;
 }

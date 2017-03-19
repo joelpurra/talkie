@@ -86,7 +86,7 @@ export default class Tabrow {
     };
 
     getTabLinks() {
-        return Array.from(document.querySelectorAll(`#${this.tabContainerId} ol li a[href^='#']`));
+        return Array.from(document.querySelectorAll(`:scope #${this.tabContainerId} ol li a[href^='#']`));
     }
 
     getLinkedTabContentElement(tabLinkElement) {
