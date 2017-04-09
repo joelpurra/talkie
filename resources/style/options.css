@@ -75,6 +75,10 @@ select.grouped option.group {
     padding: 0.1em;
 }
 
+#voices input[type=range] {
+    width: 100%;
+}
+
 ul {
     margin-top: 0;
 }

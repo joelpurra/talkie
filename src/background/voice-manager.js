@@ -18,169 +18,46 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    resolveVoiceAsMappedVoice,
-} from "../shared/voices";
-
 export default class VoiceManager {
-    constructor(storageManager, metadataManager) {
-        this.storageManager = storageManager;
-        this.metadataManager = metadataManager;
-
-        this.languageLanguageVoiceOverrideNamesStorageKey = "language-voice-overrides";
+    constructor(voiceLanguageManager, voiceRateManager, voicePitchManager) {
+        this.voiceLanguageManager = voiceLanguageManager;
+        this.voiceRateManager = voiceRateManager;
+        this.voicePitchManager = voicePitchManager;
     }
 
-    getLanguageVoiceDefault(languageName) {
-        return promiseTry(
-            () => {
-                const mappedVoice = {
-                    name: null,
-                    lang: languageName,
-                };
-
-                return resolveVoiceAsMappedVoice(mappedVoice);
-            }
-        );
+    getEffectiveVoiceForLanguage(...args) {
+        return this.voiceLanguageManager.getEffectiveVoiceForLanguage(...args);
     }
 
-    hasLanguageVoiceDefault(languageName) {
-        return promiseTry(
-            () => this.getLanguageVoiceDefault(languageName)
-                .then((languageVoiceDefault) => {
-                    if (languageVoiceDefault) {
-                        return true;
-                    }
-
-                    return false;
-                })
-        );
+    isLanguageVoiceOverrideName(...args) {
+        return this.voiceLanguageManager.isLanguageVoiceOverrideName(...args);
     }
 
-    _getLanguageLanguageVoiceOverrideNames() {
-        return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
-                        return this.storageManager.getStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey)
-                            .then((languageLanguageVoiceOverrideNames) => {
-                                if (languageLanguageVoiceOverrideNames !== null && typeof languageLanguageVoiceOverrideNames === "object") {
-                                    return languageLanguageVoiceOverrideNames;
-                                }
-
-                                return {};
-                            });
-                    }
-
-                    return {};
-                })
-        );
+    toggleLanguageVoiceOverrideName(...args) {
+        return this.voiceLanguageManager.toggleLanguageVoiceOverrideName(...args);
     }
 
-    _setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames) {
-        return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
-                        return this.storageManager.setStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey, languageLanguageVoiceOverrideNames);
-                    }
-
-                    return undefined;
-                })
-            );
+    getVoiceRateDefault(...args) {
+        return this.voiceRateManager.getVoiceRateDefault(...args);
     }
 
-    getLanguageVoiceOverrideName(languageName) {
-        return promiseTry(
-            () => this._getLanguageLanguageVoiceOverrideNames()
-                .then((languageLanguageVoiceOverrideNames) => {
-                    return languageLanguageVoiceOverrideNames[languageName] || null;
-                })
-        );
+    getEffectiveRateForVoice(...args) {
+        return this.voiceRateManager.getEffectiveRateForVoice(...args);
     }
 
-    setLanguageVoiceOverrideName(languageName, voiceName) {
-        return promiseTry(
-            () => this._getLanguageLanguageVoiceOverrideNames()
-                .then((languageLanguageVoiceOverrideNames) => {
-                    languageLanguageVoiceOverrideNames[languageName] = voiceName;
-
-                    return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
-                })
-        );
+    setVoiceRateOverride(...args) {
+        return this.voiceRateManager.setVoiceRateOverride(...args);
     }
 
-    removeLanguageVoiceOverrideName(languageName) {
-        return promiseTry(
-            () => this._getLanguageLanguageVoiceOverrideNames()
-                .then((languageLanguageVoiceOverrideNames) => {
-                    delete languageLanguageVoiceOverrideNames[languageName];
-
-                    return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
-                })
-        );
+    getVoicePitchDefault(...args) {
+        return this.voicePitchManager.getVoicePitchDefault(...args);
     }
 
-    hasLanguageVoiceOverrideName(languageName) {
-        return promiseTry(
-                () => this.getLanguageVoiceOverrideName(languageName)
-                    .then((languageVoiceOverride) => {
-                        if (languageVoiceOverride) {
-                            return true;
-                        }
-
-                        return false;
-                    })
-            );
+    getEffectivePitchForVoice(...args) {
+        return this.voicePitchManager.getEffectivePitchForVoice(...args);
     }
 
-    isLanguageVoiceOverrideName(languageName, voiceName) {
-        return promiseTry(
-                () => this.getLanguageVoiceOverrideName(languageName)
-                    .then((languageVoiceOverride) => {
-                        if (languageVoiceOverride) {
-                            return languageVoiceOverride === voiceName;
-                        }
-
-                        return false;
-                    })
-            );
-    }
-
-    toggleLanguageVoiceOverrideName(languageName, voiceName) {
-        return promiseTry(
-                () => this.isLanguageVoiceOverrideName(languageName, voiceName)
-                    .then((isLanguageVoiceOverrideName) => {
-                        if (isLanguageVoiceOverrideName) {
-                            return this.removeLanguageVoiceOverrideName(languageName);
-                        }
-
-                        return this.setLanguageVoiceOverrideName(languageName, voiceName);
-                    })
-            );
-    }
-
-    getEffectiveVoiceForLanguage(languageName) {
-        return promiseTry(
-            () => this.hasLanguageVoiceOverrideName(languageName)
-                .then((hasLanguageVoiceOverrideName) => {
-                    if (hasLanguageVoiceOverrideName) {
-                        return this.getLanguageVoiceOverrideName(languageName)
-                            .then((languageOverrideName) => {
-                                const voice = {
-                                    name: languageOverrideName,
-                                    lang: null,
-                                };
-
-                                return voice;
-                            });
-                    }
-
-                    return this.getLanguageVoiceDefault(languageName);
-                })
-        );
+    setVoicePitchOverride(...args) {
+        return this.voicePitchManager.setVoicePitchOverride(...args);
     }
 }

@@ -46,6 +46,8 @@ export default class StorageManager {
         this.allKnownStorageKeys["v1.1.0"] = {
             "options-popup-donate-buttons-hide": "options-popup-donate-buttons-hide",
             "language-voice-overrides": "language-voice-overrides",
+            "voice-rate-overrides": "voice-rate-overrides",
+            "voice-pitch-overrides": "voice-pitch-overrides",
         };
 
         // TODO: sort by semantic version.

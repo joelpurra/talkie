@@ -107,6 +107,20 @@ export const resolveVoiceAsMappedVoice = (mappedVoice) => {
     );
 };
 
+export const rateRange = {
+    min: 0.1,
+    default: 1,
+    max: 10,
+    step: 0.1,
+};
+
+export const pitchRange = {
+    min: 0,
+    default: 1,
+    max: 2,
+    step: 0.1,
+};
+
 // TODO: check if there are any voices installed, alert user if not.
 // checkVoices() {
 //     return this.getSynthesizer()

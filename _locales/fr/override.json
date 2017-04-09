@@ -165,7 +165,7 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie détecte automatiquement le langage, mais toutes les langues ne sont pas disponibles dans chaque navigateur. Ici, vous pouvez voir et tester les voix installées pour chaque langue.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voix: testez votre navigateur",

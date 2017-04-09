@@ -165,7 +165,7 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Röster: testa din webbläsare",

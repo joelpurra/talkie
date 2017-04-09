@@ -135,10 +135,29 @@ export default class TalkieBackground {
         );
     }
 
+    addRateAndPitchToSpecificVoice(voice) {
+        return promiseTry(
+            () => {
+                return Promise.all([
+                    this.voiceManager.getEffectiveRateForVoice(voice.name),
+                    this.voiceManager.getEffectivePitchForVoice(voice.name),
+                ])
+                    .then(([effectiveRateForVoice, effectivePitchForVoice]) => {
+                        const voiceWithPitchAndRate = Object.assign({}, voice, {
+                            rate: effectiveRateForVoice,
+                            pitch: effectivePitchForVoice,
+                        });
+
+                        return voiceWithPitchAndRate;
+                    });
+            }
+        );
+    }
+
     startSpeakingTextInVoiceWithOverridesAction(text, voice) {
         return promiseTry(
-            // TODO: apply user pitch/rate options/overrides.
-            () => this.startSpeakingTextInVoiceAction(text, voice)
+            () => this.addRateAndPitchToSpecificVoice(voice)
+                .then((voiceWithPitchAndRate) => this.startSpeakingTextInVoiceAction(text, voiceWithPitchAndRate))
         );
     }
 
@@ -158,13 +177,7 @@ export default class TalkieBackground {
         return promiseTry(
             () => {
                 return this.voiceManager.getEffectiveVoiceForLanguage(language)
-                    .then((voice) => {
-                        if (voice) {
-                            return this.startSpeakingTextInVoiceWithOverridesAction(text, voice);
-                        }
-
-                        return this.startSpeakingTextInLanguageAction(text, language);
-                    });
+                    .then((effectiveVoiceForLanguage) => this.startSpeakingTextInVoiceWithOverridesAction(text, effectiveVoiceForLanguage));
             }
         );
     }

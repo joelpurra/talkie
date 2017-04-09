@@ -23,7 +23,13 @@ import {
 } from "../shared/promise";
 
 import {
+    debounce,
+} from "../shared/basic";
+
+import {
     getMappedVoices,
+    rateRange,
+    pitchRange,
 } from "../shared/voices";
 
 import {
@@ -35,6 +41,8 @@ import {
     startFrontend,
     stopFrontend,
 } from "../frontend/shared-frontend";
+
+import LogarithmicScaleRange from "./logarithmic-scale-range";
 
 import Tabrow from "./tabrow";
 
@@ -71,7 +79,7 @@ const getSelectedListOption = (selectElement) => {
     return result;
 };
 
-const speakSelectedVoiceAndText = (selectedVoiceOption, textElement) => promiseTry(
+const speakSelectedVoiceAndText = (selectedVoiceOption, selectedVoiceRate, selectedVoicePitch, textElement) => promiseTry(
     () => {
         const sampleText = textElement.value.trim();
 
@@ -80,9 +88,12 @@ const speakSelectedVoiceAndText = (selectedVoiceOption, textElement) => promiseT
         }
 
         if (selectedVoiceOption && selectedVoiceOption && selectedVoiceOption.talkie && typeof Array.isArray(selectedVoiceOption.talkie.voices)) {
-            const voice = selectedVoiceOption.talkie.voices[0];
+            const voiceWithPitchAndRate = Object.assign({}, selectedVoiceOption.talkie.voices[0], {
+                rate: selectedVoiceRate,
+                pitch: selectedVoicePitch,
+            });
 
-            return speak(sampleText, voice);
+            return speak(sampleText, voiceWithPitchAndRate);
         }
 
         return undefined;
@@ -184,6 +195,245 @@ const toggleLanguageVoiceOverrideNameClick = (selectedLanguageOption, selectedVo
     }
 );
 
+const saveVoiceRateAndPitch = (selectedVoiceOption, selectedVoiceRate, selectedVoicePitch) => promiseTry(
+    () => {
+        if (selectedVoiceOption === null) {
+            throw new Error("saveVoiceRateAndPitch 1");
+        }
+
+        if (!selectedVoiceOption.talkie) {
+            throw new Error("saveVoiceRateAndPitch 2");
+        }
+
+        const voiceName = selectedVoiceOption.talkie.voiceName;
+
+        if (voiceName === null) {
+            throw new Error("saveVoiceRateAndPitch 3");
+        }
+
+        // TODO: check that values are within range.
+        return getBackgroundPage()
+            .then((background) => Promise.all([
+                background.setVoiceRateOverride(voiceName, selectedVoiceRate),
+                background.setVoicePitchOverride(voiceName, selectedVoicePitch),
+            ]));
+    }
+);
+
+const debouncedSaveVoiceRateAndPitch = debounce(saveVoiceRateAndPitch, 100);
+
+const disabledVoiceRateRange = (voicesRateRange, voicesRateRangeHeading) => promiseTry(
+    () => {
+        voicesRateRange.disabled = true;
+
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                let headingText = null;
+
+                if (isPremium) {
+                    headingText = browser.i18n.getMessage("frontend_voicesRateEmptyHeading_Premium");
+                } else {
+                    headingText = browser.i18n.getMessage("frontend_voicesRateEmptyHeading_Free");
+                }
+
+                voicesRateRangeHeading.textContent = headingText;
+
+                return undefined;
+            });
+    }
+);
+
+const enabledVoiceRateRange = (voicesRateRange, voicesRateRangeHeading, voiceName) => promiseTry(
+    () => {
+        voicesRateRange.disabled = false;
+
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                let headingText = null;
+
+                if (isPremium) {
+                    headingText = browser.i18n.getMessage("frontend_voicesRateHeading_Premium", [ voiceName ]);
+                } else {
+                    headingText = browser.i18n.getMessage("frontend_voicesRateHeading_Free", [ voiceName ]);
+                }
+
+                voicesRateRangeHeading.textContent = headingText;
+
+                return undefined;
+            });
+    }
+);
+
+const disabledVoicePitchRange = (voicesPitchRange, voicesPitchRangeHeading) => promiseTry(
+    () => {
+        voicesPitchRange.disabled = true;
+
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                let headingText = null;
+
+                if (isPremium) {
+                    headingText = browser.i18n.getMessage("frontend_voicesPitchEmptyHeading_Premium");
+                } else {
+                    headingText = browser.i18n.getMessage("frontend_voicesPitchEmptyHeading_Free");
+                }
+
+                voicesPitchRangeHeading.textContent = headingText;
+
+                return undefined;
+            });
+    }
+);
+
+const enabledVoicePitchRange = (voicesPitchRange, voicesPitchRangeHeading, voiceName) => promiseTry(
+    () => {
+        voicesPitchRange.disabled = false;
+
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.isPremiumVersion())
+            .then((isPremium) => {
+                let headingText = null;
+
+                if (isPremium) {
+                    headingText = browser.i18n.getMessage("frontend_voicesPitchHeading_Premium", [ voiceName ]);
+                } else {
+                    headingText = browser.i18n.getMessage("frontend_voicesPitchHeading_Free", [ voiceName ]);
+                }
+
+                voicesPitchRangeHeading.textContent = headingText;
+
+                return undefined;
+            });
+    }
+);
+
+const updateRateHeadings = (selectedVoiceOption, voicesRateRange, voicesRateRangeHeading) => promiseTry(
+    () => {
+        if (selectedVoiceOption === null || !selectedVoiceOption.talkie || !selectedVoiceOption.talkie.voiceName) {
+            return disabledVoiceRateRange(voicesRateRange, voicesRateRangeHeading);
+        }
+
+        const voiceName = selectedVoiceOption.talkie.voiceName;
+
+        return enabledVoiceRateRange(voicesRateRange, voicesRateRangeHeading, voiceName);
+    }
+);
+
+const updatePitchHeadings = (selectedVoiceOption, voicesPitchRange, voicesPitchRangeHeading) => promiseTry(
+    () => {
+        if (selectedVoiceOption === null || !selectedVoiceOption.talkie || !selectedVoiceOption.talkie.voiceName) {
+            return disabledVoicePitchRange(voicesPitchRange, voicesPitchRangeHeading);
+        }
+
+        const voiceName = selectedVoiceOption.talkie.voiceName;
+
+        return enabledVoicePitchRange(voicesPitchRange, voicesPitchRangeHeading, voiceName);
+    }
+);
+
+const disableRateAndPitchHeadings = (voicesRateRange, voicesRateRangeHeading, voicesPitchRange, voicesPitchRangeHeading) => promiseTry(
+    () => {
+        return Promise.all([
+            disabledVoiceRateRange(voicesRateRange, voicesRateRangeHeading),
+            disabledVoicePitchRange(voicesPitchRange, voicesPitchRangeHeading),
+        ]);
+    }
+);
+
+const updateRateAndPitchHeadings = (selectedVoiceOption, voicesRateRange, voicesRateRangeHeading, voicesPitchRange, voicesPitchRangeHeading) => promiseTry(
+    () => {
+        return Promise.all([
+            updateRateHeadings(selectedVoiceOption, voicesRateRange, voicesRateRangeHeading),
+            updatePitchHeadings(selectedVoiceOption, voicesPitchRange, voicesPitchRangeHeading),
+        ]);
+    }
+);
+
+const voiceRateLogValue = new LogarithmicScaleRange(rateRange.min, rateRange.default, rateRange.max, rateRange.step);
+
+const loadRateValue = (voicesRateRange, voiceName) => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.getEffectiveRateForVoice(voiceName))
+            .then((effectiveVoiceRate) => {
+                voiceRateLogValue.linearValue = effectiveVoiceRate;
+
+                voicesRateRange.value = voiceRateLogValue.logValue;
+
+                return undefined;
+            });
+    }
+);
+
+const loadPitchValue = (voicesPitchRange, voiceName) => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then((background) => background.getEffectivePitchForVoice(voiceName))
+            .then((effectiveVoicePitch) => {
+                voicesPitchRange.value = effectiveVoicePitch;
+
+                return undefined;
+            });
+    }
+);
+
+const loadRateAndPitchValues = (selectedVoiceOption, voicesRateRange, voicesPitchRange) => promiseTry(
+    () => {
+        if (selectedVoiceOption === null || !selectedVoiceOption.talkie || !selectedVoiceOption.talkie.voiceName) {
+            throw new Error();
+        }
+
+        const voiceName = selectedVoiceOption.talkie.voiceName;
+
+        return Promise.all([
+            loadRateValue(voicesRateRange, voiceName),
+            loadPitchValue(voicesPitchRange, voiceName),
+        ]);
+    }
+);
+
+const updateVoiceRateRangeNumericDisplay = (voicesRateNumericDisplay, selectedVoiceRate) => promiseTry(
+    () => {
+        // TODO: empty value.
+        // voicesRateNumericDisplay.textContent = "";
+        voicesRateNumericDisplay.textContent = `(${selectedVoiceRate.toFixed(1)})`;
+    }
+);
+
+const updateVoicePitchRangeNumericDisplay = (voicesPitchNumericDisplay, selectedVoicePitch) => promiseTry(
+    () => {
+        // TODO: empty value.
+        // voicesPitchNumericDisplay.textContent = "";
+        voicesPitchNumericDisplay.textContent = `(${selectedVoicePitch.toFixed(1)})`;
+    }
+);
+
+const updateRateAndPitchNumericDisplays = (voicesRateNumericDisplay, selectedVoiceRate, voicesPitchNumericDisplay, selectedVoicePitch) => promiseTry(
+    () => {
+        return Promise.all([
+            updateVoiceRateRangeNumericDisplay(voicesRateNumericDisplay, selectedVoiceRate),
+            updateVoicePitchRangeNumericDisplay(voicesPitchNumericDisplay, selectedVoicePitch),
+        ]);
+    }
+);
+
+// const updateRateRangeStep = (voicesRateRange) => promiseTry(
+//     () => {
+//         voicesRateRange.step = voiceRateLogValue.logStep;
+//     }
+// );
+//
+// const debouncedUpdateRateRangeStep = debounce(updateRateRangeStep, 10);
+
 const loadVoicesAndLanguages = () => promiseTry(
     () => {
         return getMappedVoices()
@@ -214,9 +464,56 @@ const loadVoicesAndLanguages = () => promiseTry(
                 const voicesAvailableLanguagesCount = document.getElementById("voices-available-languages-count");
                 const voicesAvailableVoicesCount = document.getElementById("voices-available-voices-count");
                 const voicesDefaultToggleButton = document.getElementById("voices-default-toggle");
+                const voicesRateRange = document.getElementById("voices-rate");
+                const voicesRateRangeSteps = document.getElementById("voices-rate-steps");
+                const voicesRateRangeHeading = document.getElementById("voices-rate-heading");
+                const voicesRateNumericDisplay = document.getElementById("voices-rate-numeric-display");
+                const voicesPitchRange = document.getElementById("voices-pitch");
+                const voicesPitchRangeSteps = document.getElementById("voices-pitch-steps");
+                const voicesPitchRangeHeading = document.getElementById("voices-pitch-heading");
+                const voicesPitchNumericDisplay = document.getElementById("voices-pitch-numeric-display");
+
+                voicesRateRange.min = voiceRateLogValue.logMin;
+                voicesRateRange.value = voiceRateLogValue.logValue;
+                // voicesRateRange.step = voiceRateLogValue.logStep;
+                voicesRateRange.step = 1;
+                voicesRateRange.max = voiceRateLogValue.logMax;
+
+                voicesPitchRange.min = pitchRange.min;
+                voicesPitchRange.value = pitchRange.default;
+                voicesPitchRange.step = pitchRange.step;
+                voicesPitchRange.max = pitchRange.max;
+
+                [
+                    voicesRateRange.min,
+                    voicesRateRange.value,
+                    voicesRateRange.max,
+                ].forEach((step) => {
+                    const option = document.createElement("option");
+                    option.value = step;
+                    option.textContent = step;
+                    voicesRateRangeSteps.appendChild(option);
+                });
+
+                voicesRateRange.setAttribute("list", voicesRateRangeSteps.id);
+
+                [
+                    voicesPitchRange.min,
+                    voicesPitchRange.value,
+                    voicesPitchRange.max,
+                ].forEach((step) => {
+                    const option = document.createElement("option");
+                    option.value = step;
+                    option.textContent = step;
+                    voicesPitchRangeSteps.appendChild(option);
+                });
+
+                voicesPitchRange.setAttribute("list", voicesPitchRangeSteps.id);
 
                 const getSelectedLanguageOption = () => getSelectedListOption(voicesLanguagesListElement);
                 const getSelectedVoiceOption = () => getSelectedListOption(voicesVoicesListElement);
+                const getSelectedVoiceRate = () => { voiceRateLogValue.logValue = parseFloat(voicesRateRange.value); return Math.round10(voiceRateLogValue.linearValue, -1); };
+                const getSelectedVoicePitch = () => Math.round10(parseFloat(voicesPitchRange.value), -1);
 
                 disabledVoiceDefaultToggleButton(voicesDefaultToggleButton);
 
@@ -267,12 +564,18 @@ const loadVoicesAndLanguages = () => promiseTry(
 
                 displayVoicesInSelectElement(allVoices);
 
-                const voiceListElementOnChangeSpeakSampleHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
-                    () => {
-                        const selectedVoiceOption = getSelectedVoiceOption();
+                const speakBasedOnSelectedOption = () => {
+                    const selectedVoiceOption = getSelectedVoiceOption();
+                    const selectedVoiceRate = getSelectedVoiceRate();
+                    const selectedVoicePitch = getSelectedVoicePitch();
 
-                        return speakSelectedVoiceAndText(selectedVoiceOption, voicesSampleTextElement);
-                    }
+                    return speakSelectedVoiceAndText(selectedVoiceOption, selectedVoiceRate, selectedVoicePitch, voicesSampleTextElement);
+                };
+
+                const debouncedSpeakBasedOnSelectedOption = debounce(speakBasedOnSelectedOption, 100);
+
+                const voicesRateAndPitchRangesElementOnChangeSpeakSampleHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                    () => debouncedSpeakBasedOnSelectedOption()
                 );
 
                 const voiceListElementOnChangeButtonHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
@@ -294,6 +597,58 @@ const loadVoicesAndLanguages = () => promiseTry(
                             .then(() => displayVoicesAndSelectVoiceInSelectElement(selectedLanguageOption, selectedVoiceOption.talkie.voiceName));
                     }
                 );
+
+                const voiceListElementOnChangeRateAndPitchHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                    () => {
+                        const selectedVoiceOption = getSelectedVoiceOption();
+
+                        return loadRateAndPitchValues(selectedVoiceOption, voicesRateRange, voicesPitchRange)
+                            .then(() => {
+                                const selectedVoiceRate = getSelectedVoiceRate();
+                                const selectedVoicePitch = getSelectedVoicePitch();
+
+                                return Promise.all([
+                                    // debouncedUpdateRateRangeStep(voicesRateRange),
+                                    updateRateAndPitchHeadings(selectedVoiceOption, voicesRateRange, voicesRateRangeHeading, voicesPitchRange, voicesPitchRangeHeading),
+                                    updateRateAndPitchNumericDisplays(voicesRateNumericDisplay, selectedVoiceRate, voicesPitchNumericDisplay, selectedVoicePitch),
+                                ]);
+                            })
+                            .then(() => debouncedSpeakBasedOnSelectedOption());
+                    }
+                );
+
+                // const voicesRateRangesElementOnInputUpdateRateStepHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                //     () => {
+                //         return debouncedUpdateRateRangeStep(voicesRateRange);
+                //     }
+                // );
+
+                const voicesRateAndPitchRangesElementOnInputUpdateNumericDisplayHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                    () => {
+                        const selectedVoiceRate = getSelectedVoiceRate();
+                        const selectedVoicePitch = getSelectedVoicePitch();
+
+                        return updateRateAndPitchNumericDisplays(voicesRateNumericDisplay, selectedVoiceRate, voicesPitchNumericDisplay, selectedVoicePitch);
+                    }
+                );
+
+                const voicesRateAndPitchRangesElementOnChangeSaveRateAndPitchHandler = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                    () => {
+                        const selectedVoiceOption = getSelectedVoiceOption();
+                        const selectedVoiceRate = getSelectedVoiceRate();
+                        const selectedVoicePitch = getSelectedVoicePitch();
+
+                        return debouncedSaveVoiceRateAndPitch(selectedVoiceOption, selectedVoiceRate, selectedVoicePitch);
+                    }
+                );
+
+                const disableRateAndPitchHeadingsOnLoad = (/* eslint-disable no-unused-vars*/event/* eslint-enable no-unused-vars*/) => promiseTry(
+                    () => {
+                        return disableRateAndPitchHeadings(voicesRateRange, voicesRateRangeHeading, voicesPitchRange, voicesPitchRangeHeading);
+                    }
+                );
+
+                disableRateAndPitchHeadingsOnLoad();
 
                 Array.from(voicesLanguagesListElement.children).forEach((child) => child.remove());
 
@@ -365,9 +720,20 @@ const loadVoicesAndLanguages = () => promiseTry(
                 );
 
                 voicesLanguagesListElement.addEventListener("change", eventToPromise.bind(null, languageListElementOnChangeUpdateVoiceListHandler));
-                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeSpeakSampleHandler));
 
                 voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeButtonHandler));
+                voicesVoicesListElement.addEventListener("change", eventToPromise.bind(null, voiceListElementOnChangeRateAndPitchHandler));
+
+                // voicesRateRange.addEventListener("input", eventToPromise.bind(null, voicesRateRangesElementOnInputUpdateRateStepHandler));
+
+                voicesRateRange.addEventListener("input", eventToPromise.bind(null, voicesRateAndPitchRangesElementOnInputUpdateNumericDisplayHandler));
+                voicesPitchRange.addEventListener("input", eventToPromise.bind(null, voicesRateAndPitchRangesElementOnInputUpdateNumericDisplayHandler));
+
+                voicesRateRange.addEventListener("change", eventToPromise.bind(null, voicesRateAndPitchRangesElementOnChangeSaveRateAndPitchHandler));
+                voicesPitchRange.addEventListener("change", eventToPromise.bind(null, voicesRateAndPitchRangesElementOnChangeSaveRateAndPitchHandler));
+
+                voicesRateRange.addEventListener("change", eventToPromise.bind(null, voicesRateAndPitchRangesElementOnChangeSpeakSampleHandler));
+                voicesPitchRange.addEventListener("change", eventToPromise.bind(null, voicesRateAndPitchRangesElementOnChangeSpeakSampleHandler));
 
                 voicesDefaultToggleButton.addEventListener("click", eventToPromise.bind(null, voicesDefaultToggleButtonOnClickToggleLanguageVoiceOverrideNameHandler));
 

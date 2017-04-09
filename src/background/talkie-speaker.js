@@ -39,6 +39,8 @@ import {
 
 import {
     resolveVoice,
+    rateRange,
+    pitchRange,
 } from "../shared/voices";
 
 import TextHelper from "./text-helper";
@@ -205,27 +207,18 @@ export default class TalkieSpeaker {
         );
     }
 
-    speakPartOfText(textPart, voice) {
+    speakPartOfText(utterance) {
         return this.getSynthesizer()
             .then((synthesizer) => new Promise(
                 (resolve, reject) => {
                     try {
-                        log("Start", "speakPartOfText", `Speak text part (length ${textPart.length}): "${textPart}"`);
-
-                        const utterance = new SpeechSynthesisUtterance(textPart);
-
-                        // TODO: options for per-language voice , pitch, rate?
-                        // utterance.pitch = [0,2];
-                        // utterance.rate = [0.1,10];
-                        utterance.voice = voice;
-
-                        log("Variable", "utterance", utterance);
+                        log("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
 
                         const handleEnd = (event) => {
                             delete utterance.onend;
                             delete utterance.onerror;
 
-                            log("End", "speakPartOfText", `Speak text part (length ${textPart.length}) spoken in ${event.elapsedTime} milliseconds.`);
+                            log("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
                             return resolve();
                         };
@@ -234,7 +227,7 @@ export default class TalkieSpeaker {
                             delete utterance.onend;
                             delete utterance.onerror;
 
-                            logError("Error", "speakPartOfText", `Speak text part (length ${textPart.length})`, event);
+                            logError("Error", "speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
 
                             return reject();
                         };
@@ -251,7 +244,7 @@ export default class TalkieSpeaker {
 
                         log("Variable", "synthesizer", synthesizer);
 
-                        log("Done", "speakPartOfText", `Speak text part (length ${textPart.length})`);
+                        log("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
                     } catch (error) {
                         return reject(error);
                     }
@@ -313,7 +306,18 @@ export default class TalkieSpeaker {
                                     if (continueSpeaking) {
                                         return Promise.resolve()
                                             .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
-                                            .then(() => this.speakPartOfText(textPart, actualVoice))
+                                            .then(() => {
+                                                const utterance = new SpeechSynthesisUtterance(textPart);
+
+                                                utterance.voice = actualVoice;
+                                                utterance.rate = voice.rate || rateRange.default;
+                                                utterance.pitch = voice.pitch || pitchRange.default;
+
+                                                log("Variable", "utterance", utterance);
+
+                                                return utterance;
+                                            })
+                                            .then((utterance) => this.speakPartOfText(utterance))
                                             .then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData));
                                     }
 

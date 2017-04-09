@@ -50,6 +50,9 @@ import SuspensionManager from "./suspension-manager";
 
 import TalkieSpeaker from "./talkie-speaker";
 
+import VoiceLanguageManager from "./voice-language-manager";
+import VoiceRateManager from "./voice-rate-manager";
+import VoicePitchManager from "./voice-pitch-manager";
 import VoiceManager from "./voice-manager";
 
 import SpeakingStatus from "./speaking-status";
@@ -97,7 +100,10 @@ function main() {
     const speakingStatus = new SpeakingStatus();
 
     const storageManager = new StorageManager();
-    const voiceManager = new VoiceManager(storageManager, metadataManager);
+    const voiceLanguageManager = new VoiceLanguageManager(storageManager, metadataManager);
+    const voiceRateManager = new VoiceRateManager(storageManager, metadataManager);
+    const voicePitchManager = new VoicePitchManager(storageManager, metadataManager);
+    const voiceManager = new VoiceManager(voiceLanguageManager, voiceRateManager, voicePitchManager);
     const languageHelper = new LanguageHelper(contentLogger, configuration);
 
     // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
@@ -251,6 +257,12 @@ function main() {
         window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
         window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
         window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
+        window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
+        window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+        window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
+        window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
+        window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
+        window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
         window.getStoredValue = (key) => storageManager.getStoredValue(key);
         window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
         window.getConfigurationValue = (path) => configuration.get(path);

@@ -93,9 +93,12 @@
     "message": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+    "message": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
+    "message": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
     "message": "Future Premium updates included for free."
   },
   "frontend_featuresVersion_Free": {
@@ -183,13 +186,69 @@
     "message": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language."
+    "message": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
     "message": "Voices"
+  },
+  "frontend_voicesPitchEmptyHeading_Free": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: pitch for voice"
+  },
+  "frontend_voicesPitchEmptyHeading_Premium": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading_Free": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "🌟 Premium: pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesPitchHeading_Premium": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesRateEmptyHeading_Free": {
+    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: rate for voice"
+  },
+  "frontend_voicesRateEmptyHeading_Premium": {
+    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
+    "message": "Rate for voice"
+  },
+  "frontend_voicesRateHeading_Free": {
+    "description": "The per-voice rate options heading, including the voice name",
+    "message": "🌟 Premium: rate for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
+  },
+  "frontend_voicesRateHeading_Premium": {
+    "description": "The per-voice rate options heading, including the voice name",
+    "message": "Rate for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
