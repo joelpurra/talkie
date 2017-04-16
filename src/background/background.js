@@ -104,13 +104,13 @@ function main() {
     const contextMenuManager = new ContextMenuManager(commandHandler);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
+    const metadataManager = new MetadataManager();
+
     const suspensionManager = new SuspensionManager();
-    const iconManager = new IconManager();
+    const iconManager = new IconManager(metadataManager);
     const buttonPopupManager = new ButtonPopupManager();
 
     const progress = new TalkieProgress(broadcaster);
-
-    const metadataManager = new MetadataManager();
 
     (function addChromeOnInstalledListeners() {
         const onExtensionInstalledHandler = () => promiseTry(

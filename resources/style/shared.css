@@ -81,8 +81,15 @@ span.icon.inline.talkie:before {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background-image: url("../icon/icon-play/icon-16x16.png");
     margin-right: 0.5em;
+}
+
+.talkie-free span.icon.inline.talkie:before {
+    background-image: url("../icon/free/icon-play/icon-16x16.png");
+}
+
+.talkie-premium span.icon.inline.talkie:before {
+    background-image: url("../icon/premium/icon-play/icon-16x16.png");
 }
 
 table {
