@@ -97,7 +97,7 @@
   },
   "frontend_rateIt": {
     "message": "Betygsätt Talkie",
-    "original": "Rate Talkie"
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
     "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det - eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande versionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer - och ett par tusen rader kod senare, ser du resultatet.",
@@ -165,7 +165,7 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Röster: testa din webbläsare",

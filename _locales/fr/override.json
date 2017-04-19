@@ -97,7 +97,7 @@
   },
   "frontend_rateIt": {
     "message": "Évaluer Talkie",
-    "original": "Rate Talkie"
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
     "message": "Talkie a été développé quelques jours avant la nouvelle année 2016/2017, suivant à un défi d'un ami. Le défi a commencé par la question suivante: pendant le déplacement au travail, est-il possible d'écouter un article au lieu de le lire? Facile, disais-je, et me mettais à le prouver - ou du moins à faire parler mon navigateur par le biais d'une voix d'ordinateur stupide. La version de base, sans aucune interface utilisateur, s'est avéré être triviale à créer. Ajouter une interface utilisateur a pris un peu plus longtemps. Ajouter une détection de langue propre; un tas plus de code. Surmonter les bugs dans le navigateur, encore plus de travail. La liste des améliorations et des fonctionnalités se poursuit - et quelques milliers de lignes de code plus tard, vous voyez le résultat final.",
@@ -165,7 +165,7 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie détecte automatiquement le langage, mais toutes les langues ne sont pas disponibles dans chaque navigateur. Ici, vous pouvez voir et tester les voix installées pour chaque langue.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voix: testez votre navigateur",
