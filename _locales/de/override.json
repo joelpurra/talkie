@@ -133,7 +133,7 @@
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Wenn die Tastenkombination nicht funktioniert, stelle bitte sicher, dass sie nicht bereits durch eine andere Erweiterung belegt ist.",
@@ -197,7 +197,7 @@
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kann nicht auf den ausgewählten Text von dieser bestimmten Seite zugreifen. Auf dieser speziellen Seite wurden Sicherheitsbeschränkungen durch den Browser eingefügt. Du kannst auch versuchen Text zu markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Ich entschuldige mich für die Unannehmlichkeiten.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }

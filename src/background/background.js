@@ -28,6 +28,8 @@ import {
     logDebug,
 } from "../shared/log";
 
+import configurationObject from "../configuration.json";
+
 import Configuration from "../shared/configuration";
 
 import {
@@ -85,7 +87,7 @@ function main() {
     log("Start", "Main background function");
 
     const metadataManager = new MetadataManager();
-    const configuration = new Configuration(metadataManager);
+    const configuration = new Configuration(metadataManager, configurationObject);
 
     log("Locale (@@ui_locale)", configuration.uiLocale);
     log("Locale (messages.json)", configuration.messagesLocale);
@@ -117,8 +119,8 @@ function main() {
         "start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
         "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
-        "open-website-chromewebstore-free": () => openUrlFromConfigurationInNewTab("chromewebstore-free"),
-        "open-website-chromewebstore-premium": () => openUrlFromConfigurationInNewTab("chromewebstore-premium"),
+        "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
+        "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
         "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 

@@ -52,16 +52,16 @@ export default class ContextMenuManager {
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteChromeWebStoreFree: {
-                id: "open-website-chromewebstore-free",
-                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription_Free"),
+            buttonContextMenuOpenWebsiteStoreFree: {
+                id: "open-website-store-free",
+                title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Free"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteChromeWebStorePremium: {
-                id: "open-website-chromewebstore-premium",
-                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription_Premium"),
+            buttonContextMenuOpenWebsiteStorePremium: {
+                id: "open-website-store-premium",
+                title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Premium"),
                 contexts: [
                     "browser_action",
                 ],

@@ -807,6 +807,12 @@ const speakLegalese = () => promiseTry(
     }
 );
 
+const onTabChange = () => promiseTry(
+    () => {
+        document.body.scrollTop = 0;
+    }
+);
+
 const start = () => promiseTry(
     () => {
         dualLogger.dualLog("Start", "start");
@@ -847,6 +853,8 @@ const stop = () => promiseTry(
             });
     }
 );
+
+document.addEventListener("tabchange", eventToPromise.bind(null, onTabChange));
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
 window.addEventListener("unload", eventToPromise.bind(null, stop));

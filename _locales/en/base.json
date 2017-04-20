@@ -8,17 +8,17 @@
   "commandBrowserActionDescription": {
     "message": "Read text selection out loud"
   },
-  "commandOpenWebsiteChromeWebStoreDescription_Free": {
-    "message": "Open the Chrome Web Store page"
-  },
-  "commandOpenWebsiteChromeWebStoreDescription_Premium": {
-    "message": "Open the Premium Chrome Web Store page"
-  },
   "commandOpenWebsiteDonateDescription": {
     "message": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "Open the Premium store page"
   },
   "commandStartStopDescription": {
     "message": "Start/stop reading selection"
@@ -37,6 +37,9 @@
   },
   "frontend_aboutLinkText": {
     "message": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "Project page on joelpurra.com"
   },
   "frontend_aboutThankYou": {
     "message": "Thank you for using Talkie - if you like it, tell your friends!"
@@ -149,6 +152,12 @@
   "frontend_supportAndFeedback": {
     "message": "Support and feedback"
   },
+  "frontend_talkieInFirefoxAddons_Free": {
+    "message": "Talkie in Firefox Add-ons"
+  },
+  "frontend_talkieInFirefoxAddons_Premium": {
+    "message": "Talkie 🌟 Premium in the Firefox Add-ons"
+  },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie in the Chrome Web Store"
   },
@@ -162,16 +171,16 @@
     "message": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "message": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "How to check or change the Talkie shortcut key."
+    "message": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
-    "message": "A convenient option is to use the Talkie shortcut key:"
+    "message": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Select desired text on any web page."
@@ -306,7 +315,7 @@
     "message": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

@@ -32,7 +32,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 <body>
     <header>
         <nav id="options-tabrow">
-            <ol>
+            <ol class="cols-4">
                 <li>
                     <a href="#usage" data-translate="frontend_usageLinkText"></a>
                 </li>
@@ -73,16 +73,32 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
             <p data-translate="frontend_usageShortcutKeyDescription"></p>
             <ul>
                 <li>
-                    <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (macOS)
+                    Windows, Linux, Chrome OS
+                    <ul>
+                        <li>
+                            <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+                        </li>
+                        <li>
+                            <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (Windows, Linux, Chrome OS)
+                    macOS
+                    <ul>
+                        <li>
+                            <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+                        </li>
+                        <li>
+                            <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <span data-translate="frontend_usageShortcutKeyAlternative03"></span>
                 </li>
                 <li>
-                    <a href="https://github.com/joelpurra/talkie#usage" data-translate="frontend_usageShortcutKeyAlternative04"></a>
+                    <a  data-configure-href="urls.shortcut-keys" data-translate="frontend_usageShortcutKeyAlternative04"></a>
                 </li>
             </ul>
         </section>
@@ -226,35 +242,49 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
             <ul>
                 <li>
-                    <a data-configure-href="urls.chromewebstore-premium" data-translate="frontend_talkieInTheChromeWebStore_Premium"></a>
-                </li>
-                <li class="talkie-free-only talkie-list-item">
-                    <a data-configure-href="urls.chromewebstore-free" data-translate="frontend_talkieInTheChromeWebStore_Free"></a>
-                </li>
-                <li>
                     <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback"></a>
                 </li>
                 <li>
                     <a data-configure-href="urls.rate" data-translate="frontend_rateIt"></a>
                 </li>
                 <li>
-                    <a data-configure-href="urls.main" data-translate="frontend_aboutCodeOnGithubLinkText"></a>
+                    <a data-configure-href="urls.project" data-translate="frontend_aboutProjectPageLinkText"></a>
+                </li>
+                <li>
+                    <a data-configure-href="urls.github" data-translate="frontend_aboutCodeOnGithubLinkText"></a>
                 </li>
             </ul>
 
             <p data-translate="frontend_aboutThankYou"></p>
+
+            <div class="store-links">
+                <p>
+                    <a data-configure-href="urls.chromewebstore-free"><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="../../resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a>
+                </p>
+                <p>
+                    <a data-configure-href="urls.chromewebstore-premium"><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="../../resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a>
+                </p>
+            </div>
+            <div class="store-links">
+                <p>
+                    <a data-configure-href="urls.firefox-amo-free"><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="../../resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a>
+                </p>
+                <p>
+                    <a data-configure-href="urls.firefox-amo-premium"><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="../../resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a>
+                </p>
+            </div>
         </section>
         <section id="license">
             <h2 data-translate="frontend_licenseHeading"></h2>
             <p>
                 <span id="license-gpl-legalese" data-translate="frontend_licenseGPLDescription"></span>
                 <br />
-                <a href="https://www.gnu.org/licenses/gpl.html" data-translate="frontend_licenseGPLLinkText"></a>
+                <a data-configure-href="urls.gpl" data-translate="frontend_licenseGPLLinkText"></a>
             </p>
             <p>
                 <span data-translate="frontend_licenseCLADescription"></span>
                 <br />
-                <a href="https://github.com/joelpurra/talkie/blob/develop/CLA.md" data-translate="frontend_licenseCLALinkText"></a>
+                <a data-configure-href="urls.cla" data-translate="frontend_licenseCLALinkText"></a>
             </p>
         </section>
     </main>

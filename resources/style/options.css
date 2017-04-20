@@ -19,9 +19,23 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 body {
-    min-height: 300px;
-    max-height: 500px;
+    min-height: 400px;
+    max-height: 1000px;
     overflow-y: scroll;
+}
+
+header {
+    margin: 0;
+    padding: 1em;
+    padding-bottom: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+main {
+    margin-top: 6.5em;
 }
 
 input[type=checkbox] {
@@ -79,6 +93,20 @@ select.grouped option.group {
     width: 100%;
 }
 
-ul {
-    margin-top: 0;
+#about .store-links {
+    text-align: center;
+    margin-top: 1em;
+}
+
+#about .store-links p {
+  margin-bottom: 2em;
+}
+
+@media (min-width: 450px) {
+    #about .store-links {
+        columns: 2;
+    }
+    #about .store-links > p:first-child {
+      margin-top: 0;
+    }
 }

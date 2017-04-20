@@ -240,7 +240,7 @@ const addOptionsLinkClickHandlers = () => promiseTry(
         .then((background) => background.getConfigurationValue("urls.options"))
         .then((optionsUrl) => {
             // https://developer.browser.com/extensions/optionsV2#linking
-            const optionsLinks = Array.from(document.querySelectorAll(":scope [href='" + optionsUrl + "']"));
+            const optionsLinks = Array.from(document.querySelectorAll(":scope [href='" + optionsUrl + "'][target]"));
 
             optionsLinks.forEach((optionsLink) => {
                 optionsLink.onclick = (event) => {
@@ -258,16 +258,14 @@ const addOptionsLinkClickHandlers = () => promiseTry(
 
 const checkVersion = () => promiseTry(
     () => {
-        const bodyElement = document.getElementsByTagName("body")[0];
-
         return Promise.resolve()
             .then(() => getBackgroundPage())
             .then((background) => background.isPremiumVersion())
             .then((isPremium) => {
                 if (isPremium) {
-                    bodyElement.classList.add("talkie-premium");
+                    document.body.classList.add("talkie-premium");
                 } else {
-                    bodyElement.classList.add("talkie-free");
+                    document.body.classList.add("talkie-free");
                 }
 
                 return undefined;
@@ -277,9 +275,7 @@ const checkVersion = () => promiseTry(
 
 const reflow = () => promiseTry(
     () => {
-        const bodyElement = document.getElementsByTagName("body")[0];
-
-        bodyElement.style.marginBottom = "0";
+        document.body.style.marginBottom = "0";
     }
 );
 
@@ -312,15 +308,16 @@ export const startFrontend = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => Promise.all([
-                getBackgroundPage(),
                 checkVersion(),
                 configureWindowContents(),
                 translateWindowContents(),
+            ]))
+            .then(() => Promise.all([
                 addLinkClickHandlers(),
                 addOptionsLinkClickHandlers(),
                 focusFirstLink(),
-            ]))
-            .then(() => reflow());
+                reflow(),
+            ]));
     }
 );
 

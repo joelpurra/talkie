@@ -23,9 +23,10 @@ import {
 } from "../shared/promise";
 
 export default class Plug {
-    constructor(contentLogger, execute) {
+    constructor(contentLogger, execute, configuration) {
         this.contentLogger = contentLogger;
         this.execute = execute;
+        this.configuration = configuration;
 
         this.executeGetTalkieWasPluggedCode = "(function(){ return window.talkieWasPlugged; }());";
         this.executeSetTalkieWasPluggedCode = "(function(){ window.talkieWasPlugged = true; }());";
@@ -35,8 +36,9 @@ export default class Plug {
         return promiseTry(
         () => {
             return Promise.resolve()
+                // TODO: premium version of the same message?
                 .then(() => this.contentLogger.logToPageWithColor("Thank you for using Talkie!"))
-                .then(() => this.contentLogger.logToPageWithColor("https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"))
+                .then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/projects/talkie/"))
                 .then(() => this.contentLogger.logToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
                 .then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/"))
                 .then(() => this.contentLogger.logToPageWithColor("If you like Talkie, send a link to your friends -- and consider donating to support further open source development."))

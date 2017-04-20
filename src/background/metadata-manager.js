@@ -24,8 +24,10 @@ import {
 
 export default class MetadataManager {
     constructor() {
-        this.VersionNamePremium = "premium";
-        this.VersionNameFree = "free";
+        this._versionTypePremium = "premium";
+        this._versionTypeFree = "free";
+        this._systemTypeChrome = "chrome";
+        this._systemTypeWebExtension = "webextension";
     }
 
     getExtensionId() {
@@ -85,10 +87,49 @@ export default class MetadataManager {
             () => this.isPremiumVersion()
                 .then((isPremium) => {
                     if (isPremium) {
-                        return this.VersionNamePremium;
+                        return this._versionTypePremium;
                     }
 
-                    return this.VersionNameFree;
+                    return this._versionTypeFree;
+                })
+        );
+    }
+
+    isChromeVersion() {
+        return promiseTry(
+                () => this.getVersionName()
+                    .then((versionName) => {
+                        if (typeof versionName === "string" && versionName.includes(" Chrome Extension ")) {
+                            return true;
+                        }
+
+                        return false;
+                    })
+            );
+    }
+
+    isWebExtensionVersion() {
+        return promiseTry(
+                    () => this.getVersionName()
+                        .then((versionName) => {
+                            if (typeof versionName === "string" && versionName.includes(" WebExtension ")) {
+                                return true;
+                            }
+
+                            return false;
+                        })
+                );
+    }
+
+    getSystemType() {
+        return promiseTry(
+            () => this.isChromeVersion()
+                .then((isChrome) => {
+                    if (isChrome) {
+                        return this._systemTypeChrome;
+                    }
+
+                    return this._systemTypeWebExtension;
                 })
         );
     }

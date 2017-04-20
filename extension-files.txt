@@ -10,6 +10,8 @@ _locales/nl/messages.json
 _locales/ru/messages.json
 _locales/sv/messages.json
 _locales/zh/messages.json
+./resources/icon/free/icon-play/icon-16x16.png
+./resources/icon/premium/icon-play/icon-16x16.png
 CLA.md
 dist/background.js
 dist/options.js
@@ -18,6 +20,8 @@ lib/browser-polyfill.js
 LICENSE
 manifest.json
 README.md
+resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png
+resources/firefox-amo/AMO-button_1.png
 resources/icon/free/icon-play/icon-1024x1024.png
 resources/icon/free/icon-play/icon-128x128.png
 resources/icon/free/icon-play/icon-16x16.png

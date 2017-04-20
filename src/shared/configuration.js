@@ -18,19 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import configurationJson from "../configuration.json";
-
 import {
     promiseTry,
 } from "../shared/promise";
 
 export default class Configuration {
-    constructor(metadataManager) {
+    constructor(metadataManager, configurationObject) {
         this.metadataManager = metadataManager;
+        this.configurationObject = configurationObject;
 
         this.extensionShortName = browser.i18n.getMessage("extensionShortName");
         this.uiLocale = browser.i18n.getMessage("@@ui_locale");
         this.messagesLocale = browser.i18n.getMessage("extensionLocale");
+
+        this.configurationObject.shared.urls.options = browser.runtime.getURL("/src/options/options.html");
     }
 
     _resolvePath(obj, path) {
@@ -59,13 +60,22 @@ export default class Configuration {
 
     get(path) {
         return promiseTry(
-            () => this.metadataManager.getVersionType()
-                .then((versionType) => Promise.all([
-                    this._resolvePath(configurationJson[versionType], path),
-                    this._resolvePath(configurationJson.shared, path),
+            () => Promise.all([
+                this.metadataManager.getVersionType(),
+                this.metadataManager.getSystemType(),
+            ])
+                .then(([versionType, systemType]) => Promise.all([
+                    this._resolvePath(this.configurationObject[versionType][systemType], path),
+                    this._resolvePath(this.configurationObject[versionType], path),
+                    this._resolvePath(this.configurationObject[systemType], path),
+                    this._resolvePath(this.configurationObject.shared, path),
                 ]))
-                .then(([versionedValue, sharedValue]) => {
-                    const value = versionedValue || sharedValue || null;
+                .then(([versionedSystemValue, versionedValue, systemValue, sharedValue]) => {
+                    const value = versionedSystemValue
+                        || versionedValue
+                        || systemValue
+                        || sharedValue
+                        || null;
 
                     return value;
                 })
