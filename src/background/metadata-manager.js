@@ -23,6 +23,13 @@ import {
 } from "../shared/promise";
 
 export default class MetadataManager {
+    constructor() {
+        this._versionTypePremium = "premium";
+        this._versionTypeFree = "free";
+        this._systemTypeChrome = "chrome";
+        this._systemTypeWebExtension = "webextension";
+    }
+
     getExtensionId() {
         return promiseTry(
             () => browser.runtime.id
@@ -49,6 +56,80 @@ export default class MetadataManager {
             () => this.getManifest()
                 .then((manifest) => {
                     return manifest.version_name || null;
+                })
+        );
+    }
+
+    isPremiumVersion() {
+        return promiseTry(
+            () => this.getVersionName()
+                .then((versionName) => {
+                    if (typeof versionName === "string" && versionName.includes(" Premium ")) {
+                        return true;
+                    }
+
+                    return false;
+                })
+        );
+    }
+
+    isFreeVersion() {
+        return promiseTry(
+            () => this.isPremiumVersion()
+                .then((isPremium) => {
+                    return !isPremium;
+                })
+        );
+    }
+
+    getVersionType() {
+        return promiseTry(
+            () => this.isPremiumVersion()
+                .then((isPremium) => {
+                    if (isPremium) {
+                        return this._versionTypePremium;
+                    }
+
+                    return this._versionTypeFree;
+                })
+        );
+    }
+
+    isChromeVersion() {
+        return promiseTry(
+                () => this.getVersionName()
+                    .then((versionName) => {
+                        if (typeof versionName === "string" && versionName.includes(" Chrome Extension ")) {
+                            return true;
+                        }
+
+                        return false;
+                    })
+            );
+    }
+
+    isWebExtensionVersion() {
+        return promiseTry(
+                    () => this.getVersionName()
+                        .then((versionName) => {
+                            if (typeof versionName === "string" && versionName.includes(" WebExtension ")) {
+                                return true;
+                            }
+
+                            return false;
+                        })
+                );
+    }
+
+    getSystemType() {
+        return promiseTry(
+            () => this.isChromeVersion()
+                .then((isChrome) => {
+                    if (isChrome) {
+                        return this._systemTypeChrome;
+                    }
+
+                    return this._systemTypeWebExtension;
                 })
         );
     }

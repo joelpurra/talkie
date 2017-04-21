@@ -38,49 +38,25 @@ import {
 } from "../shared/events";
 
 import {
-    getVoices,
+    resolveVoice,
+    rateRange,
+    pitchRange,
 } from "../shared/voices";
 
-import Execute from "../shared/execute";
-
 import TextHelper from "./text-helper";
-
-import LanguageHelper from "./language-helper";
 
 export default class TalkieSpeaker {
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
     // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-    constructor(broadcaster, shouldContinueSpeakingProvider) {
+    constructor(broadcaster, shouldContinueSpeakingProvider, contentLogger) {
         this.broadcaster = broadcaster;
         this.shouldContinueSpeakingProvider = shouldContinueSpeakingProvider;
+        this.contentLogger = contentLogger;
 
         this.synthesizer = null;
 
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
-
-        this.executeGetFramesSelectionTextAndLanguageCode = `
-            (function() {
-                try {
-                    function talkieGetParentElementLanguages(element) {
-                        return []
-                            .concat((element || null) && element.getAttribute && element.getAttribute("lang"))
-                            .concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
-                    };
-
-                    var talkieSelectionData = {
-                        text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
-                        htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.getElementsByTagName("html") || null) && (document.getElementsByTagName("html").length > 0 || null) && (document.getElementsByTagName("html")[0].getAttribute("lang") || null)),
-                        parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null) && (document.getSelection().getRangeAt(0).startContainer.parentElement || null))),
-                    };
-
-                    return talkieSelectionData;
-                } catch (error) {
-                    return null;
-                }
-            }());`
-            .replace(/\n/g, "")
-            .replace(/\s{2,}/g, " ");
     }
 
     getSynthesizerFromBrowser() {
@@ -231,27 +207,18 @@ export default class TalkieSpeaker {
         );
     }
 
-    speakPartOfText(textPart, voice) {
+    speakPartOfText(utterance) {
         return this.getSynthesizer()
             .then((synthesizer) => new Promise(
                 (resolve, reject) => {
                     try {
-                        log("Start", "speakPartOfText", `Speak text part (length ${textPart.length}): "${textPart}"`);
-
-                        const utterance = new SpeechSynthesisUtterance(textPart);
-
-                        // TODO: options for per-language voice , pitch, rate?
-                        // utterance.pitch = [0,2];
-                        // utterance.rate = [0.1,10];
-                        utterance.voice = voice;
-
-                        log("Variable", "utterance", utterance);
+                        log("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
 
                         const handleEnd = (event) => {
                             delete utterance.onend;
                             delete utterance.onerror;
 
-                            log("End", "speakPartOfText", `Speak text part (length ${textPart.length}) spoken in ${event.elapsedTime} milliseconds.`);
+                            log("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
                             return resolve();
                         };
@@ -260,7 +227,7 @@ export default class TalkieSpeaker {
                             delete utterance.onend;
                             delete utterance.onerror;
 
-                            logError("Error", "speakPartOfText", `Speak text part (length ${textPart.length})`, event);
+                            logError("Error", "speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
 
                             return reject();
                         };
@@ -277,7 +244,7 @@ export default class TalkieSpeaker {
 
                         log("Variable", "synthesizer", synthesizer);
 
-                        log("Done", "speakPartOfText", `Speak text part (length ${textPart.length})`);
+                        log("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
                     } catch (error) {
                         return reject(error);
                     }
@@ -291,28 +258,8 @@ export default class TalkieSpeaker {
             () => {
                 log("Start", "getActualVoice", mappedVoice);
 
-                return getVoices()
-                    .then((voices) => {
-                        const actualMatchingVoicesByName = voices.filter((voice) => mappedVoice.name && (voice.name === mappedVoice.name));
-                        const actualMatchingVoicesByLanguage = voices.filter((voice) => mappedVoice.lang && (voice.lang === mappedVoice.lang));
-                        const actualMatchingVoicesByLanguagePrefix = voices.filter((voice) => mappedVoice.lang && (voice.lang.substr(0, 2) === mappedVoice.lang.substr(0, 2)));
-
-                        const actualVoices = []
-                            .concat(actualMatchingVoicesByName)
-                            .concat(actualMatchingVoicesByLanguage)
-                            .concat(actualMatchingVoicesByLanguagePrefix);
-
-                        if (actualVoices.length === 0) {
-                            throw new Error(`Could not find any matching voice: ${JSON.stringify(mappedVoice)}`);
-                        }
-
-                        // NOTE: while there might be more than one voice for the particular voice name/language/language prefix, just consistently pick the first one.
-                        // if (actualMatchingVoices.length !== 1) {
-                        //     throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
-                        // }
-
-                        const actualVoice = actualVoices[0];
-
+                return resolveVoice(mappedVoice)
+                    .then((actualVoice) => {
                         log("Done", "getActualVoice", mappedVoice, actualVoice);
 
                         return actualVoice;
@@ -359,7 +306,18 @@ export default class TalkieSpeaker {
                                     if (continueSpeaking) {
                                         return Promise.resolve()
                                             .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
-                                            .then(() => this.speakPartOfText(textPart, actualVoice))
+                                            .then(() => {
+                                                const utterance = new SpeechSynthesisUtterance(textPart);
+
+                                                utterance.voice = actualVoice;
+                                                utterance.rate = voice.rate || rateRange.default;
+                                                utterance.pitch = voice.pitch || pitchRange.default;
+
+                                                log("Variable", "utterance", utterance);
+
+                                                return utterance;
+                                            })
+                                            .then((utterance) => this.speakPartOfText(utterance))
                                             .then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData));
                                     }
 
@@ -378,7 +336,7 @@ export default class TalkieSpeaker {
         return promiseTry(
             () => Promise.resolve()
                 .then(() => {
-                    Execute.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
+                    this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
 
                     return this.splitAndSpeak(text, voice);
                 })
@@ -405,62 +363,5 @@ export default class TalkieSpeaker {
                     .then(() => log("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`));
             }
         );
-    }
-
-    executeGetFramesSelectionTextAndLanguage() {
-        return Execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 1000)
-            .then((framesSelectionTextAndLanguage) => {
-                log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
-
-                if (!framesSelectionTextAndLanguage || !Array.isArray(framesSelectionTextAndLanguage)) {
-                    throw new Error("framesSelectionTextAndLanguage");
-                }
-
-                return framesSelectionTextAndLanguage;
-            });
-    }
-
-    detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage) {
-        return promiseTry(() => {
-            log("Start", "Speaking all selections");
-
-            log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
-
-            return promiseTry(
-                () => getVoices()
-            )
-                .then((allVoices) => LanguageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections))
-                .then((cleanedupSelections) => {
-                    log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
-
-                    const speakPromises = cleanedupSelections.map((selection) => {
-                        log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
-
-                        return this.speakTextInLanguage(selection.text, selection.effectiveLanguage);
-                    });
-
-                    log("Done", "Speaking all selections");
-
-                    return Promise.all(speakPromises);
-                });
-        });
-    }
-
-    speakUserSelection() {
-        return promiseTry(
-            () => {
-                log("Start", "Speaking selection");
-
-                return Promise.all(
-                    [
-                        this.executeGetFramesSelectionTextAndLanguage(),
-                        LanguageHelper.detectPageLanguage(),
-                    ]
-                )
-                    .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
-                        return this.detectLanguagesAndSpeakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
-                    })
-                    .then(() => log("Done", "Speaking selection"));
-            });
     }
 }

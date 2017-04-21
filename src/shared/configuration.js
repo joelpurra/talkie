@@ -18,11 +18,67 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import configuration from "../configuration.json";
+import {
+    promiseTry,
+} from "../shared/promise";
 
-export const extensionShortName = browser.i18n.getMessage("extensionShortName");
+export default class Configuration {
+    constructor(metadataManager, configurationObject) {
+        this.metadataManager = metadataManager;
+        this.configurationObject = configurationObject;
 
-export const uiLocale = browser.i18n.getMessage("@@ui_locale");
-export const messagesLocale = browser.i18n.getMessage("extensionLocale");
+        this.extensionShortName = browser.i18n.getMessage("extensionShortName");
+        this.uiLocale = browser.i18n.getMessage("@@ui_locale");
+        this.messagesLocale = browser.i18n.getMessage("extensionLocale");
 
-export const urls = configuration.urls;
+        this.configurationObject.shared.urls.options = browser.runtime.getURL("/src/options/options.html");
+    }
+
+    _resolvePath(obj, path) {
+        // NOTE: doesn't handle arrays nor properties of "any" non-object objects.
+        if (!obj || typeof obj !== "object") {
+            throw new Error();
+        }
+
+        if (!path || typeof path !== "string" || path.length === 0) {
+            throw new Error();
+        }
+
+        // NOTE: doesn't handle path["subpath"].
+        const parts = path.split(".");
+        const part = parts.shift();
+
+        if (({}).hasOwnProperty.call(obj, part)) {
+            if (parts.length === 0) {
+                return obj[part];
+            }
+            return this._resolvePath(obj[part], parts.join("."));
+        }
+
+        return null;
+    }
+
+    get(path) {
+        return promiseTry(
+            () => Promise.all([
+                this.metadataManager.getVersionType(),
+                this.metadataManager.getSystemType(),
+            ])
+                .then(([versionType, systemType]) => Promise.all([
+                    this._resolvePath(this.configurationObject[versionType][systemType], path),
+                    this._resolvePath(this.configurationObject[versionType], path),
+                    this._resolvePath(this.configurationObject[systemType], path),
+                    this._resolvePath(this.configurationObject.shared, path),
+                ]))
+                .then(([versionedSystemValue, versionedValue, systemValue, sharedValue]) => {
+                    const value = versionedSystemValue
+                        || versionedValue
+                        || systemValue
+                        || sharedValue
+                        || null;
+
+                    return value;
+                })
+            );
+    }
+}

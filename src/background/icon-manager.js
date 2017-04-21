@@ -27,21 +27,25 @@ import {
 } from "../shared/log";
 
 export default class IconManager {
-    getIconModePaths(name) {
-        return {
-        // NOTE: icons in use before Chrome 53 were 19x19 and 38x38.
-        // NOTE: icons in use from Chrome 53 (switching to Material design) are 16x16 and 32x32.
-        // NOTE: keeping larger icons to accomodate future changes.
-            "16": `resources/icon/icon-${name}/icon-16x16.png`,
-            "32": `resources/icon/icon-${name}/icon-32x32.png`,
-            "48": `resources/icon/icon-${name}/icon-48x48.png`,
-            "64": `resources/icon/icon-${name}/icon-64x64.png`,
+    constructor(metadataManager) {
+        this.metadataManager = metadataManager;
+    }
 
-        // NOTE: passing the larger icons slowed down the UI by several hundred milliseconds per icon switch.
-        // "128": `resources/icon/icon-${name}/icon-128x128.png`,
-        // "256": `resources/icon/icon-${name}/icon-256x256.png`,
-        // "512": `resources/icon/icon-${name}/icon-512x512.png`,
-        // "1024": `resources/icon/icon-${name}/icon-1024x1024.png`,
+    getIconModePaths(versionType, name) {
+        return {
+            // NOTE: icons in use before Chrome 53 were 19x19 and 38x38.
+            // NOTE: icons in use from Chrome 53 (switching to Material design) are 16x16 and 32x32.
+            // NOTE: keeping larger icons to accomodate future changes.
+            "16": `resources/icon/${versionType}/icon-${name}/icon-16x16.png`,
+            "32": `resources/icon/${versionType}/icon-${name}/icon-32x32.png`,
+            "48": `resources/icon/${versionType}/icon-${name}/icon-48x48.png`,
+            "64": `resources/icon/${versionType}/icon-${name}/icon-64x64.png`,
+
+            // NOTE: passing the larger icons slowed down the UI by several hundred milliseconds per icon switch.
+            // "128": `resources/icon/${versionType}/icon-${name}/icon-128x128.png`,
+            // "256": `resources/icon/${versionType}/icon-${name}/icon-256x256.png`,
+            // "512": `resources/icon/${versionType}/icon-${name}/icon-512x512.png`,
+            // "1024": `resources/icon/${versionType}/icon-${name}/icon-1024x1024.png`,
         };
     };
 
@@ -50,19 +54,22 @@ export default class IconManager {
             () => {
                 log("Start", "Changing icon to", name);
 
-                const paths = this.getIconModePaths(name);
-                const details = {
-                    path: paths,
-                };
+                return this.metadataManager.getVersionType()
+                    .then((versionType) => {
+                        const paths = this.getIconModePaths(versionType, name);
+                        const details = {
+                            path: paths,
+                        };
 
-                return browser.browserAction.setIcon(details)
-                    .then((result) => {
-                        log("Done", "Changing icon to", name);
+                        return browser.browserAction.setIcon(details)
+                            .then((result) => {
+                                log("Done", "Changing icon to", name);
 
-                        return result;
+                                return result;
+                            });
                     });
             }
-        );
+    );
     }
 
     setIconModePlaying() {

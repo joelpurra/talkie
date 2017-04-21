@@ -18,9 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    extensionShortName,
-} from "./configuration";
+const extensionShortName = browser.i18n.getMessage("extensionShortName");
 
 export const log = (...args) => {
     const now = new Date().toISOString();

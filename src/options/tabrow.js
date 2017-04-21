@@ -86,7 +86,7 @@ export default class Tabrow {
     };
 
     getTabLinks() {
-        return Array.from(document.querySelectorAll(`#${this.tabContainerId} ol li a[href^='#']`));
+        return Array.from(document.querySelectorAll(`:scope #${this.tabContainerId} ol li a[href^='#']`));
     }
 
     getLinkedTabContentElement(tabLinkElement) {
@@ -108,6 +108,15 @@ export default class Tabrow {
             this.selectedTabLinkContainerElement.classList.add(this.tabrowSelectedClassName);
             this.selectedTabContentElement = newlyFocusedTabContentElement;
             this.showEffect(this.selectedTabContentElement);
+
+            this.selectedTabContentElement.dispatchEvent(
+                new Event(
+                    "tabchange",
+                    {
+                        bubbles: true,
+                    }
+                )
+            );
         }
     }
 
@@ -130,6 +139,11 @@ export default class Tabrow {
         self.getTabLinks().forEach((tabLinkElement, index) => {
             tabLinkElement.addEventListener("click", (event) => {
                 self.tabLinkClick(event.target);
+
+                // NOTE: prevent scrolling/jumping.
+                // TODO: change the hash in the URL to match new tab.
+                event.preventDefault();
+                return false;
             });
 
             if (index !== initialSelectedIndex) {

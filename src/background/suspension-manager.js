@@ -27,10 +27,10 @@ import {
     logError,
 } from "../shared/log";
 
-import Execute from "../shared/execute";
-
 export default class SuspensionManager {
-    constructor() {
+    constructor(execute) {
+        this.execute = execute;
+
         this.preventSuspensionProducingPort = null;
         this.preventSuspensionIntervalId = null;
 
@@ -57,7 +57,7 @@ export default class SuspensionManager {
     }
 
     executeConnectFromContent() {
-        return Execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
+        return this.execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
             .then((preventExtensionSuspendConnectFromContentResult) => {
                 log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
 

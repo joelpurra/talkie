@@ -3,3 +3,6 @@ package/
 *.zip
 dist/
 web-ext-artifacts/
+extension-files.premium.txt
+_locales/*/messages.json
+_locales/*/messages.premium.json

@@ -28,10 +28,9 @@ import {
     logDebug,
 } from "../shared/log";
 
-import {
-    uiLocale,
-    messagesLocale,
-} from "../shared/configuration";
+import configurationObject from "../configuration.json";
+
+import Configuration from "../shared/configuration";
 
 import {
     knownEvents,
@@ -45,11 +44,18 @@ import TalkieProgress from "../shared/talkie-progress";
 
 import Broadcaster from "../shared/broadcaster";
 
+import ContentLogger from "../shared/content-logger";
+
 import Plug from "../shared/plug";
 
 import SuspensionManager from "./suspension-manager";
 
 import TalkieSpeaker from "./talkie-speaker";
+
+import VoiceLanguageManager from "./voice-language-manager";
+import VoiceRateManager from "./voice-rate-manager";
+import VoicePitchManager from "./voice-pitch-manager";
+import VoiceManager from "./voice-manager";
 
 import SpeakingStatus from "./speaking-status";
 
@@ -71,23 +77,40 @@ import ShortcutKeyManager from "./shortcut-key-manager";
 
 import MetadataManager from "./metadata-manager";
 
+import StorageManager from "./storage-manager";
+
+import LanguageHelper from "./language-helper";
+
+import Execute from "../shared/execute";
+
 function main() {
     log("Start", "Main background function");
 
-    log("Locale (@@ui_locale)", uiLocale);
-    log("Locale (messages.json)", messagesLocale);
+    const metadataManager = new MetadataManager();
+    const configuration = new Configuration(metadataManager, configurationObject);
 
-    // NOTE: using a chainer to be able to add click-driven speech events one after another.
-    const rootChain = new Chain();
+    log("Locale (@@ui_locale)", configuration.uiLocale);
+    log("Locale (messages.json)", configuration.messagesLocale);
 
     const broadcaster = new Broadcaster();
 
     const onlyLastCaller = new OnlyLastCaller();
     const shouldContinueSpeakingProvider = onlyLastCaller;
-    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider);
+    const execute = new Execute();
+    const contentLogger = new ContentLogger(execute, configuration);
+    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider, contentLogger);
     const speakingStatus = new SpeakingStatus();
 
-    const talkieBackground = new TalkieBackground(rootChain, talkieSpeaker, speakingStatus);
+    const storageManager = new StorageManager();
+    const voiceLanguageManager = new VoiceLanguageManager(storageManager, metadataManager);
+    const voiceRateManager = new VoiceRateManager(storageManager, metadataManager);
+    const voicePitchManager = new VoicePitchManager(storageManager, metadataManager);
+    const voiceManager = new VoiceManager(voiceLanguageManager, voiceRateManager, voicePitchManager);
+    const languageHelper = new LanguageHelper(contentLogger, configuration);
+
+    // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
+    const speechChain = new Chain();
+    const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -96,7 +119,8 @@ function main() {
         "start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
         "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
-        "open-website-chromewebstore": () => openUrlFromConfigurationInNewTab("chromewebstore"),
+        "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
+        "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
         "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 
@@ -104,17 +128,42 @@ function main() {
     const contextMenuManager = new ContextMenuManager(commandHandler);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
-    const suspensionManager = new SuspensionManager();
-    const iconManager = new IconManager();
+    const suspensionManager = new SuspensionManager(execute);
+    const iconManager = new IconManager(metadataManager);
     const buttonPopupManager = new ButtonPopupManager();
 
     const progress = new TalkieProgress(broadcaster);
 
-    const metadataManager = new MetadataManager();
+    const plug = new Plug(contentLogger, execute);
 
     (function addChromeOnInstalledListeners() {
+        const initializeOptionsDefaults = () => {
+            // TODO: more generic default option value system?
+            const hideDonationsOptionId = "options-popup-donate-buttons-hide";
+
+            return Promise.all([
+                storageManager.getStoredValue(hideDonationsOptionId),
+                metadataManager.isPremiumVersion(),
+            ])
+                .then(([hideDonations, isPremiumVersion]) => {
+                    if (typeof hideDonations !== "boolean") {
+                        // NOTE: don't bother premium users, unless they want to be bothered.
+                        if (isPremiumVersion) {
+                            return storageManager.setStoredValue(hideDonationsOptionId, true);
+                        }
+
+                        return storageManager.setStoredValue(hideDonationsOptionId, false);
+                    }
+
+                    return undefined;
+                });
+        };
+
         const onExtensionInstalledHandler = () => promiseTry(
-                () => contextMenuManager.createContextMenus()
+                () => Promise.resolve()
+                    .then(() => storageManager.upgradeIfNecessary())
+                    .then(() => initializeOptionsDefaults())
+                    .then(() => contextMenuManager.createContextMenus())
                     .catch((error) => logError("onExtensionInstalledHandler", error))
             );
 
@@ -140,10 +189,10 @@ function main() {
         broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
 
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => Plug.once()
+        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
             .catch((error) => {
-                // NOTE: swallowing any Plug.once() errors.
-                logError("Error", "Plug.once", "Error swallowed", error);
+                // NOTE: swallowing any plug.once() errors.
+                logError("Error", "plug.once", "Error swallowed", error);
 
                 return undefined;
             }));
@@ -205,6 +254,20 @@ function main() {
         window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
         window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
         window.getVersionName = () => metadataManager.getVersionName();
+        window.isFreeVersion = () => metadataManager.isFreeVersion();
+        window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+        window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
+        window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
+        window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
+        window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
+        window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+        window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
+        window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
+        window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
+        window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
+        window.getStoredValue = (key) => storageManager.getStoredValue(key);
+        window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
+        window.getConfigurationValue = (path) => configuration.get(path);
     }());
 
     buttonPopupManager.enablePopup();

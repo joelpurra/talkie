@@ -32,32 +32,42 @@ import {
     shallowCopy,
 } from "../shared/basic";
 
-import Execute from "../shared/execute";
+export default class LanguageHelper {
+    constructor(contentLogger, configuration) {
+        this.contentLogger = contentLogger;
+        this.configuration = configuration;
 
-import {
-    messagesLocale,
-} from "../shared/configuration";
+        this.noTextSelectedMessage = {
+            text: browser.i18n.getMessage("noTextSelectedMessage"),
+            effectiveLanguage: this.configuration.messagesLocale,
+        };
 
-const noTextSelectedMessage = {
-    text: browser.i18n.getMessage("noTextSelectedMessage"),
-    effectiveLanguage: messagesLocale,
-};
+        this.noVoiceForLanguageDetectedMessage = {
+            text: browser.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
+            effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
+        };
 
-const noVoiceForLanguageDetectedMessage = {
-    text: browser.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
-    effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
-};
+        // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
+        // https://en.wikipedia.org/wiki/ISO_639-1
+        // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+        // http://xml.coverpages.org/iso639a.html
+        // NOTE: discovered because Twitter seems to still use "iw".
+        this.iso639Dash1Aliases1988To2002 = {
+            "in": "id",
+            "iw": "he",
+            "ji": "yi",
+        };
+    }
 
-export default class LanguageHelper {}
-
-LanguageHelper.detectPageLanguage = () => promiseTry(
+    detectPageLanguage() {
+        return promiseTry(
             () => {
                 // https://developer.browser.com/extensions/tabs#method-detectLanguage
                 return browser.tabs.detectLanguage()
                     .then((language) => {
                         log("detectPageLanguage", "Browser detected primary page language", language);
 
-                // The language fallback value is "und", so treat it as no language.
+                        // The language fallback value is "und", so treat it as no language.
                         if (!language || typeof language !== "string" || language === "und") {
                             return null;
                         }
@@ -73,207 +83,214 @@ LanguageHelper.detectPageLanguage = () => promiseTry(
                         return null;
                     });
             }
-);
+        );
+    }
 
-const detectTextLanguage = (text) => promiseTry(
-    () => {
-        if (!("detectLanguage" in browser.i18n)) {
-            // NOTE: text-based language detection is only used as a fallback.
-            log("detectTextLanguage", "Browser does not support detecting text language");
-
-            return null;
-        }
-
-        // https://developer.browser.com/extensions/i18n#method-detectLanguage
-        return browser.i18n.detectLanguage(text)
-            .then((result) => {
-                // The language fallback value is "und", so treat it as no language.
-                if (
-                    !result.isReliable
-                        || !result.languages
-                        || !(result.languages.length > 0)
-                        || typeof result.languages[0].language !== "string"
-                        || !(result.languages[0].language.trim().length > 0)
-                        || result.languages[0].language === "und"
-                ) {
+    detectTextLanguage(text) {
+        return promiseTry(
+            () => {
+                if (!("detectLanguage" in browser.i18n)) {
                     // NOTE: text-based language detection is only used as a fallback.
-                    log("detectTextLanguage", "Browser did not detect reliable text language", result);
+                    log("detectTextLanguage", "Browser does not support detecting text language");
 
                     return null;
                 }
 
-                const primaryDetectedTextLanguage = result.languages[0].language;
+                // https://developer.browser.com/extensions/i18n#method-detectLanguage
+                return browser.i18n.detectLanguage(text)
+                    .then((result) => {
+                        // The language fallback value is "und", so treat it as no language.
+                        if (
+                            !result.isReliable
+                                || !result.languages
+                                || !(result.languages.length > 0)
+                                || typeof result.languages[0].language !== "string"
+                                || !(result.languages[0].language.trim().length > 0)
+                                || result.languages[0].language === "und"
+                        ) {
+                            // NOTE: text-based language detection is only used as a fallback.
+                            log("detectTextLanguage", "Browser did not detect reliable text language", result);
 
-                log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
+                            return null;
+                        }
 
-                return primaryDetectedTextLanguage;
-            });
+                        const primaryDetectedTextLanguage = result.languages[0].language;
+
+                        log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
+
+                        return primaryDetectedTextLanguage;
+                    });
+            }
+        );
     }
-);
 
-const getSelectionsWithValidText = (selections) => promiseTry(
-    () => {
-        const isNonNullObject = (selection) => !!selection && typeof selection === "object";
+    getSelectionsWithValidText(selections) {
+        return promiseTry(
+            () => {
+                const isNonNullObject = (selection) => !!selection && typeof selection === "object";
 
-        const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+                const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
 
-        const trimText = (selection) => {
-            const copy = shallowCopy(selection);
+                const trimText = (selection) => {
+                    const copy = shallowCopy(selection);
 
-            copy.text = copy.text.trim();
-
-            return copy;
-        };
-
-        const selectionsWithValidText = selections
-            .filter(isNonNullObject)
-            .filter(hasValidText)
-            .map(trimText)
-            .filter(hasValidText);
-
-        return selectionsWithValidText;
-    }
-);
-
-const detectAndAddLanguageForSelections = (selectionsWithValidText) => promiseTry(
-    () => Promise.all(
-    selectionsWithValidText.map(
-        (selection) => {
-            const copy = shallowCopy(selection);
-
-            return detectTextLanguage(copy.text)
-                .then((detectedTextLanguage) => {
-                    copy.detectedTextLanguage = detectedTextLanguage;
+                    copy.text = copy.text.trim();
 
                     return copy;
-                });
-        })
-    )
-);
+                };
 
-const isKnownVoiceLanguage = (allVoices, elementLanguage) => allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
+                const selectionsWithValidText = selections
+                    .filter(isNonNullObject)
+                    .filter(hasValidText)
+                    .map(trimText)
+                    .filter(hasValidText);
 
-// https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
-// https://en.wikipedia.org/wiki/ISO_639-1
-// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-// http://xml.coverpages.org/iso639a.html
-// NOTE: discovered because Twitter seems to still use "iw".
-const iso639Dash1Aliases1988To2002 = {
-    "in": "id",
-    "iw": "he",
-    "ji": "yi",
-};
-
-const mapIso639Aliases = (language) => {
-    return iso639Dash1Aliases1988To2002[language] || language;
-};
-
-const isValidString = (str) => !isUndefinedOrNullOrEmptyOrWhitespace(str);
-
-const cleanupLanguagesArray = (allVoices, languages) => {
-    const copy = (languages || [])
-        .filter(isValidString)
-        .map(mapIso639Aliases)
-        .filter(isKnownVoiceLanguage.bind(null, allVoices));
-
-    return copy;
-};
-
-const getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = (allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage) => promiseTry(
-    () => {
-        const cleanupParentElementsLanguages = (selection) => {
-            const copy = shallowCopy(selection);
-
-            copy.parentElementsLanguages = cleanupLanguagesArray(allVoices, copy.parentElementsLanguages);
-
-            return copy;
-        };
-
-        const getMoreSpecificLanguagesWithPrefix = (prefix) => {
-            return (language) => language.startsWith(prefix) && language.length > prefix.length;
-        };
-
-        const setEffectiveLanguage = (selection) => {
-            const copy = shallowCopy(selection);
-
-            const detectedLanguages = [
-                copy.detectedTextLanguage,
-                copy.parentElementsLanguages[0] || null,
-                copy.htmlTagLanguage,
-                detectedPageLanguage,
-            ];
-
-            log("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
-
-            const cleanedLanguages = cleanupLanguagesArray(allVoices, detectedLanguages);
-
-            log("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
-
-            const primaryLanguagePrefix = cleanedLanguages[0] || null;
-
-            log("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
-
-        // NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
-            const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
-
-            log("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
-
-            const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
-
-            log("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
-
-            copy.effectiveLanguage = effectiveLanguage;
-
-            Execute.logToPage("Language", "Selected text language:", copy.detectedTextLanguage);
-            Execute.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
-            Execute.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
-            Execute.logToPage("Language", "Detected page language:", detectedPageLanguage);
-            Execute.logToPage("Language", "Effective language:", copy.effectiveLanguage);
-
-            return copy;
-        };
-
-        const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage
-            .map(cleanupParentElementsLanguages)
-            .map(setEffectiveLanguage);
-
-        return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
-    }
-);
-
-const useFallbackMessageIfNoLanguageDetected = (selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) => promiseTry(
-    () => {
-        const fallbackMessageForNoLanguageDetected = (selection) => {
-            if (selection.effectiveLanguage === null) {
-                return noVoiceForLanguageDetectedMessage;
+                return selectionsWithValidText;
             }
-
-            return selection;
-        };
-
-        const mapResults = (selection) => {
-            return {
-                text: selection.text,
-                effectiveLanguage: selection.effectiveLanguage,
-            };
-        };
-
-        const results = selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage
-            .map(fallbackMessageForNoLanguageDetected)
-            .map(mapResults);
-
-        if (results.length === 0) {
-            log("Empty filtered selections");
-
-            results.push(noTextSelectedMessage);
-        }
-
-        return results;
+        );
     }
-);
 
-LanguageHelper.cleanupSelections = (allVoices, detectedPageLanguage, selections) => Promise.resolve()
-    .then(() => getSelectionsWithValidText(selections))
-    .then((selectionsWithValidText) => detectAndAddLanguageForSelections(selectionsWithValidText))
-    .then((selectionsWithValidTextAndDetectedLanguage) => getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage))
-    .then((selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) => useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage));
+    detectAndAddLanguageForSelections(selectionsWithValidText) {
+        return promiseTry(
+            () => Promise.all(
+            selectionsWithValidText.map(
+                (selection) => {
+                    const copy = shallowCopy(selection);
+
+                    return this.detectTextLanguage(copy.text)
+                        .then((detectedTextLanguage) => {
+                            copy.detectedTextLanguage = detectedTextLanguage;
+
+                            return copy;
+                        });
+                })
+            )
+        );
+    }
+
+    isKnownVoiceLanguage(allVoices, elementLanguage) {
+        return allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
+    }
+
+    mapIso639Aliases(language) {
+        return this.iso639Dash1Aliases1988To2002[language] || language;
+    }
+
+    isValidString(str) {
+        return !isUndefinedOrNullOrEmptyOrWhitespace(str);
+    }
+
+    cleanupLanguagesArray(allVoices, languages) {
+        const copy = (languages || [])
+            .filter((str) => this.isValidString(str))
+            .map((language) => this.mapIso639Aliases(language))
+            .filter((elementLanguage) => this.isKnownVoiceLanguage(allVoices, elementLanguage));
+
+        return copy;
+    }
+
+    getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage) {
+        return promiseTry(
+            () => {
+                const cleanupParentElementsLanguages = (selection) => {
+                    const copy = shallowCopy(selection);
+
+                    copy.parentElementsLanguages = this.cleanupLanguagesArray(allVoices, copy.parentElementsLanguages);
+
+                    return copy;
+                };
+
+                const getMoreSpecificLanguagesWithPrefix = (prefix) => {
+                    return (language) => language.startsWith(prefix) && language.length > prefix.length;
+                };
+
+                const setEffectiveLanguage = (selection) => {
+                    const copy = shallowCopy(selection);
+
+                    const detectedLanguages = [
+                        copy.detectedTextLanguage,
+                        copy.parentElementsLanguages[0] || null,
+                        copy.htmlTagLanguage,
+                        detectedPageLanguage,
+                    ];
+
+                    log("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
+
+                    const cleanedLanguages = this.cleanupLanguagesArray(allVoices, detectedLanguages);
+
+                    log("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
+
+                    const primaryLanguagePrefix = cleanedLanguages[0] || null;
+
+                    log("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
+
+                    // NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
+                    const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
+
+                    log("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
+
+                    const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
+
+                    log("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
+
+                    copy.effectiveLanguage = effectiveLanguage;
+
+                    this.contentLogger.logToPage("Language", "Selected text language:", copy.detectedTextLanguage);
+                    this.contentLogger.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
+                    this.contentLogger.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
+                    this.contentLogger.logToPage("Language", "Detected page language:", detectedPageLanguage);
+                    this.contentLogger.logToPage("Language", "Effective language:", copy.effectiveLanguage);
+
+                    return copy;
+                };
+
+                const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage
+                    .map(cleanupParentElementsLanguages)
+                    .map(setEffectiveLanguage);
+
+                return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
+            }
+        );
+    }
+
+    useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) {
+        return promiseTry(
+            () => {
+                const fallbackMessageForNoLanguageDetected = (selection) => {
+                    if (selection.effectiveLanguage === null) {
+                        return this.noVoiceForLanguageDetectedMessage;
+                    }
+
+                    return selection;
+                };
+
+                const mapResults = (selection) => {
+                    return {
+                        text: selection.text,
+                        effectiveLanguage: selection.effectiveLanguage,
+                    };
+                };
+
+                const results = selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage
+                    .map(fallbackMessageForNoLanguageDetected)
+                    .map(mapResults);
+
+                if (results.length === 0) {
+                    log("Empty filtered selections");
+
+                    results.push(this.noTextSelectedMessage);
+                }
+
+                return results;
+            }
+        );
+    }
+
+    cleanupSelections(allVoices, detectedPageLanguage, selections) {
+        return Promise.resolve()
+            .then(() => this.getSelectionsWithValidText(selections))
+            .then((selectionsWithValidText) => this.detectAndAddLanguageForSelections(selectionsWithValidText))
+            .then((selectionsWithValidTextAndDetectedLanguage) => this.getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage))
+            .then((selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) => this.useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage));
+    }
+}

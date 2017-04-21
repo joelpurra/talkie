@@ -13,7 +13,7 @@
   },
   "commandOpenWebsiteChromeWebStoreDescription": {
     "message": "Öppna Chrome Web Store-sidan",
-    "original": "Open the Chrome Web Store page"
+    "original": null
   },
   "commandOpenWebsiteDonateDescription": {
     "message": "Öppna donationssidan",
@@ -77,7 +77,7 @@
   },
   "frontend_hideDonateButtonsInPopupDescription": {
     "message": "Det är inte som att jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmämhet - jag vill bara inte att du ska bli irriterad när du använder Talkie till att börja med. Om du inakiverar donationsknapparna i bubblan, hoppas jag att du även stödjer Talkie på något sätt! Knapparna kommer alltid vara tillgängliga här bland alternativen, utifall att.",
-    "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Donera: stöd öppen källkodsutveckling",
@@ -97,7 +97,7 @@
   },
   "frontend_rateIt": {
     "message": "Betygsätt Talkie",
-    "original": "Rate Talkie"
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
     "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det - eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande versionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer - och ett par tusen rader kod senare, ser du resultatet.",
@@ -119,7 +119,7 @@
     "message": "Hjälp och feedback",
     "original": "Support and feedback"
   },
-  "frontend_talkieInTheChromeWebStore": {
+  "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie i Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
@@ -133,7 +133,7 @@
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg.",
@@ -165,11 +165,11 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk.",
-    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Röster: testa din webbläsare",
-    "original": "Voices: test your browser"
+    "original": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
     "message": "Röster",
@@ -197,7 +197,7 @@
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida. Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren. Du kan även testa att markera text, sedan högerklicka på den, och välja Talkie i menyn. Jag ber om ursäkt för besväret.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }

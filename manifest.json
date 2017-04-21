@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "version": "2.1.2",
-  "version_name": "v2.1.2 (2017-03-17)",
+  "version_name": "v2.1.2 Free (2017-03-17)",
   "applications": {
     "gecko": {
       "strict_min_version": "52.0"
@@ -43,15 +43,21 @@
       },
       "description": "__MSG_commandOpenWebsiteMainDescription__"
     },
-    "open-website-chromewebstore": {
+    "open-website-store-free": {
       "suggested_key": {
         "default": "Alt+Shift+9"
       },
-      "description": "__MSG_commandOpenWebsiteChromeWebStoreDescription__"
+      "description": "__MSG_commandOpenWebsiteStoreDescription_Free__"
+    },
+    "open-website-store-premium": {
+      "suggested_key": {
+        "default": "Alt+Shift+8"
+      },
+      "description": "__MSG_commandOpenWebsiteStoreDescription_Premium__"
     },
     "open-website-donate": {
       "suggested_key": {
-        "default": "Alt+Shift+8"
+        "default": "Alt+Shift+7"
       },
       "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }
@@ -66,24 +72,24 @@
   "browser_action": {
     "default_title": "__MSG_buttonDefaultTitle__",
     "default_icon": {
-      "16": "resources/icon/icon-play/icon-16x16.png",
-      "32": "resources/icon/icon-play/icon-32x32.png",
-      "48": "resources/icon/icon-play/icon-48x48.png",
-      "64": "resources/icon/icon-play/icon-64x64.png",
-      "128": "resources/icon/icon-play/icon-128x128.png",
-      "256": "resources/icon/icon-play/icon-256x256.png",
-      "512": "resources/icon/icon-play/icon-512x512.png",
-      "1024": "resources/icon/icon-play/icon-1024x1024.png"
+      "16": "resources/icon/free/icon-play/icon-16x16.png",
+      "32": "resources/icon/free/icon-play/icon-32x32.png",
+      "48": "resources/icon/free/icon-play/icon-48x48.png",
+      "64": "resources/icon/free/icon-play/icon-64x64.png",
+      "128": "resources/icon/free/icon-play/icon-128x128.png",
+      "256": "resources/icon/free/icon-play/icon-256x256.png",
+      "512": "resources/icon/free/icon-play/icon-512x512.png",
+      "1024": "resources/icon/free/icon-play/icon-1024x1024.png"
     }
   },
   "icons": {
-    "16": "resources/icon/icon-play/icon-16x16.png",
-    "32": "resources/icon/icon-play/icon-32x32.png",
-    "48": "resources/icon/icon-play/icon-48x48.png",
-    "64": "resources/icon/icon-play/icon-64x64.png",
-    "128": "resources/icon/icon-play/icon-128x128.png",
-    "256": "resources/icon/icon-play/icon-256x256.png",
-    "512": "resources/icon/icon-play/icon-512x512.png",
-    "1024": "resources/icon/icon-play/icon-1024x1024.png"
+    "16": "resources/icon/free/icon-play/icon-16x16.png",
+    "32": "resources/icon/free/icon-play/icon-32x32.png",
+    "48": "resources/icon/free/icon-play/icon-48x48.png",
+    "64": "resources/icon/free/icon-play/icon-64x64.png",
+    "128": "resources/icon/free/icon-play/icon-128x128.png",
+    "256": "resources/icon/free/icon-play/icon-256x256.png",
+    "512": "resources/icon/free/icon-play/icon-512x512.png",
+    "1024": "resources/icon/free/icon-play/icon-1024x1024.png"
   }
 }

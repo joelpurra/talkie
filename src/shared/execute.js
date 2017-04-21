@@ -28,171 +28,108 @@ import {
     promiseTimeout,
 } from "../shared/promise";
 
-import {
-    extensionShortName,
-} from "./configuration";
+export default class Execute {
+    constructor(configuration) {
+        this.configuration = configuration;
+    }
 
-export default class Execute {}
+    scriptInTopFrame(code) {
+        return promiseTry(
+            () => {
+                log("Start", "scriptInTopFrame", code.length, code);
 
-Execute.scriptInTopFrame = (code) => promiseTry(
-    () => {
-        log("Start", "scriptInTopFrame", code.length, code);
+                return browser.tabs.executeScript(
+                    {
+                        allFrames: false,
+                        code: code,
+                    }
+                )
+                    .then((result) => {
+                        log("Done", "scriptInTopFrame", code.length);
 
-        return browser.tabs.executeScript(
-            {
-                allFrames: false,
-                code: code,
+                        return result;
+                    })
+                    .catch((error) => {
+                        logError("Error", "scriptInTopFrame", code.length, error);
+
+                        throw error;
+                    });
             }
-        )
-        .then((result) => {
-            log("Done", "scriptInTopFrame", code.length);
-
-            return result;
-        })
-        .catch((error) => {
-            logError("Error", "scriptInTopFrame", code.length, error);
-
-            throw error;
-        });
+        );
     }
-);
 
-Execute.scriptInAllFrames = (code) => promiseTry(
-    () => {
-        log("Start", "scriptInAllFrames", code.length, code);
+    scriptInAllFrames(code) {
+        return promiseTry(
+            () => {
+                log("Start", "scriptInAllFrames", code.length, code);
 
-        return browser.tabs.executeScript(
-            {
-                allFrames: true,
-                code: code,
+                return browser.tabs.executeScript(
+                    {
+                        allFrames: true,
+                        code: code,
+                    }
+                )
+                    .then((result) => {
+                        log("Done", "scriptInAllFrames", code.length);
+
+                        return result;
+                    })
+                    .catch((error) => {
+                        logError("Error", "scriptInAllFrames", code.length, error);
+
+                        throw error;
+                    });
             }
-        )
-        .then((result) => {
-            log("Done", "scriptInAllFrames", code.length);
-
-            return result;
-        })
-        .catch((error) => {
-            logError("Error", "scriptInAllFrames", code.length, error);
-
-            throw error;
-        });
+        );
     }
-);
 
-Execute.scriptInTopFrameWithTimeout = (code, timeout) => promiseTry(
-    () => {
-        log("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+    scriptInTopFrameWithTimeout(code, timeout) {
+        return promiseTry(
+            () => {
+                log("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-        return promiseTimeout(
-            Execute.scriptInTopFrame(code),
-            timeout
-        )
-        .then((result) => {
-            log("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+                return promiseTimeout(
+                    this.scriptInTopFrame(code),
+                    timeout
+                )
+                    .then((result) => {
+                        log("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-            return result;
-        })
-        .catch((error) => {
-            if (error && typeof error.name === "PromiseTimeout") {
-                // NOTE: this is how to check for a timeout.
+                        return result;
+                    })
+                    .catch((error) => {
+                        if (error && typeof error.name === "PromiseTimeout") {
+                        // NOTE: this is how to check for a timeout.
+                        }
+
+                        throw error;
+                    });
             }
-
-            throw error;
-        });
+        );
     }
-);
 
-Execute.scriptInAllFramesWithTimeout = (code, timeout) => promiseTry(
-    () => {
-        log("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+    scriptInAllFramesWithTimeout(code, timeout) {
+        return promiseTry(
+            () => {
+                log("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-        return promiseTimeout(
-            Execute.scriptInAllFrames(code),
-            timeout
-        )
-        .then((result) => {
-            log("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+                return promiseTimeout(
+                    this.scriptInAllFrames(code),
+                    timeout
+                )
+                    .then((result) => {
+                        log("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-            return result;
-        })
-        .catch((error) => {
-            if (error && typeof error.name === "PromiseTimeout") {
-                // NOTE: this is how to check for a timeout.
+                        return result;
+                    })
+                    .catch((error) => {
+                        if (error && typeof error.name === "PromiseTimeout") {
+                        // NOTE: this is how to check for a timeout.
+                        }
+
+                        throw error;
+                    });
             }
-
-            throw error;
-        });
+        );
     }
-);
-
-const variableToSafeString = (v) => {
-    if (v === undefined) {
-        return "undefined";
-    }
-
-    if (v === null) {
-        return "null";
-    }
-
-    return v.toString();
-};
-
-const executeLogToPageCode = "(function(){ console.log(%a); }());";
-
-Execute.logToPage = (...args) => promiseTry(
-    () => {
-        const now = new Date().toISOString();
-
-        const logValues = [
-            now,
-            extensionShortName,
-            ...args.map((arg) => variableToSafeString(arg)),
-        ]
-            .map((arg) => arg.replace(/\\/g, "\\\\"))
-            .map((arg) => arg.replace(/"/g, "\\\""))
-            .map((arg) => arg.replace(/\n/g, "\\\\n"))
-            .map((arg) => `"${arg}"`)
-            .join(", ");
-
-        const code = executeLogToPageCode.replace("%a", logValues);
-
-        return Execute.scriptInTopFrame(code)
-            .catch((error) => {
-                logError("Error", "Execute.logToPage", ...args);
-
-                throw error;
-            });
-    }
-);
-
-const executeLogToPageWithColorCode = "(function(){ console.log(%a); }());";
-
-Execute.logToPageWithColor = (...args) => promiseTry(
-    () => {
-        const now = new Date().toISOString();
-
-        const logValues = "\"" + [
-            now,
-            extensionShortName,
-            "%c",
-            ...args,
-            " ",
-        ]
-            .map((arg) => variableToSafeString(arg))
-            .map((arg) => arg.replace(/\\/g, "\\\\"))
-            .map((arg) => arg.replace(/"/g, "\\\""))
-            .map((arg) => arg.replace(/\n/g, "\\\\n"))
-            .map((arg) => `${arg}`)
-            .join(" ") + "\", \"background: #007F41; color: #FFFFFF; padding: 0.3em;\"";
-
-        const code = executeLogToPageWithColorCode.replace("%a", logValues);
-
-        return Execute.scriptInTopFrame(code)
-            .catch((error) => {
-                logError("Error", "Execute.logToPageWithColor", ...args);
-
-                throw error;
-            });
-    }
-);
+}

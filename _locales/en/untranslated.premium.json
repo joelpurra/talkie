@@ -1,0 +1,11 @@
+{
+  "contextMenuStartStopText": {
+    "message": "Talkie Premium: \"%s\""
+  },
+  "extensionName": {
+    "message": "Talkie Premium"
+  },
+  "extensionShortName": {
+    "message": "Talkie Premium"
+  }
+}

@@ -31,10 +31,6 @@ import {
 } from "../shared/events";
 
 import {
-    getStoredValue,
-} from "../shared/storage";
-
-import {
     eventToPromise,
     startFrontend,
     stopFrontend,
@@ -48,11 +44,9 @@ const loadOptionsAndApply = () => promiseTry(
     () => {
         const hideDonationsOptionId = "options-popup-donate-buttons-hide";
 
-        return Promise.resolve()
-            .then(() => getStoredValue(hideDonationsOptionId))
+        return getBackgroundPage()
+            .then((background) => background.getStoredValue(hideDonationsOptionId))
             .then((hideDonations) => {
-                hideDonations = hideDonations === true;
-
                 if (hideDonations) {
                     const elementsToHide = []
                         .concat(Array.from(document.getElementsByTagName("footer")))
@@ -68,34 +62,49 @@ const loadOptionsAndApply = () => promiseTry(
     }
 );
 
-const passClickToBackground = (background) => promiseTry(
+const passClickToBackground = () => promiseTry(
         () => {
-            try {
-                dualLogger.dualLog("Start", "passClickToBackground");
-                background.iconClick();
-                dualLogger.dualLog("Done", "passClickToBackground");
-            } catch (error) {
-                dualLogger.dualLogError("Error", "passClickToBackground", error);
-                throw error;
-            }
+            dualLogger.dualLog("Start", "passClickToBackground");
+
+            return getBackgroundPage()
+                .then((background) => background.iconClick())
+                .then(() => {
+                    dualLogger.dualLog("Done", "passClickToBackground");
+
+                    return undefined;
+                })
+                .catch((error) => {
+                    dualLogger.dualLogError("Error", "passClickToBackground", error);
+
+                    throw error;
+                });
         }
 );
 
-const updateProgress = (data) => {
-    const progressBar = document.getElementById("progress");
-    progressBar.max = data.max - data.min;
-    progressBar.value = data.current;
-};
+const updateProgress = (data) => promiseTry(
+    () => {
+        const progressBar = document.getElementById("progress");
+        progressBar.max = data.max - data.min;
+        progressBar.value = data.current;
+
+        return undefined;
+    }
+);
+
+const registerBroadcastListeners = () => promiseTry(
+    () => {
+        return getBackgroundPage()
+            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)));
+    }
+);
 
 const start = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => startFrontend())
             .then(() => loadOptionsAndApply())
-            .then(() => getBackgroundPage())
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
-            .then(() => getBackgroundPage())
-            .then((background) => passClickToBackground(background));
+            .then(() => registerBroadcastListeners())
+            .then(() => passClickToBackground());
     }
 );
 

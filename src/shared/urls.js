@@ -23,8 +23,8 @@ import {
 } from "../shared/promise";
 
 import {
-    urls,
-} from "./configuration";
+    getBackgroundPage,
+} from "../shared/tabs";
 
 export const openUrlInNewTab = (url) => promiseTry(
     () => {
@@ -42,13 +42,13 @@ export const openUrlInNewTab = (url) => promiseTry(
 );
 
 export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
-    () => {
-        const url = urls[id];
+    () => getBackgroundPage()
+        .then((background) => background.getConfigurationValue(`urls.${id}`))
+        .then((url) => {
+            if (typeof url !== "string") {
+                throw new Error("Bad url for id: " + id);
+            }
 
-        if (typeof url !== "string") {
-            throw new Error("Bad url for id: " + id);
-        }
-
-        return openUrlInNewTab(url);
-    }
+            return openUrlInNewTab(url);
+        })
 );
