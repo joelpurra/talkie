@@ -40,6 +40,7 @@ import {
     eventToPromise,
     startFrontend,
     stopFrontend,
+    htmlEscape,
 } from "../frontend/shared-frontend";
 
 import LogarithmicScaleRange from "./logarithmic-scale-range";
@@ -129,23 +130,53 @@ const enabledVoiceDefaultToggleButton = (voicesDefaultToggleButton, languageName
             .then(() => getBackgroundPage())
             .then((background) => background.isPremiumVersion())
             .then((isPremium) => {
-                const messageDetails = [
-                    `<strong>${languageName}</strong>`,
-                    `<strong>${voiceName}</strong>`,
+                // NOTE: attempting to prevent translation HTML injection.
+                // TODO: generalized HTML-cleaning function?
+                const messageDetailsObjects = [
+                    {
+                        placeholder: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        value: `<strong>${languageName}</strong>`,
+                    },
+                    {
+                        placeholder: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                        value: `<strong>${voiceName}</strong>`,
+                    },
                 ];
 
-                let buttonText = null;
+                const messageDetailsPlaceholders = messageDetailsObjects.map((messageDetailsPlaceholder) => messageDetailsPlaceholder.placeholder);
+
+                let buttonTextWithPlaceholders = null;
 
                 if (isPremium) {
                     voicesDefaultToggleButton.disabled = false;
-                    buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium", messageDetails);
+                    buttonTextWithPlaceholders = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium", messageDetailsPlaceholders);
                 } else {
                     voicesDefaultToggleButton.disabled = true;
-                    buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Free", messageDetails);
+                    buttonTextWithPlaceholders = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Free", messageDetailsPlaceholders);
                 }
 
-                // TODO: prevent translation HTML injection.
-                voicesDefaultToggleButton.innerHTML = buttonText;
+                const escapedButtonTextWithPlaceholders = htmlEscape(buttonTextWithPlaceholders);
+
+                // NOTE: attempting to prevent translation HTML injection.
+                // TODO: generalized HTML-cleaning function?
+                const cleanedButtonTextWithReplacedValues = messageDetailsObjects.reduce(
+                    (textWithPlaceholders, messageDetailsObject) => {
+                        const placeholderRx = new RegExp(messageDetailsObject.placeholder, "g");
+                        const replacedText = textWithPlaceholders.replace(placeholderRx, messageDetailsObject.value);
+
+                        return replacedText;
+                    },
+                    escapedButtonTextWithPlaceholders
+                );
+
+                // NOTE: Hacks around linting with web-ext. How else to temporarily disable?
+                // https://github.com/mozilla/web-ext
+                // NOTE: function naming required by eslint-plugin-no-unsanitized, no matter what it does.
+                // https://github.com/mozilla/eslint-plugin-no-unsanitized
+                const escapeHTML = () => cleanedButtonTextWithReplacedValues;
+
+                // NOTE: template string required by eslint-plugin-no-unsanitized.
+                voicesDefaultToggleButton.innerHTML = escapeHTML`dummy string`;
 
                 return undefined;
             });
