@@ -129,11 +129,13 @@ span.icon.inline.talkie:before {
     margin-right: 0.5em;
 }
 
-.talkie-free span.icon.inline.talkie:before {
+.talkie-free span.icon.inline.talkie:before,
+span.icon.inline.talkie.free:before {
     background-image: url("../icon/free/icon-play/icon-16x16.png");
 }
 
-.talkie-premium span.icon.inline.talkie:before {
+.talkie-premium span.icon.inline.talkie:before,
+span.icon.inline.talkie.premium:before {
     background-image: url("../icon/premium/icon-play/icon-16x16.png");
 }
 
