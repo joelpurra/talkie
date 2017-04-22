@@ -400,7 +400,7 @@ export default class StorageManager {
                         return result;
                     })
                     .catch((error) => {
-                        logError("Error", "upgradeIfNecessary", error);
+                        logError("upgradeIfNecessary", error);
 
                         throw error;
                     });

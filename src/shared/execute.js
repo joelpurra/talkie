@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     logDebug,
-    logError,
+    logInfo,
 } from "../shared/log";
 
 import {
@@ -50,7 +50,7 @@ export default class Execute {
                         return result;
                     })
                     .catch((error) => {
-                        logError("Error", "scriptInTopFrame", code.length, error);
+                        logInfo("scriptInTopFrame", code.length, "Error", error);
 
                         throw error;
                     });
@@ -75,7 +75,7 @@ export default class Execute {
                         return result;
                     })
                     .catch((error) => {
-                        logError("Error", "scriptInAllFrames", code.length, error);
+                        logInfo("scriptInAllFrames", code.length, "Error", error);
 
                         throw error;
                     });
@@ -99,7 +99,7 @@ export default class Execute {
                     })
                     .catch((error) => {
                         if (error && typeof error.name === "PromiseTimeout") {
-                        // NOTE: this is how to check for a timeout.
+                            // NOTE: this is how to check for a timeout.
                         }
 
                         throw error;

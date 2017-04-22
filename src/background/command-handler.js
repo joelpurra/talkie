@@ -44,7 +44,7 @@ export default class CommandHandler {
                 return undefined;
             })
             .catch((error) => {
-                logError("Error", "commandHandler", command, error);
+                logError("commandHandler", command, error);
 
                 throw error;
             });
@@ -61,7 +61,7 @@ export default class CommandHandler {
                 return undefined;
             })
             .catch((error) => {
-                logError("Error", "handleCommandEvent", command, error);
+                logError("handleCommandEvent", command, error);
 
                 throw error;
             });

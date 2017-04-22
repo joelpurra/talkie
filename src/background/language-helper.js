@@ -20,11 +20,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     logDebug,
+    logInfo,
     logError,
 } from "../shared/log";
 
 import {
     promiseTry,
+    promiseSeries,
 } from "../shared/promise";
 
 import {
@@ -235,11 +237,25 @@ export default class LanguageHelper {
 
                     copy.effectiveLanguage = effectiveLanguage;
 
-                    this.contentLogger.logToPage("Language", "Selected text language:", copy.detectedTextLanguage);
-                    this.contentLogger.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null);
-                    this.contentLogger.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage);
-                    this.contentLogger.logToPage("Language", "Detected page language:", detectedPageLanguage);
-                    this.contentLogger.logToPage("Language", "Effective language:", copy.effectiveLanguage);
+                    // TODO: report language results and move logging elsewhere?
+                    promiseSeries([
+                        () => this.contentLogger.logToPage("Language", "Selected text language:", copy.detectedTextLanguage),
+                        () => this.contentLogger.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null),
+                        () => this.contentLogger.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage),
+                        () => this.contentLogger.logToPage("Language", "Detected page language:", detectedPageLanguage),
+                        () => this.contentLogger.logToPage("Language", "Effective language:", copy.effectiveLanguage),
+                    ])
+                        .catch((error) => {
+                            // NOTE: swallowing any logToPage() errors.
+                            // NOTE: reduced logging for known tab/page access problems.
+                            if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                                logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+                            } else {
+                                logInfo("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+                            }
+
+                            return undefined;
+                        });
 
                     return copy;
                 };

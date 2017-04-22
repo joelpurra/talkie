@@ -45,7 +45,7 @@ export default class ShortcutKeyManager {
                         return undefined;
                     })
                     .catch((error) => {
-                        logError("Error", "handler", command, error);
+                        logError("handler", command, error);
 
                         throw error;
                     });

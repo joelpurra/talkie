@@ -30,6 +30,10 @@ import {
     setLevel,
 } from "../shared/log";
 
+import {
+    registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+
 import configurationObject from "../configuration.json";
 
 import Configuration from "../shared/configuration";
@@ -84,6 +88,8 @@ import StorageManager from "./storage-manager";
 import LanguageHelper from "./language-helper";
 
 import Execute from "../shared/execute";
+
+registerUnhandledRejectionHandler();
 
 function main() {
     logDebug("Start", "Main background function");
@@ -194,7 +200,12 @@ function main() {
         broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
             .catch((error) => {
                 // NOTE: swallowing any plug.once() errors.
-                logError("Error", "plug.once", "Error swallowed", error);
+                // NOTE: reduced logging for known tab/page access problems.
+                if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                    logDebug("plug.once", "Error swallowed", error);
+                } else {
+                    logInfo("plug.once", "Error swallowed", error);
+                }
 
                 return undefined;
             }));

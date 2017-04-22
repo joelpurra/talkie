@@ -19,35 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
-    logError,
+    logWarn,
+    logInfo,
 } from "../shared/log";
 
-export default class Chain {
-    constructor() {
-        this.chainPromise = Promise.resolve();
-        this.length = 0;
-    }
+const handleUnhandledRejection = (event) => {
+    logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
 
-    link(promise) {
-        this.length++;
-        const currentLength = this.length;
+    logInfo("Starting debugger, if attached.");
+    /* eslint-disable no-debugger */
+    debugger;
+    /* eslint-enable no-debugger */
+};
 
-        logDebug("Start", "Chain", currentLength);
-
-        this.chainPromise = this.chainPromise
-            .then(promise)
-            .then((result) => {
-                logDebug("Done", "Chain", currentLength);
-
-                return result;
-            })
-            .catch((error) => {
-                logError("Chain", currentLength, error);
-
-                throw error;
-            });
-
-        return this.chainPromise;
-    }
-}
+export const registerUnhandledRejectionHandler = () => {
+    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+};

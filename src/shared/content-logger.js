@@ -19,7 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logError,
+    logInfo,
+    logWarn,
 } from "../shared/log";
 
 import {
@@ -102,7 +103,12 @@ export default class ContentLogger {
 
                 return this.execute.scriptInTopFrame(code)
                     .catch((error) => {
-                        logError("Error", "this.execute.logToPage", ...args);
+                        // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logInfo("this.execute.logToPage", "Error", error, ...args);
+                        } else {
+                            logWarn("this.execute.logToPage", "Error", error, ...args);
+                        }
 
                         throw error;
                     });
@@ -128,7 +134,12 @@ export default class ContentLogger {
 
                 return this.execute.scriptInTopFrame(code)
                     .catch((error) => {
-                        logError("Error", "this.execute.logToPageWithColor", ...args);
+                        // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logInfo("this.execute.logToPageWithColor", ...args);
+                        } else {
+                            logWarn("this.execute.logToPageWithColor", ...args);
+                        }
 
                         throw error;
                     });

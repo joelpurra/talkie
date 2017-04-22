@@ -24,6 +24,7 @@ import {
 
 import {
     logDebug,
+    logInfo,
     logError,
 } from "../shared/log";
 
@@ -108,7 +109,12 @@ export default class SuspensionManager {
 
                 return this.executeConnectFromContent()
                     .catch((error) => {
-                        logError("Error", "preventExtensionSuspend", "Error swallowed", error);
+                        // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logDebug("preventExtensionSuspend", "Error swallowed", error);
+                        } else {
+                            logInfo("preventExtensionSuspend", "Error swallowed", error);
+                        }
 
                         return undefined;
                     });
@@ -127,7 +133,7 @@ export default class SuspensionManager {
                         // NOTE: should work irregardless if the port was connected or not.
                         this.preventSuspensionProducingPort.disconnect();
                     } catch (error) {
-                        logError("Error", "allowExtensionSuspend", error);
+                        logError("allowExtensionSuspend", error);
                     }
 
                     this.preventSuspensionProducingPort = null;

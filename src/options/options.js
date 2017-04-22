@@ -23,6 +23,10 @@ import {
 } from "../shared/promise";
 
 import {
+    registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+
+import {
     debounce,
 } from "../shared/basic";
 
@@ -863,7 +867,7 @@ const start = () => promiseTry(
                 return undefined;
             })
             .catch((error) => {
-                dualLogger.dualLogError("Error", "Start", error);
+                dualLogger.dualLogError("Start", error);
             });
     }
 );
@@ -884,6 +888,8 @@ const stop = () => promiseTry(
             });
     }
 );
+
+registerUnhandledRejectionHandler();
 
 document.addEventListener("tabchange", eventToPromise.bind(null, onTabChange));
 

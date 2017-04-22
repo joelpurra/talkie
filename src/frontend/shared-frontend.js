@@ -97,7 +97,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
                     const attributeValue = element.getAttribute(attributeName);
 
                     if (typeof attributeValue !== "string") {
-                        dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", "Invalid attribute value", [ element ], attributeName, attributeValue);
+                        dualLogger.dualLogError("handleElementsPerAttributePrefix", "Invalid attribute value", [ element ], attributeName, attributeValue);
 
                         throw new Error(`Handleable attribute not found: ${attributeName} on ${element}`);
                     }
@@ -109,7 +109,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
                             return result;
                         })
                         .catch((error) => {
-                            dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", "Handling not successful", [ element ], attributeName, attributeValue, error);
+                            dualLogger.dualLogError("handleElementsPerAttributePrefix", "Handling not successful", [ element ], attributeName, attributeValue, error);
 
                             throw error;
                         });
@@ -126,7 +126,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
                 return result;
             })
             .catch((error) => {
-                dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", attributePrefix);
+                dualLogger.dualLogError("handleElementsPerAttributePrefix", attributePrefix);
 
                 throw error;
             });
@@ -287,9 +287,9 @@ export const eventToPromise = (eventHandler, event) => promiseTry(
             Promise.resolve()
                 .then(() => eventHandler(event))
                 .then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event.type, event, result))
-                .catch((error) => dualLogger.dualLogError("Error", "eventToPromise", event.type, event, error));
+                .catch((error) => dualLogger.dualLogError("eventToPromise", event.type, event, error));
         } catch (error) {
-            dualLogger.dualLogError("Error", "eventToPromise", event.type, event, error);
+            dualLogger.dualLogError("eventToPromise", event.type, event, error);
 
             throw error;
         }

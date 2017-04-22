@@ -20,6 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     logDebug,
+    logInfo,
     logError,
 } from "../shared/log";
 
@@ -110,7 +111,7 @@ export default class TalkieSpeaker {
                                 delete synthesizer.onerror;
                                 delete synthesizer.onvoiceschanged;
 
-                                logError("Error", "getSynthesizerFromBrowser", event);
+                                logError("getSynthesizerFromBrowser", event);
 
                                 return reject(null);
                             };
@@ -136,7 +137,7 @@ export default class TalkieSpeaker {
                             return synthesizer;
                         }
 
-                        logError("Error", "getSynthesizerFromBrowser", "asyncSynthesizerInitialization", error);
+                        logError("getSynthesizerFromBrowser", "asyncSynthesizerInitialization", error);
 
                         throw error;
                     });
@@ -227,7 +228,7 @@ export default class TalkieSpeaker {
                             delete utterance.onend;
                             delete utterance.onerror;
 
-                            logError("Error", "speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
+                            logError("speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
 
                             return reject();
                         };
@@ -265,7 +266,7 @@ export default class TalkieSpeaker {
                         return actualVoice;
                     })
                     .catch((error) => {
-                        logError("Error", "getActualVoice", mappedVoice, error);
+                        logError("getActualVoice", mappedVoice, error);
 
                         throw error;
                     });
@@ -336,7 +337,18 @@ export default class TalkieSpeaker {
         return promiseTry(
             () => Promise.resolve()
                 .then(() => {
-                    this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
+                    this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`)
+                        .catch((error) => {
+                        // NOTE: swallowing any logToPage() errors.
+                        // NOTE: reduced logging for known tab/page access problems.
+                            if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                                logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+                            } else {
+                                logInfo("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+                            }
+
+                            return undefined;
+                        });
 
                     return this.splitAndSpeak(text, voice);
                 })

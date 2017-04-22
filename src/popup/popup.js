@@ -23,6 +23,10 @@ import {
 } from "../shared/promise";
 
 import {
+    registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+
+import {
     getBackgroundPage,
 } from "../shared/tabs";
 
@@ -74,7 +78,7 @@ const passClickToBackground = () => promiseTry(
                     return undefined;
                 })
                 .catch((error) => {
-                    dualLogger.dualLogError("Error", "passClickToBackground", error);
+                    dualLogger.dualLogError("passClickToBackground", error);
 
                     throw error;
                 });
@@ -114,6 +118,8 @@ const stop = () => promiseTry(
             .then(() => stopFrontend());
     }
 );
+
+registerUnhandledRejectionHandler();
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
 window.addEventListener("unload", eventToPromise.bind(null, stop));
