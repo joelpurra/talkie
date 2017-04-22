@@ -64,12 +64,12 @@ const loadOptionsAndApply = () => promiseTry(
 
 const passClickToBackground = () => promiseTry(
         () => {
-            dualLogger.dualLog("Start", "passClickToBackground");
+            dualLogger.dualLogDebug("Start", "passClickToBackground");
 
             return getBackgroundPage()
                 .then((background) => background.iconClick())
                 .then(() => {
-                    dualLogger.dualLog("Done", "passClickToBackground");
+                    dualLogger.dualLogDebug("Done", "passClickToBackground");
 
                     return undefined;
                 })

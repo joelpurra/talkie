@@ -23,9 +23,11 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
-    logError,
     logDebug,
+    logInfo,
+    logWarn,
+    logError,
+    setLevel,
 } from "../shared/log";
 
 import configurationObject from "../configuration.json";
@@ -84,13 +86,13 @@ import LanguageHelper from "./language-helper";
 import Execute from "../shared/execute";
 
 function main() {
-    log("Start", "Main background function");
+    logDebug("Start", "Main background function");
 
     const metadataManager = new MetadataManager();
     const configuration = new Configuration(metadataManager, configurationObject);
 
-    log("Locale (@@ui_locale)", configuration.uiLocale);
-    log("Locale (messages.json)", configuration.messagesLocale);
+    logDebug("Locale (@@ui_locale)", configuration.uiLocale);
+    logDebug("Locale (messages.json)", configuration.messagesLocale);
 
     const broadcaster = new Broadcaster();
 
@@ -245,9 +247,11 @@ function main() {
         window.broadcaster = broadcaster;
         window.progress = progress;
 
-        window.log = log;
-        window.logError = logError;
         window.logDebug = logDebug;
+        window.logInfo = logInfo;
+        window.logWarn = logWarn;
+        window.logError = logError;
+        window.setLoggingLevel = setLevel;
 
         window.getAllVoices = () => talkieSpeaker.getAllVoices();
         window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
@@ -272,7 +276,7 @@ function main() {
 
     buttonPopupManager.enablePopup();
 
-    log("Done", "Main background function");
+    logDebug("Done", "Main background function");
 }
 
 try {

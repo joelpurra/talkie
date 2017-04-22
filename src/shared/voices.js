@@ -125,13 +125,13 @@ export const pitchRange = {
 // checkVoices() {
 //     return this.getSynthesizer()
 //         .then((synthesizer) => {
-//             log("Start", "Voices check");
+//             logDebug("Start", "Voices check");
 //
 //             return getMappedVoices()
 //                 .then((voices) => {
-//                     log("Variable", "voices[]", voices.length, voices);
+//                     logDebug("Variable", "voices[]", voices.length, voices);
 //
-//                     log("Done", "Voices check");
+//                     logDebug("Done", "Voices check");
 //
 //                     return synthesizer;
 //                 });

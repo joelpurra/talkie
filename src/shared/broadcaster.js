@@ -56,7 +56,7 @@ export default class Broadcaster {
         return new Promise(
             (resolve, reject) => {
                 try {
-                    // log("Start", "Sending message", actionName, actionData);
+                    // logDebug("Start", "Sending message", actionName, actionData);
 
                     const respondingAction = this.actionRespondingMap[actionName] || null;
                     const listeningActions = this.actionListeningMap[actionName] || [];

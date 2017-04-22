@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -62,7 +62,7 @@ export default class TalkieSpeaker {
     getSynthesizerFromBrowser() {
         return promiseTry(
             () => {
-                log("Start", "getSynthesizerFromBrowser", "Pre-requisites check");
+                logDebug("Start", "getSynthesizerFromBrowser", "Pre-requisites check");
 
                 if (!("speechSynthesis" in window) || typeof window.speechSynthesis.getVoices !== "function" || typeof window.speechSynthesis.speak !== "function") {
                     throw new Error("The browser does not support speechSynthesis.");
@@ -72,10 +72,10 @@ export default class TalkieSpeaker {
                     throw new Error("The browser does not support SpeechSynthesisUtterance.");
                 }
 
-                log("Done", "getSynthesizerFromBrowser", "Pre-requisites check");
+                logDebug("Done", "getSynthesizerFromBrowser", "Pre-requisites check");
             })
             .then(() => {
-                log("Start", "getSynthesizerFromBrowser");
+                logDebug("Start", "getSynthesizerFromBrowser");
 
                 // NOTE: the speech synthesizer can only be used after the voices have been loaded.
                 const synthesizer = window.speechSynthesis;
@@ -85,7 +85,7 @@ export default class TalkieSpeaker {
                 const voices = synthesizer.getVoices();
 
                 if (Array.isArray(voices) && voices.length > 0) {
-                    log("Done", "getSynthesizerFromBrowser (direct)");
+                    logDebug("Done", "getSynthesizerFromBrowser (direct)");
 
                     return synthesizer;
                 }
@@ -93,15 +93,15 @@ export default class TalkieSpeaker {
                 const asyncSynthesizerInitialization = new Promise(
                     (resolve, reject) => {
                         try {
-                            log("Start", "getSynthesizerFromBrowser (event-based)");
+                            logDebug("Start", "getSynthesizerFromBrowser (event-based)");
 
                             const handleVoicesChanged = () => {
                                 delete synthesizer.onerror;
                                 delete synthesizer.onvoiceschanged;
 
-                                log("Variable", "synthesizer", synthesizer);
+                                logDebug("Variable", "synthesizer", synthesizer);
 
-                                log("Done", "getSynthesizerFromBrowser (event-based)");
+                                logDebug("Done", "getSynthesizerFromBrowser (event-based)");
 
                                 return resolve(synthesizer);
                             };
@@ -130,7 +130,7 @@ export default class TalkieSpeaker {
                         delete synthesizer.onvoiceschanged;
 
                         if (error && error.name === "PromiseTimeout") {
-                            log("Done", "getSynthesizerFromBrowser (timeout)", "asyncSynthesizerInitialization", error);
+                            logDebug("Done", "getSynthesizerFromBrowser (timeout)", "asyncSynthesizerInitialization", error);
 
                             // NOTE: assume the synthesizer has somehow been initialized without triggering the onvoiceschanged event.
                             return synthesizer;
@@ -146,7 +146,7 @@ export default class TalkieSpeaker {
                 // NOTE: only for logging purposes.
                 const voices = synthesizer.getVoices();
 
-                log("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
+                logDebug("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
 
                 return synthesizer;
             });
@@ -181,7 +181,7 @@ export default class TalkieSpeaker {
     stopSpeaking() {
         return promiseTry(
             () => {
-                log("Start", "stopSpeaking");
+                logDebug("Start", "stopSpeaking");
 
                 return this.getSynthesizer()
                     .then((synthesizer) => {
@@ -199,7 +199,7 @@ export default class TalkieSpeaker {
                         // Reset the system to resume playback, just to be nice to the world.
                         this.synthesizer.resume();
 
-                        log("Done", "stopSpeaking");
+                        logDebug("Done", "stopSpeaking");
 
                         return undefined;
                     });
@@ -212,13 +212,13 @@ export default class TalkieSpeaker {
             .then((synthesizer) => new Promise(
                 (resolve, reject) => {
                     try {
-                        log("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
+                        logDebug("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
 
                         const handleEnd = (event) => {
                             delete utterance.onend;
                             delete utterance.onerror;
 
-                            log("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
+                            logDebug("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
                             return resolve();
                         };
@@ -242,9 +242,9 @@ export default class TalkieSpeaker {
                             synthesizer.resume();
                         }
 
-                        log("Variable", "synthesizer", synthesizer);
+                        logDebug("Variable", "synthesizer", synthesizer);
 
-                        log("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
+                        logDebug("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
                     } catch (error) {
                         return reject(error);
                     }
@@ -256,11 +256,11 @@ export default class TalkieSpeaker {
     getActualVoice(mappedVoice) {
         return promiseTry(
             () => {
-                log("Start", "getActualVoice", mappedVoice);
+                logDebug("Start", "getActualVoice", mappedVoice);
 
                 return resolveVoice(mappedVoice)
                     .then((actualVoice) => {
-                        log("Done", "getActualVoice", mappedVoice, actualVoice);
+                        logDebug("Done", "getActualVoice", mappedVoice, actualVoice);
 
                         return actualVoice;
                     })
@@ -276,7 +276,7 @@ export default class TalkieSpeaker {
     splitAndSpeak(text, voice) {
         return promiseTry(
             () => {
-                log("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
+                logDebug("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
                 const speakingEventData = {
                     text: text,
@@ -313,7 +313,7 @@ export default class TalkieSpeaker {
                                                 utterance.rate = voice.rate || rateRange.default;
                                                 utterance.pitch = voice.pitch || pitchRange.default;
 
-                                                log("Variable", "utterance", utterance);
+                                                logDebug("Variable", "utterance", utterance);
 
                                                 return utterance;
                                             })
@@ -341,7 +341,7 @@ export default class TalkieSpeaker {
                     return this.splitAndSpeak(text, voice);
                 })
                 .then(() => {
-                    log("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${voice.name}, ${voice.lang})`);
+                    logDebug("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${voice.name}, ${voice.lang})`);
 
                     return undefined;
                 })
@@ -360,7 +360,7 @@ export default class TalkieSpeaker {
                     .then(() => {
                         return this.speakTextInVoice(text, voice);
                     })
-                    .then(() => log("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`));
+                    .then(() => logDebug("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`));
             }
         );
     }

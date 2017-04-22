@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -65,7 +65,7 @@ export default class LanguageHelper {
                 // https://developer.browser.com/extensions/tabs#method-detectLanguage
                 return browser.tabs.detectLanguage()
                     .then((language) => {
-                        log("detectPageLanguage", "Browser detected primary page language", language);
+                        logDebug("detectPageLanguage", "Browser detected primary page language", language);
 
                         // The language fallback value is "und", so treat it as no language.
                         if (!language || typeof language !== "string" || language === "und") {
@@ -91,7 +91,7 @@ export default class LanguageHelper {
             () => {
                 if (!("detectLanguage" in browser.i18n)) {
                     // NOTE: text-based language detection is only used as a fallback.
-                    log("detectTextLanguage", "Browser does not support detecting text language");
+                    logDebug("detectTextLanguage", "Browser does not support detecting text language");
 
                     return null;
                 }
@@ -109,14 +109,14 @@ export default class LanguageHelper {
                                 || result.languages[0].language === "und"
                         ) {
                             // NOTE: text-based language detection is only used as a fallback.
-                            log("detectTextLanguage", "Browser did not detect reliable text language", result);
+                            logDebug("detectTextLanguage", "Browser did not detect reliable text language", result);
 
                             return null;
                         }
 
                         const primaryDetectedTextLanguage = result.languages[0].language;
 
-                        log("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
+                        logDebug("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
 
                         return primaryDetectedTextLanguage;
                     });
@@ -214,24 +214,24 @@ export default class LanguageHelper {
                         detectedPageLanguage,
                     ];
 
-                    log("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
+                    logDebug("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
 
                     const cleanedLanguages = this.cleanupLanguagesArray(allVoices, detectedLanguages);
 
-                    log("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
+                    logDebug("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
 
                     const primaryLanguagePrefix = cleanedLanguages[0] || null;
 
-                    log("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
+                    logDebug("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
 
                     // NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
                     const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
 
-                    log("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
+                    logDebug("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
 
                     const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
 
-                    log("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
+                    logDebug("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
 
                     copy.effectiveLanguage = effectiveLanguage;
 
@@ -276,7 +276,7 @@ export default class LanguageHelper {
                     .map(mapResults);
 
                 if (results.length === 0) {
-                    log("Empty filtered selections");
+                    logDebug("Empty filtered selections");
 
                     results.push(this.noTextSelectedMessage);
                 }

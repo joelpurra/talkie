@@ -23,7 +23,7 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -35,12 +35,12 @@ export default class ShortcutKeyManager {
     handler(command) {
         return promiseTry(
             () => {
-                log("Start", "handler", command);
+                logDebug("Start", "handler", command);
 
                 // NOTE: straight mapping from command to action.
                 return this.commandHandler.handle(command)
                     .then((result) => {
-                        log("Done", "handler", command, result);
+                        logDebug("Done", "handler", command, result);
 
                         return undefined;
                     })

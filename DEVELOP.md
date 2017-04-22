@@ -74,7 +74,13 @@ npm run --silent rebuild
 - From the browser extensions settings page:
   - Enable developer mode.
   - Inspect the Talkie background page view to see console output.
-- You can also inspect the popup and options pages separately.
+- It is possible to coarsely adjust the console logging level.
+  - In the background page console, enter one of these logging level commands:
+    - `this.setLoggingLevel("DEBG");` (maximum logging, default for developers)
+    - `this.setLoggingLevel("INFO");`
+    - `this.setLoggingLevel("WARN");` (default for normal usage)
+    - `this.setLoggingLevel("ERRO");` (minimum logging)
+- You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
 
 

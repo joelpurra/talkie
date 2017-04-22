@@ -23,7 +23,7 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -59,7 +59,7 @@ export default class SuspensionManager {
     executeConnectFromContent() {
         return this.execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
             .then((preventExtensionSuspendConnectFromContentResult) => {
-                log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
+                logDebug("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
 
                 if (!preventExtensionSuspendConnectFromContentResult || !Array.isArray(preventExtensionSuspendConnectFromContentResult) || preventExtensionSuspendConnectFromContentResult.length !== 1 || !preventExtensionSuspendConnectFromContentResult[0]) {
                     throw new Error("preventExtensionSuspendConnectFromContentResult");
@@ -72,10 +72,10 @@ export default class SuspensionManager {
     preventExtensionSuspend() {
         return promiseTry(
             () => {
-                log("Start", "preventExtensionSuspend");
+                logDebug("Start", "preventExtensionSuspend");
 
                 const onMessageProducingHandler = (msg) => {
-                    log("preventExtensionSuspend", "onMessageProducingHandler", msg);
+                    logDebug("preventExtensionSuspend", "onMessageProducingHandler", msg);
                 };
 
                 const messageProducer = () => {
@@ -83,7 +83,7 @@ export default class SuspensionManager {
                 };
 
                 const onConnectProducingHandler = (port) => {
-                    log("preventExtensionSuspend", "onConnectProducingHandler", port);
+                    logDebug("preventExtensionSuspend", "onConnectProducingHandler", port);
 
                     if (port.name !== this.preventSuspensionPortName) {
                         return;
@@ -104,7 +104,7 @@ export default class SuspensionManager {
 
                 browser.runtime.onConnect.addListener(onConnectProducingHandler);
 
-                log("Done", "preventExtensionSuspend");
+                logDebug("Done", "preventExtensionSuspend");
 
                 return this.executeConnectFromContent()
                     .catch((error) => {
@@ -119,7 +119,7 @@ export default class SuspensionManager {
     allowExtensionSuspend() {
         return promiseTry(
             () => {
-                log("Start", "allowExtensionSuspend");
+                logDebug("Start", "allowExtensionSuspend");
 
                 if (this.preventSuspensionProducingPort !== null) {
                     try {
@@ -136,7 +136,7 @@ export default class SuspensionManager {
                 clearInterval(this.preventSuspensionIntervalId);
                 this.preventSuspensionIntervalId = null;
 
-                log("Done", "allowExtensionSuspend");
+                logDebug("Done", "allowExtensionSuspend");
             }
         );
     }

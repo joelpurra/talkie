@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -95,7 +95,7 @@ export default class StorageManager {
     _setStoredValue(storageFormatVersion, key, value) {
         return promiseTry(
             () => {
-                log("Start", "_setStoredValue", storageFormatVersion, key, typeof value, value);
+                logDebug("Start", "_setStoredValue", storageFormatVersion, key, typeof value, value);
 
                 return this._getStorageKey(storageFormatVersion, key)
                     .then((storageKey) => {
@@ -105,7 +105,7 @@ export default class StorageManager {
                             .then((background) => {
                                 background.localStorage.setItem(storageKey, valueJson);
 
-                                log("Done", "_setStoredValue", storageFormatVersion, key, typeof value, value);
+                                logDebug("Done", "_setStoredValue", storageFormatVersion, key, typeof value, value);
 
                                 return undefined;
                             });
@@ -117,11 +117,11 @@ export default class StorageManager {
     setStoredValue(key, value) {
         return promiseTry(
             () => {
-                log("Start", "setStoredValue", key, typeof value, value);
+                logDebug("Start", "setStoredValue", key, typeof value, value);
 
                 return this._setStoredValue(this.currentStorageFormatVersion, key, value)
                     .then(() => {
-                        log("Done", "setStoredValue", key, typeof value, value);
+                        logDebug("Done", "setStoredValue", key, typeof value, value);
 
                         return undefined;
                     });
@@ -132,7 +132,7 @@ export default class StorageManager {
     _getStoredValue(storageFormatVersion, key) {
         return promiseTry(
             () => {
-                log("Start", "_getStoredValue", storageFormatVersion, key);
+                logDebug("Start", "_getStoredValue", storageFormatVersion, key);
 
                 return this._getStorageKey(storageFormatVersion, key)
                     .then((storageKey) => {
@@ -141,14 +141,14 @@ export default class StorageManager {
                                 const valueJson = background.localStorage.getItem(storageKey);
 
                                 if (valueJson === null) {
-                                    log("Done", "_getStoredValue", storageFormatVersion, key, null);
+                                    logDebug("Done", "_getStoredValue", storageFormatVersion, key, null);
 
                                     return null;
                                 }
 
                                 const value = JSON.parse(valueJson);
 
-                                log("Done", "_getStoredValue", storageFormatVersion, key, value);
+                                logDebug("Done", "_getStoredValue", storageFormatVersion, key, value);
 
                                 return value;
                             });
@@ -160,11 +160,11 @@ export default class StorageManager {
     getStoredValue(key) {
         return promiseTry(
             () => {
-                log("Start", "getStoredValue", key);
+                logDebug("Start", "getStoredValue", key);
 
                 return this._getStoredValue(this.currentStorageFormatVersion, key)
                     .then((value) => {
-                        log("Done", "getStoredValue", key, value);
+                        logDebug("Done", "getStoredValue", key, value);
 
                         return value;
                     });
@@ -390,12 +390,12 @@ export default class StorageManager {
     upgradeIfNecessary() {
         return promiseTry(
             () => {
-                log("Start", "upgradeIfNecessary");
+                logDebug("Start", "upgradeIfNecessary");
 
                 return this._upgradeV1x0x0IfNecessary()
                     .then(() => this._upgradeIfNecessary(this.currentStorageFormatVersion))
                     .then((result) => {
-                        log("Done", "upgradeIfNecessary");
+                        logDebug("Done", "upgradeIfNecessary");
 
                         return result;
                     })

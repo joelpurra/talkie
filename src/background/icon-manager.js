@@ -23,7 +23,7 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
+    logDebug,
 } from "../shared/log";
 
 export default class IconManager {
@@ -52,7 +52,7 @@ export default class IconManager {
     setIconMode(name) {
         return promiseTry(
             () => {
-                log("Start", "Changing icon to", name);
+                logDebug("Start", "Changing icon to", name);
 
                 return this.metadataManager.getVersionType()
                     .then((versionType) => {
@@ -63,7 +63,7 @@ export default class IconManager {
 
                         return browser.browserAction.setIcon(details)
                             .then((result) => {
-                                log("Done", "Changing icon to", name);
+                                logDebug("Done", "Changing icon to", name);
 
                                 return result;
                             });
