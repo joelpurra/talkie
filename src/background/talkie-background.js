@@ -242,7 +242,7 @@ export default class TalkieBackground {
 
                 return this.speakingStatus.isSpeaking()
                     .then((talkieIsSpeaking) => {
-                        // Clear all text if Talkie was speaking.
+                        // NOTE: Clear all text if Talkie was speaking.
                         if (talkieIsSpeaking) {
                             return this.talkieSpeaker.stopSpeaking();
                         }

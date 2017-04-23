@@ -146,6 +146,7 @@ git flow feature start <feature-name>
 npm run --silent watch:background
 npm run --silent watch:popup
 npm run --silent watch:options
+npm run --silent watch:stay-alive
 npm run --silent watch:chrome
 npm run --silent watch:webextension
 

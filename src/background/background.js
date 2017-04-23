@@ -54,6 +54,7 @@ import ContentLogger from "../shared/content-logger";
 
 import Plug from "../shared/plug";
 
+import SuspensionConnectorManager from "./suspension-connector-manager";
 import SuspensionManager from "./suspension-manager";
 
 import TalkieSpeaker from "./talkie-speaker";
@@ -136,7 +137,8 @@ function main() {
     const contextMenuManager = new ContextMenuManager(commandHandler);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
-    const suspensionManager = new SuspensionManager(execute);
+    const suspensionConnectorManager = new SuspensionConnectorManager();
+    const suspensionManager = new SuspensionManager(suspensionConnectorManager);
     const iconManager = new IconManager(metadataManager);
     const buttonPopupManager = new ButtonPopupManager();
 
@@ -193,101 +195,108 @@ function main() {
         }
     }());
 
-    (function registerBroadcastListeners() {
-        broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
+    return Promise.resolve()
+        .then(() => suspensionManager.initialize())
+        .then(() => {
+            (function registerBroadcastListeners() {
+                broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
 
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
-            .catch((error) => {
-                // NOTE: swallowing any plug.once() errors.
-                // NOTE: reduced logging for known tab/page access problems.
-                if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
-                    logDebug("plug.once", "Error swallowed", error);
-                } else {
-                    logInfo("plug.once", "Error swallowed", error);
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
+                    .catch((error) => {
+                        // NOTE: swallowing any plug.once() errors.
+                        // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logDebug("plug.once", "Error swallowed", error);
+                        } else {
+                            logInfo("plug.once", "Error swallowed", error);
+                        }
+
+                        return undefined;
+                    }));
+
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking());
+
+                // NOTE: setting icons async.
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; });
+
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup());
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup());
+
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend());
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend());
+
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0));
+                broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length));
+                broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment());
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress());
+            }());
+
+            (function addChromeListeners() {
+                browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
+                browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+
+                // NOTE: not supported in Firefox (2017-03-15).
+                // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+                if (browser.runtime.onSuspend) {
+                    browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+                    browser.runtime.onSuspend.addListener(() => suspensionManager.unintialize());
                 }
 
-                return undefined;
-            }));
+                // NOTE: used when the popup has been disabled.
+                browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking());
+                browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
 
-        // NOTE: setting icons async.
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; });
+                // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
+                // Does not seem to happen in Chrome.
+                // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
+                try {
+                    browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+                } catch (error) {
+                    logError("browser.commands.onCommand.addListener(...)", error);
+                }
+            }());
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup());
+            (function exportBackgroundFunctions() {
+                window.broadcaster = broadcaster;
+                window.progress = progress;
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend());
+                window.logDebug = logDebug;
+                window.logInfo = logInfo;
+                window.logWarn = logWarn;
+                window.logError = logError;
+                window.setLoggingLevel = setLevel;
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0));
-        broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length));
-        broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress());
-    }());
+                window.getAllVoices = () => talkieSpeaker.getAllVoices();
+                window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
+                window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
+                window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+                window.getVersionName = () => metadataManager.getVersionName();
+                window.isFreeVersion = () => metadataManager.isFreeVersion();
+                window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+                window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
+                window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
+                window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
+                window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
+                window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+                window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
+                window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
+                window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
+                window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
+                window.getStoredValue = (key) => storageManager.getStoredValue(key);
+                window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
+                window.getConfigurationValue = (path) => configuration.get(path);
+            }());
 
-    (function addChromeListeners() {
-        browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
-        browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+            buttonPopupManager.enablePopup();
 
-        // NOTE: not supported in Firefox (2017-03-15).
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-        if (browser.runtime.onSuspend) {
-            browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
-        }
+            logDebug("Done", "Main background function");
 
-        // NOTE: used when the popup has been disabled.
-        browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
-
-        browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
-
-        // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
-        // Does not seem to happen in Chrome.
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
-        try {
-            browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
-        } catch (error) {
-            logError("browser.commands.onCommand.addListener(...)", error);
-        }
-    }());
-
-    (function exportBackgroundFunctions() {
-        window.broadcaster = broadcaster;
-        window.progress = progress;
-
-        window.logDebug = logDebug;
-        window.logInfo = logInfo;
-        window.logWarn = logWarn;
-        window.logError = logError;
-        window.setLoggingLevel = setLevel;
-
-        window.getAllVoices = () => talkieSpeaker.getAllVoices();
-        window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
-        window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
-        window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
-        window.getVersionName = () => metadataManager.getVersionName();
-        window.isFreeVersion = () => metadataManager.isFreeVersion();
-        window.isPremiumVersion = () => metadataManager.isPremiumVersion();
-        window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
-        window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
-        window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
-        window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
-        window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
-        window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
-        window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
-        window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
-        window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
-        window.getStoredValue = (key) => storageManager.getStoredValue(key);
-        window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
-        window.getConfigurationValue = (path) => configuration.get(path);
-    }());
-
-    buttonPopupManager.enablePopup();
-
-    logDebug("Done", "Main background function");
+            return undefined;
+        });
 }
 
 try {
