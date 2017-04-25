@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
-<path fill="#DE3C26" d="M512.5,2.5c-280.6,0-508,227.4-508,508c0,87,21.9,168.9,60.4,240.5l-5.6,20.9L4.6,975.6
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
+	<path fill="#DE3C26" d="M512.5,2.5c-280.6,0-508,227.4-508,508c0,87,21.9,168.9,60.4,240.5l-5.6,20.9L4.6,975.6
 	c-6.8,27.1,18.1,51.9,44.6,44.6l203.2-55.3l21.6-5.8c71.1,37.9,152.3,59.4,238.5,59.4c280.6,0,508-227.4,508-508
 	S793.1,2.5,512.5,2.5z"/>
-<path fill="#FFFFFF" d="M711.5,757h-399c-26.1,0-47.5-21.4-47.5-47.5v-399c0-26.1,21.4-47.5,47.5-47.5h399
+	<path fill="#FFFFFF" d="M711.5,757h-399c-26.1,0-47.5-21.4-47.5-47.5v-399c0-26.1,21.4-47.5,47.5-47.5h399
 	c26.1,0,47.5,21.4,47.5,47.5v399C759,735.6,737.6,757,711.5,757z"/>
 </svg>
