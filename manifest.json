@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "version": "3.0.0",
-  "version_name": "v3.0.0 Free (2017-04-25)",
+  "version": "3.0.1",
+  "version_name": "v3.0.1 Free (2017-04-25)",
   "applications": {
     "gecko": {
       "strict_min_version": "52.0"
