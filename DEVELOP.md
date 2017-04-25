@@ -142,25 +142,22 @@ git checkout develop
 # Start a new feature. Us a descriptive "<feature-name>", such as "automatic-language-detection".
 git flow feature start <feature-name>
 
-# Watch the source files for changes; one command per terminal.
-npm run --silent watch:background
-npm run --silent watch:popup
-npm run --silent watch:options
-npm run --silent watch:stay-alive
-npm run --silent watch:chrome
-npm run --silent watch:webextension
+# Watch the source files for changes. You can also run each command separately; see package.json.
+npm run --silent watch
 
 # Code your feature and add the files.
 # Manually reload and test the code in the browser.
 # Manually test all Talkie features:
-#   - The Talkie button
-#   - Shortcut keys
-#   - Options page
-#   - Language detection in more than one language
-#   - Any feature change you may have made
-# in the supported browsers:
-#   - Google Chrome
-#   - Firefox
+#   - The Talkie button.
+#   - Shortcut keys.
+#   - Right click context menu.
+#   - Options page.
+#   - Language detection in more than one language.
+#   - (Any features which might not have been added to this list.)
+#   - (Any feature change you may have changed/added.)
+# Test in the supported browsers:
+#   - Google Chrome.
+#   - Firefox.
 #   - Preferably other browsers as well.
 
 # Make sure the code builds.
