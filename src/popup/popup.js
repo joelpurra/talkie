@@ -95,10 +95,24 @@ const updateProgress = (data) => promiseTry(
     }
 );
 
+const killSwitches = [];
+
+const executeKillSwitches = () => {
+    // NOTE: expected to have only synchronous methods for the relevant parts.
+    killSwitches.forEach((killSwitch) => {
+        try {
+            killSwitch();
+        } catch (error) {
+            dualLogger.dualLogError("executeKillSwitches", error);
+        }
+    });
+};
+
 const registerBroadcastListeners = () => promiseTry(
     () => {
         return getBackgroundPage()
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)));
+            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
+            .then((killSwitch) => killSwitches.push(killSwitch));
     }
 );
 
@@ -114,6 +128,7 @@ const start = () => promiseTry(
 
 const stop = () => promiseTry(
     () => {
+        // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
         return Promise.resolve()
             .then(() => stopFrontend());
     }
@@ -122,4 +137,11 @@ const stop = () => promiseTry(
 registerUnhandledRejectionHandler();
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
+
+// NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
 window.addEventListener("unload", eventToPromise.bind(null, stop));
+
+// NOTE: synchronous version.
+window.addEventListener("unload", () => {
+    executeKillSwitches();
+});
