@@ -4,8 +4,9 @@
   "version": "2.1.2",
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
-    "clean": "rimraf package/ && rimraf dist/ && rimraf web-ext-artifacts/",
-    "build": "rollup --config rollup.config.background.js && rollup --config rollup.config.popup.js && rollup --config rollup.config.options.js && rollup --config rollup.config.stay-alive.js && npm run --silent build:chrome:free && npm run --silent build:webextension:free && npm run --silent build:chrome:premium && npm run --silent build:webextension:premium",
+    "clean": "rimraf package/ && rimraf dist/ && rimraf web-ext-artifacts/ && rimraf lib/",
+    "build": "npm run --silent build:webextension-polyfill && rollup --config rollup.config.background.js && rollup --config rollup.config.popup.js && rollup --config rollup.config.options.js && rollup --config rollup.config.stay-alive.js && npm run --silent build:chrome:free && npm run --silent build:webextension:free && npm run --silent build:chrome:premium && npm run --silent build:webextension:premium",
+    "build:webextension-polyfill": "mkdirp lib/ && cp node_modules/webextension-polyfill/dist/browser-polyfill.js node_modules/webextension-polyfill/dist/browser-polyfill.js.map lib/",
     "build:chrome:free": "mkdirp package/chrome/ && rsync -a --files-from extension-files.txt . package/chrome/ && npm run --silent build:chrome:free:patch",
     "build:chrome:free:patch": "npm run --silent build:patch:chrome:manifest -- package/chrome/manifest.json",
     "build:chrome:premium": "mkdirp package/chrome-premium/ && npm run --silent build:patch:premium:filelist && rsync -a --files-from extension-files.premium.txt . package/chrome-premium/ && rename --force --delete '.premium' --glob 'package/chrome-premium/_locales/*/messages.premium.json' && npm run --silent build:chrome:premium:patch",
@@ -100,7 +101,7 @@
     "rollup-watch": "^3.2.2",
     "stream-to-promise": "^2.2.0",
     "web-ext": "^1.8.1",
-    "webextension-polyfill": "git+https://github.com/mozilla/webextension-polyfill.git"
+    "webextension-polyfill": "^0.1.1"
   },
   "browserslist": [
     "last 5 Chrome versions",
