@@ -70,6 +70,7 @@
   "offline_enabled": true,
   "default_locale": "en",
   "browser_action": {
+    "browser_style": false,
     "default_title": "__MSG_buttonDefaultTitle__",
     "default_icon": {
       "16": "resources/icon/free/icon-play/icon-16x16.png",
