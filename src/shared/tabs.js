@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
 } from "../shared/log";
 
 import {
@@ -56,7 +56,7 @@ export const getCurrentActiveTab = () => promiseTry(
 
                 const tab = tabs[0] || null;
 
-                log("getCurrentActiveTab", tabs, tab, singleTabResult);
+                logDebug("getCurrentActiveTab", tabs, tab, singleTabResult);
 
                 if (singleTabResult) {
                     return tab;
@@ -115,7 +115,7 @@ const getCurrentActiveNormalLoadedTab = () => promiseTry(
 
                 const tab = tabs[0] || null;
 
-                log("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
+                logDebug("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
 
                 if (singleTabResult) {
                     return tab;

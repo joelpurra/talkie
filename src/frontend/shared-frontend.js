@@ -80,11 +80,11 @@ const filterElementsWithAttributesPrefixAndGroupPerSuffix = (elements, attribute
 
 const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) => promiseTry(
     () => {
-        dualLogger.dualLog("Start", "handleElementsPerAttributePrefix", attributePrefix);
+        dualLogger.dualLogDebug("Start", "handleElementsPerAttributePrefix", attributePrefix);
 
         const suffixesAndElements = filterElementsWithAttributesPrefixAndGroupPerSuffix(elements, attributePrefix);
 
-        dualLogger.dualLog("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
+        dualLogger.dualLogDebug("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
 
         const attributeSuffixes = Object.keys(suffixesAndElements);
 
@@ -97,19 +97,19 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
                     const attributeValue = element.getAttribute(attributeName);
 
                     if (typeof attributeValue !== "string") {
-                        dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", "Invalid attribute value", [ element ], attributeName, attributeValue);
+                        dualLogger.dualLogError("handleElementsPerAttributePrefix", "Invalid attribute value", [ element ], attributeName, attributeValue);
 
                         throw new Error(`Handleable attribute not found: ${attributeName} on ${element}`);
                     }
 
                     return handler(element, attributeSuffix, attributeValue)
                         .then((result) => {
-                            dualLogger.dualLog("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
+                            dualLogger.dualLogDebug("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
 
                             return result;
                         })
                         .catch((error) => {
-                            dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", "Handling not successful", [ element ], attributeName, attributeValue, error);
+                            dualLogger.dualLogError("handleElementsPerAttributePrefix", "Handling not successful", [ element ], attributeName, attributeValue, error);
 
                             throw error;
                         });
@@ -121,12 +121,12 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
 
         return Promise.all(attributeSuffixPromises)
             .then((result) => {
-                dualLogger.dualLog("Done", "handleElementsPerAttributePrefix", attributePrefix);
+                dualLogger.dualLogDebug("Done", "handleElementsPerAttributePrefix", attributePrefix);
 
                 return result;
             })
             .catch((error) => {
-                dualLogger.dualLogError("Error", "handleElementsPerAttributePrefix", attributePrefix);
+                dualLogger.dualLogError("handleElementsPerAttributePrefix", attributePrefix);
 
                 throw error;
             });
@@ -135,7 +135,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
 
 const configureWindowContents = () => promiseTry(
     () => {
-        dualLogger.dualLog("Start", "configure");
+        dualLogger.dualLogDebug("Start", "configure");
 
         const allElements = Array.from(document.querySelectorAll(":scope *"));
         const configureAttributePrefix = "data-configure";
@@ -165,7 +165,7 @@ const configureWindowContents = () => promiseTry(
 
         return handleElementsPerAttributePrefix(allElements, configureAttributePrefix, configurationHandler)
             .then(() => {
-                dualLogger.dualLog("Done", "configure");
+                dualLogger.dualLogDebug("Done", "configure");
 
                 return undefined;
             });
@@ -174,7 +174,7 @@ const configureWindowContents = () => promiseTry(
 
 const translateWindowContents = () => promiseTry(
     () => {
-        dualLogger.dualLog("Start", "translate");
+        dualLogger.dualLogDebug("Start", "translate");
 
         const allElements = Array.from(document.querySelectorAll(":scope *"));
         const translateAttributePrefix = "data-translate";
@@ -201,7 +201,7 @@ const translateWindowContents = () => promiseTry(
 
         return handleElementsPerAttributePrefix(allElements, translateAttributePrefix, translationHandler)
             .then(() => {
-                dualLogger.dualLog("Done", "translate");
+                dualLogger.dualLogDebug("Done", "translate");
 
                 return undefined;
             });
@@ -219,7 +219,7 @@ const addLinkClickHandlers = () => promiseTry(
 
             // NOTE: skipping non-https urls -- presumably empty hrefs for special links.
             if (typeof location !== "string" || !location.startsWith("https://")) {
-                dualLogger.dualLog("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
+                dualLogger.dualLogDebug("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
 
                 return;
             }
@@ -282,14 +282,14 @@ const reflow = () => promiseTry(
 export const eventToPromise = (eventHandler, event) => promiseTry(
     () => {
         try {
-            dualLogger.dualLog("Start", "eventToPromise", event.type, event);
+            dualLogger.dualLogDebug("Start", "eventToPromise", event.type, event);
 
             Promise.resolve()
                 .then(() => eventHandler(event))
-                .then((result) => dualLogger.dualLog("Done", "eventToPromise", event.type, event, result))
-                .catch((error) => dualLogger.dualLogError("Error", "eventToPromise", event.type, event, error));
+                .then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event.type, event, result))
+                .catch((error) => dualLogger.dualLogError("eventToPromise", event.type, event, error));
         } catch (error) {
-            dualLogger.dualLogError("Error", "eventToPromise", event.type, event, error);
+            dualLogger.dualLogError("eventToPromise", event.type, event, error);
 
             throw error;
         }

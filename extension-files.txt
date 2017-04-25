@@ -16,6 +16,7 @@ CLA.md
 dist/background.js
 dist/options.js
 dist/popup.js
+dist/stay-alive.js
 lib/browser-polyfill.js
 LICENSE
 manifest.json
@@ -45,3 +46,4 @@ resources/style/popup.css
 resources/style/shared.css
 src/options/options.html
 src/popup/popup.html
+src/stay-alive/stay-alive.html

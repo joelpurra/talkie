@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
-    logError,
+    logDebug,
+    logInfo,
 } from "../shared/log";
 
 import {
@@ -36,7 +36,7 @@ export default class Execute {
     scriptInTopFrame(code) {
         return promiseTry(
             () => {
-                log("Start", "scriptInTopFrame", code.length, code);
+                logDebug("Start", "scriptInTopFrame", code.length, code);
 
                 return browser.tabs.executeScript(
                     {
@@ -45,12 +45,12 @@ export default class Execute {
                     }
                 )
                     .then((result) => {
-                        log("Done", "scriptInTopFrame", code.length);
+                        logDebug("Done", "scriptInTopFrame", code.length);
 
                         return result;
                     })
                     .catch((error) => {
-                        logError("Error", "scriptInTopFrame", code.length, error);
+                        logInfo("scriptInTopFrame", code.length, "Error", error);
 
                         throw error;
                     });
@@ -61,7 +61,7 @@ export default class Execute {
     scriptInAllFrames(code) {
         return promiseTry(
             () => {
-                log("Start", "scriptInAllFrames", code.length, code);
+                logDebug("Start", "scriptInAllFrames", code.length, code);
 
                 return browser.tabs.executeScript(
                     {
@@ -70,12 +70,12 @@ export default class Execute {
                     }
                 )
                     .then((result) => {
-                        log("Done", "scriptInAllFrames", code.length);
+                        logDebug("Done", "scriptInAllFrames", code.length);
 
                         return result;
                     })
                     .catch((error) => {
-                        logError("Error", "scriptInAllFrames", code.length, error);
+                        logInfo("scriptInAllFrames", code.length, "Error", error);
 
                         throw error;
                     });
@@ -86,20 +86,20 @@ export default class Execute {
     scriptInTopFrameWithTimeout(code, timeout) {
         return promiseTry(
             () => {
-                log("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+                logDebug("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
                 return promiseTimeout(
                     this.scriptInTopFrame(code),
                     timeout
                 )
                     .then((result) => {
-                        log("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+                        logDebug("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
                         return result;
                     })
                     .catch((error) => {
                         if (error && typeof error.name === "PromiseTimeout") {
-                        // NOTE: this is how to check for a timeout.
+                            // NOTE: this is how to check for a timeout.
                         }
 
                         throw error;
@@ -111,14 +111,14 @@ export default class Execute {
     scriptInAllFramesWithTimeout(code, timeout) {
         return promiseTry(
             () => {
-                log("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+                logDebug("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
                 return promiseTimeout(
                     this.scriptInAllFrames(code),
                     timeout
                 )
                     .then((result) => {
-                        log("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+                        logDebug("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
                         return result;
                     })

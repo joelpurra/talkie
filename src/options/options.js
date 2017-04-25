@@ -23,6 +23,10 @@ import {
 } from "../shared/promise";
 
 import {
+    registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+
+import {
     debounce,
 } from "../shared/basic";
 
@@ -474,20 +478,20 @@ const loadVoicesAndLanguages = () => promiseTry(
                 const allVoicesByLanguage = allVoices.reduce((obj, voice) => { obj[voice.lang] = (obj[voice.lang] || []).concat(voice); return obj; }, {});
                 const allLanguages = Object.keys(allVoicesByLanguage);
                 allLanguages.sort();
-                dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguage", allVoicesByLanguage);
+                dualLogger.dualLogDebug("loadVoicesAndLanguages", "allVoicesByLanguage", allVoicesByLanguage);
 
                 const allVoicesByLanguageGroup = allVoices.reduce((obj, voice) => { const group = voice.lang.substr(0, 2); obj[group] = (obj[group] || []).concat(voice); return obj; }, {});
-                dualLogger.dualLog("loadVoicesAndLanguages", "allVoicesByLanguageGroup", allVoicesByLanguageGroup);
+                dualLogger.dualLogDebug("loadVoicesAndLanguages", "allVoicesByLanguageGroup", allVoicesByLanguageGroup);
 
                 const allLanguagesByLanguageGroup = allVoices.reduce((obj, voice) => { const group = voice.lang.substr(0, 2); obj[group] = (obj[group] || {}); obj[group][voice.lang] = allVoicesByLanguage[voice.lang]; return obj; }, {});
                 const allLanguagesGroups = Object.keys(allLanguagesByLanguageGroup);
                 allLanguagesGroups.sort();
-                dualLogger.dualLog("loadVoicesAndLanguages", "allLanguagesGroups", allLanguagesGroups);
+                dualLogger.dualLogDebug("loadVoicesAndLanguages", "allLanguagesGroups", allLanguagesGroups);
 
                 const allVoicesByVoiceName = allVoices.reduce((obj, voice) => { obj[voice.name] = (obj[voice.name] || []).concat(voice); return obj; }, {});
                 const allVoiceNames = Object.keys(allVoicesByVoiceName);
                 allVoiceNames.sort();
-                dualLogger.dualLog("loadVoicesAndLanguages", "allLanguagesByLanguageGroup", allLanguagesByLanguageGroup);
+                dualLogger.dualLogDebug("loadVoicesAndLanguages", "allLanguagesByLanguageGroup", allLanguagesByLanguageGroup);
 
                 const voicesLanguagesListElement = document.getElementById("voices-languages-list");
                 const voicesVoicesListElement = document.getElementById("voices-voices-list");
@@ -846,7 +850,7 @@ const onTabChange = () => promiseTry(
 
 const start = () => promiseTry(
     () => {
-        dualLogger.dualLog("Start", "start");
+        dualLogger.dualLogDebug("Start", "start");
 
         return Promise.resolve()
             .then(() => startFrontend())
@@ -858,24 +862,24 @@ const start = () => promiseTry(
                 loadVersion(),
             ]))
             .then(() => {
-                dualLogger.dualLog("Done", "start");
+                dualLogger.dualLogDebug("Done", "start");
 
                 return undefined;
             })
             .catch((error) => {
-                dualLogger.dualLogError("Error", "Start", error);
+                dualLogger.dualLogError("Start", error);
             });
     }
 );
 
 const stop = () => promiseTry(
     () => {
-        dualLogger.dualLog("Start", "stop");
+        dualLogger.dualLogDebug("Start", "stop");
 
         return Promise.resolve()
             .then(() => stopFrontend())
             .then(() => {
-                dualLogger.dualLog("Done", "stop");
+                dualLogger.dualLogDebug("Done", "stop");
 
                 return undefined;
             })
@@ -884,6 +888,8 @@ const stop = () => promiseTry(
             });
     }
 );
+
+registerUnhandledRejectionHandler();
 
 document.addEventListener("tabchange", eventToPromise.bind(null, onTabChange));
 

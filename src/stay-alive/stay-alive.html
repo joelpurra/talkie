@@ -1,4 +1,6 @@
-/*
+<!doctype html>
+
+<!--
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://github.com/joelpurra/talkie>
 
@@ -16,38 +18,18 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
-*/
+-->
 
-import {
-    logDebug,
-    logError,
-} from "../shared/log";
+<html>
 
-export default class Chain {
-    constructor() {
-        this.chainPromise = Promise.resolve();
-        this.length = 0;
-    }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Stay Alive &mdash; Talkie</title>
+</head>
 
-    link(promise) {
-        this.length++;
-        const currentLength = this.length;
+<body>
+    <script src="../../lib/browser-polyfill.js"></script>
+    <script src="../../dist/stay-alive.js"></script>
+</body>
 
-        logDebug("Start", "Chain", currentLength);
-
-        this.chainPromise = this.chainPromise
-            .then(promise)
-            .then((result) => {
-                logDebug("Done", "Chain", currentLength);
-
-                return result;
-            })
-            .catch((error) => {
-                logError("Chain", currentLength, error);
-
-                throw error;
-            });
-
-        return this.chainPromise;
-    }
-}
+</html>

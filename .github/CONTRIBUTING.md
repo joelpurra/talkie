@@ -41,7 +41,8 @@
   - Which text/part of the website you want spoken.
   - Which language the text was expected to be spoken in.
   - Any other information you think might be relevant in tracking down the issue.
-
+- If you are [familiar with the debugging console for extensions](https://developer.chrome.com/extensions/tut_debugging), have a look there.
+  - Get maximum logging by entering `this.setLoggingLevel("DEBG")` in the background page console.
 
 
 ## Have a patch?

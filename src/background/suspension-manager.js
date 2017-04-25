@@ -23,92 +23,65 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
-    logError,
+    logDebug,
+    logInfo,
 } from "../shared/log";
 
 export default class SuspensionManager {
-    constructor(execute) {
-        this.execute = execute;
+    constructor(suspensionConnectorManager) {
+        // NOTE: the iframe takes care of the SuspensionListenerManager.
+        this.suspensionConnectorManager = suspensionConnectorManager;
 
-        this.preventSuspensionProducingPort = null;
-        this.preventSuspensionIntervalId = null;
+        this.stayAliveElementId = "stay-alive-iframe";
+        this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
 
-        // NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
-        this.preventSuspensionPortName = "talkie-prevents-suspension";
-        this.preventSuspensionConnectOptions = {
-            name: this.preventSuspensionPortName,
-        };
-
-        this.executeConnectFromContentCode = `
-            (function(){
-                try {
-                    var talkiePreventSuspensionPort = (window.chrome || browser || chrome || null).runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)});
-                    var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name };
-
-                    return preventExtensionSuspendConnectFromContentResult;
-                } catch(error) {
-                    return null;
-                }
-            }());
-            `
-            .replace(/\n/g, "")
-            .replace(/\s{2,}/g, " ");
+        this._initialized = false;
     }
 
-    executeConnectFromContent() {
-        return this.execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
-            .then((preventExtensionSuspendConnectFromContentResult) => {
-                log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
-
-                if (!preventExtensionSuspendConnectFromContentResult || !Array.isArray(preventExtensionSuspendConnectFromContentResult) || preventExtensionSuspendConnectFromContentResult.length !== 1 || !preventExtensionSuspendConnectFromContentResult[0]) {
-                    throw new Error("preventExtensionSuspendConnectFromContentResult");
-                }
-
-                return preventExtensionSuspendConnectFromContentResult;
-            });
-    }
-
-    preventExtensionSuspend() {
+    _injectBackgroundFrame() {
         return promiseTry(
             () => {
-                log("Start", "preventExtensionSuspend");
+                const existingIframe = document.getElementById(this.stayAliveElementId);
 
-                const onMessageProducingHandler = (msg) => {
-                    log("preventExtensionSuspend", "onMessageProducingHandler", msg);
-                };
+                if (existingIframe !== null) {
+                    throw new Error("this.stayAliveElementId exists.");
+                }
 
-                const messageProducer = () => {
-                    this.preventSuspensionProducingPort.postMessage("Ah, ha, ha, ha, stayin' alive, stayin' alive");
-                };
+                const iframe = document.createElement("iframe");
+                iframe.id = this.stayAliveElementId;
+                iframe.src = browser.runtime.getURL(this.stayAliveHtmlPath);
+                document.body.appendChild(iframe);
+            }
+        );
+    }
 
-                const onConnectProducingHandler = (port) => {
-                    log("preventExtensionSuspend", "onConnectProducingHandler", port);
+    _removeBackgroundFrame() {
+        return promiseTry(
+            () => {
+                const existingIframe = document.getElementById(this.stayAliveElementId);
 
-                    if (port.name !== this.preventSuspensionPortName) {
-                        return;
-                    }
+                if (existingIframe === null) {
+                    throw new Error("this.stayAliveElementId did not exist.");
+                }
 
-                    // NOTE: the browser.runtime.onConnect event is triggered once per frame on the page.
-                    // Save the first port, ignore the rest.
-                    if (this.preventSuspensionProducingPort !== null) {
-                        return;
-                    }
+                // NOTE: trigger onunload.
+                // https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
+                existingIframe.src = "about:blank";
+                existingIframe.parenNode.removeChild(existingIframe);
+            }
+        );
+    }
 
-                    this.preventSuspensionProducingPort = port;
+    initialize() {
+        return promiseTry(
+            () => {
+                logDebug("Start", "SuspensionManager.initialize");
 
-                    this.preventSuspensionProducingPort.onMessage.addListener(onMessageProducingHandler);
+                return this._injectBackgroundFrame()
+                    .then(() => {
+                        logDebug("Done", "SuspensionManager.initialize");
 
-                    this.preventSuspensionIntervalId = setInterval(messageProducer, 1000);
-                };
-
-                browser.runtime.onConnect.addListener(onConnectProducingHandler);
-
-                log("Done", "preventExtensionSuspend");
-
-                return this.executeConnectFromContent()
-                    .catch((error) => {
-                        logError("Error", "preventExtensionSuspend", "Error swallowed", error);
+                        this._initialized = true;
 
                         return undefined;
                     });
@@ -116,27 +89,47 @@ export default class SuspensionManager {
         );
     }
 
+    unintialize() {
+        return promiseTry(
+            () => {
+                logDebug("Start", "SuspensionManager.unintialize");
+
+                return this._removeBackgroundFrame()
+                    .then(() => {
+                        logDebug("Done", "SuspensionManager.unintialize");
+
+                        this._initialized = false;
+
+                        return undefined;
+                    });
+            }
+        );
+    }
+
+    preventExtensionSuspend() {
+        return promiseTry(
+            () => {
+                logInfo("SuspensionManager.preventExtensionSuspend");
+
+                return Promise.resolve()
+                    .then(() => {
+                        if (this._initialized === false) {
+                            throw new Error("Not initialized.");
+                        }
+
+                        return undefined;
+                    })
+                    .then(() => this.suspensionConnectorManager._connectToStayAlive());
+            }
+        );
+    }
+
     allowExtensionSuspend() {
         return promiseTry(
             () => {
-                log("Start", "allowExtensionSuspend");
+                logInfo("SuspensionManager.allowExtensionSuspend");
 
-                if (this.preventSuspensionProducingPort !== null) {
-                    try {
-                        // https://developer.browser.com/extensions/runtime#type-Port
-                        // NOTE: should work irregardless if the port was connected or not.
-                        this.preventSuspensionProducingPort.disconnect();
-                    } catch (error) {
-                        logError("Error", "allowExtensionSuspend", error);
-                    }
-
-                    this.preventSuspensionProducingPort = null;
-                }
-
-                clearInterval(this.preventSuspensionIntervalId);
-                this.preventSuspensionIntervalId = null;
-
-                log("Done", "allowExtensionSuspend");
+                return this.suspensionConnectorManager._disconnectToDie();
             }
         );
     }

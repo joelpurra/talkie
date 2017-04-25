@@ -19,36 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    logDebug,
+    logWarn,
+    logInfo,
 } from "../shared/log";
 
-export default class OnlyLastCaller {
-    constructor() {
-        this.lastCallerId = 0;
-    }
+const handleUnhandledRejection = (event) => {
+    logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
 
-    incrementCallerId() {
-        this.lastCallerId++;
-    }
+    logInfo("Starting debugger, if attached.");
+    /* eslint-disable no-debugger */
+    debugger;
+    /* eslint-enable no-debugger */
+};
 
-    getShouldContinueSpeakingProvider() {
-        this.incrementCallerId();
-        const callerOnTheAirId = this.lastCallerId;
-
-        logDebug("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
-
-        return () => promiseTry(
-            () => {
-                const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
-
-                logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
-
-                return isLastCallerOnTheAir;
-            }
-        );
-    };
-}
+export const registerUnhandledRejectionHandler = () => {
+    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+};

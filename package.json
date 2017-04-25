@@ -5,7 +5,7 @@
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
     "clean": "rimraf package/ && rimraf dist/ && rimraf web-ext-artifacts/",
-    "build": "rollup --config rollup.config.background.js && rollup --config rollup.config.popup.js && rollup --config rollup.config.options.js && npm run --silent build:chrome:free && npm run --silent build:webextension:free && npm run --silent build:chrome:premium && npm run --silent build:webextension:premium",
+    "build": "rollup --config rollup.config.background.js && rollup --config rollup.config.popup.js && rollup --config rollup.config.options.js && rollup --config rollup.config.stay-alive.js && npm run --silent build:chrome:free && npm run --silent build:webextension:free && npm run --silent build:chrome:premium && npm run --silent build:webextension:premium",
     "build:chrome:free": "mkdirp package/chrome/ && rsync -a --files-from extension-files.txt . package/chrome/ && npm run --silent build:chrome:free:patch",
     "build:chrome:free:patch": "npm run --silent build:patch:chrome:manifest -- package/chrome/manifest.json",
     "build:chrome:premium": "mkdirp package/chrome-premium/ && npm run --silent build:patch:premium:filelist && rsync -a --files-from extension-files.premium.txt . package/chrome-premium/ && rename --force --delete '.premium' --glob 'package/chrome-premium/_locales/*/messages.premium.json' && npm run --silent build:chrome:premium:patch",
@@ -22,6 +22,7 @@
     "watch:background": "rollup --watch --config rollup.config.background.js",
     "watch:popup": "rollup --watch --config rollup.config.popup.js",
     "watch:options": "rollup --watch --config rollup.config.options.js",
+    "watch:stay-alive": "rollup --watch --config rollup.config.stay-alive.js",
     "watch:chrome:free": "watch --interval 10 --differences --beep npm run --silent build:chrome:free",
     "watch:chrome:premium": "watch --interval 10 --differences --beep npm run --silent build:chrome:premium",
     "watch:webextension:free": "watch --interval 10 --differences --beep npm run --silent build:webextension:free",

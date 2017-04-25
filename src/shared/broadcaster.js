@@ -56,7 +56,7 @@ export default class Broadcaster {
         return new Promise(
             (resolve, reject) => {
                 try {
-                    // log("Start", "Sending message", actionName, actionData);
+                    // logDebug("Start", "Sending message", actionName, actionData);
 
                     const respondingAction = this.actionRespondingMap[actionName] || null;
                     const listeningActions = this.actionListeningMap[actionName] || [];
@@ -95,7 +95,7 @@ export default class Broadcaster {
 
                     return resolve(respondingActionResult);
                 } catch (error) {
-                    logError("Error", "catch", "Sending message", actionName, actionData);
+                    logError("catch", "Sending message", actionName, actionData);
 
                     return reject(error);
                 }

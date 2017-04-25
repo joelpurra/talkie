@@ -30,40 +30,68 @@ export const promiseTry = (fn) => new Promise(
     }
 );
 
-export const promiseSeries = (promises, state) => promiseTry(
+export const promiseSeries = (promiseFunctions, state) => promiseTry(
     () => {
-        if (promises.length === 0) {
+        if (promiseFunctions.length === 0) {
             return undefined;
         }
 
-        const first = promises[0];
+        const first = promiseFunctions[0];
 
-        if (promises.length === 1) {
+        if (promiseFunctions.length === 1) {
             return Promise.resolve(first(state));
         }
 
-        const rest = promises.slice(1);
+        const rest = promiseFunctions.slice(1);
 
         return Promise.resolve(first(state))
             .then((result) => promiseSeries(rest, result));
     }
 );
 
-const createTimeout = (limit) => new Promise((resolve) => {
-    setTimeout(() => resolve(), limit);
-});
-
 export const promiseTimeout = (promise, limit) => {
-    const timeout = createTimeout(limit)
+    let timeoutId = null;
+
+    const timeoutPromise = new Promise((resolve) => {
+        timeoutId = setTimeout(() => resolve(), limit);
+    })
         .then(() => {
+            timeoutId = null;
+
             const timeoutError = new Error(`Timeout after ${limit} milliseconds.`);
             timeoutError.name = "PromiseTimeout";
 
             throw timeoutError;
         });
 
+    const originalPromise = promise
+        .then((result) => {
+            // NOTE: timeout has already happened.
+            if (timeoutId === null) {
+                return undefined;
+            }
+
+            // NOTE: timeout has not yet happened.
+            clearTimeout(timeoutId);
+            timeoutId = null;
+
+            return result;
+        })
+        .catch((error) => {
+            // NOTE: timeout has already happened.
+            if (timeoutId === null) {
+                return undefined;
+            }
+
+            // NOTE: timeout has not yet happened.
+            clearTimeout(timeoutId);
+            timeoutId = null;
+
+            throw error;
+        });
+
     return Promise.race([
-        promise,
-        timeout,
+        originalPromise,
+        timeoutPromise,
     ]);
 };

@@ -19,7 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logError,
+    logInfo,
+    logWarn,
 } from "../shared/log";
 
 import {
@@ -31,20 +32,57 @@ export default class ContentLogger {
         this.execute = execute;
         this.configuration = configuration;
 
-        this.executeLogToPageCode = "(function(){ console.log(%a); }());";
-        this.executeLogToPageWithColorCode = "(function(){ console.log(%a); }());";
+        this.executeLogToPageCode = "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPage', error); } }());";
+        this.executeLogToPageWithColorCode = "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPageWithColor', error); } }());";
     }
 
-    _variableToSafeString(v) {
-        if (v === undefined) {
+    _variableToSafeConsoleLogStringReplacer(/* eslint-disable no-unused-vars */key/* eslint-enable no-unused-vars */, value) {
+        // NOTE: want to display if undefined was passed.
+        if (typeof value === "undefined") {
             return "undefined";
         }
 
-        if (v === null) {
-            return "null";
+        // NOTE: want to display if a function was passed.
+        if (typeof value === "function") {
+            return "function";
         }
 
-        return v.toString();
+        // NOTE: should take care of all other cases best as it can.
+        // https://github.com/joelpurra/talkie/issues/6
+        return value;
+    }
+
+    _variableToSafeConsoleLogString(value) {
+        // NOTE: want to display if undefined was passed.
+        if (typeof value === "undefined") {
+            return "undefined";
+        }
+
+        // NOTE: want to display if a function was passed.
+        if (typeof value === "function") {
+            return "function";
+        }
+
+        // NOTE: should take care of all other cases best as it can.
+        // https://github.com/joelpurra/talkie/issues/6
+        const json = JSON.stringify(value, this._variableToSafeConsoleLogStringReplacer);
+
+        const friendlyJson = json
+            // NOTE: don't double-quote standalone strings, just to make output prettier.
+            .replace(/^"/, "")
+            .replace(/"$/, "")
+            // NOTE: escaping for passing the string to be executed in the page content context.
+            .replace(/\\/g, "\\\\")
+            .replace(/"/g, "\\\"")
+            // NOTE: line separator and paragraph separator encoding.
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Issue_with_plain_JSON.stringify_for_use_as_JavaScript
+            .replace(/\u2028/g, "\\u2028")
+            .replace(/\u2029/g, "\\u2029")
+            // NOTE: there should be no newlines in the JSON, so this might be unncessary.
+            .replace(/\n/g, "\\\\n")
+            .replace(/\r/g, "\\\\r");
+
+        return friendlyJson;
     }
 
     logToPage(...args) {
@@ -55,11 +93,9 @@ export default class ContentLogger {
                 const logValues = [
                     now,
                     this.configuration.extensionShortName,
-                    ...args.map((arg) => this._variableToSafeString(arg)),
+                    ...args.map((arg) => this._variableToSafeConsoleLogString(arg)),
                 ]
-                    .map((arg) => arg.replace(/\\/g, "\\\\"))
-                    .map((arg) => arg.replace(/"/g, "\\\""))
-                    .map((arg) => arg.replace(/\n/g, "\\\\n"))
+                    // NOTE: quote each console.log() argument.
                     .map((arg) => `"${arg}"`)
                     .join(", ");
 
@@ -67,7 +103,12 @@ export default class ContentLogger {
 
                 return this.execute.scriptInTopFrame(code)
                     .catch((error) => {
-                        logError("Error", "this.execute.logToPage", ...args);
+                        // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logInfo("this.execute.logToPage", "Error", error, ...args);
+                        } else {
+                            logWarn("this.execute.logToPage", "Error", error, ...args);
+                        }
 
                         throw error;
                     });
@@ -80,25 +121,25 @@ export default class ContentLogger {
             () => {
                 const now = new Date().toISOString();
 
+                // NOTE: create one long console.log() string argument, then add the color argument second.
                 const logValues = "\"" + [
                     now,
                     this.configuration.extensionShortName,
                     "%c",
-                    ...args,
-                    " ",
+                    ...args.map((arg) => this._variableToSafeConsoleLogString(arg)),
                 ]
-                    .map((arg) => this._variableToSafeString(arg))
-                    .map((arg) => arg.replace(/\\/g, "\\\\"))
-                    .map((arg) => arg.replace(/"/g, "\\\""))
-                    .map((arg) => arg.replace(/\n/g, "\\\\n"))
-                    .map((arg) => `${arg}`)
-                    .join(" ") + "\", \"background: #007F41; color: #FFFFFF; padding: 0.3em;\"";
+                    .join(" ") + " " + "\", \"background: #007F41; color: #FFFFFF; padding: 0.3em;\"";
 
                 const code = this.executeLogToPageWithColorCode.replace("%a", logValues);
 
                 return this.execute.scriptInTopFrame(code)
                     .catch((error) => {
-                        logError("Error", "this.execute.logToPageWithColor", ...args);
+                        // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logInfo("this.execute.logToPageWithColor", ...args);
+                        } else {
+                            logWarn("this.execute.logToPageWithColor", ...args);
+                        }
 
                         throw error;
                     });

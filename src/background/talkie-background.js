@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
 } from "../shared/log";
 
 import {
@@ -83,11 +83,11 @@ export default class TalkieBackground {
                 .then(([canRun, isInternalPage]) => {
                         // NOTE: can't perform (most) actions if it's not a "normal" tab.
                     if (!canRun) {
-                        log("iconClickAction", "Did not detect a normal tab, skipping.");
+                        logDebug("iconClickAction", "Did not detect a normal tab, skipping.");
 
                             // NOTE: don't "warn" about internal pages opening.
                         if (isInternalPage) {
-                            log("iconClickAction", "Detected internal page, skipping warning.");
+                            logDebug("iconClickAction", "Detected internal page, skipping warning.");
 
                             return undefined;
                         }
@@ -191,7 +191,7 @@ export default class TalkieBackground {
                         return this.languageHelper.detectPageLanguage();
                     }
 
-                    log("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab, skipping page language detection.");
+                    logDebug("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab, skipping page language detection.");
 
                     return null;
                 })
@@ -238,11 +238,11 @@ export default class TalkieBackground {
     onExtensionSuspendHandler() {
         return promiseTry(
             () => {
-                log("Start", "onExtensionSuspendHandler");
+                logDebug("Start", "onExtensionSuspendHandler");
 
                 return this.speakingStatus.isSpeaking()
                     .then((talkieIsSpeaking) => {
-                        // Clear all text if Talkie was speaking.
+                        // NOTE: Clear all text if Talkie was speaking.
                         if (talkieIsSpeaking) {
                             return this.talkieSpeaker.stopSpeaking();
                         }
@@ -250,7 +250,7 @@ export default class TalkieBackground {
                         return undefined;
                     })
                     .then(() => {
-                        log("Done", "onExtensionSuspendHandler");
+                        logDebug("Done", "onExtensionSuspendHandler");
 
                         return undefined;
                     });
@@ -261,7 +261,7 @@ export default class TalkieBackground {
     executeGetFramesSelectionTextAndLanguage() {
         return this.execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 1000)
             .then((framesSelectionTextAndLanguage) => {
-                log("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
+                logDebug("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
 
                 if (!framesSelectionTextAndLanguage || !Array.isArray(framesSelectionTextAndLanguage)) {
                     throw new Error("framesSelectionTextAndLanguage");
@@ -273,24 +273,24 @@ export default class TalkieBackground {
 
     detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage) {
         return promiseTry(() => {
-            log("Start", "Speaking all selections");
+            logDebug("Start", "Speaking all selections");
 
-            log("Variable", `selections (length ${selections && selections.length || 0})`, selections);
+            logDebug("Variable", `selections (length ${selections && selections.length || 0})`, selections);
 
             return promiseTry(
                 () => getVoices()
             )
                 .then((allVoices) => this.languageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections))
                 .then((cleanedupSelections) => {
-                    log("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
+                    logDebug("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
 
                     const speakPromises = cleanedupSelections.map((selection) => {
-                        log("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
+                        logDebug("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 
                         return this.startSpeakingTextInLanguageWithOverridesAction(selection.text, selection.effectiveLanguage);
                     });
 
-                    log("Done", "Speaking all selections");
+                    logDebug("Done", "Speaking all selections");
 
                     return Promise.all(speakPromises);
                 });
@@ -300,7 +300,7 @@ export default class TalkieBackground {
     speakUserSelection() {
         return promiseTry(
             () => {
-                log("Start", "Speaking selection");
+                logDebug("Start", "Speaking selection");
 
                 return Promise.all(
                     [
@@ -311,7 +311,7 @@ export default class TalkieBackground {
                     .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
                         return this.detectLanguagesAndSpeakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
                     })
-                    .then(() => log("Done", "Speaking selection"));
+                    .then(() => logDebug("Done", "Speaking selection"));
             });
     }
 }
