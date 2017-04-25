@@ -6,7 +6,7 @@ export default {
     ],
     format: "umd",
     sourceMap: true,
-    entry: "src/options/options.js",
-    moduleName: "options",
-    dest: "dist/options.js",
+    entry: "src/stay-alive/stay-alive.js",
+    moduleName: "stay-alive",
+    dest: "dist/stay-alive.js",
 };
