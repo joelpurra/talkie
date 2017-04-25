@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
 } from "../shared/log";
 
 import {
@@ -56,7 +56,7 @@ export const getCurrentActiveTab = () => promiseTry(
 
                 const tab = tabs[0] || null;
 
-                log("getCurrentActiveTab", tabs, tab, singleTabResult);
+                logDebug("getCurrentActiveTab", tabs, tab, singleTabResult);
 
                 if (singleTabResult) {
                     return tab;
@@ -115,7 +115,7 @@ const getCurrentActiveNormalLoadedTab = () => promiseTry(
 
                 const tab = tabs[0] || null;
 
-                log("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
+                logDebug("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
 
                 if (singleTabResult) {
                     return tab;
@@ -149,6 +149,10 @@ export const canTalkieRunInTab = () => promiseTry(
                         return false;
                     }
 
+                    if (url.startsWith("https://addons.mozilla.org/")) {
+                        return false;
+                    }
+
                     if (url.startsWith("about:")) {
                         return false;
                     }
@@ -162,3 +166,16 @@ export const canTalkieRunInTab = () => promiseTry(
             return false;
         })
 );
+
+// NOTE: used to check if a DOM element cross-page (background, popup, options, ...) reference was used after it was supposed to be unreachable (memory leak).
+// https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Errors/Dead_object
+export const isDeadWrapper = (domElementReference) => {
+    try {
+        String(domElementReference);
+
+        return false;
+    }
+    catch (e) {
+        return true;
+    }
+};

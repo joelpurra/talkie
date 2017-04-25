@@ -11,10 +11,6 @@
     "message": "Lire la sélection de texte à haute voix",
     "original": "Read text selection out loud"
   },
-  "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Ouvrir la page Chrome Web Store",
-    "original": "Open the Chrome Web Store page"
-  },
   "commandOpenWebsiteDonateDescription": {
     "message": "Ouvrir la page des dons",
     "original": "Open the donation page"
@@ -49,7 +45,7 @@
   },
   "frontend_aboutThankYou": {
     "message": "Merci d'utiliser Talkie - si vous l'aimez, parlez-en à vos amis!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
     "message": "Faire un don",
@@ -77,7 +73,7 @@
   },
   "frontend_hideDonateButtonsInPopupDescription": {
     "message": "Ce n'est pas comme si je ne voulais pas que vous fassiez un don pour soutenir Talkie et le développement open source en général - je ne veux tout simplement pas que vous soyez ennuyé en utilisant Talkie en premier lieu. Si vous désactivez les boutons de don dans le popup, j'espère que vous allez également supporter Talkie d'une certaine manière! Les boutons seront toujours disponibles ici parmi les options, au cas où.",
-    "original": "It's not like I don't want you to donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Faire un don: soutenir le développement open source",
@@ -97,11 +93,11 @@
   },
   "frontend_rateIt": {
     "message": "Évaluer Talkie",
-    "original": "Rate Talkie"
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
     "message": "Talkie a été développé quelques jours avant la nouvelle année 2016/2017, suivant à un défi d'un ami. Le défi a commencé par la question suivante: pendant le déplacement au travail, est-il possible d'écouter un article au lieu de le lire? Facile, disais-je, et me mettais à le prouver - ou du moins à faire parler mon navigateur par le biais d'une voix d'ordinateur stupide. La version de base, sans aucune interface utilisateur, s'est avéré être triviale à créer. Ajouter une interface utilisateur a pris un peu plus longtemps. Ajouter une détection de langue propre; un tas plus de code. Surmonter les bugs dans le navigateur, encore plus de travail. La liste des améliorations et des fonctionnalités se poursuit - et quelques milliers de lignes de code plus tard, vous voyez le résultat final.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Histoire: comment Talkie a commencé",
@@ -113,13 +109,13 @@
   },
   "frontend_storyThankYou": {
     "message": "Merci d'utiliser Talkie - si vous l'aimez, parlez-en à vos amis!!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
     "message": "Soutien et commentaires",
     "original": "Support and feedback"
   },
-  "frontend_talkieInTheChromeWebStore": {
+  "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie dans le Chrome Web Store",
     "original": "Talkie in the Chrome Web Store"
   },
@@ -133,7 +129,7 @@
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Vous pouvez également sélectionner le texte, puis cliquer droit dessus et choisir Talkie dans le menu. Cette fonction s'applique également dans les fichiers PDF et sur certains types de pages spécifiques dans Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Si la touche de raccourci ne fonctionne pas, vérifiez qu'elle n'est pas déjà utilisée par une autre extension.",
@@ -141,11 +137,11 @@
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Vérifier ou modifier la touche de raccourci Talkie.",
-    "original": "How to check or change the Talkie shortcut key."
+    "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Une option pratique est d'utiliser la touche de raccourci Talkie:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
+    "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Sélectionnez le texte souhaité sur n'importe quelle page Web.",
@@ -165,11 +161,11 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie détecte automatiquement le langage, mais toutes les langues ne sont pas disponibles dans chaque navigateur. Ici, vous pouvez voir et tester les voix installées pour chaque langue.",
-    "original": "Talkie does automatic language detection, but not all languages are available in each browser. Here you can see and test installed voices for each language."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voix: testez votre navigateur",
-    "original": "Voices: test your browser"
+    "original": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
     "message": "Voix",
@@ -197,7 +193,7 @@
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie ne peut pas accéder au texte sélectionné sur ce type de page. C'est une page spéciale sur laquelle des limitations de sécurité ont été installées par le navigateur. Vous pouvez également essayer de sélectionner le texte, puis cliquer droit dessus, et choisir Talkie dans le menu. Veuillez excuser les désagrements.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }

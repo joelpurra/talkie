@@ -23,73 +23,107 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
-    logError,
+    logDebug,
+    logInfo,
 } from "../shared/log";
 
-import Execute from "../shared/execute";
-
 export default class SuspensionManager {
-    constructor() {
-        this.preventSuspensionProducingPort = null;
-        this.preventSuspensionIntervalId = null;
+    constructor(suspensionConnectorManager) {
+        // NOTE: the iframe takes care of the SuspensionListenerManager.
+        this.suspensionConnectorManager = suspensionConnectorManager;
 
-        // NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
-        this.preventSuspensionPortName = "talkie-prevents-suspension";
-        this.preventSuspensionConnectOptions = {
-            name: this.preventSuspensionPortName,
-        };
+        this.stayAliveElementId = "stay-alive-iframe";
+        this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
 
-        this.executeConnectFromContentCode = `var talkiePreventSuspensionPort = (window.browser || window.chrome || null).runtime.connect(${JSON.stringify(this.preventSuspensionConnectOptions)}); var preventExtensionSuspendConnectFromContentResult = { name: talkiePreventSuspensionPort.name }; preventExtensionSuspendConnectFromContentResult`;
+        this._initialized = false;
     }
 
-    executeConnectFromContent() {
-        return Execute.scriptInTopFrameWithTimeout(this.executeConnectFromContentCode, 1000)
-            .then((preventExtensionSuspendConnectFromContentResult) => {
-                log("Variable", "preventExtensionSuspendConnectFromContentResult", preventExtensionSuspendConnectFromContentResult);
+    _injectBackgroundFrame() {
+        return promiseTry(
+            () => {
+                const existingIframe = document.getElementById(this.stayAliveElementId);
 
-                return preventExtensionSuspendConnectFromContentResult;
-            });
+                if (existingIframe !== null) {
+                    throw new Error("this.stayAliveElementId exists.");
+                }
+
+                const iframe = document.createElement("iframe");
+                iframe.id = this.stayAliveElementId;
+                iframe.src = browser.runtime.getURL(this.stayAliveHtmlPath);
+                document.body.appendChild(iframe);
+            }
+        );
+    }
+
+    _removeBackgroundFrame() {
+        return promiseTry(
+            () => {
+                const existingIframe = document.getElementById(this.stayAliveElementId);
+
+                if (existingIframe === null) {
+                    throw new Error("this.stayAliveElementId did not exist.");
+                }
+
+                // NOTE: trigger onunload.
+                // https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
+                existingIframe.src = "about:blank";
+                existingIframe.parenNode.removeChild(existingIframe);
+            }
+        );
+    }
+
+    initialize() {
+        return promiseTry(
+            () => {
+                logDebug("Start", "SuspensionManager.initialize");
+
+                if (this._initialized === true) {
+                    throw new Error("Already initialized.");
+                }
+
+                return this._injectBackgroundFrame()
+                    .then(() => {
+                        logDebug("Done", "SuspensionManager.initialize");
+
+                        this._initialized = true;
+
+                        return undefined;
+                    });
+            }
+        );
+    }
+
+    unintialize() {
+        return promiseTry(
+            () => {
+                logDebug("Start", "SuspensionManager.unintialize");
+
+                if (this._initialized === false) {
+                    throw new Error("Not initialized.");
+                }
+
+                return this._removeBackgroundFrame()
+                    .then(() => {
+                        logDebug("Done", "SuspensionManager.unintialize");
+
+                        this._initialized = false;
+
+                        return undefined;
+                    });
+            }
+        );
     }
 
     preventExtensionSuspend() {
         return promiseTry(
             () => {
-                log("Start", "preventExtensionSuspend");
+                logInfo("SuspensionManager.preventExtensionSuspend");
 
-                const onMessageProducingHandler = (msg) => {
-                    log("preventExtensionSuspend", "onMessageProducingHandler", msg);
-                };
+                if (this._initialized === false) {
+                    throw new Error("Not initialized.");
+                }
 
-                const messageProducer = () => {
-                    this.preventSuspensionProducingPort.postMessage("Ah, ha, ha, ha, stayin' alive, stayin' alive");
-                };
-
-                const onConnectProducingHandler = (port) => {
-                    log("preventExtensionSuspend", "onConnectProducingHandler", port);
-
-                    if (port.name !== this.preventSuspensionPortName) {
-                        return;
-                    }
-
-                    // NOTE: the browser.runtime.onConnect event is triggered once per frame on the page.
-                    // Save the first port, ignore the rest.
-                    if (this.preventSuspensionProducingPort !== null) {
-                        return;
-                    }
-
-                    this.preventSuspensionProducingPort = port;
-
-                    this.preventSuspensionProducingPort.onMessage.addListener(onMessageProducingHandler);
-
-                    this.preventSuspensionIntervalId = setInterval(messageProducer, 1000);
-                };
-
-                browser.runtime.onConnect.addListener(onConnectProducingHandler);
-
-                log("Done", "preventExtensionSuspend");
-
-                return this.executeConnectFromContent();
+                return this.suspensionConnectorManager._connectToStayAlive();
             }
         );
     }
@@ -97,24 +131,13 @@ export default class SuspensionManager {
     allowExtensionSuspend() {
         return promiseTry(
             () => {
-                log("Start", "allowExtensionSuspend");
+                logInfo("SuspensionManager.allowExtensionSuspend");
 
-                if (this.preventSuspensionProducingPort !== null) {
-                    try {
-                        // https://developer.browser.com/extensions/runtime#type-Port
-                        // NOTE: should work irregardless if the port was connected or not.
-                        this.preventSuspensionProducingPort.disconnect();
-                    } catch (error) {
-                        logError("Error", "allowExtensionSuspend", error);
-                    }
-
-                    this.preventSuspensionProducingPort = null;
+                if (this._initialized === false) {
+                    throw new Error("Not initialized.");
                 }
 
-                clearInterval(this.preventSuspensionIntervalId);
-                this.preventSuspensionIntervalId = null;
-
-                log("Done", "allowExtensionSuspend");
+                return this.suspensionConnectorManager._disconnectToDie();
             }
         );
     }

@@ -19,9 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
-    logError,
     logDebug,
+    logInfo,
+    logWarn,
+    logError,
 } from "../shared/log";
 
 import {
@@ -32,45 +33,29 @@ export default class DualLogger {
     constructor(localScriptName) {
         this.localScriptName = localScriptName;
 
-        this.background = null;
+        this.dualLogDebug = this._generateLogger(logDebug, "logDebug");
+        this.dualLogInfo = this._generateLogger(logInfo, "logInfo");
+        this.dualLogWarn = this._generateLogger(logWarn, "logWarn");
+        this.dualLogError = this._generateLogger(logError, "logError");
     }
 
-    dualLog(...args) {
-        return Promise.all([
-            log(this.localScriptName, ...args),
+    _generateLogger(localLoggerFunctionName, backgroundLoggerFunctionName) {
+        const logger = (...args) => Promise.all([
+            localLoggerFunctionName(this.localScriptName, ...args),
 
             getBackgroundPage()
                 .then((background) => {
-                    background.log(this.localScriptName, ...args);
+                    background[backgroundLoggerFunctionName](this.localScriptName, ...args);
+
+                    return undefined;
+                })
+                .catch((error) => {
+                    logError(this.localScriptName, "backgroundLoggerFunctionName", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
 
                     return undefined;
                 }),
         ]);
-    }
 
-    dualLogError(...args) {
-        return Promise.all([
-            logError(this.localScriptName, ...args),
-
-            getBackgroundPage()
-                .then((background) => {
-                    background.logError(this.localScriptName, ...args);
-
-                    return undefined;
-                }),
-        ]);
-    }
-
-    dualLogDebug(...args) {
-        return Promise.all([
-            logDebug(this.localScriptName, ...args),
-
-            getBackgroundPage()
-                .then((background) => {
-                    background.logDebug(this.localScriptName, ...args);
-
-                    return undefined;
-                }),
-        ]);
+        return logger;
     }
 }

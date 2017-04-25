@@ -1,8 +1,60 @@
 {
-  "urls": {
-    "options": "chrome://extensions?options=enfbcfmmdpdminapkflljhbfeejjhjjk",
-    "main": "https://github.com/joelpurra/talkie",
-    "chromewebstore": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-    "donate": "https://joelpurra.com/donate"
+  "shared": {
+    "urls": {
+      "cla": "https://joelpurra.com/projects/talkie/CLA.md",
+      "donate": "https://joelpurra.com/donate",
+      "github": "https://github.com/joelpurra/talkie",
+      "gpl": "https://www.gnu.org/licenses/gpl.html",
+      "main": "https://joelpurra.com/projects/talkie/",
+      "project": "https://joelpurra.com/projects/talkie/",
+      "shortcut-keys": "https://github.com/joelpurra/talkie#usage",
+      "support-feedback": "https://joelpurra.com/support/",
+      "chromewebstore-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "chromewebstore-premium": "https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "firefox-amo-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
+      "firefox-amo-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  },
+  "free": {
+    "chrome": {
+      "urls": {
+        "rate": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews",
+        "store": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+        "support-feedback": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/support"
+      }
+    },
+    "webextension": {
+      "urls": {
+        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/",
+        "store": "https://addons.mozilla.org/en-US/firefox/addon/talkie/"
+      }
+    }
+  },
+  "premium": {
+    "chrome": {
+      "urls": {
+        "rate": "https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/reviews",
+        "store": "https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "support-feedback": "https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/support"
+      }
+    },
+    "webextension": {
+      "urls": {
+        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "store": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    }
+  },
+  "chrome": {
+    "urls": {
+      "store-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "store-premium": "https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  },
+  "webextension": {
+    "urls": {
+      "store-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
+      "store-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
   }
 }

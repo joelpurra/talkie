@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -33,17 +33,17 @@ export default class Chain {
         this.length++;
         const currentLength = this.length;
 
-        log("Start", "Chain", currentLength);
+        logDebug("Start", "Chain", currentLength);
 
         this.chainPromise = this.chainPromise
             .then(promise)
             .then((result) => {
-                log("Done", "Chain", currentLength);
+                logDebug("Done", "Chain", currentLength);
 
                 return result;
             })
             .catch((error) => {
-                logError("Error", "Chain", currentLength, error);
+                logError("Chain", currentLength, error);
 
                 throw error;
             });

@@ -40,7 +40,7 @@ do
     # NOTE: translate non-english languages automatically.
     if [[ ! -f "$BASE" ]];
     then
-        cat "$EN_BASE" | "${SCRIPT_FOLDER}/download-single-language.sh" "$LOCNAME" > "$AUTOMATIC"
+        cat "$EN_BASE" | node "${SCRIPT_FOLDER}/download-single-language.js" "$LOCNAME" | jq '.' > "$AUTOMATIC"
 
         # Display the output.
         jq '.' "$AUTOMATIC"

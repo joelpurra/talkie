@@ -121,7 +121,7 @@ export default class TalkieProgress {
 
         this.segmentSum += n;
 
-        this.interval = setInterval(this.intervalIncrement.bind(this), this.intervalDelay);
+        this.interval = setInterval(() => this.intervalIncrement(), this.intervalDelay);
     }
 
     endSegment() {

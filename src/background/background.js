@@ -23,15 +23,20 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
-    logError,
     logDebug,
+    logInfo,
+    logWarn,
+    logError,
+    setLevel,
 } from "../shared/log";
 
 import {
-    uiLocale,
-    messagesLocale,
-} from "../shared/configuration";
+    registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+
+import configurationObject from "../configuration.json";
+
+import Configuration from "../shared/configuration";
 
 import {
     knownEvents,
@@ -45,11 +50,19 @@ import TalkieProgress from "../shared/talkie-progress";
 
 import Broadcaster from "../shared/broadcaster";
 
+import ContentLogger from "../shared/content-logger";
+
 import Plug from "../shared/plug";
 
+import SuspensionConnectorManager from "./suspension-connector-manager";
 import SuspensionManager from "./suspension-manager";
 
 import TalkieSpeaker from "./talkie-speaker";
+
+import VoiceLanguageManager from "./voice-language-manager";
+import VoiceRateManager from "./voice-rate-manager";
+import VoicePitchManager from "./voice-pitch-manager";
+import VoiceManager from "./voice-manager";
 
 import SpeakingStatus from "./speaking-status";
 
@@ -71,23 +84,39 @@ import ShortcutKeyManager from "./shortcut-key-manager";
 
 import MetadataManager from "./metadata-manager";
 
+import StorageManager from "./storage-manager";
+
+import LanguageHelper from "./language-helper";
+
+import Execute from "../shared/execute";
+
+registerUnhandledRejectionHandler();
+
 function main() {
-    log("Start", "Main background function");
+    logDebug("Start", "Main background function");
 
-    log("Locale (@@ui_locale)", uiLocale);
-    log("Locale (messages.json)", messagesLocale);
-
-    // NOTE: using a chainer to be able to add click-driven speech events one after another.
-    const rootChain = new Chain();
+    const metadataManager = new MetadataManager();
+    const configuration = new Configuration(metadataManager, configurationObject);
 
     const broadcaster = new Broadcaster();
 
     const onlyLastCaller = new OnlyLastCaller();
     const shouldContinueSpeakingProvider = onlyLastCaller;
-    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider);
+    const execute = new Execute();
+    const contentLogger = new ContentLogger(execute, configuration);
+    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider, contentLogger);
     const speakingStatus = new SpeakingStatus();
 
-    const talkieBackground = new TalkieBackground(rootChain, talkieSpeaker, speakingStatus);
+    const storageManager = new StorageManager();
+    const voiceLanguageManager = new VoiceLanguageManager(storageManager, metadataManager);
+    const voiceRateManager = new VoiceRateManager(storageManager, metadataManager);
+    const voicePitchManager = new VoicePitchManager(storageManager, metadataManager);
+    const voiceManager = new VoiceManager(voiceLanguageManager, voiceRateManager, voicePitchManager);
+    const languageHelper = new LanguageHelper(contentLogger, configuration);
+
+    // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
+    const speechChain = new Chain();
+    const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -96,7 +125,8 @@ function main() {
         "start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
         "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
-        "open-website-chromewebstore": () => openUrlFromConfigurationInNewTab("chromewebstore"),
+        "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
+        "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
         "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 
@@ -104,17 +134,43 @@ function main() {
     const contextMenuManager = new ContextMenuManager(commandHandler);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
-    const suspensionManager = new SuspensionManager();
-    const iconManager = new IconManager();
+    const suspensionConnectorManager = new SuspensionConnectorManager();
+    const suspensionManager = new SuspensionManager(suspensionConnectorManager);
+    const iconManager = new IconManager(metadataManager);
     const buttonPopupManager = new ButtonPopupManager();
 
     const progress = new TalkieProgress(broadcaster);
 
-    const metadataManager = new MetadataManager();
+    const plug = new Plug(contentLogger, execute);
 
     (function addChromeOnInstalledListeners() {
+        const initializeOptionsDefaults = () => {
+            // TODO: more generic default option value system?
+            const hideDonationsOptionId = "options-popup-donate-buttons-hide";
+
+            return Promise.all([
+                storageManager.getStoredValue(hideDonationsOptionId),
+                metadataManager.isPremiumVersion(),
+            ])
+                .then(([hideDonations, isPremiumVersion]) => {
+                    if (typeof hideDonations !== "boolean") {
+                        // NOTE: don't bother premium users, unless they want to be bothered.
+                        if (isPremiumVersion) {
+                            return storageManager.setStoredValue(hideDonationsOptionId, true);
+                        }
+
+                        return storageManager.setStoredValue(hideDonationsOptionId, false);
+                    }
+
+                    return undefined;
+                });
+        };
+
         const onExtensionInstalledHandler = () => promiseTry(
-                () => contextMenuManager.createContextMenus()
+                () => Promise.resolve()
+                    .then(() => storageManager.upgradeIfNecessary())
+                    .then(() => initializeOptionsDefaults())
+                    .then(() => contextMenuManager.createContextMenus())
                     .catch((error) => logError("onExtensionInstalledHandler", error))
             );
 
@@ -136,80 +192,139 @@ function main() {
         }
     }());
 
-    (function registerBroadcastListeners() {
-        broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
+    // TODO: put initialization promise on the root chain?
+    return Promise.resolve()
+        .then(() => suspensionManager.initialize())
+        .then(() => {
+            const killSwitches = [];
 
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => Plug.once()
-            .catch((error) => {
-                // NOTE: swallowing any Plug.once() errors.
-                logError("Error", "Plug.once", "Error swallowed", error);
+            const executeKillSwitches = () => {
+                        // NOTE: expected to have only synchronous methods for the relevant parts.
+                killSwitches.forEach((killSwitch) => {
+                    try {
+                        killSwitch();
+                    } catch (error) {
+                        logError("executeKillSwitches", error);
+                    }
+                });
+            };
 
-                return undefined;
-            }));
+            // NOTE: synchronous version.
+            window.addEventListener("unload", () => {
+                executeKillSwitches();
+            });
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking());
+            return Promise.all([
+                broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId()),
 
-        // NOTE: setting icons async.
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; });
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
+                    .catch((error) => {
+                            // NOTE: swallowing any plug.once() errors.
+                            // NOTE: reduced logging for known tab/page access problems.
+                        if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+                            logDebug("plug.once", "Error swallowed", error);
+                        } else {
+                            logInfo("plug.once", "Error swallowed", error);
+                        }
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup());
+                        return undefined;
+                    })),
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
 
-        broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0));
-        broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length));
-        broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment());
-        broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress());
-    }());
+                    // NOTE: setting icons async.
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; }),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; }),
 
-    (function addChromeListeners() {
-        browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
-        browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup()),
 
-        // NOTE: not supported in Firefox (2017-03-15).
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-        if (browser.runtime.onSuspend) {
-            browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
-        }
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
 
-        // NOTE: used when the popup has been disabled.
-        browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
+                broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
+            ])
+                .then((registeredKillSwitches) => {
+                        // NOTE: don't want to replace the existing killSwitches array.
+                    registeredKillSwitches.forEach((registeredKillSwitch) => killSwitches.push(registeredKillSwitch));
 
-        browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
+                    return undefined;
+                });
+        })
+        .then(() => {
+            browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
+            browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
 
-        // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
-        // Does not seem to happen in Chrome.
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
-        try {
-            browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
-        } catch (error) {
-            logError("browser.commands.onCommand.addListener(...)", error);
-        }
-    }());
+            // NOTE: not supported in Firefox (2017-03-15).
+            // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+            if (browser.runtime.onSuspend) {
+                browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+                browser.runtime.onSuspend.addListener(() => suspensionManager.unintialize());
+            }
 
-    (function exportBackgroundFunctions() {
-        window.broadcaster = broadcaster;
-        window.progress = progress;
+            // NOTE: used when the popup has been disabled.
+            browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
 
-        window.log = log;
-        window.logError = logError;
-        window.logDebug = logDebug;
+            browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
 
-        window.getAllVoices = () => talkieSpeaker.getAllVoices();
-        window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
-        window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
-        window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
-        window.getVersionName = () => metadataManager.getVersionName();
-    }());
+            // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
+            // Does not seem to happen in Chrome.
+            // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
+            try {
+                browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+            } catch (error) {
+                logError("browser.commands.onCommand.addListener(...)", error);
+            }
 
-    buttonPopupManager.enablePopup();
+            return undefined;
+        })
+        .then(() => {
+            window.broadcaster = broadcaster;
+            window.progress = progress;
 
-    log("Done", "Main background function");
+            window.logDebug = logDebug;
+            window.logInfo = logInfo;
+            window.logWarn = logWarn;
+            window.logError = logError;
+            window.setLoggingLevel = setLevel;
+
+            window.getAllVoices = () => talkieSpeaker.getAllVoices();
+            window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
+            window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
+            window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            window.getVersionName = () => metadataManager.getVersionName();
+            window.isFreeVersion = () => metadataManager.isFreeVersion();
+            window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+            window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
+            window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
+            window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
+            window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
+            window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+            window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
+            window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
+            window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
+            window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
+            window.getStoredValue = (key) => storageManager.getStoredValue(key);
+            window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
+            window.getConfigurationValue = (path) => configuration.get(path);
+
+            return undefined;
+        })
+        .then(() => {
+            buttonPopupManager.enablePopup();
+
+            logInfo("Locale (@@ui_locale)", configuration.uiLocale);
+            logInfo("Locale (messages.json)", configuration.messagesLocale);
+
+            logDebug("Done", "Main background function");
+
+            return undefined;
+        });
 }
 
 try {

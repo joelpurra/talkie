@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    log,
+    logDebug,
     logError,
 } from "../shared/log";
 
@@ -29,7 +29,7 @@ export default class CommandHandler {
     }
 
     handle(command, ...args) {
-        log("Start", "commandHandler", command);
+        logDebug("Start", "commandHandler", command);
 
         const commandAction = this.commandMap[command];
 
@@ -39,29 +39,29 @@ export default class CommandHandler {
 
         return commandAction(...args)
             .then((result) => {
-                log("Done", "commandHandler", command, result);
+                logDebug("Done", "commandHandler", command, result);
 
                 return undefined;
             })
             .catch((error) => {
-                logError("Error", "commandHandler", command, error);
+                logError("commandHandler", command, error);
 
                 throw error;
             });
     }
 
     handleCommandEvent(command, ...args) {
-        log("Start", "handleCommandEvent", command);
+        logDebug("Start", "handleCommandEvent", command);
 
         // NOTE: straight mapping from command to action.
         return this.handle(command, ...args)
             .then((result) => {
-                log("Done", "handleCommandEvent", command, result);
+                logDebug("Done", "handleCommandEvent", command, result);
 
                 return undefined;
             })
             .catch((error) => {
-                logError("Error", "handleCommandEvent", command, error);
+                logError("handleCommandEvent", command, error);
 
                 throw error;
             });

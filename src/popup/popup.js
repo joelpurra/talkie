@@ -23,16 +23,16 @@ import {
 } from "../shared/promise";
 
 import {
+    registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+
+import {
     getBackgroundPage,
 } from "../shared/tabs";
 
 import {
     knownEvents,
 } from "../shared/events";
-
-import {
-    getStoredValue,
-} from "../shared/storage";
 
 import {
     eventToPromise,
@@ -48,11 +48,9 @@ const loadOptionsAndApply = () => promiseTry(
     () => {
         const hideDonationsOptionId = "options-popup-donate-buttons-hide";
 
-        return Promise.resolve()
-            .then(() => getStoredValue(hideDonationsOptionId))
+        return getBackgroundPage()
+            .then((background) => background.getStoredValue(hideDonationsOptionId))
             .then((hideDonations) => {
-                hideDonations = hideDonations === true;
-
                 if (hideDonations) {
                     const elementsToHide = []
                         .concat(Array.from(document.getElementsByTagName("footer")))
@@ -68,43 +66,82 @@ const loadOptionsAndApply = () => promiseTry(
     }
 );
 
-const passClickToBackground = (background) => promiseTry(
+const passClickToBackground = () => promiseTry(
         () => {
-            try {
-                dualLogger.dualLog("Start", "passClickToBackground");
-                background.iconClick();
-                dualLogger.dualLog("Done", "passClickToBackground");
-            } catch (error) {
-                dualLogger.dualLogError("Error", "passClickToBackground", error);
-                throw error;
-            }
+            dualLogger.dualLogDebug("Start", "passClickToBackground");
+
+            return getBackgroundPage()
+                .then((background) => background.iconClick())
+                .then(() => {
+                    dualLogger.dualLogDebug("Done", "passClickToBackground");
+
+                    return undefined;
+                })
+                .catch((error) => {
+                    dualLogger.dualLogError("passClickToBackground", error);
+
+                    throw error;
+                });
         }
 );
 
-const updateProgress = (data) => {
-    const progressBar = document.getElementById("progress");
-    progressBar.max = data.max - data.min;
-    progressBar.value = data.current;
+const updateProgress = (data) => promiseTry(
+    () => {
+        const progressBar = document.getElementById("progress");
+        progressBar.max = data.max - data.min;
+        progressBar.value = data.current;
+
+        return undefined;
+    }
+);
+
+const killSwitches = [];
+
+const executeKillSwitches = () => {
+    // NOTE: expected to have only synchronous methods for the relevant parts.
+    killSwitches.forEach((killSwitch) => {
+        try {
+            killSwitch();
+        } catch (error) {
+            dualLogger.dualLogError("executeKillSwitches", error);
+        }
+    });
 };
+
+const registerBroadcastListeners = () => promiseTry(
+    () => {
+        return getBackgroundPage()
+            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
+            .then((killSwitch) => killSwitches.push(killSwitch));
+    }
+);
 
 const start = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => startFrontend())
             .then(() => loadOptionsAndApply())
-            .then(() => getBackgroundPage())
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
-            .then(() => getBackgroundPage())
-            .then((background) => passClickToBackground(background));
+            .then(() => registerBroadcastListeners())
+            .then(() => passClickToBackground());
     }
 );
 
 const stop = () => promiseTry(
     () => {
+        // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
         return Promise.resolve()
             .then(() => stopFrontend());
     }
 );
 
+registerUnhandledRejectionHandler();
+
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
+
+// NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
 window.addEventListener("unload", eventToPromise.bind(null, stop));
+
+// NOTE: synchronous version.
+window.addEventListener("unload", () => {
+    executeKillSwitches();
+});

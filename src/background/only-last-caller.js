@@ -23,7 +23,7 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
+    logDebug,
 } from "../shared/log";
 
 export default class OnlyLastCaller {
@@ -39,13 +39,13 @@ export default class OnlyLastCaller {
         this.incrementCallerId();
         const callerOnTheAirId = this.lastCallerId;
 
-        log("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
+        logDebug("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
 
         return () => promiseTry(
             () => {
                 const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
 
-                log("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
+                logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
 
                 return isLastCallerOnTheAir;
             }

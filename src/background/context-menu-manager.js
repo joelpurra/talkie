@@ -23,7 +23,7 @@ import {
 } from "../shared/promise";
 
 import {
-    log,
+    logDebug,
 } from "../shared/log";
 
 export default class ContextMenuManager {
@@ -38,28 +38,35 @@ export default class ContextMenuManager {
                     "selection",
                 ],
             },
-            buttonContextMenuStartStopDescription: {
+            buttonContextMenuStartStop: {
                 id: "start-stop",
                 title: browser.i18n.getMessage("commandStartStopDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteMainDescription: {
+            buttonContextMenuOpenWebsiteMain: {
                 id: "open-website-main",
                 title: browser.i18n.getMessage("commandOpenWebsiteMainDescription"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteChromeWebStoreDescription: {
-                id: "open-website-chromewebstore",
-                title: browser.i18n.getMessage("commandOpenWebsiteChromeWebStoreDescription"),
+            buttonContextMenuOpenWebsiteStoreFree: {
+                id: "open-website-store-free",
+                title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Free"),
                 contexts: [
                     "browser_action",
                 ],
             },
-            buttonContextMenuOpenWebsiteDonateDescription: {
+            buttonContextMenuOpenWebsiteStorePremium: {
+                id: "open-website-store-premium",
+                title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Premium"),
+                contexts: [
+                    "browser_action",
+                ],
+            },
+            buttonContextMenuOpenWebsiteDonate: {
                 id: "open-website-donate",
                 title: browser.i18n.getMessage("commandOpenWebsiteDonateDescription"),
                 contexts: [
@@ -72,11 +79,11 @@ export default class ContextMenuManager {
     removeAll() {
         return promiseTry(
             () => {
-                log("Start", "Removing all context menus");
+                logDebug("Start", "Removing all context menus");
 
                 return browser.contextMenus.removeAll()
                     .then((result) => {
-                        log("Done", "Removing all context menus");
+                        logDebug("Done", "Removing all context menus");
 
                         return result;
                     });
@@ -88,7 +95,7 @@ export default class ContextMenuManager {
         return new Promise(
             (resolve, reject) => {
                 try {
-                    log("Start", "Creating context menu", contextMenuOptions);
+                    logDebug("Start", "Creating context menu", contextMenuOptions);
 
                     // NOTE: Can't directly use a promise chain here, as the id is returned instead.
                     // https://github.com/mozilla/webextension-polyfill/pull/26
@@ -99,7 +106,7 @@ export default class ContextMenuManager {
                                 return reject(browser.runtime.lastError);
                             }
 
-                            log("Done", "Creating context menu", contextMenuOptions);
+                            logDebug("Done", "Creating context menu", contextMenuOptions);
 
                             return resolve(contextMenuId);
                         }
@@ -114,7 +121,7 @@ export default class ContextMenuManager {
     contextMenuClickAction(info) {
         return promiseTry(
             () => {
-                log("Start", "contextMenuClickAction", info);
+                logDebug("Start", "contextMenuClickAction", info);
 
                 if (!info) {
                     throw new Error("Unknown context menu click action info object.");
@@ -139,7 +146,7 @@ export default class ContextMenuManager {
                     }
                 )
                     .then(() => {
-                        log("Done", "contextMenuClickAction", info);
+                        logDebug("Done", "contextMenuClickAction", info);
 
                         return undefined;
                     });

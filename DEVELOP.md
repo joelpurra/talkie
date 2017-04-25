@@ -1,14 +1,11 @@
 <p align="center">
-  <a href="https://github.com/joelpurra/talkie"><img src="resources/icon/icon-play/icon-128x128.png" alt="Talkie logotype, a speech bubble with a play button inside" width="128" height="128" border="0" /></a>
+  <a href="https://joelpurra.com/projects/talkie/"><img src="./resources/tile/free/440x280/2016-12-31.png" alt="Talkie logotype, a speech bubble with a play button inside" width="440" height="280" border="0" /></a>
 </p>
 <h1 align="center">
-  <a href="https://github.com/joelpurra/talkie">Talkie</a>
+  <a href="https://joelpurra.com/projects/talkie/">Talkie</a>
 </h1>
 <p align="center">
   Text-to-speech browser extension button
-</p>
-<p align="center">
-  <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="resources/chrome-web-store/ChromeWebStore_Badge_v2_340x96.png" alt="Talkie is available for installation from the Chrome Web Store" width="340" height="96" border="0" /></a>
 </p>
 <p align="center" class="donate">
   <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd>Donate $5 now</kbd></a>
@@ -16,11 +13,28 @@
   <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd>Donate $100 now</kbd></a>
   <a href="https://joelpurra.com/donate/"><kbd>More options</kbd></a>
 </p>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
+    </td>
+    <td align="center">
+      <a href="https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a><br />&nbsp;
+    </td>
+    <td align="center">
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
+    </td>
+    <td align="center">
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium<br />(Coming soon!)
+    </td>
+  </tr>
+</table>
 
 
 
 # Developer documentation
 
+- Find the source code in the [Talkie repository on Github](https://github.com/joelpurra/talkie).
 - Use the `develop` branch as the base for your pull request.
 - Follow git-flow, preferably using  [`git-flow`](http://danielkummer.github.io/git-flow-cheatsheet/).
 - It is recommended to use [`hub`](https://hub.github.com/) for forking and creating pull requests on github.
@@ -35,7 +49,7 @@
 - From the browser extensions settings page:
   - Enable developer mode.
   - Load one of the package folders as an unpacked extension.
-    - `package/chrome/` for Google Chrome, Chromium, Vivaldi, and similar browser.
+    - `package/chrome/` for Google Chrome, Chromium, Vivaldi, and similar browsers.
     - `package/webextension/` for Firefox, and other browsers.
 
 
@@ -60,8 +74,23 @@ npm run --silent rebuild
 - From the browser extensions settings page:
   - Enable developer mode.
   - Inspect the Talkie background page view to see console output.
-- You can also inspect the popup and options pages separately.
+- It is possible to coarsely adjust the console logging level.
+  - In the background page console, enter one of these logging level commands:
+    - `this.setLoggingLevel("DEBG");` (maximum logging, default for developers)
+    - `this.setLoggingLevel("INFO");`
+    - `this.setLoggingLevel("WARN");` (default for normal usage)
+    - `this.setLoggingLevel("ERRO");` (minimum logging)
+- You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
+
+
+```bash
+# Open a new instance of Firefox, with an empty profile, and load Talkie in debugging mode.
+npm run --silent run:firefox:free
+
+# You might need to set the path to Firefox.
+#WEB_EXT_FIREFOX="$HOME/Applications/Firefox.app/Contents/MacOS/firefox-bin" npm run --silent run:firefox:free
+```
 
 
 
@@ -81,7 +110,7 @@ In order to offer Talkie in as many languages as possible, translations are auto
 
 - The `messages.json` for each language is assembled by `npm run --silent messages:refresh`. It is fast enough for development change-test-change cycles.
 - All English base strings in `_locales/en/base.json` are automatically translated to all other languages by `npm run --silent messages:download`. It takes 1-3 minutes to translate all languages, and is too slow to use repeatedly during development. English is the easiest language to use during development.
-- Translation scripts require [Translate Shell `trans`](https://github.com/soimort/translate-shell), [`jq`](https://stedolan.github.io/jq/manual/), and some [`parallel`](https://www.gnu.org/software/parallel/) magic.
+- Translation scripts require a [Google Cloud Translation API key](https://cloud.google.com/translate/), [`jq`](https://stedolan.github.io/jq/manual/), and some shell magic.
 - Automated file mangling is done by package maintainers using `npm run --silent messages:translate` before each release where the have been text changes.
 
 
@@ -113,24 +142,22 @@ git checkout develop
 # Start a new feature. Us a descriptive "<feature-name>", such as "automatic-language-detection".
 git flow feature start <feature-name>
 
-# Watch the source files for changes; one command per terminal.
-npm run --silent watch:background
-npm run --silent watch:popup
-npm run --silent watch:options
-npm run --silent watch:chrome
-npm run --silent watch:webextension
+# Watch the source files for changes. You can also run each command separately; see package.json.
+npm run --silent watch
 
 # Code your feature and add the files.
 # Manually reload and test the code in the browser.
 # Manually test all Talkie features:
-#   - The Talkie button
-#   - Shortcut keys
-#   - Options page
-#   - Language detection in more than one language
-#   - Any feature change you may have made
-# in the supported browsers:
-#   - Google Chrome
-#   - Firefox
+#   - The Talkie button.
+#   - Shortcut keys.
+#   - Right click context menu.
+#   - Options page.
+#   - Language detection in more than one language.
+#   - (Any features which might not have been added to this list.)
+#   - (Any feature change you may have changed/added.)
+# Test in the supported browsers:
+#   - Google Chrome.
+#   - Firefox.
 #   - Preferably other browsers as well.
 
 # Make sure the code builds.
@@ -194,4 +221,4 @@ npm run --silent chromestore
 
 ---
 
-<a href="https://github.com/joelpurra/talkie"><img src="resources/icon/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
+<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
