@@ -80,6 +80,8 @@ streamToPromise(stdin)
                         .replace(/^\s+/g, "")
                         .replace(/\s+$/g, "")
                         .replace(/ +\/ +/g, "/")
+                        .replace(/ +-+ +/g, " — ")
+                        .replace(/ +([.:;!?]) +/g, "$1 ")
                         .replace(/ {2,}/g, " ");
 
                     return translateDirtyMessage;

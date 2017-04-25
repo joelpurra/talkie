@@ -11,14 +11,6 @@
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> קרא את בחירת הטקסט בקול רם",
     "original": "Read text selection out loud"
   },
-  "commandOpenWebsiteChromeWebStoreDescription_Free": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> פתח את דף חנות האינטרנט של Chrome",
-    "original": "Open the Chrome Web Store page"
-  },
-  "commandOpenWebsiteChromeWebStoreDescription_Premium": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> פתח את Premium חנות האינטרנט של Chrome",
-    "original": "Open the Premium Chrome Web Store page"
-  },
   "commandOpenWebsiteDonateDescription": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> פתח את דף התרומות",
     "original": "Open the donation page"
@@ -26,6 +18,14 @@
   "commandOpenWebsiteMainDescription": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> פתח את האתר Talkie",
     "original": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> פתח את דף החנות",
+    "original": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> פתח את דף הדפים Premium",
+    "original": "Open the Premium store page"
   },
   "commandStartStopDescription": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> התחל/להפסיק קריאה הבחירה",
@@ -51,16 +51,20 @@
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> על אודות",
     "original": "About"
   },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> דף הפרויקט על joelpurra.com",
+    "original": "Project page on joelpurra.com"
+  },
   "frontend_aboutThankYou": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תודה על השימוש ב- Talkie - אם אתה אוהב את זה, ספר לחברים שלך!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תודה על השימוש ב- Talkie — אם אתה אוהב את זה, ספר לחברים שלך!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> לִתְרוֹם",
     "original": "Donate"
   },
   "frontend_donate_alreadyHavePremium": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> כבר יש לך את Talkie 🌟 Premium . התמיכה המתמשכת שלך כבר מספיק - תודה!",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> כבר יש לך את Talkie 🌟 Premium. התמיכה המתמשכת שלך כבר מספיק — תודה!",
     "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
   },
   "frontend_donate_moreOptions": {
@@ -124,16 +128,16 @@
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> בחר שיעור קריאה ומגרש לכל קול. להתאים את מהירות הדיבור לטעמך!",
-    "original": "Choose reading rate and pitch per voice. Adjust speaking speed to your liking!"
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> בחר מהירות קריאה ומגרש לכל קול. התאמת קולות לטעמך!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> זה מרגיש חם, מטושטשת אתה מקבל כאשר תמיכה בתוכנות קוד פתוח על ידי מפתחים עצמאיים.",
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> מחיר סביר. בעתיד Premium עדכונים כלולים בחינם.",
-    "original": "Affordable price. Future Premium updates included for free."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> בעתיד Premium עדכונים כלולים בחינם.",
+    "original": "Future Premium updates included for free."
   },
   "frontend_featuresVersion_Free": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> אתה משתמש כעת בגרסה Talkie של Talkie , וקבוצת תכונות מוגבלת זמינה עבורך. אולי Talkie 🌟 Premium תהיה בחירה טובה יותר עבורך?",
@@ -144,8 +148,8 @@
     "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie מגיע בשתי גרסאות: Talkie חינם ו- Talkie 🌟 Premium . הגרסה החינמית היא נהדרת עבור רוב המקרים להשתמש, אבל גרסת פרימיום מציעה אפשרויות נוספות.",
-    "original": "Talkie comes in two versions: Talkie Free and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie מגיע בשתי גרסאות: Talkie ו- Talkie 🌟 Premium. הגרסה החינמית היא נהדרת עבור רוב המקרים להשתמש, אבל גרסת פרימיום מציעה אפשרויות נוספות.",
+    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_getPremiumLinkText": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> קבל Talkie 🌟 Premium !",
@@ -156,8 +160,8 @@
     "original": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> זה לא שאני לא רוצה לקבל Talkie 🌟 Premium או לתרום כדי לתמוך Talkie ופיתוח קוד פתוח בכלל - אני פשוט לא רוצה להתרגז כאשר אתה משתמש Talkie מלכתחילה. אם תשבית את לחצני התרומות בחלון הקופץ, אני מקווה שתתמוך גם ב- Talkie בדרך כלשהי! הכפתורים תמיד יהיו זמינים כאן בין האפשרויות, רק במקרה.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> זה לא שאני לא רוצה לקבל Talkie 🌟 Premium או לתרום כדי לתמוך Talkie ופיתוח קוד פתוח בכלל — אני פשוט לא רוצה להתרגז כאשר אתה משתמש Talkie מלכתחילה. אם תשבית את לחצני התרומות בחלון הקופץ, אני מקווה שתתמוך גם ב- Talkie בדרך כלשהי! הכפתורים תמיד יהיו זמינים כאן בין האפשרויות, רק במקרה.",
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> לתרום: תמיכה בפיתוח קוד פתוח",
@@ -176,12 +180,12 @@
     "original": "License"
   },
   "frontend_rateIt": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> דרג Talkie",
-    "original": "Rate Talkie"
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> עיין ב- Talkie",
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie פותחה כמה ימים לפני ראש השנה 2016/2017, על אתגר מחבר. האתגר התחיל בשאלה: תוך כדי נסיעה לעבודה, האם ניתן להקשיב למאמר במקום לקרוא אותו? קל, אמרתי, ויצאתי להוכיח את זה - או לפחות להפוך את הדפדפן שלי לדבר טקסט באמצעות קול מחשב מטופש. הגרסה הבסיסית, ללא כל ממשק משתמש, התברר להיות טריוויאלי ליצור. הוספת ממשק משתמש, לקח קצת יותר. הוספת זיהוי שפה נכונה חבורה קוד נוסף. התגברות על באגים בדפדפן עוד יותר עבודה. רשימת השיפורים והתכונות נמשכת - וכמה אלפי שורות קוד מאוחר יותר, אתה מסתכל על התוצאה הסופית.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie פותחה כמה ימים לפני ראש השנה 2016/2017, על אתגר מחבר. האתגר התחיל בשאלה: תוך כדי נסיעה לעבודה, האם ניתן להקשיב למאמר במקום לקרוא אותו? קל, אמרתי, ויצאתי להוכיח את זה — או לפחות להפוך את הדפדפן שלי לדבר טקסט באמצעות קול מחשב מטופש. הגרסה הבסיסית, ללא כל ממשק משתמש, התברר להיות טריוויאלי ליצור. הוספת ממשק משתמש, לקח קצת יותר. הוספת זיהוי שפה נכונה חבורה קוד נוסף. התגברות על באגים בדפדפן עוד יותר עבודה. רשימת השיפורים והתכונות נמשכת — וכמה אלפי שורות קוד מאוחר יותר, אתה מסתכל על התוצאה הסופית.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> סיפור: כיצד Talkie התחיל",
@@ -192,12 +196,20 @@
     "original": "Story"
   },
   "frontend_storyThankYou": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תודה על השימוש ב- Talkie - אם אתה אוהב את זה, ספר לחברים שלך!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תודה על השימוש ב- Talkie — אם אתה אוהב את זה, ספר לחברים שלך!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תמיכה ומשוב",
     "original": "Support and feedback"
+  },
+  "frontend_talkieInFirefoxAddons_Free": {
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie",
+    "original": "Talkie in Firefox Add-ons"
+  },
+  "frontend_talkieInFirefoxAddons_Premium": {
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie 🌟 Premium",
+    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie בחנות האינטרנט של Chrome",
@@ -216,20 +228,20 @@
     "original": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תוכל גם לבחור את הטקסט, ולאחר מכן לחץ עליו באמצעות לחצן העכבר הימני, ובחר באפשרות Talkie בתפריט. בדרך זו גם עובד קבצי PDF וכמה סוגים מיוחדים של דפים ב- Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> תוכל גם לבחור את הטקסט, ולאחר מכן לחץ עליו באמצעות לחצן העכבר הימני, ובחר באפשרות Talkie בתפריט. בדרך זו גם עובד קבצי PDF וכמה סוגים מיוחדים של דפים בדפדפן.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> אם המפתח אינו פועל, ודא שהוא אינו בשימוש כבר על ידי תוסף נוסף.",
     "original": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> כיצד לבדוק או לשנות את מקש הקיצור Talkie .",
-    "original": "How to check or change the Talkie shortcut key."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> כיצד לבדוק או לשנות את מקשי הקיצור של Talkie .",
+    "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> אפשרות נוחה היא להשתמש Talkie הקיצור Talkie :",
-    "original": "A convenient option is to use the Talkie shortcut key:"
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> אפשרות נוחה לשימוש Talkie הקיצור Talkie :",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> בחר את הטקסט הרצוי בכל דף אינטרנט.",
@@ -248,8 +260,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> כאן תוכל לראות ולבדוק קולות מותקנים עבור כל שפה בדפדפן שלך. 🌟 Premium משתמשים יכולים גם לבחור את הקול המועדף עליהם כברירת מחדל לכל שפה, כמו גם את שיעור השינוי ואת גובה הצליל עבור כל קול.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> כאן תוכל לראות ולבדוק קולות מותקנים עבור כל שפה בדפדפן שלך. 🌟 Premium משתמשים יכולים גם לבחור את הקול המועדף עליהם כברירת מחדל לכל שפה, וכן לשנות את מהירות הצליל ואת גובה הצליל עבור כל קול.",
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> קולות: בחר את המועדפים שלך",
@@ -261,7 +273,7 @@
   },
   "frontend_voicesPitchEmptyHeading_Free": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium : גובה הצליל",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium: גובה הצליל",
     "original": "🌟 Premium: pitch for voice"
   },
   "frontend_voicesPitchEmptyHeading_Premium": {
@@ -271,7 +283,7 @@
   },
   "frontend_voicesPitchHeading_Free": {
     "description": "The per-voice pitch options heading, including the voice name",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium : גובה הצליל עבור $VOICE$",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium: גובה הצליל עבור $VOICE$",
     "original": "🌟 Premium: pitch for $VOICE$",
     "placeholders": {
       "voice": {
@@ -292,19 +304,19 @@
     }
   },
   "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium : הדולר קול",
-    "original": "🌟 Premium: rate for voice"
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium: מהירות הקול",
+    "original": "🌟 Premium: speed for voice"
   },
   "frontend_voicesRateEmptyHeading_Premium": {
-    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> הדולר קולי",
-    "original": "Rate for voice"
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> מהירות הקול",
+    "original": "Speed for voice"
   },
   "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice rate options heading, including the voice name",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium : מחיר עבור $VOICE$",
-    "original": "🌟 Premium: rate for $VOICE$",
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium: מהירות עבור $VOICE$",
+    "original": "🌟 Premium: speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -313,9 +325,9 @@
     }
   },
   "frontend_voicesRateHeading_Premium": {
-    "description": "The per-voice rate options heading, including the voice name",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> דרג ב- $VOICE$",
-    "original": "Rate for $VOICE$",
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> מהירות עבור $VOICE$",
+    "original": "Speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -334,7 +346,7 @@
   },
   "frontend_voicesSetAsLanguageEmptySelection_Free": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium : שדרג לשינוי קול ברירת מחדל",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium: שדרג לשינוי קול ברירת מחדל",
     "original": "🌟 Premium: Upgrade to change default voice"
   },
   "frontend_voicesSetAsLanguageEmptySelection_Premium": {
@@ -344,7 +356,7 @@
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium : השתמש ב- $VOICE$ כברירת מחדל עבור טקסט ב- $LANGUAGE$",
+    "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> 🌟 Premium: השתמש ב- $VOICE$ כברירת מחדל עבור טקסט ב- $LANGUAGE$",
     "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
@@ -389,7 +401,7 @@
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "<div lang=\"en\" style=\";text-align:right;direction:rtl\"> Talkie אינו יכול לגשת לטקסט שנבחר מסוג זה. זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן. תוכל גם לנסות לבחור טקסט, ולאחר מכן לחץ עליו לחיצה ימנית ובחר באפשרות Talkie בתפריט. אני מתנצל על אי הנוחות.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }

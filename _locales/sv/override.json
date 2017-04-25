@@ -1,204 +1,480 @@
 {
   "buttonDefaultTitle": {
     "message": "Läs upp markerad text",
-    "original": "Read text selection out loud"
+    "original": "Read text selection out loud",
+    "translated-from": "Read text selection out loud"
   },
   "buttonStopTitle": {
     "message": "Sluta läsa upp",
-    "original": "Stop talking"
+    "original": "Stop talking",
+    "translated-from": "Stop talking"
   },
   "commandBrowserActionDescription": {
     "message": "Sluta läsa upp",
-    "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteChromeWebStoreDescription": {
-    "message": "Öppna Chrome Web Store-sidan",
-    "original": null
+    "original": "Read text selection out loud",
+    "translated-from": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
     "message": "Öppna donationssidan",
-    "original": "Open the donation page"
+    "original": "Open the donation page",
+    "translated-from": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Öppna Talkie-webbplatsen",
-    "original": "Open the Talkie website"
+    "original": "Open the Talkie website",
+    "translated-from": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "Öppna butikssidan",
+    "original": "Open the store page",
+    "translated-from": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "Öppna Premium-butikssidan",
+    "original": "Open the Premium store page",
+    "translated-from": "Open the Premium store page"
   },
   "commandStartStopDescription": {
     "message": "Börja/sluta läsa upp markerad text",
-    "original": "Start/stop reading selection"
+    "original": "Start/stop reading selection",
+    "translated-from": "Start/stop reading selection"
   },
   "extensionDescription": {
     "message": "Markera text på valfri webbplats, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button.",
+    "translated-from": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
     "message": "Alternativ",
-    "original": "Options"
+    "original": "Options",
+    "translated-from": "Options"
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Källkod på Github",
-    "original": "Source code on Github"
+    "original": "Source code on Github",
+    "translated-from": "Source code on Github"
   },
   "frontend_aboutHeading": {
     "message": "Om: text-till-tal webbläsartilläggsknapp",
-    "original": "About: text-to-speech browser extension button"
+    "original": "About: text-to-speech browser extension button",
+    "translated-from": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Alternativ",
-    "original": "About"
+    "original": "About",
+    "translated-from": "About"
   },
   "frontend_aboutThankYou": {
-    "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "Tack för att du använder Talkie — om du gillar det, berätta för dina vänner!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!",
+    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
     "message": "Donera",
-    "original": "Donate"
+    "original": "Donate",
+    "translated-from": "Donate"
+  },
+  "frontend_donate_alreadyHavePremium": {
+    "message": "Du har redan Talkie 🌟 Premium. Ditt fortsatta stöd är redan tillräckligt — tack!",
+    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!",
+    "translated-from": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
   },
   "frontend_donate_moreOptions": {
     "message": "Fler donationsalternativ",
-    "original": "More donation options"
+    "original": "More donation options",
+    "translated-from": "More donation options"
   },
   "frontend_donate_usd100Now": {
     "message": "Donera USD 100 nu",
-    "original": "Donate $$100 now"
+    "original": "Donate $$100 now",
+    "translated-from": "Donate $$100 now"
   },
   "frontend_donate_usd25Now": {
     "message": "Donera USD 25 nu",
-    "original": "Donate $$25 now"
+    "original": "Donate $$25 now",
+    "translated-from": "Donate $$25 now"
   },
   "frontend_donate_usd5Now": {
     "message": "Donera USD 5 nu",
-    "original": "Donate $$5 now"
+    "original": "Donate $$5 now",
+    "translated-from": "Donate $$5 now"
+  },
+  "frontend_featuresFreeHeading": {
+    "message": "Funktionalitet i Talkie",
+    "original": "Features in Talkie",
+    "translated-from": "Features in Talkie"
+  },
+  "frontend_featuresFree_List01": {
+    "message": "Automatisk språkidentifiering.",
+    "original": "Automatic language detection.",
+    "translated-from": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "Automatiskt val av ljud.",
+    "original": "Automatic voice selection.",
+    "translated-from": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "Läser upp markerad text genom en knapptryckning, kortkommando, eller högerklicksmeny.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu.",
+    "translated-from": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "Läser långa texter och artiklar högt, även när fliken är i bakgrunden.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background.",
+    "translated-from": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "Öppen källkod som finns tillgänglig kostnadsfritt för alla användare.",
+    "original": "Code is open source and available for free to all users.",
+    "translated-from": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "Kostnadsfri!",
+    "original": "Free!",
+    "translated-from": "Free!"
+  },
+  "frontend_featuresHeading": {
+    "message": "Funktionalitet: vad Talkie är bra på",
+    "original": "Features: what Talkie is good at",
+    "translated-from": "Features: what Talkie is good at"
+  },
+  "frontend_featuresLinkText": {
+    "message": "Funktionalitet",
+    "original": "Features",
+    "translated-from": "Features"
+  },
+  "frontend_featuresPremiumHeading": {
+    "message": "Funktionalitet i Talkie 🌟 Premium",
+    "original": "Features in Talkie 🌟 Premium",
+    "translated-from": "Features in Talkie 🌟 Premium"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "Välj egen standardröst för varje språk. Bra om du tröttnat på systemrösten!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!",
+    "translated-from": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "Välj läshastigheten och tonhöjd per röst. Justera röster för att passa dig!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!",
+    "translated-from": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "Det varma, sprudlande känslan man får när genom att stödja öppen källkod skriven av oberoende utvecklare.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers.",
+    "translated-from": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "Överkomligt pris. Framtida Premium-uppdateringar ingår kostnadsfritt.",
+    "original": "Future Premium updates included for free.",
+    "translated-from": "Future Premium updates included for free."
+  },
+  "frontend_featuresVersion_Free": {
+    "message": "Du använder för närvarande den konstnadsfria versionen av Talkie och en begränsad funktionalitet är tillgängliga för dig. Kanske skulle Talkie 🌟 Premium vara ett bättre val för dig?",
+    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?",
+    "translated-from": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+  },
+  "frontend_featuresVersion_Premium": {
+    "message": "Du använder för närvarande premiumversionen av Talkie och all funktionalitet är tillgängliga för dig. Tack så mycket, det värmer mitt hjärta!",
+    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!",
+    "translated-from": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresVersions": {
+    "message": "Talkie finns i två versioner: Talkie och Talkie 🌟 Premium. Den konstnadsfria versionen fungerar bra för de flesta användningsfall, men premiumversionen har fler inställningar.",
+    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options.",
+    "translated-from": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+  },
+  "frontend_getPremiumLinkText": {
+    "message": "Skaffa Talkie 🌟 Premium!",
+    "original": "Get Talkie 🌟 Premium!",
+    "translated-from": "Get Talkie 🌟 Premium!"
   },
   "frontend_hideDonateButtonsInPopup": {
     "message": "Dölj donationsknapparna i bubblan",
-    "original": "Hide donation buttons in the popup"
+    "original": "Hide donation buttons in the popup",
+    "translated-from": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Det är inte som att jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmämhet - jag vill bara inte att du ska bli irriterad när du använder Talkie till att börja med. Om du inakiverar donationsknapparna i bubblan, hoppas jag att du även stödjer Talkie på något sätt! Knapparna kommer alltid vara tillgängliga här bland alternativen, utifall att.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "message": "Det är inte som att jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmämhet — jag vill bara inte att du ska bli irriterad när du använder Talkie till att börja med. Om du inakiverar donationsknapparna i bubblan, hoppas jag att du även stödjer Talkie på något sätt! Knapparna kommer alltid vara tillgängliga här bland alternativen, utifall att.",
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case.",
+    "translated-from": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Donera: stöd öppen källkodsutveckling",
-    "original": "Donate: support open source development"
+    "original": "Donate: support open source development",
+    "translated-from": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
-    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA).",
+    "translated-from": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
     "message": "Licens: öppen källkodsmjukvara",
-    "original": "License: open-source software"
+    "original": "License: open-source software",
+    "translated-from": "License: open-source software"
   },
   "frontend_licenseLinkText": {
     "message": "Licens",
-    "original": "License"
+    "original": "License",
+    "translated-from": "License"
   },
   "frontend_rateIt": {
     "message": "Betygsätt Talkie",
-    "original": "Review Talkie"
+    "original": "Review Talkie",
+    "translated-from": "Review Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det - eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande versionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer - och ett par tusen rader kod senare, ser du resultatet.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det — eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande versionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer — och ett par tusen rader kod senare, ser du resultatet.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result.",
+    "translated-from": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Berättelse: hur Talkie kom till",
-    "original": "Story: how Talkie got started"
+    "original": "Story: how Talkie got started",
+    "translated-from": "Story: how Talkie got started"
   },
   "frontend_storyLinkText": {
     "message": "Berättelse",
-    "original": "Story"
+    "original": "Story",
+    "translated-from": "Story"
   },
   "frontend_storyThankYou": {
-    "message": "Tack för att du använder Talkie - om du gillar det, berätta för dina vänner!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "Tack för att du använder Talkie — om du gillar det, berätta för dina vänner!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!",
+    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
     "message": "Hjälp och feedback",
-    "original": "Support and feedback"
+    "original": "Support and feedback",
+    "translated-from": "Support and feedback"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie i Chrome Web Store",
-    "original": "Talkie in the Chrome Web Store"
+    "original": "Talkie in the Chrome Web Store",
+    "translated-from": "Talkie in the Chrome Web Store"
+  },
+  "frontend_talkieInTheChromeWebStore_Premium": {
+    "message": "Talkie 🌟 Premium i Chrome Web Store",
+    "original": "Talkie 🌟 Premium in the Chrome Web Store",
+    "translated-from": "Talkie 🌟 Premium in the Chrome Web Store"
   },
   "frontend_usageHeading": {
     "message": "Användning",
-    "original": "Usage"
+    "original": "Usage",
+    "translated-from": "Usage"
   },
   "frontend_usageLinkText": {
     "message": "Användning",
-    "original": "Usage"
+    "original": "Usage",
+    "translated-from": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
+    "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "original": "If the key does not work, please check that it is not already in use by another extension.",
+    "translated-from": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Steg för att kontrollera eller ändra Talkies kortkommando.",
-    "original": "How to check or change the Talkie shortcut keys."
+    "original": "How to check or change the Talkie shortcut keys.",
+    "translated-from": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:",
-    "original": "A convenient option is to use the Talkie shortcut keys:"
+    "original": "A convenient option is to use the Talkie shortcut keys:",
+    "translated-from": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Markera önskad text på valfri webbplats.",
-    "original": "Select desired text on any web page."
+    "original": "Select desired text on any web page.",
+    "translated-from": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
     "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält",
-    "original": "Click the Talkie button in your browser bar"
+    "original": "Click the Talkie button in your browser bar",
+    "translated-from": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Tillgängliga språk",
-    "original": "Available languages"
+    "original": "Available languages",
+    "translated-from": "Available languages"
   },
   "frontend_voicesAvailableVoices": {
     "message": "Tillgängliga röster",
-    "original": "Available voices"
+    "original": "Available voices",
+    "translated-from": "Available voices"
   },
   "frontend_voicesDescription": {
     "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice.",
+    "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Röster: testa din webbläsare",
-    "original": "Voices: select your favorite"
+    "original": "Voices: select your favorite",
+    "translated-from": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
     "message": "Röster",
-    "original": "Voices"
+    "original": "Voices",
+    "translated-from": "Voices"
+  },
+  "frontend_voicesPitchEmptyHeading_Free": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: tonhöjd för röst",
+    "original": "🌟 Premium: pitch for voice",
+    "translated-from": "🌟 Premium: pitch for voice"
+  },
+  "frontend_voicesPitchEmptyHeading_Premium": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Tonhöjd för röst",
+    "original": "Pitch for voice",
+    "translated-from": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading_Free": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "🌟 Premium: tonhöjd för $VOICE$",
+    "original": "🌟 Premium: pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "translated-from": "🌟 Premium: pitch for $VOICE$"
+  },
+  "frontend_voicesPitchHeading_Premium": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "Tonhöjd för $VOICE$",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "translated-from": "Pitch for $VOICE$"
+  },
+  "frontend_voicesRateEmptyHeading_Free": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: hastighet för röst",
+    "original": "🌟 Premium: speed for voice",
+    "translated-from": "🌟 Premium: speed for voice"
+  },
+  "frontend_voicesRateEmptyHeading_Premium": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "Hastighet för röst",
+    "original": "Speed for voice",
+    "translated-from": "Speed for voice"
+  },
+  "frontend_voicesRateHeading_Free": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "🌟 Premium: hastighet för $VOICE$",
+    "original": "🌟 Premium: speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "translated-from": "🌟 Premium: speed for $VOICE$"
+  },
+  "frontend_voicesRateHeading_Premium": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "Hastighet för $VOICE$",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "translated-from": "Speed for $VOICE$"
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
     "message": "Flygande bäckasiner söka hwila på mjuka tuvor.",
-    "original": "The quick brown fox jumps over the lazy dog."
+    "original": "The quick brown fox jumps over the lazy dog.",
+    "translated-from": "The quick brown fox jumps over the lazy dog."
   },
   "frontend_voicesSampleTextHeading": {
     "message": "Exempeltext för Talkie att läsa upp",
-    "original": "Sample text for Talkie to read out loud"
+    "original": "Sample text for Talkie to read out loud",
+    "translated-from": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Free": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
+    "message": "🌟 Premium: Uppgradera för att ändra standardröst",
+    "original": "🌟 Premium: Upgrade to change default voice",
+    "translated-from": "🌟 Premium: Upgrade to change default voice"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+    "message": "Använd som standardröst för språk",
+    "original": "Use as default voice for language",
+    "translated-from": "Use as default voice for language"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "🌟 Premium: Använd $VOICE$ som standardröst för text på $LANGUAGE$",
+    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "translated-from": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "Användning $VOICE$ som standardröst för text på $LANGUAGE$",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "translated-from": "Use $VOICE$ as default voice for text in $LANGUAGE$"
   },
   "frontend_voicesShowAllVoices": {
     "message": "Visa alla röster",
-    "original": "Show all voices"
+    "original": "Show all voices",
+    "translated-from": "Show all voices"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Dina donationer uppskattas!",
-    "original": "Your donations are appreciated!"
+    "original": "Your donations are appreciated!",
+    "translated-from": "Your donations are appreciated!"
+  },
+  "frontend_yourDonationsAreAppreciatedShort": {
+    "message": "Donationer uppskattat!",
+    "original": "Donations appreciated!",
+    "translated-from": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",
-    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu.",
+    "translated-from": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida. Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren. Du kan även testa att markera text, sedan högerklicka på den, och välja Talkie i menyn. Jag ber om ursäkt för besväret.",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience.",
+    "translated-from": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

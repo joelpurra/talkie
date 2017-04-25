@@ -11,14 +11,6 @@
     "message": "大声阅读文本选择",
     "original": "Read text selection out loud"
   },
-  "commandOpenWebsiteChromeWebStoreDescription_Free": {
-    "message": "打开Chrome网上应用店页面",
-    "original": "Open the Chrome Web Store page"
-  },
-  "commandOpenWebsiteChromeWebStoreDescription_Premium": {
-    "message": "打开Premium Chrome网上应用店页面",
-    "original": "Open the Premium Chrome Web Store page"
-  },
   "commandOpenWebsiteDonateDescription": {
     "message": "打开捐款页面",
     "original": "Open the donation page"
@@ -26,6 +18,14 @@
   "commandOpenWebsiteMainDescription": {
     "message": "打开Talkie网站",
     "original": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "打开商店页面",
+    "original": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "打开Premium商店页面",
+    "original": "Open the Premium store page"
   },
   "commandStartStopDescription": {
     "message": "开始/停止阅读选择",
@@ -51,16 +51,20 @@
     "message": "关于",
     "original": "About"
   },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "Joelpurra.com上的项目页面",
+    "original": "Project page on joelpurra.com"
+  },
   "frontend_aboutThankYou": {
-    "message": "谢谢你使用Talkie - 如果你喜欢，告诉你的朋友！",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "谢谢你使用Talkie — 如果你喜欢，告诉你的朋友！",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
     "message": "捐",
     "original": "Donate"
   },
   "frontend_donate_alreadyHavePremium": {
-    "message": "您已经有Talkie 🌟 Premium 。您的持续支持已经足够了 - 谢谢！",
+    "message": "您已经有Talkie 🌟 Premium 。您的持续支持已经足够了 — 谢谢！",
     "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
   },
   "frontend_donate_moreOptions": {
@@ -124,19 +128,19 @@
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "选择每个声音的阅读速度和音高。调整说话速度给你的喜好！",
-    "original": "Choose reading rate and pitch per voice. Adjust speaking speed to your liking!"
+    "message": "选择每个声音的阅读速度和音高。根据您的喜好调整声音！",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
     "message": "当由独立开发人员支持开源软件时，您将获得温暖，模糊的感觉。",
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "可接受的价格。未来Premium更新包含免费。",
-    "original": "Affordable price. Future Premium updates included for free."
+    "message": "未来Premium更新包含免费。",
+    "original": "Future Premium updates included for free."
   },
   "frontend_featuresVersion_Free": {
-    "message": "您正在使用Talkie的免费版本，您可以使用一些有限的功能。也许Talkie 🌟 Premium将是您的更好的选择？",
+    "message": "您正在使用Talkie的免费版本，您可以使用一组有限的功能。也许Talkie 🌟 Premium将是您的更好的选择？",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
@@ -144,8 +148,8 @@
     "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie有两个版本： Talkie免费和Talkie 🌟 Premium 。免费版本适用于大多数用例，但高级版本提供了其他选项。",
-    "original": "Talkie comes in two versions: Talkie Free and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+    "message": "Talkie有两个版本： Talkie和Talkie 🌟 Premium 。免费版本适用于大多数用例，但高级版本提供了其他选项。",
+    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_getPremiumLinkText": {
     "message": "获取Talkie 🌟 Premium ！",
@@ -156,8 +160,8 @@
     "original": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "这不是我不想让你得到Talkie 🌟 Premium或捐赠来支持Talkie和一般的开放源代码开发 - 我不想让你在使用Talkie时感到烦恼。如果您在弹出窗口中禁用捐赠按钮，我希望您也Talkie某种方式支持Talkie ！这些按钮将始终在这些选项之间提供，以防万一。",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "message": "这不是我不想让你得到Talkie 🌟 Premium或捐赠来支持Talkie和一般的开放源代码开发 — 我不想让你在使用Talkie时感到烦恼。如果您在弹出窗口中禁用捐赠按钮，我希望您也Talkie某种方式支持Talkie ！这些按钮将始终在这些选项之间提供，以防万一。",
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "捐款：支持开源开发",
@@ -176,12 +180,12 @@
     "original": "License"
   },
   "frontend_rateIt": {
-    "message": "价格Talkie",
-    "original": "Rate Talkie"
+    "message": "查看Talkie",
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie是在2016/2017年的新年前几天开发的，来自朋友的挑战。挑战从一个问题开始：在上班的同时，是否可以听一篇文章而不是阅读它？容易，我说，并开始证明它 - 或至少让我的浏览器使用愚蠢的电脑声音说出文字。基本版本，没有任何用户界面，原来是无聊的创建。添加用户界面花了一点时间。添加适当的语言检测一堆更多的代码。克服浏览器中的错误更多的工作。改进和功能的列表继续进行，而后续的数千行代码，您正在查看最终结果。",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie是在2016/2017年的新年前几天开发的，来自朋友的挑战。挑战从一个问题开始：在上班的同时，是否可以听一篇文章而不是阅读它？容易，我说，并开始证明它 — 或至少让我的浏览器使用愚蠢的电脑声音说出文字。基本版本，没有任何用户界面，原来是无聊的创建。添加用户界面花了一点时间。添加适当的语言检测一堆更多的代码。克服浏览器中的错误更多的工作。改进和功能的列表继续进行，而后续的数千行代码，您正在查看最终结果。",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "故事： Talkie如何开始",
@@ -192,12 +196,20 @@
     "original": "Story"
   },
   "frontend_storyThankYou": {
-    "message": "谢谢你使用Talkie - 如果你喜欢，告诉你的朋友！",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "谢谢你使用Talkie — 如果你喜欢，告诉你的朋友！",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
     "message": "支持和反馈",
     "original": "Support and feedback"
+  },
+  "frontend_talkieInFirefoxAddons_Free": {
+    "message": "Talkie在Firefox插件中",
+    "original": "Talkie in Firefox Add-ons"
+  },
+  "frontend_talkieInFirefoxAddons_Premium": {
+    "message": "在Firefox附加组件中Talkie 🌟 Premium",
+    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie在Chrome网上应用店中",
@@ -216,8 +228,8 @@
     "original": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "您还可以选择文本，然后右键单击，然后在菜单中选择Talkie 。这样也可以在PDF文件和Chrome中的一些特殊类型的页面中使用。",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "message": "您还可以选择文本，然后右键单击，然后在菜单中选择Talkie 。这样也可以在浏览器中的PDF文件和一些特殊类型的页面中使用。",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "如果钥匙不起作用，请检查它是否还没有被其他分机使用。",
@@ -225,11 +237,11 @@
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "如何检查或更改Talkie快捷键。",
-    "original": "How to check or change the Talkie shortcut key."
+    "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "一个方便的选择是使用Talkie快捷键：",
-    "original": "A convenient option is to use the Talkie shortcut key:"
+    "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "在任何网页上选择所需的文本。",
@@ -248,8 +260,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "在这里，您可以在浏览器中查看和测试每种语言的已安装语音。 🌟 Premium用户还可以选择自己喜欢的语音作为每种语言的默认值，以及每种语音的更改速率和音高。",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
+    "message": "在这里，您可以在浏览器中查看和测试每种语言的已安装语音。 🌟 Premium用户还可以选择自己喜欢的语音作为默认的每种语言，以及更改每个语音的速度和音高。",
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "声音：选择你最喜欢的",
@@ -292,19 +304,19 @@
     }
   },
   "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium ：语音率",
-    "original": "🌟 Premium: rate for voice"
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium ：语音速度",
+    "original": "🌟 Premium: speed for voice"
   },
   "frontend_voicesRateEmptyHeading_Premium": {
-    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
-    "message": "声音率",
-    "original": "Rate for voice"
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "声音速度",
+    "original": "Speed for voice"
   },
   "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice rate options heading, including the voice name",
-    "message": "🌟 Premium ： $VOICE$费率",
-    "original": "🌟 Premium: rate for $VOICE$",
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "🌟 Premium ： $VOICE$速度",
+    "original": "🌟 Premium: speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -313,9 +325,9 @@
     }
   },
   "frontend_voicesRateHeading_Premium": {
-    "description": "The per-voice rate options heading, including the voice name",
-    "message": "价格$VOICE$",
-    "original": "Rate for $VOICE$",
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "速度$VOICE$",
+    "original": "Speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -389,7 +401,7 @@
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie无法从此类型的页面访问所选文本。这是一个非常特别的页面，浏览器存在安全限制。您也可以尝试选择文本，然后右键单击，然后在菜单中选择Talkie 。对不起给您带来不便。",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }

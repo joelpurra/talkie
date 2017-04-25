@@ -11,14 +11,6 @@
     "message": "Læs tekst udvælgelse højt",
     "original": "Read text selection out loud"
   },
-  "commandOpenWebsiteChromeWebStoreDescription_Free": {
-    "message": "Åbn Chrome Webshop side",
-    "original": "Open the Chrome Web Store page"
-  },
-  "commandOpenWebsiteChromeWebStoreDescription_Premium": {
-    "message": "Åbn Premium Chrome Webshop side",
-    "original": "Open the Premium Chrome Web Store page"
-  },
   "commandOpenWebsiteDonateDescription": {
     "message": "Åbn donation side",
     "original": "Open the donation page"
@@ -26,6 +18,14 @@
   "commandOpenWebsiteMainDescription": {
     "message": "Åbn Talkie hjemmeside",
     "original": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "Åbn butikken siden",
+    "original": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "Åbn Premium butikken siden",
+    "original": "Open the Premium store page"
   },
   "commandStartStopDescription": {
     "message": "Start/stop læsning udvælgelse",
@@ -51,16 +51,20 @@
     "message": "Om",
     "original": "About"
   },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "Projekt side på joelpurra.com",
+    "original": "Project page on joelpurra.com"
+  },
   "frontend_aboutThankYou": {
-    "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "Tak fordi du bruger Talkie — hvis du kan lide det, fortæl dine venner!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
     "message": "Doner",
     "original": "Donate"
   },
   "frontend_donate_alreadyHavePremium": {
-    "message": "Du har allerede Talkie 🌟 Premium . Din fortsatte støtte er allerede nok - tak!",
+    "message": "Du har allerede Talkie 🌟 Premium. Din fortsatte støtte er allerede nok — tak!",
     "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
   },
   "frontend_donate_moreOptions": {
@@ -124,16 +128,16 @@
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "Vælg læsehastighed og stigningen pr stemme. Juster talende hastighed til din smag!",
-    "original": "Choose reading rate and pitch per voice. Adjust speaking speed to your liking!"
+    "message": "Vælg læsehastighed og stigningen pr stemme. Juster stemmer til din smag!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
     "message": "Det varme, fuzzy følelse, du får, når støtte open source-software af uafhængige udviklere.",
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "Overkommelig pris. Fremtidige Premium opdateringer inkluderet gratis.",
-    "original": "Affordable price. Future Premium updates included for free."
+    "message": "Fremtidige Premium opdateringer inkluderet gratis.",
+    "original": "Future Premium updates included for free."
   },
   "frontend_featuresVersion_Free": {
     "message": "Du bruger i øjeblikket den gratis version af Talkie , og et begrænset sæt funktioner er tilgængelig for dig. Måske Talkie 🌟 Premium ville være et bedre valg for dig?",
@@ -144,8 +148,8 @@
     "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie kommer i to versioner: Talkie Fri og Talkie 🌟 Premium . Den gratis version er fantastisk til de fleste tilfælde brug, men præmien version tilbyder ekstra muligheder.",
-    "original": "Talkie comes in two versions: Talkie Free and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+    "message": "Talkie kommer i to versioner: Talkie og Talkie 🌟 Premium. Den gratis version er fantastisk til de fleste tilfælde brug, men præmien version tilbyder ekstra muligheder.",
+    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_getPremiumLinkText": {
     "message": "Få Talkie 🌟 Premium !",
@@ -156,8 +160,8 @@
     "original": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Det er ikke ligesom jeg vil ikke have dig til at få Talkie 🌟 Premium eller donere til at støtte Talkie og open source udvikling generelt - jeg vil bare ikke have dig til at være irriteret, når du bruger Talkie i første omgang. Hvis du deaktiverer knapperne donation i popup, jeg håber at du også vil støtte Talkie på en eller anden måde! Knapperne vil altid være tilgængelige her blandt indstillingerne, just in case.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general - I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "message": "Det er ikke ligesom jeg vil ikke have dig til at få Talkie 🌟 Premium eller donere til at støtte Talkie og open source udvikling generelt — jeg vil bare ikke have dig til at være irriteret, når du bruger Talkie i første omgang. Hvis du deaktiverer knapperne donation i popup, jeg håber at du også vil støtte Talkie på en eller anden måde! Knapperne vil altid være tilgængelige her blandt indstillingerne, just in case.",
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Donér: støtte open source udvikling",
@@ -176,12 +180,12 @@
     "original": "License"
   },
   "frontend_rateIt": {
-    "message": "Bedøm Talkie",
-    "original": "Rate Talkie"
+    "message": "gennemgå Talkie",
+    "original": "Review Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie blev udviklet et par dage før nytår 2016/2017, på en udfordring fra en ven. Udfordringen startede med spørgsmålet: mens pendling til arbejde, er det muligt at lytte til en artikel i stedet for at læse det? Let, sagde jeg, og satte sig for at bevise det - eller i hvert fald at gøre min browser tale tekst ved hjælp af en dum computer stemme. Den grundlæggende version, uden nogen brugergrænseflade, viste sig at være trivielt at skabe. Tilføjelse af en brugergrænseflade, tog lidt længere tid. Tilføjelse ordentlig sprog detektering en flok mere kode. At overvinde fejl i browseren endnu mere arbejde. Listen over forbedringer og funktioner fortsætter - og et par tusinde linjer kode senere, er du kigger på det endelige resultat.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it - or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on - and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie blev udviklet et par dage før nytår 2016/2017, på en udfordring fra en ven. Udfordringen startede med spørgsmålet: mens pendling til arbejde, er det muligt at lytte til en artikel i stedet for at læse det? Let, sagde jeg, og satte sig for at bevise det — eller i hvert fald at gøre min browser tale tekst ved hjælp af en dum computer stemme. Den grundlæggende version, uden nogen brugergrænseflade, viste sig at være trivielt at skabe. Tilføjelse af en brugergrænseflade, tog lidt længere tid. Tilføjelse ordentlig sprog detektering en flok mere kode. At overvinde fejl i browseren endnu mere arbejde. Listen over forbedringer og funktioner fortsætter — og et par tusinde linjer kode senere, er du kigger på det endelige resultat.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Historie: hvordan Talkie fik startet",
@@ -192,12 +196,20 @@
     "original": "Story"
   },
   "frontend_storyThankYou": {
-    "message": "Tak fordi du bruger Talkie - hvis du kan lide det, fortæl dine venner!",
-    "original": "Thank you for using Talkie - if you like it, tell your friends!"
+    "message": "Tak fordi du bruger Talkie — hvis du kan lide det, fortæl dine venner!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
     "message": "Støtte og feedback",
     "original": "Support and feedback"
+  },
+  "frontend_talkieInFirefoxAddons_Free": {
+    "message": "Talkie i Firefox tilføjelser",
+    "original": "Talkie in Firefox Add-ons"
+  },
+  "frontend_talkieInFirefoxAddons_Premium": {
+    "message": "Talkie 🌟 Premium i Firefox tilføjelser",
+    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie i Chrome Webshop",
@@ -216,20 +228,20 @@
     "original": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "Du kan også markere teksten, så højreklik på den, og vælg Talkie i menuen. På den måde fungerer også i PDF-filer og nogle særlige typer af sider i Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in Chrome."
+    "message": "Du kan også markere teksten, så højreklik på den, og vælg Talkie i menuen. På den måde fungerer også i PDF-filer og nogle særlige typer af sider i browseren.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse.",
     "original": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Sådan kontrolleres eller ændres Talkie genvejstast.",
-    "original": "How to check or change the Talkie shortcut key."
+    "message": "Sådan kontrolleres eller ændre Talkie genvejstaster.",
+    "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
-    "message": "En bekvem mulighed er at bruge den Talkie genvejstast:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
+    "message": "En bekvem mulighed er at bruge de Talkie genvejstaster:",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Vælg den ønskede tekst på en webside.",
@@ -248,8 +260,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Her kan du se og teste installerede stemmer for hvert sprog i din browser. 🌟 Premium brugere kan også vælge deres favorit stemme som standard pr sprog, samt ændre kurs og banen for hver lyd.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change rate and pitch for each voice."
+    "message": "Her kan du se og teste installerede stemmer for hvert sprog i din browser. 🌟 Premium brugere kan også vælge deres favorit stemme som standard pr sprog, samt ændre hastighed og stigning for hver lyd.",
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Stemmer: vælg din favorit",
@@ -261,7 +273,7 @@
   },
   "frontend_voicesPitchEmptyHeading_Free": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium : banen til stemme",
+    "message": "🌟 Premium: banen til stemme",
     "original": "🌟 Premium: pitch for voice"
   },
   "frontend_voicesPitchEmptyHeading_Premium": {
@@ -271,7 +283,7 @@
   },
   "frontend_voicesPitchHeading_Free": {
     "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium : tonehøjden for $VOICE$",
+    "message": "🌟 Premium: tonehøjden for $VOICE$",
     "original": "🌟 Premium: pitch for $VOICE$",
     "placeholders": {
       "voice": {
@@ -292,19 +304,19 @@
     }
   },
   "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium : sats for voice",
-    "original": "🌟 Premium: rate for voice"
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: hastighed for voice",
+    "original": "🌟 Premium: speed for voice"
   },
   "frontend_voicesRateEmptyHeading_Premium": {
-    "description": "The per-voice rate options heading, without the voice name variable as none has been selected",
-    "message": "Pris for tale",
-    "original": "Rate for voice"
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "Hastighed for sang",
+    "original": "Speed for voice"
   },
   "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice rate options heading, including the voice name",
-    "message": "🌟 Premium : sats for $VOICE$",
-    "original": "🌟 Premium: rate for $VOICE$",
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "🌟 Premium: hastighed for $VOICE$",
+    "original": "🌟 Premium: speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -313,9 +325,9 @@
     }
   },
   "frontend_voicesRateHeading_Premium": {
-    "description": "The per-voice rate options heading, including the voice name",
-    "message": "Rate for $VOICE$",
-    "original": "Rate for $VOICE$",
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "Hastighed for $VOICE$",
+    "original": "Speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -334,7 +346,7 @@
   },
   "frontend_voicesSetAsLanguageEmptySelection_Free": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium : Opgrader for at ændre standard stemme",
+    "message": "🌟 Premium: Opgrader for at ændre standard stemme",
     "original": "🌟 Premium: Upgrade to change default voice"
   },
   "frontend_voicesSetAsLanguageEmptySelection_Premium": {
@@ -344,7 +356,7 @@
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium : Brug $VOICE$ som standard stemme til tekst i $LANGUAGE$",
+    "message": "🌟 Premium: Brug $VOICE$ som standard stemme til tekst i $LANGUAGE$",
     "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
@@ -389,7 +401,7 @@
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
-    "description": "Some tabs can't be accessed by Chrome Extensions, such as chrome:// and the Chrome Web Store. This message warns users.",
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kan ikke få adgang til markerede tekst fra denne type side. Det er en meget speciel side, og der er sikkerhed begrænsninger sat i af browseren. Du kan også prøve at markere tekst, derefter højreklikke på det og vælge Talkie i menuen. Undskyld ulejligheden.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
