@@ -98,9 +98,6 @@ function main() {
     const metadataManager = new MetadataManager();
     const configuration = new Configuration(metadataManager, configurationObject);
 
-    logDebug("Locale (@@ui_locale)", configuration.uiLocale);
-    logDebug("Locale (messages.json)", configuration.messagesLocale);
-
     const broadcaster = new Broadcaster();
 
     const onlyLastCaller = new OnlyLastCaller();
@@ -195,17 +192,36 @@ function main() {
         }
     }());
 
+    // TODO: put initialization promise on the root chain?
     return Promise.resolve()
         .then(() => suspensionManager.initialize())
         .then(() => {
-            (function registerBroadcastListeners() {
-                broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId());
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId());
+            const killSwitches = [];
+
+            const executeKillSwitches = () => {
+                        // NOTE: expected to have only synchronous methods for the relevant parts.
+                killSwitches.forEach((killSwitch) => {
+                    try {
+                        killSwitch();
+                    } catch (error) {
+                        logError("executeKillSwitches", error);
+                    }
+                });
+            };
+
+            // NOTE: synchronous version.
+            window.addEventListener("unload", () => {
+                executeKillSwitches();
+            });
+
+            return Promise.all([
+                broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId()),
 
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
                     .catch((error) => {
-                        // NOTE: swallowing any plug.once() errors.
-                        // NOTE: reduced logging for known tab/page access problems.
+                            // NOTE: swallowing any plug.once() errors.
+                            // NOTE: reduced logging for known tab/page access problems.
                         if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
                             logDebug("plug.once", "Error swallowed", error);
                         } else {
@@ -213,85 +229,97 @@ function main() {
                         }
 
                         return undefined;
-                    }));
+                    })),
 
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking());
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
 
-                // NOTE: setting icons async.
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; });
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; });
+                    // NOTE: setting icons async.
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; }),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; }),
 
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup());
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup()),
 
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend());
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
 
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0));
-                broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length));
-                broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment());
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress());
-            }());
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
+                broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
+            ])
+                .then((registeredKillSwitches) => {
+                        // NOTE: don't want to replace the existing killSwitches array.
+                    registeredKillSwitches.forEach((registeredKillSwitch) => killSwitches.push(registeredKillSwitch));
 
-            (function addChromeListeners() {
-                browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
-                browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+                    return undefined;
+                });
+        })
+        .then(() => {
+            browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
+            browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
 
-                // NOTE: not supported in Firefox (2017-03-15).
-                // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-                if (browser.runtime.onSuspend) {
-                    browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
-                    browser.runtime.onSuspend.addListener(() => suspensionManager.unintialize());
-                }
+            // NOTE: not supported in Firefox (2017-03-15).
+            // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+            if (browser.runtime.onSuspend) {
+                browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
+                browser.runtime.onSuspend.addListener(() => suspensionManager.unintialize());
+            }
 
-                // NOTE: used when the popup has been disabled.
-                browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
+            // NOTE: used when the popup has been disabled.
+            browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
 
-                browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
+            browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
 
-                // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
-                // Does not seem to happen in Chrome.
-                // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
-                try {
-                    browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
-                } catch (error) {
-                    logError("browser.commands.onCommand.addListener(...)", error);
-                }
-            }());
+            // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
+            // Does not seem to happen in Chrome.
+            // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
+            try {
+                browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+            } catch (error) {
+                logError("browser.commands.onCommand.addListener(...)", error);
+            }
 
-            (function exportBackgroundFunctions() {
-                window.broadcaster = broadcaster;
-                window.progress = progress;
+            return undefined;
+        })
+        .then(() => {
+            window.broadcaster = broadcaster;
+            window.progress = progress;
 
-                window.logDebug = logDebug;
-                window.logInfo = logInfo;
-                window.logWarn = logWarn;
-                window.logError = logError;
-                window.setLoggingLevel = setLevel;
+            window.logDebug = logDebug;
+            window.logInfo = logInfo;
+            window.logWarn = logWarn;
+            window.logError = logError;
+            window.setLoggingLevel = setLevel;
 
-                window.getAllVoices = () => talkieSpeaker.getAllVoices();
-                window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
-                window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
-                window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
-                window.getVersionName = () => metadataManager.getVersionName();
-                window.isFreeVersion = () => metadataManager.isFreeVersion();
-                window.isPremiumVersion = () => metadataManager.isPremiumVersion();
-                window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
-                window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
-                window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
-                window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
-                window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
-                window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
-                window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
-                window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
-                window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
-                window.getStoredValue = (key) => storageManager.getStoredValue(key);
-                window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
-                window.getConfigurationValue = (path) => configuration.get(path);
-            }());
+            window.getAllVoices = () => talkieSpeaker.getAllVoices();
+            window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
+            window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
+            window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            window.getVersionName = () => metadataManager.getVersionName();
+            window.isFreeVersion = () => metadataManager.isFreeVersion();
+            window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+            window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
+            window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
+            window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
+            window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
+            window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+            window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
+            window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
+            window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
+            window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
+            window.getStoredValue = (key) => storageManager.getStoredValue(key);
+            window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
+            window.getConfigurationValue = (path) => configuration.get(path);
 
+            return undefined;
+        })
+        .then(() => {
             buttonPopupManager.enablePopup();
+
+            logInfo("Locale (@@ui_locale)", configuration.uiLocale);
+            logInfo("Locale (messages.json)", configuration.messagesLocale);
 
             logDebug("Done", "Main background function");
 
