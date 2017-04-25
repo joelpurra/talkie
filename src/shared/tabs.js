@@ -166,3 +166,16 @@ export const canTalkieRunInTab = () => promiseTry(
             return false;
         })
 );
+
+// NOTE: used to check if a DOM element cross-page (background, popup, options, ...) reference was used after it was supposed to be unreachable (memory leak).
+// https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Errors/Dead_object
+export const isDeadWrapper = (domElementReference) => {
+    try {
+        String(domElementReference);
+
+        return false;
+    }
+    catch (e) {
+        return true;
+    }
+};

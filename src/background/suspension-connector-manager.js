@@ -68,7 +68,7 @@ export default class SuspensionConnectorManager {
                 logDebug("Start", "_disconnectToDie");
 
                 if (this.talkiePreventSuspensionPort === null) {
-                    // TODO: investigate if this should happen during normal operation, or no.
+                    // TODO: investigate if this should happen during normal operation, or not.
                     // throw new Error("this.talkiePreventSuspensionPort is null");
                     logDebug("Done", "_disconnectToDie", "already null");
 

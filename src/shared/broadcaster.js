@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+    logWarn,
     logError,
 } from "../shared/log";
 
@@ -26,20 +27,63 @@ import {
     promiseTry,
 } from "../shared/promise";
 
+import {
+    isDeadWrapper,
+} from "../shared/tabs";
+
 export default class Broadcaster {
     constructor() {
         this.actionRespondingMap = {};
         this.actionListeningMap = {};
     }
 
+    unregisterRespondingAction(actionName, respondingActionHandler) {
+        return promiseTry(
+            () => {
+                if (!this.actionRespondingMap[actionName]) {
+                    throw new Error("No responding handler registered for action: " + actionName);
+                }
+
+                delete this.actionRespondingMap[actionName];
+            }
+        );
+    }
+
     registerRespondingAction(actionName, respondingActionHandler) {
         return promiseTry(
             () => {
                 if (this.actionRespondingMap[actionName]) {
-                    throw new Error("Only one responding handler allowed at the moment: " + actionName);
+                    throw new Error("Only one responding handler allowed at the moment for action: " + actionName);
                 }
 
                 this.actionRespondingMap[actionName] = respondingActionHandler;
+
+                const killSwitch = () => {
+                    // NOTE: the promise chain probably won't be completed (by the caller, outside of this function), as the kill switch might be executed during the "onunload" event.
+                    return this.unregisterRespondingAction(actionName, respondingActionHandler);
+                };
+
+                return killSwitch;
+            }
+        );
+    }
+
+    unregisterListeningAction(actionName, listeningActionHandler) {
+        return promiseTry(
+            () => {
+                if (!this.actionListeningMap[actionName]) {
+                    throw new Error("No listening action(s) registered for action: " + actionName);
+                }
+
+                const countBefore = this.actionListeningMap[actionName].length;
+
+                this.actionListeningMap[actionName] = this.actionListeningMap[actionName].filter((registeredListeningActionHandler) => registeredListeningActionHandler !== listeningActionHandler);
+
+                const countAfter = this.actionListeningMap[actionName].length;
+
+                if (countBefore === countAfter) {
+                    throw new Error("The specific listening action handler was not registered for action: " + actionName);
+                }
             }
         );
     }
@@ -48,6 +92,13 @@ export default class Broadcaster {
         return promiseTry(
             () => {
                 this.actionListeningMap[actionName] = (this.actionListeningMap[actionName] || []).concat(listeningActionHandler);
+
+                const killSwitch = () => {
+                    // NOTE: the promise chain probably won't be completed (by the caller, outside of this function), as the kill switch might be executed during the "onunload" event.
+                    return this.unregisterListeningAction(actionName, listeningActionHandler);
+                };
+
+                return killSwitch;
             }
         );
     }
@@ -69,6 +120,21 @@ export default class Broadcaster {
                     }
 
                     listeningActions.forEach((listeningAction) => {
+                        // NOTE: check for dead objects from cross-page (background, popup, options, ...) memory leaks.
+                        // NOTE: this is just in case the killSwitch hasn't been called.
+                        // https://developer.mozilla.org/en-US/docs/Extensions/Common_causes_of_memory_leaks_in_extensions#Failing_to_clean_up_event_listeners
+                        // TODO: throw error instead of cleaning up?
+                        // TODO: clean up code to avoid memory leaks, primarly in Firefox as it doesn't have onSuspend at the moment.
+                        if (isDeadWrapper(listeningAction)) {
+                            logWarn(actionName, actionData, listeningAction);
+
+                            // NOTE: done out of the promise chain.
+                            // TODO: include in chain? Might affect the loop?
+                            this.unregisterListeningAction(actionName, listeningAction);
+
+                            return undefined;
+                        }
+
                         listeningAction(actionName, actionData);
                     });
 
