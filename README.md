@@ -19,7 +19,7 @@
       <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a><br />&nbsp;
     </td>
     <td align="center">
       <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
@@ -36,7 +36,7 @@
 
 - <img src="./resources/browser-logo/chrome_16x16.png" alt="Firefox logo" width="16" height="16" border="0" /> Google Chrome
   - Get <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> in the Chrome Web Store.
-  - Get <a href="https://chrome.google.com/webstore/detail/talkie/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a> in the Chrome Web Store.
+  - Get <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a> in the Chrome Web Store.
 - <img src="./resources/browser-logo/firefox_16x16.png" alt="Firefox logo" width="16" height="16" border="0" /> Firefox
   - Get <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> at Firefox Add-ons.
   - Get <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium at Firefox Add-ons. (Coming soon!)
