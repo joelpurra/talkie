@@ -77,6 +77,10 @@ export default class SuspensionManager {
             () => {
                 logDebug("Start", "SuspensionManager.initialize");
 
+                if (this._initialized === true) {
+                    throw new Error("Already initialized.");
+                }
+
                 return this._injectBackgroundFrame()
                     .then(() => {
                         logDebug("Done", "SuspensionManager.initialize");
@@ -93,6 +97,10 @@ export default class SuspensionManager {
         return promiseTry(
             () => {
                 logDebug("Start", "SuspensionManager.unintialize");
+
+                if (this._initialized === false) {
+                    throw new Error("Not initialized.");
+                }
 
                 return this._removeBackgroundFrame()
                     .then(() => {
@@ -111,15 +119,11 @@ export default class SuspensionManager {
             () => {
                 logInfo("SuspensionManager.preventExtensionSuspend");
 
-                return Promise.resolve()
-                    .then(() => {
-                        if (this._initialized === false) {
-                            throw new Error("Not initialized.");
-                        }
+                if (this._initialized === false) {
+                    throw new Error("Not initialized.");
+                }
 
-                        return undefined;
-                    })
-                    .then(() => this.suspensionConnectorManager._connectToStayAlive());
+                return this.suspensionConnectorManager._connectToStayAlive();
             }
         );
     }
@@ -128,6 +132,10 @@ export default class SuspensionManager {
         return promiseTry(
             () => {
                 logInfo("SuspensionManager.allowExtensionSuspend");
+
+                if (this._initialized === false) {
+                    throw new Error("Not initialized.");
+                }
 
                 return this.suspensionConnectorManager._disconnectToDie();
             }
