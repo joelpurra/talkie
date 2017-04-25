@@ -141,11 +141,11 @@
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "So überprüfst oder änderst du die Talkie-Tastenkombination.",
-    "original": "How to check or change the Talkie shortcut key."
+    "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Eine bequeme Option ist, die Talkie-Tastenkombination zu verwenden:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
+    "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Markiere den gewünschten Text auf einer beliebigen Webseite.",

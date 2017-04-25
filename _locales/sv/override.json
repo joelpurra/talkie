@@ -141,11 +141,11 @@
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Steg för att kontrollera eller ändra Talkies kortkommando.",
-    "original": "How to check or change the Talkie shortcut key."
+    "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:",
-    "original": "A convenient option is to use the Talkie shortcut key:"
+    "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Markera önskad text på valfri webbplats.",
