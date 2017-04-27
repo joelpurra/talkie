@@ -85,6 +85,10 @@ npm run --silent rebuild
 
 
 ```bash
+# Open a new instance of Chrome, with an empty profile, and load Talkie.
+# NOTE: assumes you have `google-chrome` in your path.
+npm run --silent run:chrome:free
+
 # Open a new instance of Firefox, with an empty profile, and load Talkie in debugging mode.
 npm run --silent run:firefox:free
 
