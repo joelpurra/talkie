@@ -1,6 +1,6 @@
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
-<https://github.com/joelpurra/talkie>
+<https://joelpurra.com/projects/talkie/>
 
 Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
 
