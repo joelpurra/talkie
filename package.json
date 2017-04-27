@@ -84,9 +84,9 @@
   },
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/joelpurra/talkie/issues"
+    "url": "https://joelpurra.com/support/"
   },
-  "homepage": "https://github.com/joelpurra/talkie#readme",
+  "homepage": "https://joelpurra.com/support/",
   "devDependencies": {
     "@google-cloud/translate": "^0.8.1",
     "bluebird": "^3.5.0",

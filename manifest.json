@@ -11,7 +11,7 @@
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
   "author": "Joel Purra",
-  "homepage_url": "https://github.com/joelpurra/talkie",
+  "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
     "scripts": [
       "lib/browser-polyfill.js",
