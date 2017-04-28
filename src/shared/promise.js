@@ -95,3 +95,15 @@ export const promiseTimeout = (promise, limit) => {
         timeoutPromise,
     ]);
 };
+
+export const promiseSleep = (fn, sleep) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            try {
+                resolve(fn());
+            } catch (error) {
+                reject(error);
+            }
+        }, sleep);
+    });
+};

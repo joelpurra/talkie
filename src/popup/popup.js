@@ -111,7 +111,7 @@ const executeKillSwitches = () => {
 const registerBroadcastListeners = () => promiseTry(
     () => {
         return getBackgroundPage()
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
+            .then((background) => background.broadcaster().registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
             .then((killSwitch) => killSwitches.push(killSwitch));
     }
 );

@@ -55,7 +55,7 @@ export default class TalkieSpeaker {
         this.shouldContinueSpeakingProvider = shouldContinueSpeakingProvider;
         this.contentLogger = contentLogger;
 
-        this.synthesizer = null;
+        this.cachedSynthesizer = null;
 
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
     }
@@ -78,7 +78,7 @@ export default class TalkieSpeaker {
             .then(() => {
                 logDebug("Start", "getSynthesizerFromBrowser");
 
-                // NOTE: the speech synthesizer can only be used after the voices have been loaded.
+                // NOTE: the speech synthesizer can only be used in Chrome after the voices have been loaded.
                 const synthesizer = window.speechSynthesis;
 
                 // https://github.com/mdn/web-speech-api/blob/gh-pages/speak-easy-synthesis/script.js#L33-L36
@@ -156,15 +156,15 @@ export default class TalkieSpeaker {
     getSynthesizer() {
         return promiseTry(
             () => {
-                if (this.synthesizer !== null) {
-                    return this.synthesizer;
+                if (this.cachedSynthesizer !== null) {
+                    return this.cachedSynthesizer;
                 }
 
                 return this.getSynthesizerFromBrowser()
                     .then((synthesizer) => {
-                        this.synthesizer = synthesizer;
+                        this.cachedSynthesizer = synthesizer;
 
-                        return this.synthesizer;
+                        return this.cachedSynthesizer;
                     });
             }
         );
@@ -193,16 +193,13 @@ export default class TalkieSpeaker {
                             .then(() => {
                                 synthesizer.cancel();
 
+                                // Reset the system to resume playback, just to be nice to the world.
+                                synthesizer.resume();
+
+                                logDebug("Done", "stopSpeaking");
+
                                 return undefined;
                             });
-                    })
-                    .then(() => {
-                        // Reset the system to resume playback, just to be nice to the world.
-                        this.synthesizer.resume();
-
-                        logDebug("Done", "stopSpeaking");
-
-                        return undefined;
                     });
             }
         );
@@ -239,9 +236,11 @@ export default class TalkieSpeaker {
                         // The actual act of speaking the text.
                         synthesizer.speak(utterance);
 
-                        if (synthesizer.paused) {
-                            synthesizer.resume();
-                        }
+                        // NOTE: pause/resume suggested (for longer texts) in Chrome bug reports, trying it for shorter texts as well.
+                        // https://bugs.chromium.org/p/chromium/issues/detail?id=335907
+                        // https://bugs.chromium.org/p/chromium/issues/detail?id=369472
+                        synthesizer.pause();
+                        synthesizer.resume();
 
                         logDebug("Variable", "synthesizer", synthesizer);
 
@@ -287,6 +286,12 @@ export default class TalkieSpeaker {
 
                 return Promise.resolve()
                     .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeaking, speakingEventData))
+                    .then(() => {
+                        // HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+                        delete window.talkieUtterance;
+
+                        return undefined;
+                    })
                     .then(() => this.getActualVoice(voice))
                     .then((actualVoice) => {
                         const paragraphs = TextHelper.splitTextToParagraphs(text);
@@ -308,13 +313,16 @@ export default class TalkieSpeaker {
                                         return Promise.resolve()
                                             .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
                                             .then(() => {
-                                                const utterance = new SpeechSynthesisUtterance(textPart);
+                                                const utterance = new window.SpeechSynthesisUtterance(textPart);
 
                                                 utterance.voice = actualVoice;
                                                 utterance.rate = voice.rate || rateRange.default;
                                                 utterance.pitch = voice.pitch || pitchRange.default;
 
                                                 logDebug("Variable", "utterance", utterance);
+
+                                                // HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+                                                window.talkieUtterance = utterance;
 
                                                 return utterance;
                                             })
@@ -328,6 +336,12 @@ export default class TalkieSpeaker {
 
                         return promiseSeries(textPartsPromises);
                     })
+                    .then(() => {
+                        // HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+                        delete window.talkieUtterance;
+
+                        return undefined;
+                    })
                     .then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeaking, speakingEventData));
             }
         );
@@ -339,8 +353,8 @@ export default class TalkieSpeaker {
                 .then(() => {
                     this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`)
                         .catch((error) => {
-                        // NOTE: swallowing any logToPage() errors.
-                        // NOTE: reduced logging for known tab/page access problems.
+                            // NOTE: swallowing any logToPage() errors.
+                            // NOTE: reduced logging for known tab/page access problems.
                             if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
                                 logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
                             } else {

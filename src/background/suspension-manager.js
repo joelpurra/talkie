@@ -20,6 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
+    promiseSleep,
 } from "../shared/promise";
 
 import {
@@ -34,42 +35,71 @@ export default class SuspensionManager {
 
         this.stayAliveElementId = "stay-alive-iframe";
         this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
-
-        this._initialized = false;
     }
 
-    _injectBackgroundFrame() {
+    _getExistingIframe() {
         return promiseTry(
             () => {
                 const existingIframe = document.getElementById(this.stayAliveElementId);
 
-                if (existingIframe !== null) {
-                    throw new Error("this.stayAliveElementId exists.");
+                return existingIframe;
+            }
+        );
+    }
+
+    _isInitialized() {
+        return this._getExistingIframe()
+            .then((existingIframe) => existingIframe !== null);
+    }
+
+    _ensureIsInitialized() {
+        return this._isInitialized()
+            .then((isInitialized) => {
+                if (isInitialized === true) {
+                    return undefined;
                 }
 
+                throw new Error("this.stayAliveElementId did not exist.");
+            });
+    }
+
+    _ensureIsNotInitialized() {
+        return this._isInitialized()
+            .then((isInitialized) => {
+                if (isInitialized === false) {
+                    return undefined;
+                }
+
+                throw new Error("this.stayAliveElementId exists.");
+            });
+    }
+
+    _injectBackgroundFrame() {
+        return this._ensureIsNotInitialized()
+            .then(() => {
                 const iframe = document.createElement("iframe");
                 iframe.id = this.stayAliveElementId;
                 iframe.src = browser.runtime.getURL(this.stayAliveHtmlPath);
                 document.body.appendChild(iframe);
-            }
-        );
+
+                return undefined;
+            });
     }
 
     _removeBackgroundFrame() {
-        return promiseTry(
-            () => {
-                const existingIframe = document.getElementById(this.stayAliveElementId);
-
-                if (existingIframe === null) {
-                    throw new Error("this.stayAliveElementId did not exist.");
-                }
-
+        return this._ensureIsInitialized()
+            .then(() => this._getExistingIframe())
+            .then((existingIframe) => {
                 // NOTE: trigger onunload.
                 // https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
                 existingIframe.src = "about:blank";
-                existingIframe.parenNode.removeChild(existingIframe);
-            }
-        );
+                existingIframe.src = "the-id-does-not-matter-now";
+
+                // NOTE: ensure the src change has time to take effect.
+                return promiseSleep(() => {
+                    existingIframe.parentNode.removeChild(existingIframe);
+                }, 10);
+            });
     }
 
     initialize() {
@@ -77,15 +107,9 @@ export default class SuspensionManager {
             () => {
                 logDebug("Start", "SuspensionManager.initialize");
 
-                if (this._initialized === true) {
-                    throw new Error("Already initialized.");
-                }
-
                 return this._injectBackgroundFrame()
                     .then(() => {
                         logDebug("Done", "SuspensionManager.initialize");
-
-                        this._initialized = true;
 
                         return undefined;
                     });
@@ -98,15 +122,9 @@ export default class SuspensionManager {
             () => {
                 logDebug("Start", "SuspensionManager.unintialize");
 
-                if (this._initialized === false) {
-                    throw new Error("Not initialized.");
-                }
-
                 return this._removeBackgroundFrame()
                     .then(() => {
                         logDebug("Done", "SuspensionManager.unintialize");
-
-                        this._initialized = false;
 
                         return undefined;
                     });
@@ -119,11 +137,8 @@ export default class SuspensionManager {
             () => {
                 logInfo("SuspensionManager.preventExtensionSuspend");
 
-                if (this._initialized === false) {
-                    throw new Error("Not initialized.");
-                }
-
-                return this.suspensionConnectorManager._connectToStayAlive();
+                return this._ensureIsInitialized()
+                    .then(() => this.suspensionConnectorManager._connectToStayAlive());
             }
         );
     }
@@ -133,11 +148,8 @@ export default class SuspensionManager {
             () => {
                 logInfo("SuspensionManager.allowExtensionSuspend");
 
-                if (this._initialized === false) {
-                    throw new Error("Not initialized.");
-                }
-
-                return this.suspensionConnectorManager._disconnectToDie();
+                return this._ensureIsInitialized()
+                    .then(() => this.suspensionConnectorManager._disconnectToDie());
             }
         );
     }

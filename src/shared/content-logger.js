@@ -21,6 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     logInfo,
     logWarn,
+    variableToSafeConsoleLogString,
 } from "../shared/log";
 
 import {
@@ -36,53 +37,15 @@ export default class ContentLogger {
         this.executeLogToPageWithColorCode = "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPageWithColor', error); } }());";
     }
 
-    _variableToSafeConsoleLogStringReplacer(/* eslint-disable no-unused-vars */key/* eslint-enable no-unused-vars */, value) {
-        // NOTE: want to display if undefined was passed.
-        if (typeof value === "undefined") {
-            return "undefined";
-        }
-
-        // NOTE: want to display if a function was passed.
-        if (typeof value === "function") {
-            return "function";
-        }
-
-        // NOTE: should take care of all other cases best as it can.
-        // https://github.com/joelpurra/talkie/issues/6
-        return value;
-    }
-
     _variableToSafeConsoleLogString(value) {
-        // NOTE: want to display if undefined was passed.
-        if (typeof value === "undefined") {
-            return "undefined";
-        }
+        const str = variableToSafeConsoleLogString(value);
 
-        // NOTE: want to display if a function was passed.
-        if (typeof value === "function") {
-            return "function";
-        }
-
-        // NOTE: should take care of all other cases best as it can.
-        // https://github.com/joelpurra/talkie/issues/6
-        const json = JSON.stringify(value, this._variableToSafeConsoleLogStringReplacer);
-
-        const friendlyJson = json
-            // NOTE: don't double-quote standalone strings, just to make output prettier.
-            .replace(/^"/, "")
-            .replace(/"$/, "")
+        const friendlyStr = str
             // NOTE: escaping for passing the string to be executed in the page content context.
             .replace(/\\/g, "\\\\")
-            .replace(/"/g, "\\\"")
-            // NOTE: line separator and paragraph separator encoding.
-            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Issue_with_plain_JSON.stringify_for_use_as_JavaScript
-            .replace(/\u2028/g, "\\u2028")
-            .replace(/\u2029/g, "\\u2029")
-            // NOTE: there should be no newlines in the JSON, so this might be unncessary.
-            .replace(/\n/g, "\\\\n")
-            .replace(/\r/g, "\\\\r");
+            .replace(/\\\\"/g, "\\\"");
 
-        return friendlyJson;
+        return friendlyStr;
     }
 
     logToPage(...args) {

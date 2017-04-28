@@ -49,11 +49,20 @@ export default class SuspensionConnectorManager {
                     throw new Error(`Could not connect to ${this.preventSuspensionPortName}.`);
                 }
 
-                this.talkiePreventSuspensionPort.onDisconnect.addListener(() => {
+                const onDisconnectHandler = () => {
                     logDebug("onDisconnect", "_connectToStayAlive");
 
                     this.talkiePreventSuspensionPort = null;
-                });
+                };
+
+                this.talkiePreventSuspensionPort.onDisconnect.addListener(onDisconnectHandler);
+
+                const _onMessageHandler = (msg) => {
+                    logDebug("_onMessageHandler", "_connectToStayAlive", msg); ;
+                };
+
+                // NOTE: this message listener is unneccessary.
+                this.talkiePreventSuspensionPort.onMessage.addListener(_onMessageHandler);
 
                 this.talkiePreventSuspensionPort.postMessage("Hello from the SuspensionConnectorManager.");
 

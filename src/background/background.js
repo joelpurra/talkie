@@ -20,6 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
+    promiseSleep,
 } from "../shared/promise";
 
 import {
@@ -28,7 +29,12 @@ import {
     logWarn,
     logError,
     setLevel,
+    setStringOnlyOutput,
 } from "../shared/log";
+
+import {
+    loggedPromise,
+} from "../shared/promise-logging";
 
 import {
     registerUnhandledRejectionHandler,
@@ -186,7 +192,7 @@ function main() {
         // https://github.com/mozilla/webextension-polyfill
         if (browser.runtime.onInstalled) {
             // NOTE: the onInstalled listener can't be added asynchronously
-            browser.runtime.onInstalled.addListener(onExtensionInstalledHandler);
+            browser.runtime.onInstalled.addListener(loggedPromise("onInstalled", onExtensionInstalledHandler));
         } else {
             onExtensionInstalledFallback();
         }
@@ -199,7 +205,7 @@ function main() {
             const killSwitches = [];
 
             const executeKillSwitches = () => {
-                        // NOTE: expected to have only synchronous methods for the relevant parts.
+                // NOTE: expected to have only synchronous methods for the relevant parts.
                 killSwitches.forEach((killSwitch) => {
                     try {
                         killSwitch();
@@ -220,8 +226,8 @@ function main() {
 
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
                     .catch((error) => {
-                            // NOTE: swallowing any plug.once() errors.
-                            // NOTE: reduced logging for known tab/page access problems.
+                        // NOTE: swallowing any plug.once() errors.
+                        // NOTE: reduced logging for known tab/page access problems.
                         if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
                             logDebug("plug.once", "Error swallowed", error);
                         } else {
@@ -234,9 +240,9 @@ function main() {
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
 
-                    // NOTE: setting icons async.
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => { setTimeout(() => iconManager.setIconModePlaying(), 10); return undefined; }),
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => { setTimeout(() => iconManager.setIconModeStopped(), 10); return undefined; }),
+                // NOTE: setting icons async.
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => iconManager.setIconModePlaying(), 10)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => iconManager.setIconModeStopped(), 10)),
 
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup()),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup()),
@@ -250,33 +256,39 @@ function main() {
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
             ])
                 .then((registeredKillSwitches) => {
-                        // NOTE: don't want to replace the existing killSwitches array.
+                    // NOTE: don't want to replace the existing killSwitches array.
                     registeredKillSwitches.forEach((registeredKillSwitch) => killSwitches.push(registeredKillSwitch));
 
                     return undefined;
                 });
         })
         .then(() => {
-            browser.tabs.onRemoved.addListener(() => talkieBackground.onTabRemovedHandler());
-            browser.tabs.onUpdated.addListener(() => talkieBackground.onTabUpdatedHandler());
+            browser.tabs.onRemoved.addListener(loggedPromise("onRemoved", () => talkieBackground.onTabRemovedHandler()));
+            browser.tabs.onUpdated.addListener(loggedPromise("onUpdated", () => talkieBackground.onTabUpdatedHandler()));
 
-            // NOTE: not supported in Firefox (2017-03-15).
+            // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
             if (browser.runtime.onSuspend) {
-                browser.runtime.onSuspend.addListener(() => talkieBackground.onExtensionSuspendHandler());
-                browser.runtime.onSuspend.addListener(() => suspensionManager.unintialize());
+                browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => talkieBackground.onExtensionSuspendHandler()));
+                // browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => suspensionManager.unintialize()));
+            }
+
+            // NOTE: not supported in Firefox (2017-04-28).
+            // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+            if (browser.runtime.onSuspendCanceled) {
+                // browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
             }
 
             // NOTE: used when the popup has been disabled.
-            browser.browserAction.onClicked.addListener(() => talkieBackground.startStopSpeakSelectionOnPage());
+            browser.browserAction.onClicked.addListener(loggedPromise("onClicked", () => talkieBackground.startStopSpeakSelectionOnPage()));
 
-            browser.contextMenus.onClicked.addListener((info) => contextMenuManager.contextMenuClickAction(info));
+            browser.contextMenus.onClicked.addListener(loggedPromise("onClicked", (info) => contextMenuManager.contextMenuClickAction(info)));
 
             // NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
             // Does not seem to happen in Chrome.
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
             try {
-                browser.commands.onCommand.addListener((command) => shortcutKeyManager.handler(command));
+                browser.commands.onCommand.addListener(loggedPromise("onCommand", (command) => shortcutKeyManager.handler(command)));
             } catch (error) {
                 logError("browser.commands.onCommand.addListener(...)", error);
             }
@@ -284,14 +296,14 @@ function main() {
             return undefined;
         })
         .then(() => {
-            window.broadcaster = broadcaster;
-            window.progress = progress;
+            window.broadcaster = () => broadcaster;
 
-            window.logDebug = logDebug;
-            window.logInfo = logInfo;
-            window.logWarn = logWarn;
-            window.logError = logError;
-            window.setLoggingLevel = setLevel;
+            window.logDebug = (...args) => logDebug(...args);
+            window.logInfo = (...args) => logInfo(...args);
+            window.logWarn = (...args) => logWarn(...args);
+            window.logError = (...args) => logError(...args);
+            window.setLoggingLevel = (...args) => setLevel(...args);
+            window.setLoggingStringOnlyOutput = (...args) => setStringOnlyOutput(...args);
 
             window.getAllVoices = () => talkieSpeaker.getAllVoices();
             window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();

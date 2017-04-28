@@ -71,7 +71,10 @@ const stop = () => promiseTry(
                 return undefined;
             })
             .catch((error) => {
-                dualLogger.dualLogError("Stop", "Stop", error);
+                dualLogger.dualLogError("stop", "Swallowing error", error);
+
+                // NOTE: swallowing errors.
+                return undefined;
             });
     }
 );
