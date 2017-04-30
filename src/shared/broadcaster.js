@@ -1,6 +1,6 @@
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
-<https://github.com/joelpurra/talkie>
+<https://joelpurra.com/projects/talkie/>
 
 Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
 
@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+    logDebug,
     logWarn,
     logError,
 } from "../shared/log";
@@ -104,68 +105,63 @@ export default class Broadcaster {
     }
 
     broadcastEvent(actionName, actionData) {
-        return new Promise(
-            (resolve, reject) => {
-                try {
-                    // logDebug("Start", "Sending message", actionName, actionData);
+        return promiseTry(
+            () => {
+                const respondingAction = this.actionRespondingMap[actionName] || null;
+                const listeningActions = this.actionListeningMap[actionName] || [];
 
-                    const respondingAction = this.actionRespondingMap[actionName] || null;
-                    const listeningActions = this.actionListeningMap[actionName] || [];
+                if (respondingAction === null && listeningActions.length === 0) {
+                    // NOTE: there was no matching action registered.
+                    // throw new Error("There was no matching action: " + actionName);
 
-                    if (respondingAction === null && listeningActions.length === 0) {
-                        // NOTE: there was no matching action registered.
-                        // throw new Error("There was no matching action: " + actionName);
+                    // logDebug("Skipping", "Sending message", actionName, actionData);
 
-                        return resolve(undefined);
-                    }
+                    return undefined;
+                }
 
-                    listeningActions.forEach((listeningAction) => {
-                        // NOTE: check for dead objects from cross-page (background, popup, options, ...) memory leaks.
-                        // NOTE: this is just in case the killSwitch hasn't been called.
-                        // https://developer.mozilla.org/en-US/docs/Extensions/Common_causes_of_memory_leaks_in_extensions#Failing_to_clean_up_event_listeners
-                        // TODO: throw error instead of cleaning up?
-                        // TODO: clean up code to avoid memory leaks, primarly in Firefox as it doesn't have onSuspend at the moment.
-                        if (isDeadWrapper(listeningAction)) {
-                            logWarn(actionName, actionData, listeningAction);
+                logDebug("Start", "Sending message", actionName, actionData);
 
-                            // NOTE: done out of the promise chain.
-                            // TODO: include in chain? Might affect the loop?
-                            this.unregisterListeningAction(actionName, listeningAction);
+                const listeningActionPromises = listeningActions.map((listeningAction) => {
+                    return promiseTry(
+                        () => {
+                            // NOTE: check for dead objects from cross-page (background, popup, options, ...) memory leaks.
+                            // NOTE: this is just in case the killSwitch hasn't been called.
+                            // https://developer.mozilla.org/en-US/docs/Extensions/Common_causes_of_memory_leaks_in_extensions#Failing_to_clean_up_event_listeners
+                            // TODO: throw error instead of cleaning up?
+                            // TODO: clean up code to avoid memory leaks, primarly in Firefox as it doesn't have onSuspend at the moment.
+                            if (isDeadWrapper(listeningAction)) {
+                                logWarn(actionName, actionData, listeningAction);
 
-                            return undefined;
+                                return this.unregisterListeningAction(actionName, listeningAction);
+                            }
+
+                            return listeningAction(actionName, actionData);
+                        });
+                });
+
+                return Promise.all(listeningActionPromises)
+                    .then(() => {
+                        if (respondingAction) {
+                            return respondingAction(actionName, actionData);
                         }
 
-                        listeningAction(actionName, actionData);
+                        return undefined;
+                    })
+                    .then(() => {
+                        logDebug("Start", "Sending message", actionName, actionData);
+
+                        return undefined;
+                    })
+                    .catch((error) => {
+                        logError("Sending message", actionName, actionData);
+
+                        throw error;
                     });
+            })
+            .catch((error) => {
+                logError("catch", "Sending message", actionName, actionData);
 
-                    let respondingActionResult = null;
-                    let respondingActionError = null;
-
-                    if (respondingAction) {
-                        respondingAction(actionName, actionData)
-                            .then((result) => {
-                                respondingActionResult = result;
-
-                                return result;
-                            })
-                            .catch((error) => {
-                                respondingActionError = error;
-
-                                throw error;
-                            });
-                    }
-
-                    if (respondingActionError) {
-                        return reject(respondingActionError);
-                    }
-
-                    return resolve(respondingActionResult);
-                } catch (error) {
-                    logError("catch", "Sending message", actionName, actionData);
-
-                    return reject(error);
-                }
-            }
-        );
+                throw error;
+            });
     }
 }

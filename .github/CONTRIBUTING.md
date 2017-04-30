@@ -34,7 +34,7 @@
 
 ## Problems?
 
-- Report any issues with installation, usage on specific webpages, crashes, etcetera [using the issue tracker](https://github.com/joelpurra/talkie/issues).
+- Report any issues with installation, usage on specific webpages, crashes, etcetera [using the issue tracker](https://github.com/joelpurra/talkie/issues) or the [support pages](https://joelpurra.com/support/).
 - Please include relevant information:
   - Which browser and version you are using.
   - Which website the problem occurred on. If possible, include the full link.

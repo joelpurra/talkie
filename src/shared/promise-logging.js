@@ -19,36 +19,30 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
     logDebug,
     logError,
 } from "../shared/log";
 
-export default class ShortcutKeyManager {
-    constructor(commandHandler) {
-        this.commandHandler = commandHandler;
-    }
+export const loggedPromise = (...args) => {
+    const fn = args.pop();
 
-    handler(command) {
-        return promiseTry(
-            () => {
-                logDebug("Start", "handler", command);
+    return (...fnArgs) => {
+        return Promise.resolve()
+            .then(() => {
+                logDebug("Start", "loggedPromise", ...args, ...fnArgs);
 
-                // NOTE: straight mapping from command to action.
-                return this.commandHandler.handle(command)
-                    .then((result) => {
-                        logDebug("Done", "handler", command, result);
+                return undefined;
+            })
+            .then(() => fn(...fnArgs))
+            .then((result) => {
+                logDebug("Done", "loggedPromise", ...args, ...fnArgs, result);
 
-                        return undefined;
-                    })
-                    .catch((error) => {
-                        logError("handler", command, error);
+                return result;
+            })
+            .catch((error) => {
+                logError("loggedPromise", ...args, ...fnArgs, error);
 
-                        throw error;
-                    });
+                throw error;
             });
-    }
-}
+    };
+};

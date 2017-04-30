@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "version": "3.0.1",
-  "version_name": "v3.0.1 Free (2017-04-25)",
+  "version": "3.0.2",
+  "version_name": "v3.0.2 Free (2017-04-30)",
   "applications": {
     "gecko": {
       "strict_min_version": "52.0"
@@ -11,7 +11,7 @@
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
   "author": "Joel Purra",
-  "homepage_url": "https://github.com/joelpurra/talkie",
+  "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
     "scripts": [
       "lib/browser-polyfill.js",

@@ -1,6 +1,6 @@
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
-<https://github.com/joelpurra/talkie>
+<https://joelpurra.com/projects/talkie/>
 
 Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
 
@@ -71,7 +71,10 @@ const stop = () => promiseTry(
                 return undefined;
             })
             .catch((error) => {
-                dualLogger.dualLogError("Stop", "Stop", error);
+                dualLogger.dualLogError("stop", "Swallowing error", error);
+
+                // NOTE: swallowing errors.
+                return undefined;
             });
     }
 );

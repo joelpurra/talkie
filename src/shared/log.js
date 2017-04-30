@@ -1,6 +1,6 @@
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
-<https://github.com/joelpurra/talkie>
+<https://joelpurra.com/projects/talkie/>
 
 Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
 
@@ -20,6 +20,52 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 const extensionShortName = browser.i18n.getMessage("extensionShortName");
 
+export const _variableToSafeConsoleLogStringReplacer = (/* eslint-disable no-unused-vars */key/* eslint-enable no-unused-vars */, value) => {
+    // NOTE: want to display if undefined was passed.
+    if (typeof value === "undefined") {
+        return "undefined";
+    }
+
+    // NOTE: want to display if a function was passed.
+    if (typeof value === "function") {
+        return "function";
+    }
+
+    // NOTE: should take care of all other cases best as it can.
+    // https://github.com/joelpurra/talkie/issues/6
+    return value;
+};
+
+export const variableToSafeConsoleLogString = (value) => {
+    // NOTE: want to display if undefined was passed.
+    if (typeof value === "undefined") {
+        return "undefined";
+    }
+
+    // NOTE: want to display if a function was passed.
+    if (typeof value === "function") {
+        return "function";
+    }
+
+    // NOTE: should take care of all other cases best as it can.
+    // https://github.com/joelpurra/talkie/issues/6
+    const json = JSON.stringify(value, _variableToSafeConsoleLogStringReplacer);
+
+    const friendlyJson = json
+        // NOTE: don't double-quote standalone strings, just to make output prettier.
+        .replace(/^"/, "")
+        .replace(/"$/, "")
+        // NOTE: line separator and paragraph separator encoding.
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Issue_with_plain_JSON.stringify_for_use_as_JavaScript
+        .replace(/\u2028/g, "\\u2028")
+        .replace(/\u2029/g, "\\u2029")
+        // NOTE: there should be no newlines in the JSON, so this might be unncessary.
+        .replace(/\n/g, "\\\\n")
+        .replace(/\r/g, "\\\\r");
+
+    return friendlyJson;
+};
+
 // https://stackoverflow.com/questions/12830649/check-if-chrome-extension-installed-in-unpacked-mode
 // http://stackoverflow.com/a/20227975
 const isDevMode = () => !("update_url" in browser.runtime.getManifest());
@@ -30,6 +76,12 @@ const loggingLevels = [
     "INFO",
     "WARN",
     "ERRO",
+
+    // NOTE: should "always" be logged, presumably for technical reasons.
+    "ALWA",
+
+    // NOTE: turns off logging output.
+    "NONE",
 ];
 
 const parseLevelName = (nextLevelName) => {
@@ -65,6 +117,13 @@ export const setLevel = (nextLevel) => {
     currentLevelIndex = parseLevel(nextLevel);
 };
 
+// NOTE: allows switching logging to strings only, to allow terminal output logging (where only one string argument is shown).
+let stringOnlyOutput = false;
+
+export const setStringOnlyOutput = (stringOnly) => {
+    stringOnlyOutput = (stringOnly === true);
+};
+
 const generateLogger = (loggingLevelName, consoleFunctioName) => {
     const functionLevelIndex = parseLevel(loggingLevelName);
 
@@ -75,8 +134,24 @@ const generateLogger = (loggingLevelName, consoleFunctioName) => {
 
         const now = new Date().toISOString();
 
+        let loggingArgs = [
+            loggingLevels[functionLevelIndex],
+            now,
+            extensionShortName,
+            ...args,
+        ];
+
+        if (stringOnlyOutput) {
+            // NOTE: for chrome command line console debugging.
+            // NOTE: has to be an array.
+            loggingArgs = [
+                loggingArgs.map((loggingArg) => variableToSafeConsoleLogString(loggingArg))
+                    .join(" "),
+            ];
+        }
+
         /* eslint-disable no-console */
-        console[consoleFunctioName](loggingLevels[functionLevelIndex], now, extensionShortName, ...args);
+        console[consoleFunctioName](...loggingArgs);
         /* eslint-enable no-console */
     };
 
@@ -84,9 +159,7 @@ const generateLogger = (loggingLevelName, consoleFunctioName) => {
 };
 
 export const logDebug = generateLogger("DEBG", "log");
-
 export const logInfo = generateLogger("INFO", "info");
-
 export const logWarn = generateLogger("WARN", "warn");
-
 export const logError = generateLogger("ERRO", "error");
+export const logAlways = generateLogger("ALWA", "log");

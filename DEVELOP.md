@@ -79,12 +79,17 @@ npm run --silent rebuild
     - `this.setLoggingLevel("DEBG");` (maximum logging, default for developers)
     - `this.setLoggingLevel("INFO");`
     - `this.setLoggingLevel("WARN");` (default for normal usage)
-    - `this.setLoggingLevel("ERRO");` (minimum logging)
+    - `this.setLoggingLevel("ERRO");`
+    - `this.setLoggingLevel("NONE");` (no logging)
 - You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
 
 
 ```bash
+# Open a new instance of Chrome, with an empty profile, and load Talkie.
+# NOTE: assumes you have `google-chrome` in your path.
+npm run --silent run:chrome:free
+
 # Open a new instance of Firefox, with an empty profile, and load Talkie in debugging mode.
 npm run --silent run:firefox:free
 

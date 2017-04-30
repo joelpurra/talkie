@@ -1,6 +1,6 @@
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
-<https://github.com/joelpurra/talkie>
+<https://joelpurra.com/projects/talkie/>
 
 Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
 
@@ -111,7 +111,7 @@ const executeKillSwitches = () => {
 const registerBroadcastListeners = () => promiseTry(
     () => {
         return getBackgroundPage()
-            .then((background) => background.broadcaster.registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
+            .then((background) => background.broadcaster().registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
             .then((killSwitch) => killSwitches.push(killSwitch));
     }
 );
