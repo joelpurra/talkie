@@ -83,19 +83,21 @@ export const isCurrentPageInternalToTalkie = () => promiseTry(
             if (tab) {
                 const url = tab.url;
 
-                if (typeof url === "string" && url.length > 0) {
-                    if (url.startsWith("chrome-extension://") && url.endsWith("/src/popup.html")) {
-                        return true;
-                    }
-
-                    return false;
+                if (
+                    typeof url === "string"
+                    && (
+                        url.startsWith(browser.runtime.getURL("/src/popup/popup.html"))
+                        || url.startsWith(browser.runtime.getURL("/src/options/options.html"))
+                        || url.startsWith(browser.runtime.getURL("/src/stay-alive/stay-alive.html"))
+                    )
+                ) {
+                    return true;
                 }
 
                 return false;
             }
 
-            // NOTE: no active tab probably means it's a very special page.
-            return true;
+            return false;
         })
 );
 
@@ -132,32 +134,28 @@ export const canTalkieRunInTab = () => promiseTry(
             if (tab) {
                 const url = tab.url;
 
-                if (typeof url === "string" && url.length > 0) {
-                    if (url.startsWith("chrome://")) {
-                        return false;
+                if (typeof url === "string") {
+                    if (
+                        (
+                            // NOTE: whitelisting schemes.
+                            // TODO: can the list be extended?
+                            url.startsWith("http://")
+                            || url.startsWith("https://")
+                            || url.startsWith("ftp://")
+                            || url.startsWith("file:")
+                        )
+                        && !(
+                            // NOTE: blacklisting known (per-browser store) urls.
+                            // TODO: should the list be extended?
+                            // TODO: move to configuration.
+                            url.startsWith("https://chrome.google.com/")
+                            || url.startsWith("https://addons.mozilla.org/")
+                        )
+                    ) {
+                        return true;
                     }
 
-                    if (url.startsWith("vivaldi://")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("chrome-extension://")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("https://chrome.google.com/")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("https://addons.mozilla.org/")) {
-                        return false;
-                    }
-
-                    if (url.startsWith("about:")) {
-                        return false;
-                    }
-
-                    return true;
+                    return false;
                 }
 
                 return false;
