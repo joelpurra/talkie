@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+    logTrace,
     logDebug,
     logInfo,
     logWarn,
@@ -33,6 +34,7 @@ export default class DualLogger {
     constructor(localScriptName) {
         this.localScriptName = localScriptName;
 
+        this.dualLogTrace = this._generateLogger(logTrace, "logTrace");
         this.dualLogDebug = this._generateLogger(logDebug, "logDebug");
         this.dualLogInfo = this._generateLogger(logInfo, "logInfo");
         this.dualLogWarn = this._generateLogger(logWarn, "logWarn");

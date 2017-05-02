@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
+    logTrace,
     logWarn,
     logError,
 } from "../shared/log";
@@ -114,12 +114,12 @@ export default class Broadcaster {
                     // NOTE: there was no matching action registered.
                     // throw new Error("There was no matching action: " + actionName);
 
-                    // logDebug("Skipping", "Sending message", actionName, actionData);
+                    logTrace("Skipping", "Sending message", actionName, actionData);
 
                     return undefined;
                 }
 
-                logDebug("Start", "Sending message", actionName, actionData);
+                logTrace("Start", "Sending message", actionName, actionData);
 
                 const listeningActionPromises = listeningActions.map((listeningAction) => {
                     return promiseTry(
@@ -148,7 +148,7 @@ export default class Broadcaster {
                         return undefined;
                     })
                     .then(() => {
-                        logDebug("Start", "Sending message", actionName, actionData);
+                        logTrace("Done", "Sending message", actionName, actionData);
 
                         return undefined;
                     })

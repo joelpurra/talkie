@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     logInfo,
     logWarn,
-    variableToSafeConsoleLogString,
 } from "../shared/log";
 
 import {
@@ -37,17 +36,6 @@ export default class ContentLogger {
         this.executeLogToPageWithColorCode = "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPageWithColor', error); } }());";
     }
 
-    _variableToSafeConsoleLogString(value) {
-        const str = variableToSafeConsoleLogString(value);
-
-        const friendlyStr = str
-            // NOTE: escaping for passing the string to be executed in the page content context.
-            .replace(/\\/g, "\\\\")
-            .replace(/\\\\"/g, "\\\"");
-
-        return friendlyStr;
-    }
-
     logToPage(...args) {
         return promiseTry(
             () => {
@@ -56,10 +44,9 @@ export default class ContentLogger {
                 const logValues = [
                     now,
                     this.configuration.extensionShortName,
-                    ...args.map((arg) => this._variableToSafeConsoleLogString(arg)),
+                    ...args,
                 ]
-                    // NOTE: quote each console.log() argument.
-                    .map((arg) => `"${arg}"`)
+                    .map((arg) => JSON.stringify(arg))
                     .join(", ");
 
                 const code = this.executeLogToPageCode.replace("%a", logValues);
@@ -85,13 +72,17 @@ export default class ContentLogger {
                 const now = new Date().toISOString();
 
                 // NOTE: create one long console.log() string argument, then add the color argument second.
-                const logValues = "\"" + [
+                const logValuesArrayAsString = [
                     now,
                     this.configuration.extensionShortName,
                     "%c",
-                    ...args.map((arg) => this._variableToSafeConsoleLogString(arg)),
+                    ...args,
                 ]
-                    .join(" ") + " " + "\", \"background: #007F41; color: #FFFFFF; padding: 0.3em;\"";
+                    .join(" ");
+
+                const logValues = JSON.stringify(logValuesArrayAsString)
+                    + ", "
+                    + JSON.stringify("background: #007F41; color: #FFFFFF; padding: 0.3em;");
 
                 const code = this.executeLogToPageWithColorCode.replace("%a", logValues);
 
