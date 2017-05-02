@@ -76,7 +76,8 @@ npm run --silent rebuild
   - Inspect the Talkie background page view to see console output.
 - It is possible to coarsely adjust the console logging level.
   - In the background page console, enter one of these logging level commands:
-    - `this.setLoggingLevel("DEBG");` (maximum logging, default for developers)
+    - `this.setLoggingLevel("TRAC");` (maximum logging)
+    - `this.setLoggingLevel("DEBG");` (default for developers)
     - `this.setLoggingLevel("INFO");`
     - `this.setLoggingLevel("WARN");` (default for normal usage)
     - `this.setLoggingLevel("ERRO");`

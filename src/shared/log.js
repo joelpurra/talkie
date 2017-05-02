@@ -72,6 +72,7 @@ const isDevMode = () => !("update_url" in browser.runtime.getManifest());
 
 // NOTE: 0, 1, ...
 const loggingLevels = [
+    "TRAC",
     "DEBG",
     "INFO",
     "WARN",
@@ -158,6 +159,7 @@ const generateLogger = (loggingLevelName, consoleFunctioName) => {
     return logger;
 };
 
+export const logTrace = generateLogger("TRAC", "log");
 export const logDebug = generateLogger("DEBG", "log");
 export const logInfo = generateLogger("INFO", "info");
 export const logWarn = generateLogger("WARN", "warn");

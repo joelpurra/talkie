@@ -24,6 +24,7 @@ import {
 } from "../shared/promise";
 
 import {
+    logTrace,
     logDebug,
     logInfo,
     logWarn,
@@ -298,6 +299,7 @@ function main() {
         .then(() => {
             window.broadcaster = () => broadcaster;
 
+            window.logTrace = (...args) => logTrace(...args);
             window.logDebug = (...args) => logDebug(...args);
             window.logInfo = (...args) => logInfo(...args);
             window.logWarn = (...args) => logWarn(...args);
