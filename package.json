@@ -1,7 +1,7 @@
 {
   "name": "talkie",
   "private": true,
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
     "clean": "rimraf package/ && rimraf dist/ && rimraf web-ext-artifacts/ && rimraf lib/ && rimraf _locales/*/*.json~  _locales/*/messages.json  _locales/*/messages.premium.json",
