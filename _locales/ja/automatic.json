@@ -284,24 +284,24 @@
   "frontend_voicesPitchHeading_Free": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "🌟 Premium ： $VOICE$ピッチ",
+    "original": "🌟 Premium: pitch for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
         "example": "Alva"
       }
-    },
-    "original": "🌟 Premium: pitch for $VOICE$"
+    }
   },
   "frontend_voicesPitchHeading_Premium": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "$VOICE$ピッチ",
+    "original": "Pitch for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
         "example": "Alva"
       }
-    },
-    "original": "Pitch for $VOICE$"
+    }
   },
   "frontend_voicesRateEmptyHeading_Free": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -316,24 +316,24 @@
   "frontend_voicesRateHeading_Free": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "🌟 Premium ： $VOICE$スピード",
+    "original": "🌟 Premium: speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
         "example": "Google italiano"
       }
-    },
-    "original": "🌟 Premium: speed for $VOICE$"
+    }
   },
   "frontend_voicesRateHeading_Premium": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "$VOICE$スピード",
+    "original": "Speed for $VOICE$",
     "placeholders": {
       "voice": {
         "content": "$1",
         "example": "Google italiano"
       }
-    },
-    "original": "Speed for $VOICE$"
+    }
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
@@ -357,6 +357,7 @@
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "🌟 Premium ： $LANGUAGE$テキストには、デフォルトの音声として$VOICE$を使用します",
+    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
         "content": "$1",
@@ -366,12 +367,12 @@
         "content": "$2",
         "example": "Alva"
       }
-    },
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$"
+    }
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$LANGUAGE$テキストには、デフォルトの音声として$VOICE$を使用します",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
         "content": "$1",
@@ -381,8 +382,7 @@
         "content": "$2",
         "example": "Alva"
       }
-    },
-    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$"
+    }
   },
   "frontend_voicesShowAllVoices": {
     "message": "すべての声を表示",
