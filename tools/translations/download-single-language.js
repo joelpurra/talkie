@@ -13,6 +13,8 @@ const googleTranslateOptions = {
 };
 const googleTranslate = GoogleTranslate(googleTranslateOptions);
 
+const striptags = require("striptags");
+
 const fromLanguage = "en";
 const toLanguage = process.argv[2];
 
@@ -58,34 +60,32 @@ streamToPromise(stdin)
         };
 
         return googleTranslate.translate(cleanedMessages, translationOptions)
-            .tap(() => undefined)
             .then((translationResponses) => {
                 const translations = translationResponses[0];
                 /* eslint-disable no-unused-vars */
                 const apiResponse = translationResponses[1];
                 /* eslint-enable no-unused-vars */
 
-                const translateDirtyMessages = translations.map((translationResponse) => {
-                    const translateDirtyMessage = translationResponse
-                        .replace(/<div lang="en">/g, "")
-                        .replace(/<\/div>/g, "")
-                        .replace(/<span class="notranslate">/g, "")
-                        .replace(/<\/span>/g, "")
-                        .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
-                        .replace(/___TEMP_TALKIE_STAR_PREMIUM___/g, "Talkie 🌟 Premium")
-                        .replace(/___TEMP_STAR_PREMIUM___/g, "🌟 Premium")
-                        .replace(/___TEMP_TALKIE___/g, "Talkie")
-                        .replace(/___TEMP_PREMIUM___/g, "Premium")
-                        .replace(/___TEMP_STAR___/g, "🌟")
-                        .replace(/^\s+/g, "")
-                        .replace(/\s+$/g, "")
-                        .replace(/ +\/ +/g, "/")
-                        .replace(/ +-+ +/g, " — ")
-                        .replace(/ +([.:;!?]) +/g, "$1 ")
-                        .replace(/ {2,}/g, " ");
+                const translateDirtyMessages = translations
+                    .map((translationResponse) => striptags(translationResponse))
+                    .map((translationResponse) => {
+                        const translateDirtyMessage = translationResponse
+                            .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
+                            .replace(/___TEMP_TALKIE_STAR_PREMIUM___/g, "Talkie 🌟 Premium")
+                            .replace(/___TEMP_STAR_PREMIUM___/g, "🌟 Premium")
+                            .replace(/___TEMP_TALKIE___/g, "Talkie")
+                            .replace(/___TEMP_PREMIUM___/g, "Premium")
+                            .replace(/___TEMP_STAR___/g, "🌟")
+                            .replace(/^\s+/g, "")
+                            .replace(/\s+$/g, "")
+                            .replace(/ +\/ +/g, "/")
+                            .replace(/ +-+ +/g, " — ")
+                            .replace(/ +([.:;!?]) +/g, "$1 ")
+                            .replace(/ {2,}/g, " ")
+                            .trim();
 
-                    return translateDirtyMessage;
-                });
+                        return translateDirtyMessage;
+                    });
 
                 return translateDirtyMessages;
             })

@@ -106,6 +106,7 @@
     "rollup-plugin-json": "^2.1.0",
     "rollup-watch": "^3.2.2",
     "stream-to-promise": "^2.2.0",
+    "striptags": "^3.0.1",
     "web-ext": "^1.8.1",
     "webextension-polyfill": "^0.1.1"
   },
