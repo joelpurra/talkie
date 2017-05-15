@@ -1,289 +1,289 @@
 {
   "buttonDefaultTitle": {
-    "message": "קרא את בחירת הטקסט בקול רם",
+    "message": "Číst výběr textu nahlas",
     "original": "Read text selection out loud"
   },
   "buttonStopTitle": {
-    "message": "תפסיק לדבר",
+    "message": "Přestaň mluvit",
     "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "קרא את בחירת הטקסט בקול רם",
+    "message": "Číst výběr textu nahlas",
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "פתח את דף התרומות",
+    "message": "Otevřete stránku darování",
     "original": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "פתח את האתר Talkie",
+    "message": "Otevřete web Talkie",
     "original": "Open the Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "פתח את דף החנות",
+    "message": "Otevřete stránku obchodu",
     "original": "Open the store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "פתח את דף הדפים Premium",
+    "message": "Otevřete stránku obchodu Premium",
     "original": "Open the Premium store page"
   },
   "commandStartStopDescription": {
-    "message": "התחל/להפסיק קריאה הבחירה",
+    "message": "Výběr čtení start/stop",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
-    "message": "בחר טקסט בכל דף אינטרנט, וקרא למחשב לקרוא אותו בקול רם על ידי לחיצה על הלחצן Talkie .",
+    "message": "Vyberte text na Talkie webové stránce a Talkie počítač číst nahlas pro vás prostě Talkie tlačítko Talkie .",
     "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
-    "message": "אפשרויות",
+    "message": "Možnosti",
     "original": "Options"
   },
   "frontend_aboutCodeOnGithubLinkText": {
-    "message": "קוד המקור על Github",
+    "message": "Zdrojový kód na Github",
     "original": "Source code on Github"
   },
   "frontend_aboutHeading": {
-    "message": "אודות: לחצן הרחבת דפדפן טקסט לדיבור",
+    "message": "About: Tlačítko rozšíření prohlížeče text-to-speech",
     "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
-    "message": "על אודות",
+    "message": "O",
     "original": "About"
   },
   "frontend_aboutProjectPageLinkText": {
-    "message": "דף הפרויקט על joelpurra.com",
+    "message": "Stránka projektu na joelpurra.com",
     "original": "Project page on joelpurra.com"
   },
   "frontend_aboutThankYou": {
-    "message": "תודה על השימוש ב- Talkie — אם אתה אוהב את זה, ספר לחברים שלך!",
+    "message": "Děkujeme, že Talkie — pokud se vám to líbí, sdělte to svým přátelům!",
     "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
-    "message": "לִתְרוֹם",
+    "message": "Darovat",
     "original": "Donate"
   },
   "frontend_donate_alreadyHavePremium": {
-    "message": "כבר יש לך את Talkie 🌟 Premium. התמיכה המתמשכת שלך כבר מספיק — תודה!",
+    "message": "Již máte Talkie 🌟 Premium. Vaši trvalou podporu už stačí — děkuji!",
     "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
   },
   "frontend_donate_moreOptions": {
-    "message": "עוד אפשרויות תרומה",
+    "message": "Další možnosti dárcovství",
     "original": "More donation options"
   },
   "frontend_donate_usd100Now": {
-    "message": "לתרום 100 USD עכשיו",
+    "message": "Darujte 100 USD nyní",
     "original": "Donate $$100 now"
   },
   "frontend_donate_usd25Now": {
-    "message": "לתרום USD 25 עכשיו",
+    "message": "Darujte nyní 25 USD",
     "original": "Donate $$25 now"
   },
   "frontend_donate_usd5Now": {
-    "message": "לתרום 5 USD עכשיו",
+    "message": "Darujte 5 USD nyní",
     "original": "Donate $$5 now"
   },
   "frontend_featuresFreeHeading": {
-    "message": "תכונות Talkie",
+    "message": "Funkce v Talkie",
     "original": "Features in Talkie"
   },
   "frontend_featuresFree_List01": {
-    "message": "זיהוי שפה אוטומטי.",
+    "message": "Automatická detekce jazyka.",
     "original": "Automatic language detection."
   },
   "frontend_featuresFree_List02": {
-    "message": "בחירה קולית אוטומטית.",
+    "message": "Automatický výběr hlasu.",
     "original": "Automatic voice selection."
   },
   "frontend_featuresFree_List03": {
-    "message": "קורא טקסט שנבחר על ידי לחיצה על לחצן, מקש קיצור או תפריט קליק ימני.",
+    "message": "Čte vybraný text kliknutím na tlačítko, klávesovou zkratkou nebo pravým tlačítkem myši.",
     "original": "Reads selected text by a button click, shortcut key, or right-click menu."
   },
   "frontend_featuresFree_List04": {
-    "message": "קורא טקסטים ארוכים ומאמרים בקול, גם כאשר הכרטיסייה נמצאת ברקע.",
+    "message": "Čte dlouhé texty a články hlasitě, i když je karta na pozadí.",
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "קוד הוא קוד פתוח וזמין בחינם לכל המשתמשים.",
+    "message": "Kód je otevřený zdroj a je zdarma k dispozici všem uživatelům.",
     "original": "Code is open source and available for free to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "חופשי!",
+    "message": "Volný, uvolnit!",
     "original": "Free!"
   },
   "frontend_featuresHeading": {
-    "message": "מאפיינים: מה Talkie הוא טוב ב",
+    "message": "Talkie: co Talkie je dobré na",
     "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
-    "message": "מאפיינים",
+    "message": "Funkce",
     "original": "Features"
   },
   "frontend_featuresPremiumHeading": {
-    "message": "תכונות ב- Talkie 🌟 Premium",
+    "message": "Funkce v Talkie 🌟 Premium",
     "original": "Features in Talkie 🌟 Premium"
   },
   "frontend_featuresPremium_List01": {
-    "message": "בחר את קול ברירת המחדל שלך עבור כל שפה. נהדר אם אתה מתעייף קול המערכת!",
+    "message": "Vyberte si svůj vlastní výchozí hlas pro každý jazyk. Skvělé, kdybyste se unavili systémovým hlasem!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "בחר מהירות קריאה ומגרש לכל קול. התאמת קולות לטעמך!",
+    "message": "Zvolte rychlost čtení a rozteč na hlas. Upravte hlasy podle vašich představ!",
     "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
-    "message": "זה מרגיש חם, מטושטשת אתה מקבל כאשר תמיכה בתוכנות קוד פתוח על ידי מפתחים עצמאיים.",
+    "message": "Ten teplý, fuzzní pocit, který získáte při podpoře softwaru s otevřeným zdrojovým kódem nezávislých vývojářů.",
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "בעתיד Premium עדכונים כלולים בחינם.",
+    "message": "Budoucí Premium zahrnuty zdarma.",
     "original": "Future Premium updates included for free."
   },
   "frontend_featuresVersion_Free": {
-    "message": "אתה משתמש כעת בגרסה Talkie של Talkie , וקבוצת תכונות מוגבלת זמינה עבורך. אולי Talkie 🌟 Premium תהיה בחירה טובה יותר עבורך?",
+    "message": "V současné době používáte bezplatnou verzi Talkie a je k Talkie omezená sada funkcí. Možná Talkie 🌟 Premium by pro vás byla lepší volbou?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "אתה משתמש כעת בגירסת הפרמיום של Talkie , וכל התכונות זמינות עבורך. תודה רבה, זה מחמם את לבי!",
+    "message": "V současné době používáte prémiovou verzi Talkie a všechny funkce jsou vám k dispozici. Děkuji vám, ohřívá mé srdce!",
     "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie מגיע בשתי גרסאות: Talkie ו- Talkie 🌟 Premium. הגרסה החינמית היא נהדרת עבור רוב המקרים להשתמש, אבל גרסת פרימיום מציעה אפשרויות נוספות.",
+    "message": "Talkie dodává ve dvou verzích: Talkie a Talkie 🌟 Premium. Volná verze je skvělá pro většinu případů použití, ale prémiová verze nabízí další možnosti.",
     "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_getPremiumLinkText": {
-    "message": "קבל Talkie 🌟 Premium !",
+    "message": "Získejte Talkie 🌟 Premium !",
     "original": "Get Talkie 🌟 Premium!"
   },
   "frontend_hideDonateButtonsInPopup": {
-    "message": "הסתר לחצני תרומה בחלון הקופץ",
+    "message": "Skrýt dotační tlačítka v rozbalovací nabídce",
     "original": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "זה לא שאני לא רוצה לקבל Talkie 🌟 Premium או לתרום כדי לתמוך Talkie ופיתוח קוד פתוח בכלל — אני פשוט לא רוצה להתרגז כאשר אתה משתמש Talkie מלכתחילה. אם תשבית את לחצני התרומות בחלון הקופץ, אני מקווה שתתמוך גם ב- Talkie בדרך כלשהי! הכפתורים תמיד יהיו זמינים כאן בין האפשרויות, רק במקרה.",
+    "message": "Není to jako bych nechtěl, abyste dostali Talkie 🌟 Premium nebo se darovali na podporu Talkie a Talkie open source obecně — prostě nechci, abyste byli naštvaní při použití Talkie na prvním místě. Pokud vypnete dotační tlačítka v Talkie , doufám, že budete také Talkie nějakým způsobem! Tlačítka budou k dispozici vždy mezi jednotlivými možnostmi.",
     "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "לתרום: תמיכה בפיתוח קוד פתוח",
+    "message": "Darujte: podporujte vývoj open source",
     "original": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
-    "message": "כל התרומות ל Talkie מבוצעות במסגרת הסכם הרישיון של התורמים (CLA).",
+    "message": "Všechny příspěvky do Talkie se Talkie podle licenční smlouvy přispěvatelů (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "רישיון: תוכנת קוד פתוח",
+    "message": "Licence: open source software",
     "original": "License: open-source software"
   },
   "frontend_licenseLinkText": {
-    "message": "רישיון",
+    "message": "Licence",
     "original": "License"
   },
   "frontend_rateIt": {
-    "message": "עיין ב- Talkie",
+    "message": "Recenze Talkie",
     "original": "Review Talkie"
   },
   "frontend_storyDescription": {
-    "message": "Talkie פותחה כמה ימים לפני ראש השנה 2016/2017, על אתגר מחבר. האתגר התחיל בשאלה: תוך כדי נסיעה לעבודה, האם ניתן להקשיב למאמר במקום לקרוא אותו? קל, אמרתי, ויצאתי להוכיח את זה — או לפחות להפוך את הדפדפן שלי לדבר טקסט באמצעות קול מחשב מטופש. הגרסה הבסיסית, ללא כל ממשק משתמש, התברר להיות טריוויאלי ליצור. הוספת ממשק משתמש, לקח קצת יותר. הוספת זיהוי שפה נכונה חבורה קוד נוסף. התגברות על באגים בדפדפן עוד יותר עבודה. רשימת השיפורים והתכונות נמשכת — וכמה אלפי שורות קוד מאוחר יותר, אתה מסתכל על התוצאה הסופית.",
+    "message": "Talkie byla vyvinuta několik dní před novým rokem 2016/2017, na výzvu od přítele. Problém začal otázkou: při dojíždění do práce je možné poslouchat článek namísto jeho čtení? Snadno, řekla jsem, a vydala se, aby to dokázala — nebo alespoň aby ​​můj prohlížeč vyslovil text pomocí hloupého počítačového hlasu. Základní verze, bez jakéhokoli uživatelského rozhraní, se ukázala být triviální k vytvoření. Přidání uživatelského rozhraní trvalo trochu déle. Přidání správného rozpoznávání jazyků další kód. Překonání chyb v prohlížeči ještě více práce. Seznam vylepšení a funkcí pokračuje — a několik tisíc řádků kódu později, hledáte konečný výsledek.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "סיפור: כיצד Talkie התחיל",
+    "message": "Příběh: jak se začalo Talkie",
     "original": "Story: how Talkie got started"
   },
   "frontend_storyLinkText": {
-    "message": "כַּתָבָה",
+    "message": "Příběh",
     "original": "Story"
   },
   "frontend_storyThankYou": {
-    "message": "תודה על השימוש ב- Talkie — אם אתה אוהב את זה, ספר לחברים שלך!",
+    "message": "Děkujeme, že Talkie — pokud se vám to líbí, sdělte to svým přátelům!",
     "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
-    "message": "תמיכה ומשוב",
+    "message": "Podpora a zpětná vazba",
     "original": "Support and feedback"
   },
   "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie",
+    "message": "Talkie v Talkie pro Firefox",
     "original": "Talkie in Firefox Add-ons"
   },
   "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium",
+    "message": "Talkie 🌟 Premium v Talkie 🌟 Premium aplikace Firefox",
     "original": "Talkie 🌟 Premium in the Firefox Add-ons"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie בחנות האינטרנט של Chrome",
+    "message": "Talkie v Talkie obchodě Chrome",
     "original": "Talkie in the Chrome Web Store"
   },
   "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium בחנות האינטרנט של Chrome",
+    "message": "Talkie 🌟 Premium v Talkie 🌟 Premium obchodě Chrome",
     "original": "Talkie 🌟 Premium in the Chrome Web Store"
   },
   "frontend_usageHeading": {
-    "message": "נוֹהָג",
+    "message": "Používání",
     "original": "Usage"
   },
   "frontend_usageLinkText": {
-    "message": "נוֹהָג",
+    "message": "Používání",
     "original": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "תוכל גם לבחור את הטקסט, ולאחר מכן לחץ עליו באמצעות לחצן העכבר הימני, ובחר באפשרות Talkie בתפריט. בדרך זו גם עובד קבצי PDF וכמה סוגים מיוחדים של דפים בדפדפן.",
+    "message": "Můžete také vybrat text, poté kliknout pravým Talkie na něj a v nabídce zvolit Talkie. Takto funguje také v souborech PDF a některých speciálních typech stránek v prohlížeči.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "אם המפתח אינו פועל, ודא שהוא אינו בשימוש כבר על ידי תוסף נוסף.",
+    "message": "Pokud klíček nefunguje, zkontrolujte prosím, že ji ještě nepoužívá jiné rozšíření.",
     "original": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "כיצד לבדוק או לשנות את מקשי הקיצור של Talkie .",
+    "message": "Jak Talkie nebo změnit Talkie zkratky Talkie .",
     "original": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
-    "message": "אפשרות נוחה לשימוש Talkie הקיצור Talkie :",
+    "message": "Vhodnou možností je použít Talkie zkratky Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
-    "message": "בחר את הטקסט הרצוי בכל דף אינטרנט.",
+    "message": "Vyberte požadovaný text na libovolné webové stránce.",
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "לחץ על הלחצן Talkie בסרגל הדפדפן",
+    "message": "V Talkie klikněte na tlačítko Talkie",
     "original": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {
-    "message": "שפות זמינות",
+    "message": "Dostupné jazyky",
     "original": "Available languages"
   },
   "frontend_voicesAvailableVoices": {
-    "message": "קולות זמינים",
+    "message": "Dostupné hlasy",
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "כאן תוכל לראות ולבדוק קולות מותקנים עבור כל שפה בדפדפן שלך. 🌟 Premium משתמשים יכולים גם לבחור את הקול המועדף עליהם כברירת מחדל לכל שפה, וכן לשנות את מהירות הצליל ואת גובה הצליל עבור כל קול.",
+    "message": "Zde můžete vidět a otestovat nainstalované hlasy pro každý jazyk ve vašem prohlížeči. 🌟 Premium mohou také vybrat svůj oblíbený hlas jako výchozí pro každý jazyk, stejně jako změnit rychlost a rozteč pro každý hlas.",
     "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
-    "message": "קולות: בחר את המועדפים שלך",
+    "message": "Hlasy: vyberte své oblíbené",
     "original": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
-    "message": "קולות",
+    "message": "Hlasy",
     "original": "Voices"
   },
   "frontend_voicesPitchEmptyHeading_Free": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: גובה הצליל",
+    "message": "🌟 Premium: pitch for voice",
     "original": "🌟 Premium: pitch for voice"
   },
   "frontend_voicesPitchEmptyHeading_Premium": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "קול על קול",
+    "message": "Pitch pro hlas",
     "original": "Pitch for voice"
   },
   "frontend_voicesPitchHeading_Free": {
     "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: גובה הצליל עבור $VOICE$",
+    "message": "🌟 Premium: hřiště pro $VOICE$",
     "original": "🌟 Premium: pitch for $VOICE$",
     "placeholders": {
       "voice": {
@@ -294,7 +294,7 @@
   },
   "frontend_voicesPitchHeading_Premium": {
     "description": "The per-voice pitch options heading, including the voice name",
-    "message": "גובה Pitch עבור $VOICE$",
+    "message": "Pitch pro $VOICE$",
     "original": "Pitch for $VOICE$",
     "placeholders": {
       "voice": {
@@ -305,17 +305,17 @@
   },
   "frontend_voicesRateEmptyHeading_Free": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: מהירות הקול",
+    "message": "🌟 Premium: Rychlost hlasu",
     "original": "🌟 Premium: speed for voice"
   },
   "frontend_voicesRateEmptyHeading_Premium": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "מהירות הקול",
+    "message": "Rychlost hlasu",
     "original": "Speed for voice"
   },
   "frontend_voicesRateHeading_Free": {
     "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: מהירות עבור $VOICE$",
+    "message": "🌟 Premium: rychlost za $VOICE$",
     "original": "🌟 Premium: speed for $VOICE$",
     "placeholders": {
       "voice": {
@@ -326,7 +326,7 @@
   },
   "frontend_voicesRateHeading_Premium": {
     "description": "The per-voice speed options heading, including the voice name",
-    "message": "מהירות עבור $VOICE$",
+    "message": "Rychlost pro $VOICE$",
     "original": "Speed for $VOICE$",
     "placeholders": {
       "voice": {
@@ -337,26 +337,26 @@
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
-    "message": "השועל החום המהיר קופץ מעל הכלב העצל.",
+    "message": "Rychlá hnědá liška skočí přes líný pes.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
   "frontend_voicesSampleTextHeading": {
-    "message": "טקסט לדוגמה עבור Talkie כדי לקרוא בקול רם",
+    "message": "Ukázkový text pro Talkie pro čtení hlasitě",
     "original": "Sample text for Talkie to read out loud"
   },
   "frontend_voicesSetAsLanguageEmptySelection_Free": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: שדרג לשינוי קול ברירת מחדל",
+    "message": "🌟 Premium: 🌟 Premium chcete-li změnit výchozí hlas",
     "original": "🌟 Premium: Upgrade to change default voice"
   },
   "frontend_voicesSetAsLanguageEmptySelection_Premium": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
-    "message": "השתמש כשפת ברירת מחדל עבור השפה",
+    "message": "Použijte výchozí jazyk pro jazyk",
     "original": "Use as default voice for language"
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: השתמש ב- $VOICE$ כברירת מחדל עבור טקסט ב- $LANGUAGE$",
+    "message": "🌟 Premium: Použijte $VOICE$ jako výchozí hlas pro text v $LANGUAGE$",
     "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
@@ -371,7 +371,7 @@
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "השתמש ב- $VOICE$ כברירת מחדל עבור טקסט ב- $LANGUAGE$",
+    "message": "Použijte $VOICE$ jako výchozí hlas pro text ve $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
@@ -385,24 +385,24 @@
     }
   },
   "frontend_voicesShowAllVoices": {
-    "message": "הצג את כל הקולות",
+    "message": "Zobrazit všechny hlasy",
     "original": "Show all voices"
   },
   "frontend_yourDonationsAreAppreciated": {
-    "message": "התרומות שלך מוערכים!",
+    "message": "Vaše dary jsou ceněny!",
     "original": "Your donations are appreciated!"
   },
   "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "תרומות מוערך!",
+    "message": "Dary oceněny!",
     "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
-    "message": "בחר תחילה את הטקסט הרצוי באתר. ניתן גם לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על אותו, ובחר באפשרות Talkie בתפריט.",
+    "message": "Nejprve vyberte nejprve požadovaný text na webu. Můžete také vybrat text, poté kliknout pravým Talkie na něj a v nabídce zvolit Talkie .",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
-    "message": "Talkie אינו יכול לגשת לטקסט שנבחר מסוג זה. זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן. תוכל גם לנסות לבחור טקסט, ולאחר מכן לחץ עליו לחיצה ימנית ובחר באפשרות Talkie בתפריט. אני מתנצל על אי הנוחות.",
+    "message": "Talkie nemůže získat přístup k Talkie textu z tohoto typu stránky. Jedná se o velmi zvláštní stránku a prohlížeč prohlížeče obsahuje bezpečnostní omezení. Můžete také zkusit vybrat text, pak kliknout pravým Talkie na něj a v nabídce zvolit Talkie. Omlouvám se za nepříjemnost.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }
