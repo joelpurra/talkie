@@ -1,0 +1,408 @@
+{
+  "buttonDefaultTitle": {
+    "message": "อ่านข้อความที่เลือกออกมาดัง ๆ",
+    "original": "Read text selection out loud"
+  },
+  "buttonStopTitle": {
+    "message": "หยุดพูด",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "อ่านข้อความที่เลือกออกมาดัง ๆ",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "เปิดหน้าบริจาค",
+    "original": "Open the donation page"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "เปิดเว็บไซต์ Talkie",
+    "original": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "เปิดหน้าร้านค้า",
+    "original": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "เปิดหน้าร้านค้า Premium",
+    "original": "Open the Premium store page"
+  },
+  "commandStartStopDescription": {
+    "message": "เริ่ม/หยุดการเลือกการอ่าน",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "message": "เลือกข้อความในหน้าเว็บใดก็ได้และให้ Talkie อ่านข้อความดังกล่าวให้คุณโดยคลิกปุ่ม Talkie",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  },
+  "frontend_Options": {
+    "message": "ตัวเลือก",
+    "original": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "รหัสแหล่งที่มาใน Github",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "เกี่ยวกับ: ปุ่มส่วนขยายเบราว์เซอร์แบบข้อความเป็นคำพูด",
+    "original": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "เกี่ยวกับ",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "หน้าโครงการเกี่ยวกับ joelpurra.com",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_aboutThankYou": {
+    "message": "ขอบคุณที่ใช้ Talkie — ถ้าคุณชอบบอกเพื่อนของคุณ!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_donateLinkText": {
+    "message": "บริจาค",
+    "original": "Donate"
+  },
+  "frontend_donate_alreadyHavePremium": {
+    "message": "คุณมี Talkie 🌟 Premium แล้ว การสนับสนุนอย่างต่อเนื่องของคุณมีอยู่แล้ว — ขอขอบคุณ!",
+    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "ตัวเลือกการบริจาคเพิ่มเติม",
+    "original": "More donation options"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "บริจาค USD 100 USD ในขณะนี้",
+    "original": "Donate $$100 now"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "บริจาค USD 25 USD ตอนนี้",
+    "original": "Donate $$25 now"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "บริจาค USD 5 USD ตอนนี้",
+    "original": "Donate $$5 now"
+  },
+  "frontend_featuresFreeHeading": {
+    "message": "Talkie ใน Talkie",
+    "original": "Features in Talkie"
+  },
+  "frontend_featuresFree_List01": {
+    "message": "การตรวจจับภาษาอัตโนมัติ",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "เลือกเสียงอัตโนมัติ",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "อ่านข้อความที่เลือกโดยการคลิกปุ่มทางลัดหรือคลิกขวาที่เมนู",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "อ่านข้อความและบทความที่ยาวออกมาดัง ๆ แม้ว่าในขณะที่แท็บอยู่ด้านหลังก็ตาม",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "รหัสนี้เป็นโอเพนซอร์สและสามารถใช้ได้ฟรีสำหรับผู้ใช้ทั้งหมด",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "ฟรี!",
+    "original": "Free!"
+  },
+  "frontend_featuresHeading": {
+    "message": "Talkie: สิ่งที่ Talkie ดีที่",
+    "original": "Features: what Talkie is good at"
+  },
+  "frontend_featuresLinkText": {
+    "message": "คุณสมบัติ",
+    "original": "Features"
+  },
+  "frontend_featuresPremiumHeading": {
+    "message": "Talkie 🌟 Premium ใน Talkie 🌟 Premium",
+    "original": "Features in Talkie 🌟 Premium"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "เลือกเสียงเริ่มต้นของคุณเองสำหรับแต่ละภาษา เยี่ยมยอดหากคุณเบื่อหน่ายระบบเสียง!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "เลือกความเร็วในการอ่านและระดับเสียงต่อเสียง ปรับเสียงให้เป็นที่ชื่นชอบของคุณ!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "รู้สึกอุ่น ๆ เลือนลื่นที่คุณได้รับเมื่อสนับสนุนซอฟต์แวร์โอเพนซอร์สโดยนักพัฒนาอิสระ",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "การปรับปรุงในอนาคต Premium รวมฟรี",
+    "original": "Future Premium updates included for free."
+  },
+  "frontend_featuresVersion_Free": {
+    "message": "ขณะนี้คุณใช้เวอร์ชันฟรี Talkie และมีชุดคุณลักษณะบางอย่างให้คุณ บางที Talkie 🌟 Premium จะเป็นทางเลือกที่ดีสำหรับคุณ",
+    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+  },
+  "frontend_featuresVersion_Premium": {
+    "message": "ขณะนี้คุณใช้พรีเมี่ยมรุ่น Talkie และมีคุณลักษณะทั้งหมดให้บริการ ขอบคุณมากมันอุ่นหัวใจของฉัน!",
+    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresVersions": {
+    "message": "Talkie มาในสองเวอร์ชัน: Talkie และ Talkie 🌟 Premium รุ่นฟรีเป็นที่ดีสำหรับกรณีการใช้งานมากที่สุด แต่รุ่นพรีเมี่ยมมีตัวเลือกเพิ่มเติม",
+    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+  },
+  "frontend_getPremiumLinkText": {
+    "message": "รับ Talkie 🌟 Premium !",
+    "original": "Get Talkie 🌟 Premium!"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "ซ่อนปุ่มบริจาคในป๊อปอัป",
+    "original": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "ไม่ใช่ว่าฉันไม่ต้องการให้คุณได้รับ Talkie 🌟 Premium หรือบริจาคเพื่อสนับสนุน Talkie และการพัฒนาโอเพ่นซอร์สโดยทั่วไป — ฉันเพียงแค่ไม่ต้องการให้คุณรู้สึกหงุดหงิดเมื่อใช้ Talkie ในตอนแรก หากคุณปิดใช้งานปุ่มบริจาคในป๊อปอัปฉันหวังว่าคุณจะสนับสนุน Talkie ด้วยวิธีใดบ้าง! ปุ่มต่างๆจะพร้อมใช้งานได้ตลอดเวลาในตัวเลือกต่างๆ",
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "บริจาค: สนับสนุนการพัฒนาโอเพ่นซอร์ส",
+    "original": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "การสนับสนุนทั้งหมดที่มีต่อ Talkie จะทำขึ้นภายใต้ข้อตกลงการให้สิทธิ์ผู้ร่วมให้ข้อมูล (CLA)",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "ใบอนุญาต: ซอฟต์แวร์โอเพนซอร์ส",
+    "original": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "การอนุญาต",
+    "original": "License"
+  },
+  "frontend_rateIt": {
+    "message": "รีวิว Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie ได้รับการพัฒนาขึ้นเมื่อไม่กี่วันก่อนปีใหม่ 2016/2017 ซึ่งเป็นความท้าทายจากเพื่อน ความท้าทายเริ่มต้นด้วยคำถาม: ในขณะที่เดินทางไปทำงานก็สามารถฟังบทความแทนการอ่านได้หรือไม่? ง่ายฉันกล่าวและออกไปพิสูจน์มัน — หรืออย่างน้อยเพื่อให้เบราว์เซอร์ของฉันพูดออกข้อความโดยใช้เสียงคอมพิวเตอร์งี่เง่า เวอร์ชันพื้นฐานโดยไม่มีอินเทอร์เฟซผู้ใช้ใด ๆ กลายเป็นเรื่องเล็กน้อยในการสร้าง การเพิ่มส่วนติดต่อผู้ใช้ใช้เวลานานกว่านี้ การเพิ่มการตรวจสอบภาษาที่ถูกต้องเป็นพวงรหัสเพิ่มเติม เอาชนะข้อบกพร่องในเบราว์เซอร์ได้มากยิ่งขึ้น รายชื่อการปรับปรุงและคุณลักษณะต่างๆไป — และไม่กี่พันบรรทัดของโค้ดในภายหลังคุณกำลังดูผลลัพธ์สุดท้าย",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Talkie: Talkie เริ่มต้นได้อย่างไร",
+    "original": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "เรื่องราว",
+    "original": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "ขอบคุณที่ใช้ Talkie — ถ้าคุณชอบบอกเพื่อนของคุณ!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "การสนับสนุนและข้อเสนอแนะ",
+    "original": "Support and feedback"
+  },
+  "frontend_talkieInFirefoxAddons_Free": {
+    "message": "Talkie ใน Add-on ของ Firefox",
+    "original": "Talkie in Firefox Add-ons"
+  },
+  "frontend_talkieInFirefoxAddons_Premium": {
+    "message": "Talkie 🌟 Premium ใน Add-on ของ Firefox",
+    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
+  },
+  "frontend_talkieInTheChromeWebStore_Free": {
+    "message": "Talkie ใน Chrome เว็บสโตร์",
+    "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_talkieInTheChromeWebStore_Premium": {
+    "message": "Talkie 🌟 Premium ใน Chrome เว็บสโตร์",
+    "original": "Talkie 🌟 Premium in the Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "การใช้",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "การใช้",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "นอกจากนี้คุณยังสามารถเลือกข้อความจากนั้นคลิกขวาที่ไอคอนและเลือก Talkie ในเมนู ด้วยวิธีนี้จะทำงานในไฟล์ PDF และหน้าเว็บบางประเภทในเบราเซอร์",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "หากคีย์ไม่ทำงานโปรดตรวจสอบว่าส่วนขยายอื่นไม่ได้ใช้อยู่หรือไม่",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "วิธีตรวจสอบหรือเปลี่ยนปุ่มลัด Talkie",
+    "original": "How to check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "ตัวเลือกที่สะดวกคือใช้ปุ่มลัด Talkie :",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageStep01": {
+    "message": "เลือกข้อความที่ต้องการในเว็บเพจใดก็ได้",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "คลิกปุ่ม Talkie ในแถบเบราเซอร์ของคุณ",
+    "original": "Click the Talkie button in your browser bar"
+  },
+  "frontend_voicesAvailableLanguages": {
+    "message": "ภาษาที่ใช้ได้",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "เสียงที่มีให้",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "ที่นี่คุณสามารถดูและทดสอบเสียงที่ติดตั้งสำหรับแต่ละภาษาในเบราเซอร์ของคุณ 🌟 Premium ผู้ใช้ยังสามารถเลือกเสียงที่ชื่นชอบเป็นค่าเริ่มต้นต่อภาษารวมทั้งเปลี่ยนความเร็วและระดับเสียงสำหรับแต่ละเสียง",
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+  },
+  "frontend_voicesHeading": {
+    "message": "เสียง: เลือกรายการโปรดของคุณ",
+    "original": "Voices: select your favorite"
+  },
+  "frontend_voicesLinkText": {
+    "message": "เสียง",
+    "original": "Voices"
+  },
+  "frontend_voicesPitchEmptyHeading_Free": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: เสียงสำหรับเสียง",
+    "original": "🌟 Premium: pitch for voice"
+  },
+  "frontend_voicesPitchEmptyHeading_Premium": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Pitch for Voice",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading_Free": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "🌟 Premium: ระดับ $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "original": "🌟 Premium: pitch for $VOICE$"
+  },
+  "frontend_voicesPitchHeading_Premium": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "original": "Pitch for $VOICE$"
+  },
+  "frontend_voicesRateEmptyHeading_Free": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: ความเร็วสำหรับเสียง",
+    "original": "🌟 Premium: speed for voice"
+  },
+  "frontend_voicesRateEmptyHeading_Premium": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "ความเร็วสำหรับเสียง",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading_Free": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "🌟 Premium: ความเร็ว $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "original": "🌟 Premium: speed for $VOICE$"
+  },
+  "frontend_voicesRateHeading_Premium": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "ความเร็ว $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "original": "Speed for $VOICE$"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "สุนัขจิ้งจอกสีน้ำตาลเร็วกระโดดข้ามสุนัขขี้เกียจ",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "ตัวอย่างข้อความสำหรับ Talkie เพื่ออ่านออกเสียง",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Free": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
+    "message": "🌟 Premium: อัปเกรดเพื่อเปลี่ยนเสียงเริ่มต้น",
+    "original": "🌟 Premium: Upgrade to change default voice"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+    "message": "ใช้เป็นเสียงเริ่มต้นสำหรับภาษา",
+    "original": "Use as default voice for language"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "🌟 Premium: ใช้ $VOICE$ เป็นเสียงเริ่มต้นสำหรับข้อความใน $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "ใช้ $VOICE$ เป็นเสียงเริ่มต้นสำหรับข้อความใน $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "แสดงเสียงทั้งหมด",
+    "original": "Show all voices"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "การบริจาคของคุณชื่นชม!",
+    "original": "Your donations are appreciated!"
+  },
+  "frontend_yourDonationsAreAppreciatedShort": {
+    "message": "บริจาคชื่นชม!",
+    "original": "Donations appreciated!"
+  },
+  "noTextSelectedMessage": {
+    "message": "โปรดเลือกข้อความที่ต้องการในเว็บไซต์ก่อน นอกจากนี้คุณยังสามารถเลือกข้อความจากนั้นคลิกขวาและเลือก Talkie ในเมนู",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie ไม่สามารถเข้าถึงข้อความที่เลือกได้จากหน้าเว็บประเภทนี้ เป็นหน้าพิเศษและมีข้อ จำกัด ด้านความปลอดภัยในเบราว์เซอร์ นอกจากนี้คุณยังสามารถลองเลือกข้อความจากนั้นคลิกขวาและเลือก Talkie ในเมนู ฉันขอโทษสำหรับความไม่สะดวก.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  }
+}
