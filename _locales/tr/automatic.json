@@ -1,0 +1,408 @@
+{
+  "buttonDefaultTitle": {
+    "message": "Metin seçimi yüksek sesle okunur",
+    "original": "Read text selection out loud"
+  },
+  "buttonStopTitle": {
+    "message": "Konuşmayı kes",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "Metin seçimi yüksek sesle okunur",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteDonateDescription": {
+    "message": "Bağış sayfasını açın",
+    "original": "Open the donation page"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Talkie web sitesini açın",
+    "original": "Open the Talkie website"
+  },
+  "commandOpenWebsiteStoreDescription_Free": {
+    "message": "Mağaza sayfasını aç",
+    "original": "Open the store page"
+  },
+  "commandOpenWebsiteStoreDescription_Premium": {
+    "message": "Premium mağaza Premium açın",
+    "original": "Open the Premium store page"
+  },
+  "commandStartStopDescription": {
+    "message": "Seçimi okumayı başlat/durdur",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "message": "Herhangi bir web Talkie seçin ve Talkie sizin yerinize yüksek sesle Talkie .",
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  },
+  "frontend_Options": {
+    "message": "Seçenekler",
+    "original": "Options"
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Github üzerinde kaynak kodu",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutHeading": {
+    "message": "Hakkında: text-to-speech tarayıcı eklentisi düğmesi",
+    "original": "About: text-to-speech browser extension button"
+  },
+  "frontend_aboutLinkText": {
+    "message": "hakkında",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "Joelpurra.com&#39;daki proje sayfası",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_aboutThankYou": {
+    "message": "Talkie için teşekkür ederiz — Talkie söyleyin!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_donateLinkText": {
+    "message": "Bağışta bulunmak",
+    "original": "Donate"
+  },
+  "frontend_donate_alreadyHavePremium": {
+    "message": "Zaten Talkie 🌟 Premium. Devamlı desteğiniz zaten yeter — teşekkür ederim!",
+    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
+  },
+  "frontend_donate_moreOptions": {
+    "message": "Daha fazla bağış seçenekleri",
+    "original": "More donation options"
+  },
+  "frontend_donate_usd100Now": {
+    "message": "Şimdi USD 100 bağış yapın",
+    "original": "Donate $$100 now"
+  },
+  "frontend_donate_usd25Now": {
+    "message": "Şimdi 25 USD bağışta bulunun",
+    "original": "Donate $$25 now"
+  },
+  "frontend_donate_usd5Now": {
+    "message": "Şimdi 5 USD bağışta bulunun",
+    "original": "Donate $$5 now"
+  },
+  "frontend_featuresFreeHeading": {
+    "message": "Talkie &#39; Talkie",
+    "original": "Features in Talkie"
+  },
+  "frontend_featuresFree_List01": {
+    "message": "Otomatik dil algılama.",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "Otomatik ses seçimi.",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "Seçili metni bir düğme tıklatısı, kısayol tuşu veya sağ tıklama menüsü ile okur.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "Sekme arka plandayken bile uzun metinleri ve makaleleri yüksek sesle okur.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "Kod açık kaynak kodlu ve tüm kullanıcılar tarafından ücretsiz olarak kullanılabilir.",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "Ücretsiz!",
+    "original": "Free!"
+  },
+  "frontend_featuresHeading": {
+    "message": "Talkie: Talkie iyi nedir Talkie",
+    "original": "Features: what Talkie is good at"
+  },
+  "frontend_featuresLinkText": {
+    "message": "Özellikler",
+    "original": "Features"
+  },
+  "frontend_featuresPremiumHeading": {
+    "message": "Talkie 🌟 Premium &#39; Talkie 🌟 Premium",
+    "original": "Features in Talkie 🌟 Premium"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "Her dil için kendi varsayılan sesinizi seçin. Sistem sesinden bıktığınızda harika!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "Ses başına okuma hızı ve adım aralığı seçin. Sesleri beğeninize göre ayarlayın!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "Bağımsız geliştiriciler tarafından açık kaynak yazılımını desteklerken aldığınız o sıcak ve bulanık his.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "Premium .",
+    "original": "Future Premium updates included for free."
+  },
+  "frontend_featuresVersion_Free": {
+    "message": "Şu anda Talkie&#39;in ücretsiz sürümünü Talkie ve sınırlı bir dizi özellik kullanımınıza sunulmuştur. Belki Talkie 🌟 Premium sizin için daha iyi bir seçim olurdu?",
+    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+  },
+  "frontend_featuresVersion_Premium": {
+    "message": "Şu anda Talkie&#39;in premium sürümünü Talkie ve tüm özellikler kullanımınıza sunulmuştur. Çok teşekkür ederim, kalbimi ısıtır!",
+    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresVersions": {
+    "message": "Talkie iki sürümden Talkie: Talkie ve Talkie 🌟 Premium. Ücretsiz sürümü çoğu kullanım ömrü için harika, ancak premium sürümde ek seçenekler bulunmaktadır.",
+    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+  },
+  "frontend_getPremiumLinkText": {
+    "message": "Talkie 🌟 Premium !",
+    "original": "Get Talkie 🌟 Premium!"
+  },
+  "frontend_hideDonateButtonsInPopup": {
+    "message": "Açılır penceredeki bağış düğmelerini gizle",
+    "original": "Hide donation buttons in the popup"
+  },
+  "frontend_hideDonateButtonsInPopupDescription": {
+    "message": "Talkie ve genel olarak açık kaynak geliştirme desteği için Talkie 🌟 Premium veya bağışta bulunmak Talkie gibi değil — Sadece Talkie rahatsız Talkie. Açılan Talkie devre dışı Talkie bir şekilde Talkie de Talkie! Düğmeler her durumda seçenekler arasında kullanılabilir olacak durumda.",
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+  },
+  "frontend_hideDonateButtonsInPopupHeading": {
+    "message": "Bağış: açık kaynak geliştirme desteği",
+    "original": "Donate: support open source development"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Talkie tüm katkıları Talkie Bulunan Lisans Sözleşmesi (CLA) kapsamında yapılır.",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Lisans: açık kaynaklı yazılım",
+    "original": "License: open-source software"
+  },
+  "frontend_licenseLinkText": {
+    "message": "Lisans",
+    "original": "License"
+  },
+  "frontend_rateIt": {
+    "message": "İnceleme Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie , yeni yıldan 2016/2017 yıl önce bir arkadaştan gelen bir soruyla geliştirildi. Meydan okuma, işine giderken bir makaleyi okumak yerine dinlemek mümkün mü? Soru ile başladı. Kolay dedim ki, bunu ispatlamaya karar verdim — ya da en azından tarayıcımı aptalca bir bilgisayar sesi kullanarak metin konuşturacaktım. Kullanıcı arabirimi olmaksızın temel sürüm, önemsiz olduğu ortaya çıktı. Bir kullanıcı arabirimi ekleme biraz zaman aldı. Doğru dili ekleme, bir grup daha fazla kod saptama. Hataları tarayıcıda aşmak daha da fazla iş. Geliştirmelerin ve özelliklerin listesi devam ediyor — ve birkaç bin satırlık kod daha sonra, sonuçtaki sonuca bakıyorsunuz.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Hikaye: Talkie nasıl başladı?",
+    "original": "Story: how Talkie got started"
+  },
+  "frontend_storyLinkText": {
+    "message": "Öykü",
+    "original": "Story"
+  },
+  "frontend_storyThankYou": {
+    "message": "Talkie için teşekkür ederiz — Talkie söyleyin!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Destek ve geribildirim",
+    "original": "Support and feedback"
+  },
+  "frontend_talkieInFirefoxAddons_Free": {
+    "message": "Firefox Talkie",
+    "original": "Talkie in Firefox Add-ons"
+  },
+  "frontend_talkieInFirefoxAddons_Premium": {
+    "message": "Firefox Talkie 🌟 Premium",
+    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
+  },
+  "frontend_talkieInTheChromeWebStore_Free": {
+    "message": "Chrome Web Talkie",
+    "original": "Talkie in the Chrome Web Store"
+  },
+  "frontend_talkieInTheChromeWebStore_Premium": {
+    "message": "Chrome Web Talkie 🌟 Premium",
+    "original": "Talkie 🌟 Premium in the Chrome Web Store"
+  },
+  "frontend_usageHeading": {
+    "message": "kullanım",
+    "original": "Usage"
+  },
+  "frontend_usageLinkText": {
+    "message": "kullanım",
+    "original": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Metni de Talkie , ardından metni sağ tıklayıp menüden Talkie öğesini Talkie. Bu yol da PDF dosyalarında ve bazı özel sayfalar türünde tarayıcıda çalışır.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Anahtar işe yaramazsa, lütfen başka bir uzantı tarafından kullanılmadığını kontrol edin.",
+    "original": "If the key does not work, please check that it is not already in use by another extension."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Talkie kısayol Talkie kontrol etme veya Talkie .",
+    "original": "How to check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Uygun bir seçenek Talkie kısayol Talkie :",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageStep01": {
+    "message": "Herhangi bir web sayfasında istediğiniz metni seçin.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Tarayıcı Talkie tıklayın",
+    "original": "Click the Talkie button in your browser bar"
+  },
+  "frontend_voicesAvailableLanguages": {
+    "message": "Kullanılabilir diller",
+    "original": "Available languages"
+  },
+  "frontend_voicesAvailableVoices": {
+    "message": "Mevcut sesler",
+    "original": "Available voices"
+  },
+  "frontend_voicesDescription": {
+    "message": "Burada, tarayıcınızda her dilde yüklü sesleri görebilir ve test edebilirsiniz. 🌟 Premium , dil başına 🌟 Premium olarak en 🌟 Premium , ayrıca her ses için hız ve perde de 🌟 Premium .",
+    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+  },
+  "frontend_voicesHeading": {
+    "message": "Sesler: favori seç",
+    "original": "Voices: select your favorite"
+  },
+  "frontend_voicesLinkText": {
+    "message": "Sesler",
+    "original": "Voices"
+  },
+  "frontend_voicesPitchEmptyHeading_Free": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: ses için adım",
+    "original": "🌟 Premium: pitch for voice"
+  },
+  "frontend_voicesPitchEmptyHeading_Premium": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Ses için konuş",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading_Free": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "🌟 Premium: $VOICE$ 🌟 Premium adım aralığı",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "original": "🌟 Premium: pitch for $VOICE$"
+  },
+  "frontend_voicesPitchHeading_Premium": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "$VOICE$ için $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "original": "Pitch for $VOICE$"
+  },
+  "frontend_voicesRateEmptyHeading_Free": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "🌟 Premium: ses hızı",
+    "original": "🌟 Premium: speed for voice"
+  },
+  "frontend_voicesRateEmptyHeading_Premium": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "Ses Hızı",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading_Free": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "🌟 Premium: $VOICE$ için hız",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "original": "🌟 Premium: speed for $VOICE$"
+  },
+  "frontend_voicesRateHeading_Premium": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "$VOICE$ için hız",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "original": "Speed for $VOICE$"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Hızlı kahverengi tilki tembel köpeği atlar.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSampleTextHeading": {
+    "message": "Yüksek sesle okumak için Talkie örnek metni",
+    "original": "Sample text for Talkie to read out loud"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Free": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
+    "message": "🌟 Premium: 🌟 Premium yeni sürüme geçin",
+    "original": "🌟 Premium: Upgrade to change default voice"
+  },
+  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+    "message": "Dil için varsayılan ses olarak kullanın",
+    "original": "Use as default voice for language"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "🌟 Premium: $LANGUAGE$ daki metin için 🌟 Premium ses olarak $VOICE$ kullanın",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$"
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "$LANGUAGE$ içindeki metin için $VOICE$ ses olarak $VOICE$ kullanın",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$"
+  },
+  "frontend_voicesShowAllVoices": {
+    "message": "Tüm sesleri göster",
+    "original": "Show all voices"
+  },
+  "frontend_yourDonationsAreAppreciated": {
+    "message": "Bağışlarınız takdir ediliyor!",
+    "original": "Your donations are appreciated!"
+  },
+  "frontend_yourDonationsAreAppreciatedShort": {
+    "message": "Bağışlar takdir etti!",
+    "original": "Donations appreciated!"
+  },
+  "noTextSelectedMessage": {
+    "message": "Lütfen önce web sitesinde istediğiniz metni seçin. Ayrıca metni seçip üzerine sağ tıklayıp menüden Talkie .",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie , bu tür bir sayfadan seçilen metne Talkie. Bu çok özel bir sayfadır ve tarayıcı tarafından güvenlik sınırlamaları koyulmuştur. Metni seçip sağ Talkie ve menüden Talkie öğesini Talkie. Ben rahatsızlık için özür dilerim.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  }
+}
