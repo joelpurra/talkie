@@ -37,6 +37,16 @@ html {
 
 /* NOTE: border-box for all elements. */
 
+
+/* NOTE: automatic text direction */
+
+
+/* https://developer.chrome.com/extensions/i18n#overview-predefined */
+
+body {
+    direction: __MSG_@@bidi_dir__;
+}
+
 html,
 body {
     margin: 0;
@@ -100,7 +110,7 @@ nav ol li {
     padding: 0;
     list-style-type: none;
     display: block;
-    float: left;
+    float: __MSG_@@bidi_start_edge__;
 }
 
 nav ol.cols-3 li {
@@ -126,16 +136,18 @@ span.icon.inline.talkie:before {
     display: inline-block;
     width: 16px;
     height: 16px;
-    margin-right: 0.5em;
+    margin-__MSG_@@bidi_end_edge__: 0.5em;
 }
 
 .talkie-free span.icon.inline.talkie:before,
-span.icon.inline.talkie.free:before {
+.talkie-free span.icon.inline.talkie.free:before,
+.talkie-premium span.icon.inline.talkie.free:before {
     background-image: url("../icon/free/icon-play/icon-16x16.png");
 }
 
 .talkie-premium span.icon.inline.talkie:before,
-span.icon.inline.talkie.premium:before {
+.talkie-free span.icon.inline.talkie.premium:before,
+.talkie-premium span.icon.inline.talkie.premium:before {
     background-image: url("../icon/premium/icon-play/icon-16x16.png");
 }
 
