@@ -181,26 +181,46 @@ kbd,
 }
 
 .talkie-free-only,
-.talkie-premium-only {
+.talkie-premium-only,
+.talkie-chrome-only,
+.talkie-webextension-only,
+.talkie-mac-only,
+.talkie-non-mac-only {
     display: none;
 }
 
 .talkie-free .talkie-free-only.talkie-block,
-.talkie-premium .talkie-premium-only.talkie-block {
+.talkie-premium .talkie-premium-only.talkie-block,
+.talkie-chrome .talkie-chrome-only.talkie-block,
+.talkie-webextension .talkie-webextension-only.talkie-block,
+.talkie-mac .talkie-mac-only.talkie-block,
+.talkie-non-mac .talkie-non-mac-only.talkie-block {
     display: block;
 }
 
 .talkie-free .talkie-free-only.talkie-inline,
-.talkie-premium .talkie-premium-only.talkie-inline {
+.talkie-premium .talkie-premium-only.talkie-inline,
+.talkie-chrome .talkie-chrome-only.talkie-inline,
+.talkie-webextension .talkie-webextension-only.talkie-inline,
+.talkie-mac .talkie-mac-only.talkie-inline,
+.talkie-non-mac .talkie-non-mac-only.talkie-inline {
     display: inline;
 }
 
 .talkie-free .talkie-free-only.talkie-inline-block,
-.talkie-premium .talkie-premium-only.talkie-inline-block {
+.talkie-premium .talkie-premium-only.talkie-inline-block,
+.talkie-chrome .talkie-chrome-only.talkie-inline-block,
+.talkie-webextension .talkie-webextension-only.talkie-inline-block,
+.talkie-mac .talkie-mac-only.talkie-inline-block,
+.talkie-non-mac .talkie-non-mac-only.talkie-inline-block {
     display: inline-block;
 }
 
 .talkie-free .talkie-free-only.talkie-list-item,
-.talkie-premium .talkie-premium-only.talkie-list-item {
+.talkie-premium .talkie-premium-only.talkie-list-item,
+.talkie-chrome .talkie-chrome-only.talkie-list-item,
+.talkie-webextension .talkie-webextension-only.talkie-list-item,
+.talkie-mac .talkie-mac-only.talkie-list-item,
+.talkie-non-mac .talkie-non-mac-only.talkie-list-item {
     display: list-item;
 }

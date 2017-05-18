@@ -85,6 +85,11 @@ import Chain from "./chain";
 
 import TalkieBackground from "./talkie-background";
 
+import PermissionsManager from "./permissions-manager";
+
+import ClipboardManager from "./clipboard-manager";
+import ReadClipboardManager from "./read-clipboard-manager";
+
 import ContextMenuManager from "./context-menu-manager";
 
 import ShortcutKeyManager from "./shortcut-key-manager";
@@ -124,6 +129,9 @@ function main() {
     // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
     const speechChain = new Chain();
     const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute);
+    const permissionsManager = new PermissionsManager();
+    const clipboardManager = new ClipboardManager(talkieBackground, permissionsManager);
+    const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -131,6 +139,7 @@ function main() {
         // "_execute_browser_action": talkieBackground.startStopSpeakSelectionOnPage(),
         "start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
         "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
+        "read-clipboard": () => readClipboardManager.startSpeaking(),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
         "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
         "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
@@ -138,7 +147,7 @@ function main() {
     };
 
     const commandHandler = new CommandHandler(commandMap);
-    const contextMenuManager = new ContextMenuManager(commandHandler);
+    const contextMenuManager = new ContextMenuManager(commandHandler, metadataManager);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
     const suspensionConnectorManager = new SuspensionConnectorManager();
@@ -311,9 +320,13 @@ function main() {
             window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
             window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
             window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+
             window.getVersionName = () => metadataManager.getVersionName();
             window.isFreeVersion = () => metadataManager.isFreeVersion();
             window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+            window.getSystemType = () => metadataManager.getSystemType();
+            window.getOsType = () => metadataManager.getOsType();
+
             window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
             window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
             window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
