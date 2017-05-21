@@ -319,7 +319,19 @@ function main() {
             window.getAllVoices = () => talkieSpeaker.getAllVoices();
             window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
             window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
-            window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            window.startSpeakFromFrontend = (frontendText, frontendVoice) => {
+                // NOTE: not sure if copying these variables have any effect.
+                // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+                const text = "" + frontendText;
+                const voice = {
+                    name: "" + frontendVoice.name,
+                    lang: "" + frontendVoice.lang,
+                    rate: 0 + frontendVoice.rate,
+                    pitch: 0 + frontendVoice.pitch,
+                };
+
+                talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            };
 
             window.getVersionName = () => metadataManager.getVersionName();
             window.isFreeVersion = () => metadataManager.isFreeVersion();
