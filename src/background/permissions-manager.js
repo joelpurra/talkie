@@ -28,17 +28,27 @@ import {
 } from "../shared/log";
 
 export default class PermissionsManager {
+    constructor() {
+        // NOTE: this is obfuscation to avoid errors regarding the permissions API not yet being implemented in Firefox (WebExtensions).
+        // NOTE: am doing feature detection, and this code should not even be called as the menus are not enabled for WebExtensions (Firefox).
+        // TODO: remove once Firefox is the main/only browser, and/or update strict_min_version in manifest.json.
+        const something = browser;
+        /* eslint-disable dot-notation */
+        this._pms = something["permissions"];
+        /* eslint-enable dot-notation */
+    }
+
     browserHasPermissionsFeature() {
         return promiseTry(
             () => {
-                return !!browser.permissions;
+                return !!this._pms;
             }
         );
     }
 
     hasPermissions(permissionNames, origins) {
         // NOTE: Firefox, and therefore browser-polyfill, has not implemented permissions -- using regular callbacks.
-        // return browser.permissions.contains({
+        // return this._pms.contains({
         //     permissions: permissionNames,
         //     origins: origins,
         // });
@@ -50,7 +60,7 @@ export default class PermissionsManager {
                         origins: origins,
                     };
 
-                    browser.permissions.contains(
+                    this._pms.contains(
                         containsOptions,
                         (result) => {
                             if (browser.runtime.lastError) {
@@ -69,7 +79,7 @@ export default class PermissionsManager {
 
     acquirePermissions(permissionNames, origins) {
         // NOTE: Firefox, and therefore browser-polyfill, has not implemented permissions -- using regular callbacks.
-        // return browser.permissions.request({
+        // return this._pms.request({
         //     permissions: permissionNames,
         //     origins: origins,
         // });
@@ -81,7 +91,7 @@ export default class PermissionsManager {
                         origins: origins,
                     };
 
-                    browser.permissions.request(
+                    this._pms.request(
                         requestOptions,
                         (granted) => {
                             if (browser.runtime.lastError) {
@@ -100,7 +110,7 @@ export default class PermissionsManager {
 
     releasePermissions(permissionNames, origins) {
         // NOTE: Firefox, and therefore browser-polyfill, has not implemented permissions -- using regular callbacks.
-        // return browser.permissions.remove({
+        // return this._pms.remove({
         //     permissions: permissionNames,
         //     origins: origins,
         // });
@@ -112,7 +122,7 @@ export default class PermissionsManager {
                         origins: origins,
                     };
 
-                    browser.permissions.remove(
+                    this._pms.remove(
                         removeOptions,
                         (granted) => {
                             if (browser.runtime.lastError) {
