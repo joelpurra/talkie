@@ -19,14 +19,11 @@
 const assert = require("assert");
 const Promise = require("bluebird");
 
+const clone = require("clone");
+
 const jsonfile = require("jsonfile");
 const jsonReadFile = Promise.promisify(jsonfile.readFile);
 const jsonWriteFile = Promise.promisify(jsonfile.writeFile);
-
-// TODO: wrap options inside of promisified function?
-const jsonWriteFileOptions = {
-    spaces: 2,
-};
 
 export default class FilesTranslator {
     constructor(messagesTranslatorFactory, base, locales) {
@@ -53,24 +50,30 @@ export default class FilesTranslator {
         return jsonReadFile(this._base.filePath)
             .then((baseMessages) => {
                 const baseWithMessages = {
-                    messages: baseMessages,
+                    messages: clone(baseMessages),
                     language: this._base.language,
                 };
 
                 return Promise.map(
-                this._locales,
-                (locale) => jsonReadFile(locale.filePath)
-                    .then((localeMessages) => {
-                        const localeWithMessages = {
-                            messages: localeMessages,
-                            language: locale.language,
-                        };
+                    this._locales,
+                    (locale) => jsonReadFile(locale.filePath)
+                        .then((localeMessages) => {
+                            const localeWithMessages = {
+                                messages: clone(localeMessages),
+                                language: locale.language,
+                            };
 
-                        return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)
-                            .then((messagesTranslator) => messagesTranslator.translate());
-                    })
-                    .then((translated) => jsonWriteFile(locale.filePath, translated, jsonWriteFileOptions))
-                );
+                            return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)
+                                .then((messagesTranslator) => messagesTranslator.translate());
+                        })
+                        .then((translated) => jsonWriteFile(
+                            locale.filePath,
+                            translated,
+                            {
+                                spaces: 2,
+                            }
+                        ))
+                    );
             });
     }
 }
