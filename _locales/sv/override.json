@@ -99,11 +99,6 @@
     "original": "Donate $$5 now",
     "translated-from": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Funktionalitet i Talkie",
-    "original": null,
-    "translated-from": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automatisk språkidentifiering.",
     "original": "Automatic language detection.",
@@ -143,11 +138,6 @@
     "message": "Funktionalitet",
     "original": "Features",
     "translated-from": "Features"
-  },
-  "frontend_featuresPremiumHeading": {
-    "message": "Funktionalitet i Talkie 🌟 Premium",
-    "original": null,
-    "translated-from": "Features in Talkie 🌟 Premium"
   },
   "frontend_featuresPremium_List01": {
     "message": "Välj egen standardröst för varje språk. Bra om du tröttnat på systemrösten!",
