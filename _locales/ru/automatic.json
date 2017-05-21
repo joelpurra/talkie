@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie не может получить доступ к Talkie тексту с этого типа страницы. Это очень специальная страница, и есть ограничения безопасности, установленные браузером. Вы также можете Talkie выбрать текст, затем щелкнуть его правой кнопкой мыши и выбрать в меню Talkie. Извините за неудобства.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Извините, но чтение текста из буфера обмена — это функция Talkie Premium. Рассматривали ли вы модернизацию?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Извините, но этот веб-браузер не поддерживает чтение из буфера обмена. Еще нет, по крайней мере. Повторите попытку через месяц или около того!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie нет разрешения на доступ из буфера обмена. Это нормально, но тогда чтение текста в буфере обмена не будет работать.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Не удалось найти подходящий текст в буфере обмена. Не могли бы вы попробовать скопировать что-нибудь еще?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

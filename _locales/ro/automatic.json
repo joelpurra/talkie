@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie nu poate accesa textul selectat din acest tip de pagină. Este o pagină foarte specială și există limitări de securitate introduse de browser. De asemenea, puteți încerca să Talkie textul, apoi să faceți clic dreapta pe el și să alegeți Talkie din meniu. Îmi pare rău pentru neplăcerile.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Îmi pare rău, dar citirea textului din clipboard este o Talkie Premium. Te-ai gândit să faci upgrade?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Îmi pare rău, dar acest browser web nu acceptă citirea din clipboard. Încă nu, cel puțin. Încercați din nou într-o lună sau cam asa ceva!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie nu are permisiunea de a accesa din clipboard. E ok, dar citirea textului clipboardului nu va funcționa.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Nu am găsit textul potrivit în clipboard. Puteți încerca să copiați altceva?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

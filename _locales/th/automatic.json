@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie ไม่สามารถเข้าถึงข้อความที่เลือกได้จากหน้าเว็บประเภทนี้ เป็นหน้าพิเศษและมีข้อ จำกัด ด้านความปลอดภัยในเบราว์เซอร์ นอกจากนี้คุณยังสามารถลองเลือกข้อความจากนั้นคลิกขวาและเลือก Talkie ในเมนู ฉันขอโทษสำหรับความไม่สะดวก.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "ฉันขอโทษ แต่การอ่านข้อความจากคลิปบอร์ดเป็น Talkie Premium คุณคิดว่าการอัพเกรดหรือไม่?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "ขออภัยเว็บเบราเซอร์ไม่สนับสนุนการอ่านจากคลิปบอร์ด ยังไม่ถึงอย่างน้อย โปรดลองอีกครั้งในหนึ่งเดือนหรือ!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie ไม่มีสิทธิ์เข้าถึงจากคลิปบอร์ด ไม่เป็นไร แต่การอ่านข้อความจากคลิปบอร์ดจะไม่ทำงาน",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "ไม่พบข้อความที่เหมาะสมในคลิปบอร์ด คุณสามารถลองคัดลอกสิ่งอื่นได้หรือไม่?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

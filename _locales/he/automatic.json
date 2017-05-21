@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie אינו יכול לגשת לטקסט שנבחר מסוג זה. זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן. תוכל גם לנסות לבחור טקסט, ולאחר מכן לחץ עליו לחיצה ימנית ובחר באפשרות Talkie בתפריט. אני מתנצל על אי הנוחות.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "אני מצטער, אבל קריאת טקסט מהלוח היא תכונה Talkie Premium. האם שקלתם שדרוג?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "אני מצטער, אבל דפדפן אינטרנט זה אינו תומך בקריאה מהלוח. עדיין לא, לפחות. נסה שוב בעוד חודש בערך!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie אין הרשאת גישה מהלוח. זה בסדר, אבל אז לקרוא את הטקסט הלוח לא יעבוד.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "לא ניתן למצוא טקסט מתאים בלוח. האם תוכל לנסות להעתיק משהו אחר?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

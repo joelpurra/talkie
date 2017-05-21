@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie no puede acceder al texto Talkie de este tipo de página. Es una página muy especial, y hay limitaciones de seguridad introducidas por el navegador. También puede intentar Talkie texto, luego haga clic derecho en él y elija Talkie en el menú. Lo siento por las molestias.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Lo siento, pero leer el texto desde el portapapeles es una función Talkie Premium. ¿Ha considerado actualizar?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Lo siento, pero este navegador no admite la lectura desde el portapapeles. Todavía no, por lo menos. Por favor, inténtelo de nuevo en un mes o así!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie no tiene permiso de acceso desde el portapapeles. Eso está bien, pero luego leer el texto del portapapeles no funcionará.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "No se pudo encontrar el texto adecuado en el portapapeles. ¿Puedes intentar copiar algo más?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

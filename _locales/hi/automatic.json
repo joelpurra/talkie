@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie इस प्रकार के पेज से चुने हुए टेक्स्ट को एक्सेस नहीं कर सकता है। यह एक बहुत ही खास पृष्ठ है, और ब्राउज़र द्वारा सुरक्षा की सीमाएं हैं। आप पाठ चुनने का भी प्रयास कर सकते हैं, फिर उस पर राइट क्लिक करें, और मेनू में Talkie चुनें। असुविधा के लिए मुझे खेद है।",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "मुझे खेद है, लेकिन क्लिपबोर्ड से पाठ पढ़ना एक Talkie Premium सुविधा है। क्या आपने अपग्रेड करने पर विचार किया है?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "मुझे खेद है, लेकिन यह वेब ब्राउजर क्लिपबोर्ड से पढ़ने का समर्थन नहीं करता है अभी तक, कम से कम नहीं कृपया एक महीने या फिर में फिर से प्रयास करें!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie को क्लिपबोर्ड से एक्सेस करने की अनुमति नहीं है। यह ठीक है, लेकिन तब क्लिपबोर्ड पाठ पढ़ना काम नहीं करेगा।",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "क्लिपबोर्ड में उचित टेक्स्ट नहीं मिला क्या आप कुछ और कॉपी करने की कोशिश कर सकते हैं?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie tidak dapat Talkie teks yang dipilih dari jenis halaman ini. Ini adalah halaman yang sangat spesial, dan ada batasan keamanan yang dimasukkan ke dalam browser. Anda juga bisa mencoba memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Saya minta maaf atas ketidaknyamanannya.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Maaf, tapi membaca teks dari clipboard adalah fitur Talkie Premium. Sudahkah anda mempertimbangkan untuk mengupgrade?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Maaf, tapi browser web ini tidak mendukung membaca dari clipboard. Belum, setidaknya. Silakan coba lagi dalam satu bulan atau lebih!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie tidak memiliki izin untuk mengakses dari clipboard. Tidak apa, tapi membaca teks clipboard tidak akan berhasil.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Tidak dapat menemukan teks yang sesuai di papan klip. Dapatkah Anda mencoba menyalin sesuatu yang lain?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

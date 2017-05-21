@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie pääse valitun tekstin tämän sivun tyyppi. Se on hyvin erityinen sivu, ja siellä on turvallisuuden rajoituksia laittaa selaimen. Voit myös yrittää valita tekstiä, sitten oikealle klikkaa sitä ja valitse Talkie valikosta. Olen pahoillani häiriötä.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Olen pahoillani, mutta lukeminen leikepöydän on Talkie Premium ominaisuus. Oletko harkinnut päivitystä?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Olen pahoillani, mutta tämä verkkoselain ei tue lukemista leikepöydälle. Ei ainakaan vielä. Yritä uudelleen yhden kuukauden tai niin!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie ei ole oikeutta käyttää leikepöydältä. Se on ok, mutta sitten lukeminen leikepöydän tekstissä ei toimi.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Ei löytänyt sopivaa tekstiä leikepöydälle. Voitko yrittää kopioimalla jotain muuta?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

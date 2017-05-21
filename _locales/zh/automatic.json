@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie无法从此类型的页面访问所选文本。这是一个非常特别的页面，浏览器存在安全限制。您也可以尝试选择文本，然后右键单击，然后在菜单中选择Talkie 。对不起给您带来不便。",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "很抱歉，从剪贴板中读取文字是Talkie Premium功能。你考虑升级了吗？",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "很抱歉，这个网络浏览器不支持从剪贴板中读取。还没有，至少。请在一个月左右再试一次！",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie没有权限从剪贴板访问。没关系，但是阅读剪贴板文本将无法正常工作。",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "无法在剪贴板中找到合适的文字。你可以尝试复制别的吗？",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkieは、このタイプのページから選択したテキストにアクセスできません。これは非常に特殊なページで、ブラウザによってセキュリティの制限があります。また、テキストを選択して右クリックし、メニューでTalkieを選択することもできます。ご迷惑をおかけして申し訳ありません。",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "申し訳ありませんが、 Talkie Premiumからのテキストの読み取りはTalkie Premium機能です。アップグレードを検討しましたか？",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "申し訳ありませんが、このWebブラウザはクリップボードからの読み取りをサポートしていません。まだ、少なくとも。 1カ月ほどでもう一度お試しください！",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkieはクリップボードからアクセスする権限がありません。それはOKですが、クリップボードのテキストを読むことはできません。",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "クリップボードに適切なテキストが見つかりませんでした。何か他のものをコピーできますか？",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie geen toegang tot de geselecteerde tekst uit dit soort pagina. Het is een heel speciale pagina, en er zijn de veiligheid beperkingen gesteld door de browser. U kunt ook proberen om tekst te selecteren, klik met de rechtermuisknop op en kies Talkie in het menu. Het spijt me voor het ongemak.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Het spijt me, maar het lezen van tekst uit het klembord is een Talkie Premium functie. Heb je overwogen om te upgraden?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Het spijt me, maar deze webbrowser ondersteunt geen lezen uit het klembord. Nog niet, in ieder geval. Probeer het nog een maand of zo!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie heeft geen toegang tot het klembord. Dat is goed, maar het lezen van de clipboard tekst zal niet werken.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Kan geen geschikte tekst vinden in het klembord. Kun je iets anders kopiëren?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

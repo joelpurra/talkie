@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie , bu tür bir sayfadan seçilen metne Talkie. Bu çok özel bir sayfadır ve tarayıcı tarafından güvenlik sınırlamaları koyulmuştur. Metni seçip sağ Talkie ve menüden Talkie öğesini Talkie. Ben rahatsızlık için özür dilerim.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Üzgünüm, ancak panelden metin okumak bir Talkie Premium. Yeni sürüme geçmeyi düşündün mü?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Üzgünüm ama bu web tarayıcısı panodaki okumayı desteklemez. Henüz değil, en azından. Lütfen bir ay sonra tekrar deneyin!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie sahip değil. Her şey tamam, ancak panoya metnini okumak işe yaramayacak.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Panoya uygun metin bulunamadı. Başka bir şey kopyalamayı deneyebilir misin?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie nem tudja elérni a kijelölt szöveget egy ilyen oldalra. Ez egy nagyon különleges oldal, és vannak biztonsági korlátozások hozott a böngészőben. Tudod is megpróbál jelölje ki a szöveget, majd kattintson a jobb egérgombbal, és válassza Talkie a menüben. Elnézést a kellemetlenségekért.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Sajnálom, de olvasás szöveg vágólapról egy Talkie Premium funkciót. Gondoltál már arra, korszerűsítése?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Sajnálom, de ez a böngésző nem támogatja olvasni a vágólapra. Még nem, legalább. Kérjük, próbálja újra egy hónap múlva!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie nincs jogosultsága hozzáférni a vágólap. Ez rendben van, de akkor olvassa a vágólap tartalmát nem fog működni.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Nem találtunk megfelelő szöveget a vágólapra. Tud próbálja másol valami mást?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "لا يمكن Talkie الوصول إلى النص المحدد من هذا النوع من الصفحات. بل هو صفحة خاصة جدا، وهناك قيود أمنية وضعها في المتصفح. يمكنك أيضا محاولة تحديد النص، ثم النقر بزر الماوس الأيمن عليه، واختيار Talkie في القائمة. انا اسف على الازعاج.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "عذرا، ولكن قراءة النص من الحافظة هي ميزة Talkie Premium. هل نظرت في الترقية؟",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "أنا آسف، ولكن متصفح الويب هذا لا يدعم القراءة من الحافظة. ليس بعد، على الأقل. يرجى المحاولة مرة أخرى في شهر واحد أو نحو ذلك!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie ليس لديه إذن للدخول من الحافظة. هذا ما يرام، ولكن بعد قراءة النص الحافظة لن تعمل.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "تعذر العثور على نص مناسب في الحافظة. يمكنك محاولة نسخ شيء آخر؟",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie não pode acessar o texto Talkie deste tipo de página. É uma página muito especial, e há limitações de segurança colocadas pelo navegador. Você também pode tentar Talkie texto, clique com o botão direito sobre ele e escolha Talkie no menu. Desculpe pelo inconveniente.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Desculpe, mas a leitura de texto da área de transferência é um recurso Talkie Premium. Você já pensou em atualizar?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Desculpe, mas este navegador da Web não suporta a leitura da área de transferência. Ainda não, pelo menos. Tente novamente dentro de um mês ou assim!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie não tem permissão para acessar a partir da área de transferência. Isso é aprovado, mas lendo então o texto da prancheta não trabalhará.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Não foi possível encontrar o texto adequado na área de transferência. Você pode tentar copiar algo mais?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

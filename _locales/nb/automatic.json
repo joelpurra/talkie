@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie får ikke tilgang til den markerte teksten fra denne typen siden. Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt i av nettleseren. Du kan også prøve å velge tekst, og deretter høyreklikk på den og velg Talkie i menyen. Jeg beklager bryet.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Beklager, men å lese tekst fra utklippstavlen er en Talkie Premium funksjon. Har du vurdert å oppgradere?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Beklager, men denne nettleseren støtter ikke lesing fra utklippstavlen. Ikke enda, i det minste. Vennligst prøv igjen om en måned eller så!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie har ikke tillatelse til å få tilgang fra utklippstavlen. Det er ok, men det vil ikke fungere å lese utklippstavlen.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Kunne ikke finne passende tekst i utklippstavlen. Kan du prøve å kopiere noe annet?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

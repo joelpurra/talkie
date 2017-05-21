@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie nie może uzyskać dostępu do Talkie tekstu z tego typu strony. Jest to bardzo specjalna strona, a w przeglądarce znajdują się ograniczenia bezpieczeństwa. Możesz także Talkie wybrać tekst, a Talkie kliknąć Talkie myszy i wybrać z menu Talkie. Przepraszam za utrudnienia.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Przykro mi, ale czytanie tekstu ze schowka to funkcja Talkie Premium. Czy rozważałeś uaktualnienie?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Przepraszam, ale ta przeglądarka nie obsługuje czytania ze schowka. Jeszcze nie co najmniej. Spróbuj ponownie za miesiąc!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie nie ma dostępu do schowka. To jest ok, ale wtedy czytanie tekstu schowka nie zadziała.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Nie znaleziono odpowiedniego tekstu w schowku. Czy możesz spróbować skopiować coś innego?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

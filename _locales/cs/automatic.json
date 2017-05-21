@@ -420,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie nemůže získat přístup k Talkie textu z tohoto typu stránky. Jedná se o velmi zvláštní stránku a prohlížeč prohlížeče obsahuje bezpečnostní omezení. Můžete také zkusit vybrat text, pak kliknout pravým Talkie na něj a v nabídce zvolit Talkie. Omlouvám se za nepříjemnost.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Omlouvám se, ale čtení textu ze schránky je funkce Talkie Premium. Zvažovali jste upgrade?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Omlouvám se, ale tento webový prohlížeč nepodporuje čtení ze schránky. Alespoň ne. Zkuste to prosím znovu asi za měsíc!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie nemá oprávnění pro přístup ze schránky. To je v pořádku, ale přečtení textu schránky nebude fungovat.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Nelze najít vhodný text ve schránce. Můžete zkusit kopírovat něco jiného?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }
