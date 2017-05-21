@@ -44,8 +44,7 @@ export default class ReadClipboardManager {
                 return this.metadataManager.isPremiumVersion()
                     .then((isPremium) => {
                         if (!isPremium) {
-                            // TODO: translation.
-                            const text = "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?";
+                            const text = browser.i18n.getMessage("readClipboardIsAPremiumFeature");
 
                             return text;
                         }
@@ -53,8 +52,7 @@ export default class ReadClipboardManager {
                         return this.permissionsManager.browserHasPermissionsFeature()
                             .then((hasPermissionsFeature) => {
                                 if (!hasPermissionsFeature) {
-                                    // TODO: translation.
-                                    const text = "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!";
+                                    const text = browser.i18n.getMessage("readClipboardNeedsBrowserSupport");
 
                                     return text;
                                 }
@@ -64,13 +62,11 @@ export default class ReadClipboardManager {
                                         let text = clipboardText;
 
                                         if (typeof text !== "string") {
-                                            // TODO: translation.
-                                            text = "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work.";
+                                            text = browser.i18n.getMessage("readClipboardNeedsPermission");
                                         }
 
                                         if (text.length === 0 || text.trim().length === 0) {
-                                            // TODO: translation.
-                                            text = "Could not find suitable text in the clipboard. Can you try copying something else?";
+                                            text = browser.i18n.getMessage("readClipboardNeedsBrowserSupport");
                                         }
 
                                         return text;
