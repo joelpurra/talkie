@@ -186,13 +186,14 @@ function main() {
                 () => Promise.resolve()
                     .then(() => storageManager.upgradeIfNecessary())
                     .then(() => initializeOptionsDefaults())
+                    // NOTE: removing all context menus in case the menus have changed since the last install/update.
+                    .then(() => contextMenuManager.removeAll())
                     .then(() => contextMenuManager.createContextMenus())
                     .catch((error) => logError("onExtensionInstalledHandler", error))
             );
 
         const onExtensionInstalledFallback = () => promiseTry(
-                () => contextMenuManager.removeAll()
-                    .then(() => onExtensionInstalledHandler())
+                () => onExtensionInstalledHandler()
                     .catch((error) => logError("onExtensionInstalledFallback", error))
             );
 
