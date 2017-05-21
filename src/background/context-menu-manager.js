@@ -155,16 +155,20 @@ export default class ContextMenuManager {
                 try {
                     logDebug("Start", "Creating context menu", contextMenuOptions);
 
+                    // NOTE: apparently Chrome modifies the context menu object after it has been passed in, by adding generatedId.
+                    // NOTE: Need to pass a clean object to avoid object reuse reference problems.
+                    const contextMenu = Object.assign({}, contextMenuOptions);
+
                     // NOTE: Can't directly use a promise chain here, as the id is returned instead.
                     // https://github.com/mozilla/webextension-polyfill/pull/26
                     const contextMenuId = browser.contextMenus.create(
-                        contextMenuOptions,
+                        contextMenu,
                         () => {
                             if (browser.runtime.lastError) {
                                 return reject(browser.runtime.lastError);
                             }
 
-                            logDebug("Done", "Creating context menu", contextMenuOptions);
+                            logDebug("Done", "Creating context menu", contextMenu);
 
                             return resolve(contextMenuId);
                         }
