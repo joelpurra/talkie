@@ -88,7 +88,7 @@
   "bugs": {
     "url": "https://joelpurra.com/support/"
   },
-  "homepage": "https://joelpurra.com/support/",
+  "homepage": "https://joelpurra.com/projects/talkie/",
   "devDependencies": {
     "@google-cloud/translate": "^0.8.1",
     "bluebird": "^3.5.0",
