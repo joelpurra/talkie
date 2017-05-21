@@ -226,8 +226,7 @@ export default class TalkieBackground {
         return this.speakingStatus.isSpeakingTabId(tabId)
             .then((isTabSpeaking) => {
                 if (isTabSpeaking) {
-                    return this.talkieSpeaker.stopSpeaking()
-                        .then(() => this.speakingStatus.setTabIsDoneSpeaking(tabId));
+                    return this.talkieSpeaker.stopSpeaking();
                 }
 
                 return undefined;
@@ -240,8 +239,7 @@ export default class TalkieBackground {
                 // NOTE: changeInfo only has properties which have changed.
                 // https://developer.browser.com/extensions/tabs#event-onUpdated
                 if (isTabSpeaking && changeInfo.url) {
-                    return this.talkieSpeaker.stopSpeaking()
-                        .then(() => this.speakingStatus.setTabIsDoneSpeaking(tabId));
+                    return this.talkieSpeaker.stopSpeaking();
                 }
 
                 return undefined;

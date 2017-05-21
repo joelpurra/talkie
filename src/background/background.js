@@ -208,6 +208,10 @@ function main() {
         }
     }());
 
+    // NOTE: cache listeners so they can be added and removed by reference before/after speaking.
+    const onTabRemovedListener = loggedPromise("onRemoved", () => talkieBackground.onTabRemovedHandler());
+    const onTabUpdatedListener = loggedPromise("onUpdated", () => talkieBackground.onTabUpdatedHandler());
+
     // TODO: put initialization promise on the root chain?
     return Promise.resolve()
         .then(() => suspensionManager.initialize())
@@ -260,6 +264,12 @@ function main() {
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
 
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onRemoved.addListener(onTabRemovedListener)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onRemoved.removeListener(onTabRemovedListener)),
+
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
+
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
                 broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length)),
                 broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
@@ -273,9 +283,6 @@ function main() {
                 });
         })
         .then(() => {
-            browser.tabs.onRemoved.addListener(loggedPromise("onRemoved", () => talkieBackground.onTabRemovedHandler()));
-            browser.tabs.onUpdated.addListener(loggedPromise("onUpdated", () => talkieBackground.onTabUpdatedHandler()));
-
             // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
             if (browser.runtime.onSuspend) {
