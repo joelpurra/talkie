@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "दान पृष्ठ खोलें",
-    "original": "Open the donation page"
+    "message": "Talkie दान पृष्ठ",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Talkie वेबसाइट खोलें",
-    "original": "Open the Talkie website"
+    "message": "Talkie वेबसाइट",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "स्टोर पृष्ठ खोलें",
-    "original": "Open the store page"
+    "message": "Talkie स्टोर पृष्ठ",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Premium स्टोर पेज खोलें",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium स्टोर पृष्ठ",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "क्लिपबोर्ड से पढ़ें",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "चयन पढ़ने शुरू/बंद करें",
@@ -83,10 +87,6 @@
     "message": "अब 5 USD दान करें",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie में Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "स्वचालित भाषा का पता लगाने",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "विशेषताएं",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium में Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "प्रत्येक भाषा के लिए अपनी खुद की डिफ़ॉल्ट आवाज चुनें महान अगर आप सिस्टम आवाज से थक गए हो!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "भविष्य Premium अपडेट मुफ्त में शामिल हैं।",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "क्लिपबोर्ड से पाठ पढ़ें! बस किसी भी Talkie Premium में पाठ को कहीं से कॉपी करें और इसे पढ़ने के लिए Talkie Premium का उपयोग करें!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "आप वर्तमान में Talkie के निःशुल्क संस्करण का उपयोग कर रहे हैं, और आपके लिए सीमित सुविधाएं उपलब्ध हैं। शायद Talkie 🌟 Premium आपके लिए बेहतर विकल्प होगा?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "आप वर्तमान में Talkie के प्रीमियम संस्करण का उपयोग कर रहे हैं, और सभी सुविधाएं आपके लिए उपलब्ध हैं। बहुत बहुत धन्यवाद, यह मेरे दिल warms!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "आप वर्तमान में Talkie 🌟 Premium का उपयोग कर रहे हैं, और सभी सुविधाएं आपके लिए उपलब्ध हैं। बहुत बहुत धन्यवाद, यह मेरे दिल warms!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie दो Talkie आता है: Talkie और Talkie 🌟 Premium नि: शुल्क संस्करण अधिकांश उपयोग मामलों के लिए महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प प्रदान करता है।",
@@ -227,13 +227,17 @@
     "message": "प्रयोग",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Talkie 🌟 Premium , आप अपने क्लिपबोर्ड पर कॉपी किए गए किसी भी पाठ को पढ़ सकते हैं — ब्राउज़र के बाहर कहीं से भी पाठ सुनने के लिए शॉर्टकट कुंजी के साथ इसका उपयोग करें। आप Talkie 🌟 Premium बटन, या किसी वेबसाइट के खाली क्षेत्र पर राइट-क्लिक भी कर सकते हैं, और क्लिपबोर्ड से पढ़ने का चयन कर सकते हैं।",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "आप पाठ का भी चयन कर सकते हैं, फिर उस पर राइट क्लिक करें, और मेनू में Talkie चुनें। इस तरह भी पीडीएफ फाइलों और ब्राउज़र में कुछ विशेष प्रकार के पृष्ठों में काम करता है।",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "यदि कुंजी काम नहीं करती है, तो कृपया जांचें कि यह पहले से किसी अन्य एक्सटेंशन द्वारा उपयोग में नहीं है।",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "यदि शॉर्टकट कुंजी काम नहीं करती है, तो कृपया जांच लें कि यह पहले से किसी अन्य एक्सटेंशन या प्रोग्राम द्वारा उपयोग में नहीं है।",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Talkie शॉर्टकट कुंजी को कैसे जांच या बदलना है",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "एक सुविधाजनक विकल्प Talkie शॉर्टकट कुंजियों का उपयोग करना है:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "किसी भी प्रोग्राम में क्लिपबोर्ड से पाठ पढ़ें — Talkie 🌟 Premium सुविधा",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "चालू बंद",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "चालू बंद",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "किसी भी वेब पेज पर वांछित पाठ चुनें",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "यहां आप अपने ब्राउज़र में प्रत्येक भाषा के लिए स्थापित आवाज देख सकते हैं और परीक्षण कर सकते हैं। 🌟 Premium प्रति पसंदीदा भाषा के रूप में अपनी पसंदीदा आवाज का चयन भी कर सकते हैं, साथ ही साथ प्रत्येक आवाज के लिए गति और पिच को बदल सकते हैं।",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "यहां आप अपने ब्राउज़र में प्रत्येक भाषा के लिए स्थापित आवाज देख सकते हैं और परीक्षण कर सकते हैं। Talkie 🌟 Premium प्रति पसंदीदा भाषा के रूप में अपनी पसंदीदा आवाज को चुन सकते हैं, साथ ही साथ प्रत्येक आवाज के लिए गति और पिच को बदल सकते हैं",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "आवाज़ें: अपने पसंदीदा का चयन करें",

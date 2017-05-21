@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Åbn donation side",
-    "original": "Open the donation page"
+    "message": "Talkie donationssiden",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Åbn Talkie hjemmeside",
-    "original": "Open the Talkie website"
+    "message": "Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Åbn butikken siden",
-    "original": "Open the store page"
+    "message": "Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Åbn Premium butikken siden",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Læs fra udklipsholderen",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Start/stop læsning udvælgelse",
@@ -83,10 +87,6 @@
     "message": "Donér USD 5 nu",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Funktioner i Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automatisk sprog.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Funktioner",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Funktioner i Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Vælg din egen standard stemme for hvert sprog. Store, hvis du bliver træt af systemets stemme!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Fremtidige Premium opdateringer inkluderet gratis.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Læs tekst fra udklipsholderen! Du skal bare kopiere tekst fra hvor som helst i et hvilket som helst program, og brug Talkie Premium at læse det!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Du bruger i øjeblikket den gratis version af Talkie , og et begrænset sæt funktioner er tilgængelig for dig. Måske Talkie 🌟 Premium ville være et bedre valg for dig?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Du bruger i øjeblikket den premium-version af Talkie , og alle funktioner er tilgængelige for dig. Mange tak, det varmer mit hjerte!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Du bruger i Talkie 🌟 Premium , og alle funktioner er tilgængelige for dig. Mange tak, det varmer mit hjerte!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie kommer i to versioner: Talkie og Talkie 🌟 Premium. Den gratis version er fantastisk til de fleste tilfælde brug, men præmien version tilbyder ekstra muligheder.",
@@ -227,13 +227,17 @@
     "message": "Anvendelse",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "I Talkie 🌟 Premium kan du læse enhver tekst, der kopieres til dit udklipsholder — brug den med en genvejstast til at lytte til tekst fra hvor som helst uden for browseren. Du kan også Talkie 🌟 Premium knappen Talkie 🌟 Premium eller i et tomt område på et websted og vælge læs fra udklipsholder.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kan også markere teksten, så højreklik på den, og vælg Talkie i menuen. På den måde fungerer også i PDF-filer og nogle særlige typer af sider i browseren.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Hvis nøglen ikke virker, skal du kontrollere, at det ikke allerede er i brug af en anden forlængelse.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Hvis genvejstasten ikke virker, skal du kontrollere, at den ikke allerede er brugt af en anden udvidelse eller et program.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Sådan kontrolleres eller ændre Talkie genvejstaster.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "En bekvem mulighed er at bruge de Talkie genvejstaster:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Læs tekst fra udklipsholder i ethvert program — Talkie 🌟 Premium funktion",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start/stop",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start/stop",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Vælg den ønskede tekst på en webside.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Her kan du se og teste installerede stemmer for hvert sprog i din browser. 🌟 Premium brugere kan også vælge deres favorit stemme som standard pr sprog, samt ændre hastighed og stigning for hver lyd.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Her kan du se og teste installerede stemmer for hvert sprog i din browser. Talkie 🌟 Premium brugere kan også vælge deres Talkie 🌟 Premium som standard pr. Sprog, samt ændre Talkie 🌟 Premium for hver stemme.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Stemmer: vælg din favorit",

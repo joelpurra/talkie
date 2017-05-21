@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Откройте страницу пожертвования",
-    "original": "Open the donation page"
+    "message": "Страница Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Откройте веб-сайт Talkie",
-    "original": "Open the Talkie website"
+    "message": "Talkie -сайт Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Откройте страницу магазина.",
-    "original": "Open the store page"
+    "message": "Talkie магазина Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Откройте страницу магазина Premium .",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium магазина Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Чтение из буфера обмена",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Выбор начала/конца показа",
@@ -83,10 +87,6 @@
     "message": "Пожертвуйте 5 USD сейчас",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie в Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Автоматическое определение языка.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Особенности",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium в Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Выберите собственный голос по умолчанию для каждого языка. Отлично, если вы устали от системного голоса!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Будущие Premium включены Premium .",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Прочитайте текст из буфера обмена! Просто Talkie Premium текст из любой точки любой Talkie Premium и Talkie Premium чтобы Talkie Premium его!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "В настоящее время вы используете бесплатную версию Talkie , и Talkie набор функций доступен вам. Возможно, Talkie 🌟 Premium был бы лучшим выбором для вас?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "В настоящее время вы используете премиальную версию Talkie , и все функции доступны для вас. Большое спасибо, это согревает мое сердце!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "В настоящее время вы Talkie 🌟 Premium , и все функции доступны для вас. Большое спасибо, это согревает мое сердце!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie в двух версиях: Talkie и Talkie 🌟 Premium. Бесплатная версия отлично подходит для большинства случаев использования, но премиум-версия предлагает дополнительные опции.",
@@ -227,13 +227,17 @@
     "message": "Применение",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "В Talkie 🌟 Premium вы можете Talkie 🌟 Premium любой текст, скопированный в буфер обмена — используйте его с помощью сочетания клавиш для прослушивания текста из любого места за пределами браузера. Вы также можете щелкнуть правой кнопкой мыши по кнопке Talkie 🌟 Premium или в пустой области веб-сайта и выбрать из буфера обмена.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Вы также можете выбрать текст, затем щелкнуть его правой кнопкой мыши и выбрать в меню Talkie. Этот способ также работает в PDF-файлах и некоторых специальных типах страниц в браузере.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Если ключ не работает, убедитесь, что он еще не используется другим расширением.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Если клавиша быстрого доступа не работает, проверьте, что она еще не используется другим расширением или программой.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Как Talkie или изменить быстрые клавиши Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Удобным вариантом является Talkie клавиш Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Чтение текста из буфера обмена в любой Talkie 🌟 Premium — функция Talkie 🌟 Premium",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Старт/Стоп",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Старт/Стоп",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Выберите нужный текст на любой веб-странице.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Здесь вы можете увидеть и протестировать установленные голоса для каждого языка в вашем браузере. 🌟 Premium могут также выбирать любимый голос в качестве языка по 🌟 Premium каждого языка, а также изменять скорость и высоту тона для каждого голоса.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Здесь вы можете увидеть и протестировать установленные голоса для каждого языка в вашем браузере. Talkie 🌟 Premium могут также выбрать свой любимый голос в качестве языка по Talkie 🌟 Premium каждого языка, а также изменить скорость и высоту тона для каждого голоса.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Голоса: выберите свой любимый",

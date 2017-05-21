@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Otevřete stránku darování",
-    "original": "Open the donation page"
+    "message": "Stránka Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Otevřete web Talkie",
-    "original": "Open the Talkie website"
+    "message": "Talkie stránky Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Otevřete stránku obchodu",
-    "original": "Open the store page"
+    "message": "Talkie obchodu Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Otevřete stránku obchodu Premium",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium obchodu Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Přečtěte si ze schránky",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Výběr čtení start/stop",
@@ -83,10 +87,6 @@
     "message": "Darujte 5 USD nyní",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Funkce v Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automatická detekce jazyka.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Funkce",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Funkce v Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Vyberte si svůj vlastní výchozí hlas pro každý jazyk. Skvělé, kdybyste se unavili systémovým hlasem!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Budoucí Premium zahrnuty zdarma.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Přečtěte text ze schránky! Stačí Talkie Premium text z Talkie Premium programu a pomocí Talkie Premium můžete přečíst!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "V současné době používáte bezplatnou verzi Talkie a je k Talkie omezená sada funkcí. Možná Talkie 🌟 Premium by pro vás byla lepší volbou?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "V současné době používáte prémiovou verzi Talkie a všechny funkce jsou vám k dispozici. Děkuji vám, ohřívá mé srdce!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Momentálně používáte Talkie 🌟 Premium a všechny funkce jsou k dispozici. Děkuji vám, ohřívá mé srdce!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie dodává ve dvou verzích: Talkie a Talkie 🌟 Premium. Volná verze je skvělá pro většinu případů použití, ale prémiová verze nabízí další možnosti.",
@@ -227,13 +227,17 @@
     "message": "Používání",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "V Talkie 🌟 Premium můžete přečíst jakýkoli text zkopírovaný do schránky — použijte jej pomocí klávesové zkratky pro poslech textu z libovolného místa mimo prohlížeč. Můžete také kliknout pravým Talkie 🌟 Premium myši na tlačítko Talkie 🌟 Premium nebo v prázdné oblasti webu a zvolit si přečtení ze schránky.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Můžete také vybrat text, poté kliknout pravým Talkie na něj a v nabídce zvolit Talkie. Takto funguje také v souborech PDF a některých speciálních typech stránek v prohlížeči.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Pokud klíček nefunguje, zkontrolujte prosím, že ji ještě nepoužívá jiné rozšíření.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Pokud klávesová zkratka nefunguje, zkontrolujte, zda ji již nepoužívá jiné rozšíření nebo program.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Jak Talkie nebo změnit Talkie zkratky Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Vhodnou možností je použít Talkie zkratky Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Číst text ze schránky v libovolném programu — Talkie 🌟 Premium",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Začátek Konec",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Začátek Konec",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Vyberte požadovaný text na libovolné webové stránce.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Zde můžete vidět a otestovat nainstalované hlasy pro každý jazyk ve vašem prohlížeči. 🌟 Premium mohou také vybrat svůj oblíbený hlas jako výchozí pro každý jazyk, stejně jako změnit rychlost a rozteč pro každý hlas.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Zde můžete vidět a otestovat nainstalované hlasy pro každý jazyk ve vašem prohlížeči. Talkie 🌟 Premium mohou také vybrat svůj oblíbený hlas jako výchozí pro každý jazyk, stejně jako změnit rychlost a rozteč pro každý hlas.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Hlasy: vyberte své oblíbené",

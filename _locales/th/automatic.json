@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "เปิดหน้าบริจาค",
-    "original": "Open the donation page"
+    "message": "หน้าการบริจาค Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "เปิดเว็บไซต์ Talkie",
-    "original": "Open the Talkie website"
+    "message": "เว็บไซต์ Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "เปิดหน้าร้านค้า",
-    "original": "Open the store page"
+    "message": "หน้าร้านค้า Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "เปิดหน้าร้านค้า Premium",
-    "original": "Open the Premium store page"
+    "message": "หน้าร้านค้า Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "อ่านจากคลิปบอร์ด",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "เริ่ม/หยุดการเลือกการอ่าน",
@@ -83,10 +87,6 @@
     "message": "บริจาค USD 5 USD ตอนนี้",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie ใน Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "การตรวจจับภาษาอัตโนมัติ",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "คุณสมบัติ",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium ใน Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "เลือกเสียงเริ่มต้นของคุณเองสำหรับแต่ละภาษา เยี่ยมยอดหากคุณเบื่อหน่ายระบบเสียง!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "การปรับปรุงในอนาคต Premium รวมฟรี",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "อ่านข้อความจากคลิปบอร์ด! เพียงคัดลอกข้อความจากที่ใดก็ได้ในโปรแกรมใด ๆ และใช้ Talkie Premium เพื่ออ่าน!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "ขณะนี้คุณใช้เวอร์ชันฟรี Talkie และมีชุดคุณลักษณะบางอย่างให้คุณ บางที Talkie 🌟 Premium จะเป็นทางเลือกที่ดีสำหรับคุณ",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "ขณะนี้คุณใช้พรีเมี่ยมรุ่น Talkie และมีคุณลักษณะทั้งหมดให้บริการ ขอบคุณมากมันอุ่นหัวใจของฉัน!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "ขณะนี้คุณใช้ Talkie 🌟 Premium และ Talkie 🌟 Premium ทั้งหมดจะพร้อมใช้งานสำหรับคุณ ขอบคุณมากมันอุ่นหัวใจของฉัน!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie มาในสองเวอร์ชัน: Talkie และ Talkie 🌟 Premium รุ่นฟรีเป็นที่ดีสำหรับกรณีการใช้งานมากที่สุด แต่รุ่นพรีเมี่ยมมีตัวเลือกเพิ่มเติม",
@@ -227,13 +227,17 @@
     "message": "การใช้",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "ใน Talkie 🌟 Premium คุณสามารถอ่านข้อความที่คัดลอกไปยังคลิปบอร์ดของคุณได้โดยใช้แป้นพิมพ์ลัดเพื่อฟังข้อความจากที่ใดก็ได้นอกเบราว์เซอร์ นอกจากนี้คุณยังสามารถคลิกขวาที่ปุ่ม Talkie 🌟 Premium หรือในพื้นที่ว่างของเว็บไซต์และเลือกอ่านจากคลิปบอร์ด",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "นอกจากนี้คุณยังสามารถเลือกข้อความจากนั้นคลิกขวาที่ไอคอนและเลือก Talkie ในเมนู ด้วยวิธีนี้จะทำงานในไฟล์ PDF และหน้าเว็บบางประเภทในเบราเซอร์",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "หากคีย์ไม่ทำงานโปรดตรวจสอบว่าส่วนขยายอื่นไม่ได้ใช้อยู่หรือไม่",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "หากคีย์ลัดไม่ทำงานโปรดตรวจสอบว่าไม่ได้ใช้ส่วนขยายหรือโปรแกรมอื่นอยู่แล้ว",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "วิธีตรวจสอบหรือเปลี่ยนปุ่มลัด Talkie",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "ตัวเลือกที่สะดวกคือใช้ปุ่มลัด Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "อ่านข้อความจากคลิปบอร์ดในโปรแกรมใดก็ได้ — Talkie 🌟 Premium",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "เริ่มหยุด",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "เริ่มหยุด",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "เลือกข้อความที่ต้องการในเว็บเพจใดก็ได้",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "ที่นี่คุณสามารถดูและทดสอบเสียงที่ติดตั้งสำหรับแต่ละภาษาในเบราเซอร์ของคุณ 🌟 Premium ผู้ใช้ยังสามารถเลือกเสียงที่ชื่นชอบเป็นค่าเริ่มต้นต่อภาษารวมทั้งเปลี่ยนความเร็วและระดับเสียงสำหรับแต่ละเสียง",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "ที่นี่คุณสามารถดูและทดสอบเสียงที่ติดตั้งสำหรับแต่ละภาษาในเบราเซอร์ของคุณ Talkie 🌟 Premium ผู้ใช้ยังสามารถเลือกเสียงที่ชื่นชอบเป็นค่าเริ่มต้นต่อภาษารวมทั้งเปลี่ยนความเร็วและระดับเสียงสำหรับแต่ละเสียง",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "เสียง: เลือกรายการโปรดของคุณ",
