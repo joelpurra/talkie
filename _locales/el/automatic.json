@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Ανοίξτε τη σελίδα δωρεάς",
-    "original": "Open the donation page"
+    "message": "Η σελίδα Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Ανοίξτε τον ιστότοπο Talkie",
-    "original": "Open the Talkie website"
+    "message": "Ο Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Ανοίξτε τη σελίδα του καταστήματος",
-    "original": "Open the store page"
+    "message": "Η σελίδα Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Ανοίξτε τη σελίδα Premium",
-    "original": "Open the Premium store page"
+    "message": "Η σελίδα Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Διαβάστε από το πρόχειρο",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Εκκίνηση/διακοπή ανάγνωσης επιλογής",
@@ -83,10 +87,6 @@
     "message": "Δώστε 5 USD τώρα",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie στο Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Αυτόματη ανίχνευση γλώσσας.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Χαρακτηριστικά",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium στο Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Επιλέξτε τη δική σας προεπιλεγμένη φωνή για κάθε γλώσσα. Μεγάλη αν κουραστείτε από τη φωνή του συστήματος!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Οι Premium δωρεάν.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Διαβάστε το κείμενο από το πρόχειρο! Απλά Talkie Premium κείμενο από Talkie Premium σε Talkie Premium και Talkie Premium για να το Talkie Premium !",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Αυτήν τη στιγμή χρησιμοποιείτε την δωρεάν έκδοση του Talkie και έχετε στη διάθεσή σας ένα περιορισμένο σύνολο λειτουργιών. Ίσως Talkie 🌟 Premium θα ήταν μια καλύτερη επιλογή για σας;",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Αυτήν τη στιγμή χρησιμοποιείτε την έκδοση Premium του Talkie και όλες οι λειτουργίες είναι διαθέσιμες σε εσάς. Σας ευχαριστώ πολύ, θερμαίνει την καρδιά μου!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Αυτήν τη στιγμή χρησιμοποιείτε το Talkie 🌟 Premium και όλες οι λειτουργίες είναι διαθέσιμες σε εσάς. Σας ευχαριστώ πολύ, θερμαίνει την καρδιά μου!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie σε δύο εκδόσεις: Talkie και Talkie 🌟 Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει πρόσθετες επιλογές.",
@@ -227,13 +227,17 @@
     "message": "Χρήση",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Στο Talkie 🌟 Premium , μπορείτε να Talkie 🌟 Premium κείμενο αντιγράψατε στο πρόχειρο σας — χρησιμοποιήστε το με ένα πλήκτρο συντόμευσης για να ακούσετε κείμενο από οπουδήποτε έξω από το πρόγραμμα περιήγησης. Μπορείτε επίσης να κάνετε δεξί κλικ στο κουμπί Talkie 🌟 Premium ή σε κενή περιοχή ενός ιστότοπου και να επιλέξετε να διαβάσετε από το πρόχειρο.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Μπορείτε επίσης να Talkie το κείμενο, στη συνέχεια κάντε δεξί κλικ πάνω του και να Talkie στο μενού. Αυτός ο τρόπος λειτουργεί επίσης σε αρχεία PDF και σε μερικούς ειδικούς τύπους σελίδων στο πρόγραμμα περιήγησης.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Εάν το κλειδί δεν λειτουργεί, βεβαιωθείτε ότι δεν χρησιμοποιείται ήδη από άλλη επέκταση.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Εάν το πλήκτρο συντόμευσης δεν λειτουργεί, βεβαιωθείτε ότι δεν χρησιμοποιείται ήδη από άλλη επέκταση ή πρόγραμμα.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Πώς να ελέγξετε ή να αλλάξετε τα Talkie πλήκτρα Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Μια βολική επιλογή είναι να Talkie πλήκτρα Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Ανάγνωση κειμένου από πρόχειρο σε Talkie 🌟 Premium — Talkie 🌟 Premium",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Ξεκίνα σταμάτα",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Ξεκίνα σταμάτα",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Επιλέξτε το επιθυμητό κείμενο σε οποιαδήποτε ιστοσελίδα.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Εδώ μπορείτε να δείτε και να δοκιμάσετε τις εγκατεστημένες φωνές για κάθε γλώσσα στο πρόγραμμα περιήγησης. 🌟 Premium χρήστες 🌟 Premium μπορούν επίσης να 🌟 Premium φωνή τους ως 🌟 Premium ανά γλώσσα, καθώς και την ταχύτητα αλλαγής και το βήμα για κάθε φωνή.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Εδώ μπορείτε να δείτε και να δοκιμάσετε τις εγκατεστημένες φωνές για κάθε γλώσσα στο πρόγραμμα περιήγησης. Talkie 🌟 Premium χρήστες Talkie 🌟 Premium μπορούν επίσης να Talkie 🌟 Premium φωνή τους ως Talkie 🌟 Premium ανά γλώσσα, καθώς και την ταχύτητα αλλαγής και το βήμα για κάθε φωνή.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Φωνές: επιλέξτε το αγαπημένο σας",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie δεν έχει πρόσβαση στο Talkie κείμενο από αυτόν τον τύπο σελίδας. Είναι μια πολύ ειδική σελίδα και υπάρχουν περιορισμοί ασφαλείας που θέτει ο browser. Μπορείτε επίσης να Talkie να Talkie κείμενο, στη συνέχεια κάντε δεξί κλικ σε αυτό και επιλέξτε Talkie στο μενού. Λυπάμαι για την ταλαιπωρία.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Λυπούμαστε, αλλά η ανάγνωση κειμένου από το πρόχειρο είναι μια Talkie Premium. Έχετε εξετάσει την αναβάθμιση;",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Λυπούμαστε, αλλά αυτό το πρόγραμμα περιήγησης ιστού δεν υποστηρίζει την ανάγνωση από το πρόχειρο. Όχι ακόμα, τουλάχιστον. Δοκιμάστε ξανά σε ένα μήνα περίπου!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie δεν έχει άδεια πρόσβασης από το πρόχειρο. Αυτό είναι εντάξει, αλλά η ανάγνωση του κειμένου του προχείρου δεν θα λειτουργήσει.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Δεν βρέθηκε κατάλληλο κείμενο στο πρόχειρο. Μπορείτε να δοκιμάσετε να αντιγράψετε κάτι άλλο;",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

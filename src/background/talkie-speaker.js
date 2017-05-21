@@ -55,7 +55,7 @@ export default class TalkieSpeaker {
         this.shouldContinueSpeakingProvider = shouldContinueSpeakingProvider;
         this.contentLogger = contentLogger;
 
-        this.cachedSynthesizer = null;
+        this.resetSynthesizer();
 
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
     }
@@ -151,6 +151,17 @@ export default class TalkieSpeaker {
 
                 return synthesizer;
             });
+    }
+
+    resetSynthesizer() {
+        return promiseTry(
+            () => {
+                delete this.cachedSynthesizer;
+                this.cachedSynthesizer = null;
+
+                return undefined;
+            }
+        );
     }
 
     getSynthesizer() {

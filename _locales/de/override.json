@@ -1,99 +1,123 @@
 {
   "buttonDefaultTitle": {
     "message": "Textauswahl laut vorlesen",
-    "original": "Read text selection out loud"
+    "original": "Read text selection out loud",
+    "translated-from": "Read text selection out loud"
   },
   "buttonStopTitle": {
     "message": "Vorlesen unterbrechen",
-    "original": "Stop talking"
+    "original": "Stop talking",
+    "translated-from": "Stop talking"
   },
   "commandBrowserActionDescription": {
     "message": "Textauswahl laut vorlesen",
-    "original": "Read text selection out loud"
+    "original": "Read text selection out loud",
+    "translated-from": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
     "message": "Spendenseite öffnen",
-    "original": "Open the donation page"
+    "original": "The Talkie donations page",
+    "translated-from": "Open the donation page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkie-Website öffnen",
-    "original": "Open the Talkie website"
+    "original": "The Talkie website",
+    "translated-from": "Open the Talkie website"
   },
   "commandStartStopDescription": {
     "message": "Start/Stop Vorlesen der Auswahl",
-    "original": "Start/stop reading selection"
+    "original": "Start/stop reading selection",
+    "translated-from": "Start/stop reading selection"
   },
   "extensionDescription": {
     "message": "Wähle den Text auf einer beliebigen Webseite aus und lass ihn dir vom Computer laut vorlesen. Klicke hierfür einfach auf den Talkie-Button.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button.",
+    "translated-from": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
     "message": "Optionen",
-    "original": "Options"
+    "original": "Options",
+    "translated-from": "Options"
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Quellcode auf Github",
-    "original": "Source code on Github"
+    "original": "Source code on Github",
+    "translated-from": "Source code on Github"
   },
   "frontend_aboutHeading": {
     "message": "Über: Browser Erweiterung für Text-nach-Sprache Konverter",
-    "original": "About: text-to-speech browser extension button"
+    "original": "About: text-to-speech browser extension button",
+    "translated-from": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Über",
-    "original": "About"
+    "original": "About",
+    "translated-from": "About"
   },
   "frontend_aboutThankYou": {
     "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+    "original": "Thank you for using Talkie — if you like it, tell your friends!",
+    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_donateLinkText": {
     "message": "Spenden",
-    "original": "Donate"
+    "original": "Donate",
+    "translated-from": "Donate"
   },
   "frontend_donate_moreOptions": {
     "message": "Weitere Spendenoptionen",
-    "original": "More donation options"
+    "original": "More donation options",
+    "translated-from": "More donation options"
   },
   "frontend_donate_usd100Now": {
     "message": "Jetzt USD 100 spenden",
-    "original": "Donate $$100 now"
+    "original": "Donate $$100 now",
+    "translated-from": "Donate $$100 now"
   },
   "frontend_donate_usd25Now": {
     "message": "Jetzt USD 25 spenden",
-    "original": "Donate $$25 now"
+    "original": "Donate $$25 now",
+    "translated-from": "Donate $$25 now"
   },
   "frontend_donate_usd5Now": {
     "message": "Jetzt USD 5 spenden",
-    "original": "Donate $$5 now"
+    "original": "Donate $$5 now",
+    "translated-from": "Donate $$5 now"
   },
   "frontend_hideDonateButtonsInPopup": {
     "message": "Spenden-Buttons im Popup ausblenden",
-    "original": "Hide donation buttons in the popup"
+    "original": "Hide donation buttons in the popup",
+    "translated-from": "Hide donation buttons in the popup"
   },
   "frontend_hideDonateButtonsInPopupDescription": {
     "message": "Es ist nicht so, dass ich nicht wollte dass du Talkie und Open Source Entwicklung im Allgemeinen durch eine Spende unterstützt - du sollst dich nur einfach bei der Nutzung von Talkie nicht belästigt fühlen. Wenn du daher die Spenden-Buttons im Popup deaktivierst, hoffe ich, dass du Talkie irgendwie anders unterstützst! Die Spenden-Buttons sind immer hier unter den Optionen zu finden, nur für den Fall.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
+    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case.",
+    "translated-from": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
   },
   "frontend_hideDonateButtonsInPopupHeading": {
     "message": "Spenden: unterstütze Open Source Entwicklung",
-    "original": "Donate: support open source development"
+    "original": "Donate: support open source development",
+    "translated-from": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
     "message": "Alle Beiträge zu Talkie wurden unter dem Contributor License Agreement (CLA) erstellt.",
-    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA).",
+    "translated-from": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
     "message": "Lizenz: Open-Source-Software",
-    "original": "License: open-source software"
+    "original": "License: open-source software",
+    "translated-from": "License: open-source software"
   },
   "frontend_licenseLinkText": {
     "message": "Lizenz",
-    "original": "License"
+    "original": "License",
+    "translated-from": "License"
   },
   "frontend_rateIt": {
     "message": "Bewerte Talkie",
-    "original": "Review Talkie"
+    "original": "Review Talkie",
+    "translated-from": "Review Talkie"
   },
   "frontend_storyDescription": {
     "message": "Ich habe Talkie ein paar Tage vor Silvester 2016/2017 entwickelt, auf eine Bemerkung eines Freunds hin. Er begann mit der herausfordernden Frage: Ist es eigentlich beim Pendeln zur Arbeit möglich, einen Artikel anzuhören anstatt ihn zu lesen? Nichts einfacher als das, sagte ich und machte mich daran, das zu beweisen - oder zumindest ließ ich meinen Browser Texte in einer albernen Computerstimme vorlesen. Die Entwicklung einer ersten einfachen Version ohne Benutzeroberfläche war einfach. Das Hinzufügen einer Benutzeroberfläche dauerte etwas länger. Eine ordentliche Spracherkennung, nur ein bisschen mehr Code. Bugs im Browser zu entfernen war noch mehr Arbeit. Die Liste der Verbesserungen und Features geht weiter - und ein paar tausend Zeilen Code später siehst du hier das Endergebnis.",
@@ -101,100 +125,124 @@
   },
   "frontend_storyHeading": {
     "message": "Geschichte: so hat alles mit Talkie angefangen",
-    "original": "Story: how Talkie got started"
+    "original": "Story: how Talkie got started",
+    "translated-from": "Story: how Talkie got started"
   },
   "frontend_storyLinkText": {
     "message": "Geschichte",
-    "original": "Story"
+    "original": "Story",
+    "translated-from": "Story"
   },
   "frontend_storyThankYou": {
     "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+    "original": "Thank you for using Talkie — if you like it, tell your friends!",
+    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
     "message": "Unterstützung und Feedback",
-    "original": "Support and feedback"
+    "original": "Support and feedback",
+    "translated-from": "Support and feedback"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie im Chrome Web Store",
-    "original": "Talkie in the Chrome Web Store"
+    "original": "Talkie in the Chrome Web Store",
+    "translated-from": "Talkie in the Chrome Web Store"
   },
   "frontend_usageHeading": {
     "message": "Verwendung",
-    "original": "Usage"
+    "original": "Usage",
+    "translated-from": "Usage"
   },
   "frontend_usageLinkText": {
     "message": "Verwendung",
-    "original": "Usage"
+    "original": "Usage",
+    "translated-from": "Usage"
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kannst auch den Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Diese Funktion existiert auch für PDF-Dateien und auf einigen speziellen Seiten in Chrome.",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
+    "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Wenn die Tastenkombination nicht funktioniert, stelle bitte sicher, dass sie nicht bereits durch eine andere Erweiterung belegt ist.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program.",
+    "translated-from": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "So überprüfst oder änderst du die Talkie-Tastenkombination.",
-    "original": "How to check or change the Talkie shortcut keys."
+    "original": "How to check or change the Talkie shortcut keys.",
+    "translated-from": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Eine bequeme Option ist, die Talkie-Tastenkombination zu verwenden:",
-    "original": "A convenient option is to use the Talkie shortcut keys:"
+    "original": "A convenient option is to use the Talkie shortcut keys:",
+    "translated-from": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageStep01": {
     "message": "Markiere den gewünschten Text auf einer beliebigen Webseite.",
-    "original": "Select desired text on any web page."
+    "original": "Select desired text on any web page.",
+    "translated-from": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
     "message": "Klicke in der Browserleiste auf den Talkie-Button",
-    "original": "Click the Talkie button in your browser bar"
+    "original": "Click the Talkie button in your browser bar",
+    "translated-from": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Verfügbare Sprachen",
-    "original": "Available languages"
+    "original": "Available languages",
+    "translated-from": "Available languages"
   },
   "frontend_voicesAvailableVoices": {
     "message": "Verfügbare Stimmen",
-    "original": "Available voices"
+    "original": "Available voices",
+    "translated-from": "Available voices"
   },
   "frontend_voicesDescription": {
     "message": "Talkie hat eine automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar. Hier kannst du alle installierten Stimmen für jede Sprache sehen und testen.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice.",
+    "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Stimmen: teste deinen Browser",
-    "original": "Voices: select your favorite"
+    "original": "Voices: select your favorite",
+    "translated-from": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {
     "message": "Stimmen",
-    "original": "Voices"
+    "original": "Voices",
+    "translated-from": "Voices"
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
     "message": "Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.",
-    "original": "The quick brown fox jumps over the lazy dog."
+    "original": "The quick brown fox jumps over the lazy dog.",
+    "translated-from": "The quick brown fox jumps over the lazy dog."
   },
   "frontend_voicesSampleTextHeading": {
     "message": "Beispieltext für Talkie zum Vorlesen",
-    "original": "Sample text for Talkie to read out loud"
+    "original": "Sample text for Talkie to read out loud",
+    "translated-from": "Sample text for Talkie to read out loud"
   },
   "frontend_voicesShowAllVoices": {
     "message": "Alle Stimmen anzeigen",
-    "original": "Show all voices"
+    "original": "Show all voices",
+    "translated-from": "Show all voices"
   },
   "frontend_yourDonationsAreAppreciated": {
     "message": "Ich freue mich über jede Spende!",
-    "original": "Your donations are appreciated!"
+    "original": "Your donations are appreciated!",
+    "translated-from": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Bitte wähle zuerst den gewünschten Text auf der Website aus. Du kannst auch Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen.",
-    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu.",
+    "translated-from": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kann nicht auf den ausgewählten Text von dieser bestimmten Seite zugreifen. Auf dieser speziellen Seite wurden Sicherheitsbeschränkungen durch den Browser eingefügt. Du kannst auch versuchen Text zu markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen. Ich entschuldige mich für die Unannehmlichkeiten.",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience.",
+    "translated-from": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   }
 }

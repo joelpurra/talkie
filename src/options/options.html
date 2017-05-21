@@ -71,55 +71,70 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
             </ul>
             <p data-translate="frontend_usageSelectionContextMenuDescription"></p>
             <p data-translate="frontend_usageShortcutKeyDescription"></p>
+            <div class="talkie-non-mac-only talkie-block">
+                Windows, Linux, Chrome OS:
+                <ul>
+                    <li>
+                        <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> <span data-translate="frontend_usageShortcutKeyDescriptionStartStopWithMenu"></span>
+                    </li>
+                    <li class="talkie-chrome-only talkie-list-item">
+                        <!-- NOTE: Shortcut key already in use in Firefox -->
+                        <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> <span data-translate="frontend_usageShortcutKeyDescriptionStartStopWithoutMenu"></span>
+                    </li>
+                    <li class="talkie-chrome-only talkie-list-item">
+                        <!-- NOTE: read from clipboard feature not available in Firefox -->
+                        <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> <span data-translate="frontend_usageShortcutKeyDescriptionReadFromClipboard"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="talkie-mac-only talkie-block">
+                macOS:
+                <ul>
+                    <li>
+                        <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> <span data-translate="frontend_usageShortcutKeyDescriptionStartStopWithMenu"></span>
+                    </li>
+                    <li class="talkie-chrome-only talkie-list-item">
+                        <!-- NOTE: Shortcut key already in use in Firefox -->
+                        <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> <span data-translate="frontend_usageShortcutKeyDescriptionStartStopWithoutMenu"></span>
+                    </li>
+                    <li class="talkie-chrome-only talkie-list-item">
+                        <!-- NOTE: read from clipboard feature not available in Firefox -->
+                        <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> <span data-translate="frontend_usageShortcutKeyDescriptionReadFromClipboard"></span>
+                    </li>
+                </ul>
+            </div>
             <ul>
-                <li>
-                    Windows, Linux, Chrome OS
-                    <ul>
-                        <li>
-                            <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                        </li>
-                        <li>
-                            <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    macOS
-                    <ul>
-                        <li>
-                            <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                        </li>
-                        <li>
-                            <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                        </li>
-                    </ul>
-                </li>
                 <li>
                     <span data-translate="frontend_usageShortcutKeyAlternative03"></span>
                 </li>
-                <li>
-                    <a  data-configure-href="urls.shortcut-keys" data-translate="frontend_usageShortcutKeyAlternative04"></a>
+                <li class="talkie-chrome-only talkie-list-item">
+                    <!-- NOTE: can't change shortcut keys in Firefox -->
+                    <a data-configure-href="urls.shortcut-keys" data-translate="frontend_usageShortcutKeyAlternative04"></a>
                 </li>
             </ul>
+            <!-- NOTE: read from clipboard feature not available in Firefox -->
+            <p data-translate="frontend_usageReadclipboard" class="talkie-chrome-only talkie-block"></p>
         </section>
         <section id="features">
             <h2 data-translate="frontend_featuresHeading"></h2>
             <p>
                 <span data-translate="frontend_featuresVersions"></span>
                 <span class="talkie-free-only talkie-inline" data-translate="frontend_featuresVersion_Free"></span>
-                <a data-configure-href="urls.chromewebstore-premium" data-translate="frontend_getPremiumLinkText" class="talkie-free-only talkie-inline"></a>
+                <a data-configure-href="urls.store-premium" data-translate="frontend_getPremiumLinkText" class="talkie-free-only talkie-inline"></a>
                 <span class="talkie-premium-only talkie-inline" data-translate="frontend_featuresVersion_Premium"></span>
             </p>
 
-            <h2 data-translate="frontend_featuresPremiumHeading"></h2>
+            <h2><a data-configure-href="urls.store-premium"><span class="icon inline talkie premium"></span>Talkie Premium</a></h2>
             <ul>
                 <li data-translate="frontend_featuresPremium_List01"></li>
                 <li data-translate="frontend_featuresPremium_List02"></li>
+                <!-- NOTE: read from clipboard feature not available in Firefox -->
+                <li data-translate="frontend_featuresPremium_List05" class="talkie-chrome-only talkie-list-item"></li>
                 <li data-translate="frontend_featuresPremium_List03"></li>
                 <li data-translate="frontend_featuresPremium_List04"></li>
             </ul>
 
-            <h2 data-translate="frontend_featuresFreeHeading"></h2>
+            <h2><a data-configure-href="urls.store-free"><span class="icon inline talkie free"></span>Talkie</a></h2>
             <ul>
                 <li data-translate="frontend_featuresFree_List01"></li>
                 <li data-translate="frontend_featuresFree_List02"></li>
@@ -205,7 +220,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
             <p data-translate="frontend_hideDonateButtonsInPopupDescription"></p>
             <p>
-                <span  class="talkie-free-only talkie-inline"><a data-configure-href="urls.chromewebstore-premium" data-translate="frontend_getPremiumLinkText"></a> — </span><span data-translate="frontend_yourDonationsAreAppreciated"></span>
+                <span  class="talkie-free-only talkie-inline"><a data-configure-href="urls.store-premium" data-translate="frontend_getPremiumLinkText"></a> — </span><span data-translate="frontend_yourDonationsAreAppreciated"></span>
             </p>
             <table class="donate">
                 <tbody>
@@ -238,7 +253,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
         </section>
         <section id="about">
             <h2 data-translate="frontend_aboutHeading"></h2>
-            <p><span class="talkie-premium-only talkie-inline-block">🌟 </span>Talkie <span id="version-name"></span></p>
+            <span class="icon inline talkie"></span>Talkie <span id="version-name"></span></p>
 
             <ul>
                 <li>

@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Buka halaman donasi",
-    "original": "Open the donation page"
+    "message": "Halaman Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Buka situs Talkie",
-    "original": "Open the Talkie website"
+    "message": "Situs Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Buka halaman toko",
-    "original": "Open the store page"
+    "message": "Talkie toko Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Buka halaman toko Premium",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium toko Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Baca dari clipboard",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Mulai/berhenti membaca seleksi",
@@ -83,10 +87,6 @@
     "message": "Sumbang USD 5 sekarang",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Fitur di Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Deteksi bahasa otomatis.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "fitur",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Fitur di Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Pilih suara default Anda untuk setiap bahasa. Bagus jika Anda bosan dengan suara sistem!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Premium masa depan gratis.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Baca teks dari clipboard! Cukup salin teks dari manapun ke program mana pun, dan gunakan Talkie Premium untuk Talkie Premium !",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Anda saat ini menggunakan versi gratis Talkie , dan Talkie fitur terbatas tersedia untuk Anda. Mungkin Talkie 🌟 Premium akan menjadi pilihan yang lebih baik untuk Anda?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Anda saat ini menggunakan versi premium Talkie , dan semua fitur tersedia untuk Anda. Terima kasih banyak, ini menghangatkan hatiku!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Anda saat ini menggunakan Talkie 🌟 Premium , dan semua fitur tersedia untuk Anda. Terima kasih banyak, ini menghangatkan hatiku!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie hadir dalam dua versi: Talkie dan Talkie 🌟 Premium. Versi gratis sangat bagus untuk sebagian besar kasus penggunaan, namun versi premium menawarkan opsi tambahan.",
@@ -227,13 +227,17 @@
     "message": "Pemakaian",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Di Talkie 🌟 Premium , Anda dapat membaca teks yang disalin ke clipboard Anda — gunakan dengan tombol pintas untuk mendengarkan teks dari manapun di luar browser. Anda juga bisa klik kanan pada tombol Talkie 🌟 Premium , atau di area situs web yang kosong, dan pilih baca dari clipboard.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Anda juga bisa memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Cara ini juga bekerja dalam file PDF dan beberapa jenis halaman khusus di browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Jika kuncinya tidak bekerja, periksa apakah itu belum digunakan oleh ekstensi lain.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Jika tombol pintas tidak bekerja, periksa apakah itu belum digunakan oleh ekstensi atau program lain.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Cara Talkie atau mengubah tombol pintas Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Pilihan yang mudah Talkie adalah Talkie tombol pintas Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Baca teks dari clipboard dalam program apapun — Talkie 🌟 Premium fitur",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Mulai berhenti",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Mulai berhenti",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Pilih teks yang diinginkan pada halaman web manapun.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Di sini Anda dapat melihat dan menguji suara yang terpasang untuk setiap bahasa di browser Anda. 🌟 Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengubah 🌟 Premium dan nada untuk setiap suara.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Di sini Anda dapat melihat dan menguji suara yang terpasang untuk setiap bahasa di browser Anda. Talkie 🌟 Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengubah Talkie 🌟 Premium dan nada untuk setiap suara.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Suara: pilih favoritmu",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie tidak dapat Talkie teks yang dipilih dari jenis halaman ini. Ini adalah halaman yang sangat spesial, dan ada batasan keamanan yang dimasukkan ke dalam browser. Anda juga bisa mencoba memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Saya minta maaf atas ketidaknyamanannya.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Maaf, tapi membaca teks dari clipboard adalah fitur Talkie Premium. Sudahkah anda mempertimbangkan untuk mengupgrade?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Maaf, tapi browser web ini tidak mendukung membaca dari clipboard. Belum, setidaknya. Silakan coba lagi dalam satu bulan atau lebih!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie tidak memiliki izin untuk mengakses dari clipboard. Tidak apa, tapi membaca teks clipboard tidak akan berhasil.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Tidak dapat menemukan teks yang sesuai di papan klip. Dapatkah Anda mencoba menyalin sesuatu yang lain?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

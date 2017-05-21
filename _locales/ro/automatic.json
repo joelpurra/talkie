@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Deschideți pagina de donare",
-    "original": "Open the donation page"
+    "message": "Pagina de Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Talkie site-ul Talkie",
-    "original": "Open the Talkie website"
+    "message": "Site-ul Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Deschideți pagina magazinului",
-    "original": "Open the store page"
+    "message": "Pagina de magazin Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Premium pagina Premium",
-    "original": "Open the Premium store page"
+    "message": "Pagina de magazin Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Citiți din clipboard",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Pornirea/oprirea citirii selecției",
@@ -83,10 +87,6 @@
     "message": "Donați 5 USD acum",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie din Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Detectarea limbii automate.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Caracteristici",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium din Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Alegeți propria voce implicită pentru fiecare limbă. Mă bucur dacă te-ai săturat de vocea sistemului!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Viitoare Premium incluse gratuit.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Citiți textul din clipboard! Doar copiați textul de oriunde din orice program și folosiți Talkie Premium pentru ao citi!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "În prezent, utilizați versiunea gratuită de Talkie , iar un set limitat de funcții este disponibil pentru dvs. Poate Talkie 🌟 Premium ar fi o alegere mai bună pentru dvs.?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "În prezent, utilizați versiunea premium a Talkie și toate funcțiile sunt disponibile pentru dvs. Mulțumesc foarte mult, îmi încălzește inima!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "În prezent, utilizați Talkie 🌟 Premium și toate funcțiile sunt disponibile pentru dvs. Mulțumesc foarte mult, îmi încălzește inima!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie vine în două versiuni: Talkie și Talkie 🌟 Premium. Versiunea gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar versiunea premium oferă opțiuni suplimentare.",
@@ -227,13 +227,17 @@
     "message": "folosire",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "În Talkie 🌟 Premium , puteți citi orice text copiat în clipboard — utilizați-l cu o tastă de comandă rapidă pentru a asculta text de oriunde în afara browserului. De asemenea, puteți să faceți clic dreapta pe butonul Talkie 🌟 Premium sau într-o zonă goală a unui site web și să selectați citirea din clipboard.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "De asemenea, puteți selecta textul, apoi faceți clic dreapta pe el și alegeți Talkie din meniu. Acest mod funcționează, de asemenea, în fișiere PDF și în câteva tipuri speciale de pagini din browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Dacă cheia nu funcționează, verificați dacă nu este deja utilizată de o altă extensie.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Dacă tasta de comandă rapidă nu funcționează, verificați dacă nu este deja utilizată de o altă extensie sau program.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Cum să Talkie sau să Talkie tastele de comenzi rapide.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "O opțiune convenabilă este Talkie tastelor rapide Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Citiți textul din clipboard în orice program — Talkie 🌟 Premium",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start Stop",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start Stop",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Selectați textul dorit pe orice pagină Web.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Aici puteți vedea și testa vocile instalate pentru fiecare limbă din browserul dvs. 🌟 Premium pot, de asemenea, să aleagă vocea 🌟 Premium pe fiecare limbă, precum și să modifice viteza și pasul pentru fiecare voce.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Aici puteți vedea și testa vocile instalate pentru fiecare limbă din browserul dvs. Talkie 🌟 Premium pot, de asemenea, să aleagă vocea Talkie 🌟 Premium fiecare limbă, precum și să modifice viteza și pitch pentru fiecare voce.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voci: selectați preferatul",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie nu poate accesa textul selectat din acest tip de pagină. Este o pagină foarte specială și există limitări de securitate introduse de browser. De asemenea, puteți încerca să Talkie textul, apoi să faceți clic dreapta pe el și să alegeți Talkie din meniu. Îmi pare rău pentru neplăcerile.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Îmi pare rău, dar citirea textului din clipboard este o Talkie Premium. Te-ai gândit să faci upgrade?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Îmi pare rău, dar acest browser web nu acceptă citirea din clipboard. Încă nu, cel puțin. Încercați din nou într-o lună sau cam asa ceva!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie nu are permisiunea de a accesa din clipboard. E ok, dar citirea textului clipboardului nu va funcționa.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Nu am găsit textul potrivit în clipboard. Puteți încerca să copiați altceva?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "打开捐款页面",
-    "original": "Open the donation page"
+    "message": "Talkie捐款页面",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "打开Talkie网站",
-    "original": "Open the Talkie website"
+    "message": "Talkie网站",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "打开商店页面",
-    "original": "Open the store page"
+    "message": "Talkie商店页面",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "打开Premium商店页面",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium商店页面",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "从剪贴板读取",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "开始/停止阅读选择",
@@ -83,10 +87,6 @@
     "message": "现在捐5 USD",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "自动语言检测。",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "特征",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "为每种语言选择自己的默认语音。很好，如果你厌倦了系统的声音！",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "未来Premium更新包含免费。",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "从剪贴板读取文本！只需从任何程序的任何地方复制文本，并使用Talkie Premium来阅读它！",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "您正在使用Talkie的免费版本，您可以使用一组有限的功能。也许Talkie 🌟 Premium将是您的更好的选择？",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "您正在使用Talkie的高级版本，您可以使用所有功能。非常感谢，它暖和我的心！",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "您正在使用Talkie 🌟 Premium ，并且您可以使用所有功能。非常感谢，它暖和我的心！",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie有两个版本： Talkie和Talkie 🌟 Premium 。免费版本适用于大多数用例，但高级版本提供了其他选项。",
@@ -227,13 +227,17 @@
     "message": "用法",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "在Talkie 🌟 Premium ，您可以阅读复制到剪贴板的任何文本 — 使用快捷键从浏览器外的任何地方收听文本。您也可以右键单击Talkie 🌟 Premium按钮或网站的空白区域，然后选择从剪贴板中读取。",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "您还可以选择文本，然后右键单击，然后在菜单中选择Talkie 。这样也可以在浏览器中的PDF文件和一些特殊类型的页面中使用。",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "如果钥匙不起作用，请检查它是否还没有被其他分机使用。",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "如果快捷键不起作用，请检查它是否还没有被其他分机或程序使用。",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "如何检查或更改Talkie快捷键。",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "一个方便的选择是使用Talkie快捷键：",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "从任何程序中的Talkie 🌟 Premium读取文本 — Talkie 🌟 Premium功能",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "启动/停止",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "启动/停止",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "在任何网页上选择所需的文本。",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "在这里，您可以在浏览器中查看和测试每种语言的已安装语音。 🌟 Premium用户还可以选择自己喜欢的语音作为默认的每种语言，以及更改每个语音的速度和音高。",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "在这里，您可以在浏览器中查看和测试每种语言的已安装语音。 Talkie 🌟 Premium用户还可以选择他们最喜欢的语音作为默认的每种语言，以及更改每个声音的速度和音高。",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "声音：选择你最喜欢的",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie无法从此类型的页面访问所选文本。这是一个非常特别的页面，浏览器存在安全限制。您也可以尝试选择文本，然后右键单击，然后在菜单中选择Talkie 。对不起给您带来不便。",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "很抱歉，从剪贴板中读取文字是Talkie Premium功能。你考虑升级了吗？",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "很抱歉，这个网络浏览器不支持从剪贴板中读取。还没有，至少。请在一个月左右再试一次！",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie没有权限从剪贴板访问。没关系，但是阅读剪贴板文本将无法正常工作。",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "无法在剪贴板中找到合适的文字。你可以尝试复制别的吗？",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -260,12 +260,28 @@ const checkVersion = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => getBackgroundPage())
-            .then((background) => background.isPremiumVersion())
-            .then((isPremium) => {
+            .then((background) => Promise.all([
+                background.isPremiumVersion(),
+                background.getSystemType(),
+                background.getOsType(),
+            ]))
+            .then(([isPremium, systemType, osType]) => {
                 if (isPremium) {
                     document.body.classList.add("talkie-premium");
                 } else {
                     document.body.classList.add("talkie-free");
+                }
+
+                if (systemType === "chrome") {
+                    document.body.classList.add("talkie-chrome");
+                } else {
+                    document.body.classList.add("talkie-webextension");
+                }
+
+                if (osType === "mac") {
+                    document.body.classList.add("talkie-mac");
+                } else {
+                    document.body.classList.add("talkie-non-mac");
                 }
 
                 return undefined;

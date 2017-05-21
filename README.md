@@ -16,16 +16,16 @@
 <table>
   <tr>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium<br />(Coming soon!)
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium<br />(Coming soon!)
     </td>
   </tr>
 </table>
@@ -35,30 +35,42 @@
 ## Installation
 
 - <img src="./resources/browser-logo/chrome_16x16.png" alt="Firefox logo" width="16" height="16" border="0" /> Google Chrome
-  - Get <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> in the Chrome Web Store.
-  - Get <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a> in the Chrome Web Store.
+  - Get <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> in the Chrome Web Store.
+  - Get <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a> in the Chrome Web Store.
 - <img src="./resources/browser-logo/firefox_16x16.png" alt="Firefox logo" width="16" height="16" border="0" /> Firefox
-  - Get <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> at Firefox Add-ons.
-  - Get <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium at Firefox Add-ons. (Coming soon!)
+  - Get <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> at Firefox Add-ons.
+  - Get <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium at Firefox Add-ons. (Coming soon!)
 - Developer option: [use the source code](DEVELOP.md) directly.
+
+
 
 ## Usage
 
 1. **Select desired text** on any web page.
-1. **Click the Talkie button** in your browser bar <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
+1. **Click the Talkie button** in your browser bar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
 
 
 You can also **select the text, then right click on it**, and choose <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie in the menu. This way also works in PDF-files and some *special* types of pages in the browser.
 
+In <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium, you can **read any text copied to your clipboard** — use it with a shortcut key to listen to text from **anywhere outside of the browser**. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select *read from clipboard*.
+
+
+
+## Shortcut keys
+
 A convenient option is to use the **Talkie shortcut keys**:
 
 - Windows, Linux, Chrome OS
-  - <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-  - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+  - <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> Start/stop
+  - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> Start/stop
+  - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> Read text from clipboard in any program — <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium feature
 - macOS
-  - <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-  - <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-- If the key does not work, please check that it is not already in use by another extension.
+  - <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> Start/stop
+  - <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> Start/stop
+  - <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> Read text from clipboard in any program — <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium feature
+- If the shortcut key does not work, please check that it is not already in use by another extension or program.
+
+
 
 <details>
   <summary><em>How to check or change the Talkie shortcut keys</em></summary>
@@ -69,37 +81,44 @@ A convenient option is to use the **Talkie shortcut keys**:
 
   <ol>
     <li>
-      In Chrome, click *<a href="chrome://extensions/">Extensions</a>* in the *Window* menu.
+      In Chrome, click <em><a href="chrome://extensions/">Extensions</a></em> in the <em>Window</em> menu.
     </li>
     <li>
-      At the bottom of the extensions list, click *<a href="chrome://extensions/configureCommands">Keyboard shortcuts</a>* in the lower right corner.
-      <p align="center">
-        <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-01.png" alt="Screenshot of Chrome's list of installed extensions, focusing on Talkie" title="Chrome's installed extensions" />
-      </p>
+      At the bottom of the extensions list, click <em><a href="chrome://extensions/configureCommands">Keyboard shortcuts</a></em> in the lower right corner.
+      <blockquote>
+        <p align="center">
+          <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-01.png" alt="Screenshot of Chrome's list of installed extensions, focusing on Talkie" title="Chrome's installed extensions" />
+        </p>
+      </blockquote>
     </li>
     <li>
-      From the *Keyboard Shortcuts for Extensions and Apps* window you can check or change keyboard shortcuts for all Chrome extensions and apps. This way you also can verify that there are no shortcut key collisions between extensions.
-      <p align="center">
-        <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-02.png" alt="Screenshot of the Keyboard Shortcuts for Extensions and Apps window in Chrome, focusing on Talkie shortcuts" title="Talkie shortcuts in Chrome" />
-      </p>
+      From the <em>Keyboard Shortcuts for Extensions and Apps</em> window you can check or change keyboard shortcuts for all Chrome extensions and apps. This way you also can verify that there are no shortcut key collisions between extensions.
+      <blockquote>
+        <p align="center">
+          <img src="resources/keyboard-shortcuts/talkie-keyboard-shortcuts-02.png" alt="Screenshot of the Keyboard Shortcuts for Extensions and Apps window in Chrome, focusing on Talkie shortcuts" title="Talkie shortcuts in Chrome" />
+        </p>
+      </blockquote>
     </li>
   </ol>
   <p>
-    You can also reach the extensions page directly with [`chrome://extensions/`](chrome://extensions/) and the keyboard shortcut configuration with [`chrome://extensions/configureCommands`](chrome://extensions/configureCommands), but you might have to copy-paste the address manually.
+    You can also reach the extensions page directly with <a href="chrome://extensions/"><code>chrome://extensions/</code></a> and the keyboard shortcut configuration with <a href="chrome://extensions/configureCommands"><code>chrome://extensions/configureCommands</code></a>, but you might have to copy-paste the address manually.
   </p>
 </details>
 
 
 
-## Features in <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium
+## Features in <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium
 
 - **Choose your own default voice** for each language. Great if you get tired of the system voice!
 - Choose reading **speed and pitch per voice**. Adjust voices to your liking!
+- **Read text from the clipboard!** Just copy text from anywhere in any program, and use Talkie Premium to read it!
 - That **warm, fuzzy feeling** you get when supporting open source software by independent developers.
 - Future Premium **updates included for free**.
 - Plus **all features** below.
 
-## Features in <img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie
+
+
+## Features in <img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie
 
 - Lets you listen to the selected text on any part of a page — **short snippets or entire news articles**. Just highlight what you want to hear read aloud and hit play.
 - Automatically **detects the text language** per-page, and chooses a voice in the same language to match it.
@@ -114,7 +133,7 @@ A convenient option is to use the **Talkie shortcut keys**:
   <summary><em>Web Speech API</em></summary>
 
   <p>
-    Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
+    Uses your browser's built-in <a href="https://www.w3.org/community/speech-api/">Web Speech API for text-to-speech (TTS)</a> known as <a href="https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section">Speech Synthesis</a>.
   </p>
 
   <ul>
@@ -148,10 +167,10 @@ A convenient option is to use the **Talkie shortcut keys**:
       Your browser's text language detection for the selection, using word and sentence analysis.
     </li>
     <li>
-      The first available `lang="..."` attribute from the selected text's parent HTML elements.
+      The first available <code>lang="..."</code> attribute from the selected text's parent HTML elements.
     </li>
     <li>
-      The `lang="..."` attribute from the HTML root element of the current page (or frame).
+      The <code>lang="..."</code> attribute from the HTML root element of the current page (or frame).
     </li>
     <li>
       Your browser's page primary language detection.
@@ -159,7 +178,7 @@ A convenient option is to use the **Talkie shortcut keys**:
   </ol>
 
   <p>
-    While the Web Speech API can use more than one voice per language (currently over 20 for `en-US` in Google Chrome version 55), as well as modify speech rate and pitch, these kinds of options have not been implemented. I am *considering* to develop it as a paid feature for those who install the extension through the Chrome Web Store.
+    The Web Speech API can use more than one voice per language (currently over 20 for <code>en-US</code> in Google Chrome version 55), as well as modify speech rate (speed) and pitch. These options have been implemented in <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium as a paid feature for those who install the extension through the <a href="https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo">Chrome Web Store</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">Firefox Add-ons</a>.
   </p>
 </details>
 
@@ -177,7 +196,7 @@ A convenient option is to use the **Talkie shortcut keys**:
   </p>
 
   <p>
-    In case you have no voices for TTS installed at all, try installing [US English Female Text-to-speech (by Google)](https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb). This should enable at least US English websites to be spoken by Talkie.
+    In case you have no voices for TTS installed at all, try installing <a href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb">US English Female Text-to-speech (by Google)</a>. This should enable at least US English websites to be spoken by Talkie.
   </p>
 
 <details>
@@ -234,6 +253,7 @@ A convenient option is to use the **Talkie shortcut keys**:
 </details>
 
 
+
 ## Acknowledgements
 
 - Thanks to [Liron Tocker](http://liron.de/) for the fancy icons and promotional graphics: <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> <img src="resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> <img src="resources/icon/free/icon-stop/icon-16x16.png" alt="Talkie stop button" width="16" height="16" border="0" />
@@ -242,4 +262,4 @@ A convenient option is to use the **Talkie shortcut keys**:
 
 ---
 
-<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
+<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> Copyright &copy; 2016, 2017 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)

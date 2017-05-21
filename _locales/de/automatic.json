@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Öffnen Sie die Spendenseite",
-    "original": "Open the donation page"
+    "message": "Die Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öffnen Sie die Website Talkie",
-    "original": "Open the Talkie website"
+    "message": "Die Website Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Öffnen Sie die Store-Seite",
-    "original": "Open the store page"
+    "message": "Die Seite Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Öffnen Sie die Seite Premium",
-    "original": "Open the Premium store page"
+    "message": "Die Seite Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Aus der Zwischenablage lesen",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Start/Stop Leseauswahl",
@@ -83,10 +87,6 @@
     "message": "Spende USD 5 jetzt",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie in Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automatische Spracherkennung.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Eigenschaften",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium in Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Wähle deine eigene Stimme für jede Sprache. Toll, wenn du von der Systemstimme müde bist!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Premium Updates sind Premium .",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Text aus der Zwischenablage lesen! Kopiere einfach Text von irgendwo in Talkie Premium Programm und verwende Talkie Premium , um es zu lesen!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Sie verwenden derzeit die kostenlose Version von Talkie und eine Talkie Anzahl von Funktionen steht Ihnen zur Verfügung. Talkie 🌟 Premium wäre Talkie 🌟 Premium eine bessere Wahl für dich?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Sie verwenden derzeit die Premium-Version von Talkie , und alle Funktionen stehen Ihnen zur Verfügung. Vielen Dank, es wärmt mein Herz!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Sie verwenden derzeit das Talkie 🌟 Premium , und alle Funktionen stehen Ihnen zur Verfügung. Vielen Dank, es wärmt mein Herz!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie kommt in zwei Talkie: Talkie und Talkie 🌟 Premium. Die kostenlose Version ist ideal für die meisten Anwendungsfälle, aber die Premium-Version bietet zusätzliche Optionen.",
@@ -227,13 +227,17 @@
     "message": "Verwendung",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "In Talkie 🌟 Premium können Sie jeden Text lesen, der in Ihre Zwischenablage kopiert wurde — verwenden Sie ihn mit einer Tastenkombination, um Text von überall außerhalb des Browsers zu hören. Sie können auch mit der rechten Talkie 🌟 Premium auf die Talkie 🌟 Premium oder in einen leeren Bereich einer Website klicken und aus der Zwischenablage auswählen.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Sie können auch den Text Talkie , dann mit der rechten Talkie darauf klicken und im Menü Talkie. So funktioniert das auch in PDF-Dateien und einigen speziellen Arten von Seiten im Browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Wenn der Schlüssel nicht funktioniert, überprüfen Sie bitte, dass er noch nicht von einer anderen Erweiterung benutzt wird.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Wenn die Tastenkombination nicht funktioniert, überprüfen Sie bitte, dass sie nicht bereits von einer anderen Erweiterung oder einem Programm verwendet wird.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "So können Sie die Talkie oder ändern.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Eine bequeme Option ist, die Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Lesen Sie den Text aus der Zwischenablage in einem Talkie 🌟 Premium Programm — Talkie 🌟 Premium",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start stop",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start stop",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Wählen Sie den gewünschten Text auf einer beliebigen Webseite aus.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Hier sehen und testen Sie installierte Stimmen für jede Sprache in Ihrem Browser. 🌟 Premium Benutzer können auch ihre 🌟 Premium als Standard pro Sprache 🌟 Premium und Tonhöhe für jede Stimme ändern.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Hier sehen und testen Sie installierte Stimmen für jede Sprache in Ihrem Browser. Talkie 🌟 Premium Benutzer können auch ihre Talkie 🌟 Premium als Standard pro Sprache Talkie 🌟 Premium und Tonhöhe für jede Stimme ändern.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Stimmen: Wähle deinen Favoriten",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kann nicht auf den Talkie Text von dieser Art von Seite Talkie. Es ist eine ganz besondere Seite, und es gibt Sicherheitsbeschränkungen, die vom Browser eingefügt werden. Sie können auch Talkie , Text Talkie , dann klicken Sie mit der rechten Talkie darauf und wählen Talkie im Menü. Ich entschuldige mich für die Unannehmlichkeiten.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Es tut mir leid, aber das Lesen von Text aus der Zwischenablage ist eine Funktion Talkie Premium. Hast du das Upgrade in Betracht gezogen?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Es tut mir leid, aber dieser Webbrowser unterstützt das Lesen aus der Zwischenablage nicht. Noch nicht, zumindest. Bitte versuchen Sie es in einem Monat noch einmal!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie hat keine Berechtigung, aus der Zwischenablage zuzugreifen. Das ist ok, aber dann liest man die Zwischenablage Text wird nicht funktionieren.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Konnte keinen passenden Text in der Zwischenablage finden. Kannst du noch etwas anderes kopieren?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

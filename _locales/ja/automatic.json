@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "寄付ページを開く",
-    "original": "Open the donation page"
+    "message": "Talkie寄付ページ",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Talkieウェブサイトを開きます",
-    "original": "Open the Talkie website"
+    "message": "Talkieウェブサイト",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "ストアページを開く",
-    "original": "Open the store page"
+    "message": "Talkieストアページ",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Premiumストアページを開く",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premiumストアページ",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "クリップボードからの読み取り",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "読書開始/停止選択",
@@ -83,10 +87,6 @@
     "message": "USD 5を寄付する",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "自動言語検出。",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "特徴",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "言語ごとに独自のデフォルトボイスを選択します。あなたがシステムの声に疲れたら大丈夫です！",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "将来のPremiumアップデートは無料で含まれています。",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "クリップボードからテキストを読み込みます！任意のプログラムのどこからでもテキストをコピーし、それを読むにはTalkie Premiumを使用してください！",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "あなたは現在Talkieの無料版を使用していますが、利用できる機能は限られています。おそらくTalkie 🌟 Premiumはあなたのためのより良い選択でしょうか？",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "現在、Talkieのプレミアムバージョンを使用しており、すべての機能を利用できます。ありがとう、それは私の心を暖める！",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "あなたは現在Talkie 🌟 Premiumを使用しています。すべての機能を利用できます。ありがとう、それは私の心を暖める！",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkieには、 TalkieとTalkie 🌟 Premiumという2つのバージョンがあります。無料のバージョンはほとんどの使用例に適していますが、プレミアムバージョンには追加のオプションがあります。",
@@ -227,13 +227,17 @@
     "message": "使用法",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Talkie 🌟 Premiumでは、 Talkie 🌟 Premiumコピーされたテキストを読むことができます。ショートカットキーを使用して、ブラウザ外のどこからでもテキストを聴くことができます。 Talkie 🌟 Premiumボタンを右クリックするか、Webサイトの空き領域で右クリックして、 Talkie 🌟 Premiumからの読み取りを選択することもできます。",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "テキストを選択して右クリックし、メニューでTalkieを選択することもできます。この方法は、PDFファイルやブラウザの特別な種類のページでも機能します。",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "キーが機能しない場合は、別の内線番号で既に使用されていないことを確認してください。",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "ショートカットキーが機能しない場合は、別の内線番号またはプログラムで既に使用されていないことを確認してください。",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Talkieショートカットキーを確認または変更する方法。",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "便利なオプションは、 Talkieショートカットキーを使用することです。",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "どのプログラムでもクリップボードからテキストを読む — Talkie 🌟 Premium機能",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "起動停止",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "起動停止",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "任意のWebページで目的のテキストを選択します。",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "ここでは、ブラウザにインストールされた各言語の音声を確認し、テストすることができます。 🌟 Premiumユーザーは、お気に入りの声を言語ごとのデフォルトとして選択し、各声の速度とピッチを変更することもできます。",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "ここでは、ブラウザにインストールされた各言語の音声を確認し、テストすることができます。 Talkie 🌟 Premiumユーザーは、お気に入りの音声を言語ごとのデフォルトとして選択し、各音声の速度とピッチを変更することもできます。",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "ボイス：お気に入りを選択",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkieは、このタイプのページから選択したテキストにアクセスできません。これは非常に特殊なページで、ブラウザによってセキュリティの制限があります。また、テキストを選択して右クリックし、メニューでTalkieを選択することもできます。ご迷惑をおかけして申し訳ありません。",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "申し訳ありませんが、 Talkie Premiumからのテキストの読み取りはTalkie Premium機能です。アップグレードを検討しましたか？",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "申し訳ありませんが、このWebブラウザはクリップボードからの読み取りをサポートしていません。まだ、少なくとも。 1カ月ほどでもう一度お試しください！",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkieはクリップボードからアクセスする権限がありません。それはOKですが、クリップボードのテキストを読むことはできません。",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "クリップボードに適切なテキストが見つかりませんでした。何か他のものをコピーできますか？",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

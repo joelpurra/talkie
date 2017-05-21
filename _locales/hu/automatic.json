@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Nyissa meg a szervadományozás oldal",
-    "original": "Open the donation page"
+    "message": "A Talkie adományok oldal",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Nyissa meg a Talkie honlapján",
-    "original": "Open the Talkie website"
+    "message": "A Talkie honlap",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Nyissa meg a boltban oldal",
-    "original": "Open the store page"
+    "message": "A Talkie előadói oldal",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Nyissa meg a Premium előadói oldal",
-    "original": "Open the Premium store page"
+    "message": "A Talkie 🌟 Premium előadói oldal",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Olvasás a vágólapra",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Start/abba az olvasást kiválasztás",
@@ -83,10 +87,6 @@
     "message": "Adományok USD 5 most",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Jellemzők Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automatikus nyelvfelismerés.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Jellemzők",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Jellemzők Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Válassza ki a saját alapértelmezett hangját minden nyelven. Nagy ha elfárad a rendszer hangja!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Jövő Premium frissítéseket is ingyenes.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Beolvassa a szöveget a vágólapra! Csak másolja a szöveget bárhonnan bármilyen programot, és Talkie Premium olvasni!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Jelenleg az ingyenes változata Talkie , és egy korlátozott készlet jellemzői áll az Ön rendelkezésére. Talán Talkie 🌟 Premium lenne a jobb választás az Ön számára?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Ön jelenleg a prémium változata Talkie , és minden funkció elérhető az Ön számára. Köszönöm szépen, ez felmelegíti a szívem!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Jelenleg a Talkie 🌟 Premium , és minden funkció elérhető az Ön számára. Köszönöm szépen, ez felmelegíti a szívem!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie kétféle változatban: Talkie és Talkie 🌟 Premium. Az ingyenes változat is kiválóan alkalmas a legtöbb használati esetek, de a prémium változata további lehetőségeket kínál.",
@@ -227,13 +227,17 @@
     "message": "Használat",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "A Talkie 🌟 Premium , akkor olvassa el a szöveget a vágólapra másolt — használja a billentyű hallgatni szöveget bárhonnan kívül a böngészőt. Azt is a jobb gombbal a Talkie 🌟 Premium gombot, vagy egy üres területre a honlapon, és válassza olvasni vágólapra.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Azt is kiválaszthatja a szöveget, majd kattintson a jobb egérgombbal, és válassza Talkie a menüben. Így is működik PDF-fájlokat és néhány speciális típusú oldalakat a böngésző.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Ha a gomb nem működik, ellenőrizze, hogy nem a már használatban van egy másik kiterjesztése.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Ha a billentyű nem működik, ellenőrizze, hogy nem a már használatban van egy másik mellék vagy programot.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Hogyan lehet ellenőrizni, vagy megváltoztathatja a Talkie billentyűkombinációt.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Egy kényelmes megoldás az, hogy használja a Talkie gyorsbillentyűk:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Beolvassa a szöveget a vágólapra bármely program — Talkie 🌟 Premium funkció",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start/stop A",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start/stop A",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Válassza ki a kívánt szöveget bármely weboldalon.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Itt lehet látni és kipróbálni telepített hangokat az egyes nyelvek a böngészőben. 🌟 Premium felhasználók is kiválaszthatja kedvenc hangot az alapértelmezett nyelvenként, valamint a változás sebességét és távolságát az egyes hang.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Itt lehet látni és kipróbálni telepített hangokat az egyes nyelvek a böngészőben. Talkie 🌟 Premium felhasználók is kiválaszthatja kedvenc hangot az alapértelmezett nyelvenként, valamint a változás sebességét és távolságát az egyes hang.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Hangok: válassza ki a kedvenc",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie nem tudja elérni a kijelölt szöveget egy ilyen oldalra. Ez egy nagyon különleges oldal, és vannak biztonsági korlátozások hozott a böngészőben. Tudod is megpróbál jelölje ki a szöveget, majd kattintson a jobb egérgombbal, és válassza Talkie a menüben. Elnézést a kellemetlenségekért.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Sajnálom, de olvasás szöveg vágólapról egy Talkie Premium funkciót. Gondoltál már arra, korszerűsítése?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Sajnálom, de ez a böngésző nem támogatja olvasni a vágólapra. Még nem, legalább. Kérjük, próbálja újra egy hónap múlva!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie nincs jogosultsága hozzáférni a vágólap. Ez rendben van, de akkor olvassa a vágólap tartalmát nem fog működni.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Nem találtunk megfelelő szöveget a vágólapra. Tud próbálja másol valami mást?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

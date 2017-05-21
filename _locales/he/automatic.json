@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "פתח את דף התרומות",
-    "original": "Open the donation page"
+    "message": "הדף Talkie תרומות",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "פתח את האתר Talkie",
-    "original": "Open the Talkie website"
+    "message": "האתר Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "פתח את דף החנות",
-    "original": "Open the store page"
+    "message": "דף החנות Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "פתח את דף הדפים Premium",
-    "original": "Open the Premium store page"
+    "message": "דף החנות Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "קרא מהלוח",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "התחל/להפסיק קריאה הבחירה",
@@ -83,10 +87,6 @@
     "message": "לתרום 5 USD עכשיו",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "תכונות Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "זיהוי שפה אוטומטי.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "מאפיינים",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "תכונות ב- Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "בחר את קול ברירת המחדל שלך עבור כל שפה. נהדר אם אתה מתעייף קול המערכת!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "בעתיד Premium עדכונים כלולים בחינם.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "קרא טקסט מתוך הלוח! פשוט העתק טקסט מכל מקום ובכל תוכנית, והשתמש ב- Talkie Premium כדי לקרוא אותו!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "אתה משתמש כעת בגרסה Talkie של Talkie , וקבוצת תכונות מוגבלת זמינה עבורך. אולי Talkie 🌟 Premium תהיה בחירה טובה יותר עבורך?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "אתה משתמש כעת בגירסת הפרמיום של Talkie , וכל התכונות זמינות עבורך. תודה רבה, זה מחמם את לבי!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "אתה משתמש כעת ב- Talkie 🌟 Premium , וכל התכונות זמינות עבורך. תודה רבה, זה מחמם את לבי!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie מגיע בשתי גרסאות: Talkie ו- Talkie 🌟 Premium. הגרסה החינמית היא נהדרת עבור רוב המקרים להשתמש, אבל גרסת פרימיום מציעה אפשרויות נוספות.",
@@ -227,13 +227,17 @@
     "message": "נוֹהָג",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "ב- Talkie 🌟 Premium , תוכל לקרוא כל טקסט שהועתק ללוח שלך — השתמש בו עם מקש קיצור כדי להאזין לטקסט מכל מקום מחוץ לדפדפן. תוכל גם ללחוץ לחיצה ימנית על הלחצן Talkie 🌟 Premium , או באזור ריק של אתר, ולבחור מתוך הלוח.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "תוכל גם לבחור את הטקסט, ולאחר מכן לחץ עליו באמצעות לחצן העכבר הימני, ובחר באפשרות Talkie בתפריט. בדרך זו גם עובד קבצי PDF וכמה סוגים מיוחדים של דפים בדפדפן.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "אם המפתח אינו פועל, ודא שהוא אינו בשימוש כבר על ידי תוסף נוסף.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "אם מפתח הקיצור אינו פועל, ודא שהוא אינו בשימוש כבר על ידי תוסף או תוכנית אחרת.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "כיצד לבדוק או לשנות את מקשי הקיצור של Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "אפשרות נוחה לשימוש Talkie הקיצור Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "קרא טקסט מלוח בכל תוכנית — Talkie 🌟 Premium תכונה",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "התחל הפסק",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "התחל הפסק",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "בחר את הטקסט הרצוי בכל דף אינטרנט.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "כאן תוכל לראות ולבדוק קולות מותקנים עבור כל שפה בדפדפן שלך. 🌟 Premium משתמשים יכולים גם לבחור את הקול המועדף עליהם כברירת מחדל לכל שפה, וכן לשנות את מהירות הצליל ואת גובה הצליל עבור כל קול.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "כאן תוכל לראות ולבדוק קולות מותקנים עבור כל שפה בדפדפן שלך. Talkie 🌟 Premium משתמשים יכולים גם לבחור את הקול המועדף עליהם כברירת מחדל לכל שפה, כמו גם לשנות את המהירות ואת גובה הצליל עבור כל קול.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "קולות: בחר את המועדפים שלך",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie אינו יכול לגשת לטקסט שנבחר מסוג זה. זהו דף מיוחד מאוד, ויש מגבלות אבטחה לשים על ידי הדפדפן. תוכל גם לנסות לבחור טקסט, ולאחר מכן לחץ עליו לחיצה ימנית ובחר באפשרות Talkie בתפריט. אני מתנצל על אי הנוחות.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "אני מצטער, אבל קריאת טקסט מהלוח היא תכונה Talkie Premium. האם שקלתם שדרוג?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "אני מצטער, אבל דפדפן אינטרנט זה אינו תומך בקריאה מהלוח. עדיין לא, לפחות. נסה שוב בעוד חודש בערך!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie אין הרשאת גישה מהלוח. זה בסדר, אבל אז לקרוא את הטקסט הלוח לא יעבוד.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "לא ניתן למצוא טקסט מתאים בלוח. האם תוכל לנסות להעתיק משהו אחר?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

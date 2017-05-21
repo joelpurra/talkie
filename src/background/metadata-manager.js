@@ -133,4 +133,17 @@ export default class MetadataManager {
                 })
         );
     }
+
+    getOsType() {
+        return promiseTry(
+            () => browser.runtime.getPlatformInfo()
+                .then((platformInfo) => {
+                    if (platformInfo && typeof platformInfo.os === "string") {
+                        return platformInfo.os;
+                    }
+
+                    return null;
+                })
+        );
+    }
 }

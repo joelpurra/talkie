@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Abra a página de doação",
-    "original": "Open the donation page"
+    "message": "A página de Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Abra o site Talkie",
-    "original": "Open the Talkie website"
+    "message": "O site Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Abrir a página da loja",
-    "original": "Open the store page"
+    "message": "A página da loja Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Abra a página de loja Premium",
-    "original": "Open the Premium store page"
+    "message": "A página da loja Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Ler da área de transferência",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Iniciar/parar a leitura da selecção",
@@ -83,10 +87,6 @@
     "message": "Doar USD 5 agora",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Recursos em Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Detecção automática de idioma.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Características",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Recursos em Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Escolha sua própria voz padrão para cada idioma. Ótimo se você se cansar da voz do sistema!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Premium futuras Premium .",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Leia o texto da área de transferência! Basta copiar texto de qualquer lugar em qualquer programa, e use Talkie Premium para lê-lo!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Você está usando a versão gratuita de Talkie , e um conjunto limitado de recursos está disponível para você. Talvez Talkie 🌟 Premium seja uma escolha melhor para você?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Você está usando a versão premium de Talkie , e todos os recursos estão disponíveis para você. Muito obrigado, aquece meu coração!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Você está usando o Talkie 🌟 Premium , e todos os recursos estão disponíveis para você. Muito obrigado, aquece meu coração!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie vem em duas versões: Talkie e Talkie 🌟 Premium. A versão gratuita é excelente para a maioria dos casos de uso, mas a versão premium oferece opções adicionais.",
@@ -227,13 +227,17 @@
     "message": "Uso",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Em Talkie 🌟 Premium , você pode ler qualquer texto copiado para a área de transferência — use-o com uma tecla de atalho para ouvir texto de qualquer lugar fora do navegador. Você também pode clicar com o botão direito do mouse no botão Talkie 🌟 Premium , ou em uma área vazia de um site e selecionar ler da área de transferência.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Você também pode Talkie o texto, clique com o botão direito sobre ele e escolha Talkie no menu. Desta forma também funciona em arquivos PDF e alguns tipos especiais de páginas no navegador.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Se a chave não funcionar, verifique se ela ainda não está em uso por outra extensão.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Se a tecla de atalho não funcionar, verifique se ela ainda não está em uso por outra extensão ou programa.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Como Talkie ou alterar as teclas de atalho Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Uma opção conveniente é usar as teclas de atalho Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Ler texto da área de transferência em qualquer programa — Talkie 🌟 Premium recurso",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Iniciar/parar",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Iniciar/parar",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Selecione o texto desejado em qualquer página da web.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Aqui você pode ver e testar vozes instaladas para cada idioma em seu navegador. 🌟 Premium os usuários também podem 🌟 Premium sua voz favorita como o padrão por idioma, bem como mudar a 🌟 Premium e pitch para cada voz.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Aqui você pode ver e testar vozes instaladas para cada idioma em seu navegador. Talkie 🌟 Premium os usuários também podem Talkie 🌟 Premium sua voz favorita como o padrão por idioma, bem como mudar a Talkie 🌟 Premium e afinação para cada voz.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Vozes: selecione seu favorito",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie não pode acessar o texto Talkie deste tipo de página. É uma página muito especial, e há limitações de segurança colocadas pelo navegador. Você também pode tentar Talkie texto, clique com o botão direito sobre ele e escolha Talkie no menu. Desculpe pelo inconveniente.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Desculpe, mas a leitura de texto da área de transferência é um recurso Talkie Premium. Você já pensou em atualizar?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Desculpe, mas este navegador da Web não suporta a leitura da área de transferência. Ainda não, pelo menos. Tente novamente dentro de um mês ou assim!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie não tem permissão para acessar a partir da área de transferência. Isso é aprovado, mas lendo então o texto da prancheta não trabalhará.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Não foi possível encontrar o texto adequado na área de transferência. Você pode tentar copiar algo mais?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

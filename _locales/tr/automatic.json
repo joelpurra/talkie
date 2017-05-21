@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Bağış sayfasını açın",
-    "original": "Open the donation page"
+    "message": "Talkie bağış sayfası",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Talkie web sitesini açın",
-    "original": "Open the Talkie website"
+    "message": "Talkie web sitesi",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Mağaza sayfasını aç",
-    "original": "Open the store page"
+    "message": "Talkie mağaza sayfası",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Premium mağaza Premium açın",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium mağaza sayfası",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Panoya oku",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Seçimi okumayı başlat/durdur",
@@ -83,10 +87,6 @@
     "message": "Şimdi 5 USD bağışta bulunun",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Talkie &#39; Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Otomatik dil algılama.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Özellikler",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Talkie 🌟 Premium &#39; Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Her dil için kendi varsayılan sesinizi seçin. Sistem sesinden bıktığınızda harika!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Premium .",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Panoya metni okuyun! Herhangi bir Talkie Premium herhangi bir yerden metni Talkie Premium okumak için Talkie Premium kullanın!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Şu anda Talkie&#39;in ücretsiz sürümünü Talkie ve sınırlı bir dizi özellik kullanımınıza sunulmuştur. Belki Talkie 🌟 Premium sizin için daha iyi bir seçim olurdu?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Şu anda Talkie&#39;in premium sürümünü Talkie ve tüm özellikler kullanımınıza sunulmuştur. Çok teşekkür ederim, kalbimi ısıtır!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Şu anda Talkie 🌟 Premium Talkie 🌟 Premium ve tüm özellikler kullanımınıza sunulmuştur. Çok teşekkür ederim, kalbimi ısıtır!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie iki sürümden Talkie: Talkie ve Talkie 🌟 Premium. Ücretsiz sürümü çoğu kullanım ömrü için harika, ancak premium sürümde ek seçenekler bulunmaktadır.",
@@ -227,13 +227,17 @@
     "message": "kullanım",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Talkie 🌟 Premium , Talkie 🌟 Premium herhangi bir metni okuyabilirsiniz — tarayıcının herhangi bir yerindeki metni dinlemek için kısayol tuşu ile kullanın. Ayrıca, Talkie 🌟 Premium sağ Talkie 🌟 Premium veya bir web sitesinin boş bir alanında panodan okumayı seçebilirsiniz.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Metni de Talkie , ardından metni sağ tıklayıp menüden Talkie öğesini Talkie. Bu yol da PDF dosyalarında ve bazı özel sayfalar türünde tarayıcıda çalışır.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Anahtar işe yaramazsa, lütfen başka bir uzantı tarafından kullanılmadığını kontrol edin.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Kısayol tuşu çalışmazsa, lütfen başka bir dahili program veya program tarafından kullanılmadığını kontrol edin.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Talkie kısayol Talkie kontrol etme veya Talkie .",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Uygun bir seçenek Talkie kısayol Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Herhangi bir programda panoya metni okuyun — Talkie 🌟 Premium feature",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Başla dur",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Başla dur",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Herhangi bir web sayfasında istediğiniz metni seçin.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Burada, tarayıcınızda her dilde yüklü sesleri görebilir ve test edebilirsiniz. 🌟 Premium , dil başına 🌟 Premium olarak en 🌟 Premium , ayrıca her ses için hız ve perde de 🌟 Premium .",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Burada, tarayıcınızda her dilde yüklü sesleri görebilir ve test edebilirsiniz. Talkie 🌟 Premium , dil başına Talkie 🌟 Premium olarak en Talkie 🌟 Premium , ayrıca her ses için hız ve perde de Talkie 🌟 Premium .",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Sesler: favori seç",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie , bu tür bir sayfadan seçilen metne Talkie. Bu çok özel bir sayfadır ve tarayıcı tarafından güvenlik sınırlamaları koyulmuştur. Metni seçip sağ Talkie ve menüden Talkie öğesini Talkie. Ben rahatsızlık için özür dilerim.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Üzgünüm, ancak panelden metin okumak bir Talkie Premium. Yeni sürüme geçmeyi düşündün mü?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Üzgünüm ama bu web tarayıcısı panodaki okumayı desteklemez. Henüz değil, en azından. Lütfen bir ay sonra tekrar deneyin!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie sahip değil. Her şey tamam, ancak panoya metnini okumak işe yaramayacak.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Panoya uygun metin bulunamadı. Başka bir şey kopyalamayı deneyebilir misin?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

@@ -85,6 +85,11 @@ import Chain from "./chain";
 
 import TalkieBackground from "./talkie-background";
 
+import PermissionsManager from "./permissions-manager";
+
+import ClipboardManager from "./clipboard-manager";
+import ReadClipboardManager from "./read-clipboard-manager";
+
 import ContextMenuManager from "./context-menu-manager";
 
 import ShortcutKeyManager from "./shortcut-key-manager";
@@ -124,6 +129,9 @@ function main() {
     // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
     const speechChain = new Chain();
     const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute);
+    const permissionsManager = new PermissionsManager();
+    const clipboardManager = new ClipboardManager(talkieBackground, permissionsManager);
+    const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -131,6 +139,7 @@ function main() {
         // "_execute_browser_action": talkieBackground.startStopSpeakSelectionOnPage(),
         "start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
         "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
+        "read-clipboard": () => readClipboardManager.startSpeaking(),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
         "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
         "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
@@ -138,7 +147,7 @@ function main() {
     };
 
     const commandHandler = new CommandHandler(commandMap);
-    const contextMenuManager = new ContextMenuManager(commandHandler);
+    const contextMenuManager = new ContextMenuManager(commandHandler, metadataManager);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
     const suspensionConnectorManager = new SuspensionConnectorManager();
@@ -177,13 +186,14 @@ function main() {
                 () => Promise.resolve()
                     .then(() => storageManager.upgradeIfNecessary())
                     .then(() => initializeOptionsDefaults())
+                    // NOTE: removing all context menus in case the menus have changed since the last install/update.
+                    .then(() => contextMenuManager.removeAll())
                     .then(() => contextMenuManager.createContextMenus())
                     .catch((error) => logError("onExtensionInstalledHandler", error))
             );
 
         const onExtensionInstalledFallback = () => promiseTry(
-                () => contextMenuManager.removeAll()
-                    .then(() => onExtensionInstalledHandler())
+                () => onExtensionInstalledHandler()
                     .catch((error) => logError("onExtensionInstalledFallback", error))
             );
 
@@ -198,6 +208,10 @@ function main() {
             onExtensionInstalledFallback();
         }
     }());
+
+    // NOTE: cache listeners so they can be added and removed by reference before/after speaking.
+    const onTabRemovedListener = loggedPromise("onRemoved", () => talkieBackground.onTabRemovedHandler());
+    const onTabUpdatedListener = loggedPromise("onUpdated", () => talkieBackground.onTabUpdatedHandler());
 
     // TODO: put initialization promise on the root chain?
     return Promise.resolve()
@@ -251,6 +265,12 @@ function main() {
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
 
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onRemoved.addListener(onTabRemovedListener)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onRemoved.removeListener(onTabRemovedListener)),
+
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
+
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
                 broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length)),
                 broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
@@ -264,9 +284,6 @@ function main() {
                 });
         })
         .then(() => {
-            browser.tabs.onRemoved.addListener(loggedPromise("onRemoved", () => talkieBackground.onTabRemovedHandler()));
-            browser.tabs.onUpdated.addListener(loggedPromise("onUpdated", () => talkieBackground.onTabUpdatedHandler()));
-
             // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
             if (browser.runtime.onSuspend) {
@@ -310,10 +327,26 @@ function main() {
             window.getAllVoices = () => talkieSpeaker.getAllVoices();
             window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
             window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
-            window.startSpeakFromFrontend = (text, voice) => talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            window.startSpeakFromFrontend = (frontendText, frontendVoice) => {
+                // NOTE: not sure if copying these variables have any effect.
+                // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+                const text = "" + frontendText;
+                const voice = {
+                    name: "" + frontendVoice.name,
+                    lang: "" + frontendVoice.lang,
+                    rate: 0 + frontendVoice.rate,
+                    pitch: 0 + frontendVoice.pitch,
+                };
+
+                talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            };
+
             window.getVersionName = () => metadataManager.getVersionName();
             window.isFreeVersion = () => metadataManager.isFreeVersion();
             window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+            window.getSystemType = () => metadataManager.getSystemType();
+            window.getOsType = () => metadataManager.getOsType();
+
             window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
             window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
             window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);

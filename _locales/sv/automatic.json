@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Öppna donationssida",
-    "original": "Open the donation page"
+    "message": "Talkie donationssidan",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öppna Talkie webbplats",
-    "original": "Open the Talkie website"
+    "message": "Den Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Öppna butikssidan",
-    "original": "Open the store page"
+    "message": "Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Öppna Premium butikssidan",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Läs från urklippet",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Start/stopp läsa val",
@@ -83,10 +87,6 @@
     "message": "Donera USD 5 nu",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Funktioner i Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automatisk språkidentifiering.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Funktioner",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Funktioner i Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Välj din egen standard röst för varje språk. Bra om du tröttnat på system röst!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Framtida Premium uppdateringar ingår gratis.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Läs text från klippbordet! Kopiera text från var som helst i något program och använd Talkie Premium att läsa det!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Du använder för närvarande gratisversionen av Talkie och en begränsad uppsättning funktioner är tillgängliga för dig. Kanske Talkie 🌟 Premium skulle vara ett bättre val för dig?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Du använder för närvarande premiumversionen av Talkie och alla funktioner är tillgängliga för dig. Tack så mycket, det värmer mitt hjärta!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Du använder för Talkie 🌟 Premium , och alla funktioner är tillgängliga för dig. Tack så mycket, det värmer mitt hjärta!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie finns i två versioner: Talkie och Talkie 🌟 Premium. Den fria versionen är bra för de flesta användningsfall, men premien versionen erbjuder ytterligare alternativ.",
@@ -227,13 +227,17 @@
     "message": "Användande",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "I Talkie 🌟 Premium kan du läsa vilken text som helst som kopieras till ditt urklipp — använd den med en genvägsknapp för att lyssna på text från var som helst utanför webbläsaren. Du kan också Talkie 🌟 Premium knappen Talkie 🌟 Premium eller i ett tomt område på en webbplats, och välj läs från klippbordet.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kan också markera texten, högerklicka på den och välj Talkie i menyn. På så sätt fungerar även i PDF-filer och några särskilda typer av sidor i webbläsaren.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Om nyckeln inte fungerar, kontrollera att det inte redan används av en annan anknytning.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Om genvägsnyckeln inte fungerar, kontrollera att den inte redan används av en annan anknytning eller ett program.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Hur kan man kontrollera eller ändra Talkie kortkommandon.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Ett bekvämt alternativ är att använda Talkie kortkommandon:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Läs text från Urklipp i något program — Talkie 🌟 Premium funktion",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start/stopp",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start/stopp",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Välj önskad text på en webbsida.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Här kan du se och testa installerade röster för varje språk i webbläsaren. 🌟 Premium användare kan också välja sin favorit röst som standard per språk, samt ändra hastighet och tonhöjd för varje ljud.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Här kan du se och testa installerade röster för varje språk i din webbläsare. Talkie 🌟 Premium kan också välja sin Talkie 🌟 Premium som standard per språk, samt ändra Talkie 🌟 Premium och tonhöjd för varje röst.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Röster: välj din favorit",
@@ -404,5 +420,21 @@
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida. Det är en mycket speciell sida, och det finns säkerhetsbegränsningar in i av webbläsaren. Du kan också prova att markera text och sedan högerklicka på den och välj Talkie i menyn. Jag är ledsen för besväret.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Jag är ledsen, men läsning av text från Urklipp är en Talkie Premium funktion. Har du övervägt att uppgradera?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Jag är ledsen, men den här webbläsaren stöder inte läsning från urklippet. Inte än, åtminstone. Försök igen om en månad eller så!",
+    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie har inte behörighet att komma åt ur urklippet. Det är okej, men då läser urklippet texten inte fungerar.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Det gick inte att hitta lämplig text i Urklippet. Kan du försöka kopiera något annat?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

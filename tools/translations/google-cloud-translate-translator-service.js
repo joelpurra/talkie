@@ -1,5 +1,27 @@
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://joelpurra.com/projects/talkie/>
+
+Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 const assert = require("assert");
 const Promise = require("bluebird");
+
+const clone = require("clone");
 
 const GoogleTranslate = require("@google-cloud/translate");
 const striptags = require("striptags");
@@ -26,10 +48,11 @@ export default class GoogleCloudTranslateTranslator {
         });
 
         return Promise.try(() => {
-            const keys = Object.keys(original);
+            const messages = clone(original);
+            const keys = Object.keys(messages);
 
             const preparedMessages = keys.map((key) => {
-                const preparedMessage = original[key].message
+                const preparedMessage = messages[key].message
                         .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
                         .replace(/Talkie 🌟 Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_STAR_PREMIUM___</span>")
                         .replace(/🌟 Premium/g, "<span class=\"notranslate\">___TEMP_STAR_PREMIUM___</span>")
@@ -82,13 +105,11 @@ export default class GoogleCloudTranslateTranslator {
                 })
                 .then((translateDirtyMessages) => {
                     keys.forEach((key, index) => {
-                        // NOTE: modifying the input object.
-                        // TODO: don't modify the input object.
-                        original[key].original = original[key].message;
-                        original[key].message = translateDirtyMessages[index];
+                        messages[key].original = messages[key].message;
+                        messages[key].message = translateDirtyMessages[index];
                     });
 
-                    return original;
+                    return messages;
                 });
         });
     }
