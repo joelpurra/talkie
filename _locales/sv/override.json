@@ -15,24 +15,24 @@
     "translated-from": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Öppna donationssidan",
-    "original": "Open the donation page",
-    "translated-from": "Open the donation page"
+    "message": "Talkies donationssida",
+    "original": "The Talkie donations page",
+    "translated-from": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Öppna Talkie-webbplatsen",
-    "original": "Open the Talkie website",
-    "translated-from": "Open the Talkie website"
+    "message": "Talkies webbplats",
+    "original": "The Talkie website",
+    "translated-from": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Öppna butikssidan",
-    "original": "Open the store page",
-    "translated-from": "Open the store page"
+    "message": "Talkies butikssida",
+    "original": "The Talkie store page",
+    "translated-from": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Öppna Premium-butikssidan",
-    "original": "Open the Premium store page",
-    "translated-from": "Open the Premium store page"
+    "message": "Talkie 🌟 Premiums butikssida",
+    "original": "The Talkie 🌟 Premium store page",
+    "translated-from": "The Talkie 🌟 Premium store page"
   },
   "commandStartStopDescription": {
     "message": "Börja/sluta läsa upp markerad text",
@@ -101,7 +101,7 @@
   },
   "frontend_featuresFreeHeading": {
     "message": "Funktionalitet i Talkie",
-    "original": "Features in Talkie",
+    "original": null,
     "translated-from": "Features in Talkie"
   },
   "frontend_featuresFree_List01": {
@@ -146,7 +146,7 @@
   },
   "frontend_featuresPremiumHeading": {
     "message": "Funktionalitet i Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium",
+    "original": null,
     "translated-from": "Features in Talkie 🌟 Premium"
   },
   "frontend_featuresPremium_List01": {
@@ -176,7 +176,7 @@
   },
   "frontend_featuresVersion_Premium": {
     "message": "Du använder för närvarande premiumversionen av Talkie och all funktionalitet är tillgängliga för dig. Tack så mycket, det värmer mitt hjärta!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!",
     "translated-from": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
@@ -276,7 +276,7 @@
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan använda av något annat tillägg.",
-    "original": "If the key does not work, please check that it is not already in use by another extension.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program.",
     "translated-from": "If the key does not work, please check that it is not already in use by another extension."
   },
   "frontend_usageShortcutKeyAlternative04": {
@@ -311,7 +311,7 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice.",
     "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {

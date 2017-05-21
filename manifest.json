@@ -23,6 +23,9 @@
     "activeTab",
     "contextMenus"
   ],
+  "optional_permissions": [
+    "clipboardRead"
+  ],
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
@@ -36,6 +39,14 @@
         "default": "Alt+Shift+A"
       },
       "description": "__MSG_commandStartStopDescription__"
+    },
+    "read-clipboard": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+1",
+        "mac": "Command+Shift+1"
+      },
+      "description": "__MSG_commandReadClipboardDescription__",
+      "global": true
     },
     "open-website-main": {
       "suggested_key": {

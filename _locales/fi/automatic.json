@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Avaa lahjoitussivulta",
-    "original": "Open the donation page"
+    "message": "Talkie lahjoitukset sivu",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Avaa Talkie verkkosivuilla",
-    "original": "Open the Talkie website"
+    "message": "Talkie verkkosivusto",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Avaa myymäläsivun",
-    "original": "Open the store page"
+    "message": "Talkie -kauppasivua",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Avaa Premium myymäläsivun",
-    "original": "Open the Premium store page"
+    "message": "Talkie 🌟 Premium -kauppasivua",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Lue leikepöydältä",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Aloita/lopettaa lukeminen valinta",
@@ -83,10 +87,6 @@
     "message": "Lahjoita USD 5 nyt",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Ominaisuudet Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "Automaattisen kielen tunnistamisen.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "ominaisuudet",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Ominaisuudet Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Valitse oma oletusääntä kullekin kielelle. Hienoa, jos väsyt järjestelmän ääni!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Tulevaisuuden Premium päivitykset mukana ilmaiseksi.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Lue leikepöydän! Vain kopioida tekstiä mistä tahansa missä tahansa ohjelmassa, ja käyttää Talkie Premium lukea sitä!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Käytät tällä hetkellä ilmainen versio Talkie , ja rajallinen joukko ominaisuuksia on käytössäsi. Ehkä Talkie 🌟 Premium olisi parempi valinta?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Käytät tällä hetkellä premium versiota Talkie , ja kaikki toiminnot ovat käytettävissä. Paljon kiitoksia, se lämmittää sydäntäni!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Käytät tällä hetkellä käyttävät Talkie 🌟 Premium , ja kaikki toiminnot ovat käytettävissä. Paljon kiitoksia, se lämmittää sydäntäni!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie on kaksi versiota: Talkie ja Talkie 🌟 Premium. Ilmainen versio on hyvä useimmissa käyttötapauksia, mutta maksullinen versio tarjoaa uusia vaihtoehtoja.",
@@ -227,13 +227,17 @@
     "message": "Käyttö",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "Vuonna Talkie 🌟 Premium , voit lukea mitään tekstiä leikepöydälle kopioituja — käytä sitä pikanäppäin kuunnella teksti mistä tahansa selaimen ulkopuolelle. Voit myös oikealla klikkaa Talkie 🌟 Premium painiketta, tai tyhjää aluetta sivuston ja valitse lukea leikepöydältä.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Voit myös valita tekstin, sitten oikealle klikkaa sitä ja valitse Talkie valikosta. Näin toimii myös PDF-tiedostoja ja joitakin erityisiä tyyppejä sivuja selaimessa.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Jos näppäin ei toimi, tarkista, että se ei ole jo käytössä toisen laajennus.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Jos pikanäppäin ei toimi, tarkista, että se ei ole jo käytössä toisen laajennuksen tai ohjelman.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Miten tarkistaa tai muuttaa Talkie pikanäppäimiä.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Sopiva vaihtoehto on käyttää Talkie pikanäppäimistä:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Lukea tekstiä leikepöydältä mihinkään ohjelmaan — Talkie 🌟 Premium ominaisuus",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start/Stop",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start/Stop",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Valitse haluamasi teksti Web-sivulta.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Täällä voit nähdä ja testata asennetut äänet kullekin kielelle selaimessa. 🌟 Premium käyttäjät voivat myös valita suosikki äänensä oletukseksi kieltä kohden, sekä muutoksen nopeus ja piki jokaisen äänen.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Täällä voit nähdä ja testata asennetut äänet kullekin kielelle selaimessa. Talkie 🌟 Premium käyttäjät voivat myös valita suosikki äänensä oletukseksi kieltä kohden, sekä muutoksen nopeus ja piki jokaisen äänen.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voices: valitse suosikkisi",

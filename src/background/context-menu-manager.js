@@ -27,53 +27,111 @@ import {
 } from "../shared/log";
 
 export default class ContextMenuManager {
-    constructor(commandHandler) {
+    constructor(commandHandler, metadataManager) {
         this.commandHandler = commandHandler;
+        this.metadataManager = metadataManager;
 
-        this.contextMenuOptionsCollection = {
-            selectionContextMenuStartStop: {
-                id: "talkie-context-menu-start-stop",
-                title: browser.i18n.getMessage("contextMenuStartStopText"),
-                contexts: [
-                    "selection",
-                ],
+        if (!isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT) && browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0) {
+            this.actionMenuLimit = browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT;
+        } else {
+            this.actionMenuLimit = Number.MAX_SAFE_INTEGER;
+        }
+
+        this.contextMenuOptionsCollection = [
+            {
+                free: true,
+                premium: true,
+                chrome: true,
+                webextension: true,
+                item: {
+                    id: "talkie-context-menu-start-stop",
+                    title: browser.i18n.getMessage("contextMenuStartStopText"),
+                    contexts: [
+                        "selection",
+                    ],
+                },
             },
-            buttonContextMenuStartStop: {
-                id: "start-stop",
-                title: browser.i18n.getMessage("commandStartStopDescription"),
-                contexts: [
-                    "browser_action",
-                ],
+            {
+                free: true,
+                premium: true,
+                chrome: true,
+                webextension: true,
+                item: {
+                    id: "start-stop",
+                    title: browser.i18n.getMessage("commandStartStopDescription"),
+                    contexts: [
+                        "browser_action",
+                    ],
+                },
             },
-            buttonContextMenuOpenWebsiteMain: {
-                id: "open-website-main",
-                title: browser.i18n.getMessage("commandOpenWebsiteMainDescription"),
-                contexts: [
-                    "browser_action",
-                ],
+            {
+                free: true,
+                premium: true,
+                chrome: true,
+                // TODO: enable after Firefox 55 has landed?
+                webextension: false,
+                item: {
+                    id: "read-clipboard",
+                    title: browser.i18n.getMessage("commandReadClipboardDescription"),
+                    contexts: [
+                        "browser_action",
+                        "page",
+                    ],
+                },
             },
-            buttonContextMenuOpenWebsiteStoreFree: {
-                id: "open-website-store-free",
-                title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Free"),
-                contexts: [
-                    "browser_action",
-                ],
+            {
+                free: true,
+                premium: true,
+                chrome: true,
+                webextension: true,
+                item: {
+                    id: "buttonContextMenuSeparator01",
+                    type: "separator",
+                    contexts: [
+                        "browser_action",
+                    ],
+                },
             },
-            buttonContextMenuOpenWebsiteStorePremium: {
-                id: "open-website-store-premium",
-                title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Premium"),
-                contexts: [
-                    "browser_action",
-                ],
+            {
+                free: true,
+                premium: true,
+                chrome: true,
+                webextension: true,
+                item: {
+                    id: "open-website-main",
+                    title: browser.i18n.getMessage("commandOpenWebsiteMainDescription"),
+                    contexts: [
+                        "browser_action",
+                    ],
+                },
             },
-            buttonContextMenuOpenWebsiteDonate: {
-                id: "open-website-donate",
-                title: browser.i18n.getMessage("commandOpenWebsiteDonateDescription"),
-                contexts: [
-                    "browser_action",
-                ],
+            {
+                free: true,
+                premium: false,
+                chrome: true,
+                webextension: true,
+                item: {
+                    id: "open-website-store-premium",
+                    title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Premium"),
+                    contexts: [
+                        "browser_action",
+                    ],
+                },
             },
-        };
+            {
+                free: true,
+                premium: false,
+                chrome: true,
+                webextension: true,
+                item: {
+                    id: "open-website-donate",
+                    title: browser.i18n.getMessage("commandOpenWebsiteDonateDescription"),
+                    contexts: [
+                        "browser_action",
+                    ],
+                },
+            },
+        ];
     }
 
     removeAll() {
@@ -131,7 +189,23 @@ export default class ContextMenuManager {
                     () => {
                         const id = info.menuItemId;
 
-                        if (id === this.contextMenuOptionsCollection.selectionContextMenuStartStop.id) {
+                        const selectionContextMenuStartStop = this.contextMenuOptionsCollection
+                            .reduce(
+                                (prev, obj) => {
+                                    if (obj.item.id === "talkie-context-menu-start-stop") {
+                                        return obj;
+                                    }
+
+                                    return prev;
+                                },
+                                null);
+
+                        // TODO: use assertions?
+                        if (!selectionContextMenuStartStop) {
+                            throw new Error("Not found: selectionContextMenuStartStop");
+                        }
+
+                        if (id === selectionContextMenuStartStop.item.id) {
                             const selection = info.selectionText || null;
 
                             if (!selection || typeof selection !== "string" || selection.length === 0) {
@@ -157,13 +231,24 @@ export default class ContextMenuManager {
     createContextMenus() {
         return promiseTry(
             () => {
-                const contextMenuOptionsCollectionPromises = Object.keys(this.contextMenuOptionsCollection).map((contextMenuOptionsCollectionKey) => {
-                    const contextMenuOption = this.contextMenuOptionsCollection[contextMenuOptionsCollectionKey];
+                return Promise.all([
+                    this.metadataManager.getVersionType(),
+                    this.metadataManager.getSystemType(),
+                ])
+                    .then(([versionType, systemType]) => {
+                        const applicableContextMenuOptions = this.contextMenuOptionsCollection
+                            .filter((contextMenuOption) => contextMenuOption[versionType] === true && contextMenuOption[systemType] === true);
 
-                    return this.createContextMenu(contextMenuOption);
-                });
+                        // // TODO: group by selected contexts before checking against limit.
+                        // if (applicableContextMenuOptions > this.actionMenuLimit) {
+                        //     throw new Error("Maximum number of menu items reached.");
+                        // }
 
-                return Promise.all(contextMenuOptionsCollectionPromises);
+                        const contextMenuOptionsCollectionPromises = applicableContextMenuOptions
+                            .map((contextMenuOption) => this.createContextMenu(contextMenuOption.item));
+
+                        return Promise.all(contextMenuOptionsCollectionPromises);
+                    });
             }
         );
     }

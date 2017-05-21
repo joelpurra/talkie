@@ -12,20 +12,24 @@
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteDonateDescription": {
-    "message": "Aprire la pagina delle donazioni",
-    "original": "Open the donation page"
+    "message": "La pagina Talkie Talkie",
+    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Aprire il Talkie sito",
-    "original": "Open the Talkie website"
+    "message": "Il sito web Talkie",
+    "original": "The Talkie website"
   },
   "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Aprire la pagina del negozio",
-    "original": "Open the store page"
+    "message": "La pagina del negozio Talkie",
+    "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Aprire la Premium pagina del negozio",
-    "original": "Open the Premium store page"
+    "message": "La pagina del negozio Talkie 🌟 Premium",
+    "original": "The Talkie 🌟 Premium store page"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Leggete dagli Appunti",
+    "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Start/smettere di leggere selezione",
@@ -83,10 +87,6 @@
     "message": "Dona USD 5 ora",
     "original": "Donate $$5 now"
   },
-  "frontend_featuresFreeHeading": {
-    "message": "Caratteristiche in Talkie",
-    "original": "Features in Talkie"
-  },
   "frontend_featuresFree_List01": {
     "message": "rilevamento automatico della lingua.",
     "original": "Automatic language detection."
@@ -119,10 +119,6 @@
     "message": "Caratteristiche",
     "original": "Features"
   },
-  "frontend_featuresPremiumHeading": {
-    "message": "Caratteristiche in Talkie 🌟 Premium",
-    "original": "Features in Talkie 🌟 Premium"
-  },
   "frontend_featuresPremium_List01": {
     "message": "Scegliere la propria voce di default per ogni lingua. Ottimo se siete stanchi della voce di sistema!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
@@ -139,13 +135,17 @@
     "message": "Future Premium aggiornamenti inclusi gratuitamente.",
     "original": "Future Premium updates included for free."
   },
+  "frontend_featuresPremium_List05": {
+    "message": "Leggere il testo negli Appunti! Basta copiare il testo da Talkie Premium in Talkie Premium e Talkie Premium per leggerlo!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
   "frontend_featuresVersion_Free": {
     "message": "Stai utilizzando la versione gratuita di Talkie , e una serie limitata di funzioni è a vostra disposizione. Forse Talkie 🌟 Premium sarebbe una scelta migliore per voi?",
     "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Stai utilizzando la versione premium di Talkie , e tutte le funzioni sono a vostra disposizione. Grazie mille, mi scalda il cuore!",
-    "original": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Stai utilizzando il Talkie 🌟 Premium e tutte le funzionalità sono a vostra disposizione. Grazie mille, mi riscalda il cuore!",
+    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie è disponibile in due versioni: Talkie e Talkie 🌟 Premium. La versione gratuita è grande per la maggior parte dei casi d&#39;uso, ma la versione premium offre opzioni aggiuntive.",
@@ -227,13 +227,17 @@
     "message": "uso",
     "original": "Usage"
   },
+  "frontend_usageReadclipboard": {
+    "message": "In Talkie 🌟 Premium , puoi leggere Talkie 🌟 Premium testo copiato negli appunti: usa un tasto di scelta rapida per ascoltare il testo da qualsiasi parte del browser. Puoi anche fare clic con il pulsante destro del mouse sul pulsante Talkie 🌟 Premium o in un&#39;area vuota di un sito web e selezionare la lettura negli appunti.",
+    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "È inoltre possibile selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu. In questo modo funziona anche in file PDF e di alcuni tipi speciali di pagine nel browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Se la chiave non funziona, si prega di controllare che non sia già in uso da un altro interno.",
-    "original": "If the key does not work, please check that it is not already in use by another extension."
+    "message": "Se la chiave di scelta rapida non funziona, verificare che non sia già in uso da un&#39;altra estensione o un programma.",
+    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "Come controllare o modificare le Talkie tasti di scelta rapida.",
@@ -242,6 +246,18 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Un&#39;opzione conveniente è quello di utilizzare i Talkie tasti di scelta rapida:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Leggete il testo da appunti in Talkie 🌟 Premium — Talkie 🌟 Premium feature",
+    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Start/stop",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Start/stop",
+    "original": "Start/stop"
   },
   "frontend_usageStep01": {
     "message": "Selezionare il testo desiderato in qualsiasi pagina web.",
@@ -260,8 +276,8 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Qui potete vedere e provare le voci installate per ogni lingua nel tuo browser. 🌟 Premium gli utenti possono anche selezionare la loro voce preferita come predefinita per lingua, così come la velocità del cambiamento e intonazione per ogni voce.",
-    "original": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "message": "Qui puoi vedere e testare voci installate per ogni lingua nel tuo browser. Talkie 🌟 Premium utenti di Talkie 🌟 Premium possono anche Talkie 🌟 Premium loro voce Talkie 🌟 Premium per lingua, nonché la velocità e l&#39;inclinazione di ogni voce.",
+    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voices: selezionare il tuo preferito",
