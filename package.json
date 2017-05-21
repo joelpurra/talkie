@@ -1,7 +1,7 @@
 {
   "name": "talkie",
   "private": true,
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Text-to-speech (TTS) browser extension button.",
   "scripts": {
     "clean": "rimraf package/ && rimraf dist/ && rimraf web-ext-artifacts/ && rimraf lib/ && rimraf _locales/*/*.json~  _locales/*/messages.json  _locales/*/messages.premium.json",
@@ -38,10 +38,10 @@
     "run:firefox:premium": "web-ext --source-dir=package/webextension-premium/ run --browser-console --start-url 'https://www.wikipedia.org/'",
     "prepackage": "npm run --silent rebuild && npm run --silent test && npm run --silent messages:count",
     "package": "npm run --silent package:chrome:free && npm run --silent package:webextension:free && npm run --silent package:chrome:premium && npm run --silent package:webextension:premium",
-    "package:chrome:free": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/chrome/ build --ignore-files ./resources/style/options.css ./resources/style/shared.css &&  mv \"web-ext-artifacts/talkie-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-chrome-free.zip\"",
-    "package:chrome:premium": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/chrome-premium/ build --ignore-files ./resources/style/options.css ./resources/style/shared.css &&  mv \"web-ext-artifacts/talkie_premium-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-chrome-premium.zip\"",
-    "package:webextension:free": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/webextension/ build --ignore-files ./resources/style/options.css ./resources/style/shared.css &&  mv \"web-ext-artifacts/talkie-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-webextension-free.zip\"",
-    "package:webextension:premium": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/webextension-premium/ build --ignore-files ./resources/style/options.css ./resources/style/shared.css &&  mv \"web-ext-artifacts/talkie_premium-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-webextension-premium.zip\"",
+    "package:chrome:free": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/chrome/ build &&  mv \"web-ext-artifacts/talkie-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-chrome-free.zip\"",
+    "package:chrome:premium": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/chrome-premium/ build &&  mv \"web-ext-artifacts/talkie_premium-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-chrome-premium.zip\"",
+    "package:webextension:free": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/webextension/ build &&  mv \"web-ext-artifacts/talkie-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-webextension-free.zip\"",
+    "package:webextension:premium": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/webextension-premium/ build &&  mv \"web-ext-artifacts/talkie_premium-${npm_package_version}.zip\" \"talkie-joelpurra.com-${npm_package_version}-webextension-premium.zip\"",
     "version:get": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/v_v_ p'",
     "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file:free -- manifest.json && npm run --silent version:update:file -- package.json && git add manifest.json package.json && git commit -m \"${TALKIE_VERSION}\"",
     "version:update:file": "json -Ie \"this.version='${TALKIE_VERSION}'\" -f",
