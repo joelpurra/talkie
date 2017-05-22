@@ -10,7 +10,7 @@
       "shortcut-keys": "https://joelpurra.com/projects/talkie/#usage",
       "support-feedback": "https://joelpurra.com/support/",
       "chromewebstore-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-      "chromewebstore-premium": "https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo",
+      "chromewebstore-premium": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo",
       "firefox-amo-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
       "firefox-amo-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
@@ -33,9 +33,9 @@
   "premium": {
     "chrome": {
       "urls": {
-        "rate": "https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo/reviews",
-        "store": "https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo",
-        "support-feedback": "https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo/support"
+        "rate": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo/reviews",
+        "store": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo",
+        "support-feedback": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo/support"
       }
     },
     "webextension": {
@@ -48,7 +48,7 @@
   "chrome": {
     "urls": {
       "store-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-      "store-premium": "https://chrome.google.com/webstore/detail/talkie/madmpgibncancdmkjflnifcdakndkngo"
+      "store-premium": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo"
     }
   },
   "webextension": {
