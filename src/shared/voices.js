@@ -29,9 +29,8 @@ import {
 export const getVoices = () => promiseTry(
     () => {
         return getBackgroundPage()
-            .then((background) => {
-                const voices = background.getAllVoices();
-
+            .then((background) => background.getAllVoices())
+            .then((voices) => {
                 if (!voices || voices.length === 0) {
                     throw new Error("The browser does not have any voices installed.");
                 }

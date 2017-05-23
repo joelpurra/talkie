@@ -80,11 +80,11 @@ const filterElementsWithAttributesPrefixAndGroupPerSuffix = (elements, attribute
 
 const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) => promiseTry(
     () => {
-        dualLogger.dualLogDebug("Start", "handleElementsPerAttributePrefix", attributePrefix);
+        dualLogger.dualLogTrace("Start", "handleElementsPerAttributePrefix", attributePrefix);
 
         const suffixesAndElements = filterElementsWithAttributesPrefixAndGroupPerSuffix(elements, attributePrefix);
 
-        dualLogger.dualLogDebug("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
+        dualLogger.dualLogTrace("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
 
         const attributeSuffixes = Object.keys(suffixesAndElements);
 
@@ -104,7 +104,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
 
                     return handler(element, attributeSuffix, attributeValue)
                         .then((result) => {
-                            dualLogger.dualLogDebug("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
+                            dualLogger.dualLogTrace("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
 
                             return result;
                         })
@@ -121,7 +121,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
 
         return Promise.all(attributeSuffixPromises)
             .then((result) => {
-                dualLogger.dualLogDebug("Done", "handleElementsPerAttributePrefix", attributePrefix);
+                dualLogger.dualLogTrace("Done", "handleElementsPerAttributePrefix", attributePrefix);
 
                 return result;
             })
@@ -219,7 +219,7 @@ const addLinkClickHandlers = () => promiseTry(
 
             // NOTE: skipping non-https urls -- presumably empty hrefs for special links.
             if (typeof location !== "string" || !location.startsWith("https://")) {
-                dualLogger.dualLogDebug("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
+                dualLogger.dualLogTrace("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
 
                 return;
             }
@@ -256,7 +256,7 @@ const addOptionsLinkClickHandlers = () => promiseTry(
         })
 );
 
-const checkVersion = () => promiseTry(
+const addVersionCssClasses = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => getBackgroundPage())
@@ -265,8 +265,8 @@ const checkVersion = () => promiseTry(
                 background.getSystemType(),
                 background.getOsType(),
             ]))
-            .then(([isPremium, systemType, osType]) => {
-                if (isPremium) {
+            .then(([isPremiumVersion, systemType, osType]) => {
+                if (isPremiumVersion) {
                     document.body.classList.add("talkie-premium");
                 } else {
                     document.body.classList.add("talkie-free");
@@ -286,6 +286,12 @@ const checkVersion = () => promiseTry(
 
                 return undefined;
             });
+    }
+);
+
+const removeLoadingCssClass = () => promiseTry(
+    () => {
+        document.body.classList.remove("loading");
     }
 );
 
@@ -324,7 +330,8 @@ export const startFrontend = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => Promise.all([
-                checkVersion(),
+                removeLoadingCssClass(),
+                addVersionCssClasses(),
                 configureWindowContents(),
                 translateWindowContents(),
             ]))
@@ -338,6 +345,23 @@ export const startFrontend = () => promiseTry(
 );
 
 export const stopFrontend = () => promiseTry(
+    () => {
+        // TODO: unregister listeners.
+    }
+);
+
+export const startReactFrontend = () => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => Promise.all([
+                removeLoadingCssClass(),
+                addVersionCssClasses(),
+            ]))
+            .then(() => reflow());
+    }
+);
+
+export const stopReactFrontend = () => promiseTry(
     () => {
         // TODO: unregister listeners.
     }

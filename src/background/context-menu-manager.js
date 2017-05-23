@@ -26,6 +26,10 @@ import {
     logDebug,
 } from "../shared/log";
 
+import {
+    shallowCopy,
+} from "../shared/basic";
+
 export default class ContextMenuManager {
     constructor(commandHandler, metadataManager) {
         this.commandHandler = commandHandler;
@@ -157,7 +161,7 @@ export default class ContextMenuManager {
 
                     // NOTE: apparently Chrome modifies the context menu object after it has been passed in, by adding generatedId.
                     // NOTE: Need to pass a clean object to avoid object reuse reference problems.
-                    const contextMenu = Object.assign({}, contextMenuOptions);
+                    const contextMenu = shallowCopy(contextMenuOptions);
 
                     // NOTE: Can't directly use a promise chain here, as the id is returned instead.
                     // https://github.com/mozilla/webextension-polyfill/pull/26

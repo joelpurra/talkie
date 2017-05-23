@@ -14,7 +14,7 @@
   "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
     "scripts": [
-      "lib/browser-polyfill.js",
+      "lib/browser-polyfill.min.js",
       "dist/background.js"
     ],
     "persistent": false

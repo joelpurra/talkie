@@ -61,6 +61,12 @@ body {
     max-width: 600px;
 }
 
+body.loading {
+    background-image: url("../icon/free/icon-play/icon-16x16.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 header,
 main,
 footer {

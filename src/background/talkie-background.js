@@ -28,6 +28,10 @@ import {
 } from "../shared/promise";
 
 import {
+    shallowCopy,
+} from "../shared/basic";
+
+import {
     canTalkieRunInTab,
     isCurrentPageInternalToTalkie,
 } from "../shared/tabs";
@@ -150,10 +154,13 @@ export default class TalkieBackground {
                     this.voiceManager.getEffectivePitchForVoice(voice.name),
                 ])
                     .then(([effectiveRateForVoice, effectivePitchForVoice]) => {
-                        const voiceWithPitchAndRate = Object.assign({}, voice, {
-                            rate: effectiveRateForVoice,
-                            pitch: effectivePitchForVoice,
-                        });
+                        const voiceWithPitchAndRate = shallowCopy(
+                            voice,
+                            {
+                                rate: effectiveRateForVoice,
+                                pitch: effectivePitchForVoice,
+                            }
+                        );
 
                         return voiceWithPitchAndRate;
                     });

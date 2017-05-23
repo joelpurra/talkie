@@ -42,8 +42,8 @@ export default class ReadClipboardManager {
                 logDebug("Start", "startSpeaking");
 
                 return this.metadataManager.isPremiumVersion()
-                    .then((isPremium) => {
-                        if (!isPremium) {
+                    .then((isPremiumVersion) => {
+                        if (!isPremiumVersion) {
                             const text = browser.i18n.getMessage("readClipboardIsAPremiumFeature");
 
                             return text;

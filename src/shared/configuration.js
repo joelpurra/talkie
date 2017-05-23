@@ -23,10 +23,15 @@ import {
 } from "../shared/promise";
 
 export default class Configuration {
+    // NOTE: keep SynchronousConfiguration and Configuration in... sync.
     constructor(metadataManager, configurationObject) {
         this.metadataManager = metadataManager;
         this.configurationObject = configurationObject;
 
+        this._initialize();
+    }
+
+    _initialize() {
         this.extensionShortName = browser.i18n.getMessage("extensionShortName");
         this.uiLocale = browser.i18n.getMessage("@@ui_locale");
         this.messagesLocale = browser.i18n.getMessage("extensionLocale");
