@@ -21,8 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import configure from "../../hocs/configure.jsx";
 import translate from "../../hocs/translate.jsx";
 
+@configure
 @translate
 export default class Nav extends React.Component {
     constructor(props) {
@@ -34,12 +36,14 @@ export default class Nav extends React.Component {
     static propTypes = {
         initialActiveTabId: PropTypes.string,
         onTabChange: PropTypes.func.isRequired,
+        shouldShowBackButton: PropTypes.bool.isRequired,
         links: PropTypes.arrayOf(
             PropTypes.shape({
                 tabId: PropTypes.string.isRequired,
                 translationKey: PropTypes.string.isRequired,
             })).isRequired,
         translate: PropTypes.func.isRequired,
+        configure: PropTypes.func.isRequired,
     }
 
     handleClick(e) {
@@ -61,27 +65,42 @@ export default class Nav extends React.Component {
     }
 
     render() {
-        const linkList = this.props.links
+        const linkCells = this.props.links
             .map((link) => (
-                <li
+                <td
                     key={link.tabId}
                     className={this.props.initialActiveTabId === link.tabId ? "tabrowselected" : ""}
+                    onClick={this.handleClick}
                 >
                     <a
                         href={"#" + link.tabId}
                     >{this.props.translate(link.translationKey)}</a>
-                </li>
+                </td>
             )
         );
 
+        let backButton = null;
+
+        if (this.props.shouldShowBackButton) {
+            backButton = <a href={this.props.configure("urls.popup-passclick-false")} id="back-to-popup">←</a>;
+        }
+
         return (
             <nav className="columns">
-                <ol
-                    className="cols-3"
-                    onClick={this.handleClick}
-                >
-                    {linkList}
-                </ol>
+                <table>
+                    <colgroup>
+                        <col width="0*" />
+                        <col width="25%" colSpan="4" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {backButton}
+                            </td>
+                            {linkCells}
+                            </tr>
+                    </tbody>
+                </table>
             </nav>
         );
     }

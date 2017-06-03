@@ -44,9 +44,25 @@ import DualLogger from "../frontend/dual-log";
 
 const dualLogger = new DualLogger("popup.js");
 
+const shouldPassClick = () => {
+    const containsBlockerString = document.location
+        && typeof document.location.search === "string"
+        && document.location.search.length > 0
+        && document.location.search.includes("passclick=false");
+
+    return !containsBlockerString;
+};
+
 const passClickToBackground = () => promiseTry(
         () => {
             dualLogger.dualLogDebug("Start", "passClickToBackground");
+
+            // NOTE: provide a way to link to the popup without triggering the "click".
+            if (!shouldPassClick()) {
+                dualLogger.dualLogDebug("Skipped", "passClickToBackground");
+
+                return;
+            }
 
             return getBackgroundPage()
                 .then((background) => background.iconClick())
@@ -61,6 +77,28 @@ const passClickToBackground = () => promiseTry(
                     throw error;
                 });
         }
+);
+
+const registerStartStopButtonClickHandlers = () => promiseTry(
+    () => {
+        const startStopButtons = Array.from(document.querySelectorAll(":scope .start-stop-button"));
+
+        startStopButtons.forEach((optionsLink) => {
+            optionsLink.onclick = (event) => {
+                event.preventDefault();
+
+                getBackgroundPage()
+                        .then((background) => background.iconClick())
+                        .catch((error) => {
+                            dualLogger.dualLogError("registerStartStopButtonClickHandlers", "onclick", error);
+                        });
+
+                return false;
+            };
+        });
+
+        return undefined;
+    }
 );
 
 const updateProgress = (data) => promiseTry(
@@ -97,8 +135,9 @@ const registerBroadcastListeners = () => promiseTry(
 const start = () => promiseTry(
     () => {
         return Promise.resolve()
-            .then(() => startFrontend())
+            .then(() => startFrontend(killSwitches))
             .then(() => registerBroadcastListeners())
+            .then(() => registerStartStopButtonClickHandlers())
             .then(() => passClickToBackground());
     }
 );

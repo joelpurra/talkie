@@ -31,7 +31,7 @@
   },
   "frontend_Options": {
     "message": "Options",
-    "original": "Options",
+    "original": null,
     "translated-from": "Options"
   },
   "frontend_aboutCodeOnGithubLinkText": {
@@ -41,18 +41,13 @@
   },
   "frontend_aboutHeading": {
     "message": "À propos: bouton d'extension de navigateur texte-à-parole",
-    "original": "About: text-to-speech browser extension button",
+    "original": null,
     "translated-from": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "À propos",
     "original": "About",
     "translated-from": "About"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Merci d'utiliser Talkie - si vous l'aimez, parlez-en à vos amis!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!",
-    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_licenseCLADescription": {
     "message": "Toutes les contributions à Talkie sont effectuées en vertu de l'Accord de licence d'auteur (CLA).",
@@ -61,12 +56,12 @@
   },
   "frontend_licenseHeading": {
     "message": "Licence: logiciel libre",
-    "original": "License: open-source software",
+    "original": "License",
     "translated-from": "License: open-source software"
   },
   "frontend_licenseLinkText": {
     "message": "Licence",
-    "original": "License",
+    "original": null,
     "translated-from": "License"
   },
   "frontend_rateIt": {
@@ -80,12 +75,12 @@
   },
   "frontend_storyHeading": {
     "message": "Histoire: comment Talkie a commencé",
-    "original": "Story: how Talkie got started",
+    "original": "How Talkie got started",
     "translated-from": "Story: how Talkie got started"
   },
   "frontend_storyLinkText": {
     "message": "Histoire",
-    "original": "Story",
+    "original": null,
     "translated-from": "Story"
   },
   "frontend_storyThankYou": {
@@ -105,7 +100,7 @@
   },
   "frontend_usageHeading": {
     "message": "Usage",
-    "original": "Usage",
+    "original": null,
     "translated-from": "Usage"
   },
   "frontend_usageLinkText": {
@@ -155,12 +150,12 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie détecte automatiquement le langage, mais toutes les langues ne sont pas disponibles dans chaque navigateur. Ici, vous pouvez voir et tester les voix installées pour chaque langue.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
     "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Voix: testez votre navigateur",
-    "original": "Voices: select your favorite",
+    "original": null,
     "translated-from": "Voices: select your favorite"
   },
   "frontend_voicesLinkText": {

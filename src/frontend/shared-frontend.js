@@ -30,6 +30,10 @@ import {
     getBackgroundPage,
 } from "../shared/tabs";
 
+import {
+    knownEvents,
+} from "../shared/events";
+
 import DualLogger from "./dual-log";
 
 const dualLogger = new DualLogger("shared-frontend.js");
@@ -343,7 +347,36 @@ const focusFirstLink = () => promiseTry(
     }
 );
 
-export const startFrontend = () => promiseTry(
+const setTalkieStatusSpeaking = (speaking) => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then(() => {
+                if (speaking) {
+                    document.body.classList.add("talkie-speaking");
+                } else {
+                    document.body.classList.remove("talkie-speaking");
+                }
+
+                return undefined;
+            });
+    }
+);
+const registerBroadcastListeners = (killSwitches) => promiseTry(
+    () => {
+        return getBackgroundPage()
+            .then((background) => {
+                return Promise.all([
+                    background.broadcaster().registerListeningAction(knownEvents.beforeSpeaking, () => setTalkieStatusSpeaking(true))
+                        .then((killSwitch) => killSwitches.push(killSwitch)),
+                    background.broadcaster().registerListeningAction(knownEvents.afterSpeaking, () => setTalkieStatusSpeaking(false))
+                        .then((killSwitch) => killSwitches.push(killSwitch)),
+                ]);
+            });
+    }
+);
+
+export const startFrontend = (killSwitches) => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => Promise.all([
@@ -353,6 +386,7 @@ export const startFrontend = () => promiseTry(
                 translateWindowContents(),
             ]))
             .then(() => Promise.all([
+                registerBroadcastListeners(killSwitches),
                 loadVersion(),
                 addLinkClickHandlers(),
                 addOptionsLinkClickHandlers(),

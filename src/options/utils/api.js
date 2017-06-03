@@ -28,6 +28,10 @@ import {
 } from "../../shared/tabs";
 
 import {
+    openUrlInNewTab as sharedOpenUrlInNewTab,
+} from "../../shared/urls";
+
+import {
     getMappedVoices,
 } from "../../shared/voices";
 
@@ -85,3 +89,5 @@ export const isPremiumVersion = () => getBackgroundPage()
 
 export const getVersionName = () => getBackgroundPage()
     .then((background) => background.getVersionName());
+
+export const openUrlInNewTab = (url) => sharedOpenUrlInNewTab(url);

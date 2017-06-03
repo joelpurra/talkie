@@ -36,6 +36,7 @@ import * as actionCreators from "../actions/navigation";
 const mapStateToProps = (state) => {
     return {
         activeTabId: state.navigation.activeTabId,
+        shouldShowBackButton: state.navigation.shouldShowBackButton,
     };
 };
 
@@ -65,20 +66,22 @@ export default class NavContainer extends React.Component {
                 translationKey: "frontend_voicesLinkText",
             },
             {
-                tabId: "story",
-                translationKey: "frontend_storyLinkText",
-            },
-            {
                 tabId: "about",
                 translationKey: "frontend_aboutLinkText",
-            },
-            {
-                tabId: "license",
-                translationKey: "frontend_licenseLinkText",
             },
         ];
 
         this.handleTabChange = this.handleTabChange.bind(this);
+    }
+
+    getLocationQuerystring() {
+        let queryString = null;
+
+        if (document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
+            queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
+        }
+
+        return queryString;
     }
 
     getLocationHash() {
@@ -96,6 +99,11 @@ export default class NavContainer extends React.Component {
     }
 
     componentWillMount() {
+        const queryString = this.getLocationQuerystring();
+        const shouldShowBackButton = !!(queryString && queryString.includes("from=popup"));
+
+        this.props.actions.setShouldShowBackButton(shouldShowBackButton);
+
         const locationHash = this.getLocationHash();
 
         if (typeof locationHash === "string") {
@@ -111,9 +119,14 @@ export default class NavContainer extends React.Component {
         this.setLocationHash(activeTabId);
     }
 
+    static defaultProps = {
+        shouldShowBackButton: false,
+    }
+
     static propTypes = {
         actions: PropTypes.object.isRequired,
         activeTabId: PropTypes.string,
+        shouldShowBackButton: PropTypes.bool,
     }
 
     render() {
@@ -121,6 +134,7 @@ export default class NavContainer extends React.Component {
             <Nav
                 initialActiveTabId={this.props.activeTabId}
                 onTabChange={this.handleTabChange}
+                shouldShowBackButton={this.props.shouldShowBackButton}
                 links={this.links}
             />
         );

@@ -135,6 +135,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
     "rollup-watch": "^3.2.2",
+    "rrssb": "^1.14.0",
     "stream-to-promise": "^2.2.0",
     "striptags": "^3.0.1",
     "web-ext": "^1.8.1",

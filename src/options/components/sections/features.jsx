@@ -35,25 +35,36 @@ export default class Features extends React.Component {
     render() {
         return (
             <section>
-                <h2>{this.props.translate("frontend_featuresHeading")}</h2>
                 <p>
                     {this.props.translate("frontend_featuresVersions")}
+                    {" "}
                     <span className="talkie-free-only talkie-inline">{this.props.translate("frontend_featuresVersion_Free")}</span>
-                    <a href={this.props.configure("urls.store-premium")} className="talkie-free-only talkie-inline">{this.props.translate("frontend_getPremiumLinkText")}</a>
+                    {" "}
                     <span className="talkie-premium-only talkie-inline">{this.props.translate("frontend_featuresVersion_Premium")}</span>
                 </p>
 
-                <h2><a href={this.props.configure("urls.store-premium")}><span className="icon inline talkie premium"></span>Talkie Premium</a></h2>
-                <ul>
-                    <li>{this.props.translate("frontend_featuresPremium_List01")}</li>
-                    <li>{this.props.translate("frontend_featuresPremium_List02")}</li>
-                    {/* NOTE: read from clipboard feature not available in Firefox */}
-                    <li className="talkie-chrome-only talkie-list-item">{this.props.translate("frontend_featuresPremium_List05")}</li>
-                    <li>{this.props.translate("frontend_featuresPremium_List03")}</li>
-                    <li>{this.props.translate("frontend_featuresPremium_List04")}</li>
-                </ul>
+                <div className="premium-section">
+                    <h2><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></h2>
+                    <ul>
+                        <li>{this.props.translate("frontend_featuresPremium_List01")}</li>
+                        <li>{this.props.translate("frontend_featuresPremium_List02")}</li>
+                        {/* NOTE: read from clipboard feature not available in Firefox */}
+                        <li className="talkie-chrome-only talkie-list-item">{this.props.translate("frontend_featuresPremium_List05")}</li>
+                        <li>{this.props.translate("frontend_featuresPremium_List03")}</li>
+                        <li>{this.props.translate("frontend_featuresPremium_List04")}</li>
+                    </ul>
 
-                <h2><a href={this.props.configure("urls.store-free")}><span className="icon inline talkie free"></span>Talkie</a></h2>
+                    <div className="store-links">
+                        <p>
+                            <a href={this.props.configure("urls.chromewebstore-premium")}><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" /><br /><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a>
+                        </p>
+                        <p>
+                            <a href={this.props.configure("urls.firefox-amo-premium")}><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" /><br /><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a>
+                        </p>
+                    </div>
+                </div>
+
+                <h2><a href={this.props.configure("urls.store-free")}><span className="icon icon-inline icon-16px icon-talkie free"></span>Talkie</a></h2>
                 <ul>
                     <li>{this.props.translate("frontend_featuresFree_List01")}</li>
                     <li>{this.props.translate("frontend_featuresFree_List02")}</li>
@@ -62,6 +73,15 @@ export default class Features extends React.Component {
                     <li>{this.props.translate("frontend_featuresFree_List05")}</li>
                     <li>{this.props.translate("frontend_featuresFree_List06")}</li>
                 </ul>
+
+                <div className="store-links">
+                    <p>
+                        <a href={this.props.configure("urls.chromewebstore-free")}><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" /><br /><span className="icon icon-inline icon-16px icon-talkie free"></span>Talkie</a>
+                    </p>
+                    <p>
+                        <a href={this.props.configure("urls.firefox-amo-free")}><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" /><br /><span className="icon icon-inline icon-16px icon-talkie free"></span>Talkie</a>
+                    </p>
+                </div>
             </section>
         );
     }

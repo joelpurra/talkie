@@ -45,7 +45,6 @@ export default class RangeWithHeading extends React.Component {
 
     static defaultProps = {
         voiceName: null,
-        isPremiumVersion: false,
         min: 0,
         defaultValue: 1,
         initialValue: 1,
@@ -60,7 +59,6 @@ export default class RangeWithHeading extends React.Component {
         getHeading: PropTypes.func.isRequired,
         ScaleRangeElementClass: PropTypes.func.isRequired,
         voiceName: PropTypes.string,
-        isPremiumVersion: PropTypes.bool.isRequired,
         min: PropTypes.number.isRequired,
         defaultValue: PropTypes.number.isRequired,
         initialValue: PropTypes.number.isRequired,
@@ -100,7 +98,7 @@ export default class RangeWithHeading extends React.Component {
     }
 
     render() {
-        const heading = this.props.getHeading(this.props.voiceName, this.props.isPremiumVersion, this.props.translate);
+        const heading = this.props.getHeading(this.props.voiceName, this.props.translate);
 
         return (
             <tbody>

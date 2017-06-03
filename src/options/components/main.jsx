@@ -25,10 +25,6 @@ import TabContents from "./navigation/tab-contents.jsx";
 
 import Features from "./sections/features.jsx";
 
-import License from "./sections/license.jsx";
-
-import Story from "./sections/story.jsx";
-
 import Usage from "./sections/usage.jsx";
 
 import VoicesContainer from "../containers/voices-container.jsx";
@@ -40,6 +36,7 @@ export default class Main extends React.Component {
         super(props);
 
         this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
+        this.handleLinkClick = this.handleLinkClick.bind(this);
     }
 
     static defaultProps = {
@@ -67,6 +64,13 @@ export default class Main extends React.Component {
         this.props.actions.metadata.loadVersionName();
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.activeTabId !== nextProps.activeTabId) {
+                    // NOTE: feels like this might be the wrong place to put this? Is there a better place?
+            document.body.scrollTop = 0;
+        }
+    }
+
     handleLegaleseClick(text) {
         const legaleseText = text;
         const legaleseVoice = {
@@ -75,6 +79,10 @@ export default class Main extends React.Component {
         };
 
         this.props.actions.voices.speak(legaleseText, legaleseVoice);
+    }
+
+    handleLinkClick(url) {
+        this.props.actions.navigation.openUrlInNewTab(url);
     }
 
     render() {
@@ -95,6 +103,7 @@ export default class Main extends React.Component {
                 <TabContents
                     id="usage"
                     activeTabId={this.props.activeTabId}
+                    onLinkClick={this.handleLinkClick}
                 >
                     <Usage />
                 </TabContents>
@@ -102,6 +111,7 @@ export default class Main extends React.Component {
                 <TabContents
                     id="features"
                     activeTabId={this.props.activeTabId}
+                    onLinkClick={this.handleLinkClick}
                 >
                     <Features />
                 </TabContents>
@@ -109,32 +119,19 @@ export default class Main extends React.Component {
                 <TabContents
                     id="voices"
                     activeTabId={this.props.activeTabId}
+                    onLinkClick={this.handleLinkClick}
                 >
                     <VoicesContainer />
                 </TabContents>
 
                 <TabContents
-                    id="story"
-                    activeTabId={this.props.activeTabId}
-                >
-                    <Story />
-                </TabContents>
-
-                <TabContents
                     id="about"
                     activeTabId={this.props.activeTabId}
+                    onLinkClick={this.handleLinkClick}
                 >
                     <AboutContainer
                         versionName={this.props.versionName}
-                    />
-                </TabContents>
-
-                <TabContents
-                    id="license"
-                    activeTabId={this.props.activeTabId}
-                >
-                    <License
-                        onClick={this.handleLegaleseClick}
+                        onLicenseClick={this.handleLegaleseClick}
                     />
                 </TabContents>
             </main>

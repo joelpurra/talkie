@@ -33,7 +33,7 @@ import ConfigurationProvider from "../hocs/configuration-provider.jsx";
 
 import TranslationProvider from "../hocs/translation-provider.jsx";
 
-import Header from "../components/header.jsx";
+import NavContainer from "../containers/nav-container.jsx";
 
 import Main from "../components/main.jsx";
 
@@ -58,6 +58,7 @@ const mapDispatchToProps = (dispatch) => {
         actions: {
             voices: bindActionCreators(actionCreators.voices, dispatch),
             metadata: bindActionCreators(actionCreators.metadata, dispatch),
+            navigation: bindActionCreators(actionCreators.navigation, dispatch),
         },
     };
 };
@@ -89,7 +90,11 @@ export default class App extends React.Component {
             >
                 <TranslationProvider>
                     <div>
-                        <Header />
+                        <div className="nav-header">
+                            <NavContainer />
+
+                            <hr />
+                        </div>
 
                         <Main
                             actions={actions}

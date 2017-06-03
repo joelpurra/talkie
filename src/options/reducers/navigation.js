@@ -36,6 +36,13 @@ const actionsMap = {
             activeTabId: action.activeTabId,
         };
     },
+
+    [actionTypes.SET_SHOULD_SHOW_BACK_BUTTON]: (previousState, action) => {
+        return {
+            ...previousState,
+            shouldShowBackButton: action.shouldShowBackButton,
+        };
+    },
 };
 
 export default actionMapReducer(actionsMap, initialState);

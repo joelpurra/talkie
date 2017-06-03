@@ -37,7 +37,23 @@ export default class SynchronousConfiguration {
         this.uiLocale = browser.i18n.getMessage("@@ui_locale");
         this.messagesLocale = browser.i18n.getMessage("extensionLocale");
 
+        // NOTE: direct links to individual tabs.
         this.configurationObject.shared.urls.options = browser.runtime.getURL("/src/options/options.html");
+        this.configurationObject.shared.urls["options-voices"] = this.configurationObject.shared.urls.options + "#voices";
+        this.configurationObject.shared.urls["options-about"] = this.configurationObject.shared.urls.options + "#about";
+        this.configurationObject.shared.urls["options-features"] = this.configurationObject.shared.urls.options + "#features";
+        this.configurationObject.shared.urls["options-usage"] = this.configurationObject.shared.urls.options + "#usage";
+
+        // NOTE: direct links to individual tabs.
+        // NOTE: need to pass a parameter to the options page.
+        this.configurationObject.shared.urls["options-from-popup"] = this.configurationObject.shared.urls.options + "?from=popup";
+        this.configurationObject.shared.urls["options-voices-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#voices";
+        this.configurationObject.shared.urls["options-about-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#about";
+        this.configurationObject.shared.urls["options-features-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#features";
+        this.configurationObject.shared.urls["options-usage-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#usage";
+
+        this.configurationObject.shared.urls.popup = browser.runtime.getURL("/src/popup/popup.html");
+        this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
     }
 
     _resolvePath(obj, path) {

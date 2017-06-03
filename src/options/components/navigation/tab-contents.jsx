@@ -22,10 +22,39 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default class TabContents extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        let element = e.target;
+
+        do {
+            if (element.tagName === "A") {
+                const href = element.getAttribute("href");
+
+                if (typeof href === "string" && href.startsWith("https://")) {
+                    e.preventDefault();
+
+                    this.props.onLinkClick(href);
+
+                    return false;
+                }
+
+            // TODO: warn about mismatched link style?
+            }
+
+            element = element.parentElement;
+        } while (element);
+    }
+
     static propTypes = {
         id: PropTypes.string.isRequired,
         activeTabId: PropTypes.string.isRequired,
         children: PropTypes.element.isRequired,
+        onLinkClick: PropTypes.func.isRequired,
     }
 
     render() {
@@ -36,7 +65,10 @@ export default class TabContents extends React.Component {
         }
 
         return (
-            <div id={this.props.id}>
+            <div
+                id={this.props.id}
+                onClick={this.handleClick}
+            >
                 {contents}
             </div>
         );

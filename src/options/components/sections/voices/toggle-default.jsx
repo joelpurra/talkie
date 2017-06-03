@@ -32,7 +32,6 @@ export default class ToggleDefault extends React.Component {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
         languageCode: null,
         voiceName: null,
         disabled: true,
@@ -40,7 +39,6 @@ export default class ToggleDefault extends React.Component {
 
     static propTypes = {
         onClick: PropTypes.func.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
         languageCode: PropTypes.string,
         voiceName: PropTypes.string,
         disabled: PropTypes.bool,
@@ -55,19 +53,11 @@ export default class ToggleDefault extends React.Component {
         let buttonText = null;
 
         if (this.props.languageCode === null || this.props.voiceName === null) {
-            if (this.props.isPremiumVersion) {
-                buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection_Premium");
-            } else {
-                buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection_Free");
-            }
+            buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection");
         } else {
             const messageDetailsPlaceholders = [this.props.languageCode, this.props.voiceName];
 
-            if (this.props.isPremiumVersion) {
-                buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium", messageDetailsPlaceholders);
-            } else {
-                buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault_Free", messageDetailsPlaceholders);
-            }
+            buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
         }
 
         return (

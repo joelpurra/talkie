@@ -55,16 +55,19 @@ export default class AboutContainer extends React.Component {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         versionName: PropTypes.string.isRequired,
+        onLicenseClick: PropTypes.func.isRequired,
     }
 
     render() {
         const {
             versionName,
+            onLicenseClick,
           } = this.props;
 
         return (
             <About
                 versionName={versionName}
+                onLicenseClick={onLicenseClick}
             />
         );
     }

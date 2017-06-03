@@ -36,21 +36,13 @@ export default class Pitch extends React.Component {
         return value;
     }
 
-    getHeading(voiceName, isPremiumVersion, translate) {
+    getHeading(voiceName, translate) {
         let heading = null;
 
         if (typeof voiceName === "string" && voiceName.length > 0) {
-            if (isPremiumVersion) {
-                heading = translate("frontend_voicesPitchHeading_Premium", voiceName);
-            } else {
-                heading = translate("frontend_voicesPitchHeading_Free", voiceName);
-            }
+            heading = translate("frontend_voicesPitchHeading", voiceName);
         } else {
-            if (isPremiumVersion) {
-                heading = translate("frontend_voicesPitchEmptyHeading_Premium");
-            } else {
-                heading = translate("frontend_voicesPitchEmptyHeading_Free");
-            }
+            heading = translate("frontend_voicesPitchEmptyHeading");
         }
 
         return heading;

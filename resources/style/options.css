@@ -19,14 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 body {
-    min-height: 400px;
+    min-width: 400px;
+    max-width: 600px;
+    min-height: 450px;
     max-height: 1000px;
     overflow-y: scroll;
+    padding-bottom: 1em;
 }
 
-header {
+div.nav-header {
     margin: 0;
     padding: 1em;
+    padding-top: 0;
     padding-bottom: 0;
     position: fixed;
     top: 0;
@@ -35,49 +39,31 @@ header {
 }
 
 main {
-    margin-top: 6.5em;
+    margin-top: 4em;
+}
+
+
+
+#back-to-popup {
+    text-decoration: none;
 }
 
 nav {
-    font-size: 1em;
+    line-height: 1.5em;
 }
 
 nav.columns {
     text-align: center;
 }
 
-nav.columns ol {
+nav.columns table tbody tr th,
+nav.columns table tbody tr td {
     margin: 0;
     padding: 0;
 }
 
-nav.columns ol:after {
-    clear: both;
-    content: "";
-    display: table;
-}
-
-nav.columns ol li {
-    margin: 0;
-    margin-bottom: 0.5em;
-    padding: 0;
-    list-style-type: none;
-    display: block;
-    float: __MSG_@@bidi_start_edge__;
-    line-height: 1.5em;
-}
-
-nav.columns ol.cols-3 li {
-    width: 33.333%;
-}
-
-nav.columns ol.cols-4 li {
-    width: 25%;
-}
-
-nav.columns ol li.tabrowselected a {
-    color: black;
-    text-decoration: none;
+nav.columns table tbody tr td.tabrowselected a {
+    color: #3497ff;
     font-weight: bold;
 }
 
@@ -136,20 +122,20 @@ select.grouped option.group {
     width: 100%;
 }
 
-#about .store-links {
+#features .store-links {
     text-align: center;
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
-#about .store-links p {
-  margin-bottom: 2em;
+#features .store-links p {
+    margin-bottom: 0.5em;
 }
 
 @media (min-width: 450px) {
-    #about .store-links {
+    #features .store-links {
         columns: 2;
     }
-    #about .store-links > p:first-child {
-      margin-top: 0;
+    #features .store-links>p:first-child {
+        margin-top: 0;
     }
 }

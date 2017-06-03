@@ -39,8 +39,10 @@ import Rate from "./voices/rate.jsx";
 
 import Pitch from "./voices/pitch.jsx";
 
+import configure from "../../hocs/configure.jsx";
 import translate from "../../hocs/translate.jsx";
 
+@configure
 @translate
 export default class Voices extends React.Component {
     constructor(props) {
@@ -82,6 +84,7 @@ export default class Voices extends React.Component {
         pitchForSelectedVoice: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
+        configure: PropTypes.func.isRequired,
     }
 
     componentWillMount() {
@@ -132,7 +135,6 @@ export default class Voices extends React.Component {
 
         return (
             <section>
-                <h2>{this.props.translate("frontend_voicesHeading")}</h2>
                 <p>{this.props.translate("frontend_voicesDescription")}</p>
                 {/*
                     <p>TODO REMOVE selectedLanguageCode {this.props.selectedLanguageCode}</p>
@@ -193,39 +195,46 @@ export default class Voices extends React.Component {
                             </td>
                         </tr>
                     </tbody>
-
-                    <ToggleDefault
-                        onClick={this.handleToogleDefaultClick}
-                        isPremiumVersion={this.props.isPremiumVersion}
-                        languageCode={this.props.selectedLanguageCode}
-                        voiceName={this.props.selectedVoiceName}
-                        disabled={!hasSelectedLanguageCode || !hasSelectedVoiceName || isDefaultVoiceNameForLanguage}
-                    />
-
-                    <Rate
-                        onChange={this.handleRateChange}
-                        voiceName={this.props.selectedVoiceName}
-                        isPremiumVersion={this.props.isPremiumVersion}
-                        min={rateRange.min}
-                        defaultValue={rateRange.default}
-                        initialValue={this.props.rateForSelectedVoice}
-                        max={rateRange.max}
-                        step={rateRange.step}
-                        disabled={!hasSelectedVoiceName}
-                    />
-
-                    <Pitch
-                        onChange={this.handlePitchChange}
-                        voiceName={this.props.selectedVoiceName}
-                        isPremiumVersion={this.props.isPremiumVersion}
-                        min={pitchRange.min}
-                        defaultValue={pitchRange.default}
-                        initialValue={this.props.pitchForSelectedVoice}
-                        max={pitchRange.max}
-                        step={pitchRange.step}
-                        disabled={!hasSelectedVoiceName}
-                    />
                 </table>
+
+                <div className="premium-section">
+                    <p><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></p>
+
+                    <table>
+                        <colgroup>
+                            <col width="100%" />
+                        </colgroup>
+
+                        <ToggleDefault
+                            onClick={this.handleToogleDefaultClick}
+                            languageCode={this.props.selectedLanguageCode}
+                            voiceName={this.props.selectedVoiceName}
+                            disabled={!this.props.isPremiumVersion || !hasSelectedLanguageCode || !hasSelectedVoiceName || isDefaultVoiceNameForLanguage}
+                        />
+
+                        <Rate
+                            onChange={this.handleRateChange}
+                            voiceName={this.props.selectedVoiceName}
+                            min={rateRange.min}
+                            defaultValue={rateRange.default}
+                            initialValue={this.props.rateForSelectedVoice}
+                            max={rateRange.max}
+                            step={rateRange.step}
+                            disabled={!hasSelectedVoiceName}
+                        />
+
+                        <Pitch
+                            onChange={this.handlePitchChange}
+                            voiceName={this.props.selectedVoiceName}
+                            min={pitchRange.min}
+                            defaultValue={pitchRange.default}
+                            initialValue={this.props.pitchForSelectedVoice}
+                            max={pitchRange.max}
+                            step={pitchRange.step}
+                            disabled={!hasSelectedVoiceName}
+                        />
+                    </table>
+                </div>
             </section>
         );
     }

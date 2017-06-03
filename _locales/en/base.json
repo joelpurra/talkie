@@ -26,23 +26,26 @@
   "extensionDescription": {
     "message": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
-  "frontend_Options": {
-    "message": "Options"
+  "frontend_PopupMenu_About": {
+    "message": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Voice options"
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "About"
   },
   "frontend_aboutProjectPageLinkText": {
     "message": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_featuresFree_List01": {
     "message": "Automatic language detection."
@@ -61,9 +64,6 @@
   },
   "frontend_featuresFree_List06": {
     "message": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "Features"
@@ -84,37 +84,31 @@
     "message": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Get Talkie 🌟 Premium!"
+    "message": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "License"
   },
   "frontend_rateIt": {
     "message": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Share a link to Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Story"
+    "message": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Thank you for using Talkie — if you like it, tell your friends!"
@@ -126,25 +120,25 @@
     "message": "Talkie in Firefox Add-ons"
   },
   "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium in the Firefox Add-ons"
+    "message": "Talkie Premium in the Firefox Add-ons"
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie in the Chrome Web Store"
   },
   "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "Usage"
+    "message": "Talkie Premium in the Chrome Web Store"
   },
   "frontend_usageLinkText": {
     "message": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
@@ -156,7 +150,7 @@
     "message": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start/stop"
@@ -177,33 +171,16 @@
     "message": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Voices: select your favorite"
+    "message": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch for $VOICE$",
     "placeholders": {
@@ -213,25 +190,11 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Speed for $VOICE$",
     "placeholders": {
@@ -248,29 +211,11 @@
   "frontend_voicesSampleTextHeading": {
     "message": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: Upgrade to change default voice"
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
+    "message": "Upgrade to change default voice"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
-    "message": "Use as default voice for language"
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {

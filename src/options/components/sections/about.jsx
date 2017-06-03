@@ -27,21 +27,33 @@ import translate from "../../hocs/translate.jsx";
 @configure
 @translate
 export default class About extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
+    }
+
     static defaultProps = {
         versionName: null,
     };
 
     static propTypes = {
         versionName: PropTypes.string,
+        onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+    }
+
+    handleLegaleseClick(e) {
+        const legaleseText = e.target.textContent;
+
+        this.props.onLicenseClick(legaleseText);
     }
 
     render() {
         return (
             <section>
-                <h2>{this.props.translate("frontend_aboutHeading")}</h2>
-                <p><span className="icon inline talkie"></span>Talkie {this.props.versionName}</p>
+                <p><span className="icon icon-inline icon-16px icon-talkie"></span>Talkie {this.props.versionName}</p>
 
                 <ul>
                     <li>
@@ -58,24 +70,43 @@ export default class About extends React.Component {
                     </li>
                 </ul>
 
-                <p>{this.props.translate("frontend_aboutThankYou")}</p>
+                <h2>{this.props.translate("frontend_shareHeading")}</h2>
 
-                <div className="store-links">
-                    <p>
-                        <a href={this.props.configure("urls.chromewebstore-free")}><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" /><br /><span className="icon inline talkie free"></span>Talkie</a>
-                    </p>
-                    <p>
-                        <a href={this.props.configure("urls.chromewebstore-premium")}><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" /><br /><span className="icon inline talkie premium"></span>Talkie Premium</a>
-                    </p>
-                </div>
-                <div className="store-links">
-                    <p>
-                        <a href={this.props.configure("urls.firefox-amo-free")}><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" /><br /><span className="icon inline talkie free"></span>Talkie</a>
-                    </p>
-                    <p>
-                        <a href={this.props.configure("urls.firefox-amo-premium")}><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" /><br /><span className="icon inline talkie premium"></span>Talkie Premium</a>
-                    </p>
-                </div>
+                <ul className="inline">
+                    <li>
+                        <a href={this.props.configure("urls.share.twitter")}><span className="icon icon-inline icon-24px icon-share icon-twitter"></span></a>
+                    </li>
+                    <li>
+                        <a href={this.props.configure("urls.share.facebook")}><span className="icon icon-inline icon-24px icon-share icon-facebook"></span></a>
+                    </li>
+                    <li>
+                        <a href={this.props.configure("urls.share.googleplus")}><span className="icon icon-inline icon-24px icon-share icon-googleplus"></span></a>
+                    </li>
+                    <li>
+                        <a href={this.props.configure("urls.share.linkedin")}><span className="icon icon-inline icon-24px icon-share icon-linkedin"></span></a>
+                    </li>
+                </ul>
+
+                <h2>{this.props.translate("frontend_storyHeading")}</h2>
+                <p>{this.props.translate("frontend_storyDescription")}</p>
+                <p>{this.props.translate("frontend_storyThankYou")}</p>
+                <p>
+                    — <a href="https://joelpurra.com/">Joel Purra</a>
+                </p>
+
+                <h2>{this.props.translate("frontend_licenseHeading")}</h2>
+                <p>
+                    <span
+                        onClick={this.handleLegaleseClick}
+                    >{this.props.translate("frontend_licenseGPLDescription")}</span>
+                    <br />
+                    <a href={this.props.configure("urls.gpl")}>{this.props.translate("frontend_licenseGPLLinkText")}</a>
+                </p>
+                <p>
+                    {this.props.translate("frontend_licenseCLADescription")}
+                    <br />
+                    <a href={this.props.configure("urls.cla")}>{this.props.translate("frontend_licenseCLALinkText")}</a>
+                </p>
             </section>
         );
     }

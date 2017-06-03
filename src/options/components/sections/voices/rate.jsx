@@ -39,21 +39,13 @@ export default class Rate extends React.Component {
         return rounded;
     }
 
-    getHeading(voiceName, isPremiumVersion, translate) {
+    getHeading(voiceName, translate) {
         let heading = null;
 
         if (typeof voiceName === "string" && voiceName.length > 0) {
-            if (isPremiumVersion) {
-                heading = translate("frontend_voicesRateHeading_Premium", voiceName);
-            } else {
-                heading = translate("frontend_voicesRateHeading_Free", voiceName);
-            }
+            heading = translate("frontend_voicesRateHeading", voiceName);
         } else {
-            if (isPremiumVersion) {
-                heading = translate("frontend_voicesRateEmptyHeading_Premium");
-            } else {
-                heading = translate("frontend_voicesRateEmptyHeading_Free");
-            }
+            heading = translate("frontend_voicesRateEmptyHeading");
         }
 
         return heading;
