@@ -75,7 +75,7 @@ export default class Nav extends React.Component {
         );
 
         return (
-            <nav id="options-tabrow">
+            <nav className="columns">
                 <ol
                     className="cols-4"
                     onClick={this.handleClick}

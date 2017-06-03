@@ -52,9 +52,7 @@ const loadOptionsAndApply = () => promiseTry(
             .then((background) => background.getStoredValue(hideDonationsOptionId))
             .then((hideDonations) => {
                 if (hideDonations) {
-                    const elementsToHide = []
-                        .concat(Array.from(document.getElementsByTagName("footer")))
-                        .concat(Array.from(document.getElementsByTagName("hr")));
+                    const elementsToHide = Array.from(document.querySelectorAll(".donations"));
 
                     elementsToHide.forEach((element) => {
                         element.style.display = "none";

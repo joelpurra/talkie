@@ -348,6 +348,7 @@ function main() {
                 talkieBackground.startSpeakingTextInVoiceAction(text, voice);
             };
 
+            window.getVersionNumber = () => metadataManager.getVersionNumber();
             window.getVersionName = () => metadataManager.getVersionName();
             window.isFreeVersion = () => metadataManager.isFreeVersion();
             window.isPremiumVersion = () => metadataManager.isPremiumVersion();

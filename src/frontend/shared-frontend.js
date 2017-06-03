@@ -289,6 +289,23 @@ const addVersionCssClasses = () => promiseTry(
     }
 );
 
+const loadVersion = () => promiseTry(
+    () => getBackgroundPage()
+        .then((background) => Promise.all([
+            background.getVersionNumber(),
+            background.getVersionName(),
+        ]))
+        .then(([versionNumber, versionName]) => {
+            const versionNumberElements = Array.from(document.querySelectorAll(".version-number"));
+            const versionNameElements = Array.from(document.querySelectorAll(".version-name"));
+
+            versionNumberElements.forEach((versionNumberElement) => { versionNumberElement.textContent = `v${versionNumber}`; });
+            versionNameElements.forEach((versionNameElement) => { versionNameElement.textContent = versionName; });
+
+            return undefined;
+        })
+);
+
 const removeLoadingCssClass = () => promiseTry(
     () => {
         document.body.classList.remove("loading");
@@ -336,6 +353,7 @@ export const startFrontend = () => promiseTry(
                 translateWindowContents(),
             ]))
             .then(() => Promise.all([
+                loadVersion(),
                 addLinkClickHandlers(),
                 addOptionsLinkClickHandlers(),
                 focusFirstLink(),

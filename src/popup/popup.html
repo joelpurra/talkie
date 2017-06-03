@@ -25,6 +25,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Popup &mdash; Talkie</title>
+    <style>
+        body.loading {
+            /* NOTE: critical/duplicated */
+            background-image: url("../icon/free/icon-play/icon-16x16.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+    </style>
     <link rel="stylesheet" type="text/css" href="../../resources/style/shared.css" />
     <link rel="stylesheet" type="text/css" href="../../resources/style/popup.css" />
 </head>
@@ -33,48 +42,79 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
     <header>
         <p>
             <span class="icon inline talkie"></span>
-            <a data-configure-href="urls.main" data-translate="extensionShortName"></a>
-            <span class="talkie-free-only talkie-inline"> — <a data-configure-href="urls.store-premium" data-translate="frontend_getPremiumLinkText"></a></span>
+            <a data-configure-href="urls.main" data-translate="extensionShortName" class="extension-name"></a>
+            <span class="talkie-free-only talkie-inline"><a data-configure-href="urls.store-premium" class="button">Talkie Premium</a></span>
         </p>
-        <progress id="progress" value="0" max="100"></progress>
-        <nav>
-            <ol class="cols-3">
-                <li>
-                    <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback"></a>
-                </li>
-                <li>
-                    <a data-configure-href="urls.rate" data-translate="frontend_rateIt"></a>
-                </li>
-                <li>
-                    <a data-configure-href="urls.options" data-translate="frontend_Options"></a><a data-configure-href="urls.options" rel="alternate" target="_blank">⏍</a>
-                </li>
-            </ol>
-        </nav>
-        <hr />
     </header>
-    <!--<main></main>-->
-    <footer>
+
+    <main>
+        <p data-translate="extensionDescription" class="lighter"></p>
+
+        <table>
+            <colgroup>
+                <col width="0*" />
+                <col width="100%" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="icon inline talkie"></span>
+                    </td>
+                    <td>
+                        <progress id="progress" value="0" max="100"></progress>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <hr />
+
+    <nav>
+        <ol>
+            <li>
+                <a data-configure-href="urls.options" data-translate="frontend_Options"></a>
+            </li>
+            <li>
+                <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback"></a>
+            </li>
+            <li>
+                <a data-configure-href="urls.rate" data-translate="frontend_rateIt"></a>
+            </li>
+        </ol>
+    </nav>
+
+    <hr />
+
+    <footer class="lighter">
+        <a data-configure-href="urls.options" rel="alternate" target="_blank">⚙</a>
+        <a data-configure-href="urls.options" class="version-number"></a>
+    </footer>
+
+    <hr />
+
+    <footer class="donations">
         <p>
             <span data-translate="frontend_yourDonationsAreAppreciatedShort"></span>
         </p>
         <table class="donate">
             <tbody>
                 <tr>
-                </td>
-                <td>
-                    <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd data-translate="frontend_donate_usd5Now"></kbd></a>
-                </td>
-                <td>
-                    <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd data-translate="frontend_donate_usd25Now"></kbd></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd data-translate="frontend_donate_usd100Now"></kbd></a>
-                </td>
-                <td>
-                    <a href="https://joelpurra.com/donate/"><kbd data-translate="frontend_donate_moreOptions"></kbd></a>
-                </td>
+                    </td>
+                    <td>
+                        <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd data-translate="frontend_donate_usd5Now"></kbd></a>
+                    </td>
+                    <td>
+                        <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd data-translate="frontend_donate_usd25Now"></kbd></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd data-translate="frontend_donate_usd100Now"></kbd></a>
+                    </td>
+                    <td>
+                        <a href="https://joelpurra.com/donate/"><kbd data-translate="frontend_donate_moreOptions"></kbd></a>
+                    </td>
             </tbody>
         </table>
     </footer>

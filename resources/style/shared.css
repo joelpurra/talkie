@@ -55,13 +55,31 @@ body {
 }
 
 body {
-    font-family: "Open Sans", "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-family: "Open Sans", OpenSans, "Helvetica Neue", "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
     font-size: 100%;
+    color: #000000;
     min-width: 300px;
     max-width: 600px;
 }
 
+.lighter {
+    color: #9b9b9b;
+}
+
+.lighter a {
+    color: #9b9b9b;
+    text-decoration: none;
+}
+
+.lighter a:focus,
+.lighter a:hover,
+.lighter a:active {
+    color: #3497ff;
+    text-decoration: none;
+}
+
 body.loading {
+    /* NOTE: critical/duplicated */
     background-image: url("../icon/free/icon-play/icon-16x16.png");
     background-repeat: no-repeat;
     background-position: center center;
@@ -69,19 +87,39 @@ body.loading {
 
 header,
 main,
-footer {
-    margin: 1em;
-    font-size: 0.7em;
+nav,
+footer,
+hr {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 0.75em;
 }
 
 p {
     margin-bottom: 0;
 }
 
-a[rel~="alternate"][target="_blank"] {
-    /* NOTE: emulating <sup> without some of the side-effects. */
-    vertical-align: text-top;
+a.button {
+    border-radius: 0.3em;
+    background-image: linear-gradient(to bottom, #6bb3fa, #087eff);
+    color: #ffffff;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
     text-decoration: none;
+    text-align: center;
+}
+
+a.button:hover {
+    color: #ffffff;
+}
+
+a.button:focus {
+    background-image: linear-gradient(to bottom, #087eff, #087eff);
+    color: #ffffff;
 }
 
 ul,
@@ -95,50 +133,12 @@ ol li {
     margin-bottom: 0.25em;
 }
 
-nav {
-    text-align: center;
-}
-
-nav ol {
-    margin: 0;
-    padding: 0;
-}
-
-nav ol:after {
-    clear: both;
-    content: "";
-    display: table;
-}
-
-nav ol li {
-    margin: 0;
-    margin-bottom: 0.5em;
-    padding: 0;
-    list-style-type: none;
-    display: block;
-    float: __MSG_@@bidi_start_edge__;
-}
-
-nav ol.cols-3 li {
-    width: 33.333%;
-}
-
-nav ol.cols-4 li {
-    width: 25%;
-}
-
-nav ol li.tabrowselected a {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-}
-
 span.icon.inline.talkie {
     vertical-align: middle;
 }
 
 span.icon.inline.talkie:before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -163,6 +163,13 @@ table {
 
 table tbody tr td {
     padding: 0.5em;
+}
+
+hr {
+    color: #dddddd;
+    border-style: solid;
+    border-width: 0;
+    border-top-width: 1px;
 }
 
 .donate kbd {
