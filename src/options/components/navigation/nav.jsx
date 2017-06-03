@@ -77,7 +77,7 @@ export default class Nav extends React.Component {
         return (
             <nav className="columns">
                 <ol
-                    className="cols-4"
+                    className="cols-3"
                     onClick={this.handleClick}
                 >
                     {linkList}

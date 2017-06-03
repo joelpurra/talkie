@@ -65,12 +65,6 @@
         "default": "Alt+Shift+8"
       },
       "description": "__MSG_commandOpenWebsiteStoreDescription_Premium__"
-    },
-    "open-website-donate": {
-      "suggested_key": {
-        "default": "Alt+Shift+7"
-      },
-      "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }
   },
   "options_ui": {

@@ -20,15 +20,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as voices from "./voices";
 
-import * as donations from "./donations";
-
 import * as metadata from "./metadata";
 
 import * as navigation from "./navigation";
 
 export default {
     voices,
-    donations,
     metadata,
     navigation,
 };

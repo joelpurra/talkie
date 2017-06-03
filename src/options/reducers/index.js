@@ -24,15 +24,12 @@ import {
 
 import voices from "./voices";
 
-import donations from "./donations";
-
 import metadata from "./metadata";
 
 import navigation from "./navigation";
 
 export default combineReducers({
     voices,
-    donations,
     metadata,
     navigation,
 });

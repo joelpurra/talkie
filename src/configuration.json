@@ -2,7 +2,6 @@
   "shared": {
     "urls": {
       "cla": "https://joelpurra.com/projects/talkie/CLA.md",
-      "donate": "https://joelpurra.com/donate",
       "github": "https://github.com/joelpurra/talkie",
       "gpl": "https://www.gnu.org/licenses/gpl.html",
       "main": "https://joelpurra.com/projects/talkie/",

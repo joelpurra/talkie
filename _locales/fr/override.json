@@ -14,11 +14,6 @@
     "original": "Read text selection out loud",
     "translated-from": "Read text selection out loud"
   },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Ouvrir la page des dons",
-    "original": "The Talkie donations page",
-    "translated-from": "Open the donation page"
-  },
   "commandOpenWebsiteMainDescription": {
     "message": "Ouvrir le site Talkie",
     "original": "The Talkie website",
@@ -58,46 +53,6 @@
     "message": "Merci d'utiliser Talkie - si vous l'aimez, parlez-en à vos amis!",
     "original": "Thank you for using Talkie — if you like it, tell your friends!",
     "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Faire un don",
-    "original": "Donate",
-    "translated-from": "Donate"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Plus d'options de dons",
-    "original": "More donation options",
-    "translated-from": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Faire un don USD 100 maintenant",
-    "original": "Donate $$100 now",
-    "translated-from": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Faire un don USD 25 maintenant",
-    "original": "Donate $$25 now",
-    "translated-from": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Faire un don USD 5 maintenant",
-    "original": "Donate $$5 now",
-    "translated-from": "Donate $$5 now"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Masquer les boutons de don dans le popup",
-    "original": "Hide donation buttons in the popup",
-    "translated-from": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Ce n'est pas comme si je ne voulais pas que vous fassiez un don pour soutenir Talkie et le développement open source en général - je ne veux tout simplement pas que vous soyez ennuyé en utilisant Talkie en premier lieu. Si vous désactivez les boutons de don dans le popup, j'espère que vous allez également supporter Talkie d'une certaine manière! Les boutons seront toujours disponibles ici parmi les options, au cas où.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case.",
-    "translated-from": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Faire un don: soutenir le développement open source",
-    "original": "Donate: support open source development",
-    "translated-from": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
     "message": "Toutes les contributions à Talkie sont effectuées en vertu de l'Accord de licence d'auteur (CLA).",
@@ -228,11 +183,6 @@
     "message": "Afficher toutes les voix",
     "original": "Show all voices",
     "translated-from": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Vos dons sont appréciés!",
-    "original": "Your donations are appreciated!",
-    "translated-from": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Veuillez sélectionner le texte souhaité sur le site Web d'abord. Vous pouvez également sélectionner le texte, puis cliquer droit dessus et choisir Talkie dans le menu.",

@@ -31,8 +31,6 @@ import Story from "./sections/story.jsx";
 
 import Usage from "./sections/usage.jsx";
 
-import DonateContainer from "../containers/donate-container.jsx";
-
 import VoicesContainer from "../containers/voices-container.jsx";
 
 import AboutContainer from "../containers/about-container.jsx";
@@ -47,7 +45,6 @@ export default class Main extends React.Component {
     static defaultProps = {
         voicesCount: 0,
         languagesCount: 0,
-        hideDonations: false,
         isPremiumVersion: false,
         versionName: null,
         activeTabId: null,
@@ -57,7 +54,6 @@ export default class Main extends React.Component {
         actions: PropTypes.object.isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
-        hideDonations: PropTypes.bool.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string,
         activeTabId: PropTypes.string,
@@ -89,8 +85,6 @@ export default class Main extends React.Component {
 
                     <p>TODO REMOVE isPremiumVersion {"" + this.props.isPremiumVersion}</p>
 
-                    <p>TODO REMOVE hideDonations {"" + this.props.hideDonations}</p>
-
                     <p>TODO REMOVE voicesCount {this.props.voicesCount}</p>
 
                     <p>TODO REMOVE languagesCount {this.props.languagesCount}</p>
@@ -117,13 +111,6 @@ export default class Main extends React.Component {
                     activeTabId={this.props.activeTabId}
                 >
                     <VoicesContainer />
-                </TabContents>
-
-                <TabContents
-                    id="donate"
-                    activeTabId={this.props.activeTabId}
-                >
-                    <DonateContainer />
                 </TabContents>
 
                 <TabContents

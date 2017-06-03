@@ -44,26 +44,6 @@ import DualLogger from "../frontend/dual-log";
 
 const dualLogger = new DualLogger("popup.js");
 
-const loadOptionsAndApply = () => promiseTry(
-    () => {
-        const hideDonationsOptionId = "options-popup-donate-buttons-hide";
-
-        return getBackgroundPage()
-            .then((background) => background.getStoredValue(hideDonationsOptionId))
-            .then((hideDonations) => {
-                if (hideDonations) {
-                    const elementsToHide = Array.from(document.querySelectorAll(".donations"));
-
-                    elementsToHide.forEach((element) => {
-                        element.style.display = "none";
-                    });
-                }
-
-                return undefined;
-            });
-    }
-);
-
 const passClickToBackground = () => promiseTry(
         () => {
             dualLogger.dualLogDebug("Start", "passClickToBackground");
@@ -118,7 +98,6 @@ const start = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => startFrontend())
-            .then(() => loadOptionsAndApply())
             .then(() => registerBroadcastListeners())
             .then(() => passClickToBackground());
     }

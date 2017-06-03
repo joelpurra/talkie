@@ -35,33 +35,10 @@ export default class OnInstalledManager {
         this.onInstallListenerEventQueue = onInstallListenerEventQueue;
     }
 
-    initializeOptionsDefaults() {
-        // TODO: more generic default option value system?
-        const hideDonationsOptionId = "options-popup-donate-buttons-hide";
-
-        return Promise.all([
-            this.storageManager.getStoredValue(hideDonationsOptionId),
-            this.metadataManager.isPremiumVersion(),
-        ])
-            .then(([hideDonations, isPremiumVersion]) => {
-                if (typeof hideDonations !== "boolean") {
-                    // NOTE: don't bother premium users, unless they want to be bothered.
-                    if (isPremiumVersion) {
-                        return this.storageManager.setStoredValue(hideDonationsOptionId, true);
-                    }
-
-                    return this.storageManager.setStoredValue(hideDonationsOptionId, false);
-                }
-
-                return undefined;
-            });
-    }
-
     onExtensionInstalledHandler() {
         return promiseTry(
             () => Promise.resolve()
                 .then(() => this.storageManager.upgradeIfNecessary())
-                .then(() => this.initializeOptionsDefaults())
                 // NOTE: removing all context menus in case the menus have changed since the last install/update.
                 .then(() => this.contextMenuManager.removeAll())
                 .then(() => this.contextMenuManager.createContextMenus())

@@ -47,7 +47,6 @@ const mapStateToProps = (state) => {
     return {
         voicesCount: state.voices.voices.length,
         languagesCount: getLanguagesFromVoices(state.voices.voices).length,
-        hideDonations: state.donations.hideDonations,
         isPremiumVersion: state.metadata.isPremiumVersion,
         versionName: state.metadata.versionName,
         activeTabId: state.navigation.activeTabId,
@@ -69,7 +68,6 @@ export default class App extends React.Component {
         actions: PropTypes.object.isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
-        hideDonations: PropTypes.bool.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string,
         activeTabId: PropTypes.string,
@@ -80,7 +78,6 @@ export default class App extends React.Component {
             actions,
             voicesCount,
             languagesCount,
-            hideDonations,
             isPremiumVersion,
             versionName,
             activeTabId,
@@ -98,7 +95,6 @@ export default class App extends React.Component {
                             actions={actions}
                             voicesCount={voicesCount}
                             languagesCount={languagesCount}
-                            hideDonations={hideDonations}
                             isPremiumVersion={isPremiumVersion}
                             versionName={versionName}
                             activeTabId={activeTabId}

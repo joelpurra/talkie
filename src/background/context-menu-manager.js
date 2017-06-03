@@ -122,19 +122,6 @@ export default class ContextMenuManager {
                     ],
                 },
             },
-            {
-                free: true,
-                premium: false,
-                chrome: true,
-                webextension: true,
-                item: {
-                    id: "open-website-donate",
-                    title: browser.i18n.getMessage("commandOpenWebsiteDonateDescription"),
-                    contexts: [
-                        "browser_action",
-                    ],
-                },
-            },
         ];
     }
 

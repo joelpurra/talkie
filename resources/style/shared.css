@@ -172,13 +172,7 @@ hr {
     border-top-width: 1px;
 }
 
-.donate kbd {
-    width: 100%;
-    text-align: center;
-}
-
-kbd,
-.donate kbd {
+kbd {
     display: inline-block;
     color: #555;
     vertical-align: middle;

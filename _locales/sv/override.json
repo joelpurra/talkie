@@ -14,11 +14,6 @@
     "original": "Read text selection out loud",
     "translated-from": "Read text selection out loud"
   },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Talkies donationssida",
-    "original": "The Talkie donations page",
-    "translated-from": "The Talkie donations page"
-  },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkies webbplats",
     "original": "The Talkie website",
@@ -68,36 +63,6 @@
     "message": "Tack för att du använder Talkie — om du gillar det, berätta för dina vänner!",
     "original": "Thank you for using Talkie — if you like it, tell your friends!",
     "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Donera",
-    "original": "Donate",
-    "translated-from": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Du har redan Talkie 🌟 Premium. Ditt fortsatta stöd är redan tillräckligt — tack!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!",
-    "translated-from": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Fler donationsalternativ",
-    "original": "More donation options",
-    "translated-from": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Donera USD 100 nu",
-    "original": "Donate $$100 now",
-    "translated-from": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Donera USD 25 nu",
-    "original": "Donate $$25 now",
-    "translated-from": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Donera USD 5 nu",
-    "original": "Donate $$5 now",
-    "translated-from": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Automatisk språkidentifiering.",
@@ -178,21 +143,6 @@
     "message": "Skaffa Talkie 🌟 Premium!",
     "original": "Get Talkie 🌟 Premium!",
     "translated-from": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Dölj donationsknapparna i bubblan",
-    "original": "Hide donation buttons in the popup",
-    "translated-from": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Det är inte som att jag inte vill att du ska donera för att stödja Talkie och öppen källkod i allmämhet — jag vill bara inte att du ska bli irriterad när du använder Talkie till att börja med. Om du inakiverar donationsknapparna i bubblan, hoppas jag att du även stödjer Talkie på något sätt! Knapparna kommer alltid vara tillgängliga här bland alternativen, utifall att.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case.",
-    "translated-from": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Donera: stöd öppen källkodsutveckling",
-    "original": "Donate: support open source development",
-    "translated-from": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
@@ -445,16 +395,6 @@
     "message": "Visa alla röster",
     "original": "Show all voices",
     "translated-from": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Dina donationer uppskattas!",
-    "original": "Your donations are appreciated!",
-    "translated-from": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Donationer uppskattat!",
-    "original": "Donations appreciated!",
-    "translated-from": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",

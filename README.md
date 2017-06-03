@@ -7,12 +7,6 @@
 <p align="center">
   Text-to-speech browser extension button
 </p>
-<p align="center" class="donate">
-  <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd>Donate $5 now</kbd></a>
-  <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd>Donate $25 now</kbd></a>
-  <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd>Donate $100 now</kbd></a>
-  <a href="https://joelpurra.com/donate/"><kbd>More options</kbd></a>
-</p>
 <table>
   <tr>
     <td align="center">
@@ -123,7 +117,7 @@ A convenient option is to use the **Talkie shortcut keys**:
 - Lets you listen to the selected text on any part of a page — **short snippets or entire news articles**. Just highlight what you want to hear read aloud and hit play.
 - Automatically **detects the text language** per-page, and chooses a voice in the same language to match it.
 - **Privacy aware** — no unnecessary tracking or external services.
-- Free but [your donations are highly appreciated](https://joelpurra.com/donate/)!
+- Free!
 
 
 

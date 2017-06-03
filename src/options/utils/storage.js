@@ -43,7 +43,6 @@ const EMPTY_STATE = {};
 const DEFAULT_STATE = {};
 
 export const SHARED_STATE_STORAGE_KEY_WHITELIST = [
-    "donations",
     "metadata",
     "voices",
 ];

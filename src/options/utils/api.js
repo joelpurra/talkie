@@ -80,14 +80,6 @@ export const setVoicePitchOverride = (voiceName, pitch) => getBackgroundPage()
 export const toggleLanguageVoiceOverrideName = (languageCode, voiceName) => getBackgroundPage()
     .then((background) => background.toggleLanguageVoiceOverrideName(languageCode, voiceName));
 
-const hideDonationsOptionId = "options-popup-donate-buttons-hide";
-
-export const getHideDonations = () => getBackgroundPage()
-    .then((background) => background.getStoredValue(hideDonationsOptionId));
-
-export const setHideDonations = (hideDonations) => getBackgroundPage()
-    .then((background) => background.setStoredValue(hideDonationsOptionId, hideDonations === true));
-
 export const isPremiumVersion = () => getBackgroundPage()
     .then((background) => background.isPremiumVersion());
 

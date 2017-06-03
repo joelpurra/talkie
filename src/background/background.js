@@ -174,7 +174,6 @@ function main() {
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
         "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
         "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
-        "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 
     const commandHandler = new CommandHandler(commandMap);

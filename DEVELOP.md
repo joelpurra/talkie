@@ -7,12 +7,6 @@
 <p align="center">
   Text-to-speech browser extension button
 </p>
-<p align="center" class="donate">
-  <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd>Donate $5 now</kbd></a>
-  <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd>Donate $25 now</kbd></a>
-  <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd>Donate $100 now</kbd></a>
-  <a href="https://joelpurra.com/donate/"><kbd>More options</kbd></a>
-</p>
 <table>
   <tr>
     <td align="center">

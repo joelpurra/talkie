@@ -8,9 +8,6 @@
   "commandBrowserActionDescription": {
     "message": "Read text selection out loud"
   },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "The Talkie donations page"
-  },
   "commandOpenWebsiteMainDescription": {
     "message": "The Talkie website"
   },
@@ -46,24 +43,6 @@
   },
   "frontend_aboutThankYou": {
     "message": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Automatic language detection."
@@ -115,15 +94,6 @@
   },
   "frontend_getPremiumLinkText": {
     "message": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
     "message": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -316,12 +286,6 @@
   },
   "frontend_voicesShowAllVoices": {
     "message": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
