@@ -8,6 +8,9 @@
     }
   },
   "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:;",
+  "externally_connectable": {
+    "ids": []
+  },
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
