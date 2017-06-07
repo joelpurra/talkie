@@ -1,7 +1,8 @@
 {
   "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
     "message": "Läs upp markerad text",
-    "original": "Read text selection out loud",
+    "original": "Read text selection out loud with $NAME$",
     "translated-from": "Read text selection out loud"
   },
   "buttonStopTitle": {
@@ -25,9 +26,9 @@
     "translated-from": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie 🌟 Premiums butikssida",
-    "original": "The Talkie 🌟 Premium store page",
-    "translated-from": "The Talkie 🌟 Premium store page"
+    "message": "Talkie Premiums butikssida",
+    "original": "The Talkie Premium store page",
+    "translated-from": "The Talkie Premium store page"
   },
   "commandStartStopDescription": {
     "message": "Börja/sluta läsa upp markerad text",
@@ -35,8 +36,9 @@
     "translated-from": "Start/stop reading selection"
   },
   "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
     "message": "Markera text på valfri webbplats, och låt datorn läsa upp den för dig genom ett enkelt klick på Talkie-knappen.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button.",
+    "original": null,
     "translated-from": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
@@ -120,9 +122,9 @@
     "translated-from": "Future Premium updates included for free."
   },
   "frontend_featuresVersion_Free": {
-    "message": "Du använder för närvarande den konstnadsfria versionen av Talkie och en begränsad funktionalitet är tillgängliga för dig. Kanske skulle Talkie 🌟 Premium vara ett bättre val för dig?",
+    "message": "Du använder för närvarande den konstnadsfria versionen av Talkie och en begränsad funktionalitet är tillgängliga för dig. Kanske skulle Talkie Premium vara ett bättre val för dig?",
     "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?",
-    "translated-from": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "translated-from": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
     "message": "Du använder för närvarande premiumversionen av Talkie och all funktionalitet är tillgängliga för dig. Tack så mycket, det värmer mitt hjärta!",
@@ -130,14 +132,14 @@
     "translated-from": "You are currently using the premium version of Talkie, and all features are available to you. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie finns i två versioner: Talkie och Talkie 🌟 Premium. Den konstnadsfria versionen fungerar bra för de flesta användningsfall, men premiumversionen har fler inställningar.",
+    "message": "Talkie finns i två versioner: Talkie och Talkie Premium. Den konstnadsfria versionen fungerar bra för de flesta användningsfall, men premiumversionen har fler inställningar.",
     "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options.",
-    "translated-from": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
+    "translated-from": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_getPremiumLinkText": {
-    "message": "Skaffa Talkie 🌟 Premium!",
+    "message": "Skaffa Talkie Premium!",
     "original": null,
-    "translated-from": "Get Talkie 🌟 Premium!"
+    "translated-from": "Get Talkie Premium!"
   },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
@@ -186,13 +188,13 @@
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie i Chrome Web Store",
-    "original": "Talkie in the Chrome Web Store",
+    "original": null,
     "translated-from": "Talkie in the Chrome Web Store"
   },
   "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium i Chrome Web Store",
-    "original": "Talkie Premium in the Chrome Web Store",
-    "translated-from": "Talkie 🌟 Premium in the Chrome Web Store"
+    "message": "Talkie Premium i Chrome Web Store",
+    "original": null,
+    "translated-from": "Talkie Premium in the Chrome Web Store"
   },
   "frontend_usageHeading": {
     "message": "Användning",
@@ -247,7 +249,7 @@
   "frontend_voicesDescription": {
     "message": "Talkie detekterar språk automatiskt, men inte alla språk är tillgängliga i varje webbläsare. Här kan du se och testa installerade röster för varje språk.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
-    "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "translated-from": "Here you can see and test installed voices for each language in your browser. Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Röster: testa din webbläsare",
@@ -261,9 +263,9 @@
   },
   "frontend_voicesPitchEmptyHeading_Free": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: tonhöjd för röst",
+    "message": "Premium: tonhöjd för röst",
     "original": null,
-    "translated-from": "🌟 Premium: pitch for voice"
+    "translated-from": "Premium: pitch for voice"
   },
   "frontend_voicesPitchEmptyHeading_Premium": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
@@ -273,7 +275,7 @@
   },
   "frontend_voicesPitchHeading_Free": {
     "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: tonhöjd för $VOICE$",
+    "message": "Premium: tonhöjd för $VOICE$",
     "original": null,
     "placeholders": {
       "voice": {
@@ -281,7 +283,7 @@
         "example": "Alva"
       }
     },
-    "translated-from": "🌟 Premium: pitch for $VOICE$"
+    "translated-from": "Premium: pitch for $VOICE$"
   },
   "frontend_voicesPitchHeading_Premium": {
     "description": "The per-voice pitch options heading, including the voice name",
@@ -297,9 +299,9 @@
   },
   "frontend_voicesRateEmptyHeading_Free": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: hastighet för röst",
+    "message": "Premium: hastighet för röst",
     "original": null,
-    "translated-from": "🌟 Premium: speed for voice"
+    "translated-from": "Premium: speed for voice"
   },
   "frontend_voicesRateEmptyHeading_Premium": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -309,7 +311,7 @@
   },
   "frontend_voicesRateHeading_Free": {
     "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: hastighet för $VOICE$",
+    "message": "Premium: hastighet för $VOICE$",
     "original": null,
     "placeholders": {
       "voice": {
@@ -317,7 +319,7 @@
         "example": "Google italiano"
       }
     },
-    "translated-from": "🌟 Premium: speed for $VOICE$"
+    "translated-from": "Premium: speed for $VOICE$"
   },
   "frontend_voicesRateHeading_Premium": {
     "description": "The per-voice speed options heading, including the voice name",
@@ -344,9 +346,9 @@
   },
   "frontend_voicesSetAsLanguageEmptySelection_Free": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: Uppgradera för att ändra standardröst",
+    "message": "Premium: Uppgradera för att ändra standardröst",
     "original": null,
-    "translated-from": "🌟 Premium: Upgrade to change default voice"
+    "translated-from": "Premium: Upgrade to change default voice"
   },
   "frontend_voicesSetAsLanguageEmptySelection_Premium": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
@@ -356,7 +358,7 @@
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: Använd $VOICE$ som standardröst för text på $LANGUAGE$",
+    "message": "Premium: Använd $VOICE$ som standardröst för text på $LANGUAGE$",
     "original": null,
     "placeholders": {
       "language": {
@@ -368,7 +370,7 @@
         "example": "Alva"
       }
     },
-    "translated-from": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$"
+    "translated-from": "Premium: Use $VOICE$ as default voice for text in $LANGUAGE$"
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",

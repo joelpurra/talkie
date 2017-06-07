@@ -55,7 +55,10 @@ export default class ToggleDefault extends React.Component {
         if (this.props.languageCode === null || this.props.voiceName === null) {
             buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection");
         } else {
-            const messageDetailsPlaceholders = [this.props.languageCode, this.props.voiceName];
+            const messageDetailsPlaceholders = [
+                this.props.languageCode,
+                this.props.voiceName,
+            ];
 
             buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
         }

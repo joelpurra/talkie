@@ -1,6 +1,21 @@
 {
   "buttonDefaultTitle": {
-    "message": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Stop talking"
@@ -15,7 +30,7 @@
     "message": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "The Talkie 🌟 Premium store page"
+    "message": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Read from the clipboard"
@@ -23,8 +38,13 @@
   "commandStartStopDescription": {
     "message": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "About"
@@ -37,6 +57,9 @@
   },
   "frontend_PopupMenu_Voices": {
     "message": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Source code on Github"
@@ -115,18 +138,6 @@
   },
   "frontend_supportAndFeedback": {
     "message": "Support and feedback"
-  },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie Premium in the Chrome Web Store"
   },
   "frontend_usageLinkText": {
     "message": "Usage"

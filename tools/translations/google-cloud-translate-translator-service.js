@@ -54,11 +54,8 @@ export default class GoogleCloudTranslateTranslator {
             const preparedMessages = keys.map((key) => {
                 const preparedMessage = messages[key].message
                         .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
-                        .replace(/Talkie 🌟 Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_STAR_PREMIUM___</span>")
-                        .replace(/🌟 Premium/g, "<span class=\"notranslate\">___TEMP_STAR_PREMIUM___</span>")
                         .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
                         .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
-                        .replace(/🌟/g, "<span class=\"notranslate\">___TEMP_STAR___</span>")
                         .replace(/\${2}/g, " <span class=\"notranslate\"> USD </span> ")
                         .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
 
@@ -85,11 +82,8 @@ export default class GoogleCloudTranslateTranslator {
                             .map((translationResponse) => {
                                 const translateDirtyMessage = translationResponse
                                     .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
-                                    .replace(/___TEMP_TALKIE_STAR_PREMIUM___/g, "Talkie 🌟 Premium")
-                                    .replace(/___TEMP_STAR_PREMIUM___/g, "🌟 Premium")
                                     .replace(/___TEMP_TALKIE___/g, "Talkie")
                                     .replace(/___TEMP_PREMIUM___/g, "Premium")
-                                    .replace(/___TEMP_STAR___/g, "🌟")
                                     .replace(/^\s+/g, "")
                                     .replace(/\s+$/g, "")
                                     .replace(/ +\/ +/g, "/")

@@ -13,7 +13,7 @@
   },
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
-  "description": "__MSG_extensionDescription__",
+  "description": "__MSG_extensionDescription_Free__",
   "author": "Joel Purra",
   "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
@@ -80,7 +80,7 @@
   "default_locale": "en",
   "browser_action": {
     "browser_style": false,
-    "default_title": "__MSG_buttonDefaultTitle__",
+    "default_title": "__MSG_buttonDefaultTitle_Free__",
     "default_icon": {
       "16": "resources/icon/free/icon-play/icon-16x16.png",
       "32": "resources/icon/free/icon-play/icon-32x32.png",

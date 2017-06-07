@@ -1,7 +1,8 @@
 {
   "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
     "message": "Textauswahl laut vorlesen",
-    "original": "Read text selection out loud",
+    "original": "Read text selection out loud with $NAME$",
     "translated-from": "Read text selection out loud"
   },
   "buttonStopTitle": {
@@ -25,8 +26,9 @@
     "translated-from": "Start/stop reading selection"
   },
   "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
     "message": "Wähle den Text auf einer beliebigen Webseite aus und lass ihn dir vom Computer laut vorlesen. Klicke hierfür einfach auf den Talkie-Button.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button.",
+    "original": null,
     "translated-from": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_Options": {
@@ -95,7 +97,7 @@
   },
   "frontend_talkieInTheChromeWebStore_Free": {
     "message": "Talkie im Chrome Web Store",
-    "original": "Talkie in the Chrome Web Store",
+    "original": null,
     "translated-from": "Talkie in the Chrome Web Store"
   },
   "frontend_usageHeading": {
@@ -151,7 +153,7 @@
   "frontend_voicesDescription": {
     "message": "Talkie hat eine automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar. Hier kannst du alle installierten Stimmen für jede Sprache sehen und testen.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
-    "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
+    "translated-from": "Here you can see and test installed voices for each language in your browser. Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesHeading": {
     "message": "Stimmen: teste deinen Browser",
