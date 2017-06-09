@@ -58,12 +58,12 @@ export default class NavContainer extends React.Component {
                 translationKey: "frontend_usageLinkText",
             },
             {
-                tabId: "features",
-                translationKey: "frontend_featuresLinkText",
-            },
-            {
                 tabId: "voices",
                 translationKey: "frontend_voicesLinkText",
+            },
+            {
+                tabId: "features",
+                translationKey: "frontend_featuresLinkText",
             },
             {
                 tabId: "about",

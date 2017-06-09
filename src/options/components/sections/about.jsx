@@ -68,6 +68,9 @@ export default class About extends React.Component {
                     <li>
                         <a href={this.props.configure("urls.github")}>{this.props.translate("frontend_aboutCodeOnGithubLinkText")}</a>
                     </li>
+                    <li className="talkie-free-only talkie-list-item">
+                        <a href={this.props.configure("urls.store-premium")}>Talkie Premium</a>
+                    </li>
                 </ul>
 
                 <h2>{this.props.translate("frontend_shareHeading")}</h2>
