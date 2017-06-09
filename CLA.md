@@ -19,7 +19,7 @@
       <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium<br />(Coming soon!)
+      <a href="https://joelpurra.com/projects/talkie/#premium"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium<br />(Coming soon!)
     </td>
   </tr>
 </table>

@@ -11,7 +11,7 @@
       "chromewebstore-free": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
       "chromewebstore-premium": "https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo",
       "firefox-amo-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
-      "firefox-amo-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "firefox-amo-premium": "https://joelpurra.com/projects/talkie/#premium",
       "share": {
         "twitter": "https://twitter.com/intent/tweet?text=Using%20Talkie%20to%20read%20text%20for%20me%20-%20text%20to%20speech%20works%20great!&url=https://joelpurra.com/projects/talkie/&via=joelpurra&related=&hashtags=texttospeech,tts",
         "facebook": "https://www.facebook.com/sharer/sharer.php?u=https%3A//joelpurra.com/projects/talkie/",
@@ -45,8 +45,8 @@
     },
     "webextension": {
       "urls": {
-        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "store": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/#premium",
+        "store": "https://joelpurra.com/projects/talkie/#premium"
       }
     }
   },
@@ -59,7 +59,7 @@
   "webextension": {
     "urls": {
       "store-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
-      "store-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "store-premium": "https://joelpurra.com/projects/talkie/#premium"
     }
   }
 }
