@@ -60,6 +60,11 @@ body {
     color: #000000;
 }
 
+h2 {
+    margin-top: 1.5em;
+    font-size: 1.1em;
+}
+
 a {
     color: #000000;
 }
@@ -87,7 +92,7 @@ a:hover {
 
 .premium-section {
     background-color: #eceff5;
-    border-radius: 0.3em;
+    border-radius: 0.4em;
     margin-left: -0.5em;
     margin-right: -0.5em;
 }
@@ -98,6 +103,24 @@ div.premium-section {
 
 .premium-section p:first-of-type {
     margin-top: 0;
+}
+
+tr.premium-section:first-of-type td:first-of-type,
+tr:not(.premium-section)+tr.premium-section td:first-of-type {
+    border-top-left-radius: 0.5em;
+}
+
+tr.premium-section:first-of-type td:first-of-type,
+tr:not(.premium-section)+tr.premium-section td:first-of-type {
+    border-top-right-radius: 0.5em;
+}
+
+tr.premium-section:last-of-type td:first-of-type {
+    border-bottom-left-radius: 0.5em;
+}
+
+tr.premium-section:last-of-type td:last-of-type {
+    border-bottom-right-radius: 0.5em;
 }
 
 body.loading {
@@ -116,10 +139,6 @@ hr {
     margin-left: 1em;
     margin-right: 1em;
     font-size: 0.75em;
-}
-
-p {
-    margin-bottom: 0;
 }
 
 a.button {
