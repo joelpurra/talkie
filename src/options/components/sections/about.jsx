@@ -77,16 +77,16 @@ export default class About extends React.Component {
 
                 <ul className="inline">
                     <li>
-                        <a href={this.props.configure("urls.share.twitter")}><span className="icon icon-inline icon-24px icon-share icon-twitter"></span></a>
+                        <a href={this.props.configure("urls.share.twitter")}><span className="icon icon-standalone icon-24px icon-share icon-twitter"></span></a>
                     </li>
                     <li>
-                        <a href={this.props.configure("urls.share.facebook")}><span className="icon icon-inline icon-24px icon-share icon-facebook"></span></a>
+                        <a href={this.props.configure("urls.share.facebook")}><span className="icon icon-standalone icon-24px icon-share icon-facebook"></span></a>
                     </li>
                     <li>
-                        <a href={this.props.configure("urls.share.googleplus")}><span className="icon icon-inline icon-24px icon-share icon-googleplus"></span></a>
+                        <a href={this.props.configure("urls.share.googleplus")}><span className="icon icon-standalone icon-24px icon-share icon-googleplus"></span></a>
                     </li>
                     <li>
-                        <a href={this.props.configure("urls.share.linkedin")}><span className="icon icon-inline icon-24px icon-share icon-linkedin"></span></a>
+                        <a href={this.props.configure("urls.share.linkedin")}><span className="icon icon-standalone icon-24px icon-share icon-linkedin"></span></a>
                     </li>
                 </ul>
 

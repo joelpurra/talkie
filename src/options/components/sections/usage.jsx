@@ -94,6 +94,12 @@ export default class Usage extends React.Component {
                         <tbody>
                             <tr>
                                 <td>
+                                    <span className="lighter">
+                                        <span className="icon icon-inline icon-16px icon-small-play"></span>
+                                        /
+                                        <span className="icon icon-inline icon-16px icon-small-stop"></span>
+                                    </span>
+
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
                                 </td>
                                 <td>
@@ -103,6 +109,12 @@ export default class Usage extends React.Component {
                             {/* NOTE: Shortcut key already in use in Firefox */}
                             <tr className="talkie-chrome-only talkie-table-row">
                                 <td>
+                                    <span className="lighter">
+                                        <span className="icon icon-inline icon-16px icon-small-play"></span>
+                                        /
+                                        <span className="icon icon-inline icon-16px icon-small-stop"></span>
+                                    </span>
+
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
                                 </td>
                                 <td>
@@ -118,6 +130,8 @@ export default class Usage extends React.Component {
                             </tr>
                             <tr className="talkie-chrome-only talkie-table-row premium-section">
                                 <td>
+                                    <span className="icon icon-inline icon-16px icon-small-speaker"></span>
+
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
                                 </td>
                                 <td>
@@ -137,6 +151,12 @@ export default class Usage extends React.Component {
                         <tbody>
                             <tr>
                                 <td>
+                                    <span className="lighter">
+                                        <span className="icon icon-inline icon-16px icon-small-play"></span>
+                                        /
+                                        <span className="icon icon-inline icon-16px icon-small-stop"></span>
+                                    </span>
+
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
                                 </td>
                                 <td>
@@ -146,6 +166,12 @@ export default class Usage extends React.Component {
                             {/* NOTE: Shortcut key already in use in Firefox */}
                             <tr className="talkie-chrome-only talkie-table-row">
                                 <td>
+                                    <span className="lighter">
+                                        <span className="icon icon-inline icon-16px icon-small-play"></span>
+                                        /
+                                        <span className="icon icon-inline icon-16px icon-small-stop"></span>
+                                    </span>
+
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
                                 </td>
                                 <td>
@@ -160,6 +186,8 @@ export default class Usage extends React.Component {
                             </tr>
                             <tr className="talkie-chrome-only talkie-table-row premium-section">
                                 <td>
+                                    <span className="icon icon-inline icon-16px icon-small-speaker"></span>
+
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
                                 </td>
                                 <td>
