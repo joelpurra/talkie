@@ -49,13 +49,11 @@ export default class Usage extends React.Component {
                 <p>{this.props.translate("frontend_usageSelectionContextMenuDescription")}</p>
 
                 {/* NOTE: read from clipboard feature not available in Firefox */}
-                <div className="talkie-chrome-only talkie-block">
-                    <div className="premium-section">
-                        <p><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></p>
-                        <p>
-                            {this.props.translate("frontend_usageReadclipboard")}
-                        </p>
-                    </div>
+                <div className="talkie-chrome-only talkie-block premium-section">
+                    <p><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></p>
+                    <p>
+                        {this.props.translate("frontend_usageReadclipboard")}
+                    </p>
                 </div>
 
                 <h2>{this.props.translate("frontend_usageShortcutHeading")}
@@ -72,29 +70,42 @@ export default class Usage extends React.Component {
                 <p>{this.props.translate("frontend_usageShortcutKeyDescription")}</p>
 
                 <div className="talkie-non-mac-only talkie-block">
-                    <table>
+                    <table className="shortcut-keys-table">
+                        <colgroup>
+                            <col width="100%" />
+                            <col width="0*" />
+                        </colgroup>
                         <tbody>
                             <tr>
                                 <td>
-                                    <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                                    {" "}
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
+                                </td>
+                                <td>
+                                    <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
                                 </td>
                             </tr>
                             {/* NOTE: Shortcut key already in use in Firefox */}
                             <tr className="talkie-chrome-only talkie-table-row">
                                 <td>
-                                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                                    {" "}
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
+                                </td>
+                                <td>
+                                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
                                 </td>
                             </tr>
                             {/* NOTE: read from clipboard feature not available in Firefox  */}
-                            <tr className="talkie-chrome-only talkie-table-row">
+                            {/* NOTE: read from clipboard feature not available in Firefox */}
+                            <tr className="talkie-chrome-only talkie-table-row premium-section">
+                                <td colSpan="2">
+                                    <a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a>
+                                </td>
+                            </tr>
+                            <tr className="talkie-chrome-only talkie-table-row premium-section">
+                                <td>
+                                    {this.props.translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
+                                </td>
                                 <td>
                                     <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd>
-                                    {" "}
-                                    {this.props.translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
                                 </td>
                             </tr>
                         </tbody>
@@ -102,34 +113,41 @@ export default class Usage extends React.Component {
                 </div>
 
                 <div className="talkie-mac-only talkie-block">
-                    <table>
+                    <table className="shortcut-keys-table">
+                        <colgroup>
+                            <col width="100%" />
+                            <col width="0*" />
+                        </colgroup>
                         <tbody>
                             <tr>
                                 <td>
-                                    <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                                    {" "}
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
+                                </td>
+                                <td>
+                                    <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
                                 </td>
                             </tr>
                             {/* NOTE: Shortcut key already in use in Firefox */}
                             <tr className="talkie-chrome-only talkie-table-row">
                                 <td>
-                                    <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                                    {" "}
                                     {this.props.translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
+                                </td>
+                                <td>
+                                    <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
                                 </td>
                             </tr>
                             {/* NOTE: read from clipboard feature not available in Firefox */}
-                            <tr className="talkie-chrome-only talkie-table-row">
+                            <tr className="talkie-chrome-only talkie-table-row premium-section">
+                                <td colSpan="2">
+                                    <a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a>
+                                </td>
+                            </tr>
+                            <tr className="talkie-chrome-only talkie-table-row premium-section">
                                 <td>
-                                    <div className="premium-section">
-                                        <p><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></p>
-                                        <p>
-                                            <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd>
-                                            {" "}
-                                            {this.props.translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
-                                        </p>
-                                    </div>
+                                    {this.props.translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
+                                </td>
+                                <td>
+                                    <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd>
                                 </td>
                             </tr>
                         </tbody>
