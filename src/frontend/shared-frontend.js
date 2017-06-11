@@ -162,7 +162,7 @@ const configureWindowContents = () => promiseTry(
                             element.setAttribute(target, configured);
                         }
 
-                        return;
+                        return undefined;
                     });
             }
         );
@@ -198,8 +198,6 @@ const translateWindowContents = () => promiseTry(
                 } else {
                     element.setAttribute(target, translated);
                 }
-
-                return;
             }
         );
 
