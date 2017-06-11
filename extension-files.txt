@@ -33,7 +33,7 @@ dist/options.js
 dist/popup.js
 dist/stay-alive.js
 lib/browser-polyfill.min.js
-lib/react-libs.js
+lib/react-libs.min.js
 LICENSE
 manifest.json
 README.md
