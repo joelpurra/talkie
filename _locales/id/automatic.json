@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "Baca seleksi teks dengan lantang",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Baca seleksi teks dengan suara keras dengan $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Baca seleksi teks dengan keras dengan Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Baca seleksi teks dengan suara keras dengan Talkie Premium",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Berhenti berbicara",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "Baca seleksi teks dengan lantang",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Halaman Talkie Talkie",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Situs Talkie",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie 🌟 Premium toko Talkie 🌟 Premium",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "Talkie Premium toko Talkie Premium",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Baca dari clipboard",
@@ -35,21 +48,39 @@
     "message": "Mulai/berhenti membaca seleksi",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Pilih teks pada halaman web manapun, dan mintalah komputer Talkie dengan keras untuk Anda dengan mengklik tombol Talkie .",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "BEBAS! Cepat, mudah, teks berkualitas tinggi untuk berbicara di lebih dari 40 bahasa. Baca dengan keras dari situs web, PDF, email. Bicaralah teks dengan TTS.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "Pilihan",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "PREMIUM! Cepat, mudah, teks berkualitas tinggi untuk berbicara di lebih dari 40 bahasa. Baca dengan keras dari situs web, PDF, email. Bicaralah teks dengan TTS.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "Tentang",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "fitur",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Penggunaan dan jalan pintas",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Pilihan suara",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Pilih teks yang Talkie pada halaman web manapun dan klik tombol Talkie di bilah browser Anda.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Kode sumber di github",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "Tentang: tombol ekstensi browser text-to-speech",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Tentang",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Halaman proyek di joelpurra.com",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Terima kasih telah Talkie — jika Anda suka, beritahu teman Anda!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Menyumbangkan",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Anda sudah memiliki Talkie 🌟 Premium. Dukungan Anda sudah cukup — terima kasih!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Lebih banyak pilihan donasi",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Sumbang USD 100 sekarang",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Sumbang USD 25 sekarang",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Sumbang USD 5 sekarang",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Deteksi bahasa otomatis.",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "Bebas!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Fitur: apa Talkie bagus di",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "fitur",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "Anda saat ini menggunakan versi gratis Talkie , dan Talkie fitur terbatas tersedia untuk Anda. Mungkin Talkie 🌟 Premium akan menjadi pilihan yang lebih baik untuk Anda?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "Saat ini menggunakan versi gratis Talkie , dan sejumlah fitur terbatas tersedia. Mungkin Talkie Premium akan menjadi pilihan yang lebih baik untuk Anda?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Anda saat ini menggunakan Talkie 🌟 Premium , dan semua fitur tersedia untuk Anda. Terima kasih banyak, ini menghangatkan hatiku!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Saat ini menggunakan Talkie Premium , dan semua fitur tersedia. Terima kasih banyak, ini menghangatkan hatiku!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie hadir dalam dua versi: Talkie dan Talkie 🌟 Premium. Versi gratis sangat bagus untuk sebagian besar kasus penggunaan, namun versi premium menawarkan opsi tambahan.",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Dapatkan Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Sembunyikan tombol donasi di popup",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Bukannya saya tidak ingin Anda Talkie 🌟 Premium atau Talkie 🌟 Premium untuk Talkie dan pengembangan sumber terbuka secara umum — saya tidak ingin Anda Talkie saat Talkie di tempat pertama. Jika Anda Talkie tombol donasi di popup, saya harap Anda juga akan Talkie dalam beberapa cara! Tombolnya akan selalu tersedia di sini di antara pilihan, untuk jaga-jaga.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Donasi: mendukung pengembangan open source",
-    "original": "Donate: support open source development"
+    "message": "Talkie hadir dalam dua versi: Talkie dan Talkie Premium. Versi gratis sangat bagus untuk sebagian besar kasus penggunaan, namun versi premium menawarkan opsi tambahan.",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Semua kontribusi ke Talkie dibuat berdasarkan Perjanjian Lisensi Kontributor (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "Lisensi: perangkat lunak sumber terbuka",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "Lisensi",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "Tinjau Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Beritahu teman Anda tentang Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie dikembangkan beberapa hari sebelum Tahun Baru 2016/2017, atas tantangan dari seorang teman. Tantangan dimulai dengan pertanyaan: saat pulang kerja, mungkinkah untuk mendengarkan sebuah artikel daripada membacanya? Mudah, kataku, dan bersiap untuk membuktikannya — atau setidaknya membuat perambanku mengeluarkan teks dengan suara komputer yang konyol. Versi dasarnya, tanpa antarmuka pengguna, ternyata sepele untuk dibuat. Menambahkan antarmuka pengguna, butuh waktu sedikit lebih lama. Menambahkan deteksi bahasa yang tepat lebih banyak kode. Mengatasi bug di browser malah lebih banyak bekerja. Daftar perbaikan dan fitur terus berlanjut — dan beberapa ribu baris kode kemudian, Anda melihat hasil akhirnya.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Cerita: Talkie memulai",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Cerita",
-    "original": "Story"
+    "message": "Talkie memulai",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Terima kasih telah Talkie — jika Anda suka, beritahu teman Anda!",
@@ -203,53 +182,37 @@
     "message": "Dukungan dan umpan balik",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie di Firefox Add-on",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium di Firefox Add-on",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie di Toko Web Chrome",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium di Toko Web Chrome",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "Pemakaian",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "Pemakaian",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "Di Talkie 🌟 Premium , Anda dapat membaca teks yang disalin ke clipboard Anda — gunakan dengan tombol pintas untuk mendengarkan teks dari manapun di luar browser. Anda juga bisa klik kanan pada tombol Talkie 🌟 Premium , atau di area situs web yang kosong, dan pilih baca dari clipboard.",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Baca teks yang disalin ke clipboard Anda — gunakan dengan tombol shortcut untuk mendengarkan teks dari manapun di luar browser. Anda juga bisa klik kanan pada tombol Talkie Premium , atau di area kosong sebuah situs web, dan pilih baca dari clipboard.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Anda juga bisa memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Cara ini juga bekerja dalam file PDF dan beberapa jenis halaman khusus di browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Tombol pintas",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Jika tombol pintas tidak bekerja, periksa apakah itu belum digunakan oleh ekstensi atau program lain.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Cara Talkie atau mengubah tombol pintas Talkie .",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Periksa atau ganti tombol pintas Talkie .",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Pilihan yang mudah Talkie adalah Talkie tombol pintas Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Baca teks dari clipboard dalam program apapun — Talkie 🌟 Premium fitur",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Baca teks dari clipboard dalam program apapun",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Mulai berhenti",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Di sini Anda dapat melihat dan menguji suara yang terpasang untuk setiap bahasa di browser Anda. Talkie 🌟 Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengubah Talkie 🌟 Premium dan nada untuk setiap suara.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Suara: pilih favoritmu",
-    "original": "Voices: select your favorite"
+    "message": "Lihat dan uji suara terinstal untuk setiap bahasa di browser Anda. Talkie Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengatur Talkie Premium dan nada untuk setiap suara.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "Suara",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: nada untuk suara",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch untuk suara",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: 🌟 Premium $VOICE$",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch seharga $VOICE$",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: 🌟 Premium untuk suara",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Kecepatan untuk suara",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: 🌟 Premium untuk $VOICE$",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Kecepatan untuk $VOICE$",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "Contoh teks untuk Talkie untuk Talkie dengan keras",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: Upgrade untuk mengubah suara default",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "Gunakan sebagai suara default untuk bahasa",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: Gunakan $VOICE$ sebagai suara default untuk teks dalam $LANGUAGE$",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Gunakan $VOICE$ sebagai suara default untuk teks dalam $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "Tampilkan semua suara",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Sumbangan Anda dihargai!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Sumbangan dihargai!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Silahkan pilih teks yang diinginkan di website terlebih dahulu. Anda juga bisa memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu.",

@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
     promiseSleep,
 } from "../shared/promise";
 
@@ -96,6 +95,8 @@ import ShortcutKeyManager from "./shortcut-key-manager";
 
 import MetadataManager from "./metadata-manager";
 
+import OnInstalledManager from "./on-installed-manager";
+
 import StorageManager from "./storage-manager";
 
 import LanguageHelper from "./language-helper";
@@ -103,6 +104,36 @@ import LanguageHelper from "./language-helper";
 import Execute from "../shared/execute";
 
 registerUnhandledRejectionHandler();
+
+// NOTE: synchronous handling of the onInstall event through a separate, polled queue handled by the OnInstalledManager.
+const onInstallListenerEventQueue = [];
+
+const startOnInstallListener = () => {
+    const onInstallListener = (event) => {
+        const onInstallEvent = {
+            reason: "event",
+            event: event,
+        };
+
+        onInstallListenerEventQueue.push(onInstallEvent);
+    };
+
+    // NOTE: "This event is not triggered for temporarily installed add-ons."
+    // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onInstalled#Compatibility_notes
+    // NOTE: When using the WebExtensions polyfill, this check doesn't seem to work as browser.runtime.onInstalled always exists.
+    // https://github.com/mozilla/webextension-polyfill
+    if (browser.runtime.onInstalled) {
+        // NOTE: the onInstalled listener can't be added asynchronously
+        browser.runtime.onInstalled.addListener(onInstallListener);
+    } else {
+        const onInstallEvent = {
+            reason: "fallback",
+            event: null,
+        };
+
+        onInstallListenerEventQueue.push(onInstallEvent);
+    }
+};
 
 function main() {
     logDebug("Start", "Main background function");
@@ -143,7 +174,6 @@ function main() {
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
         "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
         "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
-        "open-website-donate": () => openUrlFromConfigurationInNewTab("donate"),
     };
 
     const commandHandler = new CommandHandler(commandMap);
@@ -159,54 +189,30 @@ function main() {
 
     const plug = new Plug(contentLogger, execute);
 
-    (function addChromeOnInstalledListeners() {
-        const initializeOptionsDefaults = () => {
-            // TODO: more generic default option value system?
-            const hideDonationsOptionId = "options-popup-donate-buttons-hide";
+    const onInstalledManager = new OnInstalledManager(storageManager, metadataManager, contextMenuManager, onInstallListenerEventQueue);
 
-            return Promise.all([
-                storageManager.getStoredValue(hideDonationsOptionId),
-                metadataManager.isPremiumVersion(),
-            ])
-                .then(([hideDonations, isPremiumVersion]) => {
-                    if (typeof hideDonations !== "boolean") {
-                        // NOTE: don't bother premium users, unless they want to be bothered.
-                        if (isPremiumVersion) {
-                            return storageManager.setStoredValue(hideDonationsOptionId, true);
-                        }
+    (function addOnInstalledEventQueuePolling() {
+        // NOTE: run the function once first, to allow for a very long interval.
+        const ONE_SECOND_IN_MILLISECONDS = 1 * 1000;
+        const ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT = ONE_SECOND_IN_MILLISECONDS;
 
-                        return storageManager.setStoredValue(hideDonationsOptionId, false);
-                    }
+        /* eslint-disable no-unused-vars */
+        const onInstallListenerEventQueueHandlerTimeoutId = setTimeout(
+            () => onInstalledManager.onInstallListenerEventQueueHandler(),
+            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT
+        );
+        /* eslint-enable no-unused-vars */
 
-                    return undefined;
-                });
-        };
+        // NOTE: run the function with a very long interval.
+        const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
+        const ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL = ONE_HOUR_IN_MILLISECONDS;
 
-        const onExtensionInstalledHandler = () => promiseTry(
-                () => Promise.resolve()
-                    .then(() => storageManager.upgradeIfNecessary())
-                    .then(() => initializeOptionsDefaults())
-                    // NOTE: removing all context menus in case the menus have changed since the last install/update.
-                    .then(() => contextMenuManager.removeAll())
-                    .then(() => contextMenuManager.createContextMenus())
-                    .catch((error) => logError("onExtensionInstalledHandler", error))
-            );
-
-        const onExtensionInstalledFallback = () => promiseTry(
-                () => onExtensionInstalledHandler()
-                    .catch((error) => logError("onExtensionInstalledFallback", error))
-            );
-
-        // NOTE: "This event is not triggered for temporarily installed add-ons."
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onInstalled#Compatibility_notes
-        // NOTE: When using the WebExtensions polyfill, this check doesn't seem to work as browser.runtime.onInstalled always exists.
-        // https://github.com/mozilla/webextension-polyfill
-        if (browser.runtime.onInstalled) {
-            // NOTE: the onInstalled listener can't be added asynchronously
-            browser.runtime.onInstalled.addListener(loggedPromise("onInstalled", onExtensionInstalledHandler));
-        } else {
-            onExtensionInstalledFallback();
-        }
+        /* eslint-disable no-unused-vars */
+        const onInstallListenerEventQueueHandlerIntervalId = setInterval(
+            () => onInstalledManager.onInstallListenerEventQueueHandler(),
+            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL
+        );
+        /* eslint-enable no-unused-vars */
     }());
 
     // NOTE: cache listeners so they can be added and removed by reference before/after speaking.
@@ -341,6 +347,7 @@ function main() {
                 talkieBackground.startSpeakingTextInVoiceAction(text, voice);
             };
 
+            window.getVersionNumber = () => metadataManager.getVersionNumber();
             window.getVersionName = () => metadataManager.getVersionName();
             window.isFreeVersion = () => metadataManager.isFreeVersion();
             window.isPremiumVersion = () => metadataManager.isPremiumVersion();
@@ -375,6 +382,8 @@ function main() {
 }
 
 try {
+    startOnInstallListener();
+
     main();
 } catch (error) {
     logError("onExtensionInstalledHandler", error);

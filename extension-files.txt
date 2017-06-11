@@ -32,7 +32,8 @@ dist/background.js
 dist/options.js
 dist/popup.js
 dist/stay-alive.js
-lib/browser-polyfill.js
+lib/browser-polyfill.min.js
+lib/react-libs.js
 LICENSE
 manifest.json
 README.md

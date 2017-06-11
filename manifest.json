@@ -1,20 +1,24 @@
 {
   "manifest_version": 2,
-  "version": "3.2.2",
-  "version_name": "v3.2.2 Free (2017-05-22)",
+  "version": "4.0.0",
+  "version_name": "v4.0.0 Free (2017-06-11)",
   "applications": {
     "gecko": {
       "strict_min_version": "52.0"
     }
   },
+  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:;",
+  "externally_connectable": {
+    "ids": []
+  },
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
-  "description": "__MSG_extensionDescription__",
+  "description": "__MSG_extensionDescription_Free__",
   "author": "Joel Purra",
   "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
     "scripts": [
-      "lib/browser-polyfill.js",
+      "lib/browser-polyfill.min.js",
       "dist/background.js"
     ],
     "persistent": false
@@ -65,12 +69,6 @@
         "default": "Alt+Shift+8"
       },
       "description": "__MSG_commandOpenWebsiteStoreDescription_Premium__"
-    },
-    "open-website-donate": {
-      "suggested_key": {
-        "default": "Alt+Shift+7"
-      },
-      "description": "__MSG_commandOpenWebsiteDonateDescription__"
     }
   },
   "options_ui": {
@@ -82,7 +80,7 @@
   "default_locale": "en",
   "browser_action": {
     "browser_style": false,
-    "default_title": "__MSG_buttonDefaultTitle__",
+    "default_title": "__MSG_buttonDefaultTitle_Free__",
     "default_icon": {
       "16": "resources/icon/free/icon-play/icon-16x16.png",
       "32": "resources/icon/free/icon-play/icon-32x32.png",

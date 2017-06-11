@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "Citiți selecția textului cu voce tare",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Citiți selecția textului cu voce tare cu $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Citiți selecția textului cu voce tare cu Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Citiți selecția textului cu voce tare cu Talkie Premium",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Nu mai vorbi",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "Citiți selecția textului cu voce tare",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Pagina de Talkie Talkie",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Site-ul Talkie",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Pagina de magazin Talkie 🌟 Premium",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "Pagina de magazin Talkie Premium",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Citiți din clipboard",
@@ -35,21 +48,39 @@
     "message": "Pornirea/oprirea citirii selecției",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Talkie textul pe orice pagină web și Talkie l pe computer să-l citească cu voce tare făcând clic pur și simplu pe butonul Talkie .",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "GRATUIT! Rapid, ușor, de înaltă calitate text în vorbire în peste 40 de limbi. Citiți cu voce tare de pe site-uri web, PDF, e-mail. Vorbiți cu TTS.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "Opțiuni",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "PREMIUM! Rapid, ușor, de înaltă calitate text în vorbire în peste 40 de limbi. Citiți cu voce tare de pe site-uri web, PDF, e-mail. Vorbiți cu TTS.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "Despre",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Caracteristici",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Utilizare și comenzi rapide",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Opțiunile de voce",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Talkie textul dorit pe orice pagină Web și faceți clic pe butonul Talkie din bara de browser.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Codul sursă pe Github",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "Despre: butonul de extensie a browserului text-la-vorbire",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Despre",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Pagina proiectului pe joelpurra.com",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Vă mulțumim pentru Talkie — dacă vă place, spuneți Talkie dvs.!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Dona",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Aveți deja Talkie 🌟 Premium. Suportul dvs. continuu este deja de ajuns — vă mulțumesc!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Mai multe opțiuni de donare",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Donați 100 USD acum",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Donați 25 USD acum",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Donați 5 USD acum",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Detectarea limbii automate.",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "Gratuit!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Talkie: ce Talkie este bun la",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "Caracteristici",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "În prezent, utilizați versiunea gratuită de Talkie , iar un set limitat de funcții este disponibil pentru dvs. Poate Talkie 🌟 Premium ar fi o alegere mai bună pentru dvs.?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "Folosind în prezent versiunea gratuită a Talkie și un set limitat de caracteristici este disponibil. Poate Talkie Premium ar fi o alegere mai bună pentru tine?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "În prezent, utilizați Talkie 🌟 Premium și toate funcțiile sunt disponibile pentru dvs. Mulțumesc foarte mult, îmi încălzește inima!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "În prezent, folosiți Talkie Premium și toate funcțiile sunt disponibile. Mulțumesc foarte mult, îmi încălzește inima!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie vine în două versiuni: Talkie și Talkie 🌟 Premium. Versiunea gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar versiunea premium oferă opțiuni suplimentare.",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Obțineți Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Ascundeți butoanele de donație din fereastra pop-up",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Nu e ca și cum nu vreau să Talkie 🌟 Premium sau să donezi pentru a sprijini Talkie și Talkie open source în general — pur și simplu nu vreau să te Talkie când Talkie în primul rând. Dacă Talkie din Talkie pop-up, sper că veți susține Talkie într-un fel! Butoanele vor fi întotdeauna disponibile aici printre opțiuni, doar pentru caz.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Donați: sprijinirea dezvoltării open source",
-    "original": "Donate: support open source development"
+    "message": "Talkie vine în două versiuni: Talkie și Talkie Premium. Versiunea gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar versiunea premium oferă opțiuni suplimentare.",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Toate contribuțiile la Talkie se fac în conformitate cu Acordul de licență pentru colaboratori (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "Licență: software open-source",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "Licență",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Spune Talkie tăi despre Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie a fost dezvoltat cu câteva zile înainte de Anul Nou 2016/2017, la o provocare de la un prieten. Provocarea a început cu întrebarea: în timp ce călătoriți la muncă, este posibil să ascultați un articol în loc să îl citiți? Ușor, am spus, și am pornit-o să demonstrez asta — sau cel puțin să-mi fac browserul să vorbească text folosind o voce proastă de calculator. Versiunea de bază, fără interfața cu utilizatorul, sa dovedit a fi banală pentru a crea. Adăugarea unei interfețe de utilizator a durat ceva mai mult. Adăugarea unei detectări corecte a limbajului un cod mai bun. Depășirea bug-urilor în browser chiar mai mult de lucru. Lista de îmbunătățiri și caracteristici continuă — și câteva mii de linii de cod mai târziu, te uiți la rezultatul final.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Poveste: cum a început Talkie",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Poveste",
-    "original": "Story"
+    "message": "Cum a început Talkie",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Vă mulțumim pentru Talkie — dacă vă place, spuneți Talkie dvs.!",
@@ -203,53 +182,37 @@
     "message": "Suport și feedback",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie în Firefox Add-ons",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium în add-on-urile Firefox",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie în Talkie web Chrome",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium în Talkie 🌟 Premium web Chrome",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "folosire",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "folosire",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "În Talkie 🌟 Premium , puteți citi orice text copiat în clipboard — utilizați-l cu o tastă de comandă rapidă pentru a asculta text de oriunde în afara browserului. De asemenea, puteți să faceți clic dreapta pe butonul Talkie 🌟 Premium sau într-o zonă goală a unui site web și să selectați citirea din clipboard.",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Citiți orice text copiat în clipboard — utilizați-l cu o tastă rapidă pentru a asculta text de oriunde în afara browserului. Puteți, de asemenea, să faceți clic dreapta pe butonul Talkie Premium sau într-o zonă goală a unui site Web și să selectați citirea din clipboard.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "De asemenea, puteți selecta textul, apoi faceți clic dreapta pe el și alegeți Talkie din meniu. Acest mod funcționează, de asemenea, în fișiere PDF și în câteva tipuri speciale de pagini din browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Taste rapide",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Dacă tasta de comandă rapidă nu funcționează, verificați dacă nu este deja utilizată de o altă extensie sau program.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Cum să Talkie sau să Talkie tastele de comenzi rapide.",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Talkie sau Talkie tastele de comenzi rapide Talkie .",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "O opțiune convenabilă este Talkie tastelor rapide Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Citiți textul din clipboard în orice program — Talkie 🌟 Premium",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Citiți textul din clipboard în orice program",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start Stop",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Aici puteți vedea și testa vocile instalate pentru fiecare limbă din browserul dvs. Talkie 🌟 Premium pot, de asemenea, să aleagă vocea Talkie 🌟 Premium fiecare limbă, precum și să modifice viteza și pitch pentru fiecare voce.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Voci: selectați preferatul",
-    "original": "Voices: select your favorite"
+    "message": "Vedeți și testați vocile instalate pentru fiecare limbă din browserul dvs. Talkie Premium pot de asemenea să aleagă vocea Talkie Premium fiecare limbă, precum și să Talkie Premium viteza și pasul pentru fiecare voce.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "voci",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: pitch pentru voce",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch pentru voce",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: pitch pentru $VOICE$",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch pentru $VOICE$",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: viteza pentru voce",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Viteza pentru voce",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: viteza pentru $VOICE$",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Viteza pentru $VOICE$",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "Text de Talkie pentru Talkie pentru a citi cu voce tare",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: 🌟 Premium pentru a modifica vocea 🌟 Premium",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "Utilizați ca voce implicită pentru limbă",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: 🌟 Premium $VOICE$ ca voce 🌟 Premium pentru text în $LANGUAGE$",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$VOICE$ ca voce implicită pentru text în $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "Afișați toate vocile",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Donațiile tale sunt apreciate!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Donații apreciate!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Selectați mai întâi textul dorit de pe site. De asemenea, puteți selecta textul, apoi faceți clic dreapta pe el și alegeți Talkie din meniu.",

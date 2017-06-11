@@ -1,7 +1,14 @@
 {
   "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
     "message": "Textauswahl laut vorlesen",
-    "original": "Read text selection out loud",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    },
     "translated-from": "Read text selection out loud"
   },
   "buttonStopTitle": {
@@ -14,11 +21,6 @@
     "original": "Read text selection out loud",
     "translated-from": "Read text selection out loud"
   },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Spendenseite öffnen",
-    "original": "The Talkie donations page",
-    "translated-from": "Open the donation page"
-  },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkie-Website öffnen",
     "original": "The Talkie website",
@@ -29,75 +31,27 @@
     "original": "Start/stop reading selection",
     "translated-from": "Start/stop reading selection"
   },
-  "extensionDescription": {
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
     "message": "Wähle den Text auf einer beliebigen Webseite aus und lass ihn dir vom Computer laut vorlesen. Klicke hierfür einfach auf den Talkie-Button.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS.",
     "translated-from": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
-  "frontend_Options": {
-    "message": "Optionen",
-    "original": "Options",
-    "translated-from": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "Wähle den Text auf einer beliebigen Webseite aus und lass ihn dir vom Computer laut vorlesen. Klicke hierfür einfach auf den Talkie-Button.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS.",
+    "translated-from": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Quellcode auf Github",
     "original": "Source code on Github",
     "translated-from": "Source code on Github"
   },
-  "frontend_aboutHeading": {
-    "message": "Über: Browser Erweiterung für Text-nach-Sprache Konverter",
-    "original": "About: text-to-speech browser extension button",
-    "translated-from": "About: text-to-speech browser extension button"
-  },
   "frontend_aboutLinkText": {
     "message": "Über",
     "original": "About",
     "translated-from": "About"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!",
-    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Spenden",
-    "original": "Donate",
-    "translated-from": "Donate"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Weitere Spendenoptionen",
-    "original": "More donation options",
-    "translated-from": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Jetzt USD 100 spenden",
-    "original": "Donate $$100 now",
-    "translated-from": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Jetzt USD 25 spenden",
-    "original": "Donate $$25 now",
-    "translated-from": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Jetzt USD 5 spenden",
-    "original": "Donate $$5 now",
-    "translated-from": "Donate $$5 now"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Spenden-Buttons im Popup ausblenden",
-    "original": "Hide donation buttons in the popup",
-    "translated-from": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Es ist nicht so, dass ich nicht wollte dass du Talkie und Open Source Entwicklung im Allgemeinen durch eine Spende unterstützt - du sollst dich nur einfach bei der Nutzung von Talkie nicht belästigt fühlen. Wenn du daher die Spenden-Buttons im Popup deaktivierst, hoffe ich, dass du Talkie irgendwie anders unterstützst! Die Spenden-Buttons sind immer hier unter den Optionen zu finden, nur für den Fall.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case.",
-    "translated-from": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Spenden: unterstütze Open Source Entwicklung",
-    "original": "Donate: support open source development",
-    "translated-from": "Donate: support open source development"
   },
   "frontend_licenseCLADescription": {
     "message": "Alle Beiträge zu Talkie wurden unter dem Contributor License Agreement (CLA) erstellt.",
@@ -106,13 +60,8 @@
   },
   "frontend_licenseHeading": {
     "message": "Lizenz: Open-Source-Software",
-    "original": "License: open-source software",
-    "translated-from": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
-    "message": "Lizenz",
     "original": "License",
-    "translated-from": "License"
+    "translated-from": "License: open-source software"
   },
   "frontend_rateIt": {
     "message": "Bewerte Talkie",
@@ -125,13 +74,8 @@
   },
   "frontend_storyHeading": {
     "message": "Geschichte: so hat alles mit Talkie angefangen",
-    "original": "Story: how Talkie got started",
+    "original": "How Talkie got started",
     "translated-from": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Geschichte",
-    "original": "Story",
-    "translated-from": "Story"
   },
   "frontend_storyThankYou": {
     "message": "Vielen Dank dass du Talkie verwendest - wenn es dir gefällt sag es deinen Freunden weiter!",
@@ -142,16 +86,6 @@
     "message": "Unterstützung und Feedback",
     "original": "Support and feedback",
     "translated-from": "Support and feedback"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie im Chrome Web Store",
-    "original": "Talkie in the Chrome Web Store",
-    "translated-from": "Talkie in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "Verwendung",
-    "original": "Usage",
-    "translated-from": "Usage"
   },
   "frontend_usageLinkText": {
     "message": "Verwendung",
@@ -170,7 +104,7 @@
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "So überprüfst oder änderst du die Talkie-Tastenkombination.",
-    "original": "How to check or change the Talkie shortcut keys.",
+    "original": "Check or change the Talkie shortcut keys.",
     "translated-from": "How to check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
@@ -200,13 +134,8 @@
   },
   "frontend_voicesDescription": {
     "message": "Talkie hat eine automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar. Hier kannst du alle installierten Stimmen für jede Sprache sehen und testen.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice.",
-    "translated-from": "Here you can see and test installed voices for each language in your browser. 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Stimmen: teste deinen Browser",
-    "original": "Voices: select your favorite",
-    "translated-from": "Voices: select your favorite"
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
+    "translated-from": "Here you can see and test installed voices for each language in your browser. Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "Stimmen",
@@ -228,11 +157,6 @@
     "message": "Alle Stimmen anzeigen",
     "original": "Show all voices",
     "translated-from": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Ich freue mich über jede Spende!",
-    "original": "Your donations are appreciated!",
-    "translated-from": "Your donations are appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Bitte wähle zuerst den gewünschten Text auf der Website aus. Du kannst auch Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen.",

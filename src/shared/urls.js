@@ -52,3 +52,11 @@ export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
             return openUrlInNewTab(url);
         })
 );
+
+export const openShortKeysConfiguration = () => promiseTry(
+    () => {
+        const url = "chrome://extensions/configureCommands";
+
+        return browser.tabs.create({active: true, url: url});
+    }
+);

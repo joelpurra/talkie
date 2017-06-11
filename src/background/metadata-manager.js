@@ -76,8 +76,8 @@ export default class MetadataManager {
     isFreeVersion() {
         return promiseTry(
             () => this.isPremiumVersion()
-                .then((isPremium) => {
-                    return !isPremium;
+                .then((isPremiumVersion) => {
+                    return !isPremiumVersion;
                 })
         );
     }
@@ -85,8 +85,8 @@ export default class MetadataManager {
     getVersionType() {
         return promiseTry(
             () => this.isPremiumVersion()
-                .then((isPremium) => {
-                    if (isPremium) {
+                .then((isPremiumVersion) => {
+                    if (isPremiumVersion) {
                         return this._versionTypePremium;
                     }
 

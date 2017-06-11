@@ -7,25 +7,19 @@
 <p align="center">
   Text-to-speech browser extension button
 </p>
-<p align="center" class="donate">
-  <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd>Donate $5 now</kbd></a>
-  <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd>Donate $25 now</kbd></a>
-  <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd>Donate $100 now</kbd></a>
-  <a href="https://joelpurra.com/donate/"><kbd>More options</kbd></a>
-</p>
 <table>
   <tr>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a><br />&nbsp;
     </td>
     <td align="center">
       <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium<br />(Coming soon!)
+      <a href="https://joelpurra.com/projects/talkie/#premium"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium<br />(Coming soon!)
     </td>
   </tr>
 </table>
@@ -35,8 +29,8 @@
 ## Installation
 
 - <img src="./resources/browser-logo/chrome_16x16.png" alt="Firefox logo" width="16" height="16" border="0" /> Google Chrome
-  - Get <a href="https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> in the Chrome Web Store.
-  - Get <a href="https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a> in the Chrome Web Store.
+  - Get <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> in the Chrome Web Store.
+  - Get <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a> in the Chrome Web Store.
 - <img src="./resources/browser-logo/firefox_16x16.png" alt="Firefox logo" width="16" height="16" border="0" /> Firefox
   - Get <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> at Firefox Add-ons.
   - Get <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium at Firefox Add-ons. (Coming soon!)
@@ -123,7 +117,7 @@ A convenient option is to use the **Talkie shortcut keys**:
 - Lets you listen to the selected text on any part of a page — **short snippets or entire news articles**. Just highlight what you want to hear read aloud and hit play.
 - Automatically **detects the text language** per-page, and chooses a voice in the same language to match it.
 - **Privacy aware** — no unnecessary tracking or external services.
-- Free but [your donations are highly appreciated](https://joelpurra.com/donate/)!
+- Free!
 
 
 
@@ -178,7 +172,7 @@ A convenient option is to use the **Talkie shortcut keys**:
   </ol>
 
   <p>
-    The Web Speech API can use more than one voice per language (currently over 20 for <code>en-US</code> in Google Chrome version 55), as well as modify speech rate (speed) and pitch. These options have been implemented in <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium as a paid feature for those who install the extension through the <a href="https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo">Chrome Web Store</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">Firefox Add-ons</a>.
+    The Web Speech API can use more than one voice per language (currently over 20 for <code>en-US</code> in Google Chrome version 55), as well as modify speech rate (speed) and pitch. These options have been implemented in <img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium as a paid feature for those who install the extension through the <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo">Chrome Web Store</a> or <a href="https://joelpurra.com/projects/talkie/#premium">Firefox Add-ons</a>.
   </p>
 </details>
 

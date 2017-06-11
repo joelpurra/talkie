@@ -32,53 +32,63 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 <body>
     <header>
         <p>
-            <span class="icon inline talkie"></span>
-            <a data-configure-href="urls.main" data-translate="extensionShortName"></a>
-            <span class="talkie-free-only talkie-inline"> — <a data-configure-href="urls.store-premium" data-translate="frontend_getPremiumLinkText"></a></span>
+            <span class="icon icon-inline icon-16px icon-talkie start-stop-button"></span>
+            <a data-configure-href="urls.main" data-translate="extensionShortName" class="extension-name"></a>
+            <span class="talkie-free-only talkie-inline"><a data-configure-href="urls.store-premium" class="button">Talkie Premium</a></span>
         </p>
-        <progress id="progress" value="0" max="100"></progress>
-        <nav>
-            <ol class="cols-3">
-                <li>
-                    <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback"></a>
-                </li>
-                <li>
-                    <a data-configure-href="urls.rate" data-translate="frontend_rateIt"></a>
-                </li>
-                <li>
-                    <a data-configure-href="urls.options" data-translate="frontend_Options"></a><a data-configure-href="urls.options" rel="alternate" target="_blank">⏍</a>
-                </li>
-            </ol>
-        </nav>
-        <hr />
     </header>
-    <!--<main></main>-->
-    <footer>
-        <p>
-            <span data-translate="frontend_yourDonationsAreAppreciatedShort"></span>
-        </p>
-        <table class="donate">
+
+    <main>
+        <p data-translate="frontend_PopupUsageShort" class="lighter"></p>
+
+        <table>
+            <colgroup>
+                <col width="0*" />
+                <col width="100%" />
+            </colgroup>
             <tbody>
                 <tr>
-                </td>
-                <td>
-                    <a href="https://joelpurra.com/donate/proceed/?amount=5&currency=usd"><kbd data-translate="frontend_donate_usd5Now"></kbd></a>
-                </td>
-                <td>
-                    <a href="https://joelpurra.com/donate/proceed/?amount=25&currency=usd"><kbd data-translate="frontend_donate_usd25Now"></kbd></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="https://joelpurra.com/donate/proceed/?amount=100&currency=usd&invoice=true"><kbd data-translate="frontend_donate_usd100Now"></kbd></a>
-                </td>
-                <td>
-                    <a href="https://joelpurra.com/donate/"><kbd data-translate="frontend_donate_moreOptions"></kbd></a>
-                </td>
+                    <td>
+                        <span class="icon icon-inline icon-16px icon-talkie-status start-stop-button"></span>
+                    </td>
+                    <td>
+                        <progress id="progress" value="0" max="100"></progress>
+                    </td>
+                </tr>
             </tbody>
         </table>
+    </main>
+
+    <hr />
+
+    <nav>
+        <ol>
+            <li>
+                <a data-configure-href="urls.options-usage-from-popup" data-translate="frontend_PopupMenu_Usage" class="icon icon-inline icon-16px icon-usage"></a>
+            </li>
+            <li>
+                <a data-configure-href="urls.options-voices-from-popup" data-translate="frontend_PopupMenu_Voices" class="icon icon-inline icon-16px icon-voices"></a>
+            </li>
+            <li>
+                <a data-configure-href="urls.options-features-from-popup" data-translate="frontend_PopupMenu_Features" class="icon icon-inline icon-16px icon-features"></a>
+            </li>
+            <li>
+                <a data-configure-href="urls.options-about-from-popup" data-translate="frontend_PopupMenu_About" class="icon icon-inline icon-16px icon-about"></a>
+            </li>
+            <li>
+                <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback" class="icon icon-inline icon-16px icon-feedback"></a>
+            </li>
+        </ol>
+    </nav>
+
+    <hr />
+
+    <footer class="lighter">
+        <a data-configure-href="urls.options" rel="alternate" target="_blank" class="icon icon-standalone icon-16px icon-settings"></a>
+        <a data-configure-href="urls.options-about-from-popup" class="version-number"></a>
     </footer>
-    <script src="../../lib/browser-polyfill.js"></script>
+
+    <script src="../../lib/browser-polyfill.min.js"></script>
     <script src="../../dist/popup.js"></script>
 </body>
 

@@ -28,6 +28,10 @@ import {
 } from "../shared/promise";
 
 import {
+    shallowCopy,
+} from "../shared/basic";
+
+import {
     canTalkieRunInTab,
     isCurrentPageInternalToTalkie,
 } from "../shared/tabs";
@@ -150,10 +154,13 @@ export default class TalkieBackground {
                     this.voiceManager.getEffectivePitchForVoice(voice.name),
                 ])
                     .then(([effectiveRateForVoice, effectivePitchForVoice]) => {
-                        const voiceWithPitchAndRate = Object.assign({}, voice, {
-                            rate: effectiveRateForVoice,
-                            pitch: effectivePitchForVoice,
-                        });
+                        const voiceWithPitchAndRate = shallowCopy(
+                            voice,
+                            {
+                                rate: effectiveRateForVoice,
+                                pitch: effectivePitchForVoice,
+                            }
+                        );
 
                         return voiceWithPitchAndRate;
                     });
@@ -286,14 +293,14 @@ export default class TalkieBackground {
         return promiseTry(() => {
             logDebug("Start", "Speaking all selections");
 
-            logDebug("Variable", `selections (length ${selections && selections.length || 0})`, selections);
+            logDebug("Variable", `selections (length ${(selections && selections.length) || 0})`, selections);
 
             return promiseTry(
                 () => getVoices()
             )
                 .then((allVoices) => this.languageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections))
                 .then((cleanedupSelections) => {
-                    logDebug("Variable", `cleanedupSelections (length ${cleanedupSelections && cleanedupSelections.length || 0})`, cleanedupSelections);
+                    logDebug("Variable", `cleanedupSelections (length ${(cleanedupSelections && cleanedupSelections.length) || 0})`, cleanedupSelections);
 
                     const speakPromises = cleanedupSelections.map((selection) => {
                         logDebug("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);

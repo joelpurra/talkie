@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "Olvasd kijelölt szöveget hangosan",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Olvasd kijelölt szöveget hangosan $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Olvasd kijelölt szöveget hangosan Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Olvasd kijelölt szöveget hangosan Talkie Premium",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Ne beszélj",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "Olvasd kijelölt szöveget hangosan",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "A Talkie adományok oldal",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "A Talkie honlap",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "A Talkie 🌟 Premium előadói oldal",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "A Talkie Premium előadói oldal",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Olvasás a vágólapra",
@@ -35,21 +48,39 @@
     "message": "Start/abba az olvasást kiválasztás",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Jelölje be a szöveget bármely weboldalon, és a számítógép olvassa hangosan az Ön számára egyszerűen kattintson a Talkie gombra.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "INGYENES! Gyors, egyszerű, jó minőségű szöveget hanggá több mint 40 nyelven. Olvassa hangosan a webhelyekről, PDF, e-mail. Beszélj szöveg TTS.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "Lehetőségek",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "PRÉMIUM! Gyors, egyszerű, jó minőségű szöveget hanggá több mint 40 nyelven. Olvassa hangosan a webhelyekről, PDF, e-mail. Beszélj szöveg TTS.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "Ról ről",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Jellemzők",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Használat és hivatkozások",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Voice lehetőségek",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Válassza ki a kívánt szöveget bármely weboldalon, majd kattintson a Talkie gombra a böngészőben bar.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Forráskód Github",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "Mintegy: text-to-speech böngésző bővítmény gomb",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Ról ről",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Project oldalt joelpurra.com",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Köszönjük, hogy a Talkie — ha tetszik, ossza meg ismerőseivel!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Adományoz",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Már van Talkie 🌟 Premium. Hogy továbbra is támogatja már elég — köszönöm!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Több adomány lehetőségek",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Adományok USD 100 most",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Adományok USD 25 most",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Adományok USD 5 most",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Automatikus nyelvfelismerés.",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "Ingyenes!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Jellemzők: mi Talkie jó a",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "Jellemzők",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "Jelenleg az ingyenes változata Talkie , és egy korlátozott készlet jellemzői áll az Ön rendelkezésére. Talán Talkie 🌟 Premium lenne a jobb választás az Ön számára?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "Jelenleg az ingyenes változata Talkie , és egy korlátozott funkciók is rendelkezésre áll. Talán Talkie Premium lenne a jobb választás az Ön számára?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Jelenleg a Talkie 🌟 Premium , és minden funkció elérhető az Ön számára. Köszönöm szépen, ez felmelegíti a szívem!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Jelenleg a Talkie Premium , és minden funkció elérhető. Köszönöm szépen, ez felmelegíti a szívem!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie kétféle változatban: Talkie és Talkie 🌟 Premium. Az ingyenes változat is kiválóan alkalmas a legtöbb használati esetek, de a prémium változata további lehetőségeket kínál.",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Get Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Hide adományozó gombot a felugró",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Nem mintha én nem akarom, hogy Talkie 🌟 Premium vagy adományozni, hogy támogassa Talkie és a nyílt forráskódú fejlesztés általában — Csak nem akarom, hogy bosszús ha Talkie az első helyen. Ha letiltja az adományozás gombok a felugró, remélem, hogy akkor is támogatni Talkie valamilyen módon! A gombok mindig elérhető lesz itt lehetőségek közül, csak abban az esetben.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Adományok: támogatjuk a nyílt forráskódú fejlesztési",
-    "original": "Donate: support open source development"
+    "message": "Talkie kétféle változatban: Talkie és Talkie Premium. Az ingyenes változat is kiválóan alkalmas a legtöbb használati esetek, de a prémium változata további lehetőségeket kínál.",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Minden hozzájárulások Talkie alatt végzik a Közreműködő licencszerződés (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "Licenc: nyílt forráskódú szoftverek",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "Engedély",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "Tekintse Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Mesélj a barátaidnak Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie alakult előtt néhány nappal az új év 2016/2017, a kihívást egy barátom. A kihívás kezdődött a kérdés: míg a munkába járás, lehetséges, hogy hallgatni egy cikket olvasás helyett is? Egyszerű, mondtam, és elindult, hogy bebizonyítsam — vagy legalábbis, hogy a böngésző beszélni ki szöveget egy buta számítógépes hang. Az alapváltozat, felhasználói felület használata nélkül, kiderült, hogy triviális, hogy hozzon létre. Hozzáadása egy felhasználói interfészt, vett egy kicsit hosszabb. Hozzátéve megfelelő nyelvfelismerés egy csomó több kódot. Legyőzése hibákat a böngésző még több munka. A listát a fejlesztések és funkciók megy — és néhány ezer sornyi kódot később nézel a végeredmény.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Történet: hogyan Talkie elindult",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Sztori",
-    "original": "Story"
+    "message": "Hogyan Talkie elindult",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Köszönjük, hogy a Talkie — ha tetszik, ossza meg ismerőseivel!",
@@ -203,53 +182,37 @@
     "message": "Támogatást és visszajelzést",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie a Firefox-kiegészítők",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium a Firefox kiegészítőket",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie a Chrome Internetes áruházban",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium a Chrome Internetes áruházban",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "Használat",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "Használat",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "A Talkie 🌟 Premium , akkor olvassa el a szöveget a vágólapra másolt — használja a billentyű hallgatni szöveget bárhonnan kívül a böngészőt. Azt is a jobb gombbal a Talkie 🌟 Premium gombot, vagy egy üres területre a honlapon, és válassza olvasni vágólapra.",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Olvassa el a szöveget a vágólapra másolt — használja a billentyű hallgatni szöveget bárhonnan kívül a böngészőt. Azt is a jobb gombbal a Talkie Premium gombot, vagy egy üres területre a honlapon, és válassza olvasni vágólapra.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Azt is kiválaszthatja a szöveget, majd kattintson a jobb egérgombbal, és válassza Talkie a menüben. Így is működik PDF-fájlokat és néhány speciális típusú oldalakat a böngésző.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Billentyűparancsok",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Ha a billentyű nem működik, ellenőrizze, hogy nem a már használatban van egy másik mellék vagy programot.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Hogyan lehet ellenőrizni, vagy megváltoztathatja a Talkie billentyűkombinációt.",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Ellenőrizze vagy cserélje ki a Talkie billentyűkombinációt.",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Egy kényelmes megoldás az, hogy használja a Talkie gyorsbillentyűk:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Beolvassa a szöveget a vágólapra bármely program — Talkie 🌟 Premium funkció",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Beolvassa a szöveget a vágólapra bármely program",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start/stop A",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Itt lehet látni és kipróbálni telepített hangokat az egyes nyelvek a böngészőben. Talkie 🌟 Premium felhasználók is kiválaszthatja kedvenc hangot az alapértelmezett nyelvenként, valamint a változás sebességét és távolságát az egyes hang.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Hangok: válassza ki a kedvenc",
-    "original": "Voices: select your favorite"
+    "message": "Lásd és tesztelése telepített hangokat az egyes nyelvek a böngészőben. Talkie Premium felhasználók is kiválaszthatja kedvenc hangot az alapértelmezett nyelvenként, valamint beállított sebesség és szurok minden hang.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "Voices",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: pályán a hang",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch hangja",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: pályán $VOICE$",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch $VOICE$",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: sebesség hang-",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Speed ​​hang-",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: sebesség $VOICE$",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Speed $VOICE$",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "Minta szöveg Talkie olvasni hangosan",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: Cseréld változtatni az alapértelmezett hang",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "Használja az alapértelmezett hang nyelv",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: A $VOICE$ alapértelmezett hang a szöveg $LANGUAGE$",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Felhasználási $VOICE$ alapértelmezett hang a szöveg $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "Összes hangok",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Az adományokat köszönjük!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Adományok értékelik!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Kérjük, válassza ki a kívánt szöveget a honlapon először. Ön is kiválaszthatja a szöveget, majd kattintson a jobb egérgombbal, és válassza Talkie a menüben.",

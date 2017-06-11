@@ -3,21 +3,27 @@
     "message": "Talkie: \"%s\""
   },
   "extensionName": {
-    "message": "Talkie"
+    "description": "For the browsers/web stores. Maximum 45 characters.",
+    "message": "Talkie: FREE text-to-speech, many languages!"
   },
   "extensionName_Free": {
-    "message": "Talkie"
+    "description": "For the browsers/web stores. Maximum 45 characters.",
+    "message": "Talkie: FREE text-to-speech, many languages!"
   },
   "extensionName_Premium": {
-    "message": "Talkie Premium"
+    "description": "For the browsers/web stores. Maximum 45 characters.",
+    "message": "Talkie Premium: text-to-speech/many languages"
   },
   "extensionShortName": {
+    "description": "For the browsers/web stores. Maximum 12 characters.",
     "message": "Talkie"
   },
   "extensionShortName_Free": {
+    "description": "For the browsers/web stores. Maximum 12 characters.",
     "message": "Talkie"
   },
   "extensionShortName_Premium": {
+    "description": "For the browsers/web stores. Maximum 12 characters.",
     "message": "Talkie Premium"
   },
   "frontend_licenseCLALinkText": {

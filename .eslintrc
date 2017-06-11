@@ -3,11 +3,14 @@
         "browser": true,
         "es6": true
     },
+    "parser": "babel-eslint",
     "plugins": [
-        "compat"
+        "compat",
+        "react"
     ],
     "extends": [
-        "standard"
+        "standard",
+        "plugin:react/recommended"
     ],
     "globals": {
         "browser": false,

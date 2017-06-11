@@ -30,6 +30,10 @@ import {
     getBackgroundPage,
 } from "../shared/tabs";
 
+import {
+    knownEvents,
+} from "../shared/events";
+
 import DualLogger from "./dual-log";
 
 const dualLogger = new DualLogger("shared-frontend.js");
@@ -80,11 +84,11 @@ const filterElementsWithAttributesPrefixAndGroupPerSuffix = (elements, attribute
 
 const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) => promiseTry(
     () => {
-        dualLogger.dualLogDebug("Start", "handleElementsPerAttributePrefix", attributePrefix);
+        dualLogger.dualLogTrace("Start", "handleElementsPerAttributePrefix", attributePrefix);
 
         const suffixesAndElements = filterElementsWithAttributesPrefixAndGroupPerSuffix(elements, attributePrefix);
 
-        dualLogger.dualLogDebug("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
+        dualLogger.dualLogTrace("handleElementsPerAttributePrefix", "Handleable elements", suffixesAndElements);
 
         const attributeSuffixes = Object.keys(suffixesAndElements);
 
@@ -104,7 +108,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
 
                     return handler(element, attributeSuffix, attributeValue)
                         .then((result) => {
-                            dualLogger.dualLogDebug("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
+                            dualLogger.dualLogTrace("Done", "handleElementsPerAttributePrefix", "Handling successful", [ element ], attributeName, attributeValue, result);
 
                             return result;
                         })
@@ -121,7 +125,7 @@ const handleElementsPerAttributePrefix = (elements, attributePrefix, handler) =>
 
         return Promise.all(attributeSuffixPromises)
             .then((result) => {
-                dualLogger.dualLogDebug("Done", "handleElementsPerAttributePrefix", attributePrefix);
+                dualLogger.dualLogTrace("Done", "handleElementsPerAttributePrefix", attributePrefix);
 
                 return result;
             })
@@ -158,7 +162,7 @@ const configureWindowContents = () => promiseTry(
                             element.setAttribute(target, configured);
                         }
 
-                        return;
+                        return undefined;
                     });
             }
         );
@@ -194,8 +198,6 @@ const translateWindowContents = () => promiseTry(
                 } else {
                     element.setAttribute(target, translated);
                 }
-
-                return;
             }
         );
 
@@ -219,7 +221,7 @@ const addLinkClickHandlers = () => promiseTry(
 
             // NOTE: skipping non-https urls -- presumably empty hrefs for special links.
             if (typeof location !== "string" || !location.startsWith("https://")) {
-                dualLogger.dualLogDebug("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
+                dualLogger.dualLogTrace("addLinkClickHandlers", "Skipping non-https URL", [ link ], location);
 
                 return;
             }
@@ -256,7 +258,7 @@ const addOptionsLinkClickHandlers = () => promiseTry(
         })
 );
 
-const checkVersion = () => promiseTry(
+const addVersionCssClasses = () => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => getBackgroundPage())
@@ -265,8 +267,8 @@ const checkVersion = () => promiseTry(
                 background.getSystemType(),
                 background.getOsType(),
             ]))
-            .then(([isPremium, systemType, osType]) => {
-                if (isPremium) {
+            .then(([isPremiumVersion, systemType, osType]) => {
+                if (isPremiumVersion) {
                     document.body.classList.add("talkie-premium");
                 } else {
                     document.body.classList.add("talkie-free");
@@ -286,6 +288,29 @@ const checkVersion = () => promiseTry(
 
                 return undefined;
             });
+    }
+);
+
+const loadVersion = () => promiseTry(
+    () => getBackgroundPage()
+        .then((background) => Promise.all([
+            background.getVersionNumber(),
+            background.getVersionName(),
+        ]))
+        .then(([versionNumber, versionName]) => {
+            const versionNumberElements = Array.from(document.querySelectorAll(".version-number"));
+            const versionNameElements = Array.from(document.querySelectorAll(".version-name"));
+
+            versionNumberElements.forEach((versionNumberElement) => { versionNumberElement.textContent = `v${versionNumber}`; });
+            versionNameElements.forEach((versionNameElement) => { versionNameElement.textContent = versionName; });
+
+            return undefined;
+        })
+);
+
+const removeLoadingCssClass = () => promiseTry(
+    () => {
+        document.body.classList.remove("loading");
     }
 );
 
@@ -320,15 +345,47 @@ const focusFirstLink = () => promiseTry(
     }
 );
 
-export const startFrontend = () => promiseTry(
+const setTalkieStatusSpeaking = (speaking) => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => getBackgroundPage())
+            .then(() => {
+                if (speaking) {
+                    document.body.classList.add("talkie-speaking");
+                } else {
+                    document.body.classList.remove("talkie-speaking");
+                }
+
+                return undefined;
+            });
+    }
+);
+const registerBroadcastListeners = (killSwitches) => promiseTry(
+    () => {
+        return getBackgroundPage()
+            .then((background) => {
+                return Promise.all([
+                    background.broadcaster().registerListeningAction(knownEvents.beforeSpeaking, () => setTalkieStatusSpeaking(true))
+                        .then((killSwitch) => killSwitches.push(killSwitch)),
+                    background.broadcaster().registerListeningAction(knownEvents.afterSpeaking, () => setTalkieStatusSpeaking(false))
+                        .then((killSwitch) => killSwitches.push(killSwitch)),
+                ]);
+            });
+    }
+);
+
+export const startFrontend = (killSwitches) => promiseTry(
     () => {
         return Promise.resolve()
             .then(() => Promise.all([
-                checkVersion(),
+                removeLoadingCssClass(),
+                addVersionCssClasses(),
                 configureWindowContents(),
                 translateWindowContents(),
             ]))
             .then(() => Promise.all([
+                registerBroadcastListeners(killSwitches),
+                loadVersion(),
                 addLinkClickHandlers(),
                 addOptionsLinkClickHandlers(),
                 focusFirstLink(),
@@ -338,6 +395,23 @@ export const startFrontend = () => promiseTry(
 );
 
 export const stopFrontend = () => promiseTry(
+    () => {
+        // TODO: unregister listeners.
+    }
+);
+
+export const startReactFrontend = () => promiseTry(
+    () => {
+        return Promise.resolve()
+            .then(() => Promise.all([
+                removeLoadingCssClass(),
+                addVersionCssClasses(),
+            ]))
+            .then(() => reflow());
+    }
+);
+
+export const stopReactFrontend = () => promiseTry(
     () => {
         // TODO: unregister listeners.
     }

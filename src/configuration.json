@@ -2,25 +2,30 @@
   "shared": {
     "urls": {
       "cla": "https://joelpurra.com/projects/talkie/CLA.md",
-      "donate": "https://joelpurra.com/donate",
       "github": "https://github.com/joelpurra/talkie",
       "gpl": "https://www.gnu.org/licenses/gpl.html",
       "main": "https://joelpurra.com/projects/talkie/",
       "project": "https://joelpurra.com/projects/talkie/",
-      "shortcut-keys": "https://joelpurra.com/projects/talkie/#usage",
+      "shortcut-keys": "https://joelpurra.com/projects/talkie/#shortcut-keys",
       "support-feedback": "https://joelpurra.com/support/",
-      "chromewebstore-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-      "chromewebstore-premium": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo",
+      "chromewebstore-free": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "chromewebstore-premium": "https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo",
       "firefox-amo-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
-      "firefox-amo-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "firefox-amo-premium": "https://joelpurra.com/projects/talkie/#premium",
+      "share": {
+        "twitter": "https://twitter.com/intent/tweet?text=Using%20Talkie%20to%20read%20text%20for%20me%20-%20text%20to%20speech%20works%20great!&url=https://joelpurra.com/projects/talkie/&via=joelpurra&related=&hashtags=texttospeech,tts",
+        "facebook": "https://www.facebook.com/sharer/sharer.php?u=https%3A//joelpurra.com/projects/talkie/",
+        "googleplus": "https://plus.google.com/share?url=https%3A//joelpurra.com/projects/talkie/",
+        "linkedin": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//joelpurra.com/projects/talkie/&title=&summary=&source="
+      }
     }
   },
   "free": {
     "chrome": {
       "urls": {
-        "rate": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews",
-        "store": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-        "support-feedback": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk/support"
+        "rate": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews",
+        "store": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
+        "support-feedback": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk/support"
       }
     },
     "webextension": {
@@ -33,28 +38,28 @@
   "premium": {
     "chrome": {
       "urls": {
-        "rate": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo/reviews",
-        "store": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo",
-        "support-feedback": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo/support"
+        "rate": "https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo/reviews",
+        "store": "https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo",
+        "support-feedback": "https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo/support"
       }
     },
     "webextension": {
       "urls": {
-        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "store": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/#premium",
+        "store": "https://joelpurra.com/projects/talkie/#premium"
       }
     }
   },
   "chrome": {
     "urls": {
-      "store-free": "https://chrome.google.com/webstore/detail/talkie/enfbcfmmdpdminapkflljhbfeejjhjjk",
-      "store-premium": "https://chrome.google.com/webstore/detail/talkie-premium/madmpgibncancdmkjflnifcdakndkngo"
+      "store-free": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
+      "store-premium": "https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"
     }
   },
   "webextension": {
     "urls": {
       "store-free": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
-      "store-premium": "https://addons.mozilla.org/en-US/firefox/addon/talkie/#premium=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "store-premium": "https://joelpurra.com/projects/talkie/#premium"
     }
   }
 }

@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "Čítanie výberu textu nahlas",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Prečítajte si výber hlasu vo formáte $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Prečítajte si voľbu textu nahlas pomocou Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Čítanie výberu textu nahlas s Talkie Premium",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Mlč",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "Čítanie výberu textu nahlas",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Stránka Talkie Talkie",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkie stránka Talkie",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie 🌟 Premium stránka obchodu",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "Talkie Premium obchodu s Talkie Premium",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Prečítajte si zo schránky",
@@ -35,21 +48,39 @@
     "message": "Štart/stop čítanie výberu",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Vyberte text na Talkie webovej stránke a počítač ju Talkie tlačidlo Talkie .",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "ZADARMO! Rýchly, jednoduchý a vysokokvalitný textový reč vo viac ako 40 jazykoch. Prečítajte si nahlas z webových stránok, PDF, e-mail. Hovorte text s TTS.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "možnosti",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "PREMIUM! Rýchly, jednoduchý a vysokokvalitný textový reč vo viac ako 40 jazykoch. Prečítajte si nahlas z webových stránok, PDF, e-mail. Hovorte text s TTS.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "o",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Vlastnosti",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Použitie a skratky",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Možnosti hlasu",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Vyberte Talkie text na Talkie webovej stránke a kliknite na tlačidlo Talkie v paneli Talkie .",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Zdrojový kód na Github",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "Informácie o: tlačidle rozšírenia prehliadača pre preklad textu",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "o",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Stránka projektu na joelpurra.com",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Ďakujeme za Talkie — ak sa vám to páči, povedzte svojim Talkie !",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "darovať",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Už máte Talkie 🌟 Premium. Vaša ďalšia podpora je už dosť — ďakujem!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Viac možností darovania",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Darujte 100 USD teraz",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Darujte 25 USD teraz",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Darujte 5 USD teraz",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Automatická detekcia jazyka.",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "Zadarmo!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Funkcie: čo Talkie je dobré na",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "Vlastnosti",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "Momentálne používate bezplatnú verziu Talkie a máte k dispozícii obmedzený súbor funkcií. Možno Talkie 🌟 Premium by bolo lepšou voľbou pre vás?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "V súčasnosti je k Talkie verzia Talkie a je k dispozícii obmedzená sada funkcií. Možno Talkie Premium by bolo lepšou voľbou pre vás?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Momentálne používate Talkie 🌟 Premium a všetky funkcie sú vám k dispozícii. Veľmi vám ďakujem, ohrieva moje srdce!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Momentálne používate Talkie Premium a všetky funkcie sú k dispozícii. Veľmi vám ďakujem, ohrieva moje srdce!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie v dvoch verziách: Talkie a Talkie 🌟 Premium. Bezplatná verzia je skvelá pre väčšinu prípadov použitia, ale prémiová verzia ponúka ďalšie možnosti.",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Získajte Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Skryť darovacie tlačidlá v popup",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Nie je to tak, že nechcete, aby ste dostali Talkie 🌟 Premium alebo darujte na podporu Talkie a vývoj open source vo všeobecnosti — jednoducho nechcem, aby ste sa Talkie pri použití Talkie na prvom mieste. Ak Talkie v Talkie , dúfam, že budete tiež Talkie nejakým spôsobom! Túto voľbu budú k dispozícii vždy medzi jednotlivými možnosťami.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Darujte: podporujte vývoj s otvoreným zdrojom",
-    "original": "Donate: support open source development"
+    "message": "Talkie v dvoch verziách: Talkie a Talkie Premium. Bezplatná verzia je skvelá pre väčšinu prípadov použitia, ale prémiová verzia ponúka ďalšie možnosti.",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Všetky príspevky k Talkie sa Talkie podľa Zmluvy o licencii prispievateľa (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "Licencia: open-source softvér",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "licencie",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "Recenzia Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Povedzte svojim Talkie o Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie bol vyvinutý niekoľko dní pred novým rokom 2016/2017, na výzvu od priateľa. Táto výzva sa začala otázkou: pri dochádzaní do práce je možné počúvať článok namiesto jeho čítania? Jednoducho, povedal som, a vydal sa, aby som to dokázal — alebo aspoň aby ​​môj prehliadač rozprával text pomocou hlúpeho počítačového hlasu. Základná verzia, bez akéhokoľvek užívateľského rozhrania, sa ukázala byť triviálne, ako vytvoriť. Pridanie používateľského rozhrania trvalo o niečo dlhšie. Pridanie správneho rozpoznávania jazyka viac kódov. Prekonávanie chýb v prehliadači ešte viac práce. Zoznam vylepšení a funkcií pokračuje — a niekoľko tisíc riadkov kódu neskôr, hľadáte na konečný výsledok.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Príbeh: ako sa Talkie začalo",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "príbeh",
-    "original": "Story"
+    "message": "Ako sa Talkie začalo",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Ďakujeme za Talkie — ak sa vám to páči, povedzte svojim Talkie !",
@@ -203,53 +182,37 @@
     "message": "Podpora a spätná väzba",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie v Talkie pre Firefox",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium v Talkie 🌟 Premium pre Firefox",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie v Talkie Chrome",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium v Talkie 🌟 Premium Chrome",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "používanie",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "používanie",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "V Talkie 🌟 Premium môžete čítať Talkie 🌟 Premium text skopírovaný do schránky — použite ho pomocou klávesovej skratky na počúvanie textu odkiaľkoľvek mimo prehliadača. Môžete tiež kliknúť pravým Talkie 🌟 Premium myši na tlačidlo Talkie 🌟 Premium alebo v prázdnej oblasti webových stránok a vybrať si z schránky čítanie.",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Prečítajte si akýkoľvek text skopírovaný do schránky — použite ho pomocou klávesovej skratky na počúvanie textu odkiaľkoľvek mimo prehliadača. Môžete tiež kliknúť pravým Talkie Premium myši na tlačidlo Talkie Premium alebo v prázdnej oblasti webovej lokality a vybrať si ju zo schránky.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Môžete tiež vybrať text, potom kliknite naň Talkie myši a zvoľte Talkie v ponuke. Takto funguje aj v súboroch PDF a niektorých špeciálnych typoch stránok v prehliadači.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Klávesové skratky",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Ak klávesová skratka nefunguje, skontrolujte, či ju ešte nepoužíva iná prípona alebo program.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Ako Talkie alebo zmeniť Talkie skratky.",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Talkie alebo zmente Talkie skratky.",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Vhodnou možnosťou je použiť Talkie skratky Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Čítanie textu zo schránky v akomkoľvek programe — Talkie 🌟 Premium",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Čítať text zo schránky v akomkoľvek programe",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Štart/stop",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Tu môžete vidieť a otestovať nainštalované hlasy pre každý jazyk vo vašom prehliadači. Talkie 🌟 Premium môžu tiež vybrať svoj obľúbený hlas ako Talkie 🌟 Premium jazyk, rovnako ako zmenu Talkie 🌟 Premium a rozstupu pre každý hlas.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Hlasy: vyberte svoju obľúbenú",
-    "original": "Voices: select your favorite"
+    "message": "Zobrazte a otestujte nainštalované hlasy pre každý jazyk v prehliadači. Talkie Premium môžu tiež vybrať svoj obľúbený hlas ako Talkie Premium pre každý jazyk, ako aj nastaviť rýchlosť a rozstup pre každý hlas.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "hlasy",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: pitch for voice",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch pre hlas",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: ihrisko pre $VOICE$",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch pre $VOICE$",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: rýchlosť hlasu",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Rýchlosť hlasu",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: rýchlosť za $VOICE$",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Rýchlosť pre $VOICE$",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "Ukážkový text pre Talkie na čítanie nahlas",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: Upgrade pre zmenu 🌟 Premium hlasu",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "Používa sa ako predvolený jazyk pre jazyk",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: Použite $VOICE$ ako 🌟 Premium hlas pre text v $LANGUAGE$",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Použite $VOICE$ ako predvolený hlas pre text v $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "Zobraziť všetky hlasy",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Vaše darčeky sú cenené!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Dary ocenené!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Najskôr zvoľte požadovaný text na webovej stránke. Môžete tiež vybrať text, potom kliknite pravým Talkie myši a zvoľte Talkie v ponuke.",

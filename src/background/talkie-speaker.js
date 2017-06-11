@@ -113,7 +113,7 @@ export default class TalkieSpeaker {
 
                                 logError("getSynthesizerFromBrowser", event);
 
-                                return reject(null);
+                                return reject(event.error);
                             };
 
                             // NOTE: Chrome needs to wait for the onvoiceschanged event before using the synthesizer.
@@ -238,7 +238,7 @@ export default class TalkieSpeaker {
 
                             logError("speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
 
-                            return reject();
+                            return reject(event.error);
                         };
 
                         utterance.onend = handleEnd;
