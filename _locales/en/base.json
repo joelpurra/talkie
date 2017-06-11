@@ -224,7 +224,7 @@
   },
   "frontend_voicesSetAsLanguageEmptySelection": {
     "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Upgrade to change default voice"
+    "message": "Use as default voice for language"
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
