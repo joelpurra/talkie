@@ -46,7 +46,7 @@
     "package:webextension:premium": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/webextension-premium/ build && mv web-ext-artifacts/talkie_premium*${npm_package_version}.zip \"talkie-joelpurra.com-${npm_package_version}-webextension-premium.zip\"",
     "package:sources": "zip -r talkie-joelpurra.com-${npm_package_version}-sourcemaps.zip dist/ lib/",
     "version:get": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/v_v_ p'",
-    "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file:free -- manifest.json && npm run --silent version:update:file -- package.json && git add manifest.json package.json && git commit -m \"${TALKIE_VERSION}\"",
+    "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file:free -- manifest.json && npm run --silent version:update:file -- package.json && npm run --silent version:update:file -- package-lock.json && git add manifest.json package.json package-lock.json && git commit -m \"${TALKIE_VERSION}\"",
     "version:update:file": "json -Ie \"this.version='${TALKIE_VERSION}'\" -f",
     "version:update:file:free": "json -Ie \"this.version_name='v' + this.version + ' Free (' + new Date().toISOString().substring(0,10) + ')'\" -f",
     "test": "npm run --silent lint",
