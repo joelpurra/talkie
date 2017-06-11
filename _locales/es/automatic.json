@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "Leer la selección de texto en voz alta",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Lea la selección de texto en voz alta con $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Leer la selección de texto en voz alta con Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Leer la selección de texto en voz alta con Talkie Premium",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Deja de hablar",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "Leer la selección de texto en voz alta",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "La página de Talkie Talkie",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "El sitio web Talkie",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "La página de la tienda Talkie 🌟 Premium",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "La página de la tienda Talkie Premium",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Leer desde el portapapeles",
@@ -35,21 +48,39 @@
     "message": "Iniciar/detener la selección de lectura",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Talkie página web y Talkie la Talkie que la lea en voz alta Talkie haciendo clic en el botón Talkie .",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "¡GRATIS! Rápido, fácil y de alta calidad de texto a voz en más de 40 idiomas. Leer en voz alta de sitios web, PDF, correo electrónico. Hable con TTS.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "Opciones",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "¡PRIMA! Rápido, fácil y de alta calidad de texto a voz en más de 40 idiomas. Leer en voz alta de sitios web, PDF, correo electrónico. Hable con TTS.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "Acerca de",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Caracteristicas",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Uso y accesos directos",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Opciones de voz",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Talkie el texto deseado en Talkie página web y haga clic en el botón Talkie en la barra del Talkie .",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Código fuente en Github",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "Acerca de: botón de extensión de navegador de texto a voz",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Acerca de",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Página del proyecto en joelpurra.com",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Gracias por usar Talkie — si te gusta, dile a tus amigos!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Donar",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Ya tienes Talkie 🌟 Premium. Su apoyo continuo ya es suficiente — gracias!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Más opciones de donación",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Donar USD 100 ahora",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Donar USD 25 ahora",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Donar USD 5 ahora",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Detección automática del idioma.",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "¡Gratis!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Talkie: lo que Talkie es bueno en",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "Caracteristicas",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "Actualmente está utilizando la versión gratuita de Talkie , y un conjunto limitado de funciones está disponible para usted. Tal vez Talkie 🌟 Premium sería una mejor opción para usted?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "Actualmente está disponible la versión gratuita de Talkie , y un conjunto limitado de características. Tal vez Talkie Premium sería una mejor opción para usted?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Actualmente está utilizando el Talkie 🌟 Premium , y todas las funciones están disponibles para usted. Muchas gracias, me calienta el corazón!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Actualmente está usando el Talkie Premium , y todas las funciones están disponibles. Muchas gracias, me calienta el corazón!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie viene en dos Talkie: Talkie y Talkie 🌟 Premium. La versión gratuita es ideal para la mayoría de los casos de uso, pero la versión premium ofrece opciones adicionales.",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "¡Obtenga Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Ocultar los botones de donación en el menú contextual",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "No es que no quiera que obtenga Talkie 🌟 Premium o done para apoyar Talkie y el desarrollo de código abierto en general. Simplemente no quiero que se moleste al usar Talkie en primer lugar. Si Talkie los botones de donación en la ventana Talkie , ¡espero que también Talkie de alguna manera! Los botones siempre estarán disponibles aquí entre las opciones, por si acaso.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Donar: apoyar el desarrollo de código abierto",
-    "original": "Donate: support open source development"
+    "message": "Talkie viene en dos Talkie: Talkie y Talkie Premium. La versión gratuita es ideal para la mayoría de los casos de uso, pero la versión premium ofrece opciones adicionales.",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Todas las contribuciones a Talkie se realizan bajo el Acuerdo de Licencia de Colaborador (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "Licencia: open-source software",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "Licencia",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "Revisar Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Dile a tus amigos sobre Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie fue desarrollado unos días antes del Año Nuevo 2016/2017, en un desafío de un amigo. El reto se inició con la pregunta: mientras se trabaja para trabajar, ¿es posible escuchar un artículo en lugar de leerlo? Fácil, le dije, y me dispuse a demostrarlo, o al menos a hacer que mi navegador hablara el texto usando una voz de computadora tonta. La versión básica, sin ninguna interfaz de usuario, resultó ser trivial para crear. Añadir una interfaz de usuario, tardó un poco más. Adición de detección de idioma adecuado un montón más código. Superar los errores en el navegador aún más trabajo. La lista de mejoras y características continúa — y unas pocas miles de líneas de código más tarde, está buscando el resultado final.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Historia: cómo se inició Talkie",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Historia",
-    "original": "Story"
+    "message": "Cómo se inició Talkie",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Gracias por usar Talkie — si te gusta, dile a tus amigos!",
@@ -203,53 +182,37 @@
     "message": "Soporte y comentarios",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie en Talkie de Firefox",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium en los Talkie 🌟 Premium de Firefox",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie en la Chrome Web Store",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium en la Chrome Web Store",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "Uso",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "Uso",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "En Talkie 🌟 Premium , puede leer Talkie 🌟 Premium texto copiado en su portapapeles; utilícelo con una tecla de acceso directo para escuchar texto desde cualquier lugar fuera del navegador. También puede hacer clic con el botón derecho en el botón Talkie 🌟 Premium o en un área vacía de un sitio web y seleccionar leer desde el portapapeles.",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Lea cualquier texto copiado en su portapapeles — úselo con una tecla de acceso directo para escuchar texto desde cualquier lugar fuera del navegador. También puede hacer clic con el botón derecho del ratón en el botón Talkie Premium o en un área vacía de un sitio web y seleccionar leer desde el portapapeles.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "También puede Talkie el texto, luego hacer clic con el botón derecho en él y Talkie en el menú. De esta manera también funciona en archivos PDF y algunos tipos especiales de páginas en el navegador.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Teclas de atajo",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Si la tecla de acceso directo no funciona, compruebe que no esté ya en uso por otra extensión o programa.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Cómo Talkie o cambiar las teclas de acceso directo Talkie .",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Talkie o cambie las teclas de acceso directo Talkie .",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Una opción conveniente es usar las teclas de atajo Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Leer el texto del portapapeles en cualquier programa — Talkie 🌟 Premium función",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Leer el texto del portapapeles en cualquier programa",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Inicio/parada",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Aquí puede ver y probar voces instaladas para cada idioma en su navegador. Talkie 🌟 Premium usuarios también pueden Talkie 🌟 Premium su voz favorita como Talkie 🌟 Premium por idioma, así como cambiar la Talkie 🌟 Premium y el tono de cada voz.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Voces: seleccione su favorito",
-    "original": "Voices: select your favorite"
+    "message": "Ver y probar voces instaladas para cada idioma en su navegador. Talkie Premium usuarios también pueden Talkie Premium su voz favorita como Talkie Premium por idioma, así como Talkie Premium y el tono de cada voz.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "Voces",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: tono para voz",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch for voice",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: pitch para $VOICE$",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch for $VOICE$",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: 🌟 Premium de la voz",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Velocidad de la voz",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: 🌟 Premium para $VOICE$",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Velocidad de $VOICE$",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "Ejemplo de texto para Talkie para leer en voz alta",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: 🌟 Premium para cambiar la voz 🌟 Premium",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "Utilizar como voz predeterminada para el idioma",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: Utilice $VOICE$ como voz 🌟 Premium para texto en $LANGUAGE$",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Utilice $VOICE$ como voz predeterminada para texto en $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "Mostrar todas las voces",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Sus donaciones son apreciadas!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "¡Las donaciones apreciadas!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Seleccione primero el texto deseado en el sitio web. También puede Talkie texto, luego haga clic derecho en él y elija Talkie en el menú.",

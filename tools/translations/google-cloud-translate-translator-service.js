@@ -24,7 +24,10 @@ const Promise = require("bluebird");
 const clone = require("clone");
 
 const GoogleTranslate = require("@google-cloud/translate");
+
 const striptags = require("striptags");
+const htmlEntityEncode = require("ent/encode");
+const htmlEntityDecode = require("ent/decode");
 
 export default class GoogleCloudTranslateTranslator {
     constructor(googleCloudTranslateApiKey) {
@@ -51,18 +54,20 @@ export default class GoogleCloudTranslateTranslator {
             const messages = clone(original);
             const keys = Object.keys(messages);
 
-            const preparedMessages = keys.map((key) => {
-                const preparedMessage = messages[key].message
-                        .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
-                        .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
-                        .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
-                        .replace(/\${2}/g, " <span class=\"notranslate\"> USD </span> ")
-                        .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
+            const preparedMessages = keys
+                .map((key) => messages[key].message)
+                .map((message) => htmlEntityEncode(message))
+                .map((encodedMessage) => {
+                    const preparedMessage = encodedMessage
+                            .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
+                            .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
+                            .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
+                            .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
 
-                const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
+                    const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
 
-                return htmlMessage;
-            });
+                    return htmlMessage;
+                });
 
             const translationOptions = {
                 from: fromLanguage,
@@ -79,6 +84,7 @@ export default class GoogleCloudTranslateTranslator {
 
                     const translateDirtyMessages = translations
                             .map((translationResponse) => striptags(translationResponse))
+                            .map((translationResponse) => htmlEntityDecode(translationResponse))
                             .map((translationResponse) => {
                                 const translateDirtyMessage = translationResponse
                                     .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")

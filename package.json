@@ -106,6 +106,7 @@
     "chrome-webstore-manager": "^0.4.1",
     "concurrently": "^3.4.0",
     "configvention": "^1.1.0",
+    "ent": "^2.2.0",
     "eslint": "^3.12.2",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-compat": "^1.0.2",

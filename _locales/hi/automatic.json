@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "पढ़ें",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "$NAME$ साथ जोर से बाहर पाठ चयन पढ़ें",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Talkie के साथ जोर से बाहर पाठ चयन पढ़ें",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Talkie Premium के साथ जोर से बाहर पाठ चयन पढ़ें",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "बात — चीत बंद करें",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "पढ़ें",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Talkie दान पृष्ठ",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkie वेबसाइट",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie 🌟 Premium स्टोर पृष्ठ",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "Talkie Premium स्टोर पेज",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "क्लिपबोर्ड से पढ़ें",
@@ -35,21 +48,39 @@
     "message": "चयन पढ़ने शुरू/बंद करें",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "किसी भी वेब पेज पर पाठ का चयन करें, और कंप्यूटर को केवल Talkie बटन पर क्लिक करके इसे ज़ोर से पढ़ लें।",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "मुक्त! 40 से अधिक भाषाओं में भाषण के लिए तेज़, आसान, उच्च गुणवत्ता वाले पाठ। वेबसाइटों, पीडीएफ, ईमेल से ज़ोर से पढ़ें टीटीएस के साथ टेक्स्ट बोलें",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "विकल्प",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "प्रीमियम! 40 से अधिक भाषाओं में भाषण के लिए तेज़, आसान, उच्च गुणवत्ता वाले पाठ। वेबसाइटों, पीडीएफ, ईमेल से ज़ोर से पढ़ें टीटीएस के साथ टेक्स्ट बोलें",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "के बारे में",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "विशेषताएं",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "उपयोग और शॉर्टकट",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "आवाज विकल्प",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "किसी भी वेब पेज पर इच्छित टेक्स्ट का चयन करें और अपने ब्राउज़र बार में Talkie बटन पर क्लिक करें।",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "गीथूब पर स्रोत कोड",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "के बारे में: टेक्स्ट-टू-स्पीच ब्राउज़र एक्सटेंशन बटन",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "के बारे में",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Joelpurra.com पर प्रोजेक्ट पेज",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Talkie के उपयोग के लिए धन्यवाद — अगर आपको यह पसंद है, तो अपने दोस्तों को बताएं!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "दान करना",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "आपके पास पहले से ही Talkie 🌟 Premium है आपका निरंतर सहयोग पहले से ही पर्याप्त है — धन्यवाद!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "अधिक दान विकल्प",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "अब 100 USD दान करें",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "अब 25 USD दान करें",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "अब 5 USD दान करें",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "स्वचालित भाषा का पता लगाने",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "मुक्त!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Talkie: क्या Talkie अच्छा है",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "विशेषताएं",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "आप वर्तमान में Talkie के निःशुल्क संस्करण का उपयोग कर रहे हैं, और आपके लिए सीमित सुविधाएं उपलब्ध हैं। शायद Talkie 🌟 Premium आपके लिए बेहतर विकल्प होगा?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "वर्तमान में Talkie के निःशुल्क संस्करण का उपयोग कर रहा है, और सुविधाओं का एक सीमित सेट उपलब्ध है। शायद Talkie Premium आपके लिए बेहतर विकल्प होगा?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "आप वर्तमान में Talkie 🌟 Premium का उपयोग कर रहे हैं, और सभी सुविधाएं आपके लिए उपलब्ध हैं। बहुत बहुत धन्यवाद, यह मेरे दिल warms!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "वर्तमान में Talkie Premium का उपयोग कर Talkie Premium , और सभी सुविधाएं उपलब्ध हैं। बहुत बहुत धन्यवाद, यह मेरे दिल warms!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie दो Talkie आता है: Talkie और Talkie 🌟 Premium नि: शुल्क संस्करण अधिकांश उपयोग मामलों के लिए महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प प्रदान करता है।",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Talkie 🌟 Premium प्राप्त Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "पॉपअप में दान बटन छुपाएं",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "ऐसा नहीं है कि मैं आपको Talkie 🌟 Premium प्राप्त Talkie 🌟 Premium या Talkie और सामान्य रूप से ओपन सोर्स डेवलपमेंट का समर्थन करने के लिए दान करना चाहता हूं — मैं सिर्फ आपको नहीं चाहता कि आप Talkie का उपयोग करते समय पहले नाराज हो। यदि आप पॉपअप में दान बटन को अक्षम करते हैं, तो मुझे उम्मीद है कि आप किसी तरह से Talkie का भी समर्थन करेंगे! बटन हमेशा विकल्प के बीच यहां उपलब्ध होंगे, बस के मामले में।",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "दान करें: ओपन सोर्स डेवलपमेंट का समर्थन करें",
-    "original": "Donate: support open source development"
+    "message": "Talkie दो Talkie आता है: Talkie और Talkie Premium नि: शुल्क संस्करण अधिकांश उपयोग मामलों के लिए महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प प्रदान करता है।",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Talkie के सभी योगदान अंशदाता लाइसेंस समझौते (सीएलए) के तहत किए गए हैं।",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "लाइसेंस: ओपन सोर्स सॉफ्टवेयर",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "लाइसेंस",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "समीक्षा Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "अपने दोस्तों को Talkie बारे में Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie एक मित्र से एक चुनौती पर नए साल 2016/2017 के कुछ दिनों पहले Talkie किया गया था। चुनौती इस प्रश्न के साथ शुरू हुई: काम करने के लिए आने के दौरान, क्या इसे पढ़ने के बजाय एक लेख को सुनना संभव है? आसान, मैंने कहा, और इसे साबित करने के लिए सेट किया — या कम से कम मेरे ब्राउज़र को एक मूर्ख कम्प्यूटर आवाज का उपयोग करके टेक्स्ट की बात करें। मूल संस्करण, बिना किसी उपयोगकर्ता इंटरफ़ेस के, बनाने के लिए तुच्छ होने के लिए निकला। एक उपयोगकर्ता इंटरफ़ेस जोड़ना, थोड़ी देर लगी। उचित भाषा का पता लगाने के लिए एक गुच्छा अधिक कोड जोड़ना ब्राउज़र में कीड़े पर काबू पाने के अलावा और भी काम सुधारों और सुविधाओं की सूची आगे बढ़ती है- और बाद में कोड की कुछ हज़ार लाइनें, आप अंतिम परिणाम देख रहे हैं",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "कहानी: कैसे Talkie आरंभ हुआ?",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "कहानी",
-    "original": "Story"
+    "message": "Talkie कैसे शुरू हुआ",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Talkie के उपयोग के लिए धन्यवाद — अगर आपको यह पसंद है, तो अपने दोस्तों को बताएं!",
@@ -203,53 +182,37 @@
     "message": "समर्थन और प्रतिक्रिया",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie ऐड-ऑन में",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium ऐड-ऑन में Talkie 🌟 Premium",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie क्रोम वेब स्टोर में",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "क्रोम वेब स्टोर में Talkie 🌟 Premium",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "प्रयोग",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "प्रयोग",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "Talkie 🌟 Premium , आप अपने क्लिपबोर्ड पर कॉपी किए गए किसी भी पाठ को पढ़ सकते हैं — ब्राउज़र के बाहर कहीं से भी पाठ सुनने के लिए शॉर्टकट कुंजी के साथ इसका उपयोग करें। आप Talkie 🌟 Premium बटन, या किसी वेबसाइट के खाली क्षेत्र पर राइट-क्लिक भी कर सकते हैं, और क्लिपबोर्ड से पढ़ने का चयन कर सकते हैं।",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "अपने क्लिपबोर्ड पर कॉपी किए गए किसी भी पाठ को पढ़ें — ब्राउज़र के बाहर कहीं से पाठ को सुनने के लिए शॉर्टकट कुंजी का उपयोग करें। आप Talkie Premium बटन पर, या किसी वेबसाइट के खाली क्षेत्र पर भी राइट-क्लिक कर सकते हैं, और क्लिपबोर्ड से पढ़ सकते हैं।",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "आप पाठ का भी चयन कर सकते हैं, फिर उस पर राइट क्लिक करें, और मेनू में Talkie चुनें। इस तरह भी पीडीएफ फाइलों और ब्राउज़र में कुछ विशेष प्रकार के पृष्ठों में काम करता है।",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "शॉर्टकट कुंजियाँ",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "यदि शॉर्टकट कुंजी काम नहीं करती है, तो कृपया जांच लें कि यह पहले से किसी अन्य एक्सटेंशन या प्रोग्राम द्वारा उपयोग में नहीं है।",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Talkie शॉर्टकट कुंजी को कैसे जांच या बदलना है",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Talkie शॉर्टकट कुंजी को चेक या बदलें।",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "एक सुविधाजनक विकल्प Talkie शॉर्टकट कुंजियों का उपयोग करना है:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "किसी भी प्रोग्राम में क्लिपबोर्ड से पाठ पढ़ें — Talkie 🌟 Premium सुविधा",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "किसी भी प्रोग्राम में क्लिपबोर्ड से पाठ पढ़ें",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "चालू बंद",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "यहां आप अपने ब्राउज़र में प्रत्येक भाषा के लिए स्थापित आवाज देख सकते हैं और परीक्षण कर सकते हैं। Talkie 🌟 Premium प्रति पसंदीदा भाषा के रूप में अपनी पसंदीदा आवाज को चुन सकते हैं, साथ ही साथ प्रत्येक आवाज के लिए गति और पिच को बदल सकते हैं",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "आवाज़ें: अपने पसंदीदा का चयन करें",
-    "original": "Voices: select your favorite"
+    "message": "अपने ब्राउज़र में प्रत्येक भाषा के लिए स्थापित आवाज देखें और जांचें। Talkie Premium प्रति पसंदीदा भाषा के रूप में अपनी पसंदीदा आवाज को चुन सकते हैं, साथ ही साथ प्रत्येक आवाज के लिए गति और पिच सेट कर सकते हैं।",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "आवाज़ें",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: आवाज़ के लिए पिच",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "आवाज़ के लिए पिच",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: $VOICE$ लिए पिच",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "$VOICE$ लिए पिच",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: आवाज के लिए गति",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "आवाज़ के लिए गति",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: $VOICE$ लिए गति",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "$VOICE$ लिए गति",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "ज़ोर से पढ़ने के लिए Talkie लिए नमूना पाठ",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: डिफ़ॉल्ट आवाज बदलने के लिए अपग्रेड करें",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "भाषा के लिए डिफ़ॉल्ट आवाज के रूप में उपयोग करें",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: $VOICE$ $LANGUAGE$ में टेक्स्ट के लिए डिफ़ॉल्ट वॉयस के रूप में उपयोग करें",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$LANGUAGE$ में टेक्स्ट के लिए डिफ़ॉल्ट वॉइस के रूप में $VOICE$ का उपयोग करें",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "सभी आवाज़ें दिखाएं",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "आपके दान की सराहना की है!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "दान की सराहना!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "कृपया पहले वेबसाइट पर वांछित पाठ चुनें आप पाठ का भी चयन कर सकते हैं, फिर उस पर राइट क्लिक करें, और मेनू में Talkie चुनें।",

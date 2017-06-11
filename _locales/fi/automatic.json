@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "Lue tekstinvalinnan ääneen",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Lue tekstinvalinnan ääneen $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Lue tekstinvalinnan ääneen Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Lue tekstinvalinnan ääneen Talkie Premium",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Lopeta puhuminen",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "Lue tekstinvalinnan ääneen",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Talkie lahjoitukset sivu",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkie verkkosivusto",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie 🌟 Premium -kauppasivua",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "Talkie Premium -kauppasivua",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "Lue leikepöydältä",
@@ -35,21 +48,39 @@
     "message": "Aloita/lopettaa lukeminen valinta",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "Valitse tekstiä tahansa sivulta, ja on tietokone lukea sen ääneen sinulle yksinkertaisesti klikkaamalla Talkie painiketta.",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "VAPAA! Nopea, helppo, laadukasta tekstin puheeksi yli 40 kielellä. Luetaan ääneen sivustot, PDF, sähköposti. Puhu teksti TTS.",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "vaihtoehdot",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "PREMIUM! Nopea, helppo, laadukasta tekstin puheeksi yli 40 kielellä. Luetaan ääneen sivustot, PDF, sähköposti. Puhu teksti TTS.",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "Noin",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "ominaisuudet",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Käyttö ja pikakuvakkeet",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Äänivalinnat",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Valitse haluamasi teksti Web-sivulta ja klikkaa Talkie painiketta selainpalkissa.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Lähdekoodia Github",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "Tietoja: teksti puheeksi selainlaajennus painiketta",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "Noin",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Hanke sivu joelpurra.com",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Kiitos, että käytät Talkie — jos pidät siitä, kerro ystävillesi!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "Lahjoittaa",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "Sinulla on jo Talkie 🌟 Premium. Että tuet on jo tarpeeksi — kiitos!",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "Lisää lahjoitus vaihtoehtoja",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "Lahjoita USD 100 nyt",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "Lahjoita USD 25 nyt",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "Lahjoita USD 5 nyt",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "Automaattisen kielen tunnistamisen.",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "Vapaa!",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "Ominaisuudet: mikä Talkie on hyvä",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "ominaisuudet",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "Käytät tällä hetkellä ilmainen versio Talkie , ja rajallinen joukko ominaisuuksia on käytössäsi. Ehkä Talkie 🌟 Premium olisi parempi valinta?",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "Nykyisin käyttämällä ilmaista versiota Talkie , ja rajallinen joukko ominaisuuksia on käytettävissä. Ehkä Talkie Premium olisi parempi valinta?",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Käytät tällä hetkellä käyttävät Talkie 🌟 Premium , ja kaikki toiminnot ovat käytettävissä. Paljon kiitoksia, se lämmittää sydäntäni!",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "Nykyisin käyttämällä Talkie Premium , ja kaikki toiminnot ovat käytettävissä. Paljon kiitoksia, se lämmittää sydäntäni!",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkie on kaksi versiota: Talkie ja Talkie 🌟 Premium. Ilmainen versio on hyvä useimmissa käyttötapauksia, mutta maksullinen versio tarjoaa uusia vaihtoehtoja.",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Get Talkie 🌟 Premium !",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "Piilota Lahjoituspainikkeella ponnahdusikkunan",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Se ei ole kuin en halua saat Talkie 🌟 Premium tai lahjoittaa tukemaan Talkie ja avoimen lähdekoodin kehitykseen yleensä — En vain halua sinun olevan vihainen käytettäessä Talkie ensiksi. Jos poistat lahjoituspainikkeita popup, toivon, että tuetaan myös Talkie jollain tavalla! Painikkeet ovat aina saatavilla täällä vaihtoehtojen joukosta, kaiken varalta.",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "Lahjoita: tukea avoimen lähdekoodin kehitystä",
-    "original": "Donate: support open source development"
+    "message": "Talkie on kaksi versiota: Talkie ja Talkie Premium. Ilmainen versio on hyvä useimmissa käyttötapauksia, mutta maksullinen versio tarjoaa uusia vaihtoehtoja.",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Kaikki maksut Talkie tehdään alla Contributor License Agreement (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "Lisenssi: avoimen lähdekoodin ohjelmistojen",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "lisenssi",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "arvostelu Talkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Kerro ystävillesi Talkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkie kehitettiin muutama päivä ennen uutta vuotta 2016/2017, on haaste ystävältä. Haasteena alkoi kysymyksen: kun työmatkoja, on mahdollista kuunnella artikkeli sijaan lukea sitä? Helppo, sanoin, ja lähti todistaa sen — tai ainakin tehdä selain puhua tekstiä typerä tietokoneääni. Perusversio, ilman käyttöliittymää, osoittautui triviaalia luoda. Lisääminen käyttöliittymä, kesti hieman kauemmin. Lisäämällä asianmukainen kielentunnistus joukko enemmän koodia. Selviytyminen bugeja selaimen vieläkin enemmän työtä. Luettelo parannuksia ja ominaisuuksia jatkuu — ja muutama tuhat riviä koodia myöhemmin, etsit lopputulos.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Story: miten Talkie käynnistyi",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "Tarina",
-    "original": "Story"
+    "message": "Miten Talkie käynnistyi",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Kiitos, että käytät Talkie — jos pidät siitä, kerro ystävillesi!",
@@ -203,53 +182,37 @@
     "message": "Tuki ja palaute",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "Talkie Firefoxissa lisäosat",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "Talkie 🌟 Premium Firefox lisäosat",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "Talkie Chrome Web Storesta",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "Talkie 🌟 Premium Chrome Web Storesta",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "Käyttö",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "Käyttö",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "Vuonna Talkie 🌟 Premium , voit lukea mitään tekstiä leikepöydälle kopioituja — käytä sitä pikanäppäin kuunnella teksti mistä tahansa selaimen ulkopuolelle. Voit myös oikealla klikkaa Talkie 🌟 Premium painiketta, tai tyhjää aluetta sivuston ja valitse lukea leikepöydältä.",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "Lue mitä tahansa tekstiä leikepöydälle kopioituja — käytä sitä pikanäppäin kuunnella teksti mistä tahansa selaimen ulkopuolelle. Voit myös oikealla klikkaa Talkie Premium painiketta, tai tyhjää aluetta sivuston ja valitse lukea leikepöydältä.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Voit myös valita tekstin, sitten oikealle klikkaa sitä ja valitse Talkie valikosta. Näin toimii myös PDF-tiedostoja ja joitakin erityisiä tyyppejä sivuja selaimessa.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "pikanäppäimet",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "Jos pikanäppäin ei toimi, tarkista, että se ei ole jo käytössä toisen laajennuksen tai ohjelman.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Miten tarkistaa tai muuttaa Talkie pikanäppäimiä.",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Tarkista tai muuta Talkie pikanäppäimiä.",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "Sopiva vaihtoehto on käyttää Talkie pikanäppäimistä:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Lukea tekstiä leikepöydältä mihinkään ohjelmaan — Talkie 🌟 Premium ominaisuus",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "Lukea tekstiä leikepöydältä mihinkään ohjelmaan",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start/Stop",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "Täällä voit nähdä ja testata asennetut äänet kullekin kielelle selaimessa. Talkie 🌟 Premium käyttäjät voivat myös valita suosikki äänensä oletukseksi kieltä kohden, sekä muutoksen nopeus ja piki jokaisen äänen.",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "Voices: valitse suosikkisi",
-    "original": "Voices: select your favorite"
+    "message": "Katso ja testaa asennetut äänet kullekin kielelle selaimessa. Talkie Premium käyttäjät voivat myös valita suosikki äänensä oletukseksi kieltä kohden, sekä määrittää pyörimisnopeuden ja nousun jokaisen äänen.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "Voices",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: piki ääni",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Piki ääni",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium: piki $VOICE$",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Piki $VOICE$",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium: nopeus ääni-",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "Nopeus puheelle",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium: nopeus $VOICE$",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "Speed $VOICE$",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "Näyte teksti Talkie lukea ääneen",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium: Päivitä muuttaa oletuksena ääni",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "Käytä oletushakukoneena ääni kielten",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium: Käytä $VOICE$ oletuksena ääni tekstiä $LANGUAGE$",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Käytä $VOICE$ oletuksena ääni tekstiä $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "Kaikki äänet",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "Lahjoituksia arvostetaan!",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "Lahjoituksia arvostetaan!",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "Valitse haluamasi teksti verkkosivuilla ensin. Voit myös valita tekstiä, sitten oikealle klikkaa sitä ja valitse Talkie valikosta.",

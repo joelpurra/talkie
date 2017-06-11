@@ -1,7 +1,24 @@
 {
   "buttonDefaultTitle": {
-    "message": "テキスト選択を大声で読む",
-    "original": "Read text selection out loud"
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "$NAME$大声でテキストの選択を読む",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Free": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Talkieで大声でテキストの選択を読む",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonDefaultTitle_Premium": {
+    "description": "Hover on the Talkie Premium button, set from manifest.json.",
+    "message": "Talkie Premiumで大声でテキストの選択を読む",
+    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "話すのをやめる",
@@ -10,10 +27,6 @@
   "commandBrowserActionDescription": {
     "message": "テキスト選択を大声で読む",
     "original": "Read text selection out loud"
-  },
-  "commandOpenWebsiteDonateDescription": {
-    "message": "Talkie寄付ページ",
-    "original": "The Talkie donations page"
   },
   "commandOpenWebsiteMainDescription": {
     "message": "Talkieウェブサイト",
@@ -24,8 +37,8 @@
     "original": "The Talkie store page"
   },
   "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie 🌟 Premiumストアページ",
-    "original": "The Talkie 🌟 Premium store page"
+    "message": "Talkie Premiumストアページ",
+    "original": "The Talkie Premium store page"
   },
   "commandReadClipboardDescription": {
     "message": "クリップボードからの読み取り",
@@ -35,21 +48,39 @@
     "message": "読書開始/停止選択",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription": {
-    "message": "任意のウェブページ上のテキストを選択し、 Talkieボタンをクリックするだけで、コンピュータに大声でおTalkieください。",
-    "original": "Select text on any web page, and have the computer read it out loud for you by simply clicking the Talkie button."
+  "extensionDescription_Free": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "無料！ 40種類以上の言語で、高速、簡単、高品質のテキスト音声変換ウェブサイト、PDF、電子メールから大声で読んでください。テキストをTTSと話す。",
+    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_Options": {
-    "message": "オプション",
-    "original": "Options"
+  "extensionDescription_Premium": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "プレミアム！ 40種類以上の言語で、高速、簡単、高品質のテキスト音声変換ウェブサイト、PDF、電子メールから大声で読んでください。テキストをTTSと話す。",
+    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_About": {
+    "message": "約",
+    "original": "About"
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "特徴",
+    "original": "Features"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "使用法とショートカット",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "音声オプション",
+    "original": "Voice options"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "任意のWebページで目的のテキストを選択し、ブラウザバーのTalkieボタンをクリックします。",
+    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Githubのソースコード",
     "original": "Source code on Github"
-  },
-  "frontend_aboutHeading": {
-    "message": "〜について：テキスト読み上げブラウザ拡張ボタン",
-    "original": "About: text-to-speech browser extension button"
   },
   "frontend_aboutLinkText": {
     "message": "約",
@@ -58,34 +89,6 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "joelpurra.comのプロジェクトページ",
     "original": "Project page on joelpurra.com"
-  },
-  "frontend_aboutThankYou": {
-    "message": "Talkieご利用いただきありがとうございます。お好きな場合は、お友達にお知らせください！",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
-  },
-  "frontend_donateLinkText": {
-    "message": "寄付する",
-    "original": "Donate"
-  },
-  "frontend_donate_alreadyHavePremium": {
-    "message": "あなたはすでにTalkie 🌟 Premium持ってTalkie 🌟 Premiumます。あなたの継続的なサポートはすでに十分です — ありがとう！",
-    "original": "You already have Talkie 🌟 Premium. Your continued support is already enough — thank you!"
-  },
-  "frontend_donate_moreOptions": {
-    "message": "寄付のオプションを増やす",
-    "original": "More donation options"
-  },
-  "frontend_donate_usd100Now": {
-    "message": "USD 100を寄付する",
-    "original": "Donate $$100 now"
-  },
-  "frontend_donate_usd25Now": {
-    "message": "25 USD寄付",
-    "original": "Donate $$25 now"
-  },
-  "frontend_donate_usd5Now": {
-    "message": "USD 5を寄付する",
-    "original": "Donate $$5 now"
   },
   "frontend_featuresFree_List01": {
     "message": "自動言語検出。",
@@ -110,10 +113,6 @@
   "frontend_featuresFree_List06": {
     "message": "無料！",
     "original": "Free!"
-  },
-  "frontend_featuresHeading": {
-    "message": "特集： TalkieがうまくTalkieもの",
-    "original": "Features: what Talkie is good at"
   },
   "frontend_featuresLinkText": {
     "message": "特徴",
@@ -140,42 +139,22 @@
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_featuresVersion_Free": {
-    "message": "あなたは現在Talkieの無料版を使用していますが、利用できる機能は限られています。おそらくTalkie 🌟 Premiumはあなたのためのより良い選択でしょうか？",
-    "original": "You are currently using the free version of Talkie, and a limited set of features is available to you. Perhaps Talkie 🌟 Premium would be a better choice for you?"
+    "message": "現在、無料版のTalkieを使用しており、限定された機能が利用できます。おそらくTalkie Premiumはあなたのためのより良い選択でしょうか？",
+    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "あなたは現在Talkie 🌟 Premiumを使用しています。すべての機能を利用できます。ありがとう、それは私の心を暖める！",
-    "original": "You are currently using the Talkie 🌟 Premium, and all features are available to you. Thank you very much, it warms my heart!"
+    "message": "現在Talkie Premiumを使用してTalkie Premium 、すべての機能を利用できます。ありがとう、それは私の心を暖める！",
+    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
-    "message": "Talkieには、 TalkieとTalkie 🌟 Premiumという2つのバージョンがあります。無料のバージョンはほとんどの使用例に適していますが、プレミアムバージョンには追加のオプションがあります。",
-    "original": "Talkie comes in two versions: Talkie and Talkie 🌟 Premium. The free version is great for most use cases, but the premium version offers additional options."
-  },
-  "frontend_getPremiumLinkText": {
-    "message": "Talkie 🌟 Premiumう！",
-    "original": "Get Talkie 🌟 Premium!"
-  },
-  "frontend_hideDonateButtonsInPopup": {
-    "message": "ポップアップで寄付ボタンを隠す",
-    "original": "Hide donation buttons in the popup"
-  },
-  "frontend_hideDonateButtonsInPopupDescription": {
-    "message": "Talkie 🌟 Premiumを取得したり、一般的にTalkieとオープンソース開発をサポートしてTalkieました。 Talkieを使用する際に迷惑にならないようにしてください。ポップアップで寄付ボタンを無効にすると、何らかの方法でTalkieもサポートされることを願っています！場合によっては、これらのボタンは常にオプションの中で使用できます。",
-    "original": "It's not like I don't want you to get Talkie 🌟 Premium or donate to support Talkie and open source development in general — I just don't want you to be annoyed when using Talkie in the first place. If you disable the donation buttons in the popup, I hope that you will also support Talkie in some way! The buttons will always be available here among the options, just in case."
-  },
-  "frontend_hideDonateButtonsInPopupHeading": {
-    "message": "寄付：オープンソース開発をサポート",
-    "original": "Donate: support open source development"
+    "message": "Talkieには、 TalkieとTalkie Premiumという2つのバージョンがあります。無料のバージョンはほとんどの使用例に適していますが、プレミアムバージョンには追加のオプションがあります。",
+    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
   },
   "frontend_licenseCLADescription": {
     "message": "Talkieへのすべての貢献は、コントリビュータライセンス契約（CLA）の下で行われます。",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
-    "message": "ライセンス：オープンソースソフトウェア",
-    "original": "License: open-source software"
-  },
-  "frontend_licenseLinkText": {
     "message": "ライセンス",
     "original": "License"
   },
@@ -183,17 +162,17 @@
     "message": "レビューTalkie",
     "original": "Review Talkie"
   },
+  "frontend_shareHeading": {
+    "message": "Talkieについてお友達にTalkie",
+    "original": "Tell your friends about Talkie"
+  },
   "frontend_storyDescription": {
     "message": "Talkieは、友人からの挑戦で、2016/2017年新年の数日前に開発されました。挑戦は質問から始まりました。通勤中は記事を読むのではなく、記事を聞くことが可能ですか？簡単に、私は言った、そしてそれを証明するために出発した。少なくとも、ブラウザは馬鹿なコンピュータの声でテキストを発声させた。基本的なバージョンは、ユーザーインターフェイスがなく、作成するのは簡単ではないことが判明しました。ユーザーインターフェイスを追加するのに少し時間がかかりました。適切な言語の検出を追加すると、より多くのコードをまとめることができます。ブラウザのバグを克服し、さらに多くの作業を行います。改善と機能のリストは続けられ、後に数千行のコードがあり、最終結果を見ています。",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "ストーリー： Talkie開始方法",
-    "original": "Story: how Talkie got started"
-  },
-  "frontend_storyLinkText": {
-    "message": "ストーリー",
-    "original": "Story"
+    "message": "Talkie開始方法",
+    "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
     "message": "Talkieご利用いただきありがとうございます。お好きな場合は、お友達にお知らせください！",
@@ -203,53 +182,37 @@
     "message": "サポートとフィードバック",
     "original": "Support and feedback"
   },
-  "frontend_talkieInFirefoxAddons_Free": {
-    "message": "FirefoxアドオンのTalkie",
-    "original": "Talkie in Firefox Add-ons"
-  },
-  "frontend_talkieInFirefoxAddons_Premium": {
-    "message": "FirefoxアドオンのTalkie 🌟 Premium",
-    "original": "Talkie 🌟 Premium in the Firefox Add-ons"
-  },
-  "frontend_talkieInTheChromeWebStore_Free": {
-    "message": "ChromeウェブストアのTalkie",
-    "original": "Talkie in the Chrome Web Store"
-  },
-  "frontend_talkieInTheChromeWebStore_Premium": {
-    "message": "ChromeウェブストアのTalkie 🌟 Premium",
-    "original": "Talkie 🌟 Premium in the Chrome Web Store"
-  },
-  "frontend_usageHeading": {
-    "message": "使用法",
-    "original": "Usage"
-  },
   "frontend_usageLinkText": {
     "message": "使用法",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "Talkie 🌟 Premiumでは、 Talkie 🌟 Premiumコピーされたテキストを読むことができます。ショートカットキーを使用して、ブラウザ外のどこからでもテキストを聴くことができます。 Talkie 🌟 Premiumボタンを右クリックするか、Webサイトの空き領域で右クリックして、 Talkie 🌟 Premiumからの読み取りを選択することもできます。",
-    "original": "In Talkie 🌟 Premium, you can read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie 🌟 Premium button, or in an empty area of a website, and select read from clipboard."
+    "message": "あなたのクリップボードにコピーされたテキストを読む — ブラウザの外のどこからでもテキストを聞くためにショートカットキーでそれを使用する。 Talkie Premiumボタンを右クリックするか、Webサイトの空き領域で右クリックして、 Talkie Premiumからの読み取りを選択することもできます。",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "テキストを選択して右クリックし、メニューでTalkieを選択することもできます。この方法は、PDFファイルやブラウザの特別な種類のページでも機能します。",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "ショートカットキー",
+    "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
     "message": "ショートカットキーが機能しない場合は、別の内線番号またはプログラムで既に使用されていないことを確認してください。",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Talkieショートカットキーを確認または変更する方法。",
-    "original": "How to check or change the Talkie shortcut keys."
+    "message": "Talkieショートカットキーを確認または変更してください。",
+    "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "便利なオプションは、 Talkieショートカットキーを使用することです。",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "どのプログラムでもクリップボードからテキストを読む — Talkie 🌟 Premium機能",
-    "original": "Read text from clipboard in any program — Talkie 🌟 Premium feature"
+    "message": "どのプログラムでもクリップボードからテキストを読む",
+    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "起動停止",
@@ -276,39 +239,19 @@
     "original": "Available voices"
   },
   "frontend_voicesDescription": {
-    "message": "ここでは、ブラウザにインストールされた各言語の音声を確認し、テストすることができます。 Talkie 🌟 Premiumユーザーは、お気に入りの音声を言語ごとのデフォルトとして選択し、各音声の速度とピッチを変更することもできます。",
-    "original": "Here you can see and test installed voices for each language in your browser. Talkie 🌟 Premium users can also select their favorite voice as the default per language, as well as change speed and pitch for each voice."
-  },
-  "frontend_voicesHeading": {
-    "message": "ボイス：お気に入りを選択",
-    "original": "Voices: select your favorite"
+    "message": "ブラウザで各言語のインストールされた音声を確認してテストします。 Talkie Premiumユーザーは、お気に入りの声を言語ごとのデフォルトとして選択し、各声の速度とピッチを設定することもできます。",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
   "frontend_voicesLinkText": {
     "message": "声",
     "original": "Voices"
   },
-  "frontend_voicesPitchEmptyHeading_Free": {
-    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium ：音声のピッチ",
-    "original": "🌟 Premium: pitch for voice"
-  },
-  "frontend_voicesPitchEmptyHeading_Premium": {
+  "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "音声のピッチ",
     "original": "Pitch for voice"
   },
-  "frontend_voicesPitchHeading_Free": {
-    "description": "The per-voice pitch options heading, including the voice name",
-    "message": "🌟 Premium ： $VOICE$ピッチ",
-    "original": "🌟 Premium: pitch for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesPitchHeading_Premium": {
+  "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "$VOICE$ピッチ",
     "original": "Pitch for $VOICE$",
@@ -319,28 +262,12 @@
       }
     }
   },
-  "frontend_voicesRateEmptyHeading_Free": {
-    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
-    "message": "🌟 Premium ：音声のスピード",
-    "original": "🌟 Premium: speed for voice"
-  },
-  "frontend_voicesRateEmptyHeading_Premium": {
+  "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "音声のスピード",
     "original": "Speed for voice"
   },
-  "frontend_voicesRateHeading_Free": {
-    "description": "The per-voice speed options heading, including the voice name",
-    "message": "🌟 Premium ： $VOICE$スピード",
-    "original": "🌟 Premium: speed for $VOICE$",
-    "placeholders": {
-      "voice": {
-        "content": "$1",
-        "example": "Google italiano"
-      }
-    }
-  },
-  "frontend_voicesRateHeading_Premium": {
+  "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "$VOICE$スピード",
     "original": "Speed for $VOICE$",
@@ -360,32 +287,12 @@
     "message": "大声でTalkieサンプルテキスト",
     "original": "Sample text for Talkie to read out loud"
   },
-  "frontend_voicesSetAsLanguageEmptySelection_Free": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Free, but without the variables.",
-    "message": "🌟 Premium ：アップグレードしてデフォルトの音声を変更する",
-    "original": "🌟 Premium: Upgrade to change default voice"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection_Premium": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium, but without the variables.",
+  "frontend_voicesSetAsLanguageEmptySelection": {
+    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
     "message": "言語のデフォルトボイスとして使用する",
     "original": "Use as default voice for language"
   },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Free": {
-    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "🌟 Premium ： $LANGUAGE$テキストには、デフォルトの音声として$VOICE$を使用します",
-    "original": "🌟 Premium: Use $VOICE$ as default voice for text in $LANGUAGE$",
-    "placeholders": {
-      "language": {
-        "content": "$1",
-        "example": "sv-SE"
-      },
-      "voice": {
-        "content": "$2",
-        "example": "Alva"
-      }
-    }
-  },
-  "frontend_voicesSetAsLanguageUseVoiceAsDefault_Premium": {
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$LANGUAGE$テキストには、デフォルトの音声として$VOICE$を使用します",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -403,14 +310,6 @@
   "frontend_voicesShowAllVoices": {
     "message": "すべての声を表示",
     "original": "Show all voices"
-  },
-  "frontend_yourDonationsAreAppreciated": {
-    "message": "あなたの寄付は高く評価されています！",
-    "original": "Your donations are appreciated!"
-  },
-  "frontend_yourDonationsAreAppreciatedShort": {
-    "message": "寄付が高く評価されました！",
-    "original": "Donations appreciated!"
   },
   "noTextSelectedMessage": {
     "message": "最初にウェブサイトで目的のテキストを選択してください。また、テキストを選択して右クリックし、メニューでTalkieを選択することもできます。",
