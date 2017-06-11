@@ -112,6 +112,7 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-compat": "^1.0.2",
     "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-no-unsafe-innerhtml": "^1.0.16",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^7.0.1",
