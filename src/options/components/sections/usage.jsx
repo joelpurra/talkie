@@ -27,9 +27,25 @@ import translate from "../../hocs/translate.jsx";
 @configure
 @translate
 export default class Usage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+    }
+
     static propTypes = {
+        onOpenShortKeysConfigurationClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+    }
+
+    handleOpenShortKeysConfigurationClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.props.onOpenShortKeysConfigurationClick();
+
+        return false;
     }
 
     render() {
@@ -160,7 +176,10 @@ export default class Usage extends React.Component {
 
                 <p className="talkie-chrome-only talkie-block">
                     {/* NOTE: can't change shortcut keys in Firefox */}
-                    <a href={this.props.configure("urls.shortcut-keys")}>{this.props.translate("frontend_usageShortcutKeyAlternative04")}</a>
+                    <a
+                        href={this.props.configure("urls.shortcut-keys")}
+                        onClick={this.handleOpenShortKeysConfigurationClick}
+                    >{this.props.translate("frontend_usageShortcutKeyAlternative04")}</a>
                 </p>
             </section>
         );

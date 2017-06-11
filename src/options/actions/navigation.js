@@ -32,3 +32,6 @@ export const setShouldShowBackButton = (shouldShowBackButton) => {
 
 export const openUrlInNewTab = (url) =>
     (dispatch, getState, api) => api.openUrlInNewTab(url);
+
+export const openShortKeysConfiguration = () =>
+    (dispatch, getState, api) => api.openShortKeysConfiguration();

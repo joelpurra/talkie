@@ -29,6 +29,7 @@ import {
 
 import {
     openUrlInNewTab as sharedOpenUrlInNewTab,
+    openShortKeysConfiguration as sharedOpenShortKeysConfiguration,
 } from "../../shared/urls";
 
 import {
@@ -91,3 +92,5 @@ export const getVersionName = () => getBackgroundPage()
     .then((background) => background.getVersionName());
 
 export const openUrlInNewTab = (url) => sharedOpenUrlInNewTab(url);
+
+export const openShortKeysConfiguration = () => sharedOpenShortKeysConfiguration();

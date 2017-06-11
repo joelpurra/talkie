@@ -155,7 +155,7 @@
     "message": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "How to check or change the Talkie shortcut keys."
+    "message": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "A convenient option is to use the Talkie shortcut keys:"

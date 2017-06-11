@@ -37,6 +37,7 @@ export default class Main extends React.Component {
 
         this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
         this.handleLinkClick = this.handleLinkClick.bind(this);
+        this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
     }
 
     static defaultProps = {
@@ -85,6 +86,10 @@ export default class Main extends React.Component {
         this.props.actions.navigation.openUrlInNewTab(url);
     }
 
+    handleOpenShortKeysConfigurationClick() {
+        this.props.actions.navigation.openShortKeysConfiguration();
+    }
+
     render() {
         return (
             <main>
@@ -105,7 +110,9 @@ export default class Main extends React.Component {
                     activeTabId={this.props.activeTabId}
                     onLinkClick={this.handleLinkClick}
                 >
-                    <Usage />
+                    <Usage
+                        onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+                    />
                 </TabContents>
 
                 <TabContents
