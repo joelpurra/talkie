@@ -49,7 +49,7 @@
     "version:update": "export TALKIE_VERSION=$(npm run --silent version:get | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update:file:free -- manifest.json && npm run --silent version:update:file -- package.json && npm run --silent version:update:file -- package-lock.json && git add manifest.json package.json package-lock.json && git commit -m \"${TALKIE_VERSION}\"",
     "version:update:file": "json -Ie \"this.version='${TALKIE_VERSION}'\" -f",
     "version:update:file:free": "json -Ie \"this.version_name='v' + this.version + ' Free (' + new Date().toISOString().substring(0,10) + ')'\" -f",
-    "test": "npm run --silent lint",
+    "test": "npm run --silent eslint",
     "lint": "npm run --silent eslint && npm run --silent web-ext:lint && npm run --silent lint:copyright",
     "lint:copyright": "grep -L 'This file is part of Talkie' $(find src -type f \\( -iname '*.js' -or -iname '*.jsx' -or -iname '*.html' \\)) | sed 's/^/File is missing copyright notice: /'",
     "eslint": "eslint ./src",
