@@ -31,10 +31,6 @@ import {
 } from "../shared/promise";
 
 import {
-    flatten,
-} from "../shared/basic";
-
-import {
     knownEvents,
 } from "../shared/events";
 
@@ -306,8 +302,7 @@ export default class TalkieSpeaker {
                     .then(() => this.getActualVoice(voice))
                     .then((actualVoice) => {
                         const paragraphs = TextHelper.splitTextToParagraphs(text);
-                        const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
-                        const textParts = flatten(cleanTextParts);
+                        const textParts = paragraphs;
 
                         const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
 
