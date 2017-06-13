@@ -19,10 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class ButtonPopupManager {
-    constructor() {
-        const extensionShortName = browser.i18n.getMessage("extensionShortName");
-        this.buttonDefaultTitle = browser.i18n.getMessage("buttonDefaultTitle", [ extensionShortName ]);
-        this.buttonStopTitle = browser.i18n.getMessage("buttonStopTitle");
+    constructor(translator) {
+        this.translator = translator;
+
+        const extensionShortName = this.translator.translate("extensionShortName");
+        this.buttonDefaultTitle = this.translator.translate("buttonDefaultTitle", [ extensionShortName ]);
+        this.buttonStopTitle = this.translator.translate("buttonStopTitle");
     }
 
     disablePopup() {

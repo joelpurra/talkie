@@ -43,7 +43,8 @@ export default class ContentLogger {
 
                 const logValues = [
                     now,
-                    this.configuration.extensionShortName,
+                    // TODO: configuration.
+                    "Talkie",
                     ...args,
                 ]
                     .map((arg) => JSON.stringify(arg))
@@ -74,7 +75,8 @@ export default class ContentLogger {
                 // NOTE: create one long console.log() string argument, then add the color argument second.
                 const logValuesArrayAsString = [
                     now,
-                    this.configuration.extensionShortName,
+                    // TODO: configuration.
+                    "Talkie",
                     "%c",
                     ...args,
                 ]

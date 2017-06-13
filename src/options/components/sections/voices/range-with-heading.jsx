@@ -25,7 +25,9 @@ import {
     debounce,
 } from "../../../../shared/basic";
 
-import translate from "../../../hocs/translate.jsx";
+import translate from "../../../../shared/hocs/translate.jsx";
+
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 
 @translate
 export default class RangeWithHeading extends React.PureComponent {
@@ -64,7 +66,7 @@ export default class RangeWithHeading extends React.PureComponent {
         initialValue: PropTypes.number.isRequired,
         max: PropTypes.number.isRequired,
         step: PropTypes.number.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
     }
 
@@ -101,16 +103,16 @@ export default class RangeWithHeading extends React.PureComponent {
         const heading = this.props.getHeading(this.props.voiceName, this.props.translate);
 
         return (
-            <tbody>
-                <tr>
-                    <th scope="col">
+            <tableBase.tbody>
+                <tableBase.tr>
+                    <tableBase.th scope="col">
                         {heading}
                         {" "}
                         ({this.state.value.toFixed(1)})
-                    </th>
-                </tr>
-                <tr>
-                    <td>
+                    </tableBase.th>
+                </tableBase.tr>
+                <tableBase.tr>
+                    <tableBase.td>
                         <this.props.ScaleRangeElementClass
                             min={this.props.min}
                             defaultValue={this.props.defaultValue}
@@ -121,9 +123,9 @@ export default class RangeWithHeading extends React.PureComponent {
                             onInput={this.handleInput}
                             onChange={this.handleChange}
                         />
-                    </td>
-                </tr>
-            </tbody>
+                    </tableBase.td>
+                </tableBase.tr>
+            </tableBase.tbody>
         );
     }
 }

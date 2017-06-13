@@ -9,7 +9,7 @@ end_of_line = lf
 [*.{js,json,md}]
 indent_style = space
 
-[*.js]
+[*.{js,jsx}]
 indent_size = 4
 
 [*.{json,md}]

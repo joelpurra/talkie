@@ -21,17 +21,22 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import translate from "../../../../shared/hocs/translate.jsx";
+
+import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+
 import {
     getLanguageGroupsFromVoices,
     getVoicesByLanguageFromVoices,
     getVoicesByLanguageGroupFromVoices,
     getLanguagesByLanguageGroupFromVoices,
-} from "../../../utils/transform-voices";
+} from "../../../../shared/utils/transform-voices";
 
 import {
     scrollIntoViewIfNeeded,
 } from "../../../utils/select-element";
 
+@translate
 export default class AvailableLanguages extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -44,7 +49,7 @@ export default class AvailableLanguages extends React.PureComponent {
 
     static defaultProps = {
         voices: [],
-        value: null,
+        value: undefined,
         disabled: true,
     };
 
@@ -55,7 +60,8 @@ export default class AvailableLanguages extends React.PureComponent {
         })).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
+        translate: PropTypes.func.isRequired,
     };
 
     handleChange(e) {
@@ -75,6 +81,7 @@ export default class AvailableLanguages extends React.PureComponent {
         const voicesByLanguage = getVoicesByLanguageFromVoices(this.props.voices);
         const voicesByLanguageGroup = getVoicesByLanguageGroupFromVoices(this.props.voices);
         const languagesByLanguageGroup = getLanguagesByLanguageGroupFromVoices(this.props.voices);
+        const frontendVoicesShowAllVoicesTranslated = this.props.translate("frontend_voicesShowAllVoices");
 
         const languagesOptions = languageGroups.reduce(
             (options, languageGroup) => {
@@ -135,18 +142,17 @@ export default class AvailableLanguages extends React.PureComponent {
                     value={this.defaultAllLanguagesValue}
                     className="group"
                 >
-                    {browser.i18n.getMessage("frontend_voicesShowAllVoices")}
+                    {frontendVoicesShowAllVoicesTranslated}
                 </option>,
             ]
         );
 
         return (
-            <select
-                id="voices-languages-list"
+            <formBase.multiLineSelect
                 size="7"
                 onChange={this.handleChange}
                 value={this.props.value || this.defaultAllLanguagesValue}
-                disabled={this.props.disabled}
+                disabled={this.props.disabled || null}
                 className="grouped"
                 ref={
                     (selectElement) => {
@@ -155,7 +161,7 @@ export default class AvailableLanguages extends React.PureComponent {
                     }}
             >
                 {languagesOptions}
-            </select>
+            </formBase.multiLineSelect>
         );
     }
 }

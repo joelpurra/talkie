@@ -7,7 +7,7 @@
       "strict_min_version": "52.0"
     }
   },
-  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:;",
+  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline';",
   "externally_connectable": {
     "ids": []
   },
@@ -72,7 +72,7 @@
     }
   },
   "options_ui": {
-    "page": "src/options/options.html",
+    "page": "./src/options/options.html",
     "chrome_style": true
   },
   "requirements": {},

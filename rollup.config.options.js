@@ -18,14 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import reactRollupConfig from "./rollup.config.react";
+import reactRollupConfig from "./rollup.config.react.browser";
+const mergeOptions = require("merge-options");
 
-export default Object.assign(
-    {},
+export default mergeOptions(
     reactRollupConfig,
     {
-        entry: "src/options/options.js",
-        moduleName: "options",
-        dest: "dist/options.js",
+        input: "src/options/options.js",
+        name: "options",
+        output: {
+            file: "dist/options.js",
+        },
     }
 );

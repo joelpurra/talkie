@@ -19,18 +19,29 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import json from "rollup-plugin-json";
+import globals from "rollup-plugin-node-globals";
+import replace from "rollup-plugin-replace";
 import cleanup from "./rollup.config.cleanup.js";
 import license from "./rollup.config.license.js";
 
 export default {
     plugins: [
         json(),
+        globals(),
+        replace({
+            values: {
+                // TODO: configuration?
+                "SPLIT_ENVIRONMENT": "webextension",
+            },
+        }),
         cleanup(),
         license("stay-alive"),
     ],
-    format: "umd",
-    sourceMap: true,
-    entry: "src/stay-alive/stay-alive.js",
-    moduleName: "stay-alive",
-    dest: "dist/stay-alive.js",
+    sourcemap: true,
+    input: "src/stay-alive/stay-alive.js",
+    name: "stay-alive",
+    output: {
+        format: "umd",
+        file: "dist/stay-alive.js",
+    },
 };

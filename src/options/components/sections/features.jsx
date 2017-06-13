@@ -21,67 +21,148 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configure from "../../hocs/configure.jsx";
-import translate from "../../hocs/translate.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
+import styled from "../../../shared/hocs/styled.jsx";
 
-@configure
-@translate
+import * as textBase from "../../../shared/styled/text/text-base.jsx";
+import * as listBase from "../../../shared/styled/list/list-base.jsx";
+
+import Discretional from "../../../shared/components/discretional.jsx";
+import FreeSection from "../../../shared/components/section/free-section.jsx";
+import PremiumSection from "../../../shared/components/section/premium-section.jsx";
+import TalkieFreeIcon from "../../../shared/components/icon/talkie-free-icon.jsx";
+import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-icon.jsx";
+
+@configureAttribute
+@translateAttribute
 export default class Features extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.styled = {
+            storeLinks: styled({
+                textAlign: "center",
+                marginTop: "0.5em",
+                "@media (min-width: 450px)": {
+                    columns: 2,
+                },
+            })("div"),
+
+            storeLinksP: styled({
+                marginBottom: "0.5em",
+            })(textBase.p),
+
+            storeLinksPFirst: styled({
+                marginBottom: "0.5em",
+                "@media (min-width: 450px)": {
+                    marginTop: 0,
+                },
+            })(textBase.p),
+        };
+    }
+
+    static defaultProps = {
+        isPremiumVersion: false,
+        systemType: false,
+    };
+
     static propTypes = {
+        isPremiumVersion: PropTypes.bool.isRequired,
+        systemType: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
     }
 
     render() {
+        const {
+            isPremiumVersion,
+            systemType,
+        } = this.props;
+
         return (
             <section>
                 <p>
                     {this.props.translate("frontend_featuresVersions")}
-                    {" "}
-                    <span className="talkie-free-only talkie-inline">{this.props.translate("frontend_featuresVersion_Free")}</span>
-                    {" "}
-                    <span className="talkie-premium-only talkie-inline">{this.props.translate("frontend_featuresVersion_Premium")}</span>
                 </p>
 
-                <div className="premium-section">
-                    <h2><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></h2>
-                    <ul>
-                        <li>{this.props.translate("frontend_featuresPremium_List01")}</li>
-                        <li>{this.props.translate("frontend_featuresPremium_List02")}</li>
+                <Discretional
+                    enabled={!isPremiumVersion}
+                >
+                    <p>{this.props.translate("frontend_featuresVersion_Free")}</p>
+                </Discretional>
+
+                <Discretional
+                    enabled={isPremiumVersion}
+                >
+                    <p>{this.props.translate("frontend_featuresVersion_Premium")}</p>
+                </Discretional>
+
+                <PremiumSection>
+                    <listBase.ul>
+                        <listBase.li>{this.props.translate("frontend_featuresPremium_List01")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresPremium_List02")}</listBase.li>
+
                         {/* NOTE: read from clipboard feature not available in Firefox */}
-                        <li className="talkie-chrome-only talkie-list-item">{this.props.translate("frontend_featuresPremium_List05")}</li>
-                        <li>{this.props.translate("frontend_featuresPremium_List03")}</li>
-                        <li>{this.props.translate("frontend_featuresPremium_List04")}</li>
-                    </ul>
+                        <Discretional
+                            enabled={systemType === "chrome"}
+                        >
+                            <listBase.li>{this.props.translate("frontend_featuresPremium_List05")}</listBase.li>
+                        </Discretional>
 
-                    <div className="store-links">
-                        <p>
-                            <a href={this.props.configure("urls.chromewebstore-premium")}><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" /><br /><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a>
-                        </p>
-                        <p>
-                            <a href={this.props.configure("urls.firefox-amo-premium")}><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" /><br /><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a>
-                        </p>
-                    </div>
-                </div>
+                        <listBase.li>{this.props.translate("frontend_featuresPremium_List03")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresPremium_List04")}</listBase.li>
+                    </listBase.ul>
 
-                <h2><a href={this.props.configure("urls.store-free")}><span className="icon icon-inline icon-16px icon-talkie free"></span>Talkie</a></h2>
-                <ul>
-                    <li>{this.props.translate("frontend_featuresFree_List01")}</li>
-                    <li>{this.props.translate("frontend_featuresFree_List02")}</li>
-                    <li>{this.props.translate("frontend_featuresFree_List03")}</li>
-                    <li>{this.props.translate("frontend_featuresFree_List04")}</li>
-                    <li>{this.props.translate("frontend_featuresFree_List05")}</li>
-                    <li>{this.props.translate("frontend_featuresFree_List06")}</li>
-                </ul>
+                    <this.styled.storeLinks>
+                        <this.styled.storeLinksPFirst>
+                            <textBase.a href={this.props.configure("urls.chromewebstore-premium")}>
+                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" />
+                                <br />
+                                <TalkiePremiumIcon />
+                                    Talkie Premium
+                                </textBase.a>
+                        </this.styled.storeLinksPFirst>
+                        <this.styled.storeLinksP>
+                            <textBase.a href={this.props.configure("urls.firefox-amo-premium")}>
+                                <img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" />
+                                <br />
+                                <TalkiePremiumIcon />
+                                    Talkie Premium
+                                </textBase.a>
+                        </this.styled.storeLinksP>
+                    </this.styled.storeLinks>
+                </PremiumSection>
 
-                <div className="store-links">
-                    <p>
-                        <a href={this.props.configure("urls.chromewebstore-free")}><img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" /><br /><span className="icon icon-inline icon-16px icon-talkie free"></span>Talkie</a>
-                    </p>
-                    <p>
-                        <a href={this.props.configure("urls.firefox-amo-free")}><img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" /><br /><span className="icon icon-inline icon-16px icon-talkie free"></span>Talkie</a>
-                    </p>
-                </div>
+                <FreeSection>
+                    <listBase.ul>
+                        <listBase.li>{this.props.translate("frontend_featuresFree_List01")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresFree_List02")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresFree_List03")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresFree_List04")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresFree_List05")}</listBase.li>
+                        <listBase.li>{this.props.translate("frontend_featuresFree_List06")}</listBase.li>
+                    </listBase.ul>
+
+                    <this.styled.storeLinks>
+                        <this.styled.storeLinksPFirst>
+                            <textBase.a href={this.props.configure("urls.chromewebstore-free")}>
+                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" />
+                                <br />
+                                <TalkieFreeIcon />
+                                    Talkie
+                                </textBase.a>
+                        </this.styled.storeLinksPFirst>
+                        <this.styled.storeLinksP>
+                            <textBase.a href={this.props.configure("urls.firefox-amo-free")}>
+                                <img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" />
+                                <br />
+                                <TalkieFreeIcon />
+                                    Talkie
+                                </textBase.a>
+                        </this.styled.storeLinksP>
+                    </this.styled.storeLinks>
+                </FreeSection>
             </section>
         );
     }

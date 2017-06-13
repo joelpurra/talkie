@@ -21,9 +21,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import translate from "../../../hocs/translate.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
-@translate
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
+import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+
+import Checkbox from "../../../../shared/components/form/checkbox.jsx";
+
+@translateAttribute
 export default class SpeakLongTexts extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -32,46 +37,57 @@ export default class SpeakLongTexts extends React.PureComponent {
     }
 
     static defaultProps = {
-        checked: null,
+        speakLongTexts: false,
         disabled: true,
     };
 
     static propTypes = {
         onChange: PropTypes.func.isRequired,
-        checked: PropTypes.string,
-        disabled: PropTypes.bool,
+        speakLongTexts: PropTypes.bool.isRequired,
+        disabled: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
     };
 
-    handleChange(e) {
-        const checked = e.target.checked === true;
-
-        this.props.onChange(checked);
+    handleChange(speakLongTexts) {
+        this.props.onChange(speakLongTexts);
     }
 
     render() {
+        const {
+            speakLongTexts,
+            disabled,
+            translate,
+        } = this.props;
+
         return (
-            <tbody>
-                <tr>
-                    <th scope="col">{this.props.translate("frontend_voicesSpeakLongTextsHeading")}</th>
-                </tr>
-                <tr>
-                    <p>{this.props.translate("frontend_voicesSpeakLongTextsExplanation01")}</p>
-                    <p>{this.props.translate("frontend_voicesSpeakLongTextsExplanation02")}</p>
-                    <p>
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={this.props.checked}
-                                onChange={this.handleChange}
-                                disabled={this.props.disabled}
-                            />
-                            {" "}
-                            {this.props.translate("frontend_voicesSpeakLongTextsLabel")}
-                        </label>
-                    </p>
-                </tr>
-            </tbody>
+            <tableBase.tbody>
+                <tableBase.tr>
+                    <tableBase.th scope="col">
+                        {translate("frontend_voicesSpeakLongTextsHeading")}
+                    </tableBase.th>
+                </tableBase.tr>
+                <tableBase.tr>
+                    <tableBase.td>
+                        <p>
+                            {translate("frontend_voicesSpeakLongTextsExplanation01")}
+                        </p>
+                        <p>
+                            {translate("frontend_voicesSpeakLongTextsExplanation02")}
+                        </p>
+                        <p>
+                            <label>
+                                <Checkbox
+                                    checked={speakLongTexts}
+                                    onChange={this.handleChange}
+                                    disabled={disabled}
+                                />
+                                {" "}
+                                {translate("frontend_voicesSpeakLongTextsLabel")}
+                            </label>
+                        </p>
+                    </tableBase.td>
+                </tableBase.tr>
+            </tableBase.tbody>
         );
     }
 }

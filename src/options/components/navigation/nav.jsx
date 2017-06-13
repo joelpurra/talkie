@@ -21,16 +21,47 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configure from "../../hocs/configure.jsx";
-import translate from "../../hocs/translate.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
+import styled from "../../../shared/hocs/styled.jsx";
 
-@configure
-@translate
+import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
+import * as textBase from "../../../shared/styled/text/text-base.jsx";
+import * as tableBase from "../../../shared/styled/table/table-base.jsx";
+
+@configureAttribute
+@translateAttribute
 export default class Nav extends React.Component {
     constructor(props) {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
+
+        this.styled = {
+            backButton: styled({
+                textDecoration: "none",
+            })(textBase.a),
+
+            nav: styled({
+                lineHeight: "1.5em",
+                textAlign: "center",
+            })(layoutBase.nav),
+
+            navTable: styled({
+                lineHeight: "1.5em",
+                textAlign: "center",
+            })(tableBase.table),
+
+            navTableTd: styled({
+                margin: 0,
+                padding: 0,
+            })(tableBase.td),
+
+            selectedLink: styled({
+                color: "#3497ff",
+                fontWeight: "bold",
+            })(textBase.a),
+        };
     }
 
     static propTypes = {
@@ -65,43 +96,60 @@ export default class Nav extends React.Component {
     }
 
     render() {
-        const linkCells = this.props.links
-            .map((link) => (
-                <td
-                    key={link.tabId}
-                    className={this.props.initialActiveTabId === link.tabId ? "tabrowselected" : ""}
-                    onClick={this.handleClick}
-                >
-                    <a
-                        href={"#" + link.tabId}
-                    >{this.props.translate(link.translationKey)}</a>
-                </td>
-            )
+        const {
+            links,
+            initialActiveTabId,
+            translate,
+            shouldShowBackButton,
+            configure,
+        } = this.props;
+
+        const linkCells = links
+            .map((link) => {
+                const SelectedLinkType = initialActiveTabId === link.tabId
+                    ? this.styled.selectedLink
+                    : textBase.a;
+
+                return (
+                    <this.styled.navTableTd
+                        key={link.tabId}
+                        onClick={this.handleClick}
+                    >
+                        <SelectedLinkType
+                            href={"#" + link.tabId}
+                        >
+                            {translate(link.translationKey)}
+                        </SelectedLinkType>
+                    </this.styled.navTableTd>
+                );
+            }
         );
 
         let backButton = null;
 
-        if (this.props.shouldShowBackButton) {
-            backButton = <a href={this.props.configure("urls.popup-passclick-false")} id="back-to-popup">←</a>;
+        if (shouldShowBackButton) {
+            backButton = <this.styled.backButton href={configure("urls.popup-passclick-false")}>
+                ←
+            </this.styled.backButton>;
         }
 
         return (
-            <nav className="columns">
-                <table>
+            <this.styled.nav className="columns">
+                <this.styled.navTable>
                     <colgroup>
                         <col width="0*" />
                         <col width="25%" colSpan="4" />
                     </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>
+                    <tableBase.tbody>
+                        <tableBase.tr>
+                            <this.styled.navTableTd>
                                 {backButton}
-                            </td>
+                            </this.styled.navTableTd>
                             {linkCells}
-                            </tr>
-                    </tbody>
-                </table>
-            </nav>
+                        </tableBase.tr>
+                    </tableBase.tbody>
+                </this.styled.navTable>
+            </this.styled.nav>
         );
     }
 }

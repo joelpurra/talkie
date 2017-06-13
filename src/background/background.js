@@ -42,7 +42,13 @@ import {
 
 import configurationObject from "../configuration.json";
 
+import ManifestProvider from "../split-environments/manifest-provider";
+
 import Configuration from "../shared/configuration";
+
+import LocaleProvider from "../split-environments/locale-provider";
+import TranslatorProvider from "../split-environments/translator-provider";
+import InternalUrlProvider from "../split-environments/internal-url-provider";
 
 import {
     knownEvents,
@@ -93,7 +99,7 @@ import ContextMenuManager from "./context-menu-manager";
 
 import ShortcutKeyManager from "./shortcut-key-manager";
 
-import MetadataManager from "./metadata-manager";
+import MetadataManager from "../shared/metadata-manager";
 
 import OnInstalledManager from "./on-installed-manager";
 
@@ -138,8 +144,10 @@ const startOnInstallListener = () => {
 function main() {
     logDebug("Start", "Main background function");
 
-    const metadataManager = new MetadataManager();
-    const configuration = new Configuration(metadataManager, configurationObject);
+    const manifestProvider = new ManifestProvider();
+    const metadataManager = new MetadataManager(manifestProvider);
+    const internalUrlProvider = new InternalUrlProvider();
+    const configuration = new Configuration(metadataManager, configurationObject, internalUrlProvider);
     const storageManager = new StorageManager();
 
     const broadcaster = new Broadcaster();
@@ -155,14 +163,16 @@ function main() {
     const voiceRateManager = new VoiceRateManager(storageManager, metadataManager);
     const voicePitchManager = new VoicePitchManager(storageManager, metadataManager);
     const voiceManager = new VoiceManager(voiceLanguageManager, voiceRateManager, voicePitchManager);
-    const languageHelper = new LanguageHelper(contentLogger, configuration);
+    const localeProvider = new LocaleProvider();
+    const translatorProvider = new TranslatorProvider(localeProvider);
+    const languageHelper = new LanguageHelper(contentLogger, configuration, translatorProvider);
 
     // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
     const speechChain = new Chain();
-    const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute);
+    const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translatorProvider, internalUrlProvider);
     const permissionsManager = new PermissionsManager();
     const clipboardManager = new ClipboardManager(talkieBackground, permissionsManager);
-    const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager);
+    const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager, translatorProvider);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -177,13 +187,13 @@ function main() {
     };
 
     const commandHandler = new CommandHandler(commandMap);
-    const contextMenuManager = new ContextMenuManager(commandHandler, metadataManager);
+    const contextMenuManager = new ContextMenuManager(commandHandler, metadataManager, translatorProvider);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
     const suspensionConnectorManager = new SuspensionConnectorManager();
-    const suspensionManager = new SuspensionManager(suspensionConnectorManager);
+    const suspensionManager = new SuspensionManager(suspensionConnectorManager, internalUrlProvider);
     const iconManager = new IconManager(metadataManager);
-    const buttonPopupManager = new ButtonPopupManager();
+    const buttonPopupManager = new ButtonPopupManager(translatorProvider);
 
     const progress = new TalkieProgress(broadcaster);
 
@@ -336,10 +346,10 @@ function main() {
             window.startSpeakFromFrontend = (frontendText, frontendVoice) => {
                 // NOTE: not sure if copying these variables have any effect.
                 // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
-                const text = "" + frontendText;
+                const text = String(frontendText);
                 const voice = {
-                    name: "" + frontendVoice.name,
-                    lang: "" + frontendVoice.lang,
+                    name: String(frontendVoice.name),
+                    lang: String(frontendVoice.lang),
                     rate: 0 + frontendVoice.rate,
                     pitch: 0 + frontendVoice.pitch,
                 };
@@ -378,9 +388,6 @@ function main() {
         })
         .then(() => {
             buttonPopupManager.enablePopup();
-
-            logInfo("Locale (@@ui_locale)", configuration.uiLocale);
-            logInfo("Locale (messages.json)", configuration.messagesLocale);
 
             logDebug("Done", "Main background function");
 

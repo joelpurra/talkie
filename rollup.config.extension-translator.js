@@ -26,9 +26,11 @@ export default {
         cleanup(),
         license("extension-translator"),
     ],
-    format: "cjs",
-    sourceMap: true,
-    entry: "tools/translations/extension-translator.js",
-    moduleName: "extension-translator",
-    dest: "dist/extension-translator.js",
+    sourcemap: true,
+    input: "tools/translations/extension-translator.js",
+    name: "extension-translator",
+    output: {
+        format: "cjs",
+        file: "dist/extension-translator.js",
+    },
 };

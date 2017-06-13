@@ -31,14 +31,12 @@ import {
 } from "../shared/tabs";
 
 import {
-    knownEvents,
-} from "../shared/events";
-
-import {
     eventToPromise,
-    startFrontend,
-    stopFrontend,
+    startReactFrontend,
+    stopReactFrontend,
 } from "../frontend/shared-frontend";
+
+import loadRoot from "./load-root.jsx";
 
 import DualLogger from "../frontend/dual-log";
 
@@ -85,74 +83,18 @@ const passClickToBackgroundOnLoad = () => promiseTry(
         }
 );
 
-const registerStartStopButtonClickHandlers = () => promiseTry(
-    () => {
-        const startStopButtons = Array.from(document.querySelectorAll(":scope .start-stop-button"));
-
-        startStopButtons.forEach((optionsLink) => {
-            optionsLink.onclick = (event) => {
-                event.preventDefault();
-
-                getBackgroundPage()
-                        .then((background) => background.iconClick())
-                        .catch((error) => {
-                            dualLogger.dualLogError("registerStartStopButtonClickHandlers", "onclick", error);
-                        });
-
-                return false;
-            };
-        });
-
-        return undefined;
-    }
-);
-
-const updateProgress = (data) => promiseTry(
-    () => {
-        const progressBar = document.getElementById("progress");
-        progressBar.max = data.max - data.min;
-        progressBar.value = data.current;
-
-        return undefined;
-    }
-);
-
-const killSwitches = [];
-
-const executeKillSwitches = () => {
-    // NOTE: expected to have only synchronous methods for the relevant parts.
-    killSwitches.forEach((killSwitch) => {
-        try {
-            killSwitch();
-        } catch (error) {
-            try {
-                dualLogger.dualLogError("executeKillSwitches", error);
-            } catch (ignored) {
-                // NOTE: ignoring error logging errors.
-            }
-        }
-    });
-};
-
-const registerBroadcastListeners = () => promiseTry(
-    () => {
-        return getBackgroundPage()
-            .then((background) => background.broadcaster().registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
-            .then((killSwitch) => killSwitches.push(killSwitch));
-    }
-);
-
 const start = () => promiseTry(
     () => Promise.resolve()
-        .then(() => startFrontend(killSwitches))
-        .then(() => registerBroadcastListeners())
-        .then(() => registerStartStopButtonClickHandlers())
         .then(() => passClickToBackgroundOnLoad())
+        .then(() => startReactFrontend())
+        .then(() => loadRoot())
+        .then(() => undefined)
 );
 
 const stop = () => promiseTry(
     // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
-    () => stopFrontend()
+    () => stopReactFrontend()
+        .then(() => undefined)
 );
 
 registerUnhandledRejectionHandler();
@@ -163,6 +105,7 @@ document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
 window.addEventListener("unload", eventToPromise.bind(null, stop));
 
 // NOTE: synchronous version.
-window.addEventListener("unload", () => {
-    executeKillSwitches();
-});
+// TODO: reimplement fallback unregistration in react?
+//window.addEventListener("unload", () => {
+//    executeKillSwitches();
+//});

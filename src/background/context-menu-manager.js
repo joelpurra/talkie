@@ -31,9 +31,10 @@ import {
 } from "../shared/basic";
 
 export default class ContextMenuManager {
-    constructor(commandHandler, metadataManager) {
+    constructor(commandHandler, metadataManager, translator) {
         this.commandHandler = commandHandler;
         this.metadataManager = metadataManager;
+        this.translator = translator;
 
         if (!isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT) && browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0) {
             this.actionMenuLimit = browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT;
@@ -49,7 +50,7 @@ export default class ContextMenuManager {
                 webextension: true,
                 item: {
                     id: "talkie-context-menu-start-stop",
-                    title: browser.i18n.getMessage("contextMenuStartStopText"),
+                    title: this.translator.translate("contextMenuStartStopText"),
                     contexts: [
                         "selection",
                     ],
@@ -62,7 +63,7 @@ export default class ContextMenuManager {
                 webextension: true,
                 item: {
                     id: "start-stop",
-                    title: browser.i18n.getMessage("commandStartStopDescription"),
+                    title: this.translator.translate("commandStartStopDescription"),
                     contexts: [
                         "browser_action",
                     ],
@@ -76,7 +77,7 @@ export default class ContextMenuManager {
                 webextension: false,
                 item: {
                     id: "read-clipboard",
-                    title: browser.i18n.getMessage("commandReadClipboardDescription"),
+                    title: this.translator.translate("commandReadClipboardDescription"),
                     contexts: [
                         "browser_action",
                         "page",
@@ -103,7 +104,7 @@ export default class ContextMenuManager {
                 webextension: true,
                 item: {
                     id: "open-website-main",
-                    title: browser.i18n.getMessage("commandOpenWebsiteMainDescription"),
+                    title: this.translator.translate("commandOpenWebsiteMainDescription"),
                     contexts: [
                         "browser_action",
                     ],
@@ -116,7 +117,7 @@ export default class ContextMenuManager {
                 webextension: true,
                 item: {
                     id: "open-website-store-premium",
-                    title: browser.i18n.getMessage("commandOpenWebsiteStoreDescription_Premium"),
+                    title: this.translator.translate("commandOpenWebsiteStoreDescription_Premium"),
                     contexts: [
                         "browser_action",
                     ],

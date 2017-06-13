@@ -29,9 +29,12 @@ import {
     connect,
 } from "react-redux";
 
+import DynamicEnvironment from "../../split-environments/dynamic-environment.js";
 import Nav from "../components/navigation/nav.jsx";
 
-import * as actionCreators from "../actions/navigation";
+import actionCreators from "../actions";
+
+const dynamicEnvironment = new DynamicEnvironment();
 
 const mapStateToProps = (state) => {
     return {
@@ -42,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators, dispatch),
+        actions: bindActionCreators(actionCreators.navigation, dispatch),
     };
 };
 
@@ -77,7 +80,7 @@ export default class NavContainer extends React.Component {
     getLocationQuerystring() {
         let queryString = null;
 
-        if (document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
+        if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
             queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
         }
 
@@ -87,7 +90,7 @@ export default class NavContainer extends React.Component {
     getLocationHash() {
         let locationHash = null;
 
-        if (document.location && typeof document.location.hash === "string" && document.location.hash.length > 0) {
+        if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.hash === "string" && document.location.hash.length > 0) {
             locationHash = "#" + decodeURIComponent(document.location.hash.replace("#", ""));
         }
 
@@ -98,7 +101,7 @@ export default class NavContainer extends React.Component {
         document.location.hash = locationHash;
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const queryString = this.getLocationQuerystring();
         const shouldShowBackButton = !!(queryString && queryString.includes("from=popup"));
 

@@ -21,23 +21,51 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import styled from "../../shared/hocs/styled.jsx";
+
+import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
+
+import NavContainer from "../containers/nav-container.jsx";
 import TabContents from "./navigation/tab-contents.jsx";
 
 import Features from "./sections/features.jsx";
-
 import Usage from "./sections/usage.jsx";
-
 import VoicesContainer from "../containers/voices-container.jsx";
-
 import AboutContainer from "../containers/about-container.jsx";
 
+const styles = {
+    minWidth: "400px",
+    maxWidth: "600px",
+    minHeight: "450px",
+    maxHeight: "1000px",
+    paddingBottom: "1em",
+};
+
+@styled(styles)
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
 
+        this.scrollToTop = this.scrollToTop.bind(this);
         this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+
+        this.styled = {
+            navHeader: styled({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                minWidth: "400px",
+                maxWidth: "600px",
+                backgroundColor: "#ffffff",
+            })("div"),
+
+            main: styled({
+                marginTop: "4em",
+            })(layoutBase.main),
+        };
     }
 
     static defaultProps = {
@@ -45,6 +73,8 @@ export default class Main extends React.Component {
         languagesCount: 0,
         isPremiumVersion: false,
         versionName: null,
+        systemType: null,
+        osType: null,
         activeTabId: null,
     };
 
@@ -53,23 +83,29 @@ export default class Main extends React.Component {
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string,
+        versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
         activeTabId: PropTypes.string,
+        className: PropTypes.string.isRequired,
     };
 
-    componentWillMount() {
-        // TODO: is this the best place to load data?
-        this.props.actions.metadata.loadIsPremium();
-
-        // TODO: is this the best place to load data?
-        this.props.actions.metadata.loadVersionName();
+    componentDidMount() {
+        // NOTE: execute outside the synchronous rendering.
+        setTimeout(() => this.scrollToTop(), 100);
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.activeTabId !== nextProps.activeTabId) {
-            // NOTE: feels like this might be the wrong place to put this? Is there a better place?
-            document.body.scrollTop = 0;
+            this.scrollToTop();
         }
+    }
+
+    scrollToTop() {
+        // NOTE: feels like this might be the wrong place to put this? Is there a better place?
+        // NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
+        document.body.scrollTop = 0;
+        window.scroll(0, 0);
     }
 
     handleLegaleseClick(text) {
@@ -79,69 +115,81 @@ export default class Main extends React.Component {
             lang: "en-US",
         };
 
-        this.props.actions.voices.speak(legaleseText, legaleseVoice);
+        this.props.actions.sharedVoices.speak(legaleseText, legaleseVoice);
     }
 
     handleLinkClick(url) {
-        this.props.actions.navigation.openUrlInNewTab(url);
+        this.props.actions.sharedNavigation.openUrlInNewTab(url);
     }
 
     handleOpenShortKeysConfigurationClick() {
-        this.props.actions.navigation.openShortKeysConfiguration();
+        this.props.actions.sharedNavigation.openShortKeysConfiguration();
     }
 
     render() {
+        const {
+            activeTabId,
+            isPremiumVersion,
+            versionName,
+            systemType,
+            osType,
+            className,
+        } = this.props;
+
         return (
-            <main>
-                {/*
-                    <p>TODO REMOVE versionName {this.props.versionName}</p>
+            <div className={className}>
+                <this.styled.navHeader>
+                    <NavContainer />
 
-                    <p>TODO REMOVE isPremiumVersion {"" + this.props.isPremiumVersion}</p>
+                    <layoutBase.hr />
+                </this.styled.navHeader>
 
-                    <p>TODO REMOVE voicesCount {this.props.voicesCount}</p>
+                <this.styled.main>
+                    <TabContents
+                        id="usage"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <Usage
+                            isPremiumVersion={isPremiumVersion}
+                            systemType={systemType}
+                            osType={osType}
+                            onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+                        />
+                    </TabContents>
 
-                    <p>TODO REMOVE languagesCount {this.props.languagesCount}</p>
+                    <TabContents
+                        id="features"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <Features
+                            isPremiumVersion={isPremiumVersion}
+                            systemType={systemType}
+                        />
+                    </TabContents>
 
-                    <p>TODO REMOVE activeTabId {this.props.activeTabId}</p>
-                */}
+                    <TabContents
+                        id="voices"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <VoicesContainer />
+                    </TabContents>
 
-                <TabContents
-                    id="usage"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <Usage
-                        onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
-                    />
-                </TabContents>
-
-                <TabContents
-                    id="features"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <Features />
-                </TabContents>
-
-                <TabContents
-                    id="voices"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <VoicesContainer />
-                </TabContents>
-
-                <TabContents
-                    id="about"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <AboutContainer
-                        versionName={this.props.versionName}
-                        onLicenseClick={this.handleLegaleseClick}
-                    />
-                </TabContents>
-            </main>
+                    <TabContents
+                        id="about"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <AboutContainer
+                            isPremiumVersion={isPremiumVersion}
+                            versionName={versionName}
+                            onLicenseClick={this.handleLegaleseClick}
+                        />
+                    </TabContents>
+                </this.styled.main>
+            </div>
         );
     }
 }

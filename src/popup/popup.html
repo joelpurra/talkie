@@ -1,95 +1,34 @@
 <!doctype html>
 
-<!--
-This file is part of Talkie -- text-to-speech browser extension button.
-<https://joelpurra.com/projects/talkie/>
+  <!--
+  This file is part of Talkie -- text-to-speech browser extension button.
+  <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
+  Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
 
-Talkie is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  Talkie is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-Talkie is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  Talkie is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
--->
+  You should have received a copy of the GNU General Public License
+  along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+  -->
 
-<html>
+  <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Popup &mdash; Talkie</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/style/shared.css" />
-    <link rel="stylesheet" type="text/css" href="../../resources/style/popup.css" />
-</head>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Popup &mdash; Talkie</title>
+      <script src="../frontend/locale-redirect.js"></script>
+  </head>
 
-<body>
-    <header>
-        <p>
-            <span class="icon icon-inline icon-16px icon-talkie start-stop-button"></span>
-            <a data-configure-href="urls.main" data-translate="extensionShortName" class="extension-name"></a>
-            <span class="talkie-free-only talkie-inline"><a data-configure-href="urls.store-premium" class="button">Talkie Premium</a></span>
-        </p>
-    </header>
+  <body>
+  </body>
 
-    <main>
-        <p data-translate="frontend_PopupUsageShort" class="lighter"></p>
-
-        <table>
-            <colgroup>
-                <col width="0*" />
-                <col width="100%" />
-            </colgroup>
-            <tbody>
-                <tr>
-                    <td>
-                        <span class="icon icon-inline icon-16px icon-talkie-status start-stop-button"></span>
-                    </td>
-                    <td>
-                        <progress id="progress" value="0" max="100"></progress>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
-
-    <hr />
-
-    <nav>
-        <ol>
-            <li>
-                <a data-configure-href="urls.options-usage-from-popup" data-translate="frontend_PopupMenu_Usage" class="icon icon-inline icon-16px icon-usage"></a>
-            </li>
-            <li>
-                <a data-configure-href="urls.options-voices-from-popup" data-translate="frontend_PopupMenu_Voices" class="icon icon-inline icon-16px icon-voices"></a>
-            </li>
-            <li>
-                <a data-configure-href="urls.options-features-from-popup" data-translate="frontend_PopupMenu_Features" class="icon icon-inline icon-16px icon-features"></a>
-            </li>
-            <li>
-                <a data-configure-href="urls.options-about-from-popup" data-translate="frontend_PopupMenu_About" class="icon icon-inline icon-16px icon-about"></a>
-            </li>
-            <li>
-                <a data-configure-href="urls.support-feedback" data-translate="frontend_supportAndFeedback" class="icon icon-inline icon-16px icon-feedback"></a>
-            </li>
-        </ol>
-    </nav>
-
-    <hr />
-
-    <footer class="lighter">
-        <a data-configure-href="urls.options" rel="alternate" target="_blank" class="icon icon-standalone icon-16px icon-settings"></a>
-        <a data-configure-href="urls.options-about-from-popup" class="version-number"></a>
-    </footer>
-
-    <script src="../../lib/browser-polyfill.min.js"></script>
-    <script src="../../dist/popup.js"></script>
-</body>
-
-</html>
+  </html>
