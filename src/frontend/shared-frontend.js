@@ -259,36 +259,33 @@ const addOptionsLinkClickHandlers = () => promiseTry(
 );
 
 const addVersionCssClasses = () => promiseTry(
-    () => {
-        return Promise.resolve()
-            .then(() => getBackgroundPage())
-            .then((background) => Promise.all([
-                background.isPremiumVersion(),
-                background.getSystemType(),
-                background.getOsType(),
-            ]))
-            .then(([isPremiumVersion, systemType, osType]) => {
-                if (isPremiumVersion) {
-                    document.body.classList.add("talkie-premium");
-                } else {
-                    document.body.classList.add("talkie-free");
-                }
+    () => getBackgroundPage()
+        .then((background) => Promise.all([
+            background.isPremiumVersion(),
+            background.getSystemType(),
+            background.getOsType(),
+        ]))
+        .then(([isPremiumVersion, systemType, osType]) => {
+            if (isPremiumVersion) {
+                document.body.classList.add("talkie-premium");
+            } else {
+                document.body.classList.add("talkie-free");
+            }
 
-                if (systemType === "chrome") {
-                    document.body.classList.add("talkie-chrome");
-                } else {
-                    document.body.classList.add("talkie-webextension");
-                }
+            if (systemType === "chrome") {
+                document.body.classList.add("talkie-chrome");
+            } else {
+                document.body.classList.add("talkie-webextension");
+            }
 
-                if (osType === "mac") {
-                    document.body.classList.add("talkie-mac");
-                } else {
-                    document.body.classList.add("talkie-non-mac");
-                }
+            if (osType === "mac") {
+                document.body.classList.add("talkie-mac");
+            } else {
+                document.body.classList.add("talkie-non-mac");
+            }
 
-                return undefined;
-            });
-    }
+            return undefined;
+        })
 );
 
 const loadVersion = () => promiseTry(
@@ -322,18 +319,12 @@ const reflow = () => promiseTry(
 
 export const eventToPromise = (eventHandler, event) => promiseTry(
     () => {
-        try {
-            dualLogger.dualLogDebug("Start", "eventToPromise", event.type, event);
+        dualLogger.dualLogDebug("Start", "eventToPromise", event && event.type, event);
 
-            Promise.resolve()
-                .then(() => eventHandler(event))
-                .then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event.type, event, result))
-                .catch((error) => dualLogger.dualLogError("eventToPromise", event.type, event, error));
-        } catch (error) {
-            dualLogger.dualLogError("eventToPromise", event.type, event, error);
-
-            throw error;
-        }
+        return Promise.resolve()
+            .then(() => eventHandler(event))
+            .then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event && event.type, event, result))
+            .catch((error) => dualLogger.dualLogError("eventToPromise", event && event.type, event, error));
     }
 );
 
@@ -347,51 +338,45 @@ const focusFirstLink = () => promiseTry(
 
 const setTalkieStatusSpeaking = (speaking) => promiseTry(
     () => {
-        return Promise.resolve()
-            .then(() => getBackgroundPage())
-            .then(() => {
-                if (speaking) {
-                    document.body.classList.add("talkie-speaking");
-                } else {
-                    document.body.classList.remove("talkie-speaking");
-                }
+        if (speaking) {
+            document.body.classList.add("talkie-speaking");
+        } else {
+            document.body.classList.remove("talkie-speaking");
+        }
 
-                return undefined;
-            });
+        return undefined;
     }
 );
 const registerBroadcastListeners = (killSwitches) => promiseTry(
-    () => {
-        return getBackgroundPage()
-            .then((background) => {
-                return Promise.all([
-                    background.broadcaster().registerListeningAction(knownEvents.beforeSpeaking, () => setTalkieStatusSpeaking(true))
-                        .then((killSwitch) => killSwitches.push(killSwitch)),
-                    background.broadcaster().registerListeningAction(knownEvents.afterSpeaking, () => setTalkieStatusSpeaking(false))
-                        .then((killSwitch) => killSwitches.push(killSwitch)),
-                ]);
-            });
-    }
+    () => getBackgroundPage()
+        .then((background) => {
+            return Promise.all([
+                background.broadcaster().registerListeningAction(knownEvents.beforeSpeaking, () => setTalkieStatusSpeaking(true))
+                    .then((killSwitch) => killSwitches.push(killSwitch)),
+                background.broadcaster().registerListeningAction(knownEvents.beforeSpeakingPart, () => setTalkieStatusSpeaking(true))
+                    .then((killSwitch) => killSwitches.push(killSwitch)),
+                background.broadcaster().registerListeningAction(knownEvents.afterSpeaking, () => setTalkieStatusSpeaking(false))
+                    .then((killSwitch) => killSwitches.push(killSwitch)),
+            ]);
+        })
 );
 
 export const startFrontend = (killSwitches) => promiseTry(
-    () => {
-        return Promise.resolve()
-            .then(() => Promise.all([
-                removeLoadingCssClass(),
-                addVersionCssClasses(),
-                configureWindowContents(),
-                translateWindowContents(),
-            ]))
-            .then(() => Promise.all([
-                registerBroadcastListeners(killSwitches),
-                loadVersion(),
-                addLinkClickHandlers(),
-                addOptionsLinkClickHandlers(),
-                focusFirstLink(),
-                reflow(),
-            ]));
-    }
+    () => Promise.resolve()
+        .then(() => Promise.all([
+            removeLoadingCssClass(),
+            addVersionCssClasses(),
+            configureWindowContents(),
+            translateWindowContents(),
+        ]))
+        .then(() => Promise.all([
+            registerBroadcastListeners(killSwitches),
+            loadVersion(),
+            addLinkClickHandlers(),
+            addOptionsLinkClickHandlers(),
+            focusFirstLink(),
+            reflow(),
+        ]))
 );
 
 export const stopFrontend = () => promiseTry(
@@ -401,14 +386,12 @@ export const stopFrontend = () => promiseTry(
 );
 
 export const startReactFrontend = () => promiseTry(
-    () => {
-        return Promise.resolve()
-            .then(() => Promise.all([
-                removeLoadingCssClass(),
-                addVersionCssClasses(),
-            ]))
-            .then(() => reflow());
-    }
+    () => Promise.resolve()
+        .then(() => Promise.all([
+            removeLoadingCssClass(),
+            addVersionCssClasses(),
+        ]))
+        .then(() => reflow())
 );
 
 export const stopReactFrontend = () => promiseTry(
@@ -416,25 +399,3 @@ export const stopReactFrontend = () => promiseTry(
         // TODO: unregister listeners.
     }
 );
-
-// https://stackoverflow.com/questions/1219860/html-encoding-lost-when-attribute-read-from-input-field
-export const htmlEscape = (str) => {
-    return str
-        .replace(/&/g, "&amp;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\//g, "&#x2F;");
-};
-
-// https://stackoverflow.com/questions/1219860/html-encoding-lost-when-attribute-read-from-input-field
-export const htmlUnescape = (str) => {
-    return str
-        .replace(/&quot;/g, "\"")
-        .replace(/&#39;/g, "'")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&amp;/g, "&")
-        .replace(/&#x2F;/g, "/");
-};

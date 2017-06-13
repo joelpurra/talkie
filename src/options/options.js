@@ -34,43 +34,14 @@ import {
 
 import loadRoot from "./load-root.jsx";
 
-import DualLogger from "../frontend/dual-log";
-
-const dualLogger = new DualLogger("options.js");
-
 const start = () => promiseTry(
-    () => {
-        dualLogger.dualLogDebug("Start", "start");
-
-        return Promise.resolve()
-            .then(() => startReactFrontend())
-            .then(() => loadRoot())
-            .then(() => {
-                dualLogger.dualLogDebug("Done", "start");
-
-                return undefined;
-            })
-            .catch((error) => {
-                dualLogger.dualLogError("Start", error);
-            });
-    }
+    () => Promise.resolve()
+        .then(() => startReactFrontend())
+        .then(() => loadRoot())
 );
 
 const stop = () => promiseTry(
-    () => {
-        dualLogger.dualLogDebug("Start", "stop");
-
-        return Promise.resolve()
-            .then(() => stopReactFrontend())
-            .then(() => {
-                dualLogger.dualLogDebug("Done", "stop");
-
-                return undefined;
-            })
-            .catch((error) => {
-                dualLogger.dualLogError("Stop", "Stop", error);
-            });
-    }
+    () => stopReactFrontend()
 );
 
 registerUnhandledRejectionHandler();
