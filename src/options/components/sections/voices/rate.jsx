@@ -24,7 +24,7 @@ import LogarithmicScaleRange from "../../range/logarithmic-scale-range.jsx";
 
 import RangeWithHeading from "./range-with-heading.jsx";
 
-export default class Rate extends React.Component {
+export default class Rate extends React.PureComponent {
     constructor(props) {
         super(props);
 
