@@ -28,7 +28,7 @@ import {
 import translate from "../../../hocs/translate.jsx";
 
 @translate
-export default class RangeWithHeading extends React.Component {
+export default class RangeWithHeading extends React.PureComponent {
     constructor(props) {
         super(props);
 

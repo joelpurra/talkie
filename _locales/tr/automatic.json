@@ -311,6 +311,22 @@
     "message": "Tüm sesleri göster",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "Bazı tarayıcılarda, uzun metinleri sürekli okumak mümkün değildir. Bu Talkie , Talkie , cümleler/cümleler arasında ve diğer noktalama işaretlerinden sonra küçük bir duraklama meydana Talkie .",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Bu seçeneği etkinleştirirseniz ve uzun metin okumak 10-20 saniye sonra durursa, lütfen tekrar devre dışı bırakın.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Duraklamadan uzun metinleri okumaya çalışın",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Duraklamadan uzun metinleri oku (deneysel)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Lütfen önce web sitesinde istediğiniz metni seçin. Ayrıca metni seçip üzerine sağ tıklayıp menüden Talkie .",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

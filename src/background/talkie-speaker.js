@@ -31,6 +31,10 @@ import {
 } from "../shared/promise";
 
 import {
+    flatten,
+} from "../shared/basic";
+
+import {
     knownEvents,
 } from "../shared/events";
 
@@ -46,13 +50,15 @@ export default class TalkieSpeaker {
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
     // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-    constructor(broadcaster, shouldContinueSpeakingProvider, contentLogger) {
+    constructor(broadcaster, shouldContinueSpeakingProvider, contentLogger, storageManager) {
         this.broadcaster = broadcaster;
         this.shouldContinueSpeakingProvider = shouldContinueSpeakingProvider;
         this.contentLogger = contentLogger;
+        this.storageManager = storageManager;
 
         this.resetSynthesizer();
 
+        this.speakLongTextsStorageKey = "speak-long-texts";
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
     }
 
@@ -299,10 +305,23 @@ export default class TalkieSpeaker {
 
                         return undefined;
                     })
-                    .then(() => this.getActualVoice(voice))
-                    .then((actualVoice) => {
+                    .then(() => Promise.all([
+                        this.getActualVoice(voice),
+                        this.storageManager.getStoredValue(this.speakLongTextsStorageKey),
+                    ]))
+                    .then(([actualVoice, speakLongTexts]) => {
                         const paragraphs = TextHelper.splitTextToParagraphs(text);
-                        const textParts = paragraphs;
+
+                        let textParts = null;
+
+                        if (speakLongTexts === true) {
+                            textParts = paragraphs;
+                        } else {
+                            const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
+                            textParts = flatten(cleanTextParts);
+                        }
+
+                        logDebug("Variable", "textParts.length", textParts.length);
 
                         const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
 

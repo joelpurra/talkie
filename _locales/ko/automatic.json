@@ -311,6 +311,22 @@
     "message": "모든 목소리 보이기",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "일부 브라우저에서는 긴 텍스트를 계속 읽을 수 없습니다. 이 문제를 해결하기 위해 Talkie 은 문장/절 사이 및 다른 문장 부호 뒤에 작은 일시 중지를 도입합니다.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "이 옵션을 활성화하고 10-20 초 후에 긴 텍스트를 읽는다면 다시 비활성화하십시오.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "일시 중지없이 긴 텍스트를 읽으십시오.",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "일시 중지없이 긴 텍스트 읽기 (실험적)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "먼저 웹 사이트에서 원하는 텍스트를 선택하십시오. 텍스트를 선택한 다음 마우스 오른쪽 버튼을 클릭하고 메뉴에서 Talkie 을 (를) 선택할 Talkie 있습니다.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

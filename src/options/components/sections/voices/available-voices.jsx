@@ -25,7 +25,7 @@ import {
     scrollIntoViewIfNeeded,
 } from "../../../utils/select-element";
 
-export default class AvailableVoices extends React.Component {
+export default class AvailableVoices extends React.PureComponent {
     constructor(props) {
         super(props);
 
