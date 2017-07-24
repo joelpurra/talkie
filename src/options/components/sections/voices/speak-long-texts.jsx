@@ -24,7 +24,7 @@ import PropTypes from "prop-types";
 import translate from "../../../hocs/translate.jsx";
 
 @translate
-export default class SampleText extends React.PureComponent {
+export default class SpeakLongTexts extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -32,39 +32,44 @@ export default class SampleText extends React.PureComponent {
     }
 
     static defaultProps = {
-        value: null,
+        checked: null,
         disabled: true,
     };
 
     static propTypes = {
         onChange: PropTypes.func.isRequired,
-        value: PropTypes.string,
+        checked: PropTypes.string,
         disabled: PropTypes.bool,
         translate: PropTypes.func.isRequired,
     };
 
     handleChange(e) {
-        const value = e.target.value;
+        const checked = e.target.checked === true;
 
-        this.props.onChange(value);
+        this.props.onChange(checked);
     }
 
     render() {
         return (
             <tbody>
                 <tr>
-                    <th scope="col">{this.props.translate("frontend_voicesSampleTextHeading")}</th>
+                    <th scope="col">{this.props.translate("frontend_voicesSpeakLongTextsHeading")}</th>
                 </tr>
                 <tr>
-                    <td>
-                        <textarea
-                            id="voices-sample-text"
-                            rows="2"
-                            value={this.props.value}
-                            onChange={this.handleChange}
-                            disabled={this.props.disabled}
-                        ></textarea>
-                    </td>
+                    <p>{this.props.translate("frontend_voicesSpeakLongTextsExplanation01")}</p>
+                    <p>{this.props.translate("frontend_voicesSpeakLongTextsExplanation02")}</p>
+                    <p>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={this.props.checked}
+                                onChange={this.handleChange}
+                                disabled={this.props.disabled}
+                            />
+                            {" "}
+                            {this.props.translate("frontend_voicesSpeakLongTextsLabel")}
+                        </label>
+                    </p>
                 </tr>
             </tbody>
         );

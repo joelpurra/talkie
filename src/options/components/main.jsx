@@ -67,7 +67,7 @@ export default class Main extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.activeTabId !== nextProps.activeTabId) {
-                    // NOTE: feels like this might be the wrong place to put this? Is there a better place?
+            // NOTE: feels like this might be the wrong place to put this? Is there a better place?
             document.body.scrollTop = 0;
         }
     }

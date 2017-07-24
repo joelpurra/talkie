@@ -311,6 +311,22 @@
     "message": "Pokaż wszystkie głosy",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "W niektórych przeglądarkach nie można ciągle czytać długich tekstów. W celu obejścia tego Talkie , Talkie wprowadza małą pauzę między zdaniami/klauzulami i po innych interpunacjach.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Jeśli włączysz tę opcję i czytanie długich tekstów zostanie zatrzymana po 10-20 sekundach, wyłącz je ponownie.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Spróbuj przeczytać długie teksty bez przerw",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Czytaj długie teksty bez przerw (eksperymentalnie)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Wybierz najpierw żądany tekst na stronie internetowej. Można również wybrać tekst, a Talkie kliknąć Talkie myszy i wybrać z menu Talkie .",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

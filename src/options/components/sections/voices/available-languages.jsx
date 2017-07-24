@@ -32,7 +32,7 @@ import {
     scrollIntoViewIfNeeded,
 } from "../../../utils/select-element";
 
-export default class AvailableLanguages extends React.Component {
+export default class AvailableLanguages extends React.PureComponent {
     constructor(props) {
         super(props);
 

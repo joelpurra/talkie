@@ -24,7 +24,7 @@ import ScaleRange from "../../range/scale-range.jsx";
 
 import RangeWithHeading from "./range-with-heading.jsx";
 
-export default class Pitch extends React.Component {
+export default class Pitch extends React.PureComponent {
     constructor(props) {
         super(props);
 

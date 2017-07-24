@@ -24,7 +24,7 @@ import PropTypes from "prop-types";
 import translate from "../../../hocs/translate.jsx";
 
 @translate
-export default class ToggleDefault extends React.Component {
+export default class ToggleDefault extends React.PureComponent {
     constructor(props) {
         super(props);
 

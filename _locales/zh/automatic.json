@@ -311,6 +311,22 @@
     "message": "显示所有声音",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "在某些浏览器中，不可能连续读取长文本。为了解决这个问题， Talkie在句子/子句之间和其他标点符号之间引入一个小的暂停。",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "如果启用此选项并读取长文本在10-20秒后停止，请重新禁用它。",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "尝试阅读长文本而不会暂停",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "阅读长篇文章，无暂停（实验）",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "请先在网站上选择所需的文字。您也可以选择文字，然后右键单击，然后在菜单中选择Talkie 。",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

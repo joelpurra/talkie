@@ -311,6 +311,22 @@
     "message": "הצג את כל הקולות",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "בדפדפנים מסוימים, לא ניתן לקרוא טקסטים ארוכים ברציפות. כדי לעקוף זאת, Talkie מציג הפסקה קצרה בין משפטים/סעיפים ואחרי פיסוק אחר.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "אם תפעיל אפשרות זו ותקרא טקסטים ארוכים מפסיקה לאחר 10-20 שניות, השבת אותה שוב.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "נסו לקרוא טקסטים ארוכים ללא הפסקות",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "קרא טקסטים ארוכים ללא הפסקות (ניסיוני)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "בחר תחילה את הטקסט הרצוי באתר. ניתן גם לבחור טקסט, ולאחר מכן לחץ לחיצה ימנית על אותו, ובחר באפשרות Talkie בתפריט.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

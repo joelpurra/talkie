@@ -140,6 +140,7 @@ function main() {
 
     const metadataManager = new MetadataManager();
     const configuration = new Configuration(metadataManager, configurationObject);
+    const storageManager = new StorageManager();
 
     const broadcaster = new Broadcaster();
 
@@ -147,10 +148,9 @@ function main() {
     const shouldContinueSpeakingProvider = onlyLastCaller;
     const execute = new Execute();
     const contentLogger = new ContentLogger(execute, configuration);
-    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider, contentLogger);
+    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider, contentLogger, storageManager);
     const speakingStatus = new SpeakingStatus();
 
-    const storageManager = new StorageManager();
     const voiceLanguageManager = new VoiceLanguageManager(storageManager, metadataManager);
     const voiceRateManager = new VoiceRateManager(storageManager, metadataManager);
     const voicePitchManager = new VoicePitchManager(storageManager, metadataManager);
@@ -354,6 +354,13 @@ function main() {
             window.getSystemType = () => metadataManager.getSystemType();
             window.getOsType = () => metadataManager.getOsType();
 
+            // TODO: shared place for stored value constants.
+            const speakLongTextsStorageKey = "speak-long-texts";
+            window.getSpeakLongTextsOption = () => storageManager.getStoredValue(speakLongTextsStorageKey);
+            // TODO: don't convert to boolean here, but somewhere centralized?
+            window.setSpeakLongTextsOption = (speakLongTexts) => storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts === true);
+
+            window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
             window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
             window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
             window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);

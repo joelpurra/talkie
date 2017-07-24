@@ -27,6 +27,8 @@ import {
     pitchRange,
 } from "../../../shared/voices";
 
+import SpeakLongTexts from "./voices/speak-long-texts.jsx";
+
 import SampleText from "./voices/sample-text.jsx";
 
 import AvailableLanguages from "./voices/available-languages.jsx";
@@ -50,6 +52,7 @@ export default class Voices extends React.Component {
 
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
         this.handleVoiceChange = this.handleVoiceChange.bind(this);
+        this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
         this.handleSampleTextChange = this.handleSampleTextChange.bind(this);
         this.handleToogleDefaultClick = this.handleToogleDefaultClick.bind(this);
         this.handleRateChange = this.handleRateChange.bind(this);
@@ -60,6 +63,7 @@ export default class Voices extends React.Component {
         actions: {},
         languages: [],
         voices: [],
+        speakLongTexts: false,
         selectedLanguageCode: null,
         selectedVoiceName: null,
         defaultVoiceNameForSelectedLanguage: null,
@@ -76,6 +80,7 @@ export default class Voices extends React.Component {
             name: PropTypes.string.isRequired,
             lang: PropTypes.string.isRequired,
         })).isRequired,
+        speakLongTexts: PropTypes.bool.isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
         defaultVoiceNameForSelectedLanguage: PropTypes.string,
@@ -98,6 +103,10 @@ export default class Voices extends React.Component {
 
     handleVoiceChange(value) {
         this.props.actions.loadSelectedVoiceName(value);
+    }
+
+    handleSpeakLongTextsChange(checked) {
+        this.props.actions.storeSpeakLongTexts(checked);
     }
 
     handleSampleTextChange(value) {
@@ -235,6 +244,18 @@ export default class Voices extends React.Component {
                         />
                     </table>
                 </div>
+
+                <table>
+                    <colgroup>
+                        <col width="100%" />
+                    </colgroup>
+
+                    <SpeakLongTexts
+                        onChange={this.handleSpeakLongTextsChange}
+                        checked={this.props.speakLongTexts}
+                        disabled={this.props.voices.length === 0}
+                    />
+                </table>
             </section>
         );
     }

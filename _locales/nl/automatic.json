@@ -311,6 +311,22 @@
     "message": "Toon alle stemmen",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "In sommige browsers is het niet mogelijk om lange teksten continu te lezen. Om dit te Talkie introduceert Talkie een kleine pauze tussen zinnen/clausules en na andere leestekens.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Als u deze optie inschakelt en langdurige teksten na 10-20 seconden stopt, moet u deze opnieuw uitschakelen.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Probeer lang teksten zonder pauzes te lezen",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Lees lange teksten zonder pauzes (experimentele)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Selecteer de gewenste tekst op de website eerste. U kunt ook tekst selecteren, klik met de rechtermuisknop op en kies Talkie in het menu.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

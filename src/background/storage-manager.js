@@ -33,7 +33,7 @@ import {
 
 export default class StorageManager {
     constructor() {
-        this.currentStorageFormatVersion = "v1.2.0";
+        this.currentStorageFormatVersion = "v1.3.0";
 
         this.storageMetadataId = "_storage-metadata";
 
@@ -56,6 +56,13 @@ export default class StorageManager {
             "voice-pitch-overrides": "voice-pitch-overrides",
         };
 
+        this.allKnownStorageKeys["v1.3.0"] = {
+            "language-voice-overrides": "language-voice-overrides",
+            "voice-rate-overrides": "voice-rate-overrides",
+            "voice-pitch-overrides": "voice-pitch-overrides",
+            "speak-long-texts": "speak-long-texts",
+        };
+
         // TODO: sort by semantic version.
         this.allKnownStorageFormatVersions = Object.keys(this.allKnownStorageKeys);
         this.allKnownStorageFormatVersions.sort();
@@ -71,6 +78,10 @@ export default class StorageManager {
         this.allKnownUpgradePaths["v1.1.0"] = {};
         this.allKnownUpgradePaths["v1.1.0"]["v1.2.0"] = {
             upgradeKey: this._createIdentityUpgrader("v1.1.0", "v1.2.0"),
+        };
+        this.allKnownUpgradePaths["v1.2.0"] = {};
+        this.allKnownUpgradePaths["v1.2.0"]["v1.3.0"] = {
+            upgradeKey: this._createIdentityUpgrader("v1.2.0", "v1.3.0"),
         };
     }
 

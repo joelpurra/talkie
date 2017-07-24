@@ -30,6 +30,18 @@ export const setVoices = (voices) => {
     return { type: actionTypes.SET_VOICES, voices };
 };
 
+export const loadSpeakLongTexts = () =>
+    (dispatch, getState, api) => api.getSpeakLongTextsOption()
+        .then((speakLongTexts) => dispatch(setSpeakLongTexts(speakLongTexts)));
+
+export const storeSpeakLongTexts = (speakLongTexts) =>
+    (dispatch, getState, api) => api.setSpeakLongTextsOption(speakLongTexts)
+        .then(() => dispatch(loadSpeakLongTexts()));
+
+export const setSpeakLongTexts = (speakLongTexts) => {
+    return { type: actionTypes.SET_SPEAK_LONG_TEXTS, speakLongTexts };
+};
+
 export const loadSelectedLanguageCode = (languageCode) =>
     (dispatch) => {
         dispatch(setSelectedLanguageCode(languageCode));

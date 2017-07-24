@@ -311,6 +311,22 @@
     "message": "Tampilkan semua suara",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "Di beberapa browser, tidak mungkin membaca teks panjang secara terus menerus. Untuk mengatasi hal ini, Talkie memperkenalkan jeda kecil antara kalimat/klausa dan setelah tanda baca lainnya.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Jika Anda mengaktifkan opsi ini dan membaca teks panjang berhenti setelah 10-20 detik, tolong nonaktifkan lagi.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Cobalah membaca teks panjang tanpa jeda",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Baca teks panjang tanpa jeda (eksperimen)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Silahkan pilih teks yang diinginkan di website terlebih dahulu. Anda juga bisa memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

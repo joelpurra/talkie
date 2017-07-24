@@ -297,6 +297,26 @@
     "original": "Show all voices",
     "translated-from": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "I vissa webbläsare är det inte möjligt att kontinuerligt läsa långa texter. För att arbeta runt detta har Talkie infört en liten paus mellan meningar/klausuler och efter annan interpunktion.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation.",
+    "translated-from": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Om du aktiverar det här alternativet och uppläsning av långa texter stannar efter 10-20 sekunder, stäng av det igen.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again.",
+    "translated-from": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Försök läsa upp långa texter utan pauser",
+    "original": "Try to read long texts without pauses",
+    "translated-from": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Läs upp långa texter utan pauser (experimentellt)",
+    "original": "Read long texts without pauses (experimental)",
+    "translated-from": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu.",

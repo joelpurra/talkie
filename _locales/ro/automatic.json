@@ -311,6 +311,22 @@
     "message": "Afișați toate vocile",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "În unele browsere, nu este posibilă citirea continuă a textelor lungi. Pentru a rezolva acest lucru, Talkie introduce o mică pauză între propoziții/clauze și după alte semne de punctuație.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Dacă activați această opțiune și citirea textelor lungi se oprește după 10-20 de secunde, dezactivați-o din nou.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Încercați să citiți texte lungi fără pauze",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Citiți texte lungi fără pauze (experimentale)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Selectați mai întâi textul dorit de pe site. De asemenea, puteți selecta textul, apoi faceți clic dreapta pe el și alegeți Talkie din meniu.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

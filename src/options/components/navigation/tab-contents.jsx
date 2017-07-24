@@ -58,10 +58,8 @@ export default class TabContents extends React.Component {
     }
 
     render() {
-        let contents = null;
-
-        if (this.props.id === this.props.activeTabId) {
-            contents = this.props.children;
+        if (this.props.id !== this.props.activeTabId) {
+            return null;
         }
 
         return (
@@ -69,7 +67,7 @@ export default class TabContents extends React.Component {
                 id={this.props.id}
                 onClick={this.handleClick}
             >
-                {contents}
+                {this.props.children}
             </div>
         );
     }
