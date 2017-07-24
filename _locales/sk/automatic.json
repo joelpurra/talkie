@@ -311,6 +311,22 @@
     "message": "Zobraziť všetky hlasy",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "V niektorých prehliadačoch nie je možné čítať dlhé texty nepretržite. Ak to chcete Talkie , Talkie predstavuje malú prestávku medzi vetami/klauzulami a po iných interpunkciách.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Ak povolíte túto možnosť a čítanie dlhých textov sa zastaví po 10-20 sekundách, znova ju deaktivujte.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Pokúste sa čítať dlhé texty bez prestávok",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Čítanie dlhých textov bez prestávok (experimentálne)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Najskôr zvoľte požadovaný text na webovej stránke. Môžete tiež vybrať text, potom kliknite pravým Talkie myši a zvoľte Talkie v ponuke.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

@@ -311,6 +311,22 @@
     "message": "Mostrar todas as vozes",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "Em alguns navegadores, não é possível ler textos longos de forma contínua. Para contornar isso, Talkie apresenta uma pequena pausa entre frases/cláusulas e após outra pontuação.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Se você habilitar esta opção e ler textos longos pára após 10-20 segundos, desative novamente.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Tente ler textos longos sem pausas",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Leia longos textos sem pausas (experimental)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Selecione primeiro o texto desejado no site. Você também pode Talkie texto, então clique com o botão direito sobre ele e escolha Talkie no menu.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

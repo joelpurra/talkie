@@ -311,6 +311,22 @@
     "message": "Kaikki äänet",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "Joissakin selaimissa ei ole mahdollista lukea pitkiä tekstejä jatkuvasti. Voit kiertää tätä Talkie esittää pienen tauon lauseiden/lausekkeiden ja muiden välimerkkien jälkeen.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Jos otat tämän vaihtoehdon käyttöön ja lukemalla pitkiä tekstejä pysähtyy 10-20 sekunnin kuluttua, poista se käytöstä uudelleen.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Yritä lukea pitkiä tekstejä ilman taukoja",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Lue pitkiä tekstejä ilman taukoja (kokeellinen)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "Valitse haluamasi teksti verkkosivuilla ensin. Voit myös valita tekstiä, sitten oikealle klikkaa sitä ja valitse Talkie valikosta.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."

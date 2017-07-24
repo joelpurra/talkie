@@ -311,6 +311,22 @@
     "message": "แสดงเสียงทั้งหมด",
     "original": "Show all voices"
   },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "ในเบราว์เซอร์บางประเภทคุณไม่สามารถอ่านข้อความยาวได้อย่างต่อเนื่อง ในการแก้ไขปัญหานี้ Talkie แนะนำให้หยุดชั่วคราวระหว่างประโยค/ประโยคและหลังเครื่องหมายวรรคตอนอื่น ๆ",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "ถ้าคุณเปิดใช้งานตัวเลือกนี้และการอ่านข้อความยาวจะหยุดลงหลังจาก 10-20 วินาทีโปรดปิดใช้งานอีกครั้ง",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "พยายามอ่านข้อความที่ยาวโดยไม่หยุดชั่วคราว",
+    "original": "Try to read long texts without pauses"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "อ่านข้อความที่ยาวโดยไม่หยุดชั่วคราว (ทดลอง)",
+    "original": "Read long texts without pauses (experimental)"
+  },
   "noTextSelectedMessage": {
     "message": "โปรดเลือกข้อความที่ต้องการในเว็บไซต์ก่อน นอกจากนี้คุณยังสามารถเลือกข้อความจากนั้นคลิกขวาและเลือก Talkie ในเมนู",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
