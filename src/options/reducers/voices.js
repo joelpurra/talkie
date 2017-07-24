@@ -26,6 +26,7 @@ import * as actionTypes from "../constants/action-types-voices";
 
 const initialState = {
     voices: [],
+    speakLongTexts: false,
     selectedLanguageCode: null,
     selectedVoiceName: null,
     defaultVoiceNameForSelectedLanguage: null,
@@ -49,6 +50,7 @@ const assignActionTypeToKey = (key) => (previousState, action) => {
 const actionsMap = {};
 
 const assignActionsMap = {
+    [actionTypes.SET_SPEAK_LONG_TEXTS]: "speakLongTexts",
     [actionTypes.SET_VOICES]: "voices",
     [actionTypes.SET_SELECTED_LANGUAGE_CODE]: "selectedLanguageCode",
     [actionTypes.SET_SELECTED_VOICE_NAME]: "selectedVoiceName",

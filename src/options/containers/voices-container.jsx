@@ -41,6 +41,7 @@ const mapStateToProps = (state) => {
     return {
         voices: state.voices.voices,
         languages: getLanguagesFromVoices(state.voices.voices),
+        speakLongTexts: state.voices.speakLongTexts,
         selectedLanguageCode: state.voices.selectedLanguageCode,
         selectedVoiceName: state.voices.selectedVoiceName,
         defaultVoiceNameForSelectedLanguage: state.voices.defaultVoiceNameForSelectedLanguage,
@@ -61,6 +62,7 @@ const mapDispatchToProps = (dispatch) => {
 export default class VoicesContainer extends React.Component {
     componentWillMount() {
         // TODO: is this the best place to load data?
+        this.props.actions.loadSpeakLongTexts();
         this.props.actions.loadSampleText();
     }
 
@@ -71,6 +73,7 @@ export default class VoicesContainer extends React.Component {
             lang: PropTypes.string.isRequired,
         })).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        speakLongTexts: PropTypes.bool.isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
         defaultVoiceNameForSelectedLanguage: PropTypes.string,
@@ -85,6 +88,7 @@ export default class VoicesContainer extends React.Component {
             actions,
             voices,
             languages,
+            speakLongTexts,
             selectedLanguageCode,
             selectedVoiceName,
             defaultVoiceNameForSelectedLanguage,
@@ -99,6 +103,7 @@ export default class VoicesContainer extends React.Component {
                 actions={actions}
                 voices={voices}
                 languages={languages}
+                speakLongTexts={speakLongTexts}
                 selectedLanguageCode={selectedLanguageCode}
                 selectedVoiceName={selectedVoiceName}
                 defaultVoiceNameForSelectedLanguage={defaultVoiceNameForSelectedLanguage}

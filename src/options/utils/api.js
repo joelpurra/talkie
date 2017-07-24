@@ -62,6 +62,12 @@ export const debouncedSpeak = debounce(speak, 200);
 
 export const getVoices = () => getMappedVoices();
 
+export const getSpeakLongTextsOption = () => getBackgroundPage()
+    .then((background) => background.getSpeakLongTextsOption());
+
+export const setSpeakLongTextsOption = (speakLongTexts) => getBackgroundPage()
+    .then((background) => background.setSpeakLongTextsOption(speakLongTexts === true));
+
 export const getSampleText = () => promiseTry(
     () => browser.i18n.getMessage("frontend_voicesSampleText")
 );

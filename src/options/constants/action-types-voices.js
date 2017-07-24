@@ -20,6 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 export const SET_VOICES = "SET_VOICES";
 
+export const SET_SPEAK_LONG_TEXTS = "SET_SPEAK_LONG_TEXTS";
+
 export const SET_SELECTED_LANGUAGE_CODE = "SET_SELECTED_LANGUAGE_CODE";
 
 export const SET_SELECTED_VOICE_NAME = "SET_SELECTED_VOICE_NAME";
