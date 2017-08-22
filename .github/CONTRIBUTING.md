@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://joelpurra.com/projects/talkie/"><img src="../resources/tile/free/440x280/2017-07-30.png" alt="Talkie logotype, a speech bubble with a play button inside" width="440" height="280" border="0" /></a>
+  <a href="https://joelpurra.com/projects/talkie/"><img src="../resources/tile/free/440x280/2017-08-22.png" alt="Talkie logotype, a speech bubble with a play button inside" width="440" height="280" border="0" /></a>
 </p>
 <h1 align="center">
   <a href="https://joelpurra.com/projects/talkie/">Talkie</a>
