@@ -20,22 +20,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
-// import cleanup from "./rollup.config.cleanup.js";
+import ejs from "rollup-plugin-ejs";
 import globals from "rollup-plugin-node-globals";
 import json from "rollup-plugin-json";
 import replace from "rollup-plugin-replace";
 import resolve from "rollup-plugin-node-resolve";
-import ejs from "rollup-plugin-ejs";
 
+import cleanup from "./rollup.config.cleanup.js";
+import license from "./rollup.config.license.js";
 import reactRollupConfig from "./rollup.config.react";
 
 const mergeOptions = require("merge-options");
 
-// TODO: re-enable.
-// https://github.com/mjeanroy/rollup-plugin-license/issues/6
-// import license from "./rollup.config.license.js";
-
-export default mergeOptions(
+export default (name) => mergeOptions(
     reactRollupConfig,
     {
         external: [
@@ -90,12 +87,8 @@ export default mergeOptions(
                 main: true,
                 browser: false,
             }),
-            // TODO: re-enable.
-            // https://github.com/aMarCruz/rollup-plugin-cleanup/issues/5
-            // cleanup(),
-            // TODO: re-enable.
-            // https://github.com/mjeanroy/rollup-plugin-license/issues/6
-            // license("options"),
+            cleanup(),
+            license(name),
         ],
         output: {
             format: "cjs",

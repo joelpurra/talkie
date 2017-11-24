@@ -21,13 +21,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import reactRollupConfig from "./rollup.config.react.browser";
 const mergeOptions = require("merge-options");
 
+const inputName = "demo";
+const fileExtension = "";
+const fileName = `${inputName}${fileExtension}`;
+
 export default mergeOptions(
-    reactRollupConfig,
+    reactRollupConfig(fileName),
     {
-        input: "src/demo/demo.js",
-        name: "demo",
+        input: `src/${inputName}/${fileName}.js`,
+        name: fileName,
         output: {
-            file: "dist/demo.js",
+            file: `dist/${fileName}.js`,
         },
     }
 );

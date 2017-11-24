@@ -21,8 +21,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import json from "rollup-plugin-json";
 import globals from "rollup-plugin-node-globals";
 import replace from "rollup-plugin-replace";
+
 import cleanup from "./rollup.config.cleanup.js";
+import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
+
+const inputName = "stay-alive";
+const fileExtension = "";
+const fileName = `${inputName}${fileExtension}`;
 
 export default {
     plugins: [
@@ -35,13 +41,14 @@ export default {
             },
         }),
         cleanup(),
-        license("stay-alive"),
+        license(inputName),
+        filesize(),
     ],
     sourcemap: true,
-    input: "src/stay-alive/stay-alive.js",
-    name: "stay-alive",
+    input: `src/${inputName}/${fileName}.js`,
+    name: inputName,
     output: {
         format: "umd",
-        file: "dist/stay-alive.js",
+        file: `dist/${fileName}.js`,
     },
 };
