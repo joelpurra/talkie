@@ -111,7 +111,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "bluebird": "^3.5.0",
+    "bluebird": "^3.5.1",
     "chokidar-cli": "^1.2.0",
     "chrome-webstore-manager": "^0.4.1",
     "concurrently": "^3.5.1",
