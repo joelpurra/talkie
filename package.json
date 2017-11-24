@@ -114,7 +114,7 @@
     "bluebird": "^3.5.0",
     "chokidar-cli": "^1.2.0",
     "chrome-webstore-manager": "^0.4.1",
-    "concurrently": "^3.4.0",
+    "concurrently": "^3.5.1",
     "configvention": "^1.1.0",
     "ent": "^2.2.0",
     "eslint": "^4.11.0",
