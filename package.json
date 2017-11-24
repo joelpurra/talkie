@@ -138,7 +138,7 @@
     "redux-persist": "=4.8.0",
     "redux-persist-crosstab": "=3.5.3",
     "redux-thunk": "^2.2.0",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.6.2",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-buble": "^0.18.0",
