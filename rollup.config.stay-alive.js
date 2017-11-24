@@ -22,7 +22,7 @@ import json from "rollup-plugin-json";
 import globals from "rollup-plugin-node-globals";
 import replace from "rollup-plugin-replace";
 
-import cleanup from "./rollup.config.cleanup.js";
+import uglify from "./rollup.config.uglify.js";
 import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
 
@@ -40,7 +40,7 @@ export default {
                 "SPLIT_ENVIRONMENT": "webextension",
             },
         }),
-        cleanup(),
+        uglify(),
         license(inputName),
         filesize(),
     ],

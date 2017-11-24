@@ -18,8 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import cleanup from "./rollup.config.cleanup.js";
-import filesize from "./rollup.config.filesize.js";
+import uglify from "./rollup.config.uglify.js";
 import license from "./rollup.config.license.js";
 
 const inputName = "extension-translator";
@@ -28,9 +27,8 @@ const fileName = `${inputName}${fileExtension}`;
 
 export default {
     plugins: [
-        cleanup(),
+        uglify(),
         license(inputName),
-        filesize(),
     ],
     sourcemap: true,
     input: `tools/translations/${fileName}.js`,

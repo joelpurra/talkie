@@ -25,7 +25,7 @@ import json from "rollup-plugin-json";
 import replace from "rollup-plugin-replace";
 import resolve from "rollup-plugin-node-resolve";
 
-import cleanup from "./rollup.config.cleanup.js";
+import uglify from "./rollup.config.uglify.js";
 import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
 import reactRollupConfig from "./rollup.config.react";
@@ -84,7 +84,7 @@ export default (name) => mergeOptions(
                 main: true,
                 browser: true,
             }),
-            cleanup(),
+            uglify(),
             license(name),
             filesize(),
         ],

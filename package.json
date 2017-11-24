@@ -142,7 +142,6 @@
     "rollup": "^0.48.2",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-buble": "^0.15.0",
-    "rollup-plugin-cleanup": "^1.0.1",
     "rollup-plugin-commonjs": "^8.2.0",
     "rollup-plugin-ejs": "^1.1.1",
     "rollup-plugin-filesize": "^1.5.0",
@@ -152,17 +151,20 @@
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.3.1",
     "rrssb": "^1.14.0",
     "stream-to-promise": "^2.2.0",
     "striptags": "^3.0.1",
     "styletron-client": "^3.0.0-rc.1",
     "styletron-react": "^3.0.0-rc.1",
+    "uglify-es": "^3.1.10",
     "web-ext": "^1.8.1",
     "webextension-polyfill": "^0.1.1"
   },
   "browserslist": [
     "last 5 Chrome versions",
     "last 5 Firefox versions"
-  ]
+  ],
+  "dependencies": {}
 }
