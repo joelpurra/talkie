@@ -127,7 +127,7 @@
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
     "json": "^9.0.4",
-    "jsonfile": "^3.0.0",
+    "jsonfile": "^4.0.0",
     "merge-options": "^1.0.0",
     "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
