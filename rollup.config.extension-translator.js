@@ -19,16 +19,24 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import cleanup from "./rollup.config.cleanup.js";
+import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
+
+const inputName = "extension-translator";
+const fileExtension = "";
+const fileName = `${inputName}${fileExtension}`;
 
 export default {
     plugins: [
         cleanup(),
-        license("extension-translator"),
+        license(inputName),
+        filesize(),
     ],
-    format: "cjs",
-    sourceMap: true,
-    entry: "tools/translations/extension-translator.js",
-    moduleName: "extension-translator",
-    dest: "dist/extension-translator.js",
+    sourcemap: true,
+    input: `tools/translations/${fileName}.js`,
+    name: inputName,
+    output: {
+        format: "cjs",
+        file: `dist/${fileName}.js`,
+    },
 };

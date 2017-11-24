@@ -21,7 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import translate from "../../../hocs/translate.jsx";
+import translate from "../../../../shared/hocs/translate.jsx";
+
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
+import * as formBase from "../../../../shared/styled/form/form-base.jsx";
 
 @translate
 export default class SampleText extends React.PureComponent {
@@ -39,7 +42,7 @@ export default class SampleText extends React.PureComponent {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
         value: PropTypes.string,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
     };
 
@@ -51,22 +54,24 @@ export default class SampleText extends React.PureComponent {
 
     render() {
         return (
-            <tbody>
-                <tr>
-                    <th scope="col">{this.props.translate("frontend_voicesSampleTextHeading")}</th>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea
+            <tableBase.tbody>
+                <tableBase.tr>
+                    <tableBase.th scope="col">
+                        {this.props.translate("frontend_voicesSampleTextHeading")}
+                    </tableBase.th>
+                </tableBase.tr>
+                <tableBase.tr>
+                    <tableBase.td>
+                        <formBase.textarea
                             id="voices-sample-text"
                             rows="2"
                             value={this.props.value}
                             onChange={this.handleChange}
-                            disabled={this.props.disabled}
-                        ></textarea>
-                    </td>
-                </tr>
-            </tbody>
+                            disabled={this.props.disabled || null}
+                        ></formBase.textarea>
+                    </tableBase.td>
+                </tableBase.tr>
+            </tableBase.tbody>
         );
     }
 }

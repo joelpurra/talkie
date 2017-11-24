@@ -41,7 +41,7 @@ export default class LogarithmicScaleRange extends React.Component {
         initialValue: PropTypes.number.isRequired,
         max: PropTypes.number.isRequired,
         step: PropTypes.number.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
     };
 
     constructor(props) {

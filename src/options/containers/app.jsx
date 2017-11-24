@@ -29,26 +29,22 @@ import {
     connect,
 } from "react-redux";
 
-import ConfigurationProvider from "../hocs/configuration-provider.jsx";
-
-import TranslationProvider from "../hocs/translation-provider.jsx";
-
-import NavContainer from "../containers/nav-container.jsx";
-
 import Main from "../components/main.jsx";
 
 import actionCreators from "../actions";
 
 import {
     getLanguagesFromVoices,
-} from "../utils/transform-voices";
+} from "../../shared/utils/transform-voices";
 
 const mapStateToProps = (state) => {
     return {
-        voicesCount: state.voices.voices.length,
-        languagesCount: getLanguagesFromVoices(state.voices.voices).length,
-        isPremiumVersion: state.metadata.isPremiumVersion,
-        versionName: state.metadata.versionName,
+        voicesCount: state.shared.voices.voices.length,
+        languagesCount: getLanguagesFromVoices(state.shared.voices.voices).length,
+        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        versionName: state.shared.metadata.versionName,
+        systemType: state.shared.metadata.systemType,
+        osType: state.shared.metadata.osType,
         activeTabId: state.navigation.activeTabId,
     };
 };
@@ -56,8 +52,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
-            voices: bindActionCreators(actionCreators.voices, dispatch),
-            metadata: bindActionCreators(actionCreators.metadata, dispatch),
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
+            sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
             navigation: bindActionCreators(actionCreators.navigation, dispatch),
         },
     };
@@ -70,7 +67,9 @@ export default class App extends React.Component {
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string,
+        versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
         activeTabId: PropTypes.string,
     }
 
@@ -81,32 +80,22 @@ export default class App extends React.Component {
             languagesCount,
             isPremiumVersion,
             versionName,
+            systemType,
+            osType,
             activeTabId,
           } = this.props;
 
         return (
-            <ConfigurationProvider
-                getConfigurationValue={actions.metadata.getConfigurationValue}
-            >
-                <TranslationProvider>
-                    <div>
-                        <div className="nav-header">
-                            <NavContainer />
-
-                            <hr />
-                        </div>
-
-                        <Main
-                            actions={actions}
-                            voicesCount={voicesCount}
-                            languagesCount={languagesCount}
-                            isPremiumVersion={isPremiumVersion}
-                            versionName={versionName}
-                            activeTabId={activeTabId}
-                        />
-                    </div>
-                </TranslationProvider>
-            </ConfigurationProvider>
+            <Main
+                actions={actions}
+                voicesCount={voicesCount}
+                languagesCount={languagesCount}
+                isPremiumVersion={isPremiumVersion}
+                versionName={versionName}
+                systemType={systemType}
+                osType={osType}
+                activeTabId={activeTabId}
+            />
         );
     }
 }

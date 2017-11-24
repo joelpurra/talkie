@@ -77,7 +77,7 @@ export const getCurrentActiveTabId = () => getCurrentActiveTab()
         return null;
     });
 
-export const isCurrentPageInternalToTalkie = () => promiseTry(
+export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry(
     () => getCurrentActiveTab()
         .then((tab) => {
             if (tab) {
@@ -86,9 +86,12 @@ export const isCurrentPageInternalToTalkie = () => promiseTry(
                 if (
                     typeof url === "string"
                     && (
-                        url.startsWith(browser.runtime.getURL("/src/popup/popup.html"))
-                        || url.startsWith(browser.runtime.getURL("/src/options/options.html"))
-                        || url.startsWith(browser.runtime.getURL("/src/stay-alive/stay-alive.html"))
+                        /* eslint-disable no-sync */
+                        url.startsWith(internalUrlProvider.getSync("/src/popup/popup.html"))
+                        || url.startsWith(internalUrlProvider.getSync("/dist/options.html"))
+                        || url.startsWith(internalUrlProvider.getSync("/src/stay-alive/stay-alive.html"))
+                        || url.startsWith(internalUrlProvider.getSync("/dist/demo.html"))
+                        /* eslint-enable no-sync */
                     )
                 ) {
                     return true;

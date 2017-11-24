@@ -21,6 +21,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import * as formBase from "../../../shared/styled/form/form-base.jsx";
+
 import ScaleRangeDatalist from "./scale-range-datalist.jsx";
 
 export default class ScaleRange extends React.Component {
@@ -52,7 +54,7 @@ export default class ScaleRange extends React.Component {
         initialValue: PropTypes.number.isRequired,
         max: PropTypes.number.isRequired,
         step: PropTypes.number.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
     };
 
     generateId() {
@@ -90,14 +92,14 @@ export default class ScaleRange extends React.Component {
 
         return (
             <div>
-                <input
+                <formBase.range
                     type="range"
                     min={this.props.min}
                     value={this.props.initialValue}
                     max={this.props.max}
                     step={this.props.step}
                     list={this.state.id}
-                    disabled={this.props.disabled}
+                    disabled={this.props.disabled || null}
                     onInput={this.handleInput}
                     onChange={this.handleChange}
                 />

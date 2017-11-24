@@ -18,11 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const extensionShortName = browser.i18n.getMessage("extensionShortName");
+// TODO: avoid special case use of manifest.
+import ManifestProvider from "../split-environments/manifest-provider";
+
+const manifestProvider = new ManifestProvider();
+
+// TODO: configuration.
+const extensionShortName = "Talkie";
 
 // https://stackoverflow.com/questions/12830649/check-if-chrome-extension-installed-in-unpacked-mode
 // http://stackoverflow.com/a/20227975
-const isDevMode = () => !("update_url" in browser.runtime.getManifest());
+/* eslint-disable no-sync */
+const isDevMode = () => !("update_url" in manifestProvider.getSync());
+/* eslint-enable no-sync */
 
 // NOTE: 0, 1, ...
 const loggingLevels = [

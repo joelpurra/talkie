@@ -41,7 +41,7 @@ import {
 } from "../shared/voices";
 
 export default class TalkieBackground {
-    constructor(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute) {
+    constructor(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translator, internalUrlProvider) {
         this.speechChain = speechChain;
         this.talkieSpeaker = talkieSpeaker;
         this.speakingStatus = speakingStatus;
@@ -49,10 +49,12 @@ export default class TalkieBackground {
         this.languageHelper = languageHelper;
         this.configuration = configuration;
         this.execute = execute;
+        this.translator = translator;
+        this.internalUrlProvider = internalUrlProvider;
 
         this.notAbleToSpeakTextFromThisSpecialTab = {
-            text: browser.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
-            effectiveLanguage: this.configuration.messagesLocale,
+            text: this.translator.translate("notAbleToSpeakTextFromThisSpecialTab"),
+            effectiveLanguage: this.translator.translate("extensionLocale"),
         };
 
         this.executeGetFramesSelectionTextAndLanguageCode = `
@@ -83,7 +85,7 @@ export default class TalkieBackground {
         return promiseTry(
             () => Promise.all([
                 canTalkieRunInTab(),
-                isCurrentPageInternalToTalkie(),
+                isCurrentPageInternalToTalkie(this.internalUrlProvider),
             ])
                 .then(([canRun, isInternalPage]) => {
                         // NOTE: can't perform (most) actions if it's not a "normal" tab.

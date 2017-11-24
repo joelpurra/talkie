@@ -18,51 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-body {
-    min-width: 300px;
-    max-width: 300px;
-}
-
-a:focus,
-a:hover {
-    color: #3497ff;
-}
-
-header a.extension-name {
-    font-weight: bold;
-    text-decoration: none;
-    color: #000000;
-}
-
-header a.extension-name:focus {
-    outline: 0;
-}
-
-header a.button {
-    line-height: 1.5em;
+#header-premium-button {
     float: __MSG_@@bidi_end_edge__;
 }
 
-nav ol {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-nav ol li {
-    display: block;
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-    vertical-align: middle;
-}
-
-nav ol li a {
-    display: block;
-    height: 2em;
-    line-height: 2em;
-    color: #000000;
-    text-decoration: none;
-    border-radius: 0.3em;
+#footer-about-link {
+    float: __MSG_@@bidi_end_edge__;
 }
 
 .icon.icon-usage:before {
@@ -87,30 +48,4 @@ nav ol li a {
 
 .icon.icon-settings:before {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNy4xNjUgOS45NGMtLjczNi0uMDIzLTEuMzQ2LS4yNzYtMS44My0uNzYtLjQ4My0uNDgzLS43MjQtMS4wOTMtLjcyNC0xLjgyOXMuMjQxLTEuMzQ2LjcyNS0xLjgyOWMuNDgzLS40ODMgMS4wOTMtLjcyNSAxLjgyOS0uNzI1czEuMzQ2LjI0MiAxLjgyOS43MjVjLjQ4My40ODMuNzI1IDEuMDkzLjcyNSAxLjgzIDAgLjczNS0uMjQyIDEuMzQ1LS43MjUgMS44MjgtLjQ4My40ODQtMS4wOTMuNzM3LTEuODMuNzZ6bTUuNDg3LTEuODY0YTcuMjkgNy4yOSAwIDAgMCAuMDM1LS43MjUgNy4yOSA3LjI5IDAgMCAwLS4wMzUtLjcyNWwxLjU1My0xLjIwOGMuMTM4LS4xMzguMTYxLS4yOTkuMDctLjQ4M0wxMi43OSAyLjM4MWMtLjA5Mi0uMTYtLjI0MS0uMjA3LS40NDgtLjEzOGwtMS44My43MjVhNC43ODYgNC43ODYgMCAwIDAtMS4yNDItLjcyNUw4Ljk5NC4zMTFDOC45NDguMTA0IDguODMzIDAgOC42NDkgMEg1LjY4Yy0uMTg0IDAtLjMuMTA0LS4zNDUuMzFMNS4wNiAyLjI0NGMtLjQ2LjE4NC0uODc1LjQyNi0xLjI0My43MjVsLTEuODMtLjcyNWMtLjIwNi0uMDY5LS4zNTYtLjAyMy0uNDQ4LjEzOEwuMDU1IDQuOTM1Yy0uMDkyLjE4NC0uMDY5LjM0NS4wNy40ODNsMS41NTIgMS4yMDhhNy4yOSA3LjI5IDAgMCAwLS4wMzQuNzI1YzAgLjI1My4wMTEuNDk1LjAzNC43MjVMLjEyNCA5LjI4NGMtLjEzOC4xMzgtLjE2LjI5OS0uMDY5LjQ4M2wxLjQ4NCAyLjU1NGMuMDkyLjE2MS4yNDIuMjA3LjQ0OS4xMzhsMS44My0uNzI1Yy4zNjcuMy43ODEuNTQgMS4yNDIuNzI1bC4yNzYgMS45MzNjLjA0Ni4yMDcuMTYuMzEuMzQ1LjMxaDIuOTY4Yy4xODQgMCAuMjk5LS4xMDMuMzQ1LS4zMWwuMjc2LTEuOTMzYTQuNzggNC43OCAwIDAgMCAxLjI0My0uNzI1bDEuODI5LjcyNWMuMjA3LjA2OS4zNTYuMDIzLjQ0OC0uMTM4bDEuNDg0LTIuNTU0Yy4wOTItLjE4NC4wNy0uMzQ1LS4wNjktLjQ4M2wtMS41NTMtMS4yMDh6IiBmaWxsPSIjQzdDOUNGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=");
-}
-
-table tbody tr td,
-table tbody tr th {
-    padding: 0;
-    margin: 0;
-}
-
-#progress {
-    width: 100%;
-    height: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-
-footer.lighter {
-    line-height: 2em;
-    vertical-align: middle;
-}
-
-footer.lighter a:nth-of-type(1) {
-    font-size: 1.75em;
-}
-
-footer.lighter a:nth-of-type(2) {
-    float: __MSG_@@bidi_end_edge__;
 }

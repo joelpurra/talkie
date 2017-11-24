@@ -1,0 +1,97 @@
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://joelpurra.com/projects/talkie/>
+
+Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+import React from "react";
+import PropTypes from "prop-types";
+
+import styled from "../../shared/hocs/styled.jsx";
+
+import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
+
+import Header from "./sections/header.jsx";
+import Menu from "./sections/menu.jsx";
+import Status from "./sections/status.jsx";
+import Footer from "./sections/footer.jsx";
+
+const styles = {
+    minWidth: "300px",
+    maxWidth: "300px",
+};
+
+@styled(styles)
+export default class Main extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
+        this.handleLinkClick = this.handleLinkClick.bind(this);
+    }
+
+    static defaultProps = {
+        isPremiumVersion: false,
+        versionNumber: null,
+    };
+
+    static propTypes = {
+        actions: PropTypes.object.isRequired,
+        isPremiumVersion: PropTypes.bool.isRequired,
+        versionNumber: PropTypes.string.isRequired,
+        className: PropTypes.string.isRequired,
+    };
+
+    handlePlayPauseClick() {
+        this.props.actions.sharedSpeaking.iconClick();
+    }
+
+    handleLinkClick(url) {
+        this.props.actions.sharedNavigation.openUrlInNewTab(url);
+    }
+
+    render() {
+        const {
+            isPremiumVersion,
+            versionNumber,
+            className,
+        } = this.props;
+
+        return (
+            <div className={className}>
+                <Header
+                    isPremiumVersion={isPremiumVersion}
+                    playPauseClick={this.handlePlayPauseClick}
+                />
+
+                <Status
+                    playPauseClick={this.handlePlayPauseClick}
+                 />
+
+                <layoutBase.hr />
+
+                <Menu />
+
+                <layoutBase.hr />
+
+                <Footer
+                    versionNumber={versionNumber}
+                />
+            </div>
+        );
+    }
+}

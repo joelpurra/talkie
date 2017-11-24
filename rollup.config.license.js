@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const path = require("path");
 import license from "rollup-plugin-license";
+const path = require("path");
 
 export default (name) =>
     license({

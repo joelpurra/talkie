@@ -31,37 +31,38 @@ import {
 
 import Voices from "../components/sections/voices.jsx";
 
-import * as actionCreators from "../actions/voices";
+import actionCreators from "../actions";
 
 import {
     getLanguagesFromVoices,
-} from "../utils/transform-voices";
+} from "../../shared/utils/transform-voices";
 
 const mapStateToProps = (state) => {
     return {
-        voices: state.voices.voices,
-        languages: getLanguagesFromVoices(state.voices.voices),
-        speakLongTexts: state.voices.speakLongTexts,
-        selectedLanguageCode: state.voices.selectedLanguageCode,
-        selectedVoiceName: state.voices.selectedVoiceName,
-        defaultVoiceNameForSelectedLanguage: state.voices.defaultVoiceNameForSelectedLanguage,
-        sampleText: state.voices.sampleText,
-        rateForSelectedVoice: state.voices.rateForSelectedVoice,
-        pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
-        isPremiumVersion: state.metadata.isPremiumVersion,
+        voices: state.shared.voices.voices,
+        languages: getLanguagesFromVoices(state.shared.voices.voices),
+        speakLongTexts: state.shared.voices.speakLongTexts,
+        selectedLanguageCode: state.shared.voices.selectedLanguageCode,
+        selectedVoiceName: state.shared.voices.selectedVoiceName,
+        defaultVoiceNameForSelectedLanguage: state.shared.voices.defaultVoiceNameForSelectedLanguage,
+        sampleText: state.shared.voices.sampleText,
+        rateForSelectedVoice: state.shared.voices.rateForSelectedVoice,
+        pitchForSelectedVoice: state.shared.voices.pitchForSelectedVoice,
+        isPremiumVersion: state.shared.metadata.isPremiumVersion,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators, dispatch),
+        actions: bindActionCreators(actionCreators.shared.voices, dispatch),
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class VoicesContainer extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         // TODO: is this the best place to load data?
+        this.props.actions.loadVoices();
         this.props.actions.loadSpeakLongTexts();
         this.props.actions.loadSampleText();
     }

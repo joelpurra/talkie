@@ -39,44 +39,23 @@ const startStayAliveListener = () => {
 };
 
 const stopStayAliveListener = () => {
-    return suspensionListenerManager.stop();
+    return suspensionListenerManager.stop()
+        .catch((error) => {
+            dualLogger.dualLogError("stopStayAliveListener", "Swallowing error", error);
+
+            // NOTE: swallowing errors.
+            return undefined;
+        });
 };
 
 const start = () => promiseTry(
-    () => {
-        dualLogger.dualLogDebug("Start", "start");
-
-        return Promise.resolve()
-            .then(() => startStayAliveListener())
-            .then(() => {
-                dualLogger.dualLogDebug("Done", "start");
-
-                return undefined;
-            })
-            .catch((error) => {
-                dualLogger.dualLogError("Start", error);
-            });
-    }
+    () => startStayAliveListener()
+        .then(() => undefined)
 );
 
 const stop = () => promiseTry(
-    () => {
-        dualLogger.dualLogDebug("Start", "stop");
-
-        return Promise.resolve()
-            .then(() => stopStayAliveListener())
-            .then(() => {
-                dualLogger.dualLogDebug("Done", "stop");
-
-                return undefined;
-            })
-            .catch((error) => {
-                dualLogger.dualLogError("stop", "Swallowing error", error);
-
-                // NOTE: swallowing errors.
-                return undefined;
-            });
-    }
+    () => stopStayAliveListener()
+        .then(() => undefined)
 );
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));

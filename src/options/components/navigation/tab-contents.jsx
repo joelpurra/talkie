@@ -21,6 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import {
+    handleBubbledLinkClick,
+} from "../../../shared/utils/ui";
+
 export default class TabContents extends React.Component {
     constructor(props) {
         super(props);
@@ -29,31 +33,13 @@ export default class TabContents extends React.Component {
     }
 
     handleClick(e) {
-        let element = e.target;
-
-        do {
-            if (element.tagName === "A") {
-                const href = element.getAttribute("href");
-
-                if (typeof href === "string" && href.startsWith("https://")) {
-                    e.preventDefault();
-
-                    this.props.onLinkClick(href);
-
-                    return false;
-                }
-
-            // TODO: warn about mismatched link style?
-            }
-
-            element = element.parentElement;
-        } while (element);
+        return handleBubbledLinkClick(this.props.onLinkClick, e);
     }
 
     static propTypes = {
         id: PropTypes.string.isRequired,
         activeTabId: PropTypes.string.isRequired,
-        children: PropTypes.element.isRequired,
+        children: PropTypes.node.isRequired,
         onLinkClick: PropTypes.func.isRequired,
     }
 

@@ -31,28 +31,34 @@ import {
 
 import About from "../components/sections/about.jsx";
 
-import * as actionCreators from "../actions/metadata";
+import actionCreators from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        versionName: state.metadata.versionName,
+        versionName: state.shared.metadata.versionName,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators, dispatch),
+        actions: bindActionCreators(actionCreators.shared.metadata, dispatch),
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class AboutContainer extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         // TODO: is this the best place to load data?
         this.props.actions.loadVersionName();
     }
 
+    static defaultProps = {
+        isPremiumVersion: false,
+        versionName: null,
+    };
+
     static propTypes = {
+        isPremiumVersion: PropTypes.bool.isRequired,
         actions: PropTypes.object.isRequired,
         versionName: PropTypes.string.isRequired,
         onLicenseClick: PropTypes.func.isRequired,
@@ -66,6 +72,7 @@ export default class AboutContainer extends React.Component {
 
         return (
             <About
+                isPremiumVersion={this.props.isPremiumVersion}
                 versionName={versionName}
                 onLicenseClick={onLicenseClick}
             />

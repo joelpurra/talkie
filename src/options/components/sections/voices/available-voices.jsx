@@ -21,6 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import styled from "../../../../shared/hocs/styled.jsx";
+
+import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+
 import {
     scrollIntoViewIfNeeded,
 } from "../../../utils/select-element";
@@ -32,6 +36,12 @@ export default class AvailableVoices extends React.PureComponent {
         this.selectElement = null;
 
         this.handleChange = this.handleChange.bind(this);
+
+        this.styled = {
+            effectiveVoiceOption: styled({
+                fontWeight: "bold",
+            })(formBase.option),
+        };
     }
 
     static defaultProps = {
@@ -49,7 +59,7 @@ export default class AvailableVoices extends React.PureComponent {
         value: PropTypes.string,
         defaultVoiceNameForSelectedLanguage: PropTypes.string,
         onChange: PropTypes.func.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
     };
 
     handleChange(e) {
@@ -68,26 +78,29 @@ export default class AvailableVoices extends React.PureComponent {
                     && this.props.defaultVoiceNameForSelectedLanguage === voice.name
                 );
 
-                const className = isDefaultVoiceNameForSelectedLanguage ? "effective-voice" : "";
+                const VoiceOption = isDefaultVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
 
-                return <option
+                const defaultVoiceNameForSelectedLanguageMark = isDefaultVoiceNameForSelectedLanguage ? " ✓" : "";
+
+                const voiceOptionText = `${voice.name}${defaultVoiceNameForSelectedLanguageMark}`;
+
+                return <VoiceOption
                     key={voice.name}
                     // TODO: proper way to store/look up objects?
                     value={voice.name}
-                    className={className}
-                       >
-                    {voice.name}{isDefaultVoiceNameForSelectedLanguage ? " ✓" : ""}
-                </option>;
+                >
+                    {voiceOptionText}
+                </VoiceOption>;
             }
         );
 
         return (
-            <select
+            <formBase.multiLineSelect
                 id="voices-voices-list"
                 size="7"
                 onChange={this.handleChange}
-                value={this.props.value}
-                disabled={this.props.disabled}
+                value={this.props.value || undefined}
+                disabled={this.props.disabled || null}
                 ref={
                     (selectElement) => {
                         this.selectElement = selectElement;
@@ -95,7 +108,7 @@ export default class AvailableVoices extends React.PureComponent {
                     }}
             >
                 {voicesOptions}
-            </select>
+            </formBase.multiLineSelect>
         );
     }
 }

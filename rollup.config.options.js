@@ -18,88 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
-// import cleanup from "./rollup.config.cleanup.js";
-import globals from "rollup-plugin-node-globals";
-import json from "rollup-plugin-json";
-import replace from "rollup-plugin-replace";
-import resolve from "rollup-plugin-node-resolve";
+import reactRollupConfig from "./rollup.config.react.browser";
+const mergeOptions = require("merge-options");
 
-// TODO: re-enable.
-// https://github.com/mjeanroy/rollup-plugin-license/issues/6
-// import license from "./rollup.config.license.js";
+const inputName = "options";
+const fileExtension = "";
+const fileName = `${inputName}${fileExtension}`;
 
-export default {
-    external: [
-        "prop-types",
-        "react-dom",
-        "react-redux",
-        "react",
-        "redux-persist",
-        "redux-thunk",
-        "redux",
-    ],
-    globals: {
-        "prop-types": "PropTypes",
-        "react-dom": "ReactDOM",
-        "react-redux": "ReactRedux",
-        "react": "React",
-        "redux-persist": "ReduxPersist",
-        "redux-thunk": "ReduxThunk",
-        "redux": "Redux",
-    },
-    plugins: [
-        json(),
-        babel({
-            exclude: [
-                "node_modules/**",
-            ],
-        }),
-        globals(),
-        replace({
-            // TODO: configuration?
-            "process.env.NODE_ENV": JSON.stringify("development"),
-        }),
-        commonjs({
-            include: [
-                "src/**",
-                "node_modules/**",
-            ],
-            // exclude: [
-            //     "node_modules/process-es6/**",
-            // ],
-            namedExports: {
-            //     "node_modules/react/react.js": [
-            //         "Children",
-            //         "Component",
-            //         "PropTypes",
-            //         "createElement",
-            //     ],
-            //     "node_modules/react-dom/index.js": [
-            //         "render",
-            //     ],
-                "node_modules/redux-persist/es/constants.js": [
-                    "KEY_PREFIX",
-                    "REHYDRATE",
-                ],
-            },
-        }),
-        resolve({
-            jsnext: true,
-            main: true,
-            browser: true,
-        }),
-        // TODO: re-enable.
-        // https://github.com/aMarCruz/rollup-plugin-cleanup/issues/5
-        // cleanup(),
-        // TODO: re-enable.
-        // https://github.com/mjeanroy/rollup-plugin-license/issues/6
-        // license("options"),
-    ],
-    format: "iife",
-    sourceMap: true,
-    entry: "src/options/options.js",
-    moduleName: "options",
-    dest: "dist/options.js",
-};
+export default mergeOptions(
+    reactRollupConfig(fileName),
+    {
+        input: `src/${inputName}/${fileName}.js`,
+        name: fileName,
+        output: {
+            file: `dist/${fileName}.js`,
+        },
+    }
+);

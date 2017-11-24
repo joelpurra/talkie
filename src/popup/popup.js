@@ -31,38 +31,20 @@ import {
 } from "../shared/tabs";
 
 import {
-    knownEvents,
-} from "../shared/events";
-
-import {
     eventToPromise,
-    startFrontend,
-    stopFrontend,
+    startReactFrontend,
+    stopReactFrontend,
 } from "../frontend/shared-frontend";
+
+import loadRoot from "./load-root.jsx";
 
 import DualLogger from "../frontend/dual-log";
 
 const dualLogger = new DualLogger("popup.js");
 
-const shouldPassClick = () => {
-    const containsBlockerString = document.location
-        && typeof document.location.search === "string"
-        && document.location.search.length > 0
-        && document.location.search.includes("passclick=false");
-
-    return !containsBlockerString;
-};
-
 const passClickToBackground = () => promiseTry(
         () => {
             dualLogger.dualLogDebug("Start", "passClickToBackground");
-
-            // NOTE: provide a way to link to the popup without triggering the "click".
-            if (!shouldPassClick()) {
-                dualLogger.dualLogDebug("Skipped", "passClickToBackground");
-
-                return;
-            }
 
             return getBackgroundPage()
                 .then((background) => background.iconClick())
@@ -79,75 +61,40 @@ const passClickToBackground = () => promiseTry(
         }
 );
 
-const registerStartStopButtonClickHandlers = () => promiseTry(
-    () => {
-        const startStopButtons = Array.from(document.querySelectorAll(":scope .start-stop-button"));
+const shouldPassClickOnLoad = () => {
+    const containsBlockerString = document.location
+        && typeof document.location.search === "string"
+        && document.location.search.length > 0
+        && document.location.search.includes("passclick=false");
 
-        startStopButtons.forEach((optionsLink) => {
-            optionsLink.onclick = (event) => {
-                event.preventDefault();
-
-                getBackgroundPage()
-                        .then((background) => background.iconClick())
-                        .catch((error) => {
-                            dualLogger.dualLogError("registerStartStopButtonClickHandlers", "onclick", error);
-                        });
-
-                return false;
-            };
-        });
-
-        return undefined;
-    }
-);
-
-const updateProgress = (data) => promiseTry(
-    () => {
-        const progressBar = document.getElementById("progress");
-        progressBar.max = data.max - data.min;
-        progressBar.value = data.current;
-
-        return undefined;
-    }
-);
-
-const killSwitches = [];
-
-const executeKillSwitches = () => {
-    // NOTE: expected to have only synchronous methods for the relevant parts.
-    killSwitches.forEach((killSwitch) => {
-        try {
-            killSwitch();
-        } catch (error) {
-            dualLogger.dualLogError("executeKillSwitches", error);
-        }
-    });
+    return !containsBlockerString;
 };
 
-const registerBroadcastListeners = () => promiseTry(
-    () => {
-        return getBackgroundPage()
-            .then((background) => background.broadcaster().registerListeningAction(knownEvents.updateProgress, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => updateProgress(actionData)))
-            .then((killSwitch) => killSwitches.push(killSwitch));
-    }
+const passClickToBackgroundOnLoad = () => promiseTry(
+        () => {
+            // NOTE: provide a way to link to the popup without triggering the "click".
+            if (!shouldPassClickOnLoad()) {
+                dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
+
+                return;
+            }
+
+            return passClickToBackground();
+        }
 );
 
 const start = () => promiseTry(
-    () => {
-        return Promise.resolve()
-            .then(() => startFrontend(killSwitches))
-            .then(() => registerBroadcastListeners())
-            .then(() => registerStartStopButtonClickHandlers())
-            .then(() => passClickToBackground());
-    }
+    () => Promise.resolve()
+        .then(() => passClickToBackgroundOnLoad())
+        .then(() => startReactFrontend())
+        .then(() => loadRoot())
+        .then(() => undefined)
 );
 
 const stop = () => promiseTry(
-    () => {
-        // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
-        return Promise.resolve()
-            .then(() => stopFrontend());
-    }
+    // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
+    () => stopReactFrontend()
+        .then(() => undefined)
 );
 
 registerUnhandledRejectionHandler();
@@ -158,6 +105,7 @@ document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
 window.addEventListener("unload", eventToPromise.bind(null, stop));
 
 // NOTE: synchronous version.
-window.addEventListener("unload", () => {
-    executeKillSwitches();
-});
+// TODO: reimplement fallback unregistration in react?
+//window.addEventListener("unload", () => {
+//    executeKillSwitches();
+//});

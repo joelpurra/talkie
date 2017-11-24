@@ -35,18 +35,19 @@ import {
 } from "../shared/basic";
 
 export default class LanguageHelper {
-    constructor(contentLogger, configuration) {
+    constructor(contentLogger, configuration, translator) {
         this.contentLogger = contentLogger;
         this.configuration = configuration;
+        this.translator = translator;
 
         this.noTextSelectedMessage = {
-            text: browser.i18n.getMessage("noTextSelectedMessage"),
-            effectiveLanguage: this.configuration.messagesLocale,
+            text: this.translator.translate("noTextSelectedMessage"),
+            effectiveLanguage: this.translator.translate("extensionLocale"),
         };
 
         this.noVoiceForLanguageDetectedMessage = {
-            text: browser.i18n.getMessage("noVoiceForLanguageDetectedMessage"),
-            effectiveLanguage: browser.i18n.getMessage("noVoiceForLanguageDetectedMessageLanguage"),
+            text: this.translator.translate("noVoiceForLanguageDetectedMessage"),
+            effectiveLanguage: this.translator.translate("noVoiceForLanguageDetectedMessageLanguage"),
         };
 
         // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en

@@ -18,71 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-body {
-    min-width: 400px;
-    max-width: 600px;
-    min-height: 450px;
-    max-height: 1000px;
-    overflow-y: scroll;
-    padding-bottom: 1em;
-}
-
-div.nav-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #ffffff;
-}
-
-main {
-    margin-top: 4em;
-}
-
-#back-to-popup {
-    text-decoration: none;
-}
-
-nav {
-    line-height: 1.5em;
-}
-
-nav.columns {
-    text-align: center;
-}
-
-nav.columns table tbody tr th,
-nav.columns table tbody tr td {
-    margin: 0;
-    padding: 0;
-}
-
-nav.columns table tbody tr td.tabrowselected a {
-    color: #3497ff;
-    font-weight: bold;
-}
-
-input[type=checkbox] {
-    vertical-align: text-bottom;
-}
-
-textarea {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-select[size] {
-    width: 100%;
-    height: 8.8em;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 select.grouped option {
     margin-__MSG_@@bidi_start_edge__: 1em;
 }
@@ -92,62 +27,15 @@ select.grouped option.group {
     margin-__MSG_@@bidi_start_edge__: 0;
 }
 
-#voices select[size] {
-    height: 8.8em;
-}
-
-#voices select option.effective-voice {
-    font-weight: bold;
-}
-
-#voices table tbody tr td button {
-    width: 100%;
-}
-
-#voices select,
-#voices select:active,
-#voices select:focus,
-#voices select:hover {
-    background: none;
-    padding: 0.1em;
-}
-
-#voices input[type=range] {
-    width: 100%;
-}
-
-#features .store-links {
-    text-align: center;
-    margin-top: 0.5em;
-}
-
-#features .store-links p {
-    margin-bottom: 0.5em;
-}
-
-@media (min-width: 450px) {
-    #features .store-links {
-        columns: 2;
-    }
-    #features .store-links>p:first-child {
-        margin-top: 0;
-    }
-}
-
-.icon.icon-inline.icon-24px.icon-share:before {
-    /* NOTE: modified svg files from Ridiculously Responsive Social Sharing Buttons */
-    /* https://github.com/kni-labs/rrssb */
-    background-size: 18px 18px;
-    padding: 3px;
-    border-radius: 3px;
-    margin-__MSG_@@bidi_end_edge__: 0.5em;
-}
-
-.icon.icon-inline.icon-small-speaker:before {
+.icon.icon-small-speaker:before {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC4yNjIgMHYxLjU0N2E1LjA2OSA1LjA2OSAwIDAgMSAyLjY3MiAxLjg0NmMuNjguOTAyIDEuMDIgMS45NjIgMS4wMiAzLjE4MXMtLjM0IDIuMjc0LTEuMDIgMy4xNjRjLS42OC44OS0xLjU3IDEuNTEyLTIuNjcyIDEuODY0djEuNTQ2YzEuNTIzLS4zNzUgMi43NzEtMS4xNTQgMy43NDQtMi4zMzcuOTczLTEuMTg0IDEuNDctMi41OTYgMS40OTQtNC4yMzctLjAyMy0xLjY0LS41MjEtMy4wNTMtMS40OTQtNC4yMzZDMTEuMDMzIDEuMTU0IDkuNzg2LjM3NSA4LjI2MiAwem0xLjg2MyA2LjU3NGMwLS42OC0uMTctMS4yODMtLjUxLTEuODFBMy4zOCAzLjM4IDAgMCAwIDguMjYyIDMuNTV2Ni4wMTFhMy4xMzYgMy4xMzYgMCAwIDAgMS4zNTMtMS4xNzdjLjM0LS41MjguNTEtMS4xMzEuNTEtMS44MXpNMCA0LjMyNHY0LjVoMi45ODhsMy43NjIgMy43NjJWLjU2MkwyLjk4OCA0LjMyNUgweiIgZmlsbD0iIzFFOUNEOCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+Cg==");
 }
 
 .icon.icon-share {
+    /* NOTE: modified svg files from Ridiculously Responsive Social Sharing Buttons */
+    /* Copyright (C) 2014-2015 Daniel Box and Joshua Tuscan */
+    /* MIT license */
+    /* https://github.com/kni-labs/rrssb */
     margin-__MSG_@@bidi_end_edge__: 0.5em;
 }
 
@@ -165,21 +53,4 @@ select.grouped option.group {
 
 .icon.icon-share.icon-linkedin:before {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOCAyOCI+PHBhdGggZmlsbD0iIzAwN2JiNiIgZD0iTTI1LjQyNCAxNS44ODd2OC40NDdoLTQuODk2di03Ljg4MmMwLTEuOTc5LS43MDktMy4zMzEtMi40OC0zLjMzMS0xLjM1NCAwLTIuMTU4LjkxMS0yLjUxNCAxLjgwMy0uMTI5LjMxNS0uMTYyLjc1My0uMTYyIDEuMTk0djguMjE2aC00Ljg5OXMuMDY2LTEzLjM0OSAwLTE0LjczMWg0Ljg5OXYyLjA4OGwtLjAzMy4wNDhoLjAzM3YtLjA0OWMuNjUtMS4wMDIgMS44MTItMi40MzUgNC40MTQtMi40MzUgMy4yMjItLjAwMSA1LjYzOCAyLjEwNiA1LjYzOCA2LjYzMnpNNS4zNDggMi41MDFjLTEuNjc2IDAtMi43NzIgMS4wOTItMi43NzIgMi41MzkgMCAxLjQyMSAxLjA2NiAyLjUzOCAyLjcxNyAyLjU0NmguMDMyYzEuNzA5IDAgMi43NzEtMS4xMzIgMi43NzEtMi41NDYtLjA0Mi0xLjQ0Ny0xLjA3Ny0yLjUzOS0yLjc1My0yLjUzOWguMDA1ek0yLjg2NyAyNC4zMzRoNC44OTdWOS42MDNIMi44Njd2MTQuNzMxeiIvPjwvc3ZnPgo=");
-}
-
-table.shortcut-keys-table {
-    border-spacing: 0;
-}
-
-table.shortcut-keys-table tbody tr td:nth-of-type(1) .lighter span.icon:nth-of-type(1):before {
-    margin-__MSG_@@bidi_end_edge__: 0.3em;
-}
-
-table.shortcut-keys-table tbody tr td:nth-of-type(1) .lighter span.icon:nth-of-type(2) {
-    margin-__MSG_@@bidi_start_edge__: 0.3em;
-}
-
-table.shortcut-keys-table tbody tr td:nth-of-type(2) {
-    text-align: __MSG_@@bidi_end_edge__;
-    white-space: nowrap;
 }

@@ -24,20 +24,19 @@ import {
 
 export default class Configuration {
     // NOTE: keep SynchronousConfiguration and Configuration in... sync.
-    constructor(metadataManager, configurationObject) {
+    constructor(metadataManager, configurationObject, internalUrlProvider) {
         this.metadataManager = metadataManager;
         this.configurationObject = configurationObject;
+        this.internalUrlProvider = internalUrlProvider;
 
         this._initialize();
     }
 
     _initialize() {
-        this.extensionShortName = browser.i18n.getMessage("extensionShortName");
-        this.uiLocale = browser.i18n.getMessage("@@ui_locale");
-        this.messagesLocale = browser.i18n.getMessage("extensionLocale");
-
         // NOTE: direct links to individual tabs.
-        this.configurationObject.shared.urls.options = browser.runtime.getURL("/src/options/options.html");
+        /* eslint-disable no-sync */
+        this.configurationObject.shared.urls.options = this.internalUrlProvider.getSync("/src/options/options.html");
+        /* eslint-enable no-sync */
         this.configurationObject.shared.urls["options-voices"] = this.configurationObject.shared.urls.options + "#voices";
         this.configurationObject.shared.urls["options-about"] = this.configurationObject.shared.urls.options + "#about";
         this.configurationObject.shared.urls["options-features"] = this.configurationObject.shared.urls.options + "#features";
@@ -51,7 +50,9 @@ export default class Configuration {
         this.configurationObject.shared.urls["options-features-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#features";
         this.configurationObject.shared.urls["options-usage-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#usage";
 
-        this.configurationObject.shared.urls.popup = browser.runtime.getURL("/src/popup/popup.html");
+        /* eslint-disable no-sync */
+        this.configurationObject.shared.urls.popup = this.internalUrlProvider.getSync("/src/popup/popup.html");
+        /* eslint-enable no-sync */
         this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
     }
 
@@ -101,5 +102,26 @@ export default class Configuration {
                     return value;
                 })
             );
+    }
+
+    getSync(path) {
+        // TODO: try/catch?
+        /* eslint-disable no-sync */
+        const versionType = this.metadataManager.getVersionTypeSync();
+        const systemType = this.metadataManager.getSystemTypeSync();
+        /* eslint-enable no-sync */
+
+        const versionedSystemValue = this._resolvePath(this.configurationObject[versionType][systemType], path);
+        const versionedValue = this._resolvePath(this.configurationObject[versionType], path);
+        const systemValue = this._resolvePath(this.configurationObject[systemType], path);
+        const sharedValue = this._resolvePath(this.configurationObject.shared, path);
+
+        const value = versionedSystemValue
+                         || versionedValue
+                         || systemValue
+                         || sharedValue
+                         || null;
+
+        return value;
     }
 }

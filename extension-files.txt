@@ -29,6 +29,7 @@ _locales/zh/messages.json
 ./resources/icon/premium/icon-play/icon-16x16.png
 CLA.md
 dist/background.js
+dist/demo.js
 dist/options.js
 dist/popup.js
 dist/stay-alive.js
@@ -57,9 +58,12 @@ resources/icon/free/icon-stop/icon-48x48.png
 resources/icon/free/icon-stop/icon-512x512.png
 resources/icon/free/icon-stop/icon-64x64.png
 resources/icon/free/icon-stop/icon-96x96.png
+resources/style/demo.css
 resources/style/options.css
 resources/style/popup.css
 resources/style/shared.css
+src/demo/demo.html
+src/frontend/locale-redirect.js
 src/options/options.html
 src/popup/popup.html
 src/stay-alive/stay-alive.html

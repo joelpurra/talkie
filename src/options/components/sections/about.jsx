@@ -21,11 +21,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configure from "../../hocs/configure.jsx";
-import translate from "../../hocs/translate.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
 
-@configure
-@translate
+import * as textBase from "../../../shared/styled/text/text-base.jsx";
+import * as listBase from "../../../shared/styled/list/list-base.jsx";
+
+import Discretional from "../../../shared/components/discretional.jsx";
+import SocialShareIcon from "../../../shared/components/icon/social-share-icon.jsx";
+import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
+
+@configureAttribute
+@translateAttribute
 export default class About extends React.Component {
     constructor(props) {
         super(props);
@@ -34,11 +41,13 @@ export default class About extends React.Component {
     }
 
     static defaultProps = {
+        isPremiumVersion: false,
         versionName: null,
     };
 
     static propTypes = {
-        versionName: PropTypes.string,
+        isPremiumVersion: PropTypes.bool.isRequired,
+        versionName: PropTypes.string.isRequired,
         onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
@@ -51,64 +60,117 @@ export default class About extends React.Component {
     }
 
     render() {
+        const {
+            configure,
+            isPremiumVersion,
+            translate,
+            versionName,
+        } = this.props;
+
         return (
             <section>
-                <p><span className="icon icon-inline icon-16px icon-talkie"></span>Talkie {this.props.versionName}</p>
-
-                <ul>
-                    <li>
-                        <a href={this.props.configure("urls.support-feedback")}>{this.props.translate("frontend_supportAndFeedback")}</a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.rate")}>{this.props.translate("frontend_rateIt")}</a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.project")}>{this.props.translate("frontend_aboutProjectPageLinkText")}</a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.github")}>{this.props.translate("frontend_aboutCodeOnGithubLinkText")}</a>
-                    </li>
-                    <li className="talkie-free-only talkie-list-item">
-                        <a href={this.props.configure("urls.store-premium")}>Talkie Premium</a>
-                    </li>
-                </ul>
-
-                <h2>{this.props.translate("frontend_shareHeading")}</h2>
-
-                <ul className="inline">
-                    <li>
-                        <a href={this.props.configure("urls.share.twitter")}><span className="icon icon-standalone icon-24px icon-share icon-twitter"></span></a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.share.facebook")}><span className="icon icon-standalone icon-24px icon-share icon-facebook"></span></a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.share.googleplus")}><span className="icon icon-standalone icon-24px icon-share icon-googleplus"></span></a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.share.linkedin")}><span className="icon icon-standalone icon-24px icon-share icon-linkedin"></span></a>
-                    </li>
-                </ul>
-
-                <h2>{this.props.translate("frontend_storyHeading")}</h2>
-                <p>{this.props.translate("frontend_storyDescription")}</p>
-                <p>{this.props.translate("frontend_storyThankYou")}</p>
                 <p>
-                    — <a href="https://joelpurra.com/">Joel Purra</a>
+                    <TalkieVersionIcon
+                        isPremiumVersion={isPremiumVersion}
+                    />
+                    Talkie {versionName}
                 </p>
 
-                <h2>{this.props.translate("frontend_licenseHeading")}</h2>
+                <listBase.ul>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.support-feedback")}>
+                            {translate("frontend_supportAndFeedback")}
+                        </textBase.a>
+                    </listBase.li>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.rate")}>
+                            {translate("frontend_rateIt")}
+                        </textBase.a>
+                    </listBase.li>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.project")}>
+                            {translate("frontend_aboutProjectPageLinkText")}
+                        </textBase.a>
+                    </listBase.li>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.github")}>
+                            {translate("frontend_aboutCodeOnGithubLinkText")}
+                        </textBase.a>
+                    </listBase.li>
+                    <Discretional
+                        enabled={!isPremiumVersion}
+                    >
+                        <listBase.li>
+                            <textBase.a href={configure("urls.store-premium")}>
+                                Talkie Premium
+                            </textBase.a>
+                        </listBase.li>
+                    </Discretional>
+                </listBase.ul>
+
+                <textBase.h2>
+                    {translate("frontend_shareHeading")}
+                </textBase.h2>
+
+                <listBase.inlineUl>
+                    <listBase.inlineLi>
+                        <textBase.a href={configure("urls.share.twitter")}>
+                            <SocialShareIcon mode="standalone" size="2em" network="twitter" />
+                        </textBase.a>
+                    </listBase.inlineLi>
+                    <listBase.inlineLi>
+                        <textBase.a href={configure("urls.share.facebook")}>
+                            <SocialShareIcon mode="standalone" size="2em" network="facebook" />
+                        </textBase.a>
+                    </listBase.inlineLi>
+                    <listBase.inlineLi>
+                        <textBase.a href={configure("urls.share.googleplus")}>
+                            <SocialShareIcon mode="standalone" size="2em" network="googleplus" />
+                        </textBase.a>
+                    </listBase.inlineLi>
+                    <listBase.inlineLi>
+                        <textBase.a href={configure("urls.share.linkedin")}>
+                            <SocialShareIcon mode="standalone" size="2em" network="linkedin" />
+                        </textBase.a>
+                    </listBase.inlineLi>
+                </listBase.inlineUl>
+
+                <textBase.h2>
+                    {translate("frontend_storyHeading")}
+                </textBase.h2>
+                <p>
+                    {translate("frontend_storyDescription")}
+                </p>
+                <p>
+                    {translate("frontend_storyThankYou")}
+                </p>
+                <p>
+                    —
+                    <textBase.a href="https://joelpurra.com/">
+                        Joel Purra
+                    </textBase.a>
+                </p>
+
+                <textBase.h2>
+                    {translate("frontend_licenseHeading")}
+                </textBase.h2>
                 <p>
                     <span
                         onClick={this.handleLegaleseClick}
-                    >{this.props.translate("frontend_licenseGPLDescription")}</span>
+                    >
+                        {translate("frontend_licenseGPLDescription")}
+                    </span>
                     <br />
-                    <a href={this.props.configure("urls.gpl")}>{this.props.translate("frontend_licenseGPLLinkText")}</a>
+                    <textBase.a href={configure("urls.gpl")}>
+                        {translate("frontend_licenseGPLLinkText")}
+                    </textBase.a>
                 </p>
                 <p>
-                    {this.props.translate("frontend_licenseCLADescription")}
+                    {translate("frontend_licenseCLADescription")}
                     <br />
-                    <a href={this.props.configure("urls.cla")}>{this.props.translate("frontend_licenseCLALinkText")}</a>
+                    <textBase.a href={configure("urls.cla")}>
+                        {translate("frontend_licenseCLALinkText")}
+                    </textBase.a>
                 </p>
             </section>
         );
