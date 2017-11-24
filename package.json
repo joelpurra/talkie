@@ -160,7 +160,7 @@
     "styletron-react": "^3.0.0-rc.3",
     "uglify-es": "^3.1.10",
     "web-ext": "^2.2.2",
-    "webextension-polyfill": "^0.1.2"
+    "webextension-polyfill": "^0.2.1"
   },
   "browserslist": [
     "last 5 Chrome versions",
