@@ -75,7 +75,7 @@ export default class FilesTranslator {
                                 spaces: 2,
                             }
                         ))
-                    );
+                );
             });
     }
 }

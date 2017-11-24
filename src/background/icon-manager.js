@@ -69,7 +69,7 @@ export default class IconManager {
                             });
                     });
             }
-    );
+        );
     }
 
     setIconModePlaying() {

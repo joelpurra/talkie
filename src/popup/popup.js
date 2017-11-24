@@ -43,22 +43,22 @@ import DualLogger from "../frontend/dual-log";
 const dualLogger = new DualLogger("popup.js");
 
 const passClickToBackground = () => promiseTry(
-        () => {
-            dualLogger.dualLogDebug("Start", "passClickToBackground");
+    () => {
+        dualLogger.dualLogDebug("Start", "passClickToBackground");
 
-            return getBackgroundPage()
-                .then((background) => background.iconClick())
-                .then(() => {
-                    dualLogger.dualLogDebug("Done", "passClickToBackground");
+        return getBackgroundPage()
+            .then((background) => background.iconClick())
+            .then(() => {
+                dualLogger.dualLogDebug("Done", "passClickToBackground");
 
-                    return undefined;
-                })
-                .catch((error) => {
-                    dualLogger.dualLogError("passClickToBackground", error);
+                return undefined;
+            })
+            .catch((error) => {
+                dualLogger.dualLogError("passClickToBackground", error);
 
-                    throw error;
-                });
-        }
+                throw error;
+            });
+    }
 );
 
 const shouldPassClickOnLoad = () => {
@@ -71,16 +71,16 @@ const shouldPassClickOnLoad = () => {
 };
 
 const passClickToBackgroundOnLoad = () => promiseTry(
-        () => {
-            // NOTE: provide a way to link to the popup without triggering the "click".
-            if (!shouldPassClickOnLoad()) {
-                dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
+    () => {
+        // NOTE: provide a way to link to the popup without triggering the "click".
+        if (!shouldPassClickOnLoad()) {
+            dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
 
-                return;
-            }
-
-            return passClickToBackground();
+            return;
         }
+
+        return passClickToBackground();
+    }
 );
 
 const start = () => promiseTry(

@@ -147,15 +147,15 @@ export default class MetadataManager {
 
     isChromeVersion() {
         return promiseTry(
-                () => this.getVersionName()
-                    .then((versionName) => {
-                        if (versionName.includes(" Chrome Extension ")) {
-                            return true;
-                        }
+            () => this.getVersionName()
+                .then((versionName) => {
+                    if (versionName.includes(" Chrome Extension ")) {
+                        return true;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     isChromeVersionSync() {
@@ -172,15 +172,15 @@ export default class MetadataManager {
 
     isWebExtensionVersion() {
         return promiseTry(
-                    () => this.getVersionName()
-                        .then((versionName) => {
-                            if (versionName.includes(" WebExtension ")) {
-                                return true;
-                            }
+            () => this.getVersionName()
+                .then((versionName) => {
+                    if (versionName.includes(" WebExtension ")) {
+                        return true;
+                    }
 
-                            return false;
-                        })
-                );
+                    return false;
+                })
+        );
     }
 
     isWebExtensionVersionSync() {

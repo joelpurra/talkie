@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import uglify from "rollup-plugin-uglify";
 import {
     minify,
- } from "uglify-es";
+} from "uglify-es";
 
 export default () =>
     uglify({}, minify);

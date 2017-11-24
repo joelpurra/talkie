@@ -162,17 +162,17 @@ export default class LanguageHelper {
     detectAndAddLanguageForSelections(selectionsWithValidText) {
         return promiseTry(
             () => Promise.all(
-            selectionsWithValidText.map(
-                (selection) => {
-                    const copy = shallowCopy(selection);
+                selectionsWithValidText.map(
+                    (selection) => {
+                        const copy = shallowCopy(selection);
 
-                    return this.detectTextLanguage(copy.text)
-                        .then((detectedTextLanguage) => {
-                            copy.detectedTextLanguage = detectedTextLanguage;
+                        return this.detectTextLanguage(copy.text)
+                            .then((detectedTextLanguage) => {
+                                copy.detectedTextLanguage = detectedTextLanguage;
 
-                            return copy;
-                        });
-                })
+                                return copy;
+                            });
+                    })
             )
         );
     }

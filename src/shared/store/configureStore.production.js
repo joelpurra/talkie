@@ -27,8 +27,8 @@ import {
 import thunk from "redux-thunk";
 
 import {
-     persistStore,
-     autoRehydrate,
+    persistStore,
+    autoRehydrate,
 } from "redux-persist";
 
 import crosstabSync from "redux-persist-crosstab";
@@ -43,8 +43,8 @@ export default function(initialState, rootReducer, sharedStateStorageKeyWhitelis
     const middlewares = applyMiddleware(thunk.withExtraArgument(api));
 
     const enhancer = compose(
-      middlewares,
-      autoRehydrate()
+        middlewares,
+        autoRehydrate()
     );
 
     const store = createStore(rootReducer, initialState, enhancer);
