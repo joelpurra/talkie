@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     actionMapReducer,
 }
- from "../../shared/utils/reduce-helpers";
+    from "../../shared/utils/reduce-helpers";
 
 import * as actionTypes from "../constants/action-types-navigation";
 

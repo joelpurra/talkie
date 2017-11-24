@@ -136,10 +136,10 @@ export default class SuspensionListenerManager {
 
     _createOnSuspendPromise() {
         return promiseTry(
-        () => {
-            logDebug("Start", "_createOnSuspendPromise");
+            () => {
+                logDebug("Start", "_createOnSuspendPromise");
 
-            this._preventSuspendPromise = Promise.resolve()
+                this._preventSuspendPromise = Promise.resolve()
                     .then(() => {
                         logDebug("Start", "_preventSuspendPromise", "creating");
 
@@ -158,24 +158,24 @@ export default class SuspensionListenerManager {
 
                         return undefined;
                     });
-        }
+            }
         );
     }
 
     _finishOnSuspendPromise() {
         return promiseTry(
-        () => {
-            logDebug("Start", "_finishOnSuspendPromise");
+            () => {
+                logDebug("Start", "_finishOnSuspendPromise");
 
-            return Promise.resolve()
-                .then(() => this._preventSuspendPromiseResolve())
-                .then(() => this._preventSuspendPromise)
-                .then(() => {
-                    logDebug("Done", "_finishOnSuspendPromise");
+                return Promise.resolve()
+                    .then(() => this._preventSuspendPromiseResolve())
+                    .then(() => this._preventSuspendPromise)
+                    .then(() => {
+                        logDebug("Done", "_finishOnSuspendPromise");
 
-                    return undefined;
-                });
-        }
+                        return undefined;
+                    });
+            }
         );
     }
 

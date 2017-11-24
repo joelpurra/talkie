@@ -69,7 +69,7 @@ export const getRandomInt = (min, max) => {
 // TODO: don't add non-standard functions to Math.
 // Closure
 (function() {
-  /**
+    /**
    * Decimal adjustment of a number.
    *
    * @param {String}  type  The type of adjustment.

@@ -59,10 +59,10 @@ export default class GoogleCloudTranslateTranslator {
                 .map((message) => htmlEntityEncode(message))
                 .map((encodedMessage) => {
                     const preparedMessage = encodedMessage
-                            .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
-                            .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
-                            .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
-                            .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
+                        .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
+                        .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
+                        .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
+                        .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
 
                     const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
 
@@ -83,23 +83,23 @@ export default class GoogleCloudTranslateTranslator {
                     /* eslint-enable no-unused-vars */
 
                     const translateDirtyMessages = translations
-                            .map((translationResponse) => striptags(translationResponse))
-                            .map((translationResponse) => htmlEntityDecode(translationResponse))
-                            .map((translationResponse) => {
-                                const translateDirtyMessage = translationResponse
-                                    .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
-                                    .replace(/___TEMP_TALKIE___/g, "Talkie")
-                                    .replace(/___TEMP_PREMIUM___/g, "Premium")
-                                    .replace(/^\s+/g, "")
-                                    .replace(/\s+$/g, "")
-                                    .replace(/ +\/ +/g, "/")
-                                    .replace(/ +-+ +/g, " — ")
-                                    .replace(/ +([.:;!?]) +/g, "$1 ")
-                                    .replace(/ {2,}/g, " ")
-                                    .trim();
+                        .map((translationResponse) => striptags(translationResponse))
+                        .map((translationResponse) => htmlEntityDecode(translationResponse))
+                        .map((translationResponse) => {
+                            const translateDirtyMessage = translationResponse
+                                .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
+                                .replace(/___TEMP_TALKIE___/g, "Talkie")
+                                .replace(/___TEMP_PREMIUM___/g, "Premium")
+                                .replace(/^\s+/g, "")
+                                .replace(/\s+$/g, "")
+                                .replace(/ +\/ +/g, "/")
+                                .replace(/ +-+ +/g, " — ")
+                                .replace(/ +([.:;!?]) +/g, "$1 ")
+                                .replace(/ {2,}/g, " ")
+                                .trim();
 
-                                return translateDirtyMessage;
-                            });
+                            return translateDirtyMessage;
+                        });
 
                     return translateDirtyMessages;
                 })

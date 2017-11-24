@@ -88,11 +88,11 @@ export default class TalkieBackground {
                 isCurrentPageInternalToTalkie(this.internalUrlProvider),
             ])
                 .then(([canRun, isInternalPage]) => {
-                        // NOTE: can't perform (most) actions if it's not a "normal" tab.
+                    // NOTE: can't perform (most) actions if it's not a "normal" tab.
                     if (!canRun) {
                         logDebug("iconClickAction", "Did not detect a normal tab, skipping.");
 
-                            // NOTE: don't "warn" about internal pages opening.
+                        // NOTE: don't "warn" about internal pages opening.
                         if (isInternalPage) {
                             logDebug("iconClickAction", "Detected internal page, skipping warning.");
 

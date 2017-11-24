@@ -101,7 +101,7 @@ export default class Configuration {
 
                     return value;
                 })
-            );
+        );
     }
 
     getSync(path) {

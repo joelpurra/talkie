@@ -44,7 +44,7 @@ export const getLanguageGroupsFromVoices = (voices) => {
             return obj;
         },
         {}
-      );
+    );
 
     const languageGroups = Object.keys(languageGroupsAsKeys);
 
@@ -61,7 +61,7 @@ export const getVoicesByLanguageFromVoices = (voices) => {
             return obj;
         },
         {}
-      );
+    );
 
     return voicesByLanguage;
 };
@@ -75,7 +75,7 @@ export const getVoicesByLanguageGroupFromVoices = (voices) => {
             return obj;
         },
         {}
-      );
+    );
 
     return voicesByLanguageGroup;
 };

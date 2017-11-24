@@ -56,10 +56,10 @@ export const loadStateSync = (keys, pagePath) => {
             const parsedStateForKey = JSON.parse(stateForKeyJSONString);
 
             if (
-            parsedStateForKey
+                parsedStateForKey
             && typeof parsedStateForKey === "object"
             && parsedStateForKey !== null
-        ) {
+            ) {
                 stateForKey = parsedStateForKey;
             }
         }

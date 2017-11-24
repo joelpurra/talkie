@@ -84,7 +84,7 @@ export default class VoicePitchManager {
 
                     return undefined;
                 })
-            );
+        );
     }
 
     getVoicePitchOverride(voiceName) {
@@ -120,28 +120,28 @@ export default class VoicePitchManager {
 
     hasVoicePitchOverride(voiceName) {
         return promiseTry(
-                () => this.getVoicePitchOverride(voiceName)
-                    .then((voicePitchOverride) => {
-                        if (voicePitchOverride) {
-                            return true;
-                        }
+            () => this.getVoicePitchOverride(voiceName)
+                .then((voicePitchOverride) => {
+                    if (voicePitchOverride) {
+                        return true;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     isVoicePitchOverride(voiceName, pitch) {
         return promiseTry(
-                () => this.getVoicePitchOverride(voiceName)
-                    .then((voicePitchOverride) => {
-                        if (voicePitchOverride) {
-                            return voicePitchOverride === pitch;
-                        }
+            () => this.getVoicePitchOverride(voiceName)
+                .then((voicePitchOverride) => {
+                    if (voicePitchOverride) {
+                        return voicePitchOverride === pitch;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     getEffectivePitchForVoice(voiceName) {

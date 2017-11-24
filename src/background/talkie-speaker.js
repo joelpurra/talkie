@@ -144,7 +144,7 @@ export default class TalkieSpeaker {
                         throw error;
                     });
             }
-        )
+            )
             .then((synthesizer) => {
                 // NOTE: only for logging purposes.
                 const voices = synthesizer.getVoices();
@@ -263,7 +263,7 @@ export default class TalkieSpeaker {
                     }
                 }
             )
-        );
+            );
     }
 
     getActualVoice(mappedVoice) {
