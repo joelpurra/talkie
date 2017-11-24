@@ -156,8 +156,8 @@
     "rrssb": "^1.14.0",
     "stream-to-promise": "^2.2.0",
     "striptags": "^3.0.1",
-    "styletron-client": "^3.0.0-rc.1",
-    "styletron-react": "^3.0.0-rc.1",
+    "styletron-client": "^3.0.0-rc.3",
+    "styletron-react": "^3.0.0-rc.3",
     "uglify-es": "^3.1.10",
     "web-ext": "^1.8.1",
     "webextension-polyfill": "^0.1.1"
