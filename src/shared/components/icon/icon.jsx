@@ -54,7 +54,7 @@ export default class TalkieVersionIcon extends React.Component {
                 content: "''",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 display: "inline-block",
             },
         };
@@ -73,7 +73,7 @@ export default class TalkieVersionIcon extends React.Component {
         // TODO: fully replace with css-in-js?
         return (
             <StyledIcon
-              className={`icon icon-${mode} icon-${size} ${className}`}
+                className={`icon icon-${mode} icon-${size} ${className}`}
             ></StyledIcon>
         );
     }
