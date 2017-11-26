@@ -63,7 +63,7 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
 const renderHtml = (root) => promiseTry(() => {
     const rootElement = document.getElementById("react-root");
 
-    ReactDOM.render(root, rootElement);
+    ReactDOM.hydrate(root, rootElement);
 });
 
 const hydrateHtml = (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, ChildComponent) => promiseTry(() => {
@@ -74,11 +74,11 @@ const hydrateHtml = (rootReducer, customPrerenderedActionsToDispatch, customPost
 
     return autoRoot(prerenderedState, rootReducer, ChildComponent)
         .then(({
-             root,
-             store,
-           }) => dispatchAll(store, prerenderedActionsToDispatch)
-               .then(() => renderHtml(root))
-               .then(() => dispatchAll(store, postrenderActionsToDispatch)));
+            root,
+            store,
+        }) => dispatchAll(store, prerenderedActionsToDispatch)
+            .then(() => renderHtml(root))
+            .then(() => dispatchAll(store, postrenderActionsToDispatch)));
 });
 
 export default hydrateHtml;

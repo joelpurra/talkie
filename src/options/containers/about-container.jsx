@@ -35,7 +35,10 @@ import actionCreators from "../actions";
 
 const mapStateToProps = (state) => {
     return {
+        isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionName: state.shared.metadata.versionName,
+        systemType: state.shared.metadata.systemType,
+        osType: state.shared.metadata.osType,
     };
 };
 
@@ -55,25 +58,34 @@ export default class AboutContainer extends React.Component {
     static defaultProps = {
         isPremiumVersion: false,
         versionName: null,
+        systemType: null,
+        osType: null,
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
         actions: PropTypes.object.isRequired,
+        isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
         onLicenseClick: PropTypes.func.isRequired,
     }
 
     render() {
         const {
+            isPremiumVersion,
             versionName,
+            systemType,
+            osType,
             onLicenseClick,
-          } = this.props;
+        } = this.props;
 
         return (
             <About
-                isPremiumVersion={this.props.isPremiumVersion}
+                isPremiumVersion={isPremiumVersion}
                 versionName={versionName}
+                systemType={systemType}
+                osType={osType}
                 onLicenseClick={onLicenseClick}
             />
         );

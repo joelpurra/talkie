@@ -23,8 +23,7 @@ import PropTypes from "prop-types";
 
 import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
-import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
-import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+import * as textBase from "../../../../shared/styled/text/text-base.jsx";
 
 import Checkbox from "../../../../shared/components/form/checkbox.jsx";
 
@@ -60,34 +59,28 @@ export default class SpeakLongTexts extends React.PureComponent {
         } = this.props;
 
         return (
-            <tableBase.tbody>
-                <tableBase.tr>
-                    <tableBase.th scope="col">
-                        {translate("frontend_voicesSpeakLongTextsHeading")}
-                    </tableBase.th>
-                </tableBase.tr>
-                <tableBase.tr>
-                    <tableBase.td>
-                        <p>
-                            {translate("frontend_voicesSpeakLongTextsExplanation01")}
-                        </p>
-                        <p>
-                            {translate("frontend_voicesSpeakLongTextsExplanation02")}
-                        </p>
-                        <p>
-                            <label>
-                                <Checkbox
-                                    checked={speakLongTexts}
-                                    onChange={this.handleChange}
-                                    disabled={disabled}
-                                />
-                                {" "}
-                                {translate("frontend_voicesSpeakLongTextsLabel")}
-                            </label>
-                        </p>
-                    </tableBase.td>
-                </tableBase.tr>
-            </tableBase.tbody>
+            <div>
+                <textBase.h2 scope="col">
+                    {translate("frontend_voicesSpeakLongTextsHeading")}
+                </textBase.h2>
+                <p>
+                    {translate("frontend_voicesSpeakLongTextsExplanation01")}
+                </p>
+                <p>
+                    {translate("frontend_voicesSpeakLongTextsExplanation02")}
+                </p>
+                <p>
+                    <label>
+                        <Checkbox
+                            checked={speakLongTexts}
+                            onChange={this.handleChange}
+                            disabled={disabled}
+                        />
+                        {" "}
+                        {translate("frontend_voicesSpeakLongTextsLabel")}
+                    </label>
+                </p>
+            </div>
         );
     }
 }

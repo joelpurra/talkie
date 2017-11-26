@@ -41,3 +41,8 @@ export const hr = Object.assign(
         borderTopWidth: "1px",
     }
 );
+
+export const details = {};
+export const summary = {
+    cursor: "pointer",
+};

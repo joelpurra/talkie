@@ -64,7 +64,7 @@ export default class App extends React.Component {
             actions,
             isPremiumVersion,
             versionNumber,
-          } = this.props;
+        } = this.props;
 
         return (
             <div>

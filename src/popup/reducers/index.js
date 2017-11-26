@@ -24,9 +24,6 @@ import {
 
 import shared from "../../shared/reducers";
 
-import navigation from "./navigation";
-
 export default combineReducers({
     shared,
-    navigation,
 });

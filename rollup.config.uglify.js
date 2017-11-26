@@ -24,4 +24,7 @@ import {
 } from "uglify-es";
 
 export default () =>
-    uglify({}, minify);
+    uglify({
+        // TODO: build configuration.
+        keep_fnames: true,
+    }, minify);

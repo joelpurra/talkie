@@ -23,7 +23,9 @@ import {
 } from "redux";
 
 import shared from "../../shared/reducers";
+import unshared from "../../unshared/reducers";
 
 export default combineReducers({
     shared,
+    unshared,
 });

@@ -21,12 +21,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import getHtml from "../shared/renderers/render-react-html";
 
 import rootReducer from "./reducers";
-// import actions from "./actions";
+import actions from "./actions";
 import App from "./containers/app.jsx";
 import htmlTemplate from "./options.template.html";
 
 // TODO: generalize preloading?
-const prerenderActionsToDispatch = [];
+const prerenderActionsToDispatch = [
+    actions.unshared.navigation.setActiveTabId("voices"),
+];
 const postrenderActionsToDispatch = [];
 
 export default (talkieLocale) => getHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, htmlTemplate, talkieLocale, App);

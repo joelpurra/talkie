@@ -33,6 +33,7 @@ export default class TabContents extends React.Component {
     }
 
     handleClick(e) {
+        // TODO: use an api call which has handleBubbledLinkClick?
         return handleBubbledLinkClick(this.props.onLinkClick, e);
     }
 

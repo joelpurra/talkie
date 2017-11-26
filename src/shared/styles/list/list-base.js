@@ -26,9 +26,18 @@ const sharedList = {
 
 export const ul = sharedList;
 export const ol = sharedList;
+export const dl = sharedList;
 
 export const li = {
     marginBottom: "0.25em",
+};
+
+export const dt = {
+    fontWeight: "bold",
+    marginTop: "1em",
+};
+export const dd = {
+    marginBottom: "0.5em",
 };
 
 const sharedInlineList = {

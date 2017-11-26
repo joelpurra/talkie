@@ -35,24 +35,27 @@ export default class Configuration {
     _initialize() {
         // NOTE: direct links to individual tabs.
         /* eslint-disable no-sync */
+        this.configurationObject.shared.urls.demo = this.internalUrlProvider.getSync("/src/demo/demo.html");
         this.configurationObject.shared.urls.options = this.internalUrlProvider.getSync("/src/options/options.html");
+        this.configurationObject.shared.urls.popup = this.internalUrlProvider.getSync("/src/popup/popup.html");
         /* eslint-enable no-sync */
-        this.configurationObject.shared.urls["options-voices"] = this.configurationObject.shared.urls.options + "#voices";
-        this.configurationObject.shared.urls["options-about"] = this.configurationObject.shared.urls.options + "#about";
-        this.configurationObject.shared.urls["options-features"] = this.configurationObject.shared.urls.options + "#features";
-        this.configurationObject.shared.urls["options-usage"] = this.configurationObject.shared.urls.options + "#usage";
+
+        // NOTE: direct links to individual tabs.
+        this.configurationObject.shared.urls["demo-about"] = this.configurationObject.shared.urls.demo + "#about";
+        this.configurationObject.shared.urls["demo-features"] = this.configurationObject.shared.urls.demo + "#features";
+        this.configurationObject.shared.urls["demo-usage"] = this.configurationObject.shared.urls.demo + "#usage";
+        this.configurationObject.shared.urls["demo-voices"] = this.configurationObject.shared.urls.demo + "#voices";
 
         // NOTE: direct links to individual tabs.
         // NOTE: need to pass a parameter to the options page.
-        this.configurationObject.shared.urls["options-from-popup"] = this.configurationObject.shared.urls.options + "?from=popup";
-        this.configurationObject.shared.urls["options-voices-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#voices";
-        this.configurationObject.shared.urls["options-about-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#about";
-        this.configurationObject.shared.urls["options-features-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#features";
-        this.configurationObject.shared.urls["options-usage-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#usage";
+        [
+            "popup",
+            "demo",
+        ].forEach((from) => {
+            this.configurationObject.shared.urls[`options-from-${from}`] = this.configurationObject.shared.urls.options + `?from=${from}`;
+            this.configurationObject.shared.urls[`options-about-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#about";
+        });
 
-        /* eslint-disable no-sync */
-        this.configurationObject.shared.urls.popup = this.internalUrlProvider.getSync("/src/popup/popup.html");
-        /* eslint-enable no-sync */
         this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
     }
 

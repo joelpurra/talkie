@@ -19,7 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import shared from "../../shared/actions";
+import unshared from "../../unshared/actions";
 
 export default {
     shared,
+    unshared,
 };

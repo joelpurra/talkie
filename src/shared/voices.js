@@ -42,8 +42,11 @@ export const getVoices = () => promiseTry(
 
 const getMappedVoice = voice => {
     return {
-        name: voice.name,
+        default: voice.default,
         lang: voice.lang,
+        localService: voice.localService,
+        name: voice.name,
+        voiceURI: voice.voiceURI,
     };
 };
 

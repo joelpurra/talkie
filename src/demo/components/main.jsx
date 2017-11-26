@@ -21,133 +21,246 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import configureAttribute from "../../shared/hocs/configure.jsx";
+import translateAttribute from "../../shared/hocs/translate.jsx";
 import styled from "../../shared/hocs/styled.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
-import * as listBase from "../../shared/styled/list/list-base.jsx";
-import * as textBase from "../../shared/styled/text/text-base.jsx";
 
-import {
-    handleBubbledLinkClick,
-} from "../../shared/utils/ui";
+import NavContainer from "../../shared/containers/nav-container.jsx";
+import TabContents from "../../shared/components/navigation/tab-contents.jsx";
 
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
 
-const styles = {
+import About from "./sections/about.jsx";
+import Features from "./sections/features.jsx";
+import Support from "./sections/support.jsx";
+import Usage from "./sections/usage.jsx";
+import VoicesContainer from "../containers/voices-container.jsx";
+
+const widthStyles = {
     minWidth: "400px",
-    maxWidth: "600px",
-    minHeight: "450px",
-    maxHeight: "1000px",
-    paddingBottom: "1em",
+    maxWidth: "1000px",
 };
 
+const styles = Object.assign(
+    {},
+    widthStyles,
+    {
+        minHeight: "450px",
+        paddingBottom: "1em",
+    }
+);
+
+@configureAttribute
+@translateAttribute
 @styled(styles)
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
-        // this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+        this.handleLinkClick = this.handleLinkClick.bind(this);
+        this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+
+        // TODO: better place to put navigation menu links?
+        this.links = [
+            {
+                tabId: "voices",
+                text: this.props.translate("frontend_voicesLinkText"),
+            },
+            {
+                tabId: "usage",
+                text: this.props.translate("frontend_usageLinkText"),
+            },
+            {
+                tabId: "features",
+                text: this.props.translate("frontend_featuresLinkText"),
+            },
+            {
+                tabId: "support",
+                // TODO: translate.
+                text: "Support",
+                // text: this.props.translate("frontend_supportLinkText"),
+            },
+            {
+                tabId: "about",
+                text: this.props.translate("frontend_aboutLinkText"),
+            },
+        ];
+
+        this.styled = {
+            navHeader: styled(Object.assign(
+                {},
+                widthStyles,
+                {
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: "#ffffff",
+                }
+            ))("div"),
+
+            main: styled({
+                marginTop: "8em",
+            })(layoutBase.main),
+
+            footerHr: styled({
+                marginTop: "3em",
+            })(layoutBase.hr),
+        };
     }
 
     static defaultProps = {
-        languages: [],
-        voices: [],
-        voicesCount: 0,
-        languagesCount: 0,
         isPremiumVersion: false,
+        versionNumber: null,
         versionName: null,
         systemType: null,
         osType: null,
+        activeTabId: null,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            lang: PropTypes.string.isRequired,
-        })).isRequired,
-        voicesCount: PropTypes.number.isRequired,
-        languagesCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
+        versionNumber: PropTypes.string.isRequired,
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+        activeTabId: PropTypes.string.isRequired,
         className: PropTypes.string.isRequired,
+        translate: PropTypes.func.isRequired,
+        configure: PropTypes.func.isRequired,
     };
+
+    componentDidMount() {
+        // NOTE: execute outside the synchronous rendering.
+        setTimeout(() => this.scrollToTop(), 100);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.activeTabId !== nextProps.activeTabId) {
+            this.scrollToTop();
+        }
+    }
+
+    scrollToTop() {
+        // NOTE: feels like this might be the wrong place to put this? Is there a better place?
+        // NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
+        document.body.scrollTop = 0;
+        window.scroll(0, 0);
+    }
 
     openUrlInNewTab(url) {
         this.props.actions.sharedNavigation.openUrlInNewTab(url);
     }
 
-    // handleOpenShortKeysConfigurationClick() {
-    //     this.props.actions.sharedNavigation.openShortKeysConfiguration();
-    // }
+    handleOpenShortKeysConfigurationClick() {
+        this.props.actions.sharedNavigation.openShortKeysConfiguration();
+    }
 
-    handleClick(e) {
-        return handleBubbledLinkClick(this.openUrlInNewTab, e);
+    handleLinkClick(url) {
+        this.props.actions.sharedNavigation.openUrlInNewTab(url);
     }
 
     render() {
         const {
-            languages,
-            voices,
-            voicesCount,
-            languagesCount,
+            activeTabId,
             isPremiumVersion,
+            versionNumber,
             versionName,
             systemType,
             osType,
             className,
         } = this.props;
 
-        const voicesList = voices.map((voice) =>
-          <listBase.li key={voice.name}>
-            {voice.name}
-            {" "}
-            ({voice.lang})
-          </listBase.li>
-        );
-
-        const languagesList = languages.map((language) =>
-          <listBase.li key={language}>
-            {language}
-          </listBase.li>
-        );
+        const linksToShow = this.links;
 
         return (
             <div className={className}>
-                <Header
-                    isPremiumVersion={isPremiumVersion}
-                />
+                <this.styled.navHeader>
+                    <Header
+                        isPremiumVersion={isPremiumVersion}
+                    />
+
+                    <NavContainer
+                        links={linksToShow}
+                    />
+
+                    <layoutBase.hr />
+                </this.styled.navHeader>
 
                 <layoutBase.hr />
 
-                <layoutBase.main
+                <this.styled.main
                     onClick={this.handleClick}
                 >
-                    <textBase.h2>{languagesCount}</textBase.h2>
 
-                    <listBase.ul>
-                        {languagesList}
-                    </listBase.ul>
+                    <TabContents
+                        id="voices"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <VoicesContainer />
+                    </TabContents>
 
-                    <textBase.h2>{voicesCount}</textBase.h2>
+                    <TabContents
+                        id="usage"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <Usage
+                            isPremiumVersion={isPremiumVersion}
+                            systemType={systemType}
+                            osType={osType}
+                            onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+                        />
+                    </TabContents>
 
-                    <listBase.ul>
-                        {voicesList}
-                    </listBase.ul>
-                </layoutBase.main>
+                    <TabContents
+                        id="features"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <Features
+                            isPremiumVersion={isPremiumVersion}
+                            systemType={systemType}
+                        />
+                    </TabContents>
 
-                <layoutBase.hr />
+                    <TabContents
+                        id="support"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <Support
+                            isPremiumVersion={isPremiumVersion}
+                            systemType={systemType}
+                            osType={osType}
+                        />
+                    </TabContents>
+
+                    <TabContents
+                        id="about"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <About
+                            isPremiumVersion={isPremiumVersion}
+                            versionName={versionName}
+                            systemType={systemType}
+                            osType={osType}
+                            onLicenseClick={this.handleLegaleseClick}
+                        />
+                    </TabContents>
+                </this.styled.main>
+
+                <this.styled.footerHr />
 
                 <Footer
                     isPremiumVersion={isPremiumVersion}
-                    versionName={versionName}
-                    systemType={systemType}
-                    osType={osType}
+                    versionNumber={versionNumber}
                 />
             </div>
         );

@@ -61,8 +61,8 @@ export default class Checkbox extends React.Component {
         return (
             <input
                 type="checkbox"
-                checked={checked}
-                disabled={disabled}
+                checked={checked || null}
+                disabled={disabled || null}
                 onChange={this.handleOnChange}
                 className={className}
             />

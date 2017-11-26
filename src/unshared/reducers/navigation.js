@@ -18,14 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+    createAssignmentActionMapReducer,
+} from "../../shared/utils/reduce-helpers";
+
 import * as actionTypes from "../constants/action-types-navigation";
 
-/*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
-
-export const setActiveTabId = (activeTabId) => {
-    return { type: actionTypes.SET_ACTIVE_TAB_ID, activeTabId };
+const initialState = {
+    activeTabId: null,
 };
 
-export const setShouldShowBackButton = (shouldShowBackButton) => {
-    return { type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON, shouldShowBackButton };
+const customActionsMap = {};
+
+const assignActionsMap = {
+    [actionTypes.SET_ACTIVE_TAB_ID]: "activeTabId",
 };
+
+export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

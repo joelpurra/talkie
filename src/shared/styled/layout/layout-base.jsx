@@ -27,3 +27,5 @@ export const main = styled(layoutBase.main)("main");
 export const nav = styled(layoutBase.nav)("nav");
 export const footer = styled(layoutBase.footer)("footer");
 export const hr = styled(layoutBase.hr)("hr");
+export const details = styled(layoutBase.details)("details");
+export const summary = styled(layoutBase.summary)("summary");

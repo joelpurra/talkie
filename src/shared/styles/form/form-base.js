@@ -39,7 +39,7 @@ export const select = {};
 
 export const option = {};
 
-export const multiLineSelect = {
+export const multilineSelect = {
     width: "100%",
     height: "8.8em",
     margin: "0",

@@ -26,17 +26,10 @@ import {
 import * as actionTypes from "../constants/action-types-navigation";
 
 const initialState = {
-    activeTabId: "usage",
+    shouldShowBackButton: false,
 };
 
 const actionsMap = {
-    [actionTypes.SET_ACTIVE_TAB_ID]: (previousState, action) => {
-        return {
-            ...previousState,
-            activeTabId: action.activeTabId,
-        };
-    },
-
     [actionTypes.SET_SHOULD_SHOW_BACK_BUTTON]: (previousState, action) => {
         return {
             ...previousState,

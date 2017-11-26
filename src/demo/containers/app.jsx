@@ -46,9 +46,11 @@ const mapStateToProps = (state) => {
         voicesCount: state.shared.voices.voices.length,
         languagesCount: languages.length,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        versionNumber: state.shared.metadata.versionNumber,
         versionName: state.shared.metadata.versionName,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
+        activeTabId: state.unshared.navigation.activeTabId,
     };
 };
 
@@ -65,27 +67,34 @@ const mapDispatchToProps = (dispatch) => {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends React.Component {
     static defaultProps = {
-        languages: [],
         voices: [],
+        languages: [],
         isPremiumVersion: false,
+        versionNumber: null,
         versionName: null,
         systemType: null,
         osType: null,
+        activeTabId: null,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string,
-        systemType: PropTypes.string,
+        versionNumber: PropTypes.string.isRequired,
+        versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+        activeTabId: PropTypes.string.isRequired,
     }
 
     render() {
@@ -96,10 +105,12 @@ export default class App extends React.Component {
             voicesCount,
             languagesCount,
             isPremiumVersion,
+            versionNumber,
             versionName,
             systemType,
             osType,
-          } = this.props;
+            activeTabId,
+        } = this.props;
 
         return (
             <Main
@@ -109,9 +120,11 @@ export default class App extends React.Component {
                 voicesCount={voicesCount}
                 languagesCount={languagesCount}
                 isPremiumVersion={isPremiumVersion}
+                versionNumber={versionNumber}
                 versionName={versionName}
                 systemType={systemType}
                 osType={osType}
+                activeTabId={activeTabId}
             />
         );
     }

@@ -19,9 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import shared from "../../shared/actions";
+import unshared from "../../unshared/actions";
 import * as navigation from "./navigation";
 
 export default {
     shared,
+    unshared,
     navigation,
 };

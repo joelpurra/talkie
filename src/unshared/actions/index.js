@@ -18,31 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    actionMapReducer,
-}
-    from "../../shared/utils/reduce-helpers";
+import * as navigation from "./navigation";
 
-import * as actionTypes from "../constants/action-types-navigation";
-
-const initialState = {
-    activeTabId: "usage",
+export default {
+    navigation,
 };
-
-const actionsMap = {
-    [actionTypes.SET_ACTIVE_TAB_ID]: (previousState, action) => {
-        return {
-            ...previousState,
-            activeTabId: action.activeTabId,
-        };
-    },
-
-    [actionTypes.SET_SHOULD_SHOW_BACK_BUTTON]: (previousState, action) => {
-        return {
-            ...previousState,
-            shouldShowBackButton: action.shouldShowBackButton,
-        };
-    },
-};
-
-export default actionMapReducer(actionsMap, initialState);

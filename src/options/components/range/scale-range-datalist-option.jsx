@@ -22,16 +22,27 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default class ScaleRangeDatalistOption extends React.Component {
-    static defaultProps = {};
+    static defaultProps = {
+        disabled: true,
+    };
 
     static propTypes = {
         value: PropTypes.number.isRequired,
+        disabled: PropTypes.bool.isRequired,
     };
 
     render() {
+        const {
+            disabled,
+            value,
+        } = this.props;
+
         return (
-            <option value={this.props.value}>
-                {this.props.value}
+            <option
+                value={value}
+                disabled={disabled || null}
+            >
+                {value}
             </option>
         );
     }

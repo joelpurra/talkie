@@ -349,10 +349,10 @@ function main() {
                 // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
                 const text = String(frontendText);
                 const voice = {
-                    name: String(frontendVoice.name),
-                    lang: String(frontendVoice.lang),
-                    rate: 0 + frontendVoice.rate,
-                    pitch: 0 + frontendVoice.pitch,
+                    name: typeof frontendVoice.name === "string" ? String(frontendVoice.name) : undefined,
+                    lang: typeof frontendVoice.lang === "string" ? String(frontendVoice.lang) : undefined,
+                    rate: !isNaN(frontendVoice.rate) ? (0 + frontendVoice.rate) : undefined,
+                    pitch: !isNaN(frontendVoice.pitch) ? (0 + frontendVoice.pitch) : undefined,
                 };
 
                 talkieBackground.startSpeakingTextInVoiceAction(text, voice);
@@ -367,7 +367,9 @@ function main() {
 
             // TODO: shared place for stored value constants.
             const speakLongTextsStorageKey = "speak-long-texts";
-            window.getSpeakLongTextsOption = () => storageManager.getStoredValue(speakLongTextsStorageKey);
+            // TODO: shared place for default/fallback values for booleans etcetera.
+            window.getSpeakLongTextsOption = () => storageManager.getStoredValue(speakLongTextsStorageKey)
+                .then((speakLongTexts) => speakLongTexts || false);
             // TODO: don't convert to boolean here, but somewhere centralized?
             window.setSpeakLongTextsOption = (speakLongTexts) => storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts === true);
 

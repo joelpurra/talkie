@@ -28,7 +28,6 @@ import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
 import Discretional from "../../../shared/components/discretional.jsx";
-import SocialShareIcon from "../../../shared/components/icon/social-share-icon.jsx";
 import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
 
 @configureAttribute
@@ -43,11 +42,15 @@ export default class About extends React.Component {
     static defaultProps = {
         isPremiumVersion: false,
         versionName: null,
+        systemType: null,
+        osType: null,
     };
 
     static propTypes = {
         isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
         onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
@@ -65,6 +68,8 @@ export default class About extends React.Component {
             isPremiumVersion,
             translate,
             versionName,
+            systemType,
+            osType,
         } = this.props;
 
         return (
@@ -73,7 +78,11 @@ export default class About extends React.Component {
                     <TalkieVersionIcon
                         isPremiumVersion={isPremiumVersion}
                     />
-                    Talkie {versionName}
+                    Talkie
+                    {" "}
+                    {versionName}
+                    {" "}
+                    ({systemType}/{osType})
                 </p>
 
                 <listBase.ul>
@@ -107,49 +116,6 @@ export default class About extends React.Component {
                         </listBase.li>
                     </Discretional>
                 </listBase.ul>
-
-                <textBase.h2>
-                    {translate("frontend_shareHeading")}
-                </textBase.h2>
-
-                <listBase.inlineUl>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.twitter")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="twitter" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.facebook")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="facebook" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.googleplus")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="googleplus" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.linkedin")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="linkedin" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                </listBase.inlineUl>
-
-                <textBase.h2>
-                    {translate("frontend_storyHeading")}
-                </textBase.h2>
-                <p>
-                    {translate("frontend_storyDescription")}
-                </p>
-                <p>
-                    {translate("frontend_storyThankYou")}
-                </p>
-                <p>
-                    —
-                    <textBase.a href="https://joelpurra.com/">
-                        Joel Purra
-                    </textBase.a>
-                </p>
 
                 <textBase.h2>
                     {translate("frontend_licenseHeading")}

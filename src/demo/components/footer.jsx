@@ -22,61 +22,59 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import configureAttribute from "../../shared/hocs/configure.jsx";
-import translateAttribute from "../../shared/hocs/translate.jsx";
 import styled from "../../shared/hocs/styled.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
 import * as lighter from "../../shared/styled/text/lighter.jsx";
 
-import TalkieVersionIcon from "../../shared/components/icon/talkie-version-icon.jsx";
-
-const styles = {};
+import Icon from "../../shared/components/icon/icon.jsx";
 
 @configureAttribute
-@translateAttribute
-@styled(styles)
 export default class Footer extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.styled = {
+            footer: styled({
+                lineHeight: "2em",
+                verticalAlign: "middle",
+            })(layoutBase.footer),
+
+            footerFirstLink: styled({
+                fontSize: "1.75em",
+            })(lighter.a),
+
+            footerSecondLink: styled({
+                // float: __MSG_@@bidi_end_edge__;
+            })(lighter.a),
+        };
+    }
+
     static defaultProps = {
-        isPremiumVersion: false,
-        versionName: null,
-        systemType: null,
-        osType: null,
+        versionNumber: false,
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string.isRequired,
-        systemType: PropTypes.string.isRequired,
-        osType: PropTypes.string,
-        translate: PropTypes.func.isRequired,
+        versionNumber: PropTypes.string.isRequired,
         configure: PropTypes.func.isRequired,
-        className: PropTypes.string.isRequired,
     }
 
     render() {
         const {
-            className,
-            versionName,
-            systemType,
-            osType,
-            isPremiumVersion,
-            translate,
+            configure,
+            versionNumber,
         } = this.props;
 
         return (
-            <layoutBase.footer className={className}>
-                <lighter.p>
-                    <TalkieVersionIcon
-                        isPremiumVersion={isPremiumVersion}
-                    />
+            <this.styled.footer>
+                <this.styled.footerFirstLink href={configure("urls.options")} rel="alternate noopener noreferrer" target="_blank">
+                    <Icon mode="standalone" size="0.75em" className="icon-settings" />
+                </this.styled.footerFirstLink>
 
-                    {translate("extensionShortName")}
-                    {" "}
-                    {versionName}
-                    {" "}
-                    ({systemType}/{osType})
-                </lighter.p>
-            </layoutBase.footer>
+                <this.styled.footerSecondLink href={configure("urls.options-about-from-demo")} id="footer-about-link">
+                    v{versionNumber}
+                </this.styled.footerSecondLink>
+            </this.styled.footer>
         );
     }
 }

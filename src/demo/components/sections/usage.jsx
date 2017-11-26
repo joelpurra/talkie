@@ -148,16 +148,27 @@ export default class Usage extends React.Component {
                                     <Discretional
                                         enabled={osType === "mac"}
                                     >
-                                            <textBase.kbd>⌥</textBase.kbd>
+                                        <textBase.kbd>
+                                                ⌥
+                                        </textBase.kbd>
                                     </Discretional>
 
                                     <Discretional
                                         enabled={osType !== "mac"}
                                     >
-                                            <textBase.kbd>Alt</textBase.kbd>
+                                        <textBase.kbd>
+                                                Alt
+                                        </textBase.kbd>
                                     </Discretional>
 
-                                    +<textBase.kbd>Shift</textBase.kbd>+<textBase.kbd>A</textBase.kbd>
+                                    +
+                                    <textBase.kbd>
+                                        Shift
+                                    </textBase.kbd>
+                                        +
+                                    <textBase.kbd>
+                                        A
+                                    </textBase.kbd>
                                 </this.styled.shortcutKeysTd>
                             </tableBase.tr>
 
@@ -179,16 +190,27 @@ export default class Usage extends React.Component {
                                         <Discretional
                                             enabled={osType === "mac"}
                                         >
-                                                <textBase.kbd>⌘</textBase.kbd>
+                                            <textBase.kbd>
+                                                    ⌘
+                                            </textBase.kbd>
                                         </Discretional>
 
                                         <Discretional
                                             enabled={osType !== "mac"}
                                         >
-                                                <textBase.kbd>Ctrl</textBase.kbd>
+                                            <textBase.kbd>
+                                                    Ctrl
+                                            </textBase.kbd>
                                         </Discretional>
 
-                                        +<textBase.kbd>Shift</textBase.kbd>+<textBase.kbd>A</textBase.kbd>
+                                        +
+                                        <textBase.kbd>
+                                            Shift
+                                        </textBase.kbd>
+                                        +
+                                        <textBase.kbd>
+                                            A
+                                        </textBase.kbd>
                                     </this.styled.shortcutKeysTd>
                                 </tableBase.tr>
                             </Discretional>
@@ -221,20 +243,30 @@ export default class Usage extends React.Component {
                                         <Discretional
                                             enabled={osType === "mac"}
                                         >
-                                                <textBase.kbd>⌘</textBase.kbd>
+                                            <textBase.kbd>
+                                                    ⌘
+                                            </textBase.kbd>
                                         </Discretional>
 
                                         <Discretional
                                             enabled={osType !== "mac"}
                                         >
-                                                <textBase.kbd>Ctrl</textBase.kbd>
+                                            <textBase.kbd>
+                                                    Ctrl
+                                            </textBase.kbd>
                                         </Discretional>
 
-                                        +<textBase.kbd>Shift</textBase.kbd>+<textBase.kbd>1</textBase.kbd>
+                                        +
+                                        <textBase.kbd>
+                                            Shift
+                                        </textBase.kbd>
+                                        +
+                                        <textBase.kbd>
+                                            1
+                                        </textBase.kbd>
                                     </this.styled.shortcutKeysTd>
                                 </tableBase.tr>
-                        </Discretional>
-
+                            </Discretional>
                         </tableBase.tbody>
                     </this.styled.shortcutKeysTable>
                 </div>
@@ -255,7 +287,7 @@ export default class Usage extends React.Component {
                             {translate("frontend_usageShortcutKeyAlternative04")}
                         </textBase.a>
                     </p>
-            </Discretional>
+                </Discretional>
             </section>
         );
     }

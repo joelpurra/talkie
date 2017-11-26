@@ -21,16 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configureAttribute from "../../../shared/hocs/configure.jsx";
-import translateAttribute from "../../../shared/hocs/translate.jsx";
 import styled from "../../../shared/hocs/styled.jsx";
 
 import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as tableBase from "../../../shared/styled/table/table-base.jsx";
 
-@configureAttribute
-@translateAttribute
 export default class Nav extends React.Component {
     constructor(props) {
         super(props);
@@ -38,10 +34,6 @@ export default class Nav extends React.Component {
         this.handleClick = this.handleClick.bind(this);
 
         this.styled = {
-            backButton: styled({
-                textDecoration: "none",
-            })(textBase.a),
-
             nav: styled({
                 lineHeight: "1.5em",
                 textAlign: "center",
@@ -65,16 +57,14 @@ export default class Nav extends React.Component {
     }
 
     static propTypes = {
-        initialActiveTabId: PropTypes.string,
+        initialActiveTabId: PropTypes.string.isRequired,
         onTabChange: PropTypes.func.isRequired,
-        shouldShowBackButton: PropTypes.bool.isRequired,
         links: PropTypes.arrayOf(
             PropTypes.shape({
-                tabId: PropTypes.string.isRequired,
-                translationKey: PropTypes.string.isRequired,
+                url: PropTypes.string,
+                tabId: PropTypes.string,
+                text: PropTypes.string.isRequired,
             })).isRequired,
-        translate: PropTypes.func.isRequired,
-        configure: PropTypes.func.isRequired,
     }
 
     handleClick(e) {
@@ -99,9 +89,6 @@ export default class Nav extends React.Component {
         const {
             links,
             initialActiveTabId,
-            translate,
-            shouldShowBackButton,
-            configure,
         } = this.props;
 
         const linkCells = links
@@ -110,41 +97,33 @@ export default class Nav extends React.Component {
                     ? this.styled.selectedLink
                     : textBase.a;
 
+                const url = link.url || "#" + link.tabId;
+
                 return (
                     <this.styled.navTableTd
                         key={link.tabId}
                         onClick={this.handleClick}
                     >
                         <SelectedLinkType
-                            href={"#" + link.tabId}
+                            href={url}
                         >
-                            {translate(link.translationKey)}
+                            {link.text}
                         </SelectedLinkType>
                     </this.styled.navTableTd>
                 );
-            }
-        );
+            });
 
-        let backButton = null;
-
-        if (shouldShowBackButton) {
-            backButton = <this.styled.backButton href={configure("urls.popup-passclick-false")}>
-                ←
-            </this.styled.backButton>;
-        }
+        const colCount = linkCells.length;
+        const colWidth = `${100 / linkCells.length}%`;
 
         return (
             <this.styled.nav className="columns">
                 <this.styled.navTable>
                     <colgroup>
-                        <col width="0*" />
-                        <col width="25%" colSpan="4" />
+                        <col width={colWidth} colSpan={colCount} />
                     </colgroup>
                     <tableBase.tbody>
                         <tableBase.tr>
-                            <this.styled.navTableTd>
-                                {backButton}
-                            </this.styled.navTableTd>
                             {linkCells}
                         </tableBase.tr>
                     </tableBase.tbody>

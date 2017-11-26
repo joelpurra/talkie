@@ -18,26 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+export const textColor = "#000000";
+
 export const text = {
-    color: "#000000",
+    color: textColor,
 };
 
+export const linkHighlightColor = "#3497ff";
+
 export const highlight = {
-    color: "#3497ff",
+    color: linkHighlightColor,
 };
 
 export const a = {
-    color: "#000000",
+    color: textColor,
     ":focus": highlight,
     ":hover": highlight,
     ":active": highlight,
 };
 
 export const h1 = {};
-export const h2 = {
-    marginTop: "1.5em",
-    fontSize: "1.1em",
-};
+export const h2 = {};
 export const h3 = {};
 export const h4 = {};
 export const h5 = {};
@@ -55,4 +56,13 @@ export const kbd = {
     borderRadius: "0.3em",
     boxShadow: "inset 0 -1px 0 #bbb",
     fontFamily: "Helvetica, Verdana, sans-serif",
+};
+
+export const blockquote = {
+    background: "#fafafa",
+    borderLeft: "0.5em solid #cccccc",
+    marginLeft: "0.5em",
+    marginTop: "1em",
+    marginBottom: "1em",
+    padding: "0.5em",
 };

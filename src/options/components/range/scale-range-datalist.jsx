@@ -26,22 +26,35 @@ import ScaleRangeDatalistOption from "./scale-range-datalist-option.jsx";
 export default class ScaleRangeDatalist extends React.Component {
     static defaultProps = {
         steps: [],
+        disabled: true,
     };
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
+        listName: PropTypes.string.isRequired,
         steps: PropTypes.arrayOf(PropTypes.number).isRequired,
+        disabled: PropTypes.bool.isRequired,
     };
 
     render() {
-        const listOptions = this.props.steps.map((step) =>
+        const {
+            steps,
+            disabled,
+            listName,
+        } = this.props;
+
+        const listOptions = steps.map((step) =>
             <ScaleRangeDatalistOption
                 key={step.toString()}
-                value={step} />
+                value={step}
+                disabled={disabled || null}
+            />
         );
 
         return (
-            <datalist id={this.props.id}>
+            <datalist
+                id={listName}
+                disabled={disabled || null}
+            >
                 {listOptions}
             </datalist>
         );

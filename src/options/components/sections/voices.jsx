@@ -21,26 +21,24 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import PremiumSection from "../../../shared/components/section/premium-section.jsx";
-
 // TODO: proper data handling.
 import {
     rateRange,
     pitchRange,
 } from "../../../shared/voices";
 
-import SpeakLongTexts from "./voices/speak-long-texts.jsx";
+// TODO: proper data handling.
+import {
+    getVoicesForLanguage,
+} from "../../../shared/utils/transform-voices";
+
+import PremiumSection from "../../../shared/components/section/premium-section.jsx";
 
 import SampleText from "./voices/sample-text.jsx";
-
 import AvailableLanguages from "./voices/available-languages.jsx";
-
 import AvailableVoices from "./voices/available-voices.jsx";
-
 import ToggleDefault from "./voices/toggle-default.jsx";
-
 import Rate from "./voices/rate.jsx";
-
 import Pitch from "./voices/pitch.jsx";
 
 import translateAttribute from "../../../shared/hocs/translate.jsx";
@@ -54,7 +52,6 @@ export default class Voices extends React.Component {
 
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
         this.handleVoiceChange = this.handleVoiceChange.bind(this);
-        this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
         this.handleSampleTextChange = this.handleSampleTextChange.bind(this);
         this.handleToogleDefaultClick = this.handleToogleDefaultClick.bind(this);
         this.handleRateChange = this.handleRateChange.bind(this);
@@ -65,10 +62,9 @@ export default class Voices extends React.Component {
         actions: {},
         languages: [],
         voices: [],
-        speakLongTexts: false,
         selectedLanguageCode: null,
         selectedVoiceName: null,
-        defaultVoiceNameForSelectedLanguage: null,
+        effectiveVoiceNameForSelectedLanguage: null,
         sampleText: null,
         rateForSelectedVoice: 1,
         pitchForSelectedVoice: 1,
@@ -77,15 +73,17 @@ export default class Voices extends React.Component {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
-        defaultVoiceNameForSelectedLanguage: PropTypes.string,
+        effectiveVoiceNameForSelectedLanguage: PropTypes.string,
         sampleText: PropTypes.string,
         rateForSelectedVoice: PropTypes.number.isRequired,
         pitchForSelectedVoice: PropTypes.number.isRequired,
@@ -101,16 +99,12 @@ export default class Voices extends React.Component {
         this.props.actions.loadSelectedVoiceName(value);
     }
 
-    handleSpeakLongTextsChange(speakLongTexts) {
-        this.props.actions.storeSpeakLongTexts(speakLongTexts);
-    }
-
     handleSampleTextChange(value) {
         this.props.actions.setSampleText(value);
     }
 
     handleToogleDefaultClick() {
-        this.props.actions.storeDefaultVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
+        this.props.actions.storeEffectiveVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
     }
 
     handleRateChange(value) {
@@ -123,7 +117,7 @@ export default class Voices extends React.Component {
 
     render() {
         const {
-            defaultVoiceNameForSelectedLanguage,
+            effectiveVoiceNameForSelectedLanguage,
             isPremiumVersion,
             languages,
             pitchForSelectedVoice,
@@ -131,15 +125,14 @@ export default class Voices extends React.Component {
             sampleText,
             selectedLanguageCode,
             selectedVoiceName,
-            speakLongTexts,
             translate,
             voices,
-      } = this.props;
+        } = this.props;
 
         let voicesForLanguage = null;
 
         if (typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0) {
-            voicesForLanguage = voices.filter((voice) => voice.lang.startsWith(selectedLanguageCode));
+            voicesForLanguage = getVoicesForLanguage(voices, selectedLanguageCode);
         } else {
             voicesForLanguage = voices;
         }
@@ -151,7 +144,7 @@ export default class Voices extends React.Component {
         const hasSelectedVoiceName = typeof selectedVoiceName === "string" && selectedVoiceName.length > 0;
 
         // TODO: move to function and/or state?
-        const isDefaultVoiceNameForLanguage = hasSelectedVoiceName && selectedVoiceName === defaultVoiceNameForSelectedLanguage;
+        const isEffectiveVoiceNameForLanguage = hasSelectedVoiceName && selectedVoiceName === effectiveVoiceNameForSelectedLanguage;
 
         return (
             <section>
@@ -200,7 +193,7 @@ export default class Voices extends React.Component {
                             <tableBase.td>
                                 <AvailableVoices
                                     onChange={this.handleVoiceChange}
-                                    defaultVoiceNameForSelectedLanguage={defaultVoiceNameForSelectedLanguage}
+                                    effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
                                     value={selectedVoiceName}
                                     voices={voicesForLanguage}
                                     disabled={voices.length === 0}
@@ -222,10 +215,11 @@ export default class Voices extends React.Component {
                             onClick={this.handleToogleDefaultClick}
                             languageCode={selectedLanguageCode}
                             voiceName={selectedVoiceName}
-                            disabled={!isPremiumVersion || !hasSelectedLanguageCode || !hasSelectedVoiceName || isDefaultVoiceNameForLanguage}
+                            disabled={!isPremiumVersion || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
                         />
 
                         <Rate
+                            listName="voice-rate-range-list"
                             onChange={this.handleRateChange}
                             voiceName={selectedVoiceName}
                             min={rateRange.min}
@@ -237,6 +231,7 @@ export default class Voices extends React.Component {
                         />
 
                         <Pitch
+                            listName="voice-pitch-range-list"
                             onChange={this.handlePitchChange}
                             voiceName={selectedVoiceName}
                             min={pitchRange.min}
@@ -248,18 +243,6 @@ export default class Voices extends React.Component {
                         />
                     </tableBase.table>
                 </PremiumSection>
-
-                <tableBase.table>
-                    <colgroup>
-                        <col width="100%" />
-                    </colgroup>
-
-                    <SpeakLongTexts
-                        onChange={this.handleSpeakLongTextsChange}
-                        speakLongTexts={speakLongTexts}
-                        disabled={voices.length === 0}
-                    />
-                </tableBase.table>
             </section>
         );
     }
