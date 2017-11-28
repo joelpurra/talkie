@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export default class MetadataManager {
     constructor(manifestProvider) {

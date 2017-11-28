@@ -21,11 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import styled from "../../../shared/hocs/styled.jsx";
+import styled from "../../hocs/styled.jsx";
 
-import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
-import * as textBase from "../../../shared/styled/text/text-base.jsx";
-import * as tableBase from "../../../shared/styled/table/table-base.jsx";
+import * as layoutBase from "../../styled/layout/layout-base.jsx";
+import * as textBase from "../../styled/text/text-base.jsx";
+import * as tableBase from "../../styled/table/table-base.jsx";
 
 export default class Nav extends React.Component {
     constructor(props) {

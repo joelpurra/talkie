@@ -30,7 +30,7 @@ import {
 } from "react-redux";
 
 import DynamicEnvironment from "../../split-environments/dynamic-environment.js";
-import Nav from "../../shared/components/navigation/nav.jsx";
+import Nav from "../components/navigation/nav.jsx";
 
 import actionCreators from "../../unshared/actions";
 

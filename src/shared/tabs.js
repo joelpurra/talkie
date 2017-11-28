@@ -20,11 +20,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     logDebug,
-} from "../shared/log";
+} from "./log";
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export const getBackgroundPage = () => promiseTry(
     // https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage

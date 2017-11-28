@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import {
     handleBubbledLinkClick,
-} from "../../../shared/utils/ui";
+} from "../../utils/ui";
 
 export default class TabContents extends React.Component {
     constructor(props) {

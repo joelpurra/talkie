@@ -21,12 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     logDebug,
     logInfo,
-} from "../shared/log";
+} from "./log";
 
 import {
     promiseTry,
     promiseTimeout,
-} from "../shared/promise";
+} from "./promise";
 
 export default class Execute {
     constructor(configuration) {

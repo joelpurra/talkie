@@ -21,9 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configureAttribute from "../../../shared/hocs/configure.jsx";
+import configureAttribute from "../../hocs/configure.jsx";
 
-import * as textBase from "../../../shared/styled/text/text-base.jsx";
+import * as textBase from "../../styled/text/text-base.jsx";
 
 import TalkieFreeIcon from "../icon/talkie-free-icon.jsx";
 
@@ -74,7 +74,7 @@ export default class FreeSection extends React.Component {
             <div className={classNames}>
                 <HeadingElement>
                     <textBase.a href={configure("urls.store-free")}>
-                    <TalkieFreeIcon />
+                        <TalkieFreeIcon />
                         Talkie
                     </textBase.a>
                 </HeadingElement>
