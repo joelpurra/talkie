@@ -56,10 +56,10 @@
     "message": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
-    "message": "Voice options"
+    "message": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "Select desired text on any web page and click the Talkie button in your browser bar."
+    "message": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Source code on Github"
@@ -110,7 +110,7 @@
     "message": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
@@ -173,7 +173,7 @@
     "message": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "Click the Talkie button in your browser bar"
+    "message": "Click the Talkie button in your browser toolbar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Available languages"
