@@ -38,6 +38,8 @@ export default function isSpeakingHoc(ComponentToWrap) {
         constructor(props) {
             super(props);
 
+            this.componentCleanup = this.componentCleanup.bind(this);
+            this.isListeningToBroadcasts = false;
             this.killSwitches = [];
 
             this.state = {
@@ -50,10 +52,20 @@ export default function isSpeakingHoc(ComponentToWrap) {
         }
 
         componentDidMount() {
+            window.addEventListener("beforeunload", this.componentCleanup);
+
             this.registerBroadcastListeners();
+            this.isListeningToBroadcasts = true;
         }
 
         componentWillUnmount() {
+            window.removeEventListener("beforeunload", this.componentCleanup);
+
+            this.componentCleanup();
+        }
+
+        componentCleanup() {
+            this.isListeningToBroadcasts = false;
             this.executeKillSwitches();
         }
 
@@ -71,6 +83,10 @@ export default function isSpeakingHoc(ComponentToWrap) {
         }
 
         updateIsSpeaking(data) {
+            if (this.isListeningToBroadcasts) {
+                return;
+            }
+
             this.setState({
                 isSpeaking: data,
             });

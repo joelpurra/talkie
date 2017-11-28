@@ -38,6 +38,8 @@ export default function progressHoc(ComponentToWrap) {
         constructor(props) {
             super(props);
 
+            this.componentCleanup = this.componentCleanup.bind(this);
+            this.isListeningToBroadcasts = false;
             this.killSwitches = [];
 
             this.state = {
@@ -52,13 +54,22 @@ export default function progressHoc(ComponentToWrap) {
         }
 
         componentDidMount() {
+            window.addEventListener("beforeunload", this.componentCleanup);
+
             this.registerBroadcastListeners();
+            this.isListeningToBroadcasts = true;
         }
 
         componentWillUnmount() {
-            this.executeKillSwitches();
+            window.removeEventListener("beforeunload", this.componentCleanup);
+
+            this.componentCleanup();
         }
 
+        componentCleanup() {
+            this.isListeningToBroadcasts = false;
+            this.executeKillSwitches();
+        }
         render() {
             const {
                 min,
@@ -77,6 +88,10 @@ export default function progressHoc(ComponentToWrap) {
         }
 
         updateProgress(data) {
+            if (this.isListeningToBroadcasts) {
+                return;
+            }
+
             this.setState({
                 min: data.min,
                 current: data.current,

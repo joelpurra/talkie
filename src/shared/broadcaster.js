@@ -22,15 +22,15 @@ import {
     logTrace,
     logWarn,
     logError,
-} from "../shared/log";
+} from "./log";
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 import {
     isDeadWrapper,
-} from "../shared/tabs";
+} from "./tabs";
 
 export default class Broadcaster {
     constructor() {
@@ -130,7 +130,7 @@ export default class Broadcaster {
                             // TODO: throw error instead of cleaning up?
                             // TODO: clean up code to avoid memory leaks, primarly in Firefox as it doesn't have onSuspend at the moment.
                             if (isDeadWrapper(listeningAction)) {
-                                logWarn(actionName, actionData, listeningAction);
+                                logWarn("Dead wrapper", "Sending message", actionName, actionData, listeningAction);
 
                                 return this.unregisterListeningAction(actionName, listeningAction);
                             }
