@@ -45,8 +45,14 @@ export default class Nav extends React.Component {
             })(tableBase.table),
 
             navTableTd: styled({
-                margin: 0,
-                padding: 0,
+                marginLeft: 0,
+                marginRight: 0,
+                marginTop: 0,
+                marginBottom: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
             })(tableBase.td),
 
             selectedLink: styled({
@@ -75,6 +81,7 @@ export default class Nav extends React.Component {
                 const tabId = href.replace("#", "");
 
                 e.preventDefault();
+                e.stopPropagation();
 
                 this.props.onTabChange(tabId);
 

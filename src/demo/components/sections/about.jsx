@@ -21,119 +21,55 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configureAttribute from "../../../shared/hocs/configure.jsx";
 import translateAttribute from "../../../shared/hocs/translate.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
 
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
-import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
-import Discretional from "../../../shared/components/discretional.jsx";
-import SocialShareIcon from "../../../shared/components/icon/social-share-icon.jsx";
-import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
+import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
-@configureAttribute
 @translateAttribute
+@configureAttribute
 export default class About extends React.Component {
-    static defaultProps = {
-        isPremiumVersion: false,
-    };
-
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
     }
 
     render() {
         const {
-            configure,
-            isPremiumVersion,
             translate,
+            configure,
         } = this.props;
 
         return (
             <section>
-                <p>
-                    <TalkieVersionIcon
-                        isPremiumVersion={isPremiumVersion}
-                    />
-                    {translate("extensionShortName")}
-                </p>
-
-                <listBase.ul>
-                    <listBase.li>
-                        <textBase.a href={configure("urls.support-feedback")}>
-                            {translate("frontend_supportAndFeedback")}
-                        </textBase.a>
-                    </listBase.li>
-                    <listBase.li>
-                        <textBase.a href={configure("urls.rate")}>
-                            {translate("frontend_rateIt")}
-                        </textBase.a>
-                    </listBase.li>
-                    <listBase.li>
-                        <textBase.a href={configure("urls.project")}>
-                            {translate("frontend_aboutProjectPageLinkText")}
-                        </textBase.a>
-                    </listBase.li>
-                    <listBase.li>
-                        <textBase.a href={configure("urls.github")}>
-                            {translate("frontend_aboutCodeOnGithubLinkText")}
-                        </textBase.a>
-                    </listBase.li>
-                    <Discretional
-                        enabled={!isPremiumVersion}
-                    >
-                        <listBase.li>
-                            <textBase.a href={configure("urls.store-premium")}>
-                                Talkie Premium
-                            </textBase.a>
-                        </listBase.li>
-                    </Discretional>
-                </listBase.ul>
+                <textBase.h2>
+                    {translate("frontend_storyHeading")}
+                </textBase.h2>
+                <textBase.p>
+                    {translate("frontend_storyDescription")}
+                </textBase.p>
+                <textBase.p>
+                    {translate("frontend_storyThankYou")}
+                </textBase.p>
+                <textBase.p>
+                —
+                    <textBase.a href="https://joelpurra.com/">
+                    Joel Purra
+                    </textBase.a>
+                </textBase.p>
 
                 <textBase.h2>
                     {translate("frontend_shareHeading")}
                 </textBase.h2>
 
-                <listBase.inlineUl>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.twitter")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="twitter" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.facebook")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="facebook" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.googleplus")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="googleplus" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.linkedin")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="linkedin" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                </listBase.inlineUl>
+                <textBase.p>
+                    {/* TODO: translate */}
+                    Do you like {translate("extensionShortName")}? If so, I would be happy if you could <textBase.a href={configure("urls.rate")}>give it a nice ⭐️ rating</textBase.a> 😃
+                </textBase.p>
 
-                <textBase.h2>
-                    {translate("frontend_storyHeading")}
-                </textBase.h2>
-                <p>
-                    {translate("frontend_storyDescription")}
-                </p>
-                <p>
-                    {translate("frontend_storyThankYou")}
-                </p>
-                <p>
-                    —
-                    <textBase.a href="https://joelpurra.com/">
-                        Joel Purra
-                    </textBase.a>
-                </p>
+                <SharingIcons />
             </section>
         );
     }

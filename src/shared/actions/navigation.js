@@ -27,3 +27,6 @@ export const openUrlInNewTab = (url) =>
 
 export const openShortKeysConfiguration = () =>
     (dispatch, getState, api) => api.openShortKeysConfiguration();
+
+export const openOptionsPage = () =>
+    (dispatch, getState, api) => api.openOptionsPage();

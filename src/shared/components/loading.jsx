@@ -18,18 +18,38 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export default class WebExtensionEnvironmentTranslatorProvider {
-    constructor(localeProvider) {
-        // TODO REMOVE: unused.
-        this.localeProvider = localeProvider;
+import React from "react";
+import PropTypes from "prop-types";
+
+import * as lighter from "../styled/text/lighter.jsx";
+
+export default class Loading extends React.Component {
+    static defaultProps = {
+        enabled: false,
+    };
+
+    static propTypes = {
+        enabled: PropTypes.bool.isRequired,
+        children: PropTypes.node.isRequired,
     }
 
-    translate(key, extras) {
-        // const locale = this.localeProvider.getTranslationLocale();
+    render() {
+        const {
+            enabled,
+            children,
+        } = this.props;
 
-        // TODO: use same translation system in frontend and backend?
-        const translated = browser.i18n.getMessage(key, extras);
+        if (enabled) {
+            return children;
+        }
 
-        return translated;
+        return (
+            <div>
+                <lighter.span>
+                    {/* TODO: translate */}
+                    Loading...
+                </lighter.span>
+            </div>
+        );
     }
 }

@@ -36,17 +36,11 @@ export const getLanguageGroupsAndLanguagesFromLanguages = (languages) => {
 
         if (language.length === 2) {
             languageGroupAndLanguageCodes = languageGroupAndLanguageCodes.concat(language);
-        }
-
-        if (language.length === 5) {
+        } else {
             languageGroupAndLanguageCodes = languageGroupAndLanguageCodes.concat([
                 language.substring(0, 2),
                 language,
             ]);
-        }
-
-        if (!languageGroupAndLanguageCodes) {
-            throw new Error("Unknown language code format.");
         }
 
         languageGroupAndLanguageCodes.forEach((languageGroupAndLanguageCode) => {
@@ -70,14 +64,8 @@ export const getLanguageGroupsFromLanguages = (languages) => {
 
         if (language.length === 2) {
             languageGroupCode = language;
-        }
-
-        if (language.length === 5) {
+        } else {
             languageGroupCode = language.substring(0, 2);
-        }
-
-        if (!languageGroupCode) {
-            throw new Error("Unknown language code format.");
         }
 
         obj[languageGroupCode] = (obj[languageGroupCode] || 0) + 1;

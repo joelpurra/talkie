@@ -87,10 +87,8 @@ export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry
                     typeof url === "string"
                     && (
                         /* eslint-disable no-sync */
-                        url.startsWith(internalUrlProvider.getSync("/src/popup/popup.html"))
-                        || url.startsWith(internalUrlProvider.getSync("/dist/options.html"))
-                        || url.startsWith(internalUrlProvider.getSync("/src/stay-alive/stay-alive.html"))
-                        || url.startsWith(internalUrlProvider.getSync("/dist/demo.html"))
+                        url.startsWith(internalUrlProvider.getSync("/src/"))
+                        || url.startsWith(internalUrlProvider.getSync("/dist/"))
                         /* eslint-enable no-sync */
                     )
                 ) {

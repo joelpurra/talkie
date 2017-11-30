@@ -72,6 +72,7 @@ export default class Header extends React.Component {
 
     handlePlayPauseClick(e) {
         e.preventDefault();
+        e.stopPropagation();
 
         this.props.playPauseClick();
 
@@ -89,7 +90,7 @@ export default class Header extends React.Component {
             <layoutBase.header>
                 {/* TODO: show for free Talkie, not for Talkie Premium. */}
                 <Discretional
-                    enabled={isPremiumVersion}
+                    enabled={!isPremiumVersion}
                 >
                     <this.styled.button href={configure("urls.store-premium")} id="header-premium-button">
                         {translate("extensionShortName_Premium")}

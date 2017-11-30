@@ -34,17 +34,25 @@ import Voices from "../components/sections/voices.jsx";
 import actionCreators from "../actions";
 
 import {
+    getLanguageGroupsFromLanguages,
     getLanguagesFromVoices,
 } from "../../shared/utils/transform-voices";
 
+// TODO: use a HOC or something else?
+import TalkieLocaleHelper from "../../shared/talkie-locale-helper";
+
+const talkieLocaleHelper = new TalkieLocaleHelper();
+
 const mapStateToProps = (state) => {
+    const languages = getLanguagesFromVoices(state.shared.voices.voices);
+    const languageGroups = getLanguageGroupsFromLanguages(languages);
+
     return {
         voices: state.shared.voices.voices,
-        languages: getLanguagesFromVoices(state.shared.voices.voices),
         navigatorLanguages: state.shared.voices.navigatorLanguages,
-        sampleText: state.shared.voices.sampleText,
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
-        osType: state.shared.metadata.osType,
+        voicesCount: state.shared.voices.voices.length,
+        languagesCount: languages.length,
+        languageGroupsCount: languageGroups.length,
     };
 };
 
@@ -58,13 +66,6 @@ const mapDispatchToProps = (dispatch) => {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class VoicesContainer extends React.Component {
-    componentDidMount() {
-        // TODO: is this the best place to load data?
-        this.props.actions.sharedVoices.loadVoices();
-        this.props.actions.sharedVoices.loadSampleText();
-        this.props.actions.sharedVoices.loadNavigatorLanguages();
-    }
-
     static propTypes = {
         actions: PropTypes.object.isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
@@ -74,33 +75,31 @@ export default class VoicesContainer extends React.Component {
             name: PropTypes.string.isRequired,
             voiceURI: PropTypes.string.isRequired,
         })).isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        sampleText: PropTypes.string,
-        isPremiumVersion: PropTypes.bool.isRequired,
-        osType: PropTypes.string,
+        voicesCount: PropTypes.number.isRequired,
+        languagesCount: PropTypes.number.isRequired,
+        languageGroupsCount: PropTypes.number.isRequired,
     }
 
     render() {
         const {
             actions,
-            isPremiumVersion,
-            osType,
-            languages,
+            languageGroupsCount,
+            languagesCount,
             navigatorLanguages,
-            sampleText,
             voices,
+            voicesCount,
         } = this.props;
 
         return (
             <Voices
                 actions={actions}
                 voices={voices}
-                languages={languages}
                 navigatorLanguages={navigatorLanguages}
-                sampleText={sampleText}
-                isPremiumVersion={isPremiumVersion}
-                osType={osType}
+                voicesCount={voicesCount}
+                languagesCount={languagesCount}
+                languageGroupsCount={languageGroupsCount}
+                talkieLocaleHelper={talkieLocaleHelper}
             />
         );
     }

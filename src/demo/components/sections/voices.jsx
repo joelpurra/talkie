@@ -28,20 +28,17 @@ import {
     getVoicesByLanguagesByLanguageGroupFromVoices,
 } from "../../../shared/utils/transform-voices";
 
-import LanguageHelper from "../../../shared/language-helper";
-
 import styled from "../../../shared/hocs/styled.jsx";
 
 import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
 
+import Loading from "../../../shared/components/loading.jsx";
 import Icon from "../../../shared/components/icon/icon.jsx";
 import PremiumSection from "../../../shared/components/section/premium-section.jsx";
 
 import translateAttribute from "../../../shared/hocs/translate.jsx";
-
-const languageHelper = new LanguageHelper();
 
 @translateAttribute
 export default class Voices extends React.Component {
@@ -54,10 +51,14 @@ export default class Voices extends React.Component {
         this.styled = {
             summaryH3: styled({
                 display: "inline-block",
-                margin: 0,
+                marginLeft: 0,
+                marginRight: 0,
                 marginTop: 0,
                 marginBottom: 0,
-                padding: "0.5em",
+                paddingLeft: "0.5em",
+                paddingRight: "0.5em",
+                paddingTop: "0.5em",
+                paddingBottom: "0.5em",
             })(textBase.h3),
 
             hr: styled({
@@ -79,11 +80,10 @@ export default class Voices extends React.Component {
     static defaultProps = {
         actions: {},
         voices: [],
-        languages: [],
         navigatorLanguages: [],
-        isPremiumVersion: false,
-        osType: null,
-        sampleText: null,
+        voicesCount: 0,
+        languagesCount: 0,
+        languageGroupsCount: 0,
     };
 
     static propTypes = {
@@ -95,17 +95,17 @@ export default class Voices extends React.Component {
             name: PropTypes.string.isRequired,
             voiceURI: PropTypes.string.isRequired,
         })).isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
-        osType: PropTypes.string,
-        sampleText: PropTypes.string.isRequired,
+        voicesCount: PropTypes.number.isRequired,
+        languagesCount: PropTypes.number.isRequired,
+        languageGroupsCount: PropTypes.number.isRequired,
         translate: PropTypes.func.isRequired,
+        talkieLocaleHelper: PropTypes.object.isRequired,
     }
 
     getSampleTextForLanguage(languageCode) {
         /* eslint-disable no-sync */
-        return languageHelper.getSampleTextSync(languageCode);
+        return this.props.talkieLocaleHelper.getSampleTextSync(languageCode);
         /* eslint-enable no-sync */
     }
 
@@ -115,13 +115,13 @@ export default class Voices extends React.Component {
         const languageCode = voice.lang;
 
         /* eslint-disable no-sync */
-        return languageHelper.getSampleTextSync(languageCode);
+        return this.props.talkieLocaleHelper.getSampleTextSync(languageCode);
         /* eslint-enable no-sync */
     }
 
     getTextDirectionForLanguageGroup(languageGroup) {
         /* eslint-disable no-sync */
-        return languageHelper.getBidiDirectionSync(languageGroup);
+        return this.props.talkieLocaleHelper.getBidiDirectionSync(languageGroup);
         /* eslint-enable no-sync */
     }
 
@@ -266,6 +266,20 @@ export default class Voices extends React.Component {
                 const languagesPerGroup = Object.keys(voicesByLanguagesByLanguageGroupFromVoices[languageGroup]);
                 languagesPerGroup.sort();
 
+                const sampleTextForLanguage = this.getSampleTextForLanguage(languageGroup);
+
+                let sampleTextBlockQuote = null;
+
+                if (sampleTextForLanguage) {
+                    sampleTextBlockQuote = <textBase.blockquote
+                        lang={languageGroup}
+                        className={this.getTextDirectionClassNameForLanguageGroup(languageGroup)}
+                        onClick={this.handleSpeakClickForLanguage.bind(null, languageGroup)}
+                    >
+                        {sampleTextForLanguage}
+                    </textBase.blockquote>;
+                }
+
                 return (
                     <div
                         key={languageGroup}>
@@ -276,12 +290,7 @@ export default class Voices extends React.Component {
                                 </this.styled.summaryH3>
                             </layoutBase.summary>
 
-                            <textBase.blockquote
-                                className={this.getTextDirectionClassNameForLanguageGroup(languageGroup)}
-                                onClick={this.handleSpeakClickForLanguage.bind(null, languageGroup)}
-                            >
-                                {this.getSampleTextForLanguage(languageGroup)}
-                            </textBase.blockquote>
+                            {sampleTextBlockQuote}
 
                             <textBase.p>
                                 <textBase.a href={`https://${languageGroup}.wikipedia.org/`}>
@@ -304,20 +313,15 @@ export default class Voices extends React.Component {
 
     render() {
         const {
-            osType,
-            isPremiumVersion,
-            languages,
+            languageGroupsCount,
+            languagesCount,
             navigatorLanguages,
-            sampleText,
             translate,
             voices,
+            voicesCount,
         } = this.props;
 
-        const voicesCount = voices.length;
-        const languagesCount = languages.length;
-
-        const languageGroups = getLanguageGroupsFromLanguages(languages);
-        const languageGroupsCount = languageGroups.length;
+        const haveVoices = voicesCount > 0;
 
         return (
             <section>
@@ -327,7 +331,7 @@ export default class Voices extends React.Component {
 
                 <PremiumSection>
                     {/* TODO: translate */}
-                    Change voice setting with Talkie Premium
+                    With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice.
                 </PremiumSection>
 
                 <textBase.h2>
@@ -335,14 +339,22 @@ export default class Voices extends React.Component {
                     Your preferred browser languages
                 </textBase.h2>
 
-                {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, navigatorLanguages)}
+                <Loading
+                    enabled={haveVoices}
+                >
+                    {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, navigatorLanguages)}
+                </Loading>
 
                 <textBase.h2>
                     {/* TODO: translate */}
-                    All Installed languages ({languageGroupsCount}), dialects ({languagesCount}), and voices ({voicesCount})
+                    All installed languages ({languageGroupsCount}), dialects ({languagesCount}), and voices ({voicesCount})
                 </textBase.h2>
 
-                {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, null)}
+                <Loading
+                    enabled={haveVoices}
+                >
+                    {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, null)}
+                </Loading>
             </section>
         );
     }

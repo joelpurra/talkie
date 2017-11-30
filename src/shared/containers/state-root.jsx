@@ -38,8 +38,6 @@ const mapStateToProps = (state) => {
         isSpeaking: state.shared.speaking.isSpeaking,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionName: state.shared.metadata.versionName,
-        systemType: state.shared.metadata.systemType,
-        osType: state.shared.metadata.osType,
     };
 };
 
@@ -53,16 +51,12 @@ export default class StateRoot extends React.Component {
         isSpeaking: false,
         isPremiumVersion: false,
         versionName: null,
-        systemType: null,
-        osType: null,
     };
 
     static propTypes = {
         isSpeaking: PropTypes.bool.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string,
-        systemType: PropTypes.string,
-        osType: PropTypes.string,
         children: PropTypes.element.isRequired,
     }
 
@@ -71,17 +65,13 @@ export default class StateRoot extends React.Component {
             isSpeaking,
             isPremiumVersion,
             versionName,
-            systemType,
-            osType,
-          } = this.props;
+        } = this.props;
 
         return (
             <StyleRoot
                 isSpeaking={isSpeaking}
                 isPremiumVersion={isPremiumVersion}
                 versionName={versionName}
-                systemType={systemType}
-                osType={osType}
             >
                 {React.Children.only(this.props.children)}
             </StyleRoot>

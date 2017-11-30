@@ -50,7 +50,6 @@ const mapStateToProps = (state) => {
         languageGroupsCount: languageGroups.length,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionNumber: state.shared.metadata.versionNumber,
-        versionName: state.shared.metadata.versionName,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
         activeTabId: state.unshared.navigation.activeTabId,
@@ -60,6 +59,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
+            sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
             sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
             sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
             sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
@@ -77,7 +77,6 @@ export default class App extends React.Component {
         languageGroupsCount: 0,
         isPremiumVersion: false,
         versionNumber: null,
-        versionName: null,
         systemType: null,
         osType: null,
         activeTabId: null,
@@ -98,7 +97,6 @@ export default class App extends React.Component {
         languageGroupsCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
-        versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
         activeTabId: PropTypes.string.isRequired,
@@ -114,7 +112,6 @@ export default class App extends React.Component {
             languageGroupsCount,
             isPremiumVersion,
             versionNumber,
-            versionName,
             systemType,
             osType,
             activeTabId,
@@ -130,7 +127,6 @@ export default class App extends React.Component {
                 languageGroupsCount={languageGroupsCount}
                 isPremiumVersion={isPremiumVersion}
                 versionNumber={versionNumber}
-                versionName={versionName}
                 systemType={systemType}
                 osType={osType}
                 activeTabId={activeTabId}

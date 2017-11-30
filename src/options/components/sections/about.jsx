@@ -27,7 +27,6 @@ import translateAttribute from "../../../shared/hocs/translate.jsx";
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
-import Discretional from "../../../shared/components/discretional.jsx";
 import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
 
 @configureAttribute
@@ -44,6 +43,12 @@ export default class About extends React.Component {
         versionName: null,
         systemType: null,
         osType: null,
+        voices: [],
+        languages: [],
+        languageGroups: [],
+        navigatorLanguage: null,
+        navigatorLanguages: [],
+        translatedLanguages: [],
     };
 
     static propTypes = {
@@ -51,6 +56,18 @@ export default class About extends React.Component {
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+        voices: PropTypes.arrayOf(PropTypes.shape({
+            default: PropTypes.bool.isRequired,
+            lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
+        })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        navigatorLanguage: PropTypes.string,
+        navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
@@ -70,21 +87,19 @@ export default class About extends React.Component {
             versionName,
             systemType,
             osType,
+            navigatorLanguage,
+            navigatorLanguages,
+            translatedLanguages,
+            voices,
+            languages,
+            languageGroups,
         } = this.props;
+
+        const voiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
+        voiceNames.sort();
 
         return (
             <section>
-                <p>
-                    <TalkieVersionIcon
-                        isPremiumVersion={isPremiumVersion}
-                    />
-                    Talkie
-                    {" "}
-                    {versionName}
-                    {" "}
-                    ({systemType}/{osType})
-                </p>
-
                 <listBase.ul>
                     <listBase.li>
                         <textBase.a href={configure("urls.support-feedback")}>
@@ -106,16 +121,99 @@ export default class About extends React.Component {
                             {translate("frontend_aboutCodeOnGithubLinkText")}
                         </textBase.a>
                     </listBase.li>
-                    <Discretional
-                        enabled={!isPremiumVersion}
-                    >
-                        <listBase.li>
-                            <textBase.a href={configure("urls.store-premium")}>
-                                Talkie Premium
-                            </textBase.a>
-                        </listBase.li>
-                    </Discretional>
                 </listBase.ul>
+
+                <textBase.h2>
+                    {/* TODO: translate */}
+                    {translate("frontend_systemHeading")}
+                    System details
+                </textBase.h2>
+
+                <listBase.dl>
+                    <listBase.dt>
+                        Installed version
+                    </listBase.dt>
+                    <listBase.dd>
+                        <TalkieVersionIcon
+                            isPremiumVersion={isPremiumVersion}
+                        />
+                        Talkie
+                        {" "}
+                        {versionName}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Browser type
+                    </listBase.dt>
+                    <listBase.dd>
+                        {systemType}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Operating system type
+                    </listBase.dt>
+                    <listBase.dd>
+                        {osType}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Preferred browser language
+                    </listBase.dt>
+                    <listBase.dd>
+                        {navigatorLanguage}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Preferred browser languages ({navigatorLanguages.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {navigatorLanguages.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Installed voice languages ({languageGroups.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {languageGroups.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Installed voice dialects ({languages.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {languages.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Installed voices ({voices.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {voiceNames.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Talkie user interface language
+                    </listBase.dt>
+                    <listBase.dd>
+                        {translate("extensionLocale")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Talkie user interface languages ({translatedLanguages.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {translatedLanguages.join(", ")}
+                    </listBase.dd>
+                </listBase.dl>
 
                 <textBase.h2>
                     {translate("frontend_licenseHeading")}

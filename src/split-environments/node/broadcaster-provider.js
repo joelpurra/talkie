@@ -18,8 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+    logWarn,
+} from "../../shared/log";
+
 export default class NodeEnvironmentBroadcasterProvider {
     registerListeningAction(/* eslint-disable no-unused-vars */event, handler/* eslint-enable no-unused-vars */) {
+        logWarn("NodeEnvironmentBroadcasterProvider", "registerListeningAction", "ignored", event);
+
         return Promise.resolve()
             // NOTE: returning a dummy killswitch.
             .then(() => () => {});

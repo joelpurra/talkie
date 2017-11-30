@@ -101,6 +101,7 @@ import ShortcutKeyManager from "./shortcut-key-manager";
 
 import MetadataManager from "../shared/metadata-manager";
 
+import WelcomeManager from "./welcome-manager";
 import OnInstalledManager from "./on-installed-manager";
 
 import StorageManager from "./storage-manager";
@@ -117,7 +118,7 @@ const onInstallListenerEventQueue = [];
 const startOnInstallListener = () => {
     const onInstallListener = (event) => {
         const onInstallEvent = {
-            reason: "event",
+            source: "event",
             event: event,
         };
 
@@ -133,7 +134,7 @@ const startOnInstallListener = () => {
         browser.runtime.onInstalled.addListener(onInstallListener);
     } else {
         const onInstallEvent = {
-            reason: "fallback",
+            source: "fallback",
             event: null,
         };
 
@@ -147,7 +148,7 @@ function main() {
     const manifestProvider = new ManifestProvider();
     const metadataManager = new MetadataManager(manifestProvider);
     const internalUrlProvider = new InternalUrlProvider();
-    const configuration = new Configuration(metadataManager, configurationObject, internalUrlProvider);
+    const configuration = new Configuration(metadataManager, configurationObject);
     const storageManager = new StorageManager();
 
     const broadcaster = new Broadcaster();
@@ -169,7 +170,7 @@ function main() {
 
     // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
     const speechChain = new Chain();
-    const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translatorProvider, internalUrlProvider);
+    const talkieBackground = new TalkieBackground(speechChain, broadcaster, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translatorProvider, internalUrlProvider);
     const permissionsManager = new PermissionsManager();
     const clipboardManager = new ClipboardManager(talkieBackground, permissionsManager);
     const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager, translatorProvider);
@@ -191,7 +192,7 @@ function main() {
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
     const suspensionConnectorManager = new SuspensionConnectorManager();
-    const suspensionManager = new SuspensionManager(suspensionConnectorManager, internalUrlProvider);
+    const suspensionManager = new SuspensionManager(suspensionConnectorManager);
     const iconManager = new IconManager(metadataManager);
     const buttonPopupManager = new ButtonPopupManager(translatorProvider);
 
@@ -199,7 +200,8 @@ function main() {
 
     const plug = new Plug(contentLogger, execute);
 
-    const onInstalledManager = new OnInstalledManager(storageManager, metadataManager, contextMenuManager, onInstallListenerEventQueue);
+    const welcomeManager = new WelcomeManager();
+    const onInstalledManager = new OnInstalledManager(storageManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue);
 
     (function addOnInstalledEventQueuePolling() {
         // NOTE: run the function once first, to allow for a very long interval.
@@ -303,16 +305,16 @@ function main() {
         .then(() => {
             // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-            if (browser.runtime.onSuspend) {
+            if ("onSuspend" in browser.runtime) {
                 browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => talkieBackground.onExtensionSuspendHandler()));
                 // browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => suspensionManager.unintialize()));
             }
 
             // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-            if (browser.runtime.onSuspendCanceled) {
-                // browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
-            }
+            // if ("onSuspendCanceled" in browser.runtime) {
+            //     browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
+            // }
 
             // NOTE: used when the popup has been disabled.
             browser.browserAction.onClicked.addListener(loggedPromise("onClicked", () => talkieBackground.startStopSpeakSelectionOnPage()));
@@ -356,6 +358,14 @@ function main() {
                 };
 
                 talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            };
+            window.startSpeakInLanguageWithOverridesFromFrontend = (frontendText, frontendLanguageCode) => {
+                // NOTE: not sure if copying these variables have any effect.
+                // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+                const text = String(frontendText);
+                const languageCode = String(frontendLanguageCode);
+
+                talkieBackground.startSpeakingTextInLanguageWithOverridesAction(text, languageCode);
             };
 
             window.getVersionNumber = () => metadataManager.getVersionNumber();
@@ -403,5 +413,5 @@ try {
 
     main();
 } catch (error) {
-    logError("onExtensionInstalledHandler", error);
+    logError("background", error);
 }

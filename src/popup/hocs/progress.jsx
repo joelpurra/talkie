@@ -88,7 +88,7 @@ export default function progressHoc(ComponentToWrap) {
         }
 
         updateProgress(data) {
-            if (this.isListeningToBroadcasts) {
+            if (!this.isListeningToBroadcasts) {
                 return;
             }
 
@@ -101,7 +101,10 @@ export default function progressHoc(ComponentToWrap) {
 
         executeKillSwitches() {
             // NOTE: expected to have only synchronous methods for the relevant parts.
-            this.killSwitches.forEach((killSwitch) => {
+            const killSwitchesToExecute = this.killSwitches;
+            this.killSwitches = [];
+
+            killSwitchesToExecute.forEach((killSwitch) => {
                 try {
                     killSwitch();
                 } catch (error) {

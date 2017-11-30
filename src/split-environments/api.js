@@ -30,6 +30,7 @@ import {
 import {
     openUrlInNewTab as sharedOpenUrlInNewTab,
     openShortKeysConfiguration as sharedOpenShortKeysConfiguration,
+    openOptionsPage as sharedOpenOptionsPage,
 } from "../shared/urls";
 
 import {
@@ -41,13 +42,15 @@ import {
 } from "../shared/basic";
 
 export default class Api {
-    constructor(metadataManager, configuration, translator, broadcastProvider) {
+    constructor(metadataManager, configuration, translator, broadcastProvider, talkieLocaleHelper) {
         this.metadataManager = metadataManager;
         this.configuration = configuration;
         this.translator = translator;
         this.broadcastProvider = broadcastProvider;
+        this.talkieLocaleHelper = talkieLocaleHelper;
 
         this.debouncedSpeak = debounce(this.speak.bind(this), 200);
+        this.debouncedSpeakTextInLanguageWithOverrides = debounce(this.speakTextInLanguageWithOverrides.bind(this), 200);
     }
 
     getConfigurationValueSync(path) {
@@ -69,6 +72,12 @@ export default class Api {
         return getBackgroundPage()
             .then((background) => background.stopSpeakFromFrontend()
                 .then(() => background.startSpeakFromFrontend(text, voice)));
+    }
+
+    speakTextInLanguageWithOverrides(text, languageCode) {
+        return getBackgroundPage()
+            .then((background) => background.stopSpeakFromFrontend()
+                .then(() => background.startSpeakInLanguageWithOverridesFromFrontend(text, languageCode)));
     }
 
     getVoices() {
@@ -122,6 +131,10 @@ export default class Api {
             .then((background) => background.toggleLanguageVoiceOverrideName(languageCode, voiceName));
     }
 
+    getTranslatedLanguages() {
+        return this.talkieLocaleHelper.getTranslatedLanguages();
+    }
+
     isPremiumVersion() {
         return this.metadataManager.isPremiumVersion();
     }
@@ -148,6 +161,10 @@ export default class Api {
 
     openShortKeysConfiguration() {
         return sharedOpenShortKeysConfiguration();
+    }
+
+    openOptionsPage() {
+        return sharedOpenOptionsPage();
     }
 
     registerListeningAction(event, handler) {

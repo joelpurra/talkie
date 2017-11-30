@@ -67,7 +67,16 @@ export default class NavContainer extends React.Component {
     }
 
     setLocationHash(locationHash) {
-        document.location.hash = locationHash;
+        // HACK: don't do browser detection.
+        // https://stackoverflow.com/questions/41819284/how-to-determine-in-which-browser-your-extension-background-script-is-executing
+        // https://stackoverflow.com/a/41820692
+        const isFirefox = typeof InstallTrigger !== "undefined";
+
+        // NOTE: this breaks navigation in the options page in the preferences pane in firefox, so skip.
+        // TODO: don't disable on other pages (demo, options in normal tab) in firefox.
+        if (!isFirefox) {
+            document.location.hash = locationHash;
+        }
     }
 
     componentDidMount() {

@@ -144,6 +144,20 @@ export const setEffectiveVoiceNameForSelectedLanguage = (effectiveVoiceNameForSe
     return { type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE, effectiveVoiceNameForSelectedLanguage };
 };
 
+function getNavigatorLanguage() {
+    let lang = null;
+
+    try {
+        lang = navigator.language;
+    }
+    catch (error)
+    {
+        // NOTE: swallowing errors.
+    }
+
+    return lang;
+};
+
 function getNavigatorLanguages() {
     let langs = null;
 
@@ -159,6 +173,15 @@ function getNavigatorLanguages() {
     return langs;
 };
 
+export const loadNavigatorLanguage = () =>
+    (dispatch) => Promise.resolve()
+        .then(() => getNavigatorLanguage())
+        .then((navigatorLanguage) => dispatch(setNavigatorLanguage(navigatorLanguage)));
+
+export const setNavigatorLanguage = (navigatorLanguage) => {
+    return { type: actionTypes.SET_NAVIGATOR_LANGUAGE, navigatorLanguage };
+};
+
 export const loadNavigatorLanguages = () =>
     (dispatch) => Promise.resolve()
         .then(() => getNavigatorLanguages())
@@ -166,6 +189,14 @@ export const loadNavigatorLanguages = () =>
 
 export const setNavigatorLanguages = (navigatorLanguages) => {
     return { type: actionTypes.SET_NAVIGATOR_LANGUAGES, navigatorLanguages };
+};
+
+export const loadTranslatedLanguages = () =>
+    (dispatch, getState, api) => api.getTranslatedLanguages()
+        .then((translatedLanguages) => dispatch(setTranslatedLanguages(translatedLanguages)));
+
+export const setTranslatedLanguages = (translatedLanguages) => {
+    return { type: actionTypes.SET_TRANSLATED_LANGUAGES, translatedLanguages };
 };
 
 export const speakState = () =>

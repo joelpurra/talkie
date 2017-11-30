@@ -30,10 +30,7 @@ import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
 import Discretional from "../../../shared/components/discretional.jsx";
-import FreeSection from "../../../shared/components/section/free-section.jsx";
-import PremiumSection from "../../../shared/components/section/premium-section.jsx";
-import TalkieFreeIcon from "../../../shared/components/icon/talkie-free-icon.jsx";
-import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-icon.jsx";
+import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
 @configureAttribute
 @translateAttribute
@@ -44,11 +41,21 @@ export default class Features extends React.Component {
         this.styled = {
             summaryH4: styled({
                 display: "inline-block",
-                margin: 0,
+                marginLeft: 0,
+                marginRight: 0,
                 marginTop: 0,
                 marginBottom: 0,
-                padding: "0.5em",
+                paddingLeft: "0.5em",
+                paddingRight: "0.5em",
+                paddingTop: "0.5em",
+                paddingBottom: "0.5em",
             })(textBase.h4),
+
+            sharingIcons: styled({
+                display: "inline-block",
+                verticalAlign: "middle",
+                fontSize: "0.5em",
+            })(SharingIcons),
         };
     }
 
@@ -112,7 +119,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        How does Talkie detect installed voices?
+                            How does Talkie detect installed voices?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -128,7 +135,7 @@ export default class Features extends React.Component {
                         <layoutBase.summary>
                             <this.styled.summaryH4>
                                 {/* TODO: translate */}
-                            How can I install more voices in Talkie on Windows?
+                                How can I install more voices in Talkie on Windows?
                             </this.styled.summaryH4>
                         </layoutBase.summary>
                         <textBase.p>
@@ -145,7 +152,7 @@ export default class Features extends React.Component {
                         <layoutBase.summary>
                             <this.styled.summaryH4>
                                 {/* TODO: translate */}
-                            How can I install more voices in Talkie on ChromeOS?
+                                How can I install more voices in Talkie on ChromeOS?
                             </this.styled.summaryH4>
                         </layoutBase.summary>
                         <textBase.p>
@@ -162,12 +169,12 @@ export default class Features extends React.Component {
                         <layoutBase.summary>
                             <this.styled.summaryH4>
                                 {/* TODO: translate */}
-                            How can I install more voices in Talkie on macOS?
+                                How can I install more voices in Talkie on macOS?
                             </this.styled.summaryH4>
                         </layoutBase.summary>
                         <textBase.p>
                             {/* TODO: translate */}
-                            Additional voices can be automatically installed from the system preferences for speech; see separate installation instructions. <textBase.a href="https://support.apple.com/kb/PH25378">macOS Sierra (10.12)</textBase.a>.
+                            Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions. <textBase.a href="https://support.apple.com/kb/PH25378">macOS Sierra (10.12)</textBase.a>.
                         </textBase.p>
                     </layoutBase.details>
                 </Discretional>
@@ -179,12 +186,12 @@ export default class Features extends React.Component {
                         <layoutBase.summary>
                             <this.styled.summaryH4>
                                 {/* TODO: translate */}
-                            How can I install more voices in Talkie on Linux?
+                                How can I install more voices in Talkie on Linux?
                             </this.styled.summaryH4>
                         </layoutBase.summary>
                         <textBase.p>
                             {/* TODO: translate */}
-                            Currently not sure, as I have not tried installing voices myself on any distributions. It is also a matter of if and how browers detect any installed voices. See separate installation instructions. Please let me know what your expirences are! <textBase.a href="http://espeak.sourceforge.net">eSpeak (open source)</textBase.a>.
+                            Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are! <textBase.a href="http://espeak.sourceforge.net">eSpeak (open source)</textBase.a>.
                         </textBase.p>
                     </layoutBase.details>
                 </Discretional>
@@ -193,7 +200,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Can you add support for <em>&lt;a new voice&gt;</em> in Talkie?
+                            Can you add support for <em>&lt;a new voice&gt;</em> in Talkie?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -206,7 +213,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Can you add support for <em>&lt;a new language&gt;</em> in Talkie?
+                            Can you add support for <em>&lt;a new language&gt;</em> in Talkie?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -219,12 +226,25 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Does Talkie work offline?
+                            Does Talkie work offline?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
                         {/* TODO: translate */}
                         Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online.
+                    </textBase.p>
+                </layoutBase.details>
+
+                <layoutBase.details>
+                    <layoutBase.summary>
+                        <this.styled.summaryH4>
+                            {/* TODO: translate */}
+                            Does Talkie Premium have more voices than Talkie?
+                        </this.styled.summaryH4>
+                    </layoutBase.summary>
+                    <textBase.p>
+                        {/* TODO: translate */}
+                        No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though.
                     </textBase.p>
                 </layoutBase.details>
 
@@ -237,7 +257,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Why does Talkie stop reading after 20-30 words or a few seconds?
+                            Why does Talkie stop reading after 20-30 words or a few seconds?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -250,7 +270,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Why does Talkie sometime have a long pause between sentences and words?
+                            Why does Talkie sometime have a long pause between sentences and words?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -263,7 +283,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Does Talkie work in Google Docs?
+                            Does Talkie work in Google Docs?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -276,7 +296,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Can I report bug?
+                            Should I report bugs?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -294,7 +314,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Can Talkie read PDF files?
+                            Can Talkie read PDF files?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -307,7 +327,20 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Can I request new features?
+                            Does Talkie have a word limit?
+                        </this.styled.summaryH4>
+                    </layoutBase.summary>
+                    <textBase.p>
+                        {/* TODO: translate */}
+                        No. Talkie has unlimited usage — you can read as many words and as long texts as you like.
+                    </textBase.p>
+                </layoutBase.details>
+
+                <layoutBase.details>
+                    <layoutBase.summary>
+                        <this.styled.summaryH4>
+                            {/* TODO: translate */}
+                            Can I request new features?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
@@ -324,7 +357,7 @@ export default class Features extends React.Component {
                         <layoutBase.summary>
                             <this.styled.summaryH4>
                                 {/* TODO: translate */}
-                            How to change shortcut keys in Google Chrome?
+                                How to change shortcut keys in Google Chrome?
                             </this.styled.summaryH4>
                         </layoutBase.summary>
                         <textBase.p>
@@ -348,7 +381,7 @@ export default class Features extends React.Component {
                         <layoutBase.summary>
                             <this.styled.summaryH4>
                                 {/* TODO: translate */}
-                            How to change shortcut keys in Firefox?
+                                How to change shortcut keys in Firefox?
                             </this.styled.summaryH4>
                         </layoutBase.summary>
                         <textBase.p>
@@ -356,6 +389,40 @@ export default class Features extends React.Component {
                         </textBase.p>
                     </layoutBase.details>
                 </Discretional>
+
+                <layoutBase.details>
+                    <layoutBase.summary>
+                        <this.styled.summaryH4>
+                            {/* TODO: translate */}
+                            Can I help develop Talkie?
+                        </this.styled.summaryH4>
+                    </layoutBase.summary>
+                    <textBase.p>
+                        {/* TODO: translate */}
+                        Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions.
+                    </textBase.p>
+                </layoutBase.details>
+
+                <layoutBase.details>
+                    <layoutBase.summary>
+                        <this.styled.summaryH4>
+                            {/* TODO: translate */}
+                            Can I help Talkie in any other way?
+                        </this.styled.summaryH4>
+                    </layoutBase.summary>
+                    <textBase.p>
+                        {/* TODO: translate */}
+                        Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!
+                    </textBase.p>
+
+                    <textBase.p>
+                        <this.styled.sharingIcons />
+
+                        <textBase.a href={configure("urls.rate")}>
+                            {translate("frontend_rateIt")}
+                        </textBase.a>
+                    </textBase.p>
+                </layoutBase.details>
 
                 <textBase.h3>
                     {/* TODO: translate */}
@@ -366,12 +433,12 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Why does Talkie Premium cost money?
+                            Why does Talkie Premium cost money?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>
                         {/* TODO: translate */}
-                        It takes quite a lot of time and effort to develop Talkie, so to financially support the development some features are available for Talkie Premium users only. Note that the source code itself for both Talkie and Talkie Premium is freely available, so if you want you can compile it yourself. Talkie Premium only costs money when packaged and distributed for convenience.
+                        It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users.
                     </textBase.p>
                 </layoutBase.details>
 
@@ -405,7 +472,7 @@ export default class Features extends React.Component {
                     <layoutBase.summary>
                         <this.styled.summaryH4>
                             {/* TODO: translate */}
-                        Can I get a free copy of Talkie Premium to try it out?
+                            Can I get a free copy of Talkie Premium to try it out?
                         </this.styled.summaryH4>
                     </layoutBase.summary>
                     <textBase.p>

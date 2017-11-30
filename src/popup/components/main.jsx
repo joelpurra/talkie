@@ -47,6 +47,7 @@ export default class Main extends React.Component {
         this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleCheckLinkClick = this.handleCheckLinkClick.bind(this);
+        this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
     }
 
     static defaultProps = {
@@ -72,6 +73,15 @@ export default class Main extends React.Component {
     handleCheckLinkClick(e) {
         // TODO: use an api call which has handleBubbledLinkClick?
         return handleBubbledLinkClick(this.handleLinkClick, e);
+    }
+
+    handleOptionsPageClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.props.actions.sharedNavigation.openOptionsPage();
+
+        return false;
     }
 
     render() {
@@ -103,6 +113,7 @@ export default class Main extends React.Component {
 
                 <Footer
                     versionNumber={versionNumber}
+                    optionsPageClick={this.handleOptionsPageClick}
                 />
             </div>
         );

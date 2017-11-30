@@ -21,9 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configureAttribute from "../../shared/hocs/configure.jsx";
 import translateAttribute from "../../shared/hocs/translate.jsx";
 import styled from "../../shared/hocs/styled.jsx";
+import passSelectedTextToBackground from "../../shared/hocs/pass-selected-text-to-background.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
 
@@ -37,8 +37,9 @@ import About from "./sections/about.jsx";
 import Features from "./sections/features.jsx";
 import Support from "./sections/support.jsx";
 import Usage from "./sections/usage.jsx";
+
 import VoicesContainer from "../containers/voices-container.jsx";
-import Welcome from "./sections/welcome.jsx";
+import WelcomeContainer from "../containers/welcome-container.jsx";
 
 const widthStyles = {
     minWidth: "400px",
@@ -50,20 +51,20 @@ const styles = Object.assign(
     widthStyles,
     {
         minHeight: "450px",
-        paddingBottom: "1em",
+        paddingBottom: "2em",
     }
 );
 
-@configureAttribute
 @translateAttribute
 @styled(styles)
+@passSelectedTextToBackground
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
 
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
-        this.playWelcomeMessage = this.playWelcomeMessage.bind(this);
+        this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 
         // TODO: better place to put navigation menu links?
         this.links = [
@@ -111,7 +112,7 @@ export default class Main extends React.Component {
             ))("div"),
 
             main: styled({
-                marginTop: "8em",
+                paddingTop: "8em",
             })(layoutBase.main),
 
             footerHr: styled({
@@ -123,12 +124,8 @@ export default class Main extends React.Component {
     static defaultProps = {
         isPremiumVersion: false,
         versionNumber: null,
-        versionName: null,
         systemType: null,
         osType: null,
-        voicesCount: 0,
-        languagesCount: 0,
-        languageGroupsCount: 0,
         activeTabId: null,
     };
 
@@ -136,16 +133,11 @@ export default class Main extends React.Component {
         actions: PropTypes.object.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
-        versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
-        voicesCount: PropTypes.number.isRequired,
-        languagesCount: PropTypes.number.isRequired,
-        languageGroupsCount: PropTypes.number.isRequired,
         activeTabId: PropTypes.string.isRequired,
         className: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
-        configure: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
@@ -174,16 +166,13 @@ export default class Main extends React.Component {
         this.props.actions.sharedNavigation.openUrlInNewTab(url);
     }
 
-    playWelcomeMessage() {
-        // TODO: translate.
-        const text = `Welcome to ${this.props.translate("extensionShortName")}! You are now using one of the best text-to-speech browser extensions in the world!`;
-        // const text = this.props.translate(...);
+    handleOptionsPageClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-        const voice = {
-            lang: this.props.translate("extensionLocale"),
-        };
+        this.props.actions.sharedNavigation.openOptionsPage();
 
-        this.props.actions.sharedVoices.speak(text, voice);
+        return false;
     }
 
     render() {
@@ -191,12 +180,8 @@ export default class Main extends React.Component {
             activeTabId,
             isPremiumVersion,
             versionNumber,
-            versionName,
             systemType,
             osType,
-            voicesCount,
-            languagesCount,
-            languageGroupsCount,
             className,
         } = this.props;
 
@@ -226,15 +211,7 @@ export default class Main extends React.Component {
                         activeTabId={activeTabId}
                         onLinkClick={this.handleLinkClick}
                     >
-                        <Welcome
-                            isPremiumVersion={isPremiumVersion}
-                            systemType={systemType}
-                            osType={osType}
-                            voicesCount={voicesCount}
-                            languagesCount={languagesCount}
-                            languageGroupsCount={languageGroupsCount}
-                            playWelcomeMessage={this.playWelcomeMessage}
-                        />
+                        <WelcomeContainer />
                     </TabContents>
 
                     <TabContents
@@ -288,10 +265,6 @@ export default class Main extends React.Component {
                     >
                         <About
                             isPremiumVersion={isPremiumVersion}
-                            versionName={versionName}
-                            systemType={systemType}
-                            osType={osType}
-                            onLicenseClick={this.handleLegaleseClick}
                         />
                     </TabContents>
                 </this.styled.main>
@@ -299,8 +272,8 @@ export default class Main extends React.Component {
                 <this.styled.footerHr />
 
                 <Footer
-                    isPremiumVersion={isPremiumVersion}
                     versionNumber={versionNumber}
+                    optionsPageClick={this.handleOptionsPageClick}
                 />
             </div>
         );

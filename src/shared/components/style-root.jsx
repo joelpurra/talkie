@@ -25,15 +25,11 @@ export default class StyleRoot extends React.Component {
     static defaultProps = {
         isSpeaking: false,
         isPremiumVersion: false,
-        systemType: null,
-        osType: null,
     };
 
     static propTypes = {
         isSpeaking: PropTypes.bool.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
-        systemType: PropTypes.string,
-        osType: PropTypes.string,
         children: PropTypes.element.isRequired,
     }
 
@@ -41,8 +37,6 @@ export default class StyleRoot extends React.Component {
         const {
             isSpeaking,
             isPremiumVersion,
-            systemType,
-            osType,
         } = this.props;
 
         const stateClasses = [];
@@ -57,22 +51,6 @@ export default class StyleRoot extends React.Component {
             stateClasses.push("talkie-premium");
         } else {
             stateClasses.push("talkie-free");
-        }
-
-        if (systemType) {
-            if (systemType === "chrome") {
-                stateClasses.push("talkie-chrome");
-            } else {
-                stateClasses.push("talkie-webextension");
-            }
-        }
-
-        if (osType) {
-            if (this.props.osType === "mac") {
-                stateClasses.push("talkie-mac");
-            } else {
-                stateClasses.push("talkie-non-mac");
-            }
         }
 
         return stateClasses;

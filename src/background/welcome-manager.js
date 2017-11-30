@@ -18,18 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export default class WebExtensionEnvironmentTranslatorProvider {
-    constructor(localeProvider) {
-        // TODO REMOVE: unused.
-        this.localeProvider = localeProvider;
-    }
+import {
+    openInternalUrlFromConfigurationInNewTab,
+} from "../shared/urls";
 
-    translate(key, extras) {
-        // const locale = this.localeProvider.getTranslationLocale();
-
-        // TODO: use same translation system in frontend and backend?
-        const translated = browser.i18n.getMessage(key, extras);
-
-        return translated;
-    }
+export default class WelcomeManager {
+    openWelcomePage() {
+        // TODO: focus the tab's window to ensure that the welcome text selection works?
+        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/Tab
+        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows/update
+        return openInternalUrlFromConfigurationInNewTab("demo-welcome");
+    };
 }

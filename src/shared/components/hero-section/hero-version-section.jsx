@@ -21,41 +21,50 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import SpeakLongTexts from "./text/speak-long-texts.jsx";
+import * as layoutBase from "../../styled/layout/layout-base.jsx";
 
-export default class Text extends React.Component {
+import styled from "../../hocs/styled.jsx";
+
+export default class HeroSection extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
+        this.styled = {
+            heroFree: styled({
+
+            })(layoutBase.hero),
+
+            heroPremium: styled({
+
+            })(layoutBase.hero),
+        };
     }
 
     static defaultProps = {
-        actions: {},
-        speakLongTexts: false,
+        isPremiumVersion: false,
+        className: "",
     };
 
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
-    }
-
-    handleSpeakLongTextsChange(speakLongTexts) {
-        this.props.actions.storeSpeakLongTexts(speakLongTexts);
+        isPremiumVersion: PropTypes.bool.isRequired,
+        children: PropTypes.node.isRequired,
+        className: PropTypes.string.isRequired,
+        configure: PropTypes.func.isRequired,
+        translate: PropTypes.func.isRequired,
     }
 
     render() {
         const {
-            speakLongTexts,
+            isPremiumVersion,
+            className,
         } = this.props;
+
+        const HeroElement = isPremiumVersion ? this.styled.heroPremium : this.styled.heroFree;
+
         return (
-            <section>
-                <SpeakLongTexts
-                    onChange={this.handleSpeakLongTextsChange}
-                    speakLongTexts={speakLongTexts}
-                    disabled={false}
-                />
-            </section>
+            <HeroElement className={className}>
+                {this.props.children}
+            </HeroElement>
         );
     }
 }

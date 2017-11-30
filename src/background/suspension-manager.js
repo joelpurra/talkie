@@ -29,10 +29,9 @@ import {
 } from "../shared/log";
 
 export default class SuspensionManager {
-    constructor(suspensionConnectorManager, internalUrlProvider) {
+    constructor(suspensionConnectorManager) {
         // NOTE: the iframe takes care of the SuspensionListenerManager.
         this.suspensionConnectorManager = suspensionConnectorManager;
-        this.internalUrlProvider = internalUrlProvider;
 
         this.stayAliveElementId = "stay-alive-iframe";
         this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
@@ -81,7 +80,7 @@ export default class SuspensionManager {
                 const iframe = document.createElement("iframe");
                 iframe.id = this.stayAliveElementId;
                 /* eslint-disable no-sync */
-                iframe.src = this.internalUrlProvider.getSync(this.stayAliveHtmlPath);
+                iframe.src = this.stayAliveHtmlPath;
                 /* eslint-enable no-sync */
                 document.body.appendChild(iframe);
 

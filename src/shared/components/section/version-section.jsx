@@ -30,7 +30,7 @@ import TalkieVersionIcon from "../icon/talkie-version-icon.jsx";
 
 @translateAttribute
 @configureAttribute
-export default class PremiumSection extends React.Component {
+export default class VersionSection extends React.Component {
     static defaultProps = {
         mode: "h2",
         isPremiumVersion: false,
@@ -55,6 +55,7 @@ export default class PremiumSection extends React.Component {
             configure,
         } = this.props;
 
+        // TODO: translate.
         const text = isPremiumVersion ? "Talkie Premium" : "Talkie";
 
         const versionClassName = isPremiumVersion ? "premium-section" : "free-section";

@@ -20,11 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 export default class NodeEnvironmentInternalUrlProvider {
     getSync(url) {
-        // NOTE: making sure it's a synchronous call.
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL
-        // NOTE: this is presumably enough to emulate getURL functionality for relative URL usage.
-        const internalUrl = String(url);
-
-        return internalUrl;
+        throw new Error(`NodeEnvironmentInternalUrlProvider not supported: ${url}`);
     }
 }

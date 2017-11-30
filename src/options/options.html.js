@@ -27,6 +27,7 @@ import htmlTemplate from "./options.template.html";
 
 // TODO: generalize preloading?
 const prerenderActionsToDispatch = [
+    actions.shared.voices.loadTranslatedLanguages(),
     actions.unshared.navigation.setActiveTabId("voices"),
 ];
 const postrenderActionsToDispatch = [];

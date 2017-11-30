@@ -75,7 +75,7 @@ export default class NodeEnvironmentTranslatorProvider {
     }
 
     translate(key, extras) {
-        const locale = this.localeProvider.get();
+        const locale = this.localeProvider.getTranslationLocale();
 
         // TODO: use same translation system in frontend and backend?
         // translated = [key].concat(extras).join("_").toUpperCase();

@@ -49,6 +49,8 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
         // TODO: generalize preloading?
         sharedActions.metadata.loadIsPremium(),
         sharedActions.metadata.loadVersionName(),
+
+        // NOTE: don't want to keep track of when to load these, preemptively loading.
         sharedActions.metadata.loadSystemType(),
         sharedActions.metadata.loadOsType(),
     ];

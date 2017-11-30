@@ -24,7 +24,7 @@ import {
 
 import languages from "../languages/languages.json";
 
-export default class LanuageHelper {
+export default class TalkieLocaleHelper {
     _getSync(languageCode, name) {
         const languageGroup = languageCode.substring(0, 2);
 
@@ -62,6 +62,18 @@ export default class LanuageHelper {
     getSampleText(languageCode) {
         /* eslint-disable no-sync */
         return promiseTry(() => this.getSampleTextSync(languageCode));
+        /* eslint-enable no-sync */
+    }
+
+    getTranslatedLanguagesSync() {
+        const allLanguages = Object.keys(languages.languages);
+
+        return allLanguages;
+    }
+
+    getTranslatedLanguages() {
+        /* eslint-disable no-sync */
+        return promiseTry(() => this.getTranslatedLanguagesSync());
         /* eslint-enable no-sync */
     }
 }

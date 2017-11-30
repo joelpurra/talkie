@@ -24,6 +24,7 @@ import PropTypes from "prop-types";
 import configureAttribute from "../../shared/hocs/configure.jsx";
 import translateAttribute from "../../shared/hocs/translate.jsx";
 import styled from "../../shared/hocs/styled.jsx";
+import passSelectedTextToBackground from "../../shared/hocs/pass-selected-text-to-background.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
 
@@ -48,14 +49,14 @@ const styles = Object.assign(
     widthStyles,
     {
         minHeight: "450px",
-        maxHeight: "1000px",
-        paddingBottom: "1em",
+        paddingBottom: "2em",
     }
 );
 
 @configureAttribute
 @translateAttribute
 @styled(styles)
+@passSelectedTextToBackground
 export default class Main extends React.Component {
     constructor(props) {
         super(props);

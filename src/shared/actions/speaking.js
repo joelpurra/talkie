@@ -28,3 +28,6 @@ export const iconClick = () =>
 export const setIsSpeaking = (isSpeaking) => {
     return { type: actionTypes.SET_IS_SPEAKING, isSpeaking };
 };
+
+export const speakTextInLanguageWithOverrides = (text, languageCode) =>
+    (dispatch, getState, api) => api.debouncedSpeakTextInLanguageWithOverrides(text, languageCode);

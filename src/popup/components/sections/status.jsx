@@ -55,7 +55,10 @@ export default class Status extends React.Component {
 
             td: styled({
                 borderSpacing: 0,
-                padding: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
             })(tableBase.td),
 
             statusIconWrapper: styled({
@@ -71,6 +74,7 @@ export default class Status extends React.Component {
 
     handlePlayPauseClick(e) {
         e.preventDefault();
+        e.stopPropagation();
 
         this.props.playPauseClick();
 
