@@ -283,6 +283,13 @@ export default class Voices extends React.Component {
                                 {this.getSampleTextForLanguage(languageGroup)}
                             </textBase.blockquote>
 
+                            <textBase.p>
+                                <textBase.a href={`https://${languageGroup}.wikipedia.org/`}>
+                                    <Icon className="icon-wikipedia-w" />
+                                    {languageGroup}.wikipedia.org
+                                </textBase.a>
+                            </textBase.p>
+
                             <listBase.ul>
                                 {this.getFilteredLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroupFromVoices, languagesPerGroup, languagesFilter, languageGroup)}
                             </listBase.ul>
