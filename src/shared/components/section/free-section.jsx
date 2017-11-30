@@ -21,13 +21,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configureAttribute from "../../hocs/configure.jsx";
+import VersionSection from "./version-section.jsx";
 
-import * as textBase from "../../styled/text/text-base.jsx";
-
-import TalkieFreeIcon from "../icon/talkie-free-icon.jsx";
-
-@configureAttribute
 export default class FreeSection extends React.Component {
     static defaultProps = {
         mode: "h2",
@@ -37,50 +32,25 @@ export default class FreeSection extends React.Component {
     static propTypes = {
         mode: PropTypes.oneOf(["p", "h2"]).isRequired,
         children: PropTypes.node.isRequired,
-        configure: PropTypes.func.isRequired,
         className: PropTypes.string.isRequired,
     }
 
     render() {
         const {
             mode,
-            configure,
             className,
         } = this.props;
 
-        const classNames = [
-            "free-section",
-            className,
-        ]
-            .join(" ")
-            .trim();
-
-        let HeadingElement = null;
-
-        switch (mode) {
-        case "p":
-            HeadingElement = textBase.p;
-            break;
-
-        case "h2":
-            HeadingElement = textBase.h2;
-            break;
-
-        default:
-            throw new Error("Uknown mode");
-        }
+        const isPremiumVersion = false;
 
         return (
-            <div className={classNames}>
-                <HeadingElement>
-                    <textBase.a href={configure("urls.store-free")}>
-                        <TalkieFreeIcon />
-                        Talkie
-                    </textBase.a>
-                </HeadingElement>
-
+            <VersionSection
+                mode={mode}
+                isPremiumVersion={isPremiumVersion}
+                className={className}
+            >
                 {this.props.children}
-            </div>
+            </VersionSection>
         );
     }
 }

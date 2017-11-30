@@ -38,6 +38,7 @@ import Features from "./sections/features.jsx";
 import Support from "./sections/support.jsx";
 import Usage from "./sections/usage.jsx";
 import VoicesContainer from "../containers/voices-container.jsx";
+import Welcome from "./sections/welcome.jsx";
 
 const widthStyles = {
     minWidth: "400px",
@@ -62,9 +63,16 @@ export default class Main extends React.Component {
 
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+        this.playWelcomeMessage = this.playWelcomeMessage.bind(this);
 
         // TODO: better place to put navigation menu links?
         this.links = [
+            {
+                tabId: "welcome",
+                // TODO: translate.
+                text: "Welcome",
+                // text: this.props.translate("frontend_welcomeLinkText"),
+            },
             {
                 tabId: "voices",
                 text: this.props.translate("frontend_voicesLinkText"),
@@ -118,6 +126,9 @@ export default class Main extends React.Component {
         versionName: null,
         systemType: null,
         osType: null,
+        voicesCount: 0,
+        languagesCount: 0,
+        languageGroupsCount: 0,
         activeTabId: null,
     };
 
@@ -128,6 +139,9 @@ export default class Main extends React.Component {
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+        voicesCount: PropTypes.number.isRequired,
+        languagesCount: PropTypes.number.isRequired,
+        languageGroupsCount: PropTypes.number.isRequired,
         activeTabId: PropTypes.string.isRequired,
         className: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
@@ -152,16 +166,24 @@ export default class Main extends React.Component {
         window.scroll(0, 0);
     }
 
-    openUrlInNewTab(url) {
-        this.props.actions.sharedNavigation.openUrlInNewTab(url);
-    }
-
     handleOpenShortKeysConfigurationClick() {
         this.props.actions.sharedNavigation.openShortKeysConfiguration();
     }
 
     handleLinkClick(url) {
         this.props.actions.sharedNavigation.openUrlInNewTab(url);
+    }
+
+    playWelcomeMessage() {
+        // TODO: translate.
+        const text = `Welcome to ${this.props.translate("extensionShortName")}! You are now using one of the best text-to-speech browser extensions in the world!`;
+        // const text = this.props.translate(...);
+
+        const voice = {
+            lang: this.props.translate("extensionLocale"),
+        };
+
+        this.props.actions.sharedVoices.speak(text, voice);
     }
 
     render() {
@@ -172,6 +194,9 @@ export default class Main extends React.Component {
             versionName,
             systemType,
             osType,
+            voicesCount,
+            languagesCount,
+            languageGroupsCount,
             className,
         } = this.props;
 
@@ -196,6 +221,21 @@ export default class Main extends React.Component {
                 <this.styled.main
                     onClick={this.handleClick}
                 >
+                    <TabContents
+                        id="welcome"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <Welcome
+                            isPremiumVersion={isPremiumVersion}
+                            systemType={systemType}
+                            osType={osType}
+                            voicesCount={voicesCount}
+                            languagesCount={languagesCount}
+                            languageGroupsCount={languageGroupsCount}
+                            playWelcomeMessage={this.playWelcomeMessage}
+                        />
+                    </TabContents>
 
                     <TabContents
                         id="voices"

@@ -42,10 +42,6 @@ export default class Features extends React.Component {
         super(props);
 
         this.styled = {
-            p: styled({
-                marginBottom: "0.5em",
-            })(textBase.p),
-
             summaryH4: styled({
                 display: "inline-block",
                 margin: 0,

@@ -34,17 +34,20 @@ import Main from "../components/main.jsx";
 import actionCreators from "../actions";
 
 import {
+    getLanguageGroupsFromLanguages,
     getLanguagesFromVoices,
 } from "../../shared/utils/transform-voices";
 
 const mapStateToProps = (state) => {
     const languages = getLanguagesFromVoices(state.shared.voices.voices);
+    const languageGroups = getLanguageGroupsFromLanguages(languages);
 
     return {
         voices: state.shared.voices.voices,
         languages: languages,
         voicesCount: state.shared.voices.voices.length,
         languagesCount: languages.length,
+        languageGroupsCount: languageGroups.length,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionNumber: state.shared.metadata.versionNumber,
         versionName: state.shared.metadata.versionName,
@@ -69,6 +72,9 @@ export default class App extends React.Component {
     static defaultProps = {
         voices: [],
         languages: [],
+        voicesCount: 0,
+        languagesCount: 0,
+        languageGroupsCount: 0,
         isPremiumVersion: false,
         versionNumber: null,
         versionName: null,
@@ -89,6 +95,7 @@ export default class App extends React.Component {
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
+        languageGroupsCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
         versionName: PropTypes.string.isRequired,
@@ -104,6 +111,7 @@ export default class App extends React.Component {
             languages,
             voicesCount,
             languagesCount,
+            languageGroupsCount,
             isPremiumVersion,
             versionNumber,
             versionName,
@@ -119,6 +127,7 @@ export default class App extends React.Component {
                 languages={languages}
                 voicesCount={voicesCount}
                 languagesCount={languagesCount}
+                languageGroupsCount={languageGroupsCount}
                 isPremiumVersion={isPremiumVersion}
                 versionNumber={versionNumber}
                 versionName={versionName}

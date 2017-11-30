@@ -22,4 +22,5 @@ import styled from "../../hocs/styled.jsx";
 
 import * as buttonBase from "../../styles/button/button-base";
 
+export const button = styled(buttonBase.button)("button");
 export const a = styled(buttonBase.a)("a");
