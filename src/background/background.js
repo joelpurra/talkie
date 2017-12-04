@@ -275,8 +275,9 @@ function main() {
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => iconManager.setIconModePlaying(), 10)),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => iconManager.setIconModeStopped(), 10)),
 
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup()),
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup()),
+                // NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => buttonPopupManager.disablePopup(), 200)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => buttonPopupManager.enablePopup(), 200)),
 
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),

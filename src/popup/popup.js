@@ -85,8 +85,8 @@ const passClickToBackgroundOnLoad = () => promiseTry(
 
 const start = () => promiseTry(
     () => Promise.resolve()
-        .then(() => passClickToBackgroundOnLoad())
         .then(() => startReactFrontend())
+        .then(() => passClickToBackgroundOnLoad())
         .then(() => loadRoot())
         .then(() => undefined)
 );
