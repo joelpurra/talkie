@@ -25,7 +25,7 @@ import {
     handleBubbledLinkClick,
 } from "../../utils/ui";
 
-export default class TabContents extends React.Component {
+export default class TabContents extends React.PureComponent {
     constructor(props) {
         super(props);
 

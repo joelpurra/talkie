@@ -29,7 +29,7 @@ import * as textBase from "../../styled/text/text-base.jsx";
 import SocialShareIcon from "../icon/social-share-icon.jsx";
 
 @configureAttribute
-export default class SharingIcons extends React.Component {
+export default class SharingIcons extends React.PureComponent {
     static defaultProps = {
         className: "",
     };

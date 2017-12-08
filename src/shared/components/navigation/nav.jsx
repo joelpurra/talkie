@@ -27,7 +27,7 @@ import * as layoutBase from "../../styled/layout/layout-base.jsx";
 import * as textBase from "../../styled/text/text-base.jsx";
 import * as tableBase from "../../styled/table/table-base.jsx";
 
-export default class Nav extends React.Component {
+export default class Nav extends React.PureComponent {
     constructor(props) {
         super(props);
 

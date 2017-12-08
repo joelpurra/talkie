@@ -58,7 +58,7 @@ const styles = Object.assign(
 @translateAttribute
 @styled(styles)
 @passSelectedTextToBackground
-export default class Main extends React.Component {
+export default class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 

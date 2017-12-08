@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import VersionSection from "./version-section.jsx";
 
-export default class FreeSection extends React.Component {
+export default class FreeSection extends React.PureComponent {
     static defaultProps = {
         mode: "h2",
         className: "",

@@ -34,7 +34,7 @@ import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-ic
 
 @configureAttribute
 @translateAttribute
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
     constructor(props) {
         super(props);
 

@@ -32,7 +32,7 @@ import Icon from "../../../shared/components/icon/icon.jsx";
 
 @configureAttribute
 @translateAttribute
-export default class Menu extends React.Component {
+export default class Menu extends React.PureComponent {
     constructor(props) {
         super(props);
 

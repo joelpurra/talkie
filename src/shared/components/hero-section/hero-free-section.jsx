@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import HeroVersionSection from "./hero-version-section.jsx";
 
-export default class HeroFreeSection extends React.Component {
+export default class HeroFreeSection extends React.PureComponent {
     static defaultProps = {
         className: "",
     };

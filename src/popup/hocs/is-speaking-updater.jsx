@@ -24,7 +24,7 @@ import PropTypes from "prop-types";
 import isSpeaking from "../hocs/is-speaking.jsx";
 
 @isSpeaking
-export default class IsSpeakingUpdater extends React.Component {
+export default class IsSpeakingUpdater extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         isSpeaking: PropTypes.bool.isRequired,

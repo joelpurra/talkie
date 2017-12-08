@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import SpeakLongTexts from "./text/speak-long-texts.jsx";
 
-export default class Text extends React.Component {
+export default class Text extends React.PureComponent {
     constructor(props) {
         super(props);
 

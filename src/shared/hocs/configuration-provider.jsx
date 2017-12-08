@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class ConfigurationProvider extends React.Component {
+export default class ConfigurationProvider extends React.PureComponent {
     static propTypes = {
         children: PropTypes.element.isRequired,
         configuration: PropTypes.object.isRequired,

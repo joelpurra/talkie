@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.Component {
+export default class VoicesContainer extends React.PureComponent {
     componentDidMount() {
         this.props.actions.loadSpeakLongTexts();
     }

@@ -58,7 +58,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.Component {
+export default class VoicesContainer extends React.PureComponent {
     componentDidMount() {
         // TODO: is this the best place to load data?
         this.props.actions.loadVoices();

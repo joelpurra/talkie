@@ -46,7 +46,7 @@ import translateAttribute from "../../../shared/hocs/translate.jsx";
 import * as tableBase from "../../../shared/styled/table/table-base.jsx";
 
 @translateAttribute
-export default class Voices extends React.Component {
+export default class Voices extends React.PureComponent {
     constructor(props) {
         super(props);
 

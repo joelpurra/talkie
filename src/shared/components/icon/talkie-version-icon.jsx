@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import Icon from "./icon.jsx";
 
-export default class TalkieVersionIcon extends React.Component {
+export default class TalkieVersionIcon extends React.PureComponent {
     static defaultProps = {
         mode: "inline",
         size: "1.3em",
@@ -59,16 +59,16 @@ export default class TalkieVersionIcon extends React.Component {
             isPremiumVersionClassName,
             className,
         ]
-         .join(" ")
-         .trim();
+            .join(" ")
+            .trim();
 
         return (
             <Icon
-              mode={mode}
-              size={size}
-              marginLeft={marginLeft}
-              marginRight={marginRight}
-              className={classNames}
+                mode={mode}
+                size={size}
+                marginLeft={marginLeft}
+                marginRight={marginRight}
+                className={classNames}
             />
         );
     }

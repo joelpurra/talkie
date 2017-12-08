@@ -34,7 +34,7 @@ import {
 //const dualLogger = new DualLogger("status-container.jsx");
 
 export default function isSpeakingHoc(ComponentToWrap) {
-    return class IsSpeakingHoc extends React.Component {
+    return class IsSpeakingHoc extends React.PureComponent {
         constructor(props) {
             super(props);
 

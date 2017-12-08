@@ -22,7 +22,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function configureHoc(ComponentToWrap) {
-    return class ConfigurationHoc extends React.Component {
+    return class ConfigurationHoc extends React.PureComponent {
         static contextTypes = {
             configure: PropTypes.func.isRequired,
         }

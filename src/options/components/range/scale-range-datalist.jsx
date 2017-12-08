@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import ScaleRangeDatalistOption from "./scale-range-datalist-option.jsx";
 
-export default class ScaleRangeDatalist extends React.Component {
+export default class ScaleRangeDatalist extends React.PureComponent {
     static defaultProps = {
         steps: [],
         disabled: true,

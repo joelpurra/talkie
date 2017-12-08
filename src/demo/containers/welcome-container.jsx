@@ -73,7 +73,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class WelcomeContainer extends React.Component {
+export default class WelcomeContainer extends React.PureComponent {
     static defaultProps = {
         isPremiumVersion: false,
         systemType: false,

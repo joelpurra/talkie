@@ -34,7 +34,7 @@ import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
 @configureAttribute
 @translateAttribute
-export default class Welcome extends React.Component {
+export default class Welcome extends React.PureComponent {
     constructor(props) {
         super(props);
 

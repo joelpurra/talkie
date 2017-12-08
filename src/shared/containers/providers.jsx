@@ -33,7 +33,7 @@ import BroadcasterProvider from "../hocs/broadcaster-provider.jsx";
 
 import StateRoot from "./state-root.jsx";
 
-export default class Providers extends React.Component {
+export default class Providers extends React.PureComponent {
     static propTypes = {
         broadcaster: PropTypes.object.isRequired,
         children: PropTypes.element.isRequired,

@@ -25,7 +25,7 @@ import * as formBase from "../../../shared/styled/form/form-base.jsx";
 
 import ScaleRangeDatalist from "./scale-range-datalist.jsx";
 
-export default class ScaleRange extends React.Component {
+export default class ScaleRange extends React.PureComponent {
     constructor(props) {
         super(props);
 

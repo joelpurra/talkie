@@ -41,7 +41,7 @@ import PremiumSection from "../../../shared/components/section/premium-section.j
 import translateAttribute from "../../../shared/hocs/translate.jsx";
 
 @translateAttribute
-export default class Voices extends React.Component {
+export default class Voices extends React.PureComponent {
     constructor(props) {
         super(props);
 

@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,

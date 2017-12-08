@@ -30,7 +30,7 @@ import * as lighter from "../../shared/styled/text/lighter.jsx";
 import Icon from "../../shared/components/icon/icon.jsx";
 
 @configureAttribute
-export default class Footer extends React.Component {
+export default class Footer extends React.PureComponent {
     constructor(props) {
         super(props);
 

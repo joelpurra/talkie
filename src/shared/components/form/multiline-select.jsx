@@ -30,7 +30,7 @@ import {
 import * as formBase from "../../styles/form/form-base";
 
 @styled(formBase.multilineSelect)
-export default class MultilineSelect extends React.Component {
+export default class MultilineSelect extends React.PureComponent {
     constructor(props) {
         super(props);
 

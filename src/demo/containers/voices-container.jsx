@@ -65,7 +65,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.Component {
+export default class VoicesContainer extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({

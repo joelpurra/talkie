@@ -37,7 +37,7 @@ const styles = {};
 @configureAttribute
 @translateAttribute
 @styled(styles)
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
     constructor(props) {
         super(props);
 

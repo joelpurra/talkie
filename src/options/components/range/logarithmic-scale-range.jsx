@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import ScaleRange from "./scale-range.jsx";
 
-export default class LogarithmicScaleRange extends React.Component {
+export default class LogarithmicScaleRange extends React.PureComponent {
     static defaultProps = {
         listName: null,
         min: 0,

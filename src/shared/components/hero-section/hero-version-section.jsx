@@ -25,7 +25,7 @@ import * as layoutBase from "../../styled/layout/layout-base.jsx";
 
 import styled from "../../hocs/styled.jsx";
 
-export default class HeroSection extends React.Component {
+export default class HeroSection extends React.PureComponent {
     constructor(props) {
         super(props);
 

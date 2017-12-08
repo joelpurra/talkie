@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class NavContainer extends React.Component {
+export default class NavContainer extends React.PureComponent {
     constructor(props) {
         super(props);
 

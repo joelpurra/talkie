@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class ScaleRangeDatalistOption extends React.Component {
+export default class ScaleRangeDatalistOption extends React.PureComponent {
     static defaultProps = {
         disabled: true,
     };

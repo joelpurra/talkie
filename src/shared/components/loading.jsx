@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import * as lighter from "../styled/text/lighter.jsx";
 
-export default class Loading extends React.Component {
+export default class Loading extends React.PureComponent {
     static defaultProps = {
         enabled: false,
     };

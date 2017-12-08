@@ -38,7 +38,7 @@ import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-ic
 
 @configureAttribute
 @translateAttribute
-export default class Usage extends React.Component {
+export default class Usage extends React.PureComponent {
     constructor(props) {
         super(props);
 

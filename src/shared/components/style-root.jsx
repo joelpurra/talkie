@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class StyleRoot extends React.Component {
+export default class StyleRoot extends React.PureComponent {
     static defaultProps = {
         isSpeaking: false,
         isPremiumVersion: false,

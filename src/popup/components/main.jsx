@@ -40,7 +40,7 @@ const styles = {
 };
 
 @styled(styles)
-export default class Main extends React.Component {
+export default class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 

@@ -24,7 +24,7 @@ import PropTypes from "prop-types";
 import progress from "../hocs/progress.jsx";
 
 @progress
-export default class ProgressUpdater extends React.Component {
+export default class ProgressUpdater extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         min: PropTypes.number.isRequired,

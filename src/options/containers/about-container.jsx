@@ -69,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class AboutContainer extends React.Component {
+export default class AboutContainer extends React.PureComponent {
     componentDidMount() {
         // TODO: is this the best place to load data?
         this.props.actions.sharedVoices.loadVoices();

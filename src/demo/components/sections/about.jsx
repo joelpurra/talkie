@@ -30,7 +30,7 @@ import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
 @translateAttribute
 @configureAttribute
-export default class About extends React.Component {
+export default class About extends React.PureComponent {
     static propTypes = {
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,

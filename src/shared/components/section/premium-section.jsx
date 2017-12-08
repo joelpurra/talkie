@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import VersionSection from "./version-section.jsx";
 
-export default class PremiumSection extends React.Component {
+export default class PremiumSection extends React.PureComponent {
     static defaultProps = {
         mode: "h2",
         className: "",
