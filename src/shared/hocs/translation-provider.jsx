@@ -33,7 +33,7 @@ export default class TranslationProvider extends React.Component {
 
     getChildContext() {
         return {
-            translate: (key, ...args) => this.props.translator.translate(key, args),
+            translate: (key, ...args) => this.props.translator.translate(key, ...args),
         };
     }
 
