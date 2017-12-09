@@ -1,16 +1,13 @@
 {
     "env": {
-        "browser": true,
         "es6": true
     },
     "parser": "babel-eslint",
     "plugins": [
         "compat",
-        "react"
     ],
     "extends": [
         "standard",
-        "plugin:react/recommended"
     ],
     "globals": {
         "browser": false,
