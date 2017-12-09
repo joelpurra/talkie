@@ -41,19 +41,22 @@ const mapStateToProps = (state) => {
     return {
         voices: state.shared.voices.voices,
         languages: getLanguagesFromVoices(state.shared.voices.voices),
-        selectedLanguageCode: state.shared.voices.selectedLanguageCode,
-        selectedVoiceName: state.shared.voices.selectedVoiceName,
-        effectiveVoiceNameForSelectedLanguage: state.shared.voices.effectiveVoiceNameForSelectedLanguage,
-        sampleText: state.shared.voices.sampleText,
-        rateForSelectedVoice: state.shared.voices.rateForSelectedVoice,
-        pitchForSelectedVoice: state.shared.voices.pitchForSelectedVoice,
+        selectedLanguageCode: state.voices.selectedLanguageCode,
+        selectedVoiceName: state.voices.selectedVoiceName,
+        effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguage,
+        sampleText: state.voices.sampleText,
+        rateForSelectedVoice: state.voices.rateForSelectedVoice,
+        pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators.shared.voices, dispatch),
+        actions: {
+            voices: bindActionCreators(actionCreators.voices, dispatch),
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+        },
     };
 };
 
@@ -61,8 +64,8 @@ const mapDispatchToProps = (dispatch) => {
 export default class VoicesContainer extends React.PureComponent {
     componentDidMount() {
         // TODO: is this the best place to load data?
-        this.props.actions.loadVoices();
-        this.props.actions.loadSampleText();
+        this.props.actions.sharedVoices.loadVoices();
+        this.props.actions.voices.loadSampleText();
     }
 
     static propTypes = {

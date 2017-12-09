@@ -75,8 +75,6 @@ export default class AboutContainer extends React.PureComponent {
         this.props.actions.sharedVoices.loadVoices();
         this.props.actions.sharedVoices.loadNavigatorLanguage();
         this.props.actions.sharedVoices.loadNavigatorLanguages();
-        this.props.actions.sharedVoices.loadTranslatedLanguages();
-        this.props.actions.sharedMetadata.loadVersionName();
     }
 
     static defaultProps = {

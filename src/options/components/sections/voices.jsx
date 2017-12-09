@@ -92,27 +92,27 @@ export default class Voices extends React.PureComponent {
     }
 
     handleLanguageChange(value) {
-        this.props.actions.loadSelectedLanguageCode(value);
+        this.props.actions.voices.loadSelectedLanguageCode(value);
     }
 
     handleVoiceChange(value) {
-        this.props.actions.loadSelectedVoiceName(value);
+        this.props.actions.voices.loadSelectedVoiceName(value);
     }
 
     handleSampleTextChange(value) {
-        this.props.actions.setSampleText(value);
+        this.props.actions.voices.setSampleText(value);
     }
 
     handleToogleDefaultClick() {
-        this.props.actions.storeEffectiveVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
+        this.props.actions.voices.storeEffectiveVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
     }
 
     handleRateChange(value) {
-        this.props.actions.storeVoiceRateOverride(this.props.selectedVoiceName, value);
+        this.props.actions.voices.storeVoiceRateOverride(this.props.selectedVoiceName, value);
     }
 
     handlePitchChange(value) {
-        this.props.actions.storeVoicePitchOverride(this.props.selectedVoiceName, value);
+        this.props.actions.voices.storeVoicePitchOverride(this.props.selectedVoiceName, value);
     }
 
     render() {

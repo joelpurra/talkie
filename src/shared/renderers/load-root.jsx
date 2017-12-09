@@ -44,13 +44,13 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
 
 const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
     // TODO: simplify.
-    const styleRootActionsToDispatch = [
+    const clientSideActionsToDispatch = [
         // NOTE: don't want to keep track of when to load these, preemptively loading.
         sharedActions.metadata.loadOsType(),
     ];
 
     const allActionsToDispatch = []
-        .concat(styleRootActionsToDispatch)
+        .concat(clientSideActionsToDispatch)
         .concat(postrenderActionsToDispatch);
 
     return allActionsToDispatch;
