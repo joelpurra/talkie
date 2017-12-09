@@ -24,7 +24,6 @@ import {
 
 import React from "react";
 
-import StoreProvider from "../../split-environments/store-provider";
 import StyletronProvider from "../../split-environments/styletron-provider";
 
 import configurationObject from "../../configuration.json";
@@ -34,6 +33,7 @@ import LocaleProvider from "../../split-environments/locale-provider";
 import TranslatorProvider from "../../split-environments/translator-provider";
 import BroadcasterProvider from "../../split-environments/broadcaster-provider";
 
+import ReduxStoreProvider from "../redux-store-provider";
 import MetadataManager from "../metadata-manager";
 import Configuration from "../configuration";
 import TalkieLocaleHelper from "../talkie-locale-helper";
@@ -66,8 +66,8 @@ const autoRoot = (initialState, rootReducer, ChildComponent) => promiseTry(() =>
     const talkieLocaleHelper = new TalkieLocaleHelper();
     const api = new Api(metadataManager, configuration, translatorProvider, broadcasterProvider, talkieLocaleHelper);
 
-    const storeProvider = new StoreProvider();
-    const store = storeProvider.createStore(initialState, rootReducer, api, null, null);
+    const reduxStoreProvider = new ReduxStoreProvider();
+    const store = reduxStoreProvider.createStore(initialState, rootReducer, api);
 
     const styletronProvider = new StyletronProvider();
     /* eslint-disable no-sync */
