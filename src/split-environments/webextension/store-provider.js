@@ -46,9 +46,35 @@ export default class WebExtensionEnvironmentStoreProvider {
     createStore(initialState, rootReducer, api) {
         const middlewares = applyMiddleware(thunk.withExtraArgument(api));
 
+        const autoRehydrateConfig = {
+            // NOTE: Actually not loading persisted state from localStorage.
+            // Keeping redux-persist only for redux-persist-crosstab at this time.
+            // https://github.com/rt2zz/redux-persist/tree/v4.8.2#autorehydrateconfig
+            // stateReconciler: (inboundState, state, reducedState, config) => {
+            //     console.info(
+            //         "inboundState",
+            //         JSON.stringify(inboundState).length,
+            //         inboundState,
+            //         "state",
+            //         JSON.stringify(state).length,
+            //         state,
+            //         "reducedState",
+            //         JSON.stringify(reducedState).length,
+            //         reducedState,
+            //         "config",
+            //         JSON.stringify(config).length,
+            //         config
+            //     );
+            //
+            //     return reducedState;
+            // },
+            stateReconciler: false,
+            // log: true,
+        };
+
         const enhancer = compose(
             middlewares,
-            autoRehydrate()
+            autoRehydrate(autoRehydrateConfig)
         );
 
         const store = createStore(rootReducer, initialState, enhancer);
@@ -56,7 +82,12 @@ export default class WebExtensionEnvironmentStoreProvider {
         // store.subscribe(() => {
         //     const state = store.getState();
         //
-        //     console.log("subscribe", state);
+        //     console.log(
+        //         "subscribe",
+        //         "state",
+        //         JSON.stringify(state).length,
+        //         state
+        //     );
         // });
 
         // TODO: configuration?
