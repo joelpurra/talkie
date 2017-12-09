@@ -55,8 +55,7 @@ export default class VersionSection extends React.PureComponent {
             configure,
         } = this.props;
 
-        // TODO: translate.
-        const text = isPremiumVersion ? "Talkie Premium" : "Talkie";
+        const text = translate("extensionShortName");
 
         const versionClassName = isPremiumVersion ? "premium-section" : "free-section";
 

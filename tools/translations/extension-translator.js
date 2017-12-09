@@ -18,6 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service";
+import MessagesTranslator from "./messages-translator";
+import MessagesTranslatorFactory from "./messages-translator-factory";
+import FilesTranslator from "./files-translator";
+
 const assert = require("assert");
 const Promise = require("bluebird");
 
@@ -28,11 +33,6 @@ const stat = Promise.promisify(fs.stat);
 const path = require("path");
 
 const configuration = require("configvention");
-
-import GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service";
-import MessagesTranslator from "./messages-translator";
-import MessagesTranslatorFactory from "./messages-translator-factory";
-import FilesTranslator from "./files-translator";
 
 const getDirectoryNames = (directoryPath) => readDir(directoryPath)
     .filter((file) => stat(path.join(directoryPath, file))

@@ -59,16 +59,16 @@ export default class TalkieVersionIcon extends React.PureComponent {
             networkClassName,
             className,
         ]
-         .join(" ")
-         .trim();
+            .join(" ")
+            .trim();
 
         return (
             <Icon
-              mode={mode}
-              size={size}
-              marginLeft={marginLeft}
-              marginRight={marginRight}
-              className={classNames}
+                mode={mode}
+                size={size}
+                marginLeft={marginLeft}
+                marginRight={marginRight}
+                className={classNames}
             />
         );
     }

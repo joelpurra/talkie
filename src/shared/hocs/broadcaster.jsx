@@ -32,5 +32,5 @@ export default function broadcasterHoc(ComponentToWrap) {
                 <ComponentToWrap {...this.props} broadcaster={this.context.broadcaster} />
             );
         }
-  };
+    };
 };

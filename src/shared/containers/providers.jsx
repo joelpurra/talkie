@@ -48,18 +48,18 @@ export default class Providers extends React.PureComponent {
             configuration,
             styletron,
             translator,
-          } = this.props;
+        } = this.props;
 
         return (
             <ConfigurationProvider configuration={configuration}>
                 <TranslationProvider translator={translator}>
-                <BroadcasterProvider broadcaster={broadcaster}>
-                    <StyletronProvider styletron={styletron}>
-                        <StateRoot>
-                            {React.Children.only(this.props.children)}
-                        </StateRoot>
-                    </StyletronProvider>
-                </BroadcasterProvider>
+                    <BroadcasterProvider broadcaster={broadcaster}>
+                        <StyletronProvider styletron={styletron}>
+                            <StateRoot>
+                                {React.Children.only(this.props.children)}
+                            </StateRoot>
+                        </StyletronProvider>
+                    </BroadcasterProvider>
                 </TranslationProvider>
             </ConfigurationProvider>
         );

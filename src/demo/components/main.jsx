@@ -252,7 +252,6 @@ export default class Main extends React.PureComponent {
                         onLinkClick={this.handleLinkClick}
                     >
                         <Support
-                            isPremiumVersion={isPremiumVersion}
                             systemType={systemType}
                             osType={osType}
                         />

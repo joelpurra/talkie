@@ -60,13 +60,11 @@ export default class Features extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
         systemType: false,
         osType: false,
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
@@ -75,7 +73,6 @@ export default class Features extends React.PureComponent {
 
     render() {
         const {
-            isPremiumVersion,
             systemType,
             osType,
             translate,

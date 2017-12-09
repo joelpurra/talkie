@@ -32,5 +32,5 @@ export default function translateHoc(ComponentToWrap) {
                 <ComponentToWrap {...this.props} translate={this.context.translate} />
             );
         }
-  };
+    };
 };

@@ -32,5 +32,5 @@ export default function configureHoc(ComponentToWrap) {
                 <ComponentToWrap {...this.props} configure={this.context.configure} />
             );
         }
-  };
+    };
 };
