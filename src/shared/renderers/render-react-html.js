@@ -41,7 +41,6 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
 
         // NOTE: don't want to keep track of when to load these, preemptively loading.
         sharedActions.metadata.loadSystemType(),
-        // sharedActions.metadata.loadOsType(),
     ];
 
     const allActionsToDispatch = []
