@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
         versionName: state.shared.metadata.versionName,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
-        activeTabId: state.navigation.activeTabId,
+        activeTabId: state.unshared.navigation.activeTabId,
+        shouldShowBackButton: state.navigation.shouldShowBackButton,
     };
 };
 
@@ -61,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         voicesCount: PropTypes.number.isRequired,
@@ -70,7 +71,8 @@ export default class App extends React.Component {
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
-        activeTabId: PropTypes.string,
+        activeTabId: PropTypes.string.isRequired,
+        shouldShowBackButton: PropTypes.bool.isRequired,
     }
 
     render() {
@@ -83,7 +85,8 @@ export default class App extends React.Component {
             systemType,
             osType,
             activeTabId,
-          } = this.props;
+            shouldShowBackButton,
+        } = this.props;
 
         return (
             <Main
@@ -95,6 +98,7 @@ export default class App extends React.Component {
                 systemType={systemType}
                 osType={osType}
                 activeTabId={activeTabId}
+                shouldShowBackButton={shouldShowBackButton}
             />
         );
     }

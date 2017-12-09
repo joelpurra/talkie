@@ -21,20 +21,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import translate from "../../../../shared/hocs/translate.jsx";
-import styled from "../../../../shared/hocs/styled.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
 import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 import * as formBase from "../../../../shared/styled/form/form-base.jsx";
 
-@translate
+@translateAttribute
 export default class ToggleDefault extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
-
-        this.styled = {};
     }
 
     static defaultProps = {
@@ -56,17 +53,24 @@ export default class ToggleDefault extends React.PureComponent {
     }
 
     render() {
+        const {
+            disabled,
+            languageCode,
+            translate,
+            voiceName,
+        } = this.props;
+
         let buttonText = null;
 
-        if (this.props.languageCode === null || this.props.voiceName === null) {
-            buttonText = this.props.translate("frontend_voicesSetAsLanguageEmptySelection");
+        if (languageCode === null || voiceName === null) {
+            buttonText = translate("frontend_voicesSetAsLanguageEmptySelection");
         } else {
             const messageDetailsPlaceholders = [
-                this.props.languageCode,
-                this.props.voiceName,
+                languageCode,
+                voiceName,
             ];
 
-            buttonText = this.props.translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
+            buttonText = translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
         }
 
         return (
@@ -74,7 +78,7 @@ export default class ToggleDefault extends React.PureComponent {
                 <tableBase.tr>
                     <tableBase.td>
                         <formBase.button
-                            disabled={this.props.disabled || null}
+                            disabled={disabled || null}
                             onClick={this.handleClick}
                         >
                             {buttonText}

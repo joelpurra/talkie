@@ -29,51 +29,117 @@ import {
     connect,
 } from "react-redux";
 
+import {
+    getLanguageGroupsFromLanguages,
+    getLanguagesFromVoices,
+} from "../../shared/utils/transform-voices";
+
 import About from "../components/sections/about.jsx";
 
 import actionCreators from "../actions";
 
 const mapStateToProps = (state) => {
+    const languages = getLanguagesFromVoices(state.shared.voices.voices);
+    const languageGroups = getLanguageGroupsFromLanguages(languages);
+
     return {
+        isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionName: state.shared.metadata.versionName,
+        systemType: state.shared.metadata.systemType,
+        osType: state.shared.metadata.osType,
+        voices: state.shared.voices.voices,
+        languages: languages,
+        languageGroups: languageGroups,
+        navigatorLanguage: state.shared.voices.navigatorLanguage,
+        navigatorLanguages: state.shared.voices.navigatorLanguages,
+        voicesCount: state.shared.voices.voices.length,
+        languagesCount: languages.length,
+        languageGroupsCount: languageGroups.length,
+        translatedLanguages: state.shared.voices.translatedLanguages,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators.shared.metadata, dispatch),
+        actions: {
+            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+        },
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class AboutContainer extends React.Component {
+export default class AboutContainer extends React.PureComponent {
     componentDidMount() {
         // TODO: is this the best place to load data?
-        this.props.actions.loadVersionName();
+        this.props.actions.sharedVoices.loadVoices();
+        this.props.actions.sharedVoices.loadNavigatorLanguage();
+        this.props.actions.sharedVoices.loadNavigatorLanguages();
+        this.props.actions.sharedVoices.loadTranslatedLanguages();
+        this.props.actions.sharedMetadata.loadVersionName();
     }
 
     static defaultProps = {
         isPremiumVersion: false,
         versionName: null,
+        systemType: null,
+        osType: null,
+        voices: [],
+        languages: [],
+        languageGroups: [],
+        navigatorLanguage: null,
+        navigatorLanguages: [],
+        translatedLanguages: [],
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
         actions: PropTypes.object.isRequired,
+        isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
+        voices: PropTypes.arrayOf(PropTypes.shape({
+            default: PropTypes.bool.isRequired,
+            lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
+        })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        navigatorLanguage: PropTypes.string,
+        navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         onLicenseClick: PropTypes.func.isRequired,
     }
 
     render() {
         const {
+            isPremiumVersion,
             versionName,
+            systemType,
+            osType,
+            navigatorLanguage,
+            navigatorLanguages,
+            translatedLanguages,
             onLicenseClick,
-          } = this.props;
+            voices,
+            languages,
+            languageGroups,
+        } = this.props;
 
         return (
             <About
-                isPremiumVersion={this.props.isPremiumVersion}
+                isPremiumVersion={isPremiumVersion}
                 versionName={versionName}
+                systemType={systemType}
+                osType={osType}
+                voices={voices}
+                languages={languages}
+                languageGroups={languageGroups}
+                navigatorLanguage={navigatorLanguage}
+                navigatorLanguages={navigatorLanguages}
+                translatedLanguages={translatedLanguages}
                 onLicenseClick={onLicenseClick}
             />
         );

@@ -18,14 +18,35 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as actionTypes from "../constants/action-types-navigation";
+import React from "react";
+import PropTypes from "prop-types";
 
-/*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
+import HeroVersionSection from "./hero-version-section.jsx";
 
-export const setActiveTabId = (activeTabId) => {
-    return { type: actionTypes.SET_ACTIVE_TAB_ID, activeTabId };
-};
+export default class HeroFreeSection extends React.PureComponent {
+    static defaultProps = {
+        className: "",
+    };
 
-export const setShouldShowBackButton = (shouldShowBackButton) => {
-    return { type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON, shouldShowBackButton };
-};
+    static propTypes = {
+        children: PropTypes.node.isRequired,
+        className: PropTypes.string.isRequired,
+    }
+
+    render() {
+        const {
+            className,
+        } = this.props;
+
+        const isPremiumVersion = false;
+
+        return (
+            <HeroVersionSection
+                isPremiumVersion={isPremiumVersion}
+                className={className}
+            >
+                {this.props.children}
+            </HeroVersionSection>
+        );
+    }
+}

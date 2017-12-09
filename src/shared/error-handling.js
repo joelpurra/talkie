@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     logWarn,
     logInfo,
-} from "../shared/log";
+} from "./log";
 
 const handleUnhandledRejection = (event) => {
     logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);

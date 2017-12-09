@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import styled from "../../../shared/hocs/styled.jsx";
 
-export default class Status extends React.Component {
+export default class Status extends React.PureComponent {
     constructor(props) {
         super(props);
 

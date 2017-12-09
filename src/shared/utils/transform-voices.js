@@ -18,6 +18,69 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+export const getVoicesForLanguage = (voices, languageCode) => {
+    const voicesForLanguage = voices.filter((voice) => voice.lang.startsWith(languageCode));
+
+    return voicesForLanguage;
+};
+
+export const getVoicesForLanguageExact = (voices, languageCode) => {
+    const voicesForLanguage = voices.filter((voice) => voice.lang === languageCode);
+
+    return voicesForLanguage;
+};
+
+export const getLanguageGroupsAndLanguagesFromLanguages = (languages) => {
+    const languageGroupsAndLanguagesObject = languages.reduce((obj, language) => {
+        let languageGroupAndLanguageCodes = null;
+
+        if (language.length === 2) {
+            languageGroupAndLanguageCodes = languageGroupAndLanguageCodes.concat(language);
+        } else {
+            languageGroupAndLanguageCodes = languageGroupAndLanguageCodes.concat([
+                language.substring(0, 2),
+                language,
+            ]);
+        }
+
+        languageGroupAndLanguageCodes.forEach((languageGroupAndLanguageCode) => {
+            obj[languageGroupAndLanguageCode] = (obj[languageGroupAndLanguageCode] || 0) + 1;
+        });
+
+        return obj;
+    },
+    {});
+
+    const languageGroups = Object.keys(languageGroupsAndLanguagesObject);
+
+    languageGroups.sort();
+
+    return languageGroups;
+};
+
+export const getLanguageGroupsFromLanguages = (languages) => {
+    const languageGroupsObject = languages.reduce((obj, language) => {
+        let languageGroupCode = null;
+
+        if (language.length === 2) {
+            languageGroupCode = language;
+        } else {
+            languageGroupCode = language.substring(0, 2);
+        }
+
+        obj[languageGroupCode] = (obj[languageGroupCode] || 0) + 1;
+
+        return obj;
+    },
+    {});
+
+    const languageGroups = Object.keys(languageGroupsObject);
+
+    languageGroups.sort();
+
+    return languageGroups;
+};
+
 export const getLanguagesFromVoices = (voices) => {
     const languagesAsKeys = voices.reduce(
         (obj, voice) => {
@@ -117,4 +180,16 @@ export const getLanguagesByLanguageGroupFromVoices = (voices) => {
         .forEach((languageGroup) => languagesByLanguageGroup[languageGroup].sort());
 
     return languagesByLanguageGroup;
+};
+
+export const getLanguageForVoiceNameFromVoices = (voices, voiceName) => {
+    const matchingVoices = voices.filter((voice) => voice.name === voiceName);
+
+    if (matchingVoices.length !== 1) {
+        throw new Error(`Mismatching number of voices found: ${matchingVoices.length}`);
+    }
+
+    const voice = matchingVoices[0];
+
+    return voice;
 };

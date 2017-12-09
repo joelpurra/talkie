@@ -36,7 +36,7 @@ import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-ic
 
 @configureAttribute
 @translateAttribute
-export default class Features extends React.Component {
+export default class Features extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -121,7 +121,7 @@ export default class Features extends React.Component {
                                 <br />
                                 <TalkiePremiumIcon />
                                     Talkie Premium
-                                </textBase.a>
+                            </textBase.a>
                         </this.styled.storeLinksPFirst>
                         <this.styled.storeLinksP>
                             <textBase.a href={this.props.configure("urls.firefox-amo-premium")}>
@@ -129,7 +129,7 @@ export default class Features extends React.Component {
                                 <br />
                                 <TalkiePremiumIcon />
                                     Talkie Premium
-                                </textBase.a>
+                            </textBase.a>
                         </this.styled.storeLinksP>
                     </this.styled.storeLinks>
                 </PremiumSection>
@@ -151,7 +151,7 @@ export default class Features extends React.Component {
                                 <br />
                                 <TalkieFreeIcon />
                                     Talkie
-                                </textBase.a>
+                            </textBase.a>
                         </this.styled.storeLinksPFirst>
                         <this.styled.storeLinksP>
                             <textBase.a href={this.props.configure("urls.firefox-amo-free")}>
@@ -159,7 +159,7 @@ export default class Features extends React.Component {
                                 <br />
                                 <TalkieFreeIcon />
                                     Talkie
-                                </textBase.a>
+                            </textBase.a>
                         </this.styled.storeLinksP>
                     </this.styled.storeLinks>
                 </FreeSection>

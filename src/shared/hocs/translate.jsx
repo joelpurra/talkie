@@ -22,7 +22,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function translateHoc(ComponentToWrap) {
-    return class TranslationHoc extends React.Component {
+    return class TranslationHoc extends React.PureComponent {
         static contextTypes = {
             translate: PropTypes.func.isRequired,
         }
@@ -32,5 +32,5 @@ export default function translateHoc(ComponentToWrap) {
                 <ComponentToWrap {...this.props} translate={this.context.translate} />
             );
         }
-  };
+    };
 };

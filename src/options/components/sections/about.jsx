@@ -27,13 +27,11 @@ import translateAttribute from "../../../shared/hocs/translate.jsx";
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
-import Discretional from "../../../shared/components/discretional.jsx";
-import SocialShareIcon from "../../../shared/components/icon/social-share-icon.jsx";
 import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
 
 @configureAttribute
 @translateAttribute
-export default class About extends React.Component {
+export default class About extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -43,11 +41,33 @@ export default class About extends React.Component {
     static defaultProps = {
         isPremiumVersion: false,
         versionName: null,
+        systemType: null,
+        osType: null,
+        voices: [],
+        languages: [],
+        languageGroups: [],
+        navigatorLanguage: null,
+        navigatorLanguages: [],
+        translatedLanguages: [],
     };
 
     static propTypes = {
         isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
+        voices: PropTypes.arrayOf(PropTypes.shape({
+            default: PropTypes.bool.isRequired,
+            lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
+        })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        navigatorLanguage: PropTypes.string,
+        navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
@@ -65,17 +85,21 @@ export default class About extends React.Component {
             isPremiumVersion,
             translate,
             versionName,
+            systemType,
+            osType,
+            navigatorLanguage,
+            navigatorLanguages,
+            translatedLanguages,
+            voices,
+            languages,
+            languageGroups,
         } = this.props;
+
+        const voiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
+        voiceNames.sort();
 
         return (
             <section>
-                <p>
-                    <TalkieVersionIcon
-                        isPremiumVersion={isPremiumVersion}
-                    />
-                    Talkie {versionName}
-                </p>
-
                 <listBase.ul>
                     <listBase.li>
                         <textBase.a href={configure("urls.support-feedback")}>
@@ -97,59 +121,99 @@ export default class About extends React.Component {
                             {translate("frontend_aboutCodeOnGithubLinkText")}
                         </textBase.a>
                     </listBase.li>
-                    <Discretional
-                        enabled={!isPremiumVersion}
-                    >
-                        <listBase.li>
-                            <textBase.a href={configure("urls.store-premium")}>
-                                Talkie Premium
-                            </textBase.a>
-                        </listBase.li>
-                    </Discretional>
                 </listBase.ul>
 
                 <textBase.h2>
-                    {translate("frontend_shareHeading")}
+                    {/* TODO: translate */}
+                    {translate("frontend_systemHeading")}
+                    System details
                 </textBase.h2>
 
-                <listBase.inlineUl>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.twitter")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="twitter" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.facebook")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="facebook" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.googleplus")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="googleplus" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                    <listBase.inlineLi>
-                        <textBase.a href={configure("urls.share.linkedin")}>
-                            <SocialShareIcon mode="standalone" size="2em" network="linkedin" />
-                        </textBase.a>
-                    </listBase.inlineLi>
-                </listBase.inlineUl>
+                <listBase.dl>
+                    <listBase.dt>
+                        Installed version
+                    </listBase.dt>
+                    <listBase.dd>
+                        <TalkieVersionIcon
+                            isPremiumVersion={isPremiumVersion}
+                        />
+                        Talkie
+                        {" "}
+                        {versionName}
+                    </listBase.dd>
 
-                <textBase.h2>
-                    {translate("frontend_storyHeading")}
-                </textBase.h2>
-                <p>
-                    {translate("frontend_storyDescription")}
-                </p>
-                <p>
-                    {translate("frontend_storyThankYou")}
-                </p>
-                <p>
-                    —
-                    <textBase.a href="https://joelpurra.com/">
-                        Joel Purra
-                    </textBase.a>
-                </p>
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Browser type
+                    </listBase.dt>
+                    <listBase.dd>
+                        {systemType}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Operating system type
+                    </listBase.dt>
+                    <listBase.dd>
+                        {osType}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Preferred browser language
+                    </listBase.dt>
+                    <listBase.dd>
+                        {navigatorLanguage}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Preferred browser languages ({navigatorLanguages.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {navigatorLanguages.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Installed voice languages ({languageGroups.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {languageGroups.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Installed voice dialects ({languages.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {languages.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Installed voices ({voices.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {voiceNames.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Talkie user interface language
+                    </listBase.dt>
+                    <listBase.dd>
+                        {translate("extensionLocale")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {/* TODO: translate */}
+                        Talkie user interface languages ({translatedLanguages.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {translatedLanguages.join(", ")}
+                    </listBase.dd>
+                </listBase.dl>
 
                 <textBase.h2>
                     {translate("frontend_licenseHeading")}

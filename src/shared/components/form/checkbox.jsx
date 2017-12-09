@@ -26,7 +26,7 @@ import styled from "../../hocs/styled.jsx";
 import * as formBase from "../../styles/form/form-base";
 
 @styled(formBase.checkbox)
-export default class Checkbox extends React.Component {
+export default class Checkbox extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -61,8 +61,8 @@ export default class Checkbox extends React.Component {
         return (
             <input
                 type="checkbox"
-                checked={checked}
-                disabled={disabled}
+                checked={checked || null}
+                disabled={disabled || null}
                 onChange={this.handleOnChange}
                 className={className}
             />

@@ -41,3 +41,22 @@ export const hr = Object.assign(
         borderTopWidth: "1px",
     }
 );
+
+export const details = {};
+export const summary = {
+    cursor: "pointer",
+};
+
+export const hero = {
+    borderRadius: "0.4em",
+    fontSize: "2em",
+    paddingLeft: "1em",
+    paddingRight: "1em",
+    paddingTop: "1em",
+    paddingBottom: "1em",
+    marginLeft: "2em",
+    marginRight: "2em",
+    marginTop: "2em",
+    marginBottom: "2em",
+    backgroundColor: "#eceff5",
+};

@@ -21,28 +21,43 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import configureAttribute from "../../shared/hocs/configure.jsx";
+import translateAttribute from "../../shared/hocs/translate.jsx";
 import styled from "../../shared/hocs/styled.jsx";
+import passSelectedTextToBackground from "../../shared/hocs/pass-selected-text-to-background.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
 
-import NavContainer from "../containers/nav-container.jsx";
-import TabContents from "./navigation/tab-contents.jsx";
+import DynamicEnvironment from "../../split-environments/dynamic-environment.js";
 
-import Features from "./sections/features.jsx";
-import Usage from "./sections/usage.jsx";
-import VoicesContainer from "../containers/voices-container.jsx";
+import NavContainer from "../../shared/containers/nav-container.jsx";
+import TabContents from "../../shared/components/navigation/tab-contents.jsx";
+
 import AboutContainer from "../containers/about-container.jsx";
+import TextContainer from "../containers/text-container.jsx";
+import VoicesContainer from "../containers/voices-container.jsx";
 
-const styles = {
+const dynamicEnvironment = new DynamicEnvironment();
+
+const widthStyles = {
     minWidth: "400px",
     maxWidth: "600px",
-    minHeight: "450px",
-    maxHeight: "1000px",
-    paddingBottom: "1em",
 };
 
+const styles = Object.assign(
+    {},
+    widthStyles,
+    {
+        minHeight: "450px",
+        paddingBottom: "2em",
+    }
+);
+
+@configureAttribute
+@translateAttribute
 @styled(styles)
-export default class Main extends React.Component {
+@passSelectedTextToBackground
+export default class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -51,16 +66,40 @@ export default class Main extends React.Component {
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 
+        // TODO: better place to put navigation menu links?
+        this.links = [
+            {
+                url: this.props.configure("urls.popup-passclick-false"),
+                text: "←",
+            },
+            {
+                tabId: "voices",
+                text: this.props.translate("frontend_voicesLinkText"),
+            },
+            {
+                tabId: "text",
+                // TODO: translate.
+                text: "Text",
+                // text: this.props.translate("frontend_textLinkText"),
+            },
+            {
+                tabId: "about",
+                text: this.props.translate("frontend_aboutLinkText"),
+            },
+        ];
+
         this.styled = {
-            navHeader: styled({
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                minWidth: "400px",
-                maxWidth: "600px",
-                backgroundColor: "#ffffff",
-            })("div"),
+            navHeader: styled(Object.assign(
+                {},
+                widthStyles,
+                {
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: "#ffffff",
+                }
+            ))("div"),
 
             main: styled({
                 marginTop: "4em",
@@ -71,24 +110,38 @@ export default class Main extends React.Component {
     static defaultProps = {
         voicesCount: 0,
         languagesCount: 0,
-        isPremiumVersion: false,
-        versionName: null,
-        systemType: null,
-        osType: null,
         activeTabId: null,
+        shouldShowBackButton: false,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string.isRequired,
-        systemType: PropTypes.string.isRequired,
-        osType: PropTypes.string,
-        activeTabId: PropTypes.string,
+        activeTabId: PropTypes.string.isRequired,
+        shouldShowBackButton: PropTypes.bool.isRequired,
         className: PropTypes.string.isRequired,
+        translate: PropTypes.func.isRequired,
+        configure: PropTypes.func.isRequired,
     };
+
+    getLocationQuerystring() {
+        let queryString = null;
+
+        if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
+            queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
+        }
+
+        return queryString;
+    }
+
+    componentWillMount() {
+        // TODO: move "loading shouldShowBackButton" from the querystring to an action, especially to avoid using the DynamicEnvironment in a component.
+        const queryString = this.getLocationQuerystring();
+        const shouldShowBackButton = !!(queryString && queryString.includes("from=popup"));
+
+        this.props.actions.navigation.setShouldShowBackButton(shouldShowBackButton);
+    }
 
     componentDidMount() {
         // NOTE: execute outside the synchronous rendering.
@@ -129,46 +182,23 @@ export default class Main extends React.Component {
     render() {
         const {
             activeTabId,
-            isPremiumVersion,
-            versionName,
-            systemType,
-            osType,
+            shouldShowBackButton,
             className,
         } = this.props;
+
+        const linksToShow = shouldShowBackButton ? this.links : this.links.slice(1);
 
         return (
             <div className={className}>
                 <this.styled.navHeader>
-                    <NavContainer />
+                    <NavContainer
+                        links={linksToShow}
+                    />
 
                     <layoutBase.hr />
                 </this.styled.navHeader>
 
                 <this.styled.main>
-                    <TabContents
-                        id="usage"
-                        activeTabId={activeTabId}
-                        onLinkClick={this.handleLinkClick}
-                    >
-                        <Usage
-                            isPremiumVersion={isPremiumVersion}
-                            systemType={systemType}
-                            osType={osType}
-                            onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
-                        />
-                    </TabContents>
-
-                    <TabContents
-                        id="features"
-                        activeTabId={activeTabId}
-                        onLinkClick={this.handleLinkClick}
-                    >
-                        <Features
-                            isPremiumVersion={isPremiumVersion}
-                            systemType={systemType}
-                        />
-                    </TabContents>
-
                     <TabContents
                         id="voices"
                         activeTabId={activeTabId}
@@ -178,13 +208,19 @@ export default class Main extends React.Component {
                     </TabContents>
 
                     <TabContents
+                        id="text"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <TextContainer />
+                    </TabContents>
+
+                    <TabContents
                         id="about"
                         activeTabId={activeTabId}
                         onLinkClick={this.handleLinkClick}
                     >
                         <AboutContainer
-                            isPremiumVersion={isPremiumVersion}
-                            versionName={versionName}
                             onLicenseClick={this.handleLegaleseClick}
                         />
                     </TabContents>

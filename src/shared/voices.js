@@ -20,11 +20,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 import {
     getBackgroundPage,
-} from "../shared/tabs";
+} from "./tabs";
 
 export const getVoices = () => promiseTry(
     () => {
@@ -42,8 +42,11 @@ export const getVoices = () => promiseTry(
 
 const getMappedVoice = voice => {
     return {
-        name: voice.name,
+        default: voice.default,
         lang: voice.lang,
+        localService: voice.localService,
+        name: voice.name,
+        voiceURI: voice.voiceURI,
     };
 };
 

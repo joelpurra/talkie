@@ -206,7 +206,7 @@ export default class TalkieSpeaker {
                             .then(() => {
                                 synthesizer.cancel();
 
-                                // Reset the system to resume playback, just to be nice to the world.
+                                // NOTE: reset the system to resume playback, just to be nice to the world.
                                 synthesizer.resume();
 
                                 logDebug("Done", "stopSpeaking");

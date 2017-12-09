@@ -33,3 +33,4 @@ export const h4 = styled(textBase.h4)("h4");
 export const h5 = styled(textBase.h5)("h5");
 
 export const kbd = styled(textBase.kbd)("kbd");
+export const blockquote = styled(textBase.blockquote)("blockquote");

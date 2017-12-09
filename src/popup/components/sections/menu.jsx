@@ -32,14 +32,20 @@ import Icon from "../../../shared/components/icon/icon.jsx";
 
 @configureAttribute
 @translateAttribute
-export default class Menu extends React.Component {
+export default class Menu extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.styled = {
             ol: styled({
-                margin: 0,
-                padding: 0,
+                marginLeft: 0,
+                marginRight: 0,
+                marginTop: 0,
+                marginBottom: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
                 listStyle: "none",
             })("ol"),
 
@@ -75,31 +81,25 @@ export default class Menu extends React.Component {
             <layoutBase.nav>
                 <this.styled.ol>
                     <this.styled.li>
-                        <this.styled.a href={configure("urls.options-usage-from-popup")}>
-                            <Icon className="icon-usage" />
-                            {translate("frontend_PopupMenu_Usage")}
-                        </this.styled.a>
-                    </this.styled.li>
-                    <this.styled.li>
-                        <this.styled.a href={configure("urls.options-voices-from-popup")}>
+                        <this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
                             <Icon className="icon-voices" />
                             {translate("frontend_PopupMenu_Voices")}
                         </this.styled.a>
                     </this.styled.li>
                     <this.styled.li>
-                        <this.styled.a href={configure("urls.options-features-from-popup")}>
+                        <this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
+                            <Icon className="icon-usage" />
+                            {translate("frontend_PopupMenu_Usage")}
+                        </this.styled.a>
+                    </this.styled.li>
+                    <this.styled.li>
+                        <this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
                             <Icon className="icon-features" />
                             {translate("frontend_PopupMenu_Features")}
                         </this.styled.a>
                     </this.styled.li>
                     <this.styled.li>
-                        <this.styled.a href={configure("urls.options-about-from-popup")}>
-                            <Icon className="icon-about" />
-                            {translate("frontend_PopupMenu_About")}
-                        </this.styled.a>
-                    </this.styled.li>
-                    <this.styled.li>
-                        <this.styled.a href={configure("urls.support-feedback")}>
+                        <this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
                             <Icon className="icon-feedback" />
                             {translate("frontend_supportAndFeedback")}
                         </this.styled.a>

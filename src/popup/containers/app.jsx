@@ -46,13 +46,14 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
             sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
+            sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
             sharedProgress: bindActionCreators(actionCreators.shared.progress, dispatch),
         },
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
@@ -64,7 +65,7 @@ export default class App extends React.Component {
             actions,
             isPremiumVersion,
             versionNumber,
-          } = this.props;
+        } = this.props;
 
         return (
             <div>

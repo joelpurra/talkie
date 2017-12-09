@@ -22,7 +22,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function broadcasterHoc(ComponentToWrap) {
-    return class BroadcasterHoc extends React.Component {
+    return class BroadcasterHoc extends React.PureComponent {
         static contextTypes = {
             broadcaster: PropTypes.func.isRequired,
         }
@@ -32,5 +32,5 @@ export default function broadcasterHoc(ComponentToWrap) {
                 <ComponentToWrap {...this.props} broadcaster={this.context.broadcaster} />
             );
         }
-  };
+    };
 };

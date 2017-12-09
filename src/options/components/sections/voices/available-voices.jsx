@@ -25,15 +25,11 @@ import styled from "../../../../shared/hocs/styled.jsx";
 
 import * as formBase from "../../../../shared/styled/form/form-base.jsx";
 
-import {
-    scrollIntoViewIfNeeded,
-} from "../../../utils/select-element";
+import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 
 export default class AvailableVoices extends React.PureComponent {
     constructor(props) {
         super(props);
-
-        this.selectElement = null;
 
         this.handleChange = this.handleChange.bind(this);
 
@@ -47,68 +43,76 @@ export default class AvailableVoices extends React.PureComponent {
     static defaultProps = {
         voices: [],
         value: null,
-        defaultVoiceNameForSelectedLanguage: null,
+        effectiveVoiceNameForSelectedLanguage: null,
         disabled: true,
     };
 
     static propTypes = {
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
         value: PropTypes.string,
-        defaultVoiceNameForSelectedLanguage: PropTypes.string,
+        effectiveVoiceNameForSelectedLanguage: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         disabled: PropTypes.bool.isRequired,
     };
 
-    handleChange(e) {
-        const voiceName = e.target.value;
-
+    handleChange(voiceName) {
         this.props.onChange(voiceName);
-
-        scrollIntoViewIfNeeded(this.selectElement);
     }
 
     render() {
         const voicesOptions = this.props.voices.map(
             (voice) => {
-                const isDefaultVoiceNameForSelectedLanguage = (
-                    this.props.defaultVoiceNameForSelectedLanguage
-                    && this.props.defaultVoiceNameForSelectedLanguage === voice.name
+                const isEffectiveVoiceNameForSelectedLanguage = (
+                    this.props.effectiveVoiceNameForSelectedLanguage
+                    && this.props.effectiveVoiceNameForSelectedLanguage === voice.name
                 );
 
-                const VoiceOption = isDefaultVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
+                const VoiceOption = isEffectiveVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
 
-                const defaultVoiceNameForSelectedLanguageMark = isDefaultVoiceNameForSelectedLanguage ? " ✓" : "";
+                let voiceNameAndFeaturesText = voice.name;
 
-                const voiceOptionText = `${voice.name}${defaultVoiceNameForSelectedLanguageMark}`;
+                const voiceFeatures = [];
+
+                if (voice.localService === false) {
+                    // TODO: translate.
+                    voiceFeatures.push("online");
+                }
+
+                if (voiceFeatures.length > 0) {
+                    voiceNameAndFeaturesText += " (";
+                    voiceNameAndFeaturesText += voiceFeatures.join(", ");
+                    voiceNameAndFeaturesText += ")";
+                }
+
+                if (isEffectiveVoiceNameForSelectedLanguage) {
+                    voiceNameAndFeaturesText += " ✓";
+                }
 
                 return <VoiceOption
                     key={voice.name}
                     // TODO: proper way to store/look up objects?
                     value={voice.name}
                 >
-                    {voiceOptionText}
+                    {voiceNameAndFeaturesText}
                 </VoiceOption>;
             }
         );
 
         return (
-            <formBase.multiLineSelect
-                id="voices-voices-list"
-                size="7"
+            <MultilineSelect
+                size={7}
                 onChange={this.handleChange}
-                value={this.props.value || undefined}
-                disabled={this.props.disabled || null}
-                ref={
-                    (selectElement) => {
-                        this.selectElement = selectElement;
-                        scrollIntoViewIfNeeded(this.selectElement);
-                    }}
+                value={this.props.value}
+                disabled={this.props.disabled}
             >
                 {voicesOptions}
-            </formBase.multiLineSelect>
+            </MultilineSelect>
         );
     }
 }

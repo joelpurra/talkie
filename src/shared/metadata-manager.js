@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export default class MetadataManager {
     constructor(manifestProvider) {
@@ -225,6 +225,7 @@ export default class MetadataManager {
             () => browser.runtime.getPlatformInfo()
                 .then((platformInfo) => {
                     if (platformInfo && typeof platformInfo.os === "string") {
+                        // https://developer.chrome.com/extensions/runtime#type-PlatformOs
                         return platformInfo.os;
                     }
 

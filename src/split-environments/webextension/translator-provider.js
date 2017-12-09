@@ -25,7 +25,7 @@ export default class WebExtensionEnvironmentTranslatorProvider {
     }
 
     translate(key, extras) {
-        // const locale = this.localeProvider.get();
+        // const locale = this.localeProvider.getTranslationLocale();
 
         // TODO: use same translation system in frontend and backend?
         const translated = browser.i18n.getMessage(key, extras);

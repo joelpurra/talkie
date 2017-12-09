@@ -23,8 +23,6 @@ import PropTypes from "prop-types";
 
 import translate from "../../../../shared/hocs/translate.jsx";
 
-import * as formBase from "../../../../shared/styled/form/form-base.jsx";
-
 import {
     getLanguageGroupsFromVoices,
     getVoicesByLanguageFromVoices,
@@ -32,16 +30,13 @@ import {
     getLanguagesByLanguageGroupFromVoices,
 } from "../../../../shared/utils/transform-voices";
 
-import {
-    scrollIntoViewIfNeeded,
-} from "../../../utils/select-element";
+import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 
 @translate
 export default class AvailableLanguages extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.selectElement = null;
         this.defaultAllLanguagesValue = "all-languages";
 
         this.handleChange = this.handleChange.bind(this);
@@ -49,14 +44,17 @@ export default class AvailableLanguages extends React.PureComponent {
 
     static defaultProps = {
         voices: [],
-        value: undefined,
+        value: null,
         disabled: true,
     };
 
     static propTypes = {
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
@@ -64,16 +62,14 @@ export default class AvailableLanguages extends React.PureComponent {
         translate: PropTypes.func.isRequired,
     };
 
-    handleChange(e) {
+    handleChange(newlySelectedLanguageName) {
         let languageName = null;
 
-        if (e.target.value !== this.defaultAllLanguagesValue) {
-            languageName = e.target.value;
+        if (newlySelectedLanguageName !== this.defaultAllLanguagesValue) {
+            languageName = newlySelectedLanguageName;
         }
 
         this.props.onChange(languageName);
-
-        scrollIntoViewIfNeeded(this.selectElement);
     }
 
     render() {
@@ -105,7 +101,7 @@ export default class AvailableLanguages extends React.PureComponent {
                     // TODO: proper way to store/look up objects?
                     value={languageGroup}
                     className="group"
-                  >
+                >
                     {languageGroupText}
                 </option>;
 
@@ -127,7 +123,7 @@ export default class AvailableLanguages extends React.PureComponent {
                             key={language}
                             // TODO: proper way to store/look up objects?
                             value={language}
-                          >
+                        >
                             {languageText}
                         </option>;
 
@@ -148,20 +144,15 @@ export default class AvailableLanguages extends React.PureComponent {
         );
 
         return (
-            <formBase.multiLineSelect
-                size="7"
+            <MultilineSelect
+                size={7}
                 onChange={this.handleChange}
                 value={this.props.value || this.defaultAllLanguagesValue}
-                disabled={this.props.disabled || null}
+                disabled={this.props.disabled}
                 className="grouped"
-                ref={
-                    (selectElement) => {
-                        this.selectElement = selectElement;
-                        scrollIntoViewIfNeeded(this.selectElement);
-                    }}
             >
                 {languagesOptions}
-            </formBase.multiLineSelect>
+            </MultilineSelect>
         );
     }
 }

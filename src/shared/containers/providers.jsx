@@ -33,7 +33,7 @@ import BroadcasterProvider from "../hocs/broadcaster-provider.jsx";
 
 import StateRoot from "./state-root.jsx";
 
-export default class Providers extends React.Component {
+export default class Providers extends React.PureComponent {
     static propTypes = {
         broadcaster: PropTypes.object.isRequired,
         children: PropTypes.element.isRequired,
@@ -48,18 +48,18 @@ export default class Providers extends React.Component {
             configuration,
             styletron,
             translator,
-          } = this.props;
+        } = this.props;
 
         return (
             <ConfigurationProvider configuration={configuration}>
                 <TranslationProvider translator={translator}>
-                <BroadcasterProvider broadcaster={broadcaster}>
-                    <StyletronProvider styletron={styletron}>
-                        <StateRoot>
-                            {React.Children.only(this.props.children)}
-                        </StateRoot>
-                    </StyletronProvider>
-                </BroadcasterProvider>
+                    <BroadcasterProvider broadcaster={broadcaster}>
+                        <StyletronProvider styletron={styletron}>
+                            <StateRoot>
+                                {React.Children.only(this.props.children)}
+                            </StateRoot>
+                        </StyletronProvider>
+                    </BroadcasterProvider>
                 </TranslationProvider>
             </ConfigurationProvider>
         );

@@ -103,9 +103,3 @@ document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
 
 // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
 window.addEventListener("unload", eventToPromise.bind(null, stop));
-
-// NOTE: synchronous version.
-// TODO: reimplement fallback unregistration in react?
-//window.addEventListener("unload", () => {
-//    executeKillSwitches();
-//});

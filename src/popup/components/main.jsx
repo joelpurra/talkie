@@ -21,6 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
+import {
+    handleBubbledLinkClick,
+} from "../../shared/utils/ui";
+
 import styled from "../../shared/hocs/styled.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
@@ -36,12 +40,14 @@ const styles = {
 };
 
 @styled(styles)
-export default class Main extends React.Component {
+export default class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
         this.handleLinkClick = this.handleLinkClick.bind(this);
+        this.handleCheckLinkClick = this.handleCheckLinkClick.bind(this);
+        this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
     }
 
     static defaultProps = {
@@ -64,6 +70,20 @@ export default class Main extends React.Component {
         this.props.actions.sharedNavigation.openUrlInNewTab(url);
     }
 
+    handleCheckLinkClick(e) {
+        // TODO: use an api call which has handleBubbledLinkClick?
+        return handleBubbledLinkClick(this.handleLinkClick, e);
+    }
+
+    handleOptionsPageClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.props.actions.sharedNavigation.openOptionsPage();
+
+        return false;
+    }
+
     render() {
         const {
             isPremiumVersion,
@@ -72,7 +92,10 @@ export default class Main extends React.Component {
         } = this.props;
 
         return (
-            <div className={className}>
+            <div
+                className={className}
+                onClick={this.handleCheckLinkClick}
+            >
                 <Header
                     isPremiumVersion={isPremiumVersion}
                     playPauseClick={this.handlePlayPauseClick}
@@ -80,7 +103,7 @@ export default class Main extends React.Component {
 
                 <Status
                     playPauseClick={this.handlePlayPauseClick}
-                 />
+                />
 
                 <layoutBase.hr />
 
@@ -90,6 +113,7 @@ export default class Main extends React.Component {
 
                 <Footer
                     versionNumber={versionNumber}
+                    optionsPageClick={this.handleOptionsPageClick}
                 />
             </div>
         );

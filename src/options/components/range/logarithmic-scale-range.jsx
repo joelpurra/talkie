@@ -23,8 +23,9 @@ import PropTypes from "prop-types";
 
 import ScaleRange from "./scale-range.jsx";
 
-export default class LogarithmicScaleRange extends React.Component {
+export default class LogarithmicScaleRange extends React.PureComponent {
     static defaultProps = {
+        listName: null,
         min: 0,
         defaultValue: 1,
         initialValue: 1,
@@ -36,6 +37,7 @@ export default class LogarithmicScaleRange extends React.Component {
     static propTypes = {
         onInput: PropTypes.func.isRequired,
         onChange: PropTypes.func.isRequired,
+        listName: PropTypes.string.isRequired,
         min: PropTypes.number.isRequired,
         defaultValue: PropTypes.number.isRequired,
         initialValue: PropTypes.number.isRequired,
@@ -76,15 +78,24 @@ export default class LogarithmicScaleRange extends React.Component {
     }
 
     render() {
+        const {
+            listName,
+            min,
+            defaultValue,
+            initialValue,
+            max,
+            disabled,
+        } = this.props;
+
         return (
             <ScaleRange
-                min={this._toLogarithmicRangeScale(this.props.min)}
-                defaultValue={this._toLogarithmicRangeScale(this.props.defaultValue)}
-                initialValue={this._toLogarithmicRangeScale(this.props.initialValue)}
-                max={this._toLogarithmicRangeScale(this.props.max)}
-                // step={this._toLogarithmicRangeScale(this.props.step)}
+                listName={listName}
+                min={this._toLogarithmicRangeScale(min)}
+                defaultValue={this._toLogarithmicRangeScale(defaultValue)}
+                initialValue={this._toLogarithmicRangeScale(initialValue)}
+                max={this._toLogarithmicRangeScale(max)}
                 step={1}
-                disabled={this.props.disabled}
+                disabled={disabled}
                 onInput={this.handleInput}
                 onChange={this.handleChange}
             />

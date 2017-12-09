@@ -27,7 +27,9 @@ import styled from "../../shared/hocs/styled.jsx";
 
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
 import * as textBase from "../../shared/styled/text/text-base.jsx";
+import * as buttonBase from "../../shared/styled/button/button-base.jsx";
 
+import Discretional from "../../shared/components/discretional.jsx";
 import TalkieVersionIcon from "../../shared/components/icon/talkie-version-icon.jsx";
 
 const styles = {};
@@ -35,7 +37,29 @@ const styles = {};
 @configureAttribute
 @translateAttribute
 @styled(styles)
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.styled = {
+            extensionName: styled({
+                fontWeight: "bold",
+                textDecoration: "none",
+                ":focus": {
+                    outline: 0,
+                },
+            })(textBase.a),
+
+            button: styled({
+                lineHeight: "1.5em",
+                // float: __MSG_@@bidi_end_edge__;
+                ":focus": {
+                    outline: 0,
+                },
+            })(buttonBase.a),
+        };
+    }
+
     static defaultProps = {
         isPremiumVersion: false,
     };
@@ -52,16 +76,28 @@ export default class Header extends React.Component {
             className,
             isPremiumVersion,
             translate,
+            configure,
         } = this.props;
 
         return (
             <layoutBase.header className={className}>
+                {/* TODO: show for free Talkie, not for Talkie Premium. */}
+                <Discretional
+                    enabled={!isPremiumVersion}
+                >
+                    <this.styled.button href={configure("urls.store-premium")} id="header-premium-button">
+                        {translate("extensionShortName_Premium")}
+                    </this.styled.button>
+                </Discretional>
+
                 <textBase.h1>
                     <TalkieVersionIcon
                         isPremiumVersion={isPremiumVersion}
                     />
 
-                    {translate("extensionShortName")}
+                    <this.styled.extensionName href={configure("urls.main")}>
+                        {translate("extensionShortName")}
+                    </this.styled.extensionName>
                 </textBase.h1>
             </layoutBase.header>
         );

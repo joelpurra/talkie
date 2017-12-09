@@ -34,7 +34,7 @@ import Icon from "../../../shared/components/icon/icon.jsx";
 import ProgressContainer from "../../containers/progress-container.jsx";
 
 @translateAttribute
-export default class Status extends React.Component {
+export default class Status extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -55,7 +55,10 @@ export default class Status extends React.Component {
 
             td: styled({
                 borderSpacing: 0,
-                padding: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
             })(tableBase.td),
 
             statusIconWrapper: styled({
@@ -71,6 +74,7 @@ export default class Status extends React.Component {
 
     handlePlayPauseClick(e) {
         e.preventDefault();
+        e.stopPropagation();
 
         this.props.playPauseClick();
 

@@ -38,6 +38,8 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
         // TODO: generalize preloading?
         sharedActions.metadata.loadIsPremium(),
         sharedActions.metadata.loadVersionName(),
+
+        // NOTE: don't want to keep track of when to load these, preemptively loading.
         sharedActions.metadata.loadSystemType(),
         // sharedActions.metadata.loadOsType(),
     ];
@@ -62,8 +64,9 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
 
 const EMPTY_STATE = undefined;
 
-const renderHtml = (store, reactHtmlTemplate, styletron, root) => promiseTry(() => {
+const renderHtml = (store, reactHtmlTemplate, localeProvider, styletron, root) => promiseTry(() => {
     const reactRoot = ReactDOMServer.renderToString(root);
+    const translationLocale = localeProvider.getTranslationLocale();
     const stylesForHead = styletron.getStylesheetsHtml();
     const prerenderedState = store.getState();
 
@@ -72,6 +75,7 @@ const renderHtml = (store, reactHtmlTemplate, styletron, root) => promiseTry(() 
     const prerenderedStateJson = JSON.stringify(prerenderedState).replace(/</g, "\\u003c");
 
     const html = reactHtmlTemplate({
+        locale: translationLocale,
         reactRoot: reactRoot,
         stylesForHead: stylesForHead,
         prerenderedStateJson: prerenderedStateJson,
@@ -91,13 +95,13 @@ const getHtml = (rootReducer, customPrerenderedActionsToDispatch, customPostrend
             styletron,
             localeProvider,
         }) => {
-            localeProvider.set(talkieLocale);
+            localeProvider.setTranslationLocale(talkieLocale);
 
             return dispatchAll(store, prerenderedActionsToDispatch)
                 .then(() => {
                     let html = null;
 
-                    return renderHtml(store, reactHtmlTemplate, styletron, root)
+                    return renderHtml(store, reactHtmlTemplate, localeProvider, styletron, root)
                         .then((renderedHtml) => {
                             html = renderedHtml;
                             return undefined;

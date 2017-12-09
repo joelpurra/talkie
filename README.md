@@ -43,7 +43,7 @@
 ## Usage
 
 1. **Select desired text** on any web page.
-1. **Click the Talkie button** in your browser bar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
+1. **Click the Talkie button** in your browser toolbar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" />
 
 
 You can also **select the text, then right click on it**, and choose <img src="resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie in the menu. This way also works in PDF-files and some *special* types of pages in the browser.

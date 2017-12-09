@@ -29,6 +29,7 @@ import App from "./containers/app.jsx";
 const prerenderActionsToDispatch = [];
 const postrenderActionsToDispatch = [
     actions.shared.voices.loadVoices(),
+    actions.shared.voices.loadNavigatorLanguages(),
 ];
 
 export default () => hydrateHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, App);

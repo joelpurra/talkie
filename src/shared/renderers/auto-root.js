@@ -32,11 +32,11 @@ import configurationObject from "../../configuration.json";
 import ManifestProvider from "../../split-environments/manifest-provider";
 import LocaleProvider from "../../split-environments/locale-provider";
 import TranslatorProvider from "../../split-environments/translator-provider";
-import InternalUrlProvider from "../../split-environments/internal-url-provider";
 import BroadcasterProvider from "../../split-environments/broadcaster-provider";
 
 import MetadataManager from "../metadata-manager";
 import Configuration from "../configuration";
+import TalkieLocaleHelper from "../talkie-locale-helper";
 
 import Api from "../../split-environments/api";
 
@@ -58,13 +58,13 @@ const getRoot = (store, translator, configuration, styletron, broadcaster, Child
 
 const autoRoot = (initialState, rootReducer, ChildComponent) => promiseTry(() => {
     const manifestProvider = new ManifestProvider();
-    const internalUrlProvider = new InternalUrlProvider();
     const metadataManager = new MetadataManager(manifestProvider);
-    const configuration = new Configuration(metadataManager, configurationObject, internalUrlProvider);
+    const configuration = new Configuration(metadataManager, configurationObject);
     const localeProvider = new LocaleProvider();
     const translatorProvider = new TranslatorProvider(localeProvider);
     const broadcasterProvider = new BroadcasterProvider();
-    const api = new Api(metadataManager, configuration, translatorProvider, broadcasterProvider);
+    const talkieLocaleHelper = new TalkieLocaleHelper();
+    const api = new Api(metadataManager, configuration, translatorProvider, broadcasterProvider, talkieLocaleHelper);
 
     const storeProvider = new StoreProvider();
     const store = storeProvider.createStore(initialState, rootReducer, api, null, null);

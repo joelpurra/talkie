@@ -27,6 +27,7 @@ export function handleBubbledLinkClick(handleUrl, e) {
 
             if (typeof href === "string" && href.startsWith("https://")) {
                 e.preventDefault();
+                e.stopPropagation();
 
                 handleUrl(href);
 

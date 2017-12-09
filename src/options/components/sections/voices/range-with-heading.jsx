@@ -25,11 +25,11 @@ import {
     debounce,
 } from "../../../../shared/basic";
 
-import translate from "../../../../shared/hocs/translate.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
 import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 
-@translate
+@translateAttribute
 export default class RangeWithHeading extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -46,6 +46,7 @@ export default class RangeWithHeading extends React.PureComponent {
     }
 
     static defaultProps = {
+        listName: null,
         voiceName: null,
         min: 0,
         defaultValue: 1,
@@ -60,6 +61,7 @@ export default class RangeWithHeading extends React.PureComponent {
         transformValueBeforeChange: PropTypes.func.isRequired,
         getHeading: PropTypes.func.isRequired,
         ScaleRangeElementClass: PropTypes.func.isRequired,
+        listName: PropTypes.string.isRequired,
         voiceName: PropTypes.string,
         min: PropTypes.number.isRequired,
         defaultValue: PropTypes.number.isRequired,
@@ -100,7 +102,20 @@ export default class RangeWithHeading extends React.PureComponent {
     }
 
     render() {
-        const heading = this.props.getHeading(this.props.voiceName, this.props.translate);
+        const {
+            listName,
+            getHeading,
+            voiceName,
+            translate,
+            ScaleRangeElementClass,
+            min,
+            defaultValue,
+            max,
+            step,
+            disabled,
+        } = this.props;
+
+        const heading = getHeading(voiceName, translate);
 
         return (
             <tableBase.tbody>
@@ -113,13 +128,14 @@ export default class RangeWithHeading extends React.PureComponent {
                 </tableBase.tr>
                 <tableBase.tr>
                     <tableBase.td>
-                        <this.props.ScaleRangeElementClass
-                            min={this.props.min}
-                            defaultValue={this.props.defaultValue}
+                        <ScaleRangeElementClass
+                            listName={listName}
+                            min={min}
+                            defaultValue={defaultValue}
                             initialValue={this.state.value}
-                            max={this.props.max}
-                            step={this.props.step}
-                            disabled={this.props.disabled}
+                            max={max}
+                            step={step}
+                            disabled={disabled}
                             onInput={this.handleInput}
                             onChange={this.handleChange}
                         />

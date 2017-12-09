@@ -23,10 +23,12 @@ import {
 } from "redux";
 
 import shared from "../../shared/reducers";
+import unshared from "../../unshared/reducers";
 
 import navigation from "./navigation";
 
 export default combineReducers({
     shared,
+    unshared,
     navigation,
 });

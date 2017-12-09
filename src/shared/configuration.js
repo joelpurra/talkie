@@ -20,39 +20,41 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export default class Configuration {
     // NOTE: keep SynchronousConfiguration and Configuration in... sync.
-    constructor(metadataManager, configurationObject, internalUrlProvider) {
+    constructor(metadataManager, configurationObject) {
         this.metadataManager = metadataManager;
         this.configurationObject = configurationObject;
-        this.internalUrlProvider = internalUrlProvider;
 
         this._initialize();
     }
 
     _initialize() {
+        this.configurationObject.shared.urls.root = "/";
+        this.configurationObject.shared.urls.demo = "/src/demo/demo.html";
+        this.configurationObject.shared.urls.options = "/src/options/options.html";
+        this.configurationObject.shared.urls.popup = "/src/popup/popup.html";
+
         // NOTE: direct links to individual tabs.
-        /* eslint-disable no-sync */
-        this.configurationObject.shared.urls.options = this.internalUrlProvider.getSync("/src/options/options.html");
-        /* eslint-enable no-sync */
-        this.configurationObject.shared.urls["options-voices"] = this.configurationObject.shared.urls.options + "#voices";
-        this.configurationObject.shared.urls["options-about"] = this.configurationObject.shared.urls.options + "#about";
-        this.configurationObject.shared.urls["options-features"] = this.configurationObject.shared.urls.options + "#features";
-        this.configurationObject.shared.urls["options-usage"] = this.configurationObject.shared.urls.options + "#usage";
+        this.configurationObject.shared.urls["demo-about"] = this.configurationObject.shared.urls.demo + "#about";
+        this.configurationObject.shared.urls["demo-features"] = this.configurationObject.shared.urls.demo + "#features";
+        this.configurationObject.shared.urls["demo-support"] = this.configurationObject.shared.urls.demo + "#support";
+        this.configurationObject.shared.urls["demo-usage"] = this.configurationObject.shared.urls.demo + "#usage";
+        this.configurationObject.shared.urls["demo-voices"] = this.configurationObject.shared.urls.demo + "#voices";
+        this.configurationObject.shared.urls["demo-welcome"] = this.configurationObject.shared.urls.demo + "#welcome";
 
         // NOTE: direct links to individual tabs.
         // NOTE: need to pass a parameter to the options page.
-        this.configurationObject.shared.urls["options-from-popup"] = this.configurationObject.shared.urls.options + "?from=popup";
-        this.configurationObject.shared.urls["options-voices-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#voices";
-        this.configurationObject.shared.urls["options-about-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#about";
-        this.configurationObject.shared.urls["options-features-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#features";
-        this.configurationObject.shared.urls["options-usage-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#usage";
+        [
+            "popup",
+            "demo",
+        ].forEach((from) => {
+            this.configurationObject.shared.urls[`options-from-${from}`] = this.configurationObject.shared.urls.options + `?from=${from}`;
+            this.configurationObject.shared.urls[`options-about-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#about";
+        });
 
-        /* eslint-disable no-sync */
-        this.configurationObject.shared.urls.popup = this.internalUrlProvider.getSync("/src/popup/popup.html");
-        /* eslint-enable no-sync */
         this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
     }
 

@@ -121,7 +121,7 @@ export const loadEffectiveVoiceForLanguage = (languageCode) =>
         if (languageCode) {
             return api.getEffectiveVoiceForLanguage(languageCode)
                 .then((effectiveVoiceForLanguage) => Promise.all([
-                    dispatch(setDefaultVoiceNameForSelectedLanguage(effectiveVoiceForLanguage)),
+                    dispatch(setEffectiveVoiceNameForSelectedLanguage(effectiveVoiceForLanguage)),
                     dispatch(loadSelectedVoiceName(effectiveVoiceForLanguage)),
                 ]));
         }
@@ -131,17 +131,72 @@ export const loadEffectiveVoiceForLanguage = (languageCode) =>
         const newSelectedVoiceName = (state.shared.voices.voices.length > 0 && state.shared.voices.voices[0].name) || null;
 
         return Promise.all([
-            dispatch(setDefaultVoiceNameForSelectedLanguage(null)),
+            dispatch(setEffectiveVoiceNameForSelectedLanguage(null)),
             dispatch(loadSelectedVoiceName(newSelectedVoiceName)),
         ]);
     };
 
-export const storeDefaultVoiceNameForLanguage = (languageCode, voiceName) =>
+export const storeEffectiveVoiceNameForLanguage = (languageCode, voiceName) =>
     (dispatch, getState, api) => api.toggleLanguageVoiceOverrideName(languageCode, voiceName)
         .then(() => dispatch(loadEffectiveVoiceForLanguage(languageCode)));
 
-export const setDefaultVoiceNameForSelectedLanguage = (defaultVoiceNameForSelectedLanguage) => {
-    return { type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE, defaultVoiceNameForSelectedLanguage };
+export const setEffectiveVoiceNameForSelectedLanguage = (effectiveVoiceNameForSelectedLanguage) => {
+    return { type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE, effectiveVoiceNameForSelectedLanguage };
+};
+
+function getNavigatorLanguage() {
+    let lang = null;
+
+    try {
+        lang = navigator.language;
+    }
+    catch (error)
+    {
+        // NOTE: swallowing errors.
+    }
+
+    return lang;
+};
+
+function getNavigatorLanguages() {
+    let langs = null;
+
+    try {
+        langs = navigator.languages;
+    }
+    catch (error)
+    {
+        // NOTE: swallowing errors.
+        langs = [];
+    }
+
+    return langs;
+};
+
+export const loadNavigatorLanguage = () =>
+    (dispatch) => Promise.resolve()
+        .then(() => getNavigatorLanguage())
+        .then((navigatorLanguage) => dispatch(setNavigatorLanguage(navigatorLanguage)));
+
+export const setNavigatorLanguage = (navigatorLanguage) => {
+    return { type: actionTypes.SET_NAVIGATOR_LANGUAGE, navigatorLanguage };
+};
+
+export const loadNavigatorLanguages = () =>
+    (dispatch) => Promise.resolve()
+        .then(() => getNavigatorLanguages())
+        .then((navigatorLanguages) => dispatch(setNavigatorLanguages(navigatorLanguages)));
+
+export const setNavigatorLanguages = (navigatorLanguages) => {
+    return { type: actionTypes.SET_NAVIGATOR_LANGUAGES, navigatorLanguages };
+};
+
+export const loadTranslatedLanguages = () =>
+    (dispatch, getState, api) => api.getTranslatedLanguages()
+        .then((translatedLanguages) => dispatch(setTranslatedLanguages(translatedLanguages)));
+
+export const setTranslatedLanguages = (translatedLanguages) => {
+    return { type: actionTypes.SET_TRANSLATED_LANGUAGES, translatedLanguages };
 };
 
 export const speakState = () =>

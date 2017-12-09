@@ -29,10 +29,13 @@ const initialState = {
     speakLongTexts: false,
     selectedLanguageCode: null,
     selectedVoiceName: null,
-    defaultVoiceNameForSelectedLanguage: null,
+    effectiveVoiceNameForSelectedLanguage: null,
     sampleText: "",
     rateForSelectedVoice: 1,
     pitchForSelectedVoice: 1,
+    navigatorLanguage: null,
+    navigatorLanguages: [],
+    translatedLanguages: [],
 };
 
 const customActionsMap = {};
@@ -42,10 +45,13 @@ const assignActionsMap = {
     [actionTypes.SET_VOICES]: "voices",
     [actionTypes.SET_SELECTED_LANGUAGE_CODE]: "selectedLanguageCode",
     [actionTypes.SET_SELECTED_VOICE_NAME]: "selectedVoiceName",
-    [actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE]: "defaultVoiceNameForSelectedLanguage",
+    [actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE]: "effectiveVoiceNameForSelectedLanguage",
     [actionTypes.SET_SAMPLE_TEXT]: "sampleText",
     [actionTypes.SET_RATE_FOR_SELECTED_VOICE]: "rateForSelectedVoice",
     [actionTypes.SET_PITCH_FOR_SELECTED_VOICE]: "pitchForSelectedVoice",
+    [actionTypes.SET_NAVIGATOR_LANGUAGE]: "navigatorLanguage",
+    [actionTypes.SET_NAVIGATOR_LANGUAGES]: "navigatorLanguages",
+    [actionTypes.SET_TRANSLATED_LANGUAGES]: "translatedLanguages",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

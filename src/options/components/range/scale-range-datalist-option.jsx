@@ -21,17 +21,28 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class ScaleRangeDatalistOption extends React.Component {
-    static defaultProps = {};
+export default class ScaleRangeDatalistOption extends React.PureComponent {
+    static defaultProps = {
+        disabled: true,
+    };
 
     static propTypes = {
         value: PropTypes.number.isRequired,
+        disabled: PropTypes.bool.isRequired,
     };
 
     render() {
+        const {
+            disabled,
+            value,
+        } = this.props;
+
         return (
-            <option value={this.props.value}>
-                {this.props.value}
+            <option
+                value={value}
+                disabled={disabled || null}
+            >
+                {value}
             </option>
         );
     }

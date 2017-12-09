@@ -32,14 +32,13 @@ import {
 import DynamicEnvironment from "../../split-environments/dynamic-environment.js";
 import Nav from "../components/navigation/nav.jsx";
 
-import actionCreators from "../actions";
+import actionCreators from "../../unshared/actions";
 
 const dynamicEnvironment = new DynamicEnvironment();
 
 const mapStateToProps = (state) => {
     return {
-        activeTabId: state.navigation.activeTabId,
-        shouldShowBackButton: state.navigation.shouldShowBackButton,
+        activeTabId: state.unshared.navigation.activeTabId,
     };
 };
 
@@ -50,41 +49,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class NavContainer extends React.Component {
+export default class NavContainer extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        // TODO: better place to put links?
-        this.links = [
-            {
-                tabId: "usage",
-                translationKey: "frontend_usageLinkText",
-            },
-            {
-                tabId: "voices",
-                translationKey: "frontend_voicesLinkText",
-            },
-            {
-                tabId: "features",
-                translationKey: "frontend_featuresLinkText",
-            },
-            {
-                tabId: "about",
-                translationKey: "frontend_aboutLinkText",
-            },
-        ];
-
         this.handleTabChange = this.handleTabChange.bind(this);
-    }
-
-    getLocationQuerystring() {
-        let queryString = null;
-
-        if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
-            queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
-        }
-
-        return queryString;
     }
 
     getLocationHash() {
@@ -98,15 +67,19 @@ export default class NavContainer extends React.Component {
     }
 
     setLocationHash(locationHash) {
-        document.location.hash = locationHash;
+        // HACK: don't do browser detection.
+        // https://stackoverflow.com/questions/41819284/how-to-determine-in-which-browser-your-extension-background-script-is-executing
+        // https://stackoverflow.com/a/41820692
+        const isFirefox = typeof InstallTrigger !== "undefined";
+
+        // NOTE: this breaks navigation in the options page in the preferences pane in firefox, so skip.
+        // TODO: don't disable on other pages (demo, options in normal tab) in firefox.
+        if (!isFirefox) {
+            document.location.hash = locationHash;
+        }
     }
 
     componentDidMount() {
-        const queryString = this.getLocationQuerystring();
-        const shouldShowBackButton = !!(queryString && queryString.includes("from=popup"));
-
-        this.props.actions.setShouldShowBackButton(shouldShowBackButton);
-
         const locationHash = this.getLocationHash();
 
         if (typeof locationHash === "string") {
@@ -122,23 +95,28 @@ export default class NavContainer extends React.Component {
         this.setLocationHash(activeTabId);
     }
 
-    static defaultProps = {
-        shouldShowBackButton: false,
-    }
-
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        activeTabId: PropTypes.string,
-        shouldShowBackButton: PropTypes.bool,
+        activeTabId: PropTypes.string.isRequired,
+        links: PropTypes.arrayOf(
+            PropTypes.shape({
+                url: PropTypes.string,
+                tabId: PropTypes.string,
+                text: PropTypes.string.isRequired,
+            })).isRequired,
     }
 
     render() {
+        const {
+            activeTabId,
+            links,
+        } = this.props;
+
         return (
             <Nav
-                initialActiveTabId={this.props.activeTabId}
+                initialActiveTabId={activeTabId}
                 onTabChange={this.handleTabChange}
-                shouldShowBackButton={this.props.shouldShowBackButton}
-                links={this.links}
+                links={links}
             />
         );
     }

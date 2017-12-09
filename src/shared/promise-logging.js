@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     logDebug,
     logError,
-} from "../shared/log";
+} from "./log";
 
 export const loggedPromise = (...args) => {
     const fn = args.pop();

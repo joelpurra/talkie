@@ -21,11 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     logInfo,
     logWarn,
-} from "../shared/log";
+} from "./log";
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export default class ContentLogger {
     constructor(execute, configuration) {

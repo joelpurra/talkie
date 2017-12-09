@@ -21,40 +21,50 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import {
-    handleBubbledLinkClick,
-} from "../../../shared/utils/ui";
+import * as layoutBase from "../../styled/layout/layout-base.jsx";
 
-export default class TabContents extends React.Component {
+import styled from "../../hocs/styled.jsx";
+
+export default class HeroSection extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
+        this.styled = {
+            heroFree: styled({
+
+            })(layoutBase.hero),
+
+            heroPremium: styled({
+
+            })(layoutBase.hero),
+        };
     }
 
-    handleClick(e) {
-        return handleBubbledLinkClick(this.props.onLinkClick, e);
-    }
+    static defaultProps = {
+        isPremiumVersion: false,
+        className: "",
+    };
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
-        activeTabId: PropTypes.string.isRequired,
+        isPremiumVersion: PropTypes.bool.isRequired,
         children: PropTypes.node.isRequired,
-        onLinkClick: PropTypes.func.isRequired,
+        className: PropTypes.string.isRequired,
+        configure: PropTypes.func.isRequired,
+        translate: PropTypes.func.isRequired,
     }
 
     render() {
-        if (this.props.id !== this.props.activeTabId) {
-            return null;
-        }
+        const {
+            isPremiumVersion,
+            className,
+        } = this.props;
+
+        const HeroElement = isPremiumVersion ? this.styled.heroPremium : this.styled.heroFree;
 
         return (
-            <div
-                id={this.props.id}
-                onClick={this.handleClick}
-            >
+            <HeroElement className={className}>
                 {this.props.children}
-            </div>
+            </HeroElement>
         );
     }
 }

@@ -32,15 +32,21 @@ export const range = {
 export const textarea = {
     width: "100%",
     height: "100%",
-    margin: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0,
+    marginBottom: 0,
 };
 
 export const select = {};
 
 export const option = {};
 
-export const multiLineSelect = {
+export const multilineSelect = {
     width: "100%",
     height: "8.8em",
-    margin: "0",
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0,
+    marginBottom: 0,
 };

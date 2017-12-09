@@ -34,27 +34,32 @@ import Main from "../components/main.jsx";
 import actionCreators from "../actions";
 
 import {
+    getLanguageGroupsFromLanguages,
     getLanguagesFromVoices,
 } from "../../shared/utils/transform-voices";
 
 const mapStateToProps = (state) => {
     const languages = getLanguagesFromVoices(state.shared.voices.voices);
+    const languageGroups = getLanguageGroupsFromLanguages(languages);
 
     return {
         voices: state.shared.voices.voices,
         languages: languages,
         voicesCount: state.shared.voices.voices.length,
         languagesCount: languages.length,
+        languageGroupsCount: languageGroups.length,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
-        versionName: state.shared.metadata.versionName,
+        versionNumber: state.shared.metadata.versionNumber,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
+        activeTabId: state.unshared.navigation.activeTabId,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
+            sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
             sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
             sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
             sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
@@ -63,29 +68,38 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
     static defaultProps = {
-        languages: [],
         voices: [],
+        languages: [],
+        voicesCount: 0,
+        languagesCount: 0,
+        languageGroupsCount: 0,
         isPremiumVersion: false,
-        versionName: null,
+        versionNumber: null,
         systemType: null,
         osType: null,
+        activeTabId: null,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
+        languageGroupsCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string,
-        systemType: PropTypes.string,
+        versionNumber: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+        activeTabId: PropTypes.string.isRequired,
     }
 
     render() {
@@ -95,11 +109,13 @@ export default class App extends React.Component {
             languages,
             voicesCount,
             languagesCount,
+            languageGroupsCount,
             isPremiumVersion,
-            versionName,
+            versionNumber,
             systemType,
             osType,
-          } = this.props;
+            activeTabId,
+        } = this.props;
 
         return (
             <Main
@@ -108,10 +124,12 @@ export default class App extends React.Component {
                 languages={languages}
                 voicesCount={voicesCount}
                 languagesCount={languagesCount}
+                languageGroupsCount={languageGroupsCount}
                 isPremiumVersion={isPremiumVersion}
-                versionName={versionName}
+                versionNumber={versionNumber}
                 systemType={systemType}
                 osType={osType}
+                activeTabId={activeTabId}
             />
         );
     }

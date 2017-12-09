@@ -20,20 +20,35 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 export default class NodeEnvironmentLocaleProvider {
     constructor() {
-        this.locale = null;
+        this.uiLocale = null;
+        this.translationLocale = null;
     }
 
-    get() {
-        const locale = this.locale;
+    getUILocale() {
+        const uiLocale = this.uiLocale;
 
-        if (!locale) {
-            throw new Error("Locale is not set.");
+        if (!uiLocale) {
+            throw new Error("UI locale is not set.");
         }
 
-        return locale;
+        return uiLocale;
     }
 
-    set(locale) {
-        this.locale = locale;
+    setUILocale(uiLocale) {
+        this.uiLocale = uiLocale;
+    }
+
+    getTranslationLocale() {
+        const translationLocale = this.translationLocale;
+
+        if (!translationLocale) {
+            throw new Error("Translation locale is not set.");
+        }
+
+        return translationLocale;
+    }
+
+    setTranslationLocale(translationLocale) {
+        this.translationLocale = translationLocale;
     }
 }

@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 
 import styled from "../../hocs/styled.jsx";
 
-export default class TalkieVersionIcon extends React.Component {
+export default class TalkieVersionIcon extends React.PureComponent {
     static defaultProps = {
         mode: "inline",
         size: "1.3em",

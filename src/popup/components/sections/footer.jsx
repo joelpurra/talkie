@@ -30,7 +30,7 @@ import * as lighter from "../../../shared/styled/text/lighter.jsx";
 import Icon from "../../../shared/components/icon/icon.jsx";
 
 @configureAttribute
-export default class Footer extends React.Component {
+export default class Footer extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -56,6 +56,7 @@ export default class Footer extends React.Component {
 
     static propTypes = {
         versionNumber: PropTypes.string.isRequired,
+        optionsPageClick: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
     }
 
@@ -63,11 +64,17 @@ export default class Footer extends React.Component {
         const {
             configure,
             versionNumber,
+            optionsPageClick,
         } = this.props;
 
         return (
             <this.styled.footer>
-                <this.styled.footerFirstLink href={configure("urls.options")} rel="alternate noopener noreferrer" target="_blank">
+                <this.styled.footerFirstLink
+                    href={configure("urls.options")}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    onClick={optionsPageClick}
+                >
                     <Icon mode="standalone" size="0.75em" className="icon-settings" />
                 </this.styled.footerFirstLink>
 

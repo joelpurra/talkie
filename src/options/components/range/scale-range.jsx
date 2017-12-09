@@ -25,19 +25,16 @@ import * as formBase from "../../../shared/styled/form/form-base.jsx";
 
 import ScaleRangeDatalist from "./scale-range-datalist.jsx";
 
-export default class ScaleRange extends React.Component {
+export default class ScaleRange extends React.PureComponent {
     constructor(props) {
         super(props);
-
-        this.state = {
-            id: null,
-        };
 
         this.handleInput = this.handleInput.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     static defaultProps = {
+        listName: null,
         min: 0,
         defaultValue: 1,
         initialValue: 1,
@@ -49,6 +46,7 @@ export default class ScaleRange extends React.Component {
     static propTypes = {
         onInput: PropTypes.func.isRequired,
         onChange: PropTypes.func.isRequired,
+        listName: PropTypes.string.isRequired,
         min: PropTypes.number.isRequired,
         defaultValue: PropTypes.number.isRequired,
         initialValue: PropTypes.number.isRequired,
@@ -56,20 +54,6 @@ export default class ScaleRange extends React.Component {
         step: PropTypes.number.isRequired,
         disabled: PropTypes.bool.isRequired,
     };
-
-    generateId() {
-        const rnd = (Math.pow(10, 10) + (Math.random() * Math.pow(10, 10)));
-
-        return "ScaleRange-" + rnd.toFixed(0) + "-List";
-    }
-
-    componentWillMount() {
-        const id = this.generateId();
-
-        this.setState({
-            id: id,
-        });
-    }
 
     handleInput(e) {
         const value = parseFloat(e.target.value);
@@ -84,27 +68,37 @@ export default class ScaleRange extends React.Component {
     }
 
     render() {
+        const {
+            min,
+            defaultValue,
+            max,
+            initialValue,
+            step,
+            listName,
+            disabled,
+        } = this.props;
+
         const steps = [
-            this.props.min,
-            this.props.defaultValue,
-            this.props.max,
+            min,
+            defaultValue,
+            max,
         ];
 
         return (
             <div>
                 <formBase.range
                     type="range"
-                    min={this.props.min}
-                    value={this.props.initialValue}
-                    max={this.props.max}
-                    step={this.props.step}
-                    list={this.state.id}
-                    disabled={this.props.disabled || null}
+                    min={min}
+                    value={initialValue}
+                    max={max}
+                    step={step}
+                    list={listName}
+                    disabled={disabled || null}
                     onInput={this.handleInput}
                     onChange={this.handleChange}
                 />
 
-                <ScaleRangeDatalist steps={steps} id={this.state.id} />
+                <ScaleRangeDatalist steps={steps} listName={listName} />
             </div>
         );
     }

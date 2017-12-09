@@ -34,21 +34,16 @@ import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-ic
 
 @configureAttribute
 @translateAttribute
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
         this.styled = {
-            iconWrapper: styled({
-                verticalAlign: "middle",
-            })(textBase.span),
-
             extensionName: styled({
                 fontWeight: "bold",
                 textDecoration: "none",
-                color: "#000000",
                 ":focus": {
                     outline: 0,
                 },
@@ -57,6 +52,9 @@ export default class Header extends React.Component {
             button: styled({
                 lineHeight: "1.5em",
                 // float: __MSG_@@bidi_end_edge__;
+                ":focus": {
+                    outline: 0,
+                },
             })(buttonBase.a),
         };
     }
@@ -74,6 +72,7 @@ export default class Header extends React.Component {
 
     handlePlayPauseClick(e) {
         e.preventDefault();
+        e.stopPropagation();
 
         this.props.playPauseClick();
 
@@ -89,27 +88,26 @@ export default class Header extends React.Component {
 
         return (
             <layoutBase.header>
-                <p>
-                    <this.styled.iconWrapper
-                        onClick={this.handlePlayPauseClick}
-                    >
-                        <TalkieVersionIcon
-                            isPremiumVersion={isPremiumVersion}
-                        />
-                    </this.styled.iconWrapper>
+                {/* TODO: show for free Talkie, not for Talkie Premium. */}
+                <Discretional
+                    enabled={!isPremiumVersion}
+                >
+                    <this.styled.button href={configure("urls.store-premium")} id="header-premium-button">
+                        {translate("extensionShortName_Premium")}
+                    </this.styled.button>
+                </Discretional>
 
-                    <this.styled.extensionName href={configure("urls.main")}>
-                        {translate("extensionShortName")}
-                    </this.styled.extensionName>
+                <textBase.span
+                    onClick={this.handlePlayPauseClick}
+                >
+                    <TalkieVersionIcon
+                        isPremiumVersion={isPremiumVersion}
+                    />
+                </textBase.span>
 
-                    <Discretional
-                        enabled={isPremiumVersion}
-                    >
-                        <this.styled.button href={configure("urls.store-premium")} id="header-premium-button">
-                            {translate("extensionShortName_Premium")}
-                        </this.styled.button>
-                    </Discretional>
-                </p>
+                <this.styled.extensionName href={configure("urls.main")}>
+                    {translate("extensionShortName")}
+                </this.styled.extensionName>
             </layoutBase.header>
         );
     }
