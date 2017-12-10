@@ -34,7 +34,7 @@ import {
 //const dualLogger = new DualLogger("status-container.jsx");
 
 export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
-    return class PassSelectedTextToBackgroundHoc extends React.PureComponent {
+    return class PassSelectedTextToBackgroundHoc extends React.Component {
         constructor(props) {
             super(props);
 
@@ -64,6 +64,12 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 
         componentWillUnmount() {
             this.componentCleanup();
+        }
+
+        shouldComponentUpdate(nextProps, nextState) {
+            // NOTE: always update.
+            // TODO: optimize by comparing old and new props/state.
+            return this.isListeningToBroadcasts;
         }
 
         componentCleanup() {

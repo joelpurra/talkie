@@ -34,7 +34,7 @@ import {
 //const dualLogger = new DualLogger("status-container.jsx");
 
 export default function progressHoc(ComponentToWrap) {
-    return class ProgressHoc extends React.PureComponent {
+    return class ProgressHoc extends React.Component {
         constructor(props) {
             super(props);
 
@@ -66,10 +66,17 @@ export default function progressHoc(ComponentToWrap) {
             this.componentCleanup();
         }
 
+        shouldComponentUpdate(nextProps, nextState) {
+            // NOTE: always update.
+            // TODO: optimize by comparing old and new props/state.
+            return this.isListeningToBroadcasts;
+        }
+
         componentCleanup() {
             this.isListeningToBroadcasts = false;
             this.executeKillSwitches();
         }
+
         render() {
             const {
                 min,
@@ -92,11 +99,25 @@ export default function progressHoc(ComponentToWrap) {
                 return;
             }
 
-            this.setState({
-                min: data.min,
-                current: data.current,
-                max: data.max,
-            });
+            // NOTE: there seems to be some issues with react trying to re-render the page after the page has (will) unload.
+            // NOTE: trigger by hitting the Talkie button in quick succession.
+            // NOTE: This seems to be due to events from the background page having enough state to for the broadcaster to trigger events inside of the page, before (without) killSwitches being executed.
+            // NOTE: The code inside of react is tricky -- especially in dev mode -- and this try-catch might not do anything.
+            // https://github.com/facebook/react/pull/10270
+            // https://github.com/facebook/react/blob/37e4329bc81def4695211d6e3795a654ef4d84f5/packages/react-reconciler/src/ReactFiberScheduler.js#L770
+            // https://github.com/facebook/react/blob/46b3c3e4ae0d52565f7ed2344036a22016781ca0/packages/shared/invokeGuardedCallback.js#L151-L161
+            try {
+                this.setState({
+                    min: data.min,
+                    current: data.current,
+                    max: data.max,
+                });
+            } catch (error) {
+                // dualLogger.dualLogError("setState", error);
+
+                // NOTE: ignoring and swallowing error.
+                return undefined;
+            }
         }
 
         executeKillSwitches() {

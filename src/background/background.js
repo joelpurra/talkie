@@ -249,7 +249,7 @@ function main() {
             };
 
             // NOTE: synchronous version.
-            window.addEventListener("unload", () => {
+            window.addEventListener("beforeunload", () => {
                 executeKillSwitches();
             });
 

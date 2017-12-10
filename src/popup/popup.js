@@ -92,7 +92,7 @@ const start = () => promiseTry(
 );
 
 const stop = () => promiseTry(
-    // NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
+    // NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
     () => stopReactFrontend()
         .then(() => undefined)
 );
@@ -100,6 +100,4 @@ const stop = () => promiseTry(
 registerUnhandledRejectionHandler();
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
-
-// NOTE: probably won't be correctly executed as unload doesn't allow asynchronous calls.
-window.addEventListener("unload", eventToPromise.bind(null, stop));
+window.addEventListener("beforeunload", eventToPromise.bind(null, stop));
