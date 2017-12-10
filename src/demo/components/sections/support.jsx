@@ -34,7 +34,7 @@ import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
 @configureAttribute
 @translateAttribute
-export default class Features extends React.PureComponent {
+export default class Support extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -60,13 +60,13 @@ export default class Features extends React.PureComponent {
     }
 
     static defaultProps = {
-        systemType: false,
-        osType: false,
+        systemType: null,
+        osType: null,
     };
 
     static propTypes = {
         systemType: PropTypes.string.isRequired,
-        osType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
     }
@@ -412,13 +412,13 @@ export default class Features extends React.PureComponent {
                         Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!
                     </textBase.p>
 
-                    <textBase.p>
+                    <div>
                         <this.styled.sharingIcons />
 
                         <textBase.a href={configure("urls.rate")}>
                             {translate("frontend_rateIt")}
                         </textBase.a>
-                    </textBase.p>
+                    </div>
                 </layoutBase.details>
 
                 <textBase.h3>

@@ -31,7 +31,6 @@ export default class Text extends React.PureComponent {
     }
 
     static defaultProps = {
-        actions: {},
         speakLongTexts: false,
     };
 

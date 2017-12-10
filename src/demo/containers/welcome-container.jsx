@@ -32,11 +32,7 @@ import {
 import Welcome from "../components/sections/welcome.jsx";
 
 import actionCreators from "../actions";
-
-import {
-    getLanguageGroupsFromLanguages,
-    getLanguagesFromVoices,
-} from "../../shared/utils/transform-voices";
+import selectors from "../selectors";
 
 // TODO: use a HOC or something else?
 import TalkieLocaleHelper from "../../shared/talkie-locale-helper";
@@ -48,16 +44,13 @@ const talkieLocaleHelper = new TalkieLocaleHelper();
 const localeProvider = new LocaleProvider();
 
 const mapStateToProps = (state) => {
-    const languages = getLanguagesFromVoices(state.shared.voices.voices);
-    const languageGroups = getLanguageGroupsFromLanguages(languages);
-
     return {
-        languages: languages,
-        languageGroups: languageGroups,
-        navigatorLanguages: state.shared.voices.navigatorLanguages,
-        voicesCount: state.shared.voices.voices.length,
-        languagesCount: languages.length,
-        languageGroupsCount: languageGroups.length,
+        languages: selectors.shared.voices.getLanguages(state),
+        languageGroups: selectors.shared.voices.getLanguageGroups(state),
+        voicesCount: selectors.shared.voices.getVoicesCount(state),
+        languagesCount: selectors.shared.voices.getLanguagesCount(state),
+        languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
+        availableBrowserLanguageWithInstalledVoice: selectors.shared.voices.getAvailableBrowserLanguageWithInstalledVoice(state),
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
@@ -78,10 +71,9 @@ export default class WelcomeContainer extends React.PureComponent {
         isPremiumVersion: false,
         systemType: false,
         osType: false,
-        // voices:[],
         languages: [],
         languageGroups: [],
-        navigatorLanguages: [],
+        availableBrowserLanguageWithInstalledVoice: [],
         voicesCount: 0,
         languagesCount: 0,
         languageGroupsCount: 0,
@@ -90,16 +82,9 @@ export default class WelcomeContainer extends React.PureComponent {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        // voices: PropTypes.arrayOf(PropTypes.shape({
-        //     default: PropTypes.bool.isRequired,
-        //     lang: PropTypes.string.isRequired,
-        //     localService: PropTypes.bool.isRequired,
-        //     name: PropTypes.string.isRequired,
-        //     voiceURI: PropTypes.string.isRequired,
-        // })).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        availableBrowserLanguageWithInstalledVoice: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         languageGroupsCount: PropTypes.number.isRequired,
@@ -119,13 +104,10 @@ export default class WelcomeContainer extends React.PureComponent {
             languageGroupsCount,
             languages,
             languageGroups,
-            navigatorLanguages,
+            availableBrowserLanguageWithInstalledVoice,
         } = this.props;
 
-        const availableBrowserLanguageWithInstalledVoice = []
-            .concat(navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)))
-            .concat(navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)));
-
+        // TODO: create action and store as redux state?
         const availableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoice
             .filter((languageCode) => {
                 /* eslint-disable no-sync */
@@ -135,6 +117,7 @@ export default class WelcomeContainer extends React.PureComponent {
 
         const firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoiceAndSampleText[0] || null;
 
+        // TODO: create action and store as redux state?
         const sampleTextLanguageCode = firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText || null;
         let sampleText = null;
 
@@ -144,6 +127,7 @@ export default class WelcomeContainer extends React.PureComponent {
             /* eslint-enable no-sync */
         }
 
+        // TODO: create action and store as redux state?
         const translationLocale = localeProvider.getTranslationLocale();
         const canSpeakInTranslatedLocale = languages.includes(translationLocale) || languageGroups.includes(translationLocale);
 

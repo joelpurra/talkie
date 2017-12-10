@@ -262,9 +262,7 @@ export default class Main extends React.PureComponent {
                         activeTabId={activeTabId}
                         onLinkClick={this.handleLinkClick}
                     >
-                        <About
-                            isPremiumVersion={isPremiumVersion}
-                        />
+                        <About />
                     </TabContents>
                 </this.styled.main>
 

@@ -108,16 +108,12 @@ export default class Main extends React.PureComponent {
     }
 
     static defaultProps = {
-        voicesCount: 0,
-        languagesCount: 0,
         activeTabId: null,
         shouldShowBackButton: false,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        voicesCount: PropTypes.number.isRequired,
-        languagesCount: PropTypes.number.isRequired,
         activeTabId: PropTypes.string.isRequired,
         shouldShowBackButton: PropTypes.bool.isRequired,
         className: PropTypes.string.isRequired,

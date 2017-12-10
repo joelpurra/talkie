@@ -33,21 +33,8 @@ import Main from "../components/main.jsx";
 
 import actionCreators from "../actions";
 
-import {
-    getLanguageGroupsFromLanguages,
-    getLanguagesFromVoices,
-} from "../../shared/utils/transform-voices";
-
 const mapStateToProps = (state) => {
-    const languages = getLanguagesFromVoices(state.shared.voices.voices);
-    const languageGroups = getLanguageGroupsFromLanguages(languages);
-
     return {
-        voices: state.shared.voices.voices,
-        languages: languages,
-        voicesCount: state.shared.voices.voices.length,
-        languagesCount: languages.length,
-        languageGroupsCount: languageGroups.length,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionNumber: state.shared.metadata.versionNumber,
         systemType: state.shared.metadata.systemType,
@@ -59,9 +46,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
-            sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
-            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
-            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
             sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
         },
     };
@@ -70,11 +54,6 @@ const mapDispatchToProps = (dispatch) => {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends React.PureComponent {
     static defaultProps = {
-        voices: [],
-        languages: [],
-        voicesCount: 0,
-        languagesCount: 0,
-        languageGroupsCount: 0,
         isPremiumVersion: false,
         versionNumber: null,
         systemType: null,
@@ -84,17 +63,6 @@ export default class App extends React.PureComponent {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        voices: PropTypes.arrayOf(PropTypes.shape({
-            default: PropTypes.bool.isRequired,
-            lang: PropTypes.string.isRequired,
-            localService: PropTypes.bool.isRequired,
-            name: PropTypes.string.isRequired,
-            voiceURI: PropTypes.string.isRequired,
-        })).isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        voicesCount: PropTypes.number.isRequired,
-        languagesCount: PropTypes.number.isRequired,
-        languageGroupsCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
@@ -105,11 +73,6 @@ export default class App extends React.PureComponent {
     render() {
         const {
             actions,
-            voices,
-            languages,
-            voicesCount,
-            languagesCount,
-            languageGroupsCount,
             isPremiumVersion,
             versionNumber,
             systemType,
@@ -120,11 +83,6 @@ export default class App extends React.PureComponent {
         return (
             <Main
                 actions={actions}
-                voices={voices}
-                languages={languages}
-                voicesCount={voicesCount}
-                languagesCount={languagesCount}
-                languageGroupsCount={languageGroupsCount}
                 isPremiumVersion={isPremiumVersion}
                 versionNumber={versionNumber}
                 systemType={systemType}

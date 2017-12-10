@@ -49,8 +49,6 @@ export default class HeroSection extends React.PureComponent {
         isPremiumVersion: PropTypes.bool.isRequired,
         children: PropTypes.node.isRequired,
         className: PropTypes.string.isRequired,
-        configure: PropTypes.func.isRequired,
-        translate: PropTypes.func.isRequired,
     }
 
     render() {

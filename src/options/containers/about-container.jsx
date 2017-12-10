@@ -29,32 +29,22 @@ import {
     connect,
 } from "react-redux";
 
-import {
-    getLanguageGroupsFromLanguages,
-    getLanguagesFromVoices,
-} from "../../shared/utils/transform-voices";
-
 import About from "../components/sections/about.jsx";
 
 import actionCreators from "../actions";
+import selectors from "../selectors";
 
 const mapStateToProps = (state) => {
-    const languages = getLanguagesFromVoices(state.shared.voices.voices);
-    const languageGroups = getLanguageGroupsFromLanguages(languages);
-
     return {
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionName: state.shared.metadata.versionName,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
-        voices: state.shared.voices.voices,
-        languages: languages,
-        languageGroups: languageGroups,
+        voices: selectors.shared.voices.getVoices(state),
+        languages: selectors.shared.voices.getLanguages(state),
+        languageGroups: selectors.shared.voices.getLanguageGroups(state),
         navigatorLanguage: state.shared.voices.navigatorLanguage,
-        navigatorLanguages: state.shared.voices.navigatorLanguages,
-        voicesCount: state.shared.voices.voices.length,
-        languagesCount: languages.length,
-        languageGroupsCount: languageGroups.length,
+        navigatorLanguages: selectors.shared.voices.getNavigatorLanguages(state),
         translatedLanguages: state.shared.voices.translatedLanguages,
     };
 };
@@ -62,7 +52,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
-            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
             sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
         },
     };

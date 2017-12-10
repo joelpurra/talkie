@@ -193,3 +193,7 @@ export const getLanguageForVoiceNameFromVoices = (voices, voiceName) => {
 
     return voice;
 };
+
+export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups = (navigatorLanguages, languages, languageGroups) => []
+    .concat(navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)))
+    .concat(navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)));

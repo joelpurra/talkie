@@ -59,9 +59,12 @@ export default class Voices extends React.PureComponent {
     }
 
     static defaultProps = {
-        actions: {},
         languages: [],
+        languageGroups: [],
+        languagesByLanguageGroup: {},
         voices: [],
+        voicesByLanguage: {},
+        voicesByLanguageGroup: {},
         selectedLanguageCode: null,
         selectedVoiceName: null,
         effectiveVoiceNameForSelectedLanguage: null,
@@ -80,7 +83,29 @@ export default class Voices extends React.PureComponent {
             name: PropTypes.string.isRequired,
             voiceURI: PropTypes.string.isRequired,
         })).isRequired,
+        voicesByLanguage: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        voicesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        ).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
         effectiveVoiceNameForSelectedLanguage: PropTypes.string,
@@ -127,6 +152,10 @@ export default class Voices extends React.PureComponent {
             selectedVoiceName,
             translate,
             voices,
+            voicesByLanguage,
+            voicesByLanguageGroup,
+            languageGroups,
+            languagesByLanguageGroup,
         } = this.props;
 
         let voicesForLanguage = null;
@@ -174,7 +203,10 @@ export default class Voices extends React.PureComponent {
                                 <AvailableLanguages
                                     onChange={this.handleLanguageChange}
                                     value={selectedLanguageCode}
-                                    voices={voices}
+                                    voicesByLanguage={voicesByLanguage}
+                                    voicesByLanguageGroup={voicesByLanguageGroup}
+                                    languageGroups={languageGroups}
+                                    languagesByLanguageGroup={languagesByLanguageGroup}
                                     disabled={languages.length === 0}
                                 />
                             </tableBase.td>

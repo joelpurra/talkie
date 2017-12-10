@@ -32,15 +32,16 @@ import {
 import Voices from "../components/sections/voices.jsx";
 
 import actionCreators from "../actions";
-
-import {
-    getLanguagesFromVoices,
-} from "../../shared/utils/transform-voices";
+import selectors from "../selectors";
 
 const mapStateToProps = (state) => {
     return {
-        voices: state.shared.voices.voices,
-        languages: getLanguagesFromVoices(state.shared.voices.voices),
+        voices: selectors.shared.voices.getVoices(state),
+        voicesByLanguage: selectors.shared.voices.getVoicesByLanguage(state),
+        voicesByLanguageGroup: selectors.shared.voices.getVoicesByLanguageGroup(state),
+        languages: selectors.shared.voices.getLanguages(state),
+        languageGroups: selectors.shared.voices.getLanguageGroups(state),
+        languagesByLanguageGroup: selectors.shared.voices.getLanguagesByLanguageGroup(state),
         selectedLanguageCode: state.voices.selectedLanguageCode,
         selectedVoiceName: state.voices.selectedVoiceName,
         effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguage,
@@ -77,7 +78,29 @@ export default class VoicesContainer extends React.PureComponent {
             name: PropTypes.string.isRequired,
             voiceURI: PropTypes.string.isRequired,
         })).isRequired,
+        voicesByLanguage: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        voicesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        ).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
         effectiveVoiceNameForSelectedLanguage: PropTypes.string,
@@ -91,7 +114,11 @@ export default class VoicesContainer extends React.PureComponent {
         const {
             actions,
             voices,
+            voicesByLanguage,
+            voicesByLanguageGroup,
             languages,
+            languageGroups,
+            languagesByLanguageGroup,
             selectedLanguageCode,
             selectedVoiceName,
             effectiveVoiceNameForSelectedLanguage,
@@ -105,7 +132,11 @@ export default class VoicesContainer extends React.PureComponent {
             <Voices
                 actions={actions}
                 voices={voices}
+                voicesByLanguage={voicesByLanguage}
+                voicesByLanguageGroup={voicesByLanguageGroup}
                 languages={languages}
+                languageGroups={languageGroups}
+                languagesByLanguageGroup={languagesByLanguageGroup}
                 selectedLanguageCode={selectedLanguageCode}
                 selectedVoiceName={selectedVoiceName}
                 effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
