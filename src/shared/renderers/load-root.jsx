@@ -44,19 +44,13 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
 
 const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
     // TODO: simplify.
-    const styleRootActionsToDispatch = [
-        // NOTE: currently attempts to match "synchronous usage" in style-root.jsx.
-        // TODO: generalize preloading?
-        sharedActions.metadata.loadIsPremium(),
-        sharedActions.metadata.loadVersionName(),
-
+    const clientSideActionsToDispatch = [
         // NOTE: don't want to keep track of when to load these, preemptively loading.
-        sharedActions.metadata.loadSystemType(),
         sharedActions.metadata.loadOsType(),
     ];
 
     const allActionsToDispatch = []
-        .concat(styleRootActionsToDispatch)
+        .concat(clientSideActionsToDispatch)
         .concat(postrenderActionsToDispatch);
 
     return allActionsToDispatch;

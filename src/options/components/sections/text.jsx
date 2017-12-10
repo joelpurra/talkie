@@ -31,7 +31,6 @@ export default class Text extends React.PureComponent {
     }
 
     static defaultProps = {
-        actions: {},
         speakLongTexts: false,
     };
 
@@ -41,7 +40,7 @@ export default class Text extends React.PureComponent {
     }
 
     handleSpeakLongTextsChange(speakLongTexts) {
-        this.props.actions.storeSpeakLongTexts(speakLongTexts);
+        this.props.actions.sharedVoices.storeSpeakLongTexts(speakLongTexts);
     }
 
     render() {

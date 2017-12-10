@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// if (process.env.NODE_ENV === "production") {
-//     module.exports = require("./configureStore.production");
-// } else {
-//     module.exports = require("./configureStore.development");
-// }
+export const SET_SELECTED_LANGUAGE_CODE = "SET_SELECTED_LANGUAGE_CODE";
 
-// TODO: don't want to have requires mixed with modules.
-import configureStore from "./configureStore.production";
-// import configureStore from "./configureStore.development";
+export const SET_SELECTED_VOICE_NAME = "SET_SELECTED_VOICE_NAME";
 
-export default configureStore;
+export const SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE = "SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE";
+
+export const SET_SAMPLE_TEXT = "SET_SAMPLE_TEXT";
+
+export const SET_RATE_FOR_SELECTED_VOICE = "SET_RATE_FOR_SELECTED_VOICE";
+
+export const SET_PITCH_FOR_SELECTED_VOICE = "SET_PITCH_FOR_SELECTED_VOICE";

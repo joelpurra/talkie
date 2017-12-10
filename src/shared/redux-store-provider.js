@@ -25,32 +25,28 @@ import {
 } from "redux";
 
 import thunk from "redux-thunk";
-import rootReducer from "../reducers";
-import storage from "../utils/storage";
 
-// If Redux DevTools Extension is installed use it, otherwise use Redux compose
-/* eslint-disable no-underscore-dangle */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    // Options: http://zalmoxisus.github.io/redux-devtools-extension/API/Arguments.html
-    })
-    : compose;
-/* eslint-enable no-underscore-dangle */
+export default class ReduxStoreProvider {
+    createStore(initialState, rootReducer, api) {
+        const middlewares = applyMiddleware(thunk.withExtraArgument(api));
 
-const enhancer = composeEnhancers(
-    applyMiddleware(thunk),
-    storage(),
-);
+        const enhancer = compose(
+            middlewares
+        );
 
-export default function(initialState) {
-    const store = createStore(rootReducer, initialState, enhancer);
+        const store = createStore(rootReducer, initialState, enhancer);
 
-    if (module.hot) {
-        module.hot.accept("../reducers", () => {
-            const nextRootReducer = require("../reducers");
+        // store.subscribe(() => {
+        //     const state = store.getState();
+        //
+        //     console.log(
+        //         "subscribe",
+        //         "state",
+        //         JSON.stringify(state).length,
+        //         state
+        //     );
+        // });
 
-            store.replaceReducer(nextRootReducer);
-        });
+        return store;
     }
-    return store;
 }

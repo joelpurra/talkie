@@ -78,8 +78,8 @@ export default class Welcome extends React.PureComponent {
 
     static defaultProps = {
         isPremiumVersion: false,
-        systemType: false,
-        osType: false,
+        systemType: null,
+        osType: null,
         voicesCount: 0,
         languagesCount: 0,
         languageGroupsCount: 0,
@@ -92,7 +92,7 @@ export default class Welcome extends React.PureComponent {
     static propTypes = {
         isPremiumVersion: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
-        osType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         languageGroupsCount: PropTypes.number.isRequired,

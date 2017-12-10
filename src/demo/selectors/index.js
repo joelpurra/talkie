@@ -18,30 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    applyMiddleware,
-    createStore,
-    compose,
-} from "redux";
+import shared from "../../shared/selectors";
 
-import thunk from "redux-thunk";
-
-export default class NodeEnvironmentStoreProvider {
-    createStore(initialState, rootReducer, api) {
-        const middlewares = applyMiddleware(thunk.withExtraArgument(api));
-
-        const enhancer = compose(
-            middlewares
-        );
-
-        const store = createStore(rootReducer, initialState, enhancer);
-
-        // store.subscribe(() => {
-        //     const state = store.getState();
-        //
-        //     console.log("subscribe", state);
-        // });
-
-        return store;
-    }
-}
+export default {
+    shared,
+};

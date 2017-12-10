@@ -41,9 +41,9 @@ export default (name) => mergeOptions(
             "react-dom/server",
             "react-redux",
             "react",
-            "redux-persist",
             "redux-thunk",
             "redux",
+            "reselect",
         ],
         plugins: [
             json(),
@@ -75,12 +75,6 @@ export default (name) => mergeOptions(
                     "src/**",
                     "node_modules/**",
                 ],
-                namedExports: {
-                    "node_modules/redux-persist/es/constants.js": [
-                        "KEY_PREFIX",
-                        "REHYDRATE",
-                    ],
-                },
             }),
             resolve({
                 jsnext: false,

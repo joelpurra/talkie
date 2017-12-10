@@ -18,12 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const SET_VOICES = "SET_VOICES";
+import shared from "../../shared/selectors";
 
-export const SET_SPEAK_LONG_TEXTS = "SET_SPEAK_LONG_TEXTS";
-
-export const SET_NAVIGATOR_LANGUAGE = "SET_NAVIGATOR_LANGUAGE";
-
-export const SET_NAVIGATOR_LANGUAGES = "SET_NAVIGATOR_LANGUAGES";
-
-export const SET_TRANSLATED_LANGUAGES = "SET_TRANSLATED_LANGUAGES";
+export default {
+    shared,
+};

@@ -33,7 +33,7 @@ import autoRoot from "./auto-root";
 import sharedActions from "../actions";
 
 const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
-    const styleRootActionsToDispatch = [
+    const serverSideActionsToDispatch = [
         // NOTE: currently attempts to match "synchronous usage" in style-root.jsx.
         // TODO: generalize preloading?
         sharedActions.metadata.loadIsPremium(),
@@ -41,11 +41,12 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
 
         // NOTE: don't want to keep track of when to load these, preemptively loading.
         sharedActions.metadata.loadSystemType(),
-        // sharedActions.metadata.loadOsType(),
+        sharedActions.metadata.loadVersionNumber(),
+        sharedActions.voices.loadTranslatedLanguages(),
     ];
 
     const allActionsToDispatch = []
-        .concat(styleRootActionsToDispatch)
+        .concat(serverSideActionsToDispatch)
         .concat(prerenderedActionsToDispatch);
 
     return allActionsToDispatch;

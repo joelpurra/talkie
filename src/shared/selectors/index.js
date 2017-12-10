@@ -18,6 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import StoreProvider from "./SPLIT_ENVIRONMENT/store-provider";
+import * as voices from "./voices";
 
-export default StoreProvider;
+export default {
+    voices,
+};

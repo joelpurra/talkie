@@ -33,14 +33,8 @@ import Main from "../components/main.jsx";
 
 import actionCreators from "../actions";
 
-import {
-    getLanguagesFromVoices,
-} from "../../shared/utils/transform-voices";
-
 const mapStateToProps = (state) => {
     return {
-        voicesCount: state.shared.voices.voices.length,
-        languagesCount: getLanguagesFromVoices(state.shared.voices.voices).length,
         isPremiumVersion: state.shared.metadata.isPremiumVersion,
         versionName: state.shared.metadata.versionName,
         systemType: state.shared.metadata.systemType,
@@ -54,7 +48,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
             sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
-            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
             sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
             navigation: bindActionCreators(actionCreators.navigation, dispatch),
         },
@@ -65,8 +58,6 @@ const mapDispatchToProps = (dispatch) => {
 export default class App extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        voicesCount: PropTypes.number.isRequired,
-        languagesCount: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
@@ -78,8 +69,6 @@ export default class App extends React.PureComponent {
     render() {
         const {
             actions,
-            voicesCount,
-            languagesCount,
             isPremiumVersion,
             versionName,
             systemType,
@@ -91,8 +80,6 @@ export default class App extends React.PureComponent {
         return (
             <Main
                 actions={actions}
-                voicesCount={voicesCount}
-                languagesCount={languagesCount}
                 isPremiumVersion={isPremiumVersion}
                 versionName={versionName}
                 systemType={systemType}

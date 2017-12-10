@@ -21,18 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import translate from "../../../../shared/hocs/translate.jsx";
-
-import {
-    getLanguageGroupsFromVoices,
-    getVoicesByLanguageFromVoices,
-    getVoicesByLanguageGroupFromVoices,
-    getLanguagesByLanguageGroupFromVoices,
-} from "../../../../shared/utils/transform-voices";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
 import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 
-@translate
+@translateAttribute
 export default class AvailableLanguages extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -43,19 +36,37 @@ export default class AvailableLanguages extends React.PureComponent {
     }
 
     static defaultProps = {
-        voices: [],
+        voicesByLanguage: {},
+        voicesByLanguageGroup: {},
+        languageGroups: [],
+        languagesByLanguageGroup: {},
         value: null,
         disabled: true,
     };
 
     static propTypes = {
-        voices: PropTypes.arrayOf(PropTypes.shape({
-            default: PropTypes.bool.isRequired,
-            lang: PropTypes.string.isRequired,
-            localService: PropTypes.bool.isRequired,
-            name: PropTypes.string.isRequired,
-            voiceURI: PropTypes.string.isRequired,
-        })).isRequired,
+        voicesByLanguage: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        voicesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        ).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         disabled: PropTypes.bool.isRequired,
@@ -73,11 +84,17 @@ export default class AvailableLanguages extends React.PureComponent {
     }
 
     render() {
-        const languageGroups = getLanguageGroupsFromVoices(this.props.voices);
-        const voicesByLanguage = getVoicesByLanguageFromVoices(this.props.voices);
-        const voicesByLanguageGroup = getVoicesByLanguageGroupFromVoices(this.props.voices);
-        const languagesByLanguageGroup = getLanguagesByLanguageGroupFromVoices(this.props.voices);
-        const frontendVoicesShowAllVoicesTranslated = this.props.translate("frontend_voicesShowAllVoices");
+        const {
+            translate,
+            value,
+            disabled,
+            languageGroups,
+            voicesByLanguage,
+            voicesByLanguageGroup,
+            languagesByLanguageGroup,
+        } = this.props;
+
+        const frontendVoicesShowAllVoicesTranslated = translate("frontend_voicesShowAllVoices");
 
         const languagesOptions = languageGroups.reduce(
             (options, languageGroup) => {
@@ -147,8 +164,8 @@ export default class AvailableLanguages extends React.PureComponent {
             <MultilineSelect
                 size={7}
                 onChange={this.handleChange}
-                value={this.props.value || this.defaultAllLanguagesValue}
-                disabled={this.props.disabled}
+                value={value || this.defaultAllLanguagesValue}
+                disabled={disabled}
                 className="grouped"
             >
                 {languagesOptions}

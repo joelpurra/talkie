@@ -41,14 +41,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators.shared.voices, dispatch),
+        actions: {
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+        },
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class VoicesContainer extends React.PureComponent {
     componentDidMount() {
-        this.props.actions.loadSpeakLongTexts();
+        this.props.actions.sharedVoices.loadSpeakLongTexts();
     }
 
     static propTypes = {

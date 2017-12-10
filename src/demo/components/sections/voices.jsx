@@ -25,7 +25,6 @@ import PropTypes from "prop-types";
 import {
     getLanguageForVoiceNameFromVoices,
     getLanguageGroupsFromLanguages,
-    getVoicesByLanguagesByLanguageGroupFromVoices,
 } from "../../../shared/utils/transform-voices";
 
 import styled from "../../../shared/hocs/styled.jsx";
@@ -78,8 +77,8 @@ export default class Voices extends React.PureComponent {
     }
 
     static defaultProps = {
-        actions: {},
         voices: [],
+        voicesByLanguagesByLanguageGroup: {},
         navigatorLanguages: [],
         voicesCount: 0,
         languagesCount: 0,
@@ -95,6 +94,17 @@ export default class Voices extends React.PureComponent {
             name: PropTypes.string.isRequired,
             voiceURI: PropTypes.string.isRequired,
         })).isRequired,
+        voicesByLanguagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.objectOf(
+                PropTypes.arrayOf(PropTypes.shape({
+                    default: PropTypes.bool.isRequired,
+                    lang: PropTypes.string.isRequired,
+                    localService: PropTypes.bool.isRequired,
+                    name: PropTypes.string.isRequired,
+                    voiceURI: PropTypes.string.isRequired,
+                })).isRequired
+            ).isRequired
+        ).isRequired,
         navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
@@ -229,12 +239,12 @@ export default class Voices extends React.PureComponent {
         );
     }
 
-    getFilteredLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroupFromVoices, languagesPerGroup, languagesFilter, languageGroup) {
+    getFilteredLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroup, languagesPerGroup, languagesFilter, languageGroup) {
         const filteredLanguagesPerGroup = languagesPerGroup
             .filter((language) => !languagesFilter || languagesFilter.includes(language));
 
         return filteredLanguagesPerGroup.map((language) => {
-            const voicesPerLanguage = voicesByLanguagesByLanguageGroupFromVoices[languageGroup][language];
+            const voicesPerLanguage = voicesByLanguagesByLanguageGroup[languageGroup][language];
 
             return (
                 <this.styled.clickableLi
@@ -250,11 +260,10 @@ export default class Voices extends React.PureComponent {
         });
     }
 
-    getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, languagesFilter) {
+    getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroup, languagesFilter) {
         const languageGroupsFilter = (languagesFilter && getLanguageGroupsFromLanguages(languagesFilter)) || null;
-        const voicesByLanguagesByLanguageGroupFromVoices = getVoicesByLanguagesByLanguageGroupFromVoices(voices);
 
-        const languageGroups = Object.keys(voicesByLanguagesByLanguageGroupFromVoices);
+        const languageGroups = Object.keys(voicesByLanguagesByLanguageGroup);
         languageGroups.sort();
 
         const filteredLanguageGroups = languageGroups
@@ -263,7 +272,7 @@ export default class Voices extends React.PureComponent {
         return filteredLanguageGroups
             .map((languageGroup, index) =>
             {
-                const languagesPerGroup = Object.keys(voicesByLanguagesByLanguageGroupFromVoices[languageGroup]);
+                const languagesPerGroup = Object.keys(voicesByLanguagesByLanguageGroup[languageGroup]);
                 languagesPerGroup.sort();
 
                 const sampleTextForLanguage = this.getSampleTextForLanguage(languageGroup);
@@ -300,7 +309,7 @@ export default class Voices extends React.PureComponent {
                             </textBase.p>
 
                             <listBase.ul>
-                                {this.getFilteredLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroupFromVoices, languagesPerGroup, languagesFilter, languageGroup)}
+                                {this.getFilteredLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroup, languagesPerGroup, languagesFilter, languageGroup)}
                             </listBase.ul>
                         </layoutBase.details>
 
@@ -317,7 +326,7 @@ export default class Voices extends React.PureComponent {
             languagesCount,
             navigatorLanguages,
             translate,
-            voices,
+            voicesByLanguagesByLanguageGroup,
             voicesCount,
         } = this.props;
 
@@ -342,7 +351,7 @@ export default class Voices extends React.PureComponent {
                 <Loading
                     enabled={haveVoices}
                 >
-                    {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, navigatorLanguages)}
+                    {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroup, navigatorLanguages)}
                 </Loading>
 
                 <textBase.h2>
@@ -353,7 +362,7 @@ export default class Voices extends React.PureComponent {
                 <Loading
                     enabled={haveVoices}
                 >
-                    {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voices, null)}
+                    {this.getFilteredLanguageGroupsAndLanguagesAndVoicesTree(voicesByLanguagesByLanguageGroup, null)}
                 </Loading>
             </section>
         );
