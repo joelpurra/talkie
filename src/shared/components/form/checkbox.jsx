@@ -61,7 +61,7 @@ export default class Checkbox extends React.PureComponent {
         return (
             <input
                 type="checkbox"
-                checked={checked || null}
+                checked={checked}
                 disabled={disabled || null}
                 onChange={this.handleOnChange}
                 className={className}
