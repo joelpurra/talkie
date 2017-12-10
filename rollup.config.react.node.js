@@ -43,6 +43,7 @@ export default (name) => mergeOptions(
             "react",
             "redux-thunk",
             "redux",
+            "reselect",
         ],
         plugins: [
             json(),

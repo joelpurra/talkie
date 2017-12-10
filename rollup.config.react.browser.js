@@ -42,6 +42,7 @@ export default (name) => mergeOptions(
             "react",
             "redux-thunk",
             "redux",
+            "reselect",
         ],
         globals: {
             "prop-types": "PropTypes",
@@ -50,6 +51,7 @@ export default (name) => mergeOptions(
             "react": "React",
             "redux-thunk": "ReduxThunk",
             "redux": "Redux",
+            "reselect": "Reselect",
         },
         plugins: [
             json(),
