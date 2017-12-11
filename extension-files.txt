@@ -26,8 +26,8 @@ _locales/sv/messages.json
 _locales/th/messages.json
 _locales/tr/messages.json
 _locales/zh/messages.json
-./resources/icon/free/icon-play/icon-16x16.png
-./resources/icon/premium/icon-play/icon-16x16.png
+./resources/icon/free/icon-play/icon-32x32.png
+./resources/icon/premium/icon-play/icon-32x32.png
 CLA.md
 dist/background.js
 dist/demo.js
