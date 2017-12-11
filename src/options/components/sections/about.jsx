@@ -124,16 +124,16 @@ export default class About extends React.PureComponent {
                 </listBase.ul>
 
                 <textBase.h2>
-                    {/* TODO: translate */}
                     {translate("frontend_systemHeading")}
-                    System details
                 </textBase.h2>
 
                 <listBase.dl>
                     <listBase.dt>
-                        Installed version
+                        {translate("frontend_systemInstalledVersionHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         <TalkieVersionIcon
                             isPremiumVersion={isPremiumVersion}
                         />
@@ -143,74 +143,91 @@ export default class About extends React.PureComponent {
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Browser type
+                        {translate("frontend_systemBrowserTypeHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {systemType}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Operating system type
+                        {translate("frontend_systemOSHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {osType}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Preferred browser language
+                        {translate("frontend_systemBrowserLanguageHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {navigatorLanguage}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Preferred browser languages ({navigatorLanguages.length})
+                        {translate("frontend_systemBrowserLanguagesHeading")}
+                        {" "}
+                        ({navigatorLanguages.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {navigatorLanguages.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Installed voice languages ({languageGroups.length})
+                        {translate("frontend_systemInstalledLanguagesHeading")}
+                        {" "}
+                        ({languageGroups.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {languageGroups.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Installed voice dialects ({languages.length})
+                        {translate("frontend_systemInstalledDialectsHeading")}
+                        {" "}
+                            ({languages.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {languages.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Installed voices ({voices.length})
+                        {translate("frontend_systemInstalledVoicesHeading")}
+                        {" "}
+                        ({voices.length})
                     </listBase.dt>
                     <listBase.dd>
                         {voiceNames.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Talkie user interface language
+                        {translate("frontend_systemTalkieUILanguageHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {translate("extensionLocale")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Talkie user interface languages ({translatedLanguages.length})
+                        {translate("frontend_systemTalkieUILanguagesHeading")}
+                        {" "}
+                        ({translatedLanguages.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {translatedLanguages.join(", ")}
                     </listBase.dd>
                 </listBase.dl>
@@ -220,19 +237,25 @@ export default class About extends React.PureComponent {
                 </textBase.h2>
                 <p>
                     <span
+                        lang="en"
                         onClick={this.handleLegaleseClick}
                     >
                         {translate("frontend_licenseGPLDescription")}
                     </span>
                     <br />
-                    <textBase.a href={configure("urls.gpl")}>
+                    <textBase.a
+                        href={configure("urls.gpl")}
+                        lang="en"
+                    >
                         {translate("frontend_licenseGPLLinkText")}
                     </textBase.a>
                 </p>
                 <p>
                     {translate("frontend_licenseCLADescription")}
                     <br />
-                    <textBase.a href={configure("urls.cla")}>
+                    <textBase.a href={configure("urls.cla")}
+                        lang="en"
+                    >
                         {translate("frontend_licenseCLALinkText")}
                     </textBase.a>
                 </p>

@@ -71,12 +71,12 @@
     "original": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
-    "message": "음성 옵션",
-    "original": "Voice options"
+    "message": "음성 및 언어",
+    "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "웹 페이지에서 원하는 텍스트를 선택하고 브라우저 바에서 Talkie 버튼을 클릭하십시오.",
-    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
+    "message": "웹 페이지에서 원하는 텍스트를 선택하고 브라우저 툴바에서 Talkie 버튼을 클릭하십시오.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Github의 소스 코드",
@@ -89,6 +89,218 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "joelpurra.com의 프로젝트 페이지",
     "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "음성은 운영체제 (Windows, ChromeOS, macOS, Linux 등)와 현재 브라우저 (Google 크롬, Firefox 등)에서 가져옵니다. 즉, 컴퓨터에 넣을 음성을 다운로드하여 설치할 수 있으며 Talkie 는 자동으로 인식해야합니다.",
+    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+  },
+  "frontend_faq001Q": {
+    "message": "Talkie 설치된 음성을 어떻게 감지합니까?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "Microsoft와 다른 사람들의 목소리를 더 추가 할 수 있습니다. 별도의 설치 지침을 참조하십시오.",
+    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "Windows에서 Talkie 에 더 많은 음성을 어떻게 설치합니까?",
+    "original": "How can I install more voices in Talkie on Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "ChromeOS에 대한 모든 추가 사항은 Chrome 웹 스토어에서 사용할 수 있어야합니다.",
+    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "ChromeOS에서 Talkie 에 더 많은 음성을 어떻게 설치합니까?",
+    "original": "How can I install more voices in Talkie on ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "음성을위한 macOS 시스템 환경 설정에서 추가 음성을 자동으로 설치할 수 있습니다. 별도의 설치 지침을 참조하십시오.",
+    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "MacOS에서 Talkie 에 다른 음성을 어떻게 설치합니까?",
+    "original": "How can I install more voices in Talkie on macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "현재 직접 시도하지 않았으므로 추가 음성을 설치하는 방법을 알지 못합니다. 또한 브라우저가 설치된 음성을 감지하는 방법과 방법에 대한 문제이기도합니다. 별도의 설치 지침을 참조하십시오. 내 expirences 무엇인지 알려주십시오!",
+    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "Linux에서 Talkie 에 더 많은 목소리를 어떻게 설치합니까?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "예, 아니오. Talkie 에는 음성이 포함되어 있지 않지만 컴퓨터에 이미 설치되어있는 음성이 사용됩니다. 원하는 추가 목소리를 설치할 수 있습니다.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "당신의 <a 새로운 voice>에 대한 지원을 추가 할 수 Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "예, 아니오. Talkie 은 (는) 컴퓨터에 설치된 음성을 사용하기 때문에 사용하려는 언어를 지원하는 새로운 음성을 설치해야합니다.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Talkie 에서 <a new language>에 대한 지원을 추가 할 수 있습니까?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "예. 설치된 음성을 오프라인에서도 사용할 수 있습니다. 온라인으로 표시된 음성 목록에서 볼 수 있습니다.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie 은 오프라인에서 작동합니까?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "아니요, Talkie Premium 은 (는) Talkie Premium 로 Talkie 합니다. 당신은 당신의 시스템에 더 많은 목소리들을 설치할 수 있으며 그것들은 똑같이 이용 가능합니다. Talkie Premium 언어 별 음성 선택을 맞춤 설정할 수 있습니다.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+  },
+  "frontend_faq009Q": {
+    "message": "Talkie Premium 보다 많은 음성이 Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Google 크롬 및 다른 Chromium 기반 브라우저의 경우 2014 년 이후로이 문제가 발생했습니다. Talkie 에는 몇 가지 해결 방법이 있으며 짧은 부분의 텍스트 읽기를 사용 또는 사용 중지하는 옵션이 있습니다. 해결 방법을 계속 개선 할 예정이지만 Chromium 팀이 작동 할 때까지는 100 % 작동하지 않을 수 있습니다. 이 문제가 발생하면 사용중인 브라우저 및 버전, 운영 체제 및 버전, 사용중인 언어/음성을 알려주십시오.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Talkie 이 (가) 20-30 단어 또는 몇 초 후에 읽지 않는 이유는 무엇입니까?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "두 가지 이유가 있습니다. 첫째, 활성 음성이 온라인 인 경우 음성 파일을 재생하기 전에 다운로드해야합니다. 이는 인터넷 연결 속도에 따라 추가 된 일시 중지를 의미합니다. 어떤 목소리가 온라인 목록에 있는지 확인할 수 있습니다. 두 번째 이유는 긴 텍스트를 말하기위한 해결 방법은 짧은 부분으로, 보통 문장이나 절마다 텍스트를 잘라냅니다. 이렇게하면 각 일시 중지에 대해 추가로 일시 중지를 추가 할 수 있습니다. 긴 텍스트를 옵션의 한 부분으로 읽을 수있게되어 지원되는 시스템에서 일시 중지가 제거됩니다.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "Talkie 에서 문장과 단어 사이에 긴 멈춤이 Talkie 이유는 무엇입니까?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "불행하게도. Google 스프레드 시트, Google 드라이브 및 이와 유사한 Google 문서 도구는 웹 사이트가 아니라 Google에서 만든 특별한 \"브라우저의 응용 프로그램\"입니다. Talkie 은 (는) 선택한 텍스트에 액세스 할 수 없으며 컨텍스트 메뉴 항목을 추가 할 수 없습니다. Talkie Google 문서 도구 지원을 추가 할 수있는 방법이 있는지 자세히 조사 할 것입니다.",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+  },
+  "frontend_faq012Q": {
+    "message": "Talkie 이 (가) Google 문서 도구에서 작동합니까?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "예, 부탁합니다! 지원 페이지를 사용하거나 직접 저에게 연락하십시오. 사용중인 브라우저 및 버전, 운영 체제 및 버전, 사용중인 언어/음성과 같은 가능한 많은 정보를 포함하십시오. 또한 버그가있는 특정 웹 사이트에 관한 정보를 링크와 함께 포함하는 것이 좋습니다.",
+    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "버그를 신고해야합니까?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "보통! PDF에서 텍스트를 선택할 수 있으면 해당 텍스트를 마우스 오른쪽 단추로 클릭하고 메뉴에서 Talkie 을 (를) 선택하십시오. 이미지의 일부인 경우 텍스트를 선택할 수 없으면 작동하지 않습니다.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "PDF 파일을 Talkie 읽을 수 있습니까?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "아니요 Talkie 에는 무제한 사용법이 있습니다. 원하는만큼 많은 단어와 긴 텍스트를 읽을 수 있습니다.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Talkie 에 단어 한도가 있습니까?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "확실히! 지원 또는 프로젝트 페이지를 통해 저에게 연락하십시오.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "새로운 기능을 요청할 수 있습니까?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "Chrome의 확장 프로그램 페이지 하단에있는 단축키 편집기가 있습니다.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "Google 크롬에서 단축키를 변경하는 방법",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "불행히도, 그것은 현재 가능하지 않습니다. 이 기능을 추가하려면 Firefox 팀에 문의하십시오!",
+    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+  },
+  "frontend_faq018Q": {
+    "message": "Firefox에서 바로 가기 키를 변경하는 방법?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "확실히! Talkie 번역에 도움을 Talkie , 새 시스템에서 Talkie 을 테스트하고, 버그를 조사하고, 새로운 기능을 추가하는 것이 좋습니다. 자세한 내용은 프로젝트 페이지를 참조하십시오.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Talkie 개발을 도와 Talkie 까요?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "예 — 친구에게 Talkie 에 대해 알려주세요! 아마도 가장 좋아하는 인터넷 유명인, 온라인 그룹 또는 뉴스 레터에게 링크를 보내십시오. 상사에게 직장의 모든 컴퓨터에 설치하도록 요청하거나 선생님에게 학교에 설치하도록 요청할 수도 있습니다. Talkie 에 대한 Talkie 대단히 감사합니다!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "다른 방법으로 Talkie 도와 Talkie 까요?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "지금까지 수백 시간까지 Talkie 을 (를) 개발하는 데 많은 시간과 노력이 필요했습니다. 개발을 재정적으로 지원하기 위해 일부 기능은 Talkie Premium 명의 사용자 만 사용할 수 있습니다.",
+    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Talkie Premium 비용이 Talkie Premium 이유는 무엇입니까?",
+    "original": "Why does Talkie Premium cost money?"
+  },
+  "frontend_faq022A": {
+    "message": "불행히도 아직 없습니다. Talkie Premium 은 현재 Chrome 웹 스토어에서만 제공되며 Google Payments를 사용하는 유일한 방법입니다.",
+    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+  },
+  "frontend_faq022Q": {
+    "message": "PayPal, 은행 송금 등을 사용하여 Talkie Premium 대해 비용을 지불 할 수 있습니까?",
+    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "확실한! Google Payments에서 결제를 취소하거나 직접 저에게 연락하실 수 있습니다.",
+    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+  },
+  "frontend_faq023Q": {
+    "message": "환불을받을 수 있습니까?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "확실한! Talkie Premium 의 최신 버전 사본을 보낼 수 있지만 다음 버전이 출시되면 자동 업데이트되지 않습니다.",
+    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+  },
+  "frontend_faq024Q": {
+    "message": "시도해 Talkie Premium 의 무료 사본을 Talkie Premium 볼 수 있습니까?",
+    "original": "Can I get a free copy of Talkie Premium to try it out?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "버그",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "일반",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "자주 묻는 질문",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "목소리",
+    "original": "Voices"
   },
   "frontend_featuresFree_List01": {
     "message": "자동 언어 감지.",
@@ -143,8 +355,8 @@
     "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "현재 Talkie Premium을 (를) 사용하고 있으며 모든 기능을 사용할 수 있습니다. 고맙습니다. 내 마음이 따뜻해집니다!",
-    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "현재 Talkie Premium ) 사용하고 있으며 모든 기능을 사용할 수 있습니다. 고맙습니다. 내 마음이 따뜻해집니다!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie 에는 Talkie 및 Talkie Premium 두 가지 버전이 있습니다. 무료 버전은 대부분의 사용 사례에 적합하지만 프리미엄 버전은 추가 옵션을 제공합니다.",
@@ -158,6 +370,10 @@
     "message": "특허",
     "original": "License"
   },
+  "frontend_loading": {
+    "message": "로드 중 ...",
+    "original": "Loading..."
+  },
   "frontend_rateIt": {
     "message": "Talkie 검토",
     "original": "Review Talkie"
@@ -165,6 +381,16 @@
   "frontend_shareHeading": {
     "message": "친구들에게 Talkie 에 대해 Talkie",
     "original": "Tell your friends about Talkie"
+  },
+  "frontend_sharePitch": {
+    "message": "$NAME$ 를) 좋아하니? 만약 그렇다면, 당신이 좋은 ⭐️ 등급을주고 리뷰 할 수 있다면 기쁠 것입니다. 😃",
+    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
   },
   "frontend_storyDescription": {
     "message": "Talkie 은 (는) 친구로부터의 도전에 힘 입어 2016/2017 새해 몇일 전부터 개발되었습니다. 도전 과제는 질문으로 시작되었습니다. 통근 중에는 기사를 읽지 않고 기사를들을 수 있습니까? 간단히 말하면, 그것을 증명하기 위해 출발했습니다. 적어도 브라우저가 어리석은 컴퓨터 음성을 사용하여 텍스트를 말하도록 만드는 것이 었습니다. 사용자 인터페이스가없는 기본 버전은 만들기가 쉽지 않은 것으로 나타났습니다. 사용자 인터페이스를 추가하는 데 약간 시간이 걸렸습니다. 적절한 언어 탐지를 추가하면 더 많은 코드가 추가됩니다. 브라우저에서 버그를 극복하고 더 많은 작업을 수행합니다. 개선 및 기능 목록은 계속 진행되며 나중에 수천 줄의 코드가 최종 결과를보고 있습니다.",
@@ -181,6 +407,68 @@
   "frontend_supportAndFeedback": {
     "message": "지원 및 피드백",
     "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "질문이있다? 도움이 필요하십니까? 일반적인 질문에 대한 빠른 답변을 보려면 아래에서 자주 묻는 질문을 참조하십시오. 그래도 답이 나오지 않으면 질문이 있으시면 보내주십시오. $NAME$ ) 사용하여 얻은 경험이 부드럽고 즐거운 것이라면 기쁠 것입니다.",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "지원하다",
+    "original": "Support"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "기본 브라우저 언어",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "기본 브라우저 언어",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "브라우저 유형",
+    "original": "Browser type"
+  },
+  "frontend_systemHeading": {
+    "message": "시스템 세부 정보",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "설치된 음성 언어",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "설치된 음성 언어",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "설치된 버전",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "설치된 목소리",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "운영 체제 유형",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie 사용자 인터페이스 언어",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie 사용자 인터페이스 언어",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_textLinkText": {
+    "message": "본문",
+    "original": "Text"
   },
   "frontend_usageLinkText": {
     "message": "용법",
@@ -227,8 +515,12 @@
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "브라우저 바에서 Talkie 버튼을 클릭하십시오.",
-    "original": "Click the Talkie button in your browser bar"
+    "message": "브라우저 툴바에서 Talkie 버튼을 클릭하십시오.",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voiceFeatureOnline": {
+    "message": "온라인",
+    "original": "online"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "사용 가능한 언어",
@@ -241,6 +533,24 @@
   "frontend_voicesDescription": {
     "message": "브라우저에서 각 언어에 대한 설치된 음성을보고 테스트하십시오. Talkie Premium 사용자는 각 음성의 속도와 음높이를 설정할뿐만 아니라 원하는 언어를 기본 언어로 선택할 수 있습니다.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesInstalledHeading": {
+    "message": "설치된 모든 언어 ( $LANGUAGE_GROUPS_COUNT$ ), 방언 ( $LANGUAGES_COUNT$ ) 및 음성 ( $VOICES_COUNT$ )",
+    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$1",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$2",
+        "example": "47"
+      },
+      "voices_count": {
+        "content": "$3",
+        "example": "66"
+      }
+    }
   },
   "frontend_voicesLinkText": {
     "message": "목소리",
@@ -261,6 +571,10 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesPreferredHeading": {
+    "message": "선호하는 브라우저 언어",
+    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -326,6 +640,64 @@
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "일시 중지없이 긴 텍스트 읽기 (실험적)",
     "original": "Read long texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Talkie Premium 를) 사용하면 각 언어의 기본 음성은 물론 각 음성의 음성 및 음높이를 변경할 수 있습니다.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "$NAME$ 오신 것을 환영합니다! 이제 세계 최고의 텍스트 음성 변환 브라우저 확장 기능 중 하나를 사용하고 있습니다.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "이 텍스트를 선택한 다음 브라우저 툴바에서 $NAME$ 버튼을 클릭하십시오. 즐겨!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie 은 (는) $OSTYPE_PRETTY_NAME$ 운영 체제에서 실행중인 $SYSTEM_TYPE_PRETTY_NAME$ 브라우저에 설치된 $LANGUAGES_COUNT$ 방언에서 $LANGUAGE_GROUPS_COUNT$ 언어를 사용하는 $VOICES_COUNT$ 음성을 찾을 수 있습니다.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesHeading": {
+    "message": "더 많은 목소리를 설치하고 싶습니까?",
+    "original": "Want to install more voices?"
+  },
+  "frontend_welcomeLinkText": {
+    "message": "환영",
+    "original": "Welcome"
   },
   "noTextSelectedMessage": {
     "message": "먼저 웹 사이트에서 원하는 텍스트를 선택하십시오. 텍스트를 선택한 다음 마우스 오른쪽 버튼을 클릭하고 메뉴에서 Talkie 을 (를) 선택할 Talkie 있습니다.",

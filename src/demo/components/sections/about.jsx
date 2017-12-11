@@ -23,6 +23,7 @@ import PropTypes from "prop-types";
 
 import translateAttribute from "../../../shared/hocs/translate.jsx";
 import configureAttribute from "../../../shared/hocs/configure.jsx";
+import styled from "../../../shared/hocs/styled.jsx";
 
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
 
@@ -31,6 +32,17 @@ import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 @translateAttribute
 @configureAttribute
 export default class About extends React.PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.styled = {
+            sharingIcons: styled({
+                display: "inline-block",
+                verticalAlign: "middle",
+            })(SharingIcons),
+        };
+    }
+
     static propTypes = {
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
@@ -55,7 +67,9 @@ export default class About extends React.PureComponent {
                 </textBase.p>
                 <textBase.p>
                 —
-                    <textBase.a href="https://joelpurra.com/">
+                    <textBase.a
+                        href="https://joelpurra.com/"
+                        lang="sv">
                     Joel Purra
                     </textBase.a>
                 </textBase.p>
@@ -65,11 +79,18 @@ export default class About extends React.PureComponent {
                 </textBase.h2>
 
                 <textBase.p>
-                    {/* TODO: translate */}
-                    Do you like {translate("extensionShortName")}? If so, I would be happy if you could <textBase.a href={configure("urls.rate")}>give it a nice ⭐️ rating</textBase.a> 😃
+                    {translate("frontend_sharePitch", [
+                        translate("extensionShortName"),
+                    ])}
                 </textBase.p>
 
-                <SharingIcons />
+                <div>
+                    <this.styled.sharingIcons />
+
+                    <textBase.a href={configure("urls.rate")}>
+                        {translate("frontend_rateIt")}
+                    </textBase.a>
+                </div>
             </section>
         );
     }

@@ -23,6 +23,9 @@ import PropTypes from "prop-types";
 
 import * as lighter from "../styled/text/lighter.jsx";
 
+import translateAttribute from "../hocs/translate.jsx";
+
+@translateAttribute
 export default class Loading extends React.PureComponent {
     static defaultProps = {
         enabled: false,
@@ -30,6 +33,7 @@ export default class Loading extends React.PureComponent {
 
     static propTypes = {
         enabled: PropTypes.bool.isRequired,
+        translate: PropTypes.func.isRequired,
         children: PropTypes.node.isRequired,
     }
 
@@ -37,6 +41,7 @@ export default class Loading extends React.PureComponent {
         const {
             enabled,
             children,
+            translate,
         } = this.props;
 
         if (enabled) {
@@ -46,8 +51,7 @@ export default class Loading extends React.PureComponent {
         return (
             <div>
                 <lighter.span>
-                    {/* TODO: translate */}
-                    Loading...
+                    {translate("frontend_loading")}
                 </lighter.span>
             </div>
         );

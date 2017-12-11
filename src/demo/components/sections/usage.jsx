@@ -221,9 +221,12 @@ export default class Usage extends React.PureComponent {
                             >
                                 <tableBase.tr className="premium-section">
                                     <tableBase.td colSpan="2">
-                                        <textBase.a href={configure("urls.store-premium")}>
+                                        <textBase.a
+                                            href={configure("urls.store-premium")}
+                                            lang="en"
+                                        >
                                             <TalkiePremiumIcon />
-                                            Talkie Premium
+                                            {translate("extensionShortName_Premium")}
                                         </textBase.a>
                                     </tableBase.td>
                                 </tableBase.tr>

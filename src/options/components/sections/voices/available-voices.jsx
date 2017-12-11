@@ -27,6 +27,9 @@ import * as formBase from "../../../../shared/styled/form/form-base.jsx";
 
 import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
+
+@translateAttribute
 export default class AvailableVoices extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -59,6 +62,7 @@ export default class AvailableVoices extends React.PureComponent {
         effectiveVoiceNameForSelectedLanguage: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         disabled: PropTypes.bool.isRequired,
+        translate: PropTypes.func.isRequired,
     };
 
     handleChange(voiceName) {
@@ -66,6 +70,12 @@ export default class AvailableVoices extends React.PureComponent {
     }
 
     render() {
+        const {
+            translate,
+        } = this.props;
+
+        const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
+
         const voicesOptions = this.props.voices.map(
             (voice) => {
                 const isEffectiveVoiceNameForSelectedLanguage = (
@@ -80,8 +90,7 @@ export default class AvailableVoices extends React.PureComponent {
                 const voiceFeatures = [];
 
                 if (voice.localService === false) {
-                    // TODO: translate.
-                    voiceFeatures.push("online");
+                    voiceFeatures.push(translatedVoiceFeatureOnline);
                 }
 
                 if (voiceFeatures.length > 0) {

@@ -60,16 +60,64 @@ export default class NodeEnvironmentTranslatorProvider {
             throw new Error(`Missing translation: ${key}`);
         }
 
+        let translated = messageTemplate.message;
+
+        if (typeof messageTemplate.placeholders === "object") {
+            const variableLookups = Object.keys(messageTemplate.placeholders)
+                .reduce(
+                    (obj, placeholderName) => {
+                        const placeholder = messageTemplate.placeholders[placeholderName];
+                        const id = placeholderName.toLowerCase();
+                        const extrasIndex = parseInt(placeholder.content.replace("$", ""), 10) - 1;
+
+                        if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
+                            throw new RangeError(`Variable lookup extras index out of range: ${extrasIndex}`);
+                        }
+
+                        obj[id] = extras[extrasIndex];
+
+                        return obj;
+                    },
+                    {}
+                );
+
+            const replace = (/* eslint-disable no-unused-vars */match/* eslint-enable no-unused-vars */, variableName) => {
+                let result = null;
+
+                const variableNameAsNumber = parseInt(variableName, 10);
+
+                if (!isNaN(variableNameAsNumber)) {
+                    const extrasIndex = variableNameAsNumber - 1;
+
+                    if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
+                        throw new RangeError(`Replace extras index out of range: ${extrasIndex}`);
+                    }
+
+                    result = extras[extrasIndex];
+                } else {
+                    const id = variableName.toLowerCase();
+
+                    result = variableLookups[id];
+                }
+
+                if (result === null || result === undefined) {
+                    throw new Error(`Unmatched named extra variable: ${variableName}`);
+                }
+
+                return result;
+            };
+
+            translated = translated.replace(/\$(\w+)\$/g, replace);
+        }
+
         const extraTextRx = /\$/;
 
-        if (extraTextRx.test(messageTemplate.message)) {
+        if (extraTextRx.test(translated)) {
             // TODO: replace extras in string.
             logError("_getTranslation", "Unhandled translation extras", arguments, messageTemplate);
 
             throw new Error(`Unhandled translation extras: ${key} ${extras}`);
         }
-
-        const translated = messageTemplate.message;
 
         return translated;
     }

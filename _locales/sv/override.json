@@ -125,8 +125,8 @@
   },
   "frontend_featuresVersion_Premium": {
     "message": "För närvarande används premiumversionen av Talkie och all funktionalitet är tillgänglig. Tack så mycket, det värmer mitt hjärta!",
-    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!",
-    "translated-from": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!",
+    "translated-from": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie finns i två versioner: Talkie och Talkie Premium. Den konstnadsfria versionen fungerar bra för de flesta användningsfall, men premiumversionen har fler inställningar.",
@@ -200,8 +200,8 @@
   },
   "frontend_usageStep02": {
     "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält",
-    "original": "Click the Talkie button in your browser bar",
-    "translated-from": "Click the Talkie button in your browser bar"
+    "original": "Click the Talkie button in your browser toolbar",
+    "translated-from": "Click the Talkie button in your browser toolbar"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Tillgängliga språk",

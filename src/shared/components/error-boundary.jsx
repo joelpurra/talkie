@@ -131,6 +131,7 @@ Hope this helps =)
                             href="https://joelpurra.com/"
                             rel="noopener noreferrer"
                             target="_blank"
+                            lang="sv"
                         >
                             Joel Purra
                         </a>
@@ -161,9 +162,9 @@ Hope this helps =)
                             Component stack
                         </summary>
 
-                        <p>
+                        <blockquote>
                             <pre>{this.state.componentStack}</pre>
-                        </p>
+                        </blockquote>
                     </details>
 
                     <details>
@@ -171,9 +172,9 @@ Hope this helps =)
                             Error stack trace
                         </summary>
 
-                        <p>
+                        <blockquote>
                             <pre>{this.state.stacktrace}</pre>
-                        </p>
+                        </blockquote>
                     </details>
                 </div>
             );

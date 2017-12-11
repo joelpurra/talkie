@@ -30,16 +30,19 @@ const htmlEntityEncode = require("ent/encode");
 const htmlEntityDecode = require("ent/decode");
 
 export default class GoogleCloudTranslateTranslator {
-    constructor(googleCloudTranslateApiKey) {
-        assert(typeof googleCloudTranslateApiKey === "string");
+    constructor(googleCloudTranslateApiKeyFilePath) {
+        assert(typeof googleCloudTranslateApiKeyFilePath === "string");
 
-        this._googleCloudTranslateApiKey = googleCloudTranslateApiKey;
+        this._googleCloudTranslateApiKeyFilePath = googleCloudTranslateApiKeyFilePath;
 
         this._googleTranslateOptions = {
             promise: Promise,
-            key: this._googleCloudTranslateApiKey,
+            keyFilename: this._googleCloudTranslateApiKeyFilePath,
         };
         this._googleTranslate = GoogleTranslate(this._googleTranslateOptions);
+
+        // NOTE: there is a limit to how many items can be translated per call.
+        this.maxChunkSize = 128;
     }
 
     translate(fromLanguage, toLanguage, original) {
@@ -54,31 +57,67 @@ export default class GoogleCloudTranslateTranslator {
             const messages = clone(original);
             const keys = Object.keys(messages);
 
-            const preparedMessages = keys
-                .map((key) => messages[key].message)
-                .map((message) => htmlEntityEncode(message))
-                .map((encodedMessage) => {
-                    const preparedMessage = encodedMessage
-                        .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
-                        .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
-                        .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
-                        .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
+            return Promise.try(() => {
+                const preparedMessages = keys
+                    .map((key) => messages[key].message)
+                    .map((message) => htmlEntityEncode(message))
+                    .map((encodedMessage) => {
+                        const preparedMessage = encodedMessage
+                            .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
+                            .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
+                            .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
+                            .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
 
-                    const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
+                        const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
 
-                    return htmlMessage;
-                });
+                        return htmlMessage;
+                    });
 
-            const translationOptions = {
-                from: fromLanguage,
-                to: toLanguage,
-                format: "html",
-            };
+                return preparedMessages;
+            })
+                .then((preparedMessages) => {
+                    // NOTE: put each item in a chunk with a size up to maxChunkSize.
+                    const preparedMessagesChunks = preparedMessages.reduce(
+                        (chunked, preparedMessage, preparedMessagesIndex) => {
+                            const chunkedIndex = Math.floor(preparedMessagesIndex / this.maxChunkSize);
+                            chunked[chunkedIndex] = (chunked[chunkedIndex] || []).concat(preparedMessage);
 
-            return this._googleTranslate.translate(preparedMessages, translationOptions)
+                            return chunked;
+                        },
+                        []
+                    );
+
+                    return preparedMessagesChunks;
+                })
+                .then((preparedMessagesChunks) => {
+                    const translationOptions = {
+                        from: fromLanguage,
+                        to: toLanguage,
+                        format: "html",
+                    };
+
+                    // NOTE: translating one chunk at a time.
+                    return Promise.mapSeries(
+                        preparedMessagesChunks,
+                        (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions)
+                    );
+                })
+                // NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
+                // TODO: use a prettier array flattening function?
+                .then((translationResponseChunks) => translationResponseChunks.reduce(
+                    (t, v) => [
+                        t[0].concat(v[0]),
+                        t[1].concat(v[1]),
+                    ],
+                    [
+                        [],
+                        [],
+                    ]
+                ))
                 .then((translationResponses) => {
                     const translations = translationResponses[0];
                     /* eslint-disable no-unused-vars */
+                    // NOTE: this is now an array of apiResponses (one per chunk), not a single as in the original translate api.
                     const apiResponse = translationResponses[1];
                     /* eslint-enable no-unused-vars */
 

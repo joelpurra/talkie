@@ -74,9 +74,9 @@ Promise.try(() => process.argv.slice(2))
         }
     })
     .then(([rootDirectoryPath, baseLanguageCode, baseFileName, automaticTranslationFilename, ...languageCodes]) => {
-        const googleCloudTranslateApiKey = configuration.get("GOOGLE_TRANSLATE_API_KEY");
+        const googleCloudTranslateApiKeyFilePath = configuration.get("GOOGLE_TRANSLATE_API_KEY_FILE_PATH");
 
-        const translatorService = new GoogleCloudTranslateTranslator(googleCloudTranslateApiKey);
+        const translatorService = new GoogleCloudTranslateTranslator(googleCloudTranslateApiKeyFilePath);
         const messagesTranslatorFactory = new MessagesTranslatorFactory(translatorService, MessagesTranslator);
 
         const base = {
