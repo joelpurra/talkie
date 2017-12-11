@@ -30,14 +30,14 @@ const htmlEntityEncode = require("ent/encode");
 const htmlEntityDecode = require("ent/decode");
 
 export default class GoogleCloudTranslateTranslator {
-    constructor(googleCloudTranslateApiKey) {
-        assert(typeof googleCloudTranslateApiKey === "string");
+    constructor(googleCloudTranslateApiKeyFilePath) {
+        assert(typeof googleCloudTranslateApiKeyFilePath === "string");
 
-        this._googleCloudTranslateApiKey = googleCloudTranslateApiKey;
+        this._googleCloudTranslateApiKeyFilePath = googleCloudTranslateApiKeyFilePath;
 
         this._googleTranslateOptions = {
             promise: Promise,
-            key: this._googleCloudTranslateApiKey,
+            keyFilename: this._googleCloudTranslateApiKeyFilePath,
         };
         this._googleTranslate = GoogleTranslate(this._googleTranslateOptions);
     }
