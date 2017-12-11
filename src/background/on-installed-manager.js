@@ -40,6 +40,37 @@ export default class OnInstalledManager {
         this.onInstallListenerEventQueue = onInstallListenerEventQueue;
     }
 
+    _setStorageManagerDefaults() {
+        // TODO: move this function elsewhere?
+        return promiseTry(
+            () => {
+                logDebug("Start", "_setStorageManagerDefaults");
+
+                return this.metadataManager.isWebExtensionVersion()
+                    .then((isWebExtensionVersion) => {
+                    // TODO: shared place for stored value constants.
+                        const speakLongTextsStorageKey = "speak-long-texts";
+
+                        // TODO: shared place for default/fallback values for booleans etcetera.
+                        // NOTE: enabling speaking long texts by default on in WebExtensions (Firefox).
+                        const speakLongTexts = isWebExtensionVersion;
+
+                        return this.storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts);
+                    })
+                    .then((result) => {
+                        logDebug("Done", "_setStorageManagerDefaults");
+
+                        return result;
+                    })
+                    .catch((error) => {
+                        logError("_setStorageManagerDefaults", error);
+
+                        throw error;
+                    });
+            }
+        );
+    }
+
     onExtensionInstalledHandler(event) {
         return promiseTry(
             () => Promise.resolve()
@@ -49,7 +80,8 @@ export default class OnInstalledManager {
                 .then(() => this.contextMenuManager.createContextMenus())
                 .then(() => {
                     if (event.reason === REASON_INSTALL) {
-                        return this.welcomeManager.openWelcomePage();
+                        return this._setStorageManagerDefaults()
+                            .then(() => this.welcomeManager.openWelcomePage());
                     }
 
                     return undefined;
