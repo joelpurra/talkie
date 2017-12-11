@@ -40,6 +40,19 @@
 
 
 
+## Install additional voices
+
+New voices, languages, dialects can be downloaded *for free* for your operating system from for example Microsoft and Apple. Once installed correctly, Talkie will auto-detect them.
+
+- [Windows 10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3)
+- [Windows 8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130)
+- [Windows 7](https://www.microsoft.com/en-us/download/details.aspx?id=27224)
+- [macOS Sierra (10.12)](https://support.apple.com/kb/PH25378)
+- [eSpeak (open source)](http://espeak.sourceforge.net)
+- [US English Female Text-to-speech (by Google)](https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb)
+
+
+
 ## Usage
 
 1. **Select desired text** on any web page.
@@ -181,22 +194,22 @@ A convenient option is to use the **Talkie shortcut keys**:
 
 
 <details>
-  <summary><em>Voices</em></summary>
+  <summary><em>Installing voices</em></summary>
 
   <p>
     The voices for each language are provided by your browser. For this reason the list may differ depending on your browser, browser version, operating system, and any other installed extensions/software.
   </p>
 
   <p>
-    You can see the list of languages/voices available in your specific browser, as well as speak out sample text, in the Talkie options. This is a good start in figuring out why a certain language might not be read out loud as expected.
+    To see the list of languages/voices available in your specific browser, as well as speak out sample text, check the Talkie options page after installation. This is a good start in figuring out why a certain language might not be read out loud as expected.
   </p>
 
   <p>
-    In case you have no voices for TTS installed at all, try installing <a href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb">US English Female Text-to-speech (by Google)</a>. This should enable at least US English websites to be spoken by Talkie.
+    You can install additional voices to support new languages and dialects; see separate installation instructions for your operating system.
   </p>
 
 <details>
-  <summary><em>Example list of voices available in Google Chrome version 55</em></summary>
+  <summary><em>Example list of voices available in Google Chrome version 55 on macOS</em></summary>
 
   <p>
     The total number of voices is 83.
