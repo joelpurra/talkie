@@ -99,8 +99,8 @@ export default class TalkieSpeaker {
                             logDebug("Start", "getSynthesizerFromBrowser (event-based)");
 
                             const handleVoicesChanged = () => {
-                                delete synthesizer.onerror;
-                                delete synthesizer.onvoiceschanged;
+                                synthesizer.removeEventListener("error", handleError);
+                                synthesizer.removeEventListener("voiceschanged", handleVoicesChanged);
 
                                 logDebug("Variable", "synthesizer", synthesizer);
 
@@ -110,8 +110,8 @@ export default class TalkieSpeaker {
                             };
 
                             const handleError = (event) => {
-                                delete synthesizer.onerror;
-                                delete synthesizer.onvoiceschanged;
+                                synthesizer.removeEventListener("error", handleError);
+                                synthesizer.removeEventListener("voiceschanged", handleVoicesChanged);
 
                                 logError("getSynthesizerFromBrowser", event);
 
@@ -119,8 +119,8 @@ export default class TalkieSpeaker {
                             };
 
                             // NOTE: Chrome needs to wait for the onvoiceschanged event before using the synthesizer.
-                            synthesizer.onvoiceschanged = handleVoicesChanged;
-                            synthesizer.onerror = handleError;
+                            synthesizer.addEventListener("voiceschanged", handleVoicesChanged);
+                            synthesizer.addEventListener("error", handleError);
                         } catch (error) {
                             return reject(error);
                         }
@@ -129,9 +129,7 @@ export default class TalkieSpeaker {
 
                 return promiseTimeout(asyncSynthesizerInitialization, 1000)
                     .catch((error) => {
-                        delete synthesizer.onerror;
-                        delete synthesizer.onvoiceschanged;
-
+                        // TODO: remove the specific listeners previously registered.
                         if (error && error.name === "PromiseTimeout") {
                             logDebug("Done", "getSynthesizerFromBrowser (timeout)", "asyncSynthesizerInitialization", error);
 
@@ -143,8 +141,7 @@ export default class TalkieSpeaker {
 
                         throw error;
                     });
-            }
-            )
+            })
             .then((synthesizer) => {
                 // NOTE: only for logging purposes.
                 const voices = synthesizer.getVoices();
@@ -226,8 +223,8 @@ export default class TalkieSpeaker {
                         logDebug("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
 
                         const handleEnd = (event) => {
-                            delete utterance.onend;
-                            delete utterance.onerror;
+                            utterance.removeEventListener("end", handleEnd);
+                            utterance.removeEventListener("error", handleEnd);
 
                             logDebug("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
 
@@ -235,16 +232,16 @@ export default class TalkieSpeaker {
                         };
 
                         const handleError = (event) => {
-                            delete utterance.onend;
-                            delete utterance.onerror;
+                            utterance.removeEventListener("end", handleEnd);
+                            utterance.removeEventListener("error", handleEnd);
 
                             logError("speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
 
                             return reject(event.error);
                         };
 
-                        utterance.onend = handleEnd;
-                        utterance.onerror = handleError;
+                        utterance.addEventListener("end", handleEnd);
+                        utterance.addEventListener("error", handleError);
 
                         // The actual act of speaking the text.
                         synthesizer.speak(utterance);
@@ -325,39 +322,40 @@ export default class TalkieSpeaker {
 
                         const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
 
-                        const textPartsPromises = textParts.map((textPart) => () => {
-                            const speakingPartEventData = {
-                                textPart: textPart,
-                                voice: voice.name,
-                                language: voice.lang,
-                            };
+                        const textPartsPromises = textParts
+                            .map((textPart) => () => {
+                                const speakingPartEventData = {
+                                    textPart: textPart,
+                                    voice: voice.name,
+                                    language: voice.lang,
+                                };
 
-                            return shouldContinueSpeaking()
-                                .then((continueSpeaking) => {
-                                    if (continueSpeaking) {
-                                        return Promise.resolve()
-                                            .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
-                                            .then(() => {
-                                                const utterance = new window.SpeechSynthesisUtterance(textPart);
+                                return shouldContinueSpeaking()
+                                    .then((continueSpeaking) => {
+                                        if (continueSpeaking) {
+                                            return Promise.resolve()
+                                                .then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
+                                                .then(() => {
+                                                    const utterance = new window.SpeechSynthesisUtterance(textPart);
 
-                                                utterance.voice = actualVoice;
-                                                utterance.rate = voice.rate || rateRange.default;
-                                                utterance.pitch = voice.pitch || pitchRange.default;
+                                                    utterance.voice = actualVoice;
+                                                    utterance.rate = voice.rate || rateRange.default;
+                                                    utterance.pitch = voice.pitch || pitchRange.default;
 
-                                                logDebug("Variable", "utterance", utterance);
+                                                    logDebug("Variable", "utterance", utterance);
 
-                                                // HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
-                                                window.talkieUtterance = utterance;
+                                                    // HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+                                                    window.talkieUtterance = utterance;
 
-                                                return utterance;
-                                            })
-                                            .then((utterance) => this.speakPartOfText(utterance))
-                                            .then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData));
-                                    }
+                                                    return utterance;
+                                                })
+                                                .then((utterance) => this.speakPartOfText(utterance))
+                                                .then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData));
+                                        }
 
-                                    return undefined;
-                                });
-                        });
+                                        return undefined;
+                                    });
+                            });
 
                         return promiseSeries(textPartsPromises);
                     })
