@@ -48,7 +48,6 @@ New voices, languages, dialects can be downloaded *for free* for your operating 
 - [Windows 8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130)
 - [Windows 7](https://www.microsoft.com/en-us/download/details.aspx?id=27224)
 - [macOS Sierra (10.12)](https://support.apple.com/kb/PH25378)
-- [eSpeak (open source)](http://espeak.sourceforge.net)
 - [US English Female Text-to-speech (by Google)](https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb)
 
 

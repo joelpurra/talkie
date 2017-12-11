@@ -287,14 +287,6 @@ export default class Welcome extends React.PureComponent {
                                     Windows 7
                                 </textBase.a>
                             </listBase.li>
-                            <listBase.li>
-                                <textBase.a
-                                    href="http://espeak.sourceforge.net"
-                                    lang="en"
-                                >
-                                    eSpeak (open source)
-                                </textBase.a>
-                            </listBase.li>
                         </listBase.ul>
                     </layoutBase.details>
                 </Discretional>
@@ -366,17 +358,6 @@ export default class Welcome extends React.PureComponent {
                         <textBase.p>
                             {translate("frontend_faq005A")}
                         </textBase.p>
-
-                        <listBase.ul>
-                            <listBase.li>
-                                <textBase.a
-                                    href="http://espeak.sourceforge.net"
-                                    lang="en"
-                                >
-                                     eSpeak (open source)
-                                </textBase.a>
-                            </listBase.li>
-                        </listBase.ul>
                     </layoutBase.details>
                 </Discretional>
             </section>
