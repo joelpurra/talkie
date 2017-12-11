@@ -39,7 +39,7 @@ lib/react-libs.min.js
 LICENSE
 manifest.json
 README.md
-resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png
+resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png
 resources/firefox-amo/AMO-button_1.png
 resources/icon/free/icon-play/icon-1024x1024.png
 resources/icon/free/icon-play/icon-128x128.png

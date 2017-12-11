@@ -10,10 +10,10 @@
 <table>
   <tr>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from the Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-16x16.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-16x16.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a><br />&nbsp;
     </td>
   </tr>
   <tr>
