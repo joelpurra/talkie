@@ -266,6 +266,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
+                                    lang="en"
                                 >
                                     Windows 10
                                 </textBase.a>
@@ -273,6 +274,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
+                                    lang="en"
                                 >
                                     Windows 8
                                 </textBase.a>
@@ -280,6 +282,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
+                                    lang="en"
                                 >
                                     Windows 7
                                 </textBase.a>
@@ -287,6 +290,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="http://espeak.sourceforge.net"
+                                    lang="en"
                                 >
                                     eSpeak (open source)
                                 </textBase.a>
@@ -313,6 +317,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
+                                    lang="en"
                                 >
                                      US English Female Text-to-speech (by Google)
                                 </textBase.a>
@@ -339,6 +344,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="https://support.apple.com/kb/PH25378"
+                                    lang="en"
                                 >
                                         macOS Sierra (10.12)
                                 </textBase.a>
@@ -365,6 +371,7 @@ export default class Welcome extends React.PureComponent {
                             <listBase.li>
                                 <textBase.a
                                     href="http://espeak.sourceforge.net"
+                                    lang="en"
                                 >
                                      eSpeak (open source)
                                 </textBase.a>

@@ -85,7 +85,11 @@ export default class Header extends React.PureComponent {
                 <Discretional
                     enabled={!isPremiumVersion}
                 >
-                    <this.styled.button href={configure("urls.store-premium")} id="header-premium-button">
+                    <this.styled.button
+                        href={configure("urls.store-premium")}
+                        id="header-premium-button"
+                        lang="en"
+                    >
                         {translate("extensionShortName_Premium")}
                     </this.styled.button>
                 </Discretional>
@@ -95,7 +99,10 @@ export default class Header extends React.PureComponent {
                         isPremiumVersion={isPremiumVersion}
                     />
 
-                    <this.styled.extensionName href={configure("urls.main")}>
+                    <this.styled.extensionName
+                        href={configure("urls.main")}
+                        lang="en"
+                    >
                         {translate("extensionShortName")}
                     </this.styled.extensionName>
                 </textBase.h1>

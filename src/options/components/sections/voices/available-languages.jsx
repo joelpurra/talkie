@@ -118,6 +118,7 @@ export default class AvailableLanguages extends React.PureComponent {
                     // TODO: proper way to store/look up objects?
                     value={languageGroup}
                     className="group"
+                    lang="en"
                 >
                     {languageGroupText}
                 </option>;
@@ -140,6 +141,7 @@ export default class AvailableLanguages extends React.PureComponent {
                             key={language}
                             // TODO: proper way to store/look up objects?
                             value={language}
+                            lang="en"
                         >
                             {languageText}
                         </option>;

@@ -78,57 +78,65 @@ export default class Features extends React.PureComponent {
         const {
             isPremiumVersion,
             systemType,
+            translate,
+            configure,
         } = this.props;
 
         return (
             <section>
                 <p>
-                    {this.props.translate("frontend_featuresVersions")}
+                    {translate("frontend_featuresVersions")}
                 </p>
 
                 <Discretional
                     enabled={!isPremiumVersion}
                 >
-                    <p>{this.props.translate("frontend_featuresVersion_Free")}</p>
+                    <p>{translate("frontend_featuresVersion_Free")}</p>
                 </Discretional>
 
                 <Discretional
                     enabled={isPremiumVersion}
                 >
-                    <p>{this.props.translate("frontend_featuresVersion_Premium")}</p>
+                    <p>{translate("frontend_featuresVersion_Premium")}</p>
                 </Discretional>
 
                 <PremiumSection>
                     <listBase.ul>
-                        <listBase.li>{this.props.translate("frontend_featuresPremium_List01")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresPremium_List02")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresPremium_List01")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresPremium_List02")}</listBase.li>
 
                         {/* NOTE: read from clipboard feature not available in Firefox */}
                         <Discretional
                             enabled={systemType === "chrome"}
                         >
-                            <listBase.li>{this.props.translate("frontend_featuresPremium_List05")}</listBase.li>
+                            <listBase.li>{translate("frontend_featuresPremium_List05")}</listBase.li>
                         </Discretional>
 
-                        <listBase.li>{this.props.translate("frontend_featuresPremium_List03")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresPremium_List04")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresPremium_List03")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresPremium_List04")}</listBase.li>
                     </listBase.ul>
 
                     <this.styled.storeLinks>
                         <this.styled.storeLinksPFirst>
-                            <textBase.a href={this.props.configure("urls.chromewebstore-premium")}>
+                            <textBase.a
+                                href={configure("urls.chromewebstore-premium")}
+                                lang="en"
+                            >
                                 <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" />
                                 <br />
                                 <TalkiePremiumIcon />
-                                    Talkie Premium
+                                {translate("extensionShortName_Premium")}
                             </textBase.a>
                         </this.styled.storeLinksPFirst>
                         <this.styled.storeLinksP>
-                            <textBase.a href={this.props.configure("urls.firefox-amo-premium")}>
+                            <textBase.a
+                                href={configure("urls.firefox-amo-premium")}
+                                lang="en"
+                            >
                                 <img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" />
                                 <br />
                                 <TalkiePremiumIcon />
-                                    Talkie Premium
+                                {translate("extensionShortName_Premium")}
                             </textBase.a>
                         </this.styled.storeLinksP>
                     </this.styled.storeLinks>
@@ -136,29 +144,35 @@ export default class Features extends React.PureComponent {
 
                 <FreeSection>
                     <listBase.ul>
-                        <listBase.li>{this.props.translate("frontend_featuresFree_List01")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresFree_List02")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresFree_List03")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresFree_List04")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresFree_List05")}</listBase.li>
-                        <listBase.li>{this.props.translate("frontend_featuresFree_List06")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresFree_List01")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresFree_List02")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresFree_List03")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresFree_List04")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresFree_List05")}</listBase.li>
+                        <listBase.li>{translate("frontend_featuresFree_List06")}</listBase.li>
                     </listBase.ul>
 
                     <this.styled.storeLinks>
                         <this.styled.storeLinksPFirst>
-                            <textBase.a href={this.props.configure("urls.chromewebstore-free")}>
+                            <textBase.a
+                                href={configure("urls.chromewebstore-free")}
+                                lang="en"
+                            >
                                 <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" />
                                 <br />
                                 <TalkieFreeIcon />
-                                    Talkie
+                                {translate("extensionShortName_Free")}
                             </textBase.a>
                         </this.styled.storeLinksPFirst>
                         <this.styled.storeLinksP>
-                            <textBase.a href={this.props.configure("urls.firefox-amo-free")}>
+                            <textBase.a
+                                href={configure("urls.firefox-amo-free")}
+                                lang="en"
+                            >
                                 <img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" />
                                 <br />
                                 <TalkieFreeIcon />
-                                    Talkie
+                                {translate("extensionShortName_Free")}
                             </textBase.a>
                         </this.styled.storeLinksP>
                     </this.styled.storeLinks>

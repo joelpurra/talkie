@@ -131,6 +131,7 @@ Hope this helps =)
                             href="https://joelpurra.com/"
                             rel="noopener noreferrer"
                             target="_blank"
+                            lang="sv"
                         >
                             Joel Purra
                         </a>

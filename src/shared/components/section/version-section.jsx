@@ -84,7 +84,10 @@ export default class VersionSection extends React.PureComponent {
         return (
             <div className={classNames}>
                 <HeadingElement>
-                    <textBase.a href={configure("urls.store-premium")}>
+                    <textBase.a
+                        href={configure("urls.store-premium")}
+                        lang="en"
+                    >
                         <TalkieVersionIcon
                             isPremiumVersion={isPremiumVersion}
                         />

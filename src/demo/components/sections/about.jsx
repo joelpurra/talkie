@@ -67,7 +67,9 @@ export default class About extends React.PureComponent {
                 </textBase.p>
                 <textBase.p>
                 —
-                    <textBase.a href="https://joelpurra.com/">
+                    <textBase.a
+                        href="https://joelpurra.com/"
+                        lang="sv">
                     Joel Purra
                     </textBase.a>
                 </textBase.p>

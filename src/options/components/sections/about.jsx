@@ -131,7 +131,9 @@ export default class About extends React.PureComponent {
                     <listBase.dt>
                         {translate("frontend_systemInstalledVersionHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         <TalkieVersionIcon
                             isPremiumVersion={isPremiumVersion}
                         />
@@ -143,21 +145,27 @@ export default class About extends React.PureComponent {
                     <listBase.dt>
                         {translate("frontend_systemBrowserTypeHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {systemType}
                     </listBase.dd>
 
                     <listBase.dt>
                         {translate("frontend_systemOSHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {osType}
                     </listBase.dd>
 
                     <listBase.dt>
                         {translate("frontend_systemBrowserLanguageHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {navigatorLanguage}
                     </listBase.dd>
 
@@ -166,7 +174,9 @@ export default class About extends React.PureComponent {
                         {" "}
                         ({navigatorLanguages.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {navigatorLanguages.join(", ")}
                     </listBase.dd>
 
@@ -175,7 +185,9 @@ export default class About extends React.PureComponent {
                         {" "}
                         ({languageGroups.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {languageGroups.join(", ")}
                     </listBase.dd>
 
@@ -184,7 +196,9 @@ export default class About extends React.PureComponent {
                         {" "}
                             ({languages.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {languages.join(", ")}
                     </listBase.dd>
 
@@ -200,7 +214,9 @@ export default class About extends React.PureComponent {
                     <listBase.dt>
                         {translate("frontend_systemTalkieUILanguageHeading")}
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {translate("extensionLocale")}
                     </listBase.dd>
 
@@ -209,7 +225,9 @@ export default class About extends React.PureComponent {
                         {" "}
                         ({translatedLanguages.length})
                     </listBase.dt>
-                    <listBase.dd>
+                    <listBase.dd
+                        lang="en"
+                    >
                         {translatedLanguages.join(", ")}
                     </listBase.dd>
                 </listBase.dl>
@@ -219,19 +237,25 @@ export default class About extends React.PureComponent {
                 </textBase.h2>
                 <p>
                     <span
+                        lang="en"
                         onClick={this.handleLegaleseClick}
                     >
                         {translate("frontend_licenseGPLDescription")}
                     </span>
                     <br />
-                    <textBase.a href={configure("urls.gpl")}>
+                    <textBase.a
+                        href={configure("urls.gpl")}
+                        lang="en"
+                    >
                         {translate("frontend_licenseGPLLinkText")}
                     </textBase.a>
                 </p>
                 <p>
                     {translate("frontend_licenseCLADescription")}
                     <br />
-                    <textBase.a href={configure("urls.cla")}>
+                    <textBase.a href={configure("urls.cla")}
+                        lang="en"
+                    >
                         {translate("frontend_licenseCLALinkText")}
                     </textBase.a>
                 </p>
