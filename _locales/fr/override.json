@@ -119,7 +119,7 @@
   },
   "frontend_usageStep02": {
     "message": "Cliquez sur le bouton Talkie dans la barre de navigation",
-    "original": "Click the Talkie button in your browser bar",
+    "original": "Click the Talkie button in your browser toolbar",
     "translated-from": "Click the Talkie button in your browser bar"
   },
   "frontend_voicesAvailableLanguages": {

@@ -124,14 +124,12 @@ export default class About extends React.PureComponent {
                 </listBase.ul>
 
                 <textBase.h2>
-                    {/* TODO: translate */}
                     {translate("frontend_systemHeading")}
-                    System details
                 </textBase.h2>
 
                 <listBase.dl>
                     <listBase.dt>
-                        Installed version
+                        {translate("frontend_systemInstalledVersionHeading")}
                     </listBase.dt>
                     <listBase.dd>
                         <TalkieVersionIcon
@@ -143,72 +141,73 @@ export default class About extends React.PureComponent {
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Browser type
+                        {translate("frontend_systemBrowserTypeHeading")}
                     </listBase.dt>
                     <listBase.dd>
                         {systemType}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Operating system type
+                        {translate("frontend_systemOSHeading")}
                     </listBase.dt>
                     <listBase.dd>
                         {osType}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Preferred browser language
+                        {translate("frontend_systemBrowserLanguageHeading")}
                     </listBase.dt>
                     <listBase.dd>
                         {navigatorLanguage}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Preferred browser languages ({navigatorLanguages.length})
+                        {translate("frontend_systemBrowserLanguagesHeading")}
+                        {" "}
+                        ({navigatorLanguages.length})
                     </listBase.dt>
                     <listBase.dd>
                         {navigatorLanguages.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Installed voice languages ({languageGroups.length})
+                        {translate("frontend_systemInstalledLanguagesHeading")}
+                        {" "}
+                        ({languageGroups.length})
                     </listBase.dt>
                     <listBase.dd>
                         {languageGroups.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Installed voice dialects ({languages.length})
+                        {translate("frontend_systemInstalledDialectsHeading")}
+                        {" "}
+                            ({languages.length})
                     </listBase.dt>
                     <listBase.dd>
                         {languages.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Installed voices ({voices.length})
+                        {translate("frontend_systemInstalledVoicesHeading")}
+                        {" "}
+                        ({voices.length})
                     </listBase.dt>
                     <listBase.dd>
                         {voiceNames.join(", ")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Talkie user interface language
+                        {translate("frontend_systemTalkieUILanguageHeading")}
                     </listBase.dt>
                     <listBase.dd>
                         {translate("extensionLocale")}
                     </listBase.dd>
 
                     <listBase.dt>
-                        {/* TODO: translate */}
-                        Talkie user interface languages ({translatedLanguages.length})
+                        {translate("frontend_systemTalkieUILanguagesHeading")}
+                        {" "}
+                        ({translatedLanguages.length})
                     </listBase.dt>
                     <listBase.dd>
                         {translatedLanguages.join(", ")}

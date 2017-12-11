@@ -71,12 +71,12 @@
     "original": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
-    "message": "Možnosti hlasu",
-    "original": "Voice options"
+    "message": "Hlasy a jazyky",
+    "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "Vyberte Talkie text na Talkie webovej stránke a kliknite na tlačidlo Talkie v paneli Talkie .",
-    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
+    "message": "Vyberte požadovaný text na ľubovoľnej webovej stránke a kliknite na tlačidlo Talkie na paneli s nástrojmi prehliadača.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Zdrojový kód na Github",
@@ -89,6 +89,218 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Stránka projektu na joelpurra.com",
     "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "Hlas pochádza z operačného systému (Windows, ChromeOS, MacOS, Linux a i.) A vo vašom aktuálnom prehliadači (Google Chrome, Firefox a i.). To tiež znamená, že môžete stiahnuť a nainštalovať akékoľvek hlasy, ktoré by ste chceli mať vo vašom počítači, a Talkie by ich mali rozpoznať automaticky.",
+    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+  },
+  "frontend_faq001Q": {
+    "message": "Ako Talkie zisťuje nainštalované hlasy?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "Môžete pridať ďalšie hlasy od spoločnosti Microsoft, ako aj od iných používateľov. pozri samostatné inštalačné pokyny.",
+    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "Ako môžem nainštalovať viac hlasov v Talkie v systéme Windows?",
+    "original": "How can I install more voices in Talkie on Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "Akékoľvek dodatky do systému Chrome OS by mali byť dostupné v Internetovom obchode Chrome.",
+    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "Ako môžem nainštalovať viac hlasov v Talkie v systéme Chrome OS?",
+    "original": "How can I install more voices in Talkie on ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "Ďalšie hlasy je možné automaticky nainštalovať z predvolieb systému macOS pre reč; pozri samostatné inštalačné pokyny.",
+    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "Ako môžem na macOS nainštalovať viac hlasov v Talkie ?",
+    "original": "How can I install more voices in Talkie on macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "V súčasnosti nie je isté, ako nainštalovať ďalšie hlasy, pretože som to sám nevyskúšal. Je tiež otázkou, či a ako prehliadače zisťujú nainštalované hlasy. Pozrite si samostatné inštalačné pokyny. Dajte mi vedieť, aké sú vaše expirences!",
+    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "Ako môžem na Linuxe nainštalovať viac Talkie hlasov?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "Áno a nie. Talkie nezahŕňa žiadne hlasy ako taký, ale používa hlasy, ktoré sú už nainštalované vo vašom počítači. Môžete nainštalovať akékoľvek ďalšie hlasy, ktoré by ste chceli.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "Môžete pridať podporu pre novú hlasovú zmenu v Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "Áno a nie. Keď Talkie používa hlasy, ktoré sú nainštalované vo vašom počítači, musíte nainštalovať nový hlas, ktorý podporuje jazyk, ktorý chcete použiť.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Môžete pridať podporu pre <a new language> v Talkie ?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "Áno, ak sú nainštalované hlasy aj offline. V zozname hlasov, ktoré sú označené ako online, môžete vidieť.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie pracuje offline?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "Nie, Talkie Premium má presne rovnaké hlasy ako Talkie. Na svoj systém môžete nainštalovať viac hlasov a sú rovnako dostupné. V časti Talkie Premium môžete prispôsobiť výber hlasu v každom jazyku.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+  },
+  "frontend_faq009Q": {
+    "message": "Má Talkie Premium viac hlasov než Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Prehliadač Google Chrome (a pravdepodobne aj iné prehliadače založené na Talkie ) má tento problém/chybu aspoň od roku 2014. Talkie má určité riešenia a možnosť zapnúť/vypnúť čítanie textu v kratších častiach. Budem pokračovať v zdokonaľovaní riešenia, ale kým bude fungovať tím Chromium, nemusí fungovať 100%. Ak sa vyskytne tento problém, dajte nám vedieť, ktorý prehliadač a verziu, operačný systém a verziu a jazyk/hlas, ktorý používate.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Prečo Talkie prestane čítať po 20-30 slovách alebo niekoľkých sekundách?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "Existujú dva dôvody. Po prvé, ak je aktívny hlas online, musí si pred prehrávaním stiahnuť súbor reči. To znamená dodatočnú prestávku, ktorá závisí od rýchlosti pripojenia k internetu. Môžete skontrolovať, ktoré hlasy sú online v zozname hlasov. Druhým dôvodom je, že riešenie pre rozprávanie dlhých textov preberá text v kratších častiach, zvyčajne podľa vety alebo klauzuly. To môže pridať ďalšiu pauzu pre každú prestávku. Môžete povoliť čítanie dlhých textov ako jednu časť v možnostiach, ktoré by mali odstrániť pauzu v podporovaných systémoch.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "Prečo má Talkie niekedy dlhú prestávku medzi vetami a slovami?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "Bohužiaľ nie. Ukázalo sa, že Dokumenty Google (rovnako ako Tabuľka Google, Disk Google a podobne) nie sú webové stránky, ale špeciálna \"aplikácia v prehliadači\" vytvorená spoločnosťou Google. Talkie nemôže získať prístup k vybratému textu ani pridať položky kontextovej ponuky. Budem ďalej skúmať, či existuje nejaký spôsob, ako pridať podporu služby Dokumenty Google Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+  },
+  "frontend_faq012Q": {
+    "message": "Používa Talkie v službe Dokumenty Google?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "Áno prosím! Použite stránku podpory alebo kontaktujte ma priamo. Uveďte čo najviac informácií, ako napríklad prehliadač a verziu, operačný systém a verziu a jazyk/hlas, ktorý používate. Zahrňte aj informácie týkajúce sa konkrétnych webových stránok, v ktorých nájdete chybu, najlepšie s odkazom.",
+    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "Mám ohlásiť chyby?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "Zvyčajne! Ak si môžete vybrať text v PDF, kliknite pravým tlačidlom myši a v ponuke zvoľte Talkie. Ak text nie je možné vybrať, ak je súčasťou obrázku, nebude to fungovať.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Môže Talkie čítať súbory PDF?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "Nie. Talkie má neobmedzené využitie — môžete čítať toľko slov a dlhých textov, ako sa vám páči.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Má Talkie limit slova?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "Rozhodne! Kontaktujte ma prostredníctvom stránok podpory alebo projektu.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "Môžem požiadať o nové funkcie?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "K dispozícii je editor klávesových skratiek, ktorý nájdete v dolnej časti stránky Rozšírenia v prehliadači Google Chrome.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "Ako zmeniť klávesové skratky v prehliadači Google Chrome?",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "Bohužiaľ sa to v súčasnosti nezdá byť možné. Požiadajte tím Firefoxu o pridanie tejto funkcie!",
+    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+  },
+  "frontend_faq018Q": {
+    "message": "Ako zmeniť klávesové skratky vo Firefoxe?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "Rozhodne! Bolo by skvelé získať pomoc pri prekladaní Talkie , otestovať Talkie v nových systémoch, vyšetrovať chyby a pridávať nové funkcie. Prečítajte si pokyny na stránke projektu.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Môžem pomôcť pri vývoji Talkie ?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "Áno — povedzte svojim priateľom o Talkie! Možno pošlete odkaz na svoju obľúbenú online celebritu, online skupinu alebo newsletter. Môžete dokonca požiadať svojho šéfa, aby ho nainštaloval na všetky počítače v práci, alebo váš učiteľ ho nainštalovať do školy. Šírenie slova o Talkie je veľmi cenené!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "Môžem Talkie pomôcť iným spôsobom?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Trvalo dosť času a úsilia vyvinúť Talkie — stovky hodín zatiaľ. Na finančnú podporu vývoja niektoré funkcie sú k dispozícii len používateľom Talkie Premium .",
+    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Prečo Talkie Premium stojí peniaze?",
+    "original": "Why does Talkie Premium cost money?"
+  },
+  "frontend_faq022A": {
+    "message": "Bohužiaľ ešte nie. Talkie Premium sa v súčasnosti ponúka iba prostredníctvom Internetového obchodu Chrome, kde je jedinou možnosťou používať službu Google Payments.",
+    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+  },
+  "frontend_faq022Q": {
+    "message": "Môžem platiť za Talkie Premium pomocou PayPal, bankovým prevodom atď.?",
+    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "Istá! Môžete buď platbu zrušiť v službe Google Payments, alebo ma kontaktovať priamo.",
+    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+  },
+  "frontend_faq023Q": {
+    "message": "Môžem dostať náhradu?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "Istá! Môžem vám poslať kópiu najnovšej verzie Talkie Premium , ale potom, keď sa uvoľní ďalšia verzia, nebude mať automatické aktualizácie.",
+    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+  },
+  "frontend_faq024Q": {
+    "message": "Môžem si vyskúšať bezplatnú kópiu Talkie Premium ?",
+    "original": "Can I get a free copy of Talkie Premium to try it out?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "hmyz",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "všeobecný",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "Často kladené otázky",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "hlasy",
+    "original": "Voices"
   },
   "frontend_featuresFree_List01": {
     "message": "Automatická detekcia jazyka.",
@@ -143,8 +355,8 @@
     "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Momentálne používate Talkie Premium a všetky funkcie sú k dispozícii. Veľmi vám ďakujem, ohrieva moje srdce!",
-    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "V súčasnosti používa Talkie Premium a všetky funkcie sú k dispozícii. Veľmi vám ďakujem, ohrieva moje srdce!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie v dvoch verziách: Talkie a Talkie Premium. Bezplatná verzia je skvelá pre väčšinu prípadov použitia, ale prémiová verzia ponúka ďalšie možnosti.",
@@ -158,6 +370,10 @@
     "message": "licencie",
     "original": "License"
   },
+  "frontend_loading": {
+    "message": "Načítava...",
+    "original": "Loading..."
+  },
   "frontend_rateIt": {
     "message": "Recenzia Talkie",
     "original": "Review Talkie"
@@ -165,6 +381,16 @@
   "frontend_shareHeading": {
     "message": "Povedzte svojim Talkie o Talkie",
     "original": "Tell your friends about Talkie"
+  },
+  "frontend_sharePitch": {
+    "message": "Páči sa vám $NAME$? Ak áno, bol by som rád, keby ste mohli dať pekný rating a revíziu 😃",
+    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
   },
   "frontend_storyDescription": {
     "message": "Talkie bol vyvinutý niekoľko dní pred novým rokom 2016/2017, na výzvu od priateľa. Táto výzva sa začala otázkou: pri dochádzaní do práce je možné počúvať článok namiesto jeho čítania? Jednoducho, povedal som, a vydal sa, aby som to dokázal — alebo aspoň aby ​​môj prehliadač rozprával text pomocou hlúpeho počítačového hlasu. Základná verzia, bez akéhokoľvek užívateľského rozhrania, sa ukázala byť triviálne, ako vytvoriť. Pridanie používateľského rozhrania trvalo o niečo dlhšie. Pridanie správneho rozpoznávania jazyka viac kódov. Prekonávanie chýb v prehliadači ešte viac práce. Zoznam vylepšení a funkcií pokračuje — a niekoľko tisíc riadkov kódu neskôr, hľadáte na konečný výsledok.",
@@ -181,6 +407,68 @@
   "frontend_supportAndFeedback": {
     "message": "Podpora a spätná väzba",
     "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "Mať otázku? Potrebujete pomoc s niečím? Na rýchle odpovede na bežné otázky nájdete najčastejšie kladené otázky. Ak vám to neposkytne odpoveď, pošlite mi akékoľvek otázky, ktoré by ste mohli mať. Bol by som rád, keby vaše skúsenosti s použitím $NAME$ hladké a príjemné!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "podpora",
+    "original": "Support"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "Preferovaný jazyk prehliadača",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "Preferované jazyky prehliadača",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "Typ prehliadača",
+    "original": "Browser type"
+  },
+  "frontend_systemHeading": {
+    "message": "Podrobnosti systému",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "Inštalované hlasové dialekty",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "Inštalované hlasové jazyky",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "Inštalovaná verzia",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "Inštalované hlasy",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "Typ operačného systému",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie jazyk používateľského rozhrania",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie jazykov používateľského rozhrania",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_textLinkText": {
+    "message": "text",
+    "original": "Text"
   },
   "frontend_usageLinkText": {
     "message": "používanie",
@@ -227,8 +515,12 @@
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "Kliknite na tlačidlo Talkie v paneli Talkie",
-    "original": "Click the Talkie button in your browser bar"
+    "message": "Kliknite na tlačidlo Talkie na paneli s nástrojmi prehliadača",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voiceFeatureOnline": {
+    "message": "on-line",
+    "original": "online"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Dostupné jazyky",
@@ -241,6 +533,24 @@
   "frontend_voicesDescription": {
     "message": "Zobrazte a otestujte nainštalované hlasy pre každý jazyk v prehliadači. Talkie Premium môžu tiež vybrať svoj obľúbený hlas ako Talkie Premium pre každý jazyk, ako aj nastaviť rýchlosť a rozstup pre každý hlas.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesInstalledHeading": {
+    "message": "Všetky nainštalované jazyky ( $LANGUAGE_GROUPS_COUNT$ ), dialekty ( $LANGUAGES_COUNT$ ) a hlasy ( $VOICES_COUNT$ )",
+    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$1",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$2",
+        "example": "47"
+      },
+      "voices_count": {
+        "content": "$3",
+        "example": "66"
+      }
+    }
   },
   "frontend_voicesLinkText": {
     "message": "hlasy",
@@ -261,6 +571,10 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesPreferredHeading": {
+    "message": "Vaše preferované jazyky prehliadača",
+    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -326,6 +640,64 @@
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "Čítanie dlhých textov bez prestávok (experimentálne)",
     "original": "Read long texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "S Talkie Premium môžete zmeniť predvolený hlas pre každý jazyk, rovnako ako hlas a rozstup pre každý hlas.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "Vitajte na $NAME$! Teraz používate jednu z najlepších rozšírení prehliadača na preklad textu na reč na svete.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "Pokračujte a vyberte tento text a potom kliknite na tlačidlo $NAME$ na paneli s nástrojmi prehliadača. Užite si to!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie môže v súčasnosti nájsť $VOICES_COUNT$ hlasy umožňujúce $LANGUAGE_GROUPS_COUNT$ jazykov v $LANGUAGES_COUNT$ dialektoch nainštalovaných vo vašom prehliadači $SYSTEM_TYPE_PRETTY_NAME$ bežiacom v operačnom systéme $OSTYPE_PRETTY_NAME$ .",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesHeading": {
+    "message": "Chcete nainštalovať ďalšie hlasy?",
+    "original": "Want to install more voices?"
+  },
+  "frontend_welcomeLinkText": {
+    "message": "vitajte",
+    "original": "Welcome"
   },
   "noTextSelectedMessage": {
     "message": "Najskôr zvoľte požadovaný text na webovej stránke. Môžete tiež vybrať text, potom kliknite pravým Talkie myši a zvoľte Talkie v ponuke.",

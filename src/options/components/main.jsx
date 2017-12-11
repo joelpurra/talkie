@@ -78,9 +78,7 @@ export default class Main extends React.PureComponent {
             },
             {
                 tabId: "text",
-                // TODO: translate.
-                text: "Text",
-                // text: this.props.translate("frontend_textLinkText"),
+                text: this.props.translate("frontend_textLinkText"),
             },
             {
                 tabId: "about",

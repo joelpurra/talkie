@@ -70,9 +70,7 @@ export default class Main extends React.PureComponent {
         this.links = [
             {
                 tabId: "welcome",
-                // TODO: translate.
-                text: "Welcome",
-                // text: this.props.translate("frontend_welcomeLinkText"),
+                text: this.props.translate("frontend_welcomeLinkText"),
             },
             {
                 tabId: "voices",
@@ -88,9 +86,7 @@ export default class Main extends React.PureComponent {
             },
             {
                 tabId: "support",
-                // TODO: translate.
-                text: "Support",
-                // text: this.props.translate("frontend_supportLinkText"),
+                text: this.props.translate("frontend_supportLinkText"),
             },
             {
                 tabId: "about",

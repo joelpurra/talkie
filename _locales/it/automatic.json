@@ -71,12 +71,12 @@
     "original": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
-    "message": "Opzioni vocali",
-    "original": "Voice options"
+    "message": "Voci e lingue",
+    "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "Talkie il Talkie in Talkie pagina web e fai clic sul pulsante Talkie nella barra del browser.",
-    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
+    "message": "Seleziona il testo desiderato su qualsiasi pagina web e fai clic sul pulsante Talkie nella barra degli strumenti del browser.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Il codice sorgente su Github",
@@ -89,6 +89,218 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "pagina del progetto su joelpurra.com",
     "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "La voce proviene sia dal sistema operativo (Windows, ChromeOS, macOS, Linux, eccetera) sia dal browser corrente (Google Chrome, Firefox, eccetera). Ciò significa anche che puoi scaricare e installare qualsiasi voce che vorresti avere sul tuo computer e Talkie dovrebbe riconoscerli automaticamente.",
+    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+  },
+  "frontend_faq001Q": {
+    "message": "In che modo Talkie rileva le voci installate?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "Puoi aggiungere più voci sia da Microsoft che da altri; vedere le istruzioni di installazione separate.",
+    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "Come posso installare più voci in Talkie su Windows?",
+    "original": "How can I install more voices in Talkie on Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "Eventuali aggiunte a ChromeOS dovrebbero essere disponibili nel Chrome Web Store.",
+    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "Come posso installare più voci in Talkie su ChromeOS?",
+    "original": "How can I install more voices in Talkie on ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "Ulteriori voci possono essere installate automaticamente dalle preferenze del sistema macOS per la voce; vedere le istruzioni di installazione separate.",
+    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "Come posso installare più voci in Talkie su macOS?",
+    "original": "How can I install more voices in Talkie on macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "Attualmente non sono sicuro di come installare voci aggiuntive, come non l'ho provato io stesso. È anche questione di se e in che modo i browser rilevano le voci installate. Vedere le istruzioni di installazione separate. Per favore fatemi sapere quali sono le vostre scadenze!",
+    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "Come posso installare più voci in Talkie su Linux?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "Sì e no. Talkie non include alcuna voce in sé, ma utilizza le voci che sono già installate sul tuo computer. Puoi installare qualsiasi voce aggiuntiva che desideri.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "Puoi aggiungere il supporto per <a nuova voce> in Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "Sì e no. Poiché Talkie utilizza le voci installate sul tuo computer, devi installare una nuova voce che supporti la lingua che desideri utilizzare.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Puoi aggiungere il supporto per <a nuova Talkie in Talkie ?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "Sì, se le voci installate sono disponibili anche offline. Puoi vedere l'elenco delle voci contrassegnate come online.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie funziona offline?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "No, Talkie Premium ha le stesse identiche voci di Talkie. Puoi installare più voci sul tuo sistema e sono ugualmente disponibili. In Talkie Premium puoi personalizzare la selezione vocale per lingua.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+  },
+  "frontend_faq009Q": {
+    "message": "Talkie Premium ha più voci di Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Google Chrome (e presumibilmente altri browser basati su Chromium) hanno Talkie questo problema/bug da almeno l'anno 2014. Talkie ha alcune soluzioni alternative e un'opzione per abilitare/disabilitare la lettura del testo in parti più brevi. Continuerò a migliorare la soluzione, ma fino a quando la squadra di Chromium non funzionerà potrebbe non funzionare al 100%. Se riscontri questo problema, ti preghiamo di comunicarmi quale browser e versione, sistema operativo e versione e lingua/voce stai utilizzando.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Perché Talkie smette di leggere dopo 20-30 parole o pochi secondi?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "Ci sono due ragioni. Innanzitutto, se la voce attiva è online, è necessario scaricare il file vocale prima di riprodurlo. Ciò significa una pausa aggiuntiva che dipende dalla velocità della tua connessione internet. Puoi controllare quali voci sono online nell'elenco delle voci. La seconda ragione è che la soluzione per parlare lunghi testi riduce il testo in parti più brevi, in genere per frase o per clausola. Questo può aggiungere una pausa extra per ogni pausa. È possibile abilitare la lettura di testi lunghi come una parte nelle opzioni, che dovrebbe rimuovere la pausa sui sistemi supportati.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "Perché Talkie volte ha una lunga pausa tra frasi e parole?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "Sfortunatamente no. Risulta che Google Docs (così come Google Spreadsheet, Google Drive e simili) non è un sito web ma una speciale \"applicazione nel browser\" creata da Google. Talkie non può accedere al testo selezionato né aggiungere voci del menu contestuale. Talkie ulteriormente se esiste un modo per aggiungere il supporto di Google Documenti a Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+  },
+  "frontend_faq012Q": {
+    "message": "Talkie funziona in Google Documenti?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "Sì grazie! Usa la pagina di supporto o contattami direttamente. Si prega di includere quante più informazioni possibili, quali il browser e la versione, il sistema operativo e la versione e la lingua/voce che si sta utilizzando. Includere anche informazioni riguardanti siti Web specifici in cui viene visualizzato il bug, preferibilmente con un collegamento.",
+    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "Devo segnalare bug?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "Generalmente! Se è possibile selezionare il testo nel PDF, fare clic con il tasto destro su di esso e selezionare Talkie nel menu. Se il testo non può essere selezionato, se fa parte di un'immagine, allora non funzionerà.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Talkie può leggere i file PDF?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "No. Talkie ha un utilizzo illimitato: puoi leggere tante parole e lunghi come vuoi.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Talkie ha un limite di parole?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "Certamente! Contattami semplicemente attraverso il supporto o le pagine del progetto.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "Posso richiedere nuove funzionalità?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "C'è un editor di scorciatoie da tastiera, che puoi trovare nella parte inferiore della pagina Estensioni in Google Chrome.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "Come cambiare i tasti di scelta rapida in Google Chrome?",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "Sfortunatamente, non sembra possibile al momento. Si prega di chiedere al team di Firefox di aggiungere questa funzionalità!",
+    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+  },
+  "frontend_faq018Q": {
+    "message": "Come cambiare i tasti di scelta rapida in Firefox?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "Certamente! Sarebbe fantastico ricevere aiuto nella traduzione di Talkie , per testare Talkie sui nuovi sistemi, per indagare sui bug e aggiungere nuove funzionalità. Si prega di consultare la pagina del progetto per le istruzioni.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Posso aiutare a sviluppare Talkie ?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "Sì, per favore dì ai tuoi amici di Talkie! Forse invia un link alla tua celebrità preferita in rete, al gruppo online o alla newsletter. Puoi persino chiedere al tuo capo di installarlo su tutti i computer al lavoro, o il tuo insegnante per installarlo a scuola. Diffondere la parola su Talkie è molto apprezzato!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "Posso aiutare Talkie in qualsiasi altro modo?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Ci vuole parecchio tempo e sforzi per sviluppare Talkie — centinaia di ore finora. Per supportare finanziariamente lo sviluppo alcune funzionalità sono disponibili solo per Talkie Premium utenti Talkie Premium .",
+    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Perché Talkie Premium costa?",
+    "original": "Why does Talkie Premium cost money?"
+  },
+  "frontend_faq022A": {
+    "message": "Purtroppo non ancora. Talkie Premium è attualmente offerto solo tramite Chrome Web Store, dove l'unica opzione è utilizzare Google Payments.",
+    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+  },
+  "frontend_faq022Q": {
+    "message": "Posso pagare Talkie Premium utilizzando PayPal, bonifico bancario, eccetera?",
+    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "Sicuro! Puoi annullare il pagamento in Google Payments o contattarmi direttamente.",
+    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+  },
+  "frontend_faq023Q": {
+    "message": "Posso ottenere un rimborso?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "Sicuro! Posso inviarti una copia dell'ultima versione di Talkie Premium , ma poi non avrà aggiornamenti automatici quando verrà rilasciata la prossima versione.",
+    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+  },
+  "frontend_faq024Q": {
+    "message": "Posso avere una copia gratuita di Talkie Premium per provarla?",
+    "original": "Can I get a free copy of Talkie Premium to try it out?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "bugs",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "Generale",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "Domande frequenti",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "Voices",
+    "original": "Voices"
   },
   "frontend_featuresFree_List01": {
     "message": "rilevamento automatico della lingua.",
@@ -143,8 +355,8 @@
     "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "Attualmente utilizza il Talkie Premium e tutte le funzionalità sono disponibili. Grazie mille, mi riscalda il cuore!",
-    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "Attualmente utilizza Talkie Premium e tutte le funzionalità sono disponibili. Grazie mille, mi scalda il cuore!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie arriva in due versioni: Talkie e Talkie Premium. La versione gratuita è ottima per la maggior parte dei casi d'uso, ma la versione premium offre opzioni aggiuntive.",
@@ -158,6 +370,10 @@
     "message": "Licenza",
     "original": "License"
   },
+  "frontend_loading": {
+    "message": "Caricamento in corso...",
+    "original": "Loading..."
+  },
   "frontend_rateIt": {
     "message": "Commenta Talkie",
     "original": "Review Talkie"
@@ -165,6 +381,16 @@
   "frontend_shareHeading": {
     "message": "Segnala ai tuoi amici Talkie",
     "original": "Tell your friends about Talkie"
+  },
+  "frontend_sharePitch": {
+    "message": "Ti piace $NAME$? Se è così, sarei felice se potessi dare un bel voto e recensione 😃",
+    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
   },
   "frontend_storyDescription": {
     "message": "Talkie stato sviluppato un paio di giorni prima del nuovo anno 2016/2017, una sfida da un amico. La sfida è iniziato con la domanda: mentre il pendolarismo per lavoro, è possibile ascoltare un articolo, invece di leggerlo? Facile, dissi, e precisato per dimostrarlo — o almeno di fare il mio browser parlare testo utilizzando una voce sintetizzata sciocco. La versione base, senza alcuna interfaccia utente, si rivelò essere banale per creare. L'aggiunta di un'interfaccia utente, ha preso un po 'più a lungo. L'aggiunta di rilevamento linguaggio corretto un codice mucchio di più. Superare i bug nel browser ancora più lavoro. L'elenco dei miglioramenti e caratteristiche prosegue — e qualche migliaio di righe di codice successive, si sta guardando il risultato finale.",
@@ -181,6 +407,68 @@
   "frontend_supportAndFeedback": {
     "message": "Supporto e feedback",
     "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "Avere una domanda? Hai bisogno di aiuto con qualcosa? Per risposte rapide a domande comuni, vedere le domande frequenti di seguito. Se questo non ti dà una risposta, per favore mandami tutte le domande che potresti avere. Sarei felice se la tua esperienza con $NAME$ sia liscia e piacevole!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "Supporto",
+    "original": "Support"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "Lingua del browser preferita",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "Lingue preferite per il browser",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "Tipo di browser",
+    "original": "Browser type"
+  },
+  "frontend_systemHeading": {
+    "message": "Dettagli del sistema",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "Dialetti vocali installati",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "Lingue vocali installate",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "Versione installata",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "Voci installate",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "Tipo di sistema operativo",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie lingua dell'interfaccia utente",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie lingue dell'interfaccia utente",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_textLinkText": {
+    "message": "Testo",
+    "original": "Text"
   },
   "frontend_usageLinkText": {
     "message": "uso",
@@ -227,8 +515,12 @@
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "Fare clic sul Talkie pulsante nella barra del browser",
-    "original": "Click the Talkie button in your browser bar"
+    "message": "Fai clic sul pulsante Talkie nella barra degli strumenti del browser",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voiceFeatureOnline": {
+    "message": "in linea",
+    "original": "online"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "lingue disponibili",
@@ -241,6 +533,24 @@
   "frontend_voicesDescription": {
     "message": "Vedere e testare voci installate per ogni lingua nel browser. Talkie Premium utenti di Talkie Premium possono anche Talkie Premium loro voce Talkie Premium come lingua Talkie Premium per lingua, nonché la velocità e il passo Talkie Premium per ciascuna voce.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesInstalledHeading": {
+    "message": "Tutte le lingue installate ( $LANGUAGE_GROUPS_COUNT$ ), dialetti ( $LANGUAGES_COUNT$ ) e voci ( $VOICES_COUNT$ )",
+    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$1",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$2",
+        "example": "47"
+      },
+      "voices_count": {
+        "content": "$3",
+        "example": "66"
+      }
+    }
   },
   "frontend_voicesLinkText": {
     "message": "Voices",
@@ -261,6 +571,10 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesPreferredHeading": {
+    "message": "Le tue lingue preferite per il browser",
+    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -326,6 +640,64 @@
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "Leggi testi lunghi senza pause (sperimentali)",
     "original": "Read long texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Con Talkie Premium puoi cambiare la voce predefinita per ogni lingua, nonché la voce e il tono per ogni voce.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "Benvenuto in $NAME$! Ora stai utilizzando una delle migliori estensioni del browser text-to-speech al mondo.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "Vai avanti e seleziona questo testo, quindi fai clic sul pulsante $NAME$ nella barra degli strumenti del browser. Godere!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie può attualmente trovare $VOICES_COUNT$ voci che abilitano $LANGUAGE_GROUPS_COUNT$ lingue in $LANGUAGES_COUNT$ dialetti installati nel tuo $SYSTEM_TYPE_PRETTY_NAME$ browser in esecuzione su un sistema operativo $OSTYPE_PRETTY_NAME$ .",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesHeading": {
+    "message": "Vuoi installare più voci?",
+    "original": "Want to install more voices?"
+  },
+  "frontend_welcomeLinkText": {
+    "message": "benvenuto",
+    "original": "Welcome"
   },
   "noTextSelectedMessage": {
     "message": "Si prega di selezionare il testo desiderato sul sito web prima. È inoltre possibile selezionare il testo, quindi fare clic destro su di esso e scegliere Talkie nel menu.",

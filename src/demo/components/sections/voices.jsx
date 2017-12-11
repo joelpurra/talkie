@@ -188,6 +188,12 @@ export default class Voices extends React.PureComponent {
     }
 
     getVoicesListItems(voices, showCode) {
+        const {
+            translate,
+        } = this.props;
+
+        const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
+
         return voices.map((voice) => {
             let voiceNameAndFeaturesText = voice.name;
 
@@ -198,8 +204,7 @@ export default class Voices extends React.PureComponent {
             }
 
             if (voice.localService === false) {
-                // TODO: translate.
-                voiceFeatures.push("online");
+                voiceFeatures.push(translatedVoiceFeatureOnline);
             }
 
             if (voiceFeatures.length > 0) {
@@ -339,13 +344,11 @@ export default class Voices extends React.PureComponent {
                 </textBase.p>
 
                 <PremiumSection>
-                    {/* TODO: translate */}
-                    With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice.
+                    {translate("frontend_voicesTalkiePremiumPitch")}
                 </PremiumSection>
 
                 <textBase.h2>
-                    {/* TODO: translate */}
-                    Your preferred browser languages
+                    {translate("frontend_voicesPreferredHeading")}
                 </textBase.h2>
 
                 <Loading
@@ -355,8 +358,11 @@ export default class Voices extends React.PureComponent {
                 </Loading>
 
                 <textBase.h2>
-                    {/* TODO: translate */}
-                    All installed languages ({languageGroupsCount}), dialects ({languagesCount}), and voices ({voicesCount})
+                    {translate("frontend_voicesInstalledHeading", [
+                        languageGroupsCount,
+                        languagesCount,
+                        voicesCount,
+                    ])}
                 </textBase.h2>
 
                 <Loading
