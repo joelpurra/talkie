@@ -122,7 +122,7 @@ export default class Features extends React.PureComponent {
                                 href={configure("urls.chromewebstore-premium")}
                                 lang="en"
                             >
-                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="206" height="58" />
+                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="248" height="75" />
                                 <br />
                                 <TalkiePremiumIcon />
                                 {translate("extensionShortName_Premium")}
@@ -158,7 +158,7 @@ export default class Features extends React.PureComponent {
                                 href={configure("urls.chromewebstore-free")}
                                 lang="en"
                             >
-                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png" alt="Talkie is available for installation from the Chrome Web Store" width="206" height="58" />
+                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from the Chrome Web Store" width="248" height="75" />
                                 <br />
                                 <TalkieFreeIcon />
                                 {translate("extensionShortName_Free")}
