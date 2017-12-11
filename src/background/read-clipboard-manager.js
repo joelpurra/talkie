@@ -27,11 +27,12 @@ import {
 } from "../shared/log";
 
 export default class ReadClipboardManager {
-    constructor(clipboardManager, talkieBackground, permissionsManager, metadataManager) {
+    constructor(clipboardManager, talkieBackground, permissionsManager, metadataManager, translator) {
         this.clipboardManager = clipboardManager;
         this.talkieBackground = talkieBackground;
         this.permissionsManager = permissionsManager;
         this.metadataManager = metadataManager;
+        this.translator = translator;
 
         this.copyPasteTargetElementId = "copy-paste-textarea";
     }
@@ -44,7 +45,7 @@ export default class ReadClipboardManager {
                 return this.metadataManager.isPremiumVersion()
                     .then((isPremiumVersion) => {
                         if (!isPremiumVersion) {
-                            const text = browser.i18n.getMessage("readClipboardIsAPremiumFeature");
+                            const text = this.translator.translate("readClipboardIsAPremiumFeature");
 
                             return text;
                         }
@@ -52,7 +53,7 @@ export default class ReadClipboardManager {
                         return this.permissionsManager.browserHasPermissionsFeature()
                             .then((hasPermissionsFeature) => {
                                 if (!hasPermissionsFeature) {
-                                    const text = browser.i18n.getMessage("readClipboardNeedsBrowserSupport");
+                                    const text = this.translator.translate("readClipboardNeedsBrowserSupport");
 
                                     return text;
                                 }
@@ -62,11 +63,11 @@ export default class ReadClipboardManager {
                                         let text = clipboardText;
 
                                         if (typeof text !== "string") {
-                                            text = browser.i18n.getMessage("readClipboardNeedsPermission");
+                                            text = this.translator.translate("readClipboardNeedsPermission");
                                         }
 
                                         if (text.length === 0 || text.trim().length === 0) {
-                                            text = browser.i18n.getMessage("readClipboardNoSuitableText");
+                                            text = this.translator.translate("readClipboardNoSuitableText");
                                         }
 
                                         return text;

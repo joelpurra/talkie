@@ -1,9 +1,10 @@
-node_modules/
-package/
-*.zip
-dist/
-web-ext-artifacts/
-extension-files.premium.txt
 _locales/*/messages.json
 _locales/*/messages.premium.json
+*.zip
+*~
+dist/
+extension-files.premium.txt
 lib/
+node_modules/
+package/
+web-ext-artifacts/

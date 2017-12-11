@@ -25,9 +25,11 @@ import {
     debounce,
 } from "../../../../shared/basic";
 
-import translate from "../../../hocs/translate.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
-@translate
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
+
+@translateAttribute
 export default class RangeWithHeading extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -44,6 +46,7 @@ export default class RangeWithHeading extends React.PureComponent {
     }
 
     static defaultProps = {
+        listName: null,
         voiceName: null,
         min: 0,
         defaultValue: 1,
@@ -58,13 +61,14 @@ export default class RangeWithHeading extends React.PureComponent {
         transformValueBeforeChange: PropTypes.func.isRequired,
         getHeading: PropTypes.func.isRequired,
         ScaleRangeElementClass: PropTypes.func.isRequired,
+        listName: PropTypes.string.isRequired,
         voiceName: PropTypes.string,
         min: PropTypes.number.isRequired,
         defaultValue: PropTypes.number.isRequired,
         initialValue: PropTypes.number.isRequired,
         max: PropTypes.number.isRequired,
         step: PropTypes.number.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
     }
 
@@ -98,32 +102,46 @@ export default class RangeWithHeading extends React.PureComponent {
     }
 
     render() {
-        const heading = this.props.getHeading(this.props.voiceName, this.props.translate);
+        const {
+            listName,
+            getHeading,
+            voiceName,
+            translate,
+            ScaleRangeElementClass,
+            min,
+            defaultValue,
+            max,
+            step,
+            disabled,
+        } = this.props;
+
+        const heading = getHeading(voiceName, translate);
 
         return (
-            <tbody>
-                <tr>
-                    <th scope="col">
+            <tableBase.tbody>
+                <tableBase.tr>
+                    <tableBase.th scope="col">
                         {heading}
                         {" "}
                         ({this.state.value.toFixed(1)})
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <this.props.ScaleRangeElementClass
-                            min={this.props.min}
-                            defaultValue={this.props.defaultValue}
+                    </tableBase.th>
+                </tableBase.tr>
+                <tableBase.tr>
+                    <tableBase.td>
+                        <ScaleRangeElementClass
+                            listName={listName}
+                            min={min}
+                            defaultValue={defaultValue}
                             initialValue={this.state.value}
-                            max={this.props.max}
-                            step={this.props.step}
-                            disabled={this.props.disabled}
+                            max={max}
+                            step={step}
+                            disabled={disabled}
                             onInput={this.handleInput}
                             onChange={this.handleChange}
                         />
-                    </td>
-                </tr>
-            </tbody>
+                    </tableBase.td>
+                </tableBase.tr>
+            </tableBase.tbody>
         );
     }
 }

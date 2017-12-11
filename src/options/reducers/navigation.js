@@ -21,22 +21,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
     actionMapReducer,
 }
- from "./reduce-helpers";
+    from "../../shared/utils/reduce-helpers";
 
 import * as actionTypes from "../constants/action-types-navigation";
 
 const initialState = {
-    activeTabId: "usage",
+    shouldShowBackButton: false,
 };
 
 const actionsMap = {
-    [actionTypes.SET_ACTIVE_TAB_ID]: (previousState, action) => {
-        return {
-            ...previousState,
-            activeTabId: action.activeTabId,
-        };
-    },
-
     [actionTypes.SET_SHOULD_SHOW_BACK_BUTTON]: (previousState, action) => {
         return {
             ...previousState,

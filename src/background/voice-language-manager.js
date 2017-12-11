@@ -90,7 +90,7 @@ export default class VoiceLanguageManager {
 
                     return undefined;
                 })
-            );
+        );
     }
 
     getLanguageVoiceOverrideName(languageName) {
@@ -126,41 +126,41 @@ export default class VoiceLanguageManager {
 
     hasLanguageVoiceOverrideName(languageName) {
         return promiseTry(
-                () => this.getLanguageVoiceOverrideName(languageName)
-                    .then((languageVoiceOverride) => {
-                        if (languageVoiceOverride) {
-                            return true;
-                        }
+            () => this.getLanguageVoiceOverrideName(languageName)
+                .then((languageVoiceOverride) => {
+                    if (languageVoiceOverride) {
+                        return true;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     isLanguageVoiceOverrideName(languageName, voiceName) {
         return promiseTry(
-                () => this.getLanguageVoiceOverrideName(languageName)
-                    .then((languageVoiceOverride) => {
-                        if (languageVoiceOverride) {
-                            return languageVoiceOverride === voiceName;
-                        }
+            () => this.getLanguageVoiceOverrideName(languageName)
+                .then((languageVoiceOverride) => {
+                    if (languageVoiceOverride) {
+                        return languageVoiceOverride === voiceName;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     toggleLanguageVoiceOverrideName(languageName, voiceName) {
         return promiseTry(
-                () => this.isLanguageVoiceOverrideName(languageName, voiceName)
-                    .then((isLanguageVoiceOverrideName) => {
-                        if (isLanguageVoiceOverrideName) {
-                            return this.removeLanguageVoiceOverrideName(languageName);
-                        }
+            () => this.isLanguageVoiceOverrideName(languageName, voiceName)
+                .then((isLanguageVoiceOverrideName) => {
+                    if (isLanguageVoiceOverrideName) {
+                        return this.removeLanguageVoiceOverrideName(languageName);
+                    }
 
-                        return this.setLanguageVoiceOverrideName(languageName, voiceName);
-                    })
-            );
+                    return this.setLanguageVoiceOverrideName(languageName, voiceName);
+                })
+        );
     }
 
     getEffectiveVoiceForLanguage(languageName) {

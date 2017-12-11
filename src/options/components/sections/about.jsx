@@ -21,12 +21,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import configure from "../../hocs/configure.jsx";
-import translate from "../../hocs/translate.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
 
-@configure
-@translate
-export default class About extends React.Component {
+import * as textBase from "../../../shared/styled/text/text-base.jsx";
+import * as listBase from "../../../shared/styled/list/list-base.jsx";
+
+import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
+
+@configureAttribute
+@translateAttribute
+export default class About extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -34,11 +39,35 @@ export default class About extends React.Component {
     }
 
     static defaultProps = {
+        isPremiumVersion: false,
         versionName: null,
+        systemType: null,
+        osType: null,
+        voices: [],
+        languages: [],
+        languageGroups: [],
+        navigatorLanguage: null,
+        navigatorLanguages: [],
+        translatedLanguages: [],
     };
 
     static propTypes = {
-        versionName: PropTypes.string,
+        isPremiumVersion: PropTypes.bool.isRequired,
+        versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
+        voices: PropTypes.arrayOf(PropTypes.shape({
+            default: PropTypes.bool.isRequired,
+            lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
+        })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        navigatorLanguage: PropTypes.string,
+        navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
@@ -51,64 +80,184 @@ export default class About extends React.Component {
     }
 
     render() {
+        const {
+            configure,
+            isPremiumVersion,
+            translate,
+            versionName,
+            systemType,
+            osType,
+            navigatorLanguage,
+            navigatorLanguages,
+            translatedLanguages,
+            voices,
+            languages,
+            languageGroups,
+        } = this.props;
+
+        const voiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
+        voiceNames.sort();
+
         return (
             <section>
-                <p><span className="icon icon-inline icon-16px icon-talkie"></span>Talkie {this.props.versionName}</p>
+                <listBase.ul>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.support-feedback")}>
+                            {translate("frontend_supportAndFeedback")}
+                        </textBase.a>
+                    </listBase.li>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.rate")}>
+                            {translate("frontend_rateIt")}
+                        </textBase.a>
+                    </listBase.li>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.project")}>
+                            {translate("frontend_aboutProjectPageLinkText")}
+                        </textBase.a>
+                    </listBase.li>
+                    <listBase.li>
+                        <textBase.a href={configure("urls.github")}>
+                            {translate("frontend_aboutCodeOnGithubLinkText")}
+                        </textBase.a>
+                    </listBase.li>
+                </listBase.ul>
 
-                <ul>
-                    <li>
-                        <a href={this.props.configure("urls.support-feedback")}>{this.props.translate("frontend_supportAndFeedback")}</a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.rate")}>{this.props.translate("frontend_rateIt")}</a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.project")}>{this.props.translate("frontend_aboutProjectPageLinkText")}</a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.github")}>{this.props.translate("frontend_aboutCodeOnGithubLinkText")}</a>
-                    </li>
-                    <li className="talkie-free-only talkie-list-item">
-                        <a href={this.props.configure("urls.store-premium")}>Talkie Premium</a>
-                    </li>
-                </ul>
+                <textBase.h2>
+                    {translate("frontend_systemHeading")}
+                </textBase.h2>
 
-                <h2>{this.props.translate("frontend_shareHeading")}</h2>
+                <listBase.dl>
+                    <listBase.dt>
+                        {translate("frontend_systemInstalledVersionHeading")}
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        <TalkieVersionIcon
+                            isPremiumVersion={isPremiumVersion}
+                        />
+                        Talkie
+                        {" "}
+                        {versionName}
+                    </listBase.dd>
 
-                <ul className="inline">
-                    <li>
-                        <a href={this.props.configure("urls.share.twitter")}><span className="icon icon-standalone icon-24px icon-share icon-twitter"></span></a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.share.facebook")}><span className="icon icon-standalone icon-24px icon-share icon-facebook"></span></a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.share.googleplus")}><span className="icon icon-standalone icon-24px icon-share icon-googleplus"></span></a>
-                    </li>
-                    <li>
-                        <a href={this.props.configure("urls.share.linkedin")}><span className="icon icon-standalone icon-24px icon-share icon-linkedin"></span></a>
-                    </li>
-                </ul>
+                    <listBase.dt>
+                        {translate("frontend_systemBrowserTypeHeading")}
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {systemType}
+                    </listBase.dd>
 
-                <h2>{this.props.translate("frontend_storyHeading")}</h2>
-                <p>{this.props.translate("frontend_storyDescription")}</p>
-                <p>{this.props.translate("frontend_storyThankYou")}</p>
-                <p>
-                    — <a href="https://joelpurra.com/">Joel Purra</a>
-                </p>
+                    <listBase.dt>
+                        {translate("frontend_systemOSHeading")}
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {osType}
+                    </listBase.dd>
 
-                <h2>{this.props.translate("frontend_licenseHeading")}</h2>
+                    <listBase.dt>
+                        {translate("frontend_systemBrowserLanguageHeading")}
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {navigatorLanguage}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {translate("frontend_systemBrowserLanguagesHeading")}
+                        {" "}
+                        ({navigatorLanguages.length})
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {navigatorLanguages.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {translate("frontend_systemInstalledLanguagesHeading")}
+                        {" "}
+                        ({languageGroups.length})
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {languageGroups.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {translate("frontend_systemInstalledDialectsHeading")}
+                        {" "}
+                            ({languages.length})
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {languages.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {translate("frontend_systemInstalledVoicesHeading")}
+                        {" "}
+                        ({voices.length})
+                    </listBase.dt>
+                    <listBase.dd>
+                        {voiceNames.join(", ")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {translate("frontend_systemTalkieUILanguageHeading")}
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {translate("extensionLocale")}
+                    </listBase.dd>
+
+                    <listBase.dt>
+                        {translate("frontend_systemTalkieUILanguagesHeading")}
+                        {" "}
+                        ({translatedLanguages.length})
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        {translatedLanguages.join(", ")}
+                    </listBase.dd>
+                </listBase.dl>
+
+                <textBase.h2>
+                    {translate("frontend_licenseHeading")}
+                </textBase.h2>
                 <p>
                     <span
+                        lang="en"
                         onClick={this.handleLegaleseClick}
-                    >{this.props.translate("frontend_licenseGPLDescription")}</span>
+                    >
+                        {translate("frontend_licenseGPLDescription")}
+                    </span>
                     <br />
-                    <a href={this.props.configure("urls.gpl")}>{this.props.translate("frontend_licenseGPLLinkText")}</a>
+                    <textBase.a
+                        href={configure("urls.gpl")}
+                        lang="en"
+                    >
+                        {translate("frontend_licenseGPLLinkText")}
+                    </textBase.a>
                 </p>
                 <p>
-                    {this.props.translate("frontend_licenseCLADescription")}
+                    {translate("frontend_licenseCLADescription")}
                     <br />
-                    <a href={this.props.configure("urls.cla")}>{this.props.translate("frontend_licenseCLALinkText")}</a>
+                    <textBase.a href={configure("urls.cla")}
+                        lang="en"
+                    >
+                        {translate("frontend_licenseCLALinkText")}
+                    </textBase.a>
                 </p>
             </section>
         );

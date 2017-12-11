@@ -21,9 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import translate from "../../../hocs/translate.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
-@translate
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
+import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+
+@translateAttribute
 export default class ToggleDefault extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -41,7 +44,7 @@ export default class ToggleDefault extends React.PureComponent {
         onClick: PropTypes.func.isRequired,
         languageCode: PropTypes.string,
         voiceName: PropTypes.string,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
     };
 
@@ -50,32 +53,39 @@ export default class ToggleDefault extends React.PureComponent {
     }
 
     render() {
+        const {
+            disabled,
+            languageCode,
+            translate,
+            voiceName,
+        } = this.props;
+
         let buttonText = null;
 
-        if (this.props.languageCode === null || this.props.voiceName === null) {
-            buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageEmptySelection");
+        if (languageCode === null || voiceName === null) {
+            buttonText = translate("frontend_voicesSetAsLanguageEmptySelection");
         } else {
             const messageDetailsPlaceholders = [
-                this.props.languageCode,
-                this.props.voiceName,
+                languageCode,
+                voiceName,
             ];
 
-            buttonText = browser.i18n.getMessage("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
+            buttonText = translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
         }
 
         return (
-            <tbody>
-                <tr>
-                    <td>
-                        <button
-                            disabled={this.props.disabled}
+            <tableBase.tbody>
+                <tableBase.tr>
+                    <tableBase.td>
+                        <formBase.button
+                            disabled={disabled || null}
                             onClick={this.handleClick}
                         >
                             {buttonText}
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
+                        </formBase.button>
+                    </tableBase.td>
+                </tableBase.tr>
+            </tableBase.tbody>
         );
     }
 }

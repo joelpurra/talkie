@@ -21,55 +21,138 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import TabContents from "./navigation/tab-contents.jsx";
+import configureAttribute from "../../shared/hocs/configure.jsx";
+import translateAttribute from "../../shared/hocs/translate.jsx";
+import styled from "../../shared/hocs/styled.jsx";
+import passSelectedTextToBackground from "../../shared/hocs/pass-selected-text-to-background.jsx";
 
-import Features from "./sections/features.jsx";
+import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
 
-import Usage from "./sections/usage.jsx";
+import DynamicEnvironment from "../../split-environments/dynamic-environment.js";
 
-import VoicesContainer from "../containers/voices-container.jsx";
+import NavContainer from "../../shared/containers/nav-container.jsx";
+import TabContents from "../../shared/components/navigation/tab-contents.jsx";
 
 import AboutContainer from "../containers/about-container.jsx";
+import TextContainer from "../containers/text-container.jsx";
+import VoicesContainer from "../containers/voices-container.jsx";
 
-export default class Main extends React.Component {
+const dynamicEnvironment = new DynamicEnvironment();
+
+const widthStyles = {
+    minWidth: "400px",
+    maxWidth: "600px",
+};
+
+const styles = Object.assign(
+    {},
+    widthStyles,
+    {
+        minHeight: "450px",
+        paddingBottom: "2em",
+    }
+);
+
+@configureAttribute
+@translateAttribute
+@styled(styles)
+@passSelectedTextToBackground
+export default class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 
+        this.scrollToTop = this.scrollToTop.bind(this);
         this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+
+        // TODO: better place to put navigation menu links?
+        this.links = [
+            {
+                url: this.props.configure("urls.popup-passclick-false"),
+                text: "←",
+            },
+            {
+                tabId: "voices",
+                text: this.props.translate("frontend_voicesLinkText"),
+            },
+            {
+                tabId: "text",
+                text: this.props.translate("frontend_textLinkText"),
+            },
+            {
+                tabId: "about",
+                text: this.props.translate("frontend_aboutLinkText"),
+            },
+        ];
+
+        this.styled = {
+            navHeader: styled(Object.assign(
+                {},
+                widthStyles,
+                {
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: "#ffffff",
+                }
+            ))("div"),
+
+            main: styled({
+                marginTop: "4em",
+            })(layoutBase.main),
+        };
     }
 
     static defaultProps = {
-        voicesCount: 0,
-        languagesCount: 0,
-        isPremiumVersion: false,
-        versionName: null,
         activeTabId: null,
+        shouldShowBackButton: false,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        voicesCount: PropTypes.number.isRequired,
-        languagesCount: PropTypes.number.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
-        versionName: PropTypes.string,
-        activeTabId: PropTypes.string,
+        activeTabId: PropTypes.string.isRequired,
+        shouldShowBackButton: PropTypes.bool.isRequired,
+        className: PropTypes.string.isRequired,
+        translate: PropTypes.func.isRequired,
+        configure: PropTypes.func.isRequired,
     };
 
-    componentWillMount() {
-        // TODO: is this the best place to load data?
-        this.props.actions.metadata.loadIsPremium();
+    getLocationQuerystring() {
+        let queryString = null;
 
-        // TODO: is this the best place to load data?
-        this.props.actions.metadata.loadVersionName();
+        if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
+            queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
+        }
+
+        return queryString;
+    }
+
+    componentWillMount() {
+        // TODO: move "loading shouldShowBackButton" from the querystring to an action, especially to avoid using the DynamicEnvironment in a component.
+        const queryString = this.getLocationQuerystring();
+        const shouldShowBackButton = !!(queryString && queryString.includes("from=popup"));
+
+        this.props.actions.navigation.setShouldShowBackButton(shouldShowBackButton);
+    }
+
+    componentDidMount() {
+        // NOTE: execute outside the synchronous rendering.
+        setTimeout(() => this.scrollToTop(), 100);
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.activeTabId !== nextProps.activeTabId) {
-            // NOTE: feels like this might be the wrong place to put this? Is there a better place?
-            document.body.scrollTop = 0;
+            this.scrollToTop();
         }
+    }
+
+    scrollToTop() {
+        // NOTE: feels like this might be the wrong place to put this? Is there a better place?
+        // NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
+        document.body.scrollTop = 0;
+        window.scroll(0, 0);
     }
 
     handleLegaleseClick(text) {
@@ -79,69 +162,64 @@ export default class Main extends React.Component {
             lang: "en-US",
         };
 
-        this.props.actions.voices.speak(legaleseText, legaleseVoice);
+        this.props.actions.sharedVoices.speak(legaleseText, legaleseVoice);
     }
 
     handleLinkClick(url) {
-        this.props.actions.navigation.openUrlInNewTab(url);
+        this.props.actions.sharedNavigation.openUrlInNewTab(url);
     }
 
     handleOpenShortKeysConfigurationClick() {
-        this.props.actions.navigation.openShortKeysConfiguration();
+        this.props.actions.sharedNavigation.openShortKeysConfiguration();
     }
 
     render() {
+        const {
+            activeTabId,
+            shouldShowBackButton,
+            className,
+        } = this.props;
+
+        const linksToShow = shouldShowBackButton ? this.links : this.links.slice(1);
+
         return (
-            <main>
-                {/*
-                    <p>TODO REMOVE versionName {this.props.versionName}</p>
-
-                    <p>TODO REMOVE isPremiumVersion {"" + this.props.isPremiumVersion}</p>
-
-                    <p>TODO REMOVE voicesCount {this.props.voicesCount}</p>
-
-                    <p>TODO REMOVE languagesCount {this.props.languagesCount}</p>
-
-                    <p>TODO REMOVE activeTabId {this.props.activeTabId}</p>
-                */}
-
-                <TabContents
-                    id="usage"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <Usage
-                        onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+            <div className={className}>
+                <this.styled.navHeader>
+                    <NavContainer
+                        links={linksToShow}
                     />
-                </TabContents>
 
-                <TabContents
-                    id="features"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <Features />
-                </TabContents>
+                    <layoutBase.hr />
+                </this.styled.navHeader>
 
-                <TabContents
-                    id="voices"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <VoicesContainer />
-                </TabContents>
+                <this.styled.main>
+                    <TabContents
+                        id="voices"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <VoicesContainer />
+                    </TabContents>
 
-                <TabContents
-                    id="about"
-                    activeTabId={this.props.activeTabId}
-                    onLinkClick={this.handleLinkClick}
-                >
-                    <AboutContainer
-                        versionName={this.props.versionName}
-                        onLicenseClick={this.handleLegaleseClick}
-                    />
-                </TabContents>
-            </main>
+                    <TabContents
+                        id="text"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <TextContainer />
+                    </TabContents>
+
+                    <TabContents
+                        id="about"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <AboutContainer
+                            onLicenseClick={this.handleLegaleseClick}
+                        />
+                    </TabContents>
+                </this.styled.main>
+            </div>
         );
     }
 }

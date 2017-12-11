@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     knownEvents,
-} from "../shared/events";
+} from "./events";
 
 export default class TalkieProgress {
     constructor(broadcaster, min, max, current) {

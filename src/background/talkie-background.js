@@ -40,21 +40,29 @@ import {
     getVoices,
 } from "../shared/voices";
 
+import {
+    knownEvents,
+} from "../shared/events";
+
 export default class TalkieBackground {
-    constructor(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute) {
+    constructor(speechChain, broadcaster, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translator, internalUrlProvider) {
         this.speechChain = speechChain;
+        this.broadcaster = broadcaster;
         this.talkieSpeaker = talkieSpeaker;
         this.speakingStatus = speakingStatus;
         this.voiceManager = voiceManager;
         this.languageHelper = languageHelper;
         this.configuration = configuration;
         this.execute = execute;
+        this.translator = translator;
+        this.internalUrlProvider = internalUrlProvider;
 
         this.notAbleToSpeakTextFromThisSpecialTab = {
-            text: browser.i18n.getMessage("notAbleToSpeakTextFromThisSpecialTab"),
-            effectiveLanguage: this.configuration.messagesLocale,
+            text: this.translator.translate("notAbleToSpeakTextFromThisSpecialTab"),
+            effectiveLanguage: this.translator.translate("extensionLocale"),
         };
 
+        // NOTE: duplicated elsewhere in the codebase.
         this.executeGetFramesSelectionTextAndLanguageCode = `
             (function() {
                 try {
@@ -67,7 +75,7 @@ export default class TalkieBackground {
                     var talkieSelectionData = {
                         text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
                         htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.getElementsByTagName("html") || null) && (document.getElementsByTagName("html").length > 0 || null) && (document.getElementsByTagName("html")[0].getAttribute("lang") || null)),
-                        parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null) && (document.getSelection().getRangeAt(0).startContainer.parentElement || null))),
+                        parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null))),
                     };
 
                     return talkieSelectionData;
@@ -83,19 +91,61 @@ export default class TalkieBackground {
         return promiseTry(
             () => Promise.all([
                 canTalkieRunInTab(),
-                isCurrentPageInternalToTalkie(),
+                isCurrentPageInternalToTalkie(this.internalUrlProvider),
             ])
                 .then(([canRun, isInternalPage]) => {
-                        // NOTE: can't perform (most) actions if it's not a "normal" tab.
+                    // NOTE: can't perform (most) actions if it's not a "normal" tab.
                     if (!canRun) {
-                        logDebug("iconClickAction", "Did not detect a normal tab, skipping.");
+                        logDebug("iconClickAction", "Did not detect a normal tab.");
 
-                            // NOTE: don't "warn" about internal pages opening.
                         if (isInternalPage) {
-                            logDebug("iconClickAction", "Detected internal page, skipping warning.");
+                            logDebug("iconClickAction", "Requesting text selection from internal page.");
 
-                            return undefined;
+                            const eventData = null;
+
+                            return this.broadcaster.broadcastEvent(knownEvents.passSelectedTextToBackground, eventData)
+                                .then((selectedTextsFromFrontend) => {
+                                    logDebug("iconClickAction", "Received text selections from internal pages.", selectedTextsFromFrontend);
+
+                                    const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
+                                        .filter((selectedTextWithFocusTimestamp) => selectedTextWithFocusTimestamp !== null);
+
+                                    return filteredSelectedTextsFromFrontend;
+                                })
+                                .then((filteredSelectedTextsFromFrontend) => {
+                                    const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
+                                        .reduce(
+                                            (prev, selectedTextWithFocusTimestamp) => {
+                                                if (prev === null || prev.mostRecentUse < selectedTextWithFocusTimestamp.mostRecentUse) {
+                                                    return selectedTextWithFocusTimestamp;
+                                                }
+
+                                                return prev;
+                                            },
+                                            null
+                                        );
+
+                                    return selectedTextFromFrontend;
+                                })
+                                .then((selectedTextFromFrontend) => {
+                                    if (selectedTextFromFrontend === null) {
+                                        logDebug("iconClickAction", "Did not receive text selection from internal page, doing nothing.");
+
+                                        return undefined;
+                                    }
+
+                                    const selections = [
+                                        selectedTextFromFrontend.selectionTextAndLanguageCode,
+                                    ];
+
+                                    // NOTE: assumes that internal pages have at least proper <html lang=""> attributes.
+                                    const detectedPageLanguage = null;
+
+                                    return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
+                                });
                         }
+
+                        logDebug("iconClickAction", "Skipping speaking selection.");
 
                         const text = this.notAbleToSpeakTextFromThisSpecialTab.text;
                         const lang = this.notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
@@ -211,7 +261,7 @@ export default class TalkieBackground {
                         return this.languageHelper.detectPageLanguage();
                     }
 
-                    logDebug("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab, skipping page language detection.");
+                    logDebug("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab.", "Skipping page language detection.");
 
                     return null;
                 })

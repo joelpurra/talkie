@@ -3,5 +3,10 @@
     "description": "Used to check which locale is loaded, as it might be different from @@ui_locale.",
     "message": "fr",
     "original": "en"
+  },
+  "extensionLocaleBidiDirection": {
+    "description": "Used to get the bidirectional (left-to-right, right-to-left) for the loaded locale, without relying on the browser's @@bidi_dir.",
+    "message": "ltr",
+    "original": "ltr"
   }
 }

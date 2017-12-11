@@ -19,59 +19,29 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    jsonClone,
-} from "../utils/basic";
+    createAssignmentActionMapReducer,
+} from "../../shared/utils/reduce-helpers";
 
 import * as actionTypes from "../constants/action-types-voices";
 
 const initialState = {
-    voices: [],
-    speakLongTexts: false,
     selectedLanguageCode: null,
     selectedVoiceName: null,
-    defaultVoiceNameForSelectedLanguage: null,
+    effectiveVoiceNameForSelectedLanguage: null,
     sampleText: "",
     rateForSelectedVoice: 1,
     pitchForSelectedVoice: 1,
 };
 
-const assignActionKeyToState = (previousState, action, key) => {
-    return {
-        ...previousState,
-        // TODO: replace generic deep clone with faster custom code per key.
-        [key]: jsonClone(action[key]),
-    };
-};
-
-const assignActionTypeToKey = (key) => (previousState, action) => {
-    return assignActionKeyToState(previousState, action, key);
-};
-
-const actionsMap = {};
+const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_SPEAK_LONG_TEXTS]: "speakLongTexts",
-    [actionTypes.SET_VOICES]: "voices",
     [actionTypes.SET_SELECTED_LANGUAGE_CODE]: "selectedLanguageCode",
     [actionTypes.SET_SELECTED_VOICE_NAME]: "selectedVoiceName",
-    [actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE]: "defaultVoiceNameForSelectedLanguage",
+    [actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE]: "effectiveVoiceNameForSelectedLanguage",
     [actionTypes.SET_SAMPLE_TEXT]: "sampleText",
     [actionTypes.SET_RATE_FOR_SELECTED_VOICE]: "rateForSelectedVoice",
     [actionTypes.SET_PITCH_FOR_SELECTED_VOICE]: "pitchForSelectedVoice",
 };
 
-export default function voices(previousState = initialState, action) {
-    let reduceFn = null;
-
-    if (actionsMap[action.type]) {
-        reduceFn = actionsMap[action.type];
-    } else if (assignActionsMap[action.type]) {
-        reduceFn = assignActionTypeToKey(assignActionsMap[action.type]);
-    }
-
-    if (!reduceFn) {
-        return previousState;
-    }
-
-    return reduceFn(previousState, action);
-}
+export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

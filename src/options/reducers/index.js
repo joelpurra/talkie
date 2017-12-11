@@ -22,14 +22,15 @@ import {
     combineReducers,
 } from "redux";
 
-import voices from "./voices";
-
-import metadata from "./metadata";
+import shared from "../../shared/reducers";
+import unshared from "../../unshared/reducers";
 
 import navigation from "./navigation";
+import voices from "./voices";
 
 export default combineReducers({
-    voices,
-    metadata,
+    shared,
+    unshared,
     navigation,
+    voices,
 });

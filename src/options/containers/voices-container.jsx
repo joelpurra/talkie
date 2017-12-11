@@ -31,52 +31,79 @@ import {
 
 import Voices from "../components/sections/voices.jsx";
 
-import * as actionCreators from "../actions/voices";
-
-import {
-    getLanguagesFromVoices,
-} from "../utils/transform-voices";
+import actionCreators from "../actions";
+import selectors from "../selectors";
 
 const mapStateToProps = (state) => {
     return {
-        voices: state.voices.voices,
-        languages: getLanguagesFromVoices(state.voices.voices),
-        speakLongTexts: state.voices.speakLongTexts,
+        voices: selectors.shared.voices.getVoices(state),
+        voicesByLanguage: selectors.shared.voices.getVoicesByLanguage(state),
+        voicesByLanguageGroup: selectors.shared.voices.getVoicesByLanguageGroup(state),
+        languages: selectors.shared.voices.getLanguages(state),
+        languageGroups: selectors.shared.voices.getLanguageGroups(state),
+        languagesByLanguageGroup: selectors.shared.voices.getLanguagesByLanguageGroup(state),
         selectedLanguageCode: state.voices.selectedLanguageCode,
         selectedVoiceName: state.voices.selectedVoiceName,
-        defaultVoiceNameForSelectedLanguage: state.voices.defaultVoiceNameForSelectedLanguage,
+        effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguage,
         sampleText: state.voices.sampleText,
         rateForSelectedVoice: state.voices.rateForSelectedVoice,
         pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
-        isPremiumVersion: state.metadata.isPremiumVersion,
+        isPremiumVersion: state.shared.metadata.isPremiumVersion,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators, dispatch),
+        actions: {
+            voices: bindActionCreators(actionCreators.voices, dispatch),
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+        },
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.Component {
-    componentWillMount() {
+export default class VoicesContainer extends React.PureComponent {
+    componentDidMount() {
         // TODO: is this the best place to load data?
-        this.props.actions.loadSpeakLongTexts();
-        this.props.actions.loadSampleText();
+        this.props.actions.sharedVoices.loadVoices();
+        this.props.actions.voices.loadSampleText();
     }
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
+        voicesByLanguage: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        voicesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        ).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
-        defaultVoiceNameForSelectedLanguage: PropTypes.string,
+        effectiveVoiceNameForSelectedLanguage: PropTypes.string,
         sampleText: PropTypes.string,
         rateForSelectedVoice: PropTypes.number.isRequired,
         pitchForSelectedVoice: PropTypes.number.isRequired,
@@ -87,26 +114,32 @@ export default class VoicesContainer extends React.Component {
         const {
             actions,
             voices,
+            voicesByLanguage,
+            voicesByLanguageGroup,
             languages,
-            speakLongTexts,
+            languageGroups,
+            languagesByLanguageGroup,
             selectedLanguageCode,
             selectedVoiceName,
-            defaultVoiceNameForSelectedLanguage,
+            effectiveVoiceNameForSelectedLanguage,
             sampleText,
             rateForSelectedVoice,
             pitchForSelectedVoice,
             isPremiumVersion,
-          } = this.props;
+        } = this.props;
 
         return (
             <Voices
                 actions={actions}
                 voices={voices}
+                voicesByLanguage={voicesByLanguage}
+                voicesByLanguageGroup={voicesByLanguageGroup}
                 languages={languages}
-                speakLongTexts={speakLongTexts}
+                languageGroups={languageGroups}
+                languagesByLanguageGroup={languagesByLanguageGroup}
                 selectedLanguageCode={selectedLanguageCode}
                 selectedVoiceName={selectedVoiceName}
-                defaultVoiceNameForSelectedLanguage={defaultVoiceNameForSelectedLanguage}
+                effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
                 sampleText={sampleText}
                 rateForSelectedVoice={rateForSelectedVoice}
                 pitchForSelectedVoice={pitchForSelectedVoice}

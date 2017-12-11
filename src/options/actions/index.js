@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import shared from "../../shared/actions";
+import unshared from "../../unshared/actions";
+import * as navigation from "./navigation";
 import * as voices from "./voices";
 
-import * as metadata from "./metadata";
-
-import * as navigation from "./navigation";
-
 export default {
-    voices,
-    metadata,
+    shared,
+    unshared,
     navigation,
+    voices,
 };

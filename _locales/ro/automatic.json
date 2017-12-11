@@ -71,12 +71,12 @@
     "original": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
-    "message": "Opțiunile de voce",
-    "original": "Voice options"
+    "message": "Voci și limbi",
+    "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "Talkie textul dorit pe orice pagină Web și faceți clic pe butonul Talkie din bara de browser.",
-    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
+    "message": "Selectați textul dorit pe orice pagină Web și faceți clic pe butonul Talkie din bara de instrumente a browserului.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Codul sursă pe Github",
@@ -89,6 +89,218 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Pagina proiectului pe joelpurra.com",
     "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "Vocea vine atât din sistemul de operare (Windows, ChromeOS, MacOS, Linux etc.), cât și din browserul dvs. curent (Google Chrome, Firefox etc.). Acest lucru înseamnă, de asemenea, că puteți descărca și instala orice voce pe care doriți să îl aveți pe computer și Talkie ar trebui să-l recunoască automat.",
+    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+  },
+  "frontend_faq001Q": {
+    "message": "Cum detectează Talkie vocile instalate?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "Puteți adăuga mai multe voci atât de la Microsoft, cât și de la alții; consultați instrucțiunile de instalare separate.",
+    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "Cum pot instala mai multe voci în Talkie pe Windows?",
+    "original": "How can I install more voices in Talkie on Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "Orice adăugări la ChromeOS ar trebui să fie disponibile în Magazinul web Chrome.",
+    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "Cum pot instala mai multe voci în Talkie în ChromeOS?",
+    "original": "How can I install more voices in Talkie on ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "Voci suplimentare pot fi instalate automat din preferințele sistemului macOS pentru vorbire; consultați instrucțiunile de instalare separate.",
+    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "Cum pot instala mai multe voci în Talkie pe macOS?",
+    "original": "How can I install more voices in Talkie on macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "În prezent nu sunteți sigur cum să instalați voci suplimentare, deoarece nu am încercat eu însumi. Este, de asemenea, o chestiune dacă și cum browserele detectează vocile instalate. Consultați instrucțiunile de instalare separate. Vă rog să-mi spuneți ce expirații aveți!",
+    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "Cum pot instala mai multe voci în Talkie pe Linux?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "Da și nu. Talkie nu include voci în sine, ci utilizează vocile deja instalate pe computer. Puteți instala orice alte voci doriți.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "Puteți adăuga suport pentru <a new voice> în Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "Da și nu. Pe Talkie ce Talkie folosește vocile care sunt instalate pe calculatorul dvs., trebuie să instalați o voce nouă care acceptă limba pe care doriți să o utilizați.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Puteți adăuga suport pentru <a new language> în Talkie ?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "Da, dacă vocile instalate sunt disponibile și offline. Puteți vedea în lista de voci care sunt marcate ca fiind online.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie lucrează offline?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "Nu, Talkie Premium are exact aceleași voci ca Talkie. Puteți instala mai multe voci pe sistemul dvs. și sunt la fel de disponibile. În Talkie Premium puteți personaliza selecția vocală pentru fiecare limbă.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+  },
+  "frontend_faq009Q": {
+    "message": "Are Talkie Premium mai multe voci decât Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Google Chrome (și probabil alte browsere bazate pe Chromium) au avut această problemă/eroare începând cu cel puțin anul 2014. Talkie are anumite soluții și o opțiune pentru activarea/dezactivarea citirii textului în părți mai scurte. Voi continua să îmbunătățesc soluția, dar până când echipa Chromium funcționează, s-ar putea să nu funcționeze 100%. Dacă întâmpinați această problemă, anunțați-ne ce browser și versiune, sistemul de operare și versiunea și limba/vocea pe care o utilizați.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "De ce Talkie nu mai citiți după 20-30 de cuvinte sau câteva secunde?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "Există două motive. În primul rând, dacă vocea activă este online, trebuie să descărcați fișierul de vorbire înainte de ao juca. Aceasta înseamnă o pauză adăugată care depinde de viteza de conectare la internet. Puteți verifica care sunt vocile online în lista de voci. Cel de-al doilea motiv este că soluția pentru vorbirea textelor lungi ridică textul în părți mai scurte, de obicei pe propoziții sau pe clauze. Aceasta poate adăuga o pauză suplimentară pentru fiecare pauză. Puteți permite citirea textelor lungi ca parte a opțiunilor, care ar trebui să elimine pauza pe sistemele acceptate.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "De ce Talkie are Talkie o pauză lungă între propoziții și cuvinte?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "Din pacate, nu. Se pare că Google Docs (precum Google Spreadsheet, Google Drive și altele) nu este un site web, ci o \"aplicație specială în browser\" creată de Google. Talkie nu poate accesa textul selectat și nici nu poate adăuga elemente din meniul contextual. Voi investiga mai mult dacă există o modalitate de a adăuga suport pentru Documente Google la Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+  },
+  "frontend_faq012Q": {
+    "message": "Talkie funcționează în Documente Google?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "Da, te rog! Utilizați fie pagina de suport, fie contactați-mă direct. Includeți cât mai multe informații, cum ar fi browserul și versiunea, sistemul de operare și versiunea și limba/vocea pe care o utilizați. De asemenea, includeți informații privind site-urile specifice în care vedeți eroarea, de preferință cu un link.",
+    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "Ar trebui să raport bug-uri?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "De obicei! Dacă puteți selecta textul în PDF, faceți clic dreapta pe el și alegeți Talkie din meniu. Dacă textul nu poate fi selectat, dacă face parte dintr-o imagine, atunci nu va funcționa.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Pot Talkie citi fișiere PDF?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "Nu. Talkie are utilizare nelimitată — puteți citi cât mai multe cuvinte și texte lungi după cum doriți.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Are Talkie o limită de cuvânt?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "Cu siguranță! Contactați-mă doar prin paginile de suport sau de proiect.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "Pot solicita funcții noi?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "Există un editor de comenzi rapide pentru tastatură, pe care îl puteți găsi în partea de jos a paginii Extensii din Google Chrome.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "Cum se schimbă cheile de comenzi rapide în Google Chrome?",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "Din păcate, acest lucru nu pare posibil în acest moment. Cereți echipei Firefox să adauge această funcție!",
+    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+  },
+  "frontend_faq018Q": {
+    "message": "Cum de a schimba cheile de comenzi rapide în Firefox?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "Cu siguranță! Ar fi minunat să obțineți ajutor în traducerea Talkie , să testați Talkie pe noile sisteme, să investiga erorile și să adăugați noi caracteristici. Consultați pagina proiectului pentru instrucțiuni.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Pot ajuta la dezvoltarea Talkie ?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "Da — spuneți prietenilor dvs. despre Talkie! Poate trimiteți un link către celebritatea preferată de internet, grupul online sau buletinul informativ. Puteți chiar să-l întrebați pe șeful dvs. să îl instaleze pe toate computerele la locul de muncă sau pe profesorul dvs. să-l instaleze la școală. Răspândirea cuvântului despre Talkie este foarte apreciată!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "Pot ajuta Talkie în orice alt mod?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Este nevoie de destul timp și efort pentru a dezvolta Talkie — sute de ore până acum. Pentru a sprijini financiar dezvoltarea, unele funcții sunt disponibile numai utilizatorilor Talkie Premium .",
+    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "De ce Talkie Premium costă bani?",
+    "original": "Why does Talkie Premium cost money?"
+  },
+  "frontend_faq022A": {
+    "message": "Din păcate, nu încă. Talkie Premium este în prezent oferită numai prin Magazinul web Chrome, unde singura opțiune este de a utiliza Google Payments.",
+    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+  },
+  "frontend_faq022Q": {
+    "message": "Pot să plătesc pentru Talkie Premium folosind PayPal, transfer bancar etc.?",
+    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "Sigur! Puteți fie să anulați plata în Google Payments, fie să mă contactați direct.",
+    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+  },
+  "frontend_faq023Q": {
+    "message": "Pot să primesc o rambursare?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "Sigur! Vă pot trimite o copie a celei mai recente versiuni a Talkie Premium , dar atunci nu va avea actualizări automate la lansarea următoarei versiuni.",
+    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+  },
+  "frontend_faq024Q": {
+    "message": "Pot să obțin o copie gratuită de Talkie Premium pentru a încerca?",
+    "original": "Can I get a free copy of Talkie Premium to try it out?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "Gandaci",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "General",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "Întrebări frecvente",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "voci",
+    "original": "Voices"
   },
   "frontend_featuresFree_List01": {
     "message": "Detectarea limbii automate.",
@@ -144,7 +356,7 @@
   },
   "frontend_featuresVersion_Premium": {
     "message": "În prezent, folosiți Talkie Premium și toate funcțiile sunt disponibile. Mulțumesc foarte mult, îmi încălzește inima!",
-    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie vine în două versiuni: Talkie și Talkie Premium. Versiunea gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar versiunea premium oferă opțiuni suplimentare.",
@@ -158,6 +370,10 @@
     "message": "Licență",
     "original": "License"
   },
+  "frontend_loading": {
+    "message": "Se incarca...",
+    "original": "Loading..."
+  },
   "frontend_rateIt": {
     "message": "Talkie",
     "original": "Review Talkie"
@@ -165,6 +381,16 @@
   "frontend_shareHeading": {
     "message": "Spune Talkie tăi despre Talkie",
     "original": "Tell your friends about Talkie"
+  },
+  "frontend_sharePitch": {
+    "message": "Îți place $NAME$? Dacă da, aș fi fericit dacă ai putea da o evaluare ⭐️ și o revizuire 😃",
+    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
   },
   "frontend_storyDescription": {
     "message": "Talkie a fost dezvoltat cu câteva zile înainte de Anul Nou 2016/2017, la o provocare de la un prieten. Provocarea a început cu întrebarea: în timp ce călătoriți la muncă, este posibil să ascultați un articol în loc să îl citiți? Ușor, am spus, și am pornit-o să demonstrez asta — sau cel puțin să-mi fac browserul să vorbească text folosind o voce proastă de calculator. Versiunea de bază, fără interfața cu utilizatorul, sa dovedit a fi banală pentru a crea. Adăugarea unei interfețe de utilizator a durat ceva mai mult. Adăugarea unei detectări corecte a limbajului un cod mai bun. Depășirea bug-urilor în browser chiar mai mult de lucru. Lista de îmbunătățiri și caracteristici continuă — și câteva mii de linii de cod mai târziu, te uiți la rezultatul final.",
@@ -181,6 +407,68 @@
   "frontend_supportAndFeedback": {
     "message": "Suport și feedback",
     "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "A avea o intrebare? Aveți nevoie de ajutor cu ceva? Pentru răspunsuri rapide la întrebările frecvente, consultați întrebările frecvente de mai jos. Dacă nu vă răspundeți, vă rog să îmi trimiți orice întrebare. Aș fi fericit dacă experiența dvs. folosind $NAME$ este netedă și plăcută!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "A sustine",
+    "original": "Support"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "Limba preferată a browserului",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "Limbaje de browser preferate",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "Tipul browserului",
+    "original": "Browser type"
+  },
+  "frontend_systemHeading": {
+    "message": "Detalii despre sistem",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "Dialecte vocale instalate",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "Limbi de voce instalate",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "Versiune instalată",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "Glasuri instalate",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "Tipul sistemului de operare",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie interfeței utilizator Talkie",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie limbile interfeței utilizator",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_textLinkText": {
+    "message": "Text",
+    "original": "Text"
   },
   "frontend_usageLinkText": {
     "message": "folosire",
@@ -227,8 +515,12 @@
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "Faceți clic pe butonul Talkie din bara de browser",
-    "original": "Click the Talkie button in your browser bar"
+    "message": "Faceți clic pe butonul Talkie din bara de instrumente a browserului dvs.",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voiceFeatureOnline": {
+    "message": "pe net",
+    "original": "online"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "Limbi disponibile",
@@ -241,6 +533,24 @@
   "frontend_voicesDescription": {
     "message": "Vedeți și testați vocile instalate pentru fiecare limbă din browserul dvs. Talkie Premium pot de asemenea să aleagă vocea Talkie Premium fiecare limbă, precum și să Talkie Premium viteza și pasul pentru fiecare voce.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesInstalledHeading": {
+    "message": "Toate limbile instalate ( $LANGUAGE_GROUPS_COUNT$ ), dialecte ( $LANGUAGES_COUNT$ ) și voci ( $VOICES_COUNT$ )",
+    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$1",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$2",
+        "example": "47"
+      },
+      "voices_count": {
+        "content": "$3",
+        "example": "66"
+      }
+    }
   },
   "frontend_voicesLinkText": {
     "message": "voci",
@@ -261,6 +571,10 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesPreferredHeading": {
+    "message": "Limbile dvs. de browser preferate",
+    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -326,6 +640,64 @@
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "Citiți texte lungi fără pauze (experimentale)",
     "original": "Read long texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Cu Talkie Premium puteți modifica vocea prestabilită pentru fiecare limbă, precum și vocea și pasul pentru fiecare voce.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "Bine ați venit la $NAME$! Utilizați acum una dintre cele mai bune extensii de browser de tip text în vorbire din lume.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "Mergeți mai departe și selectați acest text, apoi faceți clic pe butonul $NAME$ din bara de instrumente a browserului. Bucurați-vă!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie poate găsi în prezent $VOICES_COUNT$ voci care să permită $LANGUAGE_GROUPS_COUNT$ limbi în $LANGUAGES_COUNT$ dialecte instalate în browserul dvs. $SYSTEM_TYPE_PRETTY_NAME$ care rulează pe un sistem de operare $OSTYPE_PRETTY_NAME$ .",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesHeading": {
+    "message": "Doriți să instalați mai multe voci?",
+    "original": "Want to install more voices?"
+  },
+  "frontend_welcomeLinkText": {
+    "message": "Bine ati venit",
+    "original": "Welcome"
   },
   "noTextSelectedMessage": {
     "message": "Selectați mai întâi textul dorit de pe site. De asemenea, puteți selecta textul, apoi faceți clic dreapta pe el și alegeți Talkie din meniu.",

@@ -1,4 +1,5 @@
 _locales/ar/messages.json
+_locales/bg/messages.json
 _locales/cs/messages.json
 _locales/da/messages.json
 _locales/de/messages.json
@@ -25,10 +26,11 @@ _locales/sv/messages.json
 _locales/th/messages.json
 _locales/tr/messages.json
 _locales/zh/messages.json
-./resources/icon/free/icon-play/icon-16x16.png
-./resources/icon/premium/icon-play/icon-16x16.png
+./resources/icon/free/icon-play/icon-32x32.png
+./resources/icon/premium/icon-play/icon-32x32.png
 CLA.md
 dist/background.js
+dist/demo.js
 dist/options.js
 dist/popup.js
 dist/stay-alive.js
@@ -37,7 +39,7 @@ lib/react-libs.min.js
 LICENSE
 manifest.json
 README.md
-resources/chrome-web-store/ChromeWebStore_Badge_v2_206x58.png
+resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png
 resources/firefox-amo/AMO-button_1.png
 resources/icon/free/icon-play/icon-1024x1024.png
 resources/icon/free/icon-play/icon-128x128.png
@@ -57,9 +59,12 @@ resources/icon/free/icon-stop/icon-48x48.png
 resources/icon/free/icon-stop/icon-512x512.png
 resources/icon/free/icon-stop/icon-64x64.png
 resources/icon/free/icon-stop/icon-96x96.png
+resources/style/demo.css
 resources/style/options.css
 resources/style/popup.css
 resources/style/shared.css
+src/demo/demo.html
+src/frontend/locale-redirect.js
 src/options/options.html
 src/popup/popup.html
 src/stay-alive/stay-alive.html

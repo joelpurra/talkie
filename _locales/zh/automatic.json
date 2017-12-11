@@ -71,12 +71,12 @@
     "original": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
-    "message": "语音选项",
-    "original": "Voice options"
+    "message": "声音和语言",
+    "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "在任何网页上选择所需的文本，然后单击浏览器栏中的Talkie按钮。",
-    "original": "Select desired text on any web page and click the Talkie button in your browser bar."
+    "message": "在任何网页上选择所需的文本，然后单击浏览器工具栏中的Talkie按钮。",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Github上的源代码",
@@ -89,6 +89,218 @@
   "frontend_aboutProjectPageLinkText": {
     "message": "Joelpurra.com上的项目页面",
     "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "语音来自操作系统（Windows，ChromeOS，macOS，Linux等）和您当前的浏览器（Google Chrome，Firefox等）。这也意味着您可以下载并安装您的计算机上的任何声音， Talkie应自动识别它们。",
+    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+  },
+  "frontend_faq001Q": {
+    "message": "Talkie如何检测已安装的声音？",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "您可以添加来自Microsoft和其他人的更多声音;请参阅单独的安装说明",
+    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "如何在Windows上的Talkie安装更多语音？",
+    "original": "How can I install more voices in Talkie on Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "在Chrome网上应用店中可以使用ChromeOS。",
+    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "如何在ChromeOS上的Talkie安装更多声音？",
+    "original": "How can I install more voices in Talkie on ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "额外的声音可以自动安装从macOS系统偏好为语音;请参阅单独的安装说明",
+    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "如何在macOS上的Talkie安装更多语音？",
+    "original": "How can I install more voices in Talkie on macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "目前不知道如何安装额外的声音，因为我没有尝试过自己。这也是浏览器是否以及如何检测已安装的声音的问题。请参阅单独的安装说明请让我知道你的期限是什么！",
+    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "如何在Linux上的Talkie安装更多语音？",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "是和不是。 Talkie本身不包含任何声音，但使用已经安装在电脑上的声音。你可以安装任何你想要的额外的声音。",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "您可以在Talkie添加对“新的Talkie ”",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "是和不是。由于Talkie使用电脑上安装的语音，因此您需要安装支持您要使用的语言的新语音。",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "您可以在Talkie添加对“新语言”的Talkie吗？",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "是的，如果安装的声音也可以离线使用。您可以在标记为在线的声音列表中看到。",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie离线工作吗？",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "不， Talkie Premium具有完全相同的声音作为Talkie 。你可以在你的系统上安装更多的声音，同样可用。在Talkie Premium您可以自定义每种语言的语音选择。",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+  },
+  "frontend_faq009Q": {
+    "message": "Talkie Premium比Talkie有更多的声音吗？",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "谷歌Chrome浏览器（大概是其他基于Chromium的浏览器）至少从2014年起就有这个问题/错误Talkie有一些解决方法，以及启用/禁用短文本阅读文本的选项。我将继续改进解决方法，但在Chromium团队工作之前，它可能无法正常工作。如果遇到此问题，请告诉我您正在使用的浏览器和版本，操作系统和版本以及语言/语音。",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "为什么Talkie在20-30字或几秒后停止阅读？",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "有两个原因。首先，如果主动语音在线，则在播放语音文件之前需要下载语音文件。这意味着一个添加的暂停取决于您的互联网连接速度。您可以查看声音列表中的哪些声音在线。第二个原因是说长文本的解决方法是在较短的部分打文本，通常是每句或每个子句。这可以为每个暂停添加一个额外的暂停。您可以启用阅读长文本作为选项中的一部分，这应该删除支持的系统上的暂停。",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "为什么Talkie在句子和单词之间有一段很长的停顿？",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "很不幸的是，不行。事实证明，Google Docs（以及Google Spreadsheet，Google Drive等）不是一个网站，而是由Google创建的一个特殊的“浏览器中的应用程序”。 Talkie不能访问选定的文本，也不能添加上下文菜单项。如果有某种方法可将Google文档支持添加到Talkie我将进一步调查。",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+  },
+  "frontend_faq012Q": {
+    "message": "Talkie是否可以在Google文档中使用？",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "是的，请！使用支持页面或直接与我联系。请包含尽可能多的信息，例如您使用的浏览器和版本，操作系统和版本以及语言/语音。还包括有关您看到错误的特定网站的信息，最好是链接。",
+    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "我应该报告错误吗？",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "通常！如果您可以选择PDF中的文本，请右键单击它并在菜单中选择Talkie 。如果文本不能被选择，如果它是图像的一部分，那么它将不起作用。",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Talkie可以阅读PDF文件吗？",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "编号Talkie具有无限制的用法 — 您可以Talkie地阅读尽可能多的单词和长文本。",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Talkie是否有字数限制？",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "当然！只需通过支持或项目页面与我联系。",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "我可以要求新功能吗？",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "有一个键盘快捷键编辑器，您可以在Google Chrome扩展页面的底部找到它。",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "如何在Google Chrome中更改快捷键？",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "不幸的是，目前这似乎不可能。请要求Firefox团队添加此功能！",
+    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+  },
+  "frontend_faq018Q": {
+    "message": "如何更改Firefox中的快捷键？",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "当然！能够帮助翻译Talkie ，在新系统上测试Talkie ，调查错误以及添加新功能将是非常好的。请参阅项目页面的说明。",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "我可以帮助开发Talkie吗？",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "是的 — 请告诉你的朋友Talkie ！也许发送一个链接到你最喜欢的互联网名人，在线组或通讯。你甚至可以让你的老板把它安装在工作的所有电脑上，或者你的老师在学校安装它。传播关于Talkie这个词是非常感谢！",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "我Talkie以其他方式帮助Talkie吗？",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "开发Talkie需要花费相当多的时间和精力 — 迄今已有数百个小时的时间。为了在财务上支持开发，某些功能仅适用于Talkie Premium用户。",
+    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "为什么Talkie Premium花钱？",
+    "original": "Why does Talkie Premium cost money?"
+  },
+  "frontend_faq022A": {
+    "message": "不幸的是还没有。 Talkie Premium目前仅通过Chrome网上应用店提供，唯一的选择是使用Google Payments。",
+    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+  },
+  "frontend_faq022Q": {
+    "message": "我可以使用PayPal，银行转帐等方式支付Talkie Premium吗？",
+    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "当然！您可以在Google Payments中取消付款，也可以直接与我联系。",
+    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+  },
+  "frontend_faq023Q": {
+    "message": "我可以得到退款吗？",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "当然！我可以向您发送Talkie Premium最新版本的Talkie Premium ，但是当下一个版本发布时，它不会自动更新。",
+    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+  },
+  "frontend_faq024Q": {
+    "message": "我可以免费获得Talkie Premium的试用Talkie Premium来试用吗？",
+    "original": "Can I get a free copy of Talkie Premium to try it out?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "错误",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "一般",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "经常问的问题",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "声音",
+    "original": "Voices"
   },
   "frontend_featuresFree_List01": {
     "message": "自动语言检测。",
@@ -143,8 +355,8 @@
     "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresVersion_Premium": {
-    "message": "目前使用Talkie Premium ，并且所有功能都可用。非常感谢，它暖和我的心！",
-    "original": "Currently using the Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "目前使用Talkie Premium ，所有功能都可用。非常感谢，温暖我的心！",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresVersions": {
     "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版本适用于大多数用例，但高级版本提供了其他选项。",
@@ -158,6 +370,10 @@
     "message": "执照",
     "original": "License"
   },
+  "frontend_loading": {
+    "message": "载入中...",
+    "original": "Loading..."
+  },
   "frontend_rateIt": {
     "message": "查看Talkie",
     "original": "Review Talkie"
@@ -165,6 +381,16 @@
   "frontend_shareHeading": {
     "message": "告诉你的朋友关于Talkie",
     "original": "Tell your friends about Talkie"
+  },
+  "frontend_sharePitch": {
+    "message": "你喜欢$NAME$吗？如果是这样，我会很高兴，如果你可以给一个很好的⭐️评级和审查😃",
+    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
   },
   "frontend_storyDescription": {
     "message": "Talkie是在2016/2017年的新年前几天开发的，来自朋友的挑战。挑战从一个问题开始：在上班的同时，是否可以听一篇文章而不是阅读它？容易，我说，并开始证明它 — 或至少让我的浏览器使用愚蠢的电脑声音说出文字。基本版本，没有任何用户界面，原来是无聊的创建。添加用户界面花了一点时间。添加适当的语言检测一堆更多的代码。克服浏览器中的错误更多的工作。改进和功能的列表继续进行，而后续的数千行代码，您正在查看最终结果。",
@@ -181,6 +407,68 @@
   "frontend_supportAndFeedback": {
     "message": "支持和反馈",
     "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "有一个问题？需要帮助的东西？有关常见问题的快速回答，请参阅下面的常见问题。如果这不能给你一个答案，请给我任何问题，你可能有。如果你使用$NAME$经验是顺利和愉快的，我会很高兴！",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "支持",
+    "original": "Support"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "首选浏览器语言",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "首选浏览器语言",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "浏览器类型",
+    "original": "Browser type"
+  },
+  "frontend_systemHeading": {
+    "message": "系统细节",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "安装了语音方言",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "安装了语音语言",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "安装版本",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "已安装的声音",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "操作系统类型",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie用户界面语言",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie用户界面语言",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_textLinkText": {
+    "message": "文本",
+    "original": "Text"
   },
   "frontend_usageLinkText": {
     "message": "用法",
@@ -227,8 +515,12 @@
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "点击浏览器栏中的Talkie按钮",
-    "original": "Click the Talkie button in your browser bar"
+    "message": "点击浏览器工具栏中的Talkie按钮",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voiceFeatureOnline": {
+    "message": "线上",
+    "original": "online"
   },
   "frontend_voicesAvailableLanguages": {
     "message": "可用语言",
@@ -241,6 +533,24 @@
   "frontend_voicesDescription": {
     "message": "在浏览器中查看并测试每种语言的已安装语音。 Talkie Premium用户还可以选择他们最喜欢的语音作为每种语言的默认值，以及为每个语音设置速度和音高。",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesInstalledHeading": {
+    "message": "所有安装的语言（ $LANGUAGE_GROUPS_COUNT$ ），方言（ $LANGUAGES_COUNT$ ）和声音（ $VOICES_COUNT$ ）",
+    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$1",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$2",
+        "example": "47"
+      },
+      "voices_count": {
+        "content": "$3",
+        "example": "66"
+      }
+    }
   },
   "frontend_voicesLinkText": {
     "message": "声音",
@@ -261,6 +571,10 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesPreferredHeading": {
+    "message": "您的首选浏览器语言",
+    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -326,6 +640,64 @@
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "阅读长篇文章，无暂停（实验）",
     "original": "Read long texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "使用Talkie Premium您可以更改每种语言的默认语音，以及每个语音的语音和音高。",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "欢迎来到$NAME$ ！您现在正在使用世界上最好的文本到语音浏览器扩展之一。",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "继续选择这个文本，然后点击浏览器工具栏中的$NAME$按钮。请享用！",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie目前可以找到$VOICES_COUNT$声音使$LANGUAGE_GROUPS_COUNT$语言在$LANGUAGES_COUNT$安装在你的方言$SYSTEM_TYPE_PRETTY_NAME$一个上运行的浏览器$OSTYPE_PRETTY_NAME$操作系统。",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesHeading": {
+    "message": "想要安装更多的声音？",
+    "original": "Want to install more voices?"
+  },
+  "frontend_welcomeLinkText": {
+    "message": "欢迎",
+    "original": "Welcome"
   },
   "noTextSelectedMessage": {
     "message": "请先在网站上选择所需的文字。您也可以选择文字，然后右键单击，然后在菜单中选择Talkie 。",

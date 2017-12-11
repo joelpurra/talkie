@@ -28,4 +28,5 @@ export const knownEvents = {
     resetProgress: "resetProgress",
     addProgress: "addProgress",
     finishProgress: "finishProgress",
+    passSelectedTextToBackground: "passSelectedTextToBackground",
 };

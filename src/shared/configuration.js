@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export default class Configuration {
     // NOTE: keep SynchronousConfiguration and Configuration in... sync.
@@ -32,26 +32,29 @@ export default class Configuration {
     }
 
     _initialize() {
-        this.extensionShortName = browser.i18n.getMessage("extensionShortName");
-        this.uiLocale = browser.i18n.getMessage("@@ui_locale");
-        this.messagesLocale = browser.i18n.getMessage("extensionLocale");
+        this.configurationObject.shared.urls.root = "/";
+        this.configurationObject.shared.urls.demo = "/src/demo/demo.html";
+        this.configurationObject.shared.urls.options = "/src/options/options.html";
+        this.configurationObject.shared.urls.popup = "/src/popup/popup.html";
 
         // NOTE: direct links to individual tabs.
-        this.configurationObject.shared.urls.options = browser.runtime.getURL("/src/options/options.html");
-        this.configurationObject.shared.urls["options-voices"] = this.configurationObject.shared.urls.options + "#voices";
-        this.configurationObject.shared.urls["options-about"] = this.configurationObject.shared.urls.options + "#about";
-        this.configurationObject.shared.urls["options-features"] = this.configurationObject.shared.urls.options + "#features";
-        this.configurationObject.shared.urls["options-usage"] = this.configurationObject.shared.urls.options + "#usage";
+        this.configurationObject.shared.urls["demo-about"] = this.configurationObject.shared.urls.demo + "#about";
+        this.configurationObject.shared.urls["demo-features"] = this.configurationObject.shared.urls.demo + "#features";
+        this.configurationObject.shared.urls["demo-support"] = this.configurationObject.shared.urls.demo + "#support";
+        this.configurationObject.shared.urls["demo-usage"] = this.configurationObject.shared.urls.demo + "#usage";
+        this.configurationObject.shared.urls["demo-voices"] = this.configurationObject.shared.urls.demo + "#voices";
+        this.configurationObject.shared.urls["demo-welcome"] = this.configurationObject.shared.urls.demo + "#welcome";
 
         // NOTE: direct links to individual tabs.
         // NOTE: need to pass a parameter to the options page.
-        this.configurationObject.shared.urls["options-from-popup"] = this.configurationObject.shared.urls.options + "?from=popup";
-        this.configurationObject.shared.urls["options-voices-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#voices";
-        this.configurationObject.shared.urls["options-about-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#about";
-        this.configurationObject.shared.urls["options-features-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#features";
-        this.configurationObject.shared.urls["options-usage-from-popup"] = this.configurationObject.shared.urls["options-from-popup"] + "#usage";
+        [
+            "popup",
+            "demo",
+        ].forEach((from) => {
+            this.configurationObject.shared.urls[`options-from-${from}`] = this.configurationObject.shared.urls.options + `?from=${from}`;
+            this.configurationObject.shared.urls[`options-about-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#about";
+        });
 
-        this.configurationObject.shared.urls.popup = browser.runtime.getURL("/src/popup/popup.html");
         this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
     }
 
@@ -100,6 +103,27 @@ export default class Configuration {
 
                     return value;
                 })
-            );
+        );
+    }
+
+    getSync(path) {
+        // TODO: try/catch?
+        /* eslint-disable no-sync */
+        const versionType = this.metadataManager.getVersionTypeSync();
+        const systemType = this.metadataManager.getSystemTypeSync();
+        /* eslint-enable no-sync */
+
+        const versionedSystemValue = this._resolvePath(this.configurationObject[versionType][systemType], path);
+        const versionedValue = this._resolvePath(this.configurationObject[versionType], path);
+        const systemValue = this._resolvePath(this.configurationObject[systemType], path);
+        const sharedValue = this._resolvePath(this.configurationObject.shared, path);
+
+        const value = versionedSystemValue
+                         || versionedValue
+                         || systemValue
+                         || sharedValue
+                         || null;
+
+        return value;
     }
 }

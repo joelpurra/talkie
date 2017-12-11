@@ -31,42 +31,102 @@ import {
 
 import About from "../components/sections/about.jsx";
 
-import * as actionCreators from "../actions/metadata";
+import actionCreators from "../actions";
+import selectors from "../selectors";
 
 const mapStateToProps = (state) => {
     return {
-        versionName: state.metadata.versionName,
+        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        versionName: state.shared.metadata.versionName,
+        systemType: state.shared.metadata.systemType,
+        osType: state.shared.metadata.osType,
+        voices: selectors.shared.voices.getVoices(state),
+        languages: selectors.shared.voices.getLanguages(state),
+        languageGroups: selectors.shared.voices.getLanguageGroups(state),
+        navigatorLanguage: state.shared.voices.navigatorLanguage,
+        navigatorLanguages: selectors.shared.voices.getNavigatorLanguages(state),
+        translatedLanguages: state.shared.voices.translatedLanguages,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(actionCreators, dispatch),
+        actions: {
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+        },
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class AboutContainer extends React.Component {
-    componentWillMount() {
+export default class AboutContainer extends React.PureComponent {
+    componentDidMount() {
         // TODO: is this the best place to load data?
-        this.props.actions.loadVersionName();
+        this.props.actions.sharedVoices.loadVoices();
+        this.props.actions.sharedVoices.loadNavigatorLanguage();
+        this.props.actions.sharedVoices.loadNavigatorLanguages();
     }
+
+    static defaultProps = {
+        isPremiumVersion: false,
+        versionName: null,
+        systemType: null,
+        osType: null,
+        voices: [],
+        languages: [],
+        languageGroups: [],
+        navigatorLanguage: null,
+        navigatorLanguages: [],
+        translatedLanguages: [],
+    };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
+        isPremiumVersion: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
+        systemType: PropTypes.string.isRequired,
+        osType: PropTypes.string,
+        voices: PropTypes.arrayOf(PropTypes.shape({
+            default: PropTypes.bool.isRequired,
+            lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
+        })).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        navigatorLanguage: PropTypes.string,
+        navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         onLicenseClick: PropTypes.func.isRequired,
     }
 
     render() {
         const {
+            isPremiumVersion,
             versionName,
+            systemType,
+            osType,
+            navigatorLanguage,
+            navigatorLanguages,
+            translatedLanguages,
             onLicenseClick,
-          } = this.props;
+            voices,
+            languages,
+            languageGroups,
+        } = this.props;
 
         return (
             <About
+                isPremiumVersion={isPremiumVersion}
                 versionName={versionName}
+                systemType={systemType}
+                osType={osType}
+                voices={voices}
+                languages={languages}
+                languageGroups={languageGroups}
+                navigatorLanguage={navigatorLanguage}
+                navigatorLanguages={navigatorLanguages}
+                translatedLanguages={translatedLanguages}
                 onLicenseClick={onLicenseClick}
             />
         );

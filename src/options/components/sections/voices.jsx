@@ -27,32 +27,31 @@ import {
     pitchRange,
 } from "../../../shared/voices";
 
-import SpeakLongTexts from "./voices/speak-long-texts.jsx";
+// TODO: proper data handling.
+import {
+    getVoicesForLanguage,
+} from "../../../shared/utils/transform-voices";
+
+import PremiumSection from "../../../shared/components/section/premium-section.jsx";
 
 import SampleText from "./voices/sample-text.jsx";
-
 import AvailableLanguages from "./voices/available-languages.jsx";
-
 import AvailableVoices from "./voices/available-voices.jsx";
-
 import ToggleDefault from "./voices/toggle-default.jsx";
-
 import Rate from "./voices/rate.jsx";
-
 import Pitch from "./voices/pitch.jsx";
 
-import configure from "../../hocs/configure.jsx";
-import translate from "../../hocs/translate.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
 
-@configure
-@translate
-export default class Voices extends React.Component {
+import * as tableBase from "../../../shared/styled/table/table-base.jsx";
+
+@translateAttribute
+export default class Voices extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
         this.handleVoiceChange = this.handleVoiceChange.bind(this);
-        this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
         this.handleSampleTextChange = this.handleSampleTextChange.bind(this);
         this.handleToogleDefaultClick = this.handleToogleDefaultClick.bind(this);
         this.handleRateChange = this.handleRateChange.bind(this);
@@ -60,13 +59,15 @@ export default class Voices extends React.Component {
     }
 
     static defaultProps = {
-        actions: {},
         languages: [],
+        languageGroups: [],
+        languagesByLanguageGroup: {},
         voices: [],
-        speakLongTexts: false,
+        voicesByLanguage: {},
+        voicesByLanguageGroup: {},
         selectedLanguageCode: null,
         selectedVoiceName: null,
-        defaultVoiceNameForSelectedLanguage: null,
+        effectiveVoiceNameForSelectedLanguage: null,
         sampleText: null,
         rateForSelectedVoice: 1,
         pitchForSelectedVoice: 1,
@@ -75,187 +76,205 @@ export default class Voices extends React.Component {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            default: PropTypes.bool.isRequired,
             lang: PropTypes.string.isRequired,
+            localService: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+            voiceURI: PropTypes.string.isRequired,
         })).isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
+        voicesByLanguage: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        voicesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        ).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,
-        defaultVoiceNameForSelectedLanguage: PropTypes.string,
+        effectiveVoiceNameForSelectedLanguage: PropTypes.string,
         sampleText: PropTypes.string,
         rateForSelectedVoice: PropTypes.number.isRequired,
         pitchForSelectedVoice: PropTypes.number.isRequired,
         isPremiumVersion: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
-        configure: PropTypes.func.isRequired,
-    }
-
-    componentWillMount() {
-        // TODO: is this the best place to load data?
-        this.props.actions.loadVoices();
     }
 
     handleLanguageChange(value) {
-        this.props.actions.loadSelectedLanguageCode(value);
+        this.props.actions.voices.loadSelectedLanguageCode(value);
     }
 
     handleVoiceChange(value) {
-        this.props.actions.loadSelectedVoiceName(value);
-    }
-
-    handleSpeakLongTextsChange(checked) {
-        this.props.actions.storeSpeakLongTexts(checked);
+        this.props.actions.voices.loadSelectedVoiceName(value);
     }
 
     handleSampleTextChange(value) {
-        this.props.actions.setSampleText(value);
+        this.props.actions.voices.setSampleText(value);
     }
 
     handleToogleDefaultClick() {
-        this.props.actions.storeDefaultVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
+        this.props.actions.voices.storeEffectiveVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
     }
 
     handleRateChange(value) {
-        this.props.actions.storeVoiceRateOverride(this.props.selectedVoiceName, value);
+        this.props.actions.voices.storeVoiceRateOverride(this.props.selectedVoiceName, value);
     }
 
     handlePitchChange(value) {
-        this.props.actions.storeVoicePitchOverride(this.props.selectedVoiceName, value);
+        this.props.actions.voices.storeVoicePitchOverride(this.props.selectedVoiceName, value);
     }
 
     render() {
+        const {
+            effectiveVoiceNameForSelectedLanguage,
+            isPremiumVersion,
+            languages,
+            pitchForSelectedVoice,
+            rateForSelectedVoice,
+            sampleText,
+            selectedLanguageCode,
+            selectedVoiceName,
+            translate,
+            voices,
+            voicesByLanguage,
+            voicesByLanguageGroup,
+            languageGroups,
+            languagesByLanguageGroup,
+        } = this.props;
+
         let voicesForLanguage = null;
 
-        if (typeof this.props.selectedLanguageCode === "string" && this.props.selectedLanguageCode.length > 0) {
-            voicesForLanguage = this.props.voices.filter((voice) => voice.lang.startsWith(this.props.selectedLanguageCode));
+        if (typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0) {
+            voicesForLanguage = getVoicesForLanguage(voices, selectedLanguageCode);
         } else {
-            voicesForLanguage = this.props.voices;
+            voicesForLanguage = voices;
         }
 
         // TODO: move to function and/or state?
-        const hasSelectedLanguageCode = typeof this.props.selectedLanguageCode === "string" && this.props.selectedLanguageCode.length > 0;
+        const hasSelectedLanguageCode = typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0;
 
         // TODO: move to function and/or state?
-        const hasSelectedVoiceName = typeof this.props.selectedVoiceName === "string" && this.props.selectedVoiceName.length > 0;
+        const hasSelectedVoiceName = typeof selectedVoiceName === "string" && selectedVoiceName.length > 0;
 
-        const isDefaultVoiceNameForLanguage = hasSelectedVoiceName && this.props.selectedVoiceName === this.props.defaultVoiceNameForSelectedLanguage;
+        // TODO: move to function and/or state?
+        const isEffectiveVoiceNameForLanguage = hasSelectedVoiceName && selectedVoiceName === effectiveVoiceNameForSelectedLanguage;
 
         return (
             <section>
-                <p>{this.props.translate("frontend_voicesDescription")}</p>
-                {/*
-                    <p>TODO REMOVE selectedLanguageCode {this.props.selectedLanguageCode}</p>
-                    <p>TODO REMOVE selectedVoiceName {this.props.selectedVoiceName}</p>
-                    <p>TODO REMOVE defaultVoiceNameForSelectedLanguage {this.props.defaultVoiceNameForSelectedLanguage}</p>
-                    <p>TODO REMOVE sampleText {this.props.sampleText}</p>
-                    <p>TODO REMOVE rateForSelectedVoice {this.props.rateForSelectedVoice.toFixed(2)}</p>
-                    <p>TODO REMOVE pitchForSelectedVoice {this.props.pitchForSelectedVoice.toFixed(2)}</p>
-                */}
-                <table>
+                <p>{translate("frontend_voicesDescription")}</p>
+
+                <tableBase.table>
                     <colgroup>
                         <col width="100%" />
                     </colgroup>
 
                     <SampleText
                         onChange={this.handleSampleTextChange}
-                        value={this.props.sampleText}
-                        disabled={this.props.voices.length === 0}
+                        value={sampleText}
+                        disabled={voices.length === 0}
                     />
 
-                    <tbody>
-                        <tr>
-                            <th scope="col">
-                                {this.props.translate("frontend_voicesAvailableLanguages")}
+                    <tableBase.tbody>
+                        <tableBase.tr>
+                            <tableBase.th scope="col">
+                                {translate("frontend_voicesAvailableLanguages")}
                                 {" "}
-                                ({this.props.languages.length})
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
+                                ({languages.length})
+                            </tableBase.th>
+                        </tableBase.tr>
+                        <tableBase.tr>
+                            <tableBase.td>
                                 <AvailableLanguages
                                     onChange={this.handleLanguageChange}
-                                    value={this.props.selectedLanguageCode}
-                                    voices={this.props.voices}
-                                    disabled={this.props.languages.length === 0}
+                                    value={selectedLanguageCode}
+                                    voicesByLanguage={voicesByLanguage}
+                                    voicesByLanguageGroup={voicesByLanguageGroup}
+                                    languageGroups={languageGroups}
+                                    languagesByLanguageGroup={languagesByLanguageGroup}
+                                    disabled={languages.length === 0}
                                 />
-                            </td>
-                        </tr>
-                    </tbody>
+                            </tableBase.td>
+                        </tableBase.tr>
+                    </tableBase.tbody>
 
-                    <tbody>
-                        <tr>
-                            <th scope="col">
-                                {this.props.translate("frontend_voicesAvailableVoices")}
+                    <tableBase.tbody>
+                        <tableBase.tr>
+                            <tableBase.th scope="col">
+                                {translate("frontend_voicesAvailableVoices")}
                                 {" "}
-                                ({(this.props.selectedLanguageCode ? (this.props.selectedLanguageCode + ", ") : "")}{voicesForLanguage.length})
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
+                                ({(selectedLanguageCode ? (selectedLanguageCode + ", ") : "")}{voicesForLanguage.length})
+                            </tableBase.th>
+                        </tableBase.tr>
+                        <tableBase.tr>
+                            <tableBase.td>
                                 <AvailableVoices
                                     onChange={this.handleVoiceChange}
-                                    defaultVoiceNameForSelectedLanguage={this.props.defaultVoiceNameForSelectedLanguage}
-                                    value={this.props.selectedVoiceName}
+                                    effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
+                                    value={selectedVoiceName}
                                     voices={voicesForLanguage}
-                                    disabled={this.props.voices.length === 0}
+                                    disabled={voices.length === 0}
                                 />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </tableBase.td>
+                        </tableBase.tr>
+                    </tableBase.tbody>
+                </tableBase.table>
 
-                <div className="premium-section">
-                    <p><a href={this.props.configure("urls.store-premium")}><span className="icon icon-inline icon-16px icon-talkie premium"></span>Talkie Premium</a></p>
-
-                    <table>
+                <PremiumSection
+                    mode="p"
+                >
+                    <tableBase.table>
                         <colgroup>
                             <col width="100%" />
                         </colgroup>
 
                         <ToggleDefault
                             onClick={this.handleToogleDefaultClick}
-                            languageCode={this.props.selectedLanguageCode}
-                            voiceName={this.props.selectedVoiceName}
-                            disabled={!this.props.isPremiumVersion || !hasSelectedLanguageCode || !hasSelectedVoiceName || isDefaultVoiceNameForLanguage}
+                            languageCode={selectedLanguageCode}
+                            voiceName={selectedVoiceName}
+                            disabled={!isPremiumVersion || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
                         />
 
                         <Rate
+                            listName="voice-rate-range-list"
                             onChange={this.handleRateChange}
-                            voiceName={this.props.selectedVoiceName}
+                            voiceName={selectedVoiceName}
                             min={rateRange.min}
                             defaultValue={rateRange.default}
-                            initialValue={this.props.rateForSelectedVoice}
+                            initialValue={rateForSelectedVoice}
                             max={rateRange.max}
                             step={rateRange.step}
                             disabled={!hasSelectedVoiceName}
                         />
 
                         <Pitch
+                            listName="voice-pitch-range-list"
                             onChange={this.handlePitchChange}
-                            voiceName={this.props.selectedVoiceName}
+                            voiceName={selectedVoiceName}
                             min={pitchRange.min}
                             defaultValue={pitchRange.default}
-                            initialValue={this.props.pitchForSelectedVoice}
+                            initialValue={pitchForSelectedVoice}
                             max={pitchRange.max}
                             step={pitchRange.step}
                             disabled={!hasSelectedVoiceName}
                         />
-                    </table>
-                </div>
-
-                <table>
-                    <colgroup>
-                        <col width="100%" />
-                    </colgroup>
-
-                    <SpeakLongTexts
-                        onChange={this.handleSpeakLongTextsChange}
-                        checked={this.props.speakLongTexts}
-                        disabled={this.props.voices.length === 0}
-                    />
-                </table>
+                    </tableBase.table>
+                </PremiumSection>
             </section>
         );
     }

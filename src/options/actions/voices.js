@@ -22,26 +22,6 @@ import * as actionTypes from "../constants/action-types-voices";
 
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
-export const loadVoices = () =>
-    (dispatch, getState, api) => api.getVoices()
-        .then((voices) => dispatch(setVoices(voices)));
-
-export const setVoices = (voices) => {
-    return { type: actionTypes.SET_VOICES, voices };
-};
-
-export const loadSpeakLongTexts = () =>
-    (dispatch, getState, api) => api.getSpeakLongTextsOption()
-        .then((speakLongTexts) => dispatch(setSpeakLongTexts(speakLongTexts)));
-
-export const storeSpeakLongTexts = (speakLongTexts) =>
-    (dispatch, getState, api) => api.setSpeakLongTextsOption(speakLongTexts)
-        .then(() => dispatch(loadSpeakLongTexts()));
-
-export const setSpeakLongTexts = (speakLongTexts) => {
-    return { type: actionTypes.SET_SPEAK_LONG_TEXTS, speakLongTexts };
-};
-
 export const loadSelectedLanguageCode = (languageCode) =>
     (dispatch) => {
         dispatch(setSelectedLanguageCode(languageCode));
@@ -61,9 +41,11 @@ export const loadSelectedVoiceName = (voiceName) =>
         let existingVoiceName = null;
 
         if (
-            state.voices
-            && state.voices.voices
-            && state.voices.voices.some((voice) => voice.name === voiceName)
+            state
+            && state.shared
+            && state.shared.voices
+            && state.shared.voices.voices
+            && state.shared.voices.voices.some((voice) => voice.name === voiceName)
         ) {
             existingVoiceName = voiceName;
         }
@@ -119,31 +101,31 @@ export const loadEffectiveVoiceForLanguage = (languageCode) =>
         if (languageCode) {
             return api.getEffectiveVoiceForLanguage(languageCode)
                 .then((effectiveVoiceForLanguage) => Promise.all([
-                    dispatch(setDefaultVoiceNameForSelectedLanguage(effectiveVoiceForLanguage)),
+                    dispatch(setEffectiveVoiceNameForSelectedLanguage(effectiveVoiceForLanguage)),
                     dispatch(loadSelectedVoiceName(effectiveVoiceForLanguage)),
                 ]));
         }
 
         const state = getState();
 
-        const newSelectedVoiceName = (state.voices.voices.length > 0 && state.voices.voices[0].name) || null;
+        const newSelectedVoiceName = (state.shared.voices.voices.length > 0 && state.shared.voices.voices[0].name) || null;
 
         return Promise.all([
-            dispatch(setDefaultVoiceNameForSelectedLanguage(null)),
+            dispatch(setEffectiveVoiceNameForSelectedLanguage(null)),
             dispatch(loadSelectedVoiceName(newSelectedVoiceName)),
         ]);
     };
 
-export const storeDefaultVoiceNameForLanguage = (languageCode, voiceName) =>
+export const storeEffectiveVoiceNameForLanguage = (languageCode, voiceName) =>
     (dispatch, getState, api) => api.toggleLanguageVoiceOverrideName(languageCode, voiceName)
         .then(() => dispatch(loadEffectiveVoiceForLanguage(languageCode)));
 
-export const setDefaultVoiceNameForSelectedLanguage = (defaultVoiceNameForSelectedLanguage) => {
-    return { type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE, defaultVoiceNameForSelectedLanguage };
+export const setEffectiveVoiceNameForSelectedLanguage = (effectiveVoiceNameForSelectedLanguage) => {
+    return { type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE, effectiveVoiceNameForSelectedLanguage };
 };
 
 export const speakState = () =>
-    (dispatch, getState) => Promise.resolve()
+    (dispatch, getState, api) => Promise.resolve()
         .then(() => {
             const state = getState();
 
@@ -174,11 +156,8 @@ export const speakState = () =>
                     pitch: state.voices.pitchForSelectedVoice,
                 };
 
-                return dispatch(speak(text, voice));
+                return api.debouncedSpeak(text, voice);
             }
 
             return undefined;
         });
-
-export const speak = (text, voice) =>
-    (dispatch, getState, api) => api.debouncedSpeak(text, voice);

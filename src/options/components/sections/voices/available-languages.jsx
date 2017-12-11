@@ -21,60 +21,80 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import {
-    getLanguageGroupsFromVoices,
-    getVoicesByLanguageFromVoices,
-    getVoicesByLanguageGroupFromVoices,
-    getLanguagesByLanguageGroupFromVoices,
-} from "../../../utils/transform-voices";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
-import {
-    scrollIntoViewIfNeeded,
-} from "../../../utils/select-element";
+import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 
+@translateAttribute
 export default class AvailableLanguages extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.selectElement = null;
         this.defaultAllLanguagesValue = "all-languages";
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     static defaultProps = {
-        voices: [],
+        voicesByLanguage: {},
+        voicesByLanguageGroup: {},
+        languageGroups: [],
+        languagesByLanguageGroup: {},
         value: null,
         disabled: true,
     };
 
     static propTypes = {
-        voices: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            lang: PropTypes.string.isRequired,
-        })).isRequired,
+        voicesByLanguage: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        voicesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.shape({
+                default: PropTypes.bool.isRequired,
+                lang: PropTypes.string.isRequired,
+                localService: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+                voiceURI: PropTypes.string.isRequired,
+            })).isRequired
+        ).isRequired,
+        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        languagesByLanguageGroup: PropTypes.objectOf(
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        ).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
-        disabled: PropTypes.bool,
+        disabled: PropTypes.bool.isRequired,
+        translate: PropTypes.func.isRequired,
     };
 
-    handleChange(e) {
+    handleChange(newlySelectedLanguageName) {
         let languageName = null;
 
-        if (e.target.value !== this.defaultAllLanguagesValue) {
-            languageName = e.target.value;
+        if (newlySelectedLanguageName !== this.defaultAllLanguagesValue) {
+            languageName = newlySelectedLanguageName;
         }
 
         this.props.onChange(languageName);
-
-        scrollIntoViewIfNeeded(this.selectElement);
     }
 
     render() {
-        const languageGroups = getLanguageGroupsFromVoices(this.props.voices);
-        const voicesByLanguage = getVoicesByLanguageFromVoices(this.props.voices);
-        const voicesByLanguageGroup = getVoicesByLanguageGroupFromVoices(this.props.voices);
-        const languagesByLanguageGroup = getLanguagesByLanguageGroupFromVoices(this.props.voices);
+        const {
+            translate,
+            value,
+            disabled,
+            languageGroups,
+            voicesByLanguage,
+            voicesByLanguageGroup,
+            languagesByLanguageGroup,
+        } = this.props;
+
+        const frontendVoicesShowAllVoicesTranslated = translate("frontend_voicesShowAllVoices");
 
         const languagesOptions = languageGroups.reduce(
             (options, languageGroup) => {
@@ -98,7 +118,8 @@ export default class AvailableLanguages extends React.PureComponent {
                     // TODO: proper way to store/look up objects?
                     value={languageGroup}
                     className="group"
-                  >
+                    lang="en"
+                >
                     {languageGroupText}
                 </option>;
 
@@ -120,7 +141,8 @@ export default class AvailableLanguages extends React.PureComponent {
                             key={language}
                             // TODO: proper way to store/look up objects?
                             value={language}
-                          >
+                            lang="en"
+                        >
                             {languageText}
                         </option>;
 
@@ -135,27 +157,21 @@ export default class AvailableLanguages extends React.PureComponent {
                     value={this.defaultAllLanguagesValue}
                     className="group"
                 >
-                    {browser.i18n.getMessage("frontend_voicesShowAllVoices")}
+                    {frontendVoicesShowAllVoicesTranslated}
                 </option>,
             ]
         );
 
         return (
-            <select
-                id="voices-languages-list"
-                size="7"
+            <MultilineSelect
+                size={7}
                 onChange={this.handleChange}
-                value={this.props.value || this.defaultAllLanguagesValue}
-                disabled={this.props.disabled}
+                value={value || this.defaultAllLanguagesValue}
+                disabled={disabled}
                 className="grouped"
-                ref={
-                    (selectElement) => {
-                        this.selectElement = selectElement;
-                        scrollIntoViewIfNeeded(this.selectElement);
-                    }}
             >
                 {languagesOptions}
-            </select>
+            </MultilineSelect>
         );
     }
 }

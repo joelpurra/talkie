@@ -18,19 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import json from "rollup-plugin-json";
-import cleanup from "./rollup.config.cleanup.js";
-import license from "./rollup.config.license.js";
+import reactRollupConfig from "./rollup.config.react.browser";
+const mergeOptions = require("merge-options");
 
-export default {
-    plugins: [
-        json(),
-        cleanup(),
-        license("popup"),
-    ],
-    format: "umd",
-    sourceMap: true,
-    entry: "src/popup/popup.js",
-    moduleName: "popup",
-    dest: "dist/popup.js",
-};
+const inputName = "popup";
+const fileExtension = "";
+const fileName = `${inputName}${fileExtension}`;
+
+export default mergeOptions(
+    reactRollupConfig(fileName),
+    {
+        input: `src/${inputName}/${fileName}.js`,
+        name: fileName,
+        output: {
+            file: `dist/${fileName}.js`,
+        },
+    }
+);

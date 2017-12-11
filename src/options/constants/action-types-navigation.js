@@ -18,6 +18,4 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const SET_ACTIVE_TAB_ID = "SET_ACTIVE_TAB_ID";
-
 export const SET_SHOULD_SHOW_BACK_BUTTON = "SET_SHOULD_SHOW_BACK_BUTTON";

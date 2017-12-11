@@ -79,7 +79,9 @@ export default class SuspensionManager {
             .then(() => {
                 const iframe = document.createElement("iframe");
                 iframe.id = this.stayAliveElementId;
-                iframe.src = browser.runtime.getURL(this.stayAliveHtmlPath);
+                /* eslint-disable no-sync */
+                iframe.src = this.stayAliveHtmlPath;
+                /* eslint-enable no-sync */
                 document.body.appendChild(iframe);
 
                 return undefined;

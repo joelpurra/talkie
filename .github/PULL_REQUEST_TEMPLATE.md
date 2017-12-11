@@ -18,7 +18,7 @@
 
 - [ ] The code works as expected.
 - [ ] All tests pass.
-- [ ] The pull request follows the steps for a [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/) feature.
+- [ ] The pull request follows the steps for a [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/) feature.
 - [ ] The pull request has been made against the `develop` branch.
 
 

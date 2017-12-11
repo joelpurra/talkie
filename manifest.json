@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
-  "version": "4.1.2",
-  "version_name": "v4.1.2 Free (2017-07-30)",
+  "version": "5.0.0",
+  "version_name": "v5.0.0 Free (2017-12-11)",
   "applications": {
     "gecko": {
       "strict_min_version": "52.0"
     }
   },
-  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:;",
+  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline';",
   "externally_connectable": {
     "ids": []
   },
@@ -72,7 +72,7 @@
     }
   },
   "options_ui": {
-    "page": "src/options/options.html",
+    "page": "./src/options/options.html",
     "chrome_style": true
   },
   "requirements": {},

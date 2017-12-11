@@ -22,16 +22,6 @@ import * as actionTypes from "../constants/action-types-navigation";
 
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
-export const setActiveTabId = (activeTabId) => {
-    return { type: actionTypes.SET_ACTIVE_TAB_ID, activeTabId };
-};
-
 export const setShouldShowBackButton = (shouldShowBackButton) => {
     return { type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON, shouldShowBackButton };
 };
-
-export const openUrlInNewTab = (url) =>
-    (dispatch, getState, api) => api.openUrlInNewTab(url);
-
-export const openShortKeysConfiguration = () =>
-    (dispatch, getState, api) => api.openShortKeysConfiguration();

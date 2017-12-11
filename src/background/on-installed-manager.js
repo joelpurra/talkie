@@ -27,21 +27,65 @@ import {
     logError,
 } from "../shared/log";
 
+// NOTE: https://developer.chrome.com/extensions/runtime#type-OnInstalledReason
+const REASON_INSTALL = "install";
+
 export default class OnInstalledManager {
-    constructor(storageManager, metadataManager, contextMenuManager, onInstallListenerEventQueue) {
+    constructor(storageManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue) {
+        // TODO: use broadcast listeners instead.
         this.storageManager = storageManager;
         this.metadataManager = metadataManager;
         this.contextMenuManager = contextMenuManager;
+        this.welcomeManager = welcomeManager;
         this.onInstallListenerEventQueue = onInstallListenerEventQueue;
     }
 
-    onExtensionInstalledHandler() {
+    _setStorageManagerDefaults() {
+        // TODO: move this function elsewhere?
+        return promiseTry(
+            () => {
+                logDebug("Start", "_setStorageManagerDefaults");
+
+                return this.metadataManager.isWebExtensionVersion()
+                    .then((isWebExtensionVersion) => {
+                    // TODO: shared place for stored value constants.
+                        const speakLongTextsStorageKey = "speak-long-texts";
+
+                        // TODO: shared place for default/fallback values for booleans etcetera.
+                        // NOTE: enabling speaking long texts by default on in WebExtensions (Firefox).
+                        const speakLongTexts = isWebExtensionVersion;
+
+                        return this.storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts);
+                    })
+                    .then((result) => {
+                        logDebug("Done", "_setStorageManagerDefaults");
+
+                        return result;
+                    })
+                    .catch((error) => {
+                        logError("_setStorageManagerDefaults", error);
+
+                        throw error;
+                    });
+            }
+        );
+    }
+
+    onExtensionInstalledHandler(event) {
         return promiseTry(
             () => Promise.resolve()
                 .then(() => this.storageManager.upgradeIfNecessary())
                 // NOTE: removing all context menus in case the menus have changed since the last install/update.
                 .then(() => this.contextMenuManager.removeAll())
                 .then(() => this.contextMenuManager.createContextMenus())
+                .then(() => {
+                    if (event.reason === REASON_INSTALL) {
+                        return this._setStorageManagerDefaults()
+                            .then(() => this.welcomeManager.openWelcomePage());
+                    }
+
+                    return undefined;
+                })
                 .catch((error) => logError("onExtensionInstalledHandler", error))
         );
     }
@@ -49,7 +93,7 @@ export default class OnInstalledManager {
     onInstallListenerEventQueueHandler() {
         return promiseTry(
             () => {
-                if (this.onInstallListenerEventQueue.length > 0) {
+                while (this.onInstallListenerEventQueue.length > 0) {
                     const onInstallListenerEvent = this.onInstallListenerEventQueue.shift();
 
                     logDebug("onInstallListenerEventQueueHandler", "Start", onInstallListenerEvent);

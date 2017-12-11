@@ -42,7 +42,13 @@ import {
 
 import configurationObject from "../configuration.json";
 
+import ManifestProvider from "../split-environments/manifest-provider";
+
 import Configuration from "../shared/configuration";
+
+import LocaleProvider from "../split-environments/locale-provider";
+import TranslatorProvider from "../split-environments/translator-provider";
+import InternalUrlProvider from "../split-environments/internal-url-provider";
 
 import {
     knownEvents,
@@ -93,8 +99,9 @@ import ContextMenuManager from "./context-menu-manager";
 
 import ShortcutKeyManager from "./shortcut-key-manager";
 
-import MetadataManager from "./metadata-manager";
+import MetadataManager from "../shared/metadata-manager";
 
+import WelcomeManager from "./welcome-manager";
 import OnInstalledManager from "./on-installed-manager";
 
 import StorageManager from "./storage-manager";
@@ -111,7 +118,7 @@ const onInstallListenerEventQueue = [];
 const startOnInstallListener = () => {
     const onInstallListener = (event) => {
         const onInstallEvent = {
-            reason: "event",
+            source: "event",
             event: event,
         };
 
@@ -127,7 +134,7 @@ const startOnInstallListener = () => {
         browser.runtime.onInstalled.addListener(onInstallListener);
     } else {
         const onInstallEvent = {
-            reason: "fallback",
+            source: "fallback",
             event: null,
         };
 
@@ -138,7 +145,9 @@ const startOnInstallListener = () => {
 function main() {
     logDebug("Start", "Main background function");
 
-    const metadataManager = new MetadataManager();
+    const manifestProvider = new ManifestProvider();
+    const metadataManager = new MetadataManager(manifestProvider);
+    const internalUrlProvider = new InternalUrlProvider();
     const configuration = new Configuration(metadataManager, configurationObject);
     const storageManager = new StorageManager();
 
@@ -155,14 +164,16 @@ function main() {
     const voiceRateManager = new VoiceRateManager(storageManager, metadataManager);
     const voicePitchManager = new VoicePitchManager(storageManager, metadataManager);
     const voiceManager = new VoiceManager(voiceLanguageManager, voiceRateManager, voicePitchManager);
-    const languageHelper = new LanguageHelper(contentLogger, configuration);
+    const localeProvider = new LocaleProvider();
+    const translatorProvider = new TranslatorProvider(localeProvider);
+    const languageHelper = new LanguageHelper(contentLogger, configuration, translatorProvider);
 
     // NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
     const speechChain = new Chain();
-    const talkieBackground = new TalkieBackground(speechChain, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute);
+    const talkieBackground = new TalkieBackground(speechChain, broadcaster, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translatorProvider, internalUrlProvider);
     const permissionsManager = new PermissionsManager();
     const clipboardManager = new ClipboardManager(talkieBackground, permissionsManager);
-    const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager);
+    const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager, translatorProvider);
 
     const commandMap = {
         // NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
@@ -177,19 +188,20 @@ function main() {
     };
 
     const commandHandler = new CommandHandler(commandMap);
-    const contextMenuManager = new ContextMenuManager(commandHandler, metadataManager);
+    const contextMenuManager = new ContextMenuManager(commandHandler, metadataManager, translatorProvider);
     const shortcutKeyManager = new ShortcutKeyManager(commandHandler);
 
     const suspensionConnectorManager = new SuspensionConnectorManager();
     const suspensionManager = new SuspensionManager(suspensionConnectorManager);
     const iconManager = new IconManager(metadataManager);
-    const buttonPopupManager = new ButtonPopupManager();
+    const buttonPopupManager = new ButtonPopupManager(translatorProvider);
 
     const progress = new TalkieProgress(broadcaster);
 
     const plug = new Plug(contentLogger, execute);
 
-    const onInstalledManager = new OnInstalledManager(storageManager, metadataManager, contextMenuManager, onInstallListenerEventQueue);
+    const welcomeManager = new WelcomeManager();
+    const onInstalledManager = new OnInstalledManager(storageManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue);
 
     (function addOnInstalledEventQueuePolling() {
         // NOTE: run the function once first, to allow for a very long interval.
@@ -237,7 +249,7 @@ function main() {
             };
 
             // NOTE: synchronous version.
-            window.addEventListener("unload", () => {
+            window.addEventListener("beforeunload", () => {
                 executeKillSwitches();
             });
 
@@ -265,8 +277,9 @@ function main() {
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => iconManager.setIconModePlaying(), 10)),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => iconManager.setIconModeStopped(), 10)),
 
-                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => buttonPopupManager.disablePopup()),
-                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => buttonPopupManager.enablePopup()),
+                // NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
+                broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => buttonPopupManager.disablePopup(), 200)),
+                broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => buttonPopupManager.enablePopup(), 200)),
 
                 broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
                 broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
@@ -292,16 +305,16 @@ function main() {
         .then(() => {
             // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-            if (browser.runtime.onSuspend) {
+            if ("onSuspend" in browser.runtime) {
                 browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => talkieBackground.onExtensionSuspendHandler()));
                 // browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => suspensionManager.unintialize()));
             }
 
             // NOTE: not supported in Firefox (2017-04-28).
             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-            if (browser.runtime.onSuspendCanceled) {
-                // browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
-            }
+            // if ("onSuspendCanceled" in browser.runtime) {
+            //     browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
+            // }
 
             // NOTE: used when the popup has been disabled.
             browser.browserAction.onClicked.addListener(loggedPromise("onClicked", () => talkieBackground.startStopSpeakSelectionOnPage()));
@@ -336,15 +349,23 @@ function main() {
             window.startSpeakFromFrontend = (frontendText, frontendVoice) => {
                 // NOTE: not sure if copying these variables have any effect.
                 // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
-                const text = "" + frontendText;
+                const text = String(frontendText);
                 const voice = {
-                    name: "" + frontendVoice.name,
-                    lang: "" + frontendVoice.lang,
-                    rate: 0 + frontendVoice.rate,
-                    pitch: 0 + frontendVoice.pitch,
+                    name: typeof frontendVoice.name === "string" ? String(frontendVoice.name) : undefined,
+                    lang: typeof frontendVoice.lang === "string" ? String(frontendVoice.lang) : undefined,
+                    rate: !isNaN(frontendVoice.rate) ? (0 + frontendVoice.rate) : undefined,
+                    pitch: !isNaN(frontendVoice.pitch) ? (0 + frontendVoice.pitch) : undefined,
                 };
 
                 talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+            };
+            window.startSpeakInLanguageWithOverridesFromFrontend = (frontendText, frontendLanguageCode) => {
+                // NOTE: not sure if copying these variables have any effect.
+                // NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+                const text = String(frontendText);
+                const languageCode = String(frontendLanguageCode);
+
+                talkieBackground.startSpeakingTextInLanguageWithOverridesAction(text, languageCode);
             };
 
             window.getVersionNumber = () => metadataManager.getVersionNumber();
@@ -356,7 +377,9 @@ function main() {
 
             // TODO: shared place for stored value constants.
             const speakLongTextsStorageKey = "speak-long-texts";
-            window.getSpeakLongTextsOption = () => storageManager.getStoredValue(speakLongTextsStorageKey);
+            // TODO: shared place for default/fallback values for booleans etcetera.
+            window.getSpeakLongTextsOption = () => storageManager.getStoredValue(speakLongTextsStorageKey)
+                .then((speakLongTexts) => speakLongTexts || false);
             // TODO: don't convert to boolean here, but somewhere centralized?
             window.setSpeakLongTextsOption = (speakLongTexts) => storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts === true);
 
@@ -379,9 +402,6 @@ function main() {
         .then(() => {
             buttonPopupManager.enablePopup();
 
-            logInfo("Locale (@@ui_locale)", configuration.uiLocale);
-            logInfo("Locale (messages.json)", configuration.messagesLocale);
-
             logDebug("Done", "Main background function");
 
             return undefined;
@@ -393,5 +413,5 @@ try {
 
     main();
 } catch (error) {
-    logError("onExtensionInstalledHandler", error);
+    logError("background", error);
 }

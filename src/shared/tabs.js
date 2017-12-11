@@ -20,11 +20,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
     logDebug,
-} from "../shared/log";
+} from "./log";
 
 import {
     promiseTry,
-} from "../shared/promise";
+} from "./promise";
 
 export const getBackgroundPage = () => promiseTry(
     // https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
@@ -77,7 +77,7 @@ export const getCurrentActiveTabId = () => getCurrentActiveTab()
         return null;
     });
 
-export const isCurrentPageInternalToTalkie = () => promiseTry(
+export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry(
     () => getCurrentActiveTab()
         .then((tab) => {
             if (tab) {
@@ -86,9 +86,10 @@ export const isCurrentPageInternalToTalkie = () => promiseTry(
                 if (
                     typeof url === "string"
                     && (
-                        url.startsWith(browser.runtime.getURL("/src/popup/popup.html"))
-                        || url.startsWith(browser.runtime.getURL("/src/options/options.html"))
-                        || url.startsWith(browser.runtime.getURL("/src/stay-alive/stay-alive.html"))
+                        /* eslint-disable no-sync */
+                        url.startsWith(internalUrlProvider.getSync("/src/"))
+                        || url.startsWith(internalUrlProvider.getSync("/dist/"))
+                        /* eslint-enable no-sync */
                     )
                 ) {
                     return true;

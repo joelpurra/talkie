@@ -84,7 +84,7 @@ export default class VoiceRateManager {
 
                     return undefined;
                 })
-            );
+        );
     }
 
     getVoiceRateOverride(voiceName) {
@@ -120,28 +120,28 @@ export default class VoiceRateManager {
 
     hasVoiceRateOverride(voiceName) {
         return promiseTry(
-                () => this.getVoiceRateOverride(voiceName)
-                    .then((voiceRateOverride) => {
-                        if (voiceRateOverride) {
-                            return true;
-                        }
+            () => this.getVoiceRateOverride(voiceName)
+                .then((voiceRateOverride) => {
+                    if (voiceRateOverride) {
+                        return true;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     isVoiceRateOverride(voiceName, rate) {
         return promiseTry(
-                () => this.getVoiceRateOverride(voiceName)
-                    .then((voiceRateOverride) => {
-                        if (voiceRateOverride) {
-                            return voiceRateOverride === rate;
-                        }
+            () => this.getVoiceRateOverride(voiceName)
+                .then((voiceRateOverride) => {
+                    if (voiceRateOverride) {
+                        return voiceRateOverride === rate;
+                    }
 
-                        return false;
-                    })
-            );
+                    return false;
+                })
+        );
     }
 
     getEffectiveRateForVoice(voiceName) {
