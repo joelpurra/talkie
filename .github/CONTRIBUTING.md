@@ -45,7 +45,7 @@
 
 - Translations, bug fixes, and new features are very welcome!
 - See the [developer documentation](../DEVELOP.md).
-- Follow [git-flow](http://danielkummer.github.io/git-flow-cheatsheet/) and use the `develop` branch as the base for your pull request.
+- Follow [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/) and use the `develop` branch as the base for your pull request.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](../CLA.md).
 
 

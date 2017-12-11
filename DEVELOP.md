@@ -32,7 +32,7 @@
 
 - Find the source code in the [Talkie repository on Github](https://github.com/joelpurra/talkie).
 - Use the `develop` branch as the base for your pull request.
-- Follow git-flow, preferably using  [`git-flow`](http://danielkummer.github.io/git-flow-cheatsheet/).
+- Follow git-flow, preferably using  [`git-flow`](https://danielkummer.github.io/git-flow-cheatsheet/).
 - It is recommended to use [`hub`](https://hub.github.com/) for forking and creating pull requests on github.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](CLA.md).
 
@@ -203,7 +203,7 @@ cat extension-files.txt
 npm run --silent prepackage
 
 # The "<release-version>" needs to follow semantic versioning, such as "v1.0.0".
-# http://semver.org/
+# https://semver.org/
 git flow release start <release-version>
 
 # Update files to contain the version number.

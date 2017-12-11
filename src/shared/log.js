@@ -27,7 +27,7 @@ const manifestProvider = new ManifestProvider();
 const extensionShortName = "Talkie";
 
 // https://stackoverflow.com/questions/12830649/check-if-chrome-extension-installed-in-unpacked-mode
-// http://stackoverflow.com/a/20227975
+// https://stackoverflow.com/a/20227975
 /* eslint-disable no-sync */
 const isDevMode = () => !("update_url" in manifestProvider.getSync());
 /* eslint-enable no-sync */
