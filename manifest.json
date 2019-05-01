@@ -73,7 +73,9 @@
   },
   "options_ui": {
     "page": "./src/options/options.html",
-    "chrome_style": true
+    "chrome_style": false,
+    "browser_style": false,
+    "open_in_tab": true
   },
   "requirements": {},
   "offline_enabled": true,
