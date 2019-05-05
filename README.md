@@ -44,11 +44,12 @@
 
 New voices, languages, dialects can be downloaded *for free* for your operating system from for example Microsoft and Apple. Once installed correctly, Talkie will auto-detect them.
 
-- [Windows 10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3)
+- [Windows 10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3): Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language <!-- TODO: translate system settings path. -->
 - [Windows 8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130)
 - [Windows 7](https://www.microsoft.com/en-us/download/details.aspx?id=27224)
-- [macOS Sierra (10.12)](https://support.apple.com/kb/PH25378)
+- [macOS](https://support.apple.com/kb/index?page=search&q=VoiceOver+language&product=PF6&doctype=PRODUCT_HELP,HOWTO_ARTICLES&locale=en_US): System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize... <!-- TODO: translate system settings path. -->
 - [US English Female Text-to-speech (by Google)](https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb)
+
 
 
 
