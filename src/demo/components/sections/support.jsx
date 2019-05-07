@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -155,7 +155,8 @@ export default class Support extends React.PureComponent {
                                     lang="en"
                                 >
                                     Windows 10
-                                </textBase.a>
+                                </textBase.a>: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
+                                {/* TODO: translate system settings path. */}
                             </listBase.li>
                             <listBase.li>
                                 <textBase.a
@@ -221,11 +222,12 @@ export default class Support extends React.PureComponent {
                         <listBase.ul>
                             <listBase.li>
                                 <textBase.a
-                                    href="https://support.apple.com/kb/PH25378"
+                                    href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
                                     lang="en"
                                 >
-                                        macOS Sierra (10.12)
-                                </textBase.a>
+                                        macOS
+                                </textBase.a>: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
+                                {/* TODO: translate system settings path. */}
                             </listBase.li>
                         </listBase.ul>
                     </layoutBase.details>
