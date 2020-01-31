@@ -113,7 +113,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "bluebird": "^3.5.1",
-    "chokidar-cli": "^1.2.0",
+    "chokidar-cli": "^2.1.0",
     "chrome-webstore-manager": "^0.4.2",
     "concurrently": "^3.5.1",
     "configvention": "^1.1.0",
@@ -160,7 +160,7 @@
     "styletron-client": "^3.0.0-rc.3",
     "styletron-react": "^3.0.0-rc.3",
     "uglify-es": "^3.1.10",
-    "web-ext": "^2.2.2",
+    "web-ext": "^4.0.0",
     "webextension-polyfill": "^0.2.1"
   },
   "browserslist": [
