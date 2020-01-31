@@ -29,8 +29,8 @@ export default mergeOptions(
     reactRollupConfig(fileName),
     {
         input: `src/${inputName}/${fileName}.js`,
-        name: fileName,
         output: {
+            name: fileName,
             file: `dist/${fileName}.js`,
         },
     },

@@ -23,10 +23,12 @@ const path = require("path");
 
 export default (name) =>
     license({
-        sourceMap: true,
+        sourcemap: true,
 
         banner: {
-            file: path.join(__dirname, "LICENSE-BANNER"),
+            content: {
+                file: path.join(__dirname, "LICENSE-BANNER"),
+            },
         },
 
         thirdParty: {
