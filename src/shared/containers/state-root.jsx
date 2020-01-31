@@ -45,8 +45,9 @@ const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint
     return {};
 };
 
+export default
 @connect(mapStateToProps, mapDispatchToProps)
-export default class StateRoot extends React.PureComponent {
+class StateRoot extends React.PureComponent {
     static defaultProps = {
         isSpeaking: false,
         isPremiumVersion: false,

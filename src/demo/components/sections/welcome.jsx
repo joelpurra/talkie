@@ -33,9 +33,10 @@ import Discretional from "../../../shared/components/discretional.jsx";
 import HeroVersionSection from "../../../shared/components/hero-section/hero-version-section.jsx";
 import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class Welcome extends React.PureComponent {
+class Welcome extends React.PureComponent {
     constructor(props) {
         super(props);
 

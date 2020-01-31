@@ -26,8 +26,9 @@ import translate from "../../../../shared/hocs/translate.jsx";
 import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 import * as formBase from "../../../../shared/styled/form/form-base.jsx";
 
+export default
 @translate
-export default class SampleText extends React.PureComponent {
+class SampleText extends React.PureComponent {
     constructor(props) {
         super(props);
 

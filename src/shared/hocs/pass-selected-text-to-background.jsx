@@ -177,7 +177,7 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
                             .then((killSwitch) => this.killSwitches.push(killSwitch)),
                         /* eslint-enable no-unused-vars */
                     ]);
-                }
+                },
             );
         }
     };

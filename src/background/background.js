@@ -211,7 +211,7 @@ function main() {
         /* eslint-disable no-unused-vars */
         const onInstallListenerEventQueueHandlerTimeoutId = setTimeout(
             () => onInstalledManager.onInstallListenerEventQueueHandler(),
-            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT
+            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT,
         );
         /* eslint-enable no-unused-vars */
 
@@ -222,7 +222,7 @@ function main() {
         /* eslint-disable no-unused-vars */
         const onInstallListenerEventQueueHandlerIntervalId = setInterval(
             () => onInstalledManager.onInstallListenerEventQueueHandler(),
-            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL
+            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL,
         );
         /* eslint-enable no-unused-vars */
     }());

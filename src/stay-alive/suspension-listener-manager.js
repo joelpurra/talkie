@@ -130,7 +130,7 @@ export default class SuspensionListenerManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -151,14 +151,14 @@ export default class SuspensionListenerManager {
                             // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onMessage
                             // https://developer.chrome.com/extensions/runtime
                             this._preventSuspendPromiseResolve = resolve;
-                        })
+                        }),
                     )
                     .then(() => {
                         logDebug("Done", "_preventSuspendPromise", "resolved");
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -175,7 +175,7 @@ export default class SuspensionListenerManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -196,7 +196,7 @@ export default class SuspensionListenerManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -227,7 +227,7 @@ export default class SuspensionListenerManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 }

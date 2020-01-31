@@ -37,7 +37,7 @@ export default class VoicePitchManager {
     getVoicePitchDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
         return promiseTry(
             // TODO: initialize a "real" synthesizer voice, then read out the pitch value.
-            () => pitchRange.default
+            () => pitchRange.default,
         );
     }
 
@@ -50,7 +50,7 @@ export default class VoicePitchManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -70,7 +70,7 @@ export default class VoicePitchManager {
                     }
 
                     return {};
-                })
+                }),
         );
     }
 
@@ -83,7 +83,7 @@ export default class VoicePitchManager {
                     }
 
                     return undefined;
-                })
+                }),
         );
     }
 
@@ -92,7 +92,7 @@ export default class VoicePitchManager {
             () => this._getVoicePitchOverrides()
                 .then((voicePitchPitchOverrides) => {
                     return voicePitchPitchOverrides[voiceName] || null;
-                })
+                }),
         );
     }
 
@@ -103,7 +103,7 @@ export default class VoicePitchManager {
                     voicePitchPitchOverrides[voiceName] = pitch;
 
                     return this._setVoicePitchOverrides(voicePitchPitchOverrides);
-                })
+                }),
         );
     }
 
@@ -114,7 +114,7 @@ export default class VoicePitchManager {
                     delete voicePitchPitchOverrides[voiceName];
 
                     return this._setVoicePitchOverrides(voicePitchPitchOverrides);
-                })
+                }),
         );
     }
 
@@ -127,7 +127,7 @@ export default class VoicePitchManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -140,7 +140,7 @@ export default class VoicePitchManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -153,7 +153,7 @@ export default class VoicePitchManager {
                     }
 
                     return this.getVoicePitchDefault(voiceName);
-                })
+                }),
         );
     }
 }

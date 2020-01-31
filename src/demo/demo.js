@@ -38,13 +38,13 @@ const start = () => promiseTry(
     () => Promise.resolve()
         .then(() => startReactFrontend())
         .then(() => loadRoot())
-        .then(() => undefined)
+        .then(() => undefined),
 );
 
 const stop = () => promiseTry(
     // NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
     () => stopReactFrontend()
-        .then(() => undefined)
+        .then(() => undefined),
 );
 
 registerUnhandledRejectionHandler();

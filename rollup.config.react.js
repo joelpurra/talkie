@@ -19,5 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default {
-    sourcemap: true,
+    output: {
+        sourcemap: true,
+    },
 };

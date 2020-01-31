@@ -29,9 +29,10 @@ import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
 import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class About extends React.PureComponent {
+class About extends React.PureComponent {
     constructor(props) {
         super(props);
 

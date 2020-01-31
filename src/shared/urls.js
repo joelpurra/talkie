@@ -41,7 +41,7 @@ export const openUrlInNewTab = (url) => promiseTry(
             active: true,
             url: url,
         });
-    }
+    },
 );
 
 export const openInternalUrlInNewTab = (url) => promiseTry(
@@ -60,7 +60,7 @@ export const openInternalUrlInNewTab = (url) => promiseTry(
             active: true,
             url: url,
         });
-    }
+    },
 );
 
 export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
@@ -72,7 +72,7 @@ export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
             }
 
             return openUrlInNewTab(url);
-        })
+        }),
 );
 
 export const openInternalUrlFromConfigurationInNewTab = (id) => promiseTry(
@@ -84,7 +84,7 @@ export const openInternalUrlFromConfigurationInNewTab = (id) => promiseTry(
             }
 
             return openInternalUrlInNewTab(url);
-        })
+        }),
 );
 
 export const openShortKeysConfiguration = () => promiseTry(
@@ -95,11 +95,11 @@ export const openShortKeysConfiguration = () => promiseTry(
             active: true,
             url: url,
         });
-    }
+    },
 );
 
 export const openOptionsPage = () => promiseTry(
     () => {
         return browser.runtime.openOptionsPage();
-    }
+    },
 );

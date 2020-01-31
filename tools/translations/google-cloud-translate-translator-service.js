@@ -84,7 +84,7 @@ export default class GoogleCloudTranslateTranslator {
 
                             return chunked;
                         },
-                        []
+                        [],
                     );
 
                     return preparedMessagesChunks;
@@ -99,7 +99,7 @@ export default class GoogleCloudTranslateTranslator {
                     // NOTE: translating one chunk at a time.
                     return Promise.mapSeries(
                         preparedMessagesChunks,
-                        (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions)
+                        (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions),
                     );
                 })
                 // NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
@@ -112,7 +112,7 @@ export default class GoogleCloudTranslateTranslator {
                     [
                         [],
                         [],
-                    ]
+                    ],
                 ))
                 .then((translationResponses) => {
                     const translations = translationResponses[0];

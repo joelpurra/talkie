@@ -47,8 +47,9 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+export default
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.PureComponent {
+class VoicesContainer extends React.PureComponent {
     componentDidMount() {
         this.props.actions.sharedVoices.loadSpeakLongTexts();
     }

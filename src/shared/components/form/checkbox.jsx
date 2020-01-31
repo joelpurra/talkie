@@ -25,8 +25,9 @@ import styled from "../../hocs/styled.jsx";
 
 import * as formBase from "../../styles/form/form-base";
 
+export default
 @styled(formBase.checkbox)
-export default class Checkbox extends React.PureComponent {
+class Checkbox extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -47,7 +48,7 @@ export default class Checkbox extends React.PureComponent {
         className: PropTypes.string.isRequired,
     }
 
-    handleOnChange({target}) {
+    handleOnChange({ target }) {
         this.props.onChange(target.checked === true);
     }
 

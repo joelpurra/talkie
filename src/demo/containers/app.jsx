@@ -51,8 +51,9 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+export default
 @connect(mapStateToProps, mapDispatchToProps)
-export default class App extends React.PureComponent {
+class App extends React.PureComponent {
     static defaultProps = {
         isPremiumVersion: false,
         versionNumber: null,

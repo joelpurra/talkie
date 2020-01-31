@@ -67,7 +67,7 @@ export default class OnInstalledManager {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 
@@ -86,7 +86,7 @@ export default class OnInstalledManager {
 
                     return undefined;
                 })
-                .catch((error) => logError("onExtensionInstalledHandler", error))
+                .catch((error) => logError("onExtensionInstalledHandler", error)),
         );
     }
 
@@ -105,7 +105,7 @@ export default class OnInstalledManager {
                             return undefined;
                         });
                 }
-            }
+            },
         );
     }
 }

@@ -27,7 +27,7 @@ export const promiseTry = (fn) => new Promise(
         } catch (error) {
             reject(error);
         }
-    }
+    },
 );
 
 export const promiseSeries = (promiseFunctions, state) => promiseTry(
@@ -46,7 +46,7 @@ export const promiseSeries = (promiseFunctions, state) => promiseTry(
 
         return Promise.resolve(first(state))
             .then((result) => promiseSeries(rest, result));
-    }
+    },
 );
 
 export const promiseTimeout = (promise, limit) => {

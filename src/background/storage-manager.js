@@ -97,7 +97,7 @@ export default class StorageManager {
                 }
 
                 return `${storageFormatVersion}_${key}`;
-            }
+            },
         );
     }
 
@@ -112,7 +112,7 @@ export default class StorageManager {
                         // TODO: check for the specific storageKey errors.
                         return false;
                     });
-            }
+            },
         );
     }
 
@@ -134,7 +134,7 @@ export default class StorageManager {
                                 return undefined;
                             });
                     });
-            }
+            },
         );
     }
 
@@ -149,7 +149,7 @@ export default class StorageManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -177,7 +177,7 @@ export default class StorageManager {
                                 return value;
                             });
                     });
-            }
+            },
         );
     }
 
@@ -192,7 +192,7 @@ export default class StorageManager {
 
                         return value;
                     });
-            }
+            },
         );
     }
 
@@ -217,7 +217,7 @@ export default class StorageManager {
                                     .then(() => true);
                             });
                     });
-            }
+            },
         );
 
         return identityUpgrader;
@@ -235,7 +235,7 @@ export default class StorageManager {
                 const upgradePromises = storageKeysForVersion.map((key) => this._upgradeKey(fromStorageFormatVersion, toStorageFormatVersion, key));
 
                 return Promise.all(upgradePromises);
-            }
+            },
         );
     }
 
@@ -243,7 +243,7 @@ export default class StorageManager {
         return promiseTry(
             () => {
                 return this._getStoredValue(storageFormatVersion, this.storageMetadataId);
-            }
+            },
         );
     }
 
@@ -258,7 +258,7 @@ export default class StorageManager {
 
                         return false;
                     });
-            }
+            },
         );
     }
 
@@ -282,7 +282,7 @@ export default class StorageManager {
 
                         return this._setStoredValue(storageFormatVersion, this.storageMetadataId, storageMetadata);
                     });
-            }
+            },
         );
     }
 
@@ -309,7 +309,7 @@ export default class StorageManager {
 
                         return false;
                     });
-            }
+            },
         );
     }
 
@@ -348,7 +348,7 @@ export default class StorageManager {
                                 return firstInitializedUpgradePath;
                             });
                     });
-            }
+            },
         );
     }
 
@@ -379,7 +379,7 @@ export default class StorageManager {
 
                         return false;
                     });
-            }
+            },
         );
     }
 
@@ -407,7 +407,7 @@ export default class StorageManager {
 
                         return false;
                     });
-            }
+            },
         );
     }
 
@@ -428,7 +428,7 @@ export default class StorageManager {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 }

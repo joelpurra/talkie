@@ -37,7 +37,7 @@ export default class VoiceRateManager {
     getVoiceRateDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
         return promiseTry(
             // TODO: initialize a "real" synthesizer voice, then read out the rate value.
-            () => rateRange.default
+            () => rateRange.default,
         );
     }
 
@@ -50,7 +50,7 @@ export default class VoiceRateManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -70,7 +70,7 @@ export default class VoiceRateManager {
                     }
 
                     return {};
-                })
+                }),
         );
     }
 
@@ -83,7 +83,7 @@ export default class VoiceRateManager {
                     }
 
                     return undefined;
-                })
+                }),
         );
     }
 
@@ -92,7 +92,7 @@ export default class VoiceRateManager {
             () => this._getVoiceRateOverrides()
                 .then((voiceRateRateOverrides) => {
                     return voiceRateRateOverrides[voiceName] || null;
-                })
+                }),
         );
     }
 
@@ -103,7 +103,7 @@ export default class VoiceRateManager {
                     voiceRateRateOverrides[voiceName] = rate;
 
                     return this._setVoiceRateOverrides(voiceRateRateOverrides);
-                })
+                }),
         );
     }
 
@@ -114,7 +114,7 @@ export default class VoiceRateManager {
                     delete voiceRateRateOverrides[voiceName];
 
                     return this._setVoiceRateOverrides(voiceRateRateOverrides);
-                })
+                }),
         );
     }
 
@@ -127,7 +127,7 @@ export default class VoiceRateManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -140,7 +140,7 @@ export default class VoiceRateManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -153,7 +153,7 @@ export default class VoiceRateManager {
                     }
 
                     return this.getVoiceRateDefault(voiceName);
-                })
+                }),
         );
     }
 }

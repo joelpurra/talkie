@@ -32,9 +32,10 @@ import * as buttonBase from "../../../shared/styled/button/button-base.jsx";
 import Discretional from "../../../shared/components/discretional.jsx";
 import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class Header extends React.PureComponent {
+class Header extends React.PureComponent {
     constructor(props) {
         super(props);
 

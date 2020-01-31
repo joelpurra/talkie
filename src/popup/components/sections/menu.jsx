@@ -30,9 +30,10 @@ import * as textBase from "../../../shared/styled/text/text-base.jsx";
 
 import Icon from "../../../shared/components/icon/icon.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class Menu extends React.PureComponent {
+class Menu extends React.PureComponent {
     constructor(props) {
         super(props);
 

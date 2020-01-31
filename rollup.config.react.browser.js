@@ -19,13 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@rollup/plugin-commonjs";
 import globals from "rollup-plugin-node-globals";
-import json from "rollup-plugin-json";
-import replace from "rollup-plugin-replace";
-import resolve from "rollup-plugin-node-resolve";
+import json from "@rollup/plugin-json";
+import replace from "@rollup/plugin-replace";
+import resolve from "@rollup/plugin-node-resolve";
 
-import uglify from "./rollup.config.uglify.js";
 import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
 import reactRollupConfig from "./rollup.config.react";
@@ -44,15 +43,6 @@ export default (name) => mergeOptions(
             "redux",
             "reselect",
         ],
-        globals: {
-            "prop-types": "PropTypes",
-            "react-dom": "ReactDOM",
-            "react-redux": "ReactRedux",
-            "react": "React",
-            "redux-thunk": "ReduxThunk",
-            "redux": "Redux",
-            "reselect": "Reselect",
-        },
         plugins: [
             json(),
             babel({
@@ -73,17 +63,21 @@ export default (name) => mergeOptions(
                     "node_modules/**",
                 ],
             }),
-            resolve({
-                jsnext: true,
-                main: true,
-                browser: true,
-            }),
-            uglify(),
+            resolve(),
             license(name),
             filesize(),
         ],
         output: {
             format: "iife",
+            globals: {
+                "prop-types": "PropTypes",
+                "react-dom": "ReactDOM",
+                "react-redux": "ReactRedux",
+                "react": "React",
+                "redux-thunk": "ReduxThunk",
+                "redux": "Redux",
+                "reselect": "Reselect",
+            },
         },
-    }
+    },
 );

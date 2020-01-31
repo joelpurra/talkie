@@ -25,8 +25,9 @@ import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
 import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 
+export default
 @translateAttribute
-export default class AvailableLanguages extends React.PureComponent {
+class AvailableLanguages extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -52,7 +53,7 @@ export default class AvailableLanguages extends React.PureComponent {
                 localService: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
                 voiceURI: PropTypes.string.isRequired,
-            })).isRequired
+            })).isRequired,
         ).isRequired,
         voicesByLanguageGroup: PropTypes.objectOf(
             PropTypes.arrayOf(PropTypes.shape({
@@ -61,11 +62,11 @@ export default class AvailableLanguages extends React.PureComponent {
                 localService: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
                 voiceURI: PropTypes.string.isRequired,
-            })).isRequired
+            })).isRequired,
         ).isRequired,
         languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         languagesByLanguageGroup: PropTypes.objectOf(
-            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         ).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
@@ -159,7 +160,7 @@ export default class AvailableLanguages extends React.PureComponent {
                 >
                     {frontendVoicesShowAllVoicesTranslated}
                 </option>,
-            ]
+            ],
         );
 
         return (

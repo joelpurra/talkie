@@ -29,8 +29,9 @@ import {
 
 import * as formBase from "../../styles/form/form-base";
 
+export default
 @styled(formBase.multilineSelect)
-export default class MultilineSelect extends React.PureComponent {
+class MultilineSelect extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -56,7 +57,7 @@ export default class MultilineSelect extends React.PureComponent {
         children: PropTypes.node.isRequired,
     }
 
-    handleOnChange({target}) {
+    handleOnChange({ target }) {
         this.props.onChange(target.value);
 
         scrollIntoViewIfNeeded(this.selectElement);

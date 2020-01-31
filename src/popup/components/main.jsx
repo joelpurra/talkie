@@ -39,8 +39,9 @@ const styles = {
     maxWidth: "300px",
 };
 
+export default
 @styled(styles)
-export default class Main extends React.PureComponent {
+class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 

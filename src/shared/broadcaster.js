@@ -53,7 +53,7 @@ export default class Broadcaster {
                 if (countBefore === countAfter) {
                     throw new Error("The specific listening action handler was not registered for action: " + actionName);
                 }
-            }
+            },
         );
     }
 
@@ -68,7 +68,7 @@ export default class Broadcaster {
                 };
 
                 return killSwitch;
-            }
+            },
         );
     }
 

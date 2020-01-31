@@ -47,7 +47,7 @@ export default class ScaleRangeDatalist extends React.PureComponent {
                 key={step.toString()}
                 value={step}
                 disabled={disabled || null}
-            />
+            />,
         );
 
         return (

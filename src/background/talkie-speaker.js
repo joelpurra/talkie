@@ -124,7 +124,7 @@ export default class TalkieSpeaker {
                         } catch (error) {
                             return reject(error);
                         }
-                    }
+                    },
                 );
 
                 return promiseTimeout(asyncSynthesizerInitialization, 1000)
@@ -159,7 +159,7 @@ export default class TalkieSpeaker {
                 this.cachedSynthesizer = null;
 
                 return undefined;
-            }
+            },
         );
     }
 
@@ -176,7 +176,7 @@ export default class TalkieSpeaker {
 
                         return this.cachedSynthesizer;
                     });
-            }
+            },
         );
     }
 
@@ -185,7 +185,7 @@ export default class TalkieSpeaker {
             () => this.getSynthesizer()
                 .then((synthesizer) => {
                     return synthesizer.getVoices();
-                })
+                }),
         );
     }
 
@@ -211,7 +211,7 @@ export default class TalkieSpeaker {
                                 return undefined;
                             });
                     });
-            }
+            },
         );
     }
 
@@ -258,8 +258,8 @@ export default class TalkieSpeaker {
                     } catch (error) {
                         return reject(error);
                     }
-                }
-            )
+                },
+            ),
             );
     }
 
@@ -279,7 +279,7 @@ export default class TalkieSpeaker {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 
@@ -366,7 +366,7 @@ export default class TalkieSpeaker {
                         return undefined;
                     })
                     .then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeaking, speakingEventData));
-            }
+            },
         );
     }
 
@@ -393,7 +393,7 @@ export default class TalkieSpeaker {
                     logDebug("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${voice.name}, ${voice.lang})`);
 
                     return undefined;
-                })
+                }),
         );
     }
 
@@ -410,7 +410,7 @@ export default class TalkieSpeaker {
                         return this.speakTextInVoice(text, voice);
                     })
                     .then(() => logDebug("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`));
-            }
+            },
         );
     }
 }

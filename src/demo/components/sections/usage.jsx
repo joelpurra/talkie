@@ -36,9 +36,10 @@ import Icon from "../../../shared/components/icon/icon.jsx";
 import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
 import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-icon.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class Usage extends React.PureComponent {
+class Usage extends React.PureComponent {
     constructor(props) {
         super(props);
 

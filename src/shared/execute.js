@@ -42,7 +42,7 @@ export default class Execute {
                     {
                         allFrames: false,
                         code: code,
-                    }
+                    },
                 )
                     .then((result) => {
                         logDebug("Done", "scriptInTopFrame", code.length);
@@ -54,7 +54,7 @@ export default class Execute {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 
@@ -67,7 +67,7 @@ export default class Execute {
                     {
                         allFrames: true,
                         code: code,
-                    }
+                    },
                 )
                     .then((result) => {
                         logDebug("Done", "scriptInAllFrames", code.length);
@@ -79,7 +79,7 @@ export default class Execute {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 
@@ -90,7 +90,7 @@ export default class Execute {
 
                 return promiseTimeout(
                     this.scriptInTopFrame(code),
-                    timeout
+                    timeout,
                 )
                     .then((result) => {
                         logDebug("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
@@ -104,7 +104,7 @@ export default class Execute {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 
@@ -115,7 +115,7 @@ export default class Execute {
 
                 return promiseTimeout(
                     this.scriptInAllFrames(code),
-                    timeout
+                    timeout,
                 )
                     .then((result) => {
                         logDebug("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
@@ -129,7 +129,7 @@ export default class Execute {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 }

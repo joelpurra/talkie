@@ -50,13 +50,13 @@ const stopStayAliveListener = () => {
 
 const start = () => promiseTry(
     () => startStayAliveListener()
-        .then(() => undefined)
+        .then(() => undefined),
 );
 
 const stop = () => promiseTry(
     // NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
     () => stopStayAliveListener()
-        .then(() => undefined)
+        .then(() => undefined),
 );
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));

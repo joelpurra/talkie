@@ -67,7 +67,7 @@ export default class SuspensionConnectorManager {
                 this.talkiePreventSuspensionPort.postMessage("Hello from the SuspensionConnectorManager.");
 
                 logDebug("Done", "_connectToStayAlive");
-            }
+            },
         );
     }
 
@@ -93,7 +93,7 @@ export default class SuspensionConnectorManager {
                 this.talkiePreventSuspensionPort = null;
 
                 logDebug("Done", "_disconnectToDie");
-            }
+            },
         );
     }
 }

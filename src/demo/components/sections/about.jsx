@@ -29,9 +29,10 @@ import * as textBase from "../../../shared/styled/text/text-base.jsx";
 
 import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
+export default
 @translateAttribute
 @configureAttribute
-export default class About extends React.PureComponent {
+class About extends React.PureComponent {
     constructor(props) {
         super(props);
 

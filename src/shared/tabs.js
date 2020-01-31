@@ -35,7 +35,7 @@ export const getBackgroundPage = () => promiseTry(
             }
 
             return null;
-        })
+        }),
 );
 
 export const getCurrentActiveTab = () => promiseTry(
@@ -64,7 +64,7 @@ export const getCurrentActiveTab = () => promiseTry(
 
                 return null;
             });
-    }
+    },
 );
 
 export const getCurrentActiveTabId = () => getCurrentActiveTab()
@@ -99,7 +99,7 @@ export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry
             }
 
             return false;
-        })
+        }),
 );
 
 const getCurrentActiveNormalLoadedTab = () => promiseTry(
@@ -126,7 +126,7 @@ const getCurrentActiveNormalLoadedTab = () => promiseTry(
 
                 return null;
             });
-    }
+    },
 );
 
 export const canTalkieRunInTab = () => promiseTry(
@@ -163,7 +163,7 @@ export const canTalkieRunInTab = () => promiseTry(
             }
 
             return false;
-        })
+        }),
 );
 
 // NOTE: used to check if a DOM element cross-page (background, popup, options, ...) reference was used after it was supposed to be unreachable (memory leak).
