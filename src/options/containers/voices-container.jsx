@@ -61,8 +61,9 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+export default
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.PureComponent {
+class VoicesContainer extends React.PureComponent {
     componentDidMount() {
         // TODO: is this the best place to load data?
         this.props.actions.sharedVoices.loadVoices();
@@ -85,7 +86,7 @@ export default class VoicesContainer extends React.PureComponent {
                 localService: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
                 voiceURI: PropTypes.string.isRequired,
-            })).isRequired
+            })).isRequired,
         ).isRequired,
         voicesByLanguageGroup: PropTypes.objectOf(
             PropTypes.arrayOf(PropTypes.shape({
@@ -94,12 +95,12 @@ export default class VoicesContainer extends React.PureComponent {
                 localService: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
                 voiceURI: PropTypes.string.isRequired,
-            })).isRequired
+            })).isRequired,
         ).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         languagesByLanguageGroup: PropTypes.objectOf(
-            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         ).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,

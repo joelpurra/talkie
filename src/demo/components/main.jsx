@@ -52,13 +52,14 @@ const styles = Object.assign(
     {
         minHeight: "450px",
         paddingBottom: "2em",
-    }
+    },
 );
 
+export default
 @translateAttribute
 @styled(styles)
 @passSelectedTextToBackground
-export default class Main extends React.PureComponent {
+class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -104,7 +105,7 @@ export default class Main extends React.PureComponent {
                     left: 0,
                     right: 0,
                     backgroundColor: "#ffffff",
-                }
+                },
             ))("div"),
 
             main: styled({
@@ -141,7 +142,7 @@ export default class Main extends React.PureComponent {
         setTimeout(() => this.scrollToTop(), 100);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.activeTabId !== nextProps.activeTabId) {
             this.scrollToTop();
         }

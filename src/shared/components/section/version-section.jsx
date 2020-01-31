@@ -28,9 +28,10 @@ import * as textBase from "../../styled/text/text-base.jsx";
 
 import TalkieVersionIcon from "../icon/talkie-version-icon.jsx";
 
+export default
 @translateAttribute
 @configureAttribute
-export default class VersionSection extends React.PureComponent {
+class VersionSection extends React.PureComponent {
     static defaultProps = {
         mode: "h2",
         isPremiumVersion: false,

@@ -78,7 +78,7 @@ export default class NodeEnvironmentTranslatorProvider {
 
                         return obj;
                     },
-                    {}
+                    {},
                 );
 
             const replace = (/* eslint-disable no-unused-vars */match/* eslint-enable no-unused-vars */, variableName) => {

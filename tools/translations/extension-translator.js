@@ -36,7 +36,7 @@ const configuration = require("configvention");
 
 const getDirectoryNames = (directoryPath) => readDir(directoryPath)
     .filter((file) => stat(path.join(directoryPath, file))
-        .then((stats) => stats.isDirectory())
+        .then((stats) => stats.isDirectory()),
     );
 
 const localesDirectoryName = "_locales";

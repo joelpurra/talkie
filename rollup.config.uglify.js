@@ -26,5 +26,7 @@ import {
 export default () =>
     uglify({
         // TODO: build configuration.
+        /* eslint-disable camelcase */
         keep_fnames: true,
+        /* eslint-enable camelcase */
     }, minify);

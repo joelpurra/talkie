@@ -33,8 +33,9 @@ import Icon from "../../../shared/components/icon/icon.jsx";
 
 import ProgressContainer from "../../containers/progress-container.jsx";
 
+export default
 @translateAttribute
-export default class Status extends React.PureComponent {
+class Status extends React.PureComponent {
     constructor(props) {
         super(props);
 

@@ -87,5 +87,5 @@ export default (name) => mergeOptions(
         output: {
             format: "cjs",
         },
-    }
+    },
 );

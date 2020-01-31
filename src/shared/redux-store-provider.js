@@ -31,7 +31,7 @@ export default class ReduxStoreProvider {
         const middlewares = applyMiddleware(thunk.withExtraArgument(api));
 
         const enhancer = compose(
-            middlewares
+            middlewares,
         );
 
         const store = createStore(rootReducer, initialState, enhancer);

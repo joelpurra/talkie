@@ -80,7 +80,7 @@ export default class ReadClipboardManager {
 
                         return result;
                     });
-            }
+            },
         );
     }
 }

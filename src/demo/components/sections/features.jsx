@@ -34,9 +34,10 @@ import PremiumSection from "../../../shared/components/section/premium-section.j
 import TalkieFreeIcon from "../../../shared/components/icon/talkie-free-icon.jsx";
 import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-icon.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class Features extends React.PureComponent {
+class Features extends React.PureComponent {
     constructor(props) {
         super(props);
 

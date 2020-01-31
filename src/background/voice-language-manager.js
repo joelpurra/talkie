@@ -43,7 +43,7 @@ export default class VoiceLanguageManager {
                 };
 
                 return resolveVoiceAsMappedVoice(mappedVoice);
-            }
+            },
         );
     }
 
@@ -56,7 +56,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -76,7 +76,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return {};
-                })
+                }),
         );
     }
 
@@ -89,7 +89,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return undefined;
-                })
+                }),
         );
     }
 
@@ -98,7 +98,7 @@ export default class VoiceLanguageManager {
             () => this._getLanguageLanguageVoiceOverrideNames()
                 .then((languageLanguageVoiceOverrideNames) => {
                     return languageLanguageVoiceOverrideNames[languageName] || null;
-                })
+                }),
         );
     }
 
@@ -109,7 +109,7 @@ export default class VoiceLanguageManager {
                     languageLanguageVoiceOverrideNames[languageName] = voiceName;
 
                     return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
-                })
+                }),
         );
     }
 
@@ -120,7 +120,7 @@ export default class VoiceLanguageManager {
                     delete languageLanguageVoiceOverrideNames[languageName];
 
                     return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
-                })
+                }),
         );
     }
 
@@ -133,7 +133,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -146,7 +146,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -159,7 +159,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return this.setLanguageVoiceOverrideName(languageName, voiceName);
-                })
+                }),
         );
     }
 
@@ -180,7 +180,7 @@ export default class VoiceLanguageManager {
                     }
 
                     return this.getLanguageVoiceDefault(languageName);
-                })
+                }),
         );
     }
 }

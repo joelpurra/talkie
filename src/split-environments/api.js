@@ -96,7 +96,7 @@ export default class Api {
 
     getSampleText() {
         return promiseTry(
-            () => this.translator.translate("frontend_voicesSampleText")
+            () => this.translator.translate("frontend_voicesSampleText"),
         );
     }
 

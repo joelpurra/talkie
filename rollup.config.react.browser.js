@@ -85,5 +85,5 @@ export default (name) => mergeOptions(
         output: {
             format: "iife",
         },
-    }
+    },
 );

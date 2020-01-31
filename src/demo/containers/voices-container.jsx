@@ -58,8 +58,9 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+export default
 @connect(mapStateToProps, mapDispatchToProps)
-export default class VoicesContainer extends React.PureComponent {
+class VoicesContainer extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         voices: PropTypes.arrayOf(PropTypes.shape({
@@ -77,8 +78,8 @@ export default class VoicesContainer extends React.PureComponent {
                     localService: PropTypes.bool.isRequired,
                     name: PropTypes.string.isRequired,
                     voiceURI: PropTypes.string.isRequired,
-                })).isRequired
-            ).isRequired
+                })).isRequired,
+            ).isRequired,
         ).isRequired,
         navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,

@@ -102,7 +102,7 @@ export default class Configuration {
                         || null;
 
                     return value;
-                })
+                }),
         );
     }
 

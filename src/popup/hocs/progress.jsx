@@ -145,11 +145,11 @@ export default function progressHoc(ComponentToWrap) {
                         knownEvents.updateProgress,
                         (
                             /* eslint-disable no-unused-vars */actionName/* eslint-enable no-unused-vars */,
-                            actionData
-                        ) => this.updateProgress(actionData)
+                            actionData,
+                        ) => this.updateProgress(actionData),
                     )
                         .then((killSwitch) => this.killSwitches.push(killSwitch));
-                }
+                },
             );
         }
     };

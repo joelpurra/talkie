@@ -34,10 +34,11 @@ import TalkieVersionIcon from "../../shared/components/icon/talkie-version-icon.
 
 const styles = {};
 
+export default
 @configureAttribute
 @translateAttribute
 @styled(styles)
-export default class Header extends React.PureComponent {
+class Header extends React.PureComponent {
     constructor(props) {
         super(props);
 

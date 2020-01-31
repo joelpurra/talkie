@@ -143,7 +143,7 @@ export default function isSpeakingHoc(ComponentToWrap) {
                             .then((killSwitch) => this.killSwitches.push(killSwitch)),
                         /* eslint-enable no-unused-vars */
                     ]);
-                }
+                },
             );
         }
     };

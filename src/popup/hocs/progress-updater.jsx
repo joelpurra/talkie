@@ -23,8 +23,9 @@ import PropTypes from "prop-types";
 
 import progress from "../hocs/progress.jsx";
 
+export default
 @progress
-export default class ProgressUpdater extends React.PureComponent {
+class ProgressUpdater extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         min: PropTypes.number.isRequired,
@@ -32,7 +33,7 @@ export default class ProgressUpdater extends React.PureComponent {
         max: PropTypes.number.isRequired,
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.min !== nextProps.min) {
             this.props.actions.sharedProgress.setMin(nextProps.min);
         }

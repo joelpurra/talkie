@@ -27,8 +27,9 @@ import * as textBase from "../../../../shared/styled/text/text-base.jsx";
 
 import Checkbox from "../../../../shared/components/form/checkbox.jsx";
 
+export default
 @translateAttribute
-export default class SpeakLongTexts extends React.PureComponent {
+class SpeakLongTexts extends React.PureComponent {
     constructor(props) {
         super(props);
 

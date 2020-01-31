@@ -34,7 +34,7 @@ export default class SpeakingStatus {
 
     getSpeakingTabId() {
         return promiseTry(
-            () => this.currentSpeakingTab
+            () => this.currentSpeakingTab,
         );
     }
 
@@ -55,7 +55,7 @@ export default class SpeakingStatus {
         return promiseTry(
             () => {
                 this.currentSpeakingTab = null;
-            }
+            },
         );
     }
 
@@ -73,7 +73,7 @@ export default class SpeakingStatus {
 
     isSpeakingTabId(tabId) {
         return promiseTry(
-            () => this.currentSpeakingTab !== null && tabId === this.currentSpeakingTab
+            () => this.currentSpeakingTab !== null && tabId === this.currentSpeakingTab,
         );
     }
 

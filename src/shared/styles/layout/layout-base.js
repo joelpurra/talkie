@@ -39,7 +39,7 @@ export const hr = Object.assign(
         borderStyle: "solid",
         borderWidth: 0,
         borderTopWidth: "1px",
-    }
+    },
 );
 
 export const details = {};

@@ -85,7 +85,7 @@ export default class LanguageHelper {
 
                         return null;
                     });
-            }
+            },
         );
     }
 
@@ -129,7 +129,7 @@ export default class LanguageHelper {
 
                         return primaryDetectedTextLanguage;
                     });
-            }
+            },
         );
     }
 
@@ -155,7 +155,7 @@ export default class LanguageHelper {
                     .filter(hasValidText);
 
                 return selectionsWithValidText;
-            }
+            },
         );
     }
 
@@ -172,8 +172,8 @@ export default class LanguageHelper {
 
                                 return copy;
                             });
-                    })
-            )
+                    }),
+            ),
         );
     }
 
@@ -272,7 +272,7 @@ export default class LanguageHelper {
                     .map(setEffectiveLanguage);
 
                 return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
-            }
+            },
         );
     }
 
@@ -305,7 +305,7 @@ export default class LanguageHelper {
                 }
 
                 return results;
-            }
+            },
         );
     }
 

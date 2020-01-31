@@ -29,7 +29,7 @@ const dualLogger = new DualLogger("shared-frontend.js");
 const reflow = () => promiseTry(
     () => {
         document.body.style.marginBottom = "0";
-    }
+    },
 );
 
 export const eventToPromise = (eventHandler, event) => promiseTry(
@@ -40,7 +40,7 @@ export const eventToPromise = (eventHandler, event) => promiseTry(
             .then(() => eventHandler(event))
             .then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event && event.type, event, result))
             .catch((error) => dualLogger.dualLogError("eventToPromise", event && event.type, event, error));
-    }
+    },
 );
 
 const focusFirstLink = () => promiseTry(
@@ -52,18 +52,18 @@ const focusFirstLink = () => promiseTry(
 
             firstLinkElement.focus();
         }
-    }
+    },
 );
 
 export const startReactFrontend = () => promiseTry(
     () => Promise.all([
         focusFirstLink(),
         reflow(),
-    ])
+    ]),
 );
 
 export const stopReactFrontend = () => promiseTry(
     () => {
         // TODO: unregister listeners.
-    }
+    },
 );

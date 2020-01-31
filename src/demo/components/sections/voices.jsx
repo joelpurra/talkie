@@ -39,8 +39,9 @@ import PremiumSection from "../../../shared/components/section/premium-section.j
 
 import translateAttribute from "../../../shared/hocs/translate.jsx";
 
+export default
 @translateAttribute
-export default class Voices extends React.PureComponent {
+class Voices extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -102,8 +103,8 @@ export default class Voices extends React.PureComponent {
                     localService: PropTypes.bool.isRequired,
                     name: PropTypes.string.isRequired,
                     voiceURI: PropTypes.string.isRequired,
-                })).isRequired
-            ).isRequired
+                })).isRequired,
+            ).isRequired,
         ).isRequired,
         navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         voicesCount: PropTypes.number.isRequired,
@@ -240,7 +241,7 @@ export default class Voices extends React.PureComponent {
                 onClick={this.handleSpeakClickForLanguage.bind(null, language)}
             >
                 {language}
-            </this.styled.clickableLi>
+            </this.styled.clickableLi>,
         );
     }
 
@@ -321,7 +322,7 @@ export default class Voices extends React.PureComponent {
                         {((index + 1) < filteredLanguageGroups.length) && <this.styled.hr />}
                     </div>
                 );
-            }
+            },
             );
     }
 

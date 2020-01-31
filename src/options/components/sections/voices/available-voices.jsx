@@ -29,8 +29,9 @@ import MultilineSelect from "../../../../shared/components/form/multiline-select
 
 import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
+export default
 @translateAttribute
-export default class AvailableVoices extends React.PureComponent {
+class AvailableVoices extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -110,7 +111,7 @@ export default class AvailableVoices extends React.PureComponent {
                 >
                     {voiceNameAndFeaturesText}
                 </VoiceOption>;
-            }
+            },
         );
 
         return (

@@ -25,8 +25,9 @@ import * as lighter from "../styled/text/lighter.jsx";
 
 import translateAttribute from "../hocs/translate.jsx";
 
+export default
 @translateAttribute
-export default class Loading extends React.PureComponent {
+class Loading extends React.PureComponent {
     static defaultProps = {
         enabled: false,
     };

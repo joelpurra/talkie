@@ -32,9 +32,10 @@ import * as listBase from "../../../shared/styled/list/list-base.jsx";
 import Discretional from "../../../shared/components/discretional.jsx";
 import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
 
+export default
 @configureAttribute
 @translateAttribute
-export default class Support extends React.PureComponent {
+class Support extends React.PureComponent {
     constructor(props) {
         super(props);
 

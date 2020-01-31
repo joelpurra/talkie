@@ -42,7 +42,7 @@ export default class Plug {
                     .then(() => this.contentLogger.logToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
                     .then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/"))
                     .then(() => this.contentLogger.logToPageWithColor("If you like Talkie, send a link to your friends -- and consider upgrading to Talkie Premium to support further open source development."));
-            }
+            },
         );
     }
 

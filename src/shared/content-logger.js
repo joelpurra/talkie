@@ -63,7 +63,7 @@ export default class ContentLogger {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 
@@ -99,7 +99,7 @@ export default class ContentLogger {
 
                         throw error;
                     });
-            }
+            },
         );
     }
 }

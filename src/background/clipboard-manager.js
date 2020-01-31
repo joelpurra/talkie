@@ -40,7 +40,7 @@ export default class ClipboardManager {
                 const existingTextarea = document.getElementById(this.copyPasteTargetElementId);
 
                 return existingTextarea;
-            }
+            },
         );
     }
 
@@ -114,7 +114,7 @@ export default class ClipboardManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -129,7 +129,7 @@ export default class ClipboardManager {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -162,13 +162,13 @@ export default class ClipboardManager {
                             }
 
                             return null;
-                        })
+                        }),
                     )
                     .then((text) => {
                         logDebug("Done", "getClipboardText", text);
 
                         return text;
                     });
-            }
+            },
         );
     }}

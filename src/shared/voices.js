@@ -37,7 +37,7 @@ export const getVoices = () => promiseTry(
 
                 return voices;
             });
-    }
+    },
 );
 
 const getMappedVoice = voice => {
@@ -58,7 +58,7 @@ export const getMappedVoices = () => promiseTry(
 
                 return mappedVoices;
             });
-    }
+    },
 );
 
 export const resolveVoice = (mappedVoice) => {
@@ -88,7 +88,7 @@ export const resolveVoice = (mappedVoice) => {
 
                     return resolvedVoice;
                 });
-        }
+        },
     );
 };
 
@@ -105,7 +105,7 @@ export const resolveVoiceAsMappedVoice = (mappedVoice) => {
 
                     return resolvedVoiceAsMappedVoice;
                 });
-        }
+        },
     );
 };
 

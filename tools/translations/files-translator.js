@@ -73,8 +73,8 @@ export default class FilesTranslator {
                             translated,
                             {
                                 spaces: 2,
-                            }
-                        ))
+                            },
+                        )),
                 );
             });
     }

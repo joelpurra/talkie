@@ -68,13 +68,14 @@ export default class IconManager {
                                 return result;
                             });
                     });
-            }
+            },
         );
     }
 
     setIconModePlaying() {
         return this.setIconMode("stop");
     }
+
     setIconModeStopped() {
         return this.setIconMode("play");
     }

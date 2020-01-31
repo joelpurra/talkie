@@ -48,7 +48,7 @@ export default class OnlyLastCaller {
                 logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
 
                 return isLastCallerOnTheAir;
-            }
+            },
         );
     };
 }

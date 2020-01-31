@@ -42,7 +42,7 @@ export default class PermissionsManager {
         return promiseTry(
             () => {
                 return !!this._pms;
-            }
+            },
         );
     }
 
@@ -68,12 +68,12 @@ export default class PermissionsManager {
                             }
 
                             return resolve(result);
-                        }
+                        },
                     );
                 } catch (error) {
                     return reject(error);
                 }
-            }
+            },
         );
     }
 
@@ -99,12 +99,12 @@ export default class PermissionsManager {
                             }
 
                             return resolve(granted);
-                        }
+                        },
                     );
                 } catch (error) {
                     return reject(error);
                 }
-            }
+            },
         );
     }
 
@@ -130,12 +130,12 @@ export default class PermissionsManager {
                             }
 
                             return resolve(granted);
-                        }
+                        },
                     );
                 } catch (error) {
                     return reject(error);
                 }
-            }
+            },
         );
     }
 
@@ -146,7 +146,7 @@ export default class PermissionsManager {
 
                 const hasPermissionsPromises = permissionNames.map((permissionName) => {
                     // TODO: be more fine-grained per origin as well?
-                    return this.hasPermissions([ permissionName ], origins);
+                    return this.hasPermissions([permissionName], origins);
                 });
 
                 return Promise.all(hasPermissionsPromises)
@@ -195,7 +195,7 @@ export default class PermissionsManager {
                                     });
                             });
                     });
-            }
+            },
         );
     }
 }

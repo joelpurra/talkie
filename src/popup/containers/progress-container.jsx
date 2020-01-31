@@ -39,8 +39,9 @@ const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint
     return {};
 };
 
+export default
 @connect(mapStateToProps, mapDispatchToProps)
-export default class ProgressContainer extends React.PureComponent {
+class ProgressContainer extends React.PureComponent {
     static propTypes = {
         min: PropTypes.number.isRequired,
         current: PropTypes.number.isRequired,

@@ -33,5 +33,5 @@ export default mergeOptions(
         output: {
             file: `dist/${fileName}.js`,
         },
-    }
+    },
 );

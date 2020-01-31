@@ -23,7 +23,7 @@ export default class ButtonPopupManager {
         this.translator = translator;
 
         const extensionShortName = this.translator.translate("extensionShortName");
-        this.buttonDefaultTitle = this.translator.translate("buttonDefaultTitle", [ extensionShortName ]);
+        this.buttonDefaultTitle = this.translator.translate("buttonDefaultTitle", [extensionShortName]);
         this.buttonStopTitle = this.translator.translate("buttonStopTitle");
     }
 
