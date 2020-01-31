@@ -139,7 +139,7 @@
     "redux-thunk": "^2.3.0",
     "renamer": "^1.1.4",
     "reselect": "^3.0.1",
-    "rimraf": "^2.7.1",
+    "rimraf": "^3.0.1",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-buble": "^0.18.0",
