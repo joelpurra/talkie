@@ -4,7 +4,7 @@
   "version_name": "v5.0.1 Free (2019-05-07)",
   "applications": {
     "gecko": {
-      "strict_min_version": "52.0"
+      "strict_min_version": "57.0"
     }
   },
   "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline';",
