@@ -236,9 +236,12 @@ git flow release finish -s <release-version>
 # Create zip files with the extension packages.
 npm run --silent package
 
-# Upload and publish the package.
+# Upload and publish the package where it can be automated.
 # Release to other distribution channels manually.
-npm run --silent chromestore
+npm run --silent publish:chromestore:free
+npm run --silent publish:chromestore:premium
+npm run --silent publish:amo:free
+npm run --silent publish:amo:premium
 ```
 
 
