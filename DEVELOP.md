@@ -30,18 +30,39 @@
 
 # Developer documentation
 
+## Prerequisites
+
 - Find the source code in the [Talkie repository on Github](https://github.com/joelpurra/talkie).
+  - Source code is primarly distributed using `git`, so preferably clone the repository.
+  - Many script commands rely on the repository and will not work for `.zip` release files with source code.
+- Development should be performed on modern [Linux](https://en.wikipedia.org/wiki/Linux) or [Apple macOS](https://en.wikipedia.org/wiki/MacOS).
+  - Development on [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows) is not supported.
+- Script commands are executed as `npm` scripts, mostly using `node`.
+  - Some script commands assume that `bash` (or a compatible shell) is used, or at least available.
+  - Additional common development tools are required.
 - Use the `develop` branch as the base for your pull request.
-- Follow git-flow, preferably using  [`git-flow`](https://danielkummer.github.io/git-flow-cheatsheet/).
-- It is recommended to use [`hub`](https://hub.github.com/) for forking and creating pull requests on github.
+  - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/), preferably using  the `git-flow` tooling.
+  - It is recommended to use `hub` for forking and creating pull requests on github.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](CLA.md).
+
+
+
+## Software used
+
+- [`bash`](https://www.gnu.org/software/bash/)
+- [`git`](https://git-scm.com/)
+- [`hub`](https://hub.github.com/)
+- [`git-flow`](https://github.com/petervanderdoes/gitflow-avh) (AVH Edition)
+- [`node`](https://nodejs.org/) with `npm`
+- [`jq`](https://stedolan.github.io/jq/)
+- If anything is missing from this list, please [open an issue](https://github.com/joelpurra/talkie/issues).
 
 
 
 ## Manual installation
 
 - Clone the repository.
-- Build the code using commands below.
+- Build the code using the script commands below.
 - From the browser extensions settings page:
   - Enable developer mode.
   - Load one of the package folders as an unpacked extension.
@@ -185,7 +206,7 @@ hub browse
 
 ## Release procedure
 
-These steps are only done by the project owner.
+Packaging all extension variants for release in the different distribution channels, as well as a `.zip` file with the source code. These steps are only performed by the project owner.
 
 ```bash
 # Finish up any features, switch to develop.
@@ -212,10 +233,11 @@ npm run --silent version:update
 # Finish the release and sign the tag.
 git flow release finish -s <release-version>
 
-# Create a zip file with the extension package.
+# Create zip files with the extension packages.
 npm run --silent package
 
 # Upload and publish the package.
+# Release to other distribution channels manually.
 npm run --silent chromestore
 ```
 
