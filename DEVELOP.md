@@ -103,8 +103,14 @@ npm run --silent rebuild
 - Optionally add breakpoints in the source code.
 
 
+
+## Browser testing
+
+- Loads Talkie from the `package/` directory and allows for quick testing right in the browser.
+- Uses a temporary (empty) browser user profile, when possible.
+- Might not work on all systems; try to install/use another browser if one fails.
+
 ```bash
-# Open a new instance of Chrome/Chromium/Vivaldi, with an empty profile, and load Talkie.
 # NOTE: assumes you have `google-chrome`/`chromium`/`vivaldi` in your path.
 npm run --silent run:chrome:free
 npm run --silent run:chromium:free
