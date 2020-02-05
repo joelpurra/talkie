@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ export default class MetadataManager {
 
     getExtensionId() {
         return promiseTry(
-            () => browser.runtime.id
+            () => browser.runtime.id,
         );
     }
 
@@ -47,7 +47,7 @@ export default class MetadataManager {
     getManifest() {
         return promiseTry(
             /* eslint-disable no-sync */
-            () => this.getManifestSync()
+            () => this.getManifestSync(),
             /* eslint-enable no-sync */
         );
     }
@@ -57,7 +57,7 @@ export default class MetadataManager {
             () => this.getManifest()
                 .then((manifest) => {
                     return manifest.version || null;
-                })
+                }),
         );
     }
 
@@ -66,7 +66,7 @@ export default class MetadataManager {
             () => this.getManifest()
                 .then((manifest) => {
                     return manifest.version_name || null;
-                })
+                }),
         );
     }
 
@@ -87,7 +87,7 @@ export default class MetadataManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -108,7 +108,7 @@ export default class MetadataManager {
             () => this.isPremiumVersion()
                 .then((isPremiumVersion) => {
                     return !isPremiumVersion;
-                })
+                }),
         );
     }
 
@@ -129,7 +129,7 @@ export default class MetadataManager {
                     }
 
                     return this._versionTypeFree;
-                })
+                }),
         );
     }
 
@@ -154,7 +154,7 @@ export default class MetadataManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -179,7 +179,7 @@ export default class MetadataManager {
                     }
 
                     return false;
-                })
+                }),
         );
     }
 
@@ -204,7 +204,7 @@ export default class MetadataManager {
                     }
 
                     return this._systemTypeWebExtension;
-                })
+                }),
         );
     }
 
@@ -230,7 +230,7 @@ export default class MetadataManager {
                     }
 
                     return null;
-                })
+                }),
         );
     }
 }

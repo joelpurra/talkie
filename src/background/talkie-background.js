@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -122,7 +122,7 @@ export default class TalkieBackground {
 
                                                 return prev;
                                             },
-                                            null
+                                            null,
                                         );
 
                                     return selectedTextFromFrontend;
@@ -154,7 +154,7 @@ export default class TalkieBackground {
                     }
 
                     return this.speakUserSelection();
-                })
+                }),
         );
     }
 
@@ -168,13 +168,13 @@ export default class TalkieBackground {
                         }
 
                         return undefined;
-                    }))
+                    })),
         );
     }
 
     stopSpeakingAction() {
         return promiseTry(
-            () => this.talkieSpeaker.stopSpeaking()
+            () => this.talkieSpeaker.stopSpeaking(),
         );
     }
 
@@ -192,7 +192,7 @@ export default class TalkieBackground {
                         });
 
                     return undefined;
-                })
+                }),
         );
     }
 
@@ -209,19 +209,19 @@ export default class TalkieBackground {
                             {
                                 rate: effectiveRateForVoice,
                                 pitch: effectivePitchForVoice,
-                            }
+                            },
                         );
 
                         return voiceWithPitchAndRate;
                     });
-            }
+            },
         );
     }
 
     startSpeakingTextInVoiceWithOverridesAction(text, voice) {
         return promiseTry(
             () => this.addRateAndPitchToSpecificVoice(voice)
-                .then((voiceWithPitchAndRate) => this.startSpeakingTextInVoiceAction(text, voiceWithPitchAndRate))
+                .then((voiceWithPitchAndRate) => this.startSpeakingTextInVoiceAction(text, voiceWithPitchAndRate)),
         );
     }
 
@@ -239,7 +239,7 @@ export default class TalkieBackground {
                         });
 
                     return undefined;
-                })
+                }),
         );
     }
 
@@ -248,7 +248,7 @@ export default class TalkieBackground {
             () => {
                 return this.voiceManager.getEffectiveVoiceForLanguage(language)
                     .then((effectiveVoiceForLanguage) => this.startSpeakingTextInVoiceWithOverridesAction(text, effectiveVoiceForLanguage));
-            }
+            },
         );
     }
 
@@ -275,7 +275,7 @@ export default class TalkieBackground {
                     ];
 
                     return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
-                })
+                }),
         );
     }
 
@@ -322,7 +322,7 @@ export default class TalkieBackground {
 
                         return undefined;
                     });
-            }
+            },
         );
     }
 
@@ -346,7 +346,7 @@ export default class TalkieBackground {
             logDebug("Variable", `selections (length ${(selections && selections.length) || 0})`, selections);
 
             return promiseTry(
-                () => getVoices()
+                () => getVoices(),
             )
                 .then((allVoices) => this.languageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections))
                 .then((cleanedupSelections) => {
@@ -374,7 +374,7 @@ export default class TalkieBackground {
                     [
                         this.executeGetFramesSelectionTextAndLanguage(),
                         this.languageHelper.detectPageLanguage(),
-                    ]
+                    ],
                 )
                     .then(([framesSelectionTextAndLanguage, detectedPageLanguage]) => {
                         return this.detectLanguagesAndSpeakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);

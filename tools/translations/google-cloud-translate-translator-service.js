@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -84,7 +84,7 @@ export default class GoogleCloudTranslateTranslator {
 
                             return chunked;
                         },
-                        []
+                        [],
                     );
 
                     return preparedMessagesChunks;
@@ -99,7 +99,7 @@ export default class GoogleCloudTranslateTranslator {
                     // NOTE: translating one chunk at a time.
                     return Promise.mapSeries(
                         preparedMessagesChunks,
-                        (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions)
+                        (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions),
                     );
                 })
                 // NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
@@ -112,7 +112,7 @@ export default class GoogleCloudTranslateTranslator {
                     [
                         [],
                         [],
-                    ]
+                    ],
                 ))
                 .then((translationResponses) => {
                     const translations = translationResponses[0];

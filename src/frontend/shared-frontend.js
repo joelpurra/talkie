@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ const dualLogger = new DualLogger("shared-frontend.js");
 const reflow = () => promiseTry(
     () => {
         document.body.style.marginBottom = "0";
-    }
+    },
 );
 
 export const eventToPromise = (eventHandler, event) => promiseTry(
@@ -40,7 +40,7 @@ export const eventToPromise = (eventHandler, event) => promiseTry(
             .then(() => eventHandler(event))
             .then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event && event.type, event, result))
             .catch((error) => dualLogger.dualLogError("eventToPromise", event && event.type, event, error));
-    }
+    },
 );
 
 const focusFirstLink = () => promiseTry(
@@ -52,18 +52,18 @@ const focusFirstLink = () => promiseTry(
 
             firstLinkElement.focus();
         }
-    }
+    },
 );
 
 export const startReactFrontend = () => promiseTry(
     () => Promise.all([
         focusFirstLink(),
         reflow(),
-    ])
+    ]),
 );
 
 export const stopReactFrontend = () => promiseTry(
     () => {
         // TODO: unregister listeners.
-    }
+    },
 );

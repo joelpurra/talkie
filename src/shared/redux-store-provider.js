@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ export default class ReduxStoreProvider {
         const middlewares = applyMiddleware(thunk.withExtraArgument(api));
 
         const enhancer = compose(
-            middlewares
+            middlewares,
         );
 
         const store = createStore(rootReducer, initialState, enhancer);

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -52,13 +52,14 @@ const styles = Object.assign(
     {
         minHeight: "450px",
         paddingBottom: "2em",
-    }
+    },
 );
 
+export default
 @translateAttribute
 @styled(styles)
 @passSelectedTextToBackground
-export default class Main extends React.PureComponent {
+class Main extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -104,7 +105,7 @@ export default class Main extends React.PureComponent {
                     left: 0,
                     right: 0,
                     backgroundColor: "#ffffff",
-                }
+                },
             ))("div"),
 
             main: styled({
@@ -141,7 +142,7 @@ export default class Main extends React.PureComponent {
         setTimeout(() => this.scrollToTop(), 100);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.activeTabId !== nextProps.activeTabId) {
             this.scrollToTop();
         }

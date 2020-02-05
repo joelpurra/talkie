@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -45,8 +45,9 @@ import translateAttribute from "../../../shared/hocs/translate.jsx";
 
 import * as tableBase from "../../../shared/styled/table/table-base.jsx";
 
+export default
 @translateAttribute
-export default class Voices extends React.PureComponent {
+class Voices extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -90,7 +91,7 @@ export default class Voices extends React.PureComponent {
                 localService: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
                 voiceURI: PropTypes.string.isRequired,
-            })).isRequired
+            })).isRequired,
         ).isRequired,
         voicesByLanguageGroup: PropTypes.objectOf(
             PropTypes.arrayOf(PropTypes.shape({
@@ -99,12 +100,12 @@ export default class Voices extends React.PureComponent {
                 localService: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
                 voiceURI: PropTypes.string.isRequired,
-            })).isRequired
+            })).isRequired,
         ).isRequired,
         languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         languagesByLanguageGroup: PropTypes.objectOf(
-            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         ).isRequired,
         selectedLanguageCode: PropTypes.string,
         selectedVoiceName: PropTypes.string,

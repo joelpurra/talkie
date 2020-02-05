@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -38,63 +38,63 @@ export const getVoicesCount = createSelector(
     [
         getVoices,
     ],
-    (voices) => voices.length
+    (voices) => voices.length,
 );
 
 export const getLanguages = createSelector(
     [
         getVoices,
     ],
-    (voices) => getLanguagesFromVoices(voices)
+    (voices) => getLanguagesFromVoices(voices),
 );
 
 export const getLanguagesCount = createSelector(
     [
         getLanguages,
     ],
-    (languages) => languages.length
+    (languages) => languages.length,
 );
 
 export const getLanguageGroups = createSelector(
     [
         getLanguages,
     ],
-    (languages) => getLanguageGroupsFromLanguages(languages)
+    (languages) => getLanguageGroupsFromLanguages(languages),
 );
 
 export const getLanguageGroupsCount = createSelector(
     [
         getLanguageGroups,
     ],
-    (languageGroups) => languageGroups.length
+    (languageGroups) => languageGroups.length,
 );
 
 export const getVoicesByLanguage = createSelector(
     [
         getVoices,
     ],
-    (voices) => getVoicesByLanguageFromVoices(voices)
+    (voices) => getVoicesByLanguageFromVoices(voices),
 );
 
 export const getVoicesByLanguageGroup = createSelector(
     [
         getVoices,
     ],
-    (voices) => getVoicesByLanguageGroupFromVoices(voices)
+    (voices) => getVoicesByLanguageGroupFromVoices(voices),
 );
 
 export const getLanguagesByLanguageGroup = createSelector(
     [
         getVoices,
     ],
-    (voices) => getLanguagesByLanguageGroupFromVoices(voices)
+    (voices) => getLanguagesByLanguageGroupFromVoices(voices),
 );
 
 export const getVoicesByLanguagesByLanguageGroup = createSelector(
     [
         getVoices,
     ],
-    (voices) => getVoicesByLanguagesByLanguageGroupFromVoices(voices)
+    (voices) => getVoicesByLanguagesByLanguageGroupFromVoices(voices),
 );
 
 export const getNavigatorLanguages = (state) => state.shared.voices.navigatorLanguages;
@@ -105,5 +105,5 @@ export const getAvailableBrowserLanguageWithInstalledVoice = createSelector(
         getLanguages,
         getLanguageGroups,
     ],
-    (navigatorLanguages, languages, languageGroups) => getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups(navigatorLanguages, languages, languageGroups)
+    (navigatorLanguages, languages, languageGroups) => getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups(navigatorLanguages, languages, languageGroups),
 );

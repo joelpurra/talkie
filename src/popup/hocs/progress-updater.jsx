@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,8 +23,9 @@ import PropTypes from "prop-types";
 
 import progress from "../hocs/progress.jsx";
 
+export default
 @progress
-export default class ProgressUpdater extends React.PureComponent {
+class ProgressUpdater extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         min: PropTypes.number.isRequired,
@@ -32,7 +33,7 @@ export default class ProgressUpdater extends React.PureComponent {
         max: PropTypes.number.isRequired,
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.min !== nextProps.min) {
             this.props.actions.sharedProgress.setMin(nextProps.min);
         }

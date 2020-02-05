@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,8 +29,9 @@ import MultilineSelect from "../../../../shared/components/form/multiline-select
 
 import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
+export default
 @translateAttribute
-export default class AvailableVoices extends React.PureComponent {
+class AvailableVoices extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -110,7 +111,7 @@ export default class AvailableVoices extends React.PureComponent {
                 >
                     {voiceNameAndFeaturesText}
                 </VoiceOption>;
-            }
+            },
         );
 
         return (

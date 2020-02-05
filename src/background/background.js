@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -211,7 +211,7 @@ function main() {
         /* eslint-disable no-unused-vars */
         const onInstallListenerEventQueueHandlerTimeoutId = setTimeout(
             () => onInstalledManager.onInstallListenerEventQueueHandler(),
-            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT
+            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT,
         );
         /* eslint-enable no-unused-vars */
 
@@ -222,7 +222,7 @@ function main() {
         /* eslint-disable no-unused-vars */
         const onInstallListenerEventQueueHandlerIntervalId = setInterval(
             () => onInstalledManager.onInstallListenerEventQueueHandler(),
-            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL
+            ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL,
         );
         /* eslint-enable no-unused-vars */
     }());

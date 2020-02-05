@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import uglify from "./rollup.config.uglify.js";
 import license from "./rollup.config.license.js";
 
 const inputName = "extension-translator";
@@ -27,14 +26,13 @@ const fileName = `${inputName}${fileExtension}`;
 
 export default {
     plugins: [
-        uglify(),
         license(inputName),
     ],
-    sourcemap: true,
     input: `tools/translations/${fileName}.js`,
-    name: inputName,
     output: {
+        name: inputName,
         format: "cjs",
         file: `dist/${fileName}.js`,
+        sourcemap: true,
     },
 };

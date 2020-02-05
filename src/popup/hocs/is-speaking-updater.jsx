@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,14 +23,15 @@ import PropTypes from "prop-types";
 
 import isSpeaking from "../hocs/is-speaking.jsx";
 
+export default
 @isSpeaking
-export default class IsSpeakingUpdater extends React.PureComponent {
+class IsSpeakingUpdater extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
         isSpeaking: PropTypes.bool.isRequired,
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.isSpeaking !== nextProps.isSpeaking) {
             this.props.actions.sharedSpeaking.setIsSpeaking(nextProps.isSpeaking);
         }
