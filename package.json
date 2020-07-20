@@ -156,7 +156,7 @@
     "rollup-plugin-ejs": "^2.2.0",
     "rollup-plugin-filesize": "^6.2.1",
     "rollup-plugin-jsx": "^1.0.3",
-    "rollup-plugin-license": "^0.13.0",
+    "rollup-plugin-license": "^2.1.0",
     "rollup-plugin-node-globals": "^1.4.0",
     "rrssb": "^1.14.0",
     "stream-to-promise": "^2.2.0",
