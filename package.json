@@ -148,7 +148,7 @@
     "react-redux": "^5.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.3.0",
-    "renamer": "^1.1.4",
+    "renamer": "^2.0.1",
     "reselect": "^3.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.29.0",
