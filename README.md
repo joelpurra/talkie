@@ -105,24 +105,26 @@ If the shortcut key does not work, please check that it is not already in use by
 </details>
 
 
+## Features
 
-## Features in <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium
+- <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" /> Talkie Premium
+- <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" /> Talkie
 
-- **Choose your own default voice** for each language. Great if you get tired of the system voice!
-- Choose reading **speed and pitch per voice**. Adjust voices to your liking!
-- **Read text from the clipboard!** Just copy text from anywhere in any program, and use Talkie Premium to read it!
-- That **warm, fuzzy feeling** you get when supporting open source software by independent developers.
-- Future Premium **updates included for free**.
-- Plus **all features** below.
+| Feature | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Description |
+| --- | --- | --- | --- |
+| **Ease-of-use** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Just highlight the text you want to hear, and hit play. |
+| **Unlimited text** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Listen to short snippets or entire articles without limits. |
+| **Automatic language detection** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Picks the correct language from installed voices. |
+| **Keyboard shortcuts** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Fast, easy, configurable. |
+| **Privacy aware** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | No unnecessary tracking or external services. |
+| **Choose your favorite voice** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Great if you get tired of the system voice. |
+| **Choose speed and pitch** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Adjust voices to your liking. |
+| **Read from the clipboard** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Just copy text from anywhere in any program. |
+| **Warm, fuzzy feeling** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Support open source software by independent developers. |
+| **Faster updates** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Features and fixes come first to Talkie Premium. |
+| **Free** | | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Free to use as much as you like. |
+| **Paid subscription** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Great price for a yearly subscription. |
 
-
-
-## Features in <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie
-
-- Lets you listen to the selected text on any part of a page — **short snippets or entire news articles**. Just highlight what you want to hear read aloud and hit play.
-- Automatically **detects the text language** per-page, and chooses a voice in the same language to match it.
-- **Privacy aware** — no unnecessary tracking or external services.
-- Free!
 
 
 
