@@ -7,6 +7,9 @@
 <p align="center">
   Text-to-speech browser extension button
 </p>
+
+## Installation
+
 <table>
   <tr>
     <td align="center">
@@ -26,17 +29,7 @@
   </tr>
 </table>
 
-
-
-## Installation
-
-- <img src="./resources/browser-logo/chrome_32x32.png" alt="Firefox logo" width="16" height="16" border="0" /> Google Chrome
-  - Get <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> in Chrome Web Store.
-  - Get <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a> in Chrome Web Store.
-- <img src="./resources/browser-logo/firefox_32x32.png" alt="Firefox logo" width="16" height="16" border="0" /> Firefox
-  - Get <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> at Firefox Add-ons.
-  - Get <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium at Firefox Add-ons. (Coming soon!)
-- Developer option: [use the source code](DEVELOP.md) directly.
+Developer option: [use the source code](DEVELOP.md) directly.
 
 
 
