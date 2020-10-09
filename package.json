@@ -48,7 +48,7 @@
     "run:vivaldi:free": "web-ext --source-dir=package/chrome/ run --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'",
     "run:vivaldi:premium": "web-ext --source-dir=package/chrome-premium/ run --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'",
     "prepackage": "npm run --silent rebuild && npm run --silent test && npm run --silent lint && npm run --silent messages:count",
-    "package": "npm run --silent package:chrome:free && npm run --silent package:webextension:free && npm run --silent package:chrome:premium && npm run --silent package:webextension:premium && npm run --silent package:source",
+    "package": "npm run --silent package:chrome:free && npm run --silent package:webextension:free && npm run --silent package:chrome:premium && npm run --silent package:webextension:premium && npm run --silent package:source && node --eval \"console.log(require('fs').readdirSync(process.cwd()).filter(n => n.endsWith('.zip')))\"",
     "package:chrome:free": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/chrome/ build && mv -n web-ext-artifacts/talkie*.zip \"talkie-joelpurra.com-$(npm run --silent version:get:head)-chrome-free.zip\"",
     "package:chrome:premium": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/chrome-premium/ build && mv -n web-ext-artifacts/talkie_premium*.zip \"talkie-joelpurra.com-$(npm run --silent version:get:head)-chrome-premium.zip\"",
     "package:webextension:free": "rimraf web-ext-artifacts/ && web-ext --source-dir=package/webextension/ build && mv -n web-ext-artifacts/talkie*.zip \"talkie-joelpurra.com-$(npm run --silent version:get:head)-webextension-free.zip\"",
