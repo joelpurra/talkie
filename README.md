@@ -35,7 +35,7 @@ Developer option: [use the source code](./DEVELOP.md) directly.
 
 ## Install additional voices
 
-New voices, languages, dialects can be downloaded *for free* for your operating system from for example Microsoft and Apple. Once installed correctly just restart your computer, and Talkie will auto-detect the voices.
+New voices, languages, dialects can be downloaded **for free** for your operating system from for example Microsoft and Apple. Once installed correctly just restart your computer, and Talkie will auto-detect the voices.
 
 | Operating&nbsp;system | Where to look | 
 | --- | --- |
@@ -51,8 +51,8 @@ New voices, languages, dialects can be downloaded *for free* for your operating 
 
 ### Browser toolbar button
 
-1. **Select desired text** on any web page.
-1. **Click the Talkie button** in your browser toolbar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />
+1. Select desired text on any web page.
+1. Click the Talkie button in your browser toolbar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />
 
 
 ### Right-click menu
@@ -60,14 +60,14 @@ New voices, languages, dialects can be downloaded *for free* for your operating 
 1. Select the text, then right click on it
 1. Choose <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie in the menu.
 
-The right-click menu also works in most PDF-files and some *special* types of pages in the browser.
+The right-click menu also works in **most PDF-files** and **some special types of web pages** in the browser.
 
 ### Read from clipboard in Talkie Premium
 
 1. Copy text to the clipboard from any program.
 1. Use the "read from clipboard" shortcut key from anywhere.
 
-You can also right-click on the <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium button, or in an empty area of a website, and select *read from clipboard*.
+You can also right-click on the <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium button, or in an empty area of a website, and select **read from clipboard**.
 
 
 
@@ -88,10 +88,10 @@ If the shortcut key does not work, please check that it is not already in use by
 <details>
 <summary>How to check or change the Talkie shortcut keys in Google Chrome</summary>
 
-1. In Chrome, click [*Extensions*](chrome://extensions/) in the *Window* menu.
-1. At the bottom of the extensions list, click [*Keyboard shortcuts*](chrome://extensions/shortcuts) in the left side menu.
+1. In Chrome, click [**Extensions**](chrome://extensions/) in the **Window** menu.
+1. At the bottom of the extensions list, click [**Keyboard shortcuts**](chrome://extensions/shortcuts) in the left side menu.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-google-chrome-01.png" alt="Screenshot of Chrome's list of installed extensions, focusing on Talkie" title="Chrome's installed extensions" width="467" height="276" />
-1. From the *Keyboard Shortcuts* window you can check or change keyboard shortcuts for all Chrome extensions and apps. This way you also can verify that there are no shortcut key collisions between extensions.
+1. From the **Keyboard Shortcuts** window you can check or change keyboard shortcuts for all Chrome extensions and apps. This way you also can verify that there are no shortcut key collisions between extensions.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-google-chrome-02.png" alt="Screenshot of the Keyboard Shortcuts window in Chrome, focusing on Talkie shortcuts" title="Talkie shortcuts in Chrome"  width="708" height="491" />
 1. You can also reach the extensions page directly with [`chrome://extensions/`](chrome://extensions/) and the keyboard shortcut configuration with [`chrome://extensions/shortcuts`](chrome://extensions/shortcuts), but you might have to copy-paste the address manually.
 
@@ -100,12 +100,12 @@ If the shortcut key does not work, please check that it is not already in use by
 <details>
 <summary>How to check or change the Talkie shortcut keys in Firefox</summary>
 
-1. In Firefox, click [*Add-ons*](about:addons) in the *Tools* menu.
+1. In Firefox, click [**Add-ons**](about:addons) in the **Tools** menu.
 1. From the Add-ons page, click Extensions in the left side menu.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-01.png" alt="Screenshot of Firefox's list of installed extensions, focusing on Talkie" title="Firefox's installed extensions"  width="565" height="387" />
-1. At the top right of the extensions list, click *Manage extension shortcuts* in the gear button menu.
+1. At the top right of the extensions list, click **Manage extension shortcuts** in the gear button menu.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-02.png" alt="Screenshot of the Manage extension shortcuts menu item" title="Manage extensions in Firefox"  width="701" height="293" />
-1. From the *Manage extension shortcuts* window you can check or change extension shortcuts for all Firefox extensions. This way you also can verify that there are no shortcut key collisions between extensions.
+1. From the **Manage extension shortcuts** window you can check or change extension shortcuts for all Firefox extensions. This way you also can verify that there are no shortcut key collisions between extensions.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-03.png" alt="Screenshot of the Manage extension shortcuts window in Firefox, focusing on Talkie shortcuts" title="Talkie shortcuts in Firefox"  width="690" height="333" />
 1. You can also reach the extensions page directly with [`about:addons`](about:addons), but you might have to copy-paste the address manually.
 
