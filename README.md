@@ -177,55 +177,6 @@ To see the list of languages/voices available in your specific browser, as well 
 
 You can install additional voices to support new languages and dialects; see separate installation instructions for your operating system.
 
-<details>
-<summary>Example list of voices available in Google Chrome version 55 on macOS</summary>
-
-The total number of voices is 83.
-
-- **ar-SA:** Tarik
-- **cs-CZ:** Zuzana
-- **da-DK:** Sara
-- **de-DE:** Anna, Google Deutsch
-- **el-GR:** Melina
-- **en:** Fiona
-- **en-AU:** Karen
-- **en-GB:** Daniel, Google UK English Female, Google UK English Male
-- **en-IE:** Moira
-- **en-IN:** Veena
-- **en-US:** Agnes, Albert, Alex, Bad News, Bahh, Bells, Boing, Bruce, Bubbles, Cellos, Deranged, Fred, Good News, Google US English, Hysterical, Junior, Kathy, Pipe Organ, Princess, Ralph, Samantha, Trinoids, Vicki, Victoria, Whisper, Zarvox
-- **en-ZA:** Tessa
-- **es-AR:** Diego
-- **es-ES:** Google español, Monica
-- **es-MX:** Paulina
-- **es-US:** Google español de Estados Unidos
-- **fi-FI:** Satu
-- **fr-CA:** Amelie
-- **fr-FR:** Google français, Thomas
-- **he-IL:** Carmit
-- **hi-IN:** Google हिन्दी, Lekha
-- **hu-HU:** Mariska
-- **id-ID:** Damayanti, Google Bahasa Indonesia
-- **it-IT:** Alice, Google italiano
-- **ja-JP:** Google 日本語, Kyoko
-- **ko-KR:** Google 한국의, Yuna
-- **nb-NO:** Nora
-- **nl-BE:** Ellen
-- **nl-NL:** Google Nederlands, Xander
-- **pl-PL:** Google polski, Zosia
-- **pt-BR:** Google português do Brasil, Luciana
-- **pt-PT:** Joana
-- **ro-RO:** Ioana
-- **ru-RU:** Google русский, Milena
-- **sk-SK:** Laura
-- **sv-SE:** Alva
-- **th-TH:** Kanya
-- **tr-TR:** Yelda
-- **zh-CN:** Google 普通话（中国大陆）, Ting-Ting
-- **zh-HK:** Google 粤語（香港）, Sin-ji
-- **zh-TW:** Google 國語（臺灣）, Mei-Jia
-
-</details>
-
 </details>
 
 <details>
