@@ -29,7 +29,7 @@
   </tr>
 </table>
 
-Developer option: [use the source code](DEVELOP.md) directly.
+Developer option: [use the source code](./DEVELOP.md) directly.
 
 
 
