@@ -24,8 +24,6 @@ const Promise = require("bluebird");
 const clone = require("clone");
 
 const jsonfile = require("jsonfile");
-const jsonReadFile = Promise.promisify(jsonfile.readFile);
-const jsonWriteFile = Promise.promisify(jsonfile.writeFile);
 
 export default class FilesTranslator {
     constructor(messagesTranslatorFactory, base, locales) {
@@ -49,7 +47,7 @@ export default class FilesTranslator {
     }
 
     translate() {
-        return jsonReadFile(this._base.filePath)
+        return jsonfile.readFile(this._base.filePath)
             .then((baseMessages) => {
                 const baseWithMessages = {
                     messages: clone(baseMessages),
@@ -58,7 +56,7 @@ export default class FilesTranslator {
 
                 return Promise.map(
                     this._locales,
-                    (locale) => jsonReadFile(locale.filePath)
+                    (locale) => jsonfile.readFile(locale.filePath)
                         .then((localeMessages) => {
                             const localeWithMessages = {
                                 messages: clone(localeMessages),
@@ -68,7 +66,7 @@ export default class FilesTranslator {
                             return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)
                                 .then((messagesTranslator) => messagesTranslator.translate());
                         })
-                        .then((translated) => jsonWriteFile(
+                        .then((translated) => jsonfile.writeFile(
                             locale.filePath,
                             translated,
                             {

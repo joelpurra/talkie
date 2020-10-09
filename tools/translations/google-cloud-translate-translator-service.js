@@ -23,7 +23,7 @@ const Promise = require("bluebird");
 
 const clone = require("clone");
 
-const GoogleTranslate = require("@google-cloud/translate");
+const { Translate } = require("@google-cloud/translate");
 
 const striptags = require("striptags");
 const htmlEntityEncode = require("ent/encode");
@@ -39,7 +39,7 @@ export default class GoogleCloudTranslateTranslator {
             promise: Promise,
             keyFilename: this._googleCloudTranslateApiKeyFilePath,
         };
-        this._googleTranslate = GoogleTranslate(this._googleTranslateOptions);
+        this._googleTranslate = new Translate(this._googleTranslateOptions);
 
         // NOTE: there is a limit to how many items can be translated per call.
         this.maxChunkSize = 128;
