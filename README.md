@@ -239,4 +239,4 @@ The total number of voices is 83.
 
 ---
 
-<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
+<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).
