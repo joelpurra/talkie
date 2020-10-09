@@ -43,7 +43,7 @@
 - Use the `develop` branch as the base for your pull request.
   - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/), preferably using  the `git-flow` tooling.
   - It is recommended to use `hub` for forking and creating pull requests on github.
-- All project contributors need to agree to the the [Contributor License Agreement (CLA)](CLA.md).
+- All project contributors need to agree to the the [Contributor License Agreement (CLA)](./CLA.md).
 
 
 
@@ -256,4 +256,4 @@ npm run --silent publish:amo:premium
 
 ---
 
-<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
+<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).

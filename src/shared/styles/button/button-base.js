@@ -18,6 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+export const hover = {
+    color: "#ffffff",
+};
+
+export const focus = {
+    backgroundImage: "linear-gradient(to bottom, #087eff, #087eff)",
+    color: "#ffffff",
+};
+
 export const button = {
     borderRadius: "0.3em",
     backgroundImage: "linear-gradient(to bottom, #6bb3fa, #087eff)",
@@ -30,15 +39,6 @@ export const button = {
     textAlign: "center",
     ":hover": hover,
     ":focus": focus,
-};
-
-export const hover = {
-    color: "#ffffff",
-};
-
-export const focus = {
-    backgroundImage: "linear-gradient(to bottom, #087eff, #087eff)",
-    color: "#ffffff",
 };
 
 export const a = button;

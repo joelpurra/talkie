@@ -40,102 +40,34 @@ export default class PermissionsManager {
 
     browserHasPermissionsFeature() {
         return promiseTry(
-            () => {
-                return !!this._pms;
-            },
+            () => !!this._pms,
         );
     }
 
     hasPermissions(permissionNames, origins) {
-        // NOTE: Firefox, and therefore browser-polyfill, has not implemented permissions -- using regular callbacks.
-        // return this._pms.contains({
-        //     permissions: permissionNames,
-        //     origins: origins,
-        // });
-        return new Promise(
-            (resolve, reject) => {
-                try {
-                    const containsOptions = {
-                        permissions: permissionNames,
-                        origins: origins,
-                    };
-
-                    this._pms.contains(
-                        containsOptions,
-                        (result) => {
-                            if (browser.runtime.lastError) {
-                                return reject(browser.runtime.lastError);
-                            }
-
-                            return resolve(result);
-                        },
-                    );
-                } catch (error) {
-                    return reject(error);
-                }
-            },
+        return promiseTry(
+            () => this._pms.contains({
+                permissions: permissionNames,
+                origins: origins,
+            }),
         );
     }
 
     acquirePermissions(permissionNames, origins) {
-        // NOTE: Firefox, and therefore browser-polyfill, has not implemented permissions -- using regular callbacks.
-        // return this._pms.request({
-        //     permissions: permissionNames,
-        //     origins: origins,
-        // });
-        return new Promise(
-            (resolve, reject) => {
-                try {
-                    const requestOptions = {
-                        permissions: permissionNames,
-                        origins: origins,
-                    };
-
-                    this._pms.request(
-                        requestOptions,
-                        (granted) => {
-                            if (browser.runtime.lastError) {
-                                return reject(browser.runtime.lastError);
-                            }
-
-                            return resolve(granted);
-                        },
-                    );
-                } catch (error) {
-                    return reject(error);
-                }
-            },
+        return promiseTry(
+            () => this._pms.request({
+                permissions: permissionNames,
+                origins: origins,
+            }),
         );
     }
 
     releasePermissions(permissionNames, origins) {
-        // NOTE: Firefox, and therefore browser-polyfill, has not implemented permissions -- using regular callbacks.
-        // return this._pms.remove({
-        //     permissions: permissionNames,
-        //     origins: origins,
-        // });
-        return new Promise(
-            (resolve, reject) => {
-                try {
-                    const removeOptions = {
-                        permissions: permissionNames,
-                        origins: origins,
-                    };
-
-                    this._pms.remove(
-                        removeOptions,
-                        (granted) => {
-                            if (browser.runtime.lastError) {
-                                return reject(browser.runtime.lastError);
-                            }
-
-                            return resolve(granted);
-                        },
-                    );
-                } catch (error) {
-                    return reject(error);
-                }
-            },
+        return promiseTry(
+            () => this._pms.remove({
+                permissions: permissionNames,
+                origins: origins,
+            }),
         );
     }
 

@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import babel from "rollup-plugin-babel";
+import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import ejs from "rollup-plugin-ejs";
 import globals from "rollup-plugin-node-globals";
@@ -64,6 +64,7 @@ export default (name) => mergeOptions(
                 },
             }),
             babel({
+                babelHelpers: "bundled",
                 exclude: [
                     "node_modules/**",
                 ],
@@ -79,6 +80,7 @@ export default (name) => mergeOptions(
             license(name),
         ],
         output: {
+            exports: "default",
             format: "cjs",
         },
     },
