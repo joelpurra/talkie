@@ -49,6 +49,8 @@ New voices, languages, dialects can be downloaded **for free** for your operatin
 
 ## Usage
 
+There are several convenient ways to use Talkie.
+
 ### Browser toolbar button
 
 1. Select desired text on any web page.
@@ -62,6 +64,7 @@ New voices, languages, dialects can be downloaded **for free** for your operatin
 
 The right-click menu also works in **most PDF-files** and **some special types of web pages** in the browser.
 
+
 ### Read from clipboard in Talkie Premium
 
 1. Copy text to the clipboard from any program.
@@ -70,8 +73,7 @@ The right-click menu also works in **most PDF-files** and **some special types o
 You can also right-click on the <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium button, or in an empty area of a website, and select **read from clipboard**.
 
 
-
-## Shortcut keys
+### Shortcut keys
 
 A fast, easy, and convenient option is to use Talkie's configurable keyboard shortcuts.
 
@@ -89,11 +91,11 @@ If the shortcut key does not work, please check that it is not already in use by
 <summary>How to check or change the Talkie shortcut keys in Google Chrome</summary>
 
 1. In Chrome, click [**Extensions**](chrome://extensions/) in the **Window** menu.
-1. At the bottom of the extensions list, click [**Keyboard shortcuts**](chrome://extensions/shortcuts) in the left side menu.
+1. Click [**Keyboard shortcuts**](chrome://extensions/shortcuts) in the left side menu.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-google-chrome-01.png" alt="Screenshot of Chrome's list of installed extensions, focusing on Talkie" title="Chrome's installed extensions" width="467" height="276" />
-1. From the **Keyboard Shortcuts** window you can check or change keyboard shortcuts for all Chrome extensions and apps. This way you also can verify that there are no shortcut key collisions between extensions.
+1. From the **Keyboard Shortcuts** window you can check or change keyboard shortcuts for all Chrome extensions and apps. You can also verify that there are no shortcut key collisions between extensions.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-google-chrome-02.png" alt="Screenshot of the Keyboard Shortcuts window in Chrome, focusing on Talkie shortcuts" title="Talkie shortcuts in Chrome"  width="708" height="491" />
-1. You can also reach the extensions page directly with [`chrome://extensions/`](chrome://extensions/) and the keyboard shortcut configuration with [`chrome://extensions/shortcuts`](chrome://extensions/shortcuts), but you might have to copy-paste the address manually.
+1. You can also reach the extensions page in Google Chrome directly with [`chrome://extensions/`](chrome://extensions/) and the keyboard shortcut configuration with [`chrome://extensions/shortcuts`](chrome://extensions/shortcuts), but you might have to copy-paste the address manually.
 
 </details>
 
@@ -101,13 +103,13 @@ If the shortcut key does not work, please check that it is not already in use by
 <summary>How to check or change the Talkie shortcut keys in Firefox</summary>
 
 1. In Firefox, click [**Add-ons**](about:addons) in the **Tools** menu.
-1. From the Add-ons page, click Extensions in the left side menu.
+1. From the Add-ons page, click **Extensions** in the left side menu.
    > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-01.png" alt="Screenshot of Firefox's list of installed extensions, focusing on Talkie" title="Firefox's installed extensions"  width="565" height="387" />
-1. At the top right of the extensions list, click **Manage extension shortcuts** in the gear button menu.
-   > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-02.png" alt="Screenshot of the Manage extension shortcuts menu item" title="Manage extensions in Firefox"  width="701" height="293" />
-1. From the **Manage extension shortcuts** window you can check or change extension shortcuts for all Firefox extensions. This way you also can verify that there are no shortcut key collisions between extensions.
-   > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-03.png" alt="Screenshot of the Manage extension shortcuts window in Firefox, focusing on Talkie shortcuts" title="Talkie shortcuts in Firefox"  width="690" height="333" />
-1. You can also reach the extensions page directly with [`about:addons`](about:addons), but you might have to copy-paste the address manually.
+1. At the top right of the extensions list, click **Manage Extension Shortcuts** in the **gear button menu**.
+   > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-02.png" alt="Screenshot of the Manage Extension Shortcuts menu item" title="Manage extensions in Firefox"  width="701" height="293" />
+1. From the **Manage Extension Shortcuts** window you can check or change extension shortcuts for all Firefox extensions. You can also verify that there are no shortcut key collisions between extensions.
+   > <img src="resources/keyboard-shortcuts/talkie-shortcuts-firefox-03.png" alt="Screenshot of the Manage Extension Shortcuts window in Firefox, focusing on Talkie shortcuts" title="Talkie shortcuts in Firefox"  width="690" height="333" />
+1. You can also reach the extensions page in Firefox directly with [`about:addons`](about:addons), but you might have to copy-paste the address manually.
 
 </details>
 
