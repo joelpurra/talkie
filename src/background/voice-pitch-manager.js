@@ -56,9 +56,9 @@ export default class VoicePitchManager {
 
     _getVoicePitchOverrides() {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.getStoredValue(this.voicePitchPitchOverridesStorageKey)
                             .then((voicePitchPitchOverrides) => {
                                 if (voicePitchPitchOverrides !== null && typeof voicePitchPitchOverrides === "object") {
@@ -76,9 +76,9 @@ export default class VoicePitchManager {
 
     _setVoicePitchOverrides(voicePitchPitchOverrides) {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.setStoredValue(this.voicePitchPitchOverridesStorageKey, voicePitchPitchOverrides);
                     }
 

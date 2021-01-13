@@ -37,7 +37,7 @@ import actionCreators from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
         versionNumber: state.shared.metadata.versionNumber,
     };
 };
@@ -57,14 +57,14 @@ export default
 class App extends React.PureComponent {
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
     }
 
     render() {
         const {
             actions,
-            isPremiumVersion,
+            isPremiumEdition,
             versionNumber,
         } = this.props;
 
@@ -80,7 +80,7 @@ class App extends React.PureComponent {
 
                 <Main
                     actions={actions}
-                    isPremiumVersion={isPremiumVersion}
+                    isPremiumEdition={isPremiumEdition}
                     versionNumber={versionNumber}
                 />
             </div>

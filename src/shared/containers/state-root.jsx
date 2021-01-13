@@ -36,7 +36,7 @@ import StyleRoot from "../components/style-root.jsx";
 const mapStateToProps = (state) => {
     return {
         isSpeaking: state.shared.speaking.isSpeaking,
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
         versionName: state.shared.metadata.versionName,
     };
 };
@@ -50,13 +50,13 @@ export default
 class StateRoot extends React.PureComponent {
     static defaultProps = {
         isSpeaking: false,
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         versionName: null,
     };
 
     static propTypes = {
         isSpeaking: PropTypes.bool.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         versionName: PropTypes.string,
         children: PropTypes.element.isRequired,
     }
@@ -64,14 +64,14 @@ class StateRoot extends React.PureComponent {
     render() {
         const {
             isSpeaking,
-            isPremiumVersion,
+            isPremiumEdition,
             versionName,
         } = this.props;
 
         return (
             <StyleRoot
                 isSpeaking={isSpeaking}
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
                 versionName={versionName}
             >
                 {React.Children.only(this.props.children)}

@@ -62,9 +62,9 @@ export default class VoiceLanguageManager {
 
     _getLanguageLanguageVoiceOverrideNames() {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.getStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey)
                             .then((languageLanguageVoiceOverrideNames) => {
                                 if (languageLanguageVoiceOverrideNames !== null && typeof languageLanguageVoiceOverrideNames === "object") {
@@ -82,9 +82,9 @@ export default class VoiceLanguageManager {
 
     _setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames) {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.setStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey, languageLanguageVoiceOverrideNames);
                     }
 

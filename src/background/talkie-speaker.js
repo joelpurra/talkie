@@ -50,15 +50,14 @@ export default class TalkieSpeaker {
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
     // https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
     // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-    constructor(broadcaster, shouldContinueSpeakingProvider, contentLogger, storageManager) {
+    constructor(broadcaster, shouldContinueSpeakingProvider, contentLogger, settingsManager) {
         this.broadcaster = broadcaster;
         this.shouldContinueSpeakingProvider = shouldContinueSpeakingProvider;
         this.contentLogger = contentLogger;
-        this.storageManager = storageManager;
+        this.settingsManager = settingsManager;
 
         this.resetSynthesizer();
 
-        this.speakLongTextsStorageKey = "speak-long-texts";
         this.MAX_UTTERANCE_TEXT_LENGTH = 100;
     }
 
@@ -304,7 +303,7 @@ export default class TalkieSpeaker {
                     })
                     .then(() => Promise.all([
                         this.getActualVoice(voice),
-                        this.storageManager.getStoredValue(this.speakLongTextsStorageKey),
+                        this.settingsManager.getSpeakLongTexts(),
                     ]))
                     .then(([actualVoice, speakLongTexts]) => {
                         const paragraphs = TextHelper.splitTextToParagraphs(text);

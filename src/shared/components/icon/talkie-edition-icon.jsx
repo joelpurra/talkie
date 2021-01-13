@@ -21,15 +21,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import TalkieEditionIcon from "./talkie-edition-icon.jsx";
+import Icon from "./icon.jsx";
 
-export default class TalkieFreeIcon extends React.PureComponent {
+export default class TalkieEditionIcon extends React.PureComponent {
     static defaultProps = {
         mode: "inline",
         size: "1.3em",
         marginLeft: "0.3em",
         marginRight: "0.3em",
         className: "",
+        isPremiumEdition: false,
     };
 
     static propTypes = {
@@ -38,6 +39,7 @@ export default class TalkieFreeIcon extends React.PureComponent {
         marginLeft: PropTypes.string.isRequired,
         marginRight: PropTypes.string.isRequired,
         className: PropTypes.string.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
     }
 
     render() {
@@ -47,16 +49,26 @@ export default class TalkieFreeIcon extends React.PureComponent {
             marginLeft,
             marginRight,
             className,
+            isPremiumEdition,
         } = this.props;
 
+        const isPremiumEditionClassName = isPremiumEdition ? "premium" : "free";
+
+        const classNames = [
+            "icon-talkie",
+            isPremiumEditionClassName,
+            className,
+        ]
+            .join(" ")
+            .trim();
+
         return (
-            <TalkieEditionIcon
+            <Icon
                 mode={mode}
                 size={size}
                 marginLeft={marginLeft}
                 marginRight={marginRight}
-                className={className}
-                isPremiumEdition={false}
+                className={classNames}
             />
         );
     }

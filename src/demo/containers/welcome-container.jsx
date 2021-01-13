@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
         languagesCount: selectors.shared.voices.getLanguagesCount(state),
         languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
         availableBrowserLanguageWithInstalledVoice: selectors.shared.voices.getAvailableBrowserLanguageWithInstalledVoice(state),
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
     };
@@ -70,7 +70,7 @@ export default
 @connect(mapStateToProps, mapDispatchToProps)
 class WelcomeContainer extends React.PureComponent {
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         systemType: false,
         osType: false,
         languages: [],
@@ -90,7 +90,7 @@ class WelcomeContainer extends React.PureComponent {
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         languageGroupsCount: PropTypes.number.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
     }
@@ -115,7 +115,7 @@ class WelcomeContainer extends React.PureComponent {
     render() {
         const {
             actions,
-            isPremiumVersion,
+            isPremiumEdition,
             systemType,
             osType,
             voicesCount,
@@ -152,7 +152,7 @@ class WelcomeContainer extends React.PureComponent {
 
         return (
             <Welcome
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
                 systemType={systemType}
                 osType={osType}
                 voicesCount={voicesCount}

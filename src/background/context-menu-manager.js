@@ -116,8 +116,8 @@ export default class ContextMenuManager {
                 chrome: true,
                 webextension: true,
                 item: {
-                    id: "open-website-store-premium",
-                    title: this.translator.translate("commandOpenWebsiteStoreDescription_Premium"),
+                    id: "open-website-upgrade",
+                    title: this.translator.translate("commandOpenWebsiteUpgradeDescription"),
                     contexts: [
                         "browser_action",
                     ],
@@ -228,12 +228,12 @@ export default class ContextMenuManager {
         return promiseTry(
             () => {
                 return Promise.all([
-                    this.metadataManager.getVersionType(),
+                    this.metadataManager.getEditionType(),
                     this.metadataManager.getSystemType(),
                 ])
-                    .then(([versionType, systemType]) => {
+                    .then(([editionType, systemType]) => {
                         const applicableContextMenuOptions = this.contextMenuOptionsCollection
-                            .filter((contextMenuOption) => contextMenuOption[versionType] === true && contextMenuOption[systemType] === true);
+                            .filter((contextMenuOption) => contextMenuOption[editionType] === true && contextMenuOption[systemType] === true);
 
                         // // TODO: group by selected contexts before checking against limit.
                         // if (applicableContextMenuOptions > this.actionMenuLimit) {

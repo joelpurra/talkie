@@ -18,11 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const SET_IS_PREMIUM_VERSION = "SET_IS_PREMIUM_VERSION";
+export const SET_IS_PREMIUM_EDITION = "SET_IS_PREMIUM_EDITION";
 
 export const SET_VERSION_NAME = "SET_VERSION_NAME";
 
 export const SET_VERSION_NUMBER = "SET_VERSION_NUMBER";
+
+export const SET_EDITION_TYPE = "SET_EDITION_TYPE";
 
 export const SET_SYSTEM_TYPE = "SET_SYSTEM_TYPE";
 

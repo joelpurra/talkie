@@ -36,10 +36,9 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
     const serverSideActionsToDispatch = [
         // NOTE: currently attempts to match "synchronous usage" in style-root.jsx.
         // TODO: generalize preloading?
-        sharedActions.metadata.loadIsPremium(),
-        sharedActions.metadata.loadVersionName(),
-
         // NOTE: don't want to keep track of when to load these, preemptively loading.
+        sharedActions.metadata.loadIsPremiumEdition(),
+        sharedActions.metadata.loadVersionName(),
         sharedActions.metadata.loadSystemType(),
         sharedActions.metadata.loadVersionNumber(),
         sharedActions.voices.loadTranslatedLanguages(),

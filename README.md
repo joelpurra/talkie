@@ -17,23 +17,26 @@ It seems current users with existing installation can continue to use the extens
 <table>
   <tr>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie Premium is available for installation from Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium</a><br />&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
-    </td>
-    <td align="center">
-      <a href="https://joelpurra.com/projects/talkie/#premium"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium<br />(Coming soon!)
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
   </tr>
 </table>
 
 Developer option: [use the source code](./DEVELOP.md) directly.
+
+
+
+## Talkie Premium
+
+- <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> **Talkie:** free to use as much as you like
+- <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> **Talkie Premium:** [pay what you want](https://www.paypal.me/joelpurrade) for [more options and features](#features)
+
+How much does Talkie Premium cost? You *choose* how much you want to pay, depending on how much the additional features are worth to you. You can even choose to pay nothing. Afterwards, enable Talkie Premium in the Upgrade tab in Talkie's options.
+
+[Send your payment through PayPal](https://www.paypal.me/joelpurrade) or see [more payment methods](https://joelpurra.com/donate/) on the donations page. Payments are labeled as donations for open source software development.
 
 
 
@@ -58,13 +61,13 @@ There are several convenient ways to use Talkie.
 ### Browser toolbar button
 
 1. Select desired text on any web page.
-1. Click the Talkie button in your browser toolbar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />
+1. Click the Talkie button in your browser toolbar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" />
 
 
 ### Right-click menu
 
 1. Select the text, then right click on it
-1. Choose <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie in the menu.
+1. Choose <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> Talkie in the menu.
 
 The right-click menu also works in **most PDF-files** and **some special types of web pages** in the browser.
 
@@ -74,18 +77,18 @@ The right-click menu also works in **most PDF-files** and **some special types o
 1. Copy text to the clipboard from any program.
 1. Use the "read from clipboard" shortcut key from anywhere.
 
-You can also right-click on the <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium button, or in an empty area of a website, and select **read from clipboard**.
+You can also right-click on the <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> Talkie Premium button, or in an empty area of a website, and select **read from clipboard**.
 
 
 ### Shortcut keys
 
 A fast, easy, and convenient option is to use Talkie's configurable keyboard shortcuts.
 
-| Feature | Version | Windows, Linux, ChromeOS | macOS |
+| Feature | Edition | Windows, Linux, ChromeOS | macOS |
 | --- | --- | --- | --- |
-| Start/stop | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
-| Start/stop and show menu | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
-| Read text from clipboard in any program | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> |
+| Start/stop | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
+| Start/stop and show menu | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
+| Read text from clipboard in any program | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> |
 
 If the shortcut key does not work, please check that it is not already in use by another extension or program.
 
@@ -120,8 +123,8 @@ If the shortcut key does not work, please check that it is not already in use by
 
 ## Features
 
-- <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" /> Talkie Premium
 - <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" /> Talkie
+- <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" /> Talkie Premium
 
 | Feature | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Description |
 | --- | --- | --- | --- |
@@ -134,9 +137,8 @@ If the shortcut key does not work, please check that it is not already in use by
 | **Choose speed and pitch** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Adjust voices to your liking. |
 | **Read from the clipboard** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Just copy text from anywhere in any program. |
 | **Warm, fuzzy feeling** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Support open source software by independent developers. |
-| **Faster updates** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Features and fixes come first to Talkie Premium. |
 | **Free** | | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Free to use as much as you like. |
-| **Paid subscription** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Great price for a yearly subscription. |
+| **Pay what you want** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Pay what you want. |
 
 
 
@@ -168,7 +170,7 @@ The language detection is performed in four steps, where the first valid value i
 1. The `lang="..."` attribute from the HTML root element of the current page (or frame).
 1. Your browser's page primary language detection.
 
-The Web Speech API can use more than one voice per language (currently over 20 for `en-US` in Google Chrome version 55), as well as modify speech rate (speed) and pitch. These options have been implemented in <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> Talkie Premium as a paid feature for those who install the extension [through Chrome Web Store](https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo) or [through Firefox Add-ons](https://joelpurra.com/projects/talkie/#premium).
+The Web Speech API can use more than one voice per language (currently over 20 for `en-US` in Google Chrome version 55), as well as modify speech rate (speed) and pitch. These options have been implemented in <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> Talkie Premium as a paid feature.
 
 </details>
 
@@ -188,7 +190,7 @@ You can install additional voices to support new languages and dialects; see sep
 <details>
 <summary>Acknowledgements</summary>
 
-- Thanks to [Liron Tocker](https://liron.de/) for coming up with the name Talkie, the fancy icons, and promotional graphics (2016-12-31, 2017-04-09): <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> <img src="resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" /> <img src="resources/icon/free/icon-stop/icon-32x32.png" alt="Talkie stop button" width="16" height="16" border="0" />
+- Thanks to [Liron Tocker](https://liron.de/) for coming up with the name Talkie, the fancy icons, and promotional graphics (2016-12-31, 2017-04-09): <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> <img src="resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> <img src="resources/icon/free/icon-stop/icon-32x32.png" alt="Talkie stop button" width="16" height="16" border="0" />
 - Thanks to [Miroslava Jovičić](http://www.miroslavajovicic.net/) for the fancy user interface redesign (2017-05-29), and promotional graphics (2017-07-30, 2017-08-01).
 
 </details>
@@ -196,4 +198,4 @@ You can install additional voices to support new languages and dialects; see sep
 
 ---
 
-<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).
+<a href="https://joelpurra.com/projects/talkie/"><img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).

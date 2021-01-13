@@ -24,19 +24,19 @@ import PropTypes from "prop-types";
 export default class StyleRoot extends React.PureComponent {
     static defaultProps = {
         isSpeaking: false,
-        isPremiumVersion: false,
+        isPremiumEdition: false,
     };
 
     static propTypes = {
         isSpeaking: PropTypes.bool.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         children: PropTypes.element.isRequired,
     }
 
     getStateClasses() {
         const {
             isSpeaking,
-            isPremiumVersion,
+            isPremiumEdition,
         } = this.props;
 
         const stateClasses = [];
@@ -47,7 +47,7 @@ export default class StyleRoot extends React.PureComponent {
             stateClasses.push("talkie-not-speaking");
         }
 
-        if (isPremiumVersion) {
+        if (isPremiumEdition) {
             stateClasses.push("talkie-premium");
         } else {
             stateClasses.push("talkie-free");

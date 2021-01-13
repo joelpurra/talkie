@@ -31,39 +31,37 @@ import {
 const REASON_INSTALL = "install";
 
 export default class OnInstalledManager {
-    constructor(storageManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue) {
+    constructor(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue) {
         // TODO: use broadcast listeners instead.
         this.storageManager = storageManager;
+        this.settingsManager = settingsManager;
         this.metadataManager = metadataManager;
         this.contextMenuManager = contextMenuManager;
         this.welcomeManager = welcomeManager;
         this.onInstallListenerEventQueue = onInstallListenerEventQueue;
     }
 
-    _setStorageManagerDefaults() {
+    _setSettingsManagerDefaults() {
         // TODO: move this function elsewhere?
         return promiseTry(
             () => {
-                logDebug("Start", "_setStorageManagerDefaults");
+                logDebug("Start", "_setSettingsManagerDefaults");
 
                 return this.metadataManager.isWebExtensionVersion()
                     .then((isWebExtensionVersion) => {
-                    // TODO: shared place for stored value constants.
-                        const speakLongTextsStorageKey = "speak-long-texts";
-
-                        // TODO: shared place for default/fallback values for booleans etcetera.
                         // NOTE: enabling speaking long texts by default on in WebExtensions (Firefox).
                         const speakLongTexts = isWebExtensionVersion;
 
-                        return this.storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts);
+                        // TODO: move setting the default settings to the SettingsManager?
+                        return this.settingsManager.setSpeakLongTexts(speakLongTexts);
                     })
                     .then((result) => {
-                        logDebug("Done", "_setStorageManagerDefaults");
+                        logDebug("Done", "_setSettingsManagerDefaults");
 
                         return result;
                     })
                     .catch((error) => {
-                        logError("_setStorageManagerDefaults", error);
+                        logError("_setSettingsManagerDefaults", error);
 
                         throw error;
                     });
@@ -80,7 +78,7 @@ export default class OnInstalledManager {
                 .then(() => this.contextMenuManager.createContextMenus())
                 .then(() => {
                     if (event.reason === REASON_INSTALL) {
-                        return this._setStorageManagerDefaults()
+                        return this._setSettingsManagerDefaults()
                             .then(() => this.welcomeManager.openWelcomePage());
                     }
 

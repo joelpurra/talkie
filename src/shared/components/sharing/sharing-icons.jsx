@@ -37,8 +37,17 @@ class SharingIcons extends React.PureComponent {
 
     static propTypes = {
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
         className: PropTypes.string.isRequired,
     };
+
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
+    }
 
     render() {
         const {

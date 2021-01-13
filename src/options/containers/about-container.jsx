@@ -36,7 +36,7 @@ import selectors from "../selectors";
 
 const mapStateToProps = (state) => {
     return {
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
         versionName: state.shared.metadata.versionName,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
@@ -68,7 +68,7 @@ class AboutContainer extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         versionName: null,
         systemType: null,
         osType: null,
@@ -82,7 +82,7 @@ class AboutContainer extends React.PureComponent {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
@@ -103,7 +103,7 @@ class AboutContainer extends React.PureComponent {
 
     render() {
         const {
-            isPremiumVersion,
+            isPremiumEdition,
             versionName,
             systemType,
             osType,
@@ -118,7 +118,7 @@ class AboutContainer extends React.PureComponent {
 
         return (
             <About
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
                 versionName={versionName}
                 systemType={systemType}
                 osType={osType}

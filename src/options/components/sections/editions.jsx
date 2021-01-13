@@ -21,32 +21,40 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import HeroVersionSection from "./hero-version-section.jsx";
+import TalkiePremiumEdition from "./editions/talkie-premium-edition.jsx";
 
-export default class HeroPremiumSection extends React.PureComponent {
+export default class Editions extends React.PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.handleIsPremiumEditionChange = this.handleIsPremiumEditionChange.bind(this);
+    }
+
     static defaultProps = {
-        className: "",
+        isPremiumEdition: false,
     };
 
     static propTypes = {
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
+        actions: PropTypes.object.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
+    }
+
+    handleIsPremiumEditionChange(isPremiumEdition) {
+        this.props.actions.sharedMetadata.storeIsPremiumEdition(isPremiumEdition);
     }
 
     render() {
         const {
-            className,
+            isPremiumEdition,
         } = this.props;
-
-        const isPremiumVersion = true;
-
         return (
-            <HeroVersionSection
-                isPremiumVersion={isPremiumVersion}
-                className={className}
-            >
-                {this.props.children}
-            </HeroVersionSection>
+            <section>
+                <TalkiePremiumEdition
+                    onChange={this.handleIsPremiumEditionChange}
+                    isPremiumEdition={isPremiumEdition}
+                    disabled={false}
+                />
+            </section>
         );
     }
 }

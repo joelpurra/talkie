@@ -26,39 +26,51 @@ import configureAttribute from "../../hocs/configure.jsx";
 
 import * as textBase from "../../styled/text/text-base.jsx";
 
-import TalkieVersionIcon from "../icon/talkie-version-icon.jsx";
+import TalkieEditionIcon from "../icon/talkie-edition-icon.jsx";
 
 export default
 @translateAttribute
 @configureAttribute
-class VersionSection extends React.PureComponent {
+class EditionSection extends React.PureComponent {
     static defaultProps = {
         mode: "h2",
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         className: "",
     };
 
     static propTypes = {
         mode: PropTypes.oneOf(["p", "h2"]).isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         children: PropTypes.node.isRequired,
         className: PropTypes.string.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
+    }
+
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
     }
 
     render() {
         const {
             mode,
-            isPremiumVersion,
+            isPremiumEdition,
             className,
             translate,
             configure,
         } = this.props;
 
-        const text = isPremiumVersion ? translate("extensionShortName_Premium") : translate("extensionShortName_Free");
+        // TODO: move resolving the name to the state, like edition type?
+        const text = isPremiumEdition
+            ? translate("extensionShortName_Premium")
+            : translate("extensionShortName_Free");
 
-        const versionClassName = isPremiumVersion ? "premium-section" : "free-section";
+        const versionClassName = isPremiumEdition ? "premium-section" : "free-section";
 
         const classNames = [
             versionClassName,
@@ -86,11 +98,11 @@ class VersionSection extends React.PureComponent {
             <div className={classNames}>
                 <HeadingElement>
                     <textBase.a
-                        href={configure("urls.store-premium")}
+                        href={configure("urls.options-upgrade-from-demo")}
                         lang="en"
                     >
-                        <TalkieVersionIcon
-                            isPremiumVersion={isPremiumVersion}
+                        <TalkieEditionIcon
+                            isPremiumEdition={isPremiumEdition}
                         />
                         {text}
                     </textBase.a>

@@ -21,55 +21,27 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import Icon from "./icon.jsx";
+import * as layoutBase from "../../styled/layout/layout-base.jsx";
 
-export default class TalkieVersionIcon extends React.PureComponent {
+export default class HeroSection extends React.PureComponent {
     static defaultProps = {
-        mode: "inline",
-        size: "1.3em",
-        marginLeft: "0.3em",
-        marginRight: "0.3em",
         className: "",
-        isPremiumVersion: false,
     };
 
     static propTypes = {
-        mode: PropTypes.oneOf(["inline", "standalone"]).isRequired,
-        size: PropTypes.string.isRequired,
-        marginLeft: PropTypes.string.isRequired,
-        marginRight: PropTypes.string.isRequired,
+        children: PropTypes.node.isRequired,
         className: PropTypes.string.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
     }
 
     render() {
         const {
-            mode,
-            size,
-            marginLeft,
-            marginRight,
             className,
-            isPremiumVersion,
         } = this.props;
 
-        const isPremiumVersionClassName = isPremiumVersion ? "premium" : "free";
-
-        const classNames = [
-            "icon-talkie",
-            isPremiumVersionClassName,
-            className,
-        ]
-            .join(" ")
-            .trim();
-
         return (
-            <Icon
-                mode={mode}
-                size={size}
-                marginLeft={marginLeft}
-                marginRight={marginRight}
-                className={classNames}
-            />
+            <layoutBase.hero className={className}>
+                {this.props.children}
+            </layoutBase.hero>
         );
     }
 }

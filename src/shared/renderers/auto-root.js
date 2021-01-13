@@ -32,8 +32,11 @@ import ManifestProvider from "../../split-environments/manifest-provider";
 import LocaleProvider from "../../split-environments/locale-provider";
 import TranslatorProvider from "../../split-environments/translator-provider";
 import BroadcasterProvider from "../../split-environments/broadcaster-provider";
+import StorageProvider from "../../split-environments/storage-provider";
 
 import ReduxStoreProvider from "../redux-store-provider";
+import StorageManager from "../storage-manager";
+import SettingsManager from "../settings-manager";
 import MetadataManager from "../metadata-manager";
 import Configuration from "../configuration";
 import TalkieLocaleHelper from "../talkie-locale-helper";
@@ -57,8 +60,11 @@ const getRoot = (store, translator, configuration, styletron, broadcaster, Child
 });
 
 const autoRoot = (initialState, rootReducer, ChildComponent) => promiseTry(() => {
+    const storageProvider = new StorageProvider();
+    const storageManager = new StorageManager(storageProvider);
+    const settingsManager = new SettingsManager(storageManager);
     const manifestProvider = new ManifestProvider();
-    const metadataManager = new MetadataManager(manifestProvider);
+    const metadataManager = new MetadataManager(manifestProvider, settingsManager);
     const configuration = new Configuration(metadataManager, configurationObject);
     const localeProvider = new LocaleProvider();
     const translatorProvider = new TranslatorProvider(localeProvider);

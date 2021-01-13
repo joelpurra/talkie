@@ -21,48 +21,37 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import * as layoutBase from "../../styled/layout/layout-base.jsx";
+import translateAttribute from "../../hocs/translate.jsx";
 
-import styled from "../../hocs/styled.jsx";
+import * as textBase from "../../styled/text/text-base.jsx";
 
-export default class HeroSection extends React.PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.styled = {
-            heroFree: styled({
-
-            })(layoutBase.hero),
-
-            heroPremium: styled({
-
-            })(layoutBase.hero),
-        };
+export default
+@translateAttribute
+class ExtensionShortName extends React.PureComponent {
+    static defaultProps={
+        isPremiumEdition: false,
     }
 
-    static defaultProps = {
-        isPremiumVersion: false,
-        className: "",
-    };
-
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
+        translate: PropTypes.func.isRequired,
     }
 
     render() {
         const {
-            isPremiumVersion,
-            className,
+            isPremiumEdition,
+            translate,
         } = this.props;
 
-        const HeroElement = isPremiumVersion ? this.styled.heroPremium : this.styled.heroFree;
+        // TODO: move resolving the name to the state, like edition type?
+        const extensionShortName = isPremiumEdition
+            ? translate("extensionShortName_Premium")
+            : translate("extensionShortName_Free");
 
         return (
-            <HeroElement className={className}>
-                {this.props.children}
-            </HeroElement>
+            <textBase.span>
+                {extensionShortName}
+            </textBase.span>
         );
     }
 }

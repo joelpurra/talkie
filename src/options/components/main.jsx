@@ -36,6 +36,7 @@ import TabContents from "../../shared/components/navigation/tab-contents.jsx";
 import AboutContainer from "../containers/about-container.jsx";
 import TextContainer from "../containers/text-container.jsx";
 import VoicesContainer from "../containers/voices-container.jsx";
+import EditionsContainer from "../containers/editions-container.jsx";
 
 const dynamicEnvironment = new DynamicEnvironment();
 
@@ -82,6 +83,10 @@ class Main extends React.PureComponent {
                 text: this.props.translate("frontend_textLinkText"),
             },
             {
+                tabId: "upgrade",
+                text: this.props.translate("frontend_upgradeLinkText"),
+            },
+            {
                 tabId: "about",
                 text: this.props.translate("frontend_aboutLinkText"),
             },
@@ -118,6 +123,7 @@ class Main extends React.PureComponent {
         className: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
     };
 
     getLocationQuerystring() {
@@ -139,8 +145,14 @@ class Main extends React.PureComponent {
     }
 
     componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+
         // NOTE: execute outside the synchronous rendering.
         setTimeout(() => this.scrollToTop(), 100);
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -208,6 +220,14 @@ class Main extends React.PureComponent {
                         onLinkClick={this.handleLinkClick}
                     >
                         <TextContainer />
+                    </TabContents>
+
+                    <TabContents
+                        id="upgrade"
+                        activeTabId={activeTabId}
+                        onLinkClick={this.handleLinkClick}
+                    >
+                        <EditionsContainer />
                     </TabContents>
 
                     <TabContents

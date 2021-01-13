@@ -10,18 +10,10 @@
 <table>
   <tr>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from the Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/madmpgibncancdmkjflnifcdakndkngo"><img src="./resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium</a><br />&nbsp;
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a><br />&nbsp;
-    </td>
-    <td align="center">
-      <a href="https://joelpurra.com/projects/talkie/#premium"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" border="0" /></a><br /><img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium play button" width="16" height="16" border="0" />Talkie Premium<br />(Coming soon!)
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
   </tr>
 </table>
@@ -112,15 +104,15 @@ npm run --silent rebuild
 
 ```bash
 # NOTE: assumes you have `google-chrome`/`chromium`/`vivaldi` in your path.
-npm run --silent run:chrome:free
-npm run --silent run:chromium:free
-npm run --silent run:vivaldi:free
+npm run --silent run:chrome
+npm run --silent run:chromium
+npm run --silent run:vivaldi
 
 # Open a new instance of Firefox, with an empty profile, and load Talkie in debugging mode.
-npm run --silent run:firefox:free
+npm run --silent run:firefox
 
 # You might need to set the path to Firefox.
-#WEB_EXT_FIREFOX="$HOME/Applications/Firefox.app/Contents/MacOS/firefox-bin" npm run --silent run:firefox:free
+#WEB_EXT_FIREFOX="$HOME/Applications/Firefox.app/Contents/MacOS/firefox-bin" npm run --silent run:firefox
 ```
 
 
@@ -241,15 +233,16 @@ npm run --silent version:update
 # Finish the release and sign the tag.
 git flow release finish -s <release-version>
 
+# Check out the release version tag.
+git checkout <release-version>
+
 # Create zip files with the extension packages.
 npm run --silent package
 
 # Upload and publish the package where it can be automated.
 # Release to other distribution channels manually.
-npm run --silent publish:chromestore:free
-npm run --silent publish:chromestore:premium
-npm run --silent publish:amo:free
-npm run --silent publish:amo:premium
+npm run --silent publish:chromestore
+npm run --silent publish:amo
 ```
 
 

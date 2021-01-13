@@ -53,9 +53,9 @@ export default class Api {
         this.debouncedSpeakTextInLanguageWithOverrides = debounce(this.speakTextInLanguageWithOverrides.bind(this), 200);
     }
 
-    getConfigurationValueSync(path) {
+    getConfigurationValueSync(systemType, path) {
         /* eslint-disable no-sync */
-        return this.configuration.getSync(path);
+        return this.configuration.getSync(systemType, path);
         /* eslint-enable no-sync */
     }
 
@@ -82,6 +82,16 @@ export default class Api {
 
     getVoices() {
         return getMappedVoices();
+    }
+
+    getIsPremiumEditionOption() {
+        return getBackgroundPage()
+            .then((background) => background.getIsPremiumEditionOption());
+    }
+
+    setIsPremiumEditionOption(isPremiumEdition) {
+        return getBackgroundPage()
+            .then((background) => background.setIsPremiumEditionOption(isPremiumEdition === true));
     }
 
     getSpeakLongTextsOption() {
@@ -135,8 +145,8 @@ export default class Api {
         return this.talkieLocaleHelper.getTranslatedLanguages();
     }
 
-    isPremiumVersion() {
-        return this.metadataManager.isPremiumVersion();
+    isPremiumEdition() {
+        return this.metadataManager.isPremiumEdition();
     }
 
     getVersionName() {
@@ -145,6 +155,10 @@ export default class Api {
 
     getVersionNumber() {
         return this.metadataManager.getVersionNumber();
+    }
+
+    getEditionType() {
+        return this.metadataManager.getEditionType();
     }
 
     getSystemType() {

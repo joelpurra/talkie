@@ -25,11 +25,12 @@ export default function configureHoc(ComponentToWrap) {
     return class ConfigurationHoc extends React.PureComponent {
         static contextTypes = {
             configure: PropTypes.func.isRequired,
+            onConfigurationChange: PropTypes.func.isRequired,
         }
 
         render() {
             return (
-                <ComponentToWrap {...this.props} configure={this.context.configure} />
+                <ComponentToWrap {...this.props} configure={this.context.configure} onConfigurationChange={this.context.onConfigurationChange} />
             );
         }
     };

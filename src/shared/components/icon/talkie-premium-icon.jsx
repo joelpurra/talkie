@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import TalkieVersionIcon from "./talkie-version-icon.jsx";
+import TalkieEditionIcon from "./talkie-edition-icon.jsx";
 
 export default class TalkiePremiumIcon extends React.PureComponent {
     static defaultProps = {
@@ -50,13 +50,13 @@ export default class TalkiePremiumIcon extends React.PureComponent {
         } = this.props;
 
         return (
-            <TalkieVersionIcon
+            <TalkieEditionIcon
                 mode={mode}
                 size={size}
                 marginLeft={marginLeft}
                 marginRight={marginRight}
                 className={className}
-                isPremiumVersion={true}
+                isPremiumEdition={true}
             />
         );
     }

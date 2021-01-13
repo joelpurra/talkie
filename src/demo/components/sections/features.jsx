@@ -42,6 +42,11 @@ class Features extends React.PureComponent {
         super(props);
 
         this.styled = {
+            storeLink: styled({
+                textAlign: "center",
+                marginTop: "0.5em",
+            })("div"),
+
             storeLinks: styled({
                 textAlign: "center",
                 marginTop: "0.5em",
@@ -64,20 +69,29 @@ class Features extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         systemType: false,
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
+    }
+
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
     }
 
     render() {
         const {
-            isPremiumVersion,
+            isPremiumEdition,
             systemType,
             translate,
             configure,
@@ -86,19 +100,19 @@ class Features extends React.PureComponent {
         return (
             <section>
                 <p>
-                    {translate("frontend_featuresVersions")}
+                    {translate("frontend_featuresEditions")}
                 </p>
 
                 <Discretional
-                    enabled={!isPremiumVersion}
+                    enabled={!isPremiumEdition}
                 >
-                    <p>{translate("frontend_featuresVersion_Free")}</p>
+                    <p>{translate("frontend_featuresEdition_Free")}</p>
                 </Discretional>
 
                 <Discretional
-                    enabled={isPremiumVersion}
+                    enabled={isPremiumEdition}
                 >
-                    <p>{translate("frontend_featuresVersion_Premium")}</p>
+                    <p>{translate("frontend_featuresEdition_Premium")}</p>
                 </Discretional>
 
                 <PremiumSection>
@@ -117,30 +131,15 @@ class Features extends React.PureComponent {
                         <listBase.li>{translate("frontend_featuresPremium_List04")}</listBase.li>
                     </listBase.ul>
 
-                    <this.styled.storeLinks>
-                        <this.styled.storeLinksPFirst>
-                            <textBase.a
-                                href={configure("urls.chromewebstore-premium")}
-                                lang="en"
-                            >
-                                <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie Premium is available for installation from the Chrome Web Store" width="248" height="75" />
-                                <br />
-                                <TalkiePremiumIcon />
-                                {translate("extensionShortName_Premium")}
-                            </textBase.a>
-                        </this.styled.storeLinksPFirst>
-                        <this.styled.storeLinksP>
-                            <textBase.a
-                                href={configure("urls.firefox-amo-premium")}
-                                lang="en"
-                            >
-                                <img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" />
-                                <br />
-                                <TalkiePremiumIcon />
-                                {translate("extensionShortName_Premium")}
-                            </textBase.a>
-                        </this.styled.storeLinksP>
-                    </this.styled.storeLinks>
+                    <this.styled.storeLink>
+                        <textBase.a
+                            href={configure("urls.options-upgrade-from-demo")}
+                            lang="en"
+                        >
+                            <TalkiePremiumIcon />
+                            {translate("frontend_featuresUpgradeToTalkiePremiumLinkText")}
+                        </textBase.a>
+                    </this.styled.storeLink>
                 </PremiumSection>
 
                 <FreeSection>
@@ -156,7 +155,7 @@ class Features extends React.PureComponent {
                     <this.styled.storeLinks>
                         <this.styled.storeLinksPFirst>
                             <textBase.a
-                                href={configure("urls.chromewebstore-free")}
+                                href={configure("urls.chromewebstore")}
                                 lang="en"
                             >
                                 <img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from the Chrome Web Store" width="248" height="75" />
@@ -167,7 +166,7 @@ class Features extends React.PureComponent {
                         </this.styled.storeLinksPFirst>
                         <this.styled.storeLinksP>
                             <textBase.a
-                                href={configure("urls.firefox-amo-free")}
+                                href={configure("urls.firefox-amo")}
                                 lang="en"
                             >
                                 <img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60" />

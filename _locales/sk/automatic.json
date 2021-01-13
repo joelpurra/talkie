@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Prečítajte si voľbu textu nahlas pomocou Talkie",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Čítanie výberu textu nahlas s Talkie Premium",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Mlč",
@@ -32,13 +27,9 @@
     "message": "Talkie stránka Talkie",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Talkie obchodu s Talkie",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie Premium obchodu s Talkie Premium",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Inovovať na Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "Prečítajte si zo schránky",
@@ -48,15 +39,10 @@
     "message": "Štart/stop čítanie výberu",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "ZADARMO! Rýchly, jednoduchý a vysokokvalitný textový reč vo viac ako 40 jazykoch. Prečítajte si nahlas z webových stránok, PDF, e-mail. Hovorte text s TTS.",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "PREMIUM! Rýchly, jednoduchý a vysokokvalitný textový reč vo viac ako 40 jazykoch. Prečítajte si nahlas z webových stránok, PDF, e-mail. Hovorte text s TTS.",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Rýchly, ľahký a vysoko kvalitný prevod textu na reč vo viac ako 40 jazykoch. Čítajte nahlas z webových stránok, PDF, e-mailov. Hovorte text pomocou TTS.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "o",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Bohužiaľ nie. Ukázalo sa, že Dokumenty Google (rovnako ako Tabuľka Google, Disk Google a podobne) nie sú webové stránky, ale špeciálna \"aplikácia v prehliadači\" vytvorená spoločnosťou Google. Talkie nemôže získať prístup k vybratému textu ani pridať položky kontextovej ponuky. Budem ďalej skúmať, či existuje nejaký spôsob, ako pridať podporu služby Dokumenty Google Talkie .",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Bohužiaľ nie. Ukazuje sa, že služba Dokumenty Google (rovnako ako tabuľka Google, Disk Google a podobné) nie je web, ale špeciálna „aplikácia v prehliadači“ vytvorená spoločnosťou Google. Talkie nemôže získať prístup k vybratému textu ani pridávať položky kontextovej ponuky. Budem ďalej skúmať, či existuje nejaký spôsob, ako pridať podporu služby Dokumenty Google do Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Používa Talkie v službe Dokumenty Google?",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Trvalo dosť času a úsilia vyvinúť Talkie — stovky hodín zatiaľ. Na finančnú podporu vývoja niektoré funkcie sú k dispozícii len používateľom Talkie Premium .",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Vývoj a údržba Talkie vyžaduje pomerne veľa času a úsilia — zatiaľ stovky hodín. Talkie môže každý používať, koľko chce. Na účely finančnej podpory ďalšieho vývoja, údržby a zachovania bezplatnej Talkie bezplatnej Talkie sú niektoré funkcie k dispozícii iba používateľom Talkie Premium .",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "Prečo Talkie Premium stojí peniaze?",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "Prečo existujú dve vydania Talkie ?",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Bohužiaľ ešte nie. Talkie Premium sa v súčasnosti ponúka iba prostredníctvom Internetového obchodu Chrome, kde je jedinou možnosťou používať službu Google Payments.",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "Áno, k dispozícii je niekoľko možností platby.",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "Môžem platiť za Talkie Premium pomocou PayPal, bankovým prevodom atď.?",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "Môžem platiť prostredníctvom služby PayPal, bankovým prevodom atď.?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Istá! Môžete buď platbu zrušiť v službe Google Payments, alebo ma kontaktovať priamo.",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "Áno, ak ste platili prostredníctvom služby PayPal alebo Stripe, ktoré ponúkajú jednoduchú správu vrátenia peňazí. Vrátenie platby nie je zvyčajne k dispozícii pre iné spôsoby platby z dôvodu množstva práce navyše, ktorú vyžaduje, a navyše existuje riziko, že peniaze budú vrátené na nesprávny účet.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "Môžem dostať náhradu?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Istá! Môžem vám poslať kópiu najnovšej verzie Talkie Premium , ale potom, keď sa uvoľní ďalšia verzia, nebude mať automatické aktualizácie.",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "Samozrejme! Talkie Premium chcete vyskúšať, Talkie Premium aktualizáciu Talkie Premium .",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "Môžem si vyskúšať bezplatnú kópiu Talkie Premium ?",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "Môžem si Talkie Premium vyskúšať zadarmo?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "V Talkie nie je žiadna reklama, zber údajov ani sledovanie Talkie. Spokojní používatelia platiaci za Talkie Premium sú jediné speňaženia.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Obsahuje rozšírenie Talkie reklamu, zhromažďuje údaje alebo sleduje používateľov?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Systém vyznamenania je taký, keď jednotlivcom dôverujeme, že sú čestní, a dodržiavajú pokyny bez prísne vynútených kontrol. Za Talkie Premium dôveru v to, že tí, ktorí upgradujú, za ňu zaplatili.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Čo je čestný systém?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Pretože ľudia na celom svete používajú rôzne meny, majú inú úroveň disponibilného príjmu a rôzne úrovne ocenenia Talkie Premium. Neexistuje jednotná pevná cena, ktorá by dobre fungovala pre všetkých na svete. Okrem toho prichádzajú fluktuácie mien, trendy hospodárskeho cyklu, regionálne/vnútrokrajinové variácie atď. Celkovo je nastavenie cien produktu predávaného na celom svete komplikované. Je jednoduchšie nechať každého, aby určil svoju vlastnú cenu, a zaistiť, aby bol produkt dostatočne dobrý na to, aby vyžadoval platbu.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "Prečo si môžem nastaviť vlastnú cenu?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Pretože neviem, koľko peňazí môžete minúť na softvér na Talkie Premium textu na reč, dávam prednosť tomu, aby ste zaplatili to, čo si myslíte, že Talkie Premium pre vás stojí — nič viac, nič menej. V prípade, že hľadáte referenčný rámec, keď Google v Spojených štátoch amerických spracovával platby za Talkie Premium cena predplatného bola $ 25 (americký dolár) ročne. Upozorňujeme, že Google upravil ceny okolo krajín a mien po celom svete tak, aby zodpovedali miestnym podmienkam, takže to môže byť viac-menej. Zároveň každý, kto zdvorilo požiadal, mohol tiež dostať Talkie Premium zadarmo.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Koľko mi odporúčate zaplatiť?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Pretože implementácia systému platieb a overovania si vyžaduje veľa času a úsilia a predpokladá sa, že náklady na zavedenie prísneho overovania platieb sú vyššie ako straty jednotlivcov, ktorí systém podvádzajú. Overenie platby tiež vyžaduje určitú úroveň zhromažďovania údajov zo systémov používateľov a technicky zdatní používatelia môžu overenie aj tak často obísť. Takže z technického a obchodného hľadiska, aj keď neexistujú žiadne záruky, je jednoduchšie jednoducho veriť, že používatelia dodržiavajú čestný systém.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "Prečo neexistuje overenie platby?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Rozhodnutie nevykonať overenie platby znamená, že zaplatenú sumu nie je možné overiť. Okrem toho sú náklady na „výrobu“ digitálnej kópie produktu Talkie Premium nulové, takže jeho Talkie Premium rozdávanie neznamená pre vývojára finančnú stratu. Existuje tiež nádej, že ak sa vám Talkie Premium páči, povedzte o tom svojim priateľom. Rozdávanie Talkie Premium sa dá považovať aj za marketingové úsilie.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "Prečo si môžem zvoliť, že nebudem platiť nič?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Áno, pomocou Stripe. Zobraziť ďalšie možnosti platby.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Môžem vykonať opakovanú mesačnú alebo ročnú platbu?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Áno, ak o to požiadate prostredníctvom e-mailu. Uveďte svoje meno, adresu a prípadne identifikátor dane z pridanej hodnoty (DPH) (alebo ekvivalent).",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Môžem dostať potvrdenie o svojej platbe?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Pretože sa vám páčia ďalšie funkcie, ktoré Talkie Premium poskytuje, a šťastný pocit z prispievania nezávislých vývojárov k vývoju softvéru s otvoreným zdrojom. Vzhľadom na relatívne vysoké náklady na vývoj a údržbu, ale nulové náklady na „výrobu“ digitálnych kópií, platby za Talkie Premium možno považovať aj za podporu budúceho vývoja a údržby, na rozdiel od hodnoty produktu v čase platby .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "Prečo by som mal platiť za upgrade?",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "hmyz",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "hlasy",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Momentálne sa používa bezplatné vydanie Talkie a k dispozícii je obmedzená sada funkcií. Možno by pre vás bola Talkie Premium lepšou voľbou?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "V súčasnosti používa Talkie Premium a všetky funkcie sú k dispozícii. Veľmi vám ďakujem, ohrieva moje srdce!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie dodáva v dvoch vydaniach: Talkie a Talkie Premium. Bezplatná edícia je skvelá pre väčšinu prípadov použitia, ale prémiová edícia ponúka ďalšie možnosti a funkcie.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "Automatická detekcia jazyka.",
@@ -350,17 +420,9 @@
     "message": "Čítať text zo schránky! Stačí Talkie Premium text z Talkie Premium programu a pomocou Talkie Premium môžete prečítať!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "V súčasnosti je k Talkie verzia Talkie a je k dispozícii obmedzená sada funkcií. Možno Talkie Premium by bolo lepšou voľbou pre vás?",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "V súčasnosti používa Talkie Premium a všetky funkcie sú k dispozícii. Veľmi vám ďakujem, ohrieva moje srdce!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie v dvoch verziách: Talkie a Talkie Premium. Bezplatná verzia je skvelá pre väčšinu prípadov použitia, ale prémiová verzia ponúka ďalšie možnosti.",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Inovovať na Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Všetky príspevky k Talkie sa Talkie podľa Zmluvy o licencii prispievateľa (CLA).",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie bol vyvinutý niekoľko dní pred novým rokom 2016/2017, na výzvu od priateľa. Táto výzva sa začala otázkou: pri dochádzaní do práce je možné počúvať článok namiesto jeho čítania? Jednoducho, povedal som, a vydal sa, aby som to dokázal — alebo aspoň aby ​​môj prehliadač rozprával text pomocou hlúpeho počítačového hlasu. Základná verzia, bez akéhokoľvek užívateľského rozhrania, sa ukázala byť triviálne, ako vytvoriť. Pridanie používateľského rozhrania trvalo o niečo dlhšie. Pridanie správneho rozpoznávania jazyka viac kódov. Prekonávanie chýb v prehliadači ešte viac práce. Zoznam vylepšení a funkcií pokračuje — a niekoľko tisíc riadkov kódu neskôr, hľadáte na konečný výsledok.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie bol vyvinutý niekoľko dní pred Novým rokom 2016/2017 na výzvu priateľa. Výzva sa začala otázkou: je možné pri dochádzaní do práce počúvať článok namiesto jeho čítania? Ľahko, povedal som a vydal som sa dokázať to — alebo aspoň prinútiť môj prehliadač, aby hovoril text hlúpym počítačovým hlasom. Ukázalo sa, že základné vydanie bez akéhokoľvek používateľského rozhrania bolo triviálne. Pridanie používateľského rozhrania trvalo o niečo dlhšie. Pridaním správnej detekcie jazyka získate viac kódu. Prekonávanie chýb v prehliadači funguje ešte viac. Zoznam vylepšení a funkcií pokračuje — a o niekoľko tisíc riadkov kódu neskôr sa pozeráte na konečný výsledok.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Ako sa Talkie začalo",
@@ -434,6 +496,10 @@
     "message": "Typ prehliadača",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Aktuálne vydanie",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "Podrobnosti systému",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "text",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie dodáva v dvoch vydaniach: Talkie a Talkie Premium. Bezplatná edícia je skvelá pre väčšinu prípadov použitia, ale prémiová edícia ponúka ďalšie možnosti a funkcie.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Cena za Talkie Premium nie je pevná. Namiesto toho zaplatíte, čo chcete, podľa toho, koľko si myslíte, že pre vás prémiové funkcie majú hodnotu. Môžete sa dokonca rozhodnúť nič neplatiť.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Po odoslaní platby nie sú potrebné žiadne kódy na inováciu, nie sú potrebné žiadne používateľské účty na registráciu, ani žiadne iné overenie platby. Namiesto toho Talkie Premium používa čestný systém.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "Upozorňujeme, že Talkie nemá ako alternatívny spôsob speňaženia žiadnu reklamu, sledovanie používateľov ani zhromažďovanie údajov. Platby sú označené ako dary za vývoj softvéru s otvoreným zdrojovým kódom.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Inovovať na Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Zaplatil som za Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "Inovovať",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Viac spôsobov platby prostredníctvom stránky darov",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "Plaťte pomocou služby PayPal",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "používanie",

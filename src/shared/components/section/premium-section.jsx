@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import VersionSection from "./version-section.jsx";
+import EditionSection from "./edition-section.jsx";
 
 export default class PremiumSection extends React.PureComponent {
     static defaultProps = {
@@ -41,16 +41,16 @@ export default class PremiumSection extends React.PureComponent {
             className,
         } = this.props;
 
-        const isPremiumVersion = true;
+        const isPremiumEdition = true;
 
         return (
-            <VersionSection
+            <EditionSection
                 mode={mode}
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
                 className={className}
             >
                 {this.props.children}
-            </VersionSection>
+            </EditionSection>
         );
     }
 }

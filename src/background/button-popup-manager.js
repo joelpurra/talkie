@@ -18,16 +18,44 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export default class ButtonPopupManager {
-    constructor(translator) {
-        this.translator = translator;
+import {
+    promiseTry,
+} from "../shared/promise";
 
-        const extensionShortName = this.translator.translate("extensionShortName");
-        this.buttonDefaultTitle = this.translator.translate("buttonDefaultTitle", [extensionShortName]);
-        this.buttonStopTitle = this.translator.translate("buttonStopTitle");
+export default class ButtonPopupManager {
+    constructor(translator, metadataManager) {
+        this.translator = translator;
+        this.metadataManager = metadataManager;
     }
 
-    disablePopup() {
+    _getExtensionShortName() {
+        return promiseTry(
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    // TODO: move resolving the name to a layer on top of the translator?
+                    const extensionShortName = isPremiumEdition
+                        ? this.translator.translate("extensionShortName_Premium")
+                        : this.translator.translate("extensionShortName_Free");
+
+                    return extensionShortName;
+                }),
+        );
+    }
+
+    _getButtonDefaultTitle() {
+        return promiseTry(
+            () => this._getExtensionShortName()
+                .then((extensionShortName) => this.translator.translate("buttonDefaultTitle", [extensionShortName])),
+        );
+    }
+
+    _getButtonStopTitle() {
+        return promiseTry(
+            () => this.translator.translate("buttonStopTitle"),
+        );
+    }
+
+    _disablePopupSync(buttonStopTitle) {
         const disablePopupOptions = {
             popup: "",
         };
@@ -35,13 +63,13 @@ export default class ButtonPopupManager {
         browser.browserAction.setPopup(disablePopupOptions);
 
         const disableIconTitleOptions = {
-            title: this.buttonStopTitle,
+            title: buttonStopTitle,
         };
 
         browser.browserAction.setTitle(disableIconTitleOptions);
-    };
+    }
 
-    enablePopup() {
+    _enablePopupSync(buttonDefaultTitle) {
         const enablePopupOptions = {
             popup: "src/popup/popup.html",
         };
@@ -49,9 +77,27 @@ export default class ButtonPopupManager {
         browser.browserAction.setPopup(enablePopupOptions);
 
         const enableIconTitleOptions = {
-            title: this.buttonDefaultTitle,
+            title: buttonDefaultTitle,
         };
 
         browser.browserAction.setTitle(enableIconTitleOptions);
-    };
+    }
+
+    disablePopup() {
+        return promiseTry(
+            /* eslint-disable no-sync */
+            () => this._getButtonStopTitle()
+                .then((buttonStopTitle) => this._disablePopupSync(buttonStopTitle)),
+            /* eslint-enable no-sync */
+        );
+    }
+
+    enablePopup() {
+        return promiseTry(
+            /* eslint-disable no-sync */
+            () => this._getButtonDefaultTitle()
+                .then((buttonDefaultTitle) => this._enablePopupSync(buttonDefaultTitle)),
+            /* eslint-enable no-sync */
+        );
+    }
 }

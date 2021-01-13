@@ -42,9 +42,9 @@ export default class ReadClipboardManager {
             () => {
                 logDebug("Start", "startSpeaking");
 
-                return this.metadataManager.isPremiumVersion()
-                    .then((isPremiumVersion) => {
-                        if (!isPremiumVersion) {
+                return this.metadataManager.isPremiumEdition()
+                    .then((isPremiumEdition) => {
+                        if (!isPremiumEdition) {
                             const text = this.translator.translate("readClipboardIsAPremiumFeature");
 
                             return text;

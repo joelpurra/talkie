@@ -21,32 +21,51 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import HeroVersionSection from "./hero-version-section.jsx";
+import {
+    bindActionCreators,
+} from "redux";
 
-export default class HeroFreeSection extends React.PureComponent {
-    static defaultProps = {
-        className: "",
+import {
+    connect,
+} from "react-redux";
+
+import Editions from "../components/sections/editions.jsx";
+
+import actionCreators from "../actions";
+
+const mapStateToProps = (state) => {
+    return {
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
     };
+};
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: {
+            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
+        },
+    };
+};
+
+export default
+@connect(mapStateToProps, mapDispatchToProps)
+class EditionsContainer extends React.PureComponent {
     static propTypes = {
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
+        actions: PropTypes.object.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
     }
 
     render() {
         const {
-            className,
+            actions,
+            isPremiumEdition,
         } = this.props;
 
-        const isPremiumVersion = false;
-
         return (
-            <HeroVersionSection
-                isPremiumVersion={isPremiumVersion}
-                className={className}
-            >
-                {this.props.children}
-            </HeroVersionSection>
+            <Editions
+                actions={actions}
+                isPremiumEdition={isPremiumEdition}
+            />
         );
     }
 }

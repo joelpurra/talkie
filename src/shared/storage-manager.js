@@ -19,21 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+    logTrace,
     logDebug,
     logError,
-} from "../shared/log";
+} from "./log";
 
 import {
     promiseTry,
-} from "../shared/promise";
-
-import {
-    getBackgroundPage,
-} from "../shared/tabs";
+} from "./promise";
 
 export default class StorageManager {
-    constructor() {
-        this.currentStorageFormatVersion = "v1.3.0";
+    constructor(storageProvider) {
+        this.storageProvider = storageProvider;
+
+        this.currentStorageFormatVersion = "v1.4.0";
 
         this.storageMetadataId = "_storage-metadata";
 
@@ -44,23 +43,31 @@ export default class StorageManager {
         };
 
         this.allKnownStorageKeys["v1.1.0"] = {
-            "options-popup-donate-buttons-hide": "options-popup-donate-buttons-hide",
             "language-voice-overrides": "language-voice-overrides",
-            "voice-rate-overrides": "voice-rate-overrides",
+            "options-popup-donate-buttons-hide": "options-popup-donate-buttons-hide",
             "voice-pitch-overrides": "voice-pitch-overrides",
+            "voice-rate-overrides": "voice-rate-overrides",
         };
 
         this.allKnownStorageKeys["v1.2.0"] = {
             "language-voice-overrides": "language-voice-overrides",
-            "voice-rate-overrides": "voice-rate-overrides",
             "voice-pitch-overrides": "voice-pitch-overrides",
+            "voice-rate-overrides": "voice-rate-overrides",
         };
 
         this.allKnownStorageKeys["v1.3.0"] = {
             "language-voice-overrides": "language-voice-overrides",
-            "voice-rate-overrides": "voice-rate-overrides",
-            "voice-pitch-overrides": "voice-pitch-overrides",
             "speak-long-texts": "speak-long-texts",
+            "voice-pitch-overrides": "voice-pitch-overrides",
+            "voice-rate-overrides": "voice-rate-overrides",
+        };
+
+        this.allKnownStorageKeys["v1.4.0"] = {
+            "is-premium-edition": "is-premium-edition",
+            "language-voice-overrides": "language-voice-overrides",
+            "speak-long-texts": "speak-long-texts",
+            "voice-pitch-overrides": "voice-pitch-overrides",
+            "voice-rate-overrides": "voice-rate-overrides",
         };
 
         // TODO: sort by semantic version.
@@ -82,6 +89,10 @@ export default class StorageManager {
         this.allKnownUpgradePaths["v1.2.0"] = {};
         this.allKnownUpgradePaths["v1.2.0"]["v1.3.0"] = {
             upgradeKey: this._createIdentityUpgrader("v1.2.0", "v1.3.0"),
+        };
+        this.allKnownUpgradePaths["v1.3.0"] = {};
+        this.allKnownUpgradePaths["v1.3.0"]["v1.4.0"] = {
+            upgradeKey: this._createIdentityUpgrader("v1.3.0", "v1.4.0"),
         };
     }
 
@@ -119,17 +130,13 @@ export default class StorageManager {
     _setStoredValue(storageFormatVersion, key, value) {
         return promiseTry(
             () => {
-                logDebug("Start", "_setStoredValue", storageFormatVersion, key, typeof value, value);
+                logTrace("Start", "_setStoredValue", storageFormatVersion, key, typeof value, value);
 
                 return this._getStorageKey(storageFormatVersion, key)
                     .then((storageKey) => {
-                        const valueJson = JSON.stringify(value);
-
-                        return getBackgroundPage()
-                            .then((background) => {
-                                background.localStorage.setItem(storageKey, valueJson);
-
-                                logDebug("Done", "_setStoredValue", storageFormatVersion, key, typeof value, value);
+                        return this.storageProvider.set(storageKey, value)
+                            .then(() => {
+                                logTrace("Done", "_setStoredValue", storageFormatVersion, key, typeof value, value);
 
                                 return undefined;
                             });
@@ -156,23 +163,13 @@ export default class StorageManager {
     _getStoredValue(storageFormatVersion, key) {
         return promiseTry(
             () => {
-                logDebug("Start", "_getStoredValue", storageFormatVersion, key);
+                logTrace("Start", "_getStoredValue", storageFormatVersion, key);
 
                 return this._getStorageKey(storageFormatVersion, key)
                     .then((storageKey) => {
-                        return getBackgroundPage()
-                            .then((background) => {
-                                const valueJson = background.localStorage.getItem(storageKey);
-
-                                if (valueJson === null) {
-                                    logDebug("Done", "_getStoredValue", storageFormatVersion, key, null);
-
-                                    return null;
-                                }
-
-                                const value = JSON.parse(valueJson);
-
-                                logDebug("Done", "_getStoredValue", storageFormatVersion, key, value);
+                        return this.storageProvider.get(storageKey)
+                            .then((value) => {
+                                logTrace("Done", "_getStoredValue", storageFormatVersion, key, value);
 
                                 return value;
                             });
@@ -184,11 +181,11 @@ export default class StorageManager {
     getStoredValue(key) {
         return promiseTry(
             () => {
-                logDebug("Start", "getStoredValue", key);
+                logTrace("Start", "getStoredValue", key);
 
                 return this._getStoredValue(this.currentStorageFormatVersion, key)
                     .then((value) => {
-                        logDebug("Done", "getStoredValue", key, value);
+                        logTrace("Done", "getStoredValue", key, value);
 
                         return value;
                     });

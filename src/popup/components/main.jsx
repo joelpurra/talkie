@@ -52,13 +52,13 @@ class Main extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         versionNumber: null,
     };
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
         className: PropTypes.string.isRequired,
     };
@@ -87,7 +87,7 @@ class Main extends React.PureComponent {
 
     render() {
         const {
-            isPremiumVersion,
+            isPremiumEdition,
             versionNumber,
             className,
         } = this.props;
@@ -98,7 +98,7 @@ class Main extends React.PureComponent {
                 onClick={this.handleCheckLinkClick}
             >
                 <Header
-                    isPremiumVersion={isPremiumVersion}
+                    isPremiumEdition={isPremiumEdition}
                     playPauseClick={this.handlePlayPauseClick}
                 />
 

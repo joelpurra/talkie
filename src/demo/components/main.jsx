@@ -119,7 +119,7 @@ class Main extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         versionNumber: null,
         systemType: null,
         osType: null,
@@ -128,7 +128,7 @@ class Main extends React.PureComponent {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         versionNumber: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
@@ -175,7 +175,7 @@ class Main extends React.PureComponent {
     render() {
         const {
             activeTabId,
-            isPremiumVersion,
+            isPremiumEdition,
             versionNumber,
             systemType,
             osType,
@@ -188,7 +188,7 @@ class Main extends React.PureComponent {
             <div className={className}>
                 <this.styled.navHeader>
                     <Header
-                        isPremiumVersion={isPremiumVersion}
+                        isPremiumEdition={isPremiumEdition}
                     />
 
                     <NavContainer
@@ -225,7 +225,7 @@ class Main extends React.PureComponent {
                         onLinkClick={this.handleLinkClick}
                     >
                         <Usage
-                            isPremiumVersion={isPremiumVersion}
+                            isPremiumEdition={isPremiumEdition}
                             systemType={systemType}
                             osType={osType}
                             onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
@@ -238,7 +238,7 @@ class Main extends React.PureComponent {
                         onLinkClick={this.handleLinkClick}
                     >
                         <Features
-                            isPremiumVersion={isPremiumVersion}
+                            isPremiumEdition={isPremiumEdition}
                             systemType={systemType}
                         />
                     </TabContents>

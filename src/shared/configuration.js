@@ -53,6 +53,7 @@ export default class Configuration {
         ].forEach((from) => {
             this.configurationObject.shared.urls[`options-from-${from}`] = this.configurationObject.shared.urls.options + `?from=${from}`;
             this.configurationObject.shared.urls[`options-about-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#about";
+            this.configurationObject.shared.urls[`options-upgrade-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#upgrade";
         });
 
         this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
@@ -84,45 +85,22 @@ export default class Configuration {
 
     get(path) {
         return promiseTry(
-            () => Promise.all([
-                this.metadataManager.getVersionType(),
-                this.metadataManager.getSystemType(),
-            ])
-                .then(([versionType, systemType]) => Promise.all([
-                    this._resolvePath(this.configurationObject[versionType][systemType], path),
-                    this._resolvePath(this.configurationObject[versionType], path),
-                    this._resolvePath(this.configurationObject[systemType], path),
-                    this._resolvePath(this.configurationObject.shared, path),
-                ]))
-                .then(([versionedSystemValue, versionedValue, systemValue, sharedValue]) => {
-                    const value = versionedSystemValue
-                        || versionedValue
-                        || systemValue
-                        || sharedValue
-                        || null;
-
-                    return value;
-                }),
+            () => this.metadataManager.getSystemType()
+                .then((systemType) =>
+                    /* eslint-disable no-sync */
+                    this.getSync(systemType, path),
+                    /* eslint-enable no-sync */
+                ),
         );
     }
 
-    getSync(path) {
-        // TODO: try/catch?
-        /* eslint-disable no-sync */
-        const versionType = this.metadataManager.getVersionTypeSync();
-        const systemType = this.metadataManager.getSystemTypeSync();
-        /* eslint-enable no-sync */
-
-        const versionedSystemValue = this._resolvePath(this.configurationObject[versionType][systemType], path);
-        const versionedValue = this._resolvePath(this.configurationObject[versionType], path);
+    getSync(systemType, path) {
         const systemValue = this._resolvePath(this.configurationObject[systemType], path);
         const sharedValue = this._resolvePath(this.configurationObject.shared, path);
 
-        const value = versionedSystemValue
-                         || versionedValue
-                         || systemValue
-                         || sharedValue
-                         || null;
+        const value = systemValue
+                        || sharedValue
+                        || null;
 
         return value;
     }

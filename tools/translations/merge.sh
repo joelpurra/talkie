@@ -29,7 +29,6 @@ declare -a LOCS=( "$(find "${ROOT_FOLDER}/_locales" -mindepth 1 -type d)" )
 
 declare -r EN_BASE="${ROOT_FOLDER}/_locales/en/base.json"
 declare UNTRANSLATED="${ROOT_FOLDER}/_locales/en/untranslated.json"
-declare UNTRANSLATED_PREMIUM="${ROOT_FOLDER}/_locales/en/untranslated.premium.json"
 
 function mergeMessages() {
     local -r INPUT="$1"
@@ -50,9 +49,7 @@ do
     declare MANUAL="${LOC}/manual.json"
     declare OVERRIDE="${LOC}/override.json"
     declare MERGE="${LOC}/merge.json~"
-    declare MERGE_PREMIUM="${LOC}/merge.premium.json~"
     declare MESSAGES="${LOC}/messages.json"
-    declare MESSAGES_PREMIUM="${LOC}/messages.premium.json"
 
     rm -f "$MERGE"
     touch "$MERGE"
@@ -84,12 +81,6 @@ do
 
     # NOTE: standard version.
     mergeMessages "$MERGE" > "$MESSAGES"
-
-    # NOTE: premium version.
-    cp "$MERGE" "$MERGE_PREMIUM"
-    cat "$UNTRANSLATED_PREMIUM" >> "$MERGE_PREMIUM"
-
-    mergeMessages "$MERGE_PREMIUM" > "$MESSAGES_PREMIUM"
 
     # Display the output.
     jq '.' "$MESSAGES"

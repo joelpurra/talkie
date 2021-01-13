@@ -70,6 +70,15 @@ class Menu extends React.PureComponent {
     static propTypes = {
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
+    }
+
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
     }
 
     render() {

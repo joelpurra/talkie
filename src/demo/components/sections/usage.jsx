@@ -33,7 +33,7 @@ import * as tableBase from "../../../shared/styled/table/table-base.jsx";
 import Discretional from "../../../shared/components/discretional.jsx";
 import PremiumSection from "../../../shared/components/section/premium-section.jsx";
 import Icon from "../../../shared/components/icon/icon.jsx";
-import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
+import TalkieEditionIcon from "../../../shared/components/icon/talkie-edition-icon.jsx";
 import TalkiePremiumIcon from "../../../shared/components/icon/talkie-premium-icon.jsx";
 
 export default
@@ -58,18 +58,19 @@ class Usage extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         systemType: null,
         osType: null,
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
         onOpenShortKeysConfigurationClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
     }
 
     handleOpenShortKeysConfigurationClick(e) {
@@ -81,9 +82,17 @@ class Usage extends React.PureComponent {
         return false;
     }
 
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
+    }
+
     render() {
         const {
-            isPremiumVersion,
+            isPremiumEdition,
             systemType,
             osType,
             configure,
@@ -98,8 +107,8 @@ class Usage extends React.PureComponent {
                     </listBase.li>
                     <listBase.li>
                         {translate("frontend_usageStep02")}
-                        <TalkieVersionIcon
-                            isPremiumVersion={isPremiumVersion}
+                        <TalkieEditionIcon
+                            isPremiumEdition={isPremiumEdition}
                         />
                     </listBase.li>
                 </listBase.ul>
@@ -223,7 +232,7 @@ class Usage extends React.PureComponent {
                                 <tableBase.tr className="premium-section">
                                     <tableBase.td colSpan="2">
                                         <textBase.a
-                                            href={configure("urls.store-premium")}
+                                            href={configure("urls.options-upgrade-from-demo")}
                                             lang="en"
                                         >
                                             <TalkiePremiumIcon />

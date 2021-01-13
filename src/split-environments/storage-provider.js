@@ -18,37 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const form = {};
+import StorageProvider from "./SPLIT_ENVIRONMENT/storage-provider";
 
-export const button = {
-    width: "100%",
-};
-
-export const checkbox = {
-    verticalAlign: "middle",
-};
-export const range = {
-    width: "100%",
-};
-
-export const textarea = {
-    width: "100%",
-    height: "100%",
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
-    marginBottom: 0,
-};
-
-export const select = {};
-
-export const option = {};
-
-export const multilineSelect = {
-    width: "100%",
-    height: "8.8em",
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
-    marginBottom: 0,
-};
+export default StorageProvider;

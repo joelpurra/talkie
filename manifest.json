@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "version": "5.0.3",
-  "version_name": "v5.0.3 Free (2020-10-09)",
+  "version_name": "v5.0.3 (2020-10-09)",
   "applications": {
     "gecko": {
       "strict_min_version": "57.0"
@@ -13,7 +13,7 @@
   },
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
-  "description": "__MSG_extensionDescription_Free__",
+  "description": "__MSG_extensionDescription__",
   "author": "Joel Purra",
   "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
@@ -51,24 +51,6 @@
       },
       "description": "__MSG_commandReadClipboardDescription__",
       "global": true
-    },
-    "open-website-main": {
-      "suggested_key": {
-        "default": "Alt+Shift+0"
-      },
-      "description": "__MSG_commandOpenWebsiteMainDescription__"
-    },
-    "open-website-store-free": {
-      "suggested_key": {
-        "default": "Alt+Shift+9"
-      },
-      "description": "__MSG_commandOpenWebsiteStoreDescription_Free__"
-    },
-    "open-website-store-premium": {
-      "suggested_key": {
-        "default": "Alt+Shift+8"
-      },
-      "description": "__MSG_commandOpenWebsiteStoreDescription_Premium__"
     }
   },
   "options_ui": {
@@ -82,7 +64,7 @@
   "default_locale": "en",
   "browser_action": {
     "browser_style": false,
-    "default_title": "__MSG_buttonDefaultTitle_Free__",
+    "default_title": "__MSG_buttonDefaultTitle_Static__",
     "default_icon": {
       "16": "resources/icon/free/icon-play/icon-16x16.png",
       "32": "resources/icon/free/icon-play/icon-32x32.png",

@@ -25,7 +25,7 @@ import {
 import * as actionTypes from "../constants/action-types-metadata";
 
 const initialState = {
-    isPremiumVersion: false,
+    isPremiumEdition: false,
     versionName: null,
     versionNumber: null,
     systemType: null,
@@ -35,9 +35,10 @@ const initialState = {
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_IS_PREMIUM_VERSION]: "isPremiumVersion",
+    [actionTypes.SET_IS_PREMIUM_EDITION]: "isPremiumEdition",
     [actionTypes.SET_VERSION_NAME]: "versionName",
     [actionTypes.SET_VERSION_NUMBER]: "versionNumber",
+    [actionTypes.SET_EDITION_TYPE]: "editionType",
     [actionTypes.SET_SYSTEM_TYPE]: "systemType",
     [actionTypes.SET_OS_TYPE]: "osType",
 };

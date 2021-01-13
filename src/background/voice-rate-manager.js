@@ -56,9 +56,9 @@ export default class VoiceRateManager {
 
     _getVoiceRateOverrides() {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.getStoredValue(this.voiceRateRateOverridesStorageKey)
                             .then((voiceRateRateOverrides) => {
                                 if (voiceRateRateOverrides !== null && typeof voiceRateRateOverrides === "object") {
@@ -76,9 +76,9 @@ export default class VoiceRateManager {
 
     _setVoiceRateOverrides(voiceRateRateOverrides) {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.setStoredValue(this.voiceRateRateOverridesStorageKey, voiceRateRateOverrides);
                     }
 

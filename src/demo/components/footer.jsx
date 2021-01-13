@@ -59,6 +59,15 @@ class Footer extends React.PureComponent {
         versionNumber: PropTypes.string.isRequired,
         optionsPageClick: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
+    }
+
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
     }
 
     render() {

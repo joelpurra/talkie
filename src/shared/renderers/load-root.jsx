@@ -46,6 +46,7 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
     // TODO: simplify.
     const clientSideActionsToDispatch = [
         // NOTE: don't want to keep track of when to load these, preemptively loading.
+        sharedActions.metadata.loadIsPremiumEdition(),
         sharedActions.metadata.loadOsType(),
     ];
 

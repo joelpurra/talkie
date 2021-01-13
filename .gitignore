@@ -1,9 +1,7 @@
 _locales/*/messages.json
-_locales/*/messages.premium.json
 *.zip
 *~
 dist/
-extension-files.premium.txt
 lib/
 node_modules/
 package/

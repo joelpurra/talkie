@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "用Talkie大声阅读文本Talkie",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "用Talkie Premium大声阅读文本Talkie Premium",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "停止说话",
@@ -32,13 +27,9 @@
     "message": "Talkie网站",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Talkie商店页面",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie Premium商店页面",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "升级到Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "从剪贴板读取",
@@ -48,15 +39,10 @@
     "message": "开始/停止阅读选择",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "自由！快速，简单，高品质的文字演讲，超过40种语言。从网站，PDF，电子邮件大声朗读。与TTS说话。",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "溢价！快速，简单，高品质的文字演讲，超过40种语言。从网站，PDF，电子邮件大声朗读。与TTS说话。",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "快速，轻松，高质量的文本到40种语言的语音转换。从网站，PDF，电子邮件中大声朗读。用TTS朗读文字。",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "关于",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "很不幸的是，不行。事实证明，Google Docs（以及Google Spreadsheet，Google Drive等）不是一个网站，而是由Google创建的一个特殊的“浏览器中的应用程序”。 Talkie不能访问选定的文本，也不能添加上下文菜单项。如果有某种方法可将Google文档支持添加到Talkie我将进一步调查。",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "抱歉不行。事实证明，Google文档（以及Google Spreadsheet，Google Drive等）不是网站，而是Google创建的特殊“浏览器中的应用程序”。 Talkie无法访问所选文本，也不能添加上下文菜单项。我将进一步调查是否有某种方法可以将Google文档支持添加到Talkie 。",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Talkie是否可以在Google文档中使用？",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "开发Talkie需要花费相当多的时间和精力 — 迄今已有数百个小时的时间。为了在财务上支持开发，某些功能仅适用于Talkie Premium用户。",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "开发和维护Talkie花费了大量的时间和精力-到目前为止已经Talkie数百个小时。但是， Talkie是免费的，每个人都可以随意使用。为了在经济上支持进一步的开发，维护和免费提供Talkie免费，某些功能仅对Talkie Premium用户可用。",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "为什么Talkie Premium花钱？",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "为什么会有Talkie两个版本？",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "不幸的是还没有。 Talkie Premium目前仅通过Chrome网上应用店提供，唯一的选择是使用Google Payments。",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "是的，有多种付款方式。",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "我可以使用PayPal，银行转帐等方式支付Talkie Premium吗？",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "我可以使用贝宝，银行转账等方式付款吗？",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "当然！您可以在Google Payments中取消付款，也可以直接与我联系。",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "是的，如果您使用提供简单退款管理的PayPal或Stripe付款。由于需要额外的工作量，再加上其他付款方式的退款，再加上将钱退回到错误帐户的风险，通常无法退款。",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "我可以得到退款吗？",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "当然！我可以向您发送Talkie Premium最新版本的Talkie Premium ，但是当下一个版本发布时，它不会自动更新。",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "当然！只需启用Talkie Premium升级即可试用。",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "我可以免费获得Talkie Premium的试用Talkie Premium来试用吗？",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "我可以免费试用Talkie Premium吗？",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie没有广告，数据收集或用户跟踪。付费是Talkie Premium满意用户。",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie扩展名是否包含广告，收集数据或跟踪用户？",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "荣誉制度是信任个人诚实并遵守准则而无严格执行的检查的制度。对于Talkie Premium相信升级的人已经为此付出了代价。",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "什么是荣誉制度？",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "由于世界各地的人们使用不同的货币，具有不同的可支配收入水平，并且对Talkie Premium的功能具有不同的升值水平。没有一个适用于世界各地的固定价格。最重要的是货币波动，经济周期趋势，区域/国家内部差异等。总而言之，全球销售产品的设定价格非常复杂。让每个人都设置自己的价格，并确保产品质量足以保证付款变得容易。",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "为什么我可以设定自己的价格？",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "由于我不知道您可以在文字转语音软件上花多少钱，因此，我宁愿您支付Talkie Premium值得您付出的东西—不多也不少。如果您正在寻找参考系，则Google在Talkie Premium处理付款时，在美国Talkie Premium的订阅费用为25美元（美元）。请注意，Google会根据世界各地的国家/地区和货币调整价格，以符合当地条件，因此价格可能会有所不同。同时，任何礼貌地询问的人都可以免费获得Talkie Premium 。",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "您建议我付多少钱？",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "因为实施付款和验证系统需要花费大量时间和精力，并且可以假设实施严格的付款验证的成本要高于欺骗该系统的个人所造成的损失。付款验证还需要从用户系统中收集一定级别的数据，并且技术熟练的用户通常可以始终进行验证。因此，从技术和业务角度看，即使没有保证，也更容易简单地相信用户遵守荣誉制度。",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "为什么没有付款验证？",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "不执行付款验证的决定意味着无法验证付款金额。此外，“制造” Talkie Premium的数字副本的Talkie Premium为零，因此Talkie Premium并不意味着开发人员会遭受经济损失。还有希望，如果您喜欢Talkie Premium ，您会告诉您的朋友。赠送Talkie Premium也可以视为一种营销手段。",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "为什么我选择不支付任何费用？",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "是的，通过使用Stripe。查看其他付款方式。",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "我可以每月或每年定期付款吗？",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "是的，如果您通过电子邮件请求。请提供您的姓名，地址，以及可选的增值税（VAT）标识符（或同等编号）。",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "我可以收到付款收据吗？",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "因为您喜欢Talkie Premium提供的其他功能，以及喜欢由独立开发人员为开源软件开发做出贡献的快乐感觉。由于开发和维护的人员成本相对较高，但是“制造”数字副本的成本为零，因此Talkie Premium付款也可以视为对未来开发和维护的支持，而不是付款时产品的价值。",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "我为什么要付费升级？",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "错误",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "声音",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "当前使用的是Talkie的免费版本，并且提供的功能有限。也许Talkie Premium对您来说是一个更好的选择？",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "目前使用Talkie Premium ，所有功能都可用。非常感谢，温暖我的心！",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版非常适合大多数用例，但高级版提供了更多选项和功能。",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "自动语言检测。",
@@ -350,17 +420,9 @@
     "message": "从剪贴板读取文本！只需从任何程序的任何地方复制文本，并使用Talkie Premium来阅读它！",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "目前使用的是Talkie的免费版本，还有一些有限的功能。也许Talkie Premium将是您的更好的选择？",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "目前使用Talkie Premium ，所有功能都可用。非常感谢，温暖我的心！",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版本适用于大多数用例，但高级版本提供了其他选项。",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "升级到Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "对Talkie所有贡献都是根据“贡献者许可协议”（CLA）进行的。",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie是在2016/2017年的新年前几天开发的，来自朋友的挑战。挑战从一个问题开始：在上班的同时，是否可以听一篇文章而不是阅读它？容易，我说，并开始证明它 — 或至少让我的浏览器使用愚蠢的电脑声音说出文字。基本版本，没有任何用户界面，原来是无聊的创建。添加用户界面花了一点时间。添加适当的语言检测一堆更多的代码。克服浏览器中的错误更多的工作。改进和功能的列表继续进行，而后续的数千行代码，您正在查看最终结果。",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie是在2016/ Talkie年新年前几天，在朋友的挑战下开发的。挑战始于以下问题：通勤上班时，是否可以听文章而不是阅读文章？我说，很容易，然后开始证明这一点-或至少让我的浏览器使用愚蠢的计算机语音朗读文本。没有任何用户界面的基本版创建起来很简单。添加用户界面需要花费更长的时间。添加适当的语言检测还有更多代码。克服浏览器中的错误甚至可以做更多的工作。改进和功能列表不胜枚举-几千年后的代码，您正在寻找最终结果。",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "如何Talkie开始",
@@ -434,6 +496,10 @@
     "message": "浏览器类型",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "当前版本",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "系统细节",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "文本",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版非常适合大多数用例，但高级版提供了更多选项和功能。",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Talkie Premium的价格Talkie Premium 。取而代之的是，您要支付所需的费用，具体取决于您认为这些高级功能对您来说值得多少。您甚至可以决定不支付任何费用。",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "发送付款后，无需输入升级代码，没有要注册的用户帐户或任何其他付款验证。相反， Talkie Premium使用荣誉制度。",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "请注意， Talkie没有任何广告，用户跟踪或数据收集作为替代获利手段。付款被标记为对开源软件开发的捐赠。",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "升级到Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "我已支付Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "升级",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "通过捐赠页面更多付款方式",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "使用贝宝付款",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "用法",

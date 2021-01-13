@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Talkie을 사용하여 텍스트 선택을 크게 읽습니다.",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Talkie Premium을 사용하여 텍스트 선택을 크게 읽습니다.",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "말하지 마라.",
@@ -32,13 +27,9 @@
     "message": "Talkie 웹 사이트",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Talkie 상점 페이지",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie Premium 상점 페이지",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Talkie Premium 업그레이드",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "클립 보드에서 읽기",
@@ -48,15 +39,10 @@
     "message": "읽기 시작/중지 선택",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "비어 있는! 40 개 이상의 언어로 된 빠르고 쉬운 고품질의 텍스트 음성. 웹 사이트, PDF, 이메일에서 크게 읽으십시오. TTS로 텍스트를 말하십시오.",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "프리미엄! 40 개 이상의 언어로 된 빠르고 쉬운 고품질의 텍스트 음성. 웹 사이트, PDF, 이메일에서 크게 읽으십시오. TTS로 텍스트를 말하십시오.",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "40 개 이상의 언어로 빠르고 쉬운 고품질 텍스트 음성 변환. 웹 사이트, PDF, 이메일에서 소리내어 읽으십시오. TTS로 텍스트를 말합니다.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "약",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "불행하게도. Google 스프레드 시트, Google 드라이브 및 이와 유사한 Google 문서 도구는 웹 사이트가 아니라 Google에서 만든 특별한 \"브라우저의 응용 프로그램\"입니다. Talkie 은 (는) 선택한 텍스트에 액세스 할 수 없으며 컨텍스트 메뉴 항목을 추가 할 수 없습니다. Talkie Google 문서 도구 지원을 추가 할 수있는 방법이 있는지 자세히 조사 할 것입니다.",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "불행하게도. Google 문서 도구 (Google 스프레드 시트, Google 드라이브 등)는 웹 사이트가 아니라 Google에서 만든 특별한 \"브라우저의 응용 프로그램\"입니다. Talkie 는 선택한 텍스트에 액세스하거나 상황에 맞는 메뉴 항목을 추가 할 수 없습니다. Talkie Google 문서 도구 지원을 추가 할 수있는 방법이 있는지 자세히 조사 Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Talkie 이 (가) Google 문서 도구에서 작동합니까?",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "지금까지 수백 시간까지 Talkie 을 (를) 개발하는 데 많은 시간과 노력이 필요했습니다. 개발을 재정적으로 지원하기 위해 일부 기능은 Talkie Premium 명의 사용자 만 사용할 수 있습니다.",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Talkie 를 개발하고 유지하는 Talkie 많은 시간과 노력이 필요합니다. 지금까지 수백 시간이 걸립니다. 그러나 Talkie 는 누구나 Talkie 만큼 무료로 사용할 수 있습니다. 개발, 유지 관리 및 무료 Talkie 무료로 유지하기 위해 재정적으로 지원하기 위해 일부 기능은 Talkie Premium 사용자 만 사용할 수 있습니다.",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "Talkie Premium 비용이 Talkie Premium 이유는 무엇입니까?",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "Talkie 두 가지 버전이있는 이유는 무엇입니까?",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "불행히도 아직 없습니다. Talkie Premium 은 현재 Chrome 웹 스토어에서만 제공되며 Google Payments를 사용하는 유일한 방법입니다.",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "예, 여러 결제 옵션을 사용할 수 있습니다.",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "PayPal, 은행 송금 등을 사용하여 Talkie Premium 대해 비용을 지불 할 수 있습니까?",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "PayPal, 은행 송금 등으로 결제 할 수 있나요?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "확실한! Google Payments에서 결제를 취소하거나 직접 저에게 연락하실 수 있습니다.",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "예, 간단한 환불 관리를 제공하는 PayPal 또는 Stripe를 사용하여 결제 한 경우. 일반적으로 필요한 추가 작업량과 잘못된 계정으로 돈이 환불 될 위험이 있기 때문에 다른 결제 방법으로는 환불이 불가능합니다.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "환불을받을 수 있습니까?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "확실한! Talkie Premium 의 최신 버전 사본을 보낼 수 있지만 다음 버전이 출시되면 자동 업데이트되지 않습니다.",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "확실한! Talkie Premium 업그레이드를 활성화하여 사용해보십시오.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "시도해 Talkie Premium 의 무료 사본을 Talkie Premium 볼 수 있습니까?",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "Talkie Premium 을 무료로 사용해 볼 수 있습니까?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie 에는 광고, 데이터 수집 또는 사용자 추적이 Talkie. Talkie Premium 비용을 지불하는 행복한 사용자 만이 수익을 창출 할 수 있습니다.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie 확장에 광고가 포함되어 있거나 데이터를 수집하거나 사용자를 추적합니까?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "명예 시스템은 개인이 정직하다고 믿고 엄격한 검사없이 지침을 준수하는 것입니다. Talkie Premium 은 (는) 업그레이드 한 사람들이 비용을 지불했다고 Talkie Premium .",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "명예 시스템이란 무엇입니까?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "전 세계 사람들이 서로 다른 통화를 사용하고 가처분 소득 수준이 다르며 Talkie Premium 의 기능에 대한 감사 수준이 서로 다르기 때문입니다. 전 세계 모든 사람에게 적합한 단일 고정 가격은 없습니다. 그 외에도 통화의 변동, 경기 순환 추세, 지역/국내 변동 등이 있습니다. 대체로 전 세계적으로 판매되는 제품의 가격 설정은 복잡합니다. 모든 사람이 자신의 가격을 책정하게하고 제품이 지불을 보증하기에 충분한 지 확인하는 것이 더 쉽습니다.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "나만의 가격을 설정할 수있는 이유는 무엇입니까?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "TTS (텍스트 음성 변환) 소프트웨어에 얼마나 많은 돈을 쓸 수 있는지 모르겠 기 때문에 Talkie Premium 이 (가) 가치가 있다고 생각하는 금액을 지불하는 것이 좋습니다. 그 이상도 그 이하도 아닙니다. 참조 프레임을 찾고있는 경우 Google이 Talkie Premium 대한 결제를 처리했을 때 미국에서 연간 구독 비용은 $ 25 (미국 달러)입니다. Google은 현지 조건에 맞게 전 세계 국가 및 통화의 가격을 조정했기 때문에 다소 차이가있을 수 있습니다. 동시에 정중하게 요청한 사람은 Talkie Premium 도 무료로받을 수 있습니다.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "얼마를 지불하는 것이 좋습니까?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "결제 및 검증을위한 시스템을 구현하려면 많은 시간과 노력이 필요하고 엄격한 결제 검증을 구현하는 데 드는 비용은 시스템을 속이는 개인의 손실보다 더 높다고 가정합니다. 지불 확인에는 사용자 시스템에서 일정 수준의 데이터 수집이 필요하며 기술적으로 숙련 된 사용자는 종종 확인 작업을 수행 할 수 있습니다. 따라서 기술 및 비즈니스 관점에서 보증은 없지만 사용자가 명예 시스템을 준수한다고 신뢰하는 것이 더 쉽습니다.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "결제 확인이없는 이유는 무엇입니까?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "지불 확인을 구현하지 않기로 결정하면 지불 한 금액을 확인할 수 없습니다. 또한 Talkie Premium 의 디지털 사본을 \"제조\"하는 비용은 0이므로 아무것도 제공하지 않는 것이 개발자에게 재정적 손실을 의미하지 않습니다. Talkie Premium 을 좋아 Talkie Premium 친구들에게 그것에 대해 말할 것이라는 희망도 있습니다. Talkie Premium 포기하는 것도 마케팅 노력으로 볼 수 있습니다.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "왜 아무것도 지불하지 않기로 선택할 수 있습니까?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "예, Stripe를 사용합니다. 추가 결제 옵션을 참조하십시오.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "매월 또는 매년 반복 결제 할 수 있습니까?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "예, 이메일로 요청하면 가능합니다. 귀하의 이름, 주소 및 선택적으로 부가가치세 (VAT) 식별자 (또는 이에 상응하는 것)를 포함하십시오.",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "결제 영수증을받을 수 있나요?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Talkie Premium 제공하는 추가 기능과 독립 개발자가 오픈 소스 소프트웨어 개발에 기여한 행복한 느낌을 좋아하기 때문입니다. 개발 및 유지 관리에 드는 개인 비용이 상대적으로 높지만 디지털 사본을 \"제조\"하는 데 드는 비용이 Talkie Premium 때문에 Talkie Premium 대한 지불은 지불 당시 제품의 가치가 아니라 향후 개발 및 유지 관리에 대한 지원을 제공하는 것으로 볼 수 있습니다. .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "업그레이드 비용을 지불해야하는 이유는 무엇입니까?",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "버그",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "목소리",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "현재 Talkie 무료 버전을 사용하고 있으며 제한된 기능 세트를 사용할 수 있습니다. 아마도 Talkie Premium 이 더 나은 선택일까요?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "현재 Talkie Premium ) 사용하고 있으며 모든 기능을 사용할 수 있습니다. 고맙습니다. 내 마음이 따뜻해집니다!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie 는 Talkie 및 Talkie Premium 두 가지 버전으로 제공됩니다. 무료 버전은 대부분의 사용 사례에 적합하지만 프리미엄 버전은 추가 옵션과 기능을 제공합니다.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "자동 언어 감지.",
@@ -350,17 +420,9 @@
     "message": "클립 보드에서 텍스트를 읽으십시오! 어떤 프로그램에서든 텍스트를 복사하고 Talkie Premium 을 사용하여 읽을 수 있습니다!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "현재 무료 버전의 Talkie 을 (를) 사용하며 제한된 기능 집합 만 사용할 수 있습니다. 아마도 Talkie Premium 이 (가) 더 나은 선택일까요?",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "현재 Talkie Premium ) 사용하고 있으며 모든 기능을 사용할 수 있습니다. 고맙습니다. 내 마음이 따뜻해집니다!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie 에는 Talkie 및 Talkie Premium 두 가지 버전이 있습니다. 무료 버전은 대부분의 사용 사례에 적합하지만 프리미엄 버전은 추가 옵션을 제공합니다.",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Talkie Premium 업그레이드",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Talkie에 Talkie 모든 기고는 Contributor License Agreement (CLA)에 의거하여 작성됩니다.",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie 은 (는) 친구로부터의 도전에 힘 입어 2016/2017 새해 몇일 전부터 개발되었습니다. 도전 과제는 질문으로 시작되었습니다. 통근 중에는 기사를 읽지 않고 기사를들을 수 있습니까? 간단히 말하면, 그것을 증명하기 위해 출발했습니다. 적어도 브라우저가 어리석은 컴퓨터 음성을 사용하여 텍스트를 말하도록 만드는 것이 었습니다. 사용자 인터페이스가없는 기본 버전은 만들기가 쉽지 않은 것으로 나타났습니다. 사용자 인터페이스를 추가하는 데 약간 시간이 걸렸습니다. 적절한 언어 탐지를 추가하면 더 많은 코드가 추가됩니다. 브라우저에서 버그를 극복하고 더 많은 작업을 수행합니다. 개선 및 기능 목록은 계속 진행되며 나중에 수천 줄의 코드가 최종 결과를보고 있습니다.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie 는 2016/2017 새해가되기 며칠 전에 친구의 도전으로 개발되었습니다. 문제는 다음과 같은 질문에서 시작되었습니다. 출근하는 동안 기사를 읽는 대신들을 수 있습니까? 나는 쉬웠다 고 말했고 그것을 증명하거나 적어도 내 브라우저가 어리석은 컴퓨터 음성을 사용하여 텍스트를 말하도록 만들려고했다. 사용자 인터페이스가없는 기본 버전은 작성하기가 쉽지 않았습니다. 사용자 인터페이스를 추가하는 데 시간이 조금 더 걸립니다. 적절한 언어 감지를 추가하면 더 많은 코드가 추가됩니다. 브라우저의 버그 극복은 더 많은 작업을합니다. 개선 사항 및 기능 목록은 계속됩니다. 나중에 수천 줄의 코드를 입력하면 최종 결과를 볼 수 있습니다.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Talkie 시작 방법",
@@ -434,6 +496,10 @@
     "message": "브라우저 유형",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "현재 버전",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "시스템 세부 정보",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "본문",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie 는 Talkie 및 Talkie Premium 두 가지 버전으로 제공됩니다. 무료 버전은 대부분의 사용 사례에 적합하지만 프리미엄 버전은 추가 옵션과 기능을 제공합니다.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Talkie Premium 의 가격은 고정되어 있지 않습니다. 대신 프리미엄 기능이 가치가 있다고 생각하는 정도에 따라 원하는만큼 지불합니다. 아무것도 지불하지 않기로 결정할 수도 있습니다.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "결제를 보낸 후 입력 할 업그레이드 코드, 등록 할 사용자 계정 또는 기타 결제 확인이 없습니다. 대신 Talkie Premium 은 명예 시스템을 사용합니다.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "Talkie 에는 대체 수익 창출 수단으로 광고, 사용자 추적 또는 데이터 수집이 없습니다. 지불은 오픈 소스 소프트웨어 개발을위한 기부로 표시됩니다.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Talkie Premium 업그레이드",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Talkie Premium 비용을 지불했습니다 Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "업그레이드",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "기부 페이지를 통한 더 많은 지불 방법",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "PayPal로 결제",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "용법",

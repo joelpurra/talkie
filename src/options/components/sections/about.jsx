@@ -27,7 +27,7 @@ import translateAttribute from "../../../shared/hocs/translate.jsx";
 import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
-import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
+import TalkieEditionIcon from "../../../shared/components/icon/talkie-edition-icon.jsx";
 
 export default
 @configureAttribute
@@ -40,7 +40,7 @@ class About extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         versionName: null,
         systemType: null,
         osType: null,
@@ -53,7 +53,7 @@ class About extends React.PureComponent {
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         versionName: PropTypes.string.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
@@ -72,6 +72,7 @@ class About extends React.PureComponent {
         onLicenseClick: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
     }
 
     handleLegaleseClick(e) {
@@ -80,10 +81,18 @@ class About extends React.PureComponent {
         this.props.onLicenseClick(legaleseText);
     }
 
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
+    }
+
     render() {
         const {
             configure,
-            isPremiumVersion,
+            isPremiumEdition,
             translate,
             versionName,
             systemType,
@@ -95,6 +104,11 @@ class About extends React.PureComponent {
             languages,
             languageGroups,
         } = this.props;
+
+        // TODO: move resolving the name to the state, like edition type?
+        const extensionShortName = isPremiumEdition
+            ? translate("extensionShortName_Premium")
+            : translate("extensionShortName_Free");
 
         const voiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
         voiceNames.sort();
@@ -130,15 +144,24 @@ class About extends React.PureComponent {
 
                 <listBase.dl>
                     <listBase.dt>
+                        {translate("frontend_systemCurrentEditionHeading")}
+                    </listBase.dt>
+                    <listBase.dd
+                        lang="en"
+                    >
+                        <TalkieEditionIcon
+                            isPremiumEdition={isPremiumEdition}
+                        />
+                        {extensionShortName}
+                    </listBase.dd>
+
+                    <listBase.dt>
                         {translate("frontend_systemInstalledVersionHeading")}
                     </listBase.dt>
                     <listBase.dd
                         lang="en"
                     >
-                        <TalkieVersionIcon
-                            isPremiumVersion={isPremiumVersion}
-                        />
-                        Talkie
+                        {translate("extensionShortName")}
                         {" "}
                         {versionName}
                     </listBase.dd>
