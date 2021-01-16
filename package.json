@@ -115,7 +115,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
-    "@google-cloud/translate": "^4.2.1",
+    "@google-cloud/translate": "^5.3.0",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^15.1.0",
