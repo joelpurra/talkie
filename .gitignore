@@ -8,3 +8,5 @@ lib/
 node_modules/
 package/
 web-ext-artifacts/
+*.xpi
+
