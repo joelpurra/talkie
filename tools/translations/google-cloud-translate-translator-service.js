@@ -23,7 +23,7 @@ const Promise = require("bluebird");
 
 const clone = require("clone");
 
-const { Translate } = require("@google-cloud/translate");
+const { Translate } = require("@google-cloud/translate").v2;
 
 const striptags = require("striptags");
 const htmlEntityEncode = require("ent/encode");
