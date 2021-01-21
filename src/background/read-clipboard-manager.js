@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -42,9 +42,9 @@ export default class ReadClipboardManager {
             () => {
                 logDebug("Start", "startSpeaking");
 
-                return this.metadataManager.isPremiumVersion()
-                    .then((isPremiumVersion) => {
-                        if (!isPremiumVersion) {
+                return this.metadataManager.isPremiumEdition()
+                    .then((isPremiumEdition) => {
+                        if (!isPremiumEdition) {
                             const text = this.translator.translate("readClipboardIsAPremiumFeature");
 
                             return text;

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import VersionSection from "./version-section.jsx";
+import EditionSection from "./edition-section.jsx";
 
 export default class FreeSection extends React.PureComponent {
     static defaultProps = {
@@ -41,16 +41,16 @@ export default class FreeSection extends React.PureComponent {
             className,
         } = this.props;
 
-        const isPremiumVersion = false;
+        const isPremiumEdition = false;
 
         return (
-            <VersionSection
+            <EditionSection
                 mode={mode}
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
                 className={className}
             >
                 {this.props.children}
-            </VersionSection>
+            </EditionSection>
         );
     }
 }

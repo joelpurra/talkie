@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
         languagesCount: selectors.shared.voices.getLanguagesCount(state),
         languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
         availableBrowserLanguageWithInstalledVoice: selectors.shared.voices.getAvailableBrowserLanguageWithInstalledVoice(state),
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
         systemType: state.shared.metadata.systemType,
         osType: state.shared.metadata.osType,
     };
@@ -61,6 +61,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
             sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
         },
     };
 };
@@ -69,7 +70,7 @@ export default
 @connect(mapStateToProps, mapDispatchToProps)
 class WelcomeContainer extends React.PureComponent {
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         systemType: false,
         osType: false,
         languages: [],
@@ -89,15 +90,32 @@ class WelcomeContainer extends React.PureComponent {
         voicesCount: PropTypes.number.isRequired,
         languagesCount: PropTypes.number.isRequired,
         languageGroupsCount: PropTypes.number.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (nextProps.voicesCount === 0) {
+            // NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
+            // NOTE: sometimes the browser (Firefox?) has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
+            // NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
+            const loadVoicesRetryDelay = 250;
+
+            setTimeout(
+                () => {
+                    // TODO: is this the best place to load data?
+                    this.props.actions.sharedVoices.loadVoices();
+                },
+                loadVoicesRetryDelay,
+            );
+        }
     }
 
     render() {
         const {
             actions,
-            isPremiumVersion,
+            isPremiumEdition,
             systemType,
             osType,
             voicesCount,
@@ -134,7 +152,7 @@ class WelcomeContainer extends React.PureComponent {
 
         return (
             <Welcome
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
                 systemType={systemType}
                 osType={osType}
                 voicesCount={voicesCount}

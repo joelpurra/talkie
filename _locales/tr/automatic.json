@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Metin seçimi Talkie ile yüksek sesle Talkie",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Metin seçimini Talkie Premium ile yüksek sesle okuyun",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Konuşmayı kes",
@@ -32,13 +27,9 @@
     "message": "Talkie web sitesi",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Talkie mağaza sayfası",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie Premium mağaza sayfası",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Talkie Premium sürümüne yükseltin",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "Panoya oku",
@@ -48,15 +39,10 @@
     "message": "Seçimi okumayı başlat/durdur",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "ÜCRETSİZ! 40'tan fazla dilde hızlı, kolay, yüksek kaliteli metin. Web sitelerinden, PDF'den, e-postalardan yüksek sesle okuyun. TTS ile konuşma metni.",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "ÖDÜL! 40'tan fazla dilde hızlı, kolay, yüksek kaliteli metin. Web sitelerinden, PDF'den, e-postalardan yüksek sesle okuyun. TTS ile konuşma metni.",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "40'tan fazla dilde hızlı, kolay, yüksek kaliteli metin okuma. Web sitelerinden, PDF'den, e-postadan yüksek sesle okuyun. TTS ile metni konuşun.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "hakkında",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Ne yazık ki hayır. Google Dokümanlar'ın (Google E-Tablo, Google Drive ve benzeri gibi) bir web sitesi olmadığını, ancak Google tarafından oluşturulan özel bir \"tarayıcıdaki bir uygulama\" olduğunu görüyoruz. Talkie seçilen metne erişemiyor veya bağlam menüsü öğeleri ekleyemiyor. Google Dokümanlar desteği Talkie e eklemenin bir yolu varsa daha da araştıracağım.",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Ne yazık ki hayır. Google Dokümanlar'ın (Google Spreadsheet, Google Drive ve benzeri) bir web sitesi değil, Google tarafından oluşturulan özel bir \"tarayıcıdaki uygulama\" olduğu ortaya çıktı. Talkie seçili metne erişemez veya içerik menüsü öğeleri ekleyemez. Talkie için Google Dokümanlar desteğini eklemenin bir yolu olup olmadığını daha fazla Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Talkie Google Dokümanlar'da çalışıyor mu?",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Talkie — bugüne kadar yüzlerce saat geliştirmek oldukça zaman ve çaba gerektirir. Finansal açıdan gelişmeyi desteklemek için bazı özellikler yalnızca Talkie Premium kullanıcıları tarafından kullanılabilir.",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Talkie i geliştirmek ve sürdürmek oldukça fazla zaman ve çaba Talkie — şimdiye kadar yüzlerce saat. Yine de Talkie herkesin istediği kadar kullanması için ücretsizdir. Hem geliştirme, hem bakım hem de ücretsiz Talkie finansal olarak desteklemek için, bazı özellikler yalnızca Talkie Premium kullanıcıları tarafından kullanılabilir.",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "Neden Talkie Premium maliyeti Talkie Premium ?",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "Neden Talkie iki baskısı var?",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Maalesef henüz değil. Talkie Premium şu an için yalnızca Chrome Web Mağazası aracılığıyla sunuluyor; burada yalnızca Google Payments kullanmak sunuluyor.",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "Evet, birden fazla ödeme seçeneği mevcuttur.",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "Talkie Premium için PayPal, banka havalesi vb. Talkie Premium kullanarak ödeme yapabilir miyim?",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "PayPal, banka havalesi vb. İle ödeme yapabilir miyim?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Emin! Ödemeyi Google Payments'ta iptal edebilir veya doğrudan benimle iletişime geçebilirsiniz.",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "Evet, basit geri ödeme yönetimi sunan PayPal veya Stripe kullanarak ödeme yaptıysanız. İadeler, gerektirdiği ekstra iş miktarı ve paranın yanlış hesaba iade edilmesi riski nedeniyle genellikle diğer ödeme yöntemleri için geçerli değildir.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "Geri ödeme alabilir miyim?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Emin! Size Talkie Premium son sürümünün bir kopyasını gönderebilirim, ancak bir sonraki sürüm yayınlandığında otomatik güncelleştirmelerin olmaz.",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "Elbette! Talkie Premium için Talkie Premium yükseltmesini etkinleştirmeniz Talkie Premium .",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "Talkie Premium için Talkie Premium ücretsiz bir kopyasını alabilir miyim?",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "Talkie Premium ücretsiz deneyebilir miyim?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie içinde reklam, veri toplama veya kullanıcı takibi Talkie. Talkie Premium için ödeme yapan mutlu kullanıcılar, tek para Talkie Premium .",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie uzantıları reklam içeriyor mu, veri topluyor mu veya kullanıcıları takip ediyor mu?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Onur sistemi, bireylerin dürüst olmaya güvendiği ve sıkı bir şekilde zorunlu kontroller olmaksızın kurallara bağlı kaldığı zamandır. Talkie Premium için yükseltme yapanların Talkie Premium güvenmek için.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Onur sistemi nedir?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Dünyanın her yerindeki insanlar farklı para birimleri kullandığından, farklı harcanabilir gelir seviyelerine sahip olduğundan ve Talkie Premium 'un özellikleri için farklı takdir seviyelerine sahiptir. Dünyadaki herkes için işe yarayan tek bir sabit fiyat yoktur. Üstelik para birimlerindeki dalgalanmalar, ekonomik döngü eğilimleri, bölgesel/ülke içi farklılıklar, vb. Sonuç olarak, dünya çapında satılan bir ürünün ayar fiyatları karmaşıktır. Herkesin kendi fiyatını belirlemesine izin vermek ve ürünün bir ödeme gerektirecek kadar iyi olmasını sağlamak daha kolaydır.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "Neden kendi fiyatımı belirleyebilirim?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Metinden konuşmaya yazılıma ne kadar para harcayabileceğinizi Talkie Premium , Talkie Premium nin sizin için değerli olduğunu düşündüğünüz Talkie Premium ödemenizi tercih ederim — ne fazla ne de az. Bir referans çerçevesi arıyorsanız, Google Talkie Premium için ödemeleri ele Talkie Premium , Amerika Birleşik Devletleri'nde abonelik maliyeti yıllık 25 $$ (ABD Doları) olacaktır. Google'ın, dünya genelindeki ülkeler ve para birimleri için fiyatları yerel koşullara uyacak şekilde ayarladığını unutmayın, bu nedenle aşağı yukarı olabilir. Aynı zamanda, kibarca soran herkes ücretsiz olarak Talkie Premium alabilirdi.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Ne kadar ödememi tavsiye edersiniz?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Çünkü ödemeler ve doğrulama için bir sistemin uygulanması çok zaman ve çaba gerektirir ve sıkı ödeme doğrulamasının uygulanmasının maliyetinin, sistemi aldatan kişilerin kayıplarından daha yüksek olduğu varsayılır. Ödeme doğrulaması ayrıca, kullanıcıların sistemlerinden bir miktar veri toplanmasını gerektirir ve teknik olarak yetenekli kullanıcılar genellikle doğrulama konusunda çalışabilir. Dolayısıyla, teknik ve ticari açıdan bakıldığında, hiçbir garanti olmamasına rağmen, kullanıcıların onur sistemine bağlı olduklarına güvenmek daha kolaydır.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "Neden ödeme doğrulaması yok?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Ödeme doğrulamasını uygulamama kararı, ödenen tutarın doğrulanamayacağı anlamına gelir. Ek olarak, Talkie Premium dijital bir kopyasını \" Talkie Premium \" maliyeti sıfırdır, bu nedenle onu Talkie Premium yere vermek, geliştirici için mali bir kayıp anlamına gelmez. Ayrıca, Talkie Premium hoşunuza Talkie Premium , bunu arkadaşlarınıza anlatacağınız umudu da var. Talkie Premium vermek bir pazarlama çabası olarak görülebilir.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "Neden hiçbir şey ödememeyi seçebilirim?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Evet, Stripe kullanarak. Ek ödeme seçeneklerini görün.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Yinelenen aylık veya yıllık ödeme yapabilir miyim?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Evet, e-posta yoluyla talep ederseniz. Lütfen adınızı, adresinizi ve isteğe bağlı olarak katma değer vergisi (KDV) tanımlayıcınızı (veya eşdeğeri) ekleyin.",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Ödemem için makbuz alabilir miyim?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Çünkü Talkie Premium sağlanan ek özellikleri ve bağımsız geliştiricilerin açık kaynak yazılım geliştirmesine katkıda bulunmanın mutlu hissini Talkie Premium. Nispeten yüksek kişisel geliştirme ve bakım maliyeti, ancak dijital kopyaların \"üretilmesinin\" sıfır maliyeti nedeniyle, Talkie Premium için Talkie Premium ödemeler, ödeme Talkie Premium ürünün değerinin aksine, gelecekteki geliştirme ve bakım için destek sağladığı da görülebilir. .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "Yükseltmek için neden ödeme yapmalıyım?",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "Hatalar",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "Sesler",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Şu anda Talkie nin ücretsiz sürümünü kullanmaktadır ve sınırlı bir özellik seti mevcuttur. Belki de Talkie Premium sizin için daha iyi bir seçim olabilir?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "Şu anda Talkie Premium kullanıyor ve tüm özellikler mevcut. Çok teşekkür ederim, kalbimi ısıtır!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie iki baskı Talkie gelir: Talkie ve Talkie Premium. Ücretsiz sürüm çoğu kullanım durumu için harikadır ancak premium sürüm ek seçenekler ve özellikler sunar.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "Otomatik dil algılama.",
@@ -350,17 +420,9 @@
     "message": "Panoya metni okuyun! Herhangi bir Talkie Premium herhangi bir yerden metni Talkie Premium okumak için Talkie Premium kullanın!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "Halen Talkie'in ücretsiz sürümünü Talkie ve sınırlı sayıda özellik var. Belki Talkie Premium sizin için daha iyi bir seçim olurdu?",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "Şu anda Talkie Premium kullanıyor ve tüm özellikler mevcut. Çok teşekkür ederim, kalbimi ısıtır!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie iki sürümden Talkie: Talkie ve Talkie Premium. Ücretsiz sürümü çoğu kullanım ömrü için harika, ancak premium sürümde ek seçenekler bulunmaktadır.",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Talkie Premium sürümüne yükseltin",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Talkie tüm katkıları Talkie Bulunan Lisans Sözleşmesi (CLA) kapsamında yapılır.",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie , yeni yıldan 2016/2017 yıl önce bir arkadaştan gelen bir soruyla geliştirildi. Meydan okuma, işine giderken bir makaleyi okumak yerine dinlemek mümkün mü? Soru ile başladı. Kolay dedim ki, bunu ispatlamaya karar verdim — ya da en azından tarayıcımı aptalca bir bilgisayar sesi kullanarak metin konuşturacaktım. Kullanıcı arabirimi olmaksızın temel sürüm, önemsiz olduğu ortaya çıktı. Bir kullanıcı arabirimi ekleme biraz zaman aldı. Doğru dili ekleme, bir grup daha fazla kod saptama. Hataları tarayıcıda aşmak daha da fazla iş. Geliştirmelerin ve özelliklerin listesi devam ediyor — ve birkaç bin satırlık kod daha sonra, sonuçtaki sonuca bakıyorsunuz.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie , 2016/2017 Yeni Yılından birkaç gün önce bir arkadaşın meydan okumasıyla geliştirildi. Zorluk şu soruyla başladı: işe giderken bir makaleyi okumak yerine dinlemek mümkün mü? Kolay, dedim ve bunu ispatlamak için yola çıktım — ya da en azından tarayıcımın aptal bir bilgisayar sesi kullanarak metni konuşmasını sağlamak için. Herhangi bir kullanıcı arayüzü olmayan temel sürümün oluşturulması önemsiz olduğu ortaya çıktı. Bir kullanıcı arayüzü eklemek biraz daha uzun sürdü. Doğru dil tespiti ekleyerek bir grup daha kod. Tarayıcıdaki hataların üstesinden gelmek daha da fazla çalışır. İyileştirmelerin ve özelliklerin listesi devam ediyor — ve birkaç bin satır kod sonra, sonuca bakıyorsunuz.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Talkie nasıl başladı?",
@@ -434,6 +496,10 @@
     "message": "Tarayıcı türü",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Mevcut baskı",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "Sistem ayrıntıları",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "Metin",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie iki baskı Talkie gelir: Talkie ve Talkie Premium. Ücretsiz sürüm çoğu kullanım durumu için harikadır ancak premium sürüm ek seçenekler ve özellikler sunar.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Talkie Premium için fiyat sabit değildir. Bunun yerine, premium özelliklerin sizin için ne kadar değerli olduğunu düşündüğünüze bağlı olarak istediğiniz kadar ödersiniz. Hiçbir şey ödememeye bile karar verebilirsiniz.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Ödemeyi gönderdikten sonra girilecek yükseltme kodu, kaydedilecek kullanıcı hesabı veya başka herhangi bir ödeme doğrulaması yoktur. Bunun yerine Talkie Premium , onur sistemini kullanır.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "Lütfen Talkie alternatif para kazanma yöntemi olarak reklam, kullanıcı takibi veya veri toplamasının olmadığını unutmayın. Ödemeler, açık kaynak yazılım geliştirme için bağış olarak etiketlenir.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Talkie Premium sürümüne yükseltin",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Talkie Premium için ödeme Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "Yükselt",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Bağışlar sayfasından daha fazla ödeme yöntemi",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "PayPal ile öde",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "kullanım",

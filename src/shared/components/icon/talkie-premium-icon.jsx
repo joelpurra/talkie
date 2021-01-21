@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import TalkieVersionIcon from "./talkie-version-icon.jsx";
+import TalkieEditionIcon from "./talkie-edition-icon.jsx";
 
 export default class TalkiePremiumIcon extends React.PureComponent {
     static defaultProps = {
@@ -50,13 +50,13 @@ export default class TalkiePremiumIcon extends React.PureComponent {
         } = this.props;
 
         return (
-            <TalkieVersionIcon
+            <TalkieEditionIcon
                 mode={mode}
                 size={size}
                 marginLeft={marginLeft}
                 marginRight={marginRight}
                 className={className}
-                isPremiumVersion={true}
+                isPremiumEdition={true}
             />
         );
     }

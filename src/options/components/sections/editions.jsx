@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,48 +21,40 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import * as layoutBase from "../../styled/layout/layout-base.jsx";
+import TalkiePremiumEdition from "./editions/talkie-premium-edition.jsx";
 
-import styled from "../../hocs/styled.jsx";
-
-export default class HeroSection extends React.PureComponent {
+export default class Editions extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.styled = {
-            heroFree: styled({
-
-            })(layoutBase.hero),
-
-            heroPremium: styled({
-
-            })(layoutBase.hero),
-        };
+        this.handleIsPremiumEditionChange = this.handleIsPremiumEditionChange.bind(this);
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
-        className: "",
+        isPremiumEdition: false,
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
+        actions: PropTypes.object.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
+    }
+
+    handleIsPremiumEditionChange(isPremiumEdition) {
+        this.props.actions.sharedMetadata.storeIsPremiumEdition(isPremiumEdition);
     }
 
     render() {
         const {
-            isPremiumVersion,
-            className,
+            isPremiumEdition,
         } = this.props;
-
-        const HeroElement = isPremiumVersion ? this.styled.heroPremium : this.styled.heroFree;
-
         return (
-            <HeroElement className={className}>
-                {this.props.children}
-            </HeroElement>
+            <section>
+                <TalkiePremiumEdition
+                    onChange={this.handleIsPremiumEditionChange}
+                    isPremiumEdition={isPremiumEdition}
+                    disabled={false}
+                />
+            </section>
         );
     }
 }

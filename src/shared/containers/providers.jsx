@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {
+    connect,
+} from "react-redux";
+
+import {
     StyletronProvider,
 } from "styletron-react";
 
@@ -33,13 +37,26 @@ import BroadcasterProvider from "../hocs/broadcaster-provider.jsx";
 
 import StateRoot from "./state-root.jsx";
 
-export default class Providers extends React.PureComponent {
+const mapStateToProps = (state) => {
+    return {
+        systemType: state.shared.metadata.systemType,
+    };
+};
+
+const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint-enable no-unused-vars */) => {
+    return {};
+};
+
+export default
+@connect(mapStateToProps, mapDispatchToProps)
+class Providers extends React.PureComponent {
     static propTypes = {
         broadcaster: PropTypes.object.isRequired,
         children: PropTypes.element.isRequired,
         configuration: PropTypes.object.isRequired,
         styletron: PropTypes.object.isRequired,
         translator: PropTypes.object.isRequired,
+        systemType: PropTypes.string.isRequired,
     }
 
     render() {
@@ -48,10 +65,11 @@ export default class Providers extends React.PureComponent {
             configuration,
             styletron,
             translator,
+            systemType,
         } = this.props;
 
         return (
-            <ConfigurationProvider configuration={configuration}>
+            <ConfigurationProvider configuration={configuration} systemType={systemType}>
                 <TranslationProvider translator={translator}>
                     <BroadcasterProvider broadcaster={broadcaster}>
                         <StyletronProvider styletron={styletron}>

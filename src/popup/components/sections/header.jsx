@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,7 +30,8 @@ import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as buttonBase from "../../../shared/styled/button/button-base.jsx";
 
 import Discretional from "../../../shared/components/discretional.jsx";
-import TalkieVersionIcon from "../../../shared/components/icon/talkie-version-icon.jsx";
+import TalkieEditionIcon from "../../../shared/components/icon/talkie-edition-icon.jsx";
+import ExtensionShortName from "../../../shared/components/editions/extension-short-name.jsx";
 
 export default
 @configureAttribute
@@ -61,14 +62,15 @@ class Header extends React.PureComponent {
     }
 
     static defaultProps={
-        isPremiumVersion: false,
+        isPremiumEdition: false,
     }
 
     static propTypes = {
         playPauseClick: PropTypes.func.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
     }
 
     handlePlayPauseClick(e) {
@@ -80,9 +82,17 @@ class Header extends React.PureComponent {
         return false;
     }
 
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
+    }
+
     render() {
         const {
-            isPremiumVersion,
+            isPremiumEdition,
             configure,
             translate,
         } = this.props;
@@ -91,10 +101,10 @@ class Header extends React.PureComponent {
             <layoutBase.header>
                 {/* TODO: show for free Talkie, not for Talkie Premium. */}
                 <Discretional
-                    enabled={!isPremiumVersion}
+                    enabled={!isPremiumEdition}
                 >
                     <this.styled.button
-                        href={configure("urls.store-premium")}
+                        href={configure("urls.options-upgrade-from-demo")}
                         id="header-premium-button"
                         lang="en"
                     >
@@ -105,8 +115,8 @@ class Header extends React.PureComponent {
                 <textBase.span
                     onClick={this.handlePlayPauseClick}
                 >
-                    <TalkieVersionIcon
-                        isPremiumVersion={isPremiumVersion}
+                    <TalkieEditionIcon
+                        isPremiumEdition={isPremiumEdition}
                     />
                 </textBase.span>
 
@@ -114,7 +124,9 @@ class Header extends React.PureComponent {
                     href={configure("urls.main")}
                     lang="en"
                 >
-                    {translate("extensionShortName")}
+                    <ExtensionShortName
+                        isPremiumEdition={isPremiumEdition}
+                    />
                 </this.styled.extensionName>
             </layoutBase.header>
         );

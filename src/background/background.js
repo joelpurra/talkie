@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ import Configuration from "../shared/configuration";
 import LocaleProvider from "../split-environments/locale-provider";
 import TranslatorProvider from "../split-environments/translator-provider";
 import InternalUrlProvider from "../split-environments/internal-url-provider";
+import StorageProvider from "../split-environments/storage-provider";
 
 import {
     knownEvents,
@@ -104,7 +105,8 @@ import MetadataManager from "../shared/metadata-manager";
 import WelcomeManager from "./welcome-manager";
 import OnInstalledManager from "./on-installed-manager";
 
-import StorageManager from "./storage-manager";
+import StorageManager from "../shared/storage-manager";
+import SettingsManager from "../shared/settings-manager";
 
 import LanguageHelper from "./language-helper";
 
@@ -145,11 +147,13 @@ const startOnInstallListener = () => {
 function main() {
     logDebug("Start", "Main background function");
 
+    const storageProvider = new StorageProvider();
+    const storageManager = new StorageManager(storageProvider);
+    const settingsManager = new SettingsManager(storageManager);
     const manifestProvider = new ManifestProvider();
-    const metadataManager = new MetadataManager(manifestProvider);
+    const metadataManager = new MetadataManager(manifestProvider, settingsManager);
     const internalUrlProvider = new InternalUrlProvider();
     const configuration = new Configuration(metadataManager, configurationObject);
-    const storageManager = new StorageManager();
 
     const broadcaster = new Broadcaster();
 
@@ -157,7 +161,7 @@ function main() {
     const shouldContinueSpeakingProvider = onlyLastCaller;
     const execute = new Execute();
     const contentLogger = new ContentLogger(execute, configuration);
-    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider, contentLogger, storageManager);
+    const talkieSpeaker = new TalkieSpeaker(broadcaster, shouldContinueSpeakingProvider, contentLogger, settingsManager);
     const speakingStatus = new SpeakingStatus();
 
     const voiceLanguageManager = new VoiceLanguageManager(storageManager, metadataManager);
@@ -183,8 +187,7 @@ function main() {
         "start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
         "read-clipboard": () => readClipboardManager.startSpeaking(),
         "open-website-main": () => openUrlFromConfigurationInNewTab("main"),
-        "open-website-store-free": () => openUrlFromConfigurationInNewTab("store-free"),
-        "open-website-store-premium": () => openUrlFromConfigurationInNewTab("store-premium"),
+        "open-website-upgrade": () => openUrlFromConfigurationInNewTab("upgrade"),
     };
 
     const commandHandler = new CommandHandler(commandMap);
@@ -194,14 +197,14 @@ function main() {
     const suspensionConnectorManager = new SuspensionConnectorManager();
     const suspensionManager = new SuspensionManager(suspensionConnectorManager);
     const iconManager = new IconManager(metadataManager);
-    const buttonPopupManager = new ButtonPopupManager(translatorProvider);
+    const buttonPopupManager = new ButtonPopupManager(translatorProvider, metadataManager);
 
     const progress = new TalkieProgress(broadcaster);
 
     const plug = new Plug(contentLogger, execute);
 
     const welcomeManager = new WelcomeManager();
-    const onInstalledManager = new OnInstalledManager(storageManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue);
+    const onInstalledManager = new OnInstalledManager(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue);
 
     (function addOnInstalledEventQueuePolling() {
         // NOTE: run the function once first, to allow for a very long interval.
@@ -370,18 +373,15 @@ function main() {
 
             window.getVersionNumber = () => metadataManager.getVersionNumber();
             window.getVersionName = () => metadataManager.getVersionName();
-            window.isFreeVersion = () => metadataManager.isFreeVersion();
-            window.isPremiumVersion = () => metadataManager.isPremiumVersion();
+            window.getEditionType = () => metadataManager.getEditionType();
+            window.isPremiumEdition = () => metadataManager.isPremiumEdition();
             window.getSystemType = () => metadataManager.getSystemType();
             window.getOsType = () => metadataManager.getOsType();
 
-            // TODO: shared place for stored value constants.
-            const speakLongTextsStorageKey = "speak-long-texts";
-            // TODO: shared place for default/fallback values for booleans etcetera.
-            window.getSpeakLongTextsOption = () => storageManager.getStoredValue(speakLongTextsStorageKey)
-                .then((speakLongTexts) => speakLongTexts || false);
-            // TODO: don't convert to boolean here, but somewhere centralized?
-            window.setSpeakLongTextsOption = (speakLongTexts) => storageManager.setStoredValue(speakLongTextsStorageKey, speakLongTexts === true);
+            window.getIsPremiumEditionOption = () => settingsManager.getIsPremiumEdition();
+            window.setIsPremiumEditionOption = (isPremiumEdition) => settingsManager.setIsPremiumEdition(isPremiumEdition);
+            window.getSpeakLongTextsOption = () => settingsManager.getSpeakLongTexts();
+            window.setSpeakLongTextsOption = (speakLongTexts) => settingsManager.setSpeakLongTexts(speakLongTexts);
 
             window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
             window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);

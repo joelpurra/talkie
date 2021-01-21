@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,8 +30,9 @@ import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import * as listBase from "../../../shared/styled/list/list-base.jsx";
 
 import Discretional from "../../../shared/components/discretional.jsx";
-import HeroVersionSection from "../../../shared/components/hero-section/hero-version-section.jsx";
+import HeroSection from "../../../shared/components/hero-section/hero-section.jsx";
 import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
+import Loading from "../../../shared/components/loading.jsx";
 
 export default
 @configureAttribute
@@ -51,10 +52,10 @@ class Welcome extends React.PureComponent {
                 marginBottom: "2em",
             })("div"),
 
-            heroVersionSection: styled({
+            HeroEditionSection: styled({
                 // NOTE: atomic css class ordering seems to not work well in this case.
                 marginBottom: 0,
-            })(HeroVersionSection),
+            })(HeroSection),
 
             sampleHeroP: styled({
                 marginTop: 0,
@@ -91,7 +92,7 @@ class Welcome extends React.PureComponent {
     }
 
     static defaultProps = {
-        isPremiumVersion: false,
+        isPremiumEdition: false,
         systemType: null,
         osType: null,
         voicesCount: 0,
@@ -104,7 +105,7 @@ class Welcome extends React.PureComponent {
     };
 
     static propTypes = {
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
         voicesCount: PropTypes.number.isRequired,
@@ -116,9 +117,12 @@ class Welcome extends React.PureComponent {
         canSpeakInTranslatedLocale: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+
         this.playWelcomeMessage();
     }
 
@@ -126,7 +130,16 @@ class Welcome extends React.PureComponent {
         this.playWelcomeMessage();
     }
 
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
+    }
+
     playWelcomeMessage() {
+        // TODO: take sample text language code into account.
+        if (this.props.voicesCount === 0) {
+            return;
+        }
+
         if (!this.welcomeSampleTextElement) {
             return;
         }
@@ -168,7 +181,7 @@ class Welcome extends React.PureComponent {
 
     render() {
         const {
-            isPremiumVersion,
+            isPremiumEdition,
             systemType,
             osType,
             voicesCount,
@@ -190,11 +203,13 @@ class Welcome extends React.PureComponent {
 
         const welcomeSample = this.getWelcomeSample();
 
+        const haveVoices = voicesCount > 0;
+
         return (
             <section>
                 <this.styled.heroDiv>
-                    <this.styled.heroVersionSection
-                        isPremiumVersion={isPremiumVersion}
+                    <this.styled.HeroEditionSection
+                        isPremiumEdition={isPremiumEdition}
                     >
                         <Discretional
                             enabled={welcomeSample.hasSampleText}
@@ -223,7 +238,7 @@ class Welcome extends React.PureComponent {
                                 {translate("frontend_welcomeHero02")}
                             </Discretional>
                         </this.styled.welcomeHeroP>
-                    </this.styled.heroVersionSection>
+                    </this.styled.HeroEditionSection>
 
                     <this.styled.sharingDiv>
                         <this.styled.sharingIcons />
@@ -239,14 +254,18 @@ class Welcome extends React.PureComponent {
                 </textBase.h2>
 
                 <textBase.p>
-                    {/* TODO: pretty format */}
-                    {translate("frontend_welcomeInstallMoreVoicesDescription", [
-                        voicesCount,
-                        languageGroupsCount,
-                        languagesCount,
-                        systemTypePrettyName,
-                        osTypePrettyName,
-                    ])}
+                    <Loading
+                        enabled={haveVoices}
+                    >
+                        {/* TODO: pretty format */}
+                        {translate("frontend_welcomeInstallMoreVoicesDescription", [
+                            voicesCount,
+                            languageGroupsCount,
+                            languagesCount,
+                            systemTypePrettyName,
+                            osTypePrettyName,
+                        ])}
+                    </Loading>
                 </textBase.p>
 
                 <Discretional

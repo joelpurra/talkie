@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ import {
 import * as actionTypes from "../constants/action-types-metadata";
 
 const initialState = {
-    isPremiumVersion: false,
+    isPremiumEdition: false,
     versionName: null,
     versionNumber: null,
     systemType: null,
@@ -35,9 +35,10 @@ const initialState = {
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_IS_PREMIUM_VERSION]: "isPremiumVersion",
+    [actionTypes.SET_IS_PREMIUM_EDITION]: "isPremiumEdition",
     [actionTypes.SET_VERSION_NAME]: "versionName",
     [actionTypes.SET_VERSION_NUMBER]: "versionNumber",
+    [actionTypes.SET_EDITION_TYPE]: "editionType",
     [actionTypes.SET_SYSTEM_TYPE]: "systemType",
     [actionTypes.SET_OS_TYPE]: "osType",
 };

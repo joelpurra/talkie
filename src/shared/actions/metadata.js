@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,12 +22,16 @@ import * as actionTypes from "../constants/action-types-metadata";
 
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
-export const loadIsPremium = () =>
-    (dispatch, getState, api) => api.isPremiumVersion()
-        .then((isPremiumVersion) => dispatch(setIsPremium(isPremiumVersion)));
+export const loadIsPremiumEdition = () =>
+    (dispatch, getState, api) => api.isPremiumEdition()
+        .then((isPremiumEdition) => dispatch(setIsPremium(isPremiumEdition)));
 
-export const setIsPremium = (isPremiumVersion) => {
-    return { type: actionTypes.SET_IS_PREMIUM_VERSION, isPremiumVersion };
+export const storeIsPremiumEdition = (isPremiumEdition) =>
+    (dispatch, getState, api) => api.setIsPremiumEditionOption(isPremiumEdition)
+        .then(() => dispatch(loadIsPremiumEdition()));
+
+export const setIsPremium = (isPremiumEdition) => {
+    return { type: actionTypes.SET_IS_PREMIUM_EDITION, isPremiumEdition };
 };
 
 export const loadVersionName = () =>
@@ -46,6 +50,14 @@ export const setVersionNumber = (versionNumber) => {
     return { type: actionTypes.SET_VERSION_NUMBER, versionNumber };
 };
 
+export const loadEditionType = () =>
+    (dispatch, getState, api) => api.getEditionType()
+        .then((editionType) => dispatch(setEditionType(editionType)));
+
+export const setEditionType = (editionType) => {
+    return { type: actionTypes.SET_EDITION_TYPE, editionType };
+};
+
 export const loadSystemType = () =>
     (dispatch, getState, api) => api.getSystemType()
         .then((systemType) => dispatch(setSystemType(systemType)));
@@ -61,8 +73,3 @@ export const loadOsType = () =>
 export const setOsType = (osType) => {
     return { type: actionTypes.SET_OS_TYPE, osType };
 };
-
-export const getConfigurationValue = (path) =>
-    /* eslint-disable no-sync */
-    (dispatch, getState, api) => api.getConfigurationValueSync(path);
-    /* eslint-enable no-sync */

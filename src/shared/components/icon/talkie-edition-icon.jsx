@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,14 +23,14 @@ import PropTypes from "prop-types";
 
 import Icon from "./icon.jsx";
 
-export default class TalkieVersionIcon extends React.PureComponent {
+export default class TalkieEditionIcon extends React.PureComponent {
     static defaultProps = {
         mode: "inline",
         size: "1.3em",
         marginLeft: "0.3em",
         marginRight: "0.3em",
         className: "",
-        isPremiumVersion: false,
+        isPremiumEdition: false,
     };
 
     static propTypes = {
@@ -39,7 +39,7 @@ export default class TalkieVersionIcon extends React.PureComponent {
         marginLeft: PropTypes.string.isRequired,
         marginRight: PropTypes.string.isRequired,
         className: PropTypes.string.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
     }
 
     render() {
@@ -49,14 +49,14 @@ export default class TalkieVersionIcon extends React.PureComponent {
             marginLeft,
             marginRight,
             className,
-            isPremiumVersion,
+            isPremiumEdition,
         } = this.props;
 
-        const isPremiumVersionClassName = isPremiumVersion ? "premium" : "free";
+        const isPremiumEditionClassName = isPremiumEdition ? "premium" : "free";
 
         const classNames = [
             "icon-talkie",
-            isPremiumVersionClassName,
+            isPremiumEditionClassName,
             className,
         ]
             .join(" ")

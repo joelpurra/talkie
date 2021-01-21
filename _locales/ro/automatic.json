@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Citiți selecția textului cu voce tare cu Talkie",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Citiți selecția textului cu voce tare cu Talkie Premium",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Nu mai vorbi",
@@ -32,13 +27,9 @@
     "message": "Site-ul Talkie",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Pagina de magazin Talkie",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Pagina de magazin Talkie Premium",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Treceți la Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "Citiți din clipboard",
@@ -48,15 +39,10 @@
     "message": "Pornirea/oprirea citirii selecției",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "GRATUIT! Rapid, ușor, de înaltă calitate text în vorbire în peste 40 de limbi. Citiți cu voce tare de pe site-uri web, PDF, e-mail. Vorbiți cu TTS.",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "PREMIUM! Rapid, ușor, de înaltă calitate text în vorbire în peste 40 de limbi. Citiți cu voce tare de pe site-uri web, PDF, e-mail. Vorbiți cu TTS.",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Text rapid, ușor și de înaltă calitate în vorbire în peste 40 de limbi. Citiți cu voce tare de pe site-uri web, PDF, e-mail. Rostiți text cu TTS.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "Despre",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Din pacate, nu. Se pare că Google Docs (precum Google Spreadsheet, Google Drive și altele) nu este un site web, ci o \"aplicație specială în browser\" creată de Google. Talkie nu poate accesa textul selectat și nici nu poate adăuga elemente din meniul contextual. Voi investiga mai mult dacă există o modalitate de a adăuga suport pentru Documente Google la Talkie .",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Din pacate, nu. Se pare că Google Docs (precum și Foaia de calcul Google, Google Drive și altele similare) nu este un site web, ci o „aplicație specială în browser” creată de Google. Talkie nu poate accesa textul selectat și nici nu poate adăuga elemente din meniul contextual. Voi investiga în continuare dacă există o modalitate de a adăuga asistență Google Docs la Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Talkie funcționează în Documente Google?",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Este nevoie de destul timp și efort pentru a dezvolta Talkie — sute de ore până acum. Pentru a sprijini financiar dezvoltarea, unele funcții sunt disponibile numai utilizatorilor Talkie Premium .",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Este nevoie de mult timp și efort pentru a dezvolta și întreține Talkie — sute de ore până acum. Cu toate acestea, Talkie este gratuit pentru toată lumea să folosească cât de mult dorește. Pentru a sprijini financiar atât dezvoltarea, întreținerea, cât și menținerea gratuită a Talkie gratuit, unele funcții sunt disponibile numai utilizatorilor Talkie Premium .",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "De ce Talkie Premium costă bani?",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "De ce există două ediții ale Talkie ?",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Din păcate, nu încă. Talkie Premium este în prezent oferită numai prin Magazinul web Chrome, unde singura opțiune este de a utiliza Google Payments.",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "Da, există mai multe opțiuni de plată disponibile.",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "Pot să plătesc pentru Talkie Premium folosind PayPal, transfer bancar etc.?",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "Pot plăti folosind PayPal, transfer bancar etc.?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Sigur! Puteți fie să anulați plata în Google Payments, fie să mă contactați direct.",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "Da, dacă ați plătit utilizând PayPal sau Stripe, care oferă o gestionare simplă a rambursărilor. Rambursările nu sunt, în general, disponibile pentru alte metode de plată datorită volumului de muncă suplimentară pe care îl necesită, plus riscul ca banii să fie rambursați într-un cont greșit.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "Pot să primesc o rambursare?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Sigur! Vă pot trimite o copie a celei mai recente versiuni a Talkie Premium , dar atunci nu va avea actualizări automate la lansarea următoarei versiuni.",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "Sigur! Doar activați actualizarea Talkie Premium pentru a o încerca.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "Pot să obțin o copie gratuită de Talkie Premium pentru a încerca?",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "Pot încerca Talkie Premium gratuit?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "În Talkie nu există reclamă, colectare de date sau urmărire a utilizatorilor. Utilizatorii fericiți care plătesc pentru Talkie Premium sunt singura generare de bani.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Extensiile Talkie conțin reclame, colectează date sau urmăresc utilizatorii?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Sistemul de onoare este atunci când se crede că persoanele sunt oneste și respectă orientările fără controale strict aplicate. Pentru Talkie Premium încredere că cei care fac upgrade au plătit pentru asta.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Care este sistemul de onoare?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Deoarece oamenii din întreaga lume folosesc monede diferite, au niveluri diferite de venit disponibil și au niveluri diferite de apreciere pentru caracteristicile lui Talkie Premium. Nu există un preț unic, care să funcționeze bine pentru toată lumea din lume. Pe lângă aceasta, apar și fluctuațiile monedelor, tendințele ciclului economic, variațiile regionale/intra-țări etc. Una peste alta, prețurile setărilor pentru un produs vândut în întreaga lume sunt complicate. Este mai ușor să permiteți tuturor să își stabilească propriul preț și să vă asigurați că produsul este suficient de bun pentru a garanta o plată.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "De ce îmi pot stabili propriul preț?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Din moment ce nu știu câți bani sunteți capabili să cheltuiți pentru software text-to-speech, prefer să plătiți ceea ce credeți că Talkie Premium merită pentru dvs. — nici mai mult, nici mai puțin. În cazul în care căutați un cadru de referință, atunci când Google a gestionat plăți pentru Talkie Premium , abonamentul a costat 25 $ $ (dolar SUA) pe an în Statele Unite ale Americii. Rețineți că Google a ajustat prețurile pentru țări și monede din întreaga lume pentru a se potrivi condițiilor locale, deci ar putea fi mai mult sau mai puțin. În același timp, oricine a cerut politicos ar putea primi gratuit Talkie Premium .",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Cât îmi recomandați să plătesc?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Deoarece implementarea unui sistem de plăți și verificare necesită mult timp și efort și se presupune că costul implementării verificării stricte a plăților este mai mare decât pierderile cauzate de persoanele care înșeală sistemul. Verificarea plăților necesită, de asemenea, un anumit nivel de colectare a datelor de la sistemele utilizatorilor, iar utilizatorii calificați din punct de vedere tehnic pot lucra adesea în jurul verificării oricum. Deci, din punct de vedere tehnic și de afaceri, chiar dacă nu există garanții, este mai ușor să aveți încredere că utilizatorii aderă la sistemul de onoare.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "De ce nu există nicio verificare a plății?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Decizia de a nu implementa verificarea plății înseamnă că suma plătită nu poate fi verificată. În plus, costul „fabricării” unei copii digitale a Talkie Premium este zero, deci acordarea acesteia pentru nimic nu implică o pierdere financiară pentru dezvoltator. Există, de asemenea, speranța că, dacă îți place Talkie Premium , vei spune prietenilor tăi despre asta. Renunțarea la Talkie Premium poate fi văzută și ca un efort de marketing.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "De ce pot alege să nu plătesc nimic?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Da, folosind Stripe. Consultați opțiuni de plată suplimentare.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Pot efectua o plată lunară sau anuală recurentă?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Da, dacă o solicitați prin e-mail. Vă rugăm să includeți numele, adresa și, opțional, identificatorul dvs. de taxă pe valoarea adăugată (TVA) (sau echivalent).",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Pot primi o chitanță pentru plata mea?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Pentru că îți plac funcțiile suplimentare pe care Talkie Premium oferă și sentimentul fericit de a contribui la dezvoltarea de software open source de către dezvoltatori independenți. Datorită costului relativ ridicat al dezvoltării și întreținerii personalului, dar al costului zero al „fabricării” copiilor digitale, plățile pentru Talkie Premium pot fi văzute și ca oferind suport pentru dezvoltarea și întreținerea viitoare, spre deosebire de valoarea produsului în momentul plății .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "De ce ar trebui să plătesc pentru upgrade?",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "Gandaci",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "voci",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "În prezent se folosește ediția gratuită a Talkie și este disponibil un set limitat de caracteristici. Poate că Talkie Premium ar fi o alegere mai bună pentru tine?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "În prezent, folosiți Talkie Premium și toate funcțiile sunt disponibile. Mulțumesc foarte mult, îmi încălzește inima!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie vine în două ediții: Talkie și Talkie Premium. Ediția gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar ediția premium oferă opțiuni și caracteristici suplimentare.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "Detectarea limbii automate.",
@@ -350,17 +420,9 @@
     "message": "Citiți textul din clipboard! Doar copiați textul de oriunde din orice program și folosiți Talkie Premium pentru ao citi!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "Folosind în prezent versiunea gratuită a Talkie și un set limitat de caracteristici este disponibil. Poate Talkie Premium ar fi o alegere mai bună pentru tine?",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "În prezent, folosiți Talkie Premium și toate funcțiile sunt disponibile. Mulțumesc foarte mult, îmi încălzește inima!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie vine în două versiuni: Talkie și Talkie Premium. Versiunea gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar versiunea premium oferă opțiuni suplimentare.",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Treceți la Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Toate contribuțiile la Talkie se fac în conformitate cu Acordul de licență pentru colaboratori (CLA).",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie a fost dezvoltat cu câteva zile înainte de Anul Nou 2016/2017, la o provocare de la un prieten. Provocarea a început cu întrebarea: în timp ce călătoriți la muncă, este posibil să ascultați un articol în loc să îl citiți? Ușor, am spus, și am pornit-o să demonstrez asta — sau cel puțin să-mi fac browserul să vorbească text folosind o voce proastă de calculator. Versiunea de bază, fără interfața cu utilizatorul, sa dovedit a fi banală pentru a crea. Adăugarea unei interfețe de utilizator a durat ceva mai mult. Adăugarea unei detectări corecte a limbajului un cod mai bun. Depășirea bug-urilor în browser chiar mai mult de lucru. Lista de îmbunătățiri și caracteristici continuă — și câteva mii de linii de cod mai târziu, te uiți la rezultatul final.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie fost dezvoltat cu câteva zile înainte de Anul Nou 2016/2017, la provocarea unui prieten. Provocarea a început cu întrebarea: în timp ce faceți naveta la serviciu, este posibil să ascultați un articol în loc să îl citiți? Ușor, am spus, și mi-am propus să dovedesc acest lucru — sau cel puțin să-mi fac browserul să rostească text folosind o voce prostească de computer. Ediția de bază, fără nicio interfață cu utilizatorul, s-a dovedit a fi banală de creat. Adăugarea unei interfețe cu utilizatorul a durat puțin mai mult. Adăugând detecția corectă a limbii, mai multe coduri. Depășirea erorilor din browser funcționează și mai mult. Lista de îmbunătățiri și caracteristici continuă — și câteva mii de linii de cod mai târziu, vă uitați la rezultatul final.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Cum a început Talkie",
@@ -434,6 +496,10 @@
     "message": "Tipul browserului",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Ediția curentă",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "Detalii despre sistem",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "Text",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie vine în două ediții: Talkie și Talkie Premium. Ediția gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar ediția premium oferă opțiuni și caracteristici suplimentare.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Prețul pentru Talkie Premium nu este fix. În schimb, plătești ceea ce vrei, în funcție de cât crezi că merită pentru tine funcțiile premium. Puteți chiar să decideți să nu plătiți nimic.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "După trimiterea plății, nu mai există coduri de upgrade de introdus, conturi de utilizator de înregistrat sau nicio altă verificare de plată. În schimb, Talkie Premium folosește sistemul de onoare.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "Rețineți că Talkie nu are publicitate, urmărire utilizator sau colectare de date ca mijloace alternative de generare de bani. Plățile sunt etichetate ca donații pentru dezvoltarea de software open source.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Treceți la Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Am plătit pentru Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "Actualizare",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Mai multe metode de plată prin pagina de donații",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "Plătiți utilizând PayPal",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "folosire",

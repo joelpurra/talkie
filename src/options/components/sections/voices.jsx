@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ class Voices extends React.PureComponent {
         sampleText: null,
         rateForSelectedVoice: 1,
         pitchForSelectedVoice: 1,
-        isPremiumVersion: false,
+        isPremiumEdition: false,
     };
 
     static propTypes = {
@@ -113,7 +113,7 @@ class Voices extends React.PureComponent {
         sampleText: PropTypes.string,
         rateForSelectedVoice: PropTypes.number.isRequired,
         pitchForSelectedVoice: PropTypes.number.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         translate: PropTypes.func.isRequired,
     }
 
@@ -144,7 +144,7 @@ class Voices extends React.PureComponent {
     render() {
         const {
             effectiveVoiceNameForSelectedLanguage,
-            isPremiumVersion,
+            isPremiumEdition,
             languages,
             pitchForSelectedVoice,
             rateForSelectedVoice,
@@ -248,7 +248,7 @@ class Voices extends React.PureComponent {
                             onClick={this.handleToogleDefaultClick}
                             languageCode={selectedLanguageCode}
                             voiceName={selectedVoiceName}
-                            disabled={!isPremiumVersion || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
+                            disabled={!isPremiumEdition || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
                         />
 
                         <Rate

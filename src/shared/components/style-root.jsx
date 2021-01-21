@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,19 +24,19 @@ import PropTypes from "prop-types";
 export default class StyleRoot extends React.PureComponent {
     static defaultProps = {
         isSpeaking: false,
-        isPremiumVersion: false,
+        isPremiumEdition: false,
     };
 
     static propTypes = {
         isSpeaking: PropTypes.bool.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
         children: PropTypes.element.isRequired,
     }
 
     getStateClasses() {
         const {
             isSpeaking,
-            isPremiumVersion,
+            isPremiumEdition,
         } = this.props;
 
         const stateClasses = [];
@@ -47,7 +47,7 @@ export default class StyleRoot extends React.PureComponent {
             stateClasses.push("talkie-not-speaking");
         }
 
-        if (isPremiumVersion) {
+        if (isPremiumEdition) {
             stateClasses.push("talkie-premium");
         } else {
             stateClasses.push("talkie-free");

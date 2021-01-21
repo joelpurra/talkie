@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -56,9 +56,9 @@ export default class VoicePitchManager {
 
     _getVoicePitchOverrides() {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.getStoredValue(this.voicePitchPitchOverridesStorageKey)
                             .then((voicePitchPitchOverrides) => {
                                 if (voicePitchPitchOverrides !== null && typeof voicePitchPitchOverrides === "object") {
@@ -76,9 +76,9 @@ export default class VoicePitchManager {
 
     _setVoicePitchOverrides(voicePitchPitchOverrides) {
         return promiseTry(
-            () => this.metadataManager.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
+            () => this.metadataManager.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
                         return this.storageManager.setStoredValue(this.voicePitchPitchOverridesStorageKey, voicePitchPitchOverrides);
                     }
 

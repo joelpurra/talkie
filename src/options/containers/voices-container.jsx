@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
         sampleText: state.voices.sampleText,
         rateForSelectedVoice: state.voices.rateForSelectedVoice,
         pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
-        isPremiumVersion: state.shared.metadata.isPremiumVersion,
+        isPremiumEdition: state.shared.metadata.isPremiumEdition,
     };
 };
 
@@ -108,7 +108,7 @@ class VoicesContainer extends React.PureComponent {
         sampleText: PropTypes.string,
         rateForSelectedVoice: PropTypes.number.isRequired,
         pitchForSelectedVoice: PropTypes.number.isRequired,
-        isPremiumVersion: PropTypes.bool.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
     }
 
     render() {
@@ -126,7 +126,7 @@ class VoicesContainer extends React.PureComponent {
             sampleText,
             rateForSelectedVoice,
             pitchForSelectedVoice,
-            isPremiumVersion,
+            isPremiumEdition,
         } = this.props;
 
         return (
@@ -144,7 +144,7 @@ class VoicesContainer extends React.PureComponent {
                 sampleText={sampleText}
                 rateForSelectedVoice={rateForSelectedVoice}
                 pitchForSelectedVoice={pitchForSelectedVoice}
-                isPremiumVersion={isPremiumVersion}
+                isPremiumEdition={isPremiumEdition}
             />
         );
     }

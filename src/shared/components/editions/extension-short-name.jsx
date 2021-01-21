@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,32 +21,37 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import PropTypes from "prop-types";
 
-import HeroVersionSection from "./hero-version-section.jsx";
+import translateAttribute from "../../hocs/translate.jsx";
 
-export default class HeroFreeSection extends React.PureComponent {
-    static defaultProps = {
-        className: "",
-    };
+import * as textBase from "../../styled/text/text-base.jsx";
+
+export default
+@translateAttribute
+class ExtensionShortName extends React.PureComponent {
+    static defaultProps={
+        isPremiumEdition: false,
+    }
 
     static propTypes = {
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
+        isPremiumEdition: PropTypes.bool.isRequired,
+        translate: PropTypes.func.isRequired,
     }
 
     render() {
         const {
-            className,
+            isPremiumEdition,
+            translate,
         } = this.props;
 
-        const isPremiumVersion = false;
+        // TODO: move resolving the name to the state, like edition type?
+        const extensionShortName = isPremiumEdition
+            ? translate("extensionShortName_Premium")
+            : translate("extensionShortName_Free");
 
         return (
-            <HeroVersionSection
-                isPremiumVersion={isPremiumVersion}
-                className={className}
-            >
-                {this.props.children}
-            </HeroVersionSection>
+            <textBase.span>
+                {extensionShortName}
+            </textBase.span>
         );
     }
 }

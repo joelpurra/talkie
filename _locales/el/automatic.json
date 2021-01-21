@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Διαβάστε την επιλογή κειμένου δυνατά με Talkie",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Διαβάστε την επιλογή κειμένου δυνατά με Talkie Premium",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Σταμάτα να μιλάς",
@@ -32,13 +27,9 @@
     "message": "Ο Talkie",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Η σελίδα Talkie",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Η σελίδα Talkie Premium",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Αναβάθμιση σε Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "Διαβάστε από το πρόχειρο",
@@ -48,15 +39,10 @@
     "message": "Εκκίνηση/διακοπή ανάγνωσης επιλογής",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "ΕΛΕΥΘΕΡΟΣ! Γρήγορη, εύκολη, υψηλής ποιότητας κείμενο σε ομιλία σε περισσότερες από 40 γλώσσες. Διαβάστε δυνατά από ιστοσελίδες, PDF, e-mail. Μιλήστε με κείμενο με TTS.",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "ΑΣΦΑΛΙΣΤΡΟ! Γρήγορη, εύκολη, υψηλής ποιότητας κείμενο σε ομιλία σε περισσότερες από 40 γλώσσες. Διαβάστε δυνατά από ιστοσελίδες, PDF, e-mail. Μιλήστε με κείμενο με TTS.",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Γρήγορο, εύκολο, υψηλής ποιότητας κείμενο σε ομιλία σε περισσότερες από 40 γλώσσες. Διαβάστε δυνατά από ιστότοπους, PDF, email. Εκφώνηση κειμένου με TTS.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "Σχετικά με",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Δυστυχώς όχι. Αποδεικνύεται ότι τα Έγγραφα Google (καθώς και το Google Spreadsheet, το Google Drive και παρόμοια) δεν είναι ένας ιστότοπος, αλλά μια ειδική \"εφαρμογή στο πρόγραμμα περιήγησης\" που δημιουργήθηκε από την Google. Talkie δεν μπορεί να προσπελάσει το επιλεγμένο κείμενο ούτε να προσθέσει στοιχεία μενού περιβάλλοντος. Θα διερευνήσω περαιτέρω αν υπάρχει κάποιος τρόπος να προσθέσετε την υποστήριξη των Εγγράφων Google στο Talkie .",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Δυστυχώς όχι. Αποδεικνύεται ότι τα Έγγραφα Google (καθώς και το Google Spreadsheet, το Google Drive και παρόμοια) δεν είναι ιστότοπος, αλλά μια ειδική \"εφαρμογή στο πρόγραμμα περιήγησης\" που δημιουργήθηκε από την Google. Talkie δεν μπορεί να αποκτήσει πρόσβαση στο επιλεγμένο κείμενο, ούτε να προσθέσει στοιχεία μενού περιβάλλοντος. Θα ερευνήσω περαιτέρω εάν υπάρχει κάποιος τρόπος να προσθέσω υποστήριξη στα Έγγραφα Google στο Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Λειτουργεί το Talkie στα Έγγραφα Google;",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Χρειάζεται αρκετός χρόνος και προσπάθεια για την ανάπτυξη Talkie — μέχρι τώρα εκατοντάδων ωρών. Για να υποστηρίξουμε οικονομικά την ανάπτυξη ορισμένων λειτουργιών είναι διαθέσιμες μόνο στους χρήστες Talkie Premium .",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Χρειάζεται πολύς χρόνος και προσπάθεια για την ανάπτυξη και συντήρηση Talkie — εκατοντάδες ώρες μέχρι στιγμής. Ωστόσο, το Talkie είναι δωρεάν για όλους να χρησιμοποιούν όσο θέλουν. Για να υποστηρίξετε οικονομικά περαιτέρω την ανάπτυξη, τη συντήρηση και τη διατήρηση του δωρεάν Talkie , ορισμένες δυνατότητες είναι διαθέσιμες μόνο σε Talkie Premium χρήστες.",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "Γιατί το Talkie Premium κοστίζει χρήματα;",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "Γιατί υπάρχουν δύο εκδόσεις Talkie ;",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Δυστυχώς δεν είναι ακόμα. Talkie Premium προσφέρεται αυτήν τη στιγμή μόνο μέσω του Chrome Web Store, όπου η μόνη επιλογή είναι η χρήση του Google Payments.",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "Ναι, υπάρχουν πολλές διαθέσιμες επιλογές πληρωμής.",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "Μπορώ να πληρώσω για Talkie Premium χρησιμοποιώντας PayPal, τραπεζική μεταφορά κ.λπ.;",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "Μπορώ να πληρώσω χρησιμοποιώντας PayPal, τραπεζική μεταφορά κ.λπ.;",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Σίγουρος! Μπορείτε είτε να ακυρώσετε την πληρωμή στο Google Payments είτε να επικοινωνήσετε απευθείας μαζί μου.",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "Ναι, εάν πληρώσατε χρησιμοποιώντας το PayPal ή το Stripe, τα οποία προσφέρουν απλή διαχείριση επιστροφής χρημάτων. Γενικά, οι επιστροφές χρημάτων δεν είναι διαθέσιμες για άλλες μεθόδους πληρωμής λόγω του επιπλέον ποσού που απαιτείται, καθώς και του κινδύνου επιστροφής χρημάτων σε λάθος λογαριασμό.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "Μπορώ να επιστρέψω;",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Σίγουρος! Μπορώ να σας στείλω ένα αντίγραφο της τελευταίας έκδοσης του Talkie Premium , αλλά στη συνέχεια δεν θα έχει αυτόματες ενημερώσεις όταν κυκλοφορήσει η επόμενη έκδοση.",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "Σίγουρος! Απλώς ενεργοποιήστε την αναβάθμιση Talkie Premium για να τη δοκιμάσετε.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "Μπορώ να λάβω ένα δωρεάν αντίγραφο του Talkie Premium για να το δοκιμάσω;",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "Μπορώ να δοκιμάσω Talkie Premium δωρεάν;",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Δεν υπάρχει διαφήμιση, συλλογή δεδομένων ή παρακολούθηση χρηστών στο Talkie. Οι ευτυχείς χρήστες που πληρώνουν για Talkie Premium είναι η μόνη δημιουργία εσόδων.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie επεκτάσεις Talkie περιέχουν διαφημίσεις, συλλογή δεδομένων ή παρακολούθηση χρηστών;",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Το σύστημα τιμής είναι όταν τα άτομα εμπιστεύονται ότι είναι ειλικρινά και συμμορφώνονται με τις οδηγίες χωρίς αυστηρούς ελέγχους. Για Talkie Premium εμπιστοσύνη ότι αυτοί που αναβαθμίζουν το έχουν πληρώσει.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Τι είναι το σύστημα τιμής;",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Επειδή οι άνθρωποι σε όλο τον κόσμο χρησιμοποιούν διαφορετικά νομίσματα, έχουν διαφορετικά επίπεδα διαθέσιμου εισοδήματος και έχουν διαφορετικά επίπεδα εκτίμησης για τις δυνατότητες Talkie Premium. Δεν υπάρχει ενιαία, σταθερή τιμή που να λειτουργεί καλά για όλους στον κόσμο. Πάνω από αυτό έρχονται οι διακυμάνσεις στα νομίσματα, οι τάσεις του οικονομικού κύκλου, οι περιφερειακές/ενδοκοινοτικές διακυμάνσεις κ.λπ. Συνολικά, οι ρυθμίσεις τιμών για ένα προϊόν που πωλείται παγκοσμίως είναι περίπλοκη. Είναι πιο εύκολο να αφήσουμε σε όλους να ορίσουν τη δική τους τιμή και να διασφαλίσουν ότι το προϊόν είναι αρκετά καλό ώστε να δικαιούται πληρωμή.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "Γιατί μπορώ να ορίσω τη δική μου τιμή;",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Δεδομένου ότι δεν ξέρω πόσα χρήματα μπορείτε να ξοδέψετε σε λογισμικό κειμένου σε ομιλία, προτιμώ να πληρώνετε ό, τι νομίζετε ότι αξίζει Talkie Premium — όχι περισσότερο, όχι λιγότερο. Σε περίπτωση που αναζητάτε ένα πλαίσιο αναφοράς, όταν η Google χειρίζεται πληρωμές για Talkie Premium η συνδρομή κοστίζει 25 € (Δολάριο ΗΠΑ) ετησίως στις Ηνωμένες Πολιτείες της Αμερικής. Λάβετε υπόψη ότι η Google προσαρμόζει τις τιμές για χώρες και νομίσματα στον κόσμο, ώστε να ταιριάζει με τις τοπικές συνθήκες, οπότε θα μπορούσε να είναι λίγο πολύ. Ταυτόχρονα, όποιος ζήτησε ευγενικά θα μπορούσε επίσης να λάβει Talkie Premium δωρεάν.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Πόσο προτείνετε να πληρώσω;",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Επειδή η εφαρμογή ενός συστήματος πληρωμών και επαλήθευσης απαιτεί πολύ χρόνο και προσπάθεια και θεωρείται ότι το κόστος της εφαρμογής αυστηρής επαλήθευσης πληρωμών είναι υψηλότερο από τις απώλειες από άτομα που εξαπατούν το σύστημα. Η επαλήθευση πληρωμών απαιτεί επίσης κάποιο επίπεδο συλλογής δεδομένων από τα συστήματα των χρηστών και οι τεχνικά ειδικευμένοι χρήστες μπορούν συχνά να επιλύσουν την επαλήθευση ούτως ή άλλως. Έτσι, από τεχνική και επιχειρηματική σκοπιά, παρόλο που δεν υπάρχουν εγγυήσεις, είναι ευκολότερο να εμπιστευόμαστε απλώς ότι οι χρήστες τηρούν το σύστημα τιμής.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "Γιατί δεν υπάρχει επαλήθευση πληρωμής;",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Η απόφαση μη εφαρμογής επαλήθευσης πληρωμής σημαίνει ότι το ποσό που καταβλήθηκε δεν μπορεί να επαληθευτεί. Επιπλέον, το κόστος \"κατασκευής\" ενός ψηφιακού αντιγράφου Talkie Premium είναι μηδέν, οπότε το να το δώσετε για τίποτα δεν συνεπάγεται οικονομική ζημία για τον προγραμματιστή. Υπάρχει επίσης η ελπίδα ότι αν σας αρέσει Talkie Premium , θα ενημερώσετε τους φίλους σας για αυτό. Η Talkie Premium μπορεί επίσης να θεωρηθεί ως προσπάθεια μάρκετινγκ.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "Γιατί μπορώ να επιλέξω να μην πληρώσω τίποτα;",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Ναι, χρησιμοποιώντας το Stripe. Δείτε επιπλέον επιλογές πληρωμής.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Μπορώ να κάνω μια επαναλαμβανόμενη μηνιαία ή ετήσια πληρωμή;",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Ναι, αν το ζητήσετε μέσω email. Συμπεριλάβετε το όνομα, τη διεύθυνση και, προαιρετικά, το αναγνωριστικό φόρου προστιθέμενης αξίας (ΦΠΑ) (ή ισοδύναμο).",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Μπορώ να λάβω απόδειξη για την πληρωμή μου;",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Επειδή σας αρέσουν οι πρόσθετες δυνατότητες Talkie Premium παρέχονται και η ευχάριστη αίσθηση της συμβολής σας στην ανάπτυξη λογισμικού ανοιχτού κώδικα από ανεξάρτητους προγραμματιστές. Λόγω του σχετικά υψηλού προσωπικού κόστους ανάπτυξης και συντήρησης, αλλά μηδενικό κόστος \"κατασκευής\" ψηφιακών αντιγράφων, οι πληρωμές για Talkie Premium μπορούν επίσης να θεωρηθούν ότι παρέχουν υποστήριξη για μελλοντική ανάπτυξη και συντήρηση, σε αντίθεση με την αξία του προϊόντος κατά τη στιγμή της πληρωμής .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "Γιατί πρέπει να πληρώσω για αναβάθμιση;",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "Σφάλματα",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "Φωνές",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Αυτήν τη στιγμή, χρησιμοποιείτε τη δωρεάν έκδοση Talkie και Talkie ένα περιορισμένο σύνολο λειτουργιών. Ίσως Talkie Premium θα ήταν καλύτερη επιλογή για εσάς;",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "Αυτήν τη στιγμή χρησιμοποιείτε το Talkie Premium και όλες οι λειτουργίες είναι διαθέσιμες. Σας ευχαριστώ πολύ, θερμαίνει την καρδιά μου!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie έρχεται σε δύο εκδόσεις: Talkie και Talkie Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει επιπλέον επιλογές και δυνατότητες.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "Αυτόματη ανίχνευση γλώσσας.",
@@ -350,17 +420,9 @@
     "message": "Διαβάστε το κείμενο από το πρόχειρο! Απλά Talkie Premium κείμενο από Talkie Premium σε Talkie Premium και Talkie Premium για να το Talkie Premium !",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "Αυτήν τη στιγμή χρησιμοποιείται η δωρεάν έκδοση του Talkie και υπάρχει ένα Talkie σύνολο λειτουργιών. Ίσως Talkie Premium θα ήταν μια καλύτερη επιλογή για σας;",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "Αυτήν τη στιγμή χρησιμοποιείτε το Talkie Premium και όλες οι λειτουργίες είναι διαθέσιμες. Σας ευχαριστώ πολύ, θερμαίνει την καρδιά μου!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie σε δύο εκδόσεις: Talkie και Talkie Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει πρόσθετες επιλογές.",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Αναβάθμιση σε Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Όλες οι συνεισφορές στο Talkie βάσει της Συμφωνίας Άδειας Συνεργατών (CLA).",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie αναπτύχθηκε λίγες ημέρες πριν από το νέο έτος 2016/2017, σε μια πρόκληση από έναν φίλο. Η πρόκληση ξεκίνησε με το ερώτημα: κατά τη μετάβαση στην εργασία, είναι δυνατόν να ακούσετε ένα άρθρο αντί να το διαβάσετε; Εύκολα, είπα, και ξεκίνησα να το αποδείξω — ή τουλάχιστον για να κάνω το πρόγραμμα περιήγησής μου να μιλήσει με κείμενο χρησιμοποιώντας μια ανόητη φωνή υπολογιστή. Η βασική έκδοση, χωρίς κάποια διεπαφή χρήστη, αποδείχθηκε ασήμαντη για να δημιουργήσει. Η προσθήκη διεπαφής χρήστη, πήρε λίγο περισσότερο χρόνο. Προσθέτοντας την κατάλληλη ανίχνευση γλώσσας, ένας περισσότερος κώδικας. Ξεπερνώντας τα σφάλματα στο πρόγραμμα περιήγησης ακόμα περισσότερη δουλειά. Η λίστα των βελτιώσεων και των λειτουργιών συνεχίζεται — και μερικές χιλιάδες γραμμές κώδικα αργότερα, κοιτάζετε το τελικό αποτέλεσμα.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie αναπτύχθηκε λίγες μέρες πριν από το νέο έτος 2016/2017, σε μια πρόκληση από έναν φίλο. Η πρόκληση ξεκίνησε με την ερώτηση: ενώ μετακινείστε στη δουλειά, είναι δυνατόν να ακούσετε ένα άρθρο αντί να το διαβάσετε; Εύκολο, είπα και ξεκίνησα να το αποδείξω — ή τουλάχιστον να κάνω το πρόγραμμα περιήγησής μου να εκφωνεί κείμενο χρησιμοποιώντας μια ανόητη φωνή υπολογιστή. Η βασική έκδοση, χωρίς καμία διεπαφή χρήστη, αποδείχθηκε ασήμαντη για τη δημιουργία. Η προσθήκη διεπαφής χρήστη, χρειάστηκε λίγο περισσότερο. Προσθέτοντας σωστή γλωσσική ανίχνευση περισσότερους κωδικούς. Η υπερνίκηση σφαλμάτων στο πρόγραμμα περιήγησης ακόμη περισσότερο δουλεύει. Η λίστα με τις βελτιώσεις και τα χαρακτηριστικά συνεχίζεται — και μερικές χιλιάδες γραμμές κώδικα αργότερα, εξετάζετε το τελικό αποτέλεσμα.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Πώς ξεκίνησε η Talkie",
@@ -434,6 +496,10 @@
     "message": "Τύπος προγράμματος περιήγησης",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Τρέχουσα έκδοση",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "Λεπτομέρειες συστήματος",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "Κείμενο",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie έρχεται σε δύο εκδόσεις: Talkie και Talkie Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει επιπλέον επιλογές και δυνατότητες.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Η τιμή για Talkie Premium δεν είναι σταθερή. Αντ 'αυτού πληρώνετε ό, τι θέλετε, ανάλογα με το πόσο πιστεύετε ότι τα premium χαρακτηριστικά σας αξίζουν. Μπορείτε ακόμη και να αποφασίσετε να μην πληρώσετε τίποτα.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Μετά την αποστολή της πληρωμής δεν υπάρχουν κωδικοί αναβάθμισης για εισαγωγή, δεν υπάρχουν λογαριασμοί χρηστών για εγγραφή ή άλλη επαλήθευση πληρωμής. Αντίθετα, το Talkie Premium χρησιμοποιεί το σύστημα τιμής.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "Λάβετε υπόψη ότι το Talkie δεν διαθέτει διαφημίσεις, παρακολούθηση χρηστών ή συλλογή δεδομένων ως εναλλακτικό μέσο δημιουργίας εσόδων. Οι πληρωμές χαρακτηρίζονται ως δωρεές για ανάπτυξη λογισμικού ανοιχτού κώδικα.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Αναβάθμιση σε Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Έχω πληρώσει για Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "Αναβαθμίζω",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Περισσότερες μέθοδοι πληρωμής μέσω της σελίδας δωρεών",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "Πληρώστε χρησιμοποιώντας το PayPal",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Χρήση",

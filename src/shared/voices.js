@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,8 +31,9 @@ export const getVoices = () => promiseTry(
         return getBackgroundPage()
             .then((background) => background.getAllVoices())
             .then((voices) => {
-                if (!voices || voices.length === 0) {
-                    throw new Error("The browser does not have any voices installed.");
+                if (!Array.isArray(voices)) {
+                    // NOTE: the list of voices could still be empty, either due to slow loading (cold cache) or that there actually are no voices loaded.
+                    throw new Error("Could not load list of voices from browser.");
                 }
 
                 return voices;

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -70,6 +70,15 @@ class Support extends React.PureComponent {
         osType: PropTypes.string,
         translate: PropTypes.func.isRequired,
         configure: PropTypes.func.isRequired,
+        onConfigurationChange: PropTypes.func.isRequired,
+    }
+
+    componentDidMount() {
+        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this._unregisterConfigurationListener();
     }
 
     standardFaqEntry(id) {
@@ -256,15 +265,6 @@ class Support extends React.PureComponent {
                 {this.standardFaqEntry(9)}
 
                 <textBase.h3>
-                    {translate("frontend_faqBugsHeading")}
-                </textBase.h3>
-
-                {this.standardFaqEntry(10)}
-                {this.standardFaqEntry(11)}
-                {this.standardFaqEntry(12)}
-                {this.standardFaqEntry(13)}
-
-                <textBase.h3>
                     {translate("frontend_faqGeneralHeading")}
                 </textBase.h3>
 
@@ -336,36 +336,33 @@ class Support extends React.PureComponent {
                     </div>
                 </layoutBase.details>
 
+                {this.standardFaqEntry(25)}
+
                 <textBase.h3>
                     {translate("frontend_faqTalkiePremiumHeading")}
                 </textBase.h3>
 
                 {this.standardFaqEntry(21)}
-                {this.standardFaqEntry(22)}
-
-                <layoutBase.details>
-                    <layoutBase.summary>
-                        <this.styled.summaryHeading>
-                            {translate("frontend_faq023Q")}
-                        </this.styled.summaryHeading>
-                    </layoutBase.summary>
-                    <textBase.p>
-                        {translate("frontend_faq023A")}
-                    </textBase.p>
-
-                    <listBase.ul>
-                        <listBase.li>
-                            <textBase.a
-                                href="https://support.google.com/chrome_webstore/"
-                                lang="en"
-                            >
-                                     Chrome Web Store Help Center
-                            </textBase.a>
-                        </listBase.li>
-                    </listBase.ul>
-                </layoutBase.details>
-
+                {this.standardFaqEntry(33)}
                 {this.standardFaqEntry(24)}
+                {this.standardFaqEntry(22)}
+                {this.standardFaqEntry(23)}
+                {this.standardFaqEntry(26)}
+                {this.standardFaqEntry(27)}
+                {this.standardFaqEntry(28)}
+                {this.standardFaqEntry(29)}
+                {this.standardFaqEntry(30)}
+                {this.standardFaqEntry(31)}
+                {this.standardFaqEntry(32)}
+
+                <textBase.h3>
+                    {translate("frontend_faqBugsHeading")}
+                </textBase.h3>
+
+                {this.standardFaqEntry(10)}
+                {this.standardFaqEntry(11)}
+                {this.standardFaqEntry(12)}
+                {this.standardFaqEntry(13)}
             </section>
         );
     }

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,13 +23,20 @@ import {
 } from "./promise";
 
 export default class MetadataManager {
-    constructor(manifestProvider) {
+    constructor(manifestProvider, settingsManager) {
         this.manifestProvider = manifestProvider;
+        this.settingsManager = settingsManager;
 
-        this._versionTypePremium = "premium";
-        this._versionTypeFree = "free";
+        this._editionTypePremium = "premium";
+        this._editionTypeFree = "free";
         this._systemTypeChrome = "chrome";
         this._systemTypeWebExtension = "webextension";
+    }
+
+    isPremiumEdition() {
+        return promiseTry(
+            () => this.settingsManager.getIsPremiumEdition(),
+        );
     }
 
     getExtensionId() {
@@ -70,79 +77,17 @@ export default class MetadataManager {
         );
     }
 
-    getVersionNameSync() {
-        /* eslint-disable no-sync */
-        const manifest = this.getManifestSync();
-        /* eslint-enable no-sync */
-
-        return manifest.version_name || null;
-    }
-
-    isPremiumVersion() {
+    getEditionType() {
         return promiseTry(
-            () => this.getVersionName()
-                .then((versionName) => {
-                    if (versionName.includes(" Premium ")) {
-                        return true;
+            () => this.isPremiumEdition()
+                .then((isPremiumEdition) => {
+                    if (isPremiumEdition) {
+                        return this._editionTypePremium;
                     }
 
-                    return false;
+                    return this._editionTypeFree;
                 }),
         );
-    }
-
-    isPremiumVersionSync() {
-        /* eslint-disable no-sync */
-        const versionName = this.getVersionNameSync();
-        /* eslint-enable no-sync */
-
-        if (versionName.includes(" Premium ")) {
-            return true;
-        }
-
-        return false;
-    }
-
-    isFreeVersion() {
-        return promiseTry(
-            () => this.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    return !isPremiumVersion;
-                }),
-        );
-    }
-
-    isFreeVersionSync() {
-        /* eslint-disable no-sync */
-        const isPremiumVersion = this.isPremiumVersionSync();
-        /* eslint-enable no-sync */
-
-        return !isPremiumVersion;
-    }
-
-    getVersionType() {
-        return promiseTry(
-            () => this.isPremiumVersion()
-                .then((isPremiumVersion) => {
-                    if (isPremiumVersion) {
-                        return this._versionTypePremium;
-                    }
-
-                    return this._versionTypeFree;
-                }),
-        );
-    }
-
-    getVersionTypeSync() {
-        /* eslint-disable no-sync */
-        const isPremiumVersion = this.isPremiumVersionSync();
-        /* eslint-enable no-sync */
-
-        if (isPremiumVersion) {
-            return this._versionTypePremium;
-        }
-
-        return this._versionTypeFree;
     }
 
     isChromeVersion() {
@@ -158,18 +103,6 @@ export default class MetadataManager {
         );
     }
 
-    isChromeVersionSync() {
-        /* eslint-disable no-sync */
-        const versionName = this.getVersionNameSync();
-        /* eslint-enable no-sync */
-
-        if (versionName.includes(" Chrome Extension ")) {
-            return true;
-        }
-
-        return false;
-    }
-
     isWebExtensionVersion() {
         return promiseTry(
             () => this.getVersionName()
@@ -183,18 +116,6 @@ export default class MetadataManager {
         );
     }
 
-    isWebExtensionVersionSync() {
-        /* eslint-disable no-sync */
-        const versionName = this.getVersionNameSync();
-        /* eslint-enable no-sync */
-
-        if (versionName.includes(" WebExtension ")) {
-            return true;
-        }
-
-        return false;
-    }
-
     getSystemType() {
         return promiseTry(
             () => this.isChromeVersion()
@@ -206,18 +127,6 @@ export default class MetadataManager {
                     return this._systemTypeWebExtension;
                 }),
         );
-    }
-
-    getSystemTypeSync() {
-        /* eslint-disable no-sync */
-        const isChrome = this.isChromeVersionSync();
-        /* eslint-enable no-sync */
-
-        if (isChrome) {
-            return this._systemTypeChrome;
-        }
-
-        return this._systemTypeWebExtension;
     }
 
     getOsType() {

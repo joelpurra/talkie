@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Lesen Sie die Textauswahl laut mit Talkie",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Lesen Sie die Textauswahl laut mit Talkie Premium",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "Hör auf zu reden",
@@ -32,13 +27,9 @@
     "message": "Die Website Talkie",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Die Seite Talkie",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Die Seite Talkie Premium",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Upgrade auf Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "Aus der Zwischenablage lesen",
@@ -48,15 +39,10 @@
     "message": "Start/Stop Leseauswahl",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "FREI! Schneller, einfacher, hochwertiger Text zum Sprechen in über 40 Sprachen. Lesen Sie laut von Webseiten, PDF, E-Mail. Sprechen Sie mit TTS.",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "PRÄMIE! Schneller, einfacher, hochwertiger Text zum Sprechen in über 40 Sprachen. Lesen Sie laut von Webseiten, PDF, E-Mail. Sprechen Sie mit TTS.",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Schneller, einfacher und qualitativ hochwertiger Text in über 40 Sprachen. Lesen Sie laut von Websites, PDF, E-Mail. Sprechen Sie Text mit TTS.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "Über",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Unglücklicherweise nicht. Es stellt sich heraus, dass Google Docs (sowie Google Tabellenkalkulation, Google Drive und ähnliche) keine Website, sondern eine spezielle \"Anwendung im Browser\" von Google ist. Talkie kann weder auf den ausgewählten Text zugreifen noch Kontextmenüelemente hinzufügen. Ich werde weiter untersuchen, ob es eine Möglichkeit gibt, Google Talkie Unterstützung zu Talkie .",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Unglücklicherweise nicht. Es stellt sich heraus, dass Google Text & Tabellen (sowie Google Spreadsheet, Google Drive und ähnliche) keine Website ist, sondern eine spezielle \"Anwendung im Browser\", die von Google erstellt wurde. Talkie kann weder auf den ausgewählten Text zugreifen noch Kontextmenüelemente hinzufügen. Ich werde weiter untersuchen, ob es eine Möglichkeit gibt, Talkie Google Talkie Unterstützung Talkie .",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "Funktioniert Talkie in Google Talkie ?",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Es erfordert eine Menge Zeit und Mühe, Talkie — Hunderte von Stunden bis jetzt zu entwickeln. Um die Entwicklung finanziell zu unterstützen, sind einige Funktionen nur für Talkie Premium Benutzer verfügbar.",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Die Entwicklung und Wartung von Talkie erfordert viel Zeit und Mühe — bisher Hunderte von Stunden. Talkie ist jedoch für jeden kostenlos, so viel zu verwenden, wie er möchte. Einige Funktionen stehen nur Talkie Premium Benutzern zur Verfügung, um die weitere Entwicklung, Wartung und Talkie des kostenlosen Talkie finanziell zu unterstützen.",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "Warum kostet Talkie Premium Geld?",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "Warum gibt es zwei Ausgaben von Talkie ?",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Leider noch nicht. Talkie Premium wird derzeit nur im Chrome Web Store angeboten, in dem nur Google Payments verwendet werden kann.",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "Ja, es stehen mehrere Zahlungsoptionen zur Verfügung.",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "Kann ich Talkie Premium mit PayPal, Banküberweisung usw. bezahlen?",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "Kann ich mit PayPal, Überweisung usw. bezahlen?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Sicher! Sie können die Zahlung in Google Payments entweder stornieren oder direkt mit mir Kontakt aufnehmen.",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "Ja, wenn Sie mit PayPal oder Stripe bezahlt haben, die eine einfache Rückerstattungsverwaltung bieten. Rückerstattungen sind für andere Zahlungsmethoden aufgrund des zusätzlichen Arbeitsaufwands und des Risikos, dass das Geld auf das falsche Konto zurückerstattet wird, im Allgemeinen nicht verfügbar.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "Kann ich eine Rückerstattung erhalten?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Sicher! Ich kann Ihnen eine Kopie der neuesten Version von Talkie Premium , aber dann wird es keine automatischen Updates geben, wenn die nächste Version veröffentlicht wird.",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "Sicher! Aktivieren Sie Talkie Premium Upgrade Talkie Premium , um es auszuprobieren.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "Kann ich eine kostenlose Kopie von Talkie Premium , um es auszuprobieren?",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "Kann ich Talkie Premium kostenlos ausprobieren?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "In Talkie gibt es keine Werbung, Datenerfassung oder Benutzerverfolgung. Talkie Premium Benutzer, die für Talkie Premium bezahlen, sind die einzige Monetarisierung.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie Erweiterungen Talkie Werbung, sammeln Daten oder verfolgen Benutzer?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Das Ehrensystem ist, wenn Einzelpersonen vertraut werden, um ehrlich zu sein, und sich an Richtlinien halten, ohne streng erzwungene Kontrollen durchzuführen. Für Talkie Premium Vertrauen, dass diejenigen, die ein Upgrade durchführen, dafür bezahlt haben.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Was ist das Ehrensystem?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Weil Menschen auf der ganzen Welt unterschiedliche Währungen verwenden, unterschiedliche verfügbare Einkommen haben und unterschiedliche Wertschätzung für die Funktionen von Talkie Premium haben. Es gibt keinen einzigen Festpreis, der für alle auf der Welt gut funktioniert. Hinzu kommen Währungsschwankungen, Konjunkturtrends, regionale/länderinterne Schwankungen usw. Alles in allem sind die Einstellungspreise für ein weltweit verkauftes Produkt kompliziert. Es ist einfacher, jeden seinen eigenen Preis festlegen zu lassen und sicherzustellen, dass das Produkt gut genug ist, um eine Zahlung zu rechtfertigen.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "Warum kann ich meinen eigenen Preis festlegen?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Da ich nicht weiß, wie viel Geld Sie für Text-to-Speech-Software ausgeben können, zahle ich lieber, was Sie für Talkie Premium wert sind — nicht mehr und nicht weniger. Wenn Sie nach einem Referenzrahmen suchen und Google Zahlungen für Talkie Premium das Abonnement in den Vereinigten Staaten von Amerika 25 Talkie Premium (US-Dollar) pro Jahr. Beachten Sie, dass Google die Preise für Länder und Währungen weltweit an die örtlichen Gegebenheiten angepasst hat, sodass dies mehr oder weniger der Fall sein kann. Gleichzeitig kann jeder, der höflich fragt, Talkie Premium kostenlos erhalten.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Wie viel empfehlen Sie mir zu zahlen?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Da die Implementierung eines Systems für Zahlungen und Überprüfung viel Zeit und Mühe kostet und davon ausgegangen wird, dass die Kosten für die Implementierung einer strengen Zahlungsüberprüfung höher sind als die Verluste von Personen, die das System betrügen. Die Überprüfung von Zahlungen erfordert auch ein gewisses Maß an Datenerfassung von den Systemen der Benutzer, und technisch versierte Benutzer können die Überprüfung häufig sowieso umgehen. Aus technischer und geschäftlicher Sicht ist es einfacher, einfach darauf zu vertrauen, dass Benutzer das Ehrensystem einhalten, obwohl es keine Garantien gibt.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "Warum gibt es keine Zahlungsüberprüfung?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Die Entscheidung, keine Zahlungsüberprüfung durchzuführen, bedeutet, dass der gezahlte Betrag nicht überprüft werden kann. Darüber hinaus sind die Kosten für die \"Herstellung\" einer digitalen Kopie von Talkie Premium Null. Talkie Premium Sie sie also umsonst verschenken, bedeutet dies keinen finanziellen Verlust für den Entwickler. Es besteht auch die Hoffnung, dass Sie Ihren Freunden davon erzählen, wenn Sie Talkie Premium mögen. Das Verschenken von Talkie Premium kann auch als Marketingaufwand angesehen werden.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "Warum kann ich nichts bezahlen?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Ja, mit Stripe. Siehe zusätzliche Zahlungsoptionen.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Kann ich eine wiederkehrende monatliche oder jährliche Zahlung leisten?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Ja, wenn Sie es per E-Mail anfordern. Bitte geben Sie Ihren Namen, Ihre Adresse und optional Ihren Mehrwertsteuer-Identifikator (oder einen gleichwertigen Wert) an.",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Kann ich eine Quittung für meine Zahlung erhalten?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Weil Ihnen die zusätzlichen Funktionen Talkie Premium , die Talkie Premium bietet, und das glückliche Gefühl, von unabhängigen Entwicklern zur Open-Source-Softwareentwicklung beizutragen. Aufgrund der relativ hohen Personalkosten für Entwicklung und Wartung, aber ohne Kosten für die \"Herstellung\" digitaler Kopien, können Zahlungen für Talkie Premium auch als Unterstützung für die zukünftige Entwicklung und Wartung angesehen werden, im Gegensatz zum Wert des Produkts zum Zeitpunkt der Zahlung .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "Warum sollte ich für ein Upgrade bezahlen?",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "Wanzen",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "Stimmen",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Derzeit wird die kostenlose Talkie von Talkie , und eine begrenzte Talkie von Funktionen ist verfügbar. Vielleicht wäre Talkie Premium die bessere Wahl für Sie?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "Derzeit verwenden Sie Talkie Premium und alle Funktionen sind verfügbar. Vielen Dank, es wärmt mein Herz!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie in zwei Editionen erhältlich: Talkie und Talkie Premium. Die kostenlose Edition eignet sich hervorragend für die meisten Anwendungsfälle, die Premium Edition bietet jedoch zusätzliche Optionen und Funktionen.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "Automatische Spracherkennung.",
@@ -350,17 +420,9 @@
     "message": "Text aus der Zwischenablage lesen! Kopiere einfach Text von irgendwo in Talkie Premium Programm und verwende Talkie Premium , um es zu lesen!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "Derzeit mit der kostenlosen Version von Talkie , und eine Talkie Reihe von Funktionen zur Verfügung steht. Talkie Premium wäre Talkie Premium eine bessere Wahl für dich?",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "Derzeit verwenden Sie Talkie Premium und alle Funktionen sind verfügbar. Vielen Dank, es wärmt mein Herz!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie kommt in zwei Talkie: Talkie und Talkie Premium. Die kostenlose Version ist ideal für die meisten Anwendungsfälle, aber die Premium-Version bietet zusätzliche Optionen.",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Upgrade auf Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Alle Beiträge zu Talkie werden unter dem Contributor License Agreement (CLA) erstellt.",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie wurde ein paar Tage vor dem Neujahr 2016/2017 auf eine Herausforderung von einem Freund entwickelt. Die Herausforderung begann mit der Frage: Beim Pendeln zur Arbeit ist es möglich, einen Artikel zu hören, anstatt es zu lesen? Einfach, sagte ich und machte sich darum, es zu beweisen — oder zumindest, um meinen Browser mit einer dummen Computerstimme auszudrücken. Die Basisversion, ohne Benutzeroberfläche, erwies sich als trivial zu erstellen. Hinzufügen einer Benutzeroberfläche, dauerte etwas länger. Hinzufügen der richtigen Sprache Erkennung ein Bündel mehr Code. Überwindung von Bugs im Browser noch mehr Arbeit. Die Liste der Verbesserungen und Features geht weiter — und ein paar tausend Zeilen Code später, du siehst das Endergebnis.",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie wurde einige Tage vor dem neuen Jahr 2016/2017 auf Herausforderung eines Freundes entwickelt. Die Herausforderung begann mit der Frage: Ist es möglich, auf dem Weg zur Arbeit einen Artikel anzuhören, anstatt ihn zu lesen? Einfach, sagte ich, und machte mich daran, es zu beweisen — oder zumindest meinen Browser dazu zu bringen, Text mit einer dummen Computerstimme auszusprechen. Die Basisversion ohne Benutzeroberfläche erwies sich als trivial zu erstellen. Das Hinzufügen einer Benutzeroberfläche dauerte etwas länger. Durch Hinzufügen der richtigen Spracherkennung wird eine Menge mehr Code hinzugefügt. Das Überwinden von Fehlern im Browser macht noch mehr Arbeit. Die Liste der Verbesserungen und Funktionen geht weiter — und einige tausend Codezeilen später sehen Sie das Endergebnis.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Wie Talkie hat",
@@ -434,6 +496,10 @@
     "message": "Browsertyp",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Aktuelle Ausgabe",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "Systemdetails",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "Text",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie in zwei Editionen erhältlich: Talkie und Talkie Premium. Die kostenlose Edition eignet sich hervorragend für die meisten Anwendungsfälle, die Premium Edition bietet jedoch zusätzliche Optionen und Funktionen.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Der Preis für Talkie Premium ist nicht festgelegt. Stattdessen zahlen Sie, was Sie wollen, je nachdem, wie viel Ihnen die Premium-Funktionen Ihrer Meinung nach wert sind. Sie können sogar entscheiden, nichts zu bezahlen.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Nach dem Senden der Zahlung müssen keine Upgrade-Codes eingegeben, keine Benutzerkonten registriert oder andere Zahlungsüberprüfungen durchgeführt werden. Stattdessen verwendet Talkie Premium das Talkie Premium .",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "Bitte beachten Sie, dass Talkie keine Werbung, Benutzerverfolgung oder Datenerfassung als alternatives Mittel zur Monetarisierung enthält. Zahlungen werden als Spenden für die Open Source-Softwareentwicklung gekennzeichnet.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Upgrade auf Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Ich habe für Talkie Premium bezahlt",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "Aktualisierung",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Weitere Zahlungsmethoden über die Spendenseite",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "Bezahlen Sie mit PayPal",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Verwendung",

@@ -10,15 +10,10 @@
       }
     }
   },
-  "buttonDefaultTitle_Free": {
+  "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "Talkie के साथ जोर से बाहर पाठ चयन पढ़ें",
     "original": "Read text selection out loud with Talkie"
-  },
-  "buttonDefaultTitle_Premium": {
-    "description": "Hover on the Talkie Premium button, set from manifest.json.",
-    "message": "Talkie Premium के साथ जोर से बाहर पाठ चयन पढ़ें",
-    "original": "Read text selection out loud with Talkie Premium"
   },
   "buttonStopTitle": {
     "message": "बात — चीत बंद करें",
@@ -32,13 +27,9 @@
     "message": "Talkie वेबसाइट",
     "original": "The Talkie website"
   },
-  "commandOpenWebsiteStoreDescription_Free": {
-    "message": "Talkie स्टोर पृष्ठ",
-    "original": "The Talkie store page"
-  },
-  "commandOpenWebsiteStoreDescription_Premium": {
-    "message": "Talkie Premium स्टोर पेज",
-    "original": "The Talkie Premium store page"
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Talkie Premium अपग्रेड करें",
+    "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
     "message": "क्लिपबोर्ड से पढ़ें",
@@ -48,15 +39,10 @@
     "message": "चयन पढ़ने शुरू/बंद करें",
     "original": "Start/stop reading selection"
   },
-  "extensionDescription_Free": {
+  "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "मुक्त! 40 से अधिक भाषाओं में भाषण के लिए तेज़, आसान, उच्च गुणवत्ता वाले पाठ। वेबसाइटों, पीडीएफ, ईमेल से ज़ोर से पढ़ें टीटीएस के साथ टेक्स्ट बोलें",
-    "original": "FREE! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
-  },
-  "extensionDescription_Premium": {
-    "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "प्रीमियम! 40 से अधिक भाषाओं में भाषण के लिए तेज़, आसान, उच्च गुणवत्ता वाले पाठ। वेबसाइटों, पीडीएफ, ईमेल से ज़ोर से पढ़ें टीटीएस के साथ टेक्स्ट बोलें",
-    "original": "PREMIUM! Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "40 से अधिक भाषाओं में भाषण देने के लिए तेज, आसान, उच्च गुणवत्ता वाला पाठ। वेबसाइट, पीडीएफ, ईमेल से ज़ोर से पढ़ें। टीटीएस के साथ पाठ बोलो।",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
   "frontend_PopupMenu_About": {
     "message": "के बारे में",
@@ -179,8 +165,8 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "दुर्भाग्यवश नहीं। यह पता चला है कि गूगल डॉक्स (साथ ही साथ Google स्प्रैडशीट, गूगल ड्राइव, और इसी तरह) एक वेबसाइट नहीं है, बल्कि Google द्वारा बनाए गए एक विशेष \"ब्राउज़र में आवेदन\" Talkie चयनित पाठ का उपयोग नहीं कर सकता है, न ही संदर्भ मेनू आइटम जोड़ सकता है। मैं आगे की जांच करूँगा यदि Google डॉक्स समर्थन को Talkie पर जोड़ने का कोई तरीका है।",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "दुर्भाग्यवश नहीं। यह पता चला है कि Google डॉक्स (साथ ही Google स्प्रैडशीट, Google ड्राइव और इसी तरह) एक वेबसाइट नहीं है, बल्कि Google द्वारा बनाया गया \"ब्राउज़र में एक विशेष एप्लिकेशन\" है। Talkie चयनित पाठ तक नहीं पहुँच सकते, न ही संदर्भ मेनू आइटम जोड़ सकते हैं। अगर Talkie Google डॉक्स समर्थन जोड़ने का कोई तरीका है, तो मैं आगे की जाँच Talkie ।",
+    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
   },
   "frontend_faq012Q": {
     "message": "क्या Talkie Google दस्तावेज़ में काम करता है?",
@@ -251,36 +237,108 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "यह काफी समय और Talkie को विकसित करने का प्रयास Talkie — सैकड़ों घंटे अब तक। विकास का आर्थिक रूप से समर्थन करने के लिए कुछ सुविधाएं केवल Talkie Premium उपयोगकर्ताओं के लिए उपलब्ध हैं।",
-    "original": "It takes quite a lot of time and effort to develop Talkie — hundreds of hours so far. To financially support the development some features are only available to Talkie Premium users."
+    "message": "Talkie को विकसित करने और बनाए रखने में काफी समय और प्रयास Talkie — अब तक सैकड़ों घंटे। फिर भी, Talkie हर किसी के लिए उतना ही उपयोग करने के लिए स्वतंत्र है जितना वे चाहते हैं। विकास, रखरखाव और मुक्त Talkie को मुक्त रखने के लिए आर्थिक रूप से आगे समर्थन करने के लिए, कुछ सुविधाएँ केवल Talkie Premium उपयोगकर्ताओं के लिए उपलब्ध हैं।",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
-    "message": "Talkie Premium लागत क्यों है?",
-    "original": "Why does Talkie Premium cost money?"
+    "message": "Talkie दो संस्करण क्यों हैं?",
+    "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "दुर्भायवश अभी तक नहीं। Talkie Premium वर्तमान में केवल क्रोम वेब स्टोर के माध्यम से ही उपलब्ध Talkie Premium जाता है, जहां एकमात्र विकल्प Google पेमेंट्स का उपयोग करना है।",
-    "original": "Unfortunately not yet. Talkie Premium is currently only offered through the Chrome Web Store, where the only option is to use Google Payments."
+    "message": "हां, कई भुगतान विकल्प उपलब्ध हैं।",
+    "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "क्या मैं पेपैल, बैंक स्थानांतरण, आदि का उपयोग कर Talkie Premium का भुगतान कर सकता हूँ?",
-    "original": "Can I pay for Talkie Premium using PayPal, bank transfer, etcetera?"
+    "message": "क्या मैं पेपाल, बैंक हस्तांतरण, वगैरह का उपयोग कर भुगतान कर सकता हूं?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "ज़रूर! आप या तो Google भुगतान में भुगतान रद्द कर सकते हैं या सीधे मुझसे संपर्क कर सकते हैं।",
-    "original": "Sure! You can either cancel the payment in Google Payments, or contact me directly."
+    "message": "हां, यदि आपने पेपाल या स्ट्राइप का उपयोग करके भुगतान किया है, जो सरल धनवापसी प्रबंधन प्रदान करता है। धनराशि आम तौर पर अतिरिक्त कार्य की आवश्यकता के कारण भुगतान के अन्य तरीकों के लिए उपलब्ध नहीं होती है, साथ ही यह जोखिम कि धन गलत खाते में वापस कर दिया जाता है।",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
     "message": "क्या मुझे धनवापसी प्राप्त हो सकती है?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "ज़रूर! मैं आपको Talkie Premium के नवीनतम संस्करण की एक प्रति भेज सकता Talkie Premium , लेकिन उसके बाद अगले संस्करण जारी होने पर स्वत: अपडेट नहीं होगा।",
-    "original": "Sure! I can send you a copy of the latest version of Talkie Premium, but then it will not have automatic updates when the next version is released."
+    "message": "ज़रूर! बस इसे आज़माने के लिए Talkie Premium सक्षम करें।",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "क्या मुझे यह देखने की Talkie Premium की एक मुफ्त कॉपी मिल सकती है?",
-    "original": "Can I get a free copy of Talkie Premium to try it out?"
+    "message": "क्या मैं Talkie Premium मुफ्त में आज़मा सकता हूँ?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie में कोई विज्ञापन, डेटा संग्रह या उपयोगकर्ता ट्रैकिंग नहीं है। Talkie Premium लिए भुगतान करने वाले उपयोगकर्ता केवल मुद्रीकरण हैं।",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "क्या Talkie एक्सटेंशन में विज्ञापन होते हैं, डेटा एकत्र करते हैं, या उपयोगकर्ताओं को ट्रैक करते हैं?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "सम्मान प्रणाली तब होती है जब व्यक्तियों को ईमानदार माना जाता है, और सख्ती से लागू किए बिना दिशानिर्देशों का पालन करना होता है। Talkie Premium लिए Talkie Premium विश्वास करना कि उन्नयन करने वालों ने इसके लिए भुगतान किया है।",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "क्या है सम्मान प्रणाली?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "क्योंकि दुनिया भर में लोग विभिन्न मुद्राओं का उपयोग करते हैं, विभिन्न स्तर की डिस्पोजेबल आय होती है, और Talkie Premium की सुविधाओं के लिए प्रशंसा के विभिन्न स्तर होते हैं। कोई एकल, निश्चित मूल्य नहीं है जो दुनिया में सभी के लिए अच्छा है। शीर्ष पर मुद्राओं में उतार-चढ़ाव, आर्थिक चक्र के रुझान, क्षेत्रीय/अंतर-देश विविधताएं, वगैरह आते हैं। सभी सभी में, दुनिया भर में बेचे जाने वाले उत्पाद के लिए सेटिंग्स की कीमतें जटिल हैं। हर किसी को अपनी कीमत निर्धारित करने देना आसान है, और यह सुनिश्चित करना कि उत्पाद भुगतान के लिए पर्याप्त है।",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "मैं अपनी कीमत क्यों निर्धारित कर सकता हूं?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "चूंकि मुझे पता नहीं है कि आप टेक्स्ट-टू-स्पीच सॉफ़्टवेयर पर कितना पैसा खर्च करने में सक्षम हैं, इसलिए मैं पसंद करता हूं कि आप वह भुगतान करें जो आपको लगता है कि Talkie Premium लिए लायक है — और नहीं, कम नहीं। यदि आप संदर्भ के एक फ्रेम की तलाश में हैं, जब Google ने संयुक्त राज्य अमेरिका में प्रति वर्ष Talkie Premium लिए सदस्यता लागत $ $ 25 (यूएस डॉलर) का भुगतान किया। ध्यान दें कि Google ने स्थानीय परिस्थितियों से मेल खाने के लिए दुनिया और देशों की मुद्राओं के लिए कीमतों को समायोजित किया है, इसलिए यह कम या ज्यादा हो सकता है। उसी समय, जिसने भी विनम्रता से पूछा, वह Talkie Premium भी मुफ्त में प्राप्त कर सकता है।",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "आप मुझे कितना भुगतान करने की सलाह देते हैं?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "क्योंकि भुगतान और सत्यापन के लिए एक प्रणाली को लागू करने में बहुत समय और प्रयास लगता है, और यह माना जाता है कि सख्त भुगतान सत्यापन को लागू करने की लागत प्रणाली को धोखा देने वाले व्यक्तियों से नुकसान से अधिक है। भुगतान सत्यापन के लिए उपयोगकर्ताओं के सिस्टम से कुछ स्तर के डेटा संग्रह की आवश्यकता होती है, और तकनीकी रूप से कुशल उपयोगकर्ता अक्सर सत्यापन वैसे भी काम कर सकते हैं। इसलिए एक तकनीकी और व्यावसायिक दृष्टिकोण से, भले ही कोई गारंटी नहीं है, लेकिन यह भरोसा करना आसान है कि उपयोगकर्ता सम्मान प्रणाली का पालन करते हैं।",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "कोई भुगतान सत्यापन क्यों नहीं है?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "भुगतान सत्यापन को लागू नहीं करने के निर्णय का अर्थ है कि भुगतान की गई राशि का सत्यापन नहीं किया जा सकता है। इसके अलावा, \"निर्माण\" की एक डिजिटल कॉपी Talkie Premium लागत शून्य है, इसलिए इसे कुछ भी नहीं देने से डेवलपर के लिए वित्तीय नुकसान नहीं होता है। इस बात की भी उम्मीद है कि अगर आपको Talkie Premium पसंद है, तो आप अपने दोस्तों को इसके बारे में बताएंगे। दूर Talkie Premium को एक विपणन प्रयास के रूप में भी देखा जा सकता है।",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "मैं कुछ भी भुगतान करने के लिए क्यों चुन सकता हूं?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "हाँ, स्ट्राइप का उपयोग करके। अतिरिक्त भुगतान विकल्प देखें।",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "क्या मैं आवर्ती मासिक या वार्षिक भुगतान कर सकता हूं?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "हां, यदि आप इसे ईमेल के माध्यम से अनुरोध करते हैं। कृपया अपना नाम, पता और वैकल्पिक रूप से अपना मूल्य वर्धित कर (वैट) पहचानकर्ता (या समतुल्य) शामिल करें।",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "क्या मुझे मेरे भुगतान की रसीद मिल सकती है?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "क्योंकि आपको अतिरिक्त सुविधाएं पसंद हैं Talkie Premium प्रदान करता है, और स्वतंत्र डेवलपर्स द्वारा स्रोत सॉफ़्टवेयर विकास में योगदान करने की सुखद भावना। विकास और रखरखाव की अपेक्षाकृत उच्च व्यक्तिगत लागत के कारण, लेकिन डिजिटल प्रतियां \"विनिर्माण\" की शून्य लागत, Talkie Premium भुगतान को भविष्य के विकास और रखरखाव के लिए सहायता प्रदान करने के रूप में भी देखा जा सकता है, क्योंकि भुगतान के समय उत्पाद के मूल्य के विपरीत। ।",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "मुझे उन्नयन के लिए भुगतान क्यों करना चाहिए?",
+    "original": "Why should I pay to upgrade?"
   },
   "frontend_faqBugsHeading": {
     "message": "कीड़े",
@@ -301,6 +359,18 @@
   "frontend_faqVoicesHeading": {
     "message": "आवाज़ें",
     "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "वर्तमान में Talkie के नि: शुल्क संस्करण का उपयोग कर रहा है, और सुविधाओं का एक सीमित सेट उपलब्ध है। शायद Talkie Premium आपके लिए बेहतर विकल्प होगा?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "वर्तमान में Talkie Premium का उपयोग कर Talkie Premium , और सभी सुविधाएं उपलब्ध हैं। बहुत बहुत धन्यवाद, यह मेरे दिल warms!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie दो संस्करणों में आता है: Talkie और Talkie Premium । अधिकांश उपयोग मामलों के लिए मुफ्त संस्करण महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प और सुविधाएँ प्रदान करता है।",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
     "message": "स्वचालित भाषा का पता लगाने",
@@ -350,17 +420,9 @@
     "message": "क्लिपबोर्ड से पाठ पढ़ें! बस किसी भी Talkie Premium में पाठ को कहीं से कॉपी करें और इसे पढ़ने के लिए Talkie Premium का उपयोग करें!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresVersion_Free": {
-    "message": "वर्तमान में Talkie के निःशुल्क संस्करण का उपयोग कर रहा है, और सुविधाओं का एक सीमित सेट उपलब्ध है। शायद Talkie Premium आपके लिए बेहतर विकल्प होगा?",
-    "original": "Currently using the free version of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
-  },
-  "frontend_featuresVersion_Premium": {
-    "message": "वर्तमान में Talkie Premium का उपयोग कर Talkie Premium , और सभी सुविधाएं उपलब्ध हैं। बहुत बहुत धन्यवाद, यह मेरे दिल warms!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
-  },
-  "frontend_featuresVersions": {
-    "message": "Talkie दो Talkie आता है: Talkie और Talkie Premium नि: शुल्क संस्करण अधिकांश उपयोग मामलों के लिए महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प प्रदान करता है।",
-    "original": "Talkie comes in two versions: Talkie and Talkie Premium. The free version is great for most use cases, but the premium version offers additional options."
+  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
+    "message": "Talkie Premium अपग्रेड करें",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_licenseCLADescription": {
     "message": "Talkie के सभी योगदान अंशदाता लाइसेंस समझौते (सीएलए) के तहत किए गए हैं।",
@@ -393,8 +455,8 @@
     }
   },
   "frontend_storyDescription": {
-    "message": "Talkie एक मित्र से एक चुनौती पर नए साल 2016/2017 के कुछ दिनों पहले Talkie किया गया था। चुनौती इस प्रश्न के साथ शुरू हुई: काम करने के लिए आने के दौरान, क्या इसे पढ़ने के बजाय एक लेख को सुनना संभव है? आसान, मैंने कहा, और इसे साबित करने के लिए सेट किया — या कम से कम मेरे ब्राउज़र को एक मूर्ख कम्प्यूटर आवाज का उपयोग करके टेक्स्ट की बात करें। मूल संस्करण, बिना किसी उपयोगकर्ता इंटरफ़ेस के, बनाने के लिए तुच्छ होने के लिए निकला। एक उपयोगकर्ता इंटरफ़ेस जोड़ना, थोड़ी देर लगी। उचित भाषा का पता लगाने के लिए एक गुच्छा अधिक कोड जोड़ना ब्राउज़र में कीड़े पर काबू पाने के अलावा और भी काम सुधारों और सुविधाओं की सूची आगे बढ़ती है- और बाद में कोड की कुछ हज़ार लाइनें, आप अंतिम परिणाम देख रहे हैं",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic version, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "message": "Talkie को नए साल 2016/2017 से कुछ दिन पहले, एक दोस्त से एक चुनौती पर विकसित किया गया था। चुनौती इस सवाल के साथ शुरू हुई: काम करने के लिए, क्या यह पढ़ने के बजाय एक लेख सुनना संभव है? आसान, मैंने कहा, और यह साबित करने के लिए निर्धारित किया है — या कम से कम मेरे ब्राउज़र को एक मूर्खतापूर्ण कंप्यूटर की आवाज का उपयोग करके पाठ को बोलने के लिए। मूल संस्करण, बिना किसी उपयोगकर्ता इंटरफ़ेस के, बनाने के लिए तुच्छ हो गया। एक उपयोगकर्ता इंटरफ़ेस जोड़ना, थोड़ा लंबा समय लगा। एक गुच्छा अधिक कोड का उचित भाषा पहचान जोड़ना। ब्राउज़र में बग्स पर काबू पाना और भी अधिक काम करता है। सुधार और सुविधाओं की सूची आगे बढ़ती है — और बाद में कोड की कुछ हजार लाइनें, आप अंतिम परिणाम देख रहे हैं।",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
     "message": "Talkie कैसे शुरू हुआ",
@@ -434,6 +496,10 @@
     "message": "ब्राउज़र का प्रकार",
     "original": "Browser type"
   },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "वर्तमान संस्करण",
+    "original": "Current edition"
+  },
   "frontend_systemHeading": {
     "message": "सिस्टम विवरण",
     "original": "System details"
@@ -469,6 +535,42 @@
   "frontend_textLinkText": {
     "message": "टेक्स्ट",
     "original": "Text"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie दो संस्करणों में आता है: Talkie और Talkie Premium । अधिकांश उपयोग मामलों के लिए मुफ्त संस्करण महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प और सुविधाएँ प्रदान करता है।",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Talkie Premium लिए मूल्य निर्धारित नहीं है। इसके बजाय आप भुगतान करते हैं कि आप क्या चाहते हैं, इस पर निर्भर करता है कि आपको लगता है कि प्रीमियम सुविधाएँ आपके लायक हैं। आप कुछ भी नहीं देने का फैसला कर सकते हैं।",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "भुगतान भेजने के बाद प्रवेश करने के लिए कोई अपग्रेड कोड नहीं हैं, पंजीकरण के लिए कोई उपयोगकर्ता खाते या कोई अन्य भुगतान सत्यापन नहीं है। इसके बजाय Talkie Premium सम्मान प्रणाली का उपयोग करता है।",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation04": {
+    "message": "कृपया ध्यान दें कि Talkie वैकल्पिक साधन के रूप में कोई विज्ञापन, उपयोगकर्ता ट्रैकिंग या डेटा संग्रह नहीं है। भुगतान को खुले स्रोत सॉफ़्टवेयर विकास के लिए दान के रूप में लेबल किया जाता है।",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Talkie Premium अपग्रेड करें",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "मैंने Talkie Premium लिए भुगतान किया है",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradeLinkText": {
+    "message": "अपग्रेड",
+    "original": "Upgrade"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "दान पेज के माध्यम से अधिक भुगतान के तरीके",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "पेपाल का उपयोग करके भुगतान करें",
+    "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "प्रयोग",

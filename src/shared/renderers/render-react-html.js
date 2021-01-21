@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,10 +36,9 @@ const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
     const serverSideActionsToDispatch = [
         // NOTE: currently attempts to match "synchronous usage" in style-root.jsx.
         // TODO: generalize preloading?
-        sharedActions.metadata.loadIsPremium(),
-        sharedActions.metadata.loadVersionName(),
-
         // NOTE: don't want to keep track of when to load these, preemptively loading.
+        sharedActions.metadata.loadIsPremiumEdition(),
+        sharedActions.metadata.loadVersionName(),
         sharedActions.metadata.loadSystemType(),
         sharedActions.metadata.loadVersionNumber(),
         sharedActions.voices.loadTranslatedLanguages(),
