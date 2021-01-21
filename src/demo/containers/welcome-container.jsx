@@ -61,6 +61,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: {
             sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
+            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
         },
     };
 };
@@ -92,6 +93,23 @@ class WelcomeContainer extends React.PureComponent {
         isPremiumVersion: PropTypes.bool.isRequired,
         systemType: PropTypes.string.isRequired,
         osType: PropTypes.string,
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (nextProps.voicesCount === 0) {
+            // NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
+            // NOTE: sometimes the browser (Firefox?) has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
+            // NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
+            const loadVoicesRetryDelay = 250;
+
+            setTimeout(
+                () => {
+                    // TODO: is this the best place to load data?
+                    this.props.actions.sharedVoices.loadVoices();
+                },
+                loadVoicesRetryDelay,
+            );
+        }
     }
 
     render() {

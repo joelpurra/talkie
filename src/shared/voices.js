@@ -31,8 +31,9 @@ export const getVoices = () => promiseTry(
         return getBackgroundPage()
             .then((background) => background.getAllVoices())
             .then((voices) => {
-                if (!voices || voices.length === 0) {
-                    throw new Error("The browser does not have any voices installed.");
+                if (!Array.isArray(voices)) {
+                    // NOTE: the list of voices could still be empty, either due to slow loading (cold cache) or that there actually are no voices loaded.
+                    throw new Error("Could not load list of voices from browser.");
                 }
 
                 return voices;

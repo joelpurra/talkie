@@ -32,6 +32,7 @@ import * as listBase from "../../../shared/styled/list/list-base.jsx";
 import Discretional from "../../../shared/components/discretional.jsx";
 import HeroVersionSection from "../../../shared/components/hero-section/hero-version-section.jsx";
 import SharingIcons from "../../../shared/components/sharing/sharing-icons.jsx";
+import Loading from "../../../shared/components/loading.jsx";
 
 export default
 @configureAttribute
@@ -127,6 +128,11 @@ class Welcome extends React.PureComponent {
     }
 
     playWelcomeMessage() {
+        // TODO: take sample text language code into account.
+        if (this.props.voicesCount === 0) {
+            return;
+        }
+
         if (!this.welcomeSampleTextElement) {
             return;
         }
@@ -190,6 +196,8 @@ class Welcome extends React.PureComponent {
 
         const welcomeSample = this.getWelcomeSample();
 
+        const haveVoices = voicesCount > 0;
+
         return (
             <section>
                 <this.styled.heroDiv>
@@ -239,14 +247,18 @@ class Welcome extends React.PureComponent {
                 </textBase.h2>
 
                 <textBase.p>
-                    {/* TODO: pretty format */}
-                    {translate("frontend_welcomeInstallMoreVoicesDescription", [
-                        voicesCount,
-                        languageGroupsCount,
-                        languagesCount,
-                        systemTypePrettyName,
-                        osTypePrettyName,
-                    ])}
+                    <Loading
+                        enabled={haveVoices}
+                    >
+                        {/* TODO: pretty format */}
+                        {translate("frontend_welcomeInstallMoreVoicesDescription", [
+                            voicesCount,
+                            languageGroupsCount,
+                            languagesCount,
+                            systemTypePrettyName,
+                            osTypePrettyName,
+                        ])}
+                    </Loading>
                 </textBase.p>
 
                 <Discretional
