@@ -10,10 +10,6 @@
 
 ## Installation
 
-&#9888; [**Talkie and Talkie Premium have been deleted from the Google Chrome Web Store**](https://github.com/joelpurra/talkie/issues/17)
-
-It seems current users with existing installation can continue to use the extensions, but without Google's approval it is unclear how long it will last. A solution is being worked on; until the issue has been resolved, please have patience. See [Talkie's Github issue #17](https://github.com/joelpurra/talkie/issues/17)  for details.
-
 <table>
   <tr>
     <td align="center">
