@@ -18,43 +18,43 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import SpeakLongTexts from "./text/speak-long-texts.jsx";
 
 export default class Text extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
-    }
+		this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
+	}
 
     static defaultProps = {
-        speakLongTexts: false,
+    	speakLongTexts: false,
     };
 
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
+    	actions: PropTypes.object.isRequired,
+    	speakLongTexts: PropTypes.bool.isRequired,
     }
 
     handleSpeakLongTextsChange(speakLongTexts) {
-        this.props.actions.sharedVoices.storeSpeakLongTexts(speakLongTexts);
+    	this.props.actions.sharedVoices.storeSpeakLongTexts(speakLongTexts);
     }
 
     render() {
-        const {
-            speakLongTexts,
-        } = this.props;
-        return (
-            <section>
-                <SpeakLongTexts
-                    onChange={this.handleSpeakLongTextsChange}
-                    speakLongTexts={speakLongTexts}
-                    disabled={false}
-                />
-            </section>
-        );
+    	const {
+    		speakLongTexts,
+    	} = this.props;
+    	return (
+    		<section>
+    			<SpeakLongTexts
+    				onChange={this.handleSpeakLongTextsChange}
+    				speakLongTexts={speakLongTexts}
+    				disabled={false}
+    			/>
+ </section>
+    	);
     }
 }

@@ -19,40 +19,40 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "../../shared/promise";
 
 export default class NodeEnvironmentStorageProvider {
-    constructor() {
-        // NOTE: storing stringified JSON to match browser storage.
-        this._inMemoryStorage = new Map();
-    }
+	constructor() {
+		// NOTE: storing stringified JSON to match browser storage.
+		this._inMemoryStorage = new Map();
+	}
 
-    get(key) {
-        return promiseTry(() => {
-            if (!this._inMemoryStorage.has(key)) {
-                return null;
-            }
+	get(key) {
+		return promiseTry(() => {
+			if (!this._inMemoryStorage.has(key)) {
+				return null;
+			}
 
-            const valueJson = this._inMemoryStorage.get(key);
+			const valueJson = this._inMemoryStorage.get(key);
 
-            if (valueJson === null) {
-                return null;
-            }
+			if (valueJson === null) {
+				return null;
+			}
 
-            const value = JSON.parse(valueJson);
+			const value = JSON.parse(valueJson);
 
-            return value;
-        });
-    }
+			return value;
+		});
+	}
 
-    set(key, value) {
-        return promiseTry(() => {
-            const valueJson = JSON.stringify(value);
+	set(key, value) {
+		return promiseTry(() => {
+			const valueJson = JSON.stringify(value);
 
-            this._inMemoryStorage.set(key, valueJson);
+			this._inMemoryStorage.set(key, valueJson);
 
-            return undefined;
-        });
-    }
+			return undefined;
+		});
+	}
 }

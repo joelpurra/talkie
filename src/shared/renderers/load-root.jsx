@@ -18,64 +18,61 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../promise";
-
 import ReactDOM from "react-dom";
 
+import sharedActions from "../actions";
 import {
-    dispatchAll,
+	promiseTry,
+} from "../promise";
+import {
+	dispatchAll,
 } from "../utils/store-helpers";
-
 import autoRoot from "./auto-root";
 
-import sharedActions from "../actions";
-
 const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
-    const styleRootActionsToDispatch = [];
+	const styleRootActionsToDispatch = [];
 
-    const allActionsToDispatch = []
-        .concat(styleRootActionsToDispatch)
-        .concat(prerenderedActionsToDispatch);
+	const allActionsToDispatch = []
+		.concat(styleRootActionsToDispatch)
+		.concat(prerenderedActionsToDispatch);
 
-    return allActionsToDispatch;
+	return allActionsToDispatch;
 };
 
 const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
-    // TODO: simplify.
-    const clientSideActionsToDispatch = [
-        // NOTE: don't want to keep track of when to load these, preemptively loading.
-        sharedActions.metadata.loadIsPremiumEdition(),
-        sharedActions.metadata.loadOsType(),
-    ];
+	// TODO: simplify.
+	const clientSideActionsToDispatch = [
+		// NOTE: don't want to keep track of when to load these, preemptively loading.
+		sharedActions.metadata.loadIsPremiumEdition(),
+		sharedActions.metadata.loadOsType(),
+	];
 
-    const allActionsToDispatch = []
-        .concat(clientSideActionsToDispatch)
-        .concat(postrenderActionsToDispatch);
+	const allActionsToDispatch = []
+		.concat(clientSideActionsToDispatch)
+		.concat(postrenderActionsToDispatch);
 
-    return allActionsToDispatch;
+	return allActionsToDispatch;
 };
 
 const renderHtml = (root) => promiseTry(() => {
-    const rootElement = document.getElementById("react-root");
+	const rootElement = document.querySelector("#react-root");
 
-    ReactDOM.hydrate(root, rootElement);
+	ReactDOM.hydrate(root, rootElement);
 });
 
 const hydrateHtml = (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, ChildComponent) => promiseTry(() => {
-    // NOTE: use preloaded state from the pre-rendered html.
-    const prerenderedState = JSON.parse(document.getElementById("__PRERENDERED_STATE__").textContent);
-    const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
-    const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);
+	// NOTE: use preloaded state from the pre-rendered html.
+	const prerenderedState = JSON.parse(document.querySelector("#__PRERENDERED_STATE__").textContent);
+	const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
+	const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);
 
-    return autoRoot(prerenderedState, rootReducer, ChildComponent)
-        .then(({
-            root,
-            store,
-        }) => dispatchAll(store, prerenderedActionsToDispatch)
-            .then(() => renderHtml(root))
-            .then(() => dispatchAll(store, postrenderActionsToDispatch)));
+	return autoRoot(prerenderedState, rootReducer, ChildComponent)
+		.then(({
+			root,
+			store,
+		}) => dispatchAll(store, prerenderedActionsToDispatch)
+			.then(() => renderHtml(root))
+			.then(() => dispatchAll(store, postrenderActionsToDispatch)));
 });
 
 export default hydrateHtml;

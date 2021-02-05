@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import globals from "rollup-plugin-node-globals";
 import json from "@rollup/plugin-json";
-import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
+import globals from "rollup-plugin-node-globals";
 
 import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
@@ -32,54 +32,54 @@ import reactRollupConfig from "./rollup.config.react";
 const mergeOptions = require("merge-options");
 
 export default (name) => mergeOptions(
-    reactRollupConfig,
-    {
-        external: [
-            "prop-types",
-            "react-dom",
-            "react-redux",
-            "react",
-            "redux-thunk",
-            "redux",
-            "reselect",
-        ],
-        plugins: [
-            json(),
-            babel({
-                babelHelpers: "bundled",
-                exclude: [
-                    "node_modules/**",
-                ],
-            }),
-            globals(),
-            replace({
-                values: {
-                    // TODO: configuration?
-                    "SPLIT_ENVIRONMENT": "webextension",
-                },
-            }),
-            commonjs({
-                include: [
-                    "src/**",
-                    "node_modules/**",
-                ],
-            }),
-            resolve(),
-            license(name),
-            filesize(),
-        ],
-        output: {
-            exports: "auto",
-            format: "iife",
-            globals: {
-                "prop-types": "PropTypes",
-                "react-dom": "ReactDOM",
-                "react-redux": "ReactRedux",
-                "react": "React",
-                "redux-thunk": "ReduxThunk",
-                "redux": "Redux",
-                "reselect": "Reselect",
-            },
-        },
-    },
+	reactRollupConfig,
+	{
+		external: [
+			"prop-types",
+			"react-dom",
+			"react-redux",
+			"react",
+			"redux-thunk",
+			"redux",
+			"reselect",
+		],
+		plugins: [
+			json(),
+			babel({
+				babelHelpers: "bundled",
+				exclude: [
+					"node_modules/**",
+				],
+			}),
+			globals(),
+			replace({
+				values: {
+					// TODO: configuration?
+					SPLIT_ENVIRONMENT: "webextension",
+				},
+			}),
+			commonjs({
+				include: [
+					"src/**",
+					"node_modules/**",
+				],
+			}),
+			resolve(),
+			license(name),
+			filesize(),
+		],
+		output: {
+			exports: "auto",
+			format: "iife",
+			globals: {
+				"prop-types": "PropTypes",
+				"react-dom": "ReactDOM",
+				"react-redux": "ReactRedux",
+				react: "React",
+				"redux-thunk": "ReduxThunk",
+				redux: "Redux",
+				reselect: "Reselect",
+			},
+		},
+	},
 );

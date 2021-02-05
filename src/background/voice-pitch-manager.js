@@ -19,141 +19,140 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "../shared/promise";
-
 import {
-    pitchRange,
+	pitchRange,
 } from "../shared/voices";
 
 export default class VoicePitchManager {
-    constructor(storageManager, metadataManager) {
-        this.storageManager = storageManager;
-        this.metadataManager = metadataManager;
+	constructor(storageManager, metadataManager) {
+		this.storageManager = storageManager;
+		this.metadataManager = metadataManager;
 
-        this.voicePitchPitchOverridesStorageKey = "voice-pitch-overrides";
-    }
+		this.voicePitchPitchOverridesStorageKey = "voice-pitch-overrides";
+	}
 
-    getVoicePitchDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
-        return promiseTry(
-            // TODO: initialize a "real" synthesizer voice, then read out the pitch value.
-            () => pitchRange.default,
-        );
-    }
+	getVoicePitchDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
+		return promiseTry(
+			// TODO: initialize a "real" synthesizer voice, then read out the pitch value.
+			() => pitchRange.default,
+		);
+	}
 
-    hasVoicePitchDefault(voiceName) {
-        return promiseTry(
-            () => this.getVoicePitchDefault(voiceName)
-                .then((voicePitchDefault) => {
-                    if (voicePitchDefault) {
-                        return true;
-                    }
+	hasVoicePitchDefault(voiceName) {
+		return promiseTry(
+			() => this.getVoicePitchDefault(voiceName)
+				.then((voicePitchDefault) => {
+					if (voicePitchDefault) {
+						return true;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    _getVoicePitchOverrides() {
-        return promiseTry(
-            () => this.metadataManager.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this.storageManager.getStoredValue(this.voicePitchPitchOverridesStorageKey)
-                            .then((voicePitchPitchOverrides) => {
-                                if (voicePitchPitchOverrides !== null && typeof voicePitchPitchOverrides === "object") {
-                                    return voicePitchPitchOverrides;
-                                }
+	_getVoicePitchOverrides() {
+		return promiseTry(
+			() => this.metadataManager.isPremiumEdition()
+				.then((isPremiumEdition) => {
+					if (isPremiumEdition) {
+						return this.storageManager.getStoredValue(this.voicePitchPitchOverridesStorageKey)
+							.then((voicePitchPitchOverrides) => {
+								if (voicePitchPitchOverrides !== null && typeof voicePitchPitchOverrides === "object") {
+									return voicePitchPitchOverrides;
+								}
 
-                                return {};
-                            });
-                    }
+								return {};
+							});
+					}
 
-                    return {};
-                }),
-        );
-    }
+					return {};
+				}),
+		);
+	}
 
-    _setVoicePitchOverrides(voicePitchPitchOverrides) {
-        return promiseTry(
-            () => this.metadataManager.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this.storageManager.setStoredValue(this.voicePitchPitchOverridesStorageKey, voicePitchPitchOverrides);
-                    }
+	_setVoicePitchOverrides(voicePitchPitchOverrides) {
+		return promiseTry(
+			() => this.metadataManager.isPremiumEdition()
+				.then((isPremiumEdition) => {
+					if (isPremiumEdition) {
+						return this.storageManager.setStoredValue(this.voicePitchPitchOverridesStorageKey, voicePitchPitchOverrides);
+					}
 
-                    return undefined;
-                }),
-        );
-    }
+					return undefined;
+				}),
+		);
+	}
 
-    getVoicePitchOverride(voiceName) {
-        return promiseTry(
-            () => this._getVoicePitchOverrides()
-                .then((voicePitchPitchOverrides) => {
-                    return voicePitchPitchOverrides[voiceName] || null;
-                }),
-        );
-    }
+	getVoicePitchOverride(voiceName) {
+		return promiseTry(
+			() => this._getVoicePitchOverrides()
+				.then((voicePitchPitchOverrides) => {
+					return voicePitchPitchOverrides[voiceName] || null;
+				}),
+		);
+	}
 
-    setVoicePitchOverride(voiceName, pitch) {
-        return promiseTry(
-            () => this._getVoicePitchOverrides()
-                .then((voicePitchPitchOverrides) => {
-                    voicePitchPitchOverrides[voiceName] = pitch;
+	setVoicePitchOverride(voiceName, pitch) {
+		return promiseTry(
+			() => this._getVoicePitchOverrides()
+				.then((voicePitchPitchOverrides) => {
+					voicePitchPitchOverrides[voiceName] = pitch;
 
-                    return this._setVoicePitchOverrides(voicePitchPitchOverrides);
-                }),
-        );
-    }
+					return this._setVoicePitchOverrides(voicePitchPitchOverrides);
+				}),
+		);
+	}
 
-    removeVoicePitchOverride(voiceName) {
-        return promiseTry(
-            () => this._getVoicePitchOverrides()
-                .then((voicePitchPitchOverrides) => {
-                    delete voicePitchPitchOverrides[voiceName];
+	removeVoicePitchOverride(voiceName) {
+		return promiseTry(
+			() => this._getVoicePitchOverrides()
+				.then((voicePitchPitchOverrides) => {
+					delete voicePitchPitchOverrides[voiceName];
 
-                    return this._setVoicePitchOverrides(voicePitchPitchOverrides);
-                }),
-        );
-    }
+					return this._setVoicePitchOverrides(voicePitchPitchOverrides);
+				}),
+		);
+	}
 
-    hasVoicePitchOverride(voiceName) {
-        return promiseTry(
-            () => this.getVoicePitchOverride(voiceName)
-                .then((voicePitchOverride) => {
-                    if (voicePitchOverride) {
-                        return true;
-                    }
+	hasVoicePitchOverride(voiceName) {
+		return promiseTry(
+			() => this.getVoicePitchOverride(voiceName)
+				.then((voicePitchOverride) => {
+					if (voicePitchOverride) {
+						return true;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    isVoicePitchOverride(voiceName, pitch) {
-        return promiseTry(
-            () => this.getVoicePitchOverride(voiceName)
-                .then((voicePitchOverride) => {
-                    if (voicePitchOverride) {
-                        return voicePitchOverride === pitch;
-                    }
+	isVoicePitchOverride(voiceName, pitch) {
+		return promiseTry(
+			() => this.getVoicePitchOverride(voiceName)
+				.then((voicePitchOverride) => {
+					if (voicePitchOverride) {
+						return voicePitchOverride === pitch;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    getEffectivePitchForVoice(voiceName) {
-        return promiseTry(
-            () => this.hasVoicePitchOverride(voiceName)
-                .then((hasVoicePitchOverride) => {
-                    if (hasVoicePitchOverride) {
-                        return this.getVoicePitchOverride(voiceName);
-                    }
+	getEffectivePitchForVoice(voiceName) {
+		return promiseTry(
+			() => this.hasVoicePitchOverride(voiceName)
+				.then((hasVoicePitchOverride) => {
+					if (hasVoicePitchOverride) {
+						return this.getVoicePitchOverride(voiceName);
+					}
 
-                    return this.getVoicePitchDefault(voiceName);
-                }),
-        );
-    }
+					return this.getVoicePitchDefault(voiceName);
+				}),
+		);
+	}
 }

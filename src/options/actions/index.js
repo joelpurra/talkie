@@ -24,8 +24,8 @@ import * as navigation from "./navigation";
 import * as voices from "./voices";
 
 export default {
-    shared,
-    unshared,
-    navigation,
-    voices,
+	shared,
+	unshared,
+	navigation,
+	voices,
 };

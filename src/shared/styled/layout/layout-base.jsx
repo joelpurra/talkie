@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import styled from "../../hocs/styled.jsx";
-
 import * as layoutBase from "../../styles/layout/layout-base";
 
 export const header = styled(layoutBase.header)("header");

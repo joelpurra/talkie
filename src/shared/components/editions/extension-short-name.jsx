@@ -18,40 +18,39 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import translateAttribute from "../../hocs/translate.jsx";
-
 import * as textBase from "../../styled/text/text-base.jsx";
 
 export default
 @translateAttribute
 class ExtensionShortName extends React.PureComponent {
     static defaultProps={
-        isPremiumEdition: false,
+    	isPremiumEdition: false,
     }
 
     static propTypes = {
-        isPremiumEdition: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	translate: PropTypes.func.isRequired,
     }
 
     render() {
-        const {
-            isPremiumEdition,
-            translate,
-        } = this.props;
+    	const {
+    		isPremiumEdition,
+    		translate,
+    	} = this.props;
 
-        // TODO: move resolving the name to the state, like edition type?
-        const extensionShortName = isPremiumEdition
-            ? translate("extensionShortName_Premium")
-            : translate("extensionShortName_Free");
+    	// TODO: move resolving the name to the state, like edition type?
+    	const extensionShortName = isPremiumEdition
+    		? translate("extensionShortName_Premium")
+    		: translate("extensionShortName_Free");
 
-        return (
-            <textBase.span>
-                {extensionShortName}
-            </textBase.span>
-        );
+    	return (
+    		<textBase.span>
+    			{extensionShortName}
+ </textBase.span>
+    	);
     }
 }

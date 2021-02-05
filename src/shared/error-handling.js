@@ -19,19 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logWarn,
-    logInfo,
+	logInfo,
+	logWarn,
 } from "./log";
 
 const handleUnhandledRejection = (event) => {
-    logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
+	logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
 
-    logInfo("Starting debugger, if attached.");
-    /* eslint-disable no-debugger */
-    debugger;
-    /* eslint-enable no-debugger */
+	logInfo("Starting debugger, if attached.");
+	/* eslint-disable no-debugger */
+	debugger;
+	/* eslint-enable no-debugger */
 };
 
 export const registerUnhandledRejectionHandler = () => {
-    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+	window.addEventListener("unhandledrejection", handleUnhandledRejection);
 };

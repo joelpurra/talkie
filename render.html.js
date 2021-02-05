@@ -9,26 +9,26 @@ const getHtml = require(rendererPath);
 process.chdir(renderWorkingDirectory);
 
 process.on("unhandledRejection", (error) => {
-    /* eslint-disable no-console */
-    console.error("unhandledRejection", error);
-    /* eslint-enable no-console */
+	/* eslint-disable no-console */
+	console.error("unhandledRejection", error);
+	/* eslint-enable no-console */
 
-    process.exit(2);
+	process.exit(2);
 });
 
 getHtml(talkieLocale)
-    .then(html => {
-        // NOTE: outputting html to stdout.
-        /* eslint-disable no-console */
-        console.log(html);
-        /* eslint-enable no-console */
+	.then((html) => {
+		// NOTE: outputting html to stdout.
+		/* eslint-disable no-console */
+		console.log(html);
+		/* eslint-enable no-console */
 
-        return undefined;
-    })
-    .catch((error) => {
-        /* eslint-disable no-console */
-        console.error(error);
-        /* eslint-enable no-console */
+		return undefined;
+	})
+	.catch((error) => {
+		/* eslint-disable no-console */
+		console.error(error);
+		/* eslint-enable no-console */
 
-        process.exit(1);
-    });
+		process.exit(1);
+	});

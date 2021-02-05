@@ -18,74 +18,75 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import styled from "../../hocs/styled.jsx";
-
-import {
-    scrollIntoViewIfNeeded,
-} from "../../utils/select-element";
-
 import * as formBase from "../../styles/form/form-base";
+import {
+	scrollIntoViewIfNeeded,
+} from "../../utils/select-element";
 
 export default
 @styled(formBase.multilineSelect)
 class MultilineSelect extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleOnChange = this.handleOnChange.bind(this);
+		this.handleOnChange = this.handleOnChange.bind(this);
 
-        this.selectElement = null;
-    }
+		this.selectElement = null;
+	}
 
     static defaultProps = {
-        size: null,
-        value: null,
-        disabled: false,
-        onChange: null,
-        className: "",
+    	size: null,
+    	value: null,
+    	disabled: false,
+    	onChange: null,
+    	className: "",
     };
 
     static propTypes = {
-        size: PropTypes.number.isRequired,
-        value: PropTypes.string,
-        disabled: PropTypes.bool.isRequired,
-        onChange: PropTypes.func.isRequired,
-        className: PropTypes.string.isRequired,
-        children: PropTypes.node.isRequired,
+    	size: PropTypes.number.isRequired,
+    	value: PropTypes.string,
+    	disabled: PropTypes.bool.isRequired,
+    	onChange: PropTypes.func.isRequired,
+    	className: PropTypes.string.isRequired,
+    	children: PropTypes.node.isRequired,
     }
 
-    handleOnChange({ target }) {
-        this.props.onChange(target.value);
+    handleOnChange({
+    	target,
+    }) {
+    	this.props.onChange(target.value);
 
-        scrollIntoViewIfNeeded(this.selectElement);
+    	scrollIntoViewIfNeeded(this.selectElement);
     }
 
     render() {
-        const {
-            size,
-            value,
-            disabled,
-            className,
-        } = this.props;
+    	const {
+    		size,
+    		value,
+    		disabled,
+    		className,
+    	} = this.props;
 
-        return (
-            <select
-                size={size}
-                value={value || undefined}
-                disabled={disabled || null}
-                onChange={this.handleOnChange}
-                className={className}
-                ref={
-                    (selectElement) => {
-                        this.selectElement = selectElement;
-                        scrollIntoViewIfNeeded(this.selectElement);
-                    }}
-            >
-                {this.props.children}
-            </select>
-        );
+    	return (
+    		<select
+    			size={size}
+    			value={value || undefined}
+    			disabled={disabled || null}
+    			onChange={this.handleOnChange}
+    			className={className}
+    			ref={
+    				(selectElement) => {
+    					this.selectElement = selectElement;
+    					scrollIntoViewIfNeeded(this.selectElement);
+	}
+    			}
+	>
+    			{this.props.children}
+ </select>
+    	);
     }
 }

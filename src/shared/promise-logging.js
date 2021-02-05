@@ -19,30 +19,30 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
-    logError,
+	logDebug,
+	logError,
 } from "./log";
 
 export const loggedPromise = (...args) => {
-    const fn = args.pop();
+	const fn = args.pop();
 
-    return (...fnArgs) => {
-        return Promise.resolve()
-            .then(() => {
-                logDebug("Start", "loggedPromise", ...args, ...fnArgs);
+	return (...fnArgs) => {
+		return Promise.resolve()
+			.then(() => {
+				logDebug("Start", "loggedPromise", ...args, ...fnArgs);
 
-                return undefined;
-            })
-            .then(() => fn(...fnArgs))
-            .then((result) => {
-                logDebug("Done", "loggedPromise", ...args, ...fnArgs, result);
+				return undefined;
+			})
+			.then(() => fn(...fnArgs))
+			.then((result) => {
+				logDebug("Done", "loggedPromise", ...args, ...fnArgs, result);
 
-                return result;
-            })
-            .catch((error) => {
-                logError("loggedPromise", ...args, ...fnArgs, error);
+				return result;
+			})
+			.catch((error) => {
+				logError("loggedPromise", ...args, ...fnArgs, error);
 
-                throw error;
-            });
-    };
+				throw error;
+			});
+	};
 };

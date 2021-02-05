@@ -19,91 +19,90 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    logDebug,
-    logError,
+	logDebug,
+	logError,
 } from "../shared/log";
+import {
+	promiseTry,
+} from "../shared/promise";
 
 // NOTE: https://developer.chrome.com/extensions/runtime#type-OnInstalledReason
 const REASON_INSTALL = "install";
 
 export default class OnInstalledManager {
-    constructor(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue) {
-        // TODO: use broadcast listeners instead.
-        this.storageManager = storageManager;
-        this.settingsManager = settingsManager;
-        this.metadataManager = metadataManager;
-        this.contextMenuManager = contextMenuManager;
-        this.welcomeManager = welcomeManager;
-        this.onInstallListenerEventQueue = onInstallListenerEventQueue;
-    }
+	constructor(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue) {
+		// TODO: use broadcast listeners instead.
+		this.storageManager = storageManager;
+		this.settingsManager = settingsManager;
+		this.metadataManager = metadataManager;
+		this.contextMenuManager = contextMenuManager;
+		this.welcomeManager = welcomeManager;
+		this.onInstallListenerEventQueue = onInstallListenerEventQueue;
+	}
 
-    _setSettingsManagerDefaults() {
-        // TODO: move this function elsewhere?
-        return promiseTry(
-            () => {
-                logDebug("Start", "_setSettingsManagerDefaults");
+	_setSettingsManagerDefaults() {
+		// TODO: move this function elsewhere?
+		return promiseTry(
+			() => {
+				logDebug("Start", "_setSettingsManagerDefaults");
 
-                return this.metadataManager.isWebExtensionVersion()
-                    .then((isWebExtensionVersion) => {
-                        // NOTE: enabling speaking long texts by default on in WebExtensions (Firefox).
-                        const speakLongTexts = isWebExtensionVersion;
+				return this.metadataManager.isWebExtensionVersion()
+					.then((isWebExtensionVersion) => {
+						// NOTE: enabling speaking long texts by default on in WebExtensions (Firefox).
+						const speakLongTexts = isWebExtensionVersion;
 
-                        // TODO: move setting the default settings to the SettingsManager?
-                        return this.settingsManager.setSpeakLongTexts(speakLongTexts);
-                    })
-                    .then((result) => {
-                        logDebug("Done", "_setSettingsManagerDefaults");
+						// TODO: move setting the default settings to the SettingsManager?
+						return this.settingsManager.setSpeakLongTexts(speakLongTexts);
+					})
+					.then((result) => {
+						logDebug("Done", "_setSettingsManagerDefaults");
 
-                        return result;
-                    })
-                    .catch((error) => {
-                        logError("_setSettingsManagerDefaults", error);
+						return result;
+					})
+					.catch((error) => {
+						logError("_setSettingsManagerDefaults", error);
 
-                        throw error;
-                    });
-            },
-        );
-    }
+						throw error;
+					});
+			},
+		);
+	}
 
-    onExtensionInstalledHandler(event) {
-        return promiseTry(
-            () => Promise.resolve()
-                .then(() => this.storageManager.upgradeIfNecessary())
-                // NOTE: removing all context menus in case the menus have changed since the last install/update.
-                .then(() => this.contextMenuManager.removeAll())
-                .then(() => this.contextMenuManager.createContextMenus())
-                .then(() => {
-                    if (event.reason === REASON_INSTALL) {
-                        return this._setSettingsManagerDefaults()
-                            .then(() => this.welcomeManager.openWelcomePage());
-                    }
+	onExtensionInstalledHandler(event) {
+		return promiseTry(
+			() => Promise.resolve()
+				.then(() => this.storageManager.upgradeIfNecessary())
+			// NOTE: removing all context menus in case the menus have changed since the last install/update.
+				.then(() => this.contextMenuManager.removeAll())
+				.then(() => this.contextMenuManager.createContextMenus())
+				.then(() => {
+					if (event.reason === REASON_INSTALL) {
+						return this._setSettingsManagerDefaults()
+							.then(() => this.welcomeManager.openWelcomePage());
+					}
 
-                    return undefined;
-                })
-                .catch((error) => logError("onExtensionInstalledHandler", error)),
-        );
-    }
+					return undefined;
+				})
+				.catch((error) => logError("onExtensionInstalledHandler", error)),
+		);
+	}
 
-    onInstallListenerEventQueueHandler() {
-        return promiseTry(
-            () => {
-                while (this.onInstallListenerEventQueue.length > 0) {
-                    const onInstallListenerEvent = this.onInstallListenerEventQueue.shift();
+	onInstallListenerEventQueueHandler() {
+		return promiseTry(
+			() => {
+				while (this.onInstallListenerEventQueue.length > 0) {
+					const onInstallListenerEvent = this.onInstallListenerEventQueue.shift();
 
-                    logDebug("onInstallListenerEventQueueHandler", "Start", onInstallListenerEvent);
+					logDebug("onInstallListenerEventQueueHandler", "Start", onInstallListenerEvent);
 
-                    return this.onExtensionInstalledHandler(onInstallListenerEvent.event)
-                        .then(() => {
-                            logDebug("onInstallListenerEventQueueHandler", "Done", onInstallListenerEvent);
+					return this.onExtensionInstalledHandler(onInstallListenerEvent.event)
+						.then(() => {
+							logDebug("onInstallListenerEventQueueHandler", "Done", onInstallListenerEvent);
 
-                            return undefined;
-                        });
-                }
-            },
-        );
-    }
+							return undefined;
+						});
+				}
+			},
+		);
+	}
 }

@@ -19,51 +19,51 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
-    logError,
+	logDebug,
+	logError,
 } from "../shared/log";
 
 export default class CommandHandler {
-    constructor(commandMap) {
-        this.commandMap = commandMap;
-    }
+	constructor(commandMap) {
+		this.commandMap = commandMap;
+	}
 
-    handle(command, ...args) {
-        logDebug("Start", "commandHandler", command);
+	handle(command, ...args) {
+		logDebug("Start", "commandHandler", command);
 
-        const commandAction = this.commandMap[command];
+		const commandAction = this.commandMap[command];
 
-        if (typeof commandAction !== "function") {
-            throw new Error("Bad command action for command: " + command);
-        }
+		if (typeof commandAction !== "function") {
+			throw new TypeError("Bad command action for command: " + command);
+		}
 
-        return commandAction(...args)
-            .then((result) => {
-                logDebug("Done", "commandHandler", command, result);
+		return commandAction(...args)
+			.then((result) => {
+				logDebug("Done", "commandHandler", command, result);
 
-                return undefined;
-            })
-            .catch((error) => {
-                logError("commandHandler", command, error);
+				return undefined;
+			})
+			.catch((error) => {
+				logError("commandHandler", command, error);
 
-                throw error;
-            });
-    }
+				throw error;
+			});
+	}
 
-    handleCommandEvent(command, ...args) {
-        logDebug("Start", "handleCommandEvent", command);
+	handleCommandEvent(command, ...args) {
+		logDebug("Start", "handleCommandEvent", command);
 
-        // NOTE: straight mapping from command to action.
-        return this.handle(command, ...args)
-            .then((result) => {
-                logDebug("Done", "handleCommandEvent", command, result);
+		// NOTE: straight mapping from command to action.
+		return this.handle(command, ...args)
+			.then((result) => {
+				logDebug("Done", "handleCommandEvent", command, result);
 
-                return undefined;
-            })
-            .catch((error) => {
-                logError("handleCommandEvent", command, error);
+				return undefined;
+			})
+			.catch((error) => {
+				logError("handleCommandEvent", command, error);
 
-                throw error;
-            });
-    }
+				throw error;
+			});
+	}
 }

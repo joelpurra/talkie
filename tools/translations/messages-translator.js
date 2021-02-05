@@ -22,84 +22,84 @@ const assert = require("assert");
 const Promise = require("bluebird");
 
 export default class MessagesTranslator {
-    constructor(translatorService, base, locale) {
-        assert(typeof translatorService === "object");
-        assert(typeof base === "object");
-        assert(typeof base.messages === "object");
-        assert(typeof base.language === "string");
-        assert(typeof locale === "object");
-        assert(typeof locale.messages === "object");
-        assert(typeof locale.language === "string");
+	constructor(translatorService, base, locale) {
+		assert(typeof translatorService === "object");
+		assert(typeof base === "object");
+		assert(typeof base.messages === "object");
+		assert(typeof base.language === "string");
+		assert(typeof locale === "object");
+		assert(typeof locale.messages === "object");
+		assert(typeof locale.language === "string");
 
-        // NOTE: ensure the base language isn't translated onto itself.
-        assert(typeof locale.language !== base.language);
+		// NOTE: ensure the base language isn't translated onto itself.
+		assert(typeof locale.language !== base.language);
 
-        this._translatorService = translatorService;
-        this._base = base;
-        this._locale = locale;
-    }
+		this._translatorService = translatorService;
+		this._base = base;
+		this._locale = locale;
+	}
 
-    _keepOnlyKeys(keys, obj) {
-        assert(Array.isArray(keys));
-        keys.forEach((key) => {
-            assert(typeof key === "string" || (typeof key === "number" && Math.floor(key) === Math.ceil(key)));
-        });
-        assert(typeof obj === "object");
+	_keepOnlyKeys(keys, object) {
+		assert(Array.isArray(keys));
+		keys.forEach((key) => {
+			assert(typeof key === "string" || (typeof key === "number" && Math.floor(key) === Math.ceil(key)));
+		});
+		assert(typeof object === "object");
 
-        return Promise.try(() => keys.reduce((newObj, key) => {
-            newObj[key] = obj[key];
+		return Promise.try(() => keys.reduce((newObject, key) => {
+			newObject[key] = object[key];
 
-            return newObj;
-        },
-        {}));
-    }
+			return newObject;
+		},
+		{}));
+	}
 
-    translate() {
-        return Promise.try(() => {
-            const baseKeys = Object.keys(this._base.messages);
+	translate() {
+		return Promise.try(() => {
+			const baseKeys = Object.keys(this._base.messages);
 
-            return this._keepOnlyKeys(baseKeys, this._locale.messages)
-                .then((localeMessages) => {
-                    // TODO: function filterKeys.
-                    const alreadyTranslatedLocale = baseKeys.reduce((alreadyTranslated, baseKey) => {
-                        if (localeMessages[baseKey] && localeMessages[baseKey].original === this._base.messages[baseKey].message) {
-                            alreadyTranslated[baseKey] = localeMessages[baseKey];
-                        }
+			return this._keepOnlyKeys(baseKeys, this._locale.messages)
+				.then((localeMessages) => {
+					// TODO: function filterKeys.
+					const alreadyTranslatedLocale = baseKeys.reduce((alreadyTranslated, baseKey) => {
+						if (localeMessages[baseKey] && localeMessages[baseKey].original === this._base.messages[baseKey].message) {
+							alreadyTranslated[baseKey] = localeMessages[baseKey];
+						}
 
-                        return alreadyTranslated;
-                    },
-                    {});
+						return alreadyTranslated;
+					},
+					{});
 
-                    // TODO: function filterKeys.
-                    const untranslatedLocale = baseKeys.reduce((untranslated, baseKey) => {
-                        if (!localeMessages[baseKey] || localeMessages[baseKey].original !== this._base.messages[baseKey].message) {
-                            untranslated[baseKey] = this._base.messages[baseKey];
-                        }
+					// TODO: function filterKeys.
+					const untranslatedLocale = baseKeys.reduce((untranslated, baseKey) => {
+						if (!localeMessages[baseKey] || localeMessages[baseKey].original !== this._base.messages[baseKey].message) {
+							untranslated[baseKey] = this._base.messages[baseKey];
+						}
 
-                        return untranslated;
-                    },
-                    {});
+						return untranslated;
+					},
+					{});
 
-                    if (Object.keys(untranslatedLocale).length === 0) {
-                        const translated = alreadyTranslatedLocale;
+					if (Object.keys(untranslatedLocale).length === 0) {
+						const translated = alreadyTranslatedLocale;
 
-                        return translated;
-                    }
+						return translated;
+					}
 
-                    return this._translatorService.translate(this._base.language, this._locale.language, untranslatedLocale)
-                        .tap((automaticallyTranslated) => {
-                            assert(typeof automaticallyTranslated === "object");
-                            Object.keys(automaticallyTranslated).forEach((automaticallyTranslatedKey) => {
-                                assert(typeof automaticallyTranslated[automaticallyTranslatedKey].original === "string");
-                                assert(typeof automaticallyTranslated[automaticallyTranslatedKey].message === "string");
-                            });
-                        })
-                        .then((automaticallyTranslated) => {
-                            const translated = Object.assign({}, alreadyTranslatedLocale, automaticallyTranslated);
+					return this._translatorService.translate(this._base.language, this._locale.language, untranslatedLocale)
+						.tap((automaticallyTranslated) => {
+							assert(typeof automaticallyTranslated === "object");
+							Object.keys(automaticallyTranslated).forEach((automaticallyTranslatedKey) => {
+								assert(typeof automaticallyTranslated[automaticallyTranslatedKey].original === "string");
+								assert(typeof automaticallyTranslated[automaticallyTranslatedKey].message === "string");
+							});
+						})
+						.then((automaticallyTranslated) => {
+							const translated = Object.assign({}, alreadyTranslatedLocale, automaticallyTranslated);
 
-                            return translated;
-                        });
-                });
-        });
-    }
+							return translated;
+						});
+				});
+		});
+	}
 }

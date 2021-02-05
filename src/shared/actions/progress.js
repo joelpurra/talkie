@@ -23,11 +23,22 @@ import * as actionTypes from "../constants/action-types-progress";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const setMin = (min) => {
-    return { type: actionTypes.SET_MIN, min };
+	return {
+		type: actionTypes.SET_MIN,
+		min,
+	};
 };
+
 export const setCurrent = (current) => {
-    return { type: actionTypes.SET_CURRENT, current };
+	return {
+		type: actionTypes.SET_CURRENT,
+		current,
+	};
 };
+
 export const setMax = (max) => {
-    return { type: actionTypes.SET_MAX, max };
+	return {
+		type: actionTypes.SET_MAX,
+		max,
+	};
 };

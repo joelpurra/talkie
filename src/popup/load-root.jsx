@@ -19,10 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import hydrateHtml from "../shared/renderers/load-root.jsx";
-
-import rootReducer from "./reducers";
 // import actions from "./actions";
 import App from "./containers/app.jsx";
+import rootReducer from "./reducers";
 
 // NOTE: currenlty empty to not modify the server state before hydrating the prerendered state on the client.
 // TODO: generalize preloading?

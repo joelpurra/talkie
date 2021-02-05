@@ -22,6 +22,6 @@ import shared from "../../shared/actions";
 import unshared from "../../unshared/actions";
 
 export default {
-    shared,
-    unshared,
+	shared,
+	unshared,
 };

@@ -24,19 +24,19 @@ const jsonfile = require("jsonfile");
 const MANIFEST_FILENAME = "manifest.json";
 
 export default class NodeEnvironmentManifestProvider {
-    constructor() {
-        this.manifest = null;
-    }
+	constructor() {
+		this.manifest = null;
+	}
 
-    getSync() {
-        // NOTE: making sure it's a synchronous call.
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
-        if (this.manifest === null) {
-            /* eslint-disable no-sync */
-            this.manifest = jsonfile.readFileSync(MANIFEST_FILENAME);
-            /* eslint-enable no-sync */
-        }
+	getSync() {
+		// NOTE: making sure it's a synchronous call.
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
+		if (this.manifest === null) {
+			/* eslint-disable no-sync */
+			this.manifest = jsonfile.readFileSync(MANIFEST_FILENAME);
+			/* eslint-enable no-sync */
+		}
 
-        return this.manifest;
-    }
+		return this.manifest;
+	}
 }

@@ -19,17 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class WebExtensionEnvironmentTranslatorProvider {
-    constructor(localeProvider) {
-        // TODO REMOVE: unused.
-        this.localeProvider = localeProvider;
-    }
+	constructor(localeProvider) {
+		// TODO REMOVE: unused.
+		this.localeProvider = localeProvider;
+	}
 
-    translate(key, extras) {
-        // const locale = this.localeProvider.getTranslationLocale();
+	translate(key, extras) {
+		// const locale = this.localeProvider.getTranslationLocale();
 
-        // TODO: use same translation system in frontend and backend?
-        const translated = browser.i18n.getMessage(key, extras);
+		// TODO: use same translation system in frontend and backend?
+		const translated = browser.i18n.getMessage(key, extras);
 
-        return translated;
-    }
+		return translated;
+	}
 }

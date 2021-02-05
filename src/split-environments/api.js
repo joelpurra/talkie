@@ -20,168 +20,164 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // TODO: proper data handling.
 import {
-    promiseTry,
+	debounce,
+} from "../shared/basic";
+import {
+	promiseTry,
 } from "../shared/promise";
-
 import {
-    getBackgroundPage,
+	getBackgroundPage,
 } from "../shared/tabs";
-
 import {
-    openUrlInNewTab as sharedOpenUrlInNewTab,
-    openShortKeysConfiguration as sharedOpenShortKeysConfiguration,
-    openOptionsPage as sharedOpenOptionsPage,
+	openOptionsPage as sharedOpenOptionsPage,
+	openShortKeysConfiguration as sharedOpenShortKeysConfiguration,
+	openUrlInNewTab as sharedOpenUrlInNewTab,
 } from "../shared/urls";
-
 import {
-    getMappedVoices,
+	getMappedVoices,
 } from "../shared/voices";
 
-import {
-    debounce,
-} from "../shared/basic";
-
 export default class Api {
-    constructor(metadataManager, configuration, translator, broadcastProvider, talkieLocaleHelper) {
-        this.metadataManager = metadataManager;
-        this.configuration = configuration;
-        this.translator = translator;
-        this.broadcastProvider = broadcastProvider;
-        this.talkieLocaleHelper = talkieLocaleHelper;
+	constructor(metadataManager, configuration, translator, broadcastProvider, talkieLocaleHelper) {
+		this.metadataManager = metadataManager;
+		this.configuration = configuration;
+		this.translator = translator;
+		this.broadcastProvider = broadcastProvider;
+		this.talkieLocaleHelper = talkieLocaleHelper;
 
-        this.debouncedSpeak = debounce(this.speak.bind(this), 200);
-        this.debouncedSpeakTextInLanguageWithOverrides = debounce(this.speakTextInLanguageWithOverrides.bind(this), 200);
-    }
+		this.debouncedSpeak = debounce(this.speak.bind(this), 200);
+		this.debouncedSpeakTextInLanguageWithOverrides = debounce(this.speakTextInLanguageWithOverrides.bind(this), 200);
+	}
 
-    getConfigurationValueSync(systemType, path) {
-        /* eslint-disable no-sync */
-        return this.configuration.getSync(systemType, path);
-        /* eslint-enable no-sync */
-    }
+	getConfigurationValueSync(systemType, path) {
+		/* eslint-disable no-sync */
+		return this.configuration.getSync(systemType, path);
+		/* eslint-enable no-sync */
+	}
 
-    getConfigurationValue(configurationPath) {
-        return this.configuration.get(configurationPath);
-    }
+	getConfigurationValue(configurationPath) {
+		return this.configuration.get(configurationPath);
+	}
 
-    iconClick() {
-        return getBackgroundPage()
-            .then((background) => background.iconClick());
-    }
+	iconClick() {
+		return getBackgroundPage()
+			.then((background) => background.iconClick());
+	}
 
-    speak(text, voice) {
-        return getBackgroundPage()
-            .then((background) => background.stopSpeakFromFrontend()
-                .then(() => background.startSpeakFromFrontend(text, voice)));
-    }
+	speak(text, voice) {
+		return getBackgroundPage()
+			.then((background) => background.stopSpeakFromFrontend()
+				.then(() => background.startSpeakFromFrontend(text, voice)));
+	}
 
-    speakTextInLanguageWithOverrides(text, languageCode) {
-        return getBackgroundPage()
-            .then((background) => background.stopSpeakFromFrontend()
-                .then(() => background.startSpeakInLanguageWithOverridesFromFrontend(text, languageCode)));
-    }
+	speakTextInLanguageWithOverrides(text, languageCode) {
+		return getBackgroundPage()
+			.then((background) => background.stopSpeakFromFrontend()
+				.then(() => background.startSpeakInLanguageWithOverridesFromFrontend(text, languageCode)));
+	}
 
-    getVoices() {
-        return getMappedVoices();
-    }
+	getVoices() {
+		return getMappedVoices();
+	}
 
-    getIsPremiumEditionOption() {
-        return getBackgroundPage()
-            .then((background) => background.getIsPremiumEditionOption());
-    }
+	getIsPremiumEditionOption() {
+		return getBackgroundPage()
+			.then((background) => background.getIsPremiumEditionOption());
+	}
 
-    setIsPremiumEditionOption(isPremiumEdition) {
-        return getBackgroundPage()
-            .then((background) => background.setIsPremiumEditionOption(isPremiumEdition === true));
-    }
+	setIsPremiumEditionOption(isPremiumEdition) {
+		return getBackgroundPage()
+			.then((background) => background.setIsPremiumEditionOption(isPremiumEdition === true));
+	}
 
-    getSpeakLongTextsOption() {
-        return getBackgroundPage()
-            .then((background) => background.getSpeakLongTextsOption());
-    }
+	getSpeakLongTextsOption() {
+		return getBackgroundPage()
+			.then((background) => background.getSpeakLongTextsOption());
+	}
 
-    setSpeakLongTextsOption(speakLongTexts) {
-        return getBackgroundPage()
-            .then((background) => background.setSpeakLongTextsOption(speakLongTexts === true));
-    }
+	setSpeakLongTextsOption(speakLongTexts) {
+		return getBackgroundPage()
+			.then((background) => background.setSpeakLongTextsOption(speakLongTexts === true));
+	}
 
-    getSampleText() {
-        return promiseTry(
-            () => this.translator.translate("frontend_voicesSampleText"),
-        );
-    }
+	getSampleText() {
+		return promiseTry(
+			() => this.translator.translate("frontend_voicesSampleText"),
+		);
+	}
 
-    getEffectiveVoiceForLanguage(languageCode) {
-        return getBackgroundPage()
-            .then((background) => background.getEffectiveVoiceForLanguage(languageCode))
-            .then((effectiveVoiceForLanguage) => effectiveVoiceForLanguage.name);
-    }
+	getEffectiveVoiceForLanguage(languageCode) {
+		return getBackgroundPage()
+			.then((background) => background.getEffectiveVoiceForLanguage(languageCode))
+			.then((effectiveVoiceForLanguage) => effectiveVoiceForLanguage.name);
+	}
 
-    getEffectiveRateForVoice(voiceName) {
-        return getBackgroundPage()
-            .then((background) => background.getEffectiveRateForVoice(voiceName));
-    }
+	getEffectiveRateForVoice(voiceName) {
+		return getBackgroundPage()
+			.then((background) => background.getEffectiveRateForVoice(voiceName));
+	}
 
-    setVoiceRateOverride(voiceName, rate) {
-        return getBackgroundPage()
-            .then((background) => background.setVoiceRateOverride(voiceName, rate));
-    }
+	setVoiceRateOverride(voiceName, rate) {
+		return getBackgroundPage()
+			.then((background) => background.setVoiceRateOverride(voiceName, rate));
+	}
 
-    getEffectivePitchForVoice(voiceName) {
-        return getBackgroundPage()
-            .then((background) => background.getEffectivePitchForVoice(voiceName));
-    }
+	getEffectivePitchForVoice(voiceName) {
+		return getBackgroundPage()
+			.then((background) => background.getEffectivePitchForVoice(voiceName));
+	}
 
-    setVoicePitchOverride(voiceName, pitch) {
-        return getBackgroundPage()
-            .then((background) => background.setVoicePitchOverride(voiceName, pitch));
-    }
+	setVoicePitchOverride(voiceName, pitch) {
+		return getBackgroundPage()
+			.then((background) => background.setVoicePitchOverride(voiceName, pitch));
+	}
 
-    toggleLanguageVoiceOverrideName(languageCode, voiceName) {
-        return getBackgroundPage()
-            .then((background) => background.toggleLanguageVoiceOverrideName(languageCode, voiceName));
-    }
+	toggleLanguageVoiceOverrideName(languageCode, voiceName) {
+		return getBackgroundPage()
+			.then((background) => background.toggleLanguageVoiceOverrideName(languageCode, voiceName));
+	}
 
-    getTranslatedLanguages() {
-        return this.talkieLocaleHelper.getTranslatedLanguages();
-    }
+	getTranslatedLanguages() {
+		return this.talkieLocaleHelper.getTranslatedLanguages();
+	}
 
-    isPremiumEdition() {
-        return this.metadataManager.isPremiumEdition();
-    }
+	isPremiumEdition() {
+		return this.metadataManager.isPremiumEdition();
+	}
 
-    getVersionName() {
-        return this.metadataManager.getVersionName();
-    }
+	getVersionName() {
+		return this.metadataManager.getVersionName();
+	}
 
-    getVersionNumber() {
-        return this.metadataManager.getVersionNumber();
-    }
+	getVersionNumber() {
+		return this.metadataManager.getVersionNumber();
+	}
 
-    getEditionType() {
-        return this.metadataManager.getEditionType();
-    }
+	getEditionType() {
+		return this.metadataManager.getEditionType();
+	}
 
-    getSystemType() {
-        return this.metadataManager.getSystemType();
-    }
+	getSystemType() {
+		return this.metadataManager.getSystemType();
+	}
 
-    getOsType() {
-        return this.metadataManager.getOsType();
-    }
+	getOsType() {
+		return this.metadataManager.getOsType();
+	}
 
-    openUrlInNewTab(url) {
-        return sharedOpenUrlInNewTab(url);
-    }
+	openUrlInNewTab(url) {
+		return sharedOpenUrlInNewTab(url);
+	}
 
-    openShortKeysConfiguration() {
-        return sharedOpenShortKeysConfiguration();
-    }
+	openShortKeysConfiguration() {
+		return sharedOpenShortKeysConfiguration();
+	}
 
-    openOptionsPage() {
-        return sharedOpenOptionsPage();
-    }
+	openOptionsPage() {
+		return sharedOpenOptionsPage();
+	}
 
-    registerListeningAction(event, handler) {
-        return this.broadcastProvider.registerListeningAction(event, handler);
-    }
+	registerListeningAction(event, handler) {
+		return this.broadcastProvider.registerListeningAction(event, handler);
+	}
 }

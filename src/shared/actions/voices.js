@@ -23,79 +23,90 @@ import * as actionTypes from "../constants/action-types-voices";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const loadVoices = () =>
-    (dispatch, getState, api) => api.getVoices()
-        .then((voices) => dispatch(setVoices(voices)));
+	(dispatch, getState, api) => api.getVoices()
+		.then((voices) => dispatch(setVoices(voices)));
 
 export const setVoices = (voices) => {
-    return { type: actionTypes.SET_VOICES, voices };
+	return {
+		type: actionTypes.SET_VOICES,
+		voices,
+	};
 };
 
 export const loadSpeakLongTexts = () =>
-    (dispatch, getState, api) => api.getSpeakLongTextsOption()
-        .then((speakLongTexts) => dispatch(setSpeakLongTexts(speakLongTexts)));
+	(dispatch, getState, api) => api.getSpeakLongTextsOption()
+		.then((speakLongTexts) => dispatch(setSpeakLongTexts(speakLongTexts)));
 
 export const storeSpeakLongTexts = (speakLongTexts) =>
-    (dispatch, getState, api) => api.setSpeakLongTextsOption(speakLongTexts)
-        .then(() => dispatch(loadSpeakLongTexts()));
+	(dispatch, getState, api) => api.setSpeakLongTextsOption(speakLongTexts)
+		.then(() => dispatch(loadSpeakLongTexts()));
 
 export const setSpeakLongTexts = (speakLongTexts) => {
-    return { type: actionTypes.SET_SPEAK_LONG_TEXTS, speakLongTexts };
+	return {
+		type: actionTypes.SET_SPEAK_LONG_TEXTS,
+		speakLongTexts,
+	};
 };
 
 function getNavigatorLanguage() {
-    let lang = null;
+	let lang = null;
 
-    try {
-        lang = navigator.language;
-    }
-    catch (error)
-    {
-        // NOTE: swallowing errors.
-    }
+	try {
+		lang = navigator.language;
+	} catch {
+		// NOTE: swallowing errors.
+	}
 
-    return lang;
-};
+	return lang;
+}
 
 function getNavigatorLanguages() {
-    let langs = null;
+	let langs = null;
 
-    try {
-        langs = navigator.languages;
-    }
-    catch (error)
-    {
-        // NOTE: swallowing errors.
-        langs = [];
-    }
+	try {
+		langs = navigator.languages;
+	} catch {
+		// NOTE: swallowing errors.
+		langs = [];
+	}
 
-    return langs;
-};
+	return langs;
+}
 
 export const loadNavigatorLanguage = () =>
-    (dispatch) => Promise.resolve()
-        .then(() => getNavigatorLanguage())
-        .then((navigatorLanguage) => dispatch(setNavigatorLanguage(navigatorLanguage)));
+	(dispatch) => Promise.resolve()
+		.then(() => getNavigatorLanguage())
+		.then((navigatorLanguage) => dispatch(setNavigatorLanguage(navigatorLanguage)));
 
 export const setNavigatorLanguage = (navigatorLanguage) => {
-    return { type: actionTypes.SET_NAVIGATOR_LANGUAGE, navigatorLanguage };
+	return {
+		type: actionTypes.SET_NAVIGATOR_LANGUAGE,
+		navigatorLanguage,
+	};
 };
 
 export const loadNavigatorLanguages = () =>
-    (dispatch) => Promise.resolve()
-        .then(() => getNavigatorLanguages())
-        .then((navigatorLanguages) => dispatch(setNavigatorLanguages(navigatorLanguages)));
+	(dispatch) => Promise.resolve()
+		.then(() => getNavigatorLanguages())
+		.then((navigatorLanguages) => dispatch(setNavigatorLanguages(navigatorLanguages)));
 
 export const setNavigatorLanguages = (navigatorLanguages) => {
-    return { type: actionTypes.SET_NAVIGATOR_LANGUAGES, navigatorLanguages };
+	return {
+		type: actionTypes.SET_NAVIGATOR_LANGUAGES,
+		navigatorLanguages,
+	};
 };
 
 export const loadTranslatedLanguages = () =>
-    (dispatch, getState, api) => api.getTranslatedLanguages()
-        .then((translatedLanguages) => dispatch(setTranslatedLanguages(translatedLanguages)));
+	(dispatch, getState, api) => api.getTranslatedLanguages()
+		.then((translatedLanguages) => dispatch(setTranslatedLanguages(translatedLanguages)));
 
 export const setTranslatedLanguages = (translatedLanguages) => {
-    return { type: actionTypes.SET_TRANSLATED_LANGUAGES, translatedLanguages };
+	return {
+		type: actionTypes.SET_TRANSLATED_LANGUAGES,
+		translatedLanguages,
+	};
 };
 
 export const speak = (text, voice) =>
-    (dispatch, getState, api) => api.debouncedSpeak(text, voice);
+	(dispatch, getState, api) => api.debouncedSpeak(text, voice);

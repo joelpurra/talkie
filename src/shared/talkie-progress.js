@@ -19,126 +19,126 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    knownEvents,
+	knownEvents,
 } from "./events";
 
 export default class TalkieProgress {
-    constructor(broadcaster, min, max, current) {
-        this.broadcaster = broadcaster;
-        this.interval = null;
-        this.intervalDelay = 100;
-        this.minSpeed = 0.015;
+	constructor(broadcaster, min, max, current) {
+		this.broadcaster = broadcaster;
+		this.interval = null;
+		this.intervalDelay = 100;
+		this.minSpeed = 0.015;
 
-        this.resetProgress(min, max, current);
-    }
+		this.resetProgress(min, max, current);
+	}
 
-    getEventData() {
-        const eventData = {
-            min: this.min,
-            max: this.max,
-            current: this.current,
-        };
+	getEventData() {
+		const eventData = {
+			min: this.min,
+			max: this.max,
+			current: this.current,
+		};
 
-        return eventData;
-    }
+		return eventData;
+	}
 
-    broadcastEvent(eventName) {
-        const eventData = this.getEventData();
+	broadcastEvent(eventName) {
+		const eventData = this.getEventData();
 
-        return this.broadcaster.broadcastEvent(eventName, eventData);
-    }
+		return this.broadcaster.broadcastEvent(eventName, eventData);
+	}
 
-    getPercent() {
-        if (this.max === 0) {
-            return 0;
-        }
+	getPercent() {
+		if (this.max === 0) {
+			return 0;
+		}
 
-        const pct = (this.current / this.max) * 100;
+		const pct = (this.current / this.max) * 100;
 
-        return pct;
-    }
+		return pct;
+	}
 
-    updateProgress() {
-        this.broadcastEvent(knownEvents.updateProgress);
-    }
+	updateProgress() {
+		this.broadcastEvent(knownEvents.updateProgress);
+	}
 
-    resetProgress(min, max, current) {
-        const now = Date.now();
+	resetProgress(min, max, current) {
+		const now = Date.now();
 
-        this.resetTime = now;
-        this.min = min || 0;
-        this.max = max || 0;
-        this.current = current || 0;
-        this.segmentSum = this.min;
-        // this.segments = [];
+		this.resetTime = now;
+		this.min = min || 0;
+		this.max = max || 0;
+		this.current = current || 0;
+		this.segmentSum = this.min;
+		// this.segments = [];
 
-        this.broadcastEvent(knownEvents.resetProgress);
+		this.broadcastEvent(knownEvents.resetProgress);
 
-        this.updateProgress();
-    }
+		this.updateProgress();
+	}
 
-    addProgress(n) {
-        const segmentLimited = Math.min(this.segmentSum, this.current + n);
+	addProgress(n) {
+		const segmentLimited = Math.min(this.segmentSum, this.current + n);
 
-        this.current = segmentLimited;
+		this.current = segmentLimited;
 
-        this.broadcastEvent(knownEvents.addProgress);
+		this.broadcastEvent(knownEvents.addProgress);
 
-        this.updateProgress();
-    }
+		this.updateProgress();
+	}
 
-    getSpeed() {
-        const now = Date.now();
+	getSpeed() {
+		const now = Date.now();
 
-        const timeDiff = now - this.resetTime;
+		const timeDiff = now - this.resetTime;
 
-        if (timeDiff === 0) {
-            return this.minSpeed;
-        }
+		if (timeDiff === 0) {
+			return this.minSpeed;
+		}
 
-        const speed = this.current / timeDiff;
+		const speed = this.current / timeDiff;
 
-        const adjustedSpeed = Math.max(speed, this.minSpeed);
+		const adjustedSpeed = Math.max(speed, this.minSpeed);
 
-        return adjustedSpeed;
-    }
+		return adjustedSpeed;
+	}
 
-    intervalIncrement() {
-        const now = Date.now();
-        const intervalDiff = now - this.previousInterval;
-        const speed = this.getSpeed();
-        const increment = intervalDiff * speed;
+	intervalIncrement() {
+		const now = Date.now();
+		const intervalDiff = now - this.previousInterval;
+		const speed = this.getSpeed();
+		const increment = intervalDiff * speed;
 
-        this.previousInterval = now;
+		this.previousInterval = now;
 
-        this.addProgress(increment);
-    }
+		this.addProgress(increment);
+	}
 
-    startSegment(n) {
-        const now = Date.now();
+	startSegment(n) {
+		const now = Date.now();
 
-        this.previousInterval = now;
+		this.previousInterval = now;
 
-        this.segmentSum += n;
+		this.segmentSum += n;
 
-        this.interval = setInterval(() => this.intervalIncrement(), this.intervalDelay);
-    }
+		this.interval = setInterval(() => this.intervalIncrement(), this.intervalDelay);
+	}
 
-    endSegment() {
-        clearInterval(this.interval);
+	endSegment() {
+		clearInterval(this.interval);
 
-        this.interval = null;
+		this.interval = null;
 
-        this.current = this.segmentSum;
+		this.current = this.segmentSum;
 
-        this.updateProgress();
-    }
+		this.updateProgress();
+	}
 
-    finishProgress() {
-        this.current = this.max;
+	finishProgress() {
+		this.current = this.max;
 
-        this.broadcastEvent(knownEvents.finishProgress);
+		this.broadcastEvent(knownEvents.finishProgress);
 
-        this.updateProgress();
-    }
+		this.updateProgress();
+	}
 }

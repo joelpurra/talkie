@@ -19,26 +19,26 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const hover = {
-    color: "#ffffff",
+	color: "#ffffff",
 };
 
 export const focus = {
-    backgroundImage: "linear-gradient(to bottom, #087eff, #087eff)",
-    color: "#ffffff",
+	backgroundImage: "linear-gradient(to bottom, #087eff, #087eff)",
+	color: "#ffffff",
 };
 
 export const button = {
-    borderRadius: "0.3em",
-    backgroundImage: "linear-gradient(to bottom, #6bb3fa, #087eff)",
-    color: "#ffffff",
-    paddingTop: "0.3em",
-    paddingBottom: "0.3em",
-    paddingLeft: "0.75em",
-    paddingRight: "0.75em",
-    textDecoration: "none",
-    textAlign: "center",
-    ":hover": hover,
-    ":focus": focus,
+	borderRadius: "0.3em",
+	backgroundImage: "linear-gradient(to bottom, #6bb3fa, #087eff)",
+	color: "#ffffff",
+	paddingTop: "0.3em",
+	paddingBottom: "0.3em",
+	paddingLeft: "0.75em",
+	paddingRight: "0.75em",
+	textDecoration: "none",
+	textAlign: "center",
+	":hover": hover,
+	":focus": focus,
 };
 
 export const a = button;

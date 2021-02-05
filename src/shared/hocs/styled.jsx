@@ -19,9 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    styled as styletronStyled,
+	styled as styletronStyled,
 } from "styletron-react";
 
 export default function styledHoc(styles) {
-    return (ComponentToWrap) => styletronStyled(ComponentToWrap, styles);
-};
+	return (ComponentToWrap) => styletronStyled(ComponentToWrap, styles);
+}

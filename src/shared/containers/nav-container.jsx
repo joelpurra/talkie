@@ -18,107 +18,104 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    bindActionCreators,
+	connect,
+} from "react-redux";
+import {
+	bindActionCreators,
 } from "redux";
 
-import {
-    connect,
-} from "react-redux";
-
 import DynamicEnvironment from "../../split-environments/dynamic-environment.js";
-import Nav from "../components/navigation/nav.jsx";
-
 import actionCreators from "../../unshared/actions";
+import Nav from "../components/navigation/nav.jsx";
 
 const dynamicEnvironment = new DynamicEnvironment();
 
 const mapStateToProps = (state) => {
-    return {
-        activeTabId: state.unshared.navigation.activeTabId,
-    };
+	return {
+		activeTabId: state.unshared.navigation.activeTabId,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        actions: bindActionCreators(actionCreators.navigation, dispatch),
-    };
+	return {
+		actions: bindActionCreators(actionCreators.navigation, dispatch),
+	};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class NavContainer extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleTabChange = this.handleTabChange.bind(this);
-    }
+		this.handleTabChange = this.handleTabChange.bind(this);
+	}
 
-    getLocationHash() {
-        let locationHash = null;
+	getLocationHash() {
+		let locationHash = null;
 
-        if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.hash === "string" && document.location.hash.length > 0) {
-            locationHash = "#" + decodeURIComponent(document.location.hash.replace("#", ""));
-        }
+		if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.hash === "string" && document.location.hash.length > 0) {
+			locationHash = "#" + decodeURIComponent(document.location.hash.replace("#", ""));
+		}
 
-        return locationHash;
-    }
+		return locationHash;
+	}
 
-    setLocationHash(locationHash) {
-        // HACK: don't do browser detection.
-        // https://stackoverflow.com/questions/41819284/how-to-determine-in-which-browser-your-extension-background-script-is-executing
-        // https://stackoverflow.com/a/41820692
-        const isFirefox = typeof InstallTrigger !== "undefined";
+	setLocationHash(locationHash) {
+		// HACK: don't do browser detection.
+		// https://stackoverflow.com/questions/41819284/how-to-determine-in-which-browser-your-extension-background-script-is-executing
+		// https://stackoverflow.com/a/41820692
+		const isFirefox = typeof InstallTrigger !== "undefined";
 
-        // NOTE: this breaks navigation in the options page in the preferences pane in firefox, so skip.
-        // TODO: don't disable on other pages (demo, options in normal tab) in firefox.
-        if (!isFirefox) {
-            document.location.hash = locationHash;
-        }
-    }
+		// NOTE: this breaks navigation in the options page in the preferences pane in firefox, so skip.
+		// TODO: don't disable on other pages (demo, options in normal tab) in firefox.
+		if (!isFirefox) {
+			document.location.hash = locationHash;
+		}
+	}
 
-    componentDidMount() {
-        const locationHash = this.getLocationHash();
+	componentDidMount() {
+		const locationHash = this.getLocationHash();
 
-        if (typeof locationHash === "string") {
-            const activeTabId = locationHash.replace("#", "");
+		if (typeof locationHash === "string") {
+			const activeTabId = locationHash.replace("#", "");
 
-            this.props.actions.setActiveTabId(activeTabId);
-        }
-    }
+			this.props.actions.setActiveTabId(activeTabId);
+		}
+	}
 
-    handleTabChange(activeTabId) {
-        this.props.actions.setActiveTabId(activeTabId);
+	handleTabChange(activeTabId) {
+		this.props.actions.setActiveTabId(activeTabId);
 
-        this.setLocationHash(activeTabId);
-    }
+		this.setLocationHash(activeTabId);
+	}
 
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        activeTabId: PropTypes.string.isRequired,
-        links: PropTypes.arrayOf(
-            PropTypes.shape({
-                url: PropTypes.string,
-                tabId: PropTypes.string,
-                text: PropTypes.string.isRequired,
-            })).isRequired,
+    	actions: PropTypes.object.isRequired,
+    	activeTabId: PropTypes.string.isRequired,
+    	links: PropTypes.arrayOf(
+    		PropTypes.shape({
+    			url: PropTypes.string,
+    			tabId: PropTypes.string,
+    			text: PropTypes.string.isRequired,
+    		})).isRequired,
     }
 
     render() {
-        const {
-            activeTabId,
-            links,
-        } = this.props;
+    	const {
+    		activeTabId,
+    		links,
+    	} = this.props;
 
-        return (
-            <Nav
-                initialActiveTabId={activeTabId}
-                onTabChange={this.handleTabChange}
-                links={links}
-            />
-        );
+    	return (
+    		<Nav
+    			initialActiveTabId={activeTabId}
+    			onTabChange={this.handleTabChange}
+    			links={links}
+    		/>
+    	);
     }
 }

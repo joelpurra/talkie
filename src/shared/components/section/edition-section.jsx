@@ -18,14 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
-import translateAttribute from "../../hocs/translate.jsx";
 import configureAttribute from "../../hocs/configure.jsx";
-
+import translateAttribute from "../../hocs/translate.jsx";
 import * as textBase from "../../styled/text/text-base.jsx";
-
 import TalkieEditionIcon from "../icon/talkie-edition-icon.jsx";
 
 export default
@@ -33,83 +31,86 @@ export default
 @configureAttribute
 class EditionSection extends React.PureComponent {
     static defaultProps = {
-        mode: "h2",
-        isPremiumEdition: false,
-        className: "",
+    	mode: "h2",
+    	isPremiumEdition: false,
+    	className: "",
     };
 
     static propTypes = {
-        mode: PropTypes.oneOf(["p", "h2"]).isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
-        configure: PropTypes.func.isRequired,
-        onConfigurationChange: PropTypes.func.isRequired,
-        translate: PropTypes.func.isRequired,
+    	mode: PropTypes.oneOf([
+    		"p",
+    		"h2",
+    	]).isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	children: PropTypes.node.isRequired,
+    	className: PropTypes.string.isRequired,
+    	configure: PropTypes.func.isRequired,
+    	onConfigurationChange: PropTypes.func.isRequired,
+    	translate: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
-        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
     }
 
     componentWillUnmount() {
-        this._unregisterConfigurationListener();
+    	this._unregisterConfigurationListener();
     }
 
     render() {
-        const {
-            mode,
-            isPremiumEdition,
-            className,
-            translate,
-            configure,
-        } = this.props;
+    	const {
+    		mode,
+    		isPremiumEdition,
+    		className,
+    		translate,
+    		configure,
+    	} = this.props;
 
-        // TODO: move resolving the name to the state, like edition type?
-        const text = isPremiumEdition
-            ? translate("extensionShortName_Premium")
-            : translate("extensionShortName_Free");
+    	// TODO: move resolving the name to the state, like edition type?
+    	const text = isPremiumEdition
+    		? translate("extensionShortName_Premium")
+    		: translate("extensionShortName_Free");
 
-        const versionClassName = isPremiumEdition ? "premium-section" : "free-section";
+    	const versionClassName = isPremiumEdition ? "premium-section" : "free-section";
 
-        const classNames = [
-            versionClassName,
-            className,
-        ]
-            .join(" ")
-            .trim();
+    	const classNames = [
+    		versionClassName,
+    		className,
+    	]
+    		.join(" ")
+    		.trim();
 
-        let HeadingElement = null;
+    	let HeadingElement = null;
 
-        switch (mode) {
-        case "p":
-            HeadingElement = textBase.p;
-            break;
+    	switch (mode) {
+    		case "p":
+    			HeadingElement = textBase.p;
+    			break;
 
-        case "h2":
-            HeadingElement = textBase.h2;
-            break;
+    		case "h2":
+    			HeadingElement = textBase.h2;
+    			break;
 
-        default:
-            throw new Error("Uknown mode");
-        }
+    		default:
+    			throw new Error("Uknown mode");
+    	}
 
-        return (
-            <div className={classNames}>
-                <HeadingElement>
-                    <textBase.a
-                        href={configure("urls.options-upgrade-from-demo")}
-                        lang="en"
-                    >
-                        <TalkieEditionIcon
-                            isPremiumEdition={isPremiumEdition}
-                        />
-                        {text}
-                    </textBase.a>
-                </HeadingElement>
+    	return (
+    		<div className={classNames}>
+    			<HeadingElement>
+    				<textBase.a
+    					href={configure("urls.options-upgrade-from-demo")}
+    					lang="en"
+	>
+    					<TalkieEditionIcon
+    						isPremiumEdition={isPremiumEdition}
+    					/>
+    					{text}
+ </textBase.a>
+ </HeadingElement>
 
-                {this.props.children}
-            </div>
-        );
+    			{this.props.children}
+ </div>
+    	);
     }
 }

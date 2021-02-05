@@ -19,24 +19,24 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export function handleBubbledLinkClick(handleUrl, e) {
-    let element = e.target;
+	let element = e.target;
 
-    do {
-        if (element.tagName === "A") {
-            const href = element.getAttribute("href");
+	do {
+		if (element.tagName === "A") {
+			const href = element.getAttribute("href");
 
-            if (typeof href === "string" && href.startsWith("https://")) {
-                e.preventDefault();
-                e.stopPropagation();
+			if (typeof href === "string" && href.startsWith("https://")) {
+				e.preventDefault();
+				e.stopPropagation();
 
-                handleUrl(href);
+				handleUrl(href);
 
-                return false;
-            }
+				return false;
+			}
 
-            // TODO: warn about mismatched link style?
-        }
+			// TODO: warn about mismatched link style?
+		}
 
-        element = element.parentElement;
-    } while (element);
+		element = element.parentElement;
+	} while (element);
 }

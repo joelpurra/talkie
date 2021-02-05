@@ -21,5 +21,5 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import shared from "../../shared/actions";
 
 export default {
-    shared,
+	shared,
 };

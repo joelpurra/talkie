@@ -18,61 +18,60 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import translate from "../../../../shared/hocs/translate.jsx";
-
-import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 
 export default
 @translate
 class SampleText extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleChange = this.handleChange.bind(this);
-    }
+		this.handleChange = this.handleChange.bind(this);
+	}
 
     static defaultProps = {
-        value: null,
-        disabled: true,
+    	value: null,
+    	disabled: true,
     };
 
     static propTypes = {
-        onChange: PropTypes.func.isRequired,
-        value: PropTypes.string,
-        disabled: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
+    	onChange: PropTypes.func.isRequired,
+    	value: PropTypes.string,
+    	disabled: PropTypes.bool.isRequired,
+    	translate: PropTypes.func.isRequired,
     };
 
     handleChange(e) {
-        const value = e.target.value;
+    	const value = e.target.value;
 
-        this.props.onChange(value);
+    	this.props.onChange(value);
     }
 
     render() {
-        return (
-            <tableBase.tbody>
-                <tableBase.tr>
-                    <tableBase.th scope="col">
-                        {this.props.translate("frontend_voicesSampleTextHeading")}
-                    </tableBase.th>
-                </tableBase.tr>
-                <tableBase.tr>
-                    <tableBase.td>
-                        <formBase.textarea
-                            id="voices-sample-text"
-                            rows="2"
-                            value={this.props.value}
-                            onChange={this.handleChange}
-                            disabled={this.props.disabled || null}
-                        ></formBase.textarea>
-                    </tableBase.td>
-                </tableBase.tr>
-            </tableBase.tbody>
-        );
+    	return (
+    		<tableBase.tbody>
+    			<tableBase.tr>
+    				<tableBase.th scope="col">
+    					{this.props.translate("frontend_voicesSampleTextHeading")}
+ </tableBase.th>
+ </tableBase.tr>
+    			<tableBase.tr>
+    				<tableBase.td>
+    					<formBase.textarea
+    						id="voices-sample-text"
+    						rows="2"
+    						value={this.props.value}
+    						onChange={this.handleChange}
+    						disabled={this.props.disabled || null}
+    					 />
+ </tableBase.td>
+ </tableBase.tr>
+ </tableBase.tbody>
+    	);
     }
 }

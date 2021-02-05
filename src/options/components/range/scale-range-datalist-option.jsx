@@ -18,32 +18,32 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default class ScaleRangeDatalistOption extends React.PureComponent {
     static defaultProps = {
-        disabled: true,
+    	disabled: true,
     };
 
     static propTypes = {
-        value: PropTypes.number.isRequired,
-        disabled: PropTypes.bool.isRequired,
+    	value: PropTypes.number.isRequired,
+    	disabled: PropTypes.bool.isRequired,
     };
 
     render() {
-        const {
-            disabled,
-            value,
-        } = this.props;
+    	const {
+    		disabled,
+    		value,
+    	} = this.props;
 
-        return (
-            <option
-                value={value}
-                disabled={disabled || null}
-            >
-                {value}
-            </option>
-        );
+    	return (
+    		<option
+    			value={value}
+    			disabled={disabled || null}
+	>
+    			{value}
+ </option>
+    	);
     }
 }

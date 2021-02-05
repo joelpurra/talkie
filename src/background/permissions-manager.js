@@ -19,115 +19,116 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	logDebug,
+	logError,
+} from "../shared/log";
+import {
+	promiseTry,
 } from "../shared/promise";
 
-import {
-    logDebug,
-    logError,
-} from "../shared/log";
-
 export default class PermissionsManager {
-    constructor() {
-        // NOTE: this is obfuscation to avoid errors regarding the permissions API not yet being implemented in Firefox (WebExtensions).
-        // NOTE: am doing feature detection, and this code should not even be called as the menus are not enabled for WebExtensions (Firefox).
-        // TODO: remove once Firefox is the main/only browser, and/or update strict_min_version in manifest.json.
-        const something = browser;
-        /* eslint-disable dot-notation */
-        this._pms = something["permissions"];
-        /* eslint-enable dot-notation */
-    }
+	constructor() {
+		// NOTE: this is obfuscation to avoid errors regarding the permissions API not yet being implemented in Firefox (WebExtensions).
+		// NOTE: am doing feature detection, and this code should not even be called as the menus are not enabled for WebExtensions (Firefox).
+		// TODO: remove once Firefox is the main/only browser, and/or update strict_min_version in manifest.json.
+		const something = browser;
+		/* eslint-disable dot-notation */
+		this._pms = something["permissions"];
+		/* eslint-enable dot-notation */
+	}
 
-    browserHasPermissionsFeature() {
-        return promiseTry(
-            () => !!this._pms,
-        );
-    }
+	browserHasPermissionsFeature() {
+		return promiseTry(
+			() => Boolean(this._pms),
+		);
+	}
 
-    hasPermissions(permissionNames, origins) {
-        return promiseTry(
-            () => this._pms.contains({
-                permissions: permissionNames,
-                origins: origins,
-            }),
-        );
-    }
+	hasPermissions(permissionNames, origins) {
+		return promiseTry(
+			() => this._pms.contains({
+				permissions: permissionNames,
+				origins,
+			}),
+		);
+	}
 
-    acquirePermissions(permissionNames, origins) {
-        return promiseTry(
-            () => this._pms.request({
-                permissions: permissionNames,
-                origins: origins,
-            }),
-        );
-    }
+	acquirePermissions(permissionNames, origins) {
+		return promiseTry(
+			() => this._pms.request({
+				permissions: permissionNames,
+				origins,
+			}),
+		);
+	}
 
-    releasePermissions(permissionNames, origins) {
-        return promiseTry(
-            () => this._pms.remove({
-                permissions: permissionNames,
-                origins: origins,
-            }),
-        );
-    }
+	releasePermissions(permissionNames, origins) {
+		return promiseTry(
+			() => this._pms.remove({
+				permissions: permissionNames,
+				origins,
+			}),
+		);
+	}
 
-    useOptionalPermissions(permissionNames, origins, fn) {
-        return promiseTry(
-            () => {
-                logDebug("Start", "useOptionalPermissions", permissionNames.length, permissionNames, origins.length, origins);
+	useOptionalPermissions(permissionNames, origins, fn) {
+		return promiseTry(
+			() => {
+				logDebug("Start", "useOptionalPermissions", permissionNames.length, permissionNames, origins.length, origins);
 
-                const hasPermissionsPromises = permissionNames.map((permissionName) => {
-                    // TODO: be more fine-grained per origin as well?
-                    return this.hasPermissions([permissionName], origins);
-                });
+				const hasPermissionsPromises = permissionNames.map((permissionName) => {
+					// TODO: be more fine-grained per origin as well?
+					return this.hasPermissions([
+						permissionName,
+					], origins);
+				});
 
-                return Promise.all(hasPermissionsPromises)
-                    .then((hasPermissionsStates) => {
-                        const activePermissionNames = [];
-                        const inactivePermissionNames = [];
+				return Promise.all(hasPermissionsPromises)
+					.then((hasPermissionsStates) => {
+						const activePermissionNames = [];
+						const inactivePermissionNames = [];
 
-                        hasPermissionsStates.forEach((hasPermissionsState, index) => {
-                            const permissionName = permissionNames[index];
+						hasPermissionsStates.forEach((hasPermissionsState, index) => {
+							const permissionName = permissionNames[index];
 
-                            if (hasPermissionsState) {
-                                activePermissionNames.push(permissionName);
-                            } else {
-                                inactivePermissionNames.push(permissionName);
-                            }
-                        });
+							if (hasPermissionsState) {
+								activePermissionNames.push(permissionName);
+							} else {
+								inactivePermissionNames.push(permissionName);
+							}
+						});
 
-                        logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Already acquired", activePermissionNames);
-                        logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Not yet acquired", inactivePermissionNames);
+						logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Already acquired", activePermissionNames);
+						logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Not yet acquired", inactivePermissionNames);
 
-                        return this.acquirePermissions(inactivePermissionNames, origins)
-                            .then((granted) => {
-                                if (granted) {
-                                    logDebug("useOptionalPermissions", permissionNames.length, origins.length, "All permissions acquired");
-                                } else {
-                                    logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Permissions not acquired");
-                                }
+						return this.acquirePermissions(inactivePermissionNames, origins)
+							.then((granted) => {
+								if (granted) {
+									logDebug("useOptionalPermissions", permissionNames.length, origins.length, "All permissions acquired");
+								} else {
+									logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Permissions not acquired");
+								}
 
-                                return Promise.resolve()
-                                    .then(() => fn(granted))
-                                    .then((result) => {
-                                        return this.releasePermissions(inactivePermissionNames)
-                                            .then(() => {
-                                                logDebug("Done", "useOptionalPermissions", permissionNames.length, origins.length);
+								return Promise.resolve()
+									.then(() => fn(granted))
+									.then((result) => {
+										return this.releasePermissions(inactivePermissionNames)
+											.then(() => {
+												logDebug("Done", "useOptionalPermissions", permissionNames.length, origins.length);
 
-                                                return result;
-                                            });
-                                    })
-                                    .catch((error) => {
-                                        logError("useOptionalPermissions", permissionNames.length, origins.length, error);
+												return result;
+											});
+									})
+									.catch((error) => {
+										logError("useOptionalPermissions", permissionNames.length, origins.length, error);
 
-                                        return this.releasePermissions(inactivePermissionNames, origins)
-                                            .then(() => {
-                                                throw error;
-                                            });
-                                    });
-                            });
-                    });
-            },
-        );
-    }
+										return this.releasePermissions(inactivePermissionNames, origins)
+											.then(() => {
+												throw error;
+											});
+									});
+							});
+					});
+			},
+		);
+	}
 }

@@ -19,19 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    createAssignmentActionMapReducer,
+	createAssignmentActionMapReducer,
 } from "../utils/reduce-helpers";
 
 // import * as actionTypes from "../constants/action-types-navigation";
 
 const initialState = {
-    // xxx: null,
+	// xxx: null,
 };
 
 const customActionsMap = {};
 
 const assignActionsMap = {
-    // [actionTypes.SET_XXX]: "xxx",
+	// [actionTypes.SET_XXX]: "xxx",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

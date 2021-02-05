@@ -19,141 +19,140 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "../shared/promise";
-
 import {
-    rateRange,
+	rateRange,
 } from "../shared/voices";
 
 export default class VoiceRateManager {
-    constructor(storageManager, metadataManager) {
-        this.storageManager = storageManager;
-        this.metadataManager = metadataManager;
+	constructor(storageManager, metadataManager) {
+		this.storageManager = storageManager;
+		this.metadataManager = metadataManager;
 
-        this.voiceRateRateOverridesStorageKey = "voice-rate-overrides";
-    }
+		this.voiceRateRateOverridesStorageKey = "voice-rate-overrides";
+	}
 
-    getVoiceRateDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
-        return promiseTry(
-            // TODO: initialize a "real" synthesizer voice, then read out the rate value.
-            () => rateRange.default,
-        );
-    }
+	getVoiceRateDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
+		return promiseTry(
+			// TODO: initialize a "real" synthesizer voice, then read out the rate value.
+			() => rateRange.default,
+		);
+	}
 
-    hasVoiceRateDefault(voiceName) {
-        return promiseTry(
-            () => this.getVoiceRateDefault(voiceName)
-                .then((voiceRateDefault) => {
-                    if (voiceRateDefault) {
-                        return true;
-                    }
+	hasVoiceRateDefault(voiceName) {
+		return promiseTry(
+			() => this.getVoiceRateDefault(voiceName)
+				.then((voiceRateDefault) => {
+					if (voiceRateDefault) {
+						return true;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    _getVoiceRateOverrides() {
-        return promiseTry(
-            () => this.metadataManager.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this.storageManager.getStoredValue(this.voiceRateRateOverridesStorageKey)
-                            .then((voiceRateRateOverrides) => {
-                                if (voiceRateRateOverrides !== null && typeof voiceRateRateOverrides === "object") {
-                                    return voiceRateRateOverrides;
-                                }
+	_getVoiceRateOverrides() {
+		return promiseTry(
+			() => this.metadataManager.isPremiumEdition()
+				.then((isPremiumEdition) => {
+					if (isPremiumEdition) {
+						return this.storageManager.getStoredValue(this.voiceRateRateOverridesStorageKey)
+							.then((voiceRateRateOverrides) => {
+								if (voiceRateRateOverrides !== null && typeof voiceRateRateOverrides === "object") {
+									return voiceRateRateOverrides;
+								}
 
-                                return {};
-                            });
-                    }
+								return {};
+							});
+					}
 
-                    return {};
-                }),
-        );
-    }
+					return {};
+				}),
+		);
+	}
 
-    _setVoiceRateOverrides(voiceRateRateOverrides) {
-        return promiseTry(
-            () => this.metadataManager.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this.storageManager.setStoredValue(this.voiceRateRateOverridesStorageKey, voiceRateRateOverrides);
-                    }
+	_setVoiceRateOverrides(voiceRateRateOverrides) {
+		return promiseTry(
+			() => this.metadataManager.isPremiumEdition()
+				.then((isPremiumEdition) => {
+					if (isPremiumEdition) {
+						return this.storageManager.setStoredValue(this.voiceRateRateOverridesStorageKey, voiceRateRateOverrides);
+					}
 
-                    return undefined;
-                }),
-        );
-    }
+					return undefined;
+				}),
+		);
+	}
 
-    getVoiceRateOverride(voiceName) {
-        return promiseTry(
-            () => this._getVoiceRateOverrides()
-                .then((voiceRateRateOverrides) => {
-                    return voiceRateRateOverrides[voiceName] || null;
-                }),
-        );
-    }
+	getVoiceRateOverride(voiceName) {
+		return promiseTry(
+			() => this._getVoiceRateOverrides()
+				.then((voiceRateRateOverrides) => {
+					return voiceRateRateOverrides[voiceName] || null;
+				}),
+		);
+	}
 
-    setVoiceRateOverride(voiceName, rate) {
-        return promiseTry(
-            () => this._getVoiceRateOverrides()
-                .then((voiceRateRateOverrides) => {
-                    voiceRateRateOverrides[voiceName] = rate;
+	setVoiceRateOverride(voiceName, rate) {
+		return promiseTry(
+			() => this._getVoiceRateOverrides()
+				.then((voiceRateRateOverrides) => {
+					voiceRateRateOverrides[voiceName] = rate;
 
-                    return this._setVoiceRateOverrides(voiceRateRateOverrides);
-                }),
-        );
-    }
+					return this._setVoiceRateOverrides(voiceRateRateOverrides);
+				}),
+		);
+	}
 
-    removeVoiceRateOverride(voiceName) {
-        return promiseTry(
-            () => this._getVoiceRateOverrides()
-                .then((voiceRateRateOverrides) => {
-                    delete voiceRateRateOverrides[voiceName];
+	removeVoiceRateOverride(voiceName) {
+		return promiseTry(
+			() => this._getVoiceRateOverrides()
+				.then((voiceRateRateOverrides) => {
+					delete voiceRateRateOverrides[voiceName];
 
-                    return this._setVoiceRateOverrides(voiceRateRateOverrides);
-                }),
-        );
-    }
+					return this._setVoiceRateOverrides(voiceRateRateOverrides);
+				}),
+		);
+	}
 
-    hasVoiceRateOverride(voiceName) {
-        return promiseTry(
-            () => this.getVoiceRateOverride(voiceName)
-                .then((voiceRateOverride) => {
-                    if (voiceRateOverride) {
-                        return true;
-                    }
+	hasVoiceRateOverride(voiceName) {
+		return promiseTry(
+			() => this.getVoiceRateOverride(voiceName)
+				.then((voiceRateOverride) => {
+					if (voiceRateOverride) {
+						return true;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    isVoiceRateOverride(voiceName, rate) {
-        return promiseTry(
-            () => this.getVoiceRateOverride(voiceName)
-                .then((voiceRateOverride) => {
-                    if (voiceRateOverride) {
-                        return voiceRateOverride === rate;
-                    }
+	isVoiceRateOverride(voiceName, rate) {
+		return promiseTry(
+			() => this.getVoiceRateOverride(voiceName)
+				.then((voiceRateOverride) => {
+					if (voiceRateOverride) {
+						return voiceRateOverride === rate;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    getEffectiveRateForVoice(voiceName) {
-        return promiseTry(
-            () => this.hasVoiceRateOverride(voiceName)
-                .then((hasVoiceRateOverride) => {
-                    if (hasVoiceRateOverride) {
-                        return this.getVoiceRateOverride(voiceName);
-                    }
+	getEffectiveRateForVoice(voiceName) {
+		return promiseTry(
+			() => this.hasVoiceRateOverride(voiceName)
+				.then((hasVoiceRateOverride) => {
+					if (hasVoiceRateOverride) {
+						return this.getVoiceRateOverride(voiceName);
+					}
 
-                    return this.getVoiceRateDefault(voiceName);
-                }),
-        );
-    }
+					return this.getVoiceRateDefault(voiceName);
+				}),
+		);
+	}
 }

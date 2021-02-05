@@ -19,89 +19,90 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "./promise";
 
 export default class Configuration {
-    // NOTE: keep SynchronousConfiguration and Configuration in... sync.
-    constructor(metadataManager, configurationObject) {
-        this.metadataManager = metadataManager;
-        this.configurationObject = configurationObject;
+	// NOTE: keep SynchronousConfiguration and Configuration in... sync.
+	constructor(metadataManager, configurationObject) {
+		this.metadataManager = metadataManager;
+		this.configurationObject = configurationObject;
 
-        this._initialize();
-    }
+		this._initialize();
+	}
 
-    _initialize() {
-        this.configurationObject.shared.urls.root = "/";
-        this.configurationObject.shared.urls.demo = "/src/demo/demo.html";
-        this.configurationObject.shared.urls.options = "/src/options/options.html";
-        this.configurationObject.shared.urls.popup = "/src/popup/popup.html";
+	_initialize() {
+		this.configurationObject.shared.urls.root = "/";
+		this.configurationObject.shared.urls.demo = "/src/demo/demo.html";
+		this.configurationObject.shared.urls.options = "/src/options/options.html";
+		this.configurationObject.shared.urls.popup = "/src/popup/popup.html";
 
-        // NOTE: direct links to individual tabs.
-        this.configurationObject.shared.urls["demo-about"] = this.configurationObject.shared.urls.demo + "#about";
-        this.configurationObject.shared.urls["demo-features"] = this.configurationObject.shared.urls.demo + "#features";
-        this.configurationObject.shared.urls["demo-support"] = this.configurationObject.shared.urls.demo + "#support";
-        this.configurationObject.shared.urls["demo-usage"] = this.configurationObject.shared.urls.demo + "#usage";
-        this.configurationObject.shared.urls["demo-voices"] = this.configurationObject.shared.urls.demo + "#voices";
-        this.configurationObject.shared.urls["demo-welcome"] = this.configurationObject.shared.urls.demo + "#welcome";
+		// NOTE: direct links to individual tabs.
+		this.configurationObject.shared.urls["demo-about"] = this.configurationObject.shared.urls.demo + "#about";
+		this.configurationObject.shared.urls["demo-features"] = this.configurationObject.shared.urls.demo + "#features";
+		this.configurationObject.shared.urls["demo-support"] = this.configurationObject.shared.urls.demo + "#support";
+		this.configurationObject.shared.urls["demo-usage"] = this.configurationObject.shared.urls.demo + "#usage";
+		this.configurationObject.shared.urls["demo-voices"] = this.configurationObject.shared.urls.demo + "#voices";
+		this.configurationObject.shared.urls["demo-welcome"] = this.configurationObject.shared.urls.demo + "#welcome";
 
-        // NOTE: direct links to individual tabs.
-        // NOTE: need to pass a parameter to the options page.
-        [
-            "popup",
-            "demo",
-        ].forEach((from) => {
-            this.configurationObject.shared.urls[`options-from-${from}`] = this.configurationObject.shared.urls.options + `?from=${from}`;
-            this.configurationObject.shared.urls[`options-about-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#about";
-            this.configurationObject.shared.urls[`options-upgrade-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#upgrade";
-        });
+		// NOTE: direct links to individual tabs.
+		// NOTE: need to pass a parameter to the options page.
+		[
+			"popup",
+			"demo",
+		].forEach((from) => {
+			this.configurationObject.shared.urls[`options-from-${from}`] = this.configurationObject.shared.urls.options + `?from=${from}`;
+			this.configurationObject.shared.urls[`options-about-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#about";
+			this.configurationObject.shared.urls[`options-upgrade-from-${from}`] = this.configurationObject.shared.urls[`options-from-${from}`] + "#upgrade";
+		});
 
-        this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
-    }
+		this.configurationObject.shared.urls["popup-passclick-false"] = this.configurationObject.shared.urls.popup + "?passclick=false";
+	}
 
-    _resolvePath(obj, path) {
-        // NOTE: doesn't handle arrays nor properties of "any" non-object objects.
-        if (!obj || typeof obj !== "object") {
-            throw new Error();
-        }
+	_resolvePath(object, path) {
+		// NOTE: doesn't handle arrays nor properties of "any" non-object objects.
+		if (!object || typeof object !== "object") {
+			throw new Error();
+		}
 
-        if (!path || typeof path !== "string" || path.length === 0) {
-            throw new Error();
-        }
+		if (!path || typeof path !== "string" || path.length === 0) {
+			throw new Error();
+		}
 
-        // NOTE: doesn't handle path["subpath"].
-        const parts = path.split(".");
-        const part = parts.shift();
+		// NOTE: doesn't handle path["subpath"].
+		const parts = path.split(".");
+		const part = parts.shift();
 
-        if (({}).hasOwnProperty.call(obj, part)) {
-            if (parts.length === 0) {
-                return obj[part];
-            }
-            return this._resolvePath(obj[part], parts.join("."));
-        }
+		if (({}).hasOwnProperty.call(object, part)) {
+			if (parts.length === 0) {
+				return object[part];
+			}
 
-        return null;
-    }
+			return this._resolvePath(object[part], parts.join("."));
+		}
 
-    get(path) {
-        return promiseTry(
-            () => this.metadataManager.getSystemType()
-                .then((systemType) =>
-                    /* eslint-disable no-sync */
-                    this.getSync(systemType, path),
-                    /* eslint-enable no-sync */
-                ),
-        );
-    }
+		return null;
+	}
 
-    getSync(systemType, path) {
-        const systemValue = this._resolvePath(this.configurationObject[systemType], path);
-        const sharedValue = this._resolvePath(this.configurationObject.shared, path);
+	get(path) {
+		return promiseTry(
+			() => this.metadataManager.getSystemType()
+				.then((systemType) =>
+				/* eslint-disable no-sync */
+					this.getSync(systemType, path),
+					/* eslint-enable no-sync */
+				),
+		);
+	}
 
-        const value = systemValue
+	getSync(systemType, path) {
+		const systemValue = this._resolvePath(this.configurationObject[systemType], path);
+		const sharedValue = this._resolvePath(this.configurationObject.shared, path);
+
+		const value = systemValue
                         || sharedValue
                         || null;
 
-        return value;
-    }
+		return value;
+	}
 }

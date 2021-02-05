@@ -18,49 +18,48 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    connect,
+	connect,
 } from "react-redux";
 
 import Progress from "../components/sections/progress.jsx";
 
 const mapStateToProps = (state) => {
-    return {
-        min: state.shared.progress.min,
-        current: state.shared.progress.current,
-        max: state.shared.progress.max,
-    };
+	return {
+		min: state.shared.progress.min,
+		current: state.shared.progress.current,
+		max: state.shared.progress.max,
+	};
 };
 
 const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint-enable no-unused-vars */) => {
-    return {};
+	return {};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class ProgressContainer extends React.PureComponent {
     static propTypes = {
-        min: PropTypes.number.isRequired,
-        current: PropTypes.number.isRequired,
-        max: PropTypes.number.isRequired,
+    	min: PropTypes.number.isRequired,
+    	current: PropTypes.number.isRequired,
+    	max: PropTypes.number.isRequired,
     }
 
     render() {
-        const {
-            min,
-            current,
-            max,
-        } = this.props;
+    	const {
+    		min,
+    		current,
+    		max,
+    	} = this.props;
 
-        return (
-            <Progress
-                min={min}
-                current={current}
-                max={max}
-            />
-        );
+    	return (
+    		<Progress
+    			min={min}
+    			current={current}
+    			max={max}
+    		/>
+    	);
     }
 }

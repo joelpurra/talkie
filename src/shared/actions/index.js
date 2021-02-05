@@ -25,9 +25,9 @@ import * as speaking from "./speaking";
 import * as voices from "./voices";
 
 export default {
-    metadata,
-    navigation,
-    progress,
-    speaking,
-    voices,
+	metadata,
+	navigation,
+	progress,
+	speaking,
+	voices,
 };

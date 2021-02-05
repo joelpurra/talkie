@@ -18,58 +18,55 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    bindActionCreators,
+	connect,
+} from "react-redux";
+import {
+	bindActionCreators,
 } from "redux";
 
-import {
-    connect,
-} from "react-redux";
-
+import actionCreators from "../actions";
 import Text from "../components/sections/text.jsx";
 
-import actionCreators from "../actions";
-
 const mapStateToProps = (state) => {
-    return {
-        speakLongTexts: state.shared.voices.speakLongTexts,
-    };
+	return {
+		speakLongTexts: state.shared.voices.speakLongTexts,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        actions: {
-            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
-        },
-    };
+	return {
+		actions: {
+			sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+		},
+	};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class TextContainer extends React.PureComponent {
-    componentDidMount() {
-        this.props.actions.sharedVoices.loadSpeakLongTexts();
-    }
+	componentDidMount() {
+		this.props.actions.sharedVoices.loadSpeakLongTexts();
+	}
 
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
+    	actions: PropTypes.object.isRequired,
+    	speakLongTexts: PropTypes.bool.isRequired,
     }
 
     render() {
-        const {
-            actions,
-            speakLongTexts,
-        } = this.props;
+    	const {
+    		actions,
+    		speakLongTexts,
+    	} = this.props;
 
-        return (
-            <Text
-                actions={actions}
-                speakLongTexts={speakLongTexts}
-            />
-        );
+    	return (
+    		<Text
+    			actions={actions}
+    			speakLongTexts={speakLongTexts}
+    		/>
+    	);
     }
 }

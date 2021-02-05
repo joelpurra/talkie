@@ -18,56 +18,58 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default class StyleRoot extends React.PureComponent {
     static defaultProps = {
-        isSpeaking: false,
-        isPremiumEdition: false,
+    	isSpeaking: false,
+    	isPremiumEdition: false,
     };
 
     static propTypes = {
-        isSpeaking: PropTypes.bool.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-        children: PropTypes.element.isRequired,
+    	isSpeaking: PropTypes.bool.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	children: PropTypes.element.isRequired,
     }
 
     getStateClasses() {
-        const {
-            isSpeaking,
-            isPremiumEdition,
-        } = this.props;
+    	const {
+    		isSpeaking,
+    		isPremiumEdition,
+    	} = this.props;
 
-        const stateClasses = [];
+    	const stateClasses = [];
 
-        if (isSpeaking) {
-            stateClasses.push("talkie-speaking");
-        } else {
-            stateClasses.push("talkie-not-speaking");
-        }
+    	if (isSpeaking) {
+    		stateClasses.push("talkie-speaking");
+    	} else {
+    		stateClasses.push("talkie-not-speaking");
+    	}
 
-        if (isPremiumEdition) {
-            stateClasses.push("talkie-premium");
-        } else {
-            stateClasses.push("talkie-free");
-        }
+    	if (isPremiumEdition) {
+    		stateClasses.push("talkie-premium");
+    	} else {
+    		stateClasses.push("talkie-free");
+    	}
 
-        return stateClasses;
+    	return stateClasses;
     }
 
     render() {
-        const {
-            children,
-        } = this.props;
+    	const {
+    		children,
+    	} = this.props;
 
-        const stateClasses = this.getStateClasses();
-        const stateClassNames = stateClasses.join(" ");
+    	const stateClasses = this.getStateClasses();
+    	const stateClassNames = stateClasses.join(" ");
 
-        return <div
-            className={stateClassNames}
-        >
-            {React.Children.only(children)}
-        </div>;
+    	return (
+	<div
+	className={stateClassNames}
+    		>
+	{React.Children.only(children)}
+    		</div>
+    	);
     }
 }

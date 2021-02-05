@@ -18,161 +18,164 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import translateAttribute from "../../../../shared/hocs/translate.jsx";
+import React from "react";
 
 import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
 export default
 @translateAttribute
 class AvailableLanguages extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.defaultAllLanguagesValue = "all-languages";
+		this.defaultAllLanguagesValue = "all-languages";
 
-        this.handleChange = this.handleChange.bind(this);
-    }
+		this.handleChange = this.handleChange.bind(this);
+	}
 
     static defaultProps = {
-        voicesByLanguage: {},
-        voicesByLanguageGroup: {},
-        languageGroups: [],
-        languagesByLanguageGroup: {},
-        value: null,
-        disabled: true,
+    	voicesByLanguage: {},
+    	voicesByLanguageGroup: {},
+    	languageGroups: [],
+    	languagesByLanguageGroup: {},
+    	value: null,
+    	disabled: true,
     };
 
     static propTypes = {
-        voicesByLanguage: PropTypes.objectOf(
-            PropTypes.arrayOf(PropTypes.shape({
-                default: PropTypes.bool.isRequired,
-                lang: PropTypes.string.isRequired,
-                localService: PropTypes.bool.isRequired,
-                name: PropTypes.string.isRequired,
-                voiceURI: PropTypes.string.isRequired,
-            })).isRequired,
-        ).isRequired,
-        voicesByLanguageGroup: PropTypes.objectOf(
-            PropTypes.arrayOf(PropTypes.shape({
-                default: PropTypes.bool.isRequired,
-                lang: PropTypes.string.isRequired,
-                localService: PropTypes.bool.isRequired,
-                name: PropTypes.string.isRequired,
-                voiceURI: PropTypes.string.isRequired,
-            })).isRequired,
-        ).isRequired,
-        languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        languagesByLanguageGroup: PropTypes.objectOf(
-            PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        ).isRequired,
-        value: PropTypes.string,
-        onChange: PropTypes.func.isRequired,
-        disabled: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
+    	voicesByLanguage: PropTypes.objectOf(
+    		PropTypes.arrayOf(PropTypes.shape({
+    			"default": PropTypes.bool.isRequired,
+    			lang: PropTypes.string.isRequired,
+    			localService: PropTypes.bool.isRequired,
+    			name: PropTypes.string.isRequired,
+    			voiceURI: PropTypes.string.isRequired,
+    		})).isRequired,
+    	).isRequired,
+    	voicesByLanguageGroup: PropTypes.objectOf(
+    		PropTypes.arrayOf(PropTypes.shape({
+    			"default": PropTypes.bool.isRequired,
+    			lang: PropTypes.string.isRequired,
+    			localService: PropTypes.bool.isRequired,
+    			name: PropTypes.string.isRequired,
+    			voiceURI: PropTypes.string.isRequired,
+    		})).isRequired,
+    	).isRequired,
+    	languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    	languagesByLanguageGroup: PropTypes.objectOf(
+    		PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    	).isRequired,
+    	value: PropTypes.string,
+    	onChange: PropTypes.func.isRequired,
+    	disabled: PropTypes.bool.isRequired,
+    	translate: PropTypes.func.isRequired,
     };
 
     handleChange(newlySelectedLanguageName) {
-        let languageName = null;
+    	let languageName = null;
 
-        if (newlySelectedLanguageName !== this.defaultAllLanguagesValue) {
-            languageName = newlySelectedLanguageName;
-        }
+    	if (newlySelectedLanguageName !== this.defaultAllLanguagesValue) {
+    		languageName = newlySelectedLanguageName;
+    	}
 
-        this.props.onChange(languageName);
+    	this.props.onChange(languageName);
     }
 
     render() {
-        const {
-            translate,
-            value,
-            disabled,
-            languageGroups,
-            voicesByLanguage,
-            voicesByLanguageGroup,
-            languagesByLanguageGroup,
-        } = this.props;
+    	const {
+    		translate,
+    		value,
+    		disabled,
+    		languageGroups,
+    		voicesByLanguage,
+    		voicesByLanguageGroup,
+    		languagesByLanguageGroup,
+    	} = this.props;
 
-        const frontendVoicesShowAllVoicesTranslated = translate("frontend_voicesShowAllVoices");
+    	const frontendVoicesShowAllVoicesTranslated = translate("frontend_voicesShowAllVoices");
 
-        const languagesOptions = languageGroups.reduce(
-            (options, languageGroup) => {
-                const newOptions = [];
+    	const languagesOptions = languageGroups.reduce(
+    		(options, languageGroup) => {
+    			const newOptions = [];
 
-                const voicesPerLanguageGroup = voicesByLanguageGroup[languageGroup];
+    			const voicesPerLanguageGroup = voicesByLanguageGroup[languageGroup];
 
-                const languagesPerGroup = languagesByLanguageGroup[languageGroup].filter((language) => language !== languageGroup);
+    			const languagesPerGroup = languagesByLanguageGroup[languageGroup].filter((language) => language !== languageGroup);
 
-                let languageGroupText = null;
+    			let languageGroupText = null;
 
-                if (languagesPerGroup.length > 1 || voicesPerLanguageGroup.length > 1) {
-                    languageGroupText = `${languageGroup} (${languagesPerGroup.length}, ${voicesPerLanguageGroup.length})`;
-                } else {
-                    languageGroupText = languageGroup;
-                }
+    			if (languagesPerGroup.length > 1 || voicesPerLanguageGroup.length > 1) {
+    				languageGroupText = `${languageGroup} (${languagesPerGroup.length}, ${voicesPerLanguageGroup.length})`;
+    			} else {
+    				languageGroupText = languageGroup;
+    			}
 
-                const languageGroupOptionElement
-                = <option
-                    key={languageGroup}
-                    // TODO: proper way to store/look up objects?
-                    value={languageGroup}
-                    className="group"
-                    lang="en"
-                >
-                    {languageGroupText}
-                </option>;
+    			const languageGroupOptionElement
+                = (
+	<option
+	key={languageGroup}
+                	// TODO: proper way to store/look up objects?
+	value={languageGroup}
+	className="group"
+	lang="en"
+                	>
+	{languageGroupText}
+                	</option>
+                );
 
-                newOptions.push(languageGroupOptionElement);
+    			newOptions.push(languageGroupOptionElement);
 
-                languagesPerGroup
-                    .filter((language) => language !== languageGroup)
-                    .forEach((language) => {
-                        let languageText = null;
+    			languagesPerGroup
+    				.filter((language) => language !== languageGroup)
+    				.forEach((language) => {
+    					let languageText = null;
 
-                        if (voicesByLanguage[language].length > 1) {
-                            languageText = `${language} (${voicesByLanguage[language].length})`;
-                        } else {
-                            languageText = language;
-                        }
+    					if (voicesByLanguage[language].length > 1) {
+    						languageText = `${language} (${voicesByLanguage[language].length})`;
+    					} else {
+    						languageText = language;
+    					}
 
-                        const languageOptionElement
-                        = <option
-                            key={language}
-                            // TODO: proper way to store/look up objects?
-                            value={language}
-                            lang="en"
-                        >
-                            {languageText}
-                        </option>;
+    					const languageOptionElement
+                        = (
+	<option
+	key={language}
+                        	// TODO: proper way to store/look up objects?
+	value={language}
+	lang="en"
+                        	>
+	{languageText}
+                        	</option>
+                        );
 
-                        newOptions.push(languageOptionElement);
-                    });
+    					newOptions.push(languageOptionElement);
+    				});
 
-                return options.concat(newOptions);
-            },
-            [
-                <option
-                    key={this.defaultAllLanguagesValue}
-                    value={this.defaultAllLanguagesValue}
-                    className="group"
-                >
-                    {frontendVoicesShowAllVoicesTranslated}
-                </option>,
-            ],
-        );
+    			return options.concat(newOptions);
+    		},
+    		[
+    			<option
+    				key={this.defaultAllLanguagesValue}
+    				value={this.defaultAllLanguagesValue}
+    				className="group"
+	>
+    				{frontendVoicesShowAllVoicesTranslated}
+ </option>,
+    		],
+    	);
 
-        return (
-            <MultilineSelect
-                size={7}
-                onChange={this.handleChange}
-                value={value || this.defaultAllLanguagesValue}
-                disabled={disabled}
-                className="grouped"
-            >
-                {languagesOptions}
-            </MultilineSelect>
-        );
+    	return (
+    		<MultilineSelect
+    			size={7}
+    			onChange={this.handleChange}
+    			value={value || this.defaultAllLanguagesValue}
+    			disabled={disabled}
+    			className="grouped"
+	>
+    			{languagesOptions}
+ </MultilineSelect>
+    	);
     }
 }

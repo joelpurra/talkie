@@ -18,20 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import configureAttribute from "../../shared/hocs/configure.jsx";
-import translateAttribute from "../../shared/hocs/translate.jsx";
-import styled from "../../shared/hocs/styled.jsx";
-
-import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
-import * as textBase from "../../shared/styled/text/text-base.jsx";
-import * as buttonBase from "../../shared/styled/button/button-base.jsx";
+import React from "react";
 
 import Discretional from "../../shared/components/discretional.jsx";
-import TalkieEditionIcon from "../../shared/components/icon/talkie-edition-icon.jsx";
 import ExtensionShortName from "../../shared/components/editions/extension-short-name.jsx";
+import TalkieEditionIcon from "../../shared/components/icon/talkie-edition-icon.jsx";
+import configureAttribute from "../../shared/hocs/configure.jsx";
+import styled from "../../shared/hocs/styled.jsx";
+import translateAttribute from "../../shared/hocs/translate.jsx";
+import * as buttonBase from "../../shared/styled/button/button-base.jsx";
+import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
+import * as textBase from "../../shared/styled/text/text-base.jsx";
 
 const styles = {};
 
@@ -40,86 +38,86 @@ export default
 @translateAttribute
 @styled(styles)
 class Header extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.styled = {
-            extensionName: styled({
-                fontWeight: "bold",
-                textDecoration: "none",
-                ":focus": {
-                    outline: 0,
-                },
-            })(textBase.a),
+		this.styled = {
+			extensionName: styled({
+				fontWeight: "bold",
+				textDecoration: "none",
+				":focus": {
+					outline: 0,
+				},
+			})(textBase.a),
 
-            button: styled({
-                lineHeight: "1.5em",
-                // float: __MSG_@@bidi_end_edge__;
-                ":focus": {
-                    outline: 0,
-                },
-            })(buttonBase.a),
-        };
-    }
+			button: styled({
+				lineHeight: "1.5em",
+				// float: __MSG_@@bidi_end_edge__;
+				":focus": {
+					outline: 0,
+				},
+			})(buttonBase.a),
+		};
+	}
 
     static defaultProps = {
-        isPremiumEdition: false,
+    	isPremiumEdition: false,
     };
 
     static propTypes = {
-        isPremiumEdition: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
-        configure: PropTypes.func.isRequired,
-        className: PropTypes.string.isRequired,
-        onConfigurationChange: PropTypes.func.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	translate: PropTypes.func.isRequired,
+    	configure: PropTypes.func.isRequired,
+    	className: PropTypes.string.isRequired,
+    	onConfigurationChange: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
-        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
     }
 
     componentWillUnmount() {
-        this._unregisterConfigurationListener();
+    	this._unregisterConfigurationListener();
     }
 
     render() {
-        const {
-            className,
-            isPremiumEdition,
-            translate,
-            configure,
-        } = this.props;
+    	const {
+    		className,
+    		isPremiumEdition,
+    		translate,
+    		configure,
+    	} = this.props;
 
-        return (
-            <layoutBase.header className={className}>
-                {/* TODO: show for free Talkie, not for Talkie Premium. */}
-                <Discretional
-                    enabled={!isPremiumEdition}
-                >
-                    <this.styled.button
-                        href={configure("urls.options-upgrade-from-demo")}
-                        id="header-premium-button"
-                        lang="en"
-                    >
-                        {translate("extensionShortName_Premium")}
-                    </this.styled.button>
-                </Discretional>
+    	return (
+    		<layoutBase.header className={className}>
+    			{/* TODO: show for free Talkie, not for Talkie Premium. */}
+    			<Discretional
+    				enabled={!isPremiumEdition}
+	>
+    				<this.styled.button
+    					href={configure("urls.options-upgrade-from-demo")}
+    					id="header-premium-button"
+    					lang="en"
+	>
+    					{translate("extensionShortName_Premium")}
+ </this.styled.button>
+ </Discretional>
 
-                <textBase.h1>
-                    <TalkieEditionIcon
-                        isPremiumEdition={isPremiumEdition}
-                    />
+    			<textBase.h1>
+    				<TalkieEditionIcon
+    					isPremiumEdition={isPremiumEdition}
+    				/>
 
-                    <this.styled.extensionName
-                        href={configure("urls.main")}
-                        lang="en"
-                    >
-                        <ExtensionShortName
-                            isPremiumEdition={isPremiumEdition}
-                        />
-                    </this.styled.extensionName>
-                </textBase.h1>
-            </layoutBase.header>
-        );
+    				<this.styled.extensionName
+    					href={configure("urls.main")}
+    					lang="en"
+	>
+    					<ExtensionShortName
+    						isPremiumEdition={isPremiumEdition}
+    					/>
+ </this.styled.extensionName>
+ </textBase.h1>
+ </layoutBase.header>
+    	);
     }
 }

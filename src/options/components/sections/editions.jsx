@@ -18,43 +18,43 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import TalkiePremiumEdition from "./editions/talkie-premium-edition.jsx";
 
 export default class Editions extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleIsPremiumEditionChange = this.handleIsPremiumEditionChange.bind(this);
-    }
+		this.handleIsPremiumEditionChange = this.handleIsPremiumEditionChange.bind(this);
+	}
 
     static defaultProps = {
-        isPremiumEdition: false,
+    	isPremiumEdition: false,
     };
 
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
+    	actions: PropTypes.object.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
     }
 
     handleIsPremiumEditionChange(isPremiumEdition) {
-        this.props.actions.sharedMetadata.storeIsPremiumEdition(isPremiumEdition);
+    	this.props.actions.sharedMetadata.storeIsPremiumEdition(isPremiumEdition);
     }
 
     render() {
-        const {
-            isPremiumEdition,
-        } = this.props;
-        return (
-            <section>
-                <TalkiePremiumEdition
-                    onChange={this.handleIsPremiumEditionChange}
-                    isPremiumEdition={isPremiumEdition}
-                    disabled={false}
-                />
-            </section>
-        );
+    	const {
+    		isPremiumEdition,
+    	} = this.props;
+    	return (
+    		<section>
+    			<TalkiePremiumEdition
+    				onChange={this.handleIsPremiumEditionChange}
+    				isPremiumEdition={isPremiumEdition}
+    				disabled={false}
+    			/>
+ </section>
+    	);
     }
 }

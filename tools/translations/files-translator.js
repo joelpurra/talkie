@@ -26,54 +26,54 @@ const clone = require("clone");
 const jsonfile = require("jsonfile");
 
 export default class FilesTranslator {
-    constructor(messagesTranslatorFactory, base, locales) {
-        assert(typeof messagesTranslatorFactory === "object");
-        assert(typeof messagesTranslatorFactory.create === "function");
-        assert(typeof base === "object");
-        assert(typeof base.filePath === "string");
-        assert(typeof base.language === "string");
-        assert(Array.isArray(locales));
-        locales.forEach((locale) => {
-            assert(typeof locale.filePath === "string");
-            assert(typeof locale.language === "string");
+	constructor(messagesTranslatorFactory, base, locales) {
+		assert(typeof messagesTranslatorFactory === "object");
+		assert(typeof messagesTranslatorFactory.create === "function");
+		assert(typeof base === "object");
+		assert(typeof base.filePath === "string");
+		assert(typeof base.language === "string");
+		assert(Array.isArray(locales));
+		locales.forEach((locale) => {
+			assert(typeof locale.filePath === "string");
+			assert(typeof locale.language === "string");
 
-            // NOTE: ensure the base language isn't translated onto itself.
-            assert(typeof locale.language !== base.language);
-        });
+			// NOTE: ensure the base language isn't translated onto itself.
+			assert(typeof locale.language !== base.language);
+		});
 
-        this._messagesTranslatorFactory = messagesTranslatorFactory;
-        this._base = base;
-        this._locales = locales;
-    }
+		this._messagesTranslatorFactory = messagesTranslatorFactory;
+		this._base = base;
+		this._locales = locales;
+	}
 
-    translate() {
-        return jsonfile.readFile(this._base.filePath)
-            .then((baseMessages) => {
-                const baseWithMessages = {
-                    messages: clone(baseMessages),
-                    language: this._base.language,
-                };
+	translate() {
+		return jsonfile.readFile(this._base.filePath)
+			.then((baseMessages) => {
+				const baseWithMessages = {
+					messages: clone(baseMessages),
+					language: this._base.language,
+				};
 
-                return Promise.map(
-                    this._locales,
-                    (locale) => jsonfile.readFile(locale.filePath)
-                        .then((localeMessages) => {
-                            const localeWithMessages = {
-                                messages: clone(localeMessages),
-                                language: locale.language,
-                            };
+				return Promise.map(
+					this._locales,
+					(locale) => jsonfile.readFile(locale.filePath)
+						.then((localeMessages) => {
+							const localeWithMessages = {
+								messages: clone(localeMessages),
+								language: locale.language,
+							};
 
-                            return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)
-                                .then((messagesTranslator) => messagesTranslator.translate());
-                        })
-                        .then((translated) => jsonfile.writeFile(
-                            locale.filePath,
-                            translated,
-                            {
-                                spaces: 2,
-                            },
-                        )),
-                );
-            });
-    }
+							return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)
+								.then((messagesTranslator) => messagesTranslator.translate());
+						})
+						.then((translated) => jsonfile.writeFile(
+							locale.filePath,
+							translated,
+							{
+								spaces: 2,
+							},
+						)),
+				);
+			});
+	}
 }

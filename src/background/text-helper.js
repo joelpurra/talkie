@@ -19,50 +19,52 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    last,
+	last,
 } from "../shared/basic";
 
 export default class TextHelper {}
 
 TextHelper.splitTextToParagraphs = (text) => {
-    // NOTE: in effect discarding empty paragraphs.
-    return text.split(/[\n\r\u2028\u2029]+/);
+	// NOTE: in effect discarding empty paragraphs.
+	return text.split(/[\n\r\u2028\u2029]+/);
 };
 
 TextHelper.splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
-    // NOTE: in effect merging multiple whitespaces in row to a single separator/space.
-    const spacedTextParts = text.split(/\s+/);
+	// NOTE: in effect merging multiple whitespaces in row to a single separator/space.
+	const spacedTextParts = text.split(/\s+/);
 
-    const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
+	const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
 
-    const textParts = spacedTextParts.reduce((newParts, spacedTextPart) => {
-        const appendToText = (ttt) => {
-            if (last(newParts) === "") {
-                newParts[newParts.length - 1] = ttt;
-            } else {
-                newParts[newParts.length - 1] += " " + ttt;
-            }
-        };
+	const textParts = spacedTextParts.reduce((newParts, spacedTextPart) => {
+		const appendToText = (ttt) => {
+			if (last(newParts) === "") {
+				newParts[newParts.length - 1] = ttt;
+			} else {
+				newParts[newParts.length - 1] += " " + ttt;
+			}
+		};
 
-        const appendPart = (ttt) => {
-            newParts[newParts.length] = ttt;
-        };
+		const appendPart = (ttt) => {
+			newParts[newParts.length] = ttt;
+		};
 
-        if (naturalPauseRx.test(spacedTextPart)) {
-            appendToText(spacedTextPart);
+		if (naturalPauseRx.test(spacedTextPart)) {
+			appendToText(spacedTextPart);
 
-            appendPart("");
-        } else if ((last(newParts).length + 1 + spacedTextPart.length) < maxPartLength) {
-            appendToText(spacedTextPart);
-        } else {
-            appendPart(spacedTextPart);
-        }
+			appendPart("");
+		} else if ((last(newParts).length + 1 + spacedTextPart.length) < maxPartLength) {
+			appendToText(spacedTextPart);
+		} else {
+			appendPart(spacedTextPart);
+		}
 
-        return newParts;
-    }, [""]);
+		return newParts;
+	}, [
+		"",
+	]);
 
-    // NOTE: cleaning empty strings "just in case".
-    const cleanTextParts = textParts.filter((textPart) => textPart.trim().length > 0);
+	// NOTE: cleaning empty strings "just in case".
+	const cleanTextParts = textParts.filter((textPart) => textPart.trim().length > 0);
 
-    return cleanTextParts;
+	return cleanTextParts;
 };

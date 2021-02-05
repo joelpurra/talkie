@@ -18,72 +18,69 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    bindActionCreators,
+	connect,
+} from "react-redux";
+import {
+	bindActionCreators,
 } from "redux";
 
-import {
-    connect,
-} from "react-redux";
-
+import actionCreators from "../actions";
+import Main from "../components/main.jsx";
 import IsSpeakingUpdater from "../hocs/is-speaking-updater.jsx";
 import ProgressUpdater from "../hocs/progress-updater.jsx";
-import Main from "../components/main.jsx";
-
-import actionCreators from "../actions";
 
 const mapStateToProps = (state) => {
-    return {
-        isPremiumEdition: state.shared.metadata.isPremiumEdition,
-        versionNumber: state.shared.metadata.versionNumber,
-    };
+	return {
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		versionNumber: state.shared.metadata.versionNumber,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        actions: {
-            sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
-            sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
-            sharedProgress: bindActionCreators(actionCreators.shared.progress, dispatch),
-        },
-    };
+	return {
+		actions: {
+			sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
+			sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
+			sharedProgress: bindActionCreators(actionCreators.shared.progress, dispatch),
+		},
+	};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-        versionNumber: PropTypes.string.isRequired,
+    	actions: PropTypes.object.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	versionNumber: PropTypes.string.isRequired,
     }
 
     render() {
-        const {
-            actions,
-            isPremiumEdition,
-            versionNumber,
-        } = this.props;
+    	const {
+    		actions,
+    		isPremiumEdition,
+    		versionNumber,
+    	} = this.props;
 
-        return (
-            <div>
-                <IsSpeakingUpdater
-                    actions={actions}
-                />
+    	return (
+    		<div>
+    			<IsSpeakingUpdater
+    				actions={actions}
+    			/>
 
-                <ProgressUpdater
-                    actions={actions}
-                />
+    			<ProgressUpdater
+    				actions={actions}
+    			/>
 
-                <Main
-                    actions={actions}
-                    isPremiumEdition={isPremiumEdition}
-                    versionNumber={versionNumber}
-                />
-            </div>
-        );
+    			<Main
+    				actions={actions}
+    				isPremiumEdition={isPremiumEdition}
+    				versionNumber={versionNumber}
+    			/>
+ </div>
+    	);
     }
 }

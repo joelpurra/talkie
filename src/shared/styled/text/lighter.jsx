@@ -19,10 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import styled from "../../hocs/styled.jsx";
-
-import * as textBase from "./text-base.jsx";
-
 import * as lighter from "../../styles/text/lighter";
+import * as textBase from "./text-base.jsx";
 
 export const p = styled(lighter.text)(textBase.p);
 export const span = styled(lighter.text)(textBase.span);

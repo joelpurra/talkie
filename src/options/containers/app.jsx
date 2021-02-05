@@ -18,76 +18,73 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    bindActionCreators,
+	connect,
+} from "react-redux";
+import {
+	bindActionCreators,
 } from "redux";
 
-import {
-    connect,
-} from "react-redux";
-
+import actionCreators from "../actions";
 import Main from "../components/main.jsx";
 
-import actionCreators from "../actions";
-
 const mapStateToProps = (state) => {
-    return {
-        isPremiumEdition: state.shared.metadata.isPremiumEdition,
-        versionName: state.shared.metadata.versionName,
-        systemType: state.shared.metadata.systemType,
-        osType: state.shared.metadata.osType,
-        activeTabId: state.unshared.navigation.activeTabId,
-        shouldShowBackButton: state.navigation.shouldShowBackButton,
-    };
+	return {
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		versionName: state.shared.metadata.versionName,
+		systemType: state.shared.metadata.systemType,
+		osType: state.shared.metadata.osType,
+		activeTabId: state.unshared.navigation.activeTabId,
+		shouldShowBackButton: state.navigation.shouldShowBackButton,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        actions: {
-            sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
-            sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
-            navigation: bindActionCreators(actionCreators.navigation, dispatch),
-        },
-    };
+	return {
+		actions: {
+			sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+			sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
+			navigation: bindActionCreators(actionCreators.navigation, dispatch),
+		},
+	};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-        versionName: PropTypes.string.isRequired,
-        systemType: PropTypes.string.isRequired,
-        osType: PropTypes.string,
-        activeTabId: PropTypes.string.isRequired,
-        shouldShowBackButton: PropTypes.bool.isRequired,
+    	actions: PropTypes.object.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	versionName: PropTypes.string.isRequired,
+    	systemType: PropTypes.string.isRequired,
+    	osType: PropTypes.string,
+    	activeTabId: PropTypes.string.isRequired,
+    	shouldShowBackButton: PropTypes.bool.isRequired,
     }
 
     render() {
-        const {
-            actions,
-            isPremiumEdition,
-            versionName,
-            systemType,
-            osType,
-            activeTabId,
-            shouldShowBackButton,
-        } = this.props;
+    	const {
+    		actions,
+    		isPremiumEdition,
+    		versionName,
+    		systemType,
+    		osType,
+    		activeTabId,
+    		shouldShowBackButton,
+    	} = this.props;
 
-        return (
-            <Main
-                actions={actions}
-                isPremiumEdition={isPremiumEdition}
-                versionName={versionName}
-                systemType={systemType}
-                osType={osType}
-                activeTabId={activeTabId}
-                shouldShowBackButton={shouldShowBackButton}
-            />
-        );
+    	return (
+    		<Main
+    			actions={actions}
+    			isPremiumEdition={isPremiumEdition}
+    			versionName={versionName}
+    			systemType={systemType}
+    			osType={osType}
+    			activeTabId={activeTabId}
+    			shouldShowBackButton={shouldShowBackButton}
+    		/>
+    	);
     }
 }

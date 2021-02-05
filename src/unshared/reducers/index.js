@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    combineReducers,
+	combineReducers,
 } from "redux";
 
 import navigation from "./navigation";
 
 export default combineReducers({
-    navigation,
+	navigation,
 });

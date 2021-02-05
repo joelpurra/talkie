@@ -19,9 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "../promise";
 
 export const dispatchAll = (store, actionsToDispatch) => promiseTry(() => {
-    return Promise.all(actionsToDispatch.map((action) => store.dispatch(action)));
+	return Promise.all(actionsToDispatch.map((action) => store.dispatch(action)));
 });

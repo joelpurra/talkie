@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import isSpeaking from "../hocs/is-speaking.jsx";
 
@@ -27,17 +27,17 @@ export default
 @isSpeaking
 class IsSpeakingUpdater extends React.PureComponent {
     static propTypes = {
-        actions: PropTypes.object.isRequired,
-        isSpeaking: PropTypes.bool.isRequired,
+    	actions: PropTypes.object.isRequired,
+    	isSpeaking: PropTypes.bool.isRequired,
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        if (this.props.isSpeaking !== nextProps.isSpeaking) {
-            this.props.actions.sharedSpeaking.setIsSpeaking(nextProps.isSpeaking);
-        }
+    	if (this.props.isSpeaking !== nextProps.isSpeaking) {
+    		this.props.actions.sharedSpeaking.setIsSpeaking(nextProps.isSpeaking);
+    	}
     }
 
     render() {
-        return null;
+    	return null;
     }
 }

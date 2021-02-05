@@ -19,9 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const sharedList = {
-    marginTop: "0.25em",
-    marginBottom: "0.25em",
-    paddingLeft: "2em",
+	marginTop: "0.25em",
+	marginBottom: "0.25em",
+	paddingLeft: "2em",
 };
 
 export const ul = sharedList;
@@ -29,39 +29,39 @@ export const ol = sharedList;
 export const dl = sharedList;
 
 export const li = {
-    marginBottom: "0.25em",
+	marginBottom: "0.25em",
 };
 
 export const dt = {
-    fontWeight: "bold",
-    marginTop: "1em",
+	fontWeight: "bold",
+	marginTop: "1em",
 };
 export const dd = {
-    marginBottom: "0.5em",
+	marginBottom: "0.5em",
 };
 
 const sharedInlineList = {
-    listStyleType: "none",
-    marginTop: "0.25em",
-    marginBottom: "0.25em",
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
+	listStyleType: "none",
+	marginTop: "0.25em",
+	marginBottom: "0.25em",
+	paddingLeft: 0,
+	paddingRight: 0,
+	paddingTop: 0,
+	paddingBottom: 0,
 };
 
 export const inlineUl = sharedInlineList;
 export const inlineOl = sharedInlineList;
 
 export const inlineLi = {
-    listStyleType: "none",
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
-    marginBottom: "0.25em",
-    display: "inline-block",
+	listStyleType: "none",
+	paddingLeft: 0,
+	paddingRight: 0,
+	paddingTop: 0,
+	paddingBottom: 0,
+	marginLeft: 0,
+	marginRight: 0,
+	marginTop: 0,
+	marginBottom: "0.25em",
+	display: "inline-block",
 };

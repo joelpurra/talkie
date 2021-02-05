@@ -21,44 +21,43 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import LogarithmicScaleRange from "../../range/logarithmic-scale-range.jsx";
-
 import RangeWithHeading from "./range-with-heading.jsx";
 
 export default class Rate extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.transformValueBeforeChange = this.transformValueBeforeChange.bind(this);
-        this.getHeading = this.getHeading.bind(this);
-    }
+		this.transformValueBeforeChange = this.transformValueBeforeChange.bind(this);
+		this.getHeading = this.getHeading.bind(this);
+	}
 
-    transformValueBeforeChange(value) {
-        // NOTE: step 0.1 for outside this component.
-        const rounded = Math.round10(value, -1);
+	transformValueBeforeChange(value) {
+		// NOTE: step 0.1 for outside this component.
+		const rounded = Math.round10(value, -1);
 
-        return rounded;
-    }
+		return rounded;
+	}
 
-    getHeading(voiceName, translate) {
-        let heading = null;
+	getHeading(voiceName, translate) {
+		let heading = null;
 
-        if (typeof voiceName === "string" && voiceName.length > 0) {
-            heading = translate("frontend_voicesRateHeading", voiceName);
-        } else {
-            heading = translate("frontend_voicesRateEmptyHeading");
-        }
+		if (typeof voiceName === "string" && voiceName.length > 0) {
+			heading = translate("frontend_voicesRateHeading", voiceName);
+		} else {
+			heading = translate("frontend_voicesRateEmptyHeading");
+		}
 
-        return heading;
-    }
+		return heading;
+	}
 
-    render() {
-        return (
-            <RangeWithHeading
-                {...this.props}
-                transformValueBeforeChange={this.transformValueBeforeChange}
-                getHeading={this.getHeading}
-                ScaleRangeElementClass={LogarithmicScaleRange}
-            />
-        );
-    }
+	render() {
+		return (
+			<RangeWithHeading
+				{...this.props}
+				transformValueBeforeChange={this.transformValueBeforeChange}
+				getHeading={this.getHeading}
+				ScaleRangeElementClass={LogarithmicScaleRange}
+			/>
+		);
+	}
 }

@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class WebExtensionEnvironmentManifestProvider {
-    getSync() {
-        // NOTE: synchronous call.
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
-        const manifest = browser.runtime.getManifest();
+	getSync() {
+		// NOTE: synchronous call.
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
+		const manifest = browser.runtime.getManifest();
 
-        return manifest;
-    }
+		return manifest;
+	}
 }

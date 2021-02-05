@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import styled from "../../hocs/styled.jsx";
-
 import * as tableBase from "../../styles/table/table-base";
 
 export const table = styled(tableBase.table)("table");

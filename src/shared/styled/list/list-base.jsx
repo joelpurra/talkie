@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import styled from "../../hocs/styled.jsx";
-
 import * as listBase from "../../styles/list/list-base";
 
 export const ul = styled(listBase.ul)("ul");

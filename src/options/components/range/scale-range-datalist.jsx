@@ -18,45 +18,46 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import ScaleRangeDatalistOption from "./scale-range-datalist-option.jsx";
 
 export default class ScaleRangeDatalist extends React.PureComponent {
     static defaultProps = {
-        steps: [],
-        disabled: true,
+    	steps: [],
+    	disabled: true,
     };
 
     static propTypes = {
-        listName: PropTypes.string.isRequired,
-        steps: PropTypes.arrayOf(PropTypes.number).isRequired,
-        disabled: PropTypes.bool.isRequired,
+    	listName: PropTypes.string.isRequired,
+    	steps: PropTypes.arrayOf(PropTypes.number).isRequired,
+    	disabled: PropTypes.bool.isRequired,
     };
 
     render() {
-        const {
-            steps,
-            disabled,
-            listName,
-        } = this.props;
+    	const {
+    		steps,
+    		disabled,
+    		listName,
+    	} = this.props;
 
-        const listOptions = steps.map((step) =>
-            <ScaleRangeDatalistOption
-                key={step.toString()}
-                value={step}
-                disabled={disabled || null}
-            />,
-        );
+    	const listOptions = steps.map((step) => (
+    		<ScaleRangeDatalistOption
+		key={step.toString()}
+		value={step}
+		disabled={disabled || null}
+    		/>
+    	),
+    	);
 
-        return (
-            <datalist
-                id={listName}
-                disabled={disabled || null}
-            >
-                {listOptions}
-            </datalist>
-        );
+    	return (
+    		<datalist
+    			id={listName}
+    			disabled={disabled || null}
+	>
+    			{listOptions}
+ </datalist>
+    	);
     }
 }

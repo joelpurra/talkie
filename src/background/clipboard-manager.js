@@ -19,156 +19,156 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	logDebug,
+} from "../shared/log";
+import {
+	promiseTry,
 } from "../shared/promise";
 
-import {
-    logDebug,
-} from "../shared/log";
-
 export default class ClipboardManager {
-    constructor(talkieBackground, permissionsManager) {
-        this.talkieBackground = talkieBackground;
-        this.permissionsManager = permissionsManager;
+	constructor(talkieBackground, permissionsManager) {
+		this.talkieBackground = talkieBackground;
+		this.permissionsManager = permissionsManager;
 
-        this.copyPasteTargetElementId = "copy-paste-textarea";
-    }
+		this.copyPasteTargetElementId = "copy-paste-textarea";
+	}
 
-    _getExistingTextarea() {
-        return promiseTry(
-            () => {
-                const existingTextarea = document.getElementById(this.copyPasteTargetElementId);
+	_getExistingTextarea() {
+		return promiseTry(
+			() => {
+				const existingTextarea = document.getElementById(this.copyPasteTargetElementId);
 
-                return existingTextarea;
-            },
-        );
-    }
+				return existingTextarea;
+			},
+		);
+	}
 
-    _isInitialized() {
-        return this._getExistingTextarea()
-            .then((existingTextarea) => existingTextarea !== null);
-    }
+	_isInitialized() {
+		return this._getExistingTextarea()
+			.then((existingTextarea) => existingTextarea !== null);
+	}
 
-    _ensureIsInitialized() {
-        return this._isInitialized()
-            .then((isInitialized) => {
-                if (isInitialized === true) {
-                    return undefined;
-                }
+	_ensureIsInitialized() {
+		return this._isInitialized()
+			.then((isInitialized) => {
+				if (isInitialized === true) {
+					return undefined;
+				}
 
-                throw new Error("this.copyPasteTargetElementId did not exist.");
-            });
-    }
+				throw new Error("this.copyPasteTargetElementId did not exist.");
+			});
+	}
 
-    _ensureIsNotInitialized() {
-        return this._isInitialized()
-            .then((isInitialized) => {
-                if (isInitialized === false) {
-                    return undefined;
-                }
+	_ensureIsNotInitialized() {
+		return this._isInitialized()
+			.then((isInitialized) => {
+				if (isInitialized === false) {
+					return undefined;
+				}
 
-                throw new Error("this.copyPasteTargetElementId exists.");
-            });
-    }
+				throw new Error("this.copyPasteTargetElementId exists.");
+			});
+	}
 
-    _injectBackgroundTextarea() {
-        return this._ensureIsNotInitialized()
-            .then(() => {
-                const textarea = document.createElement("textarea");
-                textarea.id = this.copyPasteTargetElementId;
-                document.body.appendChild(textarea);
+	_injectBackgroundTextarea() {
+		return this._ensureIsNotInitialized()
+			.then(() => {
+				const textarea = document.createElement("textarea");
+				textarea.id = this.copyPasteTargetElementId;
+				document.body.append(textarea);
 
-                return undefined;
-            });
-    }
+				return undefined;
+			});
+	}
 
-    _initializeIfNecessary() {
-        return this._isInitialized()
-            .then((isInitialized) => {
-                if (isInitialized !== true) {
-                    return this.initialize();
-                }
+	_initializeIfNecessary() {
+		return this._isInitialized()
+			.then((isInitialized) => {
+				if (isInitialized !== true) {
+					return this.initialize();
+				}
 
-                return undefined;
-            });
-    }
+				return undefined;
+			});
+	}
 
-    _removeBackgroundTextarea() {
-        return this._ensureIsInitialized()
-            .then(() => this._getExistingTextarea())
-            .then((existingTextarea) => {
-                existingTextarea.parentNode.removeChild(existingTextarea);
+	_removeBackgroundTextarea() {
+		return this._ensureIsInitialized()
+			.then(() => this._getExistingTextarea())
+			.then((existingTextarea) => {
+				existingTextarea.remove();
 
-                return undefined;
-            });
-    }
+				return undefined;
+			});
+	}
 
-    initialize() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "ClipboardManager.initialize");
+	initialize() {
+		return promiseTry(
+			() => {
+				logDebug("Start", "ClipboardManager.initialize");
 
-                return this._injectBackgroundTextarea()
-                    .then(() => {
-                        logDebug("Done", "ClipboardManager.initialize");
+				return this._injectBackgroundTextarea()
+					.then(() => {
+						logDebug("Done", "ClipboardManager.initialize");
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+						return undefined;
+					});
+			},
+		);
+	}
 
-    unintialize() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "ClipboardManager.unintialize");
+	unintialize() {
+		return promiseTry(
+			() => {
+				logDebug("Start", "ClipboardManager.unintialize");
 
-                return this._removeBackgroundTextarea()
-                    .then(() => {
-                        logDebug("Done", "ClipboardManager.unintialize");
+				return this._removeBackgroundTextarea()
+					.then(() => {
+						logDebug("Done", "ClipboardManager.unintialize");
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+						return undefined;
+					});
+			},
+		);
+	}
 
-    getClipboardText() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "getClipboardText");
+	getClipboardText() {
+		return promiseTry(
+			() => {
+				logDebug("Start", "getClipboardText");
 
-                return this._initializeIfNecessary()
-                    .then(() => this.permissionsManager.useOptionalPermissions(
-                        [
-                            "clipboardRead",
-                        ],
-                        [],
-                        (granted) => {
-                            if (granted) {
-                                return this._getExistingTextarea()
-                                    .then((textarea) => {
-                                        textarea.value = "";
-                                        textarea.focus();
+				return this._initializeIfNecessary()
+					.then(() => this.permissionsManager.useOptionalPermissions(
+						[
+							"clipboardRead",
+						],
+						[],
+						(granted) => {
+							if (granted) {
+								return this._getExistingTextarea()
+									.then((textarea) => {
+										textarea.value = "";
+										textarea.focus();
 
-                                        const success = document.execCommand("Paste");
+										const success = document.execCommand("Paste");
 
-                                        if (!success) {
-                                            return null;
-                                        }
+										if (!success) {
+											return null;
+										}
 
-                                        return textarea.value;
-                                    });
-                            }
+										return textarea.value;
+									});
+							}
 
-                            return null;
-                        }),
-                    )
-                    .then((text) => {
-                        logDebug("Done", "getClipboardText", text);
+							return null;
+						}),
+					)
+					.then((text) => {
+						logDebug("Done", "getClipboardText", text);
 
-                        return text;
-                    });
-            },
-        );
-    }}
+						return text;
+					});
+			},
+		);
+	}
+}

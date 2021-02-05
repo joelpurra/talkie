@@ -19,45 +19,45 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "./promise";
 
 export default class SettingsManager {
-    constructor(storageManager) {
-        this.storageManager = storageManager;
+	constructor(storageManager) {
+		this.storageManager = storageManager;
 
-        // TODO: shared place for stored value constants.
-        this._isPremiumEditionStorageKey = "is-premium-edition";
-        this._speakLongTextsStorageKey = "speak-long-texts";
+		// TODO: shared place for stored value constants.
+		this._isPremiumEditionStorageKey = "is-premium-edition";
+		this._speakLongTextsStorageKey = "speak-long-texts";
 
-        // TODO: shared place for default/fallback values for booleans etcetera.
-        this._isPremiumEditionDefaultValue = false;
-        this._speakLongTextsStorageKeyDefaultValue = false;
-    }
+		// TODO: shared place for default/fallback values for booleans etcetera.
+		this._isPremiumEditionDefaultValue = false;
+		this._speakLongTextsStorageKeyDefaultValue = false;
+	}
 
-    setIsPremiumEdition(isPremiumEdition) {
-        return promiseTry(
-            () => this.storageManager.setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition === true),
-        );
-    }
+	setIsPremiumEdition(isPremiumEdition) {
+		return promiseTry(
+			() => this.storageManager.setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition === true),
+		);
+	}
 
-    getIsPremiumEdition() {
-        return promiseTry(
-            () => this.storageManager.getStoredValue(this._isPremiumEditionStorageKey)
-                .then((isPremiumEdition) => isPremiumEdition || this._isPremiumEditionDefaultValue),
-        );
-    }
+	getIsPremiumEdition() {
+		return promiseTry(
+			() => this.storageManager.getStoredValue(this._isPremiumEditionStorageKey)
+				.then((isPremiumEdition) => isPremiumEdition || this._isPremiumEditionDefaultValue),
+		);
+	}
 
-    setSpeakLongTexts(speakLongTexts) {
-        return promiseTry(
-            () => this.storageManager.setStoredValue(this._speakLongTextsStorageKey, speakLongTexts === true),
-        );
-    }
+	setSpeakLongTexts(speakLongTexts) {
+		return promiseTry(
+			() => this.storageManager.setStoredValue(this._speakLongTextsStorageKey, speakLongTexts === true),
+		);
+	}
 
-    getSpeakLongTexts() {
-        return promiseTry(
-            () => this.storageManager.getStoredValue(this._speakLongTextsStorageKey)
-                .then((speakLongTexts) => speakLongTexts || this._speakLongTextsStorageKeyDefaultValue),
-        );
-    }
+	getSpeakLongTexts() {
+		return promiseTry(
+			() => this.storageManager.getStoredValue(this._speakLongTextsStorageKey)
+				.then((speakLongTexts) => speakLongTexts || this._speakLongTextsStorageKeyDefaultValue),
+		);
+	}
 }

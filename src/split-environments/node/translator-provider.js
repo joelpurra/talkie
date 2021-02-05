@@ -19,116 +19,116 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logError,
+	logError,
 } from "../../shared/log";
 
 const jsonfile = require("jsonfile");
 
 export default class NodeEnvironmentTranslatorProvider {
-    constructor(localeProvider) {
-        this.localeProvider = localeProvider;
+	constructor(localeProvider) {
+		this.localeProvider = localeProvider;
 
-        this.translations = {};
-    }
+		this.translations = {};
+	}
 
-    _getMessagesFilepath(locale) {
-        return `./_locales/${locale}/messages.json`;
-    }
+	_getMessagesFilepath(locale) {
+		return `./_locales/${locale}/messages.json`;
+	}
 
-    _getMessages(locale) {
-        if (!this.translations[locale]) {
-            const path = this._getMessagesFilepath(locale);
-            /* eslint-disable no-sync */
-            const json = jsonfile.readFileSync(path);
-            /* eslint-enable no-sync */
+	_getMessages(locale) {
+		if (!this.translations[locale]) {
+			const path = this._getMessagesFilepath(locale);
+			/* eslint-disable no-sync */
+			const json = jsonfile.readFileSync(path);
+			/* eslint-enable no-sync */
 
-            this.translations[locale] = json;
-        }
+			this.translations[locale] = json;
+		}
 
-        return this.translations[locale];
-    }
+		return this.translations[locale];
+	}
 
-    _getTranslation(locale, key, extras) {
-        // TODO: use same translation system in frontend and backend?
-        // translated = [key].concat(extras).join("_").toUpperCase();
-        const localeMessages = this._getMessages(locale);
-        const messageTemplate = localeMessages[key];
+	_getTranslation(locale, key, extras) {
+		// TODO: use same translation system in frontend and backend?
+		// translated = [key].concat(extras).join("_").toUpperCase();
+		const localeMessages = this._getMessages(locale);
+		const messageTemplate = localeMessages[key];
 
-        if (!messageTemplate) {
-            logError("_getTranslation", "Missing translation", arguments, messageTemplate);
+		if (!messageTemplate) {
+			logError("_getTranslation", "Missing translation", arguments, messageTemplate);
 
-            throw new Error(`Missing translation: ${key}`);
-        }
+			throw new Error(`Missing translation: ${key}`);
+		}
 
-        let translated = messageTemplate.message;
+		let translated = messageTemplate.message;
 
-        if (typeof messageTemplate.placeholders === "object") {
-            const variableLookups = Object.keys(messageTemplate.placeholders)
-                .reduce(
-                    (obj, placeholderName) => {
-                        const placeholder = messageTemplate.placeholders[placeholderName];
-                        const id = placeholderName.toLowerCase();
-                        const extrasIndex = parseInt(placeholder.content.replace("$", ""), 10) - 1;
+		if (typeof messageTemplate.placeholders === "object") {
+			const variableLookups = Object.keys(messageTemplate.placeholders)
+				.reduce(
+					(object, placeholderName) => {
+						const placeholder = messageTemplate.placeholders[placeholderName];
+						const id = placeholderName.toLowerCase();
+						const extrasIndex = Number.parseInt(placeholder.content.replace("$", ""), 10) - 1;
 
-                        if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
-                            throw new RangeError(`Variable lookup extras index out of range: ${extrasIndex}`);
-                        }
+						if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
+							throw new RangeError(`Variable lookup extras index out of range: ${extrasIndex}`);
+						}
 
-                        obj[id] = extras[extrasIndex];
+						object[id] = extras[extrasIndex];
 
-                        return obj;
-                    },
-                    {},
-                );
+						return object;
+					},
+					{},
+				);
 
-            const replace = (/* eslint-disable no-unused-vars */match/* eslint-enable no-unused-vars */, variableName) => {
-                let result = null;
+			const replace = (/* eslint-disable no-unused-vars */match/* eslint-enable no-unused-vars */, variableName) => {
+				let result = null;
 
-                const variableNameAsNumber = parseInt(variableName, 10);
+				const variableNameAsNumber = Number.parseInt(variableName, 10);
 
-                if (!isNaN(variableNameAsNumber)) {
-                    const extrasIndex = variableNameAsNumber - 1;
+				if (!isNaN(variableNameAsNumber)) {
+					const extrasIndex = variableNameAsNumber - 1;
 
-                    if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
-                        throw new RangeError(`Replace extras index out of range: ${extrasIndex}`);
-                    }
+					if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
+						throw new RangeError(`Replace extras index out of range: ${extrasIndex}`);
+					}
 
-                    result = extras[extrasIndex];
-                } else {
-                    const id = variableName.toLowerCase();
+					result = extras[extrasIndex];
+				} else {
+					const id = variableName.toLowerCase();
 
-                    result = variableLookups[id];
-                }
+					result = variableLookups[id];
+				}
 
-                if (result === null || result === undefined) {
-                    throw new Error(`Unmatched named extra variable: ${variableName}`);
-                }
+				if (result === null || result === undefined) {
+					throw new Error(`Unmatched named extra variable: ${variableName}`);
+				}
 
-                return result;
-            };
+				return result;
+			};
 
-            translated = translated.replace(/\$(\w+)\$/g, replace);
-        }
+			translated = translated.replace(/\$(\w+)\$/g, replace);
+		}
 
-        const extraTextRx = /\$/;
+		const extraTextRx = /\$/;
 
-        if (extraTextRx.test(translated)) {
-            // TODO: replace extras in string.
-            logError("_getTranslation", "Unhandled translation extras", arguments, messageTemplate);
+		if (extraTextRx.test(translated)) {
+			// TODO: replace extras in string.
+			logError("_getTranslation", "Unhandled translation extras", arguments, messageTemplate);
 
-            throw new Error(`Unhandled translation extras: ${key} ${extras}`);
-        }
+			throw new Error(`Unhandled translation extras: ${key} ${extras}`);
+		}
 
-        return translated;
-    }
+		return translated;
+	}
 
-    translate(key, extras) {
-        const locale = this.localeProvider.getTranslationLocale();
+	translate(key, extras) {
+		const locale = this.localeProvider.getTranslationLocale();
 
-        // TODO: use same translation system in frontend and backend?
-        // translated = [key].concat(extras).join("_").toUpperCase();
-        const translated = this._getTranslation(locale, key, extras);
+		// TODO: use same translation system in frontend and backend?
+		// translated = [key].concat(extras).join("_").toUpperCase();
+		const translated = this._getTranslation(locale, key, extras);
 
-        return translated;
-    }
+		return translated;
+	}
 }

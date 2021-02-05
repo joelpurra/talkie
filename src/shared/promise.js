@@ -19,91 +19,91 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const promiseTry = (fn) => new Promise(
-    (resolve, reject) => {
-        try {
-            const result = fn();
+	(resolve, reject) => {
+		try {
+			const result = fn();
 
-            resolve(result);
-        } catch (error) {
-            reject(error);
-        }
-    },
+			resolve(result);
+		} catch (error) {
+			reject(error);
+		}
+	},
 );
 
 export const promiseSeries = (promiseFunctions, state) => promiseTry(
-    () => {
-        if (promiseFunctions.length === 0) {
-            return undefined;
-        }
+	() => {
+		if (promiseFunctions.length === 0) {
+			return undefined;
+		}
 
-        const first = promiseFunctions[0];
+		const first = promiseFunctions[0];
 
-        if (promiseFunctions.length === 1) {
-            return Promise.resolve(first(state));
-        }
+		if (promiseFunctions.length === 1) {
+			return Promise.resolve(first(state));
+		}
 
-        const rest = promiseFunctions.slice(1);
+		const rest = promiseFunctions.slice(1);
 
-        return Promise.resolve(first(state))
-            .then((result) => promiseSeries(rest, result));
-    },
+		return Promise.resolve(first(state))
+			.then((result) => promiseSeries(rest, result));
+	},
 );
 
 export const promiseTimeout = (promise, limit) => {
-    let timeoutId = null;
+	let timeoutId = null;
 
-    const timeoutPromise = new Promise((resolve) => {
-        timeoutId = setTimeout(() => resolve(), limit);
-    })
-        .then(() => {
-            timeoutId = null;
+	const timeoutPromise = new Promise((resolve) => {
+		timeoutId = setTimeout(() => resolve(), limit);
+	})
+		.then(() => {
+			timeoutId = null;
 
-            const timeoutError = new Error(`Timeout after ${limit} milliseconds.`);
-            timeoutError.name = "PromiseTimeout";
+			const timeoutError = new Error(`Timeout after ${limit} milliseconds.`);
+			timeoutError.name = "PromiseTimeout";
 
-            throw timeoutError;
-        });
+			throw timeoutError;
+		});
 
-    const originalPromise = promise
-        .then((result) => {
-            // NOTE: timeout has already happened.
-            if (timeoutId === null) {
-                return undefined;
-            }
+	const originalPromise = promise
+		.then((result) => {
+			// NOTE: timeout has already happened.
+			if (timeoutId === null) {
+				return undefined;
+			}
 
-            // NOTE: timeout has not yet happened.
-            clearTimeout(timeoutId);
-            timeoutId = null;
+			// NOTE: timeout has not yet happened.
+			clearTimeout(timeoutId);
+			timeoutId = null;
 
-            return result;
-        })
-        .catch((error) => {
-            // NOTE: timeout has already happened.
-            if (timeoutId === null) {
-                return undefined;
-            }
+			return result;
+		})
+		.catch((error) => {
+			// NOTE: timeout has already happened.
+			if (timeoutId === null) {
+				return undefined;
+			}
 
-            // NOTE: timeout has not yet happened.
-            clearTimeout(timeoutId);
-            timeoutId = null;
+			// NOTE: timeout has not yet happened.
+			clearTimeout(timeoutId);
+			timeoutId = null;
 
-            throw error;
-        });
+			throw error;
+		});
 
-    return Promise.race([
-        originalPromise,
-        timeoutPromise,
-    ]);
+	return Promise.race([
+		originalPromise,
+		timeoutPromise,
+	]);
 };
 
 export const promiseSleep = (fn, sleep) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                resolve(fn());
-            } catch (error) {
-                reject(error);
-            }
-        }, sleep);
-    });
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			try {
+				resolve(fn());
+			} catch (error) {
+				reject(error);
+			}
+		}, sleep);
+	});
 };

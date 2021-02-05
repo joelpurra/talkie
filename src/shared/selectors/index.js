@@ -21,5 +21,5 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import * as voices from "./voices";
 
 export default {
-    voices,
+	voices,
 };

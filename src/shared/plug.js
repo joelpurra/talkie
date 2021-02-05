@@ -19,50 +19,50 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "./promise";
 
 export default class Plug {
-    constructor(contentLogger, execute, configuration) {
-        this.contentLogger = contentLogger;
-        this.execute = execute;
-        this.configuration = configuration;
+	constructor(contentLogger, execute, configuration) {
+		this.contentLogger = contentLogger;
+		this.execute = execute;
+		this.configuration = configuration;
 
-        this.executeGetTalkieWasPluggedCode = "(function(){ return window.talkieWasPlugged; }());";
-        this.executeSetTalkieWasPluggedCode = "(function(){ window.talkieWasPlugged = true; }());";
-    }
+		this.executeGetTalkieWasPluggedCode = "(function(){ return window.talkieWasPlugged; }());";
+		this.executeSetTalkieWasPluggedCode = "(function(){ window.talkieWasPlugged = true; }());";
+	}
 
-    executePlug() {
-        return promiseTry(
-            () => {
-                return Promise.resolve()
-                    // TODO: premium version of the same message?
-                    .then(() => this.contentLogger.logToPageWithColor("Thank you for using Talkie!"))
-                    .then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/projects/talkie/"))
-                    .then(() => this.contentLogger.logToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
-                    .then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/"))
-                    .then(() => this.contentLogger.logToPageWithColor("If you like Talkie, send a link to your friends -- and consider upgrading to Talkie Premium to support further open source development."));
-            },
-        );
-    }
+	executePlug() {
+		return promiseTry(
+			() => {
+				return Promise.resolve()
+				// TODO: premium version of the same message?
+					.then(() => this.contentLogger.logToPageWithColor("Thank you for using Talkie!"))
+					.then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/projects/talkie/"))
+					.then(() => this.contentLogger.logToPageWithColor("Created by Joel Purra. Released under GNU General Public License version 3.0 (GPL-3.0)"))
+					.then(() => this.contentLogger.logToPageWithColor("https://joelpurra.com/"))
+					.then(() => this.contentLogger.logToPageWithColor("If you like Talkie, send a link to your friends -- and consider upgrading to Talkie Premium to support further open source development."));
+			},
+		);
+	}
 
-    executeGetTalkieWasPlugged() {
-        return this.execute.scriptInTopFrameWithTimeout(this.executeGetTalkieWasPluggedCode, 1000);
-    }
+	executeGetTalkieWasPlugged() {
+		return this.execute.scriptInTopFrameWithTimeout(this.executeGetTalkieWasPluggedCode, 1000);
+	}
 
-    executeSetTalkieWasPlugged() {
-        return this.execute.scriptInTopFrameWithTimeout(this.executeSetTalkieWasPluggedCode, 1000);
-    }
+	executeSetTalkieWasPlugged() {
+		return this.execute.scriptInTopFrameWithTimeout(this.executeSetTalkieWasPluggedCode, 1000);
+	}
 
-    once() {
-        return this.executeGetTalkieWasPlugged()
-            .then((talkieWasPlugged) => {
-                if (talkieWasPlugged && talkieWasPlugged.toString() !== "true") {
-                    return this.executePlug()
-                        .then(() => this.executeSetTalkieWasPlugged());
-                }
+	once() {
+		return this.executeGetTalkieWasPlugged()
+			.then((talkieWasPlugged) => {
+				if (talkieWasPlugged && talkieWasPlugged.toString() !== "true") {
+					return this.executePlug()
+						.then(() => this.executeSetTalkieWasPlugged());
+				}
 
-                return undefined;
-            });
-    }
+				return undefined;
+			});
+	}
 }

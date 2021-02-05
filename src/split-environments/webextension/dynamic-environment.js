@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class WebExtensionEnvironmentDynamicEnvironment {
-    isNode() {
-        const isNode = false;
+	isNode() {
+		const isNode = false;
 
-        return isNode;
-    }
+		return isNode;
+	}
 
-    isWebExtension() {
-        const isWebExtension = true;
+	isWebExtension() {
+		const isWebExtension = true;
 
-        return isWebExtension;
-    }
+		return isWebExtension;
+	}
 }

@@ -19,127 +19,127 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	promiseTry,
 } from "./promise";
 
 export default class MetadataManager {
-    constructor(manifestProvider, settingsManager) {
-        this.manifestProvider = manifestProvider;
-        this.settingsManager = settingsManager;
+	constructor(manifestProvider, settingsManager) {
+		this.manifestProvider = manifestProvider;
+		this.settingsManager = settingsManager;
 
-        this._editionTypePremium = "premium";
-        this._editionTypeFree = "free";
-        this._systemTypeChrome = "chrome";
-        this._systemTypeWebExtension = "webextension";
-    }
+		this._editionTypePremium = "premium";
+		this._editionTypeFree = "free";
+		this._systemTypeChrome = "chrome";
+		this._systemTypeWebExtension = "webextension";
+	}
 
-    isPremiumEdition() {
-        return promiseTry(
-            () => this.settingsManager.getIsPremiumEdition(),
-        );
-    }
+	isPremiumEdition() {
+		return promiseTry(
+			() => this.settingsManager.getIsPremiumEdition(),
+		);
+	}
 
-    getExtensionId() {
-        return promiseTry(
-            () => browser.runtime.id,
-        );
-    }
+	getExtensionId() {
+		return promiseTry(
+			() => browser.runtime.id,
+		);
+	}
 
-    getManifestSync() {
-        /* eslint-disable no-sync */
-        return this.manifestProvider.getSync();
-        /* eslint-enable no-sync */
-    }
+	getManifestSync() {
+		/* eslint-disable no-sync */
+		return this.manifestProvider.getSync();
+		/* eslint-enable no-sync */
+	}
 
-    getManifest() {
-        return promiseTry(
-            /* eslint-disable no-sync */
-            () => this.getManifestSync(),
-            /* eslint-enable no-sync */
-        );
-    }
+	getManifest() {
+		return promiseTry(
+			/* eslint-disable no-sync */
+			() => this.getManifestSync(),
+			/* eslint-enable no-sync */
+		);
+	}
 
-    getVersionNumber() {
-        return promiseTry(
-            () => this.getManifest()
-                .then((manifest) => {
-                    return manifest.version || null;
-                }),
-        );
-    }
+	getVersionNumber() {
+		return promiseTry(
+			() => this.getManifest()
+				.then((manifest) => {
+					return manifest.version || null;
+				}),
+		);
+	}
 
-    getVersionName() {
-        return promiseTry(
-            () => this.getManifest()
-                .then((manifest) => {
-                    return manifest.version_name || null;
-                }),
-        );
-    }
+	getVersionName() {
+		return promiseTry(
+			() => this.getManifest()
+				.then((manifest) => {
+					return manifest.version_name || null;
+				}),
+		);
+	}
 
-    getEditionType() {
-        return promiseTry(
-            () => this.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this._editionTypePremium;
-                    }
+	getEditionType() {
+		return promiseTry(
+			() => this.isPremiumEdition()
+				.then((isPremiumEdition) => {
+					if (isPremiumEdition) {
+						return this._editionTypePremium;
+					}
 
-                    return this._editionTypeFree;
-                }),
-        );
-    }
+					return this._editionTypeFree;
+				}),
+		);
+	}
 
-    isChromeVersion() {
-        return promiseTry(
-            () => this.getVersionName()
-                .then((versionName) => {
-                    if (versionName.includes(" Chrome Extension ")) {
-                        return true;
-                    }
+	isChromeVersion() {
+		return promiseTry(
+			() => this.getVersionName()
+				.then((versionName) => {
+					if (versionName.includes(" Chrome Extension ")) {
+						return true;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    isWebExtensionVersion() {
-        return promiseTry(
-            () => this.getVersionName()
-                .then((versionName) => {
-                    if (versionName.includes(" WebExtension ")) {
-                        return true;
-                    }
+	isWebExtensionVersion() {
+		return promiseTry(
+			() => this.getVersionName()
+				.then((versionName) => {
+					if (versionName.includes(" WebExtension ")) {
+						return true;
+					}
 
-                    return false;
-                }),
-        );
-    }
+					return false;
+				}),
+		);
+	}
 
-    getSystemType() {
-        return promiseTry(
-            () => this.isChromeVersion()
-                .then((isChrome) => {
-                    if (isChrome) {
-                        return this._systemTypeChrome;
-                    }
+	getSystemType() {
+		return promiseTry(
+			() => this.isChromeVersion()
+				.then((isChrome) => {
+					if (isChrome) {
+						return this._systemTypeChrome;
+					}
 
-                    return this._systemTypeWebExtension;
-                }),
-        );
-    }
+					return this._systemTypeWebExtension;
+				}),
+		);
+	}
 
-    getOsType() {
-        return promiseTry(
-            () => browser.runtime.getPlatformInfo()
-                .then((platformInfo) => {
-                    if (platformInfo && typeof platformInfo.os === "string") {
-                        // https://developer.chrome.com/extensions/runtime#type-PlatformOs
-                        return platformInfo.os;
-                    }
+	getOsType() {
+		return promiseTry(
+			() => browser.runtime.getPlatformInfo()
+				.then((platformInfo) => {
+					if (platformInfo && typeof platformInfo.os === "string") {
+						// https://developer.chrome.com/extensions/runtime#type-PlatformOs
+						return platformInfo.os;
+					}
 
-                    return null;
-                }),
-        );
-    }
+					return null;
+				}),
+		);
+	}
 }

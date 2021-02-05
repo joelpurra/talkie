@@ -19,29 +19,28 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    createAssignmentActionMapReducer,
+	createAssignmentActionMapReducer,
 } from "../../shared/utils/reduce-helpers";
-
 import * as actionTypes from "../constants/action-types-voices";
 
 const initialState = {
-    selectedLanguageCode: null,
-    selectedVoiceName: null,
-    effectiveVoiceNameForSelectedLanguage: null,
-    sampleText: "",
-    rateForSelectedVoice: 1,
-    pitchForSelectedVoice: 1,
+	selectedLanguageCode: null,
+	selectedVoiceName: null,
+	effectiveVoiceNameForSelectedLanguage: null,
+	sampleText: "",
+	rateForSelectedVoice: 1,
+	pitchForSelectedVoice: 1,
 };
 
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_SELECTED_LANGUAGE_CODE]: "selectedLanguageCode",
-    [actionTypes.SET_SELECTED_VOICE_NAME]: "selectedVoiceName",
-    [actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE]: "effectiveVoiceNameForSelectedLanguage",
-    [actionTypes.SET_SAMPLE_TEXT]: "sampleText",
-    [actionTypes.SET_RATE_FOR_SELECTED_VOICE]: "rateForSelectedVoice",
-    [actionTypes.SET_PITCH_FOR_SELECTED_VOICE]: "pitchForSelectedVoice",
+	[actionTypes.SET_SELECTED_LANGUAGE_CODE]: "selectedLanguageCode",
+	[actionTypes.SET_SELECTED_VOICE_NAME]: "selectedVoiceName",
+	[actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE]: "effectiveVoiceNameForSelectedLanguage",
+	[actionTypes.SET_SAMPLE_TEXT]: "sampleText",
+	[actionTypes.SET_RATE_FOR_SELECTED_VOICE]: "rateForSelectedVoice",
+	[actionTypes.SET_PITCH_FOR_SELECTED_VOICE]: "pitchForSelectedVoice",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

@@ -18,58 +18,66 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import Icon from "./icon.jsx";
 
 export default class TalkieEditionIcon extends React.PureComponent {
     static defaultProps = {
-        mode: "inline",
-        size: "1.3em",
-        marginLeft: "0.3em",
-        marginRight: "0.3em",
-        className: "",
-        network: null,
+    	mode: "inline",
+    	size: "1.3em",
+    	marginLeft: "0.3em",
+    	marginRight: "0.3em",
+    	className: "",
+    	network: null,
     };
 
     static propTypes = {
-        mode: PropTypes.oneOf(["inline", "standalone"]).isRequired,
-        size: PropTypes.string.isRequired,
-        marginLeft: PropTypes.string.isRequired,
-        marginRight: PropTypes.string.isRequired,
-        className: PropTypes.string.isRequired,
-        network: PropTypes.oneOf(["twitter", "facebook", "googleplus", "linkedin"]).isRequired,
+    	mode: PropTypes.oneOf([
+    		"inline",
+    		"standalone",
+    	]).isRequired,
+    	size: PropTypes.string.isRequired,
+    	marginLeft: PropTypes.string.isRequired,
+    	marginRight: PropTypes.string.isRequired,
+    	className: PropTypes.string.isRequired,
+    	network: PropTypes.oneOf([
+    		"twitter",
+    		"facebook",
+    		"googleplus",
+    		"linkedin",
+    	]).isRequired,
     }
 
     render() {
-        const {
-            mode,
-            size,
-            marginLeft,
-            marginRight,
-            className,
-            network,
-        } = this.props;
+    	const {
+    		mode,
+    		size,
+    		marginLeft,
+    		marginRight,
+    		className,
+    		network,
+    	} = this.props;
 
-        const networkClassName = `icon-${network}`;
+    	const networkClassName = `icon-${network}`;
 
-        const classNames = [
-            "icon-share",
-            networkClassName,
-            className,
-        ]
-            .join(" ")
-            .trim();
+    	const classNames = [
+    		"icon-share",
+    		networkClassName,
+    		className,
+    	]
+    		.join(" ")
+    		.trim();
 
-        return (
-            <Icon
-                mode={mode}
-                size={size}
-                marginLeft={marginLeft}
-                marginRight={marginRight}
-                className={classNames}
-            />
-        );
+    	return (
+    		<Icon
+    			mode={mode}
+    			size={size}
+    			marginLeft={marginLeft}
+    			marginRight={marginRight}
+    			className={classNames}
+    		/>
+    	);
     }
 }

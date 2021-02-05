@@ -18,11 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    Provider,
+	Provider,
 } from "react-redux";
 
 import ErrorBoundary from "../components/error-boundary.jsx";
@@ -30,31 +29,31 @@ import Providers from "./providers.jsx";
 
 export default class Root extends React.PureComponent {
     static propTypes = {
-        store: PropTypes.object.isRequired,
-        configuration: PropTypes.object.isRequired,
-        translator: PropTypes.object.isRequired,
-        broadcaster: PropTypes.object.isRequired,
-        styletron: PropTypes.object.isRequired,
-        children: PropTypes.element.isRequired,
+    	store: PropTypes.object.isRequired,
+    	configuration: PropTypes.object.isRequired,
+    	translator: PropTypes.object.isRequired,
+    	broadcaster: PropTypes.object.isRequired,
+    	styletron: PropTypes.object.isRequired,
+    	children: PropTypes.element.isRequired,
     };
 
     render() {
-        const {
-            broadcaster,
-            configuration,
-            store,
-            styletron,
-            translator,
-        } = this.props;
+    	const {
+    		broadcaster,
+    		configuration,
+    		store,
+    		styletron,
+    		translator,
+    	} = this.props;
 
-        return (
-            <ErrorBoundary>
-                <Provider store={store}>
-                    <Providers configuration={configuration} translator={translator} broadcaster={broadcaster} styletron={styletron}>
-                        {React.Children.only(this.props.children)}
-                    </Providers>
-                </Provider>
-            </ErrorBoundary>
-        );
+    	return (
+    		<ErrorBoundary>
+    			<Provider store={store}>
+    				<Providers configuration={configuration} translator={translator} broadcaster={broadcaster} styletron={styletron}>
+    					{React.Children.only(this.props.children)}
+ </Providers>
+ </Provider>
+ </ErrorBoundary>
+    	);
     }
 }

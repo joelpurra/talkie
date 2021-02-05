@@ -19,9 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 // TODO: use library?
-export const jsonClone = (obj) => {
-    const json = JSON.stringify(obj);
-    const restored = JSON.parse(json);
+export const jsonClone = (object) => {
+	const json = JSON.stringify(object);
+	const restored = JSON.parse(json);
 
-    return restored;
+	return restored;
 };

@@ -18,80 +18,78 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import configureAttribute from "../../../shared/hocs/configure.jsx";
-import styled from "../../../shared/hocs/styled.jsx";
-
-import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
-import * as lighter from "../../../shared/styled/text/lighter.jsx";
+import React from "react";
 
 import Icon from "../../../shared/components/icon/icon.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
+import styled from "../../../shared/hocs/styled.jsx";
+import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
+import * as lighter from "../../../shared/styled/text/lighter.jsx";
 
 export default
 @configureAttribute
 class Footer extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.styled = {
-            footer: styled({
-                lineHeight: "2em",
-                verticalAlign: "middle",
-            })(layoutBase.footer),
+		this.styled = {
+			footer: styled({
+				lineHeight: "2em",
+				verticalAlign: "middle",
+			})(layoutBase.footer),
 
-            footerFirstLink: styled({
-                fontSize: "1.75em",
-            })(lighter.a),
+			footerFirstLink: styled({
+				fontSize: "1.75em",
+			})(lighter.a),
 
-            footerSecondLink: styled({
-                // float: __MSG_@@bidi_end_edge__;
-            })(lighter.a),
-        };
-    }
+			footerSecondLink: styled({
+				// float: __MSG_@@bidi_end_edge__;
+			})(lighter.a),
+		};
+	}
 
     static defaultProps = {
-        versionNumber: false,
+    	versionNumber: false,
     };
 
     static propTypes = {
-        versionNumber: PropTypes.string.isRequired,
-        optionsPageClick: PropTypes.func.isRequired,
-        configure: PropTypes.func.isRequired,
-        onConfigurationChange: PropTypes.func.isRequired,
+    	versionNumber: PropTypes.string.isRequired,
+    	optionsPageClick: PropTypes.func.isRequired,
+    	configure: PropTypes.func.isRequired,
+    	onConfigurationChange: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
-        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
     }
 
     componentWillUnmount() {
-        this._unregisterConfigurationListener();
+    	this._unregisterConfigurationListener();
     }
 
     render() {
-        const {
-            configure,
-            versionNumber,
-            optionsPageClick,
-        } = this.props;
+    	const {
+    		configure,
+    		versionNumber,
+    		optionsPageClick,
+    	} = this.props;
 
-        return (
-            <this.styled.footer>
-                <this.styled.footerFirstLink
-                    href={configure("urls.options")}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    onClick={optionsPageClick}
-                >
-                    <Icon mode="standalone" size="0.75em" className="icon-settings" />
-                </this.styled.footerFirstLink>
+    	return (
+    		<this.styled.footer>
+    			<this.styled.footerFirstLink
+    				href={configure("urls.options")}
+    				rel="noopener noreferrer"
+    				target="_blank"
+    				onClick={optionsPageClick}
+	>
+    				<Icon mode="standalone" size="0.75em" className="icon-settings"/>
+ </this.styled.footerFirstLink>
 
-                <this.styled.footerSecondLink href={configure("urls.options-about-from-popup")} id="footer-about-link">
-                    v{versionNumber}
-                </this.styled.footerSecondLink>
-            </this.styled.footer>
-        );
+    			<this.styled.footerSecondLink href={configure("urls.options-about-from-popup")} id="footer-about-link">
+		v{versionNumber}
+ </this.styled.footerSecondLink>
+ </this.styled.footer>
+    	);
     }
 }

@@ -19,19 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import license from "rollup-plugin-license";
+
 const path = require("path");
 
 export default (name) =>
-    license({
-        sourcemap: true,
+	license({
+		sourcemap: true,
 
-        banner: {
-            content: {
-                file: path.join(__dirname, "LICENSE-BANNER"),
-            },
-        },
+		banner: {
+			content: {
+				file: path.join(__dirname, "LICENSE-BANNER"),
+			},
+		},
 
-        thirdParty: {
-            output: path.join(__dirname, "dist", `${name}.dependencies.txt`),
-        },
-    });
+		thirdParty: {
+			output: path.join(__dirname, "dist", `${name}.dependencies.txt`),
+		},
+	});

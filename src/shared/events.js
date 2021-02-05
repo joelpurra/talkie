@@ -19,14 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const knownEvents = {
-    beforeSpeaking: "beforeSpeaking",
-    stopSpeaking: "stopSpeaking",
-    afterSpeaking: "afterSpeaking",
-    beforeSpeakingPart: "beforeSpeakingPart",
-    afterSpeakingPart: "afterSpeakingPart",
-    updateProgress: "updateProgress",
-    resetProgress: "resetProgress",
-    addProgress: "addProgress",
-    finishProgress: "finishProgress",
-    passSelectedTextToBackground: "passSelectedTextToBackground",
+	beforeSpeaking: "beforeSpeaking",
+	stopSpeaking: "stopSpeaking",
+	afterSpeaking: "afterSpeaking",
+	beforeSpeakingPart: "beforeSpeakingPart",
+	afterSpeakingPart: "afterSpeakingPart",
+	updateProgress: "updateProgress",
+	resetProgress: "resetProgress",
+	addProgress: "addProgress",
+	finishProgress: "finishProgress",
+	passSelectedTextToBackground: "passSelectedTextToBackground",
 };

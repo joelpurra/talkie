@@ -18,26 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default class TranslationProvider extends React.PureComponent {
     static propTypes = {
-        children: PropTypes.element.isRequired,
-        translator: PropTypes.object.isRequired,
+    	children: PropTypes.element.isRequired,
+    	translator: PropTypes.object.isRequired,
     }
 
     static childContextTypes ={
-        translate: PropTypes.func.isRequired,
+    	translate: PropTypes.func.isRequired,
     }
 
     getChildContext() {
-        return {
-            translate: (key, ...args) => this.props.translator.translate(key, ...args),
-        };
+    	return {
+    		translate: (key, ...args) => this.props.translator.translate(key, ...args),
+    	};
     }
 
     render() {
-        return React.Children.only(this.props.children);
+    	return React.Children.only(this.props.children);
     }
 }

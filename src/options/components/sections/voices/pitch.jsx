@@ -21,41 +21,40 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import ScaleRange from "../../range/scale-range.jsx";
-
 import RangeWithHeading from "./range-with-heading.jsx";
 
 export default class Pitch extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.transformValueBeforeChange = this.transformValueBeforeChange.bind(this);
-        this.getHeading = this.getHeading.bind(this);
-    }
+		this.transformValueBeforeChange = this.transformValueBeforeChange.bind(this);
+		this.getHeading = this.getHeading.bind(this);
+	}
 
-    transformValueBeforeChange(value) {
-        return value;
-    }
+	transformValueBeforeChange(value) {
+		return value;
+	}
 
-    getHeading(voiceName, translate) {
-        let heading = null;
+	getHeading(voiceName, translate) {
+		let heading = null;
 
-        if (typeof voiceName === "string" && voiceName.length > 0) {
-            heading = translate("frontend_voicesPitchHeading", voiceName);
-        } else {
-            heading = translate("frontend_voicesPitchEmptyHeading");
-        }
+		if (typeof voiceName === "string" && voiceName.length > 0) {
+			heading = translate("frontend_voicesPitchHeading", voiceName);
+		} else {
+			heading = translate("frontend_voicesPitchEmptyHeading");
+		}
 
-        return heading;
-    }
+		return heading;
+	}
 
-    render() {
-        return (
-            <RangeWithHeading
-                {...this.props}
-                transformValueBeforeChange={this.transformValueBeforeChange}
-                getHeading={this.getHeading}
-                ScaleRangeElementClass={ScaleRange}
-            />
-        );
-    }
+	render() {
+		return (
+			<RangeWithHeading
+				{...this.props}
+				transformValueBeforeChange={this.transformValueBeforeChange}
+				getHeading={this.getHeading}
+				ScaleRangeElementClass={ScaleRange}
+			/>
+		);
+	}
 }

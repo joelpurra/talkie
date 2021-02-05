@@ -18,19 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default function broadcasterHoc(ComponentToWrap) {
-    return class BroadcasterHoc extends React.PureComponent {
+	return class BroadcasterHoc extends React.PureComponent {
         static contextTypes = {
-            broadcaster: PropTypes.func.isRequired,
+        	broadcaster: PropTypes.func.isRequired,
         }
 
         render() {
-            return (
-                <ComponentToWrap {...this.props} broadcaster={this.context.broadcaster} />
-            );
+        	return (
+        		<ComponentToWrap {...this.props} broadcaster={this.context.broadcaster}/>
+        	);
         }
-    };
-};
+	};
+}

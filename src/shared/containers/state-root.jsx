@@ -18,15 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 // import {
 //     bindActionCreators,
 // } from "redux";
-
 import {
-    connect,
+	connect,
 } from "react-redux";
 
 import StyleRoot from "../components/style-root.jsx";
@@ -34,48 +32,48 @@ import StyleRoot from "../components/style-root.jsx";
 // import actionCreators from "../actions";
 
 const mapStateToProps = (state) => {
-    return {
-        isSpeaking: state.shared.speaking.isSpeaking,
-        isPremiumEdition: state.shared.metadata.isPremiumEdition,
-        versionName: state.shared.metadata.versionName,
-    };
+	return {
+		isSpeaking: state.shared.speaking.isSpeaking,
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		versionName: state.shared.metadata.versionName,
+	};
 };
 
 const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint-enable no-unused-vars */) => {
-    return {};
+	return {};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class StateRoot extends React.PureComponent {
     static defaultProps = {
-        isSpeaking: false,
-        isPremiumEdition: false,
-        versionName: null,
+    	isSpeaking: false,
+    	isPremiumEdition: false,
+    	versionName: null,
     };
 
     static propTypes = {
-        isSpeaking: PropTypes.bool.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-        versionName: PropTypes.string,
-        children: PropTypes.element.isRequired,
+    	isSpeaking: PropTypes.bool.isRequired,
+    	isPremiumEdition: PropTypes.bool.isRequired,
+    	versionName: PropTypes.string,
+    	children: PropTypes.element.isRequired,
     }
 
     render() {
-        const {
-            isSpeaking,
-            isPremiumEdition,
-            versionName,
-        } = this.props;
+    	const {
+    		isSpeaking,
+    		isPremiumEdition,
+    		versionName,
+    	} = this.props;
 
-        return (
-            <StyleRoot
-                isSpeaking={isSpeaking}
-                isPremiumEdition={isPremiumEdition}
-                versionName={versionName}
-            >
-                {React.Children.only(this.props.children)}
-            </StyleRoot>
-        );
+    	return (
+    		<StyleRoot
+    			isSpeaking={isSpeaking}
+    			isPremiumEdition={isPremiumEdition}
+    			versionName={versionName}
+	>
+    			{React.Children.only(this.props.children)}
+ </StyleRoot>
+    	);
     }
 }

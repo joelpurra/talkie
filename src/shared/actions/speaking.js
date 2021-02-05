@@ -23,11 +23,14 @@ import * as actionTypes from "../constants/action-types-speaking";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const iconClick = () =>
-    (dispatch, getState, api) => api.iconClick();
+	(dispatch, getState, api) => api.iconClick();
 
 export const setIsSpeaking = (isSpeaking) => {
-    return { type: actionTypes.SET_IS_SPEAKING, isSpeaking };
+	return {
+		type: actionTypes.SET_IS_SPEAKING,
+		isSpeaking,
+	};
 };
 
 export const speakTextInLanguageWithOverrides = (text, languageCode) =>
-    (dispatch, getState, api) => api.debouncedSpeakTextInLanguageWithOverrides(text, languageCode);
+	(dispatch, getState, api) => api.debouncedSpeakTextInLanguageWithOverrides(text, languageCode);

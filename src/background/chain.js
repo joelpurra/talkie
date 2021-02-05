@@ -19,35 +19,35 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
-    logError,
+	logDebug,
+	logError,
 } from "../shared/log";
 
 export default class Chain {
-    constructor() {
-        this.chainPromise = Promise.resolve();
-        this.length = 0;
-    }
+	constructor() {
+		this.chainPromise = Promise.resolve();
+		this.length = 0;
+	}
 
-    link(promise) {
-        this.length++;
-        const currentLength = this.length;
+	link(promise) {
+		this.length++;
+		const currentLength = this.length;
 
-        logDebug("Start", "Chain", currentLength);
+		logDebug("Start", "Chain", currentLength);
 
-        this.chainPromise = this.chainPromise
-            .then(promise)
-            .then((result) => {
-                logDebug("Done", "Chain", currentLength);
+		this.chainPromise = this.chainPromise
+			.then(promise)
+			.then((result) => {
+				logDebug("Done", "Chain", currentLength);
 
-                return result;
-            })
-            .catch((error) => {
-                logError("Chain", currentLength, error);
+				return result;
+			})
+			.catch((error) => {
+				logError("Chain", currentLength, error);
 
-                throw error;
-            });
+				throw error;
+			});
 
-        return this.chainPromise;
-    }
+		return this.chainPromise;
+	}
 }

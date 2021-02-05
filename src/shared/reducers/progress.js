@@ -18,24 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import * as actionTypes from "../constants/action-types-progress";
 import {
-    createAssignmentActionMapReducer,
+	createAssignmentActionMapReducer,
 } from "../utils/reduce-helpers";
 
-import * as actionTypes from "../constants/action-types-progress";
-
 const initialState = {
-    min: 0,
-    current: 0,
-    max: 0,
+	min: 0,
+	current: 0,
+	max: 0,
 };
 
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_MIN]: "min",
-    [actionTypes.SET_CURRENT]: "current",
-    [actionTypes.SET_MAX]: "max",
+	[actionTypes.SET_MIN]: "min",
+	[actionTypes.SET_CURRENT]: "current",
+	[actionTypes.SET_MAX]: "max",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

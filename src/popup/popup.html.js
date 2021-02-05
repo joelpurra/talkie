@@ -19,11 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import getHtml from "../shared/renderers/render-react-html";
-
-import rootReducer from "./reducers";
 // import actions from "./actions";
 import App from "./containers/app.jsx";
 import htmlTemplate from "./popup.template.html";
+import rootReducer from "./reducers";
 
 // TODO: generalize preloading?
 const prerenderActionsToDispatch = [];

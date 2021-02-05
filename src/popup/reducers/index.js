@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    combineReducers,
+	combineReducers,
 } from "redux";
 
 import shared from "../../shared/reducers";
 
 export default combineReducers({
-    shared,
+	shared,
 });

@@ -18,20 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import * as actionTypes from "../constants/action-types-speaking";
 import {
-    createAssignmentActionMapReducer,
+	createAssignmentActionMapReducer,
 } from "../utils/reduce-helpers";
 
-import * as actionTypes from "../constants/action-types-speaking";
-
 const initialState = {
-    isSpeaking: false,
+	isSpeaking: false,
 };
 
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_IS_SPEAKING]: "isSpeaking",
+	[actionTypes.SET_IS_SPEAKING]: "isSpeaking",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

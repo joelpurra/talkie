@@ -18,98 +18,95 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../promise";
-
 import ReactDOMServer from "react-dom/server";
 
+import sharedActions from "../actions";
 import {
-    dispatchAll,
+	promiseTry,
+} from "../promise";
+import {
+	dispatchAll,
 } from "../utils/store-helpers";
-
 import autoRoot from "./auto-root";
 
-import sharedActions from "../actions";
-
 const getPrerenderActionsToDispatch = (prerenderedActionsToDispatch) => {
-    const serverSideActionsToDispatch = [
-        // NOTE: currently attempts to match "synchronous usage" in style-root.jsx.
-        // TODO: generalize preloading?
-        // NOTE: don't want to keep track of when to load these, preemptively loading.
-        sharedActions.metadata.loadIsPremiumEdition(),
-        sharedActions.metadata.loadVersionName(),
-        sharedActions.metadata.loadSystemType(),
-        sharedActions.metadata.loadVersionNumber(),
-        sharedActions.voices.loadTranslatedLanguages(),
-    ];
+	const serverSideActionsToDispatch = [
+		// NOTE: currently attempts to match "synchronous usage" in style-root.jsx.
+		// TODO: generalize preloading?
+		// NOTE: don't want to keep track of when to load these, preemptively loading.
+		sharedActions.metadata.loadIsPremiumEdition(),
+		sharedActions.metadata.loadVersionName(),
+		sharedActions.metadata.loadSystemType(),
+		sharedActions.metadata.loadVersionNumber(),
+		sharedActions.voices.loadTranslatedLanguages(),
+	];
 
-    const allActionsToDispatch = []
-        .concat(serverSideActionsToDispatch)
-        .concat(prerenderedActionsToDispatch);
+	const allActionsToDispatch = []
+		.concat(serverSideActionsToDispatch)
+		.concat(prerenderedActionsToDispatch);
 
-    return allActionsToDispatch;
+	return allActionsToDispatch;
 };
 
 const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
-    // TODO: simplify.
-    const styleRootActionsToDispatch = [];
+	// TODO: simplify.
+	const styleRootActionsToDispatch = [];
 
-    const allActionsToDispatch = []
-        .concat(styleRootActionsToDispatch)
-        .concat(postrenderActionsToDispatch);
+	const allActionsToDispatch = []
+		.concat(styleRootActionsToDispatch)
+		.concat(postrenderActionsToDispatch);
 
-    return allActionsToDispatch;
+	return allActionsToDispatch;
 };
 
 const EMPTY_STATE = undefined;
 
 const renderHtml = (store, reactHtmlTemplate, localeProvider, styletron, root) => promiseTry(() => {
-    const reactRoot = ReactDOMServer.renderToString(root);
-    const translationLocale = localeProvider.getTranslationLocale();
-    const stylesForHead = styletron.getStylesheetsHtml();
-    const prerenderedState = store.getState();
+	const reactRoot = ReactDOMServer.renderToString(root);
+	const translationLocale = localeProvider.getTranslationLocale();
+	const stylesForHead = styletron.getStylesheetsHtml();
+	const prerenderedState = store.getState();
 
-    // WARNING: See the following for security issues around embedding JSON in HTML:
-    // https://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-    const prerenderedStateJson = JSON.stringify(prerenderedState).replace(/</g, "\\u003c");
+	// WARNING: See the following for security issues around embedding JSON in HTML:
+	// https://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+	const prerenderedStateJson = JSON.stringify(prerenderedState).replace(/</g, "\\u003c");
 
-    const html = reactHtmlTemplate({
-        locale: translationLocale,
-        reactRoot: reactRoot,
-        stylesForHead: stylesForHead,
-        prerenderedStateJson: prerenderedStateJson,
-    });
+	const html = reactHtmlTemplate({
+		locale: translationLocale,
+		reactRoot,
+		stylesForHead,
+		prerenderedStateJson,
+	});
 
-    return html;
+	return html;
 });
 
 const getHtml = (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, reactHtmlTemplate, talkieLocale, ChildComponent) => promiseTry(() => {
-    const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
-    const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);
+	const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
+	const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);
 
-    return autoRoot(EMPTY_STATE, rootReducer, ChildComponent)
-        .then(({
-            root,
-            store,
-            styletron,
-            localeProvider,
-        }) => {
-            localeProvider.setTranslationLocale(talkieLocale);
+	return autoRoot(EMPTY_STATE, rootReducer, ChildComponent)
+		.then(({
+			root,
+			store,
+			styletron,
+			localeProvider,
+		}) => {
+			localeProvider.setTranslationLocale(talkieLocale);
 
-            return dispatchAll(store, prerenderedActionsToDispatch)
-                .then(() => {
-                    let html = null;
+			return dispatchAll(store, prerenderedActionsToDispatch)
+				.then(() => {
+					let html = null;
 
-                    return renderHtml(store, reactHtmlTemplate, localeProvider, styletron, root)
-                        .then((renderedHtml) => {
-                            html = renderedHtml;
-                            return undefined;
-                        })
-                        .then(() => dispatchAll(store, postrenderActionsToDispatch))
-                        .then(() => html);
-                });
-        });
+					return renderHtml(store, reactHtmlTemplate, localeProvider, styletron, root)
+						.then((renderedHtml) => {
+							html = renderedHtml;
+							return undefined;
+						})
+						.then(() => dispatchAll(store, postrenderActionsToDispatch))
+						.then(() => html);
+				});
+		});
 });
 
 export default getHtml;

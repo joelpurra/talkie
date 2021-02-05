@@ -18,70 +18,68 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import translateAttribute from "../../../../shared/hocs/translate.jsx";
-
-import * as textBase from "../../../../shared/styled/text/text-base.jsx";
+import React from "react";
 
 import Checkbox from "../../../../shared/components/form/checkbox.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
+import * as textBase from "../../../../shared/styled/text/text-base.jsx";
 
 export default
 @translateAttribute
 class SpeakLongTexts extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleChange = this.handleChange.bind(this);
-    }
+		this.handleChange = this.handleChange.bind(this);
+	}
 
     static defaultProps = {
-        speakLongTexts: false,
-        disabled: true,
+    	speakLongTexts: false,
+    	disabled: true,
     };
 
     static propTypes = {
-        onChange: PropTypes.func.isRequired,
-        speakLongTexts: PropTypes.bool.isRequired,
-        disabled: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
+    	onChange: PropTypes.func.isRequired,
+    	speakLongTexts: PropTypes.bool.isRequired,
+    	disabled: PropTypes.bool.isRequired,
+    	translate: PropTypes.func.isRequired,
     };
 
     handleChange(speakLongTexts) {
-        this.props.onChange(speakLongTexts);
+    	this.props.onChange(speakLongTexts);
     }
 
     render() {
-        const {
-            speakLongTexts,
-            disabled,
-            translate,
-        } = this.props;
+    	const {
+    		speakLongTexts,
+    		disabled,
+    		translate,
+    	} = this.props;
 
-        return (
-            <div>
-                <textBase.h2 scope="col">
-                    {translate("frontend_voicesSpeakLongTextsHeading")}
-                </textBase.h2>
-                <p>
-                    {translate("frontend_voicesSpeakLongTextsExplanation01")}
-                </p>
-                <p>
-                    {translate("frontend_voicesSpeakLongTextsExplanation02")}
-                </p>
-                <p>
-                    <label>
-                        <Checkbox
-                            checked={speakLongTexts}
-                            onChange={this.handleChange}
-                            disabled={disabled}
-                        />
-                        {" "}
-                        {translate("frontend_voicesSpeakLongTextsLabel")}
-                    </label>
-                </p>
-            </div>
-        );
+    	return (
+    		<div>
+    			<textBase.h2 scope="col">
+    				{translate("frontend_voicesSpeakLongTextsHeading")}
+ </textBase.h2>
+    			<p>
+    				{translate("frontend_voicesSpeakLongTextsExplanation01")}
+ </p>
+    			<p>
+    				{translate("frontend_voicesSpeakLongTextsExplanation02")}
+ </p>
+    			<p>
+    				<label>
+    					<Checkbox
+    						checked={speakLongTexts}
+    						onChange={this.handleChange}
+    						disabled={disabled}
+    					/>
+    					{" "}
+    					{translate("frontend_voicesSpeakLongTextsLabel")}
+ </label>
+ </p>
+ </div>
+    	);
     }
 }

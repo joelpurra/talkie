@@ -18,30 +18,30 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import * as layoutBase from "../../styled/layout/layout-base.jsx";
 
 export default class HeroSection extends React.PureComponent {
     static defaultProps = {
-        className: "",
+    	className: "",
     };
 
     static propTypes = {
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
+    	children: PropTypes.node.isRequired,
+    	className: PropTypes.string.isRequired,
     }
 
     render() {
-        const {
-            className,
-        } = this.props;
+    	const {
+    		className,
+    	} = this.props;
 
-        return (
-            <layoutBase.hero className={className}>
-                {this.props.children}
-            </layoutBase.hero>
-        );
+    	return (
+    		<layoutBase.hero className={className}>
+    			{this.props.children}
+ </layoutBase.hero>
+    	);
     }
 }

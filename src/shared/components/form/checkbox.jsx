@@ -18,55 +18,56 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import styled from "../../hocs/styled.jsx";
-
 import * as formBase from "../../styles/form/form-base";
 
 export default
 @styled(formBase.checkbox)
 class Checkbox extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
+		this.handleOnChange = this.handleOnChange.bind(this);
+	}
 
     static defaultProps = {
-        checked: false,
-        disabled: false,
-        onChange: null,
-        className: "",
+    	checked: false,
+    	disabled: false,
+    	onChange: null,
+    	className: "",
     };
 
     static propTypes = {
-        checked: PropTypes.bool.isRequired,
-        disabled: PropTypes.bool.isRequired,
-        onChange: PropTypes.func.isRequired,
-        className: PropTypes.string.isRequired,
+    	checked: PropTypes.bool.isRequired,
+    	disabled: PropTypes.bool.isRequired,
+    	onChange: PropTypes.func.isRequired,
+    	className: PropTypes.string.isRequired,
     }
 
-    handleOnChange({ target }) {
-        this.props.onChange(target.checked === true);
+    handleOnChange({
+    	target,
+    }) {
+    	this.props.onChange(target.checked === true);
     }
 
     render() {
-        const {
-            checked,
-            disabled,
-            className,
-        } = this.props;
+    	const {
+    		checked,
+    		disabled,
+    		className,
+    	} = this.props;
 
-        return (
-            <input
-                type="checkbox"
-                checked={checked}
-                disabled={disabled || null}
-                onChange={this.handleOnChange}
-                className={className}
-            />
-        );
+    	return (
+    		<input
+    			type="checkbox"
+    			checked={checked}
+    			disabled={disabled || null}
+    			onChange={this.handleOnChange}
+    			className={className}
+    		/>
+    	);
     }
 }

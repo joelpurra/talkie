@@ -23,53 +23,71 @@ import * as actionTypes from "../constants/action-types-metadata";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const loadIsPremiumEdition = () =>
-    (dispatch, getState, api) => api.isPremiumEdition()
-        .then((isPremiumEdition) => dispatch(setIsPremium(isPremiumEdition)));
+	(dispatch, getState, api) => api.isPremiumEdition()
+		.then((isPremiumEdition) => dispatch(setIsPremium(isPremiumEdition)));
 
 export const storeIsPremiumEdition = (isPremiumEdition) =>
-    (dispatch, getState, api) => api.setIsPremiumEditionOption(isPremiumEdition)
-        .then(() => dispatch(loadIsPremiumEdition()));
+	(dispatch, getState, api) => api.setIsPremiumEditionOption(isPremiumEdition)
+		.then(() => dispatch(loadIsPremiumEdition()));
 
 export const setIsPremium = (isPremiumEdition) => {
-    return { type: actionTypes.SET_IS_PREMIUM_EDITION, isPremiumEdition };
+	return {
+		type: actionTypes.SET_IS_PREMIUM_EDITION,
+		isPremiumEdition,
+	};
 };
 
 export const loadVersionName = () =>
-    (dispatch, getState, api) => api.getVersionName()
-        .then((versionName) => dispatch(setVersionName(versionName)));
+	(dispatch, getState, api) => api.getVersionName()
+		.then((versionName) => dispatch(setVersionName(versionName)));
 
 export const setVersionName = (versionName) => {
-    return { type: actionTypes.SET_VERSION_NAME, versionName };
+	return {
+		type: actionTypes.SET_VERSION_NAME,
+		versionName,
+	};
 };
 
 export const loadVersionNumber = () =>
-    (dispatch, getState, api) => api.getVersionNumber()
-        .then((versionNumber) => dispatch(setVersionNumber(versionNumber)));
+	(dispatch, getState, api) => api.getVersionNumber()
+		.then((versionNumber) => dispatch(setVersionNumber(versionNumber)));
 
 export const setVersionNumber = (versionNumber) => {
-    return { type: actionTypes.SET_VERSION_NUMBER, versionNumber };
+	return {
+		type: actionTypes.SET_VERSION_NUMBER,
+		versionNumber,
+	};
 };
 
 export const loadEditionType = () =>
-    (dispatch, getState, api) => api.getEditionType()
-        .then((editionType) => dispatch(setEditionType(editionType)));
+	(dispatch, getState, api) => api.getEditionType()
+		.then((editionType) => dispatch(setEditionType(editionType)));
 
 export const setEditionType = (editionType) => {
-    return { type: actionTypes.SET_EDITION_TYPE, editionType };
+	return {
+		type: actionTypes.SET_EDITION_TYPE,
+		editionType,
+	};
 };
 
 export const loadSystemType = () =>
-    (dispatch, getState, api) => api.getSystemType()
-        .then((systemType) => dispatch(setSystemType(systemType)));
+	(dispatch, getState, api) => api.getSystemType()
+		.then((systemType) => dispatch(setSystemType(systemType)));
 
 export const setSystemType = (systemType) => {
-    return { type: actionTypes.SET_SYSTEM_TYPE, systemType };
+	return {
+		type: actionTypes.SET_SYSTEM_TYPE,
+		systemType,
+	};
 };
 
 export const loadOsType = () =>
-    (dispatch, getState, api) => api.getOsType()
-        .then((osType) => dispatch(setOsType(osType)));
+	(dispatch, getState, api) => api.getOsType()
+		.then((osType) => dispatch(setOsType(osType)));
 
 export const setOsType = (osType) => {
-    return { type: actionTypes.SET_OS_TYPE, osType };
+	return {
+		type: actionTypes.SET_OS_TYPE,
+		osType,
+	};
 };

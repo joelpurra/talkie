@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const table = {
-    width: "100%",
+	width: "100%",
 };
 
 export const tbody = {};
@@ -27,8 +27,8 @@ export const th = {};
 export const tr = {};
 
 export const td = {
-    paddingLeft: "0.5em",
-    paddingRight: "0.5em",
-    paddingTop: "0.5em",
-    paddingBottom: "0.5em",
+	paddingLeft: "0.5em",
+	paddingRight: "0.5em",
+	paddingTop: "0.5em",
+	paddingBottom: "0.5em",
 };

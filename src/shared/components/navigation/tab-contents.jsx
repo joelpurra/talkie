@@ -18,44 +18,44 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import {
-    handleBubbledLinkClick,
+	handleBubbledLinkClick,
 } from "../../utils/ui";
 
 export default class TabContents extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleClick = this.handleClick.bind(this);
-    }
+		this.handleClick = this.handleClick.bind(this);
+	}
 
-    handleClick(e) {
-        // TODO: use an api call which has handleBubbledLinkClick?
-        return handleBubbledLinkClick(this.props.onLinkClick, e);
-    }
+	handleClick(e) {
+		// TODO: use an api call which has handleBubbledLinkClick?
+		return handleBubbledLinkClick(this.props.onLinkClick, e);
+	}
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
-        activeTabId: PropTypes.string.isRequired,
-        children: PropTypes.node.isRequired,
-        onLinkClick: PropTypes.func.isRequired,
+    	id: PropTypes.string.isRequired,
+    	activeTabId: PropTypes.string.isRequired,
+    	children: PropTypes.node.isRequired,
+    	onLinkClick: PropTypes.func.isRequired,
     }
 
     render() {
-        if (this.props.id !== this.props.activeTabId) {
-            return null;
-        }
+    	if (this.props.id !== this.props.activeTabId) {
+    		return null;
+    	}
 
-        return (
-            <div
-                id={this.props.id}
-                onClick={this.handleClick}
-            >
-                {this.props.children}
-            </div>
-        );
+    	return (
+    		<div
+    			id={this.props.id}
+    			onClick={this.handleClick}
+	>
+    			{this.props.children}
+ </div>
+    	);
     }
 }

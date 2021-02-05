@@ -19,36 +19,35 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	logDebug,
+} from "../shared/log";
+import {
+	promiseTry,
 } from "../shared/promise";
 
-import {
-    logDebug,
-} from "../shared/log";
-
 export default class OnlyLastCaller {
-    constructor() {
-        this.lastCallerId = 0;
-    }
+	constructor() {
+		this.lastCallerId = 0;
+	}
 
-    incrementCallerId() {
-        this.lastCallerId++;
-    }
+	incrementCallerId() {
+		this.lastCallerId++;
+	}
 
-    getShouldContinueSpeakingProvider() {
-        this.incrementCallerId();
-        const callerOnTheAirId = this.lastCallerId;
+	getShouldContinueSpeakingProvider() {
+		this.incrementCallerId();
+		const callerOnTheAirId = this.lastCallerId;
 
-        logDebug("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
+		logDebug("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
 
-        return () => promiseTry(
-            () => {
-                const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
+		return () => promiseTry(
+			() => {
+				const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
 
-                logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
+				logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
 
-                return isLastCallerOnTheAir;
-            },
-        );
-    };
+				return isLastCallerOnTheAir;
+			},
+		);
+	}
 }

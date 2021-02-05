@@ -19,14 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    openInternalUrlFromConfigurationInNewTab,
+	openInternalUrlFromConfigurationInNewTab,
 } from "../shared/urls";
 
 export default class WelcomeManager {
-    openWelcomePage() {
-        // TODO: focus the tab's window to ensure that the welcome text selection works?
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/Tab
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows/update
-        return openInternalUrlFromConfigurationInNewTab("demo-welcome");
-    };
+	openWelcomePage() {
+		// TODO: focus the tab's window to ensure that the welcome text selection works?
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/Tab
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows/update
+		return openInternalUrlFromConfigurationInNewTab("demo-welcome");
+	}
 }

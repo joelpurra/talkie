@@ -19,68 +19,67 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
+	logDebug,
+} from "../shared/log";
+import {
+	promiseTry,
 } from "../shared/promise";
 
-import {
-    logDebug,
-} from "../shared/log";
-
 export default class ReadClipboardManager {
-    constructor(clipboardManager, talkieBackground, permissionsManager, metadataManager, translator) {
-        this.clipboardManager = clipboardManager;
-        this.talkieBackground = talkieBackground;
-        this.permissionsManager = permissionsManager;
-        this.metadataManager = metadataManager;
-        this.translator = translator;
+	constructor(clipboardManager, talkieBackground, permissionsManager, metadataManager, translator) {
+		this.clipboardManager = clipboardManager;
+		this.talkieBackground = talkieBackground;
+		this.permissionsManager = permissionsManager;
+		this.metadataManager = metadataManager;
+		this.translator = translator;
 
-        this.copyPasteTargetElementId = "copy-paste-textarea";
-    }
+		this.copyPasteTargetElementId = "copy-paste-textarea";
+	}
 
-    startSpeaking() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "startSpeaking");
+	startSpeaking() {
+		return promiseTry(
+			() => {
+				logDebug("Start", "startSpeaking");
 
-                return this.metadataManager.isPremiumEdition()
-                    .then((isPremiumEdition) => {
-                        if (!isPremiumEdition) {
-                            const text = this.translator.translate("readClipboardIsAPremiumFeature");
+				return this.metadataManager.isPremiumEdition()
+					.then((isPremiumEdition) => {
+						if (!isPremiumEdition) {
+							const text = this.translator.translate("readClipboardIsAPremiumFeature");
 
-                            return text;
-                        }
+							return text;
+						}
 
-                        return this.permissionsManager.browserHasPermissionsFeature()
-                            .then((hasPermissionsFeature) => {
-                                if (!hasPermissionsFeature) {
-                                    const text = this.translator.translate("readClipboardNeedsBrowserSupport");
+						return this.permissionsManager.browserHasPermissionsFeature()
+							.then((hasPermissionsFeature) => {
+								if (!hasPermissionsFeature) {
+									const text = this.translator.translate("readClipboardNeedsBrowserSupport");
 
-                                    return text;
-                                }
+									return text;
+								}
 
-                                return this.clipboardManager.getClipboardText()
-                                    .then((clipboardText) => {
-                                        let text = clipboardText;
+								return this.clipboardManager.getClipboardText()
+									.then((clipboardText) => {
+										let text = clipboardText;
 
-                                        if (typeof text !== "string") {
-                                            text = this.translator.translate("readClipboardNeedsPermission");
-                                        }
+										if (typeof text !== "string") {
+											text = this.translator.translate("readClipboardNeedsPermission");
+										}
 
-                                        if (text.length === 0 || text.trim().length === 0) {
-                                            text = this.translator.translate("readClipboardNoSuitableText");
-                                        }
+										if (text.length === 0 || text.trim().length === 0) {
+											text = this.translator.translate("readClipboardNoSuitableText");
+										}
 
-                                        return text;
-                                    });
-                            });
-                    })
-                    .then((text) => this.talkieBackground.startSpeakingCustomTextDetectLanguage(text))
-                    .then((result) => {
-                        logDebug("Done", "startSpeaking");
+										return text;
+									});
+							});
+					})
+					.then((text) => this.talkieBackground.startSpeakingCustomTextDetectLanguage(text))
+					.then((result) => {
+						logDebug("Done", "startSpeaking");
 
-                        return result;
-                    });
-            },
-        );
-    }
+						return result;
+					});
+			},
+		);
+	}
 }
