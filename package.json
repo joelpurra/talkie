@@ -91,6 +91,7 @@
   "homepage": "https://joelpurra.com/projects/talkie/",
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.13",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.12",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
@@ -103,7 +104,6 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-replace": "^2.3.4",
-    "babel-eslint": "^10.1.0",
     "bluebird": "^3.7.2",
     "chokidar-cli": "^2.1.0",
     "chrome-webstore-manager": "^0.4.2",
