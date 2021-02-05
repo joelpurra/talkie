@@ -34,7 +34,7 @@ export default class ContextMenuManager {
 		this.metadataManager = metadataManager;
 		this.translator = translator;
 
-		if (!isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT) && browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0) {
+		if (!Number.isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT) && browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0) {
 			this.actionMenuLimit = browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT;
 		} else {
 			this.actionMenuLimit = Number.MAX_SAFE_INTEGER;
@@ -42,84 +42,84 @@ export default class ContextMenuManager {
 
 		this.contextMenuOptionsCollection = [
 			{
-				free: true,
-				premium: true,
 				chrome: true,
-				webextension: true,
+				free: true,
 				item: {
-					id: "talkie-context-menu-start-stop",
-					title: this.translator.translate("contextMenuStartStopText"),
 					contexts: [
 						"selection",
 					],
+					id: "talkie-context-menu-start-stop",
+					title: this.translator.translate("contextMenuStartStopText"),
 				},
+				premium: true,
+				webextension: true,
 			},
 			{
-				free: true,
-				premium: true,
 				chrome: true,
-				webextension: true,
+				free: true,
 				item: {
-					id: "start-stop",
-					title: this.translator.translate("commandStartStopDescription"),
 					contexts: [
 						"browser_action",
 					],
+					id: "start-stop",
+					title: this.translator.translate("commandStartStopDescription"),
 				},
+				premium: true,
+				webextension: true,
 			},
 			{
-				free: true,
-				premium: true,
 				chrome: true,
-				// TODO: enable after Firefox 55 has landed?
-				webextension: false,
+				free: true,
 				item: {
-					id: "read-clipboard",
-					title: this.translator.translate("commandReadClipboardDescription"),
 					contexts: [
 						"browser_action",
 						"page",
 					],
+					id: "read-clipboard",
+					title: this.translator.translate("commandReadClipboardDescription"),
 				},
+				premium: true,
+				// TODO: enable after Firefox 55 has landed?
+				webextension: false,
 			},
 			{
-				free: true,
-				premium: true,
 				chrome: true,
-				webextension: true,
+				free: true,
 				item: {
+					contexts: [
+						"browser_action",
+					],
 					id: "buttonContextMenuSeparator01",
 					type: "separator",
+				},
+				premium: true,
+				webextension: true,
+			},
+			{
+				chrome: true,
+				free: true,
+				item: {
 					contexts: [
 						"browser_action",
 					],
-				},
-			},
-			{
-				free: true,
-				premium: true,
-				chrome: true,
-				webextension: true,
-				item: {
 					id: "open-website-main",
 					title: this.translator.translate("commandOpenWebsiteMainDescription"),
-					contexts: [
-						"browser_action",
-					],
 				},
+				premium: true,
+				webextension: true,
 			},
 			{
-				free: true,
-				premium: false,
 				chrome: true,
-				webextension: true,
+				free: true,
 				item: {
-					id: "open-website-upgrade",
-					title: this.translator.translate("commandOpenWebsiteUpgradeDescription"),
 					contexts: [
 						"browser_action",
 					],
+					id: "open-website-upgrade",
+					title: this.translator.translate("commandOpenWebsiteUpgradeDescription"),
 				},
+				premium: false,
+				webextension: true,
 			},
 		];
 	}
@@ -164,7 +164,7 @@ export default class ContextMenuManager {
 						},
 					);
 				} catch (error) {
-					return reject(error);
+					reject(error);
 				}
 			},
 		);
@@ -184,6 +184,7 @@ export default class ContextMenuManager {
 						const id = info.menuItemId;
 
 						const selectionContextMenuStartStop = this.contextMenuOptionsCollection
+							// eslint-disable-next-line unicorn/no-reduce
 							.reduce(
 								(previous, object) => {
 									if (object.item.id === "talkie-context-menu-start-stop") {
@@ -238,7 +239,7 @@ export default class ContextMenuManager {
 
 						// // TODO: group by selected contexts before checking against limit.
 						// if (applicableContextMenuOptions > this.actionMenuLimit) {
-						//	 throw new Error("Maximum number of menu items reached.");
+						// throw new Error("Maximum number of menu items reached.");
 						// }
 
 						const contextMenuOptionsCollectionPromises = applicableContextMenuOptions

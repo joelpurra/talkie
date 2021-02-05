@@ -39,13 +39,13 @@ export default class LanguageHelper {
 		this.translator = translator;
 
 		this.noTextSelectedMessage = {
-			text: this.translator.translate("noTextSelectedMessage"),
 			effectiveLanguage: this.translator.translate("extensionLocale"),
+			text: this.translator.translate("noTextSelectedMessage"),
 		};
 
 		this.noVoiceForLanguageDetectedMessage = {
-			text: this.translator.translate("noVoiceForLanguageDetectedMessage"),
 			effectiveLanguage: this.translator.translate("noVoiceForLanguageDetectedMessageLanguage"),
+			text: this.translator.translate("noVoiceForLanguageDetectedMessage"),
 		};
 
 		// https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
@@ -147,10 +147,10 @@ export default class LanguageHelper {
 				};
 
 				const selectionsWithValidText = selections
-					.filter(isNonNullObject)
-					.filter(hasValidText)
-					.map(trimText)
-					.filter(hasValidText);
+					.filter((selection) => isNonNullObject(selection))
+					.filter((selection) => hasValidText(selection))
+					.map((selection) => trimText(selection))
+					.filter((selection) => hasValidText(selection));
 
 				return selectionsWithValidText;
 			},
@@ -266,8 +266,8 @@ export default class LanguageHelper {
 				};
 
 				const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage
-					.map(cleanupParentElementsLanguages)
-					.map(setEffectiveLanguage);
+					.map((selection) => cleanupParentElementsLanguages(selection))
+					.map((selection) => setEffectiveLanguage(selection));
 
 				return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
 			},
@@ -287,14 +287,14 @@ export default class LanguageHelper {
 
 				const mapResults = (selection) => {
 					return {
-						text: selection.text,
 						effectiveLanguage: selection.effectiveLanguage,
+						text: selection.text,
 					};
 				};
 
 				const results = selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage
-					.map(fallbackMessageForNoLanguageDetected)
-					.map(mapResults);
+					.map((selection) => fallbackMessageForNoLanguageDetected(selection))
+					.map((selection) => mapResults(selection));
 
 				if (results.length === 0) {
 					logDebug("Empty filtered selections");

@@ -24,15 +24,17 @@ import React from "react";
 import progress from "../hocs/progress.jsx";
 
 export default
+// eslint-disable-next-line react/no-unsafe
 @progress
 class ProgressUpdater extends React.PureComponent {
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		min: PropTypes.number.isRequired,
 		current: PropTypes.number.isRequired,
 		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.props.min !== nextProps.min) {
 			this.props.actions.sharedProgress.setMin(nextProps.min);

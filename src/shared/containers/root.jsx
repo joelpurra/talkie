@@ -29,12 +29,12 @@ import Providers from "./providers.jsx";
 
 export default class Root extends React.PureComponent {
 	static propTypes = {
-		store: PropTypes.object.isRequired,
-		configuration: PropTypes.object.isRequired,
-		translator: PropTypes.object.isRequired,
 		broadcaster: PropTypes.object.isRequired,
-		styletron: PropTypes.object.isRequired,
 		children: PropTypes.element.isRequired,
+		configuration: PropTypes.object.isRequired,
+		store: PropTypes.object.isRequired,
+		styletron: PropTypes.object.isRequired,
+		translator: PropTypes.object.isRequired,
 	};
 
 	render() {

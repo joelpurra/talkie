@@ -39,7 +39,7 @@ export default class SuspensionManager {
 	_getExistingIframe() {
 		return promiseTry(
 			() => {
-				const existingIframe = document.getElementById(this.stayAliveElementId);
+				const existingIframe = document.querySelector(`#${this.stayAliveElementId}`);
 
 				return existingIframe;
 			},
@@ -78,9 +78,7 @@ export default class SuspensionManager {
 			.then(() => {
 				const iframe = document.createElement("iframe");
 				iframe.id = this.stayAliveElementId;
-				/* eslint-disable no-sync */
 				iframe.src = this.stayAliveHtmlPath;
-				/* eslint-enable no-sync */
 				document.body.append(iframe);
 
 				return undefined;

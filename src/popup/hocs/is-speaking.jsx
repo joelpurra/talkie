@@ -34,16 +34,16 @@ import {
 
 export default function isSpeakingHoc(ComponentToWrap) {
 	return class IsSpeakingHoc extends React.Component {
+		state = {
+			isSpeaking: false,
+		};
+
 		constructor(props) {
 			super(props);
 
 			this.componentCleanup = this.componentCleanup.bind(this);
 			this.isListeningToBroadcasts = false;
 			this.killSwitches = [];
-
-			this.state = {
-				isSpeaking: false,
-			};
 		}
 
 		static contextTypes ={
@@ -63,7 +63,7 @@ export default function isSpeakingHoc(ComponentToWrap) {
 			this.componentCleanup();
 		}
 
-		shouldComponentUpdate(nextProps, nextState) {
+		shouldComponentUpdate(/* eslint-disable no-unused-vars */nextProps/* eslint-enable no-unused-vars */, /* eslint-disable no-unused-vars */nextState/* eslint-enable no-unused-vars */) {
 			// NOTE: always update.
 			// TODO: optimize by comparing old and new props/state.
 			return this.isListeningToBroadcasts;

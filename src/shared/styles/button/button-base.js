@@ -28,17 +28,17 @@ export const focus = {
 };
 
 export const button = {
-	borderRadius: "0.3em",
+	":focus": focus,
+	":hover": hover,
 	backgroundImage: "linear-gradient(to bottom, #6bb3fa, #087eff)",
+	borderRadius: "0.3em",
 	color: "#ffffff",
-	paddingTop: "0.3em",
 	paddingBottom: "0.3em",
 	paddingLeft: "0.75em",
 	paddingRight: "0.75em",
-	textDecoration: "none",
+	paddingTop: "0.3em",
 	textAlign: "center",
-	":hover": hover,
-	":focus": focus,
+	textDecoration: "none",
 };
 
 export const a = button;

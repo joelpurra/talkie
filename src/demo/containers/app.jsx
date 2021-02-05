@@ -32,11 +32,11 @@ import Main from "../components/main.jsx";
 
 const mapStateToProps = (state) => {
 	return {
-		isPremiumEdition: state.shared.metadata.isPremiumEdition,
-		versionNumber: state.shared.metadata.versionNumber,
-		systemType: state.shared.metadata.systemType,
-		osType: state.shared.metadata.osType,
 		activeTabId: state.unshared.navigation.activeTabId,
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		osType: state.shared.metadata.osType,
+		systemType: state.shared.metadata.systemType,
+		versionNumber: state.shared.metadata.versionNumber,
 	};
 };
 
@@ -52,20 +52,16 @@ export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
 	static defaultProps = {
-		isPremiumEdition: false,
-		versionNumber: null,
-		systemType: null,
 		osType: null,
-		activeTabId: null,
 	};
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		versionNumber: PropTypes.string.isRequired,
-		systemType: PropTypes.string.isRequired,
-		osType: PropTypes.string,
 		activeTabId: PropTypes.string.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
+		versionNumber: PropTypes.string.isRequired,
 	}
 
 	render() {

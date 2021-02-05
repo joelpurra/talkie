@@ -271,9 +271,9 @@ export default class StorageManager {
 					})
 					.then(() => {
 						const storageMetadata = {
-							version: storageFormatVersion,
-							"upgraded-from-version": fromStorageFormatVersion,
 							"upgraded-at": Date.now(),
+							"upgraded-from-version": fromStorageFormatVersion,
+							version: storageFormatVersion,
 						};
 
 						return this._setStoredValue(storageFormatVersion, this.storageMetadataId, storageMetadata);

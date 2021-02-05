@@ -54,7 +54,7 @@ export const getMappedVoices = () => promiseTry(
 	() => {
 		return getVoices()
 			.then((voices) => {
-				const mappedVoices = voices.map(getMappedVoice);
+				const mappedVoices = voices.map((voice) => getMappedVoice(voice));
 
 				return mappedVoices;
 			});
@@ -81,7 +81,7 @@ export const resolveVoice = (mappedVoice) => {
 
 					// NOTE: while there might be more than one voice for the particular voice name/language/language prefix, just consistently pick the first one.
 					// if (actualMatchingVoices.length !== 1) {
-					//	 throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
+					// throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
 					// }
 
 					const resolvedVoice = resolvedVoices[0];
@@ -110,32 +110,32 @@ export const resolveVoiceAsMappedVoice = (mappedVoice) => {
 };
 
 export const rateRange = {
-	min: 0.1,
 	"default": 1,
 	max: 10,
+	min: 0.1,
 	step: 0.1,
 };
 
 export const pitchRange = {
-	min: 0,
 	"default": 1,
 	max: 2,
+	min: 0,
 	step: 0.1,
 };
 
 // TODO: check if there are any voices installed, alert user if not.
 // checkVoices() {
-//	 return this.getSynthesizer()
-//		 .then((synthesizer) => {
-//			 logDebug("Start", "Voices check");
+// return this.getSynthesizer()
+// .then((synthesizer) => {
+// logDebug("Start", "Voices check");
 //
-//			 return getMappedVoices()
-//				 .then((voices) => {
-//					 logDebug("Variable", "voices[]", voices.length, voices);
+// return getMappedVoices()
+// .then((voices) => {
+// logDebug("Variable", "voices[]", voices.length, voices);
 //
-//					 logDebug("Done", "Voices check");
+// logDebug("Done", "Voices check");
 //
-//					 return synthesizer;
-//				 });
-//		 });
+// return synthesizer;
+// });
+// });
 // }

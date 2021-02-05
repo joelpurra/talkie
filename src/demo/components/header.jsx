@@ -42,34 +42,30 @@ class Header extends React.PureComponent {
 		super(props);
 
 		this.styled = {
+			button: styled({
+				":focus": {
+					outline: 0,
+				},
+				lineHeight: "1.5em",
+				// float: "__MSG_@@bidi_end_edge__",
+			})(buttonBase.a),
+
 			extensionName: styled({
+				":focus": {
+					outline: 0,
+				},
 				fontWeight: "bold",
 				textDecoration: "none",
-				":focus": {
-					outline: 0,
-				},
 			})(textBase.a),
-
-			button: styled({
-				lineHeight: "1.5em",
-				// float: __MSG_@@bidi_end_edge__;
-				":focus": {
-					outline: 0,
-				},
-			})(buttonBase.a),
 		};
 	}
 
-	static defaultProps = {
-		isPremiumEdition: false,
-	};
-
 	static propTypes = {
-		isPremiumEdition: PropTypes.bool.isRequired,
-		translate: PropTypes.func.isRequired,
-		configure: PropTypes.func.isRequired,
 		className: PropTypes.string.isRequired,
+		configure: PropTypes.func.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
 	}
 
 	componentDidMount() {

@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const assert = require("assert");
-const Promise = require("bluebird");
+const Bluebird = require("bluebird");
 
 const clone = require("clone");
 
@@ -38,8 +38,8 @@ export default class GoogleCloudTranslateTranslator {
 		this._googleCloudTranslateApiKeyFilePath = googleCloudTranslateApiKeyFilePath;
 
 		this._googleTranslateOptions = {
-			promise: Promise,
 			keyFilename: this._googleCloudTranslateApiKeyFilePath,
+			promise: Bluebird,
 		};
 		this._googleTranslate = new Translate(this._googleTranslateOptions);
 
@@ -55,11 +55,11 @@ export default class GoogleCloudTranslateTranslator {
 			assert(typeof original[originalKey].message === "string");
 		});
 
-		return Promise.try(() => {
+		return Bluebird.try(() => {
 			const messages = clone(original);
 			const keys = Object.keys(messages);
 
-			return Promise.try(() => {
+			return Bluebird.try(() => {
 				const preparedMessages = keys
 					.map((key) => messages[key].message)
 					.map((message) => htmlEntityEncode(message))
@@ -79,6 +79,7 @@ export default class GoogleCloudTranslateTranslator {
 			})
 				.then((preparedMessages) => {
 					// NOTE: put each item in a chunk with a size up to maxChunkSize.
+					// eslint-disable-next-line unicorn/no-reduce
 					const preparedMessagesChunks = preparedMessages.reduce(
 						(chunked, preparedMessage, preparedMessagesIndex) => {
 							const chunkedIndex = Math.floor(preparedMessagesIndex / this.maxChunkSize);
@@ -93,19 +94,20 @@ export default class GoogleCloudTranslateTranslator {
 				})
 				.then((preparedMessagesChunks) => {
 					const translationOptions = {
+						format: "html",
 						from: fromLanguage,
 						to: toLanguage,
-						format: "html",
 					};
 
 					// NOTE: translating one chunk at a time.
-					return Promise.mapSeries(
+					return Bluebird.mapSeries(
 						preparedMessagesChunks,
 						(preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions),
 					);
 				})
-			// NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
-			// TODO: use a prettier array flattening function?
+				// NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
+				// TODO: use a prettier array flattening function?
+				// eslint-disable-next-line unicorn/no-reduce
 				.then((translationResponseChunks) => translationResponseChunks.reduce(
 					(t, v) => [
 						t[0].concat(v[0]),

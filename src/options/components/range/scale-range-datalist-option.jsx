@@ -22,13 +22,10 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export default class ScaleRangeDatalistOption extends React.PureComponent {
-	static defaultProps = {
-		disabled: true,
-	};
-
 	static propTypes = {
-		value: PropTypes.number.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		value: PropTypes.number.isRequired,
 	};
 
 	render() {

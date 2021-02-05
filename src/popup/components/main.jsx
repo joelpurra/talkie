@@ -32,8 +32,8 @@ import Menu from "./sections/menu.jsx";
 import Status from "./sections/status.jsx";
 
 const styles = {
-	minWidth: "300px",
 	maxWidth: "300px",
+	minWidth: "300px",
 };
 
 export default
@@ -48,16 +48,11 @@ class Main extends React.PureComponent {
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 	}
 
-	static defaultProps = {
-		isPremiumEdition: false,
-		versionNumber: null,
-	};
-
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		className: PropTypes.string.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
 		versionNumber: PropTypes.string.isRequired,
-		className: PropTypes.string.isRequired,
 	};
 
 	handlePlayPauseClick() {
@@ -68,14 +63,14 @@ class Main extends React.PureComponent {
 		this.props.actions.sharedNavigation.openUrlInNewTab(url);
 	}
 
-	handleCheckLinkClick(e) {
+	handleCheckLinkClick(event) {
 		// TODO: use an api call which has handleBubbledLinkClick?
-		return handleBubbledLinkClick(this.handleLinkClick, e);
+		return handleBubbledLinkClick(this.handleLinkClick, event);
 	}
 
-	handleOptionsPageClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handleOptionsPageClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		this.props.actions.sharedNavigation.openOptionsPage();
 

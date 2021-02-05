@@ -36,39 +36,39 @@ class Menu extends React.PureComponent {
 		super(props);
 
 		this.styled = {
-			ol: styled({
-				marginLeft: 0,
-				marginRight: 0,
-				marginTop: 0,
-				marginBottom: 0,
-				paddingLeft: 0,
-				paddingRight: 0,
-				paddingTop: 0,
-				paddingBottom: 0,
-				listStyle: "none",
-			})("ol"),
-
-			li: styled({
-				display: "block",
-				marginTop: "0.25em",
-				marginBottom: "0.25em",
-				verticalAlign: "middle",
-			})("li"),
-
 			a: styled({
+				borderRadius: "0.3em",
 				display: "block",
 				height: "2em",
 				lineHeight: "2em",
 				textDecoration: "none",
-				borderRadius: "0.3em",
 			})(textBase.a),
+
+			li: styled({
+				display: "block",
+				marginBottom: "0.25em",
+				marginTop: "0.25em",
+				verticalAlign: "middle",
+			})("li"),
+
+			ol: styled({
+				listStyle: "none",
+				marginBottom: 0,
+				marginLeft: 0,
+				marginRight: 0,
+				marginTop: 0,
+				paddingBottom: 0,
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingTop: 0,
+			})("ol"),
 		};
 	}
 
 	static propTypes = {
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
 	}
 
 	componentDidMount() {

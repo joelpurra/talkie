@@ -23,8 +23,8 @@ import React from "react";
 
 export default class BroadcasterProvider extends React.PureComponent {
 	static propTypes = {
-		children: PropTypes.element.isRequired,
 		broadcaster: PropTypes.object.isRequired,
+		children: PropTypes.element.isRequired,
 	}
 
 	static childContextTypes ={

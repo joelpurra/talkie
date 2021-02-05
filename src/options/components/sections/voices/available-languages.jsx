@@ -36,15 +36,19 @@ class AvailableLanguages extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		voicesByLanguage: {},
-		voicesByLanguageGroup: {},
-		languageGroups: [],
-		languagesByLanguageGroup: {},
 		value: null,
-		disabled: true,
 	};
 
 	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languagesByLanguageGroup: PropTypes.objectOf(
+			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		).isRequired,
+		onChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+		value: PropTypes.string,
 		voicesByLanguage: PropTypes.objectOf(
 			PropTypes.arrayOf(PropTypes.shape({
 				"default": PropTypes.bool.isRequired,
@@ -63,14 +67,6 @@ class AvailableLanguages extends React.PureComponent {
 				voiceURI: PropTypes.string.isRequired,
 			})).isRequired,
 		).isRequired,
-		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languagesByLanguageGroup: PropTypes.objectOf(
-			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		).isRequired,
-		value: PropTypes.string,
-		onChange: PropTypes.func.isRequired,
-		disabled: PropTypes.bool.isRequired,
-		translate: PropTypes.func.isRequired,
 	};
 
 	handleChange(newlySelectedLanguageName) {
@@ -96,6 +92,7 @@ class AvailableLanguages extends React.PureComponent {
 
 		const frontendVoicesShowAllVoicesTranslated = translate("frontend_voicesShowAllVoices");
 
+		// eslint-disable-next-line unicorn/no-reduce
 		const languagesOptions = languageGroups.reduce(
 			(options, languageGroup) => {
 				const newOptions = [];

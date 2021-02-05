@@ -30,12 +30,9 @@ export default class Text extends React.PureComponent {
 		this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
 	}
 
-	static defaultProps = {
-		speakLongTexts: false,
-	};
-
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		speakLongTexts: PropTypes.bool.isRequired,
 	}
 

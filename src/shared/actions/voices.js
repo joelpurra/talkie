@@ -43,8 +43,8 @@ export const storeSpeakLongTexts = (speakLongTexts) =>
 
 export const setSpeakLongTexts = (speakLongTexts) => {
 	return {
-		type: actionTypes.SET_SPEAK_LONG_TEXTS,
 		speakLongTexts,
+		type: actionTypes.SET_SPEAK_LONG_TEXTS,
 	};
 };
 
@@ -80,8 +80,8 @@ export const loadNavigatorLanguage = () =>
 
 export const setNavigatorLanguage = (navigatorLanguage) => {
 	return {
-		type: actionTypes.SET_NAVIGATOR_LANGUAGE,
 		navigatorLanguage,
+		type: actionTypes.SET_NAVIGATOR_LANGUAGE,
 	};
 };
 
@@ -92,8 +92,8 @@ export const loadNavigatorLanguages = () =>
 
 export const setNavigatorLanguages = (navigatorLanguages) => {
 	return {
-		type: actionTypes.SET_NAVIGATOR_LANGUAGES,
 		navigatorLanguages,
+		type: actionTypes.SET_NAVIGATOR_LANGUAGES,
 	};
 };
 
@@ -103,8 +103,8 @@ export const loadTranslatedLanguages = () =>
 
 export const setTranslatedLanguages = (translatedLanguages) => {
 	return {
-		type: actionTypes.SET_TRANSLATED_LANGUAGES,
 		translatedLanguages,
+		type: actionTypes.SET_TRANSLATED_LANGUAGES,
 	};
 };
 

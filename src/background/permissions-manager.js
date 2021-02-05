@@ -46,8 +46,8 @@ export default class PermissionsManager {
 	hasPermissions(permissionNames, origins) {
 		return promiseTry(
 			() => this._pms.contains({
-				permissions: permissionNames,
 				origins,
+				permissions: permissionNames,
 			}),
 		);
 	}
@@ -55,8 +55,8 @@ export default class PermissionsManager {
 	acquirePermissions(permissionNames, origins) {
 		return promiseTry(
 			() => this._pms.request({
-				permissions: permissionNames,
 				origins,
+				permissions: permissionNames,
 			}),
 		);
 	}
@@ -64,8 +64,8 @@ export default class PermissionsManager {
 	releasePermissions(permissionNames, origins) {
 		return promiseTry(
 			() => this._pms.remove({
-				permissions: permissionNames,
 				origins,
+				permissions: permissionNames,
 			}),
 		);
 	}

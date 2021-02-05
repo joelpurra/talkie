@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const assert = require("assert");
-const Promise = require("bluebird");
+const Bluebird = require("bluebird");
 
 export default class MessagesTranslatorFactory {
 	constructor(translatorService, MessagesTranslator) {
@@ -41,7 +41,7 @@ export default class MessagesTranslatorFactory {
 		// NOTE: ensure the base language isn't translated onto itself.
 		assert(typeof locale.language !== base.language);
 
-		return Promise.try(() => {
+		return Bluebird.try(() => {
 			const messagesTranslator = new this._MessagesTranslator(this._translatorService, base, locale);
 
 			return messagesTranslator;

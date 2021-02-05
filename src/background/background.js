@@ -88,8 +88,8 @@ const onInstallListenerEventQueue = [];
 const startOnInstallListener = () => {
 	const onInstallListener = (event) => {
 		const onInstallEvent = {
-			source: "event",
 			event,
+			source: "event",
 		};
 
 		onInstallListenerEventQueue.push(onInstallEvent);
@@ -104,8 +104,8 @@ const startOnInstallListener = () => {
 		browser.runtime.onInstalled.addListener(onInstallListener);
 	} else {
 		const onInstallEvent = {
-			source: "fallback",
 			event: null,
+			source: "fallback",
 		};
 
 		onInstallListenerEventQueue.push(onInstallEvent);
@@ -151,11 +151,11 @@ function main() {
 		// NOTE: implicitly set by the browser, and actually "clicks" the Talkie icon.
 		// Handled by the popup handler (popup contents) and icon click handler.
 		// "_execute_browser_action": talkieBackground.startStopSpeakSelectionOnPage(),
-		"start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
-		"start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
-		"read-clipboard": () => readClipboardManager.startSpeaking(),
 		"open-website-main": () => openUrlFromConfigurationInNewTab("main"),
 		"open-website-upgrade": () => openUrlFromConfigurationInNewTab("upgrade"),
+		"read-clipboard": () => readClipboardManager.startSpeaking(),
+		"start-stop": () => talkieBackground.startStopSpeakSelectionOnPage(),
+		"start-text": (text) => talkieBackground.startSpeakingCustomTextDetectLanguage(text),
 	};
 
 	const commandHandler = new CommandHandler(commandMap);
@@ -174,7 +174,7 @@ function main() {
 	const welcomeManager = new WelcomeManager();
 	const onInstalledManager = new OnInstalledManager(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue);
 
-	(function addOnInstalledEventQueuePolling() {
+	const addOnInstalledEventQueuePolling = function () {
 		// NOTE: run the function once first, to allow for a very long interval.
 		const ONE_SECOND_IN_MILLISECONDS = 1 * 1000;
 		const ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT = ONE_SECOND_IN_MILLISECONDS;
@@ -196,7 +196,9 @@ function main() {
 			ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL,
 		);
 		/* eslint-enable no-unused-vars */
-	})();
+	};
+
+	addOnInstalledEventQueuePolling();
 
 	// NOTE: cache listeners so they can be added and removed by reference before/after speaking.
 	const onTabRemovedListener = loggedPromise("onRemoved", () => talkieBackground.onTabRemovedHandler());
@@ -261,8 +263,8 @@ function main() {
 				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
 				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
 
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
-				broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (/* eslint-disable no-unused-vars*/actionName/* eslint-enable no-unused-vars*/, actionData) => progress.startSegment(actionData.textPart.length)),
+				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
+				broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => progress.startSegment(actionData.textPart.length)),
 				broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
 				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
 			])
@@ -284,7 +286,7 @@ function main() {
 			// NOTE: not supported in Firefox (2017-04-28).
 			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
 			// if ("onSuspendCanceled" in browser.runtime) {
-			//	 browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
+			// browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
 			// }
 
 			// NOTE: used when the popup has been disabled.
@@ -322,10 +324,10 @@ function main() {
 				// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
 				const text = String(frontendText);
 				const voice = {
-					name: typeof frontendVoice.name === "string" ? String(frontendVoice.name) : undefined,
 					lang: typeof frontendVoice.lang === "string" ? String(frontendVoice.lang) : undefined,
-					rate: !isNaN(frontendVoice.rate) ? (0 + frontendVoice.rate) : undefined,
-					pitch: !isNaN(frontendVoice.pitch) ? (0 + frontendVoice.pitch) : undefined,
+					name: typeof frontendVoice.name === "string" ? String(frontendVoice.name) : undefined,
+					pitch: Number.isNaN(frontendVoice.pitch) ? undefined : (0 + frontendVoice.pitch),
+					rate: Number.isNaN(frontendVoice.rate) ? undefined : (0 + frontendVoice.rate),
 				};
 
 				talkieBackground.startSpeakingTextInVoiceAction(text, voice);

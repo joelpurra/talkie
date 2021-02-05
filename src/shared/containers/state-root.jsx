@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import PropTypes from "prop-types";
 import React from "react";
 // import {
-//	 bindActionCreators,
+// bindActionCreators,
 // } from "redux";
 import {
 	connect,
@@ -33,8 +33,8 @@ import StyleRoot from "../components/style-root.jsx";
 
 const mapStateToProps = (state) => {
 	return {
-		isSpeaking: state.shared.speaking.isSpeaking,
 		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		isSpeaking: state.shared.speaking.isSpeaking,
 		versionName: state.shared.metadata.versionName,
 	};
 };
@@ -47,16 +47,14 @@ export default
 @connect(mapStateToProps, mapDispatchToProps)
 class StateRoot extends React.PureComponent {
 	static defaultProps = {
-		isSpeaking: false,
-		isPremiumEdition: false,
 		versionName: null,
 	};
 
 	static propTypes = {
-		isSpeaking: PropTypes.bool.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		versionName: PropTypes.string,
 		children: PropTypes.element.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		isSpeaking: PropTypes.bool.isRequired,
+		versionName: PropTypes.string,
 	}
 
 	render() {

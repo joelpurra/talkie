@@ -97,7 +97,7 @@ export default class Execute {
 						return result;
 					})
 					.catch((error) => {
-						if (error && typeof error.name === "PromiseTimeout") {
+						if (error && typeof error === "object" && error.name === "PromiseTimeout") {
 							// NOTE: this is how to check for a timeout.
 						}
 
@@ -122,7 +122,7 @@ export default class Execute {
 						return result;
 					})
 					.catch((error) => {
-						if (error && typeof error.name === "PromiseTimeout") {
+						if (error && typeof error === "object" && error.name === "PromiseTimeout") {
 							// NOTE: this is how to check for a timeout.
 						}
 

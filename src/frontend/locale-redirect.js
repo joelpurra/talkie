@@ -24,7 +24,7 @@ const pageName = document.location.pathname.split("/").pop().split(".").shift();
 const globalExtension = ("chrome" in this ? this["chrome"] : ("browser" in this ? this["browser"] : null));
 /* eslint-enable dot-notation */
 
-// NOTE: might be able to use @@ui_locale, but would miss out on locale directoy fallback detection logic in the browser.
+// NOTE: might be able to use @@ui_locale, but would miss out on locale directory fallback detection logic in the browser.
 const locale = globalExtension.i18n.getMessage("extensionLocale");
 const urlWithLocale = document.location.href.replace(`/src/${pageName}/${pageName}.html`, `/dist/${pageName}.${locale}.html`);
 

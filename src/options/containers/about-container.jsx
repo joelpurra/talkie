@@ -34,15 +34,15 @@ import selectors from "../selectors";
 const mapStateToProps = (state) => {
 	return {
 		isPremiumEdition: state.shared.metadata.isPremiumEdition,
-		versionName: state.shared.metadata.versionName,
-		systemType: state.shared.metadata.systemType,
-		osType: state.shared.metadata.osType,
-		voices: selectors.shared.voices.getVoices(state),
-		languages: selectors.shared.voices.getLanguages(state),
 		languageGroups: selectors.shared.voices.getLanguageGroups(state),
+		languages: selectors.shared.voices.getLanguages(state),
 		navigatorLanguage: state.shared.voices.navigatorLanguage,
 		navigatorLanguages: selectors.shared.voices.getNavigatorLanguages(state),
+		osType: state.shared.metadata.osType,
+		systemType: state.shared.metadata.systemType,
 		translatedLanguages: state.shared.voices.translatedLanguages,
+		versionName: state.shared.metadata.versionName,
+		voices: selectors.shared.voices.getVoices(state),
 	};
 };
 
@@ -65,24 +65,22 @@ class AboutContainer extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		isPremiumEdition: false,
-		versionName: null,
-		systemType: null,
-		osType: null,
-		voices: [],
-		languages: [],
-		languageGroups: [],
 		navigatorLanguage: null,
-		navigatorLanguages: [],
-		translatedLanguages: [],
+		osType: null,
 	};
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
-		versionName: PropTypes.string.isRequired,
-		systemType: PropTypes.string.isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		navigatorLanguage: PropTypes.string,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		onLicenseClick: PropTypes.func.isRequired,
 		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
+		translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		versionName: PropTypes.string.isRequired,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -90,12 +88,6 @@ class AboutContainer extends React.PureComponent {
 			name: PropTypes.string.isRequired,
 			voiceURI: PropTypes.string.isRequired,
 		})).isRequired,
-		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		navigatorLanguage: PropTypes.string,
-		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		onLicenseClick: PropTypes.func.isRequired,
 	}
 
 	render() {

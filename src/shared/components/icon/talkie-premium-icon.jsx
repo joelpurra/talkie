@@ -25,22 +25,21 @@ import TalkieEditionIcon from "./talkie-edition-icon.jsx";
 
 export default class TalkiePremiumIcon extends React.PureComponent {
 	static defaultProps = {
-		mode: "inline",
-		size: "1.3em",
+		// TODO: break out default css values to styles?
 		marginLeft: "0.3em",
 		marginRight: "0.3em",
-		className: "",
+		size: "1.3em",
 	};
 
 	static propTypes = {
+		className: PropTypes.string.isRequired,
+		marginLeft: PropTypes.string,
+		marginRight: PropTypes.string,
 		mode: PropTypes.oneOf([
 			"inline",
 			"standalone",
 		]).isRequired,
-		size: PropTypes.string.isRequired,
-		marginLeft: PropTypes.string.isRequired,
-		marginRight: PropTypes.string.isRequired,
-		className: PropTypes.string.isRequired,
+		size: PropTypes.string,
 	}
 
 	render() {

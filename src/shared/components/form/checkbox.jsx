@@ -33,18 +33,13 @@ class Checkbox extends React.PureComponent {
 		this.handleOnChange = this.handleOnChange.bind(this);
 	}
 
-	static defaultProps = {
-		checked: false,
-		disabled: false,
-		onChange: null,
-		className: "",
-	};
-
 	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
 		checked: PropTypes.bool.isRequired,
+		className: PropTypes.string.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
 		onChange: PropTypes.func.isRequired,
-		className: PropTypes.string.isRequired,
 	}
 
 	handleOnChange({

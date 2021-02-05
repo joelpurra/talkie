@@ -37,8 +37,8 @@ import VoicesContainer from "../containers/voices-container.jsx";
 const dynamicEnvironment = new DynamicEnvironment();
 
 const widthStyles = {
-	minWidth: "400px",
 	maxWidth: "600px",
+	minWidth: "400px",
 };
 
 const styles = Object.assign(
@@ -51,6 +51,7 @@ const styles = Object.assign(
 );
 
 export default
+// eslint-disable-next-line react/no-unsafe
 @configureAttribute
 @translateAttribute
 @styled(styles)
@@ -67,8 +68,8 @@ class Main extends React.PureComponent {
 		// TODO: better place to put navigation menu links?
 		this.links = [
 			{
-				url: this.props.configure("urls.popup-passclick-false"),
 				text: "←",
+				url: this.props.configure("urls.popup-passclick-false"),
 			},
 			{
 				tabId: "voices",
@@ -89,37 +90,33 @@ class Main extends React.PureComponent {
 		];
 
 		this.styled = {
+			main: styled({
+				marginTop: "4em",
+			})(layoutBase.main),
+
 			navHeader: styled(Object.assign(
 				{},
 				widthStyles,
 				{
-					position: "fixed",
-					top: 0,
-					left: 0,
-					right: 0,
 					backgroundColor: "#ffffff",
+					left: 0,
+					position: "fixed",
+					right: 0,
+					top: 0,
 				},
 			))("div"),
-
-			main: styled({
-				marginTop: "4em",
-			})(layoutBase.main),
 		};
 	}
-
-	static defaultProps = {
-		activeTabId: null,
-		shouldShowBackButton: false,
-	};
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
 		activeTabId: PropTypes.string.isRequired,
-		shouldShowBackButton: PropTypes.bool.isRequired,
 		className: PropTypes.string.isRequired,
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		shouldShowBackButton: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
 	};
 
 	getLocationQuerystring() {
@@ -132,6 +129,7 @@ class Main extends React.PureComponent {
 		return queryString;
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillMount() {
 		// TODO: move "loading shouldShowBackButton" from the querystring to an action, especially to avoid using the DynamicEnvironment in a component.
 		const queryString = this.getLocationQuerystring();
@@ -151,6 +149,7 @@ class Main extends React.PureComponent {
 		this._unregisterConfigurationListener();
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.props.activeTabId !== nextProps.activeTabId) {
 			this.scrollToTop();
@@ -167,8 +166,8 @@ class Main extends React.PureComponent {
 	handleLegaleseClick(text) {
 		const legaleseText = text;
 		const legaleseVoice = {
-			name: "Zarvox",
 			lang: "en-US",
+			name: "Zarvox",
 		};
 
 		this.props.actions.sharedVoices.speak(legaleseText, legaleseVoice);

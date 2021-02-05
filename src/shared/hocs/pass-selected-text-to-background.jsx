@@ -65,7 +65,7 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 			this.componentCleanup();
 		}
 
-		shouldComponentUpdate(nextProps, nextState) {
+		shouldComponentUpdate(/* eslint-disable no-unused-vars */nextProps/* eslint-enable no-unused-vars */, /* eslint-disable no-unused-vars */nextState/* eslint-enable no-unused-vars */) {
 			// NOTE: always update.
 			// TODO: optimize by comparing old and new props/state.
 			return this.isListeningToBroadcasts;
@@ -130,9 +130,9 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 					}
 
 					const talkieSelectionData = {
-						text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
 						htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0].getAttribute("lang") || null)),
 						parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null))),
+						text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
 					};
 					return talkieSelectionData;
 				} catch {
@@ -171,10 +171,8 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 			return promiseTry(
 				() => {
 					return Promise.all([
-						/* eslint-disable no-unused-vars */
 						this.context.broadcaster.registerListeningAction(knownEvents.passSelectedTextToBackground, (actionName, actionData) => this.getSelectedTextWithFocusTimestamp(actionName, actionData))
 							.then((killSwitch) => this.killSwitches.push(killSwitch)),
-						/* eslint-enable no-unused-vars */
 					]);
 				},
 			);

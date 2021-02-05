@@ -31,10 +31,10 @@ export const highlight = {
 };
 
 export const a = {
-	color: textColor,
+	":active": highlight,
 	":focus": highlight,
 	":hover": highlight,
-	":active": highlight,
+	color: textColor,
 };
 
 export const h1 = {};
@@ -44,29 +44,29 @@ export const h4 = {};
 export const h5 = {};
 
 export const kbd = {
-	display: "inline-block",
-	color: "#555",
-	verticalAlign: "middle",
-	paddingLeft: "0.3em",
-	paddingRight: "0.3em",
-	paddingTop: "0.1em",
-	paddingBottom: "0.1em",
 	backgroundColor: "#fcfcfc",
 	border: "solid 1px #ccc",
 	borderBottomColor: "#bbb",
 	borderRadius: "0.3em",
 	boxShadow: "inset 0 -1px 0 #bbb",
+	color: "#555",
+	display: "inline-block",
 	fontFamily: "Helvetica, Verdana, sans-serif",
+	paddingBottom: "0.1em",
+	paddingLeft: "0.3em",
+	paddingRight: "0.3em",
+	paddingTop: "0.1em",
+	verticalAlign: "middle",
 };
 
 export const blockquote = {
 	background: "#fafafa",
 	borderLeft: "0.5em solid #cccccc",
+	marginBottom: "1em",
 	marginLeft: "0.5em",
 	marginTop: "1em",
-	marginBottom: "1em",
+	paddingBottom: "0.5em",
 	paddingLeft: "0.5em",
 	paddingRight: "0.5em",
 	paddingTop: "0.5em",
-	paddingBottom: "0.5em",
 };

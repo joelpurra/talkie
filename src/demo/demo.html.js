@@ -31,4 +31,6 @@ const prerenderActionsToDispatch = [
 ];
 const postrenderActionsToDispatch = [];
 
-export default (talkieLocale) => getHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, htmlTemplate, talkieLocale, App);
+export default function get(talkieLocale) {
+	return getHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, htmlTemplate, talkieLocale, App);
+}

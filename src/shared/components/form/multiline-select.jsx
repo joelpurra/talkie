@@ -39,20 +39,17 @@ class MultilineSelect extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		size: null,
 		value: null,
-		disabled: false,
-		onChange: null,
-		className: "",
 	};
 
 	static propTypes = {
-		size: PropTypes.number.isRequired,
-		value: PropTypes.string,
+		children: PropTypes.node.isRequired,
+		className: PropTypes.string.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
 		onChange: PropTypes.func.isRequired,
-		className: PropTypes.string.isRequired,
-		children: PropTypes.node.isRequired,
+		size: PropTypes.number.isRequired,
+		value: PropTypes.string,
 	}
 
 	handleOnChange({
@@ -71,14 +68,14 @@ class MultilineSelect extends React.PureComponent {
 			className,
 		} = this.props;
 
+		const scrollOnSelect = (selectElement) => {
+			this.selectElement = selectElement;
+			scrollIntoViewIfNeeded(this.selectElement);
+		};
+
 		return (
 			<select
-				ref={
-					(selectElement) => {
-						this.selectElement = selectElement;
-						scrollIntoViewIfNeeded(this.selectElement);
-					}
-				}
+				ref={scrollOnSelect}
 				size={size}
 				value={value || undefined}
 				disabled={disabled || null}

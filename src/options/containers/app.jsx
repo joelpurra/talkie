@@ -32,21 +32,21 @@ import Main from "../components/main.jsx";
 
 const mapStateToProps = (state) => {
 	return {
-		isPremiumEdition: state.shared.metadata.isPremiumEdition,
-		versionName: state.shared.metadata.versionName,
-		systemType: state.shared.metadata.systemType,
-		osType: state.shared.metadata.osType,
 		activeTabId: state.unshared.navigation.activeTabId,
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		osType: state.shared.metadata.osType,
 		shouldShowBackButton: state.navigation.shouldShowBackButton,
+		systemType: state.shared.metadata.systemType,
+		versionName: state.shared.metadata.versionName,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		actions: {
-			sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
-			sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
 			navigation: bindActionCreators(actionCreators.navigation, dispatch),
+			sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
+			sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
 		},
 	};
 };
@@ -54,14 +54,19 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
+	static defaultProps = {
+		osType: null,
+	}
+
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		versionName: PropTypes.string.isRequired,
-		systemType: PropTypes.string.isRequired,
-		osType: PropTypes.string,
 		activeTabId: PropTypes.string.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		osType: PropTypes.string,
+		// eslint-disable-next-line react/boolean-prop-naming
 		shouldShowBackButton: PropTypes.bool.isRequired,
+		systemType: PropTypes.string.isRequired,
+		versionName: PropTypes.string.isRequired,
 	}
 
 	render() {

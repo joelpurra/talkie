@@ -24,11 +24,11 @@ import {
 } from "../utils/reduce-helpers";
 
 const initialState = {
-	voices: [],
-	speakLongTexts: false,
 	navigatorLanguage: null,
 	navigatorLanguages: [],
+	speakLongTexts: false,
 	translatedLanguages: [],
+	voices: [],
 };
 
 const customActionsMap = {};

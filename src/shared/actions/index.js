@@ -24,10 +24,12 @@ import * as progress from "./progress";
 import * as speaking from "./speaking";
 import * as voices from "./voices";
 
-export default {
+const actions = {
 	metadata,
 	navigation,
 	progress,
 	speaking,
 	voices,
 };
+
+export default actions;

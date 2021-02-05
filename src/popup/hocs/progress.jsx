@@ -34,18 +34,18 @@ import {
 
 export default function progressHoc(ComponentToWrap) {
 	return class ProgressHoc extends React.Component {
+		state = {
+			current: 0,
+			max: 0,
+			min: 0,
+		};
+
 		constructor(props) {
 			super(props);
 
 			this.componentCleanup = this.componentCleanup.bind(this);
 			this.isListeningToBroadcasts = false;
 			this.killSwitches = [];
-
-			this.state = {
-				min: 0,
-				current: 0,
-				max: 0,
-			};
 		}
 
 		static contextTypes ={
@@ -65,7 +65,7 @@ export default function progressHoc(ComponentToWrap) {
 			this.componentCleanup();
 		}
 
-		shouldComponentUpdate(nextProps, nextState) {
+		shouldComponentUpdate(/* eslint-disable no-unused-vars */nextProps/* eslint-enable no-unused-vars */, /* eslint-disable no-unused-vars */nextState/* eslint-enable no-unused-vars */) {
 			// NOTE: always update.
 			// TODO: optimize by comparing old and new props/state.
 			return this.isListeningToBroadcasts;
@@ -107,9 +107,9 @@ export default function progressHoc(ComponentToWrap) {
 			// https://github.com/facebook/react/blob/46b3c3e4ae0d52565f7ed2344036a22016781ca0/packages/shared/invokeGuardedCallback.js#L151-L161
 			try {
 				this.setState({
-					min: data.min,
 					current: data.current,
 					max: data.max,
+					min: data.min,
 				});
 			} catch {
 				// dualLogger.dualLogError("setState", error);
@@ -142,10 +142,7 @@ export default function progressHoc(ComponentToWrap) {
 				() => {
 					return this.context.broadcaster.registerListeningAction(
 						knownEvents.updateProgress,
-						(
-							/* eslint-disable no-unused-vars */actionName/* eslint-enable no-unused-vars */,
-							actionData,
-						) => this.updateProgress(actionData),
+						(actionName, actionData) => this.updateProgress(actionData),
 					)
 						.then((killSwitch) => this.killSwitches.push(killSwitch));
 				},

@@ -27,14 +27,11 @@ import * as lighter from "../styled/text/lighter.jsx";
 export default
 @translateAttribute
 class Loading extends React.PureComponent {
-	static defaultProps = {
-		enabled: false,
-	};
-
 	static propTypes = {
+		children: PropTypes.node.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		enabled: PropTypes.bool.isRequired,
 		translate: PropTypes.func.isRequired,
-		children: PropTypes.node.isRequired,
 	}
 
 	render() {

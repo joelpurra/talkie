@@ -26,13 +26,15 @@ const inputName = "popup";
 const fileExtension = ".html";
 const fileName = `${inputName}${fileExtension}`;
 
-export default mergeOptions(
+const rollupConfiguration = mergeOptions(
 	reactRollupConfig(fileName),
 	{
 		input: `src/${inputName}/${fileName}.js`,
 		output: {
-			name: fileName,
 			file: `dist/${fileName}.js`,
+			name: fileName,
 		},
 	},
 );
+
+export default rollupConfiguration;

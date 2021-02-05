@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const assert = require("assert");
-const Promise = require("bluebird");
+const Bluebird = require("bluebird");
 
 export default class MessagesTranslator {
 	constructor(translatorService, base, locale) {
@@ -46,7 +46,8 @@ export default class MessagesTranslator {
 		});
 		assert(typeof object === "object");
 
-		return Promise.try(() => keys.reduce((newObject, key) => {
+		// eslint-disable-next-line unicorn/no-reduce
+		return Bluebird.try(() => keys.reduce((newObject, key) => {
 			newObject[key] = object[key];
 
 			return newObject;
@@ -55,12 +56,13 @@ export default class MessagesTranslator {
 	}
 
 	translate() {
-		return Promise.try(() => {
+		return Bluebird.try(() => {
 			const baseKeys = Object.keys(this._base.messages);
 
 			return this._keepOnlyKeys(baseKeys, this._locale.messages)
 				.then((localeMessages) => {
 					// TODO: function filterKeys.
+					// eslint-disable-next-line unicorn/no-reduce
 					const alreadyTranslatedLocale = baseKeys.reduce((alreadyTranslated, baseKey) => {
 						if (localeMessages[baseKey] && localeMessages[baseKey].original === this._base.messages[baseKey].message) {
 							alreadyTranslated[baseKey] = localeMessages[baseKey];
@@ -71,6 +73,7 @@ export default class MessagesTranslator {
 					{});
 
 					// TODO: function filterKeys.
+					// eslint-disable-next-line unicorn/no-reduce
 					const untranslatedLocale = baseKeys.reduce((untranslated, baseKey) => {
 						if (!localeMessages[baseKey] || localeMessages[baseKey].original !== this._base.messages[baseKey].message) {
 							untranslated[baseKey] = this._base.messages[baseKey];

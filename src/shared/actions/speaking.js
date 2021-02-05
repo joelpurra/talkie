@@ -27,8 +27,8 @@ export const iconClick = () =>
 
 export const setIsSpeaking = (isSpeaking) => {
 	return {
-		type: actionTypes.SET_IS_SPEAKING,
 		isSpeaking,
+		type: actionTypes.SET_IS_SPEAKING,
 	};
 };
 

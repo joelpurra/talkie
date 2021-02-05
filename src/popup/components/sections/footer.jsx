@@ -43,21 +43,19 @@ class Footer extends React.PureComponent {
 				fontSize: "1.75em",
 			})(lighter.a),
 
-			footerSecondLink: styled({
-				// float: __MSG_@@bidi_end_edge__;
-			})(lighter.a),
+			footerSecondLink: styled(
+				// {
+				// float: "__MSG_@@bidi_end_edge__",
+				// }
+			)(lighter.a),
 		};
 	}
 
-	static defaultProps = {
-		versionNumber: false,
-	};
-
 	static propTypes = {
-		versionNumber: PropTypes.string.isRequired,
-		optionsPageClick: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		optionsPageClick: PropTypes.func.isRequired,
+		versionNumber: PropTypes.string.isRequired,
 	}
 
 	componentDidMount() {

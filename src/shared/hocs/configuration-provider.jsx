@@ -21,6 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import PropTypes from "prop-types";
 import React from "react";
 
+// eslint-disable-next-line react/no-unsafe
 export default class ConfigurationProvider extends React.PureComponent {
 	constructor(props) {
 		super(props);
@@ -41,10 +42,11 @@ export default class ConfigurationProvider extends React.PureComponent {
 		// https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076
 		// TODO: find a better solution to look up arbitrary (although it's a short list) configuration values.
 		// TODO: use proper event listener system?
-		onConfigurationChange: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.state.systemType !== nextProps.systemType) {
 			this.onChange({
@@ -59,10 +61,10 @@ export default class ConfigurationProvider extends React.PureComponent {
 		} = this.props;
 
 		return {
-			onConfigurationChange: (listener) => this.registerListener(listener),
 			/* eslint-disable no-sync */
 			configure: (path) => this.props.configuration.getSync(systemType, path),
 			/* eslint-enable no-sync */
+			onConfigurationChange: (listener) => this.registerListener(listener),
 		};
 	}
 

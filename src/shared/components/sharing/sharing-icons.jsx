@@ -29,14 +29,10 @@ import SocialShareIcon from "../icon/social-share-icon.jsx";
 export default
 @configureAttribute
 class SharingIcons extends React.PureComponent {
-	static defaultProps = {
-		className: "",
-	};
-
 	static propTypes = {
+		className: PropTypes.string.isRequired,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
-		className: PropTypes.string.isRequired,
 	};
 
 	componentDidMount() {

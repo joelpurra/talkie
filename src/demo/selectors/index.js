@@ -20,6 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import shared from "../../shared/selectors";
 
-export default {
+const selectors = {
 	shared,
 };
+
+export default selectors;

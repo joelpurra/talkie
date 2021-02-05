@@ -41,16 +41,16 @@ class Features extends React.PureComponent {
 
 		this.styled = {
 			storeLink: styled({
-				textAlign: "center",
 				marginTop: "0.5em",
+				textAlign: "center",
 			})("div"),
 
 			storeLinks: styled({
-				textAlign: "center",
-				marginTop: "0.5em",
 				"@media (min-width: 450px)": {
 					columns: 2,
 				},
+				marginTop: "0.5em",
+				textAlign: "center",
 			})("div"),
 
 			storeLinksP: styled({
@@ -58,25 +58,20 @@ class Features extends React.PureComponent {
 			})(textBase.p),
 
 			storeLinksPFirst: styled({
-				marginBottom: "0.5em",
 				"@media (min-width: 450px)": {
 					marginTop: 0,
 				},
+				marginBottom: "0.5em",
 			})(textBase.p),
 		};
 	}
 
-	static defaultProps = {
-		isPremiumEdition: false,
-		systemType: false,
-	};
-
 	static propTypes = {
+		configure: PropTypes.func.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
 		systemType: PropTypes.string.isRequired,
 		translate: PropTypes.func.isRequired,
-		configure: PropTypes.func.isRequired,
-		onConfigurationChange: PropTypes.func.isRequired,
 	}
 
 	componentDidMount() {

@@ -40,6 +40,7 @@ import {
 } from "../shared/voices";
 
 export default class TalkieBackground {
+	// eslint-disable-next-line max-params
 	constructor(speechChain, broadcaster, talkieSpeaker, speakingStatus, voiceManager, languageHelper, configuration, execute, translator, internalUrlProvider) {
 		this.speechChain = speechChain;
 		this.broadcaster = broadcaster;
@@ -53,8 +54,8 @@ export default class TalkieBackground {
 		this.internalUrlProvider = internalUrlProvider;
 
 		this.notAbleToSpeakTextFromThisSpecialTab = {
-			text: this.translator.translate("notAbleToSpeakTextFromThisSpecialTab"),
 			effectiveLanguage: this.translator.translate("extensionLocale"),
+			text: this.translator.translate("notAbleToSpeakTextFromThisSpecialTab"),
 		};
 
 		// NOTE: duplicated elsewhere in the codebase.
@@ -112,6 +113,7 @@ export default class TalkieBackground {
 								})
 								.then((filteredSelectedTextsFromFrontend) => {
 									const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
+										// eslint-disable-next-line unicorn/no-reduce
 										.reduce(
 											(previous, selectedTextWithFocusTimestamp) => {
 												if (previous === null || previous.mostRecentUse < selectedTextWithFocusTimestamp.mostRecentUse) {
@@ -208,8 +210,8 @@ export default class TalkieBackground {
 						const voiceWithPitchAndRate = shallowCopy(
 							voice,
 							{
-								rate: effectiveRateForVoice,
 								pitch: effectivePitchForVoice,
+								rate: effectiveRateForVoice,
 							},
 						);
 
@@ -269,9 +271,9 @@ export default class TalkieBackground {
 				.then((detectedPageLanguage) => {
 					const selections = [
 						{
-							text,
 							htmlTagLanguage: null,
 							parentElementsLanguages: [],
+							text,
 						},
 					];
 

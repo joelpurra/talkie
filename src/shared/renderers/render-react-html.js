@@ -73,9 +73,9 @@ const renderHtml = (store, reactHtmlTemplate, localeProvider, styletron, root) =
 
 	const html = reactHtmlTemplate({
 		locale: translationLocale,
+		prerenderedStateJson,
 		reactRoot,
 		stylesForHead,
-		prerenderedStateJson,
 	});
 
 	return html;

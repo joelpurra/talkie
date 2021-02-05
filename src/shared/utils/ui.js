@@ -18,16 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export function handleBubbledLinkClick(handleUrl, e) {
-	let element = e.target;
+export function handleBubbledLinkClick(handleUrl, event) {
+	let element = event.target;
 
 	do {
 		if (element.tagName === "A") {
 			const href = element.getAttribute("href");
 
 			if (typeof href === "string" && href.startsWith("https://")) {
-				e.preventDefault();
-				e.stopPropagation();
+				event.preventDefault();
+				event.stopPropagation();
 
 				handleUrl(href);
 

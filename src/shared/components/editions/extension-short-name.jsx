@@ -27,10 +27,6 @@ import * as textBase from "../../styled/text/text-base.jsx";
 export default
 @translateAttribute
 class ExtensionShortName extends React.PureComponent {
-	static defaultProps={
-		isPremiumEdition: false,
-	}
-
 	static propTypes = {
 		isPremiumEdition: PropTypes.bool.isRequired,
 		translate: PropTypes.func.isRequired,

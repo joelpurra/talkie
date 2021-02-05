@@ -30,10 +30,6 @@ export default class Editions extends React.PureComponent {
 		this.handleIsPremiumEditionChange = this.handleIsPremiumEditionChange.bind(this);
 	}
 
-	static defaultProps = {
-		isPremiumEdition: false,
-	};
-
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,

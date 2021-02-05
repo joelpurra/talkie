@@ -28,9 +28,9 @@ import Progress from "../components/sections/progress.jsx";
 
 const mapStateToProps = (state) => {
 	return {
-		min: state.shared.progress.min,
 		current: state.shared.progress.current,
 		max: state.shared.progress.max,
+		min: state.shared.progress.min,
 	};
 };
 
@@ -42,9 +42,9 @@ export default
 @connect(mapStateToProps, mapDispatchToProps)
 class ProgressContainer extends React.PureComponent {
 	static propTypes = {
-		min: PropTypes.number.isRequired,
 		current: PropTypes.number.isRequired,
 		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
 	}
 
 	render() {

@@ -23,7 +23,11 @@ import {
 } from "./basic";
 
 export const actionMapReducer = (actionsMap, initialState) =>
-	(previousState = initialState, action) => {
+	(
+		// eslint-disable-next-line default-param-last
+		previousState = initialState,
+		action,
+	) => {
 		let reduceFn = null;
 
 		if (actionsMap[action.type]) {
@@ -50,7 +54,11 @@ const assignActionTypeToKey = (key) => (previousState, action) => {
 };
 
 export const createAssignmentActionMapReducer = (initialState, customActionsMap, assignActionsMap) => {
-	return (previousState = initialState, action) => {
+	return (
+		// eslint-disable-next-line default-param-last
+		previousState = initialState,
+		action,
+	) => {
 		let reduceFn = null;
 
 		if (customActionsMap[action.type]) {

@@ -35,6 +35,7 @@ TextHelper.splitTextToSentencesOfMaxLength = (text, maxPartLength) => {
 
 	const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
 
+	// eslint-disable-next-line unicorn/no-reduce
 	const textParts = spacedTextParts.reduce((newParts, spacedTextPart) => {
 		const appendToText = (ttt) => {
 			if (last(newParts) === "") {

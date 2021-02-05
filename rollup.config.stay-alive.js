@@ -29,7 +29,14 @@ const inputName = "stay-alive";
 const fileExtension = "";
 const fileName = `${inputName}${fileExtension}`;
 
-export default {
+const rollupConfiguration = {
+	input: `src/${inputName}/${fileName}.js`,
+	output: {
+		file: `dist/${fileName}.js`,
+		format: "umd",
+		name: inputName,
+		sourcemap: true,
+	},
 	plugins: [
 		json(),
 		globals(),
@@ -42,11 +49,6 @@ export default {
 		license(inputName),
 		filesize(),
 	],
-	input: `src/${inputName}/${fileName}.js`,
-	output: {
-		name: inputName,
-		format: "umd",
-		file: `dist/${fileName}.js`,
-		sourcemap: true,
-	},
 };
+
+export default rollupConfiguration;

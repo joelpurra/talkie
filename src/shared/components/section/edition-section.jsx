@@ -30,21 +30,15 @@ export default
 @translateAttribute
 @configureAttribute
 class EditionSection extends React.PureComponent {
-	static defaultProps = {
-		mode: "h2",
-		isPremiumEdition: false,
-		className: "",
-	};
-
 	static propTypes = {
+		children: PropTypes.node.isRequired,
+		className: PropTypes.string.isRequired,
+		configure: PropTypes.func.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
 		mode: PropTypes.oneOf([
 			"p",
 			"h2",
 		]).isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		children: PropTypes.node.isRequired,
-		className: PropTypes.string.isRequired,
-		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
 		translate: PropTypes.func.isRequired,
 	}
@@ -83,6 +77,7 @@ class EditionSection extends React.PureComponent {
 		let HeadingElement = null;
 
 		switch (mode) {
+			// TODO: create separate components instead of a flag.
 			case "p":
 				HeadingElement = textBase.p;
 				break;

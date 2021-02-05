@@ -46,28 +46,23 @@ class Welcome extends React.PureComponent {
 		this.welcomeSampleTextElement = null;
 
 		this.styled = {
-			heroDiv: styled({
-				marginBottom: "2em",
-			})("div"),
-
 			HeroEditionSection: styled({
 				// NOTE: atomic css class ordering seems to not work well in this case.
 				marginBottom: 0,
 			})(HeroSection),
 
+			heroDiv: styled({
+				marginBottom: "2em",
+			})("div"),
+
 			sampleHeroP: styled({
 				marginTop: 0,
 			})(textBase.p),
 
-			welcomeHeroP: styled({
-				marginTop: 0,
-				marginBottom: 0,
-			})(textBase.p),
-
 			sharingDiv: styled({
-				marginTop: "-4em",
 				marginLeft: "6em",
 				marginRight: "6em",
+				marginTop: "-4em",
 			})("div"),
 
 			sharingIcons: styled({
@@ -77,45 +72,44 @@ class Welcome extends React.PureComponent {
 
 			summaryHeading: styled({
 				display: "inline-block",
+				marginBottom: 0,
 				marginLeft: 0,
 				marginRight: 0,
 				marginTop: 0,
-				marginBottom: 0,
+				paddingBottom: "0.5em",
 				paddingLeft: "0.5em",
 				paddingRight: "0.5em",
 				paddingTop: "0.5em",
-				paddingBottom: "0.5em",
 			})(textBase.h3),
+
+			welcomeHeroP: styled({
+				marginBottom: 0,
+				marginTop: 0,
+			})(textBase.p),
 		};
 	}
 
 	static defaultProps = {
-		isPremiumEdition: false,
-		systemType: null,
 		osType: null,
-		voicesCount: 0,
-		languagesCount: 0,
-		languageGroupsCount: 0,
 		sampleText: null,
 		sampleTextLanguageCode: null,
-		speakTextInLanguageWithOverrides: null,
-		canSpeakInTranslatedLocale: false,
 	};
 
 	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
+		canSpeakInTranslatedLocale: PropTypes.bool.isRequired,
+		configure: PropTypes.func.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
-		systemType: PropTypes.string.isRequired,
-		osType: PropTypes.string,
-		voicesCount: PropTypes.number.isRequired,
-		languagesCount: PropTypes.number.isRequired,
 		languageGroupsCount: PropTypes.number.isRequired,
+		languagesCount: PropTypes.number.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+		osType: PropTypes.string,
 		sampleText: PropTypes.string,
 		sampleTextLanguageCode: PropTypes.string,
 		speakTextInLanguageWithOverrides: PropTypes.func.isRequired,
-		canSpeakInTranslatedLocale: PropTypes.bool.isRequired,
+		systemType: PropTypes.string.isRequired,
 		translate: PropTypes.func.isRequired,
-		configure: PropTypes.func.isRequired,
-		onConfigurationChange: PropTypes.func.isRequired,
+		voicesCount: PropTypes.number.isRequired,
 	}
 
 	componentDidMount() {
@@ -170,8 +164,8 @@ class Welcome extends React.PureComponent {
 
 		const welcomeSample = {
 			hasSampleText,
-			text: welcomeSampleText,
 			languageCode: welcomeSampleTextLanguage,
+			text: welcomeSampleText,
 		};
 
 		return welcomeSample;

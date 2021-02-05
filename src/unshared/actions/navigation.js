@@ -24,7 +24,7 @@ import * as actionTypes from "../constants/action-types-navigation";
 
 export const setActiveTabId = (activeTabId) => {
 	return {
-		type: actionTypes.SET_ACTIVE_TAB_ID,
 		activeTabId,
+		type: actionTypes.SET_ACTIVE_TAB_ID,
 	};
 };

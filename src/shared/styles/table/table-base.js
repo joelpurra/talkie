@@ -27,8 +27,8 @@ export const th = {};
 export const tr = {};
 
 export const td = {
+	paddingBottom: "0.5em",
 	paddingLeft: "0.5em",
 	paddingRight: "0.5em",
 	paddingTop: "0.5em",
-	paddingBottom: "0.5em",
 };

@@ -20,7 +20,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import filesize from "rollup-plugin-filesize";
 
-export default () =>
+const rollupConfiguration = () =>
 	filesize({
 		showGzippedSize: false,
 	});
+
+export default rollupConfiguration;

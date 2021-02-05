@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 module.exports = {
-	extends: [
+	"extends": [
 		"eslint-config-joelpurra/esnext",
 	],
-    "parser": "babel-eslint",
+	parser: "babel-eslint",
 };

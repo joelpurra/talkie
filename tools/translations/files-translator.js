@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const assert = require("assert");
-const Promise = require("bluebird");
+const Bluebird = require("bluebird");
 
 const clone = require("clone");
 
@@ -50,17 +50,18 @@ export default class FilesTranslator {
 		return jsonfile.readFile(this._base.filePath)
 			.then((baseMessages) => {
 				const baseWithMessages = {
-					messages: clone(baseMessages),
 					language: this._base.language,
+					messages: clone(baseMessages),
 				};
 
-				return Promise.map(
+				return Bluebird.map(
+					// eslint-disable-next-line unicorn/no-fn-reference-in-iterator
 					this._locales,
 					(locale) => jsonfile.readFile(locale.filePath)
 						.then((localeMessages) => {
 							const localeWithMessages = {
-								messages: clone(localeMessages),
 								language: locale.language,
+								messages: clone(localeMessages),
 							};
 
 							return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)

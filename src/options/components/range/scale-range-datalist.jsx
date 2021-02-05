@@ -24,15 +24,11 @@ import React from "react";
 import ScaleRangeDatalistOption from "./scale-range-datalist-option.jsx";
 
 export default class ScaleRangeDatalist extends React.PureComponent {
-	static defaultProps = {
-		steps: [],
-		disabled: true,
-	};
-
 	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
 		listName: PropTypes.string.isRequired,
 		steps: PropTypes.arrayOf(PropTypes.number).isRequired,
-		disabled: PropTypes.bool.isRequired,
 	};
 
 	render() {

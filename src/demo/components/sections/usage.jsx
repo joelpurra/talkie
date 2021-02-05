@@ -56,24 +56,22 @@ class Usage extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		isPremiumEdition: false,
-		systemType: null,
 		osType: null,
 	};
 
 	static propTypes = {
-		isPremiumEdition: PropTypes.bool.isRequired,
-		systemType: PropTypes.string.isRequired,
-		osType: PropTypes.string,
-		onOpenShortKeysConfigurationClick: PropTypes.func.isRequired,
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		onOpenShortKeysConfigurationClick: PropTypes.func.isRequired,
+		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
+		translate: PropTypes.func.isRequired,
 	}
 
-	handleOpenShortKeysConfigurationClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handleOpenShortKeysConfigurationClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		this.props.onOpenShortKeysConfigurationClick();
 

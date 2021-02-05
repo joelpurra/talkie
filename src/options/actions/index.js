@@ -23,9 +23,11 @@ import unshared from "../../unshared/actions";
 import * as navigation from "./navigation";
 import * as voices from "./voices";
 
-export default {
+const actions = {
+	navigation,
 	shared,
 	unshared,
-	navigation,
 	voices,
 };
+
+export default actions;

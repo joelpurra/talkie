@@ -41,39 +41,35 @@ class Header extends React.PureComponent {
 		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
 		this.styled = {
+			button: styled({
+				// float: "__MSG_@@bidi_end_edge__",
+				":focus": {
+					outline: 0,
+				},
+				lineHeight: "1.5em",
+			})(buttonBase.a),
+
 			extensionName: styled({
+				":focus": {
+					outline: 0,
+				},
 				fontWeight: "bold",
 				textDecoration: "none",
-				":focus": {
-					outline: 0,
-				},
 			})(textBase.a),
-
-			button: styled({
-				lineHeight: "1.5em",
-				// float: __MSG_@@bidi_end_edge__;
-				":focus": {
-					outline: 0,
-				},
-			})(buttonBase.a),
 		};
 	}
 
-	static defaultProps={
-		isPremiumEdition: false,
-	}
-
 	static propTypes = {
-		playPauseClick: PropTypes.func.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		playPauseClick: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
 	}
 
-	handlePlayPauseClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handlePlayPauseClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		this.props.playPauseClick();
 

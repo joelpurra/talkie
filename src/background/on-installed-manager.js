@@ -30,6 +30,7 @@ import {
 const REASON_INSTALL = "install";
 
 export default class OnInstalledManager {
+	// eslint-disable-next-line max-params
 	constructor(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue) {
 		// TODO: use broadcast listeners instead.
 		this.storageManager = storageManager;
@@ -90,7 +91,8 @@ export default class OnInstalledManager {
 	onInstallListenerEventQueueHandler() {
 		return promiseTry(
 			() => {
-				while (this.onInstallListenerEventQueue.length > 0) {
+				// NOTE: should this be a while loop, but without the return?
+				if (this.onInstallListenerEventQueue.length > 0) {
 					const onInstallListenerEvent = this.onInstallListenerEventQueue.shift();
 
 					logDebug("onInstallListenerEventQueueHandler", "Start", onInstallListenerEvent);

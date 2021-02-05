@@ -24,6 +24,7 @@ import React from "react";
 import isSpeaking from "../hocs/is-speaking.jsx";
 
 export default
+// eslint-disable-next-line react/no-unsafe
 @isSpeaking
 class IsSpeakingUpdater extends React.PureComponent {
 	static propTypes = {
@@ -31,6 +32,7 @@ class IsSpeakingUpdater extends React.PureComponent {
 		isSpeaking: PropTypes.bool.isRequired,
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.props.isSpeaking !== nextProps.isSpeaking) {
 			this.props.actions.sharedSpeaking.setIsSpeaking(nextProps.isSpeaking);

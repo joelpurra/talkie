@@ -22,15 +22,10 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export default class StyleRoot extends React.PureComponent {
-	static defaultProps = {
-		isSpeaking: false,
-		isPremiumEdition: false,
-	};
-
 	static propTypes = {
-		isSpeaking: PropTypes.bool.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
 		children: PropTypes.element.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		isSpeaking: PropTypes.bool.isRequired,
 	}
 
 	getStateClasses() {

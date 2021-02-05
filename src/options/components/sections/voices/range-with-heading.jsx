@@ -24,15 +24,16 @@ import React from "react";
 import {
 	debounce,
 } from "../../../../shared/basic";
-import translateAttribute from "../../../../shared/hocs/translate.jsx";
 import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 
 export default
-@translateAttribute
+
+// eslint-disable-next-line react/no-unsafe
 class RangeWithHeading extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
+		// eslint-disable-next-line react/state-in-constructor
 		this.state = {
 			value: props.initialValue,
 		};
@@ -45,32 +46,27 @@ class RangeWithHeading extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		listName: null,
 		voiceName: null,
-		min: 0,
-		defaultValue: 1,
-		initialValue: 1,
-		max: 2,
-		step: 0.1,
-		disabled: true,
 	};
 
 	static propTypes = {
-		onChange: PropTypes.func.isRequired,
-		transformValueBeforeChange: PropTypes.func.isRequired,
-		getHeading: PropTypes.func.isRequired,
 		ScaleRangeElementClass: PropTypes.func.isRequired,
-		listName: PropTypes.string.isRequired,
-		voiceName: PropTypes.string,
-		min: PropTypes.number.isRequired,
 		defaultValue: PropTypes.number.isRequired,
-		initialValue: PropTypes.number.isRequired,
-		max: PropTypes.number.isRequired,
-		step: PropTypes.number.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		getHeading: PropTypes.func.isRequired,
+		initialValue: PropTypes.number.isRequired,
+		listName: PropTypes.string.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+		onChange: PropTypes.func.isRequired,
+		step: PropTypes.number.isRequired,
+		transformValueBeforeChange: PropTypes.func.isRequired,
 		translate: PropTypes.func.isRequired,
+		voiceName: PropTypes.string,
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.state.value !== nextProps.initialValue) {
 			this.setState({

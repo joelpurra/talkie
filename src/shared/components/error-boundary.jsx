@@ -30,59 +30,55 @@ const manifest = manifestProvider.getSync();
 /* eslint-enable no-sync */
 
 export default class ErrorBoundary extends React.PureComponent {
-	static propTypes = {
-		children: PropTypes.node.isRequired,
-	}
+	state = {
+		componentStack: null,
+		hasError: false,
+		message: null,
+		stacktrace: null,
+	};
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			hasError: false,
-			message: null,
-			stacktrace: null,
-			componentStack: null,
-		};
-	}
-
-	componentDidCatch(error, info) {
-		// TODO: use DualLogger?
-		/* eslint-disable no-console */
-		console.error("ErrorBoundary", error, info);
-		/* eslint-enable no-console */
-
-		this.setState({
-			hasError: true,
-			message: error.message,
-			stacktrace: error.stack && error.stack.toString(),
-			componentStack: info.componentStack,
-		});
-	}
-
-	prettyPrintForEmailBody(value, limit) {
-		let pretty = null;
-
-		if (value) {
-			pretty = value
-				.toString()
-				.trim()
-				.replace(/\n/g, "\n> ");
-
-			if (pretty.length > limit) {
-				pretty = pretty.slice(0, Math.max(0, limit)) + "...";
-			}
-		} else {
-			pretty = value;
+		static propTypes = {
+			children: PropTypes.node.isRequired,
 		}
 
-		return pretty;
-	}
+		componentDidCatch(error, info) {
+		// TODO: use DualLogger?
+		/* eslint-disable no-console */
+			console.error("ErrorBoundary", error, info);
+			/* eslint-enable no-console */
 
-	render() {
-		if (this.state.hasError) {
-			const recipient = "code@joelpurra.com";
-			const subject = "Something went wrong in Talkie";
-			const body = `Hello Joel,
+			this.setState({
+				componentStack: info.componentStack,
+				hasError: true,
+				message: error.message,
+				stacktrace: error.stack && error.stack.toString(),
+			});
+		}
+
+		prettyPrintForEmailBody(value, limit) {
+			let pretty = null;
+
+			if (value) {
+				pretty = value
+					.toString()
+					.trim()
+					.replace(/\n/g, "\n> ");
+
+				if (pretty.length > limit) {
+					pretty = pretty.slice(0, Math.max(0, limit)) + "...";
+				}
+			} else {
+				pretty = value;
+			}
+
+			return pretty;
+		}
+
+		render() {
+			if (this.state.hasError) {
+				const recipient = "code@joelpurra.com";
+				const subject = "Something went wrong in Talkie";
+				const body = `Hello Joel,
 
 Something went wrong while using Talkie! This is my error report — can you please have a look at it?
 
@@ -115,72 +111,72 @@ Error stack trace:
 Hope this helps =)
 
 `;
-			const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+				const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-			return (
-				<div>
-					<h1>
-						Something went wrong
-					</h1>
+				return (
+					<div>
+						<h1>
+							Something went wrong
+						</h1>
 
-					<p>
-						Sorry! This really should not happen. If you would like, email me an error report using the link below, and I will try to fix it for <a href="https://joelpurra.com/projects/talkie/">the next version of Talkie</a>!
-					</p>
+						<p>
+							Sorry! This really should not happen. If you would like, email me an error report using the link below, and I will try to fix it for <a href="https://joelpurra.com/projects/talkie/">the next version of Talkie</a>!
+						</p>
 
-					<p>
-						<a
-							href="https://joelpurra.com/"
-							rel="noopener noreferrer"
-							target="_blank"
-							lang="sv"
-						>
-							Joel Purra
-						</a>
-					</p>
+						<p>
+							<a
+								href="https://joelpurra.com/"
+								rel="noopener noreferrer"
+								target="_blank"
+								lang="sv"
+							>
+								Joel Purra
+							</a>
+						</p>
 
-					<hr/>
+						<hr/>
 
-					<p>
-						Talkie {manifest.version_name}
-					</p>
-
-					<blockquote>
-						<pre>{this.state.message}</pre>
-					</blockquote>
-
-					<p>
-						<a
-							href={mailto}
-							rel="noopener noreferrer"
-							target="_blank"
-						>
-							Email error report to {recipient}
-						</a>
-					</p>
-
-					<details>
-						<summary>
-							Component stack
-						</summary>
+						<p>
+							Talkie {manifest.version_name}
+						</p>
 
 						<blockquote>
-							<pre>{this.state.componentStack}</pre>
+							<pre>{this.state.message}</pre>
 						</blockquote>
-					</details>
 
-					<details>
-						<summary>
-							Error stack trace
-						</summary>
+						<p>
+							<a
+								href={mailto}
+								rel="noopener noreferrer"
+								target="_blank"
+							>
+								Email error report to {recipient}
+							</a>
+						</p>
 
-						<blockquote>
-							<pre>{this.state.stacktrace}</pre>
-						</blockquote>
-					</details>
-				</div>
-			);
+						<details>
+							<summary>
+								Component stack
+							</summary>
+
+							<blockquote>
+								<pre>{this.state.componentStack}</pre>
+							</blockquote>
+						</details>
+
+						<details>
+							<summary>
+								Error stack trace
+							</summary>
+
+							<blockquote>
+								<pre>{this.state.stacktrace}</pre>
+							</blockquote>
+						</details>
+					</div>
+				);
+			}
+
+			return this.props.children;
 		}
-
-		return this.props.children;
-	}
 }

@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const sharedList = {
-	marginTop: "0.25em",
 	marginBottom: "0.25em",
+	marginTop: "0.25em",
 	paddingLeft: "2em",
 };
 
@@ -42,26 +42,26 @@ export const dd = {
 
 const sharedInlineList = {
 	listStyleType: "none",
-	marginTop: "0.25em",
 	marginBottom: "0.25em",
+	marginTop: "0.25em",
+	paddingBottom: 0,
 	paddingLeft: 0,
 	paddingRight: 0,
 	paddingTop: 0,
-	paddingBottom: 0,
 };
 
 export const inlineUl = sharedInlineList;
 export const inlineOl = sharedInlineList;
 
 export const inlineLi = {
+	display: "inline-block",
 	listStyleType: "none",
-	paddingLeft: 0,
-	paddingRight: 0,
-	paddingTop: 0,
-	paddingBottom: 0,
+	marginBottom: "0.25em",
 	marginLeft: 0,
 	marginRight: 0,
 	marginTop: 0,
-	marginBottom: "0.25em",
-	display: "inline-block",
+	paddingBottom: 0,
+	paddingLeft: 0,
+	paddingRight: 0,
+	paddingTop: 0,
 };

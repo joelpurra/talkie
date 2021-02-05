@@ -24,9 +24,9 @@ import {
 } from "../utils/reduce-helpers";
 
 const initialState = {
-	min: 0,
 	current: 0,
 	max: 0,
+	min: 0,
 };
 
 const customActionsMap = {};

@@ -24,18 +24,13 @@ import React from "react";
 import EditionSection from "./edition-section.jsx";
 
 export default class PremiumSection extends React.PureComponent {
-	static defaultProps = {
-		mode: "h2",
-		className: "",
-	};
-
 	static propTypes = {
+		children: PropTypes.node.isRequired,
+		className: PropTypes.string.isRequired,
 		mode: PropTypes.oneOf([
 			"p",
 			"h2",
 		]).isRequired,
-		children: PropTypes.node.isRequired,
-		className: PropTypes.string.isRequired,
 	}
 
 	render() {

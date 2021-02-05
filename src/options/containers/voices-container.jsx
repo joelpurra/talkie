@@ -33,27 +33,27 @@ import selectors from "../selectors";
 
 const mapStateToProps = (state) => {
 	return {
+		effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguage,
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+		languageGroups: selectors.shared.voices.getLanguageGroups(state),
+		languages: selectors.shared.voices.getLanguages(state),
+		languagesByLanguageGroup: selectors.shared.voices.getLanguagesByLanguageGroup(state),
+		pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
+		rateForSelectedVoice: state.voices.rateForSelectedVoice,
+		sampleText: state.voices.sampleText,
+		selectedLanguageCode: state.voices.selectedLanguageCode,
+		selectedVoiceName: state.voices.selectedVoiceName,
 		voices: selectors.shared.voices.getVoices(state),
 		voicesByLanguage: selectors.shared.voices.getVoicesByLanguage(state),
 		voicesByLanguageGroup: selectors.shared.voices.getVoicesByLanguageGroup(state),
-		languages: selectors.shared.voices.getLanguages(state),
-		languageGroups: selectors.shared.voices.getLanguageGroups(state),
-		languagesByLanguageGroup: selectors.shared.voices.getLanguagesByLanguageGroup(state),
-		selectedLanguageCode: state.voices.selectedLanguageCode,
-		selectedVoiceName: state.voices.selectedVoiceName,
-		effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguage,
-		sampleText: state.voices.sampleText,
-		rateForSelectedVoice: state.voices.rateForSelectedVoice,
-		pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
-		isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		actions: {
-			voices: bindActionCreators(actionCreators.voices, dispatch),
 			sharedVoices: bindActionCreators(actionCreators.shared.voices, dispatch),
+			voices: bindActionCreators(actionCreators.voices, dispatch),
 		},
 	};
 };
@@ -67,8 +67,27 @@ class VoicesContainer extends React.PureComponent {
 		this.props.actions.voices.loadSampleText();
 	}
 
+	static defaultProps = {
+		effectiveVoiceNameForSelectedLanguage: null,
+		sampleText: null,
+		selectedLanguageCode: null,
+		selectedVoiceName: null,
+	};
+
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languagesByLanguageGroup: PropTypes.objectOf(
+			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		).isRequired,
+		pitchForSelectedVoice: PropTypes.number.isRequired,
+		rateForSelectedVoice: PropTypes.number.isRequired,
+		sampleText: PropTypes.string,
+		selectedLanguageCode: PropTypes.string,
+		selectedVoiceName: PropTypes.string,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -94,18 +113,6 @@ class VoicesContainer extends React.PureComponent {
 				voiceURI: PropTypes.string.isRequired,
 			})).isRequired,
 		).isRequired,
-		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languagesByLanguageGroup: PropTypes.objectOf(
-			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		).isRequired,
-		selectedLanguageCode: PropTypes.string,
-		selectedVoiceName: PropTypes.string,
-		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
-		sampleText: PropTypes.string,
-		rateForSelectedVoice: PropTypes.number.isRequired,
-		pitchForSelectedVoice: PropTypes.number.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
 	}
 
 	render() {

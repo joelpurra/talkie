@@ -50,8 +50,8 @@ class Providers extends React.PureComponent {
 		children: PropTypes.element.isRequired,
 		configuration: PropTypes.object.isRequired,
 		styletron: PropTypes.object.isRequired,
-		translator: PropTypes.object.isRequired,
 		systemType: PropTypes.string.isRequired,
+		translator: PropTypes.object.isRequired,
 	}
 
 	render() {

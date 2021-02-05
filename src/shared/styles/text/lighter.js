@@ -28,9 +28,9 @@ export const highlight = {
 };
 
 export const a = {
-	color: "#9b9b9b",
-	textDecoration: "none",
+	":active": highlight,
 	":focus": highlight,
 	":hover": highlight,
-	":active": highlight,
+	color: "#9b9b9b",
+	textDecoration: "none",
 };

@@ -34,15 +34,12 @@ class SpeakLongTexts extends React.PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	static defaultProps = {
-		speakLongTexts: false,
-		disabled: true,
-	};
-
 	static propTypes = {
-		onChange: PropTypes.func.isRequired,
-		speakLongTexts: PropTypes.bool.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		onChange: PropTypes.func.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		speakLongTexts: PropTypes.bool.isRequired,
 		translate: PropTypes.func.isRequired,
 	};
 

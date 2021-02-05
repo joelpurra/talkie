@@ -37,12 +37,12 @@ const talkieLocaleHelper = new TalkieLocaleHelper();
 
 const mapStateToProps = (state) => {
 	return {
+		languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
+		languagesCount: selectors.shared.voices.getLanguagesCount(state),
+		navigatorLanguages: selectors.shared.voices.getNavigatorLanguages(state),
 		voices: selectors.shared.voices.getVoices(state),
 		voicesByLanguagesByLanguageGroup: selectors.shared.voices.getVoicesByLanguagesByLanguageGroup(state),
 		voicesCount: selectors.shared.voices.getVoicesCount(state),
-		languagesCount: selectors.shared.voices.getLanguagesCount(state),
-		languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
-		navigatorLanguages: selectors.shared.voices.getNavigatorLanguages(state),
 	};
 };
 
@@ -59,6 +59,9 @@ export default
 class VoicesContainer extends React.PureComponent {
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		languageGroupsCount: PropTypes.number.isRequired,
+		languagesCount: PropTypes.number.isRequired,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -77,10 +80,7 @@ class VoicesContainer extends React.PureComponent {
 				})).isRequired,
 			).isRequired,
 		).isRequired,
-		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 		voicesCount: PropTypes.number.isRequired,
-		languagesCount: PropTypes.number.isRequired,
-		languageGroupsCount: PropTypes.number.isRequired,
 	}
 
 	render() {

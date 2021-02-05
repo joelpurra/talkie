@@ -106,8 +106,8 @@ const getCurrentActiveNormalLoadedTab = () => promiseTry(
 		const queryOptions = {
 			active: true,
 			currentWindow: true,
-			windowType: "normal",
 			status: "complete",
+			windowType: "normal",
 		};
 
 		// https://developer.browser.com/extensions/tabs#method-query

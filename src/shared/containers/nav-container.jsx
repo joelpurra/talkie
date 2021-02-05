@@ -68,6 +68,7 @@ class NavContainer extends React.PureComponent {
 		// HACK: don't do browser detection.
 		// https://stackoverflow.com/questions/41819284/how-to-determine-in-which-browser-your-extension-background-script-is-executing
 		// https://stackoverflow.com/a/41820692
+		// eslint-disable-next-line no-undef
 		const isFirefox = typeof InstallTrigger !== "undefined";
 
 		// NOTE: this breaks navigation in the options page in the preferences pane in firefox, so skip.
@@ -98,9 +99,9 @@ class NavContainer extends React.PureComponent {
 		activeTabId: PropTypes.string.isRequired,
 		links: PropTypes.arrayOf(
 			PropTypes.shape({
-				url: PropTypes.string,
 				tabId: PropTypes.string,
 				text: PropTypes.string.isRequired,
+				url: PropTypes.string,
 			})).isRequired,
 	}
 

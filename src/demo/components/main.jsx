@@ -37,8 +37,8 @@ import Support from "./sections/support.jsx";
 import Usage from "./sections/usage.jsx";
 
 const widthStyles = {
-	minWidth: "400px",
 	maxWidth: "1000px",
+	minWidth: "400px",
 };
 
 const styles = Object.assign(
@@ -51,6 +51,7 @@ const styles = Object.assign(
 );
 
 export default
+// eslint-disable-next-line react/no-unsafe
 @translateAttribute
 @styled(styles)
 @passSelectedTextToBackground
@@ -91,45 +92,41 @@ class Main extends React.PureComponent {
 		];
 
 		this.styled = {
-			navHeader: styled(Object.assign(
-				{},
-				widthStyles,
-				{
-					position: "fixed",
-					top: 0,
-					left: 0,
-					right: 0,
-					backgroundColor: "#ffffff",
-				},
-			))("div"),
+			footerHr: styled({
+				marginTop: "3em",
+			})(layoutBase.hr),
 
 			main: styled({
 				paddingTop: "8em",
 			})(layoutBase.main),
 
-			footerHr: styled({
-				marginTop: "3em",
-			})(layoutBase.hr),
+			navHeader: styled(Object.assign(
+				{},
+				widthStyles,
+				{
+					backgroundColor: "#ffffff",
+					left: 0,
+					position: "fixed",
+					right: 0,
+					top: 0,
+				},
+			))("div"),
 		};
 	}
 
 	static defaultProps = {
-		isPremiumEdition: false,
-		versionNumber: null,
-		systemType: null,
 		osType: null,
-		activeTabId: null,
 	};
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		versionNumber: PropTypes.string.isRequired,
-		systemType: PropTypes.string.isRequired,
-		osType: PropTypes.string,
 		activeTabId: PropTypes.string.isRequired,
 		className: PropTypes.string.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
 		translate: PropTypes.func.isRequired,
+		versionNumber: PropTypes.string.isRequired,
 	};
 
 	componentDidMount() {
@@ -137,6 +134,7 @@ class Main extends React.PureComponent {
 		setTimeout(() => this.scrollToTop(), 100);
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.props.activeTabId !== nextProps.activeTabId) {
 			this.scrollToTop();
@@ -158,9 +156,9 @@ class Main extends React.PureComponent {
 		this.props.actions.sharedNavigation.openUrlInNewTab(url);
 	}
 
-	handleOptionsPageClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handleOptionsPageClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		this.props.actions.sharedNavigation.openOptionsPage();
 

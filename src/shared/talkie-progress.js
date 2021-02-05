@@ -34,9 +34,9 @@ export default class TalkieProgress {
 
 	getEventData() {
 		const eventData = {
-			min: this.min,
-			max: this.max,
 			current: this.current,
+			max: this.max,
+			min: this.min,
 		};
 
 		return eventData;

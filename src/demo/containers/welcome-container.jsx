@@ -40,15 +40,15 @@ const localeProvider = new LocaleProvider();
 
 const mapStateToProps = (state) => {
 	return {
-		languages: selectors.shared.voices.getLanguages(state),
-		languageGroups: selectors.shared.voices.getLanguageGroups(state),
-		voicesCount: selectors.shared.voices.getVoicesCount(state),
-		languagesCount: selectors.shared.voices.getLanguagesCount(state),
-		languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
 		availableBrowserLanguageWithInstalledVoice: selectors.shared.voices.getAvailableBrowserLanguageWithInstalledVoice(state),
 		isPremiumEdition: state.shared.metadata.isPremiumEdition,
-		systemType: state.shared.metadata.systemType,
+		languageGroups: selectors.shared.voices.getLanguageGroups(state),
+		languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
+		languages: selectors.shared.voices.getLanguages(state),
+		languagesCount: selectors.shared.voices.getLanguagesCount(state),
 		osType: state.shared.metadata.osType,
+		systemType: state.shared.metadata.systemType,
+		voicesCount: selectors.shared.voices.getVoicesCount(state),
 	};
 };
 
@@ -62,34 +62,28 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default
+
+// eslint-disable-next-line react/no-unsafe
 @connect(mapStateToProps, mapDispatchToProps)
 class WelcomeContainer extends React.PureComponent {
 	static defaultProps = {
-		isPremiumEdition: false,
-		systemType: false,
-		osType: false,
-		languages: [],
-		languageGroups: [],
-		availableBrowserLanguageWithInstalledVoice: [],
-		voicesCount: 0,
-		languagesCount: 0,
-		languageGroupsCount: 0,
-		speakTextInLanguageWithOverrides: null,
+		osType: null,
 	};
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 		availableBrowserLanguageWithInstalledVoice: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		voicesCount: PropTypes.number.isRequired,
-		languagesCount: PropTypes.number.isRequired,
-		languageGroupsCount: PropTypes.number.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
-		systemType: PropTypes.string.isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languageGroupsCount: PropTypes.number.isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languagesCount: PropTypes.number.isRequired,
 		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
+		voicesCount: PropTypes.number.isRequired,
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.voicesCount === 0) {
 			// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.

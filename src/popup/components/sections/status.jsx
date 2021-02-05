@@ -39,6 +39,10 @@ class Status extends React.PureComponent {
 		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
 		this.styled = {
+			statusIconWrapper: styled({
+				paddingRight: "2em",
+			})(textBase.span),
+
 			table: styled({
 				borderSpacing: 0,
 			})(tableBase.table),
@@ -47,21 +51,17 @@ class Status extends React.PureComponent {
 				borderSpacing: 0,
 			})(tableBase.tbody),
 
-			tr: styled({
-				borderSpacing: 0,
-			})(tableBase.tr),
-
 			td: styled({
 				borderSpacing: 0,
+				paddingBottom: 0,
 				paddingLeft: 0,
 				paddingRight: 0,
 				paddingTop: 0,
-				paddingBottom: 0,
 			})(tableBase.td),
 
-			statusIconWrapper: styled({
-				paddingRight: "2em",
-			})(textBase.span),
+			tr: styled({
+				borderSpacing: 0,
+			})(tableBase.tr),
 		};
 	}
 
@@ -70,9 +70,9 @@ class Status extends React.PureComponent {
 		translate: PropTypes.func.isRequired,
 	}
 
-	handlePlayPauseClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handlePlayPauseClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		this.props.playPauseClick();
 

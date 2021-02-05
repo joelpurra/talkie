@@ -28,8 +28,8 @@ import navigation from "./navigation";
 import voices from "./voices";
 
 export default combineReducers({
+	navigation,
 	shared,
 	unshared,
-	navigation,
 	voices,
 });

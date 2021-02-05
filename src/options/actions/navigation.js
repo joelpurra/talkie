@@ -24,7 +24,7 @@ import * as actionTypes from "../constants/action-types-navigation";
 
 export const setShouldShowBackButton = (shouldShowBackButton) => {
 	return {
-		type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON,
 		shouldShowBackButton,
+		type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON,
 	};
 };

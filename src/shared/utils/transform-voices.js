@@ -31,6 +31,7 @@ export const getVoicesForLanguageExact = (voices, languageCode) => {
 };
 
 export const getLanguageGroupsAndLanguagesFromLanguages = (languages) => {
+	// eslint-disable-next-line unicorn/no-reduce
 	const languageGroupsAndLanguagesObject = languages.reduce((object, language) => {
 		let languageGroupAndLanguageCodes = null;
 
@@ -59,6 +60,7 @@ export const getLanguageGroupsAndLanguagesFromLanguages = (languages) => {
 };
 
 export const getLanguageGroupsFromLanguages = (languages) => {
+	// eslint-disable-next-line unicorn/no-reduce
 	const languageGroupsObject = languages.reduce((object, language) => {
 		let languageGroupCode = null;
 
@@ -82,6 +84,7 @@ export const getLanguageGroupsFromLanguages = (languages) => {
 };
 
 export const getLanguagesFromVoices = (voices) => {
+	// eslint-disable-next-line unicorn/no-reduce
 	const languagesAsKeys = voices.reduce(
 		(object, voice) => {
 			object[voice.lang] = (object[voice.lang] || 0) + 1;
@@ -99,6 +102,7 @@ export const getLanguagesFromVoices = (voices) => {
 };
 
 export const getLanguageGroupsFromVoices = (voices) => {
+	// eslint-disable-next-line unicorn/no-reduce
 	const languageGroupsAsKeys = voices.reduce(
 		(object, voice) => {
 			const group = voice.lang.slice(0, 2);
@@ -117,6 +121,7 @@ export const getLanguageGroupsFromVoices = (voices) => {
 };
 
 export const getVoicesByLanguageFromVoices = (voices) => {
+	// eslint-disable-next-line unicorn/no-reduce
 	const voicesByLanguage = voices.reduce(
 		(object, voice) => {
 			object[voice.lang] = (object[voice.lang] || []).concat(Object.assign({}, voice));
@@ -130,6 +135,7 @@ export const getVoicesByLanguageFromVoices = (voices) => {
 };
 
 export const getVoicesByLanguageGroupFromVoices = (voices) => {
+	// eslint-disable-next-line unicorn/no-reduce
 	const voicesByLanguageGroup = voices.reduce(
 		(object, voice) => {
 			const group = voice.lang.slice(0, 2);
@@ -146,6 +152,7 @@ export const getVoicesByLanguageGroupFromVoices = (voices) => {
 export const getVoicesByLanguagesByLanguageGroupFromVoices = (voices) => {
 	const voicesByLanguage = getVoicesByLanguageFromVoices(voices);
 
+	// eslint-disable-next-line unicorn/no-reduce
 	const languagesByLanguageGroup = voices.reduce(
 		(object, voice) => {
 			const group = voice.lang.slice(0, 2);
@@ -165,6 +172,7 @@ export const getLanguagesByLanguageGroupFromVoices = (voices) => {
 
 	const languageGroups = Object.keys(voicesByLanguagesByLanguageGroup);
 
+	// eslint-disable-next-line unicorn/no-reduce
 	const languagesByLanguageGroup = languageGroups.reduce(
 		(object, group) => {
 			const languages = Object.keys(voicesByLanguagesByLanguageGroup[group]);

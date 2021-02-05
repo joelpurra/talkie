@@ -24,15 +24,13 @@ import MessagesTranslator from "./messages-translator";
 import MessagesTranslatorFactory from "./messages-translator-factory";
 
 const assert = require("assert");
-const Promise = require("bluebird");
-
 const fs = require("fs");
-const readDir = Promise.promisify(fs.readdir);
-const stat = Promise.promisify(fs.stat);
-
 const path = require("path");
-
+const Bluebird = require("bluebird");
 const configuration = require("configvention");
+
+const readDir = Bluebird.promisify(fs.readdir);
+const stat = Bluebird.promisify(fs.stat);
 
 const getDirectoryNames = (directoryPath) => readDir(directoryPath)
 	.filter((file) => stat(path.join(directoryPath, file))
@@ -49,7 +47,7 @@ const getLocaleFilePath = (rootDirectoryPath, localeName, localeFilename) => {
 	return path.join(getLocalesPath(rootDirectoryPath), localeName, localeFilename);
 };
 
-Promise.try(() => process.argv.slice(2))
+Bluebird.try(() => process.argv.slice(2))
 	.tap((args) => {
 		const languageCodeRx = /[a-z]{2}(_[A-Z]{2})?/;
 
@@ -90,7 +88,7 @@ Promise.try(() => process.argv.slice(2))
 			language: baseLanguageCode,
 		};
 
-		return Promise.try(() => {
+		return Bluebird.try(() => {
 			if (languageCodes.length === 0) {
 				const localesDirectoryPath = getLocalesPath(rootDirectoryPath);
 

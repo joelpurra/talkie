@@ -44,14 +44,14 @@ export default class Nav extends React.PureComponent {
 			})(tableBase.table),
 
 			navTableTd: styled({
+				marginBottom: 0,
 				marginLeft: 0,
 				marginRight: 0,
 				marginTop: 0,
-				marginBottom: 0,
+				paddingBottom: 0,
 				paddingLeft: 0,
 				paddingRight: 0,
 				paddingTop: 0,
-				paddingBottom: 0,
 			})(tableBase.td),
 
 			selectedLink: styled({
@@ -63,24 +63,24 @@ export default class Nav extends React.PureComponent {
 
 	static propTypes = {
 		initialActiveTabId: PropTypes.string.isRequired,
-		onTabChange: PropTypes.func.isRequired,
 		links: PropTypes.arrayOf(
 			PropTypes.shape({
-				url: PropTypes.string,
 				tabId: PropTypes.string,
 				text: PropTypes.string.isRequired,
+				url: PropTypes.string,
 			})).isRequired,
+		onTabChange: PropTypes.func.isRequired,
 	}
 
-	handleClick(e) {
-		if (e.target.tagName === "A") {
-			const href = e.target.getAttribute("href");
+	handleClick(event) {
+		if (event.target.tagName === "A") {
+			const href = event.target.getAttribute("href");
 
 			if (typeof href === "string" && href.startsWith("#")) {
 				const tabId = href.replace("#", "");
 
-				e.preventDefault();
-				e.stopPropagation();
+				event.preventDefault();
+				event.stopPropagation();
 
 				this.props.onTabChange(tabId);
 

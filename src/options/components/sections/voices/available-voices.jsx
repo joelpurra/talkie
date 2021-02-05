@@ -42,13 +42,17 @@ class AvailableVoices extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		voices: [],
-		value: null,
 		effectiveVoiceNameForSelectedLanguage: null,
-		disabled: true,
+		value: null,
 	};
 
 	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
+		onChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+		value: PropTypes.string,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -56,11 +60,6 @@ class AvailableVoices extends React.PureComponent {
 			name: PropTypes.string.isRequired,
 			voiceURI: PropTypes.string.isRequired,
 		})).isRequired,
-		value: PropTypes.string,
-		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
-		onChange: PropTypes.func.isRequired,
-		disabled: PropTypes.bool.isRequired,
-		translate: PropTypes.func.isRequired,
 	};
 
 	handleChange(voiceName) {

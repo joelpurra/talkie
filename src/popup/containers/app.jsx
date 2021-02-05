@@ -42,9 +42,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		actions: {
-			sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
 			sharedNavigation: bindActionCreators(actionCreators.shared.navigation, dispatch),
 			sharedProgress: bindActionCreators(actionCreators.shared.progress, dispatch),
+			sharedSpeaking: bindActionCreators(actionCreators.shared.speaking, dispatch),
 		},
 	};
 };

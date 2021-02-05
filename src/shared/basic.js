@@ -86,7 +86,7 @@ export const getRandomInt = (min, max) => {
 		value = Number(value);
 		exp = Number(exp);
 		// If the value is not a number or the exp is not an integer...
-		if (isNaN(value) || !(typeof exp === "number" && exp % 1 === 0)) {
+		if (Number.isNaN(value) || !(typeof exp === "number" && exp % 1 === 0)) {
 			return Number.NaN;
 		}
 

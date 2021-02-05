@@ -43,9 +43,9 @@ class About extends React.PureComponent {
 	}
 
 	static propTypes = {
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
 	}
 
 	componentDidMount() {

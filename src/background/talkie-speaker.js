@@ -116,7 +116,7 @@ export default class TalkieSpeaker {
 							synthesizer.addEventListener("voiceschanged", handleVoicesChanged);
 							synthesizer.addEventListener("error", handleError);
 						} catch (error) {
-							return reject(error);
+							reject(error);
 						}
 					},
 				);
@@ -250,7 +250,7 @@ export default class TalkieSpeaker {
 
 						logDebug("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
 					} catch (error) {
-						return reject(error);
+						reject(error);
 					}
 				},
 			),
@@ -283,9 +283,9 @@ export default class TalkieSpeaker {
 				logDebug("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
 				const speakingEventData = {
+					language: voice.lang,
 					text,
 					voice: voice.name,
-					language: voice.lang,
 				};
 
 				return Promise.resolve()
@@ -322,9 +322,9 @@ export default class TalkieSpeaker {
 						const textPartsPromises = textParts
 							.map((textPart) => () => {
 								const speakingPartEventData = {
+									language: voice.lang,
 									textPart,
 									voice: voice.name,
-									language: voice.lang,
 								};
 
 								return shouldContinueSpeaking()
@@ -398,8 +398,8 @@ export default class TalkieSpeaker {
 		return promiseTry(
 			() => {
 				const voice = {
-					name: null,
 					lang: language,
+					name: null,
 				};
 
 				return Promise.resolve()

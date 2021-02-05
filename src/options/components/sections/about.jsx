@@ -38,23 +38,24 @@ class About extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		isPremiumEdition: false,
-		versionName: null,
-		systemType: null,
-		osType: null,
-		voices: [],
-		languages: [],
-		languageGroups: [],
 		navigatorLanguage: null,
-		navigatorLanguages: [],
-		translatedLanguages: [],
+		osType: null,
 	};
 
 	static propTypes = {
+		configure: PropTypes.func.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
-		versionName: PropTypes.string.isRequired,
-		systemType: PropTypes.string.isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		navigatorLanguage: PropTypes.string,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+		onLicenseClick: PropTypes.func.isRequired,
 		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
+		translate: PropTypes.func.isRequired,
+		translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		versionName: PropTypes.string.isRequired,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -62,19 +63,10 @@ class About extends React.PureComponent {
 			name: PropTypes.string.isRequired,
 			voiceURI: PropTypes.string.isRequired,
 		})).isRequired,
-		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		navigatorLanguage: PropTypes.string,
-		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		onLicenseClick: PropTypes.func.isRequired,
-		translate: PropTypes.func.isRequired,
-		configure: PropTypes.func.isRequired,
-		onConfigurationChange: PropTypes.func.isRequired,
 	}
 
-	handleLegaleseClick(e) {
-		const legaleseText = e.target.textContent;
+	handleLegaleseClick(event) {
+		const legaleseText = event.target.textContent;
 
 		this.props.onLicenseClick(legaleseText);
 	}

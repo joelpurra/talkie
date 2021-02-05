@@ -36,18 +36,14 @@ class TalkiePremiumEdition extends React.PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	static defaultProps = {
-		isPremiumEdition: false,
-		disabled: true,
-	};
-
 	static propTypes = {
-		onChange: PropTypes.func.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		disabled: PropTypes.bool.isRequired,
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		onChange: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
 	};
 
 	handleChange(isPremiumEdition) {

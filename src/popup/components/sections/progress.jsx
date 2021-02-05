@@ -29,24 +29,18 @@ export default class Status extends React.PureComponent {
 
 		this.styled = {
 			progress: styled({
-				width: "100%",
 				height: "0.5em",
-				marginTop: "0.5em",
 				marginBottom: "0.5em",
+				marginTop: "0.5em",
+				width: "100%",
 			})("progress"),
 		};
 	}
 
-	static defaultProps = {
-		min: 0,
-		current: 0,
-		max: 0,
-	}
-
 	static propTypes = {
-		min: PropTypes.number.isRequired,
 		current: PropTypes.number.isRequired,
 		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
 	}
 
 	render() {
@@ -61,7 +55,7 @@ export default class Status extends React.PureComponent {
 				min={min}
 				value={current}
 				max={max}
-			 />
+			/>
 		);
 	}
 }

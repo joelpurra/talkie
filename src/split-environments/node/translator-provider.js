@@ -64,13 +64,14 @@ export default class NodeEnvironmentTranslatorProvider {
 
 		if (typeof messageTemplate.placeholders === "object") {
 			const variableLookups = Object.keys(messageTemplate.placeholders)
+			// eslint-disable-next-line unicorn/no-reduce
 				.reduce(
 					(object, placeholderName) => {
 						const placeholder = messageTemplate.placeholders[placeholderName];
 						const id = placeholderName.toLowerCase();
 						const extrasIndex = Number.parseInt(placeholder.content.replace("$", ""), 10) - 1;
 
-						if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
+						if (Number.isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
 							throw new RangeError(`Variable lookup extras index out of range: ${extrasIndex}`);
 						}
 
@@ -81,23 +82,23 @@ export default class NodeEnvironmentTranslatorProvider {
 					{},
 				);
 
-			const replace = (/* eslint-disable no-unused-vars */match/* eslint-enable no-unused-vars */, variableName) => {
+			const replace = (match, variableName) => {
 				let result = null;
 
 				const variableNameAsNumber = Number.parseInt(variableName, 10);
 
-				if (!isNaN(variableNameAsNumber)) {
+				if (Number.isNaN(variableNameAsNumber)) {
+					const id = variableName.toLowerCase();
+
+					result = variableLookups[id];
+				} else {
 					const extrasIndex = variableNameAsNumber - 1;
 
-					if (isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
+					if (Number.isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
 						throw new RangeError(`Replace extras index out of range: ${extrasIndex}`);
 					}
 
 					result = extras[extrasIndex];
-				} else {
-					const id = variableName.toLowerCase();
-
-					result = variableLookups[id];
 				}
 
 				if (result === null || result === undefined) {

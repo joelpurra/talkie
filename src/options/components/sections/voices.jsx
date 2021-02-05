@@ -55,23 +55,27 @@ class Voices extends React.PureComponent {
 	}
 
 	static defaultProps = {
-		languages: [],
-		languageGroups: [],
-		languagesByLanguageGroup: {},
-		voices: [],
-		voicesByLanguage: {},
-		voicesByLanguageGroup: {},
-		selectedLanguageCode: null,
-		selectedVoiceName: null,
 		effectiveVoiceNameForSelectedLanguage: null,
 		sampleText: null,
-		rateForSelectedVoice: 1,
-		pitchForSelectedVoice: 1,
-		isPremiumEdition: false,
+		selectedLanguageCode: null,
+		selectedVoiceName: null,
 	};
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languagesByLanguageGroup: PropTypes.objectOf(
+			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		).isRequired,
+		pitchForSelectedVoice: PropTypes.number.isRequired,
+		rateForSelectedVoice: PropTypes.number.isRequired,
+		sampleText: PropTypes.string,
+		selectedLanguageCode: PropTypes.string,
+		selectedVoiceName: PropTypes.string,
+		translate: PropTypes.func.isRequired,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -97,19 +101,6 @@ class Voices extends React.PureComponent {
 				voiceURI: PropTypes.string.isRequired,
 			})).isRequired,
 		).isRequired,
-		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		languagesByLanguageGroup: PropTypes.objectOf(
-			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-		).isRequired,
-		selectedLanguageCode: PropTypes.string,
-		selectedVoiceName: PropTypes.string,
-		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
-		sampleText: PropTypes.string,
-		rateForSelectedVoice: PropTypes.number.isRequired,
-		pitchForSelectedVoice: PropTypes.number.isRequired,
-		isPremiumEdition: PropTypes.bool.isRequired,
-		translate: PropTypes.func.isRequired,
 	}
 
 	handleLanguageChange(value) {

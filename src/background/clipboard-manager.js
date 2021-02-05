@@ -36,7 +36,7 @@ export default class ClipboardManager {
 	_getExistingTextarea() {
 		return promiseTry(
 			() => {
-				const existingTextarea = document.getElementById(this.copyPasteTargetElementId);
+				const existingTextarea = document.querySelector(`#${this.copyPasteTargetElementId}`);
 
 				return existingTextarea;
 			},

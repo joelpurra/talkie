@@ -32,8 +32,8 @@ export const storeIsPremiumEdition = (isPremiumEdition) =>
 
 export const setIsPremium = (isPremiumEdition) => {
 	return {
-		type: actionTypes.SET_IS_PREMIUM_EDITION,
 		isPremiumEdition,
+		type: actionTypes.SET_IS_PREMIUM_EDITION,
 	};
 };
 
@@ -65,8 +65,8 @@ export const loadEditionType = () =>
 
 export const setEditionType = (editionType) => {
 	return {
-		type: actionTypes.SET_EDITION_TYPE,
 		editionType,
+		type: actionTypes.SET_EDITION_TYPE,
 	};
 };
 
@@ -76,8 +76,8 @@ export const loadSystemType = () =>
 
 export const setSystemType = (systemType) => {
 	return {
-		type: actionTypes.SET_SYSTEM_TYPE,
 		systemType,
+		type: actionTypes.SET_SYSTEM_TYPE,
 	};
 };
 
@@ -87,7 +87,7 @@ export const loadOsType = () =>
 
 export const setOsType = (osType) => {
 	return {
-		type: actionTypes.SET_OS_TYPE,
 		osType,
+		type: actionTypes.SET_OS_TYPE,
 	};
 };

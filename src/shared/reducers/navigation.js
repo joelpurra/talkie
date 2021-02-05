@@ -24,14 +24,10 @@ import {
 
 // import * as actionTypes from "../constants/action-types-navigation";
 
-const initialState = {
-	// xxx: null,
-};
+const initialState = {};
 
 const customActionsMap = {};
 
-const assignActionsMap = {
-	// [actionTypes.SET_XXX]: "xxx",
-};
+const assignActionsMap = {};
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

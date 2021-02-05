@@ -32,36 +32,27 @@ export default class ScaleRange extends React.PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	static defaultProps = {
-		listName: null,
-		min: 0,
-		defaultValue: 1,
-		initialValue: 1,
-		max: 10,
-		step: 0.1,
-		disabled: true,
-	};
-
 	static propTypes = {
-		onInput: PropTypes.func.isRequired,
-		onChange: PropTypes.func.isRequired,
-		listName: PropTypes.string.isRequired,
-		min: PropTypes.number.isRequired,
 		defaultValue: PropTypes.number.isRequired,
-		initialValue: PropTypes.number.isRequired,
-		max: PropTypes.number.isRequired,
-		step: PropTypes.number.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		initialValue: PropTypes.number.isRequired,
+		listName: PropTypes.string.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+		onChange: PropTypes.func.isRequired,
+		onInput: PropTypes.func.isRequired,
+		step: PropTypes.number.isRequired,
 	};
 
-	handleInput(e) {
-		const value = Number.parseFloat(e.target.value);
+	handleInput(event) {
+		const value = Number.parseFloat(event.target.value);
 
 		this.props.onInput(value);
 	}
 
-	handleChange(e) {
-		const value = Number.parseFloat(e.target.value);
+	handleChange(event) {
+		const value = Number.parseFloat(event.target.value);
 
 		this.props.onChange(value);
 	}

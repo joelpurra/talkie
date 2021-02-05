@@ -24,12 +24,12 @@ import {
 import * as actionTypes from "../constants/action-types-voices";
 
 const initialState = {
+	effectiveVoiceNameForSelectedLanguage: null,
+	pitchForSelectedVoice: 1,
+	rateForSelectedVoice: 1,
+	sampleText: "",
 	selectedLanguageCode: null,
 	selectedVoiceName: null,
-	effectiveVoiceNameForSelectedLanguage: null,
-	sampleText: "",
-	rateForSelectedVoice: 1,
-	pitchForSelectedVoice: 1,
 };
 
 const customActionsMap = {};

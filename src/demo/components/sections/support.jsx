@@ -38,37 +38,36 @@ class Support extends React.PureComponent {
 		super(props);
 
 		this.styled = {
+			sharingIcons: styled({
+				display: "inline-block",
+				fontSize: "0.5em",
+				verticalAlign: "middle",
+			})(SharingIcons),
+
 			summaryHeading: styled({
 				display: "inline-block",
+				marginBottom: 0,
 				marginLeft: 0,
 				marginRight: 0,
 				marginTop: 0,
-				marginBottom: 0,
+				paddingBottom: "0.5em",
 				paddingLeft: "0.5em",
 				paddingRight: "0.5em",
 				paddingTop: "0.5em",
-				paddingBottom: "0.5em",
 			})(textBase.h4),
-
-			sharingIcons: styled({
-				display: "inline-block",
-				verticalAlign: "middle",
-				fontSize: "0.5em",
-			})(SharingIcons),
 		};
 	}
 
 	static defaultProps = {
-		systemType: null,
 		osType: null,
 	};
 
 	static propTypes = {
-		systemType: PropTypes.string.isRequired,
-		osType: PropTypes.string,
-		translate: PropTypes.func.isRequired,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
+		osType: PropTypes.string,
+		systemType: PropTypes.string.isRequired,
+		translate: PropTypes.func.isRequired,
 	}
 
 	componentDidMount() {

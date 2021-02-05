@@ -31,7 +31,7 @@ import reactRollupConfig from "./rollup.config.react";
 
 const mergeOptions = require("merge-options");
 
-export default (name) => mergeOptions(
+const rollupConfiguration = (name) => mergeOptions(
 	reactRollupConfig,
 	{
 		external: [
@@ -44,6 +44,10 @@ export default (name) => mergeOptions(
 			"redux",
 			"reselect",
 		],
+		output: {
+			exports: "default",
+			format: "cjs",
+		},
 		plugins: [
 			json(),
 			replace({
@@ -57,16 +61,16 @@ export default (name) => mergeOptions(
 				},
 			}),
 			ejs({
+				compilerOptions: {
+					_with: false,
+					client: true,
+					strict: true,
+				},
+				// NOTE: enable to automatically inline <link> css file as <style> tags.
+				// loadCss: true,
 				include: [
 					"**/*.html",
 				],
-				// NOTE: enable to automatically inline <link> css file as <style> tags.
-				// loadCss: true,
-				compilerOptions: {
-					strict: true,
-					_with: false,
-					client: true,
-				},
 			}),
 			babel({
 				babelHelpers: "bundled",
@@ -84,9 +88,7 @@ export default (name) => mergeOptions(
 			resolve(),
 			license(name),
 		],
-		output: {
-			exports: "default",
-			format: "cjs",
-		},
 	},
 );
+
+export default rollupConfiguration;

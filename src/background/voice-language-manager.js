@@ -37,8 +37,8 @@ export default class VoiceLanguageManager {
 		return promiseTry(
 			() => {
 				const mappedVoice = {
-					name: null,
 					lang: languageName,
+					name: null,
 				};
 
 				return resolveVoiceAsMappedVoice(mappedVoice);
@@ -170,8 +170,8 @@ export default class VoiceLanguageManager {
 						return this.getLanguageVoiceOverrideName(languageName)
 							.then((languageOverrideName) => {
 								const voice = {
-									name: languageOverrideName,
 									lang: null,
+									name: languageOverrideName,
 								};
 
 								return voice;

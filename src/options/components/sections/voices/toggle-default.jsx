@@ -37,18 +37,18 @@ class ToggleDefault extends React.PureComponent {
 	static defaultProps = {
 		languageCode: null,
 		voiceName: null,
-		disabled: true,
 	};
 
 	static propTypes = {
-		onClick: PropTypes.func.isRequired,
-		languageCode: PropTypes.string,
-		voiceName: PropTypes.string,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		languageCode: PropTypes.string,
+		onClick: PropTypes.func.isRequired,
 		translate: PropTypes.func.isRequired,
+		voiceName: PropTypes.string,
 	};
 
-	handleClick(/* eslint-disable no-unused-vars */e/* eslint-enable no-unused-vars */) {
+	handleClick(/* eslint-disable no-unused-vars */event/* eslint-enable no-unused-vars */) {
 		this.props.onClick();
 	}
 

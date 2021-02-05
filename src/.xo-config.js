@@ -22,5 +22,12 @@ module.exports = {
 	"extends": [
 		"eslint-config-joelpurra/react",
 	],
+	globals: [
+		// TODO: ensure all browser globals are made available by SPLIT_ENVIRONMENT, throwing errors if necessary data/functionality is unavailable?
+		"browser",
+		"document",
+		"navigator",
+		"window",
+	],
 	parser: "babel-eslint",
 };

@@ -36,14 +36,14 @@ export default class ReduxStoreProvider {
 		const store = createStore(rootReducer, initialState, enhancer);
 
 		// store.subscribe(() => {
-		//	 const state = store.getState();
+		// const state = store.getState();
 		//
-		//	 console.log(
-		//		 "subscribe",
-		//		 "state",
-		//		 JSON.stringify(state).length,
-		//		 state
-		//	 );
+		// console.log(
+		// "subscribe",
+		// "state",
+		// JSON.stringify(state).length,
+		// state
+		// );
 		// });
 
 		return store;

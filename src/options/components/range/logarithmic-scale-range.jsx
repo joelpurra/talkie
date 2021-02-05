@@ -24,26 +24,19 @@ import React from "react";
 import ScaleRange from "./scale-range.jsx";
 
 export default class LogarithmicScaleRange extends React.PureComponent {
-	static defaultProps = {
-		listName: null,
-		min: 0,
-		defaultValue: 1,
-		initialValue: 1,
-		max: 10,
-		step: 0.1,
-		disabled: true,
-	};
-
 	static propTypes = {
-		onInput: PropTypes.func.isRequired,
-		onChange: PropTypes.func.isRequired,
-		listName: PropTypes.string.isRequired,
-		min: PropTypes.number.isRequired,
 		defaultValue: PropTypes.number.isRequired,
-		initialValue: PropTypes.number.isRequired,
-		max: PropTypes.number.isRequired,
-		step: PropTypes.number.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		initialValue: PropTypes.number.isRequired,
+		listName: PropTypes.string.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+		onChange: PropTypes.func.isRequired,
+		onInput: PropTypes.func.isRequired,
+		// TODO: take step into consideration, at least when reporting back the converted number?
+		// eslint-disable-next-line react/no-unused-prop-types
+		step: PropTypes.number.isRequired,
 	};
 
 	constructor(props) {

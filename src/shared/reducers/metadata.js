@@ -25,10 +25,10 @@ import {
 
 const initialState = {
 	isPremiumEdition: false,
+	osType: null,
+	systemType: null,
 	versionName: null,
 	versionNumber: null,
-	systemType: null,
-	osType: null,
 };
 
 const customActionsMap = {};

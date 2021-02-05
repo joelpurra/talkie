@@ -31,7 +31,7 @@ import reactRollupConfig from "./rollup.config.react";
 
 const mergeOptions = require("merge-options");
 
-export default (name) => mergeOptions(
+const rollupConfiguration = (name) => mergeOptions(
 	reactRollupConfig,
 	{
 		external: [
@@ -43,6 +43,19 @@ export default (name) => mergeOptions(
 			"redux",
 			"reselect",
 		],
+		output: {
+			exports: "auto",
+			format: "iife",
+			globals: {
+				"prop-types": "PropTypes",
+				react: "React",
+				"react-dom": "ReactDOM",
+				"react-redux": "ReactRedux",
+				redux: "Redux",
+				"redux-thunk": "ReduxThunk",
+				reselect: "Reselect",
+			},
+		},
 		plugins: [
 			json(),
 			babel({
@@ -68,18 +81,7 @@ export default (name) => mergeOptions(
 			license(name),
 			filesize(),
 		],
-		output: {
-			exports: "auto",
-			format: "iife",
-			globals: {
-				"prop-types": "PropTypes",
-				"react-dom": "ReactDOM",
-				"react-redux": "ReactRedux",
-				react: "React",
-				"redux-thunk": "ReduxThunk",
-				redux: "Redux",
-				reselect: "Reselect",
-			},
-		},
 	},
 );
+
+export default rollupConfiguration;

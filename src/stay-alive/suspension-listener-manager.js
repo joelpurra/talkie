@@ -88,10 +88,10 @@ export default class SuspensionListenerManager {
 
 		// NOTE: the background connects once per suspension prevention.
 		this.suspendConnectionPorts[currentConnectionId] = {
+			_onDisconnectHandler,
 			currentConnectionId,
 			port,
 			preventSuspensionIntervalId,
-			_onDisconnectHandler,
 		};
 
 		// NOTE: this disconnect listener is unneccessary.

@@ -26,6 +26,7 @@ import {
 } from "../shared/promise";
 
 export default class ReadClipboardManager {
+	// eslint-disable-next-line max-params
 	constructor(clipboardManager, talkieBackground, permissionsManager, metadataManager, translator) {
 		this.clipboardManager = clipboardManager;
 		this.talkieBackground = talkieBackground;

@@ -36,18 +36,18 @@ class SampleText extends React.PureComponent {
 
 	static defaultProps = {
 		value: null,
-		disabled: true,
 	};
 
 	static propTypes = {
-		onChange: PropTypes.func.isRequired,
-		value: PropTypes.string,
+		// eslint-disable-next-line react/boolean-prop-naming
 		disabled: PropTypes.bool.isRequired,
+		onChange: PropTypes.func.isRequired,
 		translate: PropTypes.func.isRequired,
+		value: PropTypes.string,
 	};
 
-	handleChange(e) {
-		const value = e.target.value;
+	handleChange(event) {
+		const value = event.target.value;
 
 		this.props.onChange(value);
 	}
@@ -68,7 +68,7 @@ class SampleText extends React.PureComponent {
 							value={this.props.value}
 							disabled={this.props.disabled || null}
 							onChange={this.handleChange}
-						 />
+						/>
 					</tableBase.td>
 				</tableBase.tr>
 			</tableBase.tbody>

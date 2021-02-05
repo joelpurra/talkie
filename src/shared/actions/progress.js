@@ -24,21 +24,21 @@ import * as actionTypes from "../constants/action-types-progress";
 
 export const setMin = (min) => {
 	return {
-		type: actionTypes.SET_MIN,
 		min,
+		type: actionTypes.SET_MIN,
 	};
 };
 
 export const setCurrent = (current) => {
 	return {
-		type: actionTypes.SET_CURRENT,
 		current,
+		type: actionTypes.SET_CURRENT,
 	};
 };
 
 export const setMax = (max) => {
 	return {
-		type: actionTypes.SET_MAX,
 		max,
+		type: actionTypes.SET_MAX,
 	};
 };

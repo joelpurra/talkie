@@ -31,8 +31,8 @@ export const loadSelectedLanguageCode = (languageCode) =>
 
 const setSelectedLanguageCode = (selectedLanguageCode) => {
 	return {
-		type: actionTypes.SET_SELECTED_LANGUAGE_CODE,
 		selectedLanguageCode,
+		type: actionTypes.SET_SELECTED_LANGUAGE_CODE,
 	};
 };
 
@@ -63,8 +63,8 @@ export const loadSelectedVoiceName = (voiceName) =>
 
 const setSelectedVoiceName = (selectedVoiceName) => {
 	return {
-		type: actionTypes.SET_SELECTED_VOICE_NAME,
 		selectedVoiceName,
+		type: actionTypes.SET_SELECTED_VOICE_NAME,
 	};
 };
 
@@ -74,8 +74,8 @@ export const loadSampleText = () =>
 
 export const setSampleText = (sampleText) => {
 	return {
-		type: actionTypes.SET_SAMPLE_TEXT,
 		sampleText,
+		type: actionTypes.SET_SAMPLE_TEXT,
 	};
 };
 
@@ -90,8 +90,8 @@ export const storeVoiceRateOverride = (voiceName, rate) =>
 export const setRateForSelectedVoice = (rateForSelectedVoice) =>
 	(dispatch) => Promise.resolve()
 		.then(() => dispatch({
-			type: actionTypes.SET_RATE_FOR_SELECTED_VOICE,
 			rateForSelectedVoice,
+			type: actionTypes.SET_RATE_FOR_SELECTED_VOICE,
 		}))
 		.then(() => dispatch(speakState()));
 
@@ -106,8 +106,8 @@ export const storeVoicePitchOverride = (voiceName, pitch) =>
 export const setPitchForSelectedVoice = (pitchForSelectedVoice) =>
 	(dispatch) => Promise.resolve()
 		.then(() => dispatch({
-			type: actionTypes.SET_PITCH_FOR_SELECTED_VOICE,
 			pitchForSelectedVoice,
+			type: actionTypes.SET_PITCH_FOR_SELECTED_VOICE,
 		}))
 		.then(() => dispatch(speakState()));
 
@@ -137,8 +137,8 @@ export const storeEffectiveVoiceNameForLanguage = (languageCode, voiceName) =>
 
 export const setEffectiveVoiceNameForSelectedLanguage = (effectiveVoiceNameForSelectedLanguage) => {
 	return {
-		type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE,
 		effectiveVoiceNameForSelectedLanguage,
+		type: actionTypes.SET_DEFAULT_VOICE_NAME_FOR_SELECTED_LANGUAGE,
 	};
 };
 
@@ -162,16 +162,16 @@ export const speakState = () =>
 									&& state.voices.selectedVoiceName.length > 0
 								)
 							)
-							&& !isNaN(state.voices.rateForSelectedVoice)
-							&& !isNaN(state.voices.pitchForSelectedVoice);
+							&& !Number.isNaN(state.voices.rateForSelectedVoice)
+							&& !Number.isNaN(state.voices.pitchForSelectedVoice);
 
 			if (readyToSpeak) {
 				const text = state.voices.sampleText;
 				const voice = {
 					lang: state.voices.selectedLanguageCode || null,
 					name: state.voices.selectedVoiceName || null,
-					rate: state.voices.rateForSelectedVoice,
 					pitch: state.voices.pitchForSelectedVoice,
+					rate: state.voices.rateForSelectedVoice,
 				};
 
 				return api.debouncedSpeak(text, voice);

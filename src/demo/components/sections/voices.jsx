@@ -45,26 +45,26 @@ class Voices extends React.PureComponent {
 		this.handleSpeakClickForVoice = this.handleSpeakClickForVoice.bind(this);
 
 		this.styled = {
-			summaryH3: styled({
-				display: "inline-block",
-				marginLeft: 0,
-				marginRight: 0,
-				marginTop: 0,
-				marginBottom: 0,
-				paddingLeft: "0.5em",
-				paddingRight: "0.5em",
-				paddingTop: "0.5em",
-				paddingBottom: "0.5em",
-			})(textBase.h3),
+			clickableLi: styled({
+				cursor: "pointer",
+			})(listBase.li),
 
 			hr: styled({
 				marginLeft: 0,
 				marginRight: 0,
 			})(layoutBase.hr),
 
-			clickableLi: styled({
-				cursor: "pointer",
-			})(listBase.li),
+			summaryH3: styled({
+				display: "inline-block",
+				marginBottom: 0,
+				marginLeft: 0,
+				marginRight: 0,
+				marginTop: 0,
+				paddingBottom: "0.5em",
+				paddingLeft: "0.5em",
+				paddingRight: "0.5em",
+				paddingTop: "0.5em",
+			})(textBase.h3),
 		};
 
 		this.styled.clickableNoBulletLi = styled({
@@ -73,17 +73,13 @@ class Voices extends React.PureComponent {
 		})(this.styled.clickableLi);
 	}
 
-	static defaultProps = {
-		voices: [],
-		voicesByLanguagesByLanguageGroup: {},
-		navigatorLanguages: [],
-		voicesCount: 0,
-		languagesCount: 0,
-		languageGroupsCount: 0,
-	};
-
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		languageGroupsCount: PropTypes.number.isRequired,
+		languagesCount: PropTypes.number.isRequired,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		talkieLocaleHelper: PropTypes.object.isRequired,
+		translate: PropTypes.func.isRequired,
 		voices: PropTypes.arrayOf(PropTypes.shape({
 			"default": PropTypes.bool.isRequired,
 			lang: PropTypes.string.isRequired,
@@ -102,12 +98,7 @@ class Voices extends React.PureComponent {
 				})).isRequired,
 			).isRequired,
 		).isRequired,
-		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 		voicesCount: PropTypes.number.isRequired,
-		languagesCount: PropTypes.number.isRequired,
-		languageGroupsCount: PropTypes.number.isRequired,
-		translate: PropTypes.func.isRequired,
-		talkieLocaleHelper: PropTypes.object.isRequired,
 	}
 
 	getSampleTextForLanguage(languageCode) {
@@ -150,9 +141,9 @@ class Voices extends React.PureComponent {
 		return className;
 	}
 
-	handleSpeakClickForLanguage(languageCode, e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handleSpeakClickForLanguage(languageCode, event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		const text = this.getSampleTextForLanguage(languageCode);
 		const voice = {
@@ -167,9 +158,9 @@ class Voices extends React.PureComponent {
 		return false;
 	}
 
-	handleSpeakClickForVoice(voiceName, e) {
-		e.preventDefault();
-		e.stopPropagation();
+	handleSpeakClickForVoice(voiceName, event) {
+		event.preventDefault();
+		event.stopPropagation();
 
 		const text = this.getSampleTextForVoicename(voiceName);
 		const voice = {
@@ -213,6 +204,7 @@ class Voices extends React.PureComponent {
 			return (
 				<this.styled.clickableNoBulletLi
 					key={voice.name}
+					// eslint-disable-next-line react/jsx-no-bind
 					onClick={this.handleSpeakClickForVoice.bind(null, voice.name)}
 				>
 					<Icon className="icon-voices"/>
@@ -234,6 +226,7 @@ class Voices extends React.PureComponent {
 		return languages.map((language) => (
 			<this.styled.clickableLi
 				key={language}
+				// eslint-disable-next-line react/jsx-no-bind
 				onClick={this.handleSpeakClickForLanguage.bind(null, language)}
 			>
 				{language}
@@ -252,6 +245,7 @@ class Voices extends React.PureComponent {
 			return (
 				<this.styled.clickableLi
 					key={language}
+					// eslint-disable-next-line react/jsx-no-bind
 					onClick={this.handleSpeakClickForLanguage.bind(null, language)}
 				>
 					{language}
@@ -286,6 +280,7 @@ class Voices extends React.PureComponent {
 						<textBase.blockquote
 							lang={languageGroup}
 							className={this.getTextDirectionClassNameForLanguageGroup(languageGroup)}
+							// eslint-disable-next-line react/jsx-no-bind
 							onClick={this.handleSpeakClickForLanguage.bind(null, languageGroup)}
 						>
 							{sampleTextForLanguage}
