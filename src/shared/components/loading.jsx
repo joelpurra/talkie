@@ -27,33 +27,33 @@ import * as lighter from "../styled/text/lighter.jsx";
 export default
 @translateAttribute
 class Loading extends React.PureComponent {
-    static defaultProps = {
-    	enabled: false,
-    };
+	static defaultProps = {
+		enabled: false,
+	};
 
-    static propTypes = {
-    	enabled: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	children: PropTypes.node.isRequired,
-    }
+	static propTypes = {
+		enabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+		children: PropTypes.node.isRequired,
+	}
 
-    render() {
-    	const {
-    		enabled,
-    		children,
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			enabled,
+			children,
+			translate,
+		} = this.props;
 
-    	if (enabled) {
-    		return children;
-    	}
+		if (enabled) {
+			return children;
+		}
 
-    	return (
-    		<div>
-    			<lighter.span>
-    				{translate("frontend_loading")}
- </lighter.span>
- </div>
-    	);
-    }
+		return (
+			<div>
+				<lighter.span>
+					{translate("frontend_loading")}
+				</lighter.span>
+			</div>
+		);
+	}
 }

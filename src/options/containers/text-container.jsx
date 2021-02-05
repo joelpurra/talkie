@@ -51,22 +51,22 @@ class TextContainer extends React.PureComponent {
 		this.props.actions.sharedVoices.loadSpeakLongTexts();
 	}
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	speakLongTexts: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		speakLongTexts: PropTypes.bool.isRequired,
+	}
 
-    render() {
-    	const {
-    		actions,
-    		speakLongTexts,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			speakLongTexts,
+		} = this.props;
 
-    	return (
-    		<Text
-    			actions={actions}
-    			speakLongTexts={speakLongTexts}
-    		/>
-    	);
-    }
+		return (
+			<Text
+				actions={actions}
+				speakLongTexts={speakLongTexts}
+			/>
+		);
+	}
 }

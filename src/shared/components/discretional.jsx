@@ -22,25 +22,25 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export default class Discretional extends React.PureComponent {
-    static defaultProps = {
-    	enabled: false,
-    };
+	static defaultProps = {
+		enabled: false,
+	};
 
-    static propTypes = {
-    	enabled: PropTypes.bool.isRequired,
-    	children: PropTypes.node.isRequired,
-    }
+	static propTypes = {
+		enabled: PropTypes.bool.isRequired,
+		children: PropTypes.node.isRequired,
+	}
 
-    render() {
-    	const {
-    		enabled,
-    		children,
-    	} = this.props;
+	render() {
+		const {
+			enabled,
+			children,
+		} = this.props;
 
-    	if (enabled) {
-    		return children;
-    	}
+		if (enabled) {
+			return children;
+		}
 
-    	return null;
-    }
+		return null;
+	}
 }

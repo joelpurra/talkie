@@ -47,22 +47,22 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class EditionsContainer extends React.PureComponent {
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+	}
 
-    render() {
-    	const {
-    		actions,
-    		isPremiumEdition,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			isPremiumEdition,
+		} = this.props;
 
-    	return (
-    		<Editions
-    			actions={actions}
-    			isPremiumEdition={isPremiumEdition}
-    		/>
-    	);
-    }
+		return (
+			<Editions
+				actions={actions}
+				isPremiumEdition={isPremiumEdition}
+			/>
+		);
+	}
 }

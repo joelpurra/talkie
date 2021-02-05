@@ -30,31 +30,31 @@ export default class Text extends React.PureComponent {
 		this.handleSpeakLongTextsChange = this.handleSpeakLongTextsChange.bind(this);
 	}
 
-    static defaultProps = {
-    	speakLongTexts: false,
-    };
+	static defaultProps = {
+		speakLongTexts: false,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	speakLongTexts: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		speakLongTexts: PropTypes.bool.isRequired,
+	}
 
-    handleSpeakLongTextsChange(speakLongTexts) {
-    	this.props.actions.sharedVoices.storeSpeakLongTexts(speakLongTexts);
-    }
+	handleSpeakLongTextsChange(speakLongTexts) {
+		this.props.actions.sharedVoices.storeSpeakLongTexts(speakLongTexts);
+	}
 
-    render() {
-    	const {
-    		speakLongTexts,
-    	} = this.props;
-    	return (
-    		<section>
-    			<SpeakLongTexts
-    				onChange={this.handleSpeakLongTextsChange}
-    				speakLongTexts={speakLongTexts}
-    				disabled={false}
-    			/>
- </section>
-    	);
-    }
+	render() {
+		const {
+			speakLongTexts,
+		} = this.props;
+		return (
+			<section>
+				<SpeakLongTexts
+					speakLongTexts={speakLongTexts}
+					disabled={false}
+					onChange={this.handleSpeakLongTextsChange}
+				/>
+			</section>
+		);
+	}
 }

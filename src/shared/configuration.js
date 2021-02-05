@@ -100,8 +100,8 @@ export default class Configuration {
 		const sharedValue = this._resolvePath(this.configurationObject.shared, path);
 
 		const value = systemValue
-                        || sharedValue
-                        || null;
+						|| sharedValue
+						|| null;
 
 		return value;
 	}

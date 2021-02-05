@@ -38,55 +38,55 @@ class MultilineSelect extends React.PureComponent {
 		this.selectElement = null;
 	}
 
-    static defaultProps = {
-    	size: null,
-    	value: null,
-    	disabled: false,
-    	onChange: null,
-    	className: "",
-    };
+	static defaultProps = {
+		size: null,
+		value: null,
+		disabled: false,
+		onChange: null,
+		className: "",
+	};
 
-    static propTypes = {
-    	size: PropTypes.number.isRequired,
-    	value: PropTypes.string,
-    	disabled: PropTypes.bool.isRequired,
-    	onChange: PropTypes.func.isRequired,
-    	className: PropTypes.string.isRequired,
-    	children: PropTypes.node.isRequired,
-    }
-
-    handleOnChange({
-    	target,
-    }) {
-    	this.props.onChange(target.value);
-
-    	scrollIntoViewIfNeeded(this.selectElement);
-    }
-
-    render() {
-    	const {
-    		size,
-    		value,
-    		disabled,
-    		className,
-    	} = this.props;
-
-    	return (
-    		<select
-    			size={size}
-    			value={value || undefined}
-    			disabled={disabled || null}
-    			onChange={this.handleOnChange}
-    			className={className}
-    			ref={
-    				(selectElement) => {
-    					this.selectElement = selectElement;
-    					scrollIntoViewIfNeeded(this.selectElement);
+	static propTypes = {
+		size: PropTypes.number.isRequired,
+		value: PropTypes.string,
+		disabled: PropTypes.bool.isRequired,
+		onChange: PropTypes.func.isRequired,
+		className: PropTypes.string.isRequired,
+		children: PropTypes.node.isRequired,
 	}
-    			}
-	>
-    			{this.props.children}
- </select>
-    	);
-    }
+
+	handleOnChange({
+		target,
+	}) {
+		this.props.onChange(target.value);
+
+		scrollIntoViewIfNeeded(this.selectElement);
+	}
+
+	render() {
+		const {
+			size,
+			value,
+			disabled,
+			className,
+		} = this.props;
+
+		return (
+			<select
+				ref={
+					(selectElement) => {
+						this.selectElement = selectElement;
+						scrollIntoViewIfNeeded(this.selectElement);
+					}
+				}
+				size={size}
+				value={value || undefined}
+				disabled={disabled || null}
+				className={className}
+				onChange={this.handleOnChange}
+			>
+				{this.props.children}
+			</select>
+		);
+	}
 }

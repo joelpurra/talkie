@@ -34,44 +34,44 @@ class SampleText extends React.PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-    static defaultProps = {
-    	value: null,
-    	disabled: true,
-    };
+	static defaultProps = {
+		value: null,
+		disabled: true,
+	};
 
-    static propTypes = {
-    	onChange: PropTypes.func.isRequired,
-    	value: PropTypes.string,
-    	disabled: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		onChange: PropTypes.func.isRequired,
+		value: PropTypes.string,
+		disabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	};
 
-    handleChange(e) {
-    	const value = e.target.value;
+	handleChange(e) {
+		const value = e.target.value;
 
-    	this.props.onChange(value);
-    }
+		this.props.onChange(value);
+	}
 
-    render() {
-    	return (
-    		<tableBase.tbody>
-    			<tableBase.tr>
-    				<tableBase.th scope="col">
-    					{this.props.translate("frontend_voicesSampleTextHeading")}
- </tableBase.th>
- </tableBase.tr>
-    			<tableBase.tr>
-    				<tableBase.td>
-    					<formBase.textarea
-    						id="voices-sample-text"
-    						rows="2"
-    						value={this.props.value}
-    						onChange={this.handleChange}
-    						disabled={this.props.disabled || null}
-    					 />
- </tableBase.td>
- </tableBase.tr>
- </tableBase.tbody>
-    	);
-    }
+	render() {
+		return (
+			<tableBase.tbody>
+				<tableBase.tr>
+					<tableBase.th scope="col">
+						{this.props.translate("frontend_voicesSampleTextHeading")}
+					</tableBase.th>
+				</tableBase.tr>
+				<tableBase.tr>
+					<tableBase.td>
+						<formBase.textarea
+							id="voices-sample-text"
+							rows="2"
+							value={this.props.value}
+							disabled={this.props.disabled || null}
+							onChange={this.handleChange}
+						 />
+					</tableBase.td>
+				</tableBase.tr>
+			</tableBase.tbody>
+		);
+	}
 }

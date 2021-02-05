@@ -36,73 +36,73 @@ class TalkiePremiumEdition extends React.PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	disabled: true,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		disabled: true,
+	};
 
-    static propTypes = {
-    	onChange: PropTypes.func.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	disabled: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		onChange: PropTypes.func.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		disabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	};
 
-    handleChange(isPremiumEdition) {
-    	this.props.onChange(isPremiumEdition);
-    }
+	handleChange(isPremiumEdition) {
+		this.props.onChange(isPremiumEdition);
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		disabled,
-    		translate,
-    		configure,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			disabled,
+			translate,
+			configure,
+		} = this.props;
 
-    	return (
-    		<div>
-    			<textBase.h2 scope="col">
-    				{translate("frontend_upgradeHeading")}
- </textBase.h2>
-    			<p>
-    				{translate("frontend_upgradeExplanation01")}
- </p>
-    			<p>
-    				{translate("frontend_upgradeExplanation02")}
- </p>
-    			<ul>
-    				<li><a href={configure("urls.primary-payment")}>{translate("frontend_upgradePaymentPrimaryLinkText")}</a></li>
-    				<li><a href={configure("urls.alternative-payment")}>{translate("frontend_upgradePaymentAlternativesLinkText")}</a></li>
- </ul>
-    			<p>
-    				{translate("frontend_upgradeExplanation03")}
- </p>
-    			<p>
-    				<label>
-    					<Checkbox
-    						checked={isPremiumEdition}
-    						onChange={this.handleChange}
-    						disabled={disabled}
-    					/>
-    					{" "}
-    					{translate("frontend_upgradeLabel")}
- </label>
- </p>
-    			<p>
-    				{translate("frontend_upgradeExplanation04")}
- </p>
- </div>
-    	);
-    }
+		return (
+			<div>
+				<textBase.h2 scope="col">
+					{translate("frontend_upgradeHeading")}
+				</textBase.h2>
+				<p>
+					{translate("frontend_upgradeExplanation01")}
+				</p>
+				<p>
+					{translate("frontend_upgradeExplanation02")}
+				</p>
+				<ul>
+					<li><a href={configure("urls.primary-payment")}>{translate("frontend_upgradePaymentPrimaryLinkText")}</a></li>
+					<li><a href={configure("urls.alternative-payment")}>{translate("frontend_upgradePaymentAlternativesLinkText")}</a></li>
+				</ul>
+				<p>
+					{translate("frontend_upgradeExplanation03")}
+				</p>
+				<p>
+					<label>
+						<Checkbox
+							checked={isPremiumEdition}
+							disabled={disabled}
+							onChange={this.handleChange}
+						/>
+						{" "}
+						{translate("frontend_upgradeLabel")}
+					</label>
+				</p>
+				<p>
+					{translate("frontend_upgradeExplanation04")}
+				</p>
+			</div>
+		);
+	}
 }

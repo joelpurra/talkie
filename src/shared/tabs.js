@@ -84,12 +84,12 @@ export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry
 
 				if (
 					typeof url === "string"
-                    && (
+					&& (
 					/* eslint-disable no-sync */
-                    	url.startsWith(internalUrlProvider.getSync("/src/"))
-                        || url.startsWith(internalUrlProvider.getSync("/dist/"))
-                        /* eslint-enable no-sync */
-                    )
+						url.startsWith(internalUrlProvider.getSync("/src/"))
+						|| url.startsWith(internalUrlProvider.getSync("/dist/"))
+						/* eslint-enable no-sync */
+					)
 				) {
 					return true;
 				}
@@ -140,17 +140,17 @@ export const canTalkieRunInTab = () => promiseTry(
 						// NOTE: whitelisting schemes.
 						// TODO: can the list be extended?
 							url.startsWith("http://")
-                            || url.startsWith("https://")
-                            || url.startsWith("ftp://")
-                            || url.startsWith("file:")
+							|| url.startsWith("https://")
+							|| url.startsWith("ftp://")
+							|| url.startsWith("file:")
 						)
-                        && !(
-                        // NOTE: blacklisting known (per-browser store) urls.
-                        // TODO: should the list be extended?
-                        // TODO: move to configuration.
-                        	url.startsWith("https://chrome.google.com/")
-                            || url.startsWith("https://addons.mozilla.org/")
-                        )
+						&& !(
+						// NOTE: blacklisting known (per-browser store) urls.
+						// TODO: should the list be extended?
+						// TODO: move to configuration.
+							url.startsWith("https://chrome.google.com/")
+							|| url.startsWith("https://addons.mozilla.org/")
+						)
 					) {
 						return true;
 					}

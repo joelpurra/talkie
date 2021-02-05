@@ -26,28 +26,28 @@ import progress from "../hocs/progress.jsx";
 export default
 @progress
 class ProgressUpdater extends React.PureComponent {
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	min: PropTypes.number.isRequired,
-    	current: PropTypes.number.isRequired,
-    	max: PropTypes.number.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		min: PropTypes.number.isRequired,
+		current: PropTypes.number.isRequired,
+		max: PropTypes.number.isRequired,
+	}
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-    	if (this.props.min !== nextProps.min) {
-    		this.props.actions.sharedProgress.setMin(nextProps.min);
-    	}
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props.min !== nextProps.min) {
+			this.props.actions.sharedProgress.setMin(nextProps.min);
+		}
 
-    	if (this.props.current !== nextProps.current) {
-    		this.props.actions.sharedProgress.setCurrent(nextProps.current);
-    	}
+		if (this.props.current !== nextProps.current) {
+			this.props.actions.sharedProgress.setCurrent(nextProps.current);
+		}
 
-    	if (this.props.max !== nextProps.max) {
-    		this.props.actions.sharedProgress.setMax(nextProps.max);
-    	}
-    }
+		if (this.props.max !== nextProps.max) {
+			this.props.actions.sharedProgress.setMax(nextProps.max);
+		}
+	}
 
-    render() {
-    	return null;
-    }
+	render() {
+		return null;
+	}
 }

@@ -28,32 +28,32 @@ import ErrorBoundary from "../components/error-boundary.jsx";
 import Providers from "./providers.jsx";
 
 export default class Root extends React.PureComponent {
-    static propTypes = {
-    	store: PropTypes.object.isRequired,
-    	configuration: PropTypes.object.isRequired,
-    	translator: PropTypes.object.isRequired,
-    	broadcaster: PropTypes.object.isRequired,
-    	styletron: PropTypes.object.isRequired,
-    	children: PropTypes.element.isRequired,
-    };
+	static propTypes = {
+		store: PropTypes.object.isRequired,
+		configuration: PropTypes.object.isRequired,
+		translator: PropTypes.object.isRequired,
+		broadcaster: PropTypes.object.isRequired,
+		styletron: PropTypes.object.isRequired,
+		children: PropTypes.element.isRequired,
+	};
 
-    render() {
-    	const {
-    		broadcaster,
-    		configuration,
-    		store,
-    		styletron,
-    		translator,
-    	} = this.props;
+	render() {
+		const {
+			broadcaster,
+			configuration,
+			store,
+			styletron,
+			translator,
+		} = this.props;
 
-    	return (
-    		<ErrorBoundary>
-    			<Provider store={store}>
-    				<Providers configuration={configuration} translator={translator} broadcaster={broadcaster} styletron={styletron}>
-    					{React.Children.only(this.props.children)}
- </Providers>
- </Provider>
- </ErrorBoundary>
-    	);
-    }
+		return (
+			<ErrorBoundary>
+				<Provider store={store}>
+					<Providers configuration={configuration} translator={translator} broadcaster={broadcaster} styletron={styletron}>
+						{React.Children.only(this.props.children)}
+					</Providers>
+				</Provider>
+			</ErrorBoundary>
+		);
+	}
 }

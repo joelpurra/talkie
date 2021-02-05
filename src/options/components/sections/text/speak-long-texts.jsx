@@ -34,52 +34,52 @@ class SpeakLongTexts extends React.PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-    static defaultProps = {
-    	speakLongTexts: false,
-    	disabled: true,
-    };
+	static defaultProps = {
+		speakLongTexts: false,
+		disabled: true,
+	};
 
-    static propTypes = {
-    	onChange: PropTypes.func.isRequired,
-    	speakLongTexts: PropTypes.bool.isRequired,
-    	disabled: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		onChange: PropTypes.func.isRequired,
+		speakLongTexts: PropTypes.bool.isRequired,
+		disabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	};
 
-    handleChange(speakLongTexts) {
-    	this.props.onChange(speakLongTexts);
-    }
+	handleChange(speakLongTexts) {
+		this.props.onChange(speakLongTexts);
+	}
 
-    render() {
-    	const {
-    		speakLongTexts,
-    		disabled,
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			speakLongTexts,
+			disabled,
+			translate,
+		} = this.props;
 
-    	return (
-    		<div>
-    			<textBase.h2 scope="col">
-    				{translate("frontend_voicesSpeakLongTextsHeading")}
- </textBase.h2>
-    			<p>
-    				{translate("frontend_voicesSpeakLongTextsExplanation01")}
- </p>
-    			<p>
-    				{translate("frontend_voicesSpeakLongTextsExplanation02")}
- </p>
-    			<p>
-    				<label>
-    					<Checkbox
-    						checked={speakLongTexts}
-    						onChange={this.handleChange}
-    						disabled={disabled}
-    					/>
-    					{" "}
-    					{translate("frontend_voicesSpeakLongTextsLabel")}
- </label>
- </p>
- </div>
-    	);
-    }
+		return (
+			<div>
+				<textBase.h2 scope="col">
+					{translate("frontend_voicesSpeakLongTextsHeading")}
+				</textBase.h2>
+				<p>
+					{translate("frontend_voicesSpeakLongTextsExplanation01")}
+				</p>
+				<p>
+					{translate("frontend_voicesSpeakLongTextsExplanation02")}
+				</p>
+				<p>
+					<label>
+						<Checkbox
+							checked={speakLongTexts}
+							disabled={disabled}
+							onChange={this.handleChange}
+						/>
+						{" "}
+						{translate("frontend_voicesSpeakLongTextsLabel")}
+					</label>
+				</p>
+			</div>
+		);
+	}
 }

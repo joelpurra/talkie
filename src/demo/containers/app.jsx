@@ -51,42 +51,42 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	versionNumber: null,
-    	systemType: null,
-    	osType: null,
-    	activeTabId: null,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		versionNumber: null,
+		systemType: null,
+		osType: null,
+		activeTabId: null,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionNumber: PropTypes.string.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	activeTabId: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionNumber: PropTypes.string.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		activeTabId: PropTypes.string.isRequired,
+	}
 
-    render() {
-    	const {
-    		actions,
-    		isPremiumEdition,
-    		versionNumber,
-    		systemType,
-    		osType,
-    		activeTabId,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			isPremiumEdition,
+			versionNumber,
+			systemType,
+			osType,
+			activeTabId,
+		} = this.props;
 
-    	return (
-    		<Main
-    			actions={actions}
-    			isPremiumEdition={isPremiumEdition}
-    			versionNumber={versionNumber}
-    			systemType={systemType}
-    			osType={osType}
-    			activeTabId={activeTabId}
-    		/>
-    	);
-    }
+		return (
+			<Main
+				actions={actions}
+				isPremiumEdition={isPremiumEdition}
+				versionNumber={versionNumber}
+				systemType={systemType}
+				osType={osType}
+				activeTabId={activeTabId}
+			/>
+		);
+	}
 }

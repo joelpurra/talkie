@@ -45,36 +45,36 @@ const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class Providers extends React.PureComponent {
-    static propTypes = {
-    	broadcaster: PropTypes.object.isRequired,
-    	children: PropTypes.element.isRequired,
-    	configuration: PropTypes.object.isRequired,
-    	styletron: PropTypes.object.isRequired,
-    	translator: PropTypes.object.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		broadcaster: PropTypes.object.isRequired,
+		children: PropTypes.element.isRequired,
+		configuration: PropTypes.object.isRequired,
+		styletron: PropTypes.object.isRequired,
+		translator: PropTypes.object.isRequired,
+		systemType: PropTypes.string.isRequired,
+	}
 
-    render() {
-    	const {
-    		broadcaster,
-    		configuration,
-    		styletron,
-    		translator,
-    		systemType,
-    	} = this.props;
+	render() {
+		const {
+			broadcaster,
+			configuration,
+			styletron,
+			translator,
+			systemType,
+		} = this.props;
 
-    	return (
-    		<ConfigurationProvider configuration={configuration} systemType={systemType}>
-    			<TranslationProvider translator={translator}>
-    				<BroadcasterProvider broadcaster={broadcaster}>
-    					<StyletronProvider styletron={styletron}>
-    						<StateRoot>
-    							{React.Children.only(this.props.children)}
- </StateRoot>
- </StyletronProvider>
- </BroadcasterProvider>
- </TranslationProvider>
- </ConfigurationProvider>
-    	);
-    }
+		return (
+			<ConfigurationProvider configuration={configuration} systemType={systemType}>
+				<TranslationProvider translator={translator}>
+					<BroadcasterProvider broadcaster={broadcaster}>
+						<StyletronProvider styletron={styletron}>
+							<StateRoot>
+								{React.Children.only(this.props.children)}
+							</StateRoot>
+						</StyletronProvider>
+					</BroadcasterProvider>
+				</TranslationProvider>
+			</ConfigurationProvider>
+		);
+	}
 }

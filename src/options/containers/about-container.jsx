@@ -64,69 +64,69 @@ class AboutContainer extends React.PureComponent {
 		this.props.actions.sharedVoices.loadNavigatorLanguages();
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	versionName: null,
-    	systemType: null,
-    	osType: null,
-    	voices: [],
-    	languages: [],
-    	languageGroups: [],
-    	navigatorLanguage: null,
-    	navigatorLanguages: [],
-    	translatedLanguages: [],
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		versionName: null,
+		systemType: null,
+		osType: null,
+		voices: [],
+		languages: [],
+		languageGroups: [],
+		navigatorLanguage: null,
+		navigatorLanguages: [],
+		translatedLanguages: [],
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionName: PropTypes.string.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	voices: PropTypes.arrayOf(PropTypes.shape({
-    		"default": PropTypes.bool.isRequired,
-    		lang: PropTypes.string.isRequired,
-    		localService: PropTypes.bool.isRequired,
-    		name: PropTypes.string.isRequired,
-    		voiceURI: PropTypes.string.isRequired,
-    	})).isRequired,
-    	languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	navigatorLanguage: PropTypes.string,
-    	navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	onLicenseClick: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionName: PropTypes.string.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		voices: PropTypes.arrayOf(PropTypes.shape({
+			"default": PropTypes.bool.isRequired,
+			lang: PropTypes.string.isRequired,
+			localService: PropTypes.bool.isRequired,
+			name: PropTypes.string.isRequired,
+			voiceURI: PropTypes.string.isRequired,
+		})).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		navigatorLanguage: PropTypes.string,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		onLicenseClick: PropTypes.func.isRequired,
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		versionName,
-    		systemType,
-    		osType,
-    		navigatorLanguage,
-    		navigatorLanguages,
-    		translatedLanguages,
-    		onLicenseClick,
-    		voices,
-    		languages,
-    		languageGroups,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			versionName,
+			systemType,
+			osType,
+			navigatorLanguage,
+			navigatorLanguages,
+			translatedLanguages,
+			onLicenseClick,
+			voices,
+			languages,
+			languageGroups,
+		} = this.props;
 
-    	return (
-    		<About
-    			isPremiumEdition={isPremiumEdition}
-    			versionName={versionName}
-    			systemType={systemType}
-    			osType={osType}
-    			voices={voices}
-    			languages={languages}
-    			languageGroups={languageGroups}
-    			navigatorLanguage={navigatorLanguage}
-    			navigatorLanguages={navigatorLanguages}
-    			translatedLanguages={translatedLanguages}
-    			onLicenseClick={onLicenseClick}
-    		/>
-    	);
-    }
+		return (
+			<About
+				isPremiumEdition={isPremiumEdition}
+				versionName={versionName}
+				systemType={systemType}
+				osType={osType}
+				voices={voices}
+				languages={languages}
+				languageGroups={languageGroups}
+				navigatorLanguage={navigatorLanguage}
+				navigatorLanguages={navigatorLanguages}
+				translatedLanguages={translatedLanguages}
+				onLicenseClick={onLicenseClick}
+			/>
+		);
+	}
 }

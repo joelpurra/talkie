@@ -23,14 +23,14 @@ import React from "react";
 
 export default function broadcasterHoc(ComponentToWrap) {
 	return class BroadcasterHoc extends React.PureComponent {
-        static contextTypes = {
-        	broadcaster: PropTypes.func.isRequired,
-        }
+		static contextTypes = {
+			broadcaster: PropTypes.func.isRequired,
+		}
 
-        render() {
-        	return (
-        		<ComponentToWrap {...this.props} broadcaster={this.context.broadcaster}/>
-        	);
-        }
+		render() {
+			return (
+				<ComponentToWrap {...this.props} broadcaster={this.context.broadcaster}/>
+			);
+		}
 	};
 }

@@ -24,60 +24,60 @@ import React from "react";
 import styled from "../../hocs/styled.jsx";
 
 export default class TalkieEditionIcon extends React.PureComponent {
-    static defaultProps = {
-    	mode: "inline",
-    	size: "1.3em",
-    	marginLeft: "0.3em",
-    	marginRight: "0.3em",
-    	className: "",
-    };
+	static defaultProps = {
+		mode: "inline",
+		size: "1.3em",
+		marginLeft: "0.3em",
+		marginRight: "0.3em",
+		className: "",
+	};
 
-    static propTypes = {
-    	mode: PropTypes.oneOf([
-    		"inline",
-    		"standalone",
-    	]).isRequired,
-    	size: PropTypes.string.isRequired,
-    	marginLeft: PropTypes.string.isRequired,
-    	marginRight: PropTypes.string.isRequired,
-    	className: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		mode: PropTypes.oneOf([
+			"inline",
+			"standalone",
+		]).isRequired,
+		size: PropTypes.string.isRequired,
+		marginLeft: PropTypes.string.isRequired,
+		marginRight: PropTypes.string.isRequired,
+		className: PropTypes.string.isRequired,
+	}
 
-    render() {
-    	const {
-    		mode,
-    		size,
-    		marginLeft,
-    		marginRight,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			mode,
+			size,
+			marginLeft,
+			marginRight,
+			className,
+		} = this.props;
 
-    	const iconStyle = {
-    		":before": {
-    			content: "''",
-    			backgroundRepeat: "no-repeat",
-    			backgroundPosition: "center",
-    			backgroundSize: "contain",
-    			display: "inline-block",
-    		},
-    	};
+		const iconStyle = {
+			":before": {
+				content: "''",
+				backgroundRepeat: "no-repeat",
+				backgroundPosition: "center",
+				backgroundSize: "contain",
+				display: "inline-block",
+			},
+		};
 
-    	if (mode === "inline") {
-    		iconStyle[":before"].verticalAlign = "sub";
-    	}
+		if (mode === "inline") {
+			iconStyle[":before"].verticalAlign = "sub";
+		}
 
-    	iconStyle[":before"].width = size;
-    	iconStyle[":before"].height = size;
-    	iconStyle[":before"].marginLeft = marginLeft;
-    	iconStyle[":before"].marginRight = marginRight;
+		iconStyle[":before"].width = size;
+		iconStyle[":before"].height = size;
+		iconStyle[":before"].marginLeft = marginLeft;
+		iconStyle[":before"].marginRight = marginRight;
 
-    	const StyledIcon = styled(iconStyle)("span");
+		const StyledIcon = styled(iconStyle)("span");
 
-    	// TODO: fully replace with css-in-js?
-    	return (
-    		<StyledIcon
-    			className={`icon icon-${mode} icon-${size} ${className}`}
-    		 />
-    	);
-    }
+		// TODO: fully replace with css-in-js?
+		return (
+			<StyledIcon
+				className={`icon icon-${mode} icon-${size} ${className}`}
+			 />
+		);
+	}
 }

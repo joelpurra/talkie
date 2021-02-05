@@ -52,35 +52,35 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionNumber: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionNumber: PropTypes.string.isRequired,
+	}
 
-    render() {
-    	const {
-    		actions,
-    		isPremiumEdition,
-    		versionNumber,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			isPremiumEdition,
+			versionNumber,
+		} = this.props;
 
-    	return (
-    		<div>
-    			<IsSpeakingUpdater
-    				actions={actions}
-    			/>
+		return (
+			<div>
+				<IsSpeakingUpdater
+					actions={actions}
+				/>
 
-    			<ProgressUpdater
-    				actions={actions}
-    			/>
+				<ProgressUpdater
+					actions={actions}
+				/>
 
-    			<Main
-    				actions={actions}
-    				isPremiumEdition={isPremiumEdition}
-    				versionNumber={versionNumber}
-    			/>
- </div>
-    	);
-    }
+				<Main
+					actions={actions}
+					isPremiumEdition={isPremiumEdition}
+					versionNumber={versionNumber}
+				/>
+			</div>
+		);
+	}
 }

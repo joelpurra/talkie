@@ -57,54 +57,54 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class VoicesContainer extends React.PureComponent {
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	voices: PropTypes.arrayOf(PropTypes.shape({
-    		"default": PropTypes.bool.isRequired,
-    		lang: PropTypes.string.isRequired,
-    		localService: PropTypes.bool.isRequired,
-    		name: PropTypes.string.isRequired,
-    		voiceURI: PropTypes.string.isRequired,
-    	})).isRequired,
-    	voicesByLanguagesByLanguageGroup: PropTypes.objectOf(
-    		PropTypes.objectOf(
-    			PropTypes.arrayOf(PropTypes.shape({
-    				"default": PropTypes.bool.isRequired,
-    				lang: PropTypes.string.isRequired,
-    				localService: PropTypes.bool.isRequired,
-    				name: PropTypes.string.isRequired,
-    				voiceURI: PropTypes.string.isRequired,
-    			})).isRequired,
-    		).isRequired,
-    	).isRequired,
-    	navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	voicesCount: PropTypes.number.isRequired,
-    	languagesCount: PropTypes.number.isRequired,
-    	languageGroupsCount: PropTypes.number.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		voices: PropTypes.arrayOf(PropTypes.shape({
+			"default": PropTypes.bool.isRequired,
+			lang: PropTypes.string.isRequired,
+			localService: PropTypes.bool.isRequired,
+			name: PropTypes.string.isRequired,
+			voiceURI: PropTypes.string.isRequired,
+		})).isRequired,
+		voicesByLanguagesByLanguageGroup: PropTypes.objectOf(
+			PropTypes.objectOf(
+				PropTypes.arrayOf(PropTypes.shape({
+					"default": PropTypes.bool.isRequired,
+					lang: PropTypes.string.isRequired,
+					localService: PropTypes.bool.isRequired,
+					name: PropTypes.string.isRequired,
+					voiceURI: PropTypes.string.isRequired,
+				})).isRequired,
+			).isRequired,
+		).isRequired,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		voicesCount: PropTypes.number.isRequired,
+		languagesCount: PropTypes.number.isRequired,
+		languageGroupsCount: PropTypes.number.isRequired,
+	}
 
-    render() {
-    	const {
-    		actions,
-    		languageGroupsCount,
-    		languagesCount,
-    		navigatorLanguages,
-    		voices,
-    		voicesByLanguagesByLanguageGroup,
-    		voicesCount,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			languageGroupsCount,
+			languagesCount,
+			navigatorLanguages,
+			voices,
+			voicesByLanguagesByLanguageGroup,
+			voicesCount,
+		} = this.props;
 
-    	return (
-    		<Voices
-    			actions={actions}
-    			voices={voices}
-    			voicesByLanguagesByLanguageGroup={voicesByLanguagesByLanguageGroup}
-    			navigatorLanguages={navigatorLanguages}
-    			voicesCount={voicesCount}
-    			languagesCount={languagesCount}
-    			languageGroupsCount={languageGroupsCount}
-    			talkieLocaleHelper={talkieLocaleHelper}
-    		/>
-    	);
-    }
+		return (
+			<Voices
+				actions={actions}
+				voices={voices}
+				voicesByLanguagesByLanguageGroup={voicesByLanguagesByLanguageGroup}
+				navigatorLanguages={navigatorLanguages}
+				voicesCount={voicesCount}
+				languagesCount={languagesCount}
+				languageGroupsCount={languageGroupsCount}
+				talkieLocaleHelper={talkieLocaleHelper}
+			/>
+		);
+	}
 }

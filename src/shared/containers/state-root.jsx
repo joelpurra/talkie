@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import PropTypes from "prop-types";
 import React from "react";
 // import {
-//     bindActionCreators,
+//	 bindActionCreators,
 // } from "redux";
 import {
 	connect,
@@ -46,34 +46,34 @@ const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class StateRoot extends React.PureComponent {
-    static defaultProps = {
-    	isSpeaking: false,
-    	isPremiumEdition: false,
-    	versionName: null,
-    };
+	static defaultProps = {
+		isSpeaking: false,
+		isPremiumEdition: false,
+		versionName: null,
+	};
 
-    static propTypes = {
-    	isSpeaking: PropTypes.bool.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionName: PropTypes.string,
-    	children: PropTypes.element.isRequired,
-    }
+	static propTypes = {
+		isSpeaking: PropTypes.bool.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionName: PropTypes.string,
+		children: PropTypes.element.isRequired,
+	}
 
-    render() {
-    	const {
-    		isSpeaking,
-    		isPremiumEdition,
-    		versionName,
-    	} = this.props;
+	render() {
+		const {
+			isSpeaking,
+			isPremiumEdition,
+			versionName,
+		} = this.props;
 
-    	return (
-    		<StyleRoot
-    			isSpeaking={isSpeaking}
-    			isPremiumEdition={isPremiumEdition}
-    			versionName={versionName}
-	>
-    			{React.Children.only(this.props.children)}
- </StyleRoot>
-    	);
-    }
+		return (
+			<StyleRoot
+				isSpeaking={isSpeaking}
+				isPremiumEdition={isPremiumEdition}
+				versionName={versionName}
+			>
+				{React.Children.only(this.props.children)}
+			</StyleRoot>
+		);
+	}
 }

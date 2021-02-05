@@ -60,64 +60,64 @@ class Header extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+	};
 
-    static propTypes = {
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	className: PropTypes.string.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		isPremiumEdition: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		className: PropTypes.string.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		className,
-    		isPremiumEdition,
-    		translate,
-    		configure,
-    	} = this.props;
+	render() {
+		const {
+			className,
+			isPremiumEdition,
+			translate,
+			configure,
+		} = this.props;
 
-    	return (
-    		<layoutBase.header className={className}>
-    			{/* TODO: show for free Talkie, not for Talkie Premium. */}
-    			<Discretional
-    				enabled={!isPremiumEdition}
-	>
-    				<this.styled.button
-    					href={configure("urls.options-upgrade-from-demo")}
-    					id="header-premium-button"
-    					lang="en"
-	>
-    					{translate("extensionShortName_Premium")}
- </this.styled.button>
- </Discretional>
+		return (
+			<layoutBase.header className={className}>
+				{/* TODO: show for free Talkie, not for Talkie Premium. */}
+				<Discretional
+					enabled={!isPremiumEdition}
+				>
+					<this.styled.button
+						href={configure("urls.options-upgrade-from-demo")}
+						id="header-premium-button"
+						lang="en"
+					>
+						{translate("extensionShortName_Premium")}
+					</this.styled.button>
+				</Discretional>
 
-    			<textBase.h1>
-    				<TalkieEditionIcon
-    					isPremiumEdition={isPremiumEdition}
-    				/>
+				<textBase.h1>
+					<TalkieEditionIcon
+						isPremiumEdition={isPremiumEdition}
+					/>
 
-    				<this.styled.extensionName
-    					href={configure("urls.main")}
-    					lang="en"
-	>
-    					<ExtensionShortName
-    						isPremiumEdition={isPremiumEdition}
-    					/>
- </this.styled.extensionName>
- </textBase.h1>
- </layoutBase.header>
-    	);
-    }
+					<this.styled.extensionName
+						href={configure("urls.main")}
+						lang="en"
+					>
+						<ExtensionShortName
+							isPremiumEdition={isPremiumEdition}
+						/>
+					</this.styled.extensionName>
+				</textBase.h1>
+			</layoutBase.header>
+		);
+	}
 }

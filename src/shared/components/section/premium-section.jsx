@@ -24,36 +24,36 @@ import React from "react";
 import EditionSection from "./edition-section.jsx";
 
 export default class PremiumSection extends React.PureComponent {
-    static defaultProps = {
-    	mode: "h2",
-    	className: "",
-    };
+	static defaultProps = {
+		mode: "h2",
+		className: "",
+	};
 
-    static propTypes = {
-    	mode: PropTypes.oneOf([
-    		"p",
-    		"h2",
-    	]).isRequired,
-    	children: PropTypes.node.isRequired,
-    	className: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		mode: PropTypes.oneOf([
+			"p",
+			"h2",
+		]).isRequired,
+		children: PropTypes.node.isRequired,
+		className: PropTypes.string.isRequired,
+	}
 
-    render() {
-    	const {
-    		mode,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			mode,
+			className,
+		} = this.props;
 
-    	const isPremiumEdition = true;
+		const isPremiumEdition = true;
 
-    	return (
-    		<EditionSection
-    			mode={mode}
-    			isPremiumEdition={isPremiumEdition}
-    			className={className}
-	>
-    			{this.props.children}
- </EditionSection>
-    	);
-    }
+		return (
+			<EditionSection
+				mode={mode}
+				isPremiumEdition={isPremiumEdition}
+				className={className}
+			>
+				{this.props.children}
+			</EditionSection>
+		);
+	}
 }

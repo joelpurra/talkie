@@ -89,298 +89,298 @@ class Welcome extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	systemType: null,
-    	osType: null,
-    	voicesCount: 0,
-    	languagesCount: 0,
-    	languageGroupsCount: 0,
-    	sampleText: null,
-    	sampleTextLanguageCode: null,
-    	speakTextInLanguageWithOverrides: null,
-    	canSpeakInTranslatedLocale: false,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		systemType: null,
+		osType: null,
+		voicesCount: 0,
+		languagesCount: 0,
+		languageGroupsCount: 0,
+		sampleText: null,
+		sampleTextLanguageCode: null,
+		speakTextInLanguageWithOverrides: null,
+		canSpeakInTranslatedLocale: false,
+	};
 
-    static propTypes = {
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	voicesCount: PropTypes.number.isRequired,
-    	languagesCount: PropTypes.number.isRequired,
-    	languageGroupsCount: PropTypes.number.isRequired,
-    	sampleText: PropTypes.string,
-    	sampleTextLanguageCode: PropTypes.string,
-    	speakTextInLanguageWithOverrides: PropTypes.func.isRequired,
-    	canSpeakInTranslatedLocale: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		isPremiumEdition: PropTypes.bool.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		voicesCount: PropTypes.number.isRequired,
+		languagesCount: PropTypes.number.isRequired,
+		languageGroupsCount: PropTypes.number.isRequired,
+		sampleText: PropTypes.string,
+		sampleTextLanguageCode: PropTypes.string,
+		speakTextInLanguageWithOverrides: PropTypes.func.isRequired,
+		canSpeakInTranslatedLocale: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
 
-    	this.playWelcomeMessage();
-    }
+		this.playWelcomeMessage();
+	}
 
-    componentDidUpdate() {
-    	this.playWelcomeMessage();
-    }
+	componentDidUpdate() {
+		this.playWelcomeMessage();
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    playWelcomeMessage() {
-    	// TODO: take sample text language code into account.
-    	if (this.props.voicesCount === 0) {
-    		return;
-    	}
+	playWelcomeMessage() {
+		// TODO: take sample text language code into account.
+		if (this.props.voicesCount === 0) {
+			return;
+		}
 
-    	if (!this.welcomeSampleTextElement) {
-    		return;
-    	}
+		if (!this.welcomeSampleTextElement) {
+			return;
+		}
 
-    	if (this.spokeSample) {
-    		return;
-    	}
+		if (this.spokeSample) {
+			return;
+		}
 
-    	this.spokeSample = true;
+		this.spokeSample = true;
 
-    	this.selectTextInElement(this.welcomeSampleTextElement);
+		this.selectTextInElement(this.welcomeSampleTextElement);
 
-    	const welcomeSample = this.getWelcomeSample();
-    	const text = welcomeSample.text;
-    	const languageCode = welcomeSample.languageCode;
+		const welcomeSample = this.getWelcomeSample();
+		const text = welcomeSample.text;
+		const languageCode = welcomeSample.languageCode;
 
-    	this.props.speakTextInLanguageWithOverrides(text, languageCode);
-    }
+		this.props.speakTextInLanguageWithOverrides(text, languageCode);
+	}
 
-    selectTextInElement(element) {
-    	const selection = document.getSelection();
-    	selection.removeAllRanges();
-    	selection.selectAllChildren(element);
-    }
+	selectTextInElement(element) {
+		const selection = document.getSelection();
+		selection.removeAllRanges();
+		selection.selectAllChildren(element);
+	}
 
-    getWelcomeSample() {
-    	const hasSampleText = Boolean(this.props.sampleText);
-    	const welcomeSampleText = this.props.sampleText;
-    	const welcomeSampleTextLanguage = this.props.sampleTextLanguageCode;
+	getWelcomeSample() {
+		const hasSampleText = Boolean(this.props.sampleText);
+		const welcomeSampleText = this.props.sampleText;
+		const welcomeSampleTextLanguage = this.props.sampleTextLanguageCode;
 
-    	const welcomeSample = {
-    		hasSampleText,
-    		text: welcomeSampleText,
-    		languageCode: welcomeSampleTextLanguage,
-    	};
+		const welcomeSample = {
+			hasSampleText,
+			text: welcomeSampleText,
+			languageCode: welcomeSampleTextLanguage,
+		};
 
-    	return welcomeSample;
-    }
+		return welcomeSample;
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		systemType,
-    		osType,
-    		voicesCount,
-    		languagesCount,
-    		languageGroupsCount,
-    		canSpeakInTranslatedLocale,
-    		translate,
-    		configure,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			systemType,
+			osType,
+			voicesCount,
+			languagesCount,
+			languageGroupsCount,
+			canSpeakInTranslatedLocale,
+			translate,
+			configure,
+		} = this.props;
 
-    	// TODO: configuration.
-    	const devModeShowAll = false;
+		// TODO: configuration.
+		const devModeShowAll = false;
 
-    	// TODO: pretty name.
-    	const systemTypePrettyName = systemType;
+		// TODO: pretty name.
+		const systemTypePrettyName = systemType;
 
-    	// TODO: pretty name.
-    	const osTypePrettyName = osType;
+		// TODO: pretty name.
+		const osTypePrettyName = osType;
 
-    	const welcomeSample = this.getWelcomeSample();
+		const welcomeSample = this.getWelcomeSample();
 
-    	const haveVoices = voicesCount > 0;
+		const haveVoices = voicesCount > 0;
 
-    	return (
-    		<section>
-    			<this.styled.heroDiv>
-    				<this.styled.HeroEditionSection
-    					isPremiumEdition={isPremiumEdition}
-	>
-    					<Discretional
-    						enabled={welcomeSample.hasSampleText}
-	>
-    						<this.styled.sampleHeroP>
-    							<span
-    								lang={welcomeSample.languageCode}
-    								ref={(welcomeSampleTextElement) => {
-    									this.welcomeSampleTextElement = welcomeSampleTextElement;
-	}}
-	>
-    								{welcomeSample.text}
- </span>
- </this.styled.sampleHeroP>
- </Discretional>
+		return (
+			<section>
+				<this.styled.heroDiv>
+					<this.styled.HeroEditionSection
+						isPremiumEdition={isPremiumEdition}
+					>
+						<Discretional
+							enabled={welcomeSample.hasSampleText}
+						>
+							<this.styled.sampleHeroP>
+								<span
+									ref={(welcomeSampleTextElement) => {
+										this.welcomeSampleTextElement = welcomeSampleTextElement;
+									}}
+									lang={welcomeSample.languageCode}
+								>
+									{welcomeSample.text}
+								</span>
+							</this.styled.sampleHeroP>
+						</Discretional>
 
-    					<this.styled.welcomeHeroP>
-    						{translate("frontend_welcomeHero01", [
-    							translate("extensionShortName"),
-    						])}
+						<this.styled.welcomeHeroP>
+							{translate("frontend_welcomeHero01", [
+								translate("extensionShortName"),
+							])}
 
-    						<Discretional
-    							enabled={canSpeakInTranslatedLocale}
-	>
-    							{" "}
-    							{translate("frontend_welcomeHero02")}
- </Discretional>
- </this.styled.welcomeHeroP>
- </this.styled.HeroEditionSection>
+							<Discretional
+								enabled={canSpeakInTranslatedLocale}
+							>
+								{" "}
+								{translate("frontend_welcomeHero02")}
+							</Discretional>
+						</this.styled.welcomeHeroP>
+					</this.styled.HeroEditionSection>
 
-    				<this.styled.sharingDiv>
-    					<this.styled.sharingIcons/>
+					<this.styled.sharingDiv>
+						<this.styled.sharingIcons/>
 
-    					<textBase.a href={configure("urls.rate")}>
-    						{translate("frontend_rateIt")}
- </textBase.a>
- </this.styled.sharingDiv>
- </this.styled.heroDiv>
+						<textBase.a href={configure("urls.rate")}>
+							{translate("frontend_rateIt")}
+						</textBase.a>
+					</this.styled.sharingDiv>
+				</this.styled.heroDiv>
 
-    			<textBase.h2>
-    				{translate("frontend_welcomeInstallMoreVoicesHeading")}
- </textBase.h2>
+				<textBase.h2>
+					{translate("frontend_welcomeInstallMoreVoicesHeading")}
+				</textBase.h2>
 
-    			<textBase.p>
-    				<Loading
-    					enabled={haveVoices}
-	>
-    					{/* TODO: pretty format */}
-    					{translate("frontend_welcomeInstallMoreVoicesDescription", [
-    						voicesCount,
-    						languageGroupsCount,
-    						languagesCount,
-    						systemTypePrettyName,
-    						osTypePrettyName,
-    					])}
- </Loading>
- </textBase.p>
+				<textBase.p>
+					<Loading
+						enabled={haveVoices}
+					>
+						{/* TODO: pretty format */}
+						{translate("frontend_welcomeInstallMoreVoicesDescription", [
+							voicesCount,
+							languageGroupsCount,
+							languagesCount,
+							systemTypePrettyName,
+							osTypePrettyName,
+						])}
+					</Loading>
+				</textBase.p>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "win"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq002Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq002A")}
- </textBase.p>
+				<Discretional
+					enabled={devModeShowAll || osType === "win"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq002Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq002A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
-    								lang="en"
-	>
-	Windows 10
- </textBase.a>: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
-    							{/* TODO: translate system settings path. */}
- </listBase.li>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
-    								lang="en"
-	>
-	Windows 8
- </textBase.a>
- </listBase.li>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
-    								lang="en"
-	>
-	Windows 7
- </textBase.a>
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
+									lang="en"
+								>
+									Windows 10
+								</textBase.a>: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
+								{/* TODO: translate system settings path. */}
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
+									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
+									lang="en"
+								>
+									Windows 8
+								</textBase.a>
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
+									href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
+									lang="en"
+								>
+									Windows 7
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "cros"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq003Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq003A")}
- </textBase.p>
+				<Discretional
+					enabled={devModeShowAll || osType === "cros"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq003Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq003A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
-    								lang="en"
-	>
-	US English Female Text-to-speech (by Google)
- </textBase.a>
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
+									lang="en"
+								>
+									US English Female Text-to-speech (by Google)
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "mac"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq004Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq004A")}
- </textBase.p>
+				<Discretional
+					enabled={devModeShowAll || osType === "mac"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq004Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq004A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
-    								lang="en"
-	>
-	macOS
- </textBase.a>: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
-    							{/* TODO: translate system settings path. */}
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
+									lang="en"
+								>
+									macOS
+								</textBase.a>: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
+								{/* TODO: translate system settings path. */}
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "linux"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq005Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq005A")}
- </textBase.p>
- </layoutBase.details>
- </Discretional>
- </section>
-    	);
-    }
+				<Discretional
+					enabled={devModeShowAll || osType === "linux"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq005Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq005A")}
+						</textBase.p>
+					</layoutBase.details>
+				</Discretional>
+			</section>
+		);
+	}
 }

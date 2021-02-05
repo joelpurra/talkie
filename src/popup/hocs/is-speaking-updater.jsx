@@ -26,18 +26,18 @@ import isSpeaking from "../hocs/is-speaking.jsx";
 export default
 @isSpeaking
 class IsSpeakingUpdater extends React.PureComponent {
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isSpeaking: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isSpeaking: PropTypes.bool.isRequired,
+	}
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-    	if (this.props.isSpeaking !== nextProps.isSpeaking) {
-    		this.props.actions.sharedSpeaking.setIsSpeaking(nextProps.isSpeaking);
-    	}
-    }
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props.isSpeaking !== nextProps.isSpeaking) {
+			this.props.actions.sharedSpeaking.setIsSpeaking(nextProps.isSpeaking);
+		}
+	}
 
-    render() {
-    	return null;
-    }
+	render() {
+		return null;
+	}
 }

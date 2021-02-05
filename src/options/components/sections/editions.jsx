@@ -30,31 +30,31 @@ export default class Editions extends React.PureComponent {
 		this.handleIsPremiumEditionChange = this.handleIsPremiumEditionChange.bind(this);
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+	}
 
-    handleIsPremiumEditionChange(isPremiumEdition) {
-    	this.props.actions.sharedMetadata.storeIsPremiumEdition(isPremiumEdition);
-    }
+	handleIsPremiumEditionChange(isPremiumEdition) {
+		this.props.actions.sharedMetadata.storeIsPremiumEdition(isPremiumEdition);
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    	} = this.props;
-    	return (
-    		<section>
-    			<TalkiePremiumEdition
-    				onChange={this.handleIsPremiumEditionChange}
-    				isPremiumEdition={isPremiumEdition}
-    				disabled={false}
-    			/>
- </section>
-    	);
-    }
+	render() {
+		const {
+			isPremiumEdition,
+		} = this.props;
+		return (
+			<section>
+				<TalkiePremiumEdition
+					isPremiumEdition={isPremiumEdition}
+					disabled={false}
+					onChange={this.handleIsPremiumEditionChange}
+				/>
+			</section>
+		);
+	}
 }

@@ -93,29 +93,29 @@ class NavContainer extends React.PureComponent {
 		this.setLocationHash(activeTabId);
 	}
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	activeTabId: PropTypes.string.isRequired,
-    	links: PropTypes.arrayOf(
-    		PropTypes.shape({
-    			url: PropTypes.string,
-    			tabId: PropTypes.string,
-    			text: PropTypes.string.isRequired,
-    		})).isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		activeTabId: PropTypes.string.isRequired,
+		links: PropTypes.arrayOf(
+			PropTypes.shape({
+				url: PropTypes.string,
+				tabId: PropTypes.string,
+				text: PropTypes.string.isRequired,
+			})).isRequired,
+	}
 
-    render() {
-    	const {
-    		activeTabId,
-    		links,
-    	} = this.props;
+	render() {
+		const {
+			activeTabId,
+			links,
+		} = this.props;
 
-    	return (
-    		<Nav
-    			initialActiveTabId={activeTabId}
-    			onTabChange={this.handleTabChange}
-    			links={links}
-    		/>
-    	);
-    }
+		return (
+			<Nav
+				initialActiveTabId={activeTabId}
+				links={links}
+				onTabChange={this.handleTabChange}
+			/>
+		);
+	}
 }

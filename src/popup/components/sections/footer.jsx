@@ -49,47 +49,47 @@ class Footer extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	versionNumber: false,
-    };
+	static defaultProps = {
+		versionNumber: false,
+	};
 
-    static propTypes = {
-    	versionNumber: PropTypes.string.isRequired,
-    	optionsPageClick: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		versionNumber: PropTypes.string.isRequired,
+		optionsPageClick: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		configure,
-    		versionNumber,
-    		optionsPageClick,
-    	} = this.props;
+	render() {
+		const {
+			configure,
+			versionNumber,
+			optionsPageClick,
+		} = this.props;
 
-    	return (
-    		<this.styled.footer>
-    			<this.styled.footerFirstLink
-    				href={configure("urls.options")}
-    				rel="noopener noreferrer"
-    				target="_blank"
-    				onClick={optionsPageClick}
-	>
-    				<Icon mode="standalone" size="0.75em" className="icon-settings"/>
- </this.styled.footerFirstLink>
+		return (
+			<this.styled.footer>
+				<this.styled.footerFirstLink
+					href={configure("urls.options")}
+					rel="noopener noreferrer"
+					target="_blank"
+					onClick={optionsPageClick}
+				>
+					<Icon mode="standalone" size="0.75em" className="icon-settings"/>
+				</this.styled.footerFirstLink>
 
-    			<this.styled.footerSecondLink href={configure("urls.options-about-from-popup")} id="footer-about-link">
-		v{versionNumber}
- </this.styled.footerSecondLink>
- </this.styled.footer>
-    	);
-    }
+				<this.styled.footerSecondLink href={configure("urls.options-about-from-popup")} id="footer-about-link">
+					v{versionNumber}
+				</this.styled.footerSecondLink>
+			</this.styled.footer>
+		);
+	}
 }

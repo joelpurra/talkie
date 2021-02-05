@@ -61,80 +61,80 @@ export default class Nav extends React.PureComponent {
 		};
 	}
 
-    static propTypes = {
-    	initialActiveTabId: PropTypes.string.isRequired,
-    	onTabChange: PropTypes.func.isRequired,
-    	links: PropTypes.arrayOf(
-    		PropTypes.shape({
-    			url: PropTypes.string,
-    			tabId: PropTypes.string,
-    			text: PropTypes.string.isRequired,
-    		})).isRequired,
-    }
+	static propTypes = {
+		initialActiveTabId: PropTypes.string.isRequired,
+		onTabChange: PropTypes.func.isRequired,
+		links: PropTypes.arrayOf(
+			PropTypes.shape({
+				url: PropTypes.string,
+				tabId: PropTypes.string,
+				text: PropTypes.string.isRequired,
+			})).isRequired,
+	}
 
-    handleClick(e) {
-    	if (e.target.tagName === "A") {
-    		const href = e.target.getAttribute("href");
+	handleClick(e) {
+		if (e.target.tagName === "A") {
+			const href = e.target.getAttribute("href");
 
-    		if (typeof href === "string" && href.startsWith("#")) {
-    			const tabId = href.replace("#", "");
+			if (typeof href === "string" && href.startsWith("#")) {
+				const tabId = href.replace("#", "");
 
-    			e.preventDefault();
-    			e.stopPropagation();
+				e.preventDefault();
+				e.stopPropagation();
 
-    			this.props.onTabChange(tabId);
+				this.props.onTabChange(tabId);
 
-    			return false;
-    		}
+				return false;
+			}
 
-    		// TODO: warn about mismatched link style?
-    	}
-    }
+			// TODO: warn about mismatched link style?
+		}
+	}
 
-    render() {
-    	const {
-    		links,
-    		initialActiveTabId,
-    	} = this.props;
+	render() {
+		const {
+			links,
+			initialActiveTabId,
+		} = this.props;
 
-    	const linkCells = links
-    		.map((link) => {
-    			const SelectedLinkType = initialActiveTabId === link.tabId
-    				? this.styled.selectedLink
-    				: textBase.a;
+		const linkCells = links
+			.map((link) => {
+				const SelectedLinkType = initialActiveTabId === link.tabId
+					? this.styled.selectedLink
+					: textBase.a;
 
-    			const url = link.url || "#" + link.tabId;
+				const url = link.url || "#" + link.tabId;
 
-    			return (
-    				<this.styled.navTableTd
-    					key={link.tabId}
-    					onClick={this.handleClick}
-	>
-    					<SelectedLinkType
-    						href={url}
-	>
-    						{link.text}
- </SelectedLinkType>
- </this.styled.navTableTd>
-    			);
-    		});
+				return (
+					<this.styled.navTableTd
+						key={link.tabId}
+						onClick={this.handleClick}
+					>
+						<SelectedLinkType
+							href={url}
+						>
+							{link.text}
+						</SelectedLinkType>
+					</this.styled.navTableTd>
+				);
+			});
 
-    	const colCount = linkCells.length;
-    	const colWidth = `${100 / linkCells.length}%`;
+		const colCount = linkCells.length;
+		const colWidth = `${100 / linkCells.length}%`;
 
-    	return (
-    		<this.styled.nav className="columns">
-    			<this.styled.navTable>
-    				<colgroup>
-    					<col width={colWidth} colSpan={colCount}/>
- </colgroup>
-    				<tableBase.tbody>
-    					<tableBase.tr>
-    						{linkCells}
- </tableBase.tr>
- </tableBase.tbody>
- </this.styled.navTable>
- </this.styled.nav>
-    	);
-    }
+		return (
+			<this.styled.nav className="columns">
+				<this.styled.navTable>
+					<colgroup>
+						<col width={colWidth} colSpan={colCount}/>
+					</colgroup>
+					<tableBase.tbody>
+						<tableBase.tr>
+							{linkCells}
+						</tableBase.tr>
+					</tableBase.tbody>
+				</this.styled.navTable>
+			</this.styled.nav>
+		);
+	}
 }

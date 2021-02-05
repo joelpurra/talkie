@@ -81,7 +81,7 @@ export const resolveVoice = (mappedVoice) => {
 
 					// NOTE: while there might be more than one voice for the particular voice name/language/language prefix, just consistently pick the first one.
 					// if (actualMatchingVoices.length !== 1) {
-					//     throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
+					//	 throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
 					// }
 
 					const resolvedVoice = resolvedVoices[0];
@@ -125,17 +125,17 @@ export const pitchRange = {
 
 // TODO: check if there are any voices installed, alert user if not.
 // checkVoices() {
-//     return this.getSynthesizer()
-//         .then((synthesizer) => {
-//             logDebug("Start", "Voices check");
+//	 return this.getSynthesizer()
+//		 .then((synthesizer) => {
+//			 logDebug("Start", "Voices check");
 //
-//             return getMappedVoices()
-//                 .then((voices) => {
-//                     logDebug("Variable", "voices[]", voices.length, voices);
+//			 return getMappedVoices()
+//				 .then((voices) => {
+//					 logDebug("Variable", "voices[]", voices.length, voices);
 //
-//                     logDebug("Done", "Voices check");
+//					 logDebug("Done", "Voices check");
 //
-//                     return synthesizer;
-//                 });
-//         });
+//					 return synthesizer;
+//				 });
+//		 });
 // }

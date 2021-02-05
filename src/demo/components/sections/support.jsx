@@ -58,310 +58,310 @@ class Support extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	systemType: null,
-    	osType: null,
-    };
+	static defaultProps = {
+		systemType: null,
+		osType: null,
+	};
 
-    static propTypes = {
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    standardFaqEntry(id) {
-    	const {
-    		translate,
-    	} = this.props;
+	standardFaqEntry(id) {
+		const {
+			translate,
+		} = this.props;
 
-    	const paddedId = id.toString(10).padStart(3, "0");
+		const paddedId = id.toString(10).padStart(3, "0");
 
-    	return (
-    		<layoutBase.details>
-    			<layoutBase.summary>
-    				<this.styled.summaryHeading>
-    					{translate(`frontend_faq${paddedId}Q`)}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    			<textBase.p>
-    				{translate(`frontend_faq${paddedId}A`)}
- </textBase.p>
- </layoutBase.details>
-    	);
-    }
+		return (
+			<layoutBase.details>
+				<layoutBase.summary>
+					<this.styled.summaryHeading>
+						{translate(`frontend_faq${paddedId}Q`)}
+					</this.styled.summaryHeading>
+				</layoutBase.summary>
+				<textBase.p>
+					{translate(`frontend_faq${paddedId}A`)}
+				</textBase.p>
+			</layoutBase.details>
+		);
+	}
 
-    render() {
-    	const {
-    		systemType,
-    		osType,
-    		translate,
-    		configure,
-    	} = this.props;
+	render() {
+		const {
+			systemType,
+			osType,
+			translate,
+			configure,
+		} = this.props;
 
-    	// TODO: configuration.
-    	const devModeShowAll = false;
+		// TODO: configuration.
+		const devModeShowAll = false;
 
-    	return (
-    		<section>
-    			<textBase.p>
-    				{translate("frontend_supportDescription", [
-    					translate("extensionShortName"),
-    				])}
- </textBase.p>
+		return (
+			<section>
+				<textBase.p>
+					{translate("frontend_supportDescription", [
+						translate("extensionShortName"),
+					])}
+				</textBase.p>
 
-    			<listBase.ul>
-    				<listBase.li>
-    					<textBase.a href={configure("urls.support-feedback")}>
-    						{translate("frontend_supportAndFeedback")}
- </textBase.a>
- </listBase.li>
-    				<listBase.li>
-    					<textBase.a href={configure("urls.project")}>
-    						{translate("frontend_aboutProjectPageLinkText")}
- </textBase.a>
- </listBase.li>
- </listBase.ul>
+				<listBase.ul>
+					<listBase.li>
+						<textBase.a href={configure("urls.support-feedback")}>
+							{translate("frontend_supportAndFeedback")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.project")}>
+							{translate("frontend_aboutProjectPageLinkText")}
+						</textBase.a>
+					</listBase.li>
+				</listBase.ul>
 
-    			<textBase.h2>
-    				{translate("frontend_faqHeading")}
- </textBase.h2>
+				<textBase.h2>
+					{translate("frontend_faqHeading")}
+				</textBase.h2>
 
-    			<textBase.h3>
-    				{translate("frontend_faqVoicesHeading")}
- </textBase.h3>
+				<textBase.h3>
+					{translate("frontend_faqVoicesHeading")}
+				</textBase.h3>
 
-    			{this.standardFaqEntry(1)}
+				{this.standardFaqEntry(1)}
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "win"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq002Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq002A")}
- </textBase.p>
+				<Discretional
+					enabled={devModeShowAll || osType === "win"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq002Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq002A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
-    								lang="en"
-	>
-	Windows 10
- </textBase.a>: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
-    							{/* TODO: translate system settings path. */}
- </listBase.li>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
-    								lang="en"
-	>
-	Windows 8
- </textBase.a>
- </listBase.li>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
-    								lang="en"
-	>
-	Windows 7
- </textBase.a>
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
+									lang="en"
+								>
+									Windows 10
+								</textBase.a>: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
+								{/* TODO: translate system settings path. */}
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
+									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
+									lang="en"
+								>
+									Windows 8
+								</textBase.a>
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
+									href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
+									lang="en"
+								>
+									Windows 7
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "cros"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq003Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq003A")}
- </textBase.p>
+				<Discretional
+					enabled={devModeShowAll || osType === "cros"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq003Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq003A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
-    								lang="en"
-	>
-	US English Female Text-to-speech (by Google)
- </textBase.a>
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
+									lang="en"
+								>
+									US English Female Text-to-speech (by Google)
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "mac"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq004Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq004A")}
- </textBase.p>
+				<Discretional
+					enabled={devModeShowAll || osType === "mac"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq004Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq004A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
-    								lang="en"
-	>
-	macOS
- </textBase.a>: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
-    							{/* TODO: translate system settings path. */}
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
+									lang="en"
+								>
+									macOS
+								</textBase.a>: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
+								{/* TODO: translate system settings path. */}
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			<Discretional
-    				enabled={devModeShowAll || osType === "linux"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq005Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-    					<textBase.p>
-    						{translate("frontend_faq005A")}
- </textBase.p>
- </layoutBase.details>
- </Discretional>
+				<Discretional
+					enabled={devModeShowAll || osType === "linux"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq005Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
+						<textBase.p>
+							{translate("frontend_faq005A")}
+						</textBase.p>
+					</layoutBase.details>
+				</Discretional>
 
-    			{this.standardFaqEntry(6)}
-    			{this.standardFaqEntry(7)}
-    			{this.standardFaqEntry(8)}
-    			{this.standardFaqEntry(9)}
+				{this.standardFaqEntry(6)}
+				{this.standardFaqEntry(7)}
+				{this.standardFaqEntry(8)}
+				{this.standardFaqEntry(9)}
 
-    			<textBase.h3>
-    				{translate("frontend_faqGeneralHeading")}
- </textBase.h3>
+				<textBase.h3>
+					{translate("frontend_faqGeneralHeading")}
+				</textBase.h3>
 
-    			{this.standardFaqEntry(14)}
-    			{this.standardFaqEntry(15)}
-    			{this.standardFaqEntry(16)}
+				{this.standardFaqEntry(14)}
+				{this.standardFaqEntry(15)}
+				{this.standardFaqEntry(16)}
 
-    			{/* NOTE: can't change shortcut keys in Firefox */}
-    			<Discretional
-    				enabled={devModeShowAll || systemType === "chrome"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq017Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					<textBase.p>
-    						{translate("frontend_faq017A")}
- </textBase.p>
+				{/* NOTE: can't change shortcut keys in Firefox */}
+				<Discretional
+					enabled={devModeShowAll || systemType === "chrome"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq017Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						<textBase.p>
+							{translate("frontend_faq017A")}
+						</textBase.p>
 
-    					<listBase.ul>
-    						<listBase.li>
-    							<textBase.a
-    								href={configure("urls.shortcut-keys")}
-    								onClick={this.handleOpenShortKeysConfigurationClick}
-	>
-    								{translate("frontend_usageShortcutKeyAlternative04")}
- </textBase.a>
- </listBase.li>
- </listBase.ul>
- </layoutBase.details>
- </Discretional>
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href={configure("urls.shortcut-keys")}
+									onClick={this.handleOpenShortKeysConfigurationClick}
+								>
+									{translate("frontend_usageShortcutKeyAlternative04")}
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
 
-    			{/* NOTE: can't change shortcut keys in Firefox */}
-    			<Discretional
-    				enabled={devModeShowAll || systemType === "webextension"}
-	>
-    				<layoutBase.details>
-    					<layoutBase.summary>
-    						<this.styled.summaryHeading>
-    							{translate("frontend_faq018Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    					<textBase.p>
-    						{translate("frontend_faq018A")}
- </textBase.p>
- </layoutBase.details>
- </Discretional>
+				{/* NOTE: can't change shortcut keys in Firefox */}
+				<Discretional
+					enabled={devModeShowAll || systemType === "webextension"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<this.styled.summaryHeading>
+								{translate("frontend_faq018Q")}
+							</this.styled.summaryHeading>
+						</layoutBase.summary>
+						<textBase.p>
+							{translate("frontend_faq018A")}
+						</textBase.p>
+					</layoutBase.details>
+				</Discretional>
 
-    			{this.standardFaqEntry(19)}
+				{this.standardFaqEntry(19)}
 
-    			<layoutBase.details>
-    				<layoutBase.summary>
-    					<this.styled.summaryHeading>
-    						{translate("frontend_faq020Q")}
- </this.styled.summaryHeading>
- </layoutBase.summary>
-    				<textBase.p>
-    					{translate("frontend_faq020A")}
- </textBase.p>
+				<layoutBase.details>
+					<layoutBase.summary>
+						<this.styled.summaryHeading>
+							{translate("frontend_faq020Q")}
+						</this.styled.summaryHeading>
+					</layoutBase.summary>
+					<textBase.p>
+						{translate("frontend_faq020A")}
+					</textBase.p>
 
-    				<div>
-    					<this.styled.sharingIcons/>
+					<div>
+						<this.styled.sharingIcons/>
 
-    					<textBase.a href={configure("urls.rate")}>
-    						{translate("frontend_rateIt")}
- </textBase.a>
- </div>
- </layoutBase.details>
+						<textBase.a href={configure("urls.rate")}>
+							{translate("frontend_rateIt")}
+						</textBase.a>
+					</div>
+				</layoutBase.details>
 
-    			{this.standardFaqEntry(25)}
+				{this.standardFaqEntry(25)}
 
-    			<textBase.h3>
-    				{translate("frontend_faqTalkiePremiumHeading")}
- </textBase.h3>
+				<textBase.h3>
+					{translate("frontend_faqTalkiePremiumHeading")}
+				</textBase.h3>
 
-    			{this.standardFaqEntry(21)}
-    			{this.standardFaqEntry(33)}
-    			{this.standardFaqEntry(24)}
-    			{this.standardFaqEntry(22)}
-    			{this.standardFaqEntry(23)}
-    			{this.standardFaqEntry(26)}
-    			{this.standardFaqEntry(27)}
-    			{this.standardFaqEntry(28)}
-    			{this.standardFaqEntry(29)}
-    			{this.standardFaqEntry(30)}
-    			{this.standardFaqEntry(31)}
-    			{this.standardFaqEntry(32)}
+				{this.standardFaqEntry(21)}
+				{this.standardFaqEntry(33)}
+				{this.standardFaqEntry(24)}
+				{this.standardFaqEntry(22)}
+				{this.standardFaqEntry(23)}
+				{this.standardFaqEntry(26)}
+				{this.standardFaqEntry(27)}
+				{this.standardFaqEntry(28)}
+				{this.standardFaqEntry(29)}
+				{this.standardFaqEntry(30)}
+				{this.standardFaqEntry(31)}
+				{this.standardFaqEntry(32)}
 
-    			<textBase.h3>
-    				{translate("frontend_faqBugsHeading")}
- </textBase.h3>
+				<textBase.h3>
+					{translate("frontend_faqBugsHeading")}
+				</textBase.h3>
 
-    			{this.standardFaqEntry(10)}
-    			{this.standardFaqEntry(11)}
-    			{this.standardFaqEntry(12)}
-    			{this.standardFaqEntry(13)}
- </section>
-    	);
-    }
+				{this.standardFaqEntry(10)}
+				{this.standardFaqEntry(11)}
+				{this.standardFaqEntry(12)}
+				{this.standardFaqEntry(13)}
+			</section>
+		);
+	}
 }

@@ -41,25 +41,25 @@ const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class ProgressContainer extends React.PureComponent {
-    static propTypes = {
-    	min: PropTypes.number.isRequired,
-    	current: PropTypes.number.isRequired,
-    	max: PropTypes.number.isRequired,
-    }
+	static propTypes = {
+		min: PropTypes.number.isRequired,
+		current: PropTypes.number.isRequired,
+		max: PropTypes.number.isRequired,
+	}
 
-    render() {
-    	const {
-    		min,
-    		current,
-    		max,
-    	} = this.props;
+	render() {
+		const {
+			min,
+			current,
+			max,
+		} = this.props;
 
-    	return (
-    		<Progress
-    			min={min}
-    			current={current}
-    			max={max}
-    		/>
-    	);
-    }
+		return (
+			<Progress
+				min={min}
+				current={current}
+				max={max}
+			/>
+		);
+	}
 }

@@ -29,13 +29,13 @@ export default class TalkieLocaleHelper {
 
 		const value = (
 			languages.languages[languageCode]
-                && languages.languages[languageCode][name]
+				&& languages.languages[languageCode][name]
 		)
-            || (
-            	languages.languages[languageGroup]
-                && languages.languages[languageGroup][name]
-            )
-            || languages.base[name];
+			|| (
+				languages.languages[languageGroup]
+				&& languages.languages[languageGroup][name]
+			)
+			|| languages.base[name];
 
 		return value;
 	}

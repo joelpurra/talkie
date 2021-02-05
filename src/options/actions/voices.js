@@ -45,10 +45,10 @@ export const loadSelectedVoiceName = (voiceName) =>
 
 		if (
 			state
-            && state.shared
-            && state.shared.voices
-            && state.shared.voices.voices
-            && state.shared.voices.voices.some((voice) => voice.name === voiceName)
+			&& state.shared
+			&& state.shared.voices
+			&& state.shared.voices.voices
+			&& state.shared.voices.voices.some((voice) => voice.name === voiceName)
 		) {
 			existingVoiceName = voiceName;
 		}
@@ -149,21 +149,21 @@ export const speakState = () =>
 
 			// TODO: move to function and/or state?
 			const readyToSpeak = state
-                            && state.voices
-                            && typeof state.voices.sampleText === "string"
-                            && state.voices.sampleText.length > 0
-                            && (
-                            	(
-                            		typeof state.voices.selectedLanguageCode === "string"
-                                    && state.voices.selectedLanguageCode.length > 0
-                            	)
-                                || (
-                                	typeof state.voices.selectedVoiceName === "string"
-                                    && state.voices.selectedVoiceName.length > 0
-                                )
-                            )
-                            && !isNaN(state.voices.rateForSelectedVoice)
-                            && !isNaN(state.voices.pitchForSelectedVoice);
+							&& state.voices
+							&& typeof state.voices.sampleText === "string"
+							&& state.voices.sampleText.length > 0
+							&& (
+								(
+									typeof state.voices.selectedLanguageCode === "string"
+									&& state.voices.selectedLanguageCode.length > 0
+								)
+								|| (
+									typeof state.voices.selectedVoiceName === "string"
+									&& state.voices.selectedVoiceName.length > 0
+								)
+							)
+							&& !isNaN(state.voices.rateForSelectedVoice)
+							&& !isNaN(state.voices.pitchForSelectedVoice);
 
 			if (readyToSpeak) {
 				const text = state.voices.sampleText;

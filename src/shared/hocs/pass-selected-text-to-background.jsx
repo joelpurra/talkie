@@ -48,136 +48,136 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 			this.mostRecentUse = 0;
 		}
 
-        static contextTypes ={
-        	broadcaster: PropTypes.object.isRequired,
-        }
+		static contextTypes ={
+			broadcaster: PropTypes.object.isRequired,
+		}
 
-        componentDidMount() {
-        	window.addEventListener("beforeunload", this.componentCleanup);
-        	window.addEventListener("focus", this.handleFocus);
+		componentDidMount() {
+			window.addEventListener("beforeunload", this.componentCleanup);
+			window.addEventListener("focus", this.handleFocus);
 
-        	this.gotFocus();
+			this.gotFocus();
 
-        	this.enable();
-        }
+			this.enable();
+		}
 
-        componentWillUnmount() {
-        	this.componentCleanup();
-        }
+		componentWillUnmount() {
+			this.componentCleanup();
+		}
 
-        shouldComponentUpdate(nextProps, nextState) {
-        	// NOTE: always update.
-        	// TODO: optimize by comparing old and new props/state.
-        	return this.isListeningToBroadcasts;
-        }
+		shouldComponentUpdate(nextProps, nextState) {
+			// NOTE: always update.
+			// TODO: optimize by comparing old and new props/state.
+			return this.isListeningToBroadcasts;
+		}
 
-        componentCleanup() {
-        	window.removeEventListener("beforeunload", this.componentCleanup);
-        	window.removeEventListener("focus", this.handleFocus);
+		componentCleanup() {
+			window.removeEventListener("beforeunload", this.componentCleanup);
+			window.removeEventListener("focus", this.handleFocus);
 
-        	this.disable();
-        }
+			this.disable();
+		}
 
-        handleFocus() {
-        	this.gotFocus();
-        }
+		handleFocus() {
+			this.gotFocus();
+		}
 
-        gotFocus() {
-        	this.mostRecentUse = Date.now();
-        }
+		gotFocus() {
+			this.mostRecentUse = Date.now();
+		}
 
-        enable() {
-        	// TODO: properly avoid race conditions when enabling/disabling.
-        	if (this.isListeningToBroadcasts) {
-        		return;
-        	}
+		enable() {
+			// TODO: properly avoid race conditions when enabling/disabling.
+			if (this.isListeningToBroadcasts) {
+				return;
+			}
 
-        	this.registerBroadcastListeners();
-        	this.isListeningToBroadcasts = true;
-        }
+			this.registerBroadcastListeners();
+			this.isListeningToBroadcasts = true;
+		}
 
-        disable() {
-        	// TODO: properly avoid race conditions when enabling/disabling.
-        	if (!this.isListeningToBroadcasts) {
-        		return;
-        	}
+		disable() {
+			// TODO: properly avoid race conditions when enabling/disabling.
+			if (!this.isListeningToBroadcasts) {
+				return;
+			}
 
-        	this.isListeningToBroadcasts = false;
-        	this.executeKillSwitches();
-        }
+			this.isListeningToBroadcasts = false;
+			this.executeKillSwitches();
+		}
 
-        render() {
-        	return (
-        		<ComponentToWrap
-        			{...this.props}
-        		/>
-        	);
-        }
+		render() {
+			return (
+				<ComponentToWrap
+					{...this.props}
+				/>
+			);
+		}
 
-        getSelectedTextWithFocusTimestamp() {
-        	if (!this.isListeningToBroadcasts) {
-        		return null;
-        	}
+		getSelectedTextWithFocusTimestamp() {
+			if (!this.isListeningToBroadcasts) {
+				return null;
+			}
 
-        	// NOTE: duplicated elsewhere in the codebase.
-        	/* eslint-disable no-inner-declarations */
-        	const executeGetFramesSelectionTextAndLanguageCode = (function () {
-        		try {
-        			function talkieGetParentElementLanguages(element) {
-        				return []
-        					.concat((element || null) && element.getAttribute && element.getAttribute("lang"))
-        					.concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
-        			}
+			// NOTE: duplicated elsewhere in the codebase.
+			/* eslint-disable no-inner-declarations */
+			const executeGetFramesSelectionTextAndLanguageCode = (function () {
+				try {
+					function talkieGetParentElementLanguages(element) {
+						return []
+							.concat((element || null) && element.getAttribute && element.getAttribute("lang"))
+							.concat((element || null) && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
+					}
 
-        			const talkieSelectionData = {
-        				text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
-        				htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0].getAttribute("lang") || null)),
-        				parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null))),
-        			};
-        			return talkieSelectionData;
-        		} catch {
-        			return null;
-        		}
-        	})();
-        	/* eslint-enable no-inner-declarations */
+					const talkieSelectionData = {
+						text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
+						htmlTagLanguage: ((document || null) && (document.getElementsByTagName || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0].getAttribute("lang") || null)),
+						parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null))),
+					};
+					return talkieSelectionData;
+				} catch {
+					return null;
+				}
+			})();
+			/* eslint-enable no-inner-declarations */
 
-        	const selectedTextWithFocusTimestamp = {
-        		mostRecentUse: this.mostRecentUse,
-        		selectionTextAndLanguageCode: executeGetFramesSelectionTextAndLanguageCode,
-        	};
+			const selectedTextWithFocusTimestamp = {
+				mostRecentUse: this.mostRecentUse,
+				selectionTextAndLanguageCode: executeGetFramesSelectionTextAndLanguageCode,
+			};
 
-        	return selectedTextWithFocusTimestamp;
-        }
+			return selectedTextWithFocusTimestamp;
+		}
 
-        executeKillSwitches() {
-        	// NOTE: expected to have only synchronous methods for the relevant parts.
-        	const killSwitchesToExecute = this.killSwitches;
-        	this.killSwitches = [];
+		executeKillSwitches() {
+			// NOTE: expected to have only synchronous methods for the relevant parts.
+			const killSwitchesToExecute = this.killSwitches;
+			this.killSwitches = [];
 
-        	killSwitchesToExecute.forEach((killSwitch) => {
-        		try {
-        			killSwitch();
-        		} catch {
-        			try {
-        				// dualLogger.dualLogError("executeKillSwitches", error);
-        			} catch {
-        				// NOTE: ignoring error logging errors.
-        			}
-        		}
-        	});
-        }
+			killSwitchesToExecute.forEach((killSwitch) => {
+				try {
+					killSwitch();
+				} catch {
+					try {
+						// dualLogger.dualLogError("executeKillSwitches", error);
+					} catch {
+						// NOTE: ignoring error logging errors.
+					}
+				}
+			});
+		}
 
-        registerBroadcastListeners() {
-        	return promiseTry(
-        		() => {
-        			return Promise.all([
-        				/* eslint-disable no-unused-vars */
-        				this.context.broadcaster.registerListeningAction(knownEvents.passSelectedTextToBackground, (actionName, actionData) => this.getSelectedTextWithFocusTimestamp(actionName, actionData))
-        					.then((killSwitch) => this.killSwitches.push(killSwitch)),
-        				/* eslint-enable no-unused-vars */
-        			]);
-        		},
-        	);
-        }
+		registerBroadcastListeners() {
+			return promiseTry(
+				() => {
+					return Promise.all([
+						/* eslint-disable no-unused-vars */
+						this.context.broadcaster.registerListeningAction(knownEvents.passSelectedTextToBackground, (actionName, actionData) => this.getSelectedTextWithFocusTimestamp(actionName, actionData))
+							.then((killSwitch) => this.killSwitches.push(killSwitch)),
+						/* eslint-enable no-unused-vars */
+					]);
+				},
+			);
+		}
 	};
 }

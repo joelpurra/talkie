@@ -37,252 +37,252 @@ class About extends React.PureComponent {
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	versionName: null,
-    	systemType: null,
-    	osType: null,
-    	voices: [],
-    	languages: [],
-    	languageGroups: [],
-    	navigatorLanguage: null,
-    	navigatorLanguages: [],
-    	translatedLanguages: [],
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		versionName: null,
+		systemType: null,
+		osType: null,
+		voices: [],
+		languages: [],
+		languageGroups: [],
+		navigatorLanguage: null,
+		navigatorLanguages: [],
+		translatedLanguages: [],
+	};
 
-    static propTypes = {
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionName: PropTypes.string.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	voices: PropTypes.arrayOf(PropTypes.shape({
-    		"default": PropTypes.bool.isRequired,
-    		lang: PropTypes.string.isRequired,
-    		localService: PropTypes.bool.isRequired,
-    		name: PropTypes.string.isRequired,
-    		voiceURI: PropTypes.string.isRequired,
-    	})).isRequired,
-    	languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	navigatorLanguage: PropTypes.string,
-    	navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	onLicenseClick: PropTypes.func.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionName: PropTypes.string.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		voices: PropTypes.arrayOf(PropTypes.shape({
+			"default": PropTypes.bool.isRequired,
+			lang: PropTypes.string.isRequired,
+			localService: PropTypes.bool.isRequired,
+			name: PropTypes.string.isRequired,
+			voiceURI: PropTypes.string.isRequired,
+		})).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		navigatorLanguage: PropTypes.string,
+		navigatorLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		translatedLanguages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		onLicenseClick: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    handleLegaleseClick(e) {
-    	const legaleseText = e.target.textContent;
+	handleLegaleseClick(e) {
+		const legaleseText = e.target.textContent;
 
-    	this.props.onLicenseClick(legaleseText);
-    }
+		this.props.onLicenseClick(legaleseText);
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		configure,
-    		isPremiumEdition,
-    		translate,
-    		versionName,
-    		systemType,
-    		osType,
-    		navigatorLanguage,
-    		navigatorLanguages,
-    		translatedLanguages,
-    		voices,
-    		languages,
-    		languageGroups,
-    	} = this.props;
+	render() {
+		const {
+			configure,
+			isPremiumEdition,
+			translate,
+			versionName,
+			systemType,
+			osType,
+			navigatorLanguage,
+			navigatorLanguages,
+			translatedLanguages,
+			voices,
+			languages,
+			languageGroups,
+		} = this.props;
 
-    	// TODO: move resolving the name to the state, like edition type?
-    	const extensionShortName = isPremiumEdition
-    		? translate("extensionShortName_Premium")
-    		: translate("extensionShortName_Free");
+		// TODO: move resolving the name to the state, like edition type?
+		const extensionShortName = isPremiumEdition
+			? translate("extensionShortName_Premium")
+			: translate("extensionShortName_Free");
 
-    	const voiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
-    	voiceNames.sort();
+		const voiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
+		voiceNames.sort();
 
-    	return (
-    		<section>
-    			<listBase.ul>
-    				<listBase.li>
-    					<textBase.a href={configure("urls.support-feedback")}>
-    						{translate("frontend_supportAndFeedback")}
- </textBase.a>
- </listBase.li>
-    				<listBase.li>
-    					<textBase.a href={configure("urls.rate")}>
-    						{translate("frontend_rateIt")}
- </textBase.a>
- </listBase.li>
-    				<listBase.li>
-    					<textBase.a href={configure("urls.project")}>
-    						{translate("frontend_aboutProjectPageLinkText")}
- </textBase.a>
- </listBase.li>
-    				<listBase.li>
-    					<textBase.a href={configure("urls.github")}>
-    						{translate("frontend_aboutCodeOnGithubLinkText")}
- </textBase.a>
- </listBase.li>
- </listBase.ul>
+		return (
+			<section>
+				<listBase.ul>
+					<listBase.li>
+						<textBase.a href={configure("urls.support-feedback")}>
+							{translate("frontend_supportAndFeedback")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.rate")}>
+							{translate("frontend_rateIt")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.project")}>
+							{translate("frontend_aboutProjectPageLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.github")}>
+							{translate("frontend_aboutCodeOnGithubLinkText")}
+						</textBase.a>
+					</listBase.li>
+				</listBase.ul>
 
-    			<textBase.h2>
-    				{translate("frontend_systemHeading")}
- </textBase.h2>
+				<textBase.h2>
+					{translate("frontend_systemHeading")}
+				</textBase.h2>
 
-    			<listBase.dl>
-    				<listBase.dt>
-    					{translate("frontend_systemCurrentEditionHeading")}
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					<TalkieEditionIcon
-    						isPremiumEdition={isPremiumEdition}
-    					/>
-    					{extensionShortName}
- </listBase.dd>
+				<listBase.dl>
+					<listBase.dt>
+						{translate("frontend_systemCurrentEditionHeading")}
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						<TalkieEditionIcon
+							isPremiumEdition={isPremiumEdition}
+						/>
+						{extensionShortName}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemInstalledVersionHeading")}
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{translate("extensionShortName")}
-    					{" "}
-    					{versionName}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemInstalledVersionHeading")}
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{translate("extensionShortName")}
+						{" "}
+						{versionName}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemBrowserTypeHeading")}
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{systemType}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemBrowserTypeHeading")}
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{systemType}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemOSHeading")}
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{osType}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemOSHeading")}
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{osType}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemBrowserLanguageHeading")}
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{navigatorLanguage}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemBrowserLanguageHeading")}
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{navigatorLanguage}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemBrowserLanguagesHeading")}
-    					{" "}
-		({navigatorLanguages.length})
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{navigatorLanguages.join(", ")}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemBrowserLanguagesHeading")}
+						{" "}
+						({navigatorLanguages.length})
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{navigatorLanguages.join(", ")}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemInstalledLanguagesHeading")}
-    					{" "}
-		({languageGroups.length})
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{languageGroups.join(", ")}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemInstalledLanguagesHeading")}
+						{" "}
+						({languageGroups.length})
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{languageGroups.join(", ")}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemInstalledDialectsHeading")}
-    					{" "}
-		({languages.length})
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{languages.join(", ")}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemInstalledDialectsHeading")}
+						{" "}
+						({languages.length})
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{languages.join(", ")}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemInstalledVoicesHeading")}
-    					{" "}
-		({voices.length})
- </listBase.dt>
-    				<listBase.dd>
-    					{voiceNames.join(", ")}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemInstalledVoicesHeading")}
+						{" "}
+						({voices.length})
+					</listBase.dt>
+					<listBase.dd>
+						{voiceNames.join(", ")}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemTalkieUILanguageHeading")}
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{translate("extensionLocale")}
- </listBase.dd>
+					<listBase.dt>
+						{translate("frontend_systemTalkieUILanguageHeading")}
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{translate("extensionLocale")}
+					</listBase.dd>
 
-    				<listBase.dt>
-    					{translate("frontend_systemTalkieUILanguagesHeading")}
-    					{" "}
-		({translatedLanguages.length})
- </listBase.dt>
-    				<listBase.dd
-    					lang="en"
-	>
-    					{translatedLanguages.join(", ")}
- </listBase.dd>
- </listBase.dl>
+					<listBase.dt>
+						{translate("frontend_systemTalkieUILanguagesHeading")}
+						{" "}
+						({translatedLanguages.length})
+					</listBase.dt>
+					<listBase.dd
+						lang="en"
+					>
+						{translatedLanguages.join(", ")}
+					</listBase.dd>
+				</listBase.dl>
 
-    			<textBase.h2>
-    				{translate("frontend_licenseHeading")}
- </textBase.h2>
-    			<p>
-    				<span
-    					lang="en"
-    					onClick={this.handleLegaleseClick}
-	>
-    					{translate("frontend_licenseGPLDescription")}
- </span>
-    				<br/>
-    				<textBase.a
-    					href={configure("urls.gpl")}
-    					lang="en"
-	>
-    					{translate("frontend_licenseGPLLinkText")}
- </textBase.a>
- </p>
-    			<p>
-    				{translate("frontend_licenseCLADescription")}
-    				<br/>
-    				<textBase.a
-		href={configure("urls.cla")}
-    					lang="en"
-	>
-    					{translate("frontend_licenseCLALinkText")}
- </textBase.a>
- </p>
- </section>
-    	);
-    }
+				<textBase.h2>
+					{translate("frontend_licenseHeading")}
+				</textBase.h2>
+				<p>
+					<span
+						lang="en"
+						onClick={this.handleLegaleseClick}
+					>
+						{translate("frontend_licenseGPLDescription")}
+					</span>
+					<br/>
+					<textBase.a
+						href={configure("urls.gpl")}
+						lang="en"
+					>
+						{translate("frontend_licenseGPLLinkText")}
+					</textBase.a>
+				</p>
+				<p>
+					{translate("frontend_licenseCLADescription")}
+					<br/>
+					<textBase.a
+						href={configure("urls.cla")}
+						lang="en"
+					>
+						{translate("frontend_licenseCLALinkText")}
+					</textBase.a>
+				</p>
+			</section>
+		);
+	}
 }

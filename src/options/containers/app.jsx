@@ -54,37 +54,37 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.PureComponent {
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionName: PropTypes.string.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	activeTabId: PropTypes.string.isRequired,
-    	shouldShowBackButton: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionName: PropTypes.string.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		activeTabId: PropTypes.string.isRequired,
+		shouldShowBackButton: PropTypes.bool.isRequired,
+	}
 
-    render() {
-    	const {
-    		actions,
-    		isPremiumEdition,
-    		versionName,
-    		systemType,
-    		osType,
-    		activeTabId,
-    		shouldShowBackButton,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			isPremiumEdition,
+			versionName,
+			systemType,
+			osType,
+			activeTabId,
+			shouldShowBackButton,
+		} = this.props;
 
-    	return (
-    		<Main
-    			actions={actions}
-    			isPremiumEdition={isPremiumEdition}
-    			versionName={versionName}
-    			systemType={systemType}
-    			osType={osType}
-    			activeTabId={activeTabId}
-    			shouldShowBackButton={shouldShowBackButton}
-    		/>
-    	);
-    }
+		return (
+			<Main
+				actions={actions}
+				isPremiumEdition={isPremiumEdition}
+				versionName={versionName}
+				systemType={systemType}
+				osType={osType}
+				activeTabId={activeTabId}
+				shouldShowBackButton={shouldShowBackButton}
+			/>
+		);
+	}
 }

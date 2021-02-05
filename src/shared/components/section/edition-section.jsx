@@ -30,87 +30,87 @@ export default
 @translateAttribute
 @configureAttribute
 class EditionSection extends React.PureComponent {
-    static defaultProps = {
-    	mode: "h2",
-    	isPremiumEdition: false,
-    	className: "",
-    };
+	static defaultProps = {
+		mode: "h2",
+		isPremiumEdition: false,
+		className: "",
+	};
 
-    static propTypes = {
-    	mode: PropTypes.oneOf([
-    		"p",
-    		"h2",
-    	]).isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	children: PropTypes.node.isRequired,
-    	className: PropTypes.string.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    	translate: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		mode: PropTypes.oneOf([
+			"p",
+			"h2",
+		]).isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		children: PropTypes.node.isRequired,
+		className: PropTypes.string.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		mode,
-    		isPremiumEdition,
-    		className,
-    		translate,
-    		configure,
-    	} = this.props;
+	render() {
+		const {
+			mode,
+			isPremiumEdition,
+			className,
+			translate,
+			configure,
+		} = this.props;
 
-    	// TODO: move resolving the name to the state, like edition type?
-    	const text = isPremiumEdition
-    		? translate("extensionShortName_Premium")
-    		: translate("extensionShortName_Free");
+		// TODO: move resolving the name to the state, like edition type?
+		const text = isPremiumEdition
+			? translate("extensionShortName_Premium")
+			: translate("extensionShortName_Free");
 
-    	const versionClassName = isPremiumEdition ? "premium-section" : "free-section";
+		const versionClassName = isPremiumEdition ? "premium-section" : "free-section";
 
-    	const classNames = [
-    		versionClassName,
-    		className,
-    	]
-    		.join(" ")
-    		.trim();
+		const classNames = [
+			versionClassName,
+			className,
+		]
+			.join(" ")
+			.trim();
 
-    	let HeadingElement = null;
+		let HeadingElement = null;
 
-    	switch (mode) {
-    		case "p":
-    			HeadingElement = textBase.p;
-    			break;
+		switch (mode) {
+			case "p":
+				HeadingElement = textBase.p;
+				break;
 
-    		case "h2":
-    			HeadingElement = textBase.h2;
-    			break;
+			case "h2":
+				HeadingElement = textBase.h2;
+				break;
 
-    		default:
-    			throw new Error("Uknown mode");
-    	}
+			default:
+				throw new Error("Uknown mode");
+		}
 
-    	return (
-    		<div className={classNames}>
-    			<HeadingElement>
-    				<textBase.a
-    					href={configure("urls.options-upgrade-from-demo")}
-    					lang="en"
-	>
-    					<TalkieEditionIcon
-    						isPremiumEdition={isPremiumEdition}
-    					/>
-    					{text}
- </textBase.a>
- </HeadingElement>
+		return (
+			<div className={classNames}>
+				<HeadingElement>
+					<textBase.a
+						href={configure("urls.options-upgrade-from-demo")}
+						lang="en"
+					>
+						<TalkieEditionIcon
+							isPremiumEdition={isPremiumEdition}
+						/>
+						{text}
+					</textBase.a>
+				</HeadingElement>
 
-    			{this.props.children}
- </div>
-    	);
-    }
+				{this.props.children}
+			</div>
+		);
+	}
 }

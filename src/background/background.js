@@ -284,7 +284,7 @@ function main() {
 			// NOTE: not supported in Firefox (2017-04-28).
 			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
 			// if ("onSuspendCanceled" in browser.runtime) {
-			//     browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
+			//	 browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
 			// }
 
 			// NOTE: used when the popup has been disabled.

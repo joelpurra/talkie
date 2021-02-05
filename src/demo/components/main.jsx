@@ -113,158 +113,158 @@ class Main extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	versionNumber: null,
-    	systemType: null,
-    	osType: null,
-    	activeTabId: null,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		versionNumber: null,
+		systemType: null,
+		osType: null,
+		activeTabId: null,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionNumber: PropTypes.string.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	activeTabId: PropTypes.string.isRequired,
-    	className: PropTypes.string.isRequired,
-    	translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionNumber: PropTypes.string.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		activeTabId: PropTypes.string.isRequired,
+		className: PropTypes.string.isRequired,
+		translate: PropTypes.func.isRequired,
+	};
 
-    componentDidMount() {
-    	// NOTE: execute outside the synchronous rendering.
-    	setTimeout(() => this.scrollToTop(), 100);
-    }
+	componentDidMount() {
+		// NOTE: execute outside the synchronous rendering.
+		setTimeout(() => this.scrollToTop(), 100);
+	}
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-    	if (this.props.activeTabId !== nextProps.activeTabId) {
-    		this.scrollToTop();
-    	}
-    }
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props.activeTabId !== nextProps.activeTabId) {
+			this.scrollToTop();
+		}
+	}
 
-    scrollToTop() {
-    	// NOTE: feels like this might be the wrong place to put this? Is there a better place?
-    	// NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
-    	document.body.scrollTop = 0;
-    	window.scroll(0, 0);
-    }
+	scrollToTop() {
+		// NOTE: feels like this might be the wrong place to put this? Is there a better place?
+		// NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
+		document.body.scrollTop = 0;
+		window.scroll(0, 0);
+	}
 
-    handleOpenShortKeysConfigurationClick() {
-    	this.props.actions.sharedNavigation.openShortKeysConfiguration();
-    }
+	handleOpenShortKeysConfigurationClick() {
+		this.props.actions.sharedNavigation.openShortKeysConfiguration();
+	}
 
-    handleLinkClick(url) {
-    	this.props.actions.sharedNavigation.openUrlInNewTab(url);
-    }
+	handleLinkClick(url) {
+		this.props.actions.sharedNavigation.openUrlInNewTab(url);
+	}
 
-    handleOptionsPageClick(e) {
-    	e.preventDefault();
-    	e.stopPropagation();
+	handleOptionsPageClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-    	this.props.actions.sharedNavigation.openOptionsPage();
+		this.props.actions.sharedNavigation.openOptionsPage();
 
-    	return false;
-    }
+		return false;
+	}
 
-    render() {
-    	const {
-    		activeTabId,
-    		isPremiumEdition,
-    		versionNumber,
-    		systemType,
-    		osType,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			activeTabId,
+			isPremiumEdition,
+			versionNumber,
+			systemType,
+			osType,
+			className,
+		} = this.props;
 
-    	const linksToShow = this.links;
+		const linksToShow = this.links;
 
-    	return (
-    		<div className={className}>
-    			<this.styled.navHeader>
-    				<Header
-    					isPremiumEdition={isPremiumEdition}
-    				/>
+		return (
+			<div className={className}>
+				<this.styled.navHeader>
+					<Header
+						isPremiumEdition={isPremiumEdition}
+					/>
 
-    				<NavContainer
-    					links={linksToShow}
-    				/>
+					<NavContainer
+						links={linksToShow}
+					/>
 
-    				<layoutBase.hr/>
- </this.styled.navHeader>
+					<layoutBase.hr/>
+				</this.styled.navHeader>
 
-    			<layoutBase.hr/>
+				<layoutBase.hr/>
 
-    			<this.styled.main
-    				onClick={this.handleClick}
-	>
-    				<TabContents
-    					id="welcome"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<WelcomeContainer/>
- </TabContents>
+				<this.styled.main
+					onClick={this.handleClick}
+				>
+					<TabContents
+						id="welcome"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<WelcomeContainer/>
+					</TabContents>
 
-    				<TabContents
-    					id="voices"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<VoicesContainer/>
- </TabContents>
+					<TabContents
+						id="voices"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<VoicesContainer/>
+					</TabContents>
 
-    				<TabContents
-    					id="usage"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<Usage
-    						isPremiumEdition={isPremiumEdition}
-    						systemType={systemType}
-    						osType={osType}
-    						onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
-    					/>
- </TabContents>
+					<TabContents
+						id="usage"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<Usage
+							isPremiumEdition={isPremiumEdition}
+							systemType={systemType}
+							osType={osType}
+							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+						/>
+					</TabContents>
 
-    				<TabContents
-    					id="features"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<Features
-    						isPremiumEdition={isPremiumEdition}
-    						systemType={systemType}
-    					/>
- </TabContents>
+					<TabContents
+						id="features"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<Features
+							isPremiumEdition={isPremiumEdition}
+							systemType={systemType}
+						/>
+					</TabContents>
 
-    				<TabContents
-    					id="support"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<Support
-    						systemType={systemType}
-    						osType={osType}
-    					/>
- </TabContents>
+					<TabContents
+						id="support"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<Support
+							systemType={systemType}
+							osType={osType}
+						/>
+					</TabContents>
 
-    				<TabContents
-    					id="about"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<About/>
- </TabContents>
- </this.styled.main>
+					<TabContents
+						id="about"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<About/>
+					</TabContents>
+				</this.styled.main>
 
-    			<this.styled.footerHr/>
+				<this.styled.footerHr/>
 
-    			<Footer
-    				versionNumber={versionNumber}
-    				optionsPageClick={this.handleOptionsPageClick}
-    			/>
- </div>
-    	);
-    }
+				<Footer
+					versionNumber={versionNumber}
+					optionsPageClick={this.handleOptionsPageClick}
+				/>
+			</div>
+		);
+	}
 }

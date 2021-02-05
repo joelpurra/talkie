@@ -33,41 +33,41 @@ class Checkbox extends React.PureComponent {
 		this.handleOnChange = this.handleOnChange.bind(this);
 	}
 
-    static defaultProps = {
-    	checked: false,
-    	disabled: false,
-    	onChange: null,
-    	className: "",
-    };
+	static defaultProps = {
+		checked: false,
+		disabled: false,
+		onChange: null,
+		className: "",
+	};
 
-    static propTypes = {
-    	checked: PropTypes.bool.isRequired,
-    	disabled: PropTypes.bool.isRequired,
-    	onChange: PropTypes.func.isRequired,
-    	className: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		checked: PropTypes.bool.isRequired,
+		disabled: PropTypes.bool.isRequired,
+		onChange: PropTypes.func.isRequired,
+		className: PropTypes.string.isRequired,
+	}
 
-    handleOnChange({
-    	target,
-    }) {
-    	this.props.onChange(target.checked === true);
-    }
+	handleOnChange({
+		target,
+	}) {
+		this.props.onChange(target.checked === true);
+	}
 
-    render() {
-    	const {
-    		checked,
-    		disabled,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			checked,
+			disabled,
+			className,
+		} = this.props;
 
-    	return (
-    		<input
-    			type="checkbox"
-    			checked={checked}
-    			disabled={disabled || null}
-    			onChange={this.handleOnChange}
-    			className={className}
-    		/>
-    	);
-    }
+		return (
+			<input
+				type="checkbox"
+				checked={checked}
+				disabled={disabled || null}
+				className={className}
+				onChange={this.handleOnChange}
+			/>
+		);
+	}
 }

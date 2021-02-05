@@ -107,136 +107,136 @@ class Main extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	activeTabId: null,
-    	shouldShowBackButton: false,
-    };
+	static defaultProps = {
+		activeTabId: null,
+		shouldShowBackButton: false,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	activeTabId: PropTypes.string.isRequired,
-    	shouldShowBackButton: PropTypes.bool.isRequired,
-    	className: PropTypes.string.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		activeTabId: PropTypes.string.isRequired,
+		shouldShowBackButton: PropTypes.bool.isRequired,
+		className: PropTypes.string.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	};
 
-    getLocationQuerystring() {
-    	let queryString = null;
+	getLocationQuerystring() {
+		let queryString = null;
 
-    	if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
-    		queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
-    	}
+		if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
+			queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
+		}
 
-    	return queryString;
-    }
+		return queryString;
+	}
 
-    UNSAFE_componentWillMount() {
-    	// TODO: move "loading shouldShowBackButton" from the querystring to an action, especially to avoid using the DynamicEnvironment in a component.
-    	const queryString = this.getLocationQuerystring();
-    	const shouldShowBackButton = Boolean(queryString && queryString.includes("from=popup"));
+	UNSAFE_componentWillMount() {
+		// TODO: move "loading shouldShowBackButton" from the querystring to an action, especially to avoid using the DynamicEnvironment in a component.
+		const queryString = this.getLocationQuerystring();
+		const shouldShowBackButton = Boolean(queryString && queryString.includes("from=popup"));
 
-    	this.props.actions.navigation.setShouldShowBackButton(shouldShowBackButton);
-    }
+		this.props.actions.navigation.setShouldShowBackButton(shouldShowBackButton);
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
 
-    	// NOTE: execute outside the synchronous rendering.
-    	setTimeout(() => this.scrollToTop(), 100);
-    }
+		// NOTE: execute outside the synchronous rendering.
+		setTimeout(() => this.scrollToTop(), 100);
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-    	if (this.props.activeTabId !== nextProps.activeTabId) {
-    		this.scrollToTop();
-    	}
-    }
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props.activeTabId !== nextProps.activeTabId) {
+			this.scrollToTop();
+		}
+	}
 
-    scrollToTop() {
-    	// NOTE: feels like this might be the wrong place to put this? Is there a better place?
-    	// NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
-    	document.body.scrollTop = 0;
-    	window.scroll(0, 0);
-    }
+	scrollToTop() {
+		// NOTE: feels like this might be the wrong place to put this? Is there a better place?
+		// NOTE: due to schuffling around elements, there's some confusion regarding which element to apply scrolling to.
+		document.body.scrollTop = 0;
+		window.scroll(0, 0);
+	}
 
-    handleLegaleseClick(text) {
-    	const legaleseText = text;
-    	const legaleseVoice = {
-    		name: "Zarvox",
-    		lang: "en-US",
-    	};
+	handleLegaleseClick(text) {
+		const legaleseText = text;
+		const legaleseVoice = {
+			name: "Zarvox",
+			lang: "en-US",
+		};
 
-    	this.props.actions.sharedVoices.speak(legaleseText, legaleseVoice);
-    }
+		this.props.actions.sharedVoices.speak(legaleseText, legaleseVoice);
+	}
 
-    handleLinkClick(url) {
-    	this.props.actions.sharedNavigation.openUrlInNewTab(url);
-    }
+	handleLinkClick(url) {
+		this.props.actions.sharedNavigation.openUrlInNewTab(url);
+	}
 
-    handleOpenShortKeysConfigurationClick() {
-    	this.props.actions.sharedNavigation.openShortKeysConfiguration();
-    }
+	handleOpenShortKeysConfigurationClick() {
+		this.props.actions.sharedNavigation.openShortKeysConfiguration();
+	}
 
-    render() {
-    	const {
-    		activeTabId,
-    		shouldShowBackButton,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			activeTabId,
+			shouldShowBackButton,
+			className,
+		} = this.props;
 
-    	const linksToShow = shouldShowBackButton ? this.links : this.links.slice(1);
+		const linksToShow = shouldShowBackButton ? this.links : this.links.slice(1);
 
-    	return (
-    		<div className={className}>
-    			<this.styled.navHeader>
-    				<NavContainer
-    					links={linksToShow}
-    				/>
+		return (
+			<div className={className}>
+				<this.styled.navHeader>
+					<NavContainer
+						links={linksToShow}
+					/>
 
-    				<layoutBase.hr/>
- </this.styled.navHeader>
+					<layoutBase.hr/>
+				</this.styled.navHeader>
 
-    			<this.styled.main>
-    				<TabContents
-    					id="voices"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<VoicesContainer/>
- </TabContents>
+				<this.styled.main>
+					<TabContents
+						id="voices"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<VoicesContainer/>
+					</TabContents>
 
-    				<TabContents
-    					id="text"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<TextContainer/>
- </TabContents>
+					<TabContents
+						id="text"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<TextContainer/>
+					</TabContents>
 
-    				<TabContents
-    					id="upgrade"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<EditionsContainer/>
- </TabContents>
+					<TabContents
+						id="upgrade"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<EditionsContainer/>
+					</TabContents>
 
-    				<TabContents
-    					id="about"
-    					activeTabId={activeTabId}
-    					onLinkClick={this.handleLinkClick}
-	>
-    					<AboutContainer
-    						onLicenseClick={this.handleLegaleseClick}
-    					/>
- </TabContents>
- </this.styled.main>
- </div>
-    	);
-    }
+					<TabContents
+						id="about"
+						activeTabId={activeTabId}
+						onLinkClick={this.handleLinkClick}
+					>
+						<AboutContainer
+							onLicenseClick={this.handleLegaleseClick}
+						/>
+					</TabContents>
+				</this.styled.main>
+			</div>
+		);
+	}
 }

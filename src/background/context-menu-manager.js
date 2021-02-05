@@ -238,7 +238,7 @@ export default class ContextMenuManager {
 
 						// // TODO: group by selected contexts before checking against limit.
 						// if (applicableContextMenuOptions > this.actionMenuLimit) {
-						//     throw new Error("Maximum number of menu items reached.");
+						//	 throw new Error("Maximum number of menu items reached.");
 						// }
 
 						const contextMenuOptionsCollectionPromises = applicableContextMenuOptions

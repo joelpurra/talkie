@@ -34,58 +34,58 @@ class ToggleDefault extends React.PureComponent {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-    static defaultProps = {
-    	languageCode: null,
-    	voiceName: null,
-    	disabled: true,
-    };
+	static defaultProps = {
+		languageCode: null,
+		voiceName: null,
+		disabled: true,
+	};
 
-    static propTypes = {
-    	onClick: PropTypes.func.isRequired,
-    	languageCode: PropTypes.string,
-    	voiceName: PropTypes.string,
-    	disabled: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		onClick: PropTypes.func.isRequired,
+		languageCode: PropTypes.string,
+		voiceName: PropTypes.string,
+		disabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	};
 
-    handleClick(/* eslint-disable no-unused-vars */e/* eslint-enable no-unused-vars */) {
-    	this.props.onClick();
-    }
+	handleClick(/* eslint-disable no-unused-vars */e/* eslint-enable no-unused-vars */) {
+		this.props.onClick();
+	}
 
-    render() {
-    	const {
-    		disabled,
-    		languageCode,
-    		translate,
-    		voiceName,
-    	} = this.props;
+	render() {
+		const {
+			disabled,
+			languageCode,
+			translate,
+			voiceName,
+		} = this.props;
 
-    	let buttonText = null;
+		let buttonText = null;
 
-    	if (languageCode === null || voiceName === null) {
-    		buttonText = translate("frontend_voicesSetAsLanguageEmptySelection");
-    	} else {
-    		const messageDetailsPlaceholders = [
-    			languageCode,
-    			voiceName,
-    		];
+		if (languageCode === null || voiceName === null) {
+			buttonText = translate("frontend_voicesSetAsLanguageEmptySelection");
+		} else {
+			const messageDetailsPlaceholders = [
+				languageCode,
+				voiceName,
+			];
 
-    		buttonText = translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
-    	}
+			buttonText = translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
+		}
 
-    	return (
-    		<tableBase.tbody>
-    			<tableBase.tr>
-    				<tableBase.td>
-    					<formBase.button
-    						disabled={disabled || null}
-    						onClick={this.handleClick}
-	>
-    						{buttonText}
- </formBase.button>
- </tableBase.td>
- </tableBase.tr>
- </tableBase.tbody>
-    	);
-    }
+		return (
+			<tableBase.tbody>
+				<tableBase.tr>
+					<tableBase.td>
+						<formBase.button
+							disabled={disabled || null}
+							onClick={this.handleClick}
+						>
+							{buttonText}
+						</formBase.button>
+					</tableBase.td>
+				</tableBase.tr>
+			</tableBase.tbody>
+		);
+	}
 }

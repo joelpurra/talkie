@@ -82,8 +82,8 @@ export default class ContentLogger {
 					.join(" ");
 
 				const logValues = JSON.stringify(logValuesArrayAsString)
-                    + ", "
-                    + JSON.stringify("background: #007F41; color: #FFFFFF; padding: 0.3em;");
+					+ ", "
+					+ JSON.stringify("background: #007F41; color: #FFFFFF; padding: 0.3em;");
 
 				const code = this.executeLogToPageWithColorCode.replace("%a", logValues);
 

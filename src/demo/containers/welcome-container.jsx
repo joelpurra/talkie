@@ -64,100 +64,100 @@ const mapDispatchToProps = (dispatch) => {
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class WelcomeContainer extends React.PureComponent {
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	systemType: false,
-    	osType: false,
-    	languages: [],
-    	languageGroups: [],
-    	availableBrowserLanguageWithInstalledVoice: [],
-    	voicesCount: 0,
-    	languagesCount: 0,
-    	languageGroupsCount: 0,
-    	speakTextInLanguageWithOverrides: null,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		systemType: false,
+		osType: false,
+		languages: [],
+		languageGroups: [],
+		availableBrowserLanguageWithInstalledVoice: [],
+		voicesCount: 0,
+		languagesCount: 0,
+		languageGroupsCount: 0,
+		speakTextInLanguageWithOverrides: null,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	availableBrowserLanguageWithInstalledVoice: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	voicesCount: PropTypes.number.isRequired,
-    	languagesCount: PropTypes.number.isRequired,
-    	languageGroupsCount: PropTypes.number.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		availableBrowserLanguageWithInstalledVoice: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		voicesCount: PropTypes.number.isRequired,
+		languagesCount: PropTypes.number.isRequired,
+		languageGroupsCount: PropTypes.number.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+	}
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-    	if (nextProps.voicesCount === 0) {
-    		// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
-    		// NOTE: sometimes the browser (Firefox?) has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
-    		// NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
-    		const loadVoicesRetryDelay = 250;
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (nextProps.voicesCount === 0) {
+			// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
+			// NOTE: sometimes the browser (Firefox?) has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
+			// NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
+			const loadVoicesRetryDelay = 250;
 
-    		setTimeout(
-    			() => {
-    				// TODO: is this the best place to load data?
-    				this.props.actions.sharedVoices.loadVoices();
-    			},
-    			loadVoicesRetryDelay,
-    		);
-    	}
-    }
+			setTimeout(
+				() => {
+					// TODO: is this the best place to load data?
+					this.props.actions.sharedVoices.loadVoices();
+				},
+				loadVoicesRetryDelay,
+			);
+		}
+	}
 
-    render() {
-    	const {
-    		actions,
-    		isPremiumEdition,
-    		systemType,
-    		osType,
-    		voicesCount,
-    		languagesCount,
-    		languageGroupsCount,
-    		languages,
-    		languageGroups,
-    		availableBrowserLanguageWithInstalledVoice,
-    	} = this.props;
+	render() {
+		const {
+			actions,
+			isPremiumEdition,
+			systemType,
+			osType,
+			voicesCount,
+			languagesCount,
+			languageGroupsCount,
+			languages,
+			languageGroups,
+			availableBrowserLanguageWithInstalledVoice,
+		} = this.props;
 
-    	// TODO: create action and store as redux state?
-    	const availableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoice
-    		.find((languageCode) => {
-    			/* eslint-disable no-sync */
-    			return Boolean(talkieLocaleHelper.getSampleTextSync(languageCode));
-    			/* eslint-enable no-sync */
-    		});
+		// TODO: create action and store as redux state?
+		const availableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoice
+			.find((languageCode) => {
+				/* eslint-disable no-sync */
+				return Boolean(talkieLocaleHelper.getSampleTextSync(languageCode));
+				/* eslint-enable no-sync */
+			});
 
-    	const firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoiceAndSampleText || null;
+		const firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoiceAndSampleText || null;
 
-    	// TODO: create action and store as redux state?
-    	const sampleTextLanguageCode = firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText || null;
-    	let sampleText = null;
+		// TODO: create action and store as redux state?
+		const sampleTextLanguageCode = firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText || null;
+		let sampleText = null;
 
-    	if (sampleTextLanguageCode) {
-    		/* eslint-disable no-sync */
-    		sampleText = talkieLocaleHelper.getSampleTextSync(firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText);
-    		/* eslint-enable no-sync */
-    	}
+		if (sampleTextLanguageCode) {
+			/* eslint-disable no-sync */
+			sampleText = talkieLocaleHelper.getSampleTextSync(firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText);
+			/* eslint-enable no-sync */
+		}
 
-    	// TODO: create action and store as redux state?
-    	const translationLocale = localeProvider.getTranslationLocale();
-    	const canSpeakInTranslatedLocale = languages.includes(translationLocale) || languageGroups.includes(translationLocale);
+		// TODO: create action and store as redux state?
+		const translationLocale = localeProvider.getTranslationLocale();
+		const canSpeakInTranslatedLocale = languages.includes(translationLocale) || languageGroups.includes(translationLocale);
 
-    	return (
-    		<Welcome
-    			isPremiumEdition={isPremiumEdition}
-    			systemType={systemType}
-    			osType={osType}
-    			voicesCount={voicesCount}
-    			languagesCount={languagesCount}
-    			languageGroupsCount={languageGroupsCount}
-    			canSpeakInTranslatedLocale={canSpeakInTranslatedLocale}
-    			sampleTextLanguageCode={sampleTextLanguageCode}
-    			sampleText={sampleText}
-    			speakTextInLanguageWithOverrides={actions.sharedSpeaking.speakTextInLanguageWithOverrides}
-    		/>
-    	);
-    }
+		return (
+			<Welcome
+				isPremiumEdition={isPremiumEdition}
+				systemType={systemType}
+				osType={osType}
+				voicesCount={voicesCount}
+				languagesCount={languagesCount}
+				languageGroupsCount={languageGroupsCount}
+				canSpeakInTranslatedLocale={canSpeakInTranslatedLocale}
+				sampleTextLanguageCode={sampleTextLanguageCode}
+				sampleText={sampleText}
+				speakTextInLanguageWithOverrides={actions.sharedSpeaking.speakTextInLanguageWithOverrides}
+			/>
+		);
+	}
 }

@@ -24,55 +24,55 @@ import React from "react";
 import Icon from "./icon.jsx";
 
 export default class TalkieEditionIcon extends React.PureComponent {
-    static defaultProps = {
-    	mode: "inline",
-    	size: "1.3em",
-    	marginLeft: "0.3em",
-    	marginRight: "0.3em",
-    	className: "",
-    	isPremiumEdition: false,
-    };
+	static defaultProps = {
+		mode: "inline",
+		size: "1.3em",
+		marginLeft: "0.3em",
+		marginRight: "0.3em",
+		className: "",
+		isPremiumEdition: false,
+	};
 
-    static propTypes = {
-    	mode: PropTypes.oneOf([
-    		"inline",
-    		"standalone",
-    	]).isRequired,
-    	size: PropTypes.string.isRequired,
-    	marginLeft: PropTypes.string.isRequired,
-    	marginRight: PropTypes.string.isRequired,
-    	className: PropTypes.string.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		mode: PropTypes.oneOf([
+			"inline",
+			"standalone",
+		]).isRequired,
+		size: PropTypes.string.isRequired,
+		marginLeft: PropTypes.string.isRequired,
+		marginRight: PropTypes.string.isRequired,
+		className: PropTypes.string.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+	}
 
-    render() {
-    	const {
-    		mode,
-    		size,
-    		marginLeft,
-    		marginRight,
-    		className,
-    		isPremiumEdition,
-    	} = this.props;
+	render() {
+		const {
+			mode,
+			size,
+			marginLeft,
+			marginRight,
+			className,
+			isPremiumEdition,
+		} = this.props;
 
-    	const isPremiumEditionClassName = isPremiumEdition ? "premium" : "free";
+		const isPremiumEditionClassName = isPremiumEdition ? "premium" : "free";
 
-    	const classNames = [
-    		"icon-talkie",
-    		isPremiumEditionClassName,
-    		className,
-    	]
-    		.join(" ")
-    		.trim();
+		const classNames = [
+			"icon-talkie",
+			isPremiumEditionClassName,
+			className,
+		]
+			.join(" ")
+			.trim();
 
-    	return (
-    		<Icon
-    			mode={mode}
-    			size={size}
-    			marginLeft={marginLeft}
-    			marginRight={marginRight}
-    			className={classNames}
-    		/>
-    	);
-    }
+		return (
+			<Icon
+				mode={mode}
+				size={size}
+				marginLeft={marginLeft}
+				marginRight={marginRight}
+				className={classNames}
+			/>
+		);
+	}
 }

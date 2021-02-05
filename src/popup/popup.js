@@ -58,9 +58,9 @@ const passClickToBackground = () => promiseTry(
 
 const shouldPassClickOnLoad = () => {
 	const containsBlockerString = document.location
-        && typeof document.location.search === "string"
-        && document.location.search.length > 0
-        && document.location.search.includes("passclick=false");
+		&& typeof document.location.search === "string"
+		&& document.location.search.length > 0
+		&& document.location.search.includes("passclick=false");
 
 	return !containsBlockerString;
 };

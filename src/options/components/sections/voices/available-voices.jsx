@@ -41,87 +41,87 @@ class AvailableVoices extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	voices: [],
-    	value: null,
-    	effectiveVoiceNameForSelectedLanguage: null,
-    	disabled: true,
-    };
+	static defaultProps = {
+		voices: [],
+		value: null,
+		effectiveVoiceNameForSelectedLanguage: null,
+		disabled: true,
+	};
 
-    static propTypes = {
-    	voices: PropTypes.arrayOf(PropTypes.shape({
-    		"default": PropTypes.bool.isRequired,
-    		lang: PropTypes.string.isRequired,
-    		localService: PropTypes.bool.isRequired,
-    		name: PropTypes.string.isRequired,
-    		voiceURI: PropTypes.string.isRequired,
-    	})).isRequired,
-    	value: PropTypes.string,
-    	effectiveVoiceNameForSelectedLanguage: PropTypes.string,
-    	onChange: PropTypes.func.isRequired,
-    	disabled: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		voices: PropTypes.arrayOf(PropTypes.shape({
+			"default": PropTypes.bool.isRequired,
+			lang: PropTypes.string.isRequired,
+			localService: PropTypes.bool.isRequired,
+			name: PropTypes.string.isRequired,
+			voiceURI: PropTypes.string.isRequired,
+		})).isRequired,
+		value: PropTypes.string,
+		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
+		onChange: PropTypes.func.isRequired,
+		disabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	};
 
-    handleChange(voiceName) {
-    	this.props.onChange(voiceName);
-    }
+	handleChange(voiceName) {
+		this.props.onChange(voiceName);
+	}
 
-    render() {
-    	const {
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			translate,
+		} = this.props;
 
-    	const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
+		const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
 
-    	const voicesOptions = this.props.voices.map(
-    		(voice) => {
-    			const isEffectiveVoiceNameForSelectedLanguage = (
-    				this.props.effectiveVoiceNameForSelectedLanguage
-                    && this.props.effectiveVoiceNameForSelectedLanguage === voice.name
-    			);
+		const voicesOptions = this.props.voices.map(
+			(voice) => {
+				const isEffectiveVoiceNameForSelectedLanguage = (
+					this.props.effectiveVoiceNameForSelectedLanguage
+					&& this.props.effectiveVoiceNameForSelectedLanguage === voice.name
+				);
 
-    			const VoiceOption = isEffectiveVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
+				const VoiceOption = isEffectiveVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
 
-    			let voiceNameAndFeaturesText = voice.name;
+				let voiceNameAndFeaturesText = voice.name;
 
-    			const voiceFeatures = [];
+				const voiceFeatures = [];
 
-    			if (voice.localService === false) {
-    				voiceFeatures.push(translatedVoiceFeatureOnline);
-    			}
+				if (voice.localService === false) {
+					voiceFeatures.push(translatedVoiceFeatureOnline);
+				}
 
-    			if (voiceFeatures.length > 0) {
-    				voiceNameAndFeaturesText += " (";
-    				voiceNameAndFeaturesText += voiceFeatures.join(", ");
-    				voiceNameAndFeaturesText += ")";
-    			}
+				if (voiceFeatures.length > 0) {
+					voiceNameAndFeaturesText += " (";
+					voiceNameAndFeaturesText += voiceFeatures.join(", ");
+					voiceNameAndFeaturesText += ")";
+				}
 
-    			if (isEffectiveVoiceNameForSelectedLanguage) {
-    				voiceNameAndFeaturesText += " ✓";
-    			}
+				if (isEffectiveVoiceNameForSelectedLanguage) {
+					voiceNameAndFeaturesText += " ✓";
+				}
 
-    			return (
-	<VoiceOption
-	key={voice.name}
-    				// TODO: proper way to store/look up objects?
-	value={voice.name}
-    				>
-	{voiceNameAndFeaturesText}
-    				</VoiceOption>
-    			);
-    		},
-    	);
+				return (
+					<VoiceOption
+						key={voice.name}
+						// TODO: proper way to store/look up objects?
+						value={voice.name}
+					>
+						{voiceNameAndFeaturesText}
+					</VoiceOption>
+				);
+			},
+		);
 
-    	return (
-    		<MultilineSelect
-    			size={7}
-    			onChange={this.handleChange}
-    			value={this.props.value}
-    			disabled={this.props.disabled}
-	>
-    			{voicesOptions}
- </MultilineSelect>
-    	);
-    }
+		return (
+			<MultilineSelect
+				size={7}
+				value={this.props.value}
+				disabled={this.props.disabled}
+				onChange={this.handleChange}
+			>
+				{voicesOptions}
+			</MultilineSelect>
+		);
+	}
 }

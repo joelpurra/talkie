@@ -55,251 +55,251 @@ class Usage extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	systemType: null,
-    	osType: null,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		systemType: null,
+		osType: null,
+	};
 
-    static propTypes = {
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	systemType: PropTypes.string.isRequired,
-    	osType: PropTypes.string,
-    	onOpenShortKeysConfigurationClick: PropTypes.func.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		isPremiumEdition: PropTypes.bool.isRequired,
+		systemType: PropTypes.string.isRequired,
+		osType: PropTypes.string,
+		onOpenShortKeysConfigurationClick: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    handleOpenShortKeysConfigurationClick(e) {
-    	e.preventDefault();
-    	e.stopPropagation();
+	handleOpenShortKeysConfigurationClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-    	this.props.onOpenShortKeysConfigurationClick();
+		this.props.onOpenShortKeysConfigurationClick();
 
-    	return false;
-    }
+		return false;
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		systemType,
-    		osType,
-    		configure,
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			systemType,
+			osType,
+			configure,
+			translate,
+		} = this.props;
 
-    	return (
-    		<section>
-    			<listBase.ul>
-    				<listBase.li>
-    					{translate("frontend_usageStep01")}
- </listBase.li>
-    				<listBase.li>
-    					{translate("frontend_usageStep02")}
-    					<TalkieEditionIcon
-    						isPremiumEdition={isPremiumEdition}
-    					/>
- </listBase.li>
- </listBase.ul>
-    			<p>
-    				{translate("frontend_usageSelectionContextMenuDescription")}
- </p>
+		return (
+			<section>
+				<listBase.ul>
+					<listBase.li>
+						{translate("frontend_usageStep01")}
+					</listBase.li>
+					<listBase.li>
+						{translate("frontend_usageStep02")}
+						<TalkieEditionIcon
+							isPremiumEdition={isPremiumEdition}
+						/>
+					</listBase.li>
+				</listBase.ul>
+				<p>
+					{translate("frontend_usageSelectionContextMenuDescription")}
+				</p>
 
-    			{/* NOTE: read from clipboard feature not available in Firefox */}
-    			<Discretional
-    				enabled={systemType === "chrome"}
-	>
-    				<PremiumSection
-    					mode="p"
-	>
-    					<p>
-    						{translate("frontend_usageReadclipboard")}
- </p>
- </PremiumSection>
- </Discretional>
+				{/* NOTE: read from clipboard feature not available in Firefox */}
+				<Discretional
+					enabled={systemType === "chrome"}
+				>
+					<PremiumSection
+						mode="p"
+					>
+						<p>
+							{translate("frontend_usageReadclipboard")}
+						</p>
+					</PremiumSection>
+				</Discretional>
 
-    			<textBase.h2>
-    				{translate("frontend_usageShortcutHeading")}
- </textBase.h2>
+				<textBase.h2>
+					{translate("frontend_usageShortcutHeading")}
+				</textBase.h2>
 
-    			<p>
-    				{translate("frontend_usageShortcutKeyDescription")}
- </p>
+				<p>
+					{translate("frontend_usageShortcutKeyDescription")}
+				</p>
 
-    			<div className="talkie-block">
-    				<this.styled.shortcutKeysTable>
-    					<colgroup>
-    						<col width="100%"/>
-    						<col width="0*"/>
- </colgroup>
-    					<tableBase.tbody>
-    						<tableBase.tr>
-    							<tableBase.td>
-    								<Icon className="icon-small-play"/>
-    								<lighter.span>
-		/
-    								</lighter.span>
-    								<Icon className="icon-small-stop"/>
+				<div className="talkie-block">
+					<this.styled.shortcutKeysTable>
+						<colgroup>
+							<col width="100%"/>
+							<col width="0*"/>
+						</colgroup>
+						<tableBase.tbody>
+							<tableBase.tr>
+								<tableBase.td>
+									<Icon className="icon-small-play"/>
+									<lighter.span>
+										/
+									</lighter.span>
+									<Icon className="icon-small-stop"/>
 
-    								{translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
- </tableBase.td>
-    							<this.styled.shortcutKeysTd>
-    								<Discretional
-    									enabled={osType === "mac"}
-	>
-    									<textBase.kbd>
-		⌥
-    									</textBase.kbd>
- </Discretional>
+									{translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
+								</tableBase.td>
+								<this.styled.shortcutKeysTd>
+									<Discretional
+										enabled={osType === "mac"}
+									>
+										<textBase.kbd>
+											⌥
+										</textBase.kbd>
+									</Discretional>
 
-    								<Discretional
-    									enabled={osType !== "mac"}
-	>
-    									<textBase.kbd>
-		Alt
-    									</textBase.kbd>
- </Discretional>
+									<Discretional
+										enabled={osType !== "mac"}
+									>
+										<textBase.kbd>
+											Alt
+										</textBase.kbd>
+									</Discretional>
 
-		+
-    								<textBase.kbd>
-	Shift
-    								</textBase.kbd>
-		+
-    								<textBase.kbd>
-	A
-    								</textBase.kbd>
- </this.styled.shortcutKeysTd>
- </tableBase.tr>
+									+
+									<textBase.kbd>
+										Shift
+									</textBase.kbd>
+									+
+									<textBase.kbd>
+										A
+									</textBase.kbd>
+								</this.styled.shortcutKeysTd>
+							</tableBase.tr>
 
-    						{/* NOTE: Shortcut key already in use in Firefox */}
-    						<Discretional
-    							enabled={systemType === "chrome"}
-	>
-    							<tableBase.tr>
-    								<tableBase.td>
-    									<Icon className="icon-small-play"/>
-    									<lighter.span>
-		/
-    									</lighter.span>
-    									<Icon className="icon-small-stop"/>
+							{/* NOTE: Shortcut key already in use in Firefox */}
+							<Discretional
+								enabled={systemType === "chrome"}
+							>
+								<tableBase.tr>
+									<tableBase.td>
+										<Icon className="icon-small-play"/>
+										<lighter.span>
+											/
+										</lighter.span>
+										<Icon className="icon-small-stop"/>
 
-    									{translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
- </tableBase.td>
-    								<this.styled.shortcutKeysTd>
-    									<Discretional
-    										enabled={osType === "mac"}
-	>
-    										<textBase.kbd>
-		⌘
-    										</textBase.kbd>
- </Discretional>
+										{translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
+									</tableBase.td>
+									<this.styled.shortcutKeysTd>
+										<Discretional
+											enabled={osType === "mac"}
+										>
+											<textBase.kbd>
+												⌘
+											</textBase.kbd>
+										</Discretional>
 
-    									<Discretional
-    										enabled={osType !== "mac"}
-	>
-    										<textBase.kbd>
-		Ctrl
-    										</textBase.kbd>
- </Discretional>
+										<Discretional
+											enabled={osType !== "mac"}
+										>
+											<textBase.kbd>
+												Ctrl
+											</textBase.kbd>
+										</Discretional>
 
-		+
-    									<textBase.kbd>
-	Shift
-    									</textBase.kbd>
-		+
-    									<textBase.kbd>
-	A
-    									</textBase.kbd>
- </this.styled.shortcutKeysTd>
- </tableBase.tr>
- </Discretional>
+										+
+										<textBase.kbd>
+											Shift
+										</textBase.kbd>
+										+
+										<textBase.kbd>
+											A
+										</textBase.kbd>
+									</this.styled.shortcutKeysTd>
+								</tableBase.tr>
+							</Discretional>
 
-    						{/* NOTE: read from clipboard feature not available in Firefox */}
-    						<Discretional
-    							enabled={systemType === "chrome"}
-	>
-    							<tableBase.tr className="premium-section">
-    								<tableBase.td colSpan="2">
-    									<textBase.a
-    										href={configure("urls.options-upgrade-from-demo")}
-    										lang="en"
-	>
-    										<TalkiePremiumIcon/>
-    										{translate("extensionShortName_Premium")}
- </textBase.a>
- </tableBase.td>
- </tableBase.tr>
- </Discretional>
+							{/* NOTE: read from clipboard feature not available in Firefox */}
+							<Discretional
+								enabled={systemType === "chrome"}
+							>
+								<tableBase.tr className="premium-section">
+									<tableBase.td colSpan="2">
+										<textBase.a
+											href={configure("urls.options-upgrade-from-demo")}
+											lang="en"
+										>
+											<TalkiePremiumIcon/>
+											{translate("extensionShortName_Premium")}
+										</textBase.a>
+									</tableBase.td>
+								</tableBase.tr>
+							</Discretional>
 
-    						{/* NOTE: read from clipboard feature not available in Firefox */}
-    						<Discretional
-    							enabled={systemType === "chrome"}
-	>
-    							<tableBase.tr className="premium-section">
-    								<tableBase.td>
-    									<Icon className="icon-small-speaker"/>
+							{/* NOTE: read from clipboard feature not available in Firefox */}
+							<Discretional
+								enabled={systemType === "chrome"}
+							>
+								<tableBase.tr className="premium-section">
+									<tableBase.td>
+										<Icon className="icon-small-speaker"/>
 
-    									{translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
- </tableBase.td>
-    								<this.styled.shortcutKeysTd>
-    									<Discretional
-    										enabled={osType === "mac"}
-	>
-    										<textBase.kbd>
-		⌘
-    										</textBase.kbd>
- </Discretional>
+										{translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
+									</tableBase.td>
+									<this.styled.shortcutKeysTd>
+										<Discretional
+											enabled={osType === "mac"}
+										>
+											<textBase.kbd>
+												⌘
+											</textBase.kbd>
+										</Discretional>
 
-    									<Discretional
-    										enabled={osType !== "mac"}
-	>
-    										<textBase.kbd>
-		Ctrl
-    										</textBase.kbd>
- </Discretional>
+										<Discretional
+											enabled={osType !== "mac"}
+										>
+											<textBase.kbd>
+												Ctrl
+											</textBase.kbd>
+										</Discretional>
 
-		+
-    									<textBase.kbd>
-	Shift
-    									</textBase.kbd>
-		+
-    									<textBase.kbd>
-	1
-    									</textBase.kbd>
- </this.styled.shortcutKeysTd>
- </tableBase.tr>
- </Discretional>
- </tableBase.tbody>
- </this.styled.shortcutKeysTable>
- </div>
+										+
+										<textBase.kbd>
+											Shift
+										</textBase.kbd>
+										+
+										<textBase.kbd>
+											1
+										</textBase.kbd>
+									</this.styled.shortcutKeysTd>
+								</tableBase.tr>
+							</Discretional>
+						</tableBase.tbody>
+					</this.styled.shortcutKeysTable>
+				</div>
 
-    			<lighter.p>
-    				{translate("frontend_usageShortcutKeyAlternative03")}
- </lighter.p>
+				<lighter.p>
+					{translate("frontend_usageShortcutKeyAlternative03")}
+				</lighter.p>
 
-    			{/* NOTE: can't change shortcut keys in Firefox */}
-    			<Discretional
-    				enabled={systemType === "chrome"}
-	>
-    				<p>
-    					<textBase.a
-    						href={configure("urls.shortcut-keys")}
-    						onClick={this.handleOpenShortKeysConfigurationClick}
-	>
-    						{translate("frontend_usageShortcutKeyAlternative04")}
- </textBase.a>
- </p>
- </Discretional>
- </section>
-    	);
-    }
+				{/* NOTE: can't change shortcut keys in Firefox */}
+				<Discretional
+					enabled={systemType === "chrome"}
+				>
+					<p>
+						<textBase.a
+							href={configure("urls.shortcut-keys")}
+							onClick={this.handleOpenShortKeysConfigurationClick}
+						>
+							{translate("frontend_usageShortcutKeyAlternative04")}
+						</textBase.a>
+					</p>
+				</Discretional>
+			</section>
+		);
+	}
 }

@@ -37,31 +37,31 @@ export default class Status extends React.PureComponent {
 		};
 	}
 
-    static defaultProps = {
-    	min: 0,
-    	current: 0,
-    	max: 0,
-    }
+	static defaultProps = {
+		min: 0,
+		current: 0,
+		max: 0,
+	}
 
-    static propTypes = {
-    	min: PropTypes.number.isRequired,
-    	current: PropTypes.number.isRequired,
-    	max: PropTypes.number.isRequired,
-    }
+	static propTypes = {
+		min: PropTypes.number.isRequired,
+		current: PropTypes.number.isRequired,
+		max: PropTypes.number.isRequired,
+	}
 
-    render() {
-    	const {
-    		min,
-    		current,
-    		max,
-    	} = this.props;
+	render() {
+		const {
+			min,
+			current,
+			max,
+		} = this.props;
 
-    	return (
-    		<this.styled.progress
-    			min={min}
-    			value={current}
-    			max={max}
-    		 />
-    	);
-    }
+		return (
+			<this.styled.progress
+				min={min}
+				value={current}
+				max={max}
+			 />
+		);
+	}
 }

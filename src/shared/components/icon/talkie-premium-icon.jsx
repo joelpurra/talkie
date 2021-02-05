@@ -24,43 +24,43 @@ import React from "react";
 import TalkieEditionIcon from "./talkie-edition-icon.jsx";
 
 export default class TalkiePremiumIcon extends React.PureComponent {
-    static defaultProps = {
-    	mode: "inline",
-    	size: "1.3em",
-    	marginLeft: "0.3em",
-    	marginRight: "0.3em",
-    	className: "",
-    };
+	static defaultProps = {
+		mode: "inline",
+		size: "1.3em",
+		marginLeft: "0.3em",
+		marginRight: "0.3em",
+		className: "",
+	};
 
-    static propTypes = {
-    	mode: PropTypes.oneOf([
-    		"inline",
-    		"standalone",
-    	]).isRequired,
-    	size: PropTypes.string.isRequired,
-    	marginLeft: PropTypes.string.isRequired,
-    	marginRight: PropTypes.string.isRequired,
-    	className: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		mode: PropTypes.oneOf([
+			"inline",
+			"standalone",
+		]).isRequired,
+		size: PropTypes.string.isRequired,
+		marginLeft: PropTypes.string.isRequired,
+		marginRight: PropTypes.string.isRequired,
+		className: PropTypes.string.isRequired,
+	}
 
-    render() {
-    	const {
-    		mode,
-    		size,
-    		marginLeft,
-    		marginRight,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			mode,
+			size,
+			marginLeft,
+			marginRight,
+			className,
+		} = this.props;
 
-    	return (
-    		<TalkieEditionIcon
-    			mode={mode}
-    			size={size}
-    			marginLeft={marginLeft}
-    			marginRight={marginRight}
-    			className={className}
-    			isPremiumEdition
-    		/>
-    	);
-    }
+		return (
+			<TalkieEditionIcon
+				isPremiumEdition
+				mode={mode}
+				size={size}
+				marginLeft={marginLeft}
+				marginRight={marginRight}
+				className={className}
+			/>
+		);
+	}
 }

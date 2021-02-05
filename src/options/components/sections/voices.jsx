@@ -54,224 +54,224 @@ class Voices extends React.PureComponent {
 		this.handlePitchChange = this.handlePitchChange.bind(this);
 	}
 
-    static defaultProps = {
-    	languages: [],
-    	languageGroups: [],
-    	languagesByLanguageGroup: {},
-    	voices: [],
-    	voicesByLanguage: {},
-    	voicesByLanguageGroup: {},
-    	selectedLanguageCode: null,
-    	selectedVoiceName: null,
-    	effectiveVoiceNameForSelectedLanguage: null,
-    	sampleText: null,
-    	rateForSelectedVoice: 1,
-    	pitchForSelectedVoice: 1,
-    	isPremiumEdition: false,
-    };
+	static defaultProps = {
+		languages: [],
+		languageGroups: [],
+		languagesByLanguageGroup: {},
+		voices: [],
+		voicesByLanguage: {},
+		voicesByLanguageGroup: {},
+		selectedLanguageCode: null,
+		selectedVoiceName: null,
+		effectiveVoiceNameForSelectedLanguage: null,
+		sampleText: null,
+		rateForSelectedVoice: 1,
+		pitchForSelectedVoice: 1,
+		isPremiumEdition: false,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	voices: PropTypes.arrayOf(PropTypes.shape({
-    		"default": PropTypes.bool.isRequired,
-    		lang: PropTypes.string.isRequired,
-    		localService: PropTypes.bool.isRequired,
-    		name: PropTypes.string.isRequired,
-    		voiceURI: PropTypes.string.isRequired,
-    	})).isRequired,
-    	voicesByLanguage: PropTypes.objectOf(
-    		PropTypes.arrayOf(PropTypes.shape({
-    			"default": PropTypes.bool.isRequired,
-    			lang: PropTypes.string.isRequired,
-    			localService: PropTypes.bool.isRequired,
-    			name: PropTypes.string.isRequired,
-    			voiceURI: PropTypes.string.isRequired,
-    		})).isRequired,
-    	).isRequired,
-    	voicesByLanguageGroup: PropTypes.objectOf(
-    		PropTypes.arrayOf(PropTypes.shape({
-    			"default": PropTypes.bool.isRequired,
-    			lang: PropTypes.string.isRequired,
-    			localService: PropTypes.bool.isRequired,
-    			name: PropTypes.string.isRequired,
-    			voiceURI: PropTypes.string.isRequired,
-    		})).isRequired,
-    	).isRequired,
-    	languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	languagesByLanguageGroup: PropTypes.objectOf(
-    		PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    	).isRequired,
-    	selectedLanguageCode: PropTypes.string,
-    	selectedVoiceName: PropTypes.string,
-    	effectiveVoiceNameForSelectedLanguage: PropTypes.string,
-    	sampleText: PropTypes.string,
-    	rateForSelectedVoice: PropTypes.number.isRequired,
-    	pitchForSelectedVoice: PropTypes.number.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		voices: PropTypes.arrayOf(PropTypes.shape({
+			"default": PropTypes.bool.isRequired,
+			lang: PropTypes.string.isRequired,
+			localService: PropTypes.bool.isRequired,
+			name: PropTypes.string.isRequired,
+			voiceURI: PropTypes.string.isRequired,
+		})).isRequired,
+		voicesByLanguage: PropTypes.objectOf(
+			PropTypes.arrayOf(PropTypes.shape({
+				"default": PropTypes.bool.isRequired,
+				lang: PropTypes.string.isRequired,
+				localService: PropTypes.bool.isRequired,
+				name: PropTypes.string.isRequired,
+				voiceURI: PropTypes.string.isRequired,
+			})).isRequired,
+		).isRequired,
+		voicesByLanguageGroup: PropTypes.objectOf(
+			PropTypes.arrayOf(PropTypes.shape({
+				"default": PropTypes.bool.isRequired,
+				lang: PropTypes.string.isRequired,
+				localService: PropTypes.bool.isRequired,
+				name: PropTypes.string.isRequired,
+				voiceURI: PropTypes.string.isRequired,
+			})).isRequired,
+		).isRequired,
+		languages: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languageGroups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		languagesByLanguageGroup: PropTypes.objectOf(
+			PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+		).isRequired,
+		selectedLanguageCode: PropTypes.string,
+		selectedVoiceName: PropTypes.string,
+		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
+		sampleText: PropTypes.string,
+		rateForSelectedVoice: PropTypes.number.isRequired,
+		pitchForSelectedVoice: PropTypes.number.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    handleLanguageChange(value) {
-    	this.props.actions.voices.loadSelectedLanguageCode(value);
-    }
+	handleLanguageChange(value) {
+		this.props.actions.voices.loadSelectedLanguageCode(value);
+	}
 
-    handleVoiceChange(value) {
-    	this.props.actions.voices.loadSelectedVoiceName(value);
-    }
+	handleVoiceChange(value) {
+		this.props.actions.voices.loadSelectedVoiceName(value);
+	}
 
-    handleSampleTextChange(value) {
-    	this.props.actions.voices.setSampleText(value);
-    }
+	handleSampleTextChange(value) {
+		this.props.actions.voices.setSampleText(value);
+	}
 
-    handleToogleDefaultClick() {
-    	this.props.actions.voices.storeEffectiveVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
-    }
+	handleToogleDefaultClick() {
+		this.props.actions.voices.storeEffectiveVoiceNameForLanguage(this.props.selectedLanguageCode, this.props.selectedVoiceName);
+	}
 
-    handleRateChange(value) {
-    	this.props.actions.voices.storeVoiceRateOverride(this.props.selectedVoiceName, value);
-    }
+	handleRateChange(value) {
+		this.props.actions.voices.storeVoiceRateOverride(this.props.selectedVoiceName, value);
+	}
 
-    handlePitchChange(value) {
-    	this.props.actions.voices.storeVoicePitchOverride(this.props.selectedVoiceName, value);
-    }
+	handlePitchChange(value) {
+		this.props.actions.voices.storeVoicePitchOverride(this.props.selectedVoiceName, value);
+	}
 
-    render() {
-    	const {
-    		effectiveVoiceNameForSelectedLanguage,
-    		isPremiumEdition,
-    		languages,
-    		pitchForSelectedVoice,
-    		rateForSelectedVoice,
-    		sampleText,
-    		selectedLanguageCode,
-    		selectedVoiceName,
-    		translate,
-    		voices,
-    		voicesByLanguage,
-    		voicesByLanguageGroup,
-    		languageGroups,
-    		languagesByLanguageGroup,
-    	} = this.props;
+	render() {
+		const {
+			effectiveVoiceNameForSelectedLanguage,
+			isPremiumEdition,
+			languages,
+			pitchForSelectedVoice,
+			rateForSelectedVoice,
+			sampleText,
+			selectedLanguageCode,
+			selectedVoiceName,
+			translate,
+			voices,
+			voicesByLanguage,
+			voicesByLanguageGroup,
+			languageGroups,
+			languagesByLanguageGroup,
+		} = this.props;
 
-    	let voicesForLanguage = null;
+		let voicesForLanguage = null;
 
-    	if (typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0) {
-    		voicesForLanguage = getVoicesForLanguage(voices, selectedLanguageCode);
-    	} else {
-    		voicesForLanguage = voices;
-    	}
+		if (typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0) {
+			voicesForLanguage = getVoicesForLanguage(voices, selectedLanguageCode);
+		} else {
+			voicesForLanguage = voices;
+		}
 
-    	// TODO: move to function and/or state?
-    	const hasSelectedLanguageCode = typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0;
+		// TODO: move to function and/or state?
+		const hasSelectedLanguageCode = typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0;
 
-    	// TODO: move to function and/or state?
-    	const hasSelectedVoiceName = typeof selectedVoiceName === "string" && selectedVoiceName.length > 0;
+		// TODO: move to function and/or state?
+		const hasSelectedVoiceName = typeof selectedVoiceName === "string" && selectedVoiceName.length > 0;
 
-    	// TODO: move to function and/or state?
-    	const isEffectiveVoiceNameForLanguage = hasSelectedVoiceName && selectedVoiceName === effectiveVoiceNameForSelectedLanguage;
+		// TODO: move to function and/or state?
+		const isEffectiveVoiceNameForLanguage = hasSelectedVoiceName && selectedVoiceName === effectiveVoiceNameForSelectedLanguage;
 
-    	return (
-    		<section>
-    			<p>{translate("frontend_voicesDescription")}</p>
+		return (
+			<section>
+				<p>{translate("frontend_voicesDescription")}</p>
 
-    			<tableBase.table>
-    				<colgroup>
-    					<col width="100%"/>
- </colgroup>
+				<tableBase.table>
+					<colgroup>
+						<col width="100%"/>
+					</colgroup>
 
-    				<SampleText
-    					onChange={this.handleSampleTextChange}
-    					value={sampleText}
-    					disabled={voices.length === 0}
-    				/>
+					<SampleText
+						value={sampleText}
+						disabled={voices.length === 0}
+						onChange={this.handleSampleTextChange}
+					/>
 
-    				<tableBase.tbody>
-    					<tableBase.tr>
-    						<tableBase.th scope="col">
-    							{translate("frontend_voicesAvailableLanguages")}
-    							{" "}
-		({languages.length})
- </tableBase.th>
- </tableBase.tr>
-    					<tableBase.tr>
-    						<tableBase.td>
-    							<AvailableLanguages
-    								onChange={this.handleLanguageChange}
-    								value={selectedLanguageCode}
-    								voicesByLanguage={voicesByLanguage}
-    								voicesByLanguageGroup={voicesByLanguageGroup}
-    								languageGroups={languageGroups}
-    								languagesByLanguageGroup={languagesByLanguageGroup}
-    								disabled={languages.length === 0}
-    							/>
- </tableBase.td>
- </tableBase.tr>
- </tableBase.tbody>
+					<tableBase.tbody>
+						<tableBase.tr>
+							<tableBase.th scope="col">
+								{translate("frontend_voicesAvailableLanguages")}
+								{" "}
+								({languages.length})
+							</tableBase.th>
+						</tableBase.tr>
+						<tableBase.tr>
+							<tableBase.td>
+								<AvailableLanguages
+									value={selectedLanguageCode}
+									voicesByLanguage={voicesByLanguage}
+									voicesByLanguageGroup={voicesByLanguageGroup}
+									languageGroups={languageGroups}
+									languagesByLanguageGroup={languagesByLanguageGroup}
+									disabled={languages.length === 0}
+									onChange={this.handleLanguageChange}
+								/>
+							</tableBase.td>
+						</tableBase.tr>
+					</tableBase.tbody>
 
-    				<tableBase.tbody>
-    					<tableBase.tr>
-    						<tableBase.th scope="col">
-    							{translate("frontend_voicesAvailableVoices")}
-    							{" "}
-		({(selectedLanguageCode ? (selectedLanguageCode + ", ") : "")}{voicesForLanguage.length})
- </tableBase.th>
- </tableBase.tr>
-    					<tableBase.tr>
-    						<tableBase.td>
-    							<AvailableVoices
-    								onChange={this.handleVoiceChange}
-    								effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
-    								value={selectedVoiceName}
-    								voices={voicesForLanguage}
-    								disabled={voices.length === 0}
-    							/>
- </tableBase.td>
- </tableBase.tr>
- </tableBase.tbody>
- </tableBase.table>
+					<tableBase.tbody>
+						<tableBase.tr>
+							<tableBase.th scope="col">
+								{translate("frontend_voicesAvailableVoices")}
+								{" "}
+								({(selectedLanguageCode ? (selectedLanguageCode + ", ") : "")}{voicesForLanguage.length})
+							</tableBase.th>
+						</tableBase.tr>
+						<tableBase.tr>
+							<tableBase.td>
+								<AvailableVoices
+									effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
+									value={selectedVoiceName}
+									voices={voicesForLanguage}
+									disabled={voices.length === 0}
+									onChange={this.handleVoiceChange}
+								/>
+							</tableBase.td>
+						</tableBase.tr>
+					</tableBase.tbody>
+				</tableBase.table>
 
-    			<PremiumSection
-    				mode="p"
-	>
-    				<tableBase.table>
-    					<colgroup>
-    						<col width="100%"/>
- </colgroup>
+				<PremiumSection
+					mode="p"
+				>
+					<tableBase.table>
+						<colgroup>
+							<col width="100%"/>
+						</colgroup>
 
-    					<ToggleDefault
-    						onClick={this.handleToogleDefaultClick}
-    						languageCode={selectedLanguageCode}
-    						voiceName={selectedVoiceName}
-    						disabled={!isPremiumEdition || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
-    					/>
+						<ToggleDefault
+							languageCode={selectedLanguageCode}
+							voiceName={selectedVoiceName}
+							disabled={!isPremiumEdition || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
+							onClick={this.handleToogleDefaultClick}
+						/>
 
-    					<Rate
-    						listName="voice-rate-range-list"
-    						onChange={this.handleRateChange}
-    						voiceName={selectedVoiceName}
-    						min={rateRange.min}
-    						defaultValue={rateRange.default}
-    						initialValue={rateForSelectedVoice}
-    						max={rateRange.max}
-    						step={rateRange.step}
-    						disabled={!hasSelectedVoiceName}
-    					/>
+						<Rate
+							listName="voice-rate-range-list"
+							voiceName={selectedVoiceName}
+							min={rateRange.min}
+							defaultValue={rateRange.default}
+							initialValue={rateForSelectedVoice}
+							max={rateRange.max}
+							step={rateRange.step}
+							disabled={!hasSelectedVoiceName}
+							onChange={this.handleRateChange}
+						/>
 
-    					<Pitch
-    						listName="voice-pitch-range-list"
-    						onChange={this.handlePitchChange}
-    						voiceName={selectedVoiceName}
-    						min={pitchRange.min}
-    						defaultValue={pitchRange.default}
-    						initialValue={pitchForSelectedVoice}
-    						max={pitchRange.max}
-    						step={pitchRange.step}
-    						disabled={!hasSelectedVoiceName}
-    					/>
- </tableBase.table>
- </PremiumSection>
- </section>
-    	);
-    }
+						<Pitch
+							listName="voice-pitch-range-list"
+							voiceName={selectedVoiceName}
+							min={pitchRange.min}
+							defaultValue={pitchRange.default}
+							initialValue={pitchForSelectedVoice}
+							max={pitchRange.max}
+							step={pitchRange.step}
+							disabled={!hasSelectedVoiceName}
+							onChange={this.handlePitchChange}
+						/>
+					</tableBase.table>
+				</PremiumSection>
+			</section>
+		);
+	}
 }

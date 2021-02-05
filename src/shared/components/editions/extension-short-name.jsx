@@ -27,30 +27,30 @@ import * as textBase from "../../styled/text/text-base.jsx";
 export default
 @translateAttribute
 class ExtensionShortName extends React.PureComponent {
-    static defaultProps={
-    	isPremiumEdition: false,
-    }
+	static defaultProps={
+		isPremiumEdition: false,
+	}
 
-    static propTypes = {
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		isPremiumEdition: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			translate,
+		} = this.props;
 
-    	// TODO: move resolving the name to the state, like edition type?
-    	const extensionShortName = isPremiumEdition
-    		? translate("extensionShortName_Premium")
-    		: translate("extensionShortName_Free");
+		// TODO: move resolving the name to the state, like edition type?
+		const extensionShortName = isPremiumEdition
+			? translate("extensionShortName_Premium")
+			: translate("extensionShortName_Free");
 
-    	return (
-    		<textBase.span>
-    			{extensionShortName}
- </textBase.span>
-    	);
-    }
+		return (
+			<textBase.span>
+				{extensionShortName}
+			</textBase.span>
+		);
+	}
 }

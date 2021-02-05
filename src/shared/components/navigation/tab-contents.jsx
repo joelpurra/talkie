@@ -37,25 +37,25 @@ export default class TabContents extends React.PureComponent {
 		return handleBubbledLinkClick(this.props.onLinkClick, e);
 	}
 
-    static propTypes = {
-    	id: PropTypes.string.isRequired,
-    	activeTabId: PropTypes.string.isRequired,
-    	children: PropTypes.node.isRequired,
-    	onLinkClick: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		id: PropTypes.string.isRequired,
+		activeTabId: PropTypes.string.isRequired,
+		children: PropTypes.node.isRequired,
+		onLinkClick: PropTypes.func.isRequired,
+	}
 
-    render() {
-    	if (this.props.id !== this.props.activeTabId) {
-    		return null;
-    	}
+	render() {
+		if (this.props.id !== this.props.activeTabId) {
+			return null;
+		}
 
-    	return (
-    		<div
-    			id={this.props.id}
-    			onClick={this.handleClick}
-	>
-    			{this.props.children}
- </div>
-    	);
-    }
+		return (
+			<div
+				id={this.props.id}
+				onClick={this.handleClick}
+			>
+				{this.props.children}
+			</div>
+		);
+	}
 }

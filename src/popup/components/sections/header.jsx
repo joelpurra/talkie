@@ -59,74 +59,74 @@ class Header extends React.PureComponent {
 		};
 	}
 
-    static defaultProps={
-    	isPremiumEdition: false,
-    }
+	static defaultProps={
+		isPremiumEdition: false,
+	}
 
-    static propTypes = {
-    	playPauseClick: PropTypes.func.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		playPauseClick: PropTypes.func.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    handlePlayPauseClick(e) {
-    	e.preventDefault();
-    	e.stopPropagation();
+	handlePlayPauseClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-    	this.props.playPauseClick();
+		this.props.playPauseClick();
 
-    	return false;
-    }
+		return false;
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		configure,
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			configure,
+			translate,
+		} = this.props;
 
-    	return (
-    		<layoutBase.header>
-    			{/* TODO: show for free Talkie, not for Talkie Premium. */}
-    			<Discretional
-    				enabled={!isPremiumEdition}
-	>
-    				<this.styled.button
-    					href={configure("urls.options-upgrade-from-demo")}
-    					id="header-premium-button"
-    					lang="en"
-	>
-    					{translate("extensionShortName_Premium")}
- </this.styled.button>
- </Discretional>
+		return (
+			<layoutBase.header>
+				{/* TODO: show for free Talkie, not for Talkie Premium. */}
+				<Discretional
+					enabled={!isPremiumEdition}
+				>
+					<this.styled.button
+						href={configure("urls.options-upgrade-from-demo")}
+						id="header-premium-button"
+						lang="en"
+					>
+						{translate("extensionShortName_Premium")}
+					</this.styled.button>
+				</Discretional>
 
-    			<textBase.span
-    				onClick={this.handlePlayPauseClick}
-	>
-    				<TalkieEditionIcon
-    					isPremiumEdition={isPremiumEdition}
-    				/>
- </textBase.span>
+				<textBase.span
+					onClick={this.handlePlayPauseClick}
+				>
+					<TalkieEditionIcon
+						isPremiumEdition={isPremiumEdition}
+					/>
+				</textBase.span>
 
-    			<this.styled.extensionName
-    				href={configure("urls.main")}
-    				lang="en"
-	>
-    				<ExtensionShortName
-    					isPremiumEdition={isPremiumEdition}
-    				/>
- </this.styled.extensionName>
- </layoutBase.header>
-    	);
-    }
+				<this.styled.extensionName
+					href={configure("urls.main")}
+					lang="en"
+				>
+					<ExtensionShortName
+						isPremiumEdition={isPremiumEdition}
+					/>
+				</this.styled.extensionName>
+			</layoutBase.header>
+		);
+	}
 }

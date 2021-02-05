@@ -65,52 +65,52 @@ class Status extends React.PureComponent {
 		};
 	}
 
-    static propTypes = {
-    	playPauseClick: PropTypes.func.isRequired,
-    	translate: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		playPauseClick: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    handlePlayPauseClick(e) {
-    	e.preventDefault();
-    	e.stopPropagation();
+	handlePlayPauseClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-    	this.props.playPauseClick();
+		this.props.playPauseClick();
 
-    	return false;
-    }
+		return false;
+	}
 
-    render() {
-    	const {
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			translate,
+		} = this.props;
 
-    	return (
-    		<layoutBase.main>
-    			<lighter.p>
-    				{translate("frontend_PopupUsageShort")}
- </lighter.p>
+		return (
+			<layoutBase.main>
+				<lighter.p>
+					{translate("frontend_PopupUsageShort")}
+				</lighter.p>
 
-    			<this.styled.table>
-    				<colgroup>
-    					<col width="0*"/>
-    					<col width="100%"/>
- </colgroup>
-    				<this.styled.tbody>
-    					<this.styled.tr>
-    						<this.styled.td>
-    							<this.styled.statusIconWrapper
-    								onClick={this.handlePlayPauseClick}
-	>
-    								<Icon mode="standalone" className="icon-talkie-status"/>
- </this.styled.statusIconWrapper>
- </this.styled.td>
-    						<this.styled.td>
-    							<ProgressContainer/>
- </this.styled.td>
- </this.styled.tr>
- </this.styled.tbody>
- </this.styled.table>
- </layoutBase.main>
-    	);
-    }
+				<this.styled.table>
+					<colgroup>
+						<col width="0*"/>
+						<col width="100%"/>
+					</colgroup>
+					<this.styled.tbody>
+						<this.styled.tr>
+							<this.styled.td>
+								<this.styled.statusIconWrapper
+									onClick={this.handlePlayPauseClick}
+								>
+									<Icon mode="standalone" className="icon-talkie-status"/>
+								</this.styled.statusIconWrapper>
+							</this.styled.td>
+							<this.styled.td>
+								<ProgressContainer/>
+							</this.styled.td>
+						</this.styled.tr>
+					</this.styled.tbody>
+				</this.styled.table>
+			</layoutBase.main>
+		);
+	}
 }

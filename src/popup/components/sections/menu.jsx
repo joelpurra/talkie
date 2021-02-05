@@ -65,55 +65,55 @@ class Menu extends React.PureComponent {
 		};
 	}
 
-    static propTypes = {
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		configure,
-    		translate,
-    	} = this.props;
+	render() {
+		const {
+			configure,
+			translate,
+		} = this.props;
 
-    	return (
-    		<layoutBase.nav>
-    			<this.styled.ol>
-    				<this.styled.li>
-    					<this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
-    						<Icon className="icon-voices"/>
-    						{translate("frontend_PopupMenu_Voices")}
- </this.styled.a>
- </this.styled.li>
-    				<this.styled.li>
-    					<this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
-    						<Icon className="icon-usage"/>
-    						{translate("frontend_PopupMenu_Usage")}
- </this.styled.a>
- </this.styled.li>
-    				<this.styled.li>
-    					<this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
-    						<Icon className="icon-features"/>
-    						{translate("frontend_PopupMenu_Features")}
- </this.styled.a>
- </this.styled.li>
-    				<this.styled.li>
-    					<this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
-    						<Icon className="icon-feedback"/>
-    						{translate("frontend_supportAndFeedback")}
- </this.styled.a>
- </this.styled.li>
- </this.styled.ol>
- </layoutBase.nav>
-    	);
-    }
+		return (
+			<layoutBase.nav>
+				<this.styled.ol>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-voices"/>
+							{translate("frontend_PopupMenu_Voices")}
+						</this.styled.a>
+					</this.styled.li>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-usage"/>
+							{translate("frontend_PopupMenu_Usage")}
+						</this.styled.a>
+					</this.styled.li>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-features"/>
+							{translate("frontend_PopupMenu_Features")}
+						</this.styled.a>
+					</this.styled.li>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-feedback"/>
+							{translate("frontend_supportAndFeedback")}
+						</this.styled.a>
+					</this.styled.li>
+				</this.styled.ol>
+			</layoutBase.nav>
+		);
+	}
 }

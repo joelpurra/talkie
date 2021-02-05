@@ -104,16 +104,16 @@ export default class LanguageHelper {
 
 						if (
 							!result
-                                // NOTE: the "isReliable" flag can apparently be false for languages with 100% reliabilty.
-                                // NOTE: using the percentage instead.
-                                // || !result.isReliable
-                                || !result.languages
-                                || !(result.languages.length > 0)
-                                || typeof result.languages[0].language !== "string"
-                                || !(result.languages[0].language.trim().length > 0)
-                                // NOTE: The language fallback value is "und", so treat it as no language.
-                                || result.languages[0].language === "und"
-                                || result.languages[0].percentage < MINIMUM_RELIABILITY_PERCENTAGE
+								// NOTE: the "isReliable" flag can apparently be false for languages with 100% reliabilty.
+								// NOTE: using the percentage instead.
+								// || !result.isReliable
+								|| !result.languages
+								|| !(result.languages.length > 0)
+								|| typeof result.languages[0].language !== "string"
+								|| !(result.languages[0].language.trim().length > 0)
+								// NOTE: The language fallback value is "und", so treat it as no language.
+								|| result.languages[0].language === "und"
+								|| result.languages[0].percentage < MINIMUM_RELIABILITY_PERCENTAGE
 						) {
 							// NOTE: text-based language detection is only used as a fallback.
 							logDebug("detectTextLanguage", "Browser did not detect reliable text language", result);

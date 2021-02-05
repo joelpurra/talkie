@@ -42,65 +42,65 @@ class About extends React.PureComponent {
 		};
 	}
 
-    static propTypes = {
-    	translate: PropTypes.func.isRequired,
-    	configure: PropTypes.func.isRequired,
-    	onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		translate: PropTypes.func.isRequired,
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-    	this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-    	this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-    	const {
-    		translate,
-    		configure,
-    	} = this.props;
+	render() {
+		const {
+			translate,
+			configure,
+		} = this.props;
 
-    	return (
-    		<section>
-    			<textBase.h2>
-    				{translate("frontend_storyHeading")}
- </textBase.h2>
-    			<textBase.p>
-    				{translate("frontend_storyDescription")}
- </textBase.p>
-    			<textBase.p>
-    				{translate("frontend_storyThankYou")}
- </textBase.p>
-    			<textBase.p>
-		—
-    				<textBase.a
-    					href="https://joelpurra.com/"
-    					lang="sv"
-    				>
-	Joel Purra
-    				</textBase.a>
- </textBase.p>
+		return (
+			<section>
+				<textBase.h2>
+					{translate("frontend_storyHeading")}
+				</textBase.h2>
+				<textBase.p>
+					{translate("frontend_storyDescription")}
+				</textBase.p>
+				<textBase.p>
+					{translate("frontend_storyThankYou")}
+				</textBase.p>
+				<textBase.p>
+					—
+					<textBase.a
+						href="https://joelpurra.com/"
+						lang="sv"
+					>
+						Joel Purra
+					</textBase.a>
+				</textBase.p>
 
-    			<textBase.h2>
-    				{translate("frontend_shareHeading")}
- </textBase.h2>
+				<textBase.h2>
+					{translate("frontend_shareHeading")}
+				</textBase.h2>
 
-    			<textBase.p>
-    				{translate("frontend_sharePitch", [
-    					translate("extensionShortName"),
-    				])}
- </textBase.p>
+				<textBase.p>
+					{translate("frontend_sharePitch", [
+						translate("extensionShortName"),
+					])}
+				</textBase.p>
 
-    			<div>
-    				<this.styled.sharingIcons/>
+				<div>
+					<this.styled.sharingIcons/>
 
-    				<textBase.a href={configure("urls.rate")}>
-    					{translate("frontend_rateIt")}
- </textBase.a>
- </div>
- </section>
-    	);
-    }
+					<textBase.a href={configure("urls.rate")}>
+						{translate("frontend_rateIt")}
+					</textBase.a>
+				</div>
+			</section>
+		);
+	}
 }

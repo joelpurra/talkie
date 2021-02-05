@@ -48,72 +48,72 @@ class Main extends React.PureComponent {
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 	}
 
-    static defaultProps = {
-    	isPremiumEdition: false,
-    	versionNumber: null,
-    };
+	static defaultProps = {
+		isPremiumEdition: false,
+		versionNumber: null,
+	};
 
-    static propTypes = {
-    	actions: PropTypes.object.isRequired,
-    	isPremiumEdition: PropTypes.bool.isRequired,
-    	versionNumber: PropTypes.string.isRequired,
-    	className: PropTypes.string.isRequired,
-    };
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionNumber: PropTypes.string.isRequired,
+		className: PropTypes.string.isRequired,
+	};
 
-    handlePlayPauseClick() {
-    	this.props.actions.sharedSpeaking.iconClick();
-    }
+	handlePlayPauseClick() {
+		this.props.actions.sharedSpeaking.iconClick();
+	}
 
-    handleLinkClick(url) {
-    	this.props.actions.sharedNavigation.openUrlInNewTab(url);
-    }
+	handleLinkClick(url) {
+		this.props.actions.sharedNavigation.openUrlInNewTab(url);
+	}
 
-    handleCheckLinkClick(e) {
-    	// TODO: use an api call which has handleBubbledLinkClick?
-    	return handleBubbledLinkClick(this.handleLinkClick, e);
-    }
+	handleCheckLinkClick(e) {
+		// TODO: use an api call which has handleBubbledLinkClick?
+		return handleBubbledLinkClick(this.handleLinkClick, e);
+	}
 
-    handleOptionsPageClick(e) {
-    	e.preventDefault();
-    	e.stopPropagation();
+	handleOptionsPageClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-    	this.props.actions.sharedNavigation.openOptionsPage();
+		this.props.actions.sharedNavigation.openOptionsPage();
 
-    	return false;
-    }
+		return false;
+	}
 
-    render() {
-    	const {
-    		isPremiumEdition,
-    		versionNumber,
-    		className,
-    	} = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			versionNumber,
+			className,
+		} = this.props;
 
-    	return (
-    		<div
-    			className={className}
-    			onClick={this.handleCheckLinkClick}
-	>
-    			<Header
-    				isPremiumEdition={isPremiumEdition}
-    				playPauseClick={this.handlePlayPauseClick}
-    			/>
+		return (
+			<div
+				className={className}
+				onClick={this.handleCheckLinkClick}
+			>
+				<Header
+					isPremiumEdition={isPremiumEdition}
+					playPauseClick={this.handlePlayPauseClick}
+				/>
 
-    			<Status
-    				playPauseClick={this.handlePlayPauseClick}
-    			/>
+				<Status
+					playPauseClick={this.handlePlayPauseClick}
+				/>
 
-    			<layoutBase.hr/>
+				<layoutBase.hr/>
 
-    			<Menu/>
+				<Menu/>
 
-    			<layoutBase.hr/>
+				<layoutBase.hr/>
 
-    			<Footer
-    				versionNumber={versionNumber}
-    				optionsPageClick={this.handleOptionsPageClick}
-    			/>
- </div>
-    	);
-    }
+				<Footer
+					versionNumber={versionNumber}
+					optionsPageClick={this.handleOptionsPageClick}
+				/>
+			</div>
+		);
+	}
 }
