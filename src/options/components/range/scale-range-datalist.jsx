@@ -41,16 +41,16 @@ export default class ScaleRangeDatalist extends React.PureComponent {
 		const listOptions = steps.map((step) => (
 			<ScaleRangeDatalistOption
 				key={step.toString()}
-				value={step}
 				disabled={disabled || null}
+				value={step}
 			/>
 		),
 		);
 
 		return (
 			<datalist
-				id={listName}
 				disabled={disabled || null}
+				id={listName}
 			>
 				{listOptions}
 			</datalist>

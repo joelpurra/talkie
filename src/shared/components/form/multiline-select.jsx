@@ -76,10 +76,10 @@ class MultilineSelect extends React.PureComponent {
 		return (
 			<select
 				ref={scrollOnSelect}
+				className={className}
+				disabled={disabled || null}
 				size={size}
 				value={value || undefined}
-				disabled={disabled || null}
-				className={className}
 				onChange={this.handleOnChange}
 			>
 				{this.props.children}

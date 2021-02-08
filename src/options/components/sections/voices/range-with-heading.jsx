@@ -118,21 +118,23 @@ class RangeWithHeading extends React.PureComponent {
 					<tableBase.th scope="col">
 						{heading}
 						{" "}
-						({this.state.value.toFixed(1)})
+						(
+						{this.state.value.toFixed(1)}
+						)
 					</tableBase.th>
 				</tableBase.tr>
 				<tableBase.tr>
 					<tableBase.td>
 						<ScaleRangeElementClass
-							listName={listName}
-							min={min}
 							defaultValue={defaultValue}
-							initialValue={this.state.value}
-							max={max}
-							step={step}
 							disabled={disabled}
-							onInput={this.handleInput}
+							initialValue={this.state.value}
+							listName={listName}
+							max={max}
+							min={min}
+							step={step}
 							onChange={this.handleChange}
+							onInput={this.handleInput}
 						/>
 					</tableBase.td>
 				</tableBase.tr>

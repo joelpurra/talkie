@@ -86,9 +86,9 @@ export default function progressHoc(ComponentToWrap) {
 			return (
 				<ComponentToWrap
 					{...this.props}
-					min={min}
 					current={current}
 					max={max}
+					min={min}
 				/>
 			);
 		}

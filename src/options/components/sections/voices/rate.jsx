@@ -54,9 +54,9 @@ export default class Rate extends React.PureComponent {
 		return (
 			<RangeWithHeading
 				{...this.props}
-				transformValueBeforeChange={this.transformValueBeforeChange}
-				getHeading={this.getHeading}
 				ScaleRangeElementClass={LogarithmicScaleRange}
+				getHeading={this.getHeading}
+				transformValueBeforeChange={this.transformValueBeforeChange}
 			/>
 		);
 	}

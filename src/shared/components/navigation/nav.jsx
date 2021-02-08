@@ -126,7 +126,7 @@ export default class Nav extends React.PureComponent {
 			<this.styled.nav className="columns">
 				<this.styled.navTable>
 					<colgroup>
-						<col width={colWidth} colSpan={colCount}/>
+						<col colSpan={colCount} width={colWidth}/>
 					</colgroup>
 					<tableBase.tbody>
 						<tableBase.tr>

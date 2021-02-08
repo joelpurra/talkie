@@ -141,16 +141,16 @@ class WelcomeContainer extends React.PureComponent {
 
 		return (
 			<Welcome
-				isPremiumEdition={isPremiumEdition}
-				systemType={systemType}
-				osType={osType}
-				voicesCount={voicesCount}
-				languagesCount={languagesCount}
-				languageGroupsCount={languageGroupsCount}
 				canSpeakInTranslatedLocale={canSpeakInTranslatedLocale}
-				sampleTextLanguageCode={sampleTextLanguageCode}
+				isPremiumEdition={isPremiumEdition}
+				languageGroupsCount={languageGroupsCount}
+				languagesCount={languagesCount}
+				osType={osType}
 				sampleText={sampleText}
+				sampleTextLanguageCode={sampleTextLanguageCode}
 				speakTextInLanguageWithOverrides={actions.sharedSpeaking.speakTextInLanguageWithOverrides}
+				systemType={systemType}
+				voicesCount={voicesCount}
 			/>
 		);
 	}

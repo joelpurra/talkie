@@ -63,10 +63,10 @@ class SampleText extends React.PureComponent {
 				<tableBase.tr>
 					<tableBase.td>
 						<formBase.textarea
+							disabled={this.props.disabled || null}
 							id="voices-sample-text"
 							rows="2"
 							value={this.props.value}
-							disabled={this.props.disabled || null}
 							onChange={this.handleChange}
 						/>
 					</tableBase.td>

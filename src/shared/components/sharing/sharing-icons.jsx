@@ -53,22 +53,22 @@ class SharingIcons extends React.PureComponent {
 			<listBase.inlineUl className={className}>
 				<listBase.inlineLi>
 					<textBase.a href={configure("urls.share.twitter")}>
-						<SocialShareIcon mode="standalone" size="2em" network="twitter"/>
+						<SocialShareIcon mode="standalone" network="twitter" size="2em"/>
 					</textBase.a>
 				</listBase.inlineLi>
 				<listBase.inlineLi>
 					<textBase.a href={configure("urls.share.facebook")}>
-						<SocialShareIcon mode="standalone" size="2em" network="facebook"/>
+						<SocialShareIcon mode="standalone" network="facebook" size="2em"/>
 					</textBase.a>
 				</listBase.inlineLi>
 				<listBase.inlineLi>
 					<textBase.a href={configure("urls.share.googleplus")}>
-						<SocialShareIcon mode="standalone" size="2em" network="googleplus"/>
+						<SocialShareIcon mode="standalone" network="googleplus" size="2em"/>
 					</textBase.a>
 				</listBase.inlineLi>
 				<listBase.inlineLi>
 					<textBase.a href={configure("urls.share.linkedin")}>
-						<SocialShareIcon mode="standalone" size="2em" network="linkedin"/>
+						<SocialShareIcon mode="standalone" network="linkedin" size="2em"/>
 					</textBase.a>
 				</listBase.inlineLi>
 			</listBase.inlineUl>

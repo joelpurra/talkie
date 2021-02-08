@@ -43,9 +43,9 @@ export default class FreeSection extends React.PureComponent {
 
 		return (
 			<EditionSection
-				mode={mode}
-				isPremiumEdition={isPremiumEdition}
 				className={className}
+				isPremiumEdition={isPremiumEdition}
+				mode={mode}
 			>
 				{this.props.children}
 			</EditionSection>

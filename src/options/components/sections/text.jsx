@@ -47,8 +47,8 @@ export default class Text extends React.PureComponent {
 		return (
 			<section>
 				<SpeakLongTexts
-					speakLongTexts={speakLongTexts}
 					disabled={false}
+					speakLongTexts={speakLongTexts}
 					onChange={this.handleSpeakLongTextsChange}
 				/>
 			</section>

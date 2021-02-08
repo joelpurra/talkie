@@ -99,29 +99,43 @@ class Features extends React.PureComponent {
 				<Discretional
 					enabled={!isPremiumEdition}
 				>
-					<p>{translate("frontend_featuresEdition_Free")}</p>
+					<p>
+						{translate("frontend_featuresEdition_Free")}
+					</p>
 				</Discretional>
 
 				<Discretional
 					enabled={isPremiumEdition}
 				>
-					<p>{translate("frontend_featuresEdition_Premium")}</p>
+					<p>
+						{translate("frontend_featuresEdition_Premium")}
+					</p>
 				</Discretional>
 
 				<PremiumSection>
 					<listBase.ul>
-						<listBase.li>{translate("frontend_featuresPremium_List01")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresPremium_List02")}</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresPremium_List01")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresPremium_List02")}
+						</listBase.li>
 
 						{/* NOTE: read from clipboard feature not available in Firefox */}
 						<Discretional
 							enabled={systemType === "chrome"}
 						>
-							<listBase.li>{translate("frontend_featuresPremium_List05")}</listBase.li>
+							<listBase.li>
+								{translate("frontend_featuresPremium_List05")}
+							</listBase.li>
 						</Discretional>
 
-						<listBase.li>{translate("frontend_featuresPremium_List03")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresPremium_List04")}</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresPremium_List03")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresPremium_List04")}
+						</listBase.li>
 					</listBase.ul>
 
 					<this.styled.storeLink>
@@ -137,12 +151,24 @@ class Features extends React.PureComponent {
 
 				<FreeSection>
 					<listBase.ul>
-						<listBase.li>{translate("frontend_featuresFree_List01")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresFree_List02")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresFree_List03")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresFree_List04")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresFree_List05")}</listBase.li>
-						<listBase.li>{translate("frontend_featuresFree_List06")}</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresFree_List01")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresFree_List02")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresFree_List03")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresFree_List04")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresFree_List05")}
+						</listBase.li>
+						<listBase.li>
+							{translate("frontend_featuresFree_List06")}
+						</listBase.li>
 					</listBase.ul>
 
 					<this.styled.storeLinks>
@@ -151,7 +177,7 @@ class Features extends React.PureComponent {
 								href={configure("urls.chromewebstore")}
 								lang="en"
 							>
-								<img src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from the Chrome Web Store" width="248" height="75"/>
+								<img alt="Talkie is available for installation from the Chrome Web Store" height="75" src="../../resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" width="248"/>
 								<br/>
 								<TalkieFreeIcon/>
 								{translate("extensionShortName_Free")}
@@ -162,7 +188,7 @@ class Features extends React.PureComponent {
 								href={configure("urls.firefox-amo")}
 								lang="en"
 							>
-								<img src="../../resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from the Chrome Web Store" width="172" height="60"/>
+								<img alt="Talkie is available for installation from the Chrome Web Store" height="60" src="../../resources/firefox-amo/AMO-button_1.png" width="172"/>
 								<br/>
 								<TalkieFreeIcon/>
 								{translate("extensionShortName_Free")}

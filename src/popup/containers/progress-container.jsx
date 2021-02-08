@@ -56,9 +56,9 @@ class ProgressContainer extends React.PureComponent {
 
 		return (
 			<Progress
-				min={min}
 				current={current}
 				max={max}
+				min={min}
 			/>
 		);
 	}

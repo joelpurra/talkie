@@ -52,9 +52,9 @@ export default class Status extends React.PureComponent {
 
 		return (
 			<this.styled.progress
+				max={max}
 				min={min}
 				value={current}
-				max={max}
 			/>
 		);
 	}

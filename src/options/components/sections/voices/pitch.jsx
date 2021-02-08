@@ -51,9 +51,9 @@ export default class Pitch extends React.PureComponent {
 		return (
 			<RangeWithHeading
 				{...this.props}
-				transformValueBeforeChange={this.transformValueBeforeChange}
-				getHeading={this.getHeading}
 				ScaleRangeElementClass={ScaleRange}
+				getHeading={this.getHeading}
+				transformValueBeforeChange={this.transformValueBeforeChange}
 			/>
 		);
 	}

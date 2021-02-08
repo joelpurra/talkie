@@ -101,7 +101,7 @@ class Status extends React.PureComponent {
 								<this.styled.statusIconWrapper
 									onClick={this.handlePlayPauseClick}
 								>
-									<Icon mode="standalone" className="icon-talkie-status"/>
+									<Icon className="icon-talkie-status" mode="standalone"/>
 								</this.styled.statusIconWrapper>
 							</this.styled.td>
 							<this.styled.td>

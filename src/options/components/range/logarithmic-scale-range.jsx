@@ -82,15 +82,15 @@ export default class LogarithmicScaleRange extends React.PureComponent {
 
 		return (
 			<ScaleRange
-				listName={listName}
-				min={this._toLogarithmicRangeScale(min)}
 				defaultValue={this._toLogarithmicRangeScale(defaultValue)}
-				initialValue={this._toLogarithmicRangeScale(initialValue)}
-				max={this._toLogarithmicRangeScale(max)}
-				step={1}
 				disabled={disabled}
-				onInput={this.handleInput}
+				initialValue={this._toLogarithmicRangeScale(initialValue)}
+				listName={listName}
+				max={this._toLogarithmicRangeScale(max)}
+				min={this._toLogarithmicRangeScale(min)}
+				step={1}
 				onChange={this.handleChange}
+				onInput={this.handleInput}
 			/>
 		);
 	}

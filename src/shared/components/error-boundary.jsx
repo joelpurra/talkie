@@ -24,11 +24,6 @@ import React from "react";
 // NOTE: avoiding using a HOC or similar.
 import ManifestProvider from "../../split-environments/manifest-provider";
 
-const manifestProvider = new ManifestProvider();
-/* eslint-disable no-sync */
-const manifest = manifestProvider.getSync();
-/* eslint-enable no-sync */
-
 export default class ErrorBoundary extends React.PureComponent {
 	state = {
 		componentStack: null,
@@ -76,8 +71,14 @@ export default class ErrorBoundary extends React.PureComponent {
 
 		render() {
 			if (this.state.hasError) {
+				const manifestProvider = new ManifestProvider();
+				/* eslint-disable no-sync */
+				const manifest = manifestProvider.getSync();
+				/* eslint-enable no-sync */
+
 				const recipient = "code@joelpurra.com";
 				const subject = "Something went wrong in Talkie";
+
 				const body = `Hello Joel,
 
 Something went wrong while using Talkie! This is my error report — can you please have a look at it?
@@ -86,7 +87,7 @@ Something went wrong while using Talkie! This is my error report — can you ple
 
 
 
-Below are some techical details.
+Below are some technical details.
 
 Talkie ${manifest.version_name}
 https://joelpurra.com/projects/talkie/
@@ -120,15 +121,21 @@ Hope this helps =)
 						</h1>
 
 						<p>
-							Sorry! This really should not happen. If you would like, email me an error report using the link below, and I will try to fix it for <a href="https://joelpurra.com/projects/talkie/">the next version of Talkie</a>!
+							Sorry! This really should not happen. If you would like, email me an error report using the link below, and I will try to fix it for
+							{" "}
+							<a href="https://joelpurra.com/projects/talkie/">
+								the next version of Talkie
+								{/* eslint-disable-next-line react/jsx-child-element-spacing */}
+							</a>
+							!
 						</p>
 
 						<p>
 							<a
 								href="https://joelpurra.com/"
+								lang="en"
 								rel="noopener noreferrer"
 								target="_blank"
-								lang="sv"
 							>
 								Joel Purra
 							</a>
@@ -137,11 +144,15 @@ Hope this helps =)
 						<hr/>
 
 						<p>
-							Talkie {manifest.version_name}
+							Talkie
+							{" "}
+							{manifest.version_name}
 						</p>
 
 						<blockquote>
-							<pre>{this.state.message}</pre>
+							<pre>
+								{this.state.message}
+							</pre>
 						</blockquote>
 
 						<p>
@@ -150,7 +161,9 @@ Hope this helps =)
 								rel="noopener noreferrer"
 								target="_blank"
 							>
-								Email error report to {recipient}
+								Email error report to
+								{" "}
+								{recipient}
 							</a>
 						</p>
 
@@ -160,7 +173,9 @@ Hope this helps =)
 							</summary>
 
 							<blockquote>
-								<pre>{this.state.componentStack}</pre>
+								<pre>
+									{this.state.componentStack}
+								</pre>
 							</blockquote>
 						</details>
 
@@ -170,7 +185,9 @@ Hope this helps =)
 							</summary>
 
 							<blockquote>
-								<pre>{this.state.stacktrace}</pre>
+								<pre>
+									{this.state.stacktrace}
+								</pre>
 							</blockquote>
 						</details>
 					</div>

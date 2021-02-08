@@ -278,8 +278,8 @@ class Voices extends React.PureComponent {
 				if (sampleTextForLanguage) {
 					sampleTextBlockQuote = (
 						<textBase.blockquote
-							lang={languageGroup}
 							className={this.getTextDirectionClassNameForLanguageGroup(languageGroup)}
+							lang={languageGroup}
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={this.handleSpeakClickForLanguage.bind(null, languageGroup)}
 						>
@@ -304,7 +304,8 @@ class Voices extends React.PureComponent {
 							<textBase.p>
 								<textBase.a href={`https://${languageGroup}.wikipedia.org/`}>
 									<Icon className="icon-wikipedia-w"/>
-									{languageGroup}.wikipedia.org
+									{languageGroup}
+									.wikipedia.org
 								</textBase.a>
 							</textBase.p>
 

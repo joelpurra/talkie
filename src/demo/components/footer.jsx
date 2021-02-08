@@ -81,11 +81,12 @@ class Footer extends React.PureComponent {
 					target="_blank"
 					onClick={optionsPageClick}
 				>
-					<Icon mode="standalone" size="0.75em" className="icon-settings"/>
+					<Icon className="icon-settings" mode="standalone" size="0.75em"/>
 				</this.styled.footerFirstLink>
 
 				<this.styled.footerSecondLink href={configure("urls.options-about-from-demo")} id="footer-about-link">
-					v{versionNumber}
+					v
+					{versionNumber}
 				</this.styled.footerSecondLink>
 			</this.styled.footer>
 		);

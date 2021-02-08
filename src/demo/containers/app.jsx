@@ -77,11 +77,11 @@ class App extends React.PureComponent {
 		return (
 			<Main
 				actions={actions}
-				isPremiumEdition={isPremiumEdition}
-				versionNumber={versionNumber}
-				systemType={systemType}
-				osType={osType}
 				activeTabId={activeTabId}
+				isPremiumEdition={isPremiumEdition}
+				osType={osType}
+				systemType={systemType}
+				versionNumber={versionNumber}
 			/>
 		);
 	}

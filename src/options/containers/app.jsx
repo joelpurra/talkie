@@ -83,12 +83,12 @@ class App extends React.PureComponent {
 		return (
 			<Main
 				actions={actions}
-				isPremiumEdition={isPremiumEdition}
-				versionName={versionName}
-				systemType={systemType}
-				osType={osType}
 				activeTabId={activeTabId}
+				isPremiumEdition={isPremiumEdition}
+				osType={osType}
 				shouldShowBackButton={shouldShowBackButton}
+				systemType={systemType}
+				versionName={versionName}
 			/>
 		);
 	}

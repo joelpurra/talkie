@@ -164,7 +164,9 @@ class Voices extends React.PureComponent {
 
 		return (
 			<section>
-				<p>{translate("frontend_voicesDescription")}</p>
+				<p>
+					{translate("frontend_voicesDescription")}
+				</p>
 
 				<tableBase.table>
 					<colgroup>
@@ -172,8 +174,8 @@ class Voices extends React.PureComponent {
 					</colgroup>
 
 					<SampleText
-						value={sampleText}
 						disabled={voices.length === 0}
+						value={sampleText}
 						onChange={this.handleSampleTextChange}
 					/>
 
@@ -182,18 +184,20 @@ class Voices extends React.PureComponent {
 							<tableBase.th scope="col">
 								{translate("frontend_voicesAvailableLanguages")}
 								{" "}
-								({languages.length})
+								(
+								{languages.length}
+								)
 							</tableBase.th>
 						</tableBase.tr>
 						<tableBase.tr>
 							<tableBase.td>
 								<AvailableLanguages
+									disabled={languages.length === 0}
+									languageGroups={languageGroups}
+									languagesByLanguageGroup={languagesByLanguageGroup}
 									value={selectedLanguageCode}
 									voicesByLanguage={voicesByLanguage}
 									voicesByLanguageGroup={voicesByLanguageGroup}
-									languageGroups={languageGroups}
-									languagesByLanguageGroup={languagesByLanguageGroup}
-									disabled={languages.length === 0}
 									onChange={this.handleLanguageChange}
 								/>
 							</tableBase.td>
@@ -205,16 +209,19 @@ class Voices extends React.PureComponent {
 							<tableBase.th scope="col">
 								{translate("frontend_voicesAvailableVoices")}
 								{" "}
-								({(selectedLanguageCode ? (selectedLanguageCode + ", ") : "")}{voicesForLanguage.length})
+								(
+								{(selectedLanguageCode ? (selectedLanguageCode + ", ") : "")}
+								{voicesForLanguage.length}
+								)
 							</tableBase.th>
 						</tableBase.tr>
 						<tableBase.tr>
 							<tableBase.td>
 								<AvailableVoices
+									disabled={voices.length === 0}
 									effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
 									value={selectedVoiceName}
 									voices={voicesForLanguage}
-									disabled={voices.length === 0}
 									onChange={this.handleVoiceChange}
 								/>
 							</tableBase.td>
@@ -231,33 +238,33 @@ class Voices extends React.PureComponent {
 						</colgroup>
 
 						<ToggleDefault
+							disabled={!isPremiumEdition || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
 							languageCode={selectedLanguageCode}
 							voiceName={selectedVoiceName}
-							disabled={!isPremiumEdition || !hasSelectedLanguageCode || !hasSelectedVoiceName || isEffectiveVoiceNameForLanguage}
 							onClick={this.handleToogleDefaultClick}
 						/>
 
 						<Rate
-							listName="voice-rate-range-list"
-							voiceName={selectedVoiceName}
-							min={rateRange.min}
 							defaultValue={rateRange.default}
-							initialValue={rateForSelectedVoice}
-							max={rateRange.max}
-							step={rateRange.step}
 							disabled={!hasSelectedVoiceName}
+							initialValue={rateForSelectedVoice}
+							listName="voice-rate-range-list"
+							max={rateRange.max}
+							min={rateRange.min}
+							step={rateRange.step}
+							voiceName={selectedVoiceName}
 							onChange={this.handleRateChange}
 						/>
 
 						<Pitch
-							listName="voice-pitch-range-list"
-							voiceName={selectedVoiceName}
-							min={pitchRange.min}
 							defaultValue={pitchRange.default}
-							initialValue={pitchForSelectedVoice}
-							max={pitchRange.max}
-							step={pitchRange.step}
 							disabled={!hasSelectedVoiceName}
+							initialValue={pitchForSelectedVoice}
+							listName="voice-pitch-range-list"
+							max={pitchRange.max}
+							min={pitchRange.min}
+							step={pitchRange.step}
+							voiceName={selectedVoiceName}
 							onChange={this.handlePitchChange}
 						/>
 					</tableBase.table>

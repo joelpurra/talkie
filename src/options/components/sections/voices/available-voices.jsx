@@ -114,9 +114,9 @@ class AvailableVoices extends React.PureComponent {
 
 		return (
 			<MultilineSelect
+				disabled={this.props.disabled}
 				size={7}
 				value={this.props.value}
-				disabled={this.props.disabled}
 				onChange={this.handleChange}
 			>
 				{voicesOptions}

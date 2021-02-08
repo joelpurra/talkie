@@ -78,8 +78,16 @@ class TalkiePremiumEdition extends React.PureComponent {
 					{translate("frontend_upgradeExplanation02")}
 				</p>
 				<ul>
-					<li><a href={configure("urls.primary-payment")}>{translate("frontend_upgradePaymentPrimaryLinkText")}</a></li>
-					<li><a href={configure("urls.alternative-payment")}>{translate("frontend_upgradePaymentAlternativesLinkText")}</a></li>
+					<li>
+						<a href={configure("urls.primary-payment")}>
+							{translate("frontend_upgradePaymentPrimaryLinkText")}
+						</a>
+					</li>
+					<li>
+						<a href={configure("urls.alternative-payment")}>
+							{translate("frontend_upgradePaymentAlternativesLinkText")}
+						</a>
+					</li>
 				</ul>
 				<p>
 					{translate("frontend_upgradeExplanation03")}

@@ -97,13 +97,13 @@ class VoicesContainer extends React.PureComponent {
 		return (
 			<Voices
 				actions={actions}
+				languageGroupsCount={languageGroupsCount}
+				languagesCount={languagesCount}
+				navigatorLanguages={navigatorLanguages}
+				talkieLocaleHelper={talkieLocaleHelper}
 				voices={voices}
 				voicesByLanguagesByLanguageGroup={voicesByLanguagesByLanguageGroup}
-				navigatorLanguages={navigatorLanguages}
 				voicesCount={voicesCount}
-				languagesCount={languagesCount}
-				languageGroupsCount={languageGroupsCount}
-				talkieLocaleHelper={talkieLocaleHelper}
 			/>
 		);
 	}

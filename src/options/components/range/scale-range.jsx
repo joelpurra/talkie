@@ -77,18 +77,18 @@ export default class ScaleRange extends React.PureComponent {
 		return (
 			<div>
 				<formBase.range
-					type="range"
-					min={min}
-					value={initialValue}
-					max={max}
-					step={step}
-					list={listName}
 					disabled={disabled || null}
-					onInput={this.handleInput}
+					list={listName}
+					max={max}
+					min={min}
+					step={step}
+					type="range"
+					value={initialValue}
 					onChange={this.handleChange}
+					onInput={this.handleInput}
 				/>
 
-				<ScaleRangeDatalist steps={steps} listName={listName}/>
+				<ScaleRangeDatalist listName={listName} steps={steps}/>
 			</div>
 		);
 	}

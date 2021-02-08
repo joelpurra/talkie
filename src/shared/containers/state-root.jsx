@@ -66,8 +66,8 @@ class StateRoot extends React.PureComponent {
 
 		return (
 			<StyleRoot
-				isSpeaking={isSpeaking}
 				isPremiumEdition={isPremiumEdition}
+				isSpeaking={isSpeaking}
 				versionName={versionName}
 			>
 				{React.Children.only(this.props.children)}

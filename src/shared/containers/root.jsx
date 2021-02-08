@@ -49,7 +49,7 @@ export default class Root extends React.PureComponent {
 		return (
 			<ErrorBoundary>
 				<Provider store={store}>
-					<Providers configuration={configuration} translator={translator} broadcaster={broadcaster} styletron={styletron}>
+					<Providers broadcaster={broadcaster} configuration={configuration} styletron={styletron} translator={translator}>
 						{React.Children.only(this.props.children)}
 					</Providers>
 				</Provider>

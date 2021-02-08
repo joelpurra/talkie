@@ -136,19 +136,19 @@ class VoicesContainer extends React.PureComponent {
 		return (
 			<Voices
 				actions={actions}
+				effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
+				isPremiumEdition={isPremiumEdition}
+				languageGroups={languageGroups}
+				languages={languages}
+				languagesByLanguageGroup={languagesByLanguageGroup}
+				pitchForSelectedVoice={pitchForSelectedVoice}
+				rateForSelectedVoice={rateForSelectedVoice}
+				sampleText={sampleText}
+				selectedLanguageCode={selectedLanguageCode}
+				selectedVoiceName={selectedVoiceName}
 				voices={voices}
 				voicesByLanguage={voicesByLanguage}
 				voicesByLanguageGroup={voicesByLanguageGroup}
-				languages={languages}
-				languageGroups={languageGroups}
-				languagesByLanguageGroup={languagesByLanguageGroup}
-				selectedLanguageCode={selectedLanguageCode}
-				selectedVoiceName={selectedVoiceName}
-				effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
-				sampleText={sampleText}
-				rateForSelectedVoice={rateForSelectedVoice}
-				pitchForSelectedVoice={pitchForSelectedVoice}
-				isPremiumEdition={isPremiumEdition}
 			/>
 		);
 	}

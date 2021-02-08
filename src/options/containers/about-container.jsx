@@ -108,15 +108,15 @@ class AboutContainer extends React.PureComponent {
 		return (
 			<About
 				isPremiumEdition={isPremiumEdition}
-				versionName={versionName}
-				systemType={systemType}
-				osType={osType}
-				voices={voices}
-				languages={languages}
 				languageGroups={languageGroups}
+				languages={languages}
 				navigatorLanguage={navigatorLanguage}
 				navigatorLanguages={navigatorLanguages}
+				osType={osType}
+				systemType={systemType}
 				translatedLanguages={translatedLanguages}
+				versionName={versionName}
+				voices={voices}
 				onLicenseClick={onLicenseClick}
 			/>
 		);

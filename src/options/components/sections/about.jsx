@@ -186,7 +186,9 @@ class About extends React.PureComponent {
 					<listBase.dt>
 						{translate("frontend_systemBrowserLanguagesHeading")}
 						{" "}
-						({navigatorLanguages.length})
+						(
+						{navigatorLanguages.length}
+						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
@@ -197,7 +199,9 @@ class About extends React.PureComponent {
 					<listBase.dt>
 						{translate("frontend_systemInstalledLanguagesHeading")}
 						{" "}
-						({languageGroups.length})
+						(
+						{languageGroups.length}
+						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
@@ -208,7 +212,9 @@ class About extends React.PureComponent {
 					<listBase.dt>
 						{translate("frontend_systemInstalledDialectsHeading")}
 						{" "}
-						({languages.length})
+						(
+						{languages.length}
+						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
@@ -219,7 +225,9 @@ class About extends React.PureComponent {
 					<listBase.dt>
 						{translate("frontend_systemInstalledVoicesHeading")}
 						{" "}
-						({voices.length})
+						(
+						{voices.length}
+						)
 					</listBase.dt>
 					<listBase.dd>
 						{voiceNames.join(", ")}
@@ -237,7 +245,9 @@ class About extends React.PureComponent {
 					<listBase.dt>
 						{translate("frontend_systemTalkieUILanguagesHeading")}
 						{" "}
-						({translatedLanguages.length})
+						(
+						{translatedLanguages.length}
+						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"

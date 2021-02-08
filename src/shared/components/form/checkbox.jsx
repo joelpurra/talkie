@@ -57,10 +57,10 @@ class Checkbox extends React.PureComponent {
 
 		return (
 			<input
-				type="checkbox"
 				checked={checked}
-				disabled={disabled || null}
 				className={className}
+				disabled={disabled || null}
+				type="checkbox"
 				onChange={this.handleOnChange}
 			/>
 		);

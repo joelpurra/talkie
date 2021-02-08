@@ -105,8 +105,8 @@ class Main extends React.PureComponent {
 				<layoutBase.hr/>
 
 				<Footer
-					versionNumber={versionNumber}
 					optionsPageClick={this.handleOptionsPageClick}
+					versionNumber={versionNumber}
 				/>
 			</div>
 		);

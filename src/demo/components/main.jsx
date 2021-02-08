@@ -197,37 +197,37 @@ class Main extends React.PureComponent {
 					onClick={this.handleClick}
 				>
 					<TabContents
-						id="welcome"
 						activeTabId={activeTabId}
+						id="welcome"
 						onLinkClick={this.handleLinkClick}
 					>
 						<WelcomeContainer/>
 					</TabContents>
 
 					<TabContents
-						id="voices"
 						activeTabId={activeTabId}
+						id="voices"
 						onLinkClick={this.handleLinkClick}
 					>
 						<VoicesContainer/>
 					</TabContents>
 
 					<TabContents
-						id="usage"
 						activeTabId={activeTabId}
+						id="usage"
 						onLinkClick={this.handleLinkClick}
 					>
 						<Usage
 							isPremiumEdition={isPremiumEdition}
-							systemType={systemType}
 							osType={osType}
+							systemType={systemType}
 							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
 						/>
 					</TabContents>
 
 					<TabContents
-						id="features"
 						activeTabId={activeTabId}
+						id="features"
 						onLinkClick={this.handleLinkClick}
 					>
 						<Features
@@ -237,19 +237,19 @@ class Main extends React.PureComponent {
 					</TabContents>
 
 					<TabContents
-						id="support"
 						activeTabId={activeTabId}
+						id="support"
 						onLinkClick={this.handleLinkClick}
 					>
 						<Support
-							systemType={systemType}
 							osType={osType}
+							systemType={systemType}
 						/>
 					</TabContents>
 
 					<TabContents
-						id="about"
 						activeTabId={activeTabId}
+						id="about"
 						onLinkClick={this.handleLinkClick}
 					>
 						<About/>
@@ -259,8 +259,8 @@ class Main extends React.PureComponent {
 				<this.styled.footerHr/>
 
 				<Footer
-					versionNumber={versionNumber}
 					optionsPageClick={this.handleOptionsPageClick}
+					versionNumber={versionNumber}
 				/>
 			</div>
 		);

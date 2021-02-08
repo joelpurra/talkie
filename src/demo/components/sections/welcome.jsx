@@ -281,7 +281,8 @@ class Welcome extends React.PureComponent {
 									lang="en"
 								>
 									Windows 10
-								</textBase.a>: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
+								</textBase.a>
+								: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
 								{/* TODO: translate system settings path. */}
 							</listBase.li>
 							<listBase.li>
@@ -352,7 +353,8 @@ class Welcome extends React.PureComponent {
 									lang="en"
 								>
 									macOS
-								</textBase.a>: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
+								</textBase.a>
+								: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
 								{/* TODO: translate system settings path. */}
 							</listBase.li>
 						</listBase.ul>

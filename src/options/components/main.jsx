@@ -202,32 +202,32 @@ class Main extends React.PureComponent {
 
 				<this.styled.main>
 					<TabContents
-						id="voices"
 						activeTabId={activeTabId}
+						id="voices"
 						onLinkClick={this.handleLinkClick}
 					>
 						<VoicesContainer/>
 					</TabContents>
 
 					<TabContents
-						id="text"
 						activeTabId={activeTabId}
+						id="text"
 						onLinkClick={this.handleLinkClick}
 					>
 						<TextContainer/>
 					</TabContents>
 
 					<TabContents
-						id="upgrade"
 						activeTabId={activeTabId}
+						id="upgrade"
 						onLinkClick={this.handleLinkClick}
 					>
 						<EditionsContainer/>
 					</TabContents>
 
 					<TabContents
-						id="about"
 						activeTabId={activeTabId}
+						id="about"
 						onLinkClick={this.handleLinkClick}
 					>
 						<AboutContainer

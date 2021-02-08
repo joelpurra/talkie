@@ -114,9 +114,9 @@ class AvailableLanguages extends React.PureComponent {
 					<option
 						key={languageGroup}
 						// TODO: proper way to store/look up objects?
-						value={languageGroup}
 						className="group"
 						lang="en"
+						value={languageGroup}
 					>
 						{languageGroupText}
 					</option>
@@ -140,8 +140,8 @@ class AvailableLanguages extends React.PureComponent {
 							<option
 								key={language}
 								// TODO: proper way to store/look up objects?
-								value={language}
 								lang="en"
+								value={language}
 							>
 								{languageText}
 							</option>
@@ -155,8 +155,8 @@ class AvailableLanguages extends React.PureComponent {
 			[
 				<option
 					key={this.defaultAllLanguagesValue}
-					value={this.defaultAllLanguagesValue}
 					className="group"
+					value={this.defaultAllLanguagesValue}
 				>
 					{frontendVoicesShowAllVoicesTranslated}
 				</option>,
@@ -165,10 +165,10 @@ class AvailableLanguages extends React.PureComponent {
 
 		return (
 			<MultilineSelect
+				className="grouped"
+				disabled={disabled}
 				size={7}
 				value={value || this.defaultAllLanguagesValue}
-				disabled={disabled}
-				className="grouped"
 				onChange={this.handleChange}
 			>
 				{languagesOptions}

@@ -65,11 +65,11 @@ export default class TalkieEditionIcon extends React.PureComponent {
 
 		return (
 			<Icon
-				mode={mode}
-				size={size}
+				className={classNames}
 				marginLeft={marginLeft}
 				marginRight={marginRight}
-				className={classNames}
+				mode={mode}
+				size={size}
 			/>
 		);
 	}

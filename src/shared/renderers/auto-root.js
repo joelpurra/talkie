@@ -42,11 +42,11 @@ import TalkieLocaleHelper from "../talkie-locale-helper";
 const getRoot = (store, translator, configuration, styletron, broadcaster, ChildComponent) => promiseTry(() => {
 	const root = (
 		<Root
-			store={store}
-			configuration={configuration}
-			translator={translator}
 			broadcaster={broadcaster}
+			configuration={configuration}
+			store={store}
 			styletron={styletron}
+			translator={translator}
 		>
 			<ChildComponent/>
 		</Root>

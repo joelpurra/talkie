@@ -46,8 +46,8 @@ export default class Editions extends React.PureComponent {
 		return (
 			<section>
 				<TalkiePremiumEdition
-					isPremiumEdition={isPremiumEdition}
 					disabled={false}
+					isPremiumEdition={isPremiumEdition}
 					onChange={this.handleIsPremiumEditionChange}
 				/>
 			</section>
