@@ -31,15 +31,12 @@ import TranslatorProvider from "../../split-environments/translator-provider";
 import Configuration from "../configuration";
 import Root from "../containers/root.jsx";
 import MetadataManager from "../metadata-manager";
-import {
-	promiseTry,
-} from "../promise";
 import ReduxStoreProvider from "../redux-store-provider";
 import SettingsManager from "../settings-manager";
 import StorageManager from "../storage-manager";
 import TalkieLocaleHelper from "../talkie-locale-helper";
 
-const getRoot = (store, translator, configuration, styletron, broadcaster, ChildComponent) => promiseTry(() => {
+const getRoot = async (store, translator, configuration, styletron, broadcaster, ChildComponent) => {
 	const root = (
 		<Root
 			broadcaster={broadcaster}
@@ -53,9 +50,9 @@ const getRoot = (store, translator, configuration, styletron, broadcaster, Child
 	);
 
 	return root;
-});
+};
 
-const autoRoot = (initialState, rootReducer, ChildComponent) => promiseTry(() => {
+const autoRoot = async (initialState, rootReducer, ChildComponent) => {
 	const storageProvider = new StorageProvider();
 	const storageManager = new StorageManager(storageProvider);
 	const settingsManager = new SettingsManager(storageManager);
@@ -77,13 +74,15 @@ const autoRoot = (initialState, rootReducer, ChildComponent) => promiseTry(() =>
 	/* eslint-enable no-sync */
 
 	// TODO: create a generic static/default/render-time preloaded state action provider attached to the component hierarchy?
-	return getRoot(store, translatorProvider, configuration, styletron, broadcasterProvider, ChildComponent)
-		.then((root) => ({
-			localeProvider,
-			root,
-			store,
-			styletron,
-		}));
-});
+	const root = await getRoot(store, translatorProvider, configuration, styletron, broadcasterProvider, ChildComponent);
+	const rootObject = {
+		localeProvider,
+		root,
+		store,
+		styletron,
+	};
+
+	return rootObject;
+};
 
 export default autoRoot;

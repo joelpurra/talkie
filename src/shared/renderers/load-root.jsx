@@ -22,9 +22,6 @@ import ReactDOM from "react-dom";
 
 import sharedActions from "../actions";
 import {
-	promiseTry,
-} from "../promise";
-import {
 	dispatchAll,
 } from "../utils/store-helpers";
 import autoRoot from "./auto-root";
@@ -54,25 +51,26 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
 	return allActionsToDispatch;
 };
 
-const renderHtml = (root) => promiseTry(() => {
+const renderHtml = async (root) => {
 	const rootElement = document.querySelector("#react-root");
 
 	ReactDOM.hydrate(root, rootElement);
-});
+};
 
-const hydrateHtml = (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, ChildComponent) => promiseTry(() => {
+const hydrateHtml = async (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, ChildComponent) => {
 	// NOTE: use preloaded state from the pre-rendered html.
 	const prerenderedState = JSON.parse(document.querySelector("#__PRERENDERED_STATE__").textContent);
 	const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
 	const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);
 
-	return autoRoot(prerenderedState, rootReducer, ChildComponent)
-		.then(({
-			root,
-			store,
-		}) => dispatchAll(store, prerenderedActionsToDispatch)
-			.then(() => renderHtml(root))
-			.then(() => dispatchAll(store, postrenderActionsToDispatch)));
-});
+	const {
+		root,
+		store,
+	} = await autoRoot(prerenderedState, rootReducer, ChildComponent);
+
+	await dispatchAll(store, prerenderedActionsToDispatch);
+	await renderHtml(root);
+	await dispatchAll(store, postrenderActionsToDispatch);
+};
 
 export default hydrateHtml;

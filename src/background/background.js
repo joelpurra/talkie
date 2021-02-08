@@ -86,6 +86,7 @@ registerUnhandledRejectionHandler();
 const onInstallListenerEventQueue = [];
 
 const startOnInstallListener = () => {
+	// NOTE: onInstall needs to be registered synchronously.
 	const onInstallListener = (event) => {
 		const onInstallEvent = {
 			event,
@@ -112,7 +113,7 @@ const startOnInstallListener = () => {
 	}
 };
 
-function main() {
+const main = async () => {
 	logDebug("Start", "Main background function");
 
 	const storageProvider = new StorageProvider();
@@ -205,179 +206,177 @@ function main() {
 	const onTabUpdatedListener = loggedPromise("onUpdated", () => talkieBackground.onTabUpdatedHandler());
 
 	// TODO: put initialization promise on the root chain?
-	return Promise.resolve()
-		.then(() => suspensionManager.initialize())
-		.then(() => {
-			const killSwitches = [];
+	await suspensionManager.initialize();
 
-			const executeKillSwitches = () => {
-				// NOTE: expected to have only synchronous methods for the relevant parts.
-				killSwitches.forEach((killSwitch) => {
-					try {
-						killSwitch();
-					} catch (error) {
-						logError("executeKillSwitches", error);
-					}
-				});
-			};
+	{
+		const killSwitches = [];
 
-			// NOTE: synchronous version.
-			window.addEventListener("beforeunload", () => {
-				executeKillSwitches();
+		const executeKillSwitches = () => {
+			// NOTE: expected to have only synchronous methods for the relevant parts.
+			killSwitches.forEach((killSwitch) => {
+				try {
+					killSwitch();
+				} catch (error) {
+					logError("executeKillSwitches", error);
+				}
 			});
+		};
 
-			return Promise.all([
-				broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId()),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId()),
-
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => plug.once()
-					.catch((error) => {
-						// NOTE: swallowing any plug.once() errors.
-						// NOTE: reduced logging for known tab/page access problems.
-						if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
-							logDebug("plug.once", "Error swallowed", error);
-						} else {
-							logInfo("plug.once", "Error swallowed", error);
-						}
-
-						return undefined;
-					})),
-
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
-
-				// NOTE: setting icons async.
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => iconManager.setIconModePlaying(), 10)),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => iconManager.setIconModeStopped(), 10)),
-
-				// NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => buttonPopupManager.disablePopup(), 200)),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => buttonPopupManager.enablePopup(), 200)),
-
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
-
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onRemoved.addListener(onTabRemovedListener)),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onRemoved.removeListener(onTabRemovedListener)),
-
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
-
-				broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
-				broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => progress.startSegment(actionData.textPart.length)),
-				broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
-				broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
-			])
-				.then((registeredKillSwitches) => {
-					// NOTE: don't want to replace the existing killSwitches array.
-					registeredKillSwitches.forEach((registeredKillSwitch) => killSwitches.push(registeredKillSwitch));
-
-					return undefined;
-				});
-		})
-		.then(() => {
-			// NOTE: not supported in Firefox (2017-04-28).
-			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-			if ("onSuspend" in browser.runtime) {
-				browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => talkieBackground.onExtensionSuspendHandler()));
-				// browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => suspensionManager.unintialize()));
-			}
-
-			// NOTE: not supported in Firefox (2017-04-28).
-			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
-			// if ("onSuspendCanceled" in browser.runtime) {
-			// browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
-			// }
-
-			// NOTE: used when the popup has been disabled.
-			browser.browserAction.onClicked.addListener(loggedPromise("onClicked", () => talkieBackground.startStopSpeakSelectionOnPage()));
-
-			browser.contextMenus.onClicked.addListener(loggedPromise("onClicked", (info) => contextMenuManager.contextMenuClickAction(info)));
-
-			// NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
-			// Does not seem to happen in Chrome.
-			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
-			try {
-				browser.commands.onCommand.addListener(loggedPromise("onCommand", (command) => shortcutKeyManager.handler(command)));
-			} catch (error) {
-				logError("browser.commands.onCommand.addListener(...)", error);
-			}
-
-			return undefined;
-		})
-		.then(() => {
-			window.broadcaster = () => broadcaster;
-
-			window.logTrace = (...args) => logTrace(...args);
-			window.logDebug = (...args) => logDebug(...args);
-			window.logInfo = (...args) => logInfo(...args);
-			window.logWarn = (...args) => logWarn(...args);
-			window.logError = (...args) => logError(...args);
-			window.setLoggingLevel = (...args) => setLevel(...args);
-			window.setLoggingStringOnlyOutput = (...args) => setStringOnlyOutput(...args);
-
-			window.getAllVoices = () => talkieSpeaker.getAllVoices();
-			window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
-			window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
-			window.startSpeakFromFrontend = (frontendText, frontendVoice) => {
-				// NOTE: not sure if copying these variables have any effect.
-				// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
-				const text = String(frontendText);
-				const voice = {
-					lang: typeof frontendVoice.lang === "string" ? String(frontendVoice.lang) : undefined,
-					name: typeof frontendVoice.name === "string" ? String(frontendVoice.name) : undefined,
-					pitch: Number.isNaN(frontendVoice.pitch) ? undefined : (0 + frontendVoice.pitch),
-					rate: Number.isNaN(frontendVoice.rate) ? undefined : (0 + frontendVoice.rate),
-				};
-
-				talkieBackground.startSpeakingTextInVoiceAction(text, voice);
-			};
-
-			window.startSpeakInLanguageWithOverridesFromFrontend = (frontendText, frontendLanguageCode) => {
-				// NOTE: not sure if copying these variables have any effect.
-				// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
-				const text = String(frontendText);
-				const languageCode = String(frontendLanguageCode);
-
-				talkieBackground.startSpeakingTextInLanguageWithOverridesAction(text, languageCode);
-			};
-
-			window.getVersionNumber = () => metadataManager.getVersionNumber();
-			window.getVersionName = () => metadataManager.getVersionName();
-			window.getEditionType = () => metadataManager.getEditionType();
-			window.isPremiumEdition = () => metadataManager.isPremiumEdition();
-			window.getSystemType = () => metadataManager.getSystemType();
-			window.getOsType = () => metadataManager.getOsType();
-
-			window.getIsPremiumEditionOption = () => settingsManager.getIsPremiumEdition();
-			window.setIsPremiumEditionOption = (isPremiumEdition) => settingsManager.setIsPremiumEdition(isPremiumEdition);
-			window.getSpeakLongTextsOption = () => settingsManager.getSpeakLongTexts();
-			window.setSpeakLongTextsOption = (speakLongTexts) => settingsManager.setSpeakLongTexts(speakLongTexts);
-
-			window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
-			window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
-			window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
-			window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
-			window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
-			window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
-			window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
-			window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
-			window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
-			window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
-			window.getStoredValue = (key) => storageManager.getStoredValue(key);
-			window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
-			window.getConfigurationValue = (path) => configuration.get(path);
-
-			return undefined;
-		})
-		.then(() => {
-			buttonPopupManager.enablePopup();
-
-			logDebug("Done", "Main background function");
-
-			return undefined;
+		// NOTE: synchronous version.
+		window.addEventListener("beforeunload", () => {
+			executeKillSwitches();
 		});
-}
+
+		const registeredKillSwitches = await Promise.all([
+			broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId()),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId()),
+
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
+				try {
+					await plug.once();
+				} catch (error) {
+					// NOTE: swallowing any plug.once() errors.
+					// NOTE: reduced logging for known tab/page access problems.
+					if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+						logDebug("plug.once", "Error swallowed", error);
+					} else {
+						logInfo("plug.once", "Error swallowed", error);
+					}
+				}
+			}),
+
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
+
+			// NOTE: setting icons async.
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => iconManager.setIconModePlaying(), 10)),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => iconManager.setIconModeStopped(), 10)),
+
+			// NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => promiseSleep(() => buttonPopupManager.disablePopup(), 200)),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => promiseSleep(() => buttonPopupManager.enablePopup(), 200)),
+
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
+
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onRemoved.addListener(onTabRemovedListener)),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onRemoved.removeListener(onTabRemovedListener)),
+
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
+
+			broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => progress.resetProgress(0, actionData.text.length, 0)),
+			broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => progress.startSegment(actionData.textPart.length)),
+			broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
+			broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
+		]);
+
+		// NOTE: don't want to replace the existing killSwitches array.
+		registeredKillSwitches.forEach((registeredKillSwitch) => killSwitches.push(registeredKillSwitch));
+	}
+
+	// eslint-disable-next-line no-lone-blocks
+	{
+		// NOTE: not supported in Firefox (2017-04-28).
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+		if ("onSuspend" in browser.runtime) {
+			browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => talkieBackground.onExtensionSuspendHandler()));
+			// browser.runtime.onSuspend.addListener(loggedPromise("onSuspend", () => suspensionManager.uninitialize()));
+		}
+
+		// NOTE: not supported in Firefox (2017-04-28).
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
+		// if ("onSuspendCanceled" in browser.runtime) {
+		// browser.runtime.onSuspendCanceled.addListener(loggedPromise("onSuspendCanceled", () => suspensionManager.initialize()));
+		// }
+
+		// NOTE: used when the popup has been disabled.
+		browser.browserAction.onClicked.addListener(loggedPromise("onClicked", () => talkieBackground.startStopSpeakSelectionOnPage()));
+
+		browser.contextMenus.onClicked.addListener(loggedPromise("onClicked", (info) => contextMenuManager.contextMenuClickAction(info)));
+
+		// NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
+		// Does not seem to happen in Chrome.
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
+		try {
+			browser.commands.onCommand.addListener(loggedPromise("onCommand", (command) => shortcutKeyManager.handler(command)));
+		} catch (error) {
+			logError("browser.commands.onCommand.addListener(...)", error);
+		}
+	}
+
+	// eslint-disable-next-line no-lone-blocks
+	{
+		window.broadcaster = () => broadcaster;
+
+		window.logTrace = (...args) => logTrace(...args);
+		window.logDebug = (...args) => logDebug(...args);
+		window.logInfo = (...args) => logInfo(...args);
+		window.logWarn = (...args) => logWarn(...args);
+		window.logError = (...args) => logError(...args);
+		window.setLoggingLevel = (...args) => setLevel(...args);
+		window.setLoggingStringOnlyOutput = (...args) => setStringOnlyOutput(...args);
+
+		window.getAllVoices = () => talkieSpeaker.getAllVoices();
+		window.iconClick = () => talkieBackground.startStopSpeakSelectionOnPage();
+		window.stopSpeakFromFrontend = () => talkieBackground.stopSpeakingAction();
+		window.startSpeakFromFrontend = (frontendText, frontendVoice) => {
+			// NOTE: not sure if copying these variables have any effect.
+			// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+			const text = String(frontendText);
+			const voice = {
+				lang: typeof frontendVoice.lang === "string" ? String(frontendVoice.lang) : undefined,
+				name: typeof frontendVoice.name === "string" ? String(frontendVoice.name) : undefined,
+				pitch: Number.isNaN(frontendVoice.pitch) ? undefined : (0 + frontendVoice.pitch),
+				rate: Number.isNaN(frontendVoice.rate) ? undefined : (0 + frontendVoice.rate),
+			};
+
+			talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+		};
+
+		window.startSpeakInLanguageWithOverridesFromFrontend = (frontendText, frontendLanguageCode) => {
+			// NOTE: not sure if copying these variables have any effect.
+			// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+			const text = String(frontendText);
+			const languageCode = String(frontendLanguageCode);
+
+			talkieBackground.startSpeakingTextInLanguageWithOverridesAction(text, languageCode);
+		};
+
+		window.getVersionNumber = () => metadataManager.getVersionNumber();
+		window.getVersionName = () => metadataManager.getVersionName();
+		window.getEditionType = () => metadataManager.getEditionType();
+		window.isPremiumEdition = () => metadataManager.isPremiumEdition();
+		window.getSystemType = () => metadataManager.getSystemType();
+		window.getOsType = () => metadataManager.getOsType();
+
+		window.getIsPremiumEditionOption = () => settingsManager.getIsPremiumEdition();
+		window.setIsPremiumEditionOption = (isPremiumEdition) => settingsManager.setIsPremiumEdition(isPremiumEdition);
+		window.getSpeakLongTextsOption = () => settingsManager.getSpeakLongTexts();
+		window.setSpeakLongTextsOption = (speakLongTexts) => settingsManager.setSpeakLongTexts(speakLongTexts);
+
+		window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+		window.getEffectiveVoiceForLanguage = (languageName) => voiceManager.getEffectiveVoiceForLanguage(languageName);
+		window.isLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName);
+		window.toggleLanguageVoiceOverrideName = (languageName, voiceName) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName);
+		window.getVoiceRateDefault = (voiceName) => voiceManager.getVoiceRateDefault(voiceName);
+		window.setVoiceRateOverride = (voiceName, rate) => voiceManager.setVoiceRateOverride(voiceName, rate);
+		window.getEffectiveRateForVoice = (voiceName) => voiceManager.getEffectiveRateForVoice(voiceName);
+		window.getVoicePitchDefault = (voiceName) => voiceManager.getVoicePitchDefault(voiceName);
+		window.setVoicePitchOverride = (voiceName, pitch) => voiceManager.setVoicePitchOverride(voiceName, pitch);
+		window.getEffectivePitchForVoice = (voiceName) => voiceManager.getEffectivePitchForVoice(voiceName);
+		window.getStoredValue = (key) => storageManager.getStoredValue(key);
+		window.setStoredValue = (key, value) => storageManager.setStoredValue(key, value);
+		window.getConfigurationValue = (path) => configuration.get(path);
+	}
+
+	// eslint-disable-next-line no-lone-blocks
+	{
+		buttonPopupManager.enablePopup();
+
+		logDebug("Done", "Main background function");
+	}
+};
 
 try {
 	startOnInstallListener();

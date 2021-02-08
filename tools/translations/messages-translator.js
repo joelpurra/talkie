@@ -55,54 +55,51 @@ export default class MessagesTranslator {
 		{}));
 	}
 
-	translate() {
-		return Bluebird.try(() => {
-			const baseKeys = Object.keys(this._base.messages);
+	async translate() {
+		const baseKeys = Object.keys(this._base.messages);
 
-			return this._keepOnlyKeys(baseKeys, this._locale.messages)
-				.then((localeMessages) => {
-					// TODO: function filterKeys.
-					// eslint-disable-next-line unicorn/no-reduce
-					const alreadyTranslatedLocale = baseKeys.reduce((alreadyTranslated, baseKey) => {
-						if (localeMessages[baseKey] && localeMessages[baseKey].original === this._base.messages[baseKey].message) {
-							alreadyTranslated[baseKey] = localeMessages[baseKey];
-						}
+		const localeMessages = await this._keepOnlyKeys(baseKeys, this._locale.messages);
 
-						return alreadyTranslated;
-					},
-					{});
+		// TODO: function filterKeys.
+		// eslint-disable-next-line unicorn/no-reduce
+		const alreadyTranslatedLocale = baseKeys.reduce((alreadyTranslated, baseKey) => {
+			if (localeMessages[baseKey] && localeMessages[baseKey].original === this._base.messages[baseKey].message) {
+				alreadyTranslated[baseKey] = localeMessages[baseKey];
+			}
 
-					// TODO: function filterKeys.
-					// eslint-disable-next-line unicorn/no-reduce
-					const untranslatedLocale = baseKeys.reduce((untranslated, baseKey) => {
-						if (!localeMessages[baseKey] || localeMessages[baseKey].original !== this._base.messages[baseKey].message) {
-							untranslated[baseKey] = this._base.messages[baseKey];
-						}
+			return alreadyTranslated;
+		},
+		{});
 
-						return untranslated;
-					},
-					{});
+		// TODO: function filterKeys.
+		// eslint-disable-next-line unicorn/no-reduce
+		const untranslatedLocale = baseKeys.reduce(
+			(untranslated, baseKey) => {
+				if (!localeMessages[baseKey] || localeMessages[baseKey].original !== this._base.messages[baseKey].message) {
+					untranslated[baseKey] = this._base.messages[baseKey];
+				}
 
-					if (Object.keys(untranslatedLocale).length === 0) {
-						const translated = alreadyTranslatedLocale;
+				return untranslated;
+			},
+			{},
+		);
 
-						return translated;
-					}
+		if (Object.keys(untranslatedLocale).length === 0) {
+			const translated = alreadyTranslatedLocale;
 
-					return this._translatorService.translate(this._base.language, this._locale.language, untranslatedLocale)
-						.tap((automaticallyTranslated) => {
-							assert(typeof automaticallyTranslated === "object");
-							Object.keys(automaticallyTranslated).forEach((automaticallyTranslatedKey) => {
-								assert(typeof automaticallyTranslated[automaticallyTranslatedKey].original === "string");
-								assert(typeof automaticallyTranslated[automaticallyTranslatedKey].message === "string");
-							});
-						})
-						.then((automaticallyTranslated) => {
-							const translated = Object.assign({}, alreadyTranslatedLocale, automaticallyTranslated);
+			return translated;
+		}
 
-							return translated;
-						});
-				});
+		const automaticallyTranslated = await this._translatorService.translate(this._base.language, this._locale.language, untranslatedLocale);
+
+		assert(typeof automaticallyTranslated === "object");
+		Object.keys(automaticallyTranslated).forEach((automaticallyTranslatedKey) => {
+			assert(typeof automaticallyTranslated[automaticallyTranslatedKey].original === "string");
+			assert(typeof automaticallyTranslated[automaticallyTranslatedKey].message === "string");
 		});
+
+		const translated = Object.assign({}, alreadyTranslatedLocale, automaticallyTranslated);
+
+		return translated;
 	}
 }

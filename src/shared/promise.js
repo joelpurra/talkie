@@ -18,40 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const promiseTry = (fn) => new Promise(
-	(resolve, reject) => {
-		try {
-			const result = fn();
+export const promiseSeries = async (promiseFunctions, state) => {
+	if (promiseFunctions.length === 0) {
+		return undefined;
+	}
 
-			resolve(result);
-		} catch (error) {
-			reject(error);
-		}
-	},
-);
+	const first = promiseFunctions[0];
+	const result = await first(state);
 
-export const promiseSeries = (promiseFunctions, state) => promiseTry(
-	() => {
-		if (promiseFunctions.length === 0) {
-			return undefined;
-		}
+	if (promiseFunctions.length === 1) {
+		return result;
+	}
 
-		const first = promiseFunctions[0];
+	const rest = promiseFunctions.slice(1);
 
-		if (promiseFunctions.length === 1) {
-			return Promise.resolve(first(state));
-		}
-
-		const rest = promiseFunctions.slice(1);
-
-		return Promise.resolve(first(state))
-			.then((result) => promiseSeries(rest, result));
-	},
-);
+	return promiseSeries(rest, result);
+};
 
 export const promiseTimeout = (promise, limit) => {
 	let timeoutId = null;
 
+	// NOTE: using promise objects for the race.
 	const timeoutPromise = new Promise((resolve) => {
 		timeoutId = setTimeout(() => resolve(), limit);
 	})

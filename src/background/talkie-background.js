@@ -29,9 +29,6 @@ import {
 	logError,
 } from "../shared/log";
 import {
-	promiseTry,
-} from "../shared/promise";
-import {
 	canTalkieRunInTab,
 	isCurrentPageInternalToTalkie,
 } from "../shared/tabs";
@@ -83,309 +80,245 @@ export default class TalkieBackground {
 			.replace(/\s{2,}/g, " ");
 	}
 
-	speakSelectionOnPage() {
-		return promiseTry(
-			() => Promise.all([
-				canTalkieRunInTab(),
-				isCurrentPageInternalToTalkie(this.internalUrlProvider),
-			])
-				.then(([
-					canRun,
-					isInternalPage,
-				]) => {
-					// NOTE: can't perform (most) actions if it's not a "normal" tab.
-					if (!canRun) {
-						logDebug("iconClickAction", "Did not detect a normal tab.");
+	async speakSelectionOnPage() {
+		const [
+			canRun,
+			isInternalPage,
+		] = await Promise.all([
+			canTalkieRunInTab(),
+			isCurrentPageInternalToTalkie(this.internalUrlProvider),
+		]);
 
-						if (isInternalPage) {
-							logDebug("iconClickAction", "Requesting text selection from internal page.");
+		// NOTE: can't perform (most) actions if it's not a "normal" tab.
+		if (!canRun) {
+			logDebug("iconClickAction", "Did not detect a normal tab.");
 
-							const eventData = null;
+			if (isInternalPage) {
+				logDebug("iconClickAction", "Requesting text selection from internal page.");
 
-							return this.broadcaster.broadcastEvent(knownEvents.passSelectedTextToBackground, eventData)
-								.then((selectedTextsFromFrontend) => {
-									logDebug("iconClickAction", "Received text selections from internal pages.", selectedTextsFromFrontend);
+				const eventData = null;
 
-									const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
-										.filter((selectedTextWithFocusTimestamp) => selectedTextWithFocusTimestamp !== null);
+				const selectedTextsFromFrontend = await this.broadcaster.broadcastEvent(knownEvents.passSelectedTextToBackground, eventData);
 
-									return filteredSelectedTextsFromFrontend;
-								})
-								.then((filteredSelectedTextsFromFrontend) => {
-									const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
-										// eslint-disable-next-line unicorn/no-reduce
-										.reduce(
-											(previous, selectedTextWithFocusTimestamp) => {
-												if (previous === null || previous.mostRecentUse < selectedTextWithFocusTimestamp.mostRecentUse) {
-													return selectedTextWithFocusTimestamp;
-												}
+				logDebug("iconClickAction", "Received text selections from internal pages.", selectedTextsFromFrontend);
 
-												return previous;
-											},
-											null,
-										);
+				const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
+					.filter((selectedTextWithFocusTimestamp) => selectedTextWithFocusTimestamp !== null);
 
-									return selectedTextFromFrontend;
-								})
-								.then((selectedTextFromFrontend) => {
-									if (selectedTextFromFrontend === null) {
-										logDebug("iconClickAction", "Did not receive text selection from internal page, doing nothing.");
+				const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
+				// eslint-disable-next-line unicorn/no-reduce
+					.reduce(
+						(previous, selectedTextWithFocusTimestamp) => {
+							if (previous === null || previous.mostRecentUse < selectedTextWithFocusTimestamp.mostRecentUse) {
+								return selectedTextWithFocusTimestamp;
+							}
 
-										return undefined;
-									}
-
-									const selections = [
-										selectedTextFromFrontend.selectionTextAndLanguageCode,
-									];
-
-									// NOTE: assumes that internal pages have at least proper <html lang=""> attributes.
-									const detectedPageLanguage = null;
-
-									return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
-								});
-						}
-
-						logDebug("iconClickAction", "Skipping speaking selection.");
-
-						const text = this.notAbleToSpeakTextFromThisSpecialTab.text;
-						const lang = this.notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
-
-						return this.startSpeakingTextInLanguageWithOverridesAction(text, lang);
-					}
-
-					return this.speakUserSelection();
-				}),
-		);
-	}
-
-	startStopSpeakSelectionOnPage() {
-		return promiseTry(
-			() => this.speakingStatus.isSpeaking()
-				.then((wasSpeaking) => this.talkieSpeaker.stopSpeaking()
-					.then(() => {
-						if (!wasSpeaking) {
-							return this.speakSelectionOnPage();
-						}
-
-						return undefined;
-					})),
-		);
-	}
-
-	stopSpeakingAction() {
-		return promiseTry(
-			() => this.talkieSpeaker.stopSpeaking(),
-		);
-	}
-
-	startSpeakingTextInVoiceAction(text, voice) {
-		return promiseTry(
-			() => this.talkieSpeaker.stopSpeaking()
-				.then(() => {
-					// NOTE: keeping the root chain separate from this chain.
-					this.speechChain.link(() => this.talkieSpeaker.speakTextInVoice(text, voice))
-						.catch((error) => {
-							logError("Caught error on the speechChain. Swallowing. Resetting synthesizer just in case.", error);
-
-							// TODO: handle internally in talkieSpeaker?
-							return this.talkieSpeaker.resetSynthesizer();
-						});
-
-					return undefined;
-				}),
-		);
-	}
-
-	addRateAndPitchToSpecificVoice(voice) {
-		return promiseTry(
-			() => {
-				return Promise.all([
-					this.voiceManager.getEffectiveRateForVoice(voice.name),
-					this.voiceManager.getEffectivePitchForVoice(voice.name),
-				])
-					.then(([
-						effectiveRateForVoice,
-						effectivePitchForVoice,
-					]) => {
-						const voiceWithPitchAndRate = shallowCopy(
-							voice,
-							{
-								pitch: effectivePitchForVoice,
-								rate: effectiveRateForVoice,
-							},
-						);
-
-						return voiceWithPitchAndRate;
-					});
-			},
-		);
-	}
-
-	startSpeakingTextInVoiceWithOverridesAction(text, voice) {
-		return promiseTry(
-			() => this.addRateAndPitchToSpecificVoice(voice)
-				.then((voiceWithPitchAndRate) => this.startSpeakingTextInVoiceAction(text, voiceWithPitchAndRate)),
-		);
-	}
-
-	startSpeakingTextInLanguageAction(text, language) {
-		return promiseTry(
-			() => this.talkieSpeaker.stopSpeaking()
-				.then(() => {
-					// NOTE: keeping the root chain separate from this chain.
-					this.speechChain.link(() => this.talkieSpeaker.speakTextInLanguage(text, language))
-						.catch((error) => {
-							logError("Caught error on the speechChain. Swallowing. Resetting synthesizer just in case.", error);
-
-							// TODO: handle internally in talkieSpeaker?
-							return this.talkieSpeaker.resetSynthesizer();
-						});
-
-					return undefined;
-				}),
-		);
-	}
-
-	startSpeakingTextInLanguageWithOverridesAction(text, language) {
-		return promiseTry(
-			() => {
-				return this.voiceManager.getEffectiveVoiceForLanguage(language)
-					.then((effectiveVoiceForLanguage) => this.startSpeakingTextInVoiceWithOverridesAction(text, effectiveVoiceForLanguage));
-			},
-		);
-	}
-
-	startSpeakingCustomTextDetectLanguage(text) {
-		return promiseTry(
-			() => this.talkieSpeaker.stopSpeaking()
-				.then(() => canTalkieRunInTab())
-				.then((canRun) => {
-					if (canRun) {
-						return this.languageHelper.detectPageLanguage();
-					}
-
-					logDebug("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab.", "Skipping page language detection.");
-
-					return null;
-				})
-				.then((detectedPageLanguage) => {
-					const selections = [
-						{
-							htmlTagLanguage: null,
-							parentElementsLanguages: [],
-							text,
+							return previous;
 						},
-					];
+						null,
+					);
 
-					return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
-				}),
-		);
-	}
+				if (selectedTextFromFrontend === null) {
+					logDebug("iconClickAction", "Did not receive text selection from internal page, doing nothing.");
 
-	onTabRemovedHandler(tabId) {
-		return this.speakingStatus.isSpeakingTabId(tabId)
-			.then((isTabSpeaking) => {
-				if (isTabSpeaking) {
-					return this.talkieSpeaker.stopSpeaking();
+					return;
 				}
 
-				return undefined;
+				const selections = [
+					selectedTextFromFrontend.selectionTextAndLanguageCode,
+				];
+
+				// NOTE: assumes that internal pages have at least proper <html lang=""> attributes.
+				const detectedPageLanguage = null;
+
+				return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
+			}
+
+			logDebug("iconClickAction", "Skipping speaking selection.");
+
+			const text = this.notAbleToSpeakTextFromThisSpecialTab.text;
+			const lang = this.notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
+
+			return this.startSpeakingTextInLanguageWithOverridesAction(text, lang);
+		}
+
+		return this.speakUserSelection();
+	}
+
+	async startStopSpeakSelectionOnPage() {
+		const wasSpeaking = await this.speakingStatus.isSpeaking();
+		await this.talkieSpeaker.stopSpeaking();
+
+		if (!wasSpeaking) {
+			return this.speakSelectionOnPage();
+		}
+	}
+
+	async stopSpeakingAction() {
+		return this.talkieSpeaker.stopSpeaking();
+	}
+
+	async startSpeakingTextInVoiceAction(text, voice) {
+		await this.talkieSpeaker.stopSpeaking();
+
+		// NOTE: keeping the root chain separate from this chain.
+		this.speechChain.link(() => this.talkieSpeaker.speakTextInVoice(text, voice))
+			.catch((error) => {
+				logError("Caught error on the speechChain. Swallowing. Resetting synthesizer just in case.", error);
+
+				// TODO: handle internally in talkieSpeaker?
+				return this.talkieSpeaker.resetSynthesizer();
 			});
 	}
 
-	onTabUpdatedHandler(tabId, changeInfo) {
-		return this.speakingStatus.isSpeakingTabId(tabId)
-			.then((isTabSpeaking) => {
-				// NOTE: changeInfo only has properties which have changed.
-				// https://developer.browser.com/extensions/tabs#event-onUpdated
-				if (isTabSpeaking && changeInfo.url) {
-					return this.talkieSpeaker.stopSpeaking();
-				}
+	async addRateAndPitchToSpecificVoice(voice) {
+		const [
+			effectiveRateForVoice,
+			effectivePitchForVoice,
+		] = await Promise.all([
+			this.voiceManager.getEffectiveRateForVoice(voice.name),
+			this.voiceManager.getEffectivePitchForVoice(voice.name),
+		]);
 
-				return undefined;
-			});
-	}
-
-	onExtensionSuspendHandler() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "onExtensionSuspendHandler");
-
-				return this.speakingStatus.isSpeaking()
-					.then((talkieIsSpeaking) => {
-						// NOTE: Clear all text if Talkie was speaking.
-						if (talkieIsSpeaking) {
-							return this.talkieSpeaker.stopSpeaking();
-						}
-
-						return undefined;
-					})
-					.then(() => {
-						logDebug("Done", "onExtensionSuspendHandler");
-
-						return undefined;
-					});
+		const voiceWithPitchAndRate = shallowCopy(
+			voice,
+			{
+				pitch: effectivePitchForVoice,
+				rate: effectiveRateForVoice,
 			},
 		);
+
+		return voiceWithPitchAndRate;
 	}
 
-	executeGetFramesSelectionTextAndLanguage() {
-		return this.execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 1000)
-			.then((framesSelectionTextAndLanguage) => {
-				logDebug("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
+	async startSpeakingTextInVoiceWithOverridesAction(text, voice) {
+		const voiceWithPitchAndRate = await this.addRateAndPitchToSpecificVoice(voice);
 
-				if (!framesSelectionTextAndLanguage || !Array.isArray(framesSelectionTextAndLanguage)) {
-					throw new Error("framesSelectionTextAndLanguage");
-				}
+		return this.startSpeakingTextInVoiceAction(text, voiceWithPitchAndRate);
+	}
 
-				return framesSelectionTextAndLanguage;
+	async startSpeakingTextInLanguageAction(text, language) {
+		await this.talkieSpeaker.stopSpeaking();
+
+		// NOTE: keeping the root chain separate from this chain.
+		this.speechChain.link(() => this.talkieSpeaker.speakTextInLanguage(text, language))
+			.catch((error) => {
+				logError("Caught error on the speechChain. Swallowing. Resetting synthesizer just in case.", error);
+
+				// TODO: handle internally in talkieSpeaker?
+				return this.talkieSpeaker.resetSynthesizer();
 			});
 	}
 
-	detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage) {
-		return promiseTry(() => {
-			logDebug("Start", "Speaking all selections");
+	async startSpeakingTextInLanguageWithOverridesAction(text, language) {
+		const effectiveVoiceForLanguage = await this.voiceManager.getEffectiveVoiceForLanguage(language);
 
-			logDebug("Variable", `selections (length ${(selections && selections.length) || 0})`, selections);
-
-			return promiseTry(
-				() => getVoices(),
-			)
-				.then((allVoices) => this.languageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections))
-				.then((cleanedupSelections) => {
-					logDebug("Variable", `cleanedupSelections (length ${(cleanedupSelections && cleanedupSelections.length) || 0})`, cleanedupSelections);
-
-					const speakPromises = cleanedupSelections.map((selection) => {
-						logDebug("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
-
-						return this.startSpeakingTextInLanguageWithOverridesAction(selection.text, selection.effectiveLanguage);
-					});
-
-					logDebug("Done", "Speaking all selections");
-
-					return Promise.all(speakPromises);
-				});
-		});
+		return this.startSpeakingTextInVoiceWithOverridesAction(text, effectiveVoiceForLanguage);
 	}
 
-	speakUserSelection() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "Speaking selection");
+	async startSpeakingCustomTextDetectLanguage(text) {
+		await this.talkieSpeaker.stopSpeaking();
+		const canRun = await canTalkieRunInTab();
 
-				return Promise.all(
-					[
-						this.executeGetFramesSelectionTextAndLanguage(),
-						this.languageHelper.detectPageLanguage(),
-					],
-				)
-					.then(([
-						framesSelectionTextAndLanguage,
-						detectedPageLanguage,
-					]) => {
-						return this.detectLanguagesAndSpeakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
-					})
-					.then(() => logDebug("Done", "Speaking selection"));
-			});
+		let detectedPageLanguage = null;
+
+		if (canRun) {
+			detectedPageLanguage = await this.languageHelper.detectPageLanguage();
+		} else {
+			logDebug("startSpeakingCustomTextDetectLanguage", "Did not detect a normal tab.", "Skipping page language detection.");
+		}
+
+		const selections = [
+			{
+				htmlTagLanguage: null,
+				parentElementsLanguages: [],
+				text,
+			},
+		];
+
+		return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
+	}
+
+	async onTabRemovedHandler(tabId) {
+		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(tabId);
+
+		if (isTabSpeaking) {
+			await this.talkieSpeaker.stopSpeaking();
+		}
+	}
+
+	async onTabUpdatedHandler(tabId, changeInfo) {
+		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(tabId);
+
+		// NOTE: changeInfo only has properties which have changed.
+		// https://developer.browser.com/extensions/tabs#event-onUpdated
+		if (isTabSpeaking && changeInfo.url) {
+			await this.talkieSpeaker.stopSpeaking();
+		}
+	}
+
+	async onExtensionSuspendHandler() {
+		logDebug("Start", "onExtensionSuspendHandler");
+
+		const talkieIsSpeaking = await this.speakingStatus.isSpeaking();
+
+		// NOTE: Clear all text if Talkie was speaking.
+		if (talkieIsSpeaking) {
+			await this.talkieSpeaker.stopSpeaking();
+		}
+
+		logDebug("Done", "onExtensionSuspendHandler");
+	}
+
+	async executeGetFramesSelectionTextAndLanguage() {
+		const framesSelectionTextAndLanguage = await this.execute.scriptInAllFramesWithTimeout(this.executeGetFramesSelectionTextAndLanguageCode, 1000);
+
+		logDebug("Variable", "framesSelectionTextAndLanguage", framesSelectionTextAndLanguage);
+
+		if (!framesSelectionTextAndLanguage || !Array.isArray(framesSelectionTextAndLanguage)) {
+			throw new Error("framesSelectionTextAndLanguage");
+		}
+
+		return framesSelectionTextAndLanguage;
+	}
+
+	async detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage) {
+		logDebug("Start", "Speaking all selections");
+
+		logDebug("Variable", `selections (length ${(selections && selections.length) || 0})`, selections);
+
+		const allVoices = await getVoices();
+		const cleanedupSelections = await this.languageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections);
+
+		logDebug("Variable", `cleanedupSelections (length ${(cleanedupSelections && cleanedupSelections.length) || 0})`, cleanedupSelections);
+
+		// TODO: switch to bluebird for async/promise mapping, also for the browser?
+		const speakPromises = cleanedupSelections.map((selection) => (async () => {
+			logDebug("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
+
+			return this.startSpeakingTextInLanguageWithOverridesAction(selection.text, selection.effectiveLanguage);
+		})());
+
+		logDebug("Done", "Speaking all selections");
+
+		return Promise.all(speakPromises);
+	}
+
+	async speakUserSelection() {
+		logDebug("Start", "Speaking selection");
+
+		const [
+			framesSelectionTextAndLanguage,
+			detectedPageLanguage,
+		] = await Promise.all(
+			[
+				this.executeGetFramesSelectionTextAndLanguage(),
+				this.languageHelper.detectPageLanguage(),
+			],
+		);
+
+		await this.detectLanguagesAndSpeakAllSelections(framesSelectionTextAndLanguage, detectedPageLanguage);
+
+		logDebug("Done", "Speaking selection");
 	}
 }

@@ -23,9 +23,6 @@ import {
 	logError,
 	logTrace,
 } from "./log";
-import {
-	promiseTry,
-} from "./promise";
 
 export default class StorageManager {
 	constructor(storageProvider) {
@@ -95,126 +92,89 @@ export default class StorageManager {
 		};
 	}
 
-	_getStorageKey(storageFormatVersion, key) {
-		return promiseTry(
-			() => {
-				if (!this.allKnownStorageKeys[storageFormatVersion]) {
-					throw new Error(`Unknown storage format version: (${storageFormatVersion})`);
-				}
+	async _getStorageKey(storageFormatVersion, key) {
+		if (!this.allKnownStorageKeys[storageFormatVersion]) {
+			throw new Error(`Unknown storage format version: (${storageFormatVersion})`);
+		}
 
-				if (key !== this.storageMetadataId && !this.allKnownStorageKeys[storageFormatVersion][key]) {
-					throw new Error(`Unknown storage key (${storageFormatVersion}): ${key}`);
-				}
+		if (key !== this.storageMetadataId && !this.allKnownStorageKeys[storageFormatVersion][key]) {
+			throw new Error(`Unknown storage key (${storageFormatVersion}): ${key}`);
+		}
 
-				return `${storageFormatVersion}_${key}`;
-			},
-		);
+		return `${storageFormatVersion}_${key}`;
 	}
 
-	_isStorageKeyValid(storageFormatVersion, key) {
-		return promiseTry(
-			() => {
-				return this._getStorageKey(storageFormatVersion, key)
-					.then(() => {
-						return true;
-					})
-					.catch(() => {
-						// TODO: check for the specific storageKey errors.
-						return false;
-					});
-			},
-		);
+	async _isStorageKeyValid(storageFormatVersion, key) {
+		try {
+			await this._getStorageKey(storageFormatVersion, key);
+
+			return true;
+		} catch {
+			// TODO: check for the specific storageKey errors.
+			return false;
+		}
 	}
 
-	_setStoredValue(storageFormatVersion, key, value) {
-		return promiseTry(
-			() => {
-				logTrace("Start", "_setStoredValue", storageFormatVersion, key, typeof value, value);
+	async _setStoredValue(storageFormatVersion, key, value) {
+		logTrace("Start", "_setStoredValue", storageFormatVersion, key, typeof value, value);
 
-				return this._getStorageKey(storageFormatVersion, key)
-					.then((storageKey) => {
-						return this.storageProvider.set(storageKey, value)
-							.then(() => {
-								logTrace("Done", "_setStoredValue", storageFormatVersion, key, typeof value, value);
+		const storageKey = await this._getStorageKey(storageFormatVersion, key);
 
-								return undefined;
-							});
-					});
-			},
-		);
+		await this.storageProvider.set(storageKey, value);
+
+		logTrace("Done", "_setStoredValue", storageFormatVersion, key, typeof value, value);
 	}
 
-	setStoredValue(key, value) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "setStoredValue", key, typeof value, value);
+	async setStoredValue(key, value) {
+		logDebug("Start", "setStoredValue", key, typeof value, value);
 
-				return this._setStoredValue(this.currentStorageFormatVersion, key, value)
-					.then(() => {
-						logDebug("Done", "setStoredValue", key, typeof value, value);
+		await this._setStoredValue(this.currentStorageFormatVersion, key, value);
 
-						return undefined;
-					});
-			},
-		);
+		logDebug("Done", "setStoredValue", key, typeof value, value);
 	}
 
-	_getStoredValue(storageFormatVersion, key) {
-		return promiseTry(
-			() => {
-				logTrace("Start", "_getStoredValue", storageFormatVersion, key);
+	async _getStoredValue(storageFormatVersion, key) {
+		logTrace("Start", "_getStoredValue", storageFormatVersion, key);
 
-				return this._getStorageKey(storageFormatVersion, key)
-					.then((storageKey) => {
-						return this.storageProvider.get(storageKey)
-							.then((value) => {
-								logTrace("Done", "_getStoredValue", storageFormatVersion, key, value);
+		const storageKey = await this._getStorageKey(storageFormatVersion, key);
 
-								return value;
-							});
-					});
-			},
-		);
+		const value = await this.storageProvider.get(storageKey);
+
+		logTrace("Done", "_getStoredValue", storageFormatVersion, key, value);
+
+		return value;
 	}
 
-	getStoredValue(key) {
-		return promiseTry(
-			() => {
-				logTrace("Start", "getStoredValue", key);
+	async getStoredValue(key) {
+		logTrace("Start", "getStoredValue", key);
 
-				return this._getStoredValue(this.currentStorageFormatVersion, key)
-					.then((value) => {
-						logTrace("Done", "getStoredValue", key, value);
+		const value = await this._getStoredValue(this.currentStorageFormatVersion, key);
 
-						return value;
-					});
-			},
-		);
+		logTrace("Done", "getStoredValue", key, value);
+
+		return value;
 	}
 
 	_createIdentityUpgrader(fromStorageFormatVersion, toStorageFormatVersion) {
-		const identityUpgrader = (key) => promiseTry(
-			() => {
-				return this._isStorageKeyValid(fromStorageFormatVersion, key)
-					.then((isStorageKeyValid) => {
-						if (!isStorageKeyValid) {
-							return false;
-						}
+		const identityUpgrader = async (key) => {
+			const isStorageKeyValid = await this._isStorageKeyValid(fromStorageFormatVersion, key);
 
-						return this._getStoredValue(fromStorageFormatVersion, key)
-							.then((fromValue) => {
-								if (fromValue === undefined || fromValue === null) {
-									return false;
-								}
+			if (!isStorageKeyValid) {
+				return false;
+			}
 
-								const toValue = fromValue;
+			const fromValue = await this._getStoredValue(fromStorageFormatVersion, key);
 
-								return this._setStoredValue(toStorageFormatVersion, key, toValue)
-									.then(() => true);
-							});
-					});
-			},
-		);
+			if (fromValue === undefined || fromValue === null) {
+				return false;
+			}
+
+			const toValue = fromValue;
+
+			await this._setStoredValue(toStorageFormatVersion, key, toValue);
+
+			return true;
+		};
 
 		return identityUpgrader;
 	}
@@ -223,208 +183,162 @@ export default class StorageManager {
 		return this.allKnownUpgradePaths[fromStorageFormatVersion][toStorageFormatVersion].upgradeKey(key);
 	}
 
-	_upgrade(fromStorageFormatVersion, toStorageFormatVersion) {
-		return promiseTry(
-			() => {
-				const storageKeysForVersion = Object.keys(this.allKnownStorageKeys[toStorageFormatVersion]);
+	async _upgrade(fromStorageFormatVersion, toStorageFormatVersion) {
+		const storageKeysForVersion = Object.keys(this.allKnownStorageKeys[toStorageFormatVersion]);
 
-				const upgradePromises = storageKeysForVersion.map((key) => this._upgradeKey(fromStorageFormatVersion, toStorageFormatVersion, key));
+		const upgradePromises = storageKeysForVersion.map((key) => this._upgradeKey(fromStorageFormatVersion, toStorageFormatVersion, key));
 
-				return Promise.all(upgradePromises);
-			},
-		);
+		return Promise.all(upgradePromises);
 	}
 
-	_getStorageMetadata(storageFormatVersion) {
-		return promiseTry(
-			() => {
-				return this._getStoredValue(storageFormatVersion, this.storageMetadataId);
-			},
-		);
+	async _getStorageMetadata(storageFormatVersion) {
+		return this._getStoredValue(storageFormatVersion, this.storageMetadataId);
 	}
 
-	_isStorageFormatVersionInitialized(storageFormatVersion) {
-		return promiseTry(
-			() => {
-				return this._getStorageMetadata(storageFormatVersion)
-					.then((storageMetadata) => {
-						if (storageMetadata !== null) {
-							return true;
-						}
+	async _isStorageFormatVersionInitialized(storageFormatVersion) {
+		const storageMetadata = await this._getStorageMetadata(storageFormatVersion);
 
-						return false;
-					});
-			},
-		);
+		if (storageMetadata !== null) {
+			return true;
+		}
+
+		return false;
 	}
 
-	_setStorageMetadataAsInitialized(storageFormatVersion, fromStorageFormatVersion) {
-		return promiseTry(
-			() => {
-				return this._isStorageFormatVersionInitialized(storageFormatVersion)
-					.then((storageFormatVersionIsInitialized) => {
-						if (storageFormatVersionIsInitialized) {
-							throw new Error(`Already initialized: ${storageFormatVersion}`);
-						}
+	async _setStorageMetadataAsInitialized(storageFormatVersion, fromStorageFormatVersion) {
+		const storageFormatVersionIsInitialized = await this._isStorageFormatVersionInitialized(storageFormatVersion);
 
-						return undefined;
-					})
-					.then(() => {
-						const storageMetadata = {
-							"upgraded-at": Date.now(),
-							"upgraded-from-version": fromStorageFormatVersion,
-							version: storageFormatVersion,
-						};
+		if (storageFormatVersionIsInitialized) {
+			throw new Error(`Already initialized: ${storageFormatVersion}`);
+		}
 
-						return this._setStoredValue(storageFormatVersion, this.storageMetadataId, storageMetadata);
-					});
-			},
-		);
+		const storageMetadata = {
+			"upgraded-at": Date.now(),
+			"upgraded-from-version": fromStorageFormatVersion,
+			version: storageFormatVersion,
+		};
+
+		return this._setStoredValue(storageFormatVersion, this.storageMetadataId, storageMetadata);
 	}
 
-	_findUpgradePaths(toStorageFormatVersion) {
-		return promiseTry(
-			() => {
-				return this.allKnownStorageFormatVersions
-					.filter((knownStorageFormatVersion) => knownStorageFormatVersion !== toStorageFormatVersion)
-					.reverse()
-					.filter((knownStorageFormatVersion) => {
-						if (!this.allKnownUpgradePaths[knownStorageFormatVersion]) {
-							return false;
-						}
+	async _findUpgradePaths(toStorageFormatVersion) {
+		return this.allKnownStorageFormatVersions
+			.filter((knownStorageFormatVersion) => knownStorageFormatVersion !== toStorageFormatVersion)
+			.reverse()
+			.filter((knownStorageFormatVersion) => {
+				if (!this.allKnownUpgradePaths[knownStorageFormatVersion]) {
+					return false;
+				}
 
-						if (!this.allKnownUpgradePaths[knownStorageFormatVersion][toStorageFormatVersion]) {
-							return false;
-						}
+				if (!this.allKnownUpgradePaths[knownStorageFormatVersion][toStorageFormatVersion]) {
+					return false;
+				}
 
-						const upgradePath = this.allKnownUpgradePaths[knownStorageFormatVersion][toStorageFormatVersion];
+				const upgradePath = this.allKnownUpgradePaths[knownStorageFormatVersion][toStorageFormatVersion];
 
-						if (upgradePath) {
-							return true;
-						}
+				if (upgradePath) {
+					return true;
+				}
 
-						return false;
-					});
-			},
-		);
+				return false;
+			});
 	}
 
-	_findUpgradePath(toStorageFormatVersion) {
-		return promiseTry(
-			() => {
-				return this._findUpgradePaths(toStorageFormatVersion)
-					.then((upgradePaths) => {
-						if (!upgradePaths || !Array.isArray(upgradePaths) || upgradePaths.length === 0) {
-							return null;
-						}
+	async _findUpgradePath(toStorageFormatVersion) {
+		const upgradePaths = await this._findUpgradePaths(toStorageFormatVersion);
 
-						const possiblyInitializedUpgradePathPromises = upgradePaths.map((upgradePath) => {
-							return this._isStorageFormatVersionInitialized(upgradePath)
-								.then((storageFormatVersionIsInitialized) => {
-									if (storageFormatVersionIsInitialized) {
-										return upgradePath;
-									}
+		if (!upgradePaths || !Array.isArray(upgradePaths) || upgradePaths.length === 0) {
+			return null;
+		}
 
-									return null;
-								});
-						});
+		// TODO: switch to bluebird for async/promise mapping, also for the browser?
+		const possiblyInitializedUpgradePathPromises = upgradePaths.map(
+			(upgradePath) => (async () => {
+				const storageFormatVersionIsInitialized = await this._isStorageFormatVersionInitialized(upgradePath);
 
-						return Promise.all(possiblyInitializedUpgradePathPromises)
-							.then((possiblyInitializedUpgradePaths) => {
-								return possiblyInitializedUpgradePaths
-									.filter((possiblyInitializedUpgradePath) => Boolean(possiblyInitializedUpgradePath));
-							})
-							.then((initializedUpgradePaths) => {
-								if (initializedUpgradePaths.length === 0) {
-									return null;
-								}
+				if (storageFormatVersionIsInitialized) {
+					return upgradePath;
+				}
 
-								const firstInitializedUpgradePath = initializedUpgradePaths[0];
-
-								return firstInitializedUpgradePath;
-							});
-					});
-			},
+				return null;
+			})(),
 		);
+
+		const possiblyInitializedUpgradePaths = await Promise.all(possiblyInitializedUpgradePathPromises);
+		const initializedUpgradePaths = possiblyInitializedUpgradePaths
+			.filter((possiblyInitializedUpgradePath) => Boolean(possiblyInitializedUpgradePath));
+
+		if (initializedUpgradePaths.length === 0) {
+			return null;
+		}
+
+		const firstInitializedUpgradePath = initializedUpgradePaths[0];
+
+		return firstInitializedUpgradePath;
 	}
 
-	_upgradeIfNecessary(storageFormatVersion) {
-		return promiseTry(
-			() => {
-				return this._isStorageFormatVersionInitialized(storageFormatVersion)
-					.then((storageFormatVersionIsInitialized) => {
-						if (!storageFormatVersionIsInitialized) {
-							return this._findUpgradePath(storageFormatVersion)
-								.then((firstInitializedUpgradePath) => {
-									return promiseTry(
-										() => {
-											if (!firstInitializedUpgradePath) {
-												return false;
-											}
+	async _upgradeIfNecessary(storageFormatVersion) {
+		const storageFormatVersionIsInitialized = await this._isStorageFormatVersionInitialized(storageFormatVersion);
 
-											return this._upgrade(firstInitializedUpgradePath, storageFormatVersion)
-												.then(() => true);
-										})
-										.then((result) => {
-											this._setStorageMetadataAsInitialized(storageFormatVersion, firstInitializedUpgradePath);
+		if (!storageFormatVersionIsInitialized) {
+			const firstInitializedUpgradePath = await this._findUpgradePath(storageFormatVersion);
 
-											return result;
-										});
-								});
-						}
+			let result = null;
 
-						return false;
-					});
-			},
-		);
+			if (firstInitializedUpgradePath) {
+				await this._upgrade(firstInitializedUpgradePath, storageFormatVersion);
+
+				result = true;
+			} else {
+				result = false;
+			}
+
+			await this._setStorageMetadataAsInitialized(storageFormatVersion, firstInitializedUpgradePath);
+
+			return result;
+		}
+
+		return false;
 	}
 
-	_upgradeV1x0x0IfNecessary() {
-		return promiseTry(
-			() => {
-				const storageFormatVersion1x0x0 = "v1.0.0";
-				const keyToCheck = "options-popup-donate-buttons-hide";
+	async _upgradeV1x0x0IfNecessary() {
+		const storageFormatVersion1x0x0 = "v1.0.0";
+		const keyToCheck = "options-popup-donate-buttons-hide";
 
-				// NOTE: return v1.0.0 as initialized if it had the single setting set,
-				// as it didn't have initialization code yet.
-				return this._isStorageFormatVersionInitialized(storageFormatVersion1x0x0)
-					.then((storageFormatVersionIsInitialized) => {
-						if (!storageFormatVersionIsInitialized) {
-							return this._getStoredValue(storageFormatVersion1x0x0, keyToCheck)
-								.then((storageValueToCheck) => {
-									if (storageValueToCheck !== null) {
-										return this._setStorageMetadataAsInitialized(storageFormatVersion1x0x0, null)
-											.then(() => true);
-									}
+		// NOTE: return v1.0.0 as initialized if it had the single setting set,
+		// as it didn't have initialization code yet.
+		const storageFormatVersionIsInitialized = await this._isStorageFormatVersionInitialized(storageFormatVersion1x0x0);
 
-									return false;
-								});
-						}
+		let result = false;
 
-						return false;
-					});
-			},
-		);
+		if (!storageFormatVersionIsInitialized) {
+			const storageValueToCheck = await this._getStoredValue(storageFormatVersion1x0x0, keyToCheck);
+
+			if (storageValueToCheck !== null) {
+				await this._setStorageMetadataAsInitialized(storageFormatVersion1x0x0, null);
+
+				result = true;
+			}
+		}
+
+		return result;
 	}
 
-	upgradeIfNecessary() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "upgradeIfNecessary");
+	async upgradeIfNecessary() {
+		try {
+			logDebug("Start", "upgradeIfNecessary");
 
-				return this._upgradeV1x0x0IfNecessary()
-					.then(() => this._upgradeIfNecessary(this.currentStorageFormatVersion))
-					.then((result) => {
-						logDebug("Done", "upgradeIfNecessary");
+			await this._upgradeV1x0x0IfNecessary();
 
-						return result;
-					})
-					.catch((error) => {
-						logError("upgradeIfNecessary", error);
+			const result = await this._upgradeIfNecessary(this.currentStorageFormatVersion);
 
-						throw error;
-					});
-			},
-		);
+			logDebug("Done", "upgradeIfNecessary");
+
+			return result;
+		} catch (error) {
+			logError("upgradeIfNecessary", error);
+
+			throw error;
+		}
 	}
 }

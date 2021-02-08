@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class SuspensionConnectorManager {
 	constructor() {
@@ -33,66 +30,58 @@ export default class SuspensionConnectorManager {
 		this.talkiePreventSuspensionPort = null;
 	}
 
-	_connectToStayAlive() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "_connectToStayAlive");
+	async _connectToStayAlive() {
+		logDebug("Start", "_connectToStayAlive");
 
-				const preventSuspensionConnectOptions = {
-					name: this.preventSuspensionPortName,
-				};
+		const preventSuspensionConnectOptions = {
+			name: this.preventSuspensionPortName,
+		};
 
-				this.talkiePreventSuspensionPort = browser.runtime.connect(preventSuspensionConnectOptions);
+		this.talkiePreventSuspensionPort = browser.runtime.connect(preventSuspensionConnectOptions);
 
-				if (this.talkiePreventSuspensionPort === null) {
-					throw new Error(`Could not connect to ${this.preventSuspensionPortName}.`);
-				}
+		if (this.talkiePreventSuspensionPort === null) {
+			throw new Error(`Could not connect to ${this.preventSuspensionPortName}.`);
+		}
 
-				const onDisconnectHandler = () => {
-					logDebug("onDisconnect", "_connectToStayAlive");
+		const onDisconnectHandler = () => {
+			logDebug("onDisconnect", "_connectToStayAlive");
 
-					this.talkiePreventSuspensionPort = null;
-				};
+			this.talkiePreventSuspensionPort = null;
+		};
 
-				this.talkiePreventSuspensionPort.onDisconnect.addListener(onDisconnectHandler);
+		this.talkiePreventSuspensionPort.onDisconnect.addListener(onDisconnectHandler);
 
-				const _onMessageHandler = (message) => {
-					logDebug("_onMessageHandler", "_connectToStayAlive", message);
-				};
+		const _onMessageHandler = (message) => {
+			logDebug("_onMessageHandler", "_connectToStayAlive", message);
+		};
 
-				// NOTE: this message listener is unneccessary.
-				this.talkiePreventSuspensionPort.onMessage.addListener(_onMessageHandler);
+		// NOTE: this message listener is unnecessary.
+		this.talkiePreventSuspensionPort.onMessage.addListener(_onMessageHandler);
 
-				this.talkiePreventSuspensionPort.postMessage("Hello from the SuspensionConnectorManager.");
+		this.talkiePreventSuspensionPort.postMessage("Hello from the SuspensionConnectorManager.");
 
-				logDebug("Done", "_connectToStayAlive");
-			},
-		);
+		logDebug("Done", "_connectToStayAlive");
 	}
 
-	_disconnectToDie() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "_disconnectToDie");
+	async _disconnectToDie() {
+		logDebug("Start", "_disconnectToDie");
 
-				if (this.talkiePreventSuspensionPort === null) {
-					// TODO: investigate if this should happen during normal operation, or not.
-					// throw new Error("this.talkiePreventSuspensionPort is null");
-					logDebug("Done", "_disconnectToDie", "already null");
+		if (this.talkiePreventSuspensionPort === null) {
+			// TODO: investigate if this should happen during normal operation, or not.
+			// throw new Error("this.talkiePreventSuspensionPort is null");
+			logDebug("Done", "_disconnectToDie", "already null");
 
-					return;
-				}
+			return;
+		}
 
-				this.talkiePreventSuspensionPort.postMessage("Goodbye from the SuspensionConnectorManager.");
+		this.talkiePreventSuspensionPort.postMessage("Goodbye from the SuspensionConnectorManager.");
 
-				// https://developer.browser.com/extensions/runtime#type-Port
-				// NOTE: should work irregardless if the port was connected or not.
-				this.talkiePreventSuspensionPort.disconnect();
+		// https://developer.browser.com/extensions/runtime#type-Port
+		// NOTE: should work irregardless if the port was connected or not.
+		this.talkiePreventSuspensionPort.disconnect();
 
-				this.talkiePreventSuspensionPort = null;
+		this.talkiePreventSuspensionPort = null;
 
-				logDebug("Done", "_disconnectToDie");
-			},
-		);
+		logDebug("Done", "_disconnectToDie");
 	}
 }

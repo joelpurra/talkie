@@ -24,9 +24,6 @@ import React from "react";
 import {
 	knownEvents,
 } from "../../shared/events";
-import {
-	promiseTry,
-} from "../../shared/promise";
 
 //import DualLogger from "../frontend/dual-log";
 //
@@ -107,7 +104,6 @@ export default function isSpeakingHoc(ComponentToWrap) {
 				// dualLogger.dualLogError("setState", error);
 
 				// NOTE: ignoring and swallowing error.
-				return undefined;
 			}
 		}
 
@@ -129,21 +125,18 @@ export default function isSpeakingHoc(ComponentToWrap) {
 			});
 		}
 
-		registerBroadcastListeners() {
-			return promiseTry(
-				() => {
-					return Promise.all([
-						/* eslint-disable no-unused-vars */
-						this.context.broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => this.updateIsSpeaking(true))
-							.then((killSwitch) => this.killSwitches.push(killSwitch)),
-						this.context.broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => this.updateIsSpeaking(true))
-							.then((killSwitch) => this.killSwitches.push(killSwitch)),
-						this.context.broadcaster.registerListeningAction(knownEvents.afterSpeaking, (actionName, actionData) => this.updateIsSpeaking(false))
-							.then((killSwitch) => this.killSwitches.push(killSwitch)),
-						/* eslint-enable no-unused-vars */
-					]);
-				},
-			);
+		async registerBroadcastListeners() {
+			const killSwitches = await Promise.all([
+				/* eslint-disable no-unused-vars */
+				this.context.broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => this.updateIsSpeaking(true)),
+				this.context.broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => this.updateIsSpeaking(true)),
+				this.context.broadcaster.registerListeningAction(knownEvents.afterSpeaking, (actionName, actionData) => this.updateIsSpeaking(false)),
+				/* eslint-enable no-unused-vars */
+			]);
+
+			killSwitches.forEach((killSwitch) => {
+				this.killSwitches.push(killSwitch);
+			});
 		}
 	};
 }

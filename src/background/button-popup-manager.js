@@ -18,43 +18,33 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	promiseTry,
-} from "../shared/promise";
-
 export default class ButtonPopupManager {
 	constructor(translator, metadataManager) {
 		this.translator = translator;
 		this.metadataManager = metadataManager;
 	}
 
-	_getExtensionShortName() {
-		return promiseTry(
-			() => this.metadataManager.isPremiumEdition()
-				.then((isPremiumEdition) => {
-					// TODO: move resolving the name to a layer on top of the translator?
-					const extensionShortName = isPremiumEdition
-						? this.translator.translate("extensionShortName_Premium")
-						: this.translator.translate("extensionShortName_Free");
+	async _getExtensionShortName() {
+		const isPremiumEdition = await this.metadataManager.isPremiumEdition();
 
-					return extensionShortName;
-				}),
-		);
+		// TODO: move resolving the name to a layer on top of the translator?
+		const extensionShortName = isPremiumEdition
+			? this.translator.translate("extensionShortName_Premium")
+			: this.translator.translate("extensionShortName_Free");
+
+		return extensionShortName;
 	}
 
-	_getButtonDefaultTitle() {
-		return promiseTry(
-			() => this._getExtensionShortName()
-				.then((extensionShortName) => this.translator.translate("buttonDefaultTitle", [
-					extensionShortName,
-				])),
-		);
+	async _getButtonDefaultTitle() {
+		const extensionShortName = await this._getExtensionShortName();
+
+		return this.translator.translate("buttonDefaultTitle", [
+			extensionShortName,
+		]);
 	}
 
-	_getButtonStopTitle() {
-		return promiseTry(
-			() => this.translator.translate("buttonStopTitle"),
-		);
+	async _getButtonStopTitle() {
+		return this.translator.translate("buttonStopTitle");
 	}
 
 	_disablePopupSync(buttonStopTitle) {
@@ -85,21 +75,19 @@ export default class ButtonPopupManager {
 		browser.browserAction.setTitle(enableIconTitleOptions);
 	}
 
-	disablePopup() {
-		return promiseTry(
-			/* eslint-disable no-sync */
-			() => this._getButtonStopTitle()
-				.then((buttonStopTitle) => this._disablePopupSync(buttonStopTitle)),
-			/* eslint-enable no-sync */
-		);
+	async disablePopup() {
+		const buttonStopTitle = await this._getButtonStopTitle();
+
+		/* eslint-disable no-sync */
+		return this._disablePopupSync(buttonStopTitle);
+		/* eslint-enable no-sync */
 	}
 
-	enablePopup() {
-		return promiseTry(
-			/* eslint-disable no-sync */
-			() => this._getButtonDefaultTitle()
-				.then((buttonDefaultTitle) => this._enablePopupSync(buttonDefaultTitle)),
-			/* eslint-enable no-sync */
-		);
+	async enablePopup() {
+		const buttonDefaultTitle = await this._getButtonDefaultTitle();
+
+		/* eslint-disable no-sync */
+		return this._enablePopupSync(buttonDefaultTitle);
+		/* eslint-enable no-sync */
 	}
 }

@@ -22,32 +22,24 @@ import {
 	logDebug,
 	logError,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class ShortcutKeyManager {
 	constructor(commandHandler) {
 		this.commandHandler = commandHandler;
 	}
 
-	handler(command) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "handler", command);
+	async handler(command) {
+		logDebug("Start", "handler", command);
 
-				// NOTE: straight mapping from command to action.
-				return this.commandHandler.handle(command)
-					.then((result) => {
-						logDebug("Done", "handler", command, result);
+		try {
+		// NOTE: straight mapping from command to action.
+			const result = await this.commandHandler.handle(command);
 
-						return undefined;
-					})
-					.catch((error) => {
-						logError("handler", command, error);
+			logDebug("Done", "handler", command, result);
+		} catch (error) {
+			logError("handler", command, error);
 
-						throw error;
-					});
-			});
+			throw error;
+		}
 	}
 }

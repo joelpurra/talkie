@@ -19,9 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	promiseTry,
-} from "../shared/promise";
-import {
 	resolveVoiceAsMappedVoice,
 } from "../shared/voices";
 
@@ -33,153 +30,117 @@ export default class VoiceLanguageManager {
 		this.languageLanguageVoiceOverrideNamesStorageKey = "language-voice-overrides";
 	}
 
-	getLanguageVoiceDefault(languageName) {
-		return promiseTry(
-			() => {
-				const mappedVoice = {
-					lang: languageName,
-					name: null,
-				};
+	async getLanguageVoiceDefault(languageName) {
+		const mappedVoice = {
+			lang: languageName,
+			name: null,
+		};
 
-				return resolveVoiceAsMappedVoice(mappedVoice);
-			},
-		);
+		return resolveVoiceAsMappedVoice(mappedVoice);
 	}
 
-	hasLanguageVoiceDefault(languageName) {
-		return promiseTry(
-			() => this.getLanguageVoiceDefault(languageName)
-				.then((languageVoiceDefault) => {
-					if (languageVoiceDefault) {
-						return true;
-					}
+	async hasLanguageVoiceDefault(languageName) {
+		const languageVoiceDefault = await this.getLanguageVoiceDefault(languageName);
 
-					return false;
-				}),
-		);
+		if (languageVoiceDefault) {
+			return true;
+		}
+
+		return false;
 	}
 
-	_getLanguageLanguageVoiceOverrideNames() {
-		return promiseTry(
-			() => this.metadataManager.isPremiumEdition()
-				.then((isPremiumEdition) => {
-					if (isPremiumEdition) {
-						return this.storageManager.getStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey)
-							.then((languageLanguageVoiceOverrideNames) => {
-								if (languageLanguageVoiceOverrideNames !== null && typeof languageLanguageVoiceOverrideNames === "object") {
-									return languageLanguageVoiceOverrideNames;
-								}
+	async _getLanguageLanguageVoiceOverrideNames() {
+		const isPremiumEdition = await this.metadataManager.isPremiumEdition();
 
-								return {};
-							});
-					}
+		if (isPremiumEdition) {
+			const languageLanguageVoiceOverrideNames = await this.storageManager.getStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey);
 
-					return {};
-				}),
-		);
+			if (languageLanguageVoiceOverrideNames !== null && typeof languageLanguageVoiceOverrideNames === "object") {
+				return languageLanguageVoiceOverrideNames;
+			}
+
+			return {};
+		}
+
+		return {};
 	}
 
-	_setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames) {
-		return promiseTry(
-			() => this.metadataManager.isPremiumEdition()
-				.then((isPremiumEdition) => {
-					if (isPremiumEdition) {
-						return this.storageManager.setStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey, languageLanguageVoiceOverrideNames);
-					}
+	async _setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames) {
+		const isPremiumEdition = await this.metadataManager.isPremiumEdition();
 
-					return undefined;
-				}),
-		);
+		if (isPremiumEdition) {
+			return this.storageManager.setStoredValue(this.languageLanguageVoiceOverrideNamesStorageKey, languageLanguageVoiceOverrideNames);
+		}
+
+		return undefined;
 	}
 
-	getLanguageVoiceOverrideName(languageName) {
-		return promiseTry(
-			() => this._getLanguageLanguageVoiceOverrideNames()
-				.then((languageLanguageVoiceOverrideNames) => {
-					return languageLanguageVoiceOverrideNames[languageName] || null;
-				}),
-		);
+	async getLanguageVoiceOverrideName(languageName) {
+		const languageLanguageVoiceOverrideNames = await this._getLanguageLanguageVoiceOverrideNames();
+
+		return languageLanguageVoiceOverrideNames[languageName] || null;
 	}
 
-	setLanguageVoiceOverrideName(languageName, voiceName) {
-		return promiseTry(
-			() => this._getLanguageLanguageVoiceOverrideNames()
-				.then((languageLanguageVoiceOverrideNames) => {
-					languageLanguageVoiceOverrideNames[languageName] = voiceName;
+	async setLanguageVoiceOverrideName(languageName, voiceName) {
+		const languageLanguageVoiceOverrideNames = await this._getLanguageLanguageVoiceOverrideNames();
 
-					return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
-				}),
-		);
+		languageLanguageVoiceOverrideNames[languageName] = voiceName;
+
+		return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
 	}
 
-	removeLanguageVoiceOverrideName(languageName) {
-		return promiseTry(
-			() => this._getLanguageLanguageVoiceOverrideNames()
-				.then((languageLanguageVoiceOverrideNames) => {
-					delete languageLanguageVoiceOverrideNames[languageName];
+	async removeLanguageVoiceOverrideName(languageName) {
+		const languageLanguageVoiceOverrideNames = await this._getLanguageLanguageVoiceOverrideNames();
 
-					return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
-				}),
-		);
+		delete languageLanguageVoiceOverrideNames[languageName];
+
+		return this._setLanguageLanguageVoiceOverrideNames(languageLanguageVoiceOverrideNames);
 	}
 
-	hasLanguageVoiceOverrideName(languageName) {
-		return promiseTry(
-			() => this.getLanguageVoiceOverrideName(languageName)
-				.then((languageVoiceOverride) => {
-					if (languageVoiceOverride) {
-						return true;
-					}
+	async hasLanguageVoiceOverrideName(languageName) {
+		const languageVoiceOverride = await this.getLanguageVoiceOverrideName(languageName);
 
-					return false;
-				}),
-		);
+		if (languageVoiceOverride) {
+			return true;
+		}
+
+		return false;
 	}
 
-	isLanguageVoiceOverrideName(languageName, voiceName) {
-		return promiseTry(
-			() => this.getLanguageVoiceOverrideName(languageName)
-				.then((languageVoiceOverride) => {
-					if (languageVoiceOverride) {
-						return languageVoiceOverride === voiceName;
-					}
+	async isLanguageVoiceOverrideName(languageName, voiceName) {
+		const languageVoiceOverride = await this.getLanguageVoiceOverrideName(languageName);
 
-					return false;
-				}),
-		);
+		if (languageVoiceOverride) {
+			return languageVoiceOverride === voiceName;
+		}
+
+		return false;
 	}
 
-	toggleLanguageVoiceOverrideName(languageName, voiceName) {
-		return promiseTry(
-			() => this.isLanguageVoiceOverrideName(languageName, voiceName)
-				.then((isLanguageVoiceOverrideName) => {
-					if (isLanguageVoiceOverrideName) {
-						return this.removeLanguageVoiceOverrideName(languageName);
-					}
+	async toggleLanguageVoiceOverrideName(languageName, voiceName) {
+		const isLanguageVoiceOverrideName = await this.isLanguageVoiceOverrideName(languageName, voiceName);
 
-					return this.setLanguageVoiceOverrideName(languageName, voiceName);
-				}),
-		);
+		if (isLanguageVoiceOverrideName) {
+			return this.removeLanguageVoiceOverrideName(languageName);
+		}
+
+		return this.setLanguageVoiceOverrideName(languageName, voiceName);
 	}
 
-	getEffectiveVoiceForLanguage(languageName) {
-		return promiseTry(
-			() => this.hasLanguageVoiceOverrideName(languageName)
-				.then((hasLanguageVoiceOverrideName) => {
-					if (hasLanguageVoiceOverrideName) {
-						return this.getLanguageVoiceOverrideName(languageName)
-							.then((languageOverrideName) => {
-								const voice = {
-									lang: null,
-									name: languageOverrideName,
-								};
+	async getEffectiveVoiceForLanguage(languageName) {
+		const hasLanguageVoiceOverrideName = await this.hasLanguageVoiceOverrideName(languageName);
 
-								return voice;
-							});
-					}
+		if (hasLanguageVoiceOverrideName) {
+			const languageOverrideName = await this.getLanguageVoiceOverrideName(languageName);
 
-					return this.getLanguageVoiceDefault(languageName);
-				}),
-		);
+			const voice = {
+				lang: null,
+				name: languageOverrideName,
+			};
+
+			return voice;
+		}
+
+		return this.getLanguageVoiceDefault(languageName);
 	}
 }

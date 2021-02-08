@@ -24,9 +24,6 @@ import {
 import {
 	logDebug,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class ContextMenuManager {
 	constructor(commandHandler, metadataManager, translator) {
@@ -124,130 +121,101 @@ export default class ContextMenuManager {
 		];
 	}
 
-	removeAll() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "Removing all context menus");
+	async removeAll() {
+		logDebug("Start", "Removing all context menus");
 
-				return browser.contextMenus.removeAll()
-					.then((result) => {
-						logDebug("Done", "Removing all context menus");
+		const result = await browser.contextMenus.removeAll();
 
-						return result;
-					});
-			},
-		);
+		logDebug("Done", "Removing all context menus");
+
+		return result;
 	}
 
-	createContextMenu(contextMenuOptions) {
-		return new Promise(
-			(resolve, reject) => {
-				try {
-					logDebug("Start", "Creating context menu", contextMenuOptions);
+	async createContextMenu(contextMenuOptions) {
+		logDebug("Start", "Creating context menu", contextMenuOptions);
 
-					// NOTE: apparently Chrome modifies the context menu object after it has been passed in, by adding generatedId.
-					// NOTE: Need to pass a clean object to avoid object reuse reference problems.
-					const contextMenu = shallowCopy(contextMenuOptions);
+		// NOTE: apparently Chrome modifies the context menu object after it has been passed in, by adding generatedId.
+		// NOTE: Need to pass a clean object to avoid object reuse reference problems.
+		const contextMenu = shallowCopy(contextMenuOptions);
 
-					// NOTE: Can't directly use a promise chain here, as the id is returned instead.
-					// https://github.com/mozilla/webextension-polyfill/pull/26
-					const contextMenuId = browser.contextMenus.create(
-						contextMenu,
-						() => {
-							if (browser.runtime.lastError) {
-								return reject(browser.runtime.lastError);
-							}
-
-							logDebug("Done", "Creating context menu", contextMenu);
-
-							return resolve(contextMenuId);
-						},
-					);
-				} catch (error) {
-					reject(error);
-				}
-			},
-		);
-	}
-
-	contextMenuClickAction(info) {
-		return promiseTry(
+		// NOTE: Can't directly use a promise chain here, as the id is returned instead.
+		// https://github.com/mozilla/webextension-polyfill/pull/26
+		const contextMenuId = browser.contextMenus.create(
+			contextMenu,
 			() => {
-				logDebug("Start", "contextMenuClickAction", info);
-
-				if (!info) {
-					throw new Error("Unknown context menu click action info object.");
+				if (browser.runtime.lastError) {
+					throw browser.runtime.lastError;
 				}
 
-				return promiseTry(
-					() => {
-						const id = info.menuItemId;
+				logDebug("Done", "Creating context menu", contextMenu);
 
-						const selectionContextMenuStartStop = this.contextMenuOptionsCollection
-							// eslint-disable-next-line unicorn/no-reduce
-							.reduce(
-								(previous, object) => {
-									if (object.item.id === "talkie-context-menu-start-stop") {
-										return object;
-									}
-
-									return previous;
-								},
-								null);
-
-						// TODO: use assertions?
-						if (!selectionContextMenuStartStop) {
-							throw new Error("Not found: selectionContextMenuStartStop");
-						}
-
-						if (id === selectionContextMenuStartStop.item.id) {
-							const selection = info.selectionText || null;
-
-							if (!selection || typeof selection !== "string" || selection.length === 0) {
-								throw new Error("Unknown context menu click action selection was empty.");
-							}
-
-							return this.commandHandler.handle("start-text", selection);
-						}
-
-						// NOTE: context menu items default to being commands.
-						return this.commandHandler.handle(id);
-					},
-				)
-					.then(() => {
-						logDebug("Done", "contextMenuClickAction", info);
-
-						return undefined;
-					});
+				return contextMenuId;
 			},
 		);
 	}
 
-	createContextMenus() {
-		return promiseTry(
-			() => {
-				return Promise.all([
-					this.metadataManager.getEditionType(),
-					this.metadataManager.getSystemType(),
-				])
-					.then(([
-						editionType,
-						systemType,
-					]) => {
-						const applicableContextMenuOptions = this.contextMenuOptionsCollection
-							.filter((contextMenuOption) => contextMenuOption[editionType] === true && contextMenuOption[systemType] === true);
+	async contextMenuClickAction(info) {
+		logDebug("Start", "contextMenuClickAction", info);
 
-						// // TODO: group by selected contexts before checking against limit.
-						// if (applicableContextMenuOptions > this.actionMenuLimit) {
-						// throw new Error("Maximum number of menu items reached.");
-						// }
+		if (!info) {
+			throw new Error("Unknown context menu click action info object.");
+		}
 
-						const contextMenuOptionsCollectionPromises = applicableContextMenuOptions
-							.map((contextMenuOption) => this.createContextMenu(contextMenuOption.item));
+		const id = info.menuItemId;
 
-						return Promise.all(contextMenuOptionsCollectionPromises);
-					});
-			},
-		);
+		const selectionContextMenuStartStop = this.contextMenuOptionsCollection
+		// eslint-disable-next-line unicorn/no-reduce
+			.reduce(
+				(previous, object) => {
+					if (object.item.id === "talkie-context-menu-start-stop") {
+						return object;
+					}
+
+					return previous;
+				},
+				null);
+
+		// TODO: use assertions?
+		if (!selectionContextMenuStartStop) {
+			throw new Error("Not found: selectionContextMenuStartStop");
+		}
+
+		if (id === selectionContextMenuStartStop.item.id) {
+			const selection = info.selectionText || null;
+
+			if (!selection || typeof selection !== "string" || selection.length === 0) {
+				throw new Error("Unknown context menu click action selection was empty.");
+			}
+
+			return this.commandHandler.handle("start-text", selection);
+		}
+
+		// NOTE: context menu items default to being commands.
+		await this.commandHandler.handle(id);
+
+		logDebug("Done", "contextMenuClickAction", info);
+	}
+
+	async createContextMenus() {
+		const [
+			editionType,
+			systemType,
+		] = await Promise.all([
+			this.metadataManager.getEditionType(),
+			this.metadataManager.getSystemType(),
+		]);
+
+		const applicableContextMenuOptions = this.contextMenuOptionsCollection
+			.filter((contextMenuOption) => contextMenuOption[editionType] === true && contextMenuOption[systemType] === true);
+
+		// // TODO: group by selected contexts before checking against limit.
+		// if (applicableContextMenuOptions > this.actionMenuLimit) {
+		// throw new Error("Maximum number of menu items reached.");
+		// }
+
+		const contextMenuOptionsCollectionPromises = applicableContextMenuOptions
+			.map((contextMenuOption) => this.createContextMenu(contextMenuOption.item));
+
+		return Promise.all(contextMenuOptionsCollectionPromises);
 	}
 }

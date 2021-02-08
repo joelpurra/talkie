@@ -24,9 +24,6 @@ import React from "react";
 import {
 	knownEvents,
 } from "../../shared/events";
-import {
-	promiseTry,
-} from "../../shared/promise";
 
 //import DualLogger from "../frontend/dual-log";
 //
@@ -167,15 +164,10 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 			});
 		}
 
-		registerBroadcastListeners() {
-			return promiseTry(
-				() => {
-					return Promise.all([
-						this.context.broadcaster.registerListeningAction(knownEvents.passSelectedTextToBackground, (actionName, actionData) => this.getSelectedTextWithFocusTimestamp(actionName, actionData))
-							.then((killSwitch) => this.killSwitches.push(killSwitch)),
-					]);
-				},
-			);
+		async registerBroadcastListeners() {
+			const killSwitch = await this.context.broadcaster.registerListeningAction(knownEvents.passSelectedTextToBackground, (actionName, actionData) => this.getSelectedTextWithFocusTimestamp(actionName, actionData));
+
+			this.killSwitches.push(killSwitch);
 		}
 	};
 }

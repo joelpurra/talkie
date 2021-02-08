@@ -134,19 +134,19 @@ export const debounce = (fn, limit) => {
 
 		clearTimeout(timeout);
 
-		timeout = setTimeout(() => {
-			timeout = null;
+		timeout = setTimeout(
+			async () => {
+				timeout = null;
 
-			Promise.resolve()
-				.then(() => fn(...args))
-				.catch((error) => {
-					// TODO: log/handle success/errors?
+				try {
+					await fn(...args);
+				} catch (error) {
+				// TODO: log/handle success/errors?
 					throw error;
-				});
-		},
-		limit);
-
-		return undefined;
+				}
+			},
+			limit,
+		);
 	};
 
 	return limiter;

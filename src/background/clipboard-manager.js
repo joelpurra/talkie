@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class ClipboardManager {
 	constructor(talkieBackground, permissionsManager) {
@@ -33,142 +30,104 @@ export default class ClipboardManager {
 		this.copyPasteTargetElementId = "copy-paste-textarea";
 	}
 
-	_getExistingTextarea() {
-		return promiseTry(
-			() => {
-				const existingTextarea = document.querySelector(`#${this.copyPasteTargetElementId}`);
+	async _getExistingTextarea() {
+		const existingTextarea = document.querySelector(`#${this.copyPasteTargetElementId}`);
 
-				return existingTextarea;
-			},
+		return existingTextarea;
+	}
+
+	async _isInitialized() {
+		const existingTextarea = await this._getExistingTextarea();
+
+		return existingTextarea !== null;
+	}
+
+	async _ensureIsInitialized() {
+		const isInitialized = await this._isInitialized();
+
+		if (!isInitialized) {
+			throw new Error("this.copyPasteTargetElementId did not exist.");
+		}
+	}
+
+	async _ensureIsNotInitialized() {
+		const isInitialized = await this._isInitialized();
+
+		if (isInitialized) {
+			throw new Error("this.copyPasteTargetElementId exists.");
+		}
+	}
+
+	async _injectBackgroundTextarea() {
+		await this._ensureIsNotInitialized();
+
+		const textarea = document.createElement("textarea");
+		textarea.id = this.copyPasteTargetElementId;
+		document.body.append(textarea);
+	}
+
+	async _initializeIfNecessary() {
+		const isInitialized = await this._isInitialized();
+
+		if (isInitialized !== true) {
+			return this.initialize();
+		}
+	}
+
+	async _removeBackgroundTextarea() {
+		await this._ensureIsInitialized();
+
+		const existingTextarea = await this._getExistingTextarea();
+
+		existingTextarea.remove();
+	}
+
+	async initialize() {
+		logDebug("Start", "ClipboardManager.initialize");
+
+		await this._injectBackgroundTextarea();
+
+		logDebug("Done", "ClipboardManager.initialize");
+	}
+
+	async uninitialize() {
+		logDebug("Start", "ClipboardManager.uninitialize");
+
+		await this._removeBackgroundTextarea();
+
+		logDebug("Done", "ClipboardManager.uninitialize");
+	}
+
+	async _getTextFromClipboard() {
+		const textarea = await this._getExistingTextarea();
+
+		textarea.value = "";
+		textarea.focus();
+
+		const success = document.execCommand("Paste");
+
+		if (!success) {
+			return null;
+		}
+
+		return textarea.value;
+	}
+
+	async getClipboardText() {
+		logDebug("Start", "getClipboardText");
+
+		await this._initializeIfNecessary();
+
+		const text = await this.permissionsManager.useOptionalPermissions(
+			[
+				"clipboardRead",
+			],
+			[],
+			(granted) => granted ? this._getTextFromClipboard(granted) : null,
 		);
-	}
 
-	_isInitialized() {
-		return this._getExistingTextarea()
-			.then((existingTextarea) => existingTextarea !== null);
-	}
+		logDebug("Done", "getClipboardText", text);
 
-	_ensureIsInitialized() {
-		return this._isInitialized()
-			.then((isInitialized) => {
-				if (isInitialized === true) {
-					return undefined;
-				}
-
-				throw new Error("this.copyPasteTargetElementId did not exist.");
-			});
-	}
-
-	_ensureIsNotInitialized() {
-		return this._isInitialized()
-			.then((isInitialized) => {
-				if (isInitialized === false) {
-					return undefined;
-				}
-
-				throw new Error("this.copyPasteTargetElementId exists.");
-			});
-	}
-
-	_injectBackgroundTextarea() {
-		return this._ensureIsNotInitialized()
-			.then(() => {
-				const textarea = document.createElement("textarea");
-				textarea.id = this.copyPasteTargetElementId;
-				document.body.append(textarea);
-
-				return undefined;
-			});
-	}
-
-	_initializeIfNecessary() {
-		return this._isInitialized()
-			.then((isInitialized) => {
-				if (isInitialized !== true) {
-					return this.initialize();
-				}
-
-				return undefined;
-			});
-	}
-
-	_removeBackgroundTextarea() {
-		return this._ensureIsInitialized()
-			.then(() => this._getExistingTextarea())
-			.then((existingTextarea) => {
-				existingTextarea.remove();
-
-				return undefined;
-			});
-	}
-
-	initialize() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "ClipboardManager.initialize");
-
-				return this._injectBackgroundTextarea()
-					.then(() => {
-						logDebug("Done", "ClipboardManager.initialize");
-
-						return undefined;
-					});
-			},
-		);
-	}
-
-	unintialize() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "ClipboardManager.unintialize");
-
-				return this._removeBackgroundTextarea()
-					.then(() => {
-						logDebug("Done", "ClipboardManager.unintialize");
-
-						return undefined;
-					});
-			},
-		);
-	}
-
-	getClipboardText() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "getClipboardText");
-
-				return this._initializeIfNecessary()
-					.then(() => this.permissionsManager.useOptionalPermissions(
-						[
-							"clipboardRead",
-						],
-						[],
-						(granted) => {
-							if (granted) {
-								return this._getExistingTextarea()
-									.then((textarea) => {
-										textarea.value = "";
-										textarea.focus();
-
-										const success = document.execCommand("Paste");
-
-										if (!success) {
-											return null;
-										}
-
-										return textarea.value;
-									});
-							}
-
-							return null;
-						}),
-					)
-					.then((text) => {
-						logDebug("Done", "getClipboardText", text);
-
-						return text;
-					});
-			},
-		);
+		return text;
 	}
 }

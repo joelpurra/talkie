@@ -19,9 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import languages from "../languages/languages.json";
-import {
-	promiseTry,
-} from "./promise";
 
 export default class TalkieLocaleHelper {
 	_getSync(languageCode, name) {
@@ -46,9 +43,9 @@ export default class TalkieLocaleHelper {
 		/* eslint-enable no-sync */
 	}
 
-	getBidiDirection(languageCode) {
+	async getBidiDirection(languageCode) {
 		/* eslint-disable no-sync */
-		return promiseTry(() => this.getBidiDirectionSync(languageCode));
+		return this.getBidiDirectionSync(languageCode);
 		/* eslint-enable no-sync */
 	}
 
@@ -58,9 +55,9 @@ export default class TalkieLocaleHelper {
 		/* eslint-enable no-sync */
 	}
 
-	getSampleText(languageCode) {
+	async getSampleText(languageCode) {
 		/* eslint-disable no-sync */
-		return promiseTry(() => this.getSampleTextSync(languageCode));
+		return this.getSampleTextSync(languageCode);
 		/* eslint-enable no-sync */
 	}
 
@@ -70,9 +67,9 @@ export default class TalkieLocaleHelper {
 		return allLanguages;
 	}
 
-	getTranslatedLanguages() {
+	async getTranslatedLanguages() {
 		/* eslint-disable no-sync */
-		return promiseTry(() => this.getTranslatedLanguagesSync());
+		return this.getTranslatedLanguagesSync();
 		/* eslint-enable no-sync */
 	}
 }

@@ -32,7 +32,6 @@ import {
 import {
 	promiseSeries,
 	promiseTimeout,
-	promiseTry,
 } from "../shared/promise";
 import {
 	pitchRange,
@@ -56,358 +55,299 @@ export default class TalkieSpeaker {
 		this.MAX_UTTERANCE_TEXT_LENGTH = 100;
 	}
 
-	getSynthesizerFromBrowser() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "getSynthesizerFromBrowser", "Pre-requisites check");
+	static _asyncSynthesizerInitialization() {
+		// NOTE: wraps the browser's speech synthesizer events to figure out when it is ready.
+		return new Promise(
+			(resolve, reject) => {
+				const handleVoicesChanged = () => {
+					window.speechSynthesis.removeEventListener("error", handleError);
+					window.speechSynthesis.removeEventListener("voiceschanged", handleVoicesChanged);
 
-				if (!("speechSynthesis" in window) || typeof window.speechSynthesis.getVoices !== "function" || typeof window.speechSynthesis.speak !== "function") {
-					throw new Error("The browser does not support speechSynthesis.");
+					logDebug("Variable", "window.speechSynthesis", window.speechSynthesis);
+
+					logDebug("Done", "getSynthesizerFromBrowser (event-based)");
+
+					return resolve();
+				};
+
+				const handleError = (event) => {
+					window.speechSynthesis.removeEventListener("error", handleError);
+					window.speechSynthesis.removeEventListener("voiceschanged", handleVoicesChanged);
+
+					logError("getSynthesizerFromBrowser", event);
+
+					return reject(event.error);
+				};
+
+				try {
+					logDebug("Start", "getSynthesizerFromBrowser (event-based)");
+
+					// NOTE: Chrome needs to wait for the onvoiceschanged event before using the synthesizer.
+					window.speechSynthesis.addEventListener("voiceschanged", handleVoicesChanged);
+					window.speechSynthesis.addEventListener("error", handleError);
+				} catch (error) {
+					logError("getSynthesizerFromBrowser", error);
+
+					reject(error);
 				}
-
-				if (!("SpeechSynthesisUtterance" in window)) {
-					throw new Error("The browser does not support SpeechSynthesisUtterance.");
-				}
-
-				logDebug("Done", "getSynthesizerFromBrowser", "Pre-requisites check");
-			})
-			.then(() => {
-				logDebug("Start", "getSynthesizerFromBrowser");
-
-				// NOTE: the speech synthesizer can only be used in Chrome after the voices have been loaded.
-				const synthesizer = window.speechSynthesis;
-
-				// https://github.com/mdn/web-speech-api/blob/gh-pages/speak-easy-synthesis/script.js#L33-L36
-				// NOTE: The synthesizer will work right away in Firefox.
-				const voices = synthesizer.getVoices();
-
-				if (Array.isArray(voices) && voices.length > 0) {
-					logDebug("Done", "getSynthesizerFromBrowser (direct)");
-
-					return synthesizer;
-				}
-
-				const asyncSynthesizerInitialization = new Promise(
-					(resolve, reject) => {
-						try {
-							logDebug("Start", "getSynthesizerFromBrowser (event-based)");
-
-							const handleVoicesChanged = () => {
-								synthesizer.removeEventListener("error", handleError);
-								synthesizer.removeEventListener("voiceschanged", handleVoicesChanged);
-
-								logDebug("Variable", "synthesizer", synthesizer);
-
-								logDebug("Done", "getSynthesizerFromBrowser (event-based)");
-
-								return resolve(synthesizer);
-							};
-
-							const handleError = (event) => {
-								synthesizer.removeEventListener("error", handleError);
-								synthesizer.removeEventListener("voiceschanged", handleVoicesChanged);
-
-								logError("getSynthesizerFromBrowser", event);
-
-								return reject(event.error);
-							};
-
-							// NOTE: Chrome needs to wait for the onvoiceschanged event before using the synthesizer.
-							synthesizer.addEventListener("voiceschanged", handleVoicesChanged);
-							synthesizer.addEventListener("error", handleError);
-						} catch (error) {
-							reject(error);
-						}
-					},
-				);
-
-				return promiseTimeout(asyncSynthesizerInitialization, 1000)
-					.catch((error) => {
-						// TODO: remove the specific listeners previously registered.
-						if (error && error.name === "PromiseTimeout") {
-							logDebug("Done", "getSynthesizerFromBrowser (timeout)", "asyncSynthesizerInitialization", error);
-
-							// NOTE: assume the synthesizer has somehow been initialized without triggering the onvoiceschanged event.
-							return synthesizer;
-						}
-
-						logError("getSynthesizerFromBrowser", "asyncSynthesizerInitialization", error);
-
-						throw error;
-					});
-			})
-			.then((synthesizer) => {
-				// NOTE: only for logging purposes.
-				const voices = synthesizer.getVoices();
-
-				logDebug("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
-
-				return synthesizer;
-			});
-	}
-
-	resetSynthesizer() {
-		return promiseTry(
-			() => {
-				delete this.cachedSynthesizer;
-				this.cachedSynthesizer = null;
-
-				return undefined;
 			},
 		);
 	}
 
-	getSynthesizer() {
-		return promiseTry(
-			() => {
-				if (this.cachedSynthesizer !== null) {
-					return this.cachedSynthesizer;
+	async getSynthesizerFromBrowser() {
+		logDebug("Start", "getSynthesizerFromBrowser", "Pre-requisites check");
+
+		if (!("speechSynthesis" in window) || typeof window.speechSynthesis.getVoices !== "function" || typeof window.speechSynthesis.speak !== "function") {
+			throw new Error("The browser does not support speechSynthesis.");
+		}
+
+		if (!("SpeechSynthesisUtterance" in window)) {
+			throw new Error("The browser does not support SpeechSynthesisUtterance.");
+		}
+
+		logDebug("Done", "getSynthesizerFromBrowser", "Pre-requisites check");
+
+		logDebug("Start", "getSynthesizerFromBrowser");
+
+		// NOTE: the speech synthesizer can only be used in Chrome after the voices have been loaded.
+		// https://github.com/mdn/web-speech-api/blob/gh-pages/speak-easy-synthesis/script.js#L33-L36
+		// NOTE: The synthesizer will work right away in Firefox.
+		const preloadedVoices = window.speechSynthesis.getVoices();
+
+		if (Array.isArray(preloadedVoices) && preloadedVoices.length > 0) {
+			logDebug("Done", "getSynthesizerFromBrowser (direct)");
+
+			return window.speechSynthesis;
+		}
+
+		try {
+			await promiseTimeout(TalkieSpeaker._asyncSynthesizerInitialization(), 1000);
+		} catch (error) {
+			// TODO: remove the specific listeners previously registered.
+			if (error && error.name === "PromiseTimeout") {
+				// NOTE: assume the synthesizer has somehow been initialized without triggering the onvoiceschanged event and continue.
+				logDebug("Done", "getSynthesizerFromBrowser (timeout)", "_asyncSynthesizerInitialization", error);
+			} else {
+				logError("getSynthesizerFromBrowser", "_asyncSynthesizerInitialization", error);
+
+				throw error;
+			}
+		}
+
+		// NOTE: only for logging purposes.
+		const voices = window.speechSynthesis.getVoices();
+
+		logDebug("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
+
+		return window.speechSynthesis;
+	}
+
+	async resetSynthesizer() {
+		delete this.cachedSynthesizer;
+		this.cachedSynthesizer = null;
+	}
+
+	async getSynthesizer() {
+		// TODO: measure impact of caching versus always fetching from the browser.
+		if (this.cachedSynthesizer !== null) {
+			return this.cachedSynthesizer;
+		}
+
+		const synthesizer = await this.getSynthesizerFromBrowser();
+
+		this.cachedSynthesizer = synthesizer;
+
+		return this.cachedSynthesizer;
+	}
+
+	async getAllVoices() {
+		const synthesizer = await this.getSynthesizer();
+
+		return synthesizer.getVoices();
+	}
+
+	async stopSpeaking() {
+		logDebug("Start", "stopSpeaking");
+
+		const synthesizer = await this.getSynthesizer();
+
+		const eventData = {};
+
+		await this.broadcaster.broadcastEvent(knownEvents.stopSpeaking, eventData);
+
+		synthesizer.cancel();
+
+		// NOTE: reset the system to resume playback, just to be nice to the world.
+		synthesizer.resume();
+
+		logDebug("Done", "stopSpeaking");
+	}
+
+	async speakPartOfText(utterance) {
+		const synthesizer = await this.getSynthesizer();
+
+		// NOTE: wraps the browser's speech synthesizer events to track progress.
+		return new Promise(
+			(resolve, reject) => {
+				const handleEnd = (event) => {
+					utterance.removeEventListener("end", handleEnd);
+					utterance.removeEventListener("error", handleEnd);
+
+					logDebug("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
+
+					return resolve();
+				};
+
+				const handleError = (event) => {
+					utterance.removeEventListener("end", handleEnd);
+					utterance.removeEventListener("error", handleEnd);
+
+					logError("speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
+
+					return reject(event.error);
+				};
+
+				try {
+					logDebug("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
+
+					utterance.addEventListener("end", handleEnd);
+					utterance.addEventListener("error", handleError);
+
+					// The actual act of speaking the text.
+					synthesizer.speak(utterance);
+
+					// NOTE: pause/resume suggested (for longer texts) in Chrome bug reports, trying it for shorter texts as well.
+					// https://bugs.chromium.org/p/chromium/issues/detail?id=335907
+					// https://bugs.chromium.org/p/chromium/issues/detail?id=369472
+					synthesizer.pause();
+					synthesizer.resume();
+
+					logDebug("Variable", "synthesizer", synthesizer);
+
+					logDebug("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
+				} catch (error) {
+					reject(error);
 				}
-
-				return this.getSynthesizerFromBrowser()
-					.then((synthesizer) => {
-						this.cachedSynthesizer = synthesizer;
-
-						return this.cachedSynthesizer;
-					});
 			},
 		);
 	}
 
-	getAllVoices() {
-		return promiseTry(
-			() => this.getSynthesizer()
-				.then((synthesizer) => {
-					return synthesizer.getVoices();
-				}),
-		);
+	async getActualVoice(mappedVoice) {
+		try {
+			logDebug("Start", "getActualVoice", mappedVoice);
+
+			const actualVoice = await resolveVoice(mappedVoice);
+
+			logDebug("Done", "getActualVoice", mappedVoice, actualVoice);
+
+			return actualVoice;
+		} catch (error) {
+			logError("getActualVoice", mappedVoice, error);
+
+			throw error;
+		}
 	}
 
-	stopSpeaking() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "stopSpeaking");
+	async splitAndSpeak(text, voice) {
+		logDebug("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
-				return this.getSynthesizer()
-					.then((synthesizer) => {
-						const eventData = {};
+		const speakingEventData = {
+			language: voice.lang,
+			text,
+			voice: voice.name,
+		};
 
-						return Promise.resolve()
-							.then(() => this.broadcaster.broadcastEvent(knownEvents.stopSpeaking, eventData))
-							.then(() => {
-								synthesizer.cancel();
+		await this.broadcaster.broadcastEvent(knownEvents.beforeSpeaking, speakingEventData);
 
-								// NOTE: reset the system to resume playback, just to be nice to the world.
-								synthesizer.resume();
+		// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+		delete window.talkieUtterance;
 
-								logDebug("Done", "stopSpeaking");
+		const [
+			actualVoice,
+			speakLongTexts,
+		] = await Promise.all([
+			this.getActualVoice(voice),
+			this.settingsManager.getSpeakLongTexts(),
+		]);
 
-								return undefined;
-							});
-					});
-			},
-		);
-	}
+		const paragraphs = TextHelper.splitTextToParagraphs(text);
 
-	speakPartOfText(utterance) {
-		return this.getSynthesizer()
-			.then((synthesizer) => new Promise(
-				(resolve, reject) => {
-					try {
-						logDebug("Start", "speakPartOfText", `Speak text part (length ${utterance.text.length}): "${utterance.text}"`);
+		let textParts = null;
 
-						const handleEnd = (event) => {
-							utterance.removeEventListener("end", handleEnd);
-							utterance.removeEventListener("error", handleEnd);
+		if (speakLongTexts === true) {
+			textParts = paragraphs;
+		} else {
+			const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
+			textParts = flatten(cleanTextParts);
+		}
 
-							logDebug("End", "speakPartOfText", `Speak text part (length ${utterance.text.length}) spoken in ${event.elapsedTime} milliseconds.`);
+		logDebug("Variable", "textParts.length", textParts.length);
 
-							return resolve();
-						};
+		const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
 
-						const handleError = (event) => {
-							utterance.removeEventListener("end", handleEnd);
-							utterance.removeEventListener("error", handleEnd);
-
-							logError("speakPartOfText", `Speak text part (length ${utterance.text.length})`, event);
-
-							return reject(event.error);
-						};
-
-						utterance.addEventListener("end", handleEnd);
-						utterance.addEventListener("error", handleError);
-
-						// The actual act of speaking the text.
-						synthesizer.speak(utterance);
-
-						// NOTE: pause/resume suggested (for longer texts) in Chrome bug reports, trying it for shorter texts as well.
-						// https://bugs.chromium.org/p/chromium/issues/detail?id=335907
-						// https://bugs.chromium.org/p/chromium/issues/detail?id=369472
-						synthesizer.pause();
-						synthesizer.resume();
-
-						logDebug("Variable", "synthesizer", synthesizer);
-
-						logDebug("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
-					} catch (error) {
-						reject(error);
-					}
-				},
-			),
-			);
-	}
-
-	getActualVoice(mappedVoice) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "getActualVoice", mappedVoice);
-
-				return resolveVoice(mappedVoice)
-					.then((actualVoice) => {
-						logDebug("Done", "getActualVoice", mappedVoice, actualVoice);
-
-						return actualVoice;
-					})
-					.catch((error) => {
-						logError("getActualVoice", mappedVoice, error);
-
-						throw error;
-					});
-			},
-		);
-	}
-
-	splitAndSpeak(text, voice) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
-
-				const speakingEventData = {
+		// TODO: switch to bluebird for async/promise mapping, also for the browser?
+		const textPartsPromises = textParts
+			.map((textPart) => async () => {
+				const speakingPartEventData = {
 					language: voice.lang,
-					text,
+					textPart,
 					voice: voice.name,
 				};
 
-				return Promise.resolve()
-					.then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeaking, speakingEventData))
-					.then(() => {
-						// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
-						delete window.talkieUtterance;
+				const continueSpeaking = await shouldContinueSpeaking();
 
-						return undefined;
-					})
-					.then(() => Promise.all([
-						this.getActualVoice(voice),
-						this.settingsManager.getSpeakLongTexts(),
-					]))
-					.then(([
-						actualVoice,
-						speakLongTexts,
-					]) => {
-						const paragraphs = TextHelper.splitTextToParagraphs(text);
+				if (continueSpeaking) {
+					await this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData);
 
-						let textParts = null;
+					const utterance = new window.SpeechSynthesisUtterance(textPart);
 
-						if (speakLongTexts === true) {
-							textParts = paragraphs;
-						} else {
-							const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
-							textParts = flatten(cleanTextParts);
-						}
+					utterance.voice = actualVoice;
+					utterance.rate = voice.rate || rateRange.default;
+					utterance.pitch = voice.pitch || pitchRange.default;
 
-						logDebug("Variable", "textParts.length", textParts.length);
+					logDebug("Variable", "utterance", utterance);
 
-						const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
+					// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+					window.talkieUtterance = utterance;
+					await this.speakPartOfText(utterance);
+					await this.broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData);
+				}
+			});
 
-						const textPartsPromises = textParts
-							.map((textPart) => () => {
-								const speakingPartEventData = {
-									language: voice.lang,
-									textPart,
-									voice: voice.name,
-								};
+		await promiseSeries(textPartsPromises);
 
-								return shouldContinueSpeaking()
-									.then((continueSpeaking) => {
-										if (continueSpeaking) {
-											return Promise.resolve()
-												.then(() => this.broadcaster.broadcastEvent(knownEvents.beforeSpeakingPart, speakingPartEventData))
-												.then(() => {
-													const utterance = new window.SpeechSynthesisUtterance(textPart);
+		// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
+		delete window.talkieUtterance;
 
-													utterance.voice = actualVoice;
-													utterance.rate = voice.rate || rateRange.default;
-													utterance.pitch = voice.pitch || pitchRange.default;
-
-													logDebug("Variable", "utterance", utterance);
-
-													// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
-													window.talkieUtterance = utterance;
-
-													return utterance;
-												})
-												.then((utterance) => this.speakPartOfText(utterance))
-												.then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeakingPart, speakingPartEventData));
-										}
-
-										return undefined;
-									});
-							});
-
-						return promiseSeries(textPartsPromises);
-					})
-					.then(() => {
-						// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
-						delete window.talkieUtterance;
-
-						return undefined;
-					})
-					.then(() => this.broadcaster.broadcastEvent(knownEvents.afterSpeaking, speakingEventData));
-			},
-		);
+		await this.broadcaster.broadcastEvent(knownEvents.afterSpeaking, speakingEventData);
 	}
 
-	speakTextInVoice(text, voice) {
-		return promiseTry(
-			() => Promise.resolve()
-				.then(() => {
-					this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`)
-						.catch((error) => {
-							// NOTE: swallowing any logToPage() errors.
-							// NOTE: reduced logging for known tab/page access problems.
-							if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
-								logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
-							} else {
-								logInfo("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
-							}
+	async speakTextInVoice(text, voice) {
+		try {
+			await this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${voice.name}, ${voice.lang}): ${text}`);
+		} catch (error) {
+			// NOTE: swallowing any logToPage() errors.
+			// NOTE: reduced logging for known tab/page access problems.
+			if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+				logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+			} else {
+				logInfo("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+			}
+		}
 
-							return undefined;
-						});
+		await this.splitAndSpeak(text, voice);
 
-					return this.splitAndSpeak(text, voice);
-				})
-				.then(() => {
-					logDebug("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${voice.name}, ${voice.lang})`);
-
-					return undefined;
-				}),
-		);
+		logDebug("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${voice.name}, ${voice.lang})`);
 	}
 
-	speakTextInLanguage(text, language) {
-		return promiseTry(
-			() => {
-				const voice = {
-					lang: language,
-					name: null,
-				};
+	async speakTextInLanguage(text, language) {
+		const voice = {
+			lang: language,
+			name: null,
+		};
 
-				return Promise.resolve()
-					.then(() => {
-						return this.speakTextInVoice(text, voice);
-					})
-					.then(() => logDebug("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`));
-			},
-		);
+		await this.speakTextInVoice(text, voice);
+
+		logDebug("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`);
 	}
 }

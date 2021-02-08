@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	promiseTry,
-} from "./promise";
-
 export default class MetadataManager {
 	constructor(manifestProvider, settingsManager) {
 		this.manifestProvider = manifestProvider;
@@ -33,16 +29,12 @@ export default class MetadataManager {
 		this._systemTypeWebExtension = "webextension";
 	}
 
-	isPremiumEdition() {
-		return promiseTry(
-			() => this.settingsManager.getIsPremiumEdition(),
-		);
+	async isPremiumEdition() {
+		return this.settingsManager.getIsPremiumEdition();
 	}
 
-	getExtensionId() {
-		return promiseTry(
-			() => browser.runtime.id,
-		);
+	async getExtensionId() {
+		return browser.runtime.id;
 	}
 
 	getManifestSync() {
@@ -51,95 +43,72 @@ export default class MetadataManager {
 		/* eslint-enable no-sync */
 	}
 
-	getManifest() {
-		return promiseTry(
-			/* eslint-disable no-sync */
-			() => this.getManifestSync(),
-			/* eslint-enable no-sync */
-		);
+	async getManifest() {
+		/* eslint-disable no-sync */
+		return this.getManifestSync();
+		/* eslint-enable no-sync */
 	}
 
-	getVersionNumber() {
-		return promiseTry(
-			() => this.getManifest()
-				.then((manifest) => {
-					return manifest.version || null;
-				}),
-		);
+	async getVersionNumber() {
+		const manifest = await this.getManifest();
+
+		return manifest.version || null;
 	}
 
-	getVersionName() {
-		return promiseTry(
-			() => this.getManifest()
-				.then((manifest) => {
-					return manifest.version_name || null;
-				}),
-		);
+	async getVersionName() {
+		const manifest = await this.getManifest();
+
+		return manifest.version_name || null;
 	}
 
-	getEditionType() {
-		return promiseTry(
-			() => this.isPremiumEdition()
-				.then((isPremiumEdition) => {
-					if (isPremiumEdition) {
-						return this._editionTypePremium;
-					}
+	async getEditionType() {
+		const isPremiumEdition = await this.isPremiumEdition();
 
-					return this._editionTypeFree;
-				}),
-		);
+		if (isPremiumEdition) {
+			return this._editionTypePremium;
+		}
+
+		return this._editionTypeFree;
 	}
 
-	isChromeVersion() {
-		return promiseTry(
-			() => this.getVersionName()
-				.then((versionName) => {
-					if (versionName.includes(" Chrome Extension ")) {
-						return true;
-					}
+	async isChromeVersion() {
+		const versionName = await this.getVersionName();
 
-					return false;
-				}),
-		);
+		if (versionName.includes(" Chrome Extension ")) {
+			return true;
+		}
+
+		return false;
 	}
 
-	isWebExtensionVersion() {
-		return promiseTry(
-			() => this.getVersionName()
-				.then((versionName) => {
-					if (versionName.includes(" WebExtension ")) {
-						return true;
-					}
+	async isWebExtensionVersion() {
+		const versionName = await this.getVersionName();
 
-					return false;
-				}),
-		);
+		if (versionName.includes(" WebExtension ")) {
+			return true;
+		}
+
+		return false;
 	}
 
-	getSystemType() {
-		return promiseTry(
-			() => this.isChromeVersion()
-				.then((isChrome) => {
-					if (isChrome) {
-						return this._systemTypeChrome;
-					}
+	async getSystemType() {
+		const isChrome = await this.isChromeVersion();
 
-					return this._systemTypeWebExtension;
-				}),
-		);
+		if (isChrome) {
+			return this._systemTypeChrome;
+		}
+
+		return this._systemTypeWebExtension;
 	}
 
-	getOsType() {
-		return promiseTry(
-			() => browser.runtime.getPlatformInfo()
-				.then((platformInfo) => {
-					if (platformInfo && typeof platformInfo.os === "string") {
-						// https://developer.chrome.com/extensions/runtime#type-PlatformOs
-						return platformInfo.os;
-					}
+	async getOsType() {
+		const platformInfo = await browser.runtime.getPlatformInfo();
 
-					return null;
-				}),
-		);
+		if (platformInfo && typeof platformInfo.os === "string") {
+			// https://developer.chrome.com/extensions/runtime#type-PlatformOs
+			return platformInfo.os;
+		}
+
+		return null;
 	}
 }

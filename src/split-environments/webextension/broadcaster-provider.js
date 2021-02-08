@@ -23,8 +23,9 @@ import {
 } from "../../shared/tabs";
 
 export default class WebExtensionEnvironmentBroadcasterProvider {
-	registerListeningAction(event, handler) {
-		return getBackgroundPage()
-			.then((background) => background.broadcaster().registerListeningAction(event, handler));
+	async registerListeningAction(event, handler) {
+		const background = await getBackgroundPage();
+
+		await background.broadcaster().registerListeningAction(event, handler);
 	}
 }

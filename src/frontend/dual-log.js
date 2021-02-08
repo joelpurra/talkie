@@ -41,20 +41,19 @@ export default class DualLogger {
 	}
 
 	_generateLogger(localLoggerFunctionName, backgroundLoggerFunctionName) {
+		const logInTheBackground = async (...args) => {
+			const background = await getBackgroundPage();
+
+			try {
+				background[backgroundLoggerFunctionName](this.localScriptName, ...args);
+			} catch (error) {
+				logError(this.localScriptName, "backgroundLoggerFunctionName", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
+			}
+		};
+
 		const logger = (...args) => Promise.all([
 			localLoggerFunctionName(this.localScriptName, ...args),
-
-			getBackgroundPage()
-				.then((background) => {
-					background[backgroundLoggerFunctionName](this.localScriptName, ...args);
-
-					return undefined;
-				})
-				.catch((error) => {
-					logError(this.localScriptName, "backgroundLoggerFunctionName", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
-
-					return undefined;
-				}),
+			logInTheBackground(...args),
 		]);
 
 		return logger;

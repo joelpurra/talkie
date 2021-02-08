@@ -28,33 +28,27 @@ import {
 	registerUnhandledRejectionHandler,
 } from "../shared/error-handling";
 import {
-	promiseTry,
-} from "../shared/promise";
-import {
 	getBackgroundPage,
 } from "../shared/tabs";
 import loadRoot from "./load-root.jsx";
 
 const dualLogger = new DualLogger("popup.js");
 
-const passClickToBackground = () => promiseTry(
-	() => {
-		dualLogger.dualLogDebug("Start", "passClickToBackground");
+const passClickToBackground = async () => {
+	dualLogger.dualLogDebug("Start", "passClickToBackground");
 
-		return getBackgroundPage()
-			.then((background) => background.iconClick())
-			.then(() => {
-				dualLogger.dualLogDebug("Done", "passClickToBackground");
+	try {
+		const background = await getBackgroundPage();
 
-				return undefined;
-			})
-			.catch((error) => {
-				dualLogger.dualLogError("passClickToBackground", error);
+		await background.iconClick();
 
-				throw error;
-			});
-	},
-);
+		dualLogger.dualLogDebug("Done", "passClickToBackground");
+	} catch (error) {
+		dualLogger.dualLogError("passClickToBackground", error);
+
+		throw error;
+	}
+};
 
 const shouldPassClickOnLoad = () => {
 	const containsBlockerString = document.location
@@ -65,32 +59,27 @@ const shouldPassClickOnLoad = () => {
 	return !containsBlockerString;
 };
 
-const passClickToBackgroundOnLoad = () => promiseTry(
-	() => {
-		// NOTE: provide a way to link to the popup without triggering the "click".
-		if (!shouldPassClickOnLoad()) {
-			dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
+const passClickToBackgroundOnLoad = async () => {
+	// NOTE: provide a way to link to the popup without triggering the "click".
+	if (!shouldPassClickOnLoad()) {
+		dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
 
-			return;
-		}
+		return;
+	}
 
-		return passClickToBackground();
-	},
-);
+	return passClickToBackground();
+};
 
-const start = () => promiseTry(
-	() => Promise.resolve()
-		.then(() => startReactFrontend())
-		.then(() => passClickToBackgroundOnLoad())
-		.then(() => loadRoot())
-		.then(() => undefined),
-);
+const start = async () => {
+	await startReactFrontend();
+	await passClickToBackgroundOnLoad();
+	await loadRoot();
+};
 
-const stop = () => promiseTry(
-	// NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
-	() => stopReactFrontend()
-		.then(() => undefined),
-);
+const stop = async () => {
+	// NOTE: stopping probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
+	await stopReactFrontend();
+};
 
 registerUnhandledRejectionHandler();
 

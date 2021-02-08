@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class ReadClipboardManager {
 	// eslint-disable-next-line max-params
@@ -37,50 +34,40 @@ export default class ReadClipboardManager {
 		this.copyPasteTargetElementId = "copy-paste-textarea";
 	}
 
-	startSpeaking() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "startSpeaking");
+	async startSpeaking() {
+		logDebug("Start", "startSpeaking");
 
-				return this.metadataManager.isPremiumEdition()
-					.then((isPremiumEdition) => {
-						if (!isPremiumEdition) {
-							const text = this.translator.translate("readClipboardIsAPremiumFeature");
+		let text = null;
 
-							return text;
-						}
+		const isPremiumEdition = await this.metadataManager.isPremiumEdition();
 
-						return this.permissionsManager.browserHasPermissionsFeature()
-							.then((hasPermissionsFeature) => {
-								if (!hasPermissionsFeature) {
-									const text = this.translator.translate("readClipboardNeedsBrowserSupport");
+		if (isPremiumEdition) {
+			const hasPermissionsFeature = await this.permissionsManager.browserHasPermissionsFeature();
 
-									return text;
-								}
+			if (hasPermissionsFeature) {
+				const clipboardText = await this.clipboardManager.getClipboardText();
 
-								return this.clipboardManager.getClipboardText()
-									.then((clipboardText) => {
-										let text = clipboardText;
+				if (typeof clipboardText !== "string") {
+					// TODO: pass the current locale to avoid attempting to detect a known text language.
+					text = this.translator.translate("readClipboardNeedsPermission");
+				} else if (clipboardText.length === 0 || clipboardText.trim().length === 0) {
+					// TODO: pass the current locale to avoid attempting to detect a known text language.
+					text = this.translator.translate("readClipboardNoSuitableText");
+				} else {
+					text = clipboardText;
+				}
+			} else {
+				text = this.translator.translate("readClipboardNeedsBrowserSupport");
+			}
+		} else {
+			// TODO: pass the current locale to avoid attempting to detect a known text language.
+			text = this.translator.translate("readClipboardIsAPremiumFeature");
+		}
 
-										if (typeof text !== "string") {
-											text = this.translator.translate("readClipboardNeedsPermission");
-										}
+		const result = await this.talkieBackground.startSpeakingCustomTextDetectLanguage(text);
 
-										if (text.length === 0 || text.trim().length === 0) {
-											text = this.translator.translate("readClipboardNoSuitableText");
-										}
+		logDebug("Done", "startSpeaking");
 
-										return text;
-									});
-							});
-					})
-					.then((text) => this.talkieBackground.startSpeakingCustomTextDetectLanguage(text))
-					.then((result) => {
-						logDebug("Done", "startSpeaking");
-
-						return result;
-					});
-			},
-		);
+		return result;
 	}
 }

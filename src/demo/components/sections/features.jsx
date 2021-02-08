@@ -151,7 +151,9 @@ class Features extends React.PureComponent {
 					</this.styled.storeLink>
 				</PremiumSection>
 
-				<FreeSection>
+				<FreeSection
+					mode="h2"
+				>
 					<listBase.ul>
 						<listBase.li>
 							{translate("frontend_featuresFree_List01")}

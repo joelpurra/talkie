@@ -34,7 +34,7 @@
 ### Code checklist
 
 - [ ] The code has sanity checks (null values, string lengths, etcetera).
-- [ ] Relevant functions and passages uses `promiseTry(() => { ... })` with `return` and `throw` statements.
+- [ ] Relevant functions and passages uses `async` with `return` and `throw` statements.
 - [ ] Errors are handled gracefully.
 
 

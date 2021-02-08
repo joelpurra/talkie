@@ -24,9 +24,6 @@ import React from "react";
 import {
 	knownEvents,
 } from "../../shared/events";
-import {
-	promiseTry,
-} from "../../shared/promise";
 
 //import DualLogger from "../frontend/dual-log";
 //
@@ -115,7 +112,6 @@ export default function progressHoc(ComponentToWrap) {
 				// dualLogger.dualLogError("setState", error);
 
 				// NOTE: ignoring and swallowing error.
-				return undefined;
 			}
 		}
 
@@ -137,16 +133,13 @@ export default function progressHoc(ComponentToWrap) {
 			});
 		}
 
-		registerBroadcastListeners() {
-			return promiseTry(
-				() => {
-					return this.context.broadcaster.registerListeningAction(
-						knownEvents.updateProgress,
-						(actionName, actionData) => this.updateProgress(actionData),
-					)
-						.then((killSwitch) => this.killSwitches.push(killSwitch));
-				},
+		async registerBroadcastListeners() {
+			const killSwitch = await this.context.broadcaster.registerListeningAction(
+				knownEvents.updateProgress,
+				(actionName, actionData) => this.updateProgress(actionData),
 			);
+
+			this.killSwitches.push(killSwitch);
 		}
 	};
 }

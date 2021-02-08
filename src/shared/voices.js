@@ -19,26 +19,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	promiseTry,
-} from "./promise";
-import {
 	getBackgroundPage,
 } from "./tabs";
 
-export const getVoices = () => promiseTry(
-	() => {
-		return getBackgroundPage()
-			.then((background) => background.getAllVoices())
-			.then((voices) => {
-				if (!Array.isArray(voices)) {
-					// NOTE: the list of voices could still be empty, either due to slow loading (cold cache) or that there actually are no voices loaded.
-					throw new TypeError("Could not load list of voices from browser.");
-				}
+export const getVoices = async () => {
+	// TODO: check if there are any voices installed, alert user if not.
+	const background = await getBackgroundPage();
+	const voices = await background.getAllVoices();
 
-				return voices;
-			});
-	},
-);
+	if (!Array.isArray(voices)) {
+		// NOTE: the list of voices could still be empty, either due to slow loading (cold cache) or that there actually are no voices loaded.
+		throw new TypeError("Could not load list of voices from browser.");
+	}
+
+	return voices;
+};
 
 const getMappedVoice = (voice) => {
 	return {
@@ -50,63 +45,50 @@ const getMappedVoice = (voice) => {
 	};
 };
 
-export const getMappedVoices = () => promiseTry(
-	() => {
-		return getVoices()
-			.then((voices) => {
-				const mappedVoices = voices.map((voice) => getMappedVoice(voice));
+export const getMappedVoices = async () => {
+	const voices = await getVoices();
 
-				return mappedVoices;
-			});
-	},
-);
+	const mappedVoices = voices.map((voice) => getMappedVoice(voice));
 
-export const resolveVoice = (mappedVoice) => {
-	return promiseTry(
-		() => {
-			return getVoices()
-				.then((voices) => {
-					const actualMatchingVoicesByName = voices.filter((voice) => mappedVoice.name && (voice.name === mappedVoice.name));
-					const actualMatchingVoicesByLanguage = voices.filter((voice) => mappedVoice.lang && (voice.lang === mappedVoice.lang));
-					const actualMatchingVoicesByLanguagePrefix = voices.filter((voice) => mappedVoice.lang && (voice.lang.slice(0, 2) === mappedVoice.lang.slice(0, 2)));
-
-					const resolvedVoices = []
-						.concat(actualMatchingVoicesByName)
-						.concat(actualMatchingVoicesByLanguage)
-						.concat(actualMatchingVoicesByLanguagePrefix);
-
-					if (resolvedVoices.length === 0) {
-						return null;
-					}
-
-					// NOTE: while there might be more than one voice for the particular voice name/language/language prefix, just consistently pick the first one.
-					// if (actualMatchingVoices.length !== 1) {
-					// throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
-					// }
-
-					const resolvedVoice = resolvedVoices[0];
-
-					return resolvedVoice;
-				});
-		},
-	);
+	return mappedVoices;
 };
 
-export const resolveVoiceAsMappedVoice = (mappedVoice) => {
-	return promiseTry(
-		() => {
-			return resolveVoice(mappedVoice)
-				.then((resolvedVoice) => {
-					if (!resolvedVoice) {
-						return null;
-					}
+export const resolveVoice = async (mappedVoice) => {
+	const voices = await getVoices();
 
-					const resolvedVoiceAsMappedVoice = getMappedVoice(resolvedVoice);
+	const actualMatchingVoicesByName = voices.filter((voice) => mappedVoice.name && (voice.name === mappedVoice.name));
+	const actualMatchingVoicesByLanguage = voices.filter((voice) => mappedVoice.lang && (voice.lang === mappedVoice.lang));
+	const actualMatchingVoicesByLanguagePrefix = voices.filter((voice) => mappedVoice.lang && (voice.lang.slice(0, 2) === mappedVoice.lang.slice(0, 2)));
 
-					return resolvedVoiceAsMappedVoice;
-				});
-		},
-	);
+	const resolvedVoices = []
+		.concat(actualMatchingVoicesByName)
+		.concat(actualMatchingVoicesByLanguage)
+		.concat(actualMatchingVoicesByLanguagePrefix);
+
+	if (resolvedVoices.length === 0) {
+		return null;
+	}
+
+	// NOTE: while there might be more than one voice for the particular voice name/language/language prefix, just consistently pick the first one.
+	// if (actualMatchingVoices.length !== 1) {
+	// throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
+	// }
+
+	const resolvedVoice = resolvedVoices[0];
+
+	return resolvedVoice;
+};
+
+export const resolveVoiceAsMappedVoice = async (mappedVoice) => {
+	const resolvedVoice = await resolveVoice(mappedVoice);
+
+	if (!resolvedVoice) {
+		return null;
+	}
+
+	const resolvedVoiceAsMappedVoice = getMappedVoice(resolvedVoice);
+
+	return resolvedVoiceAsMappedVoice;
 };
 
 export const rateRange = {
@@ -122,20 +104,3 @@ export const pitchRange = {
 	min: 0,
 	step: 0.1,
 };
-
-// TODO: check if there are any voices installed, alert user if not.
-// checkVoices() {
-// return this.getSynthesizer()
-// .then((synthesizer) => {
-// logDebug("Start", "Voices check");
-//
-// return getMappedVoices()
-// .then((voices) => {
-// logDebug("Variable", "voices[]", voices.length, voices);
-//
-// logDebug("Done", "Voices check");
-//
-// return synthesizer;
-// });
-// });
-// }

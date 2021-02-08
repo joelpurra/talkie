@@ -37,7 +37,7 @@ const setSelectedLanguageCode = (selectedLanguageCode) => {
 };
 
 export const loadSelectedVoiceName = (voiceName) =>
-	(dispatch, getState) => {
+	async (dispatch, getState) => {
 		const state = getState();
 
 		// TODO: move to function and/or state?
@@ -53,12 +53,13 @@ export const loadSelectedVoiceName = (voiceName) =>
 			existingVoiceName = voiceName;
 		}
 
-		return Promise.all([
+		await Promise.all([
 			dispatch(setSelectedVoiceName(existingVoiceName)),
 			dispatch(loadEffectiveRateForVoice(existingVoiceName)),
 			dispatch(loadEffectivePitchForVoice(existingVoiceName)),
-		])
-			.then(() => dispatch(speakState()));
+		]);
+
+		await dispatch(speakState());
 	};
 
 const setSelectedVoiceName = (selectedVoiceName) => {
@@ -69,8 +70,10 @@ const setSelectedVoiceName = (selectedVoiceName) => {
 };
 
 export const loadSampleText = () =>
-	(dispatch, getState, api) => api.getSampleText()
-		.then((sampleText) => dispatch(setSampleText(sampleText)));
+	async (dispatch, getState, api) => {
+		const sampleText = await api.getSampleText();
+		await dispatch(setSampleText(sampleText));
+	};
 
 export const setSampleText = (sampleText) => {
 	return {
@@ -80,60 +83,74 @@ export const setSampleText = (sampleText) => {
 };
 
 export const loadEffectiveRateForVoice = (voiceName) =>
-	(dispatch, getState, api) => api.getEffectiveRateForVoice(voiceName)
-		.then((effectiveRateForVoice) => dispatch(setRateForSelectedVoice(effectiveRateForVoice)));
+	async (dispatch, getState, api) => {
+		const effectiveRateForVoice = await api.getEffectiveRateForVoice(voiceName);
+		await dispatch(setRateForSelectedVoice(effectiveRateForVoice));
+	};
 
 export const storeVoiceRateOverride = (voiceName, rate) =>
-	(dispatch, getState, api) => api.setVoiceRateOverride(voiceName, rate)
-		.then(() => dispatch(setRateForSelectedVoice(rate)));
+	async (dispatch, getState, api) => {
+		await api.setVoiceRateOverride(voiceName, rate);
+		await dispatch(setRateForSelectedVoice(rate));
+	};
 
 export const setRateForSelectedVoice = (rateForSelectedVoice) =>
-	(dispatch) => Promise.resolve()
-		.then(() => dispatch({
+	async (dispatch) => {
+		await dispatch({
 			rateForSelectedVoice,
 			type: actionTypes.SET_RATE_FOR_SELECTED_VOICE,
-		}))
-		.then(() => dispatch(speakState()));
+		});
+		await dispatch(speakState());
+	};
 
 export const loadEffectivePitchForVoice = (voiceName) =>
-	(dispatch, getState, api) => api.getEffectivePitchForVoice(voiceName)
-		.then((effectivePitchForVoice) => dispatch(setPitchForSelectedVoice(effectivePitchForVoice)));
+	async (dispatch, getState, api) => {
+		const effectivePitchForVoice = await api.getEffectivePitchForVoice(voiceName);
+
+		await dispatch(setPitchForSelectedVoice(effectivePitchForVoice));
+	};
 
 export const storeVoicePitchOverride = (voiceName, pitch) =>
-	(dispatch, getState, api) => api.setVoicePitchOverride(voiceName, pitch)
-		.then(() => dispatch(setPitchForSelectedVoice(pitch)));
+	async (dispatch, getState, api) => {
+		await api.setVoicePitchOverride(voiceName, pitch);
+		await dispatch(setPitchForSelectedVoice(pitch));
+	};
 
 export const setPitchForSelectedVoice = (pitchForSelectedVoice) =>
-	(dispatch) => Promise.resolve()
-		.then(() => dispatch({
+	async (dispatch) => {
+		await dispatch({
 			pitchForSelectedVoice,
 			type: actionTypes.SET_PITCH_FOR_SELECTED_VOICE,
-		}))
-		.then(() => dispatch(speakState()));
+		});
+		await dispatch(speakState());
+	};
 
 export const loadEffectiveVoiceForLanguage = (languageCode) =>
-	(dispatch, getState, api) => {
+	async (dispatch, getState, api) => {
 		if (languageCode) {
-			return api.getEffectiveVoiceForLanguage(languageCode)
-				.then((effectiveVoiceForLanguage) => Promise.all([
-					dispatch(setEffectiveVoiceNameForSelectedLanguage(effectiveVoiceForLanguage)),
-					dispatch(loadSelectedVoiceName(effectiveVoiceForLanguage)),
-				]));
+			const effectiveVoiceForLanguage = await api.getEffectiveVoiceForLanguage(languageCode);
+
+			await Promise.all([
+				dispatch(setEffectiveVoiceNameForSelectedLanguage(effectiveVoiceForLanguage)),
+				dispatch(loadSelectedVoiceName(effectiveVoiceForLanguage)),
+			]);
+		} else {
+			const state = getState();
+
+			const newSelectedVoiceName = (state.shared.voices.voices.length > 0 && state.shared.voices.voices[0].name) || null;
+
+			await Promise.all([
+				dispatch(setEffectiveVoiceNameForSelectedLanguage(null)),
+				dispatch(loadSelectedVoiceName(newSelectedVoiceName)),
+			]);
 		}
-
-		const state = getState();
-
-		const newSelectedVoiceName = (state.shared.voices.voices.length > 0 && state.shared.voices.voices[0].name) || null;
-
-		return Promise.all([
-			dispatch(setEffectiveVoiceNameForSelectedLanguage(null)),
-			dispatch(loadSelectedVoiceName(newSelectedVoiceName)),
-		]);
 	};
 
 export const storeEffectiveVoiceNameForLanguage = (languageCode, voiceName) =>
-	(dispatch, getState, api) => api.toggleLanguageVoiceOverrideName(languageCode, voiceName)
-		.then(() => dispatch(loadEffectiveVoiceForLanguage(languageCode)));
+	async (dispatch, getState, api) => {
+		await api.toggleLanguageVoiceOverrideName(languageCode, voiceName);
+		await dispatch(loadEffectiveVoiceForLanguage(languageCode));
+	};
 
 export const setEffectiveVoiceNameForSelectedLanguage = (effectiveVoiceNameForSelectedLanguage) => {
 	return {
@@ -143,12 +160,11 @@ export const setEffectiveVoiceNameForSelectedLanguage = (effectiveVoiceNameForSe
 };
 
 export const speakState = () =>
-	(dispatch, getState, api) => Promise.resolve()
-		.then(() => {
-			const state = getState();
+	async (dispatch, getState, api) => {
+		const state = getState();
 
-			// TODO: move to function and/or state?
-			const readyToSpeak = state
+		// TODO: move to function and/or state?
+		const readyToSpeak = state
 							&& state.voices
 							&& typeof state.voices.sampleText === "string"
 							&& state.voices.sampleText.length > 0
@@ -165,17 +181,15 @@ export const speakState = () =>
 							&& !Number.isNaN(state.voices.rateForSelectedVoice)
 							&& !Number.isNaN(state.voices.pitchForSelectedVoice);
 
-			if (readyToSpeak) {
-				const text = state.voices.sampleText;
-				const voice = {
-					lang: state.voices.selectedLanguageCode || null,
-					name: state.voices.selectedVoiceName || null,
-					pitch: state.voices.pitchForSelectedVoice,
-					rate: state.voices.rateForSelectedVoice,
-				};
+		if (readyToSpeak) {
+			const text = state.voices.sampleText;
+			const voice = {
+				lang: state.voices.selectedLanguageCode || null,
+				name: state.voices.selectedVoiceName || null,
+				pitch: state.voices.pitchForSelectedVoice,
+				rate: state.voices.rateForSelectedVoice,
+			};
 
-				return api.debouncedSpeak(text, voice);
-			}
-
-			return undefined;
-		});
+			await api.debouncedSpeak(text, voice);
+		}
+	};

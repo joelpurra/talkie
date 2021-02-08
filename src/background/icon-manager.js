@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class IconManager {
 	constructor(metadataManager) {
@@ -48,27 +45,21 @@ export default class IconManager {
 		};
 	}
 
-	setIconMode(name) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "Changing icon to", name);
+	async setIconMode(name) {
+		logDebug("Start", "Changing icon to", name);
 
-				return this.metadataManager.getEditionType()
-					.then((editionType) => {
-						const paths = this.getIconModePaths(editionType, name);
-						const details = {
-							path: paths,
-						};
+		const editionType = await this.metadataManager.getEditionType();
 
-						return browser.browserAction.setIcon(details)
-							.then((result) => {
-								logDebug("Done", "Changing icon to", name);
+		const paths = this.getIconModePaths(editionType, name);
+		const details = {
+			path: paths,
+		};
 
-								return result;
-							});
-					});
-			},
-		);
+		const result = await browser.browserAction.setIcon(details);
+
+		logDebug("Done", "Changing icon to", name);
+
+		return result;
 	}
 
 	setIconModePlaying() {

@@ -35,6 +35,7 @@ export default class Chain {
 
 		logDebug("Start", "Chain", currentLength);
 
+		// NOTE: using promise objects for the chain.
 		this.chainPromise = this.chainPromise
 			.then(promise)
 			.then((result) => {

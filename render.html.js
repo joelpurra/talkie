@@ -30,27 +30,37 @@ const getHtml = require(rendererPath);
 // NOTE: renderer expects to execute in the root of the output directory, to load any modified files.
 process.chdir(renderWorkingDirectory);
 
-process.on("unhandledRejection", (error) => {
-	/* eslint-disable no-console */
-	console.error("unhandledRejection", error);
-	/* eslint-enable no-console */
+const main = async () => {
+	try {
+		const html = await getHtml(talkieLocale);
 
-	process.exit(2);
-});
-
-getHtml(talkieLocale)
-	.then((html) => {
 		// NOTE: outputting html to stdout.
 		/* eslint-disable no-console */
 		console.log(html);
 		/* eslint-enable no-console */
-
-		return undefined;
-	})
-	.catch((error) => {
+	} catch (error) {
 		/* eslint-disable no-console */
 		console.error(error);
 		/* eslint-enable no-console */
 
-		process.exit(1);
+		process.exitCode = 3;
+	}
+};
+
+try {
+	process.on("unhandledRejection", (error) => {
+		/* eslint-disable no-console */
+		console.error("unhandledRejection", error);
+		/* eslint-enable no-console */
+
+		process.exitCode = 2;
 	});
+
+	main();
+} catch (error) {
+	/* eslint-disable no-console */
+	console.error(error);
+	/* eslint-enable no-console */
+
+	process.exitCode = 1;
+}

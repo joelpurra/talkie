@@ -23,9 +23,6 @@ import {
 	debounce,
 } from "../shared/basic";
 import {
-	promiseTry,
-} from "../shared/promise";
-import {
 	getBackgroundPage,
 } from "../shared/tabs";
 import {
@@ -60,82 +57,93 @@ export default class Api {
 		return this.configuration.get(configurationPath);
 	}
 
-	iconClick() {
-		return getBackgroundPage()
-			.then((background) => background.iconClick());
+	async iconClick() {
+		const background = await getBackgroundPage();
+
+		await background.iconClick();
 	}
 
-	speak(text, voice) {
-		return getBackgroundPage()
-			.then((background) => background.stopSpeakFromFrontend()
-				.then(() => background.startSpeakFromFrontend(text, voice)));
+	async speak(text, voice) {
+		const background = await getBackgroundPage();
+
+		await background.stopSpeakFromFrontend();
+		await background.startSpeakFromFrontend(text, voice);
 	}
 
-	speakTextInLanguageWithOverrides(text, languageCode) {
-		return getBackgroundPage()
-			.then((background) => background.stopSpeakFromFrontend()
-				.then(() => background.startSpeakInLanguageWithOverridesFromFrontend(text, languageCode)));
+	async speakTextInLanguageWithOverrides(text, languageCode) {
+		const background = await getBackgroundPage();
+
+		await background.stopSpeakFromFrontend();
+		await background.startSpeakInLanguageWithOverridesFromFrontend(text, languageCode);
 	}
 
 	getVoices() {
 		return getMappedVoices();
 	}
 
-	getIsPremiumEditionOption() {
-		return getBackgroundPage()
-			.then((background) => background.getIsPremiumEditionOption());
+	async getIsPremiumEditionOption() {
+		const background = await getBackgroundPage();
+
+		return background.getIsPremiumEditionOption();
 	}
 
-	setIsPremiumEditionOption(isPremiumEdition) {
-		return getBackgroundPage()
-			.then((background) => background.setIsPremiumEditionOption(isPremiumEdition === true));
+	async setIsPremiumEditionOption(isPremiumEdition) {
+		const background = await getBackgroundPage();
+
+		await background.setIsPremiumEditionOption(isPremiumEdition === true);
 	}
 
-	getSpeakLongTextsOption() {
-		return getBackgroundPage()
-			.then((background) => background.getSpeakLongTextsOption());
+	async getSpeakLongTextsOption() {
+		const background = await getBackgroundPage();
+
+		return background.getSpeakLongTextsOption();
 	}
 
-	setSpeakLongTextsOption(speakLongTexts) {
-		return getBackgroundPage()
-			.then((background) => background.setSpeakLongTextsOption(speakLongTexts === true));
+	async setSpeakLongTextsOption(speakLongTexts) {
+		const background = await getBackgroundPage();
+
+		await background.setSpeakLongTextsOption(speakLongTexts === true);
 	}
 
-	getSampleText() {
-		return promiseTry(
-			() => this.translator.translate("frontend_voicesSampleText"),
-		);
+	async getSampleText() {
+		return this.translator.translate("frontend_voicesSampleText");
 	}
 
-	getEffectiveVoiceForLanguage(languageCode) {
-		return getBackgroundPage()
-			.then((background) => background.getEffectiveVoiceForLanguage(languageCode))
-			.then((effectiveVoiceForLanguage) => effectiveVoiceForLanguage.name);
+	async getEffectiveVoiceForLanguage(languageCode) {
+		const background = await getBackgroundPage();
+		const effectiveVoiceForLanguage = await background.getEffectiveVoiceForLanguage(languageCode);
+
+		return effectiveVoiceForLanguage.name;
 	}
 
-	getEffectiveRateForVoice(voiceName) {
-		return getBackgroundPage()
-			.then((background) => background.getEffectiveRateForVoice(voiceName));
+	async getEffectiveRateForVoice(voiceName) {
+		const background = await getBackgroundPage();
+
+		await background.getEffectiveRateForVoice(voiceName);
 	}
 
-	setVoiceRateOverride(voiceName, rate) {
-		return getBackgroundPage()
-			.then((background) => background.setVoiceRateOverride(voiceName, rate));
+	async setVoiceRateOverride(voiceName, rate) {
+		const background = await getBackgroundPage();
+
+		await background.setVoiceRateOverride(voiceName, rate);
 	}
 
-	getEffectivePitchForVoice(voiceName) {
-		return getBackgroundPage()
-			.then((background) => background.getEffectivePitchForVoice(voiceName));
+	async getEffectivePitchForVoice(voiceName) {
+		const background = await getBackgroundPage();
+
+		await background.getEffectivePitchForVoice(voiceName);
 	}
 
-	setVoicePitchOverride(voiceName, pitch) {
-		return getBackgroundPage()
-			.then((background) => background.setVoicePitchOverride(voiceName, pitch));
+	async setVoicePitchOverride(voiceName, pitch) {
+		const background = await getBackgroundPage();
+
+		await background.setVoicePitchOverride(voiceName, pitch);
 	}
 
-	toggleLanguageVoiceOverrideName(languageCode, voiceName) {
-		return getBackgroundPage()
-			.then((background) => background.toggleLanguageVoiceOverrideName(languageCode, voiceName));
+	async toggleLanguageVoiceOverrideName(languageCode, voiceName) {
+		const background = await getBackgroundPage();
+
+		await background.toggleLanguageVoiceOverrideName(languageCode, voiceName);
 	}
 
 	getTranslatedLanguages() {

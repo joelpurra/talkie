@@ -22,9 +22,6 @@ import {
 	logDebug,
 	logWarn,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class SuspensionListenerManager {
 	constructor() {
@@ -71,7 +68,7 @@ export default class SuspensionListenerManager {
 			this.suspendConnectionPorts[currentConnectionId].port.postMessage(`Ah, ha, ha, ha, stayin' alive, stayin' alive: ${currentConnectionId}, ${this.activeSuspendConnections}`);
 		};
 
-		// NOTE: this message producer is unneccessary.
+		// NOTE: this message producer is unnecessary.
 		const preventSuspensionIntervalId = setInterval(_messageProducer, 1000);
 
 		const _onDisconnectHandler = () => {
@@ -94,139 +91,96 @@ export default class SuspensionListenerManager {
 			preventSuspensionIntervalId,
 		};
 
-		// NOTE: this disconnect listener is unneccessary.
+		// NOTE: this disconnect listener is unnecessary.
 		this.suspendConnectionPorts[currentConnectionId].port.onDisconnect.addListener(_onDisconnectHandler);
 
-		// NOTE: this message listener is unneccessary.
+		// NOTE: this message listener is unnecessary.
 		this.suspendConnectionPorts[currentConnectionId].port.onMessage.addListener(_onMessageHandler);
 
 		logDebug("Done", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
 	}
 
-	_cleanUpConnections() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "_cleanUpConnections");
+	async _cleanUpConnections() {
+		logDebug("Start", "_cleanUpConnections");
 
-				const portDisconnectPromises = this.suspendConnectionPorts
-					.map((suspendConnectionPort) => {
-						if (suspendConnectionPort) {
-							if (suspendConnectionPort.port && typeof suspendConnectionPort.port.disconnect === "function") {
-								suspendConnectionPort.port.disconnect();
-							}
+		// TODO: this isn't an array of promises, should it be?
+		const portDisconnectPromises = this.suspendConnectionPorts
+			.map((suspendConnectionPort) => {
+				if (suspendConnectionPort) {
+					if (suspendConnectionPort.port && typeof suspendConnectionPort.port.disconnect === "function") {
+						suspendConnectionPort.port.disconnect();
+					}
 
-							if (typeof suspendConnectionPort._onDisconnectHandler === "function") {
-								suspendConnectionPort._onDisconnectHandler();
-							}
-						}
-
-						return undefined;
-					});
-
-				return Promise.all(portDisconnectPromises)
-					.then(() => {
-						logDebug("Done", "_cleanUpConnections");
-
-						return undefined;
-					});
-			},
-		);
-	}
-
-	_createOnSuspendPromise() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "_createOnSuspendPromise");
-
-				this._preventSuspendPromise = Promise.resolve()
-					.then(() => {
-						logDebug("Start", "_preventSuspendPromise", "creating");
-
-						return undefined;
-					})
-					.then(() => new Promise(
-						(resolve) => {
-							// NOTE: should keep the channel alive until it disconnects.
-							// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onMessage
-							// https://developer.chrome.com/extensions/runtime
-							this._preventSuspendPromiseResolve = resolve;
-						}),
-					)
-					.then(() => {
-						logDebug("Done", "_preventSuspendPromise", "resolved");
-
-						return undefined;
-					});
-			},
-		);
-	}
-
-	_finishOnSuspendPromise() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "_finishOnSuspendPromise");
-
-				return Promise.resolve()
-					.then(() => this._preventSuspendPromiseResolve())
-					.then(() => this._preventSuspendPromise)
-					.then(() => {
-						logDebug("Done", "_finishOnSuspendPromise");
-
-						return undefined;
-					});
-			},
-		);
-	}
-
-	start() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "SuspensionListenerManager.start");
-
-				if (browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
-					throw new Error("SuspensionListenerManager: Already initialized.");
+					if (typeof suspendConnectionPort._onDisconnectHandler === "function") {
+						suspendConnectionPort._onDisconnectHandler();
+					}
 				}
 
-				browser.runtime.onConnect.addListener(this._onConnectHandlerBound);
+				return undefined;
+			});
 
-				return this._createOnSuspendPromise()
-					.then(() => {
-						logDebug("Done", "SuspensionListenerManager.start");
+		await Promise.all(portDisconnectPromises);
 
-						return undefined;
-					});
-			},
-		);
+		logDebug("Done", "_cleanUpConnections");
 	}
 
-	stop() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "SuspensionListenerManager.stop");
+	async _createOnSuspendPromise() {
+		logDebug("Start", "_createOnSuspendPromise");
 
-				if (!browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
-					throw new Error("SuspensionListenerManager: Not initialized.");
-				}
+		logDebug("Start", "_preventSuspendPromise", "creating");
 
-				browser.runtime.onConnect.removeListener(this._onConnectHandlerBound);
-				this._onConnectHandlerBound = null;
+		this._preventSuspendPromise = await new Promise(
+			(resolve) => {
+				// NOTE: should keep the channel alive until it disconnects.
+				// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onMessage
+				// https://developer.chrome.com/extensions/runtime
+				this._preventSuspendPromiseResolve = resolve;
+			});
 
-				return this._finishOnSuspendPromise()
-					.then(() => {
-						if (this.activeSuspendConnections !== 0) {
-							logWarn(`this.activeSuspendConnections is not 0: ${this.activeSuspendConnections}. Attempting to disconnect.`);
+		logDebug("Done", "_preventSuspendPromise", "resolved");
+	}
 
-							return this._cleanUpConnections();
-						}
+	async _finishOnSuspendPromise() {
+		logDebug("Start", "_finishOnSuspendPromise");
 
-						return undefined;
-					})
-					.then(() => {
-						logDebug("Done", "SuspensionListenerManager.stop");
+		await this._preventSuspendPromiseResolve();
+		await this._preventSuspendPromise;
 
-						return undefined;
-					});
-			},
-		);
+		logDebug("Done", "_finishOnSuspendPromise");
+	}
+
+	async start() {
+		logDebug("Start", "SuspensionListenerManager.start");
+
+		if (browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
+			throw new Error("SuspensionListenerManager: Already initialized.");
+		}
+
+		browser.runtime.onConnect.addListener(this._onConnectHandlerBound);
+
+		await this._createOnSuspendPromise();
+
+		logDebug("Done", "SuspensionListenerManager.start");
+	}
+
+	async stop() {
+		logDebug("Start", "SuspensionListenerManager.stop");
+
+		if (!browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
+			throw new Error("SuspensionListenerManager: Not initialized.");
+		}
+
+		browser.runtime.onConnect.removeListener(this._onConnectHandlerBound);
+		this._onConnectHandlerBound = null;
+
+		await this._finishOnSuspendPromise();
+
+		if (this.activeSuspendConnections !== 0) {
+			logWarn(`this.activeSuspendConnections is not 0: ${this.activeSuspendConnections}. Attempting to disconnect.`);
+
+			await this._cleanUpConnections();
+		}
+
+		logDebug("Done", "SuspensionListenerManager.stop");
 	}
 }

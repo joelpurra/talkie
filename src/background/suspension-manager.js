@@ -24,7 +24,6 @@ import {
 } from "../shared/log";
 import {
 	promiseSleep,
-	promiseTry,
 } from "../shared/promise";
 
 export default class SuspensionManager {
@@ -36,120 +35,90 @@ export default class SuspensionManager {
 		this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
 	}
 
-	_getExistingIframe() {
-		return promiseTry(
-			() => {
-				const existingIframe = document.querySelector(`#${this.stayAliveElementId}`);
+	async _getExistingIframe() {
+		const existingIframe = document.querySelector(`#${this.stayAliveElementId}`);
 
-				return existingIframe;
-			},
-		);
+		return existingIframe;
 	}
 
-	_isInitialized() {
-		return this._getExistingIframe()
-			.then((existingIframe) => existingIframe !== null);
+	async _isInitialized() {
+		const existingIframe = await this._getExistingIframe();
+
+		return existingIframe !== null;
 	}
 
-	_ensureIsInitialized() {
-		return this._isInitialized()
-			.then((isInitialized) => {
-				if (isInitialized === true) {
-					return undefined;
-				}
+	async _ensureIsInitialized() {
+		const isInitialized = await this._isInitialized();
 
-				throw new Error("this.stayAliveElementId did not exist.");
-			});
+		if (isInitialized === true) {
+			return;
+		}
+
+		throw new Error("this.stayAliveElementId did not exist.");
 	}
 
-	_ensureIsNotInitialized() {
-		return this._isInitialized()
-			.then((isInitialized) => {
-				if (isInitialized === false) {
-					return undefined;
-				}
+	async _ensureIsNotInitialized() {
+		const isInitialized = await this._isInitialized();
 
-				throw new Error("this.stayAliveElementId exists.");
-			});
+		if (isInitialized === false) {
+			return;
+		}
+
+		throw new Error("this.stayAliveElementId exists.");
 	}
 
-	_injectBackgroundFrame() {
-		return this._ensureIsNotInitialized()
-			.then(() => {
-				const iframe = document.createElement("iframe");
-				iframe.id = this.stayAliveElementId;
-				iframe.src = this.stayAliveHtmlPath;
-				document.body.append(iframe);
+	async _injectBackgroundFrame() {
+		await this._ensureIsNotInitialized();
 
-				return undefined;
-			});
+		const iframe = document.createElement("iframe");
+		iframe.id = this.stayAliveElementId;
+		iframe.src = this.stayAliveHtmlPath;
+		document.body.append(iframe);
 	}
 
-	_removeBackgroundFrame() {
-		return this._ensureIsInitialized()
-			.then(() => this._getExistingIframe())
-			.then((existingIframe) => {
-				// NOTE: trigger onunload.
-				// https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
-				existingIframe.src = "about:blank";
-				existingIframe.src = "the-id-does-not-matter-now";
+	async _removeBackgroundFrame() {
+		await this._ensureIsInitialized();
 
-				// NOTE: ensure the src change has time to take effect.
-				return promiseSleep(() => {
-					existingIframe.remove();
-				}, 10);
-			});
+		const existingIframe = await this._getExistingIframe();
+
+		// NOTE: trigger onunload.
+		// https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
+		existingIframe.src = "about:blank";
+		existingIframe.src = "the-id-does-not-matter-now";
+
+		// NOTE: ensure the src change has time to take effect.
+		return promiseSleep(() => {
+			existingIframe.remove();
+		}, 10);
 	}
 
-	initialize() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "SuspensionManager.initialize");
+	async initialize() {
+		logDebug("Start", "SuspensionManager.initialize");
 
-				return this._injectBackgroundFrame()
-					.then(() => {
-						logDebug("Done", "SuspensionManager.initialize");
+		await this._injectBackgroundFrame();
 
-						return undefined;
-					});
-			},
-		);
+		logDebug("Done", "SuspensionManager.initialize");
 	}
 
-	unintialize() {
-		return promiseTry(
-			() => {
-				logDebug("Start", "SuspensionManager.unintialize");
+	async uninitialize() {
+		logDebug("Start", "SuspensionManager.uninitialize");
 
-				return this._removeBackgroundFrame()
-					.then(() => {
-						logDebug("Done", "SuspensionManager.unintialize");
+		await this._removeBackgroundFrame();
 
-						return undefined;
-					});
-			},
-		);
+		logDebug("Done", "SuspensionManager.uninitialize");
 	}
 
-	preventExtensionSuspend() {
-		return promiseTry(
-			() => {
-				logInfo("SuspensionManager.preventExtensionSuspend");
+	async preventExtensionSuspend() {
+		logInfo("SuspensionManager.preventExtensionSuspend");
 
-				return this._ensureIsInitialized()
-					.then(() => this.suspensionConnectorManager._connectToStayAlive());
-			},
-		);
+		await this._ensureIsInitialized();
+		await this.suspensionConnectorManager._connectToStayAlive();
 	}
 
-	allowExtensionSuspend() {
-		return promiseTry(
-			() => {
-				logInfo("SuspensionManager.allowExtensionSuspend");
+	async allowExtensionSuspend() {
+		logInfo("SuspensionManager.allowExtensionSuspend");
 
-				return this._ensureIsInitialized()
-					.then(() => this.suspensionConnectorManager._disconnectToDie());
-			},
-		);
+		await this._ensureIsInitialized();
+		await this.suspensionConnectorManager._disconnectToDie();
 	}
 }

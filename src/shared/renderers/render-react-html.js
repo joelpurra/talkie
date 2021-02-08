@@ -22,9 +22,6 @@ import ReactDOMServer from "react-dom/server";
 
 import sharedActions from "../actions";
 import {
-	promiseTry,
-} from "../promise";
-import {
 	dispatchAll,
 } from "../utils/store-helpers";
 import autoRoot from "./auto-root";
@@ -61,7 +58,7 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
 
 const EMPTY_STATE = undefined;
 
-const renderHtml = (store, reactHtmlTemplate, localeProvider, styletron, root) => promiseTry(() => {
+const renderHtml = async (store, reactHtmlTemplate, localeProvider, styletron, root) => {
 	const reactRoot = ReactDOMServer.renderToString(root);
 	const translationLocale = localeProvider.getTranslationLocale();
 	const stylesForHead = styletron.getStylesheetsHtml();
@@ -79,34 +76,28 @@ const renderHtml = (store, reactHtmlTemplate, localeProvider, styletron, root) =
 	});
 
 	return html;
-});
+};
 
-const getHtml = (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, reactHtmlTemplate, talkieLocale, ChildComponent) => promiseTry(() => {
+const getHtml = async (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, reactHtmlTemplate, talkieLocale, ChildComponent) => {
 	const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
 	const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);
 
-	return autoRoot(EMPTY_STATE, rootReducer, ChildComponent)
-		.then(({
-			root,
-			store,
-			styletron,
-			localeProvider,
-		}) => {
-			localeProvider.setTranslationLocale(talkieLocale);
+	const {
+		root,
+		store,
+		styletron,
+		localeProvider,
+	} = await autoRoot(EMPTY_STATE, rootReducer, ChildComponent);
 
-			return dispatchAll(store, prerenderedActionsToDispatch)
-				.then(() => {
-					let html = null;
+	localeProvider.setTranslationLocale(talkieLocale);
 
-					return renderHtml(store, reactHtmlTemplate, localeProvider, styletron, root)
-						.then((renderedHtml) => {
-							html = renderedHtml;
-							return undefined;
-						})
-						.then(() => dispatchAll(store, postrenderActionsToDispatch))
-						.then(() => html);
-				});
-		});
-});
+	await dispatchAll(store, prerenderedActionsToDispatch);
+
+	const html = await renderHtml(store, reactHtmlTemplate, localeProvider, styletron, root);
+
+	await dispatchAll(store, postrenderActionsToDispatch);
+
+	return html;
+};
 
 export default getHtml;

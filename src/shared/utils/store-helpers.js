@@ -18,10 +18,4 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	promiseTry,
-} from "../promise";
-
-export const dispatchAll = (store, actionsToDispatch) => promiseTry(() => {
-	return Promise.all(actionsToDispatch.map((action) => store.dispatch(action)));
-});
+export const dispatchAll = async (store, actionsToDispatch) => Promise.all(actionsToDispatch.map((action) => store.dispatch(action)));

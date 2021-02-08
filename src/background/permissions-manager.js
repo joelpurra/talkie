@@ -22,9 +22,6 @@ import {
 	logDebug,
 	logError,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class PermissionsManager {
 	constructor() {
@@ -37,98 +34,82 @@ export default class PermissionsManager {
 		/* eslint-enable dot-notation */
 	}
 
-	browserHasPermissionsFeature() {
-		return promiseTry(
-			() => Boolean(this._pms),
-		);
+	async browserHasPermissionsFeature() {
+		return Boolean(this._pms);
 	}
 
-	hasPermissions(permissionNames, origins) {
-		return promiseTry(
-			() => this._pms.contains({
-				origins,
-				permissions: permissionNames,
-			}),
-		);
+	async hasPermissions(permissionNames, origins) {
+		return this._pms.contains({
+			origins,
+			permissions: permissionNames,
+		});
 	}
 
-	acquirePermissions(permissionNames, origins) {
-		return promiseTry(
-			() => this._pms.request({
-				origins,
-				permissions: permissionNames,
-			}),
-		);
+	async acquirePermissions(permissionNames, origins) {
+		return this._pms.request({
+			origins,
+			permissions: permissionNames,
+		});
 	}
 
-	releasePermissions(permissionNames, origins) {
-		return promiseTry(
-			() => this._pms.remove({
-				origins,
-				permissions: permissionNames,
-			}),
-		);
+	async releasePermissions(permissionNames, origins) {
+		return this._pms.remove({
+			origins,
+			permissions: permissionNames,
+		});
 	}
 
-	useOptionalPermissions(permissionNames, origins, fn) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "useOptionalPermissions", permissionNames.length, permissionNames, origins.length, origins);
+	async useOptionalPermissions(permissionNames, origins, fn) {
+		logDebug("Start", "useOptionalPermissions", permissionNames.length, permissionNames, origins.length, origins);
 
-				const hasPermissionsPromises = permissionNames.map((permissionName) => {
-					// TODO: be more fine-grained per origin as well?
-					return this.hasPermissions([
-						permissionName,
-					], origins);
-				});
+		const hasPermissionsPromises = permissionNames.map((permissionName) => {
+			// TODO: be more fine-grained per origin as well?
+			return this.hasPermissions([
+				permissionName,
+			], origins);
+		});
 
-				return Promise.all(hasPermissionsPromises)
-					.then((hasPermissionsStates) => {
-						const activePermissionNames = [];
-						const inactivePermissionNames = [];
+		const hasPermissionsStates = await Promise.all(hasPermissionsPromises);
 
-						hasPermissionsStates.forEach((hasPermissionsState, index) => {
-							const permissionName = permissionNames[index];
+		const activePermissionNames = [];
+		const inactivePermissionNames = [];
 
-							if (hasPermissionsState) {
-								activePermissionNames.push(permissionName);
-							} else {
-								inactivePermissionNames.push(permissionName);
-							}
-						});
+		hasPermissionsStates.forEach((hasPermissionsState, index) => {
+			const permissionName = permissionNames[index];
 
-						logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Already acquired", activePermissionNames);
-						logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Not yet acquired", inactivePermissionNames);
+			if (hasPermissionsState) {
+				activePermissionNames.push(permissionName);
+			} else {
+				inactivePermissionNames.push(permissionName);
+			}
+		});
 
-						return this.acquirePermissions(inactivePermissionNames, origins)
-							.then((granted) => {
-								if (granted) {
-									logDebug("useOptionalPermissions", permissionNames.length, origins.length, "All permissions acquired");
-								} else {
-									logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Permissions not acquired");
-								}
+		logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Already acquired", activePermissionNames);
+		logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Not yet acquired", inactivePermissionNames);
 
-								return Promise.resolve()
-									.then(() => fn(granted))
-									.then((result) => {
-										return this.releasePermissions(inactivePermissionNames)
-											.then(() => {
-												logDebug("Done", "useOptionalPermissions", permissionNames.length, origins.length);
+		const granted = await this.acquirePermissions(inactivePermissionNames, origins);
 
-												return result;
-											});
-									})
-									.catch((error) => {
-										logError("useOptionalPermissions", permissionNames.length, origins.length, error);
+		if (granted) {
+			logDebug("useOptionalPermissions", permissionNames.length, origins.length, "All permissions acquired");
+		} else {
+			logDebug("useOptionalPermissions", permissionNames.length, origins.length, "Permissions not acquired");
+		}
 
-										return this.releasePermissions(inactivePermissionNames, origins)
-											.then(() => {
-												throw error;
-											});
-									});
-							});
-					});
-			},
-		);
+		try {
+			// NOTE: using callback style to simplify permissions usage and minimize the period during which permissions are acquired.
+			const result = await fn(granted);
+
+			await this.releasePermissions(inactivePermissionNames);
+
+			logDebug("Done", "useOptionalPermissions", permissionNames.length, origins.length);
+
+			return result;
+		} catch (error) {
+			logError("useOptionalPermissions", permissionNames.length, origins.length, error);
+
+			await this.releasePermissions(inactivePermissionNames, origins);
+
+			throw error;
+		}
 	}
 }

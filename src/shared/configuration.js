@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	promiseTry,
-} from "./promise";
-
 export default class Configuration {
 	// NOTE: keep SynchronousConfiguration and Configuration in... sync.
 	constructor(metadataManager, configurationObject) {
@@ -84,15 +80,12 @@ export default class Configuration {
 		return null;
 	}
 
-	get(path) {
-		return promiseTry(
-			() => this.metadataManager.getSystemType()
-				.then((systemType) =>
-				/* eslint-disable no-sync */
-					this.getSync(systemType, path),
-					/* eslint-enable no-sync */
-				),
-		);
+	async get(path) {
+		const systemType = await this.metadataManager.getSystemType();
+
+		/* eslint-disable no-sync */
+		return this.getSync(systemType, path);
+		/* eslint-enable no-sync */
 	}
 
 	getSync(systemType, path) {

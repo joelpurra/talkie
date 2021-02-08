@@ -18,51 +18,40 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	promiseTry,
-} from "../shared/promise";
 import DualLogger from "./dual-log";
 
 const dualLogger = new DualLogger("shared-frontend.js");
 
-const reflow = () => promiseTry(
-	() => {
-		document.body.style.marginBottom = "0";
-	},
-);
+const reflow = async () => {
+	document.body.style.marginBottom = "0";
+};
 
-export const eventToPromise = (eventHandler, event) => promiseTry(
-	() => {
+export const eventToPromise = async (eventHandler, event) => {
+	try {
 		dualLogger.dualLogDebug("Start", "eventToPromise", event && event.type, event);
 
-		return Promise.resolve()
-			.then(() => eventHandler(event))
-			.then((result) => dualLogger.dualLogDebug("Done", "eventToPromise", event && event.type, event, result))
-			.catch((error) => dualLogger.dualLogError("eventToPromise", event && event.type, event, error));
-	},
-);
+		const result = await eventHandler(event);
+		dualLogger.dualLogDebug("Done", "eventToPromise", event && event.type, event, result);
+	} catch (error) {
+		dualLogger.dualLogError("eventToPromise", event && event.type, event, error);
+	}
+};
 
-const focusFirstLink = () => promiseTry(
-	() => {
-		const links = document.querySelectorAll("a");
+const focusFirstLink = async () => {
+	const links = document.querySelectorAll("a");
 
-		if (links.length > 0) {
-			const firstLinkElement = links[0];
+	if (links.length > 0) {
+		const firstLinkElement = links[0];
 
-			firstLinkElement.focus();
-		}
-	},
-);
+		firstLinkElement.focus();
+	}
+};
 
-export const startReactFrontend = () => promiseTry(
-	() => Promise.all([
-		focusFirstLink(),
-		reflow(),
-	]),
-);
+export const startReactFrontend = async () => Promise.all([
+	focusFirstLink(),
+	reflow(),
+]);
 
-export const stopReactFrontend = () => promiseTry(
-	() => {
-		// TODO: unregister listeners.
-	},
-);
+export const stopReactFrontend = async () => {
+	// TODO: unregister listeners.
+};

@@ -21,149 +21,138 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "./log";
-import {
-	promiseTry,
-} from "./promise";
 
-export const getBackgroundPage = () => promiseTry(
+export const getBackgroundPage = async () => {
+	const backgroundPage = await browser.runtime.getBackgroundPage();
+
 	// https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
-	() => browser.runtime.getBackgroundPage()
-		.then((backgroundPage) => {
-			if (backgroundPage) {
-				return backgroundPage;
-			}
+	if (backgroundPage) {
+		return backgroundPage;
+	}
 
-			return null;
-		}),
-);
+	return null;
+};
 
-export const getCurrentActiveTab = () => promiseTry(
-	() => {
-		const queryOptions = {
-			active: true,
-			currentWindow: true,
-		};
+export const getCurrentActiveTab = async () => {
+	const queryOptions = {
+		active: true,
+		currentWindow: true,
+	};
 
-		// https://developer.browser.com/extensions/tabs#method-query
-		return browser.tabs.query(queryOptions)
-			.then((tabs) => {
-				if (!tabs) {
-					return null;
-				}
+	// https://developer.browser.com/extensions/tabs#method-query
+	const tabs = await browser.tabs.query(queryOptions);
 
-				const singleTabResult = tabs.length === 1;
-
-				const tab = tabs[0] || null;
-
-				logDebug("getCurrentActiveTab", tabs, tab, singleTabResult);
-
-				if (singleTabResult) {
-					return tab;
-				}
-
-				return null;
-			});
-	},
-);
-
-export const getCurrentActiveTabId = () => getCurrentActiveTab()
-	.then((activeTab) => {
-		if (activeTab) {
-			return activeTab.id;
-		}
-
-		// NOTE: some tabs can't be retreived.
+	if (!tabs) {
 		return null;
-	});
+	}
 
-export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry(
-	() => getCurrentActiveTab()
-		.then((tab) => {
-			if (tab) {
-				const url = tab.url;
+	const singleTabResult = tabs.length === 1;
 
-				if (
-					typeof url === "string"
+	const tab = tabs[0] || null;
+
+	logDebug("getCurrentActiveTab", tabs, tab, singleTabResult);
+
+	if (singleTabResult) {
+		return tab;
+	}
+
+	return null;
+};
+
+export const getCurrentActiveTabId = async () => {
+	const activeTab = await getCurrentActiveTab();
+
+	if (activeTab) {
+		return activeTab.id;
+	}
+
+	// NOTE: some tabs can't be retrieved.
+	return null;
+};
+
+export const isCurrentPageInternalToTalkie = async (internalUrlProvider) => {
+	const tab = await getCurrentActiveTab();
+
+	if (tab) {
+		const url = tab.url;
+
+		if (
+			typeof url === "string"
 					&& (
 					/* eslint-disable no-sync */
 						url.startsWith(internalUrlProvider.getSync("/src/"))
 						|| url.startsWith(internalUrlProvider.getSync("/dist/"))
 						/* eslint-enable no-sync */
 					)
-				) {
-					return true;
-				}
+		) {
+			return true;
+		}
 
-				return false;
+		return false;
+	}
+
+	return false;
+};
+
+const getCurrentActiveNormalLoadedTab = async () => {
+	const queryOptions = {
+		active: true,
+		currentWindow: true,
+		status: "complete",
+		windowType: "normal",
+	};
+
+	// https://developer.browser.com/extensions/tabs#method-query
+	const tabs = await browser.tabs.query(queryOptions);
+
+	const singleTabResult = tabs.length === 1;
+
+	const tab = tabs[0] || null;
+
+	logDebug("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
+
+	if (singleTabResult) {
+		return tab;
+	}
+
+	return null;
+};
+
+export const canTalkieRunInTab = async () => {
+	const tab = await getCurrentActiveNormalLoadedTab();
+
+	if (tab) {
+		const url = tab.url;
+
+		if (typeof url === "string") {
+			const canRunInUrl = (
+				// NOTE: whitelisting schemes.
+				// TODO: can the list be extended?
+				url.startsWith("http://")
+				|| url.startsWith("https://")
+				|| url.startsWith("ftp://")
+				|| url.startsWith("file:")
+			)
+			&& !(
+				// NOTE: blacklisting known (per-browser store) urls.
+				// TODO: should the list be extended?
+				// TODO: move to configuration.
+				url.startsWith("https://chrome.google.com/")
+				|| url.startsWith("https://addons.mozilla.org/")
+			);
+
+			if (canRunInUrl) {
+				return true;
 			}
 
 			return false;
-		}),
-);
+		}
 
-const getCurrentActiveNormalLoadedTab = () => promiseTry(
-	() => {
-		const queryOptions = {
-			active: true,
-			currentWindow: true,
-			status: "complete",
-			windowType: "normal",
-		};
+		return false;
+	}
 
-		// https://developer.browser.com/extensions/tabs#method-query
-		return browser.tabs.query(queryOptions)
-			.then((tabs) => {
-				const singleTabResult = tabs.length === 1;
-
-				const tab = tabs[0] || null;
-
-				logDebug("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
-
-				if (singleTabResult) {
-					return tab;
-				}
-
-				return null;
-			});
-	},
-);
-
-export const canTalkieRunInTab = () => promiseTry(
-	() => getCurrentActiveNormalLoadedTab()
-		.then((tab) => {
-			if (tab) {
-				const url = tab.url;
-
-				if (typeof url === "string") {
-					if (
-						(
-						// NOTE: whitelisting schemes.
-						// TODO: can the list be extended?
-							url.startsWith("http://")
-							|| url.startsWith("https://")
-							|| url.startsWith("ftp://")
-							|| url.startsWith("file:")
-						)
-						&& !(
-						// NOTE: blacklisting known (per-browser store) urls.
-						// TODO: should the list be extended?
-						// TODO: move to configuration.
-							url.startsWith("https://chrome.google.com/")
-							|| url.startsWith("https://addons.mozilla.org/")
-						)
-					) {
-						return true;
-					}
-
-					return false;
-				}
-
-				return false;
-			}
-
-			return false;
-		}),
-);
+	return false;
+};
 
 // NOTE: used to check if a DOM element cross-page (background, popup, options, ...) reference was used after it was supposed to be unreachable (memory leak).
 // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Errors/Dead_object

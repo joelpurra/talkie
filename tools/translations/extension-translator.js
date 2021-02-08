@@ -1,3 +1,6 @@
+// TODO: fix hashbang compile-time parsing.
+// #!/usr/bin/env node
+
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
@@ -32,10 +35,22 @@ const configuration = require("configvention");
 const readDir = Bluebird.promisify(fs.readdir);
 const stat = Bluebird.promisify(fs.stat);
 
-const getDirectoryNames = (directoryPath) => readDir(directoryPath)
-	.filter((file) => stat(path.join(directoryPath, file))
-		.then((stats) => stats.isDirectory()),
+const getDirectoryNames = async (directoryPath) => {
+	const files = await readDir(directoryPath);
+
+	const directories = Bluebird.filter(
+		// eslint-disable-next-line unicorn/no-fn-reference-in-iterator
+		files,
+		async (file) => {
+			const fullPath = path.join(directoryPath, file);
+			const entry = await stat(fullPath);
+
+			return entry.isDirectory();
+		},
 	);
+
+	return directories;
+};
 
 const localesDirectoryName = "_locales";
 
@@ -47,71 +62,90 @@ const getLocaleFilePath = (rootDirectoryPath, localeName, localeFilename) => {
 	return path.join(getLocalesPath(rootDirectoryPath), localeName, localeFilename);
 };
 
-Bluebird.try(() => process.argv.slice(2))
-	.tap((args) => {
-		const languageCodeRx = /[a-z]{2}(_[A-Z]{2})?/;
+const main = async () => {
+	const args = process.argv.slice(2);
+	const languageCodeRx = /[a-z]{2}(_[A-Z]{2})?/;
 
-		assert(args.length >= 4);
+	assert(args.length >= 4);
 
-		// TODO: check resolved path?
-		assert(typeof args[0] === "string");
+	// TODO: check resolved path?
+	assert(typeof args[0] === "string");
 
-		assert(typeof args[1] === "string");
-		assert(languageCodeRx.test(args[1]));
+	assert(typeof args[1] === "string");
+	assert(languageCodeRx.test(args[1]));
 
-		assert(typeof args[2] === "string");
-		assert(args[2].endsWith(".json"));
+	assert(typeof args[2] === "string");
+	assert(args[2].endsWith(".json"));
 
-		assert(typeof args[3] === "string");
-		assert(args[3].endsWith(".json"));
+	assert(typeof args[3] === "string");
+	assert(args[3].endsWith(".json"));
 
-		if (args.length > 4) {
-			args.slice(4).forEach((arg) => {
-				assert(languageCodeRx.test(arg));
-			});
-		}
-	})
-	.then(([
+	if (args.length > 4) {
+		args.slice(4).forEach((arg) => {
+			assert(languageCodeRx.test(arg));
+		});
+	}
+
+	const [
 		rootDirectoryPath,
 		baseLanguageCode,
 		baseFileName,
 		automaticTranslationFilename,
 		...languageCodes
-	]) => {
-		const googleCloudTranslateApiKeyFilePath = configuration.get("GOOGLE_TRANSLATE_API_KEY_FILE_PATH");
+	] = args;
 
-		const translatorService = new GoogleCloudTranslateTranslator(googleCloudTranslateApiKeyFilePath);
-		const messagesTranslatorFactory = new MessagesTranslatorFactory(translatorService, MessagesTranslator);
+	const googleCloudTranslateApiKeyFilePath = configuration.get("GOOGLE_TRANSLATE_API_KEY_FILE_PATH");
 
-		const base = {
-			filePath: getLocaleFilePath(rootDirectoryPath, baseLanguageCode, baseFileName),
-			language: baseLanguageCode,
-		};
+	const translatorService = new GoogleCloudTranslateTranslator(googleCloudTranslateApiKeyFilePath);
+	const messagesTranslatorFactory = new MessagesTranslatorFactory(translatorService, MessagesTranslator);
 
-		return Bluebird.try(() => {
-			if (languageCodes.length === 0) {
-				const localesDirectoryPath = getLocalesPath(rootDirectoryPath);
+	const base = {
+		filePath: getLocaleFilePath(rootDirectoryPath, baseLanguageCode, baseFileName),
+		language: baseLanguageCode,
+	};
 
-				return getDirectoryNames(localesDirectoryPath);
-			}
+	try {
+		let effectiveLanguageCodes = languageCodes;
 
-			return languageCodes;
-		})
-			.filter((localeName) => localeName !== baseLanguageCode)
-			.map((localeName) => {
-				return {
-					filePath: getLocaleFilePath(rootDirectoryPath, localeName, automaticTranslationFilename),
-					language: localeName,
-				};
-			})
-			.then((locales) => {
-				const filesTranslator = new FilesTranslator(messagesTranslatorFactory, base, locales);
+		if (languageCodes.length === 0) {
+			const localesDirectoryPath = getLocalesPath(rootDirectoryPath);
 
-				return filesTranslator.translate();
-			});
-	})
-	.catch((error) => {
+			effectiveLanguageCodes = await getDirectoryNames(localesDirectoryPath);
+		}
+
+		const localeNames = effectiveLanguageCodes.filter((localeName) => localeName !== baseLanguageCode);
+
+		const locales = localeNames.map((localeName) => ({
+			filePath: getLocaleFilePath(rootDirectoryPath, localeName, automaticTranslationFilename),
+			language: localeName,
+		}));
+
+		const filesTranslator = new FilesTranslator(messagesTranslatorFactory, base, locales);
+
+		await filesTranslator.translate();
+	} catch (error) {
 		/* eslint-disable no-console */
-		console.error("Error", error);
+		console.error(error);
 		/* eslint-enable no-console */
+
+		process.exitCode = 3;
+	}
+};
+
+try {
+	process.on("unhandledRejection", (error) => {
+		/* eslint-disable no-console */
+		console.error("unhandledRejection", error);
+		/* eslint-enable no-console */
+
+		process.exitCode = 2;
 	});
+
+	main();
+} catch (error) {
+	/* eslint-disable no-console */
+	console.error(error);
+	/* eslint-enable no-console */
+
+	process.exitCode = 1;
+}

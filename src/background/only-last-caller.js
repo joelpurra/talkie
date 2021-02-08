@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "../shared/log";
-import {
-	promiseTry,
-} from "../shared/promise";
 
 export default class OnlyLastCaller {
 	constructor() {
@@ -40,14 +37,12 @@ export default class OnlyLastCaller {
 
 		logDebug("Start", "getShouldContinueSpeakingProvider", callerOnTheAirId);
 
-		return () => promiseTry(
-			() => {
-				const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
+		return async () => {
+			const isLastCallerOnTheAir = callerOnTheAirId === this.lastCallerId;
 
-				logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
+			logDebug("Status", "getShouldContinueSpeakingProvider", callerOnTheAirId, isLastCallerOnTheAir);
 
-				return isLastCallerOnTheAir;
-			},
-		);
+			return isLastCallerOnTheAir;
+		};
 	}
 }

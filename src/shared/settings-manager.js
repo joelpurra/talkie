@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	promiseTry,
-} from "./promise";
-
 export default class SettingsManager {
 	constructor(storageManager) {
 		this.storageManager = storageManager;
@@ -35,29 +31,23 @@ export default class SettingsManager {
 		this._speakLongTextsStorageKeyDefaultValue = false;
 	}
 
-	setIsPremiumEdition(isPremiumEdition) {
-		return promiseTry(
-			() => this.storageManager.setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition === true),
-		);
+	async setIsPremiumEdition(isPremiumEdition) {
+		return this.storageManager.setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition === true);
 	}
 
-	getIsPremiumEdition() {
-		return promiseTry(
-			() => this.storageManager.getStoredValue(this._isPremiumEditionStorageKey)
-				.then((isPremiumEdition) => isPremiumEdition || this._isPremiumEditionDefaultValue),
-		);
+	async getIsPremiumEdition() {
+		const isPremiumEdition = await this.storageManager.getStoredValue(this._isPremiumEditionStorageKey);
+
+		return isPremiumEdition || this._isPremiumEditionDefaultValue;
 	}
 
-	setSpeakLongTexts(speakLongTexts) {
-		return promiseTry(
-			() => this.storageManager.setStoredValue(this._speakLongTextsStorageKey, speakLongTexts === true),
-		);
+	async setSpeakLongTexts(speakLongTexts) {
+		return this.storageManager.setStoredValue(this._speakLongTextsStorageKey, speakLongTexts === true);
 	}
 
-	getSpeakLongTexts() {
-		return promiseTry(
-			() => this.storageManager.getStoredValue(this._speakLongTextsStorageKey)
-				.then((speakLongTexts) => speakLongTexts || this._speakLongTextsStorageKeyDefaultValue),
-		);
+	async getSpeakLongTexts() {
+		const speakLongTexts = await this.storageManager.getStoredValue(this._speakLongTextsStorageKey);
+
+		return speakLongTexts || this._speakLongTextsStorageKeyDefaultValue;
 	}
 }

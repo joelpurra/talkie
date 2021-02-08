@@ -24,7 +24,6 @@ import {
 } from "./log";
 import {
 	promiseTimeout,
-	promiseTry,
 } from "./promise";
 
 export default class Execute {
@@ -32,103 +31,88 @@ export default class Execute {
 		this.configuration = configuration;
 	}
 
-	scriptInTopFrame(code) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "scriptInTopFrame", code.length, code);
+	async scriptInTopFrame(code) {
+		try {
+			logDebug("Start", "scriptInTopFrame", code.length, code);
 
-				return browser.tabs.executeScript(
-					{
-						allFrames: false,
-						code,
-					},
-				)
-					.then((result) => {
-						logDebug("Done", "scriptInTopFrame", code.length);
+			const result = await browser.tabs.executeScript(
+				{
+					allFrames: false,
+					code,
+				},
+			);
+			logDebug("Done", "scriptInTopFrame", code.length);
 
-						return result;
-					})
-					.catch((error) => {
-						logInfo("scriptInTopFrame", code.length, "Error", error);
+			return result;
+		} catch (error) {
+			logInfo("scriptInTopFrame", code.length, "Error", error);
 
-						throw error;
-					});
-			},
-		);
+			throw error;
+		}
 	}
 
-	scriptInAllFrames(code) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "scriptInAllFrames", code.length, code);
+	async scriptInAllFrames(code) {
+		try {
+			logDebug("Start", "scriptInAllFrames", code.length, code);
 
-				return browser.tabs.executeScript(
-					{
-						allFrames: true,
-						code,
-					},
-				)
-					.then((result) => {
-						logDebug("Done", "scriptInAllFrames", code.length);
+			const result = await browser.tabs.executeScript(
+				{
+					allFrames: true,
+					code,
+				},
+			);
 
-						return result;
-					})
-					.catch((error) => {
-						logInfo("scriptInAllFrames", code.length, "Error", error);
+			logDebug("Done", "scriptInAllFrames", code.length);
 
-						throw error;
-					});
-			},
-		);
+			return result;
+		} catch (error) {
+			logInfo("scriptInAllFrames", code.length, "Error", error);
+
+			throw error;
+		}
 	}
 
-	scriptInTopFrameWithTimeout(code, timeout) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+	async scriptInTopFrameWithTimeout(code, timeout) {
+		try {
+			logDebug("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-				return promiseTimeout(
-					this.scriptInTopFrame(code),
-					timeout,
-				)
-					.then((result) => {
-						logDebug("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
+			const result = await promiseTimeout(
+				this.scriptInTopFrame(code),
+				timeout,
+			);
 
-						return result;
-					})
-					.catch((error) => {
-						if (error && typeof error === "object" && error.name === "PromiseTimeout") {
-							// NOTE: this is how to check for a timeout.
-						}
+			logDebug("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-						throw error;
-					});
-			},
-		);
+			return result;
+		} catch (error) {
+			logInfo("scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds", "Error", error);
+
+			if (error && typeof error === "object" && error.name === "PromiseTimeout") {
+				// NOTE: this is how to check for a timeout.
+			}
+
+			throw error;
+		}
 	}
 
-	scriptInAllFramesWithTimeout(code, timeout) {
-		return promiseTry(
-			() => {
-				logDebug("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+	async scriptInAllFramesWithTimeout(code, timeout) {
+		try {
+			logDebug("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-				return promiseTimeout(
-					this.scriptInAllFrames(code),
-					timeout,
-				)
-					.then((result) => {
-						logDebug("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
+			const result = await promiseTimeout(
+				this.scriptInAllFrames(code),
+				timeout,
+			);
 
-						return result;
-					})
-					.catch((error) => {
-						if (error && typeof error === "object" && error.name === "PromiseTimeout") {
-							// NOTE: this is how to check for a timeout.
-						}
+			logDebug("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
 
-						throw error;
-					});
-			},
-		);
+			return result;
+		} catch (error) {
+			if (error && typeof error === "object" && error.name === "PromiseTimeout") {
+				// NOTE: this is how to check for a timeout.
+			}
+
+			throw error;
+		}
 	}
 }

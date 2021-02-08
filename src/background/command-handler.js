@@ -28,7 +28,7 @@ export default class CommandHandler {
 		this.commandMap = commandMap;
 	}
 
-	handle(command, ...args) {
+	async handle(command, ...args) {
 		logDebug("Start", "commandHandler", command);
 
 		const commandAction = this.commandMap[command];
@@ -37,33 +37,29 @@ export default class CommandHandler {
 			throw new TypeError("Bad command action for command: " + command);
 		}
 
-		return commandAction(...args)
-			.then((result) => {
-				logDebug("Done", "commandHandler", command, result);
+		try {
+			const result = await commandAction(...args);
 
-				return undefined;
-			})
-			.catch((error) => {
-				logError("commandHandler", command, error);
+			logDebug("Done", "commandHandler", command, result);
+		} catch (error) {
+			logError("commandHandler", command, error);
 
-				throw error;
-			});
+			throw error;
+		}
 	}
 
-	handleCommandEvent(command, ...args) {
+	async handleCommandEvent(command, ...args) {
 		logDebug("Start", "handleCommandEvent", command);
 
-		// NOTE: straight mapping from command to action.
-		return this.handle(command, ...args)
-			.then((result) => {
-				logDebug("Done", "handleCommandEvent", command, result);
+		try {
+			// NOTE: straight mapping from command to action.
+			const result = await this.handle(command, ...args);
 
-				return undefined;
-			})
-			.catch((error) => {
-				logError("handleCommandEvent", command, error);
+			logDebug("Done", "handleCommandEvent", command, result);
+		} catch (error) {
+			logError("handleCommandEvent", command, error);
 
-				throw error;
-			});
+			throw error;
+		}
 	}
 }

@@ -46,35 +46,35 @@ export default class FilesTranslator {
 		this._locales = locales;
 	}
 
-	translate() {
-		return jsonfile.readFile(this._base.filePath)
-			.then((baseMessages) => {
-				const baseWithMessages = {
-					language: this._base.language,
-					messages: clone(baseMessages),
-				};
+	async _translateLocale(baseWithMessages, locale) {
+		const localeMessages = await jsonfile.readFile(locale.filePath);
+		const localeWithMessages = {
+			language: locale.language,
+			messages: clone(localeMessages),
+		};
+		const messagesTranslator = await this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages);
+		const translated = await messagesTranslator.translate();
 
-				return Bluebird.map(
-					// eslint-disable-next-line unicorn/no-fn-reference-in-iterator
-					this._locales,
-					(locale) => jsonfile.readFile(locale.filePath)
-						.then((localeMessages) => {
-							const localeWithMessages = {
-								language: locale.language,
-								messages: clone(localeMessages),
-							};
+		await jsonfile.writeFile(
+			locale.filePath,
+			translated,
+			{
+				spaces: 2,
+			},
+		);
+	}
 
-							return this._messagesTranslatorFactory.create(baseWithMessages, localeWithMessages)
-								.then((messagesTranslator) => messagesTranslator.translate());
-						})
-						.then((translated) => jsonfile.writeFile(
-							locale.filePath,
-							translated,
-							{
-								spaces: 2,
-							},
-						)),
-				);
-			});
+	async translate() {
+		const baseMessages = await jsonfile.readFile(this._base.filePath);
+		const baseWithMessages = {
+			language: this._base.language,
+			messages: clone(baseMessages),
+		};
+
+		await Bluebird.map(
+			// eslint-disable-next-line unicorn/no-fn-reference-in-iterator
+			this._locales,
+			(locale) => this._translateLocale(baseWithMessages, locale),
+		);
 	}
 }
