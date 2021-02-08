@@ -90,25 +90,25 @@ class Menu extends React.PureComponent {
 				<this.styled.ol>
 					<this.styled.li>
 						<this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
-							<Icon className="icon-voices"/>
+							<Icon className="icon-voices" mode="inline"/>
 							{translate("frontend_PopupMenu_Voices")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
 						<this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
-							<Icon className="icon-usage"/>
+							<Icon className="icon-usage" mode="inline"/>
 							{translate("frontend_PopupMenu_Usage")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
 						<this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
-							<Icon className="icon-features"/>
+							<Icon className="icon-features" mode="inline"/>
 							{translate("frontend_PopupMenu_Features")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
 						<this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
-							<Icon className="icon-feedback"/>
+							<Icon className="icon-feedback" mode="inline"/>
 							{translate("frontend_supportAndFeedback")}
 						</this.styled.a>
 					</this.styled.li>

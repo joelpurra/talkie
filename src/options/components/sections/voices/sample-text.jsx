@@ -53,20 +53,26 @@ class SampleText extends React.PureComponent {
 	}
 
 	render() {
+		const {
+			disabled,
+			translate,
+			value,
+		} = this.props;
+
 		return (
 			<tableBase.tbody>
 				<tableBase.tr>
 					<tableBase.th scope="col">
-						{this.props.translate("frontend_voicesSampleTextHeading")}
+						{translate("frontend_voicesSampleTextHeading")}
 					</tableBase.th>
 				</tableBase.tr>
 				<tableBase.tr>
 					<tableBase.td>
 						<formBase.textarea
-							disabled={this.props.disabled || null}
+							disabled={disabled}
 							id="voices-sample-text"
 							rows="2"
-							value={this.props.value}
+							value={value}
 							onChange={this.handleChange}
 						/>
 					</tableBase.td>

@@ -48,9 +48,13 @@ class Main extends React.PureComponent {
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 	}
 
+	static defaultProps = {
+		className: "",
+	}
+
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		isPremiumEdition: PropTypes.bool.isRequired,
 		versionNumber: PropTypes.string.isRequired,
 	};

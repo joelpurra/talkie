@@ -112,7 +112,9 @@ class Features extends React.PureComponent {
 					</p>
 				</Discretional>
 
-				<PremiumSection>
+				<PremiumSection
+					mode="h2"
+				>
 					<listBase.ul>
 						<listBase.li>
 							{translate("frontend_featuresPremium_List01")}

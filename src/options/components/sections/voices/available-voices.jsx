@@ -20,7 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import PropTypes from "prop-types";
 import React from "react";
-
 import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
 import styled from "../../../../shared/hocs/styled.jsx";
 import translateAttribute from "../../../../shared/hocs/translate.jsx";
@@ -68,16 +67,20 @@ class AvailableVoices extends React.PureComponent {
 
 	render() {
 		const {
+			disabled,
+			effectiveVoiceNameForSelectedLanguage,
 			translate,
+			value,
+			voices,
 		} = this.props;
 
 		const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
 
-		const voicesOptions = this.props.voices.map(
+		const voicesOptions = voices.map(
 			(voice) => {
 				const isEffectiveVoiceNameForSelectedLanguage = (
-					this.props.effectiveVoiceNameForSelectedLanguage
-					&& this.props.effectiveVoiceNameForSelectedLanguage === voice.name
+					effectiveVoiceNameForSelectedLanguage
+					&& effectiveVoiceNameForSelectedLanguage === voice.name
 				);
 
 				const VoiceOption = isEffectiveVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
@@ -114,9 +117,9 @@ class AvailableVoices extends React.PureComponent {
 
 		return (
 			<MultilineSelect
-				disabled={this.props.disabled}
+				disabled={disabled}
 				size={7}
-				value={this.props.value}
+				value={value}
 				onChange={this.handleChange}
 			>
 				{voicesOptions}

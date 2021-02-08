@@ -78,7 +78,7 @@ class ToggleDefault extends React.PureComponent {
 				<tableBase.tr>
 					<tableBase.td>
 						<formBase.button
-							disabled={disabled || null}
+							disabled={disabled}
 							onClick={this.handleClick}
 						>
 							{buttonText}

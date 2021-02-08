@@ -25,6 +25,7 @@ import TalkieEditionIcon from "./talkie-edition-icon.jsx";
 
 export default class TalkiePremiumIcon extends React.PureComponent {
 	static defaultProps = {
+		className: "",
 		// TODO: break out default css values to styles?
 		marginLeft: "0.3em",
 		marginRight: "0.3em",
@@ -32,7 +33,7 @@ export default class TalkiePremiumIcon extends React.PureComponent {
 	};
 
 	static propTypes = {
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		marginLeft: PropTypes.string,
 		marginRight: PropTypes.string,
 		mode: PropTypes.oneOf([

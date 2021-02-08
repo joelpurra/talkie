@@ -25,10 +25,12 @@ import {
 	debounce,
 } from "../../../../shared/basic";
 import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 
 export default
 
 // eslint-disable-next-line react/no-unsafe
+@translateAttribute
 class RangeWithHeading extends React.PureComponent {
 	constructor(props) {
 		super(props);

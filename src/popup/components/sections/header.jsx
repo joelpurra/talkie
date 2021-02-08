@@ -111,6 +111,7 @@ class Header extends React.PureComponent {
 				>
 					<TalkieEditionIcon
 						isPremiumEdition={isPremiumEdition}
+						mode="inline"
 					/>
 				</textBase.span>
 

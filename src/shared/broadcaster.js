@@ -39,7 +39,7 @@ export default class Broadcaster {
 		return promiseTry(
 			() => {
 				if (!this.actionListeningMap[actionName]) {
-					throw new Error("No listening action(s) registered for action: " + actionName);
+					throw new Error(`No listening action(s) registered for action: ${typeof actionName} ${JSON.stringify(actionName)}`);
 				}
 
 				const countBefore = this.actionListeningMap[actionName].length;
@@ -49,7 +49,7 @@ export default class Broadcaster {
 				const countAfter = this.actionListeningMap[actionName].length;
 
 				if (countBefore === countAfter) {
-					throw new Error("The specific listening action handler was not registered for action: " + actionName);
+					throw new Error(`The specific listening action handler was not registered for action: ${typeof actionName} ${JSON.stringify(actionName)}`);
 				}
 			},
 		);

@@ -62,11 +62,11 @@ export default class Configuration {
 	_resolvePath(object, path) {
 		// NOTE: doesn't handle arrays nor properties of "any" non-object objects.
 		if (!object || typeof object !== "object") {
-			throw new Error("Unable to handle non-object object.");
+			throw new Error(`Unable to handle non-object object: ${typeof object} ${JSON.stringify(object)}`);
 		}
 
 		if (!path || typeof path !== "string" || path.length === 0) {
-			throw new Error("Unable to handle non-string path");
+			throw new Error(`Unable to handle non-string path: ${typeof path} ${JSON.stringify(path)}`);
 		}
 
 		// NOTE: doesn't handle path["subpath"].

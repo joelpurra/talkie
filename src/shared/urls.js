@@ -28,12 +28,12 @@ import {
 export const openUrlInNewTab = (url) => promiseTry(
 	() => {
 		if (typeof url !== "string") {
-			throw new TypeError("Bad url: " + url);
+			throw new TypeError(`Bad url: ${typeof url}`);
 		}
 
 		// NOTE: only https urls.
 		if (!url.startsWith("https://")) {
-			throw new Error("Bad url, only https:// allowed: " + url);
+			throw new Error(`Bad url, only https:// allowed: ${JSON.stringify(url)}`);
 		}
 
 		return browser.tabs.create({
@@ -46,13 +46,13 @@ export const openUrlInNewTab = (url) => promiseTry(
 export const openInternalUrlInNewTab = (url) => promiseTry(
 	() => {
 		if (typeof url !== "string") {
-			throw new TypeError("Bad url: " + url);
+			throw new TypeError(`Bad url: ${typeof url}`);
 		}
 
 		// NOTE: only root-relative internal urls.
 		// NOTE: double-slash is protocol relative, checking just in case.
 		if (!url.startsWith("/") || url[1] === "/") {
-			throw new Error("Bad url, only internally rooted allowed: " + url);
+			throw new Error(`Bad url, only internally rooted allowed: ${JSON.stringify(url)}`);
 		}
 
 		return browser.tabs.create({

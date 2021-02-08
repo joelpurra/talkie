@@ -23,8 +23,9 @@ import React from "react";
 
 import styled from "../../hocs/styled.jsx";
 
-export default class TalkieEditionIcon extends React.PureComponent {
+export default class Icon extends React.PureComponent {
 	static defaultProps = {
+		className: "",
 		// TODO: break out default css values to styles?
 		marginLeft: "0.3em",
 		marginRight: "0.3em",
@@ -32,7 +33,7 @@ export default class TalkieEditionIcon extends React.PureComponent {
 	};
 
 	static propTypes = {
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		marginLeft: PropTypes.string,
 		marginRight: PropTypes.string,
 		mode: PropTypes.oneOf([
@@ -73,6 +74,7 @@ export default class TalkieEditionIcon extends React.PureComponent {
 		const StyledIcon = styled(iconStyle)("span");
 
 		// TODO: fully replace with css-in-js?
+		// TODO: use a separate component per mode?
 		return (
 			<StyledIcon
 				className={`icon icon-${mode} icon-${size} ${className}`}

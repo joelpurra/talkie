@@ -115,13 +115,14 @@ class Main extends React.PureComponent {
 	}
 
 	static defaultProps = {
+		className: "",
 		osType: null,
-	};
+	}
 
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
 		activeTabId: PropTypes.string.isRequired,
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		isPremiumEdition: PropTypes.bool.isRequired,
 		osType: PropTypes.string,
 		systemType: PropTypes.string.isRequired,

@@ -38,6 +38,7 @@ import {
 } from "../shared/voices";
 
 export default class Api {
+	// eslint-disable-next-line max-params
 	constructor(metadataManager, configuration, translator, broadcastProvider, talkieLocaleHelper) {
 		this.metadataManager = metadataManager;
 		this.configuration = configuration;

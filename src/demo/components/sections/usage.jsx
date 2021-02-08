@@ -105,6 +105,7 @@ class Usage extends React.PureComponent {
 						{translate("frontend_usageStep02")}
 						<TalkieEditionIcon
 							isPremiumEdition={isPremiumEdition}
+							mode="inline"
 						/>
 					</listBase.li>
 				</listBase.ul>
@@ -142,11 +143,15 @@ class Usage extends React.PureComponent {
 						<tableBase.tbody>
 							<tableBase.tr>
 								<tableBase.td>
-									<Icon className="icon-small-play"/>
+									<Icon
+										className="icon-small-play"
+										mode="inline"/>
 									<lighter.span>
 										/
 									</lighter.span>
-									<Icon className="icon-small-stop"/>
+									<Icon
+										className="icon-small-stop"
+										mode="inline"/>
 
 									{translate("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
 								</tableBase.td>
@@ -184,11 +189,15 @@ class Usage extends React.PureComponent {
 							>
 								<tableBase.tr>
 									<tableBase.td>
-										<Icon className="icon-small-play"/>
+										<Icon
+											className="icon-small-play"
+											mode="inline"/>
 										<lighter.span>
 											/
 										</lighter.span>
-										<Icon className="icon-small-stop"/>
+										<Icon
+											className="icon-small-stop"
+											mode="inline"/>
 
 										{translate("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
 									</tableBase.td>
@@ -231,7 +240,9 @@ class Usage extends React.PureComponent {
 											href={configure("urls.options-upgrade-from-demo")}
 											lang="en"
 										>
-											<TalkiePremiumIcon/>
+											<TalkiePremiumIcon
+												mode="inline"
+											/>
 											{translate("extensionShortName_Premium")}
 										</textBase.a>
 									</tableBase.td>
@@ -244,7 +255,9 @@ class Usage extends React.PureComponent {
 							>
 								<tableBase.tr className="premium-section">
 									<tableBase.td>
-										<Icon className="icon-small-speaker"/>
+										<Icon
+											className="icon-small-speaker"
+											mode="inline"/>
 
 										{translate("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
 									</tableBase.td>

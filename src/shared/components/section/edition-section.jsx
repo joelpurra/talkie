@@ -30,9 +30,13 @@ export default
 @translateAttribute
 @configureAttribute
 class EditionSection extends React.PureComponent {
+	static defaultProps = {
+		className: "",
+	}
+
 	static propTypes = {
 		children: PropTypes.node.isRequired,
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		configure: PropTypes.func.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
 		mode: PropTypes.oneOf([
@@ -87,7 +91,7 @@ class EditionSection extends React.PureComponent {
 				break;
 
 			default:
-				throw new Error("Uknown mode");
+				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
 		}
 
 		return (
@@ -99,6 +103,7 @@ class EditionSection extends React.PureComponent {
 					>
 						<TalkieEditionIcon
 							isPremiumEdition={isPremiumEdition}
+							mode="inline"
 						/>
 						{text}
 					</textBase.a>

@@ -108,10 +108,14 @@ class Main extends React.PureComponent {
 		};
 	}
 
+	static defaultProps = {
+		className: "",
+	}
+
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
 		activeTabId: PropTypes.string.isRequired,
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		configure: PropTypes.func.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
 		// eslint-disable-next-line react/boolean-prop-naming

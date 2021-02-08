@@ -77,7 +77,7 @@ export default class ScaleRange extends React.PureComponent {
 		return (
 			<div>
 				<formBase.range
-					disabled={disabled || null}
+					disabled={disabled}
 					list={listName}
 					max={max}
 					min={min}
@@ -88,7 +88,11 @@ export default class ScaleRange extends React.PureComponent {
 					onInput={this.handleInput}
 				/>
 
-				<ScaleRangeDatalist listName={listName} steps={steps}/>
+				<ScaleRangeDatalist
+					disabled={disabled}
+					listName={listName}
+					steps={steps}
+				/>
 			</div>
 		);
 	}

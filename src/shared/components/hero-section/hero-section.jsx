@@ -24,9 +24,13 @@ import React from "react";
 import * as layoutBase from "../../styled/layout/layout-base.jsx";
 
 export default class HeroSection extends React.PureComponent {
+	static defaultProps = {
+		className: "",
+	}
+
 	static propTypes = {
 		children: PropTypes.node.isRequired,
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 	}
 
 	render() {

@@ -36,7 +36,7 @@ export default class ScaleRangeDatalistOption extends React.PureComponent {
 
 		return (
 			<option
-				disabled={disabled || null}
+				disabled={disabled}
 				value={value}
 			>
 				{value}

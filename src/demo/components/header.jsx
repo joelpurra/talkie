@@ -60,8 +60,12 @@ class Header extends React.PureComponent {
 		};
 	}
 
+	static defaultProps = {
+		className: "",
+	}
+
 	static propTypes = {
-		className: PropTypes.string.isRequired,
+		className: PropTypes.string,
 		configure: PropTypes.func.isRequired,
 		isPremiumEdition: PropTypes.bool.isRequired,
 		onConfigurationChange: PropTypes.func.isRequired,
@@ -102,6 +106,7 @@ class Header extends React.PureComponent {
 				<textBase.h1>
 					<TalkieEditionIcon
 						isPremiumEdition={isPremiumEdition}
+						mode="inline"
 					/>
 
 					<this.styled.extensionName

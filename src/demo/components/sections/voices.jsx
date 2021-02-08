@@ -135,7 +135,7 @@ class Voices extends React.PureComponent {
 				className = "text-direction-rtl";
 				break;
 			default:
-				throw new Error("Unknown text direction");
+				throw new Error(`Unknown text direction: ${typeof direction} ${JSON.stringify(direction)}`);
 		}
 
 		return className;
@@ -339,7 +339,9 @@ class Voices extends React.PureComponent {
 					{translate("frontend_voicesDescription")}
 				</textBase.p>
 
-				<PremiumSection>
+				<PremiumSection
+					mode="h2"
+				>
 					{translate("frontend_voicesTalkiePremiumPitch")}
 				</PremiumSection>
 

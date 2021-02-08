@@ -141,6 +141,7 @@ class About extends React.PureComponent {
 					>
 						<TalkieEditionIcon
 							isPremiumEdition={isPremiumEdition}
+							mode="inline"
 						/>
 						{extensionShortName}
 					</listBase.dd>
