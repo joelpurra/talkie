@@ -38,9 +38,8 @@ export default class NodeEnvironmentTranslatorProvider {
 	_getMessages(locale) {
 		if (!this.translations[locale]) {
 			const path = this._getMessagesFilepath(locale);
-			/* eslint-disable no-sync */
+			// eslint-disable-next-line no-sync
 			const json = jsonfile.readFileSync(path);
-			/* eslint-enable no-sync */
 
 			this.translations[locale] = json;
 		}

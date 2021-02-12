@@ -23,7 +23,11 @@ import {
 } from "../../shared/log";
 
 export default class NodeEnvironmentBroadcasterProvider {
-	async registerListeningAction(/* eslint-disable no-unused-vars */event, handler/* eslint-enable no-unused-vars */) {
+	async registerListeningAction(
+		event,
+		// eslint-disable-next-line no-unused-vars
+		handler,
+	) {
 		logWarn("NodeEnvironmentBroadcasterProvider", "registerListeningAction", "ignored", event);
 
 		// NOTE: returning a dummy killswitch.

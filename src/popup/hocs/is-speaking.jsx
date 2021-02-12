@@ -60,7 +60,12 @@ export default function isSpeakingHoc(ComponentToWrap) {
 			this.componentCleanup();
 		}
 
-		shouldComponentUpdate(/* eslint-disable no-unused-vars */nextProps/* eslint-enable no-unused-vars */, /* eslint-disable no-unused-vars */nextState/* eslint-enable no-unused-vars */) {
+		shouldComponentUpdate(
+			// eslint-disable-next-line no-unused-vars
+			nextProps,
+			// eslint-disable-next-line no-unused-vars
+			nextState,
+		) {
 			// NOTE: always update.
 			// TODO: optimize by comparing old and new props/state.
 			return this.isListeningToBroadcasts;
@@ -127,11 +132,12 @@ export default function isSpeakingHoc(ComponentToWrap) {
 
 		async registerBroadcastListeners() {
 			const killSwitches = await Promise.all([
-				/* eslint-disable no-unused-vars */
+				// eslint-disable-next-line no-unused-vars
 				this.context.broadcaster.registerListeningAction(knownEvents.beforeSpeaking, (actionName, actionData) => this.updateIsSpeaking(true)),
+				// eslint-disable-next-line no-unused-vars
 				this.context.broadcaster.registerListeningAction(knownEvents.beforeSpeakingPart, (actionName, actionData) => this.updateIsSpeaking(true)),
+				// eslint-disable-next-line no-unused-vars
 				this.context.broadcaster.registerListeningAction(knownEvents.afterSpeaking, (actionName, actionData) => this.updateIsSpeaking(false)),
-				/* eslint-enable no-unused-vars */
 			]);
 
 			killSwitches.forEach((killSwitch) => {

@@ -28,9 +28,8 @@ const extensionShortName = "Talkie";
 
 // https://stackoverflow.com/questions/12830649/check-if-chrome-extension-installed-in-unpacked-mode
 // https://stackoverflow.com/a/20227975
-/* eslint-disable no-sync */
+// eslint-disable-next-line no-sync
 const isDevMode = () => !("update_url" in manifestProvider.getSync());
-/* eslint-enable no-sync */
 
 // NOTE: 0, 1, ...
 const loggingLevels = [
@@ -112,9 +111,8 @@ const generateLogger = (loggingLevelName, consoleFunctioName) => {
 			];
 		}
 
-		/* eslint-disable no-console */
+		// eslint-disable-next-line no-console
 		console[consoleFunctioName](...loggingArgs);
-		/* eslint-enable no-console */
 	};
 
 	return logger;

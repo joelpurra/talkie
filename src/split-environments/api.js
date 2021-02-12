@@ -48,9 +48,8 @@ export default class Api {
 	}
 
 	getConfigurationValueSync(systemType, path) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.configuration.getSync(systemType, path);
-		/* eslint-enable no-sync */
 	}
 
 	getConfigurationValue(configurationPath) {

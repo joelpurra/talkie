@@ -180,23 +180,21 @@ const main = async () => {
 		const ONE_SECOND_IN_MILLISECONDS = 1 * 1000;
 		const ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT = ONE_SECOND_IN_MILLISECONDS;
 
-		/* eslint-disable no-unused-vars */
+		// eslint-disable-next-line no-unused-vars
 		const onInstallListenerEventQueueHandlerTimeoutId = setTimeout(
 			() => onInstalledManager.onInstallListenerEventQueueHandler(),
 			ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT,
 		);
-		/* eslint-enable no-unused-vars */
 
 		// NOTE: run the function with a very long interval.
 		const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
 		const ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL = ONE_HOUR_IN_MILLISECONDS;
 
-		/* eslint-disable no-unused-vars */
+		// eslint-disable-next-line no-unused-vars
 		const onInstallListenerEventQueueHandlerIntervalId = setInterval(
 			() => onInstalledManager.onInstallListenerEventQueueHandler(),
 			ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL,
 		);
-		/* eslint-enable no-unused-vars */
 	};
 
 	addOnInstalledEventQueuePolling();

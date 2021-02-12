@@ -25,11 +25,10 @@ import {
 
 const handleUnhandledRejection = (event) => {
 	logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
-
 	logInfo("Starting debugger, if attached.");
-	/* eslint-disable no-debugger */
+
+	// eslint-disable-next-line no-debugger
 	debugger;
-	/* eslint-enable no-debugger */
 };
 
 export const registerUnhandledRejectionHandler = () => {

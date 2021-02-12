@@ -78,16 +78,14 @@ export default class ButtonPopupManager {
 	async disablePopup() {
 		const buttonStopTitle = await this._getButtonStopTitle();
 
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this._disablePopupSync(buttonStopTitle);
-		/* eslint-enable no-sync */
 	}
 
 	async enablePopup() {
 		const buttonDefaultTitle = await this._getButtonDefaultTitle();
 
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this._enablePopupSync(buttonDefaultTitle);
-		/* eslint-enable no-sync */
 	}
 }

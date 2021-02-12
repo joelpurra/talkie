@@ -20,9 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 const pageName = document.location.pathname.split("/").pop().split(".").shift();
 
-/* eslint-disable dot-notation */
+// eslint-disable-next-line dot-notation
 const globalExtension = ("chrome" in this ? this["chrome"] : ("browser" in this ? this["browser"] : null));
-/* eslint-enable dot-notation */
 
 // NOTE: might be able to use @@ui_locale, but would miss out on locale directory fallback detection logic in the browser.
 const locale = globalExtension.i18n.getMessage("extensionLocale");

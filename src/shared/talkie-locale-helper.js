@@ -38,27 +38,23 @@ export default class TalkieLocaleHelper {
 	}
 
 	getBidiDirectionSync(languageCode) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this._getSync(languageCode, "direction");
-		/* eslint-enable no-sync */
 	}
 
 	async getBidiDirection(languageCode) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.getBidiDirectionSync(languageCode);
-		/* eslint-enable no-sync */
 	}
 
 	getSampleTextSync(languageCode) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this._getSync(languageCode, "sample");
-		/* eslint-enable no-sync */
 	}
 
 	async getSampleText(languageCode) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.getSampleTextSync(languageCode);
-		/* eslint-enable no-sync */
 	}
 
 	getTranslatedLanguagesSync() {
@@ -68,8 +64,7 @@ export default class TalkieLocaleHelper {
 	}
 
 	async getTranslatedLanguages() {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.getTranslatedLanguagesSync();
-		/* eslint-enable no-sync */
 	}
 }

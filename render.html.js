@@ -35,13 +35,11 @@ const main = async () => {
 		const html = await getHtml(talkieLocale);
 
 		// NOTE: outputting html to stdout.
-		/* eslint-disable no-console */
+		// eslint-disable-next-line no-console
 		console.log(html);
-		/* eslint-enable no-console */
 	} catch (error) {
-		/* eslint-disable no-console */
+		// eslint-disable-next-line no-console
 		console.error(error);
-		/* eslint-enable no-console */
 
 		process.exitCode = 3;
 	}
@@ -49,18 +47,16 @@ const main = async () => {
 
 try {
 	process.on("unhandledRejection", (error) => {
-		/* eslint-disable no-console */
+		// eslint-disable-next-line no-console
 		console.error("unhandledRejection", error);
-		/* eslint-enable no-console */
 
 		process.exitCode = 2;
 	});
 
 	main();
 } catch (error) {
-	/* eslint-disable no-console */
+	// eslint-disable-next-line no-console
 	console.error(error);
-	/* eslint-enable no-console */
 
 	process.exitCode = 1;
 }

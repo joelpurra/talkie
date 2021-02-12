@@ -102,9 +102,8 @@ class Voices extends React.PureComponent {
 	}
 
 	getSampleTextForLanguage(languageCode) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.props.talkieLocaleHelper.getSampleTextSync(languageCode);
-		/* eslint-enable no-sync */
 	}
 
 	getSampleTextForVoicename(voiceName) {
@@ -112,15 +111,13 @@ class Voices extends React.PureComponent {
 		const voice = getLanguageForVoiceNameFromVoices(voices, voiceName);
 		const languageCode = voice.lang;
 
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.props.talkieLocaleHelper.getSampleTextSync(languageCode);
-		/* eslint-enable no-sync */
 	}
 
 	getTextDirectionForLanguageGroup(languageGroup) {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.props.talkieLocaleHelper.getBidiDirectionSync(languageGroup);
-		/* eslint-enable no-sync */
 	}
 
 	getTextDirectionClassNameForLanguageGroup(languageGroup) {

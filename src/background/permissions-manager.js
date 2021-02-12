@@ -29,9 +29,8 @@ export default class PermissionsManager {
 		// NOTE: am doing feature detection, and this code should not even be called as the menus are not enabled for WebExtensions (Firefox).
 		// TODO: remove once Firefox is the main/only browser, and/or update strict_min_version in manifest.json.
 		const something = browser;
-		/* eslint-disable dot-notation */
+		// eslint-disable-next-line dot-notation
 		this._pms = something["permissions"];
-		/* eslint-enable dot-notation */
 	}
 
 	async browserHasPermissionsFeature() {

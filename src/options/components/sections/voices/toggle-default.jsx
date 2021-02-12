@@ -48,7 +48,10 @@ class ToggleDefault extends React.PureComponent {
 		voiceName: PropTypes.string,
 	};
 
-	handleClick(/* eslint-disable no-unused-vars */event/* eslint-enable no-unused-vars */) {
+	handleClick(
+		// eslint-disable-next-line no-unused-vars
+		event,
+	) {
 		this.props.onClick();
 	}
 

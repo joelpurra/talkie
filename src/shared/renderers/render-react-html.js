@@ -58,6 +58,7 @@ const getPostrenderActionsToDispatch = (postrenderActionsToDispatch) => {
 
 const EMPTY_STATE = undefined;
 
+// eslint-disable-next-line max-params
 const renderHtml = async (store, reactHtmlTemplate, localeProvider, styletron, root) => {
 	const reactRoot = ReactDOMServer.renderToString(root);
 	const translationLocale = localeProvider.getTranslationLocale();
@@ -78,6 +79,7 @@ const renderHtml = async (store, reactHtmlTemplate, localeProvider, styletron, r
 	return html;
 };
 
+// eslint-disable-next-line max-params
 const getHtml = async (rootReducer, customPrerenderedActionsToDispatch, customPostrenderActionsToDispatch, reactHtmlTemplate, talkieLocale, ChildComponent) => {
 	const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
 	const postrenderActionsToDispatch = getPostrenderActionsToDispatch(customPostrenderActionsToDispatch);

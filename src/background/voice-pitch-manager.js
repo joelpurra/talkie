@@ -30,7 +30,10 @@ export default class VoicePitchManager {
 		this.voicePitchPitchOverridesStorageKey = "voice-pitch-overrides";
 	}
 
-	async getVoicePitchDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
+	async getVoicePitchDefault(
+		// eslint-disable-next-line no-unused-vars
+		voiceName,
+	) {
 		// TODO: initialize a "real" synthesizer voice, then read out the pitch value.
 		return pitchRange.default;
 	}

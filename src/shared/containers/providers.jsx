@@ -38,7 +38,10 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint-enable no-unused-vars */) => {
+const mapDispatchToProps = (
+	// eslint-disable-next-line no-unused-vars
+	dispatch,
+) => {
 	return {};
 };
 

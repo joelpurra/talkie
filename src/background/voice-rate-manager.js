@@ -30,7 +30,10 @@ export default class VoiceRateManager {
 		this.voiceRateRateOverridesStorageKey = "voice-rate-overrides";
 	}
 
-	async getVoiceRateDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
+	async getVoiceRateDefault(
+		// eslint-disable-next-line no-unused-vars
+		voiceName,
+	) {
 		// TODO: initialize a "real" synthesizer voice, then read out the rate value.
 		return rateRange.default;
 	}

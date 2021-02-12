@@ -61,9 +61,8 @@ export default class ConfigurationProvider extends React.PureComponent {
 		} = this.props;
 
 		return {
-			/* eslint-disable no-sync */
+			// eslint-disable-next-line no-sync
 			configure: (path) => this.props.configuration.getSync(systemType, path),
-			/* eslint-enable no-sync */
 			onConfigurationChange: (listener) => this.registerListener(listener),
 		};
 	}

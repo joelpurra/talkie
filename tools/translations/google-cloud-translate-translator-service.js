@@ -112,10 +112,9 @@ export default class GoogleCloudTranslateTranslator {
 		);
 
 		const translations = translationResponses[0];
-		/* eslint-disable no-unused-vars */
 		// NOTE: this is now an array of apiResponses (one per chunk), not a single as in the original translate api.
+		// eslint-disable-next-line no-unused-vars
 		const apiResponse = translationResponses[1];
-		/* eslint-enable no-unused-vars */
 
 		const translateDirtyMessages = translations
 			.map((translationResponse) => striptags(translationResponse))

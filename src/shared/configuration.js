@@ -83,9 +83,8 @@ export default class Configuration {
 	async get(path) {
 		const systemType = await this.metadataManager.getSystemType();
 
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.getSync(systemType, path);
-		/* eslint-enable no-sync */
 	}
 
 	getSync(systemType, path) {

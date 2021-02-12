@@ -36,21 +36,18 @@ import SettingsManager from "../settings-manager";
 import StorageManager from "../storage-manager";
 import TalkieLocaleHelper from "../talkie-locale-helper";
 
-const getRoot = async (store, translator, configuration, styletron, broadcaster, ChildComponent) => {
-	const root = (
-		<Root
-			broadcaster={broadcaster}
-			configuration={configuration}
-			store={store}
-			styletron={styletron}
-			translator={translator}
-		>
-			<ChildComponent/>
-		</Root>
-	);
-
-	return root;
-};
+// eslint-disable-next-line max-params
+const getRoot = async (store, translator, configuration, styletron, broadcaster, ChildComponent) => (
+	<Root
+		broadcaster={broadcaster}
+		configuration={configuration}
+		store={store}
+		styletron={styletron}
+		translator={translator}
+	>
+		<ChildComponent/>
+	</Root>
+);
 
 const autoRoot = async (initialState, rootReducer, ChildComponent) => {
 	const storageProvider = new StorageProvider();
@@ -69,9 +66,8 @@ const autoRoot = async (initialState, rootReducer, ChildComponent) => {
 	const store = reduxStoreProvider.createStore(initialState, rootReducer, api);
 
 	const styletronProvider = new StyletronProvider();
-	/* eslint-disable no-sync */
+	// eslint-disable-next-line no-sync
 	const styletron = styletronProvider.getSync();
-	/* eslint-enable no-sync */
 
 	// TODO: create a generic static/default/render-time preloaded state action provider attached to the component hierarchy?
 	const root = await getRoot(store, translatorProvider, configuration, styletron, broadcasterProvider, ChildComponent);

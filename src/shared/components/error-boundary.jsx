@@ -37,10 +37,9 @@ export default class ErrorBoundary extends React.PureComponent {
 		}
 
 		componentDidCatch(error, info) {
-		// TODO: use DualLogger?
-		/* eslint-disable no-console */
+			// TODO: use DualLogger?
+			// eslint-disable-next-line no-console
 			console.error("ErrorBoundary", error, info);
-			/* eslint-enable no-console */
 
 			this.setState({
 				componentStack: info.componentStack,
@@ -72,46 +71,11 @@ export default class ErrorBoundary extends React.PureComponent {
 		render() {
 			if (this.state.hasError) {
 				const manifestProvider = new ManifestProvider();
-				/* eslint-disable no-sync */
+				// eslint-disable-next-line no-sync
 				const manifest = manifestProvider.getSync();
-				/* eslint-enable no-sync */
-
 				const recipient = "code@joelpurra.com";
 				const subject = "Something went wrong in Talkie";
-
-				const body = `Hello Joel,
-
-Something went wrong while using Talkie! This is my error report — can you please have a look at it?
-
-(Optional) My description of the problem is:
-
-
-
-Below are some technical details.
-
-Talkie ${manifest.version_name}
-https://joelpurra.com/projects/talkie/
-
-
-Error message:
-
-> ${this.prettyPrintForEmailBody(this.state.message, 128)}
-
-
-Component stack:
-
-> ${this.prettyPrintForEmailBody(this.state.componentStack, 128)}
-
-
-Error stack trace:
-
-> ${this.prettyPrintForEmailBody(this.state.stacktrace, 512)}
-
-
-
-Hope this helps =)
-
-`;
+				const body = this._getBodyText(manifest);
 				const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 				return (
@@ -195,5 +159,41 @@ Hope this helps =)
 			}
 
 			return this.props.children;
+		}
+
+		_getBodyText(manifest) {
+			return `Hello Joel,
+
+Something went wrong while using Talkie! This is my error report — can you please have a look at it?
+
+(Optional) My description of the problem is:
+
+
+
+Below are some technical details.
+
+Talkie ${manifest.version_name}
+https://joelpurra.com/projects/talkie/
+
+
+Error message:
+
+> ${this.prettyPrintForEmailBody(this.state.message, 128)}
+
+
+Component stack:
+
+> ${this.prettyPrintForEmailBody(this.state.componentStack, 128)}
+
+
+Error stack trace:
+
+> ${this.prettyPrintForEmailBody(this.state.stacktrace, 512)}
+
+
+
+Hope this helps =)
+
+`;
 		}
 }

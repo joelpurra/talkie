@@ -32,9 +32,8 @@ export default class NodeEnvironmentManifestProvider {
 		// NOTE: making sure it's a synchronous call.
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
 		if (this.manifest === null) {
-			/* eslint-disable no-sync */
+			// eslint-disable-next-line no-sync
 			this.manifest = jsonfile.readFileSync(MANIFEST_FILENAME);
-			/* eslint-enable no-sync */
 		}
 
 		return this.manifest;

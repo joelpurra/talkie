@@ -62,7 +62,12 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 			this.componentCleanup();
 		}
 
-		shouldComponentUpdate(/* eslint-disable no-unused-vars */nextProps/* eslint-enable no-unused-vars */, /* eslint-disable no-unused-vars */nextState/* eslint-enable no-unused-vars */) {
+		shouldComponentUpdate(
+			// eslint-disable-next-line no-unused-vars
+			nextProps,
+			// eslint-disable-next-line no-unused-vars
+			nextState,
+		) {
 			// NOTE: always update.
 			// TODO: optimize by comparing old and new props/state.
 			return this.isListeningToBroadcasts;
@@ -116,8 +121,8 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 				return null;
 			}
 
+			/* eslint-disable no-inner-declarations, complexity */
 			// NOTE: duplicated elsewhere in the codebase.
-			/* eslint-disable no-inner-declarations */
 			const executeGetFramesSelectionTextAndLanguageCode = (function () {
 				try {
 					function talkieGetParentElementLanguages(element) {
@@ -131,12 +136,13 @@ export default function passSelectedTextToBackgroundHoc(ComponentToWrap) {
 						parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null))),
 						text: ((document || null) && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()),
 					};
+
 					return talkieSelectionData;
 				} catch {
 					return null;
 				}
 			})();
-			/* eslint-enable no-inner-declarations */
+			/* eslint-enable no-inner-declarations, complexity */
 
 			const selectedTextWithFocusTimestamp = {
 				mostRecentUse: this.mostRecentUse,

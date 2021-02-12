@@ -38,15 +38,13 @@ export default class MetadataManager {
 	}
 
 	getManifestSync() {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.manifestProvider.getSync();
-		/* eslint-enable no-sync */
 	}
 
 	async getManifest() {
-		/* eslint-disable no-sync */
+		// eslint-disable-next-line no-sync
 		return this.getManifestSync();
-		/* eslint-enable no-sync */
 	}
 
 	async getVersionNumber() {

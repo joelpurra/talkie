@@ -118,9 +118,8 @@ class WelcomeContainer extends React.PureComponent {
 		// TODO: create action and store as redux state?
 		const availableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoice
 			.find((languageCode) => {
-				/* eslint-disable no-sync */
+				// eslint-disable-next-line no-sync
 				return Boolean(talkieLocaleHelper.getSampleTextSync(languageCode));
-				/* eslint-enable no-sync */
 			});
 
 		const firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText = availableBrowserLanguageWithInstalledVoiceAndSampleText || null;
@@ -130,9 +129,8 @@ class WelcomeContainer extends React.PureComponent {
 		let sampleText = null;
 
 		if (sampleTextLanguageCode) {
-			/* eslint-disable no-sync */
+			// eslint-disable-next-line no-sync
 			sampleText = talkieLocaleHelper.getSampleTextSync(firstAvailableBrowserLanguageWithInstalledVoiceAndSampleText);
-			/* eslint-enable no-sync */
 		}
 
 		// TODO: create action and store as redux state?

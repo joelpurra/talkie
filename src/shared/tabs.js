@@ -79,10 +79,10 @@ export const isCurrentPageInternalToTalkie = async (internalUrlProvider) => {
 		if (
 			typeof url === "string"
 					&& (
-					/* eslint-disable no-sync */
+						// eslint-disable-next-line no-sync
 						url.startsWith(internalUrlProvider.getSync("/src/"))
+						// eslint-disable-next-line no-sync
 						|| url.startsWith(internalUrlProvider.getSync("/dist/"))
-						/* eslint-enable no-sync */
 					)
 		) {
 			return true;
