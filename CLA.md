@@ -18,15 +18,11 @@
   </tr>
 </table>
 
-
-
 # Contributor License Agreement (CLA)
 
 This [Contributor License Agreement (CLA)](https://en.wikipedia.org/wiki/Contributor_License_Agreement) of the project, Talkie, is not part of the project's license.
 
 You, the contributor, confirm that you are the author of all contributed additions and changes, and have the rights necessary to contribute said material. Any contributions to this project will be licensed under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). Additionally you both assign copyright to the project owner, [Joel Purra](https://joelpurra.com/), and grant the right to the project owner to re-license your work under a different license. If that is not acceptable, you can either fork this project under GPL-3.0 or contact the project owner. Also contact the project owner if you require usage of this project under a different license.
-
-
 
 ---
 

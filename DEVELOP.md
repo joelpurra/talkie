@@ -18,8 +18,6 @@
   </tr>
 </table>
 
-
-
 # Developer documentation
 
 ## Prerequisites
@@ -33,11 +31,9 @@
   - Some script commands assume that `bash` (or a compatible shell) is used, or at least available.
   - Additional common development tools are required.
 - Use the `develop` branch as the base for your pull request.
-  - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/), preferably using  the `git-flow` tooling.
+  - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/), preferably using the `git-flow` tooling.
   - It is recommended to use `hub` for forking and creating pull requests on github.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](./CLA.md).
-
-
 
 ## Software used
 
@@ -49,8 +45,6 @@
 - [`jq`](https://stedolan.github.io/jq/)
 - If anything is missing from this list, please [open an issue](https://github.com/joelpurra/talkie/issues).
 
-
-
 ## Manual installation
 
 - Clone the repository.
@@ -60,8 +54,6 @@
   - Load one of the package folders as an unpacked extension.
     - `package/chrome/` for Google Chrome, Chromium, Vivaldi, and similar browsers.
     - `package/webextension/` for Firefox, and other browsers.
-
-
 
 ## Building
 
@@ -75,8 +67,6 @@ npm install
 # Do a clean build.
 npm run --silent rebuild
 ```
-
-
 
 ## Debugging
 
@@ -93,8 +83,6 @@ npm run --silent rebuild
     - `this.setLoggingLevel("NONE");` (no logging)
 - You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
-
-
 
 ## Browser testing
 
@@ -115,19 +103,15 @@ npm run --silent run:firefox
 #WEB_EXT_FIREFOX="$HOME/Applications/Firefox.app/Contents/MacOS/firefox-bin" npm run --silent run:firefox
 ```
 
-
-
 ## Translations
 
 In order to offer Talkie in as many languages as possible, translations are automated. It is still possible &mdash; and preferred &mdash; to add overrides with human translations.
-
 
 ### Human translations
 
 - All message changes have to be reflected in `_locales/en/base.json`, which is the base for all other languages.
 - Translations can be done by editing or adding `override.json` for the desired locale in the `_locales` directory.
 - In case of doubt, please refer to `_locales/en/base.json` as the one source of truth when it comes to original message strings and descriptions.
-
 
 ### Automated file mangling
 
@@ -136,19 +120,18 @@ In order to offer Talkie in as many languages as possible, translations are auto
 - Translation scripts require a [Google Cloud Translation API key](https://cloud.google.com/translate/), [`jq`](https://stedolan.github.io/jq/manual/), and some shell magic.
 - Automated file mangling is done by package maintainers using `npm run --silent messages:translate` before each release where the have been text changes.
 
-
 ### Translation file order
 
 Translation files are merged in this order. The last value for a specific key/name wins, which means the messages in `override.json` are the most important.
 
 1. Non-translated strings from `_locales/en/untranslated.json`.
 1. Depends on the language; English has no modifications and uses the base:
-  - Non-translated strings from `_locales/en/base.json`.
-  - Translated strings from `_locales/*/automatic.json`.
+
+- Non-translated strings from `_locales/en/base.json`.
+- Translated strings from `_locales/*/automatic.json`.
+
 1. Manual entries from `_locales/*/manual.json`.
 1. Overrides from `_locales/*/override.json`.
-
-
 
 ## Pull request procedure
 
@@ -202,8 +185,6 @@ git flow feature publish <feature-name>
 hub browse
 ```
 
-
-
 ## Release procedure
 
 Packaging all extension variants for release in the different distribution channels, as well as a `.zip` file with the source code. These steps are only performed by the project owner.
@@ -244,8 +225,6 @@ npm run --silent package
 npm run --silent publish:chromestore
 npm run --silent publish:amo
 ```
-
-
 
 ---
 

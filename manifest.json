@@ -17,19 +17,11 @@
   "author": "Joel Purra",
   "homepage_url": "https://joelpurra.com/projects/talkie/",
   "background": {
-    "scripts": [
-      "lib/browser-polyfill.min.js",
-      "dist/background.js"
-    ],
+    "scripts": ["lib/browser-polyfill.min.js", "dist/background.js"],
     "persistent": false
   },
-  "permissions": [
-    "activeTab",
-    "contextMenus"
-  ],
-  "optional_permissions": [
-    "clipboardRead"
-  ],
+  "permissions": ["activeTab", "contextMenus"],
+  "optional_permissions": ["clipboardRead"],
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
