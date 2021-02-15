@@ -18,104 +18,102 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import configureAttribute from "../../../shared/hocs/configure.jsx";
-import translateAttribute from "../../../shared/hocs/translate.jsx";
-import styled from "../../../shared/hocs/styled.jsx";
-
-import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
-import * as textBase from "../../../shared/styled/text/text-base.jsx";
+import React from "react";
 
 import Icon from "../../../shared/components/icon/icon.jsx";
+import configureAttribute from "../../../shared/hocs/configure.jsx";
+import styled from "../../../shared/hocs/styled.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
+import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
+import * as textBase from "../../../shared/styled/text/text-base.jsx";
 
 export default
 @configureAttribute
 @translateAttribute
 class Menu extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.styled = {
-            ol: styled({
-                marginLeft: 0,
-                marginRight: 0,
-                marginTop: 0,
-                marginBottom: 0,
-                paddingLeft: 0,
-                paddingRight: 0,
-                paddingTop: 0,
-                paddingBottom: 0,
-                listStyle: "none",
-            })("ol"),
+		this.styled = {
+			a: styled({
+				borderRadius: "0.3em",
+				display: "block",
+				height: "2em",
+				lineHeight: "2em",
+				textDecoration: "none",
+			})(textBase.a),
 
-            li: styled({
-                display: "block",
-                marginTop: "0.25em",
-                marginBottom: "0.25em",
-                verticalAlign: "middle",
-            })("li"),
+			li: styled({
+				display: "block",
+				marginBottom: "0.25em",
+				marginTop: "0.25em",
+				verticalAlign: "middle",
+			})("li"),
 
-            a: styled({
-                display: "block",
-                height: "2em",
-                lineHeight: "2em",
-                textDecoration: "none",
-                borderRadius: "0.3em",
-            })(textBase.a),
-        };
-    }
+			ol: styled({
+				listStyle: "none",
+				marginBottom: 0,
+				marginLeft: 0,
+				marginRight: 0,
+				marginTop: 0,
+				paddingBottom: 0,
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingTop: 0,
+			})("ol"),
+		};
+	}
 
-    static propTypes = {
-        translate: PropTypes.func.isRequired,
-        configure: PropTypes.func.isRequired,
-        onConfigurationChange: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		configure: PropTypes.func.isRequired,
+		onConfigurationChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    componentDidMount() {
-        this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
-    }
+	componentDidMount() {
+		this._unregisterConfigurationListener = this.props.onConfigurationChange(() => this.forceUpdate());
+	}
 
-    componentWillUnmount() {
-        this._unregisterConfigurationListener();
-    }
+	componentWillUnmount() {
+		this._unregisterConfigurationListener();
+	}
 
-    render() {
-        const {
-            configure,
-            translate,
-        } = this.props;
+	render() {
+		const {
+			configure,
+			translate,
+		} = this.props;
 
-        return (
-            <layoutBase.nav>
-                <this.styled.ol>
-                    <this.styled.li>
-                        <this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
-                            <Icon className="icon-voices" />
-                            {translate("frontend_PopupMenu_Voices")}
-                        </this.styled.a>
-                    </this.styled.li>
-                    <this.styled.li>
-                        <this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
-                            <Icon className="icon-usage" />
-                            {translate("frontend_PopupMenu_Usage")}
-                        </this.styled.a>
-                    </this.styled.li>
-                    <this.styled.li>
-                        <this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
-                            <Icon className="icon-features" />
-                            {translate("frontend_PopupMenu_Features")}
-                        </this.styled.a>
-                    </this.styled.li>
-                    <this.styled.li>
-                        <this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
-                            <Icon className="icon-feedback" />
-                            {translate("frontend_supportAndFeedback")}
-                        </this.styled.a>
-                    </this.styled.li>
-                </this.styled.ol>
-            </layoutBase.nav>
-        );
-    }
+		return (
+			<layoutBase.nav>
+				<this.styled.ol>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-voices" mode="inline"/>
+							{translate("frontend_PopupMenu_Voices")}
+						</this.styled.a>
+					</this.styled.li>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-usage" mode="inline"/>
+							{translate("frontend_PopupMenu_Usage")}
+						</this.styled.a>
+					</this.styled.li>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-features" mode="inline"/>
+							{translate("frontend_PopupMenu_Features")}
+						</this.styled.a>
+					</this.styled.li>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
+							<Icon className="icon-feedback" mode="inline"/>
+							{translate("frontend_supportAndFeedback")}
+						</this.styled.a>
+					</this.styled.li>
+				</this.styled.ol>
+			</layoutBase.nav>
+		);
+	}
 }

@@ -23,32 +23,26 @@
 
 Developer option: [use the source code](./DEVELOP.md) directly.
 
-
-
 ## Talkie Premium
 
 - <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> **Talkie:** free to use as much as you like
 - <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> **Talkie Premium:** [pay what you want](https://www.paypal.me/joelpurrade) for [more options and features](#features)
 
-How much does Talkie Premium cost? You *choose* how much you want to pay, depending on how much the additional features are worth to you. You can even choose to pay nothing. Afterwards, enable Talkie Premium in the Upgrade tab in Talkie's options.
+How much does Talkie Premium cost? You _choose_ how much you want to pay, depending on how much the additional features are worth to you. You can even choose to pay nothing. Afterwards, enable Talkie Premium in the Upgrade tab in Talkie's options.
 
 [Send your payment through PayPal](https://www.paypal.me/joelpurrade) or see [more payment methods](https://joelpurra.com/donate/) on the donations page. Payments are labeled as donations for open source software development.
-
-
 
 ## Install additional voices
 
 New voices, languages, dialects can be downloaded **for free** for your operating system from for example Microsoft and Apple. Once installed correctly just restart your computer, and Talkie will auto-detect the voices.
 
-| Operating&nbsp;system | Where to look | 
-| --- | --- |
-| [Windows&nbsp;10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3) | Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language <!-- TODO: translate system settings path. --> |
-| [Windows&nbsp;8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130) | Control&nbsp;Panel &gt;&nbsp;Language &gt;&nbsp;Add&nbsp;a&nbsp;Language |
-| [Windows&nbsp;7](https://www.microsoft.com/en-us/download/details.aspx?id=27224) | |
-| [ChromeOS](https://support.google.com/chromebook/answer/9032490) | Settings &gt;&nbsp;Manage&nbsp;accessibility&nbsp;features &gt;&nbsp;Text-to-Speech&nbsp;voice&nbsp;settings &gt;&nbsp;Speech&nbsp;Engines <!-- TODO: translate system settings path. --> |
-| [macOS](https://support.apple.com/kb/index?page=search&q=VoiceOver+language&product=PF6&doctype=PRODUCT_HELP,HOWTO_ARTICLES&locale=en_US) | System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize... <!-- TODO: translate system settings path. --> |
-
-
+| Operating&nbsp;system                                                                                                                                    | Where to look                                                                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Windows&nbsp;10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3) | Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language <!-- TODO: translate system settings path. -->                                                                        |
+| [Windows&nbsp;8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130)     | Control&nbsp;Panel &gt;&nbsp;Language &gt;&nbsp;Add&nbsp;a&nbsp;Language                                                                                                                  |
+| [Windows&nbsp;7](https://www.microsoft.com/en-us/download/details.aspx?id=27224)                                                                         |                                                                                                                                                                                           |
+| [ChromeOS](https://support.google.com/chromebook/answer/9032490)                                                                                         | Settings &gt;&nbsp;Manage&nbsp;accessibility&nbsp;features &gt;&nbsp;Text-to-Speech&nbsp;voice&nbsp;settings &gt;&nbsp;Speech&nbsp;Engines <!-- TODO: translate system settings path. --> |
+| [macOS](https://support.apple.com/kb/index?page=search&q=VoiceOver+language&product=PF6&doctype=PRODUCT_HELP,HOWTO_ARTICLES&locale=en_US)                | System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize... <!-- TODO: translate system settings path. -->                        |
 
 ## Usage
 
@@ -59,14 +53,12 @@ There are several convenient ways to use Talkie.
 1. Select desired text on any web page.
 1. Click the Talkie button in your browser toolbar ↗︎↗︎↗︎ <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" />
 
-
 ### Right-click menu
 
 1. Select the text, then right click on it
 1. Choose <img src="resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> Talkie in the menu.
 
 The right-click menu also works in **most PDF-files** and **some special types of web pages** in the browser.
-
 
 ### Read from clipboard in Talkie Premium
 
@@ -75,20 +67,17 @@ The right-click menu also works in **most PDF-files** and **some special types o
 
 You can also right-click on the <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> Talkie Premium button, or in an empty area of a website, and select **read from clipboard**.
 
-
 ### Shortcut keys
 
 A fast, easy, and convenient option is to use Talkie's configurable keyboard shortcuts.
 
-| Feature | Edition | Windows, Linux, ChromeOS | macOS |
-| --- | --- | --- | --- |
-| Start/stop | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
-| Start/stop and show menu | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
-| Read text from clipboard in any program | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> |
+| Feature                                 | Edition                                                                                                                                                                                                                                               | Windows, Linux, ChromeOS                      | macOS                                      |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| Start/stop                              | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>  | <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
+| Start/stop and show menu                | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />&nbsp;<img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> |
+| Read text from clipboard in any program | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" />                                                                                                                         | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> | <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> |
 
 If the shortcut key does not work, please check that it is not already in use by another extension or program.
-
-
 
 <details>
 <summary>How to check or change the Talkie shortcut keys in Google Chrome</summary>
@@ -116,28 +105,24 @@ If the shortcut key does not work, please check that it is not already in use by
 
 </details>
 
-
 ## Features
 
 - <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" /> Talkie
 - <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" /> Talkie Premium
 
-| Feature | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Description |
-| --- | --- | --- | --- |
-| **Ease-of-use** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Just highlight the text you want to hear, and hit play. |
-| **Unlimited text** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Listen to short snippets or entire articles without limits. |
-| **Automatic language detection** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Picks the correct language from installed voices. |
-| **Keyboard shortcuts** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Fast, easy, configurable. |
-| **Privacy aware** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | No unnecessary tracking or external services. |
-| **Choose your favorite voice** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Great if you get tired of the system voice. |
-| **Choose speed and pitch** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Adjust voices to your liking. |
-| **Read from the clipboard** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Just copy text from anywhere in any program. |
-| **Warm, fuzzy feeling** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Support open source software by independent developers. |
-| **Free** | | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Free to use as much as you like. |
-| **Pay what you want** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | | Pay what you want. |
-
-
-
+| Feature                          | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Description                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Ease-of-use**                  | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Just highlight the text you want to hear, and hit play.     |
+| **Unlimited text**               | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Listen to short snippets or entire articles without limits. |
+| **Automatic language detection** | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Picks the correct language from installed voices.           |
+| **Keyboard shortcuts**           | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Fast, easy, configurable.                                   |
+| **Privacy aware**                | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | No unnecessary tracking or external services.               |
+| **Choose your favorite voice**   | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> |                                                                                                                                          | Great if you get tired of the system voice.                 |
+| **Choose speed and pitch**       | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> |                                                                                                                                          | Adjust voices to your liking.                               |
+| **Read from the clipboard**      | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> |                                                                                                                                          | Just copy text from anywhere in any program.                |
+| **Warm, fuzzy feeling**          | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> |                                                                                                                                          | Support open source software by independent developers.     |
+| **Free**                         |                                                                                                                                                     | <img src="./resources/icon/free/icon-play/icon-32x32.png" alt="Talkie has this feature" width="16" height="16" border="0" hspace="16" /> | Free to use as much as you like.                            |
+| **Pay what you want**            | <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium has this feature" width="16" height="16" border="0" hspace="16" /> |                                                                                                                                          | Pay what you want.                                          |
 
 ## Notes
 
@@ -151,8 +136,6 @@ Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://w
 - Sound is only produced, never recorded.
 
 </details>
-
-
 
 <details>
 <summary>Language detection</summary>
@@ -169,8 +152,6 @@ The language detection is performed in four steps, where the first valid value i
 The Web Speech API can use more than one voice per language (currently over 20 for `en-US` in Google Chrome version 55), as well as modify speech rate (speed) and pitch. These options have been implemented in <img src="./resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> Talkie Premium as a paid feature.
 
 </details>
-
-
 
 <details>
 <summary>Installing voices</summary>
@@ -190,7 +171,6 @@ You can install additional voices to support new languages and dialects; see sep
 - Thanks to [Miroslava Jovičić](http://www.miroslavajovicic.net/) for the fancy user interface redesign (2017-05-29), and promotional graphics (2017-07-30, 2017-08-01).
 
 </details>
-
 
 ---
 

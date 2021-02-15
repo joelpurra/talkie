@@ -18,15 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../../shared/promise";
-
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import {
-    knownEvents,
+	knownEvents,
 } from "../../shared/events";
 
 //import DualLogger from "../frontend/dual-log";
@@ -34,123 +30,121 @@ import {
 //const dualLogger = new DualLogger("status-container.jsx");
 
 export default function progressHoc(ComponentToWrap) {
-    return class ProgressHoc extends React.Component {
-        constructor(props) {
-            super(props);
+	return class ProgressHoc extends React.Component {
+		state = {
+			current: 0,
+			max: 0,
+			min: 0,
+		};
 
-            this.componentCleanup = this.componentCleanup.bind(this);
-            this.isListeningToBroadcasts = false;
-            this.killSwitches = [];
+		constructor(props) {
+			super(props);
 
-            this.state = {
-                min: 0,
-                current: 0,
-                max: 0,
-            };
-        }
+			this.componentCleanup = this.componentCleanup.bind(this);
+			this.isListeningToBroadcasts = false;
+			this.killSwitches = [];
+		}
 
-        static contextTypes ={
-            broadcaster: PropTypes.object.isRequired,
-        }
+		static contextTypes ={
+			broadcaster: PropTypes.object.isRequired,
+		}
 
-        componentDidMount() {
-            window.addEventListener("beforeunload", this.componentCleanup);
+		componentDidMount() {
+			window.addEventListener("beforeunload", this.componentCleanup);
 
-            this.registerBroadcastListeners();
-            this.isListeningToBroadcasts = true;
-        }
+			this.registerBroadcastListeners();
+			this.isListeningToBroadcasts = true;
+		}
 
-        componentWillUnmount() {
-            window.removeEventListener("beforeunload", this.componentCleanup);
+		componentWillUnmount() {
+			window.removeEventListener("beforeunload", this.componentCleanup);
 
-            this.componentCleanup();
-        }
+			this.componentCleanup();
+		}
 
-        shouldComponentUpdate(nextProps, nextState) {
-            // NOTE: always update.
-            // TODO: optimize by comparing old and new props/state.
-            return this.isListeningToBroadcasts;
-        }
+		shouldComponentUpdate(
+			// eslint-disable-next-line no-unused-vars
+			nextProps,
+			// eslint-disable-next-line no-unused-vars
+			nextState,
+		) {
+			// NOTE: always update.
+			// TODO: optimize by comparing old and new props/state.
+			return this.isListeningToBroadcasts;
+		}
 
-        componentCleanup() {
-            this.isListeningToBroadcasts = false;
-            this.executeKillSwitches();
-        }
+		componentCleanup() {
+			this.isListeningToBroadcasts = false;
+			this.executeKillSwitches();
+		}
 
-        render() {
-            const {
-                min,
-                current,
-                max,
-            } = this.state;
+		render() {
+			const {
+				min,
+				current,
+				max,
+			} = this.state;
 
-            return (
-                <ComponentToWrap
-                    {...this.props}
-                    min={min}
-                    current={current}
-                    max={max}
-                />
-            );
-        }
+			return (
+				<ComponentToWrap
+					{...this.props}
+					current={current}
+					max={max}
+					min={min}
+				/>
+			);
+		}
 
-        updateProgress(data) {
-            if (!this.isListeningToBroadcasts) {
-                return;
-            }
+		updateProgress(data) {
+			if (!this.isListeningToBroadcasts) {
+				return;
+			}
 
-            // NOTE: there seems to be some issues with react trying to re-render the page after the page has (will) unload.
-            // NOTE: trigger by hitting the Talkie button in quick succession.
-            // NOTE: This seems to be due to events from the background page having enough state to for the broadcaster to trigger events inside of the page, before (without) killSwitches being executed.
-            // NOTE: The code inside of react is tricky -- especially in dev mode -- and this try-catch might not do anything.
-            // https://github.com/facebook/react/pull/10270
-            // https://github.com/facebook/react/blob/37e4329bc81def4695211d6e3795a654ef4d84f5/packages/react-reconciler/src/ReactFiberScheduler.js#L770
-            // https://github.com/facebook/react/blob/46b3c3e4ae0d52565f7ed2344036a22016781ca0/packages/shared/invokeGuardedCallback.js#L151-L161
-            try {
-                this.setState({
-                    min: data.min,
-                    current: data.current,
-                    max: data.max,
-                });
-            } catch (error) {
-                // dualLogger.dualLogError("setState", error);
+			// NOTE: there seems to be some issues with react trying to re-render the page after the page has (will) unload.
+			// NOTE: trigger by hitting the Talkie button in quick succession.
+			// NOTE: This seems to be due to events from the background page having enough state to for the broadcaster to trigger events inside of the page, before (without) killSwitches being executed.
+			// NOTE: The code inside of react is tricky -- especially in dev mode -- and this try-catch might not do anything.
+			// https://github.com/facebook/react/pull/10270
+			// https://github.com/facebook/react/blob/37e4329bc81def4695211d6e3795a654ef4d84f5/packages/react-reconciler/src/ReactFiberScheduler.js#L770
+			// https://github.com/facebook/react/blob/46b3c3e4ae0d52565f7ed2344036a22016781ca0/packages/shared/invokeGuardedCallback.js#L151-L161
+			try {
+				this.setState({
+					current: data.current,
+					max: data.max,
+					min: data.min,
+				});
+			} catch {
+				// dualLogger.dualLogError("setState", error);
 
-                // NOTE: ignoring and swallowing error.
-                return undefined;
-            }
-        }
+				// NOTE: ignoring and swallowing error.
+			}
+		}
 
-        executeKillSwitches() {
-            // NOTE: expected to have only synchronous methods for the relevant parts.
-            const killSwitchesToExecute = this.killSwitches;
-            this.killSwitches = [];
+		executeKillSwitches() {
+			// NOTE: expected to have only synchronous methods for the relevant parts.
+			const killSwitchesToExecute = this.killSwitches;
+			this.killSwitches = [];
 
-            killSwitchesToExecute.forEach((killSwitch) => {
-                try {
-                    killSwitch();
-                } catch (error) {
-                    try {
-                        // dualLogger.dualLogError("executeKillSwitches", error);
-                    } catch (ignored) {
-                    // NOTE: ignoring error logging errors.
-                    }
-                }
-            });
-        };
+			killSwitchesToExecute.forEach((killSwitch) => {
+				try {
+					killSwitch();
+				} catch {
+					try {
+						// dualLogger.dualLogError("executeKillSwitches", error);
+					} catch {
+						// NOTE: ignoring error logging errors.
+					}
+				}
+			});
+		}
 
-        registerBroadcastListeners() {
-            return promiseTry(
-                () => {
-                    return this.context.broadcaster.registerListeningAction(
-                        knownEvents.updateProgress,
-                        (
-                            /* eslint-disable no-unused-vars */actionName/* eslint-enable no-unused-vars */,
-                            actionData,
-                        ) => this.updateProgress(actionData),
-                    )
-                        .then((killSwitch) => this.killSwitches.push(killSwitch));
-                },
-            );
-        }
-    };
-};
+		async registerBroadcastListeners() {
+			const killSwitch = await this.context.broadcaster.registerListeningAction(
+				knownEvents.updateProgress,
+				(actionName, actionData) => this.updateProgress(actionData),
+			);
+
+			this.killSwitches.push(killSwitch);
+		}
+	};
+}

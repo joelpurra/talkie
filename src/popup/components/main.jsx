@@ -18,105 +18,101 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import {
-    handleBubbledLinkClick,
-} from "../../shared/utils/ui";
+import React from "react";
 
 import styled from "../../shared/hocs/styled.jsx";
-
 import * as layoutBase from "../../shared/styled/layout/layout-base.jsx";
-
+import {
+	handleBubbledLinkClick,
+} from "../../shared/utils/ui";
+import Footer from "./sections/footer.jsx";
 import Header from "./sections/header.jsx";
 import Menu from "./sections/menu.jsx";
 import Status from "./sections/status.jsx";
-import Footer from "./sections/footer.jsx";
 
 const styles = {
-    minWidth: "300px",
-    maxWidth: "300px",
+	maxWidth: "300px",
+	minWidth: "300px",
 };
 
 export default
 @styled(styles)
 class Main extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
-        this.handleLinkClick = this.handleLinkClick.bind(this);
-        this.handleCheckLinkClick = this.handleCheckLinkClick.bind(this);
-        this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
-    }
+		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
+		this.handleLinkClick = this.handleLinkClick.bind(this);
+		this.handleCheckLinkClick = this.handleCheckLinkClick.bind(this);
+		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
+	}
 
-    static defaultProps = {
-        isPremiumEdition: false,
-        versionNumber: null,
-    };
+	static defaultProps = {
+		className: "",
+	}
 
-    static propTypes = {
-        actions: PropTypes.object.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-        versionNumber: PropTypes.string.isRequired,
-        className: PropTypes.string.isRequired,
-    };
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		className: PropTypes.string,
+		isPremiumEdition: PropTypes.bool.isRequired,
+		versionNumber: PropTypes.string.isRequired,
+	};
 
-    handlePlayPauseClick() {
-        this.props.actions.sharedSpeaking.iconClick();
-    }
+	handlePlayPauseClick() {
+		this.props.actions.sharedSpeaking.iconClick();
+	}
 
-    handleLinkClick(url) {
-        this.props.actions.sharedNavigation.openUrlInNewTab(url);
-    }
+	handleLinkClick(url) {
+		this.props.actions.sharedNavigation.openUrlInNewTab(url);
+	}
 
-    handleCheckLinkClick(e) {
-        // TODO: use an api call which has handleBubbledLinkClick?
-        return handleBubbledLinkClick(this.handleLinkClick, e);
-    }
+	handleCheckLinkClick(event) {
+		// TODO: use an api call which has handleBubbledLinkClick?
+		return handleBubbledLinkClick(this.handleLinkClick, event);
+	}
 
-    handleOptionsPageClick(e) {
-        e.preventDefault();
-        e.stopPropagation();
+	handleOptionsPageClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
-        this.props.actions.sharedNavigation.openOptionsPage();
+		this.props.actions.sharedNavigation.openOptionsPage();
 
-        return false;
-    }
+		return false;
+	}
 
-    render() {
-        const {
-            isPremiumEdition,
-            versionNumber,
-            className,
-        } = this.props;
+	render() {
+		const {
+			isPremiumEdition,
+			versionNumber,
+			className,
+		} = this.props;
 
-        return (
-            <div
-                className={className}
-                onClick={this.handleCheckLinkClick}
-            >
-                <Header
-                    isPremiumEdition={isPremiumEdition}
-                    playPauseClick={this.handlePlayPauseClick}
-                />
+		return (
+			<div
+				className={className}
+				onClick={this.handleCheckLinkClick}
+			>
+				<Header
+					isPremiumEdition={isPremiumEdition}
+					playPauseClick={this.handlePlayPauseClick}
+				/>
 
-                <Status
-                    playPauseClick={this.handlePlayPauseClick}
-                />
+				<Status
+					playPauseClick={this.handlePlayPauseClick}
+				/>
 
-                <layoutBase.hr />
+				<layoutBase.hr/>
 
-                <Menu />
+				<Menu/>
 
-                <layoutBase.hr />
+				<layoutBase.hr/>
 
-                <Footer
-                    versionNumber={versionNumber}
-                    optionsPageClick={this.handleOptionsPageClick}
-                />
-            </div>
-        );
-    }
+				<Footer
+					optionsPageClick={this.handleOptionsPageClick}
+					versionNumber={versionNumber}
+				/>
+			</div>
+		);
+	}
 }

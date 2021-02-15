@@ -19,141 +19,108 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    pitchRange,
+	pitchRange,
 } from "../shared/voices";
 
 export default class VoicePitchManager {
-    constructor(storageManager, metadataManager) {
-        this.storageManager = storageManager;
-        this.metadataManager = metadataManager;
+	constructor(storageManager, metadataManager) {
+		this.storageManager = storageManager;
+		this.metadataManager = metadataManager;
 
-        this.voicePitchPitchOverridesStorageKey = "voice-pitch-overrides";
-    }
+		this.voicePitchPitchOverridesStorageKey = "voice-pitch-overrides";
+	}
 
-    getVoicePitchDefault(/* eslint-disable no-unused-vars */voiceName/* eslint-enable no-unused-vars */) {
-        return promiseTry(
-            // TODO: initialize a "real" synthesizer voice, then read out the pitch value.
-            () => pitchRange.default,
-        );
-    }
+	async getVoicePitchDefault(
+		// eslint-disable-next-line no-unused-vars
+		voiceName,
+	) {
+		// TODO: initialize a "real" synthesizer voice, then read out the pitch value.
+		return pitchRange.default;
+	}
 
-    hasVoicePitchDefault(voiceName) {
-        return promiseTry(
-            () => this.getVoicePitchDefault(voiceName)
-                .then((voicePitchDefault) => {
-                    if (voicePitchDefault) {
-                        return true;
-                    }
+	async hasVoicePitchDefault(voiceName) {
+		const voicePitchDefault = await this.getVoicePitchDefault(voiceName);
 
-                    return false;
-                }),
-        );
-    }
+		if (voicePitchDefault) {
+			return true;
+		}
 
-    _getVoicePitchOverrides() {
-        return promiseTry(
-            () => this.metadataManager.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this.storageManager.getStoredValue(this.voicePitchPitchOverridesStorageKey)
-                            .then((voicePitchPitchOverrides) => {
-                                if (voicePitchPitchOverrides !== null && typeof voicePitchPitchOverrides === "object") {
-                                    return voicePitchPitchOverrides;
-                                }
+		return false;
+	}
 
-                                return {};
-                            });
-                    }
+	async _getVoicePitchOverrides() {
+		const isPremiumEdition = await this.metadataManager.isPremiumEdition();
 
-                    return {};
-                }),
-        );
-    }
+		if (isPremiumEdition) {
+			const voicePitchPitchOverrides = await this.storageManager.getStoredValue(this.voicePitchPitchOverridesStorageKey);
 
-    _setVoicePitchOverrides(voicePitchPitchOverrides) {
-        return promiseTry(
-            () => this.metadataManager.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this.storageManager.setStoredValue(this.voicePitchPitchOverridesStorageKey, voicePitchPitchOverrides);
-                    }
+			if (voicePitchPitchOverrides !== null && typeof voicePitchPitchOverrides === "object") {
+				return voicePitchPitchOverrides;
+			}
 
-                    return undefined;
-                }),
-        );
-    }
+			return {};
+		}
 
-    getVoicePitchOverride(voiceName) {
-        return promiseTry(
-            () => this._getVoicePitchOverrides()
-                .then((voicePitchPitchOverrides) => {
-                    return voicePitchPitchOverrides[voiceName] || null;
-                }),
-        );
-    }
+		return {};
+	}
 
-    setVoicePitchOverride(voiceName, pitch) {
-        return promiseTry(
-            () => this._getVoicePitchOverrides()
-                .then((voicePitchPitchOverrides) => {
-                    voicePitchPitchOverrides[voiceName] = pitch;
+	async _setVoicePitchOverrides(voicePitchPitchOverrides) {
+		const isPremiumEdition = await this.metadataManager.isPremiumEdition();
 
-                    return this._setVoicePitchOverrides(voicePitchPitchOverrides);
-                }),
-        );
-    }
+		if (isPremiumEdition) {
+			await this.storageManager.setStoredValue(this.voicePitchPitchOverridesStorageKey, voicePitchPitchOverrides);
+		}
+	}
 
-    removeVoicePitchOverride(voiceName) {
-        return promiseTry(
-            () => this._getVoicePitchOverrides()
-                .then((voicePitchPitchOverrides) => {
-                    delete voicePitchPitchOverrides[voiceName];
+	async getVoicePitchOverride(voiceName) {
+		const voicePitchPitchOverrides = await this._getVoicePitchOverrides();
 
-                    return this._setVoicePitchOverrides(voicePitchPitchOverrides);
-                }),
-        );
-    }
+		return voicePitchPitchOverrides[voiceName] || null;
+	}
 
-    hasVoicePitchOverride(voiceName) {
-        return promiseTry(
-            () => this.getVoicePitchOverride(voiceName)
-                .then((voicePitchOverride) => {
-                    if (voicePitchOverride) {
-                        return true;
-                    }
+	async setVoicePitchOverride(voiceName, pitch) {
+		const voicePitchPitchOverrides = await this._getVoicePitchOverrides();
 
-                    return false;
-                }),
-        );
-    }
+		voicePitchPitchOverrides[voiceName] = pitch;
 
-    isVoicePitchOverride(voiceName, pitch) {
-        return promiseTry(
-            () => this.getVoicePitchOverride(voiceName)
-                .then((voicePitchOverride) => {
-                    if (voicePitchOverride) {
-                        return voicePitchOverride === pitch;
-                    }
+		return this._setVoicePitchOverrides(voicePitchPitchOverrides);
+	}
 
-                    return false;
-                }),
-        );
-    }
+	async removeVoicePitchOverride(voiceName) {
+		const voicePitchPitchOverrides = await this._getVoicePitchOverrides();
 
-    getEffectivePitchForVoice(voiceName) {
-        return promiseTry(
-            () => this.hasVoicePitchOverride(voiceName)
-                .then((hasVoicePitchOverride) => {
-                    if (hasVoicePitchOverride) {
-                        return this.getVoicePitchOverride(voiceName);
-                    }
+		delete voicePitchPitchOverrides[voiceName];
 
-                    return this.getVoicePitchDefault(voiceName);
-                }),
-        );
-    }
+		return this._setVoicePitchOverrides(voicePitchPitchOverrides);
+	}
+
+	async hasVoicePitchOverride(voiceName) {
+		const voicePitchOverride = await this.getVoicePitchOverride(voiceName);
+
+		if (voicePitchOverride) {
+			return true;
+		}
+
+		return false;
+	}
+
+	async isVoicePitchOverride(voiceName, pitch) {
+		const voicePitchOverride = await this.getVoicePitchOverride(voiceName);
+
+		if (voicePitchOverride) {
+			return voicePitchOverride === pitch;
+		}
+
+		return false;
+	}
+
+	async getEffectivePitchForVoice(voiceName) {
+		const hasVoicePitchOverride = await this.hasVoicePitchOverride(voiceName);
+
+		if (hasVoicePitchOverride) {
+			return this.getVoicePitchOverride(voiceName);
+		}
+
+		return this.getVoicePitchDefault(voiceName);
+	}
 }

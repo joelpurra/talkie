@@ -19,162 +19,149 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
+	logDebug,
 } from "./log";
 
-import {
-    promiseTry,
-} from "./promise";
+export const getBackgroundPage = async () => {
+	const backgroundPage = await browser.runtime.getBackgroundPage();
 
-export const getBackgroundPage = () => promiseTry(
-    // https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
-    () => browser.runtime.getBackgroundPage()
-        .then((backgroundPage) => {
-            if (backgroundPage) {
-                return backgroundPage;
-            }
+	// https://developer.browser.com/extensions/runtime.html#method-getBackgroundPage
+	if (backgroundPage) {
+		return backgroundPage;
+	}
 
-            return null;
-        }),
-);
+	return null;
+};
 
-export const getCurrentActiveTab = () => promiseTry(
-    () => {
-        const queryOptions = {
-            "active": true,
-            "currentWindow": true,
-        };
+export const getCurrentActiveTab = async () => {
+	const queryOptions = {
+		active: true,
+		currentWindow: true,
+	};
 
-        // https://developer.browser.com/extensions/tabs#method-query
-        return browser.tabs.query(queryOptions)
-            .then((tabs) => {
-                if (!tabs) {
-                    return null;
-                }
+	// https://developer.browser.com/extensions/tabs#method-query
+	const tabs = await browser.tabs.query(queryOptions);
 
-                const singleTabResult = tabs.length === 1;
+	if (!tabs) {
+		return null;
+	}
 
-                const tab = tabs[0] || null;
+	const singleTabResult = tabs.length === 1;
 
-                logDebug("getCurrentActiveTab", tabs, tab, singleTabResult);
+	const tab = tabs[0] || null;
 
-                if (singleTabResult) {
-                    return tab;
-                }
+	logDebug("getCurrentActiveTab", tabs, tab, singleTabResult);
 
-                return null;
-            });
-    },
-);
+	if (singleTabResult) {
+		return tab;
+	}
 
-export const getCurrentActiveTabId = () => getCurrentActiveTab()
-    .then((activeTab) => {
-        if (activeTab) {
-            return activeTab.id;
-        }
+	return null;
+};
 
-        // NOTE: some tabs can't be retreived.
-        return null;
-    });
+export const getCurrentActiveTabId = async () => {
+	const activeTab = await getCurrentActiveTab();
 
-export const isCurrentPageInternalToTalkie = (internalUrlProvider) => promiseTry(
-    () => getCurrentActiveTab()
-        .then((tab) => {
-            if (tab) {
-                const url = tab.url;
+	if (activeTab) {
+		return activeTab.id;
+	}
 
-                if (
-                    typeof url === "string"
-                    && (
-                        /* eslint-disable no-sync */
-                        url.startsWith(internalUrlProvider.getSync("/src/"))
-                        || url.startsWith(internalUrlProvider.getSync("/dist/"))
-                        /* eslint-enable no-sync */
-                    )
-                ) {
-                    return true;
-                }
+	// NOTE: some tabs can't be retrieved.
+	return null;
+};
 
-                return false;
-            }
+export const isCurrentPageInternalToTalkie = async (internalUrlProvider) => {
+	const tab = await getCurrentActiveTab();
 
-            return false;
-        }),
-);
+	if (tab) {
+		const url = tab.url;
 
-const getCurrentActiveNormalLoadedTab = () => promiseTry(
-    () => {
-        const queryOptions = {
-            "active": true,
-            "currentWindow": true,
-            "windowType": "normal",
-            "status": "complete",
-        };
+		if (
+			typeof url === "string"
+					&& (
+						// eslint-disable-next-line no-sync
+						url.startsWith(internalUrlProvider.getSync("/src/"))
+						// eslint-disable-next-line no-sync
+						|| url.startsWith(internalUrlProvider.getSync("/dist/"))
+					)
+		) {
+			return true;
+		}
 
-        // https://developer.browser.com/extensions/tabs#method-query
-        return browser.tabs.query(queryOptions)
-            .then((tabs) => {
-                const singleTabResult = tabs.length === 1;
+		return false;
+	}
 
-                const tab = tabs[0] || null;
+	return false;
+};
 
-                logDebug("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
+const getCurrentActiveNormalLoadedTab = async () => {
+	const queryOptions = {
+		active: true,
+		currentWindow: true,
+		status: "complete",
+		windowType: "normal",
+	};
 
-                if (singleTabResult) {
-                    return tab;
-                }
+	// https://developer.browser.com/extensions/tabs#method-query
+	const tabs = await browser.tabs.query(queryOptions);
 
-                return null;
-            });
-    },
-);
+	const singleTabResult = tabs.length === 1;
 
-export const canTalkieRunInTab = () => promiseTry(
-    () => getCurrentActiveNormalLoadedTab()
-        .then((tab) => {
-            if (tab) {
-                const url = tab.url;
+	const tab = tabs[0] || null;
 
-                if (typeof url === "string") {
-                    if (
-                        (
-                            // NOTE: whitelisting schemes.
-                            // TODO: can the list be extended?
-                            url.startsWith("http://")
-                            || url.startsWith("https://")
-                            || url.startsWith("ftp://")
-                            || url.startsWith("file:")
-                        )
-                        && !(
-                            // NOTE: blacklisting known (per-browser store) urls.
-                            // TODO: should the list be extended?
-                            // TODO: move to configuration.
-                            url.startsWith("https://chrome.google.com/")
-                            || url.startsWith("https://addons.mozilla.org/")
-                        )
-                    ) {
-                        return true;
-                    }
+	logDebug("getCurrentActiveNormalLoadedTab", tabs, tab, singleTabResult);
 
-                    return false;
-                }
+	if (singleTabResult) {
+		return tab;
+	}
 
-                return false;
-            }
+	return null;
+};
 
-            return false;
-        }),
-);
+export const canTalkieRunInTab = async () => {
+	const tab = await getCurrentActiveNormalLoadedTab();
+
+	if (tab) {
+		const url = tab.url;
+
+		if (typeof url === "string") {
+			const canRunInUrl = (
+				// NOTE: whitelisting schemes.
+				// TODO: can the list be extended?
+				url.startsWith("http://")
+				|| url.startsWith("https://")
+				|| url.startsWith("ftp://")
+				|| url.startsWith("file:")
+			)
+			&& !(
+				// NOTE: blacklisting known (per-browser store) urls.
+				// TODO: should the list be extended?
+				// TODO: move to configuration.
+				url.startsWith("https://chrome.google.com/")
+				|| url.startsWith("https://addons.mozilla.org/")
+			);
+
+			if (canRunInUrl) {
+				return true;
+			}
+
+			return false;
+		}
+
+		return false;
+	}
+
+	return false;
+};
 
 // NOTE: used to check if a DOM element cross-page (background, popup, options, ...) reference was used after it was supposed to be unreachable (memory leak).
 // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Errors/Dead_object
 export const isDeadWrapper = (domElementReference) => {
-    try {
-        String(domElementReference);
+	try {
+		String(domElementReference);
 
-        return false;
-    }
-    catch (e) {
-        return true;
-    }
+		return false;
+	} catch {
+		return true;
+	}
 };

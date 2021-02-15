@@ -19,87 +19,71 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "./promise";
-
-import {
-    getBackgroundPage,
+	getBackgroundPage,
 } from "./tabs";
 
-export const openUrlInNewTab = (url) => promiseTry(
-    () => {
-        if (typeof url !== "string") {
-            throw new Error("Bad url: " + url);
-        }
+export const openUrlInNewTab = async (url) => {
+	if (typeof url !== "string") {
+		throw new TypeError(`Bad url: ${typeof url}`);
+	}
 
-        // NOTE: only https urls.
-        if (!url.startsWith("https://")) {
-            throw new Error("Bad url, only https:// allowed: " + url);
-        }
+	// NOTE: only https urls.
+	if (!url.startsWith("https://")) {
+		throw new Error(`Bad url, only https:// allowed: ${JSON.stringify(url)}`);
+	}
 
-        return browser.tabs.create({
-            active: true,
-            url: url,
-        });
-    },
-);
+	return browser.tabs.create({
+		active: true,
+		url,
+	});
+};
 
-export const openInternalUrlInNewTab = (url) => promiseTry(
-    () => {
-        if (typeof url !== "string") {
-            throw new Error("Bad url: " + url);
-        }
+export const openInternalUrlInNewTab = async (url) => {
+	if (typeof url !== "string") {
+		throw new TypeError(`Bad url: ${typeof url}`);
+	}
 
-        // NOTE: only root-relative internal urls.
-        // NOTE: double-slash is protocol relative, checking just in case.
-        if (!url.startsWith("/") || url[1] === "/") {
-            throw new Error("Bad url, only internally rooted allowed: " + url);
-        }
+	// NOTE: only root-relative internal urls.
+	// NOTE: double-slash is protocol relative, checking just in case.
+	if (!url.startsWith("/") || url[1] === "/") {
+		throw new Error(`Bad url, only internally rooted allowed: ${JSON.stringify(url)}`);
+	}
 
-        return browser.tabs.create({
-            active: true,
-            url: url,
-        });
-    },
-);
+	return browser.tabs.create({
+		active: true,
+		url,
+	});
+};
 
-export const openUrlFromConfigurationInNewTab = (id) => promiseTry(
-    () => getBackgroundPage()
-        .then((background) => background.getConfigurationValue(`urls.${id}`))
-        .then((url) => {
-            if (typeof url !== "string") {
-                throw new Error("Bad url for id: " + id);
-            }
+export const openUrlFromConfigurationInNewTab = async (id) => {
+	const background = await getBackgroundPage();
+	const url = await background.getConfigurationValue(`urls.${id}`);
 
-            return openUrlInNewTab(url);
-        }),
-);
+	if (typeof url !== "string") {
+		throw new TypeError("Bad url for id: " + id);
+	}
 
-export const openInternalUrlFromConfigurationInNewTab = (id) => promiseTry(
-    () => getBackgroundPage()
-        .then((background) => background.getConfigurationValue(`urls.${id}`))
-        .then((url) => {
-            if (typeof url !== "string") {
-                throw new Error("Bad url for id: " + id);
-            }
+	return openUrlInNewTab(url);
+};
 
-            return openInternalUrlInNewTab(url);
-        }),
-);
+export const openInternalUrlFromConfigurationInNewTab = async (id) => {
+	const background = await getBackgroundPage();
+	const url = await background.getConfigurationValue(`urls.${id}`);
 
-export const openShortKeysConfiguration = () => promiseTry(
-    () => {
-        const url = "chrome://extensions/configureCommands";
+	if (typeof url !== "string") {
+		throw new TypeError("Bad url for id: " + id);
+	}
 
-        return browser.tabs.create({
-            active: true,
-            url: url,
-        });
-    },
-);
+	return openInternalUrlInNewTab(url);
+};
 
-export const openOptionsPage = () => promiseTry(
-    () => {
-        return browser.runtime.openOptionsPage();
-    },
-);
+export const openShortKeysConfiguration = async () => {
+	const url = "chrome://extensions/configureCommands";
+
+	return browser.tabs.create({
+		active: true,
+		url,
+	});
+};
+
+export const openOptionsPage = async () => browser.runtime.openOptionsPage();

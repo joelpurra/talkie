@@ -19,111 +19,96 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logTrace,
-    logWarn,
-    logError,
+	logError,
+	logTrace,
+	logWarn,
 } from "./log";
-
 import {
-    promiseTry,
-} from "./promise";
-
-import {
-    isDeadWrapper,
+	isDeadWrapper,
 } from "./tabs";
 
 export default class Broadcaster {
-    constructor() {
-        this.actionListeningMap = {};
-    }
+	constructor() {
+		this.actionListeningMap = {};
+	}
 
-    unregisterListeningAction(actionName, listeningActionHandler) {
-        return promiseTry(
-            () => {
-                if (!this.actionListeningMap[actionName]) {
-                    throw new Error("No listening action(s) registered for action: " + actionName);
-                }
+	async unregisterListeningAction(actionName, listeningActionHandler) {
+		if (!this.actionListeningMap[actionName]) {
+			throw new Error(`No listening action(s) registered for action: ${typeof actionName} ${JSON.stringify(actionName)}`);
+		}
 
-                const countBefore = this.actionListeningMap[actionName].length;
+		const countBefore = this.actionListeningMap[actionName].length;
 
-                this.actionListeningMap[actionName] = this.actionListeningMap[actionName].filter((registeredListeningActionHandler) => registeredListeningActionHandler !== listeningActionHandler);
+		this.actionListeningMap[actionName] = this.actionListeningMap[actionName].filter((registeredListeningActionHandler) => registeredListeningActionHandler !== listeningActionHandler);
 
-                const countAfter = this.actionListeningMap[actionName].length;
+		const countAfter = this.actionListeningMap[actionName].length;
 
-                if (countBefore === countAfter) {
-                    throw new Error("The specific listening action handler was not registered for action: " + actionName);
-                }
-            },
-        );
-    }
+		if (countBefore === countAfter) {
+			throw new Error(`The specific listening action handler was not registered for action: ${typeof actionName} ${JSON.stringify(actionName)}`);
+		}
+	}
 
-    registerListeningAction(actionName, listeningActionHandler) {
-        return promiseTry(
-            () => {
-                this.actionListeningMap[actionName] = (this.actionListeningMap[actionName] || []).concat(listeningActionHandler);
+	async registerListeningAction(actionName, listeningActionHandler) {
+		this.actionListeningMap[actionName] = (this.actionListeningMap[actionName] || []).concat(listeningActionHandler);
 
-                const killSwitch = () => {
-                    // NOTE: the promise chain probably won't be completed (by the caller, outside of this function), as the kill switch might be executed during the "onunload" event.
-                    return this.unregisterListeningAction(actionName, listeningActionHandler);
-                };
+		const killSwitch = () => {
+			// NOTE: the promise chain probably won't be completed (by the caller, outside of this function), as the kill switch might be executed during the "onunload" event.
+			return this.unregisterListeningAction(actionName, listeningActionHandler);
+		};
 
-                return killSwitch;
-            },
-        );
-    }
+		return killSwitch;
+	}
 
-    broadcastEvent(actionName, actionData) {
-        return promiseTry(
-            () => {
-                logTrace("Start", "Sending message", actionName, actionData);
+	async broadcastEvent(actionName, actionData) {
+		logTrace("Start", "Sending message", actionName, actionData);
 
-                const listeningActions = this.actionListeningMap[actionName];
+		const listeningActions = this.actionListeningMap[actionName];
 
-                if (!listeningActions || listeningActions.length === 0) {
-                    logTrace("Skipping", "Sending message", actionName, actionData);
+		if (!listeningActions || listeningActions.length === 0) {
+			logTrace("Skipping", "Sending message", actionName, actionData);
 
-                    return [];
-                }
+			return [];
+		}
 
-                const listeningActionPromises = listeningActions.map((action) => {
-                    return promiseTry(
-                        () => {
-                            // NOTE: check for dead objects from cross-page (background, popup, options, ...) memory leaks.
-                            // NOTE: this is just in case the killSwitch hasn't been called.
-                            // https://developer.mozilla.org/en-US/docs/Extensions/Common_causes_of_memory_leaks_in_extensions#Failing_to_clean_up_event_listeners
-                            // TODO: throw error instead of cleaning up?
-                            // TODO: clean up code to avoid memory leaks, primarly in Firefox as it doesn't have onSuspend at the moment.
-                            if (isDeadWrapper(action)) {
-                                logWarn("Dead wrapper (detected)", "Sending message", actionName, actionData);
+		// TODO: switch to bluebird for async/promise mapping, also for the browser?
+		const listeningActionPromises = listeningActions.map(
+			(action) => (async () => {
+				try {
+				// NOTE: check for dead objects from cross-page (background, popup, options, ...) memory leaks.
+				// NOTE: this is just in case the killSwitch hasn't been called.
+				// https://developer.mozilla.org/en-US/docs/Extensions/Common_causes_of_memory_leaks_in_extensions#Failing_to_clean_up_event_listeners
+				// TODO: throw error instead of cleaning up?
+				// TODO: clean up code to avoid memory leaks, primarily in Firefox as it doesn't have onSuspend at the moment.
+					if (isDeadWrapper(action)) {
+						logWarn("Dead wrapper (detected)", "Sending message", actionName, actionData);
 
-                                return this.unregisterListeningAction(actionName, action);
-                            }
+						return this.unregisterListeningAction(actionName, action);
+					}
 
-                            return action(actionName, actionData);
-                        })
-                        .catch((error) => {
-                            if (error && typeof error.message === "string" && error.message.includes("access dead object")) {
-                                // NOTE: it's a dead wrapper, but it wasn't detected by isDeadWrapper() above. Ignore.
-                                logWarn("Dead wrapper (caught)", "Sending message", actionName, actionData);
+					return action(actionName, actionData);
+				} catch (error) {
+					if (error && typeof error === "object" && typeof error.message === "string" && error.message.includes("access dead object")) {
+					// NOTE: it's a dead wrapper, but it wasn't detected by isDeadWrapper() above. Ignore.
+						logWarn("Dead wrapper (caught)", "Sending message", actionName, actionData);
 
-                                return this.unregisterListeningAction(actionName, action);
-                            }
+						return this.unregisterListeningAction(actionName, action);
+					}
 
-                            throw error;
-                        });
-                });
+					throw error;
+				}
+			})(),
+		);
 
-                return Promise.all(listeningActionPromises)
-                    .then((responses) => {
-                        logTrace("Done", "Sending message", actionName, actionData, responses);
+		try {
+			const responses = await Promise.all(listeningActionPromises);
 
-                        return responses;
-                    })
-                    .catch((error) => {
-                        logError("Sending message", actionName, actionData);
+			logTrace("Done", "Sending message", actionName, actionData, responses);
 
-                        throw error;
-                    });
-            });
-    }
+			return responses;
+		} catch (error) {
+			logError("Sending message", actionName, actionData);
+
+			throw error;
+		}
+	}
 }

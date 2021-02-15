@@ -18,49 +18,51 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    connect,
+	connect,
 } from "react-redux";
 
 import Progress from "../components/sections/progress.jsx";
 
 const mapStateToProps = (state) => {
-    return {
-        min: state.shared.progress.min,
-        current: state.shared.progress.current,
-        max: state.shared.progress.max,
-    };
+	return {
+		current: state.shared.progress.current,
+		max: state.shared.progress.max,
+		min: state.shared.progress.min,
+	};
 };
 
-const mapDispatchToProps = (/* eslint-disable no-unused-vars */dispatch/* eslint-enable no-unused-vars */) => {
-    return {};
+const mapDispatchToProps = (
+	// eslint-disable-next-line no-unused-vars
+	dispatch,
+) => {
+	return {};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class ProgressContainer extends React.PureComponent {
-    static propTypes = {
-        min: PropTypes.number.isRequired,
-        current: PropTypes.number.isRequired,
-        max: PropTypes.number.isRequired,
-    }
+	static propTypes = {
+		current: PropTypes.number.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+	}
 
-    render() {
-        const {
-            min,
-            current,
-            max,
-        } = this.props;
+	render() {
+		const {
+			min,
+			current,
+			max,
+		} = this.props;
 
-        return (
-            <Progress
-                min={min}
-                current={current}
-                max={max}
-            />
-        );
-    }
+		return (
+			<Progress
+				current={current}
+				max={max}
+				min={min}
+			/>
+		);
+	}
 }

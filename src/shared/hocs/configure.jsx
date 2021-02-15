@@ -18,20 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default function configureHoc(ComponentToWrap) {
-    return class ConfigurationHoc extends React.PureComponent {
-        static contextTypes = {
-            configure: PropTypes.func.isRequired,
-            onConfigurationChange: PropTypes.func.isRequired,
-        }
+	return class ConfigurationHoc extends React.PureComponent {
+		static contextTypes = {
+			configure: PropTypes.func.isRequired,
+			onConfigurationChange: PropTypes.func.isRequired,
+		}
 
-        render() {
-            return (
-                <ComponentToWrap {...this.props} configure={this.context.configure} onConfigurationChange={this.context.onConfigurationChange} />
-            );
-        }
-    };
-};
+		render() {
+			return (
+				<ComponentToWrap {...this.props} configure={this.context.configure} onConfigurationChange={this.context.onConfigurationChange}/>
+			);
+		}
+	};
+}

@@ -18,46 +18,36 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "./promise";
-
 export default class SettingsManager {
-    constructor(storageManager) {
-        this.storageManager = storageManager;
+	constructor(storageManager) {
+		this.storageManager = storageManager;
 
-        // TODO: shared place for stored value constants.
-        this._isPremiumEditionStorageKey = "is-premium-edition";
-        this._speakLongTextsStorageKey = "speak-long-texts";
+		// TODO: shared place for stored value constants.
+		this._isPremiumEditionStorageKey = "is-premium-edition";
+		this._speakLongTextsStorageKey = "speak-long-texts";
 
-        // TODO: shared place for default/fallback values for booleans etcetera.
-        this._isPremiumEditionDefaultValue = false;
-        this._speakLongTextsStorageKeyDefaultValue = false;
-    }
+		// TODO: shared place for default/fallback values for booleans etcetera.
+		this._isPremiumEditionDefaultValue = false;
+		this._speakLongTextsStorageKeyDefaultValue = false;
+	}
 
-    setIsPremiumEdition(isPremiumEdition) {
-        return promiseTry(
-            () => this.storageManager.setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition === true),
-        );
-    }
+	async setIsPremiumEdition(isPremiumEdition) {
+		return this.storageManager.setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition === true);
+	}
 
-    getIsPremiumEdition() {
-        return promiseTry(
-            () => this.storageManager.getStoredValue(this._isPremiumEditionStorageKey)
-                .then((isPremiumEdition) => isPremiumEdition || this._isPremiumEditionDefaultValue),
-        );
-    }
+	async getIsPremiumEdition() {
+		const isPremiumEdition = await this.storageManager.getStoredValue(this._isPremiumEditionStorageKey);
 
-    setSpeakLongTexts(speakLongTexts) {
-        return promiseTry(
-            () => this.storageManager.setStoredValue(this._speakLongTextsStorageKey, speakLongTexts === true),
-        );
-    }
+		return isPremiumEdition || this._isPremiumEditionDefaultValue;
+	}
 
-    getSpeakLongTexts() {
-        return promiseTry(
-            () => this.storageManager.getStoredValue(this._speakLongTextsStorageKey)
-                .then((speakLongTexts) => speakLongTexts || this._speakLongTextsStorageKeyDefaultValue),
-        );
-    }
+	async setSpeakLongTexts(speakLongTexts) {
+		return this.storageManager.setStoredValue(this._speakLongTextsStorageKey, speakLongTexts === true);
+	}
+
+	async getSpeakLongTexts() {
+		const speakLongTexts = await this.storageManager.getStoredValue(this._speakLongTextsStorageKey);
+
+		return speakLongTexts || this._speakLongTextsStorageKeyDefaultValue;
+	}
 }

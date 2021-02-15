@@ -19,12 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    getBackgroundPage,
+	getBackgroundPage,
 } from "../../shared/tabs";
 
 export default class WebExtensionEnvironmentBroadcasterProvider {
-    registerListeningAction(event, handler) {
-        return getBackgroundPage()
-            .then((background) => background.broadcaster().registerListeningAction(event, handler));
-    }
+	async registerListeningAction(event, handler) {
+		const background = await getBackgroundPage();
+
+		await background.broadcaster().registerListeningAction(event, handler);
+	}
 }

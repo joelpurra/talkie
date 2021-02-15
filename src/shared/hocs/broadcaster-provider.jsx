@@ -18,26 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default class BroadcasterProvider extends React.PureComponent {
-    static propTypes = {
-        children: PropTypes.element.isRequired,
-        broadcaster: PropTypes.object.isRequired,
-    }
+	static propTypes = {
+		broadcaster: PropTypes.object.isRequired,
+		children: PropTypes.element.isRequired,
+	}
 
-    static childContextTypes ={
-        broadcaster: PropTypes.object.isRequired,
-    }
+	static childContextTypes ={
+		broadcaster: PropTypes.object.isRequired,
+	}
 
-    getChildContext() {
-        return {
-            broadcaster: this.props.broadcaster,
-        };
-    }
+	getChildContext() {
+		return {
+			broadcaster: this.props.broadcaster,
+		};
+	}
 
-    render() {
-        return React.Children.only(this.props.children);
-    }
+	render() {
+		return React.Children.only(this.props.children);
+	}
 }

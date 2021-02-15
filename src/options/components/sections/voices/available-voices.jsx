@@ -18,111 +18,112 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import styled from "../../../../shared/hocs/styled.jsx";
-
-import * as formBase from "../../../../shared/styled/form/form-base.jsx";
-
+import React from "react";
 import MultilineSelect from "../../../../shared/components/form/multiline-select.jsx";
-
+import styled from "../../../../shared/hocs/styled.jsx";
 import translateAttribute from "../../../../shared/hocs/translate.jsx";
+import * as formBase from "../../../../shared/styled/form/form-base.jsx";
 
 export default
 @translateAttribute
 class AvailableVoices extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleChange = this.handleChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 
-        this.styled = {
-            effectiveVoiceOption: styled({
-                fontWeight: "bold",
-            })(formBase.option),
-        };
-    }
+		this.styled = {
+			effectiveVoiceOption: styled({
+				fontWeight: "bold",
+			})(formBase.option),
+		};
+	}
 
-    static defaultProps = {
-        voices: [],
-        value: null,
-        effectiveVoiceNameForSelectedLanguage: null,
-        disabled: true,
-    };
+	static defaultProps = {
+		effectiveVoiceNameForSelectedLanguage: null,
+		value: null,
+	};
 
-    static propTypes = {
-        voices: PropTypes.arrayOf(PropTypes.shape({
-            default: PropTypes.bool.isRequired,
-            lang: PropTypes.string.isRequired,
-            localService: PropTypes.bool.isRequired,
-            name: PropTypes.string.isRequired,
-            voiceURI: PropTypes.string.isRequired,
-        })).isRequired,
-        value: PropTypes.string,
-        effectiveVoiceNameForSelectedLanguage: PropTypes.string,
-        onChange: PropTypes.func.isRequired,
-        disabled: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		effectiveVoiceNameForSelectedLanguage: PropTypes.string,
+		onChange: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+		value: PropTypes.string,
+		voices: PropTypes.arrayOf(PropTypes.shape({
+			"default": PropTypes.bool.isRequired,
+			lang: PropTypes.string.isRequired,
+			localService: PropTypes.bool.isRequired,
+			name: PropTypes.string.isRequired,
+			voiceURI: PropTypes.string.isRequired,
+		})).isRequired,
+	};
 
-    handleChange(voiceName) {
-        this.props.onChange(voiceName);
-    }
+	handleChange(voiceName) {
+		this.props.onChange(voiceName);
+	}
 
-    render() {
-        const {
-            translate,
-        } = this.props;
+	render() {
+		const {
+			disabled,
+			effectiveVoiceNameForSelectedLanguage,
+			translate,
+			value,
+			voices,
+		} = this.props;
 
-        const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
+		const translatedVoiceFeatureOnline = translate("frontend_voiceFeatureOnline");
 
-        const voicesOptions = this.props.voices.map(
-            (voice) => {
-                const isEffectiveVoiceNameForSelectedLanguage = (
-                    this.props.effectiveVoiceNameForSelectedLanguage
-                    && this.props.effectiveVoiceNameForSelectedLanguage === voice.name
-                );
+		const voicesOptions = voices.map(
+			(voice) => {
+				const isEffectiveVoiceNameForSelectedLanguage = (
+					effectiveVoiceNameForSelectedLanguage
+					&& effectiveVoiceNameForSelectedLanguage === voice.name
+				);
 
-                const VoiceOption = isEffectiveVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
+				const VoiceOption = isEffectiveVoiceNameForSelectedLanguage ? this.styled.effectiveVoiceOption : formBase.option;
 
-                let voiceNameAndFeaturesText = voice.name;
+				let voiceNameAndFeaturesText = voice.name;
 
-                const voiceFeatures = [];
+				const voiceFeatures = [];
 
-                if (voice.localService === false) {
-                    voiceFeatures.push(translatedVoiceFeatureOnline);
-                }
+				if (voice.localService === false) {
+					voiceFeatures.push(translatedVoiceFeatureOnline);
+				}
 
-                if (voiceFeatures.length > 0) {
-                    voiceNameAndFeaturesText += " (";
-                    voiceNameAndFeaturesText += voiceFeatures.join(", ");
-                    voiceNameAndFeaturesText += ")";
-                }
+				if (voiceFeatures.length > 0) {
+					voiceNameAndFeaturesText += " (";
+					voiceNameAndFeaturesText += voiceFeatures.join(", ");
+					voiceNameAndFeaturesText += ")";
+				}
 
-                if (isEffectiveVoiceNameForSelectedLanguage) {
-                    voiceNameAndFeaturesText += " ✓";
-                }
+				if (isEffectiveVoiceNameForSelectedLanguage) {
+					voiceNameAndFeaturesText += " ✓";
+				}
 
-                return <VoiceOption
-                    key={voice.name}
-                    // TODO: proper way to store/look up objects?
-                    value={voice.name}
-                >
-                    {voiceNameAndFeaturesText}
-                </VoiceOption>;
-            },
-        );
+				return (
+					<VoiceOption
+						key={voice.name}
+						// TODO: proper way to store/look up objects?
+						value={voice.name}
+					>
+						{voiceNameAndFeaturesText}
+					</VoiceOption>
+				);
+			},
+		);
 
-        return (
-            <MultilineSelect
-                size={7}
-                onChange={this.handleChange}
-                value={this.props.value}
-                disabled={this.props.disabled}
-            >
-                {voicesOptions}
-            </MultilineSelect>
-        );
-    }
+		return (
+			<MultilineSelect
+				disabled={disabled}
+				size={7}
+				value={value}
+				onChange={this.handleChange}
+			>
+				{voicesOptions}
+			</MultilineSelect>
+		);
+	}
 }

@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const layoutWithMargins = {
-    marginTop: "0.5em",
-    marginBottom: "0.5em",
-    marginLeft: "1em",
-    marginRight: "1em",
-    fontSize: "0.75em",
+	fontSize: "0.75em",
+	marginBottom: "0.5em",
+	marginLeft: "1em",
+	marginRight: "1em",
+	marginTop: "0.5em",
 };
 
 export const header = layoutWithMargins;
@@ -32,31 +32,31 @@ export const nav = layoutWithMargins;
 export const footer = layoutWithMargins;
 
 export const hr = Object.assign(
-    {},
-    layoutWithMargins,
-    {
-        color: "#dddddd",
-        borderStyle: "solid",
-        borderWidth: 0,
-        borderTopWidth: "1px",
-    },
+	{},
+	layoutWithMargins,
+	{
+		borderStyle: "solid",
+		borderTopWidth: "1px",
+		borderWidth: 0,
+		color: "#dddddd",
+	},
 );
 
 export const details = {};
 export const summary = {
-    cursor: "pointer",
+	cursor: "pointer",
 };
 
 export const hero = {
-    borderRadius: "0.4em",
-    fontSize: "2em",
-    paddingLeft: "1em",
-    paddingRight: "1em",
-    paddingTop: "1em",
-    paddingBottom: "1em",
-    marginLeft: "2em",
-    marginRight: "2em",
-    marginTop: "2em",
-    marginBottom: "2em",
-    backgroundColor: "#eceff5",
+	backgroundColor: "#eceff5",
+	borderRadius: "0.4em",
+	fontSize: "2em",
+	marginBottom: "2em",
+	marginLeft: "2em",
+	marginRight: "2em",
+	marginTop: "2em",
+	paddingBottom: "1em",
+	paddingLeft: "1em",
+	paddingRight: "1em",
+	paddingTop: "1em",
 };

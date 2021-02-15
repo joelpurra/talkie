@@ -18,44 +18,65 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import PropTypes from "prop-types";
 import React from "react";
 
+import translateAttribute from "../../../../shared/hocs/translate.jsx";
 import ScaleRange from "../../range/scale-range.jsx";
-
 import RangeWithHeading from "./range-with-heading.jsx";
 
-export default class Pitch extends React.PureComponent {
-    constructor(props) {
-        super(props);
+export default
+@translateAttribute
+class Pitch extends React.PureComponent {
+	constructor(props) {
+		super(props);
 
-        this.transformValueBeforeChange = this.transformValueBeforeChange.bind(this);
-        this.getHeading = this.getHeading.bind(this);
-    }
+		this.transformValueBeforeChange = this.transformValueBeforeChange.bind(this);
+		this.getHeading = this.getHeading.bind(this);
+	}
 
-    transformValueBeforeChange(value) {
-        return value;
-    }
+	static defaultProps = {
+		voiceName: null,
+	};
 
-    getHeading(voiceName, translate) {
-        let heading = null;
+	static propTypes = {
+		defaultValue: PropTypes.number.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		initialValue: PropTypes.number.isRequired,
+		listName: PropTypes.string.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+		onChange: PropTypes.func.isRequired,
+		step: PropTypes.number.isRequired,
+		translate: PropTypes.func.isRequired,
+		voiceName: PropTypes.string,
+	}
 
-        if (typeof voiceName === "string" && voiceName.length > 0) {
-            heading = translate("frontend_voicesPitchHeading", voiceName);
-        } else {
-            heading = translate("frontend_voicesPitchEmptyHeading");
-        }
+	transformValueBeforeChange(value) {
+		return value;
+	}
 
-        return heading;
-    }
+	getHeading(voiceName, translate) {
+		let heading = null;
 
-    render() {
-        return (
-            <RangeWithHeading
-                {...this.props}
-                transformValueBeforeChange={this.transformValueBeforeChange}
-                getHeading={this.getHeading}
-                ScaleRangeElementClass={ScaleRange}
-            />
-        );
-    }
+		if (typeof voiceName === "string" && voiceName.length > 0) {
+			heading = translate("frontend_voicesPitchHeading", voiceName);
+		} else {
+			heading = translate("frontend_voicesPitchEmptyHeading");
+		}
+
+		return heading;
+	}
+
+	render() {
+		return (
+			<RangeWithHeading
+				{...this.props}
+				ScaleRangeElementClass={ScaleRange}
+				getHeading={this.getHeading}
+				transformValueBeforeChange={this.transformValueBeforeChange}
+			/>
+		);
+	}
 }

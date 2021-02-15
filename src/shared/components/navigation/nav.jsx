@@ -18,124 +18,123 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import styled from "../../hocs/styled.jsx";
-
 import * as layoutBase from "../../styled/layout/layout-base.jsx";
-import * as textBase from "../../styled/text/text-base.jsx";
 import * as tableBase from "../../styled/table/table-base.jsx";
+import * as textBase from "../../styled/text/text-base.jsx";
 
 export default class Nav extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleClick = this.handleClick.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 
-        this.styled = {
-            nav: styled({
-                lineHeight: "1.5em",
-                textAlign: "center",
-            })(layoutBase.nav),
+		this.styled = {
+			nav: styled({
+				lineHeight: "1.5em",
+				textAlign: "center",
+			})(layoutBase.nav),
 
-            navTable: styled({
-                lineHeight: "1.5em",
-                textAlign: "center",
-            })(tableBase.table),
+			navTable: styled({
+				lineHeight: "1.5em",
+				textAlign: "center",
+			})(tableBase.table),
 
-            navTableTd: styled({
-                marginLeft: 0,
-                marginRight: 0,
-                marginTop: 0,
-                marginBottom: 0,
-                paddingLeft: 0,
-                paddingRight: 0,
-                paddingTop: 0,
-                paddingBottom: 0,
-            })(tableBase.td),
+			navTableTd: styled({
+				marginBottom: 0,
+				marginLeft: 0,
+				marginRight: 0,
+				marginTop: 0,
+				paddingBottom: 0,
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingTop: 0,
+			})(tableBase.td),
 
-            selectedLink: styled({
-                color: "#3497ff",
-                fontWeight: "bold",
-            })(textBase.a),
-        };
-    }
+			selectedLink: styled({
+				color: "#3497ff",
+				fontWeight: "bold",
+			})(textBase.a),
+		};
+	}
 
-    static propTypes = {
-        initialActiveTabId: PropTypes.string.isRequired,
-        onTabChange: PropTypes.func.isRequired,
-        links: PropTypes.arrayOf(
-            PropTypes.shape({
-                url: PropTypes.string,
-                tabId: PropTypes.string,
-                text: PropTypes.string.isRequired,
-            })).isRequired,
-    }
+	static propTypes = {
+		initialActiveTabId: PropTypes.string.isRequired,
+		links: PropTypes.arrayOf(
+			PropTypes.shape({
+				tabId: PropTypes.string,
+				text: PropTypes.string.isRequired,
+				url: PropTypes.string,
+			})).isRequired,
+		onTabChange: PropTypes.func.isRequired,
+	}
 
-    handleClick(e) {
-        if (e.target.tagName === "A") {
-            const href = e.target.getAttribute("href");
+	handleClick(event) {
+		if (event.target.tagName === "A") {
+			const href = event.target.getAttribute("href");
 
-            if (typeof href === "string" && href.startsWith("#")) {
-                const tabId = href.replace("#", "");
+			if (typeof href === "string" && href.startsWith("#")) {
+				const tabId = href.replace("#", "");
 
-                e.preventDefault();
-                e.stopPropagation();
+				event.preventDefault();
+				event.stopPropagation();
 
-                this.props.onTabChange(tabId);
+				this.props.onTabChange(tabId);
 
-                return false;
-            }
+				return false;
+			}
 
-            // TODO: warn about mismatched link style?
-        }
-    }
+			// TODO: warn about mismatched link style?
+		}
+	}
 
-    render() {
-        const {
-            links,
-            initialActiveTabId,
-        } = this.props;
+	render() {
+		const {
+			links,
+			initialActiveTabId,
+		} = this.props;
 
-        const linkCells = links
-            .map((link) => {
-                const SelectedLinkType = initialActiveTabId === link.tabId
-                    ? this.styled.selectedLink
-                    : textBase.a;
+		const linkCells = links
+			.map((link) => {
+				const SelectedLinkType = initialActiveTabId === link.tabId
+					? this.styled.selectedLink
+					: textBase.a;
 
-                const url = link.url || "#" + link.tabId;
+				const url = link.url || "#" + link.tabId;
 
-                return (
-                    <this.styled.navTableTd
-                        key={link.tabId}
-                        onClick={this.handleClick}
-                    >
-                        <SelectedLinkType
-                            href={url}
-                        >
-                            {link.text}
-                        </SelectedLinkType>
-                    </this.styled.navTableTd>
-                );
-            });
+				return (
+					<this.styled.navTableTd
+						key={link.tabId}
+						onClick={this.handleClick}
+					>
+						<SelectedLinkType
+							href={url}
+						>
+							{link.text}
+						</SelectedLinkType>
+					</this.styled.navTableTd>
+				);
+			});
 
-        const colCount = linkCells.length;
-        const colWidth = `${100 / linkCells.length}%`;
+		const colCount = linkCells.length;
+		const colWidth = `${100 / linkCells.length}%`;
 
-        return (
-            <this.styled.nav className="columns">
-                <this.styled.navTable>
-                    <colgroup>
-                        <col width={colWidth} colSpan={colCount} />
-                    </colgroup>
-                    <tableBase.tbody>
-                        <tableBase.tr>
-                            {linkCells}
-                        </tableBase.tr>
-                    </tableBase.tbody>
-                </this.styled.navTable>
-            </this.styled.nav>
-        );
-    }
+		return (
+			<this.styled.nav className="columns">
+				<this.styled.navTable>
+					<colgroup>
+						<col colSpan={colCount} width={colWidth}/>
+					</colgroup>
+					<tableBase.tbody>
+						<tableBase.tr>
+							{linkCells}
+						</tableBase.tr>
+					</tableBase.tbody>
+				</this.styled.navTable>
+			</this.styled.nav>
+		);
+	}
 }

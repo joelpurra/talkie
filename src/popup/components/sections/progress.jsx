@@ -18,50 +18,44 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import styled from "../../../shared/hocs/styled.jsx";
 
 export default class Status extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.styled = {
-            progress: styled({
-                width: "100%",
-                height: "0.5em",
-                marginTop: "0.5em",
-                marginBottom: "0.5em",
-            })("progress"),
-        };
-    }
+		this.styled = {
+			progress: styled({
+				height: "0.5em",
+				marginBottom: "0.5em",
+				marginTop: "0.5em",
+				width: "100%",
+			})("progress"),
+		};
+	}
 
-    static defaultProps = {
-        min: 0,
-        current: 0,
-        max: 0,
-    }
+	static propTypes = {
+		current: PropTypes.number.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+	}
 
-    static propTypes = {
-        min: PropTypes.number.isRequired,
-        current: PropTypes.number.isRequired,
-        max: PropTypes.number.isRequired,
-    }
+	render() {
+		const {
+			min,
+			current,
+			max,
+		} = this.props;
 
-    render() {
-        const {
-            min,
-            current,
-            max,
-        } = this.props;
-
-        return (
-            <this.styled.progress
-                min={min}
-                value={current}
-                max={max}
-            ></this.styled.progress>
-        );
-    }
+		return (
+			<this.styled.progress
+				max={max}
+				min={min}
+				value={current}
+			/>
+		);
+	}
 }

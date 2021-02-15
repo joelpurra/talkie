@@ -19,137 +19,127 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const assert = require("assert");
-const Promise = require("bluebird");
+const Bluebird = require("bluebird");
 
 const clone = require("clone");
 
-const { Translate } = require("@google-cloud/translate").v2;
+const {
+	Translate,
+} = require("@google-cloud/translate").v2;
 
 const striptags = require("striptags");
 const htmlEntityEncode = require("ent/encode");
 const htmlEntityDecode = require("ent/decode");
 
 export default class GoogleCloudTranslateTranslator {
-    constructor(googleCloudTranslateApiKeyFilePath) {
-        assert(typeof googleCloudTranslateApiKeyFilePath === "string");
+	constructor(googleCloudTranslateApiKeyFilePath) {
+		assert(typeof googleCloudTranslateApiKeyFilePath === "string");
 
-        this._googleCloudTranslateApiKeyFilePath = googleCloudTranslateApiKeyFilePath;
+		this._googleCloudTranslateApiKeyFilePath = googleCloudTranslateApiKeyFilePath;
 
-        this._googleTranslateOptions = {
-            promise: Promise,
-            keyFilename: this._googleCloudTranslateApiKeyFilePath,
-        };
-        this._googleTranslate = new Translate(this._googleTranslateOptions);
+		this._googleTranslateOptions = {
+			keyFilename: this._googleCloudTranslateApiKeyFilePath,
+			promise: Bluebird,
+		};
+		this._googleTranslate = new Translate(this._googleTranslateOptions);
 
-        // NOTE: there is a limit to how many items can be translated per call.
-        this.maxChunkSize = 128;
-    }
+		// NOTE: there is a limit to how many items can be translated per call.
+		this.maxChunkSize = 128;
+	}
 
-    translate(fromLanguage, toLanguage, original) {
-        assert(typeof fromLanguage === "string");
-        assert(typeof toLanguage === "string");
-        assert(typeof original === "object");
-        Object.keys(original).forEach((originalKey) => {
-            assert(typeof original[originalKey].message === "string");
-        });
+	async translate(fromLanguage, toLanguage, original) {
+		assert(typeof fromLanguage === "string");
+		assert(typeof toLanguage === "string");
+		assert(typeof original === "object");
+		Object.keys(original).forEach((originalKey) => {
+			assert(typeof original[originalKey].message === "string");
+		});
 
-        return Promise.try(() => {
-            const messages = clone(original);
-            const keys = Object.keys(messages);
+		const messages = clone(original);
+		const keys = Object.keys(messages);
 
-            return Promise.try(() => {
-                const preparedMessages = keys
-                    .map((key) => messages[key].message)
-                    .map((message) => htmlEntityEncode(message))
-                    .map((encodedMessage) => {
-                        const preparedMessage = encodedMessage
-                            .replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
-                            .replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
-                            .replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
-                            .replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
+		const preparedMessages = keys
+			.map((key) => messages[key].message)
+			.map((message) => htmlEntityEncode(message))
+			.map((encodedMessage) => {
+				const preparedMessage = encodedMessage
+					.replace(/Talkie Premium/g, "<span class=\"notranslate\">___TEMP_TALKIE_PREMIUM___</span>")
+					.replace(/Talkie/g, "<span class=\"notranslate\">___TEMP_TALKIE___</span>")
+					.replace(/Premium/g, "<span class=\"notranslate\">___TEMP_PREMIUM___</span>")
+					.replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
 
-                        const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
+				const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
 
-                        return htmlMessage;
-                    });
+				return htmlMessage;
+			});
 
-                return preparedMessages;
-            })
-                .then((preparedMessages) => {
-                    // NOTE: put each item in a chunk with a size up to maxChunkSize.
-                    const preparedMessagesChunks = preparedMessages.reduce(
-                        (chunked, preparedMessage, preparedMessagesIndex) => {
-                            const chunkedIndex = Math.floor(preparedMessagesIndex / this.maxChunkSize);
-                            chunked[chunkedIndex] = (chunked[chunkedIndex] || []).concat(preparedMessage);
+		// NOTE: put each item in a chunk with a size up to maxChunkSize.
+		// eslint-disable-next-line unicorn/no-reduce
+		const preparedMessagesChunks = preparedMessages.reduce(
+			(chunked, preparedMessage, preparedMessagesIndex) => {
+				const chunkedIndex = Math.floor(preparedMessagesIndex / this.maxChunkSize);
+				chunked[chunkedIndex] = (chunked[chunkedIndex] || []).concat(preparedMessage);
 
-                            return chunked;
-                        },
-                        [],
-                    );
+				return chunked;
+			},
+			[],
+		);
 
-                    return preparedMessagesChunks;
-                })
-                .then((preparedMessagesChunks) => {
-                    const translationOptions = {
-                        from: fromLanguage,
-                        to: toLanguage,
-                        format: "html",
-                    };
+		const translationOptions = {
+			format: "html",
+			from: fromLanguage,
+			to: toLanguage,
+		};
 
-                    // NOTE: translating one chunk at a time.
-                    return Promise.mapSeries(
-                        preparedMessagesChunks,
-                        (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions),
-                    );
-                })
-                // NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
-                // TODO: use a prettier array flattening function?
-                .then((translationResponseChunks) => translationResponseChunks.reduce(
-                    (t, v) => [
-                        t[0].concat(v[0]),
-                        t[1].concat(v[1]),
-                    ],
-                    [
-                        [],
-                        [],
-                    ],
-                ))
-                .then((translationResponses) => {
-                    const translations = translationResponses[0];
-                    /* eslint-disable no-unused-vars */
-                    // NOTE: this is now an array of apiResponses (one per chunk), not a single as in the original translate api.
-                    const apiResponse = translationResponses[1];
-                    /* eslint-enable no-unused-vars */
+		// NOTE: translating one chunk at a time.
+		const translationResponseChunks = await Bluebird.mapSeries(
+			preparedMessagesChunks,
+			(preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions),
+		);
 
-                    const translateDirtyMessages = translations
-                        .map((translationResponse) => striptags(translationResponse))
-                        .map((translationResponse) => htmlEntityDecode(translationResponse))
-                        .map((translationResponse) => {
-                            const translateDirtyMessage = translationResponse
-                                .replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
-                                .replace(/___TEMP_TALKIE___/g, "Talkie")
-                                .replace(/___TEMP_PREMIUM___/g, "Premium")
-                                .replace(/^\s+/g, "")
-                                .replace(/\s+$/g, "")
-                                .replace(/ +\/ +/g, "/")
-                                .replace(/ +-+ +/g, " — ")
-                                .replace(/ +([.:;!?]) +/g, "$1 ")
-                                .replace(/ {2,}/g, " ")
-                                .trim();
+		// NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
+		// TODO: use a prettier array flattening function?
+		// eslint-disable-next-line unicorn/no-reduce
+		const translationResponses = translationResponseChunks.reduce(
+			(t, v) => [
+				t[0].concat(v[0]),
+				t[1].concat(v[1]),
+			],
+			[
+				[],
+				[],
+			],
+		);
 
-                            return translateDirtyMessage;
-                        });
+		const translations = translationResponses[0];
+		// NOTE: this is now an array of apiResponses (one per chunk), not a single as in the original translate api.
+		// eslint-disable-next-line no-unused-vars
+		const apiResponse = translationResponses[1];
 
-                    return translateDirtyMessages;
-                })
-                .then((translateDirtyMessages) => {
-                    keys.forEach((key, index) => {
-                        messages[key].original = messages[key].message;
-                        messages[key].message = translateDirtyMessages[index];
-                    });
+		const translateDirtyMessages = translations
+			.map((translationResponse) => striptags(translationResponse))
+			.map((translationResponse) => htmlEntityDecode(translationResponse))
+			.map((translationResponse) => {
+				const translateDirtyMessage = translationResponse
+					.replace(/___TEMP_TALKIE_PREMIUM___/g, "Talkie Premium")
+					.replace(/___TEMP_TALKIE___/g, "Talkie")
+					.replace(/___TEMP_PREMIUM___/g, "Premium")
+					.replace(/^\s+/g, "")
+					.replace(/\s+$/g, "")
+					.replace(/ +\/ +/g, "/")
+					.replace(/ +-+ +/g, " — ")
+					.replace(/ +([.:;!?]) +/g, "$1 ")
+					.replace(/ {2,}/g, " ")
+					.trim();
 
-                    return messages;
-                });
-        });
-    }
+				return translateDirtyMessage;
+			});
+
+		keys.forEach((key, index) => {
+			messages[key].original = messages[key].message;
+			messages[key].message = translateDirtyMessages[index];
+		});
+
+		return messages;
+	}
 }

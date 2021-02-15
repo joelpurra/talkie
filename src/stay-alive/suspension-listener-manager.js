@@ -19,215 +19,168 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    logDebug,
-    logWarn,
+	logDebug,
+	logWarn,
 } from "../shared/log";
 
 export default class SuspensionListenerManager {
-    constructor() {
-        // NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
-        this.preventSuspensionPortName = "talkie-prevents-suspension";
+	constructor() {
+		// NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
+		this.preventSuspensionPortName = "talkie-prevents-suspension";
 
-        this._onConnectHandlerBound = null;
-        this.connectionCounter = 0;
-        this.activeSuspendConnections = 0;
-        this.suspendConnectionPorts = [];
+		this._onConnectHandlerBound = null;
+		this.connectionCounter = 0;
+		this.activeSuspendConnections = 0;
+		this.suspendConnectionPorts = [];
 
-        this._preventSuspendPromise = null;
-        this._preventSuspendPromiseResolve = null;
+		this._preventSuspendPromise = null;
+		this._preventSuspendPromiseResolve = null;
 
-        this._onConnectHandlerBound = (...args) => this._onConnectHandler(...args);
-    }
+		this._onConnectHandlerBound = (...args) => this._onConnectHandler(...args);
+	}
 
-    _onConnectHandler(port) {
-        // NOTE: not only suspension managers connect here.
-        this.connectionCounter++;
+	_onConnectHandler(port) {
+		// NOTE: not only suspension managers connect here.
+		this.connectionCounter++;
 
-        const currentConnectionId = this.connectionCounter;
+		const currentConnectionId = this.connectionCounter;
 
-        logDebug("Start", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
+		logDebug("Start", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
 
-        if (port.name !== this.preventSuspensionPortName) {
-            // NOTE: ignore non-matching ports.
-            logDebug("Non-matching port", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
+		if (port.name !== this.preventSuspensionPortName) {
+			// NOTE: ignore non-matching ports.
+			logDebug("Non-matching port", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
 
-            return;
-        }
+			return;
+		}
 
-        this.activeSuspendConnections++;
+		this.activeSuspendConnections++;
 
-        logDebug("Matching port", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
+		logDebug("Matching port", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
 
-        const _onMessageHandler = (msg) => {
-            logDebug("_onMessageHandler", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, msg);
+		const _onMessageHandler = (message) => {
+			logDebug("_onMessageHandler", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, message);
 
-            return this._preventSuspendPromise;
-        };
+			return this._preventSuspendPromise;
+		};
 
-        const _messageProducer = () => {
-            this.suspendConnectionPorts[currentConnectionId].port.postMessage(`Ah, ha, ha, ha, stayin' alive, stayin' alive: ${currentConnectionId}, ${this.activeSuspendConnections}`);
-        };
+		const _messageProducer = () => {
+			this.suspendConnectionPorts[currentConnectionId].port.postMessage(`Ah, ha, ha, ha, stayin' alive, stayin' alive: ${currentConnectionId}, ${this.activeSuspendConnections}`);
+		};
 
-        // NOTE: this message producer is unneccessary.
-        const preventSuspensionIntervalId = setInterval(_messageProducer, 1000);
+		// NOTE: this message producer is unnecessary.
+		const preventSuspensionIntervalId = setInterval(_messageProducer, 1000);
 
-        const _onDisconnectHandler = () => {
-            logDebug("Start", "_onDisconnectHandler", currentConnectionId, this.activeSuspendConnections, port);
+		const _onDisconnectHandler = () => {
+			logDebug("Start", "_onDisconnectHandler", currentConnectionId, this.activeSuspendConnections, port);
 
-            clearInterval(preventSuspensionIntervalId);
+			clearInterval(preventSuspensionIntervalId);
 
-            delete this.suspendConnectionPorts[currentConnectionId];
+			delete this.suspendConnectionPorts[currentConnectionId];
 
-            this.activeSuspendConnections--;
+			this.activeSuspendConnections--;
 
-            logDebug("Done", "_onDisconnectHandler", currentConnectionId, this.activeSuspendConnections, port);
-        };
+			logDebug("Done", "_onDisconnectHandler", currentConnectionId, this.activeSuspendConnections, port);
+		};
 
-        // NOTE: the background connects once per suspension prevention.
-        this.suspendConnectionPorts[currentConnectionId] = {
-            currentConnectionId: currentConnectionId,
-            port: port,
-            preventSuspensionIntervalId: preventSuspensionIntervalId,
-            _onDisconnectHandler: _onDisconnectHandler,
-        };
+		// NOTE: the background connects once per suspension prevention.
+		this.suspendConnectionPorts[currentConnectionId] = {
+			_onDisconnectHandler,
+			currentConnectionId,
+			port,
+			preventSuspensionIntervalId,
+		};
 
-        // NOTE: this disconnect listener is unneccessary.
-        this.suspendConnectionPorts[currentConnectionId].port.onDisconnect.addListener(_onDisconnectHandler);
+		// NOTE: this disconnect listener is unnecessary.
+		this.suspendConnectionPorts[currentConnectionId].port.onDisconnect.addListener(_onDisconnectHandler);
 
-        // NOTE: this message listener is unneccessary.
-        this.suspendConnectionPorts[currentConnectionId].port.onMessage.addListener(_onMessageHandler);
+		// NOTE: this message listener is unnecessary.
+		this.suspendConnectionPorts[currentConnectionId].port.onMessage.addListener(_onMessageHandler);
 
-        logDebug("Done", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
-    };
+		logDebug("Done", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
+	}
 
-    _cleanUpConnections() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "_cleanUpConnections");
+	async _cleanUpConnections() {
+		logDebug("Start", "_cleanUpConnections");
 
-                const portDisconnectPromises = this.suspendConnectionPorts
-                    .map((suspendConnectionPort) => {
-                        if (suspendConnectionPort) {
-                            if (suspendConnectionPort.port && typeof suspendConnectionPort.port.disconnect === "function") {
-                                suspendConnectionPort.port.disconnect();
-                            }
+		// TODO: this isn't an array of promises, should it be?
+		const portDisconnectPromises = this.suspendConnectionPorts
+			.map((suspendConnectionPort) => {
+				if (suspendConnectionPort) {
+					if (suspendConnectionPort.port && typeof suspendConnectionPort.port.disconnect === "function") {
+						suspendConnectionPort.port.disconnect();
+					}
 
-                            if (typeof suspendConnectionPort._onDisconnectHandler === "function") {
-                                suspendConnectionPort._onDisconnectHandler();
-                            }
-                        }
+					if (typeof suspendConnectionPort._onDisconnectHandler === "function") {
+						suspendConnectionPort._onDisconnectHandler();
+					}
+				}
 
-                        return undefined;
-                    });
+				return undefined;
+			});
 
-                return Promise.all(portDisconnectPromises)
-                    .then(() => {
-                        logDebug("Done", "_cleanUpConnections");
+		await Promise.all(portDisconnectPromises);
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		logDebug("Done", "_cleanUpConnections");
+	}
 
-    _createOnSuspendPromise() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "_createOnSuspendPromise");
+	async _createOnSuspendPromise() {
+		logDebug("Start", "_createOnSuspendPromise");
 
-                this._preventSuspendPromise = Promise.resolve()
-                    .then(() => {
-                        logDebug("Start", "_preventSuspendPromise", "creating");
+		logDebug("Start", "_preventSuspendPromise", "creating");
 
-                        return undefined;
-                    })
-                    .then(() => new Promise(
-                        (resolve) => {
-                            // NOTE: should keep the channel alive until it disconnects.
-                            // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onMessage
-                            // https://developer.chrome.com/extensions/runtime
-                            this._preventSuspendPromiseResolve = resolve;
-                        }),
-                    )
-                    .then(() => {
-                        logDebug("Done", "_preventSuspendPromise", "resolved");
+		this._preventSuspendPromise = await new Promise(
+			(resolve) => {
+				// NOTE: should keep the channel alive until it disconnects.
+				// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onMessage
+				// https://developer.chrome.com/extensions/runtime
+				this._preventSuspendPromiseResolve = resolve;
+			});
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		logDebug("Done", "_preventSuspendPromise", "resolved");
+	}
 
-    _finishOnSuspendPromise() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "_finishOnSuspendPromise");
+	async _finishOnSuspendPromise() {
+		logDebug("Start", "_finishOnSuspendPromise");
 
-                return Promise.resolve()
-                    .then(() => this._preventSuspendPromiseResolve())
-                    .then(() => this._preventSuspendPromise)
-                    .then(() => {
-                        logDebug("Done", "_finishOnSuspendPromise");
+		await this._preventSuspendPromiseResolve();
+		await this._preventSuspendPromise;
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		logDebug("Done", "_finishOnSuspendPromise");
+	}
 
-    start() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "SuspensionListenerManager.start");
+	async start() {
+		logDebug("Start", "SuspensionListenerManager.start");
 
-                if (browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
-                    throw new Error("SuspensionListenerManager: Already initialized.");
-                }
+		if (browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
+			throw new Error("SuspensionListenerManager: Already initialized.");
+		}
 
-                browser.runtime.onConnect.addListener(this._onConnectHandlerBound);
+		browser.runtime.onConnect.addListener(this._onConnectHandlerBound);
 
-                return this._createOnSuspendPromise()
-                    .then(() => {
-                        logDebug("Done", "SuspensionListenerManager.start");
+		await this._createOnSuspendPromise();
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		logDebug("Done", "SuspensionListenerManager.start");
+	}
 
-    stop() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "SuspensionListenerManager.stop");
+	async stop() {
+		logDebug("Start", "SuspensionListenerManager.stop");
 
-                if (!browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
-                    throw new Error("SuspensionListenerManager: Not initialized.");
-                }
+		if (!browser.runtime.onConnect.hasListener(this._onConnectHandlerBound)) {
+			throw new Error("SuspensionListenerManager: Not initialized.");
+		}
 
-                browser.runtime.onConnect.removeListener(this._onConnectHandlerBound);
-                this._onConnectHandlerBound = null;
+		browser.runtime.onConnect.removeListener(this._onConnectHandlerBound);
+		this._onConnectHandlerBound = null;
 
-                return this._finishOnSuspendPromise()
-                    .then(() => {
-                        if (this.activeSuspendConnections !== 0) {
-                            logWarn(`this.activeSuspendConnections is not 0: ${this.activeSuspendConnections}. Attempting to disconnect.`);
+		await this._finishOnSuspendPromise();
 
-                            return this._cleanUpConnections();
-                        }
+		if (this.activeSuspendConnections !== 0) {
+			logWarn(`this.activeSuspendConnections is not 0: ${this.activeSuspendConnections}. Attempting to disconnect.`);
 
-                        return undefined;
-                    })
-                    .then(() => {
-                        logDebug("Done", "SuspensionListenerManager.stop");
+			await this._cleanUpConnections();
+		}
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		logDebug("Done", "SuspensionListenerManager.stop");
+	}
 }

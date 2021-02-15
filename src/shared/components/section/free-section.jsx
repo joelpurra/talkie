@@ -18,39 +18,41 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import EditionSection from "./edition-section.jsx";
 
 export default class FreeSection extends React.PureComponent {
-    static defaultProps = {
-        mode: "h2",
-        className: "",
-    };
+	static defaultProps = {
+		className: "",
+	}
 
-    static propTypes = {
-        mode: PropTypes.oneOf(["p", "h2"]).isRequired,
-        children: PropTypes.node.isRequired,
-        className: PropTypes.string.isRequired,
-    }
+	static propTypes = {
+		children: PropTypes.node.isRequired,
+		className: PropTypes.string,
+		mode: PropTypes.oneOf([
+			"p",
+			"h2",
+		]).isRequired,
+	}
 
-    render() {
-        const {
-            mode,
-            className,
-        } = this.props;
+	render() {
+		const {
+			mode,
+			className,
+		} = this.props;
 
-        const isPremiumEdition = false;
+		const isPremiumEdition = false;
 
-        return (
-            <EditionSection
-                mode={mode}
-                isPremiumEdition={isPremiumEdition}
-                className={className}
-            >
-                {this.props.children}
-            </EditionSection>
-        );
-    }
+		return (
+			<EditionSection
+				className={className}
+				isPremiumEdition={isPremiumEdition}
+				mode={mode}
+			>
+				{this.props.children}
+			</EditionSection>
+		);
+	}
 }

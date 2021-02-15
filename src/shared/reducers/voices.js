@@ -18,28 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import * as actionTypes from "../constants/action-types-voices";
 import {
-    createAssignmentActionMapReducer,
+	createAssignmentActionMapReducer,
 } from "../utils/reduce-helpers";
 
-import * as actionTypes from "../constants/action-types-voices";
-
 const initialState = {
-    voices: [],
-    speakLongTexts: false,
-    navigatorLanguage: null,
-    navigatorLanguages: [],
-    translatedLanguages: [],
+	navigatorLanguage: null,
+	navigatorLanguages: [],
+	speakLongTexts: false,
+	translatedLanguages: [],
+	voices: [],
 };
 
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_SPEAK_LONG_TEXTS]: "speakLongTexts",
-    [actionTypes.SET_VOICES]: "voices",
-    [actionTypes.SET_NAVIGATOR_LANGUAGE]: "navigatorLanguage",
-    [actionTypes.SET_NAVIGATOR_LANGUAGES]: "navigatorLanguages",
-    [actionTypes.SET_TRANSLATED_LANGUAGES]: "translatedLanguages",
+	[actionTypes.SET_SPEAK_LONG_TEXTS]: "speakLongTexts",
+	[actionTypes.SET_VOICES]: "voices",
+	[actionTypes.SET_NAVIGATOR_LANGUAGE]: "navigatorLanguage",
+	[actionTypes.SET_NAVIGATOR_LANGUAGES]: "navigatorLanguages",
+	[actionTypes.SET_TRANSLATED_LANGUAGES]: "translatedLanguages",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

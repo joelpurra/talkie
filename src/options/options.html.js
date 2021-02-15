@@ -19,17 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import getHtml from "../shared/renderers/render-react-html";
-
-import rootReducer from "./reducers";
 import actions from "./actions";
 import App from "./containers/app.jsx";
 import htmlTemplate from "./options.template.html";
+import rootReducer from "./reducers";
 
 // TODO: generalize preloading?
 const prerenderActionsToDispatch = [
-    actions.shared.voices.loadTranslatedLanguages(),
-    actions.unshared.navigation.setActiveTabId("voices"),
+	actions.shared.voices.loadTranslatedLanguages(),
+	actions.unshared.navigation.setActiveTabId("voices"),
 ];
 const postrenderActionsToDispatch = [];
 
-export default (talkieLocale) => getHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, htmlTemplate, talkieLocale, App);
+export default function get(talkieLocale) {
+	return getHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, htmlTemplate, talkieLocale, App);
+}

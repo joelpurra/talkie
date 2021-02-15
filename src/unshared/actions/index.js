@@ -20,6 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as navigation from "./navigation";
 
-export default {
-    navigation,
+const actions = {
+	navigation,
 };
+
+export default actions;

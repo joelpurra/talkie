@@ -19,91 +19,91 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    createSelector,
+	createSelector,
 } from "reselect";
 
 import {
-    getLanguageGroupsFromLanguages,
-    getLanguagesByLanguageGroupFromVoices,
-    getLanguagesFromVoices,
-    getVoicesByLanguageFromVoices,
-    getVoicesByLanguageGroupFromVoices,
-    getVoicesByLanguagesByLanguageGroupFromVoices,
-    getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups,
+	getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups,
+	getLanguageGroupsFromLanguages,
+	getLanguagesByLanguageGroupFromVoices,
+	getLanguagesFromVoices,
+	getVoicesByLanguageFromVoices,
+	getVoicesByLanguageGroupFromVoices,
+	getVoicesByLanguagesByLanguageGroupFromVoices,
 } from "../utils/transform-voices";
 
 export const getVoices = (state) => state.shared.voices.voices;
 
 export const getVoicesCount = createSelector(
-    [
-        getVoices,
-    ],
-    (voices) => voices.length,
+	[
+		getVoices,
+	],
+	(voices) => voices.length,
 );
 
 export const getLanguages = createSelector(
-    [
-        getVoices,
-    ],
-    (voices) => getLanguagesFromVoices(voices),
+	[
+		getVoices,
+	],
+	(voices) => getLanguagesFromVoices(voices),
 );
 
 export const getLanguagesCount = createSelector(
-    [
-        getLanguages,
-    ],
-    (languages) => languages.length,
+	[
+		getLanguages,
+	],
+	(languages) => languages.length,
 );
 
 export const getLanguageGroups = createSelector(
-    [
-        getLanguages,
-    ],
-    (languages) => getLanguageGroupsFromLanguages(languages),
+	[
+		getLanguages,
+	],
+	(languages) => getLanguageGroupsFromLanguages(languages),
 );
 
 export const getLanguageGroupsCount = createSelector(
-    [
-        getLanguageGroups,
-    ],
-    (languageGroups) => languageGroups.length,
+	[
+		getLanguageGroups,
+	],
+	(languageGroups) => languageGroups.length,
 );
 
 export const getVoicesByLanguage = createSelector(
-    [
-        getVoices,
-    ],
-    (voices) => getVoicesByLanguageFromVoices(voices),
+	[
+		getVoices,
+	],
+	(voices) => getVoicesByLanguageFromVoices(voices),
 );
 
 export const getVoicesByLanguageGroup = createSelector(
-    [
-        getVoices,
-    ],
-    (voices) => getVoicesByLanguageGroupFromVoices(voices),
+	[
+		getVoices,
+	],
+	(voices) => getVoicesByLanguageGroupFromVoices(voices),
 );
 
 export const getLanguagesByLanguageGroup = createSelector(
-    [
-        getVoices,
-    ],
-    (voices) => getLanguagesByLanguageGroupFromVoices(voices),
+	[
+		getVoices,
+	],
+	(voices) => getLanguagesByLanguageGroupFromVoices(voices),
 );
 
 export const getVoicesByLanguagesByLanguageGroup = createSelector(
-    [
-        getVoices,
-    ],
-    (voices) => getVoicesByLanguagesByLanguageGroupFromVoices(voices),
+	[
+		getVoices,
+	],
+	(voices) => getVoicesByLanguagesByLanguageGroupFromVoices(voices),
 );
 
 export const getNavigatorLanguages = (state) => state.shared.voices.navigatorLanguages;
 
 export const getAvailableBrowserLanguageWithInstalledVoice = createSelector(
-    [
-        getNavigatorLanguages,
-        getLanguages,
-        getLanguageGroups,
-    ],
-    (navigatorLanguages, languages, languageGroups) => getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups(navigatorLanguages, languages, languageGroups),
+	[
+		getNavigatorLanguages,
+		getLanguages,
+		getLanguageGroups,
+	],
+	(navigatorLanguages, languages, languageGroups) => getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups(navigatorLanguages, languages, languageGroups),
 );

@@ -19,23 +19,22 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    actionMapReducer,
+	actionMapReducer,
 }
-    from "../../shared/utils/reduce-helpers";
-
+	from "../../shared/utils/reduce-helpers";
 import * as actionTypes from "../constants/action-types-navigation";
 
 const initialState = {
-    shouldShowBackButton: false,
+	shouldShowBackButton: false,
 };
 
 const actionsMap = {
-    [actionTypes.SET_SHOULD_SHOW_BACK_BUTTON]: (previousState, action) => {
-        return {
-            ...previousState,
-            shouldShowBackButton: action.shouldShowBackButton,
-        };
-    },
+	[actionTypes.SET_SHOULD_SHOW_BACK_BUTTON]: (previousState, action) => {
+		return {
+			...previousState,
+			shouldShowBackButton: action.shouldShowBackButton,
+		};
+	},
 };
 
 export default actionMapReducer(actionsMap, initialState);

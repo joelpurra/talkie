@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    combineReducers,
+	combineReducers,
 } from "redux";
 
 import metadata from "./metadata";
@@ -29,9 +29,9 @@ import speaking from "./speaking";
 import voices from "./voices";
 
 export default combineReducers({
-    metadata,
-    navigation,
-    progress,
-    speaking,
-    voices,
+	metadata,
+	navigation,
+	progress,
+	speaking,
+	voices,
 });

@@ -18,128 +18,95 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "./promise";
-
 export default class MetadataManager {
-    constructor(manifestProvider, settingsManager) {
-        this.manifestProvider = manifestProvider;
-        this.settingsManager = settingsManager;
+	constructor(manifestProvider, settingsManager) {
+		this.manifestProvider = manifestProvider;
+		this.settingsManager = settingsManager;
 
-        this._editionTypePremium = "premium";
-        this._editionTypeFree = "free";
-        this._systemTypeChrome = "chrome";
-        this._systemTypeWebExtension = "webextension";
-    }
+		this._editionTypePremium = "premium";
+		this._editionTypeFree = "free";
+		this._systemTypeChrome = "chrome";
+		this._systemTypeWebExtension = "webextension";
+	}
 
-    isPremiumEdition() {
-        return promiseTry(
-            () => this.settingsManager.getIsPremiumEdition(),
-        );
-    }
+	async isPremiumEdition() {
+		return this.settingsManager.getIsPremiumEdition();
+	}
 
-    getExtensionId() {
-        return promiseTry(
-            () => browser.runtime.id,
-        );
-    }
+	async getExtensionId() {
+		return browser.runtime.id;
+	}
 
-    getManifestSync() {
-        /* eslint-disable no-sync */
-        return this.manifestProvider.getSync();
-        /* eslint-enable no-sync */
-    }
+	getManifestSync() {
+		// eslint-disable-next-line no-sync
+		return this.manifestProvider.getSync();
+	}
 
-    getManifest() {
-        return promiseTry(
-            /* eslint-disable no-sync */
-            () => this.getManifestSync(),
-            /* eslint-enable no-sync */
-        );
-    }
+	async getManifest() {
+		// eslint-disable-next-line no-sync
+		return this.getManifestSync();
+	}
 
-    getVersionNumber() {
-        return promiseTry(
-            () => this.getManifest()
-                .then((manifest) => {
-                    return manifest.version || null;
-                }),
-        );
-    }
+	async getVersionNumber() {
+		const manifest = await this.getManifest();
 
-    getVersionName() {
-        return promiseTry(
-            () => this.getManifest()
-                .then((manifest) => {
-                    return manifest.version_name || null;
-                }),
-        );
-    }
+		return manifest.version || null;
+	}
 
-    getEditionType() {
-        return promiseTry(
-            () => this.isPremiumEdition()
-                .then((isPremiumEdition) => {
-                    if (isPremiumEdition) {
-                        return this._editionTypePremium;
-                    }
+	async getVersionName() {
+		const manifest = await this.getManifest();
 
-                    return this._editionTypeFree;
-                }),
-        );
-    }
+		return manifest.version_name || null;
+	}
 
-    isChromeVersion() {
-        return promiseTry(
-            () => this.getVersionName()
-                .then((versionName) => {
-                    if (versionName.includes(" Chrome Extension ")) {
-                        return true;
-                    }
+	async getEditionType() {
+		const isPremiumEdition = await this.isPremiumEdition();
 
-                    return false;
-                }),
-        );
-    }
+		if (isPremiumEdition) {
+			return this._editionTypePremium;
+		}
 
-    isWebExtensionVersion() {
-        return promiseTry(
-            () => this.getVersionName()
-                .then((versionName) => {
-                    if (versionName.includes(" WebExtension ")) {
-                        return true;
-                    }
+		return this._editionTypeFree;
+	}
 
-                    return false;
-                }),
-        );
-    }
+	async isChromeVersion() {
+		const versionName = await this.getVersionName();
 
-    getSystemType() {
-        return promiseTry(
-            () => this.isChromeVersion()
-                .then((isChrome) => {
-                    if (isChrome) {
-                        return this._systemTypeChrome;
-                    }
+		if (versionName.includes(" Chrome Extension ")) {
+			return true;
+		}
 
-                    return this._systemTypeWebExtension;
-                }),
-        );
-    }
+		return false;
+	}
 
-    getOsType() {
-        return promiseTry(
-            () => browser.runtime.getPlatformInfo()
-                .then((platformInfo) => {
-                    if (platformInfo && typeof platformInfo.os === "string") {
-                        // https://developer.chrome.com/extensions/runtime#type-PlatformOs
-                        return platformInfo.os;
-                    }
+	async isWebExtensionVersion() {
+		const versionName = await this.getVersionName();
 
-                    return null;
-                }),
-        );
-    }
+		if (versionName.includes(" WebExtension ")) {
+			return true;
+		}
+
+		return false;
+	}
+
+	async getSystemType() {
+		const isChrome = await this.isChromeVersion();
+
+		if (isChrome) {
+			return this._systemTypeChrome;
+		}
+
+		return this._systemTypeWebExtension;
+	}
+
+	async getOsType() {
+		const platformInfo = await browser.runtime.getPlatformInfo();
+
+		if (platformInfo && typeof platformInfo.os === "string") {
+			// https://developer.chrome.com/extensions/runtime#type-PlatformOs
+			return platformInfo.os;
+		}
+
+		return null;
+	}
 }

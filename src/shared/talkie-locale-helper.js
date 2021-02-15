@@ -18,62 +18,53 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "./promise";
-
 import languages from "../languages/languages.json";
 
 export default class TalkieLocaleHelper {
-    _getSync(languageCode, name) {
-        const languageGroup = languageCode.substring(0, 2);
+	_getSync(languageCode, name) {
+		const languageGroup = languageCode.slice(0, 2);
 
-        const value = (
-            languages.languages[languageCode]
-                && languages.languages[languageCode][name]
-        )
-            || (
-                languages.languages[languageGroup]
-                && languages.languages[languageGroup][name]
-            )
-            || languages.base[name];
+		const value = (
+			languages.languages[languageCode]
+				&& languages.languages[languageCode][name]
+		)
+			|| (
+				languages.languages[languageGroup]
+				&& languages.languages[languageGroup][name]
+			)
+			|| languages.base[name];
 
-        return value;
-    }
+		return value;
+	}
 
-    getBidiDirectionSync(languageCode) {
-        /* eslint-disable no-sync */
-        return this._getSync(languageCode, "direction");
-        /* eslint-enable no-sync */
-    }
+	getBidiDirectionSync(languageCode) {
+		// eslint-disable-next-line no-sync
+		return this._getSync(languageCode, "direction");
+	}
 
-    getBidiDirection(languageCode) {
-        /* eslint-disable no-sync */
-        return promiseTry(() => this.getBidiDirectionSync(languageCode));
-        /* eslint-enable no-sync */
-    }
+	async getBidiDirection(languageCode) {
+		// eslint-disable-next-line no-sync
+		return this.getBidiDirectionSync(languageCode);
+	}
 
-    getSampleTextSync(languageCode) {
-        /* eslint-disable no-sync */
-        return this._getSync(languageCode, "sample");
-        /* eslint-enable no-sync */
-    }
+	getSampleTextSync(languageCode) {
+		// eslint-disable-next-line no-sync
+		return this._getSync(languageCode, "sample");
+	}
 
-    getSampleText(languageCode) {
-        /* eslint-disable no-sync */
-        return promiseTry(() => this.getSampleTextSync(languageCode));
-        /* eslint-enable no-sync */
-    }
+	async getSampleText(languageCode) {
+		// eslint-disable-next-line no-sync
+		return this.getSampleTextSync(languageCode);
+	}
 
-    getTranslatedLanguagesSync() {
-        const allLanguages = Object.keys(languages.languages);
+	getTranslatedLanguagesSync() {
+		const allLanguages = Object.keys(languages.languages);
 
-        return allLanguages;
-    }
+		return allLanguages;
+	}
 
-    getTranslatedLanguages() {
-        /* eslint-disable no-sync */
-        return promiseTry(() => this.getTranslatedLanguagesSync());
-        /* eslint-enable no-sync */
-    }
+	async getTranslatedLanguages() {
+		// eslint-disable-next-line no-sync
+		return this.getTranslatedLanguagesSync();
+	}
 }

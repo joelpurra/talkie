@@ -19,301 +19,275 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logDebug,
-    logInfo,
-    logError,
-} from "../shared/log";
-
+	isUndefinedOrNullOrEmptyOrWhitespace,
+	shallowCopy,
+} from "../shared/basic";
 import {
-    promiseTry,
-    promiseSeries,
+	logDebug,
+	logError,
+	logInfo,
+} from "../shared/log";
+import {
+	promiseSeries,
 } from "../shared/promise";
 
-import {
-    isUndefinedOrNullOrEmptyOrWhitespace,
-    shallowCopy,
-} from "../shared/basic";
-
 export default class LanguageHelper {
-    constructor(contentLogger, configuration, translator) {
-        this.contentLogger = contentLogger;
-        this.configuration = configuration;
-        this.translator = translator;
+	constructor(contentLogger, configuration, translator) {
+		this.contentLogger = contentLogger;
+		this.configuration = configuration;
+		this.translator = translator;
 
-        this.noTextSelectedMessage = {
-            text: this.translator.translate("noTextSelectedMessage"),
-            effectiveLanguage: this.translator.translate("extensionLocale"),
-        };
+		this.noTextSelectedMessage = {
+			effectiveLanguage: this.translator.translate("extensionLocale"),
+			text: this.translator.translate("noTextSelectedMessage"),
+		};
 
-        this.noVoiceForLanguageDetectedMessage = {
-            text: this.translator.translate("noVoiceForLanguageDetectedMessage"),
-            effectiveLanguage: this.translator.translate("noVoiceForLanguageDetectedMessageLanguage"),
-        };
+		this.noVoiceForLanguageDetectedMessage = {
+			effectiveLanguage: this.translator.translate("noVoiceForLanguageDetectedMessageLanguage"),
+			text: this.translator.translate("noVoiceForLanguageDetectedMessage"),
+		};
 
-        // https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
-        // https://en.wikipedia.org/wiki/ISO_639-1
-        // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-        // http://xml.coverpages.org/iso639a.html
-        // NOTE: discovered because Twitter seems to still use "iw".
-        this.iso639Dash1Aliases1988To2002 = {
-            "in": "id",
-            "iw": "he",
-            "ji": "yi",
-        };
-    }
+		// https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
+		// https://en.wikipedia.org/wiki/ISO_639-1
+		// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+		// http://xml.coverpages.org/iso639a.html
+		// NOTE: discovered because Twitter seems to still use "iw".
+		this.iso639Dash1Aliases1988To2002 = {
+			"in": "id",
+			iw: "he",
+			ji: "yi",
+		};
+	}
 
-    detectPageLanguage() {
-        return promiseTry(
-            () => {
-                // https://developer.browser.com/extensions/tabs#method-detectLanguage
-                return browser.tabs.detectLanguage()
-                    .then((language) => {
-                        logDebug("detectPageLanguage", "Browser detected primary page language", language);
+	async detectPageLanguage() {
+		try {
+			// https://developer.browser.com/extensions/tabs#method-detectLanguage
+			const language = await browser.tabs.detectLanguage();
 
-                        // The language fallback value is "und", so treat it as no language.
-                        if (!language || typeof language !== "string" || language === "und") {
-                            return null;
-                        }
+			logDebug("detectPageLanguage", "Browser detected primary page language", language);
 
-                        return language;
-                    })
-                    .catch((error) => {
-                        // https://github.com/joelpurra/talkie/issues/3
-                        // NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
-                        // As this is not critical, just log the error and resolve with null.
-                        logError("detectPageLanguage", error);
+			// The language fallback value is "und", so treat it as no language.
+			if (!language || typeof language !== "string" || language === "und") {
+				return null;
+			}
 
-                        return null;
-                    });
-            },
-        );
-    }
+			return language;
+		} catch (error) {
+			// https://github.com/joelpurra/talkie/issues/3
+			// NOTE: It seems the Vivaldi browser doesn't (yet/always) support detectLanguage.
+			// As this is not critical, just log the error and resolve with null.
+			logError("detectPageLanguage", error);
 
-    detectTextLanguage(text) {
-        return promiseTry(
-            () => {
-                if (!("detectLanguage" in browser.i18n)) {
-                    // NOTE: text-based language detection is only used as a fallback.
-                    logDebug("detectTextLanguage", "Browser does not support detecting text language");
+			return null;
+		}
+	}
 
-                    return null;
-                }
+	async detectTextLanguage(text) {
+		if (!("detectLanguage" in browser.i18n)) {
+			// NOTE: text-based language detection is only used as a fallback.
+			logDebug("detectTextLanguage", "Browser does not support detecting text language");
 
-                // https://developer.browser.com/extensions/i18n#method-detectLanguage
-                return browser.i18n.detectLanguage(text)
-                    .then((result) => {
-                        const MINIMUM_RELIABILITY_PERCENTAGE = 50;
+			return null;
+		}
 
-                        if (
-                            !result
-                                // NOTE: the "isReliable" flag can apparently be false for languages with 100% reliabilty.
-                                // NOTE: using the percentage instead.
-                                // || !result.isReliable
-                                || !result.languages
-                                || !(result.languages.length > 0)
-                                || typeof result.languages[0].language !== "string"
-                                || !(result.languages[0].language.trim().length > 0)
-                                // NOTE: The language fallback value is "und", so treat it as no language.
-                                || result.languages[0].language === "und"
-                                || result.languages[0].percentage < MINIMUM_RELIABILITY_PERCENTAGE
-                        ) {
-                            // NOTE: text-based language detection is only used as a fallback.
-                            logDebug("detectTextLanguage", "Browser did not detect reliable text language", result);
+		// https://developer.browser.com/extensions/i18n#method-detectLanguage
+		const result = await browser.i18n.detectLanguage(text);
 
-                            return null;
-                        }
+		const MINIMUM_RELIABILITY_PERCENTAGE = 50;
 
-                        const primaryDetectedTextLanguage = result.languages[0].language;
+		const isLanguageDetected = !result
+			// NOTE: the "isReliable" flag can apparently be false for languages with 100% reliabilty.
+			// NOTE: using the percentage instead.
+			// || !result.isReliable
+			|| !result.languages
+			|| !(result.languages.length > 0)
+			|| typeof result.languages[0].language !== "string"
+			|| !(result.languages[0].language.trim().length > 0)
+			// NOTE: The language fallback value is "und", so treat it as no language.
+			|| result.languages[0].language === "und"
+			|| result.languages[0].percentage < MINIMUM_RELIABILITY_PERCENTAGE;
 
-                        logDebug("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
+		if (isLanguageDetected) {
+			// NOTE: text-based language detection is only used as a fallback.
+			logDebug("detectTextLanguage", "Browser did not detect reliable text language", result);
 
-                        return primaryDetectedTextLanguage;
-                    });
-            },
-        );
-    }
+			return null;
+		}
 
-    getSelectionsWithValidText(selections) {
-        return promiseTry(
-            () => {
-                const isNonNullObject = (selection) => !!selection && typeof selection === "object";
+		const primaryDetectedTextLanguage = result.languages[0].language;
 
-                const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+		logDebug("detectTextLanguage", "Browser detected reliable text language", result, primaryDetectedTextLanguage);
 
-                const trimText = (selection) => {
-                    const copy = shallowCopy(selection);
+		return primaryDetectedTextLanguage;
+	}
 
-                    copy.text = copy.text.trim();
+	async getSelectionsWithValidText(selections) {
+		const isNonNullObject = (selection) => Boolean(selection) && typeof selection === "object";
 
-                    return copy;
-                };
+		const hasValidText = (selection) => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
 
-                const selectionsWithValidText = selections
-                    .filter(isNonNullObject)
-                    .filter(hasValidText)
-                    .map(trimText)
-                    .filter(hasValidText);
+		const trimText = (selection) => {
+			const copy = shallowCopy(selection);
 
-                return selectionsWithValidText;
-            },
-        );
-    }
+			copy.text = copy.text.trim();
 
-    detectAndAddLanguageForSelections(selectionsWithValidText) {
-        return promiseTry(
-            () => Promise.all(
-                selectionsWithValidText.map(
-                    (selection) => {
-                        const copy = shallowCopy(selection);
+			return copy;
+		};
 
-                        return this.detectTextLanguage(copy.text)
-                            .then((detectedTextLanguage) => {
-                                copy.detectedTextLanguage = detectedTextLanguage;
+		const selectionsWithValidText = selections
+			.filter((selection) => isNonNullObject(selection))
+			.filter((selection) => hasValidText(selection))
+			.map((selection) => trimText(selection))
+			.filter((selection) => hasValidText(selection));
 
-                                return copy;
-                            });
-                    }),
-            ),
-        );
-    }
+		return selectionsWithValidText;
+	}
 
-    isKnownVoiceLanguage(allVoices, elementLanguage) {
-        return allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
-    }
+	async detectAndAddLanguageForSelections(selectionsWithValidText) {
+		// TODO: switch to bluebird for async/promise mapping, also for the browser?
+		const detectAndAddPromises = selectionsWithValidText.map(
+			(selection) => (async () => {
+				const copy = shallowCopy(selection);
 
-    mapIso639Aliases(language) {
-        return this.iso639Dash1Aliases1988To2002[language] || language;
-    }
+				const detectedTextLanguage = await this.detectTextLanguage(copy.text);
 
-    isValidString(str) {
-        return !isUndefinedOrNullOrEmptyOrWhitespace(str);
-    }
+				copy.detectedTextLanguage = detectedTextLanguage;
 
-    cleanupLanguagesArray(allVoices, languages) {
-        const copy = (languages || [])
-            .filter((str) => this.isValidString(str))
-            .map((language) => this.mapIso639Aliases(language))
-            .filter((elementLanguage) => this.isKnownVoiceLanguage(allVoices, elementLanguage));
+				return copy;
+			})(),
+		);
 
-        return copy;
-    }
+		return Promise.all(detectAndAddPromises);
+	}
 
-    getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage) {
-        return promiseTry(
-            () => {
-                const cleanupParentElementsLanguages = (selection) => {
-                    const copy = shallowCopy(selection);
+	isKnownVoiceLanguage(allVoices, elementLanguage) {
+		return allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
+	}
 
-                    copy.parentElementsLanguages = this.cleanupLanguagesArray(allVoices, copy.parentElementsLanguages);
+	mapIso639Aliases(language) {
+		return this.iso639Dash1Aliases1988To2002[language] || language;
+	}
 
-                    return copy;
-                };
+	isValidString(string) {
+		return !isUndefinedOrNullOrEmptyOrWhitespace(string);
+	}
 
-                const getMoreSpecificLanguagesWithPrefix = (prefix) => {
-                    return (language) => language.startsWith(prefix) && language.length > prefix.length;
-                };
+	cleanupLanguagesArray(allVoices, languages) {
+		const copy = (languages || [])
+			.filter((string) => this.isValidString(string))
+			.map((language) => this.mapIso639Aliases(language))
+			.filter((elementLanguage) => this.isKnownVoiceLanguage(allVoices, elementLanguage));
 
-                const setEffectiveLanguage = (selection) => {
-                    const copy = shallowCopy(selection);
+		return copy;
+	}
 
-                    const detectedLanguages = [
-                        copy.detectedTextLanguage,
-                        copy.parentElementsLanguages[0] || null,
-                        copy.htmlTagLanguage,
-                        detectedPageLanguage,
-                    ];
+	async getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage) {
+		const cleanupParentElementsLanguages = (selection) => {
+			const copy = shallowCopy(selection);
 
-                    logDebug("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
+			copy.parentElementsLanguages = this.cleanupLanguagesArray(allVoices, copy.parentElementsLanguages);
 
-                    const cleanedLanguages = this.cleanupLanguagesArray(allVoices, detectedLanguages);
+			return copy;
+		};
 
-                    logDebug("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
+		const getMoreSpecificLanguagesWithPrefix = (prefix) => {
+			return (language) => language.startsWith(prefix) && language.length > prefix.length;
+		};
 
-                    const primaryLanguagePrefix = cleanedLanguages[0] || null;
+		const setEffectiveLanguage = (selection) => {
+			const copy = shallowCopy(selection);
 
-                    logDebug("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
+			const detectedLanguages = [
+				copy.detectedTextLanguage,
+				copy.parentElementsLanguages[0] || null,
+				copy.htmlTagLanguage,
+				detectedPageLanguage,
+			];
 
-                    // NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
-                    const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
+			logDebug("setEffectiveLanguage", "detectedLanguages", detectedLanguages);
 
-                    logDebug("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
+			const cleanedLanguages = this.cleanupLanguagesArray(allVoices, detectedLanguages);
 
-                    const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
+			logDebug("setEffectiveLanguage", "cleanedLanguages", cleanedLanguages);
 
-                    logDebug("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
+			const primaryLanguagePrefix = cleanedLanguages[0] || null;
 
-                    copy.effectiveLanguage = effectiveLanguage;
+			logDebug("setEffectiveLanguage", "primaryLanguagePrefix", primaryLanguagePrefix);
 
-                    // TODO: report language results and move logging elsewhere?
-                    promiseSeries([
-                        () => this.contentLogger.logToPage("Language", "Selected text language:", copy.detectedTextLanguage),
-                        () => this.contentLogger.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null),
-                        () => this.contentLogger.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage),
-                        () => this.contentLogger.logToPage("Language", "Detected page language:", detectedPageLanguage),
-                        () => this.contentLogger.logToPage("Language", "Effective language:", copy.effectiveLanguage),
-                    ])
-                        .catch((error) => {
-                            // NOTE: swallowing any logToPage() errors.
-                            // NOTE: reduced logging for known tab/page access problems.
-                            if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
-                                logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
-                            } else {
-                                logInfo("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
-                            }
+			// NOTE: if there is a more specific language with the same prefix among the detected languages, prefer it.
+			const cleanedLanguagesWithPrimaryPrefix = cleanedLanguages.filter(getMoreSpecificLanguagesWithPrefix(primaryLanguagePrefix));
 
-                            return undefined;
-                        });
+			logDebug("setEffectiveLanguage", "cleanedLanguagesWithPrimaryPrefix", cleanedLanguagesWithPrimaryPrefix);
 
-                    return copy;
-                };
+			const effectiveLanguage = cleanedLanguagesWithPrimaryPrefix[0] || cleanedLanguages[0] || null;
 
-                const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage
-                    .map(cleanupParentElementsLanguages)
-                    .map(setEffectiveLanguage);
+			logDebug("setEffectiveLanguage", "effectiveLanguage", effectiveLanguage);
 
-                return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
-            },
-        );
-    }
+			copy.effectiveLanguage = effectiveLanguage;
 
-    useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) {
-        return promiseTry(
-            () => {
-                const fallbackMessageForNoLanguageDetected = (selection) => {
-                    if (selection.effectiveLanguage === null) {
-                        return this.noVoiceForLanguageDetectedMessage;
-                    }
+			// TODO: report language results and move logging elsewhere?
+			// NOTE: logging is performed outside of the regular async chain.
+			promiseSeries([
+				() => this.contentLogger.logToPage("Language", "Selected text language:", copy.detectedTextLanguage),
+				() => this.contentLogger.logToPage("Language", "Selected text element language:", copy.parentElementsLanguages[0] || null),
+				() => this.contentLogger.logToPage("Language", "HTML tag language:", copy.htmlTagLanguage),
+				() => this.contentLogger.logToPage("Language", "Detected page language:", detectedPageLanguage),
+				() => this.contentLogger.logToPage("Language", "Effective language:", copy.effectiveLanguage),
+			])
+				.catch((error) => {
+					// NOTE: swallowing any logToPage() errors.
+					// NOTE: reduced logging for known tab/page access problems.
+					if (error && typeof error.message === "string" && error.message.startsWith("Cannot access")) {
+						logDebug("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+					} else {
+						logInfo("getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage", "Error", error);
+					}
+				});
 
-                    return selection;
-                };
+			return copy;
+		};
 
-                const mapResults = (selection) => {
-                    return {
-                        text: selection.text,
-                        effectiveLanguage: selection.effectiveLanguage,
-                    };
-                };
+		const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage
+			.map((selection) => cleanupParentElementsLanguages(selection))
+			.map((selection) => setEffectiveLanguage(selection));
 
-                const results = selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage
-                    .map(fallbackMessageForNoLanguageDetected)
-                    .map(mapResults);
+		return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
+	}
 
-                if (results.length === 0) {
-                    logDebug("Empty filtered selections");
+	async useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) {
+		const fallbackMessageForNoLanguageDetected = (selection) => {
+			if (selection.effectiveLanguage === null) {
+				return this.noVoiceForLanguageDetectedMessage;
+			}
 
-                    results.push(this.noTextSelectedMessage);
-                }
+			return selection;
+		};
 
-                return results;
-            },
-        );
-    }
+		const mapResults = (selection) => {
+			return {
+				effectiveLanguage: selection.effectiveLanguage,
+				text: selection.text,
+			};
+		};
 
-    cleanupSelections(allVoices, detectedPageLanguage, selections) {
-        return Promise.resolve()
-            .then(() => this.getSelectionsWithValidText(selections))
-            .then((selectionsWithValidText) => this.detectAndAddLanguageForSelections(selectionsWithValidText))
-            .then((selectionsWithValidTextAndDetectedLanguage) => this.getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage))
-            .then((selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage) => this.useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage));
-    }
+		const results = selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage
+			.map((selection) => fallbackMessageForNoLanguageDetected(selection))
+			.map((selection) => mapResults(selection));
+
+		if (results.length === 0) {
+			logDebug("Empty filtered selections");
+
+			results.push(this.noTextSelectedMessage);
+		}
+
+		return results;
+	}
+
+	async cleanupSelections(allVoices, detectedPageLanguage, selections) {
+		const selectionsWithValidText = await this.getSelectionsWithValidText(selections);
+		const selectionsWithValidTextAndDetectedLanguage = await this.detectAndAddLanguageForSelections(selectionsWithValidText);
+		const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = await this.getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage);
+
+		return this.useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage);
+	}
 }

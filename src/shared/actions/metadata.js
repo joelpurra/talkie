@@ -23,53 +23,91 @@ import * as actionTypes from "../constants/action-types-metadata";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const loadIsPremiumEdition = () =>
-    (dispatch, getState, api) => api.isPremiumEdition()
-        .then((isPremiumEdition) => dispatch(setIsPremium(isPremiumEdition)));
+	async (dispatch, getState, api) => {
+		const isPremiumEdition = await api.isPremiumEdition();
+
+		await dispatch(setIsPremium(isPremiumEdition));
+	};
 
 export const storeIsPremiumEdition = (isPremiumEdition) =>
-    (dispatch, getState, api) => api.setIsPremiumEditionOption(isPremiumEdition)
-        .then(() => dispatch(loadIsPremiumEdition()));
+	async (dispatch, getState, api) => {
+		await api.setIsPremiumEditionOption(isPremiumEdition);
+		await dispatch(loadIsPremiumEdition());
+	};
 
 export const setIsPremium = (isPremiumEdition) => {
-    return { type: actionTypes.SET_IS_PREMIUM_EDITION, isPremiumEdition };
+	return {
+		isPremiumEdition,
+		type: actionTypes.SET_IS_PREMIUM_EDITION,
+	};
 };
 
 export const loadVersionName = () =>
-    (dispatch, getState, api) => api.getVersionName()
-        .then((versionName) => dispatch(setVersionName(versionName)));
+	async (dispatch, getState, api) => {
+		const versionName = await api.getVersionName();
+
+		await dispatch(setVersionName(versionName));
+	};
 
 export const setVersionName = (versionName) => {
-    return { type: actionTypes.SET_VERSION_NAME, versionName };
+	return {
+		type: actionTypes.SET_VERSION_NAME,
+		versionName,
+	};
 };
 
 export const loadVersionNumber = () =>
-    (dispatch, getState, api) => api.getVersionNumber()
-        .then((versionNumber) => dispatch(setVersionNumber(versionNumber)));
+	async (dispatch, getState, api) => {
+		const versionNumber = await api.getVersionNumber();
+
+		await dispatch(setVersionNumber(versionNumber));
+	};
 
 export const setVersionNumber = (versionNumber) => {
-    return { type: actionTypes.SET_VERSION_NUMBER, versionNumber };
+	return {
+		type: actionTypes.SET_VERSION_NUMBER,
+		versionNumber,
+	};
 };
 
 export const loadEditionType = () =>
-    (dispatch, getState, api) => api.getEditionType()
-        .then((editionType) => dispatch(setEditionType(editionType)));
+	async (dispatch, getState, api) => {
+		const editionType = await api.getEditionType();
+
+		await dispatch(setEditionType(editionType));
+	};
 
 export const setEditionType = (editionType) => {
-    return { type: actionTypes.SET_EDITION_TYPE, editionType };
+	return {
+		editionType,
+		type: actionTypes.SET_EDITION_TYPE,
+	};
 };
 
 export const loadSystemType = () =>
-    (dispatch, getState, api) => api.getSystemType()
-        .then((systemType) => dispatch(setSystemType(systemType)));
+	async (dispatch, getState, api) => {
+		const systemType = await api.getSystemType();
+
+		await dispatch(setSystemType(systemType));
+	};
 
 export const setSystemType = (systemType) => {
-    return { type: actionTypes.SET_SYSTEM_TYPE, systemType };
+	return {
+		systemType,
+		type: actionTypes.SET_SYSTEM_TYPE,
+	};
 };
 
 export const loadOsType = () =>
-    (dispatch, getState, api) => api.getOsType()
-        .then((osType) => dispatch(setOsType(osType)));
+	async (dispatch, getState, api) => {
+		const osType = await api.getOsType();
+
+		await dispatch(setOsType(osType));
+	};
 
 export const setOsType = (osType) => {
-    return { type: actionTypes.SET_OS_TYPE, osType };
+	return {
+		osType,
+		type: actionTypes.SET_OS_TYPE,
+	};
 };

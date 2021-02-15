@@ -28,96 +28,94 @@ const extensionShortName = "Talkie";
 
 // https://stackoverflow.com/questions/12830649/check-if-chrome-extension-installed-in-unpacked-mode
 // https://stackoverflow.com/a/20227975
-/* eslint-disable no-sync */
+// eslint-disable-next-line no-sync
 const isDevMode = () => !("update_url" in manifestProvider.getSync());
-/* eslint-enable no-sync */
 
 // NOTE: 0, 1, ...
 const loggingLevels = [
-    "TRAC",
-    "DEBG",
-    "INFO",
-    "WARN",
-    "ERRO",
+	"TRAC",
+	"DEBG",
+	"INFO",
+	"WARN",
+	"ERRO",
 
-    // NOTE: should "always" be logged, presumably for technical reasons.
-    "ALWA",
+	// NOTE: should "always" be logged, presumably for technical reasons.
+	"ALWA",
 
-    // NOTE: turns off logging output.
-    "NONE",
+	// NOTE: turns off logging output.
+	"NONE",
 ];
 
 const parseLevelName = (nextLevelName) => {
-    if (typeof nextLevelName !== "string") {
-        throw new TypeError("nextLevelName");
-    }
+	if (typeof nextLevelName !== "string") {
+		throw new TypeError("nextLevelName");
+	}
 
-    const normalizedLevelName = nextLevelName.toUpperCase();
+	const normalizedLevelName = nextLevelName.toUpperCase();
 
-    const levelIndex = loggingLevels.indexOf(normalizedLevelName);
+	const levelIndex = loggingLevels.indexOf(normalizedLevelName);
 
-    if (typeof levelIndex === "number" && Math.floor(levelIndex) === Math.ceil(levelIndex) && levelIndex >= 0 && levelIndex < loggingLevels.length) {
-        return levelIndex;
-    }
+	if (typeof levelIndex === "number" && Math.floor(levelIndex) === Math.ceil(levelIndex) && levelIndex >= 0 && levelIndex < loggingLevels.length) {
+		return levelIndex;
+	}
 
-    throw new TypeError("nextLevel");
+	throw new TypeError("nextLevel");
 };
 
 const parseLevel = (nextLevel) => {
-    if (typeof nextLevel === "number" && Math.floor(nextLevel) === Math.ceil(nextLevel) && nextLevel >= 0 && nextLevel < loggingLevels.length) {
-        return nextLevel;
-    }
+	if (typeof nextLevel === "number" && Math.floor(nextLevel) === Math.ceil(nextLevel) && nextLevel >= 0 && nextLevel < loggingLevels.length) {
+		return nextLevel;
+	}
 
-    const levelIndex = parseLevelName(nextLevel);
+	const levelIndex = parseLevelName(nextLevel);
 
-    return levelIndex;
+	return levelIndex;
 };
 
 // NOTE: default logging level differs for developers using the unpacked extension, and "normal" usage.
 let currentLevelIndex = isDevMode() ? parseLevel("DEBG") : parseLevel("WARN");
 
 export const setLevel = (nextLevel) => {
-    currentLevelIndex = parseLevel(nextLevel);
+	currentLevelIndex = parseLevel(nextLevel);
 };
 
 // NOTE: allows switching logging to strings only, to allow terminal output logging (where only one string argument is shown).
 let stringOnlyOutput = false;
 
 export const setStringOnlyOutput = (stringOnly) => {
-    stringOnlyOutput = (stringOnly === true);
+	stringOnlyOutput = (stringOnly === true);
 };
 
 const generateLogger = (loggingLevelName, consoleFunctioName) => {
-    const functionLevelIndex = parseLevel(loggingLevelName);
+	const functionLevelIndex = parseLevel(loggingLevelName);
 
-    const logger = (...args) => {
-        if (functionLevelIndex < currentLevelIndex) {
-            return;
-        }
+	const logger = (...args) => {
+		if (functionLevelIndex < currentLevelIndex) {
+			return;
+		}
 
-        const now = new Date().toISOString();
+		const now = new Date().toISOString();
 
-        let loggingArgs = [
-            loggingLevels[functionLevelIndex],
-            now,
-            extensionShortName,
-            ...args,
-        ];
+		let loggingArgs = [
+			loggingLevels[functionLevelIndex],
+			now,
+			extensionShortName,
+			...args,
+		];
 
-        if (stringOnlyOutput) {
-            // NOTE: for chrome command line console debugging.
-            // NOTE: has to be an array.
-            loggingArgs = [
-                JSON.stringify(loggingArgs),
-            ];
-        }
+		if (stringOnlyOutput) {
+			// NOTE: for chrome command line console debugging.
+			// NOTE: has to be an array.
+			loggingArgs = [
+				JSON.stringify(loggingArgs),
+			];
+		}
 
-        /* eslint-disable no-console */
-        console[consoleFunctioName](...loggingArgs);
-        /* eslint-enable no-console */
-    };
+		// eslint-disable-next-line no-console
+		console[consoleFunctioName](...loggingArgs);
+	};
 
-    return logger;
+	return logger;
 };
 
 export const logTrace = generateLogger("TRAC", "log");

@@ -18,29 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default class Discretional extends React.PureComponent {
-    static defaultProps = {
-        enabled: false,
-    };
+	static propTypes = {
+		children: PropTypes.node.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		enabled: PropTypes.bool.isRequired,
+	}
 
-    static propTypes = {
-        enabled: PropTypes.bool.isRequired,
-        children: PropTypes.node.isRequired,
-    }
+	render() {
+		const {
+			enabled,
+			children,
+		} = this.props;
 
-    render() {
-        const {
-            enabled,
-            children,
-        } = this.props;
+		if (enabled) {
+			return children;
+		}
 
-        if (enabled) {
-            return children;
-        }
-
-        return null;
-    }
+		return null;
+	}
 }

@@ -19,233 +19,203 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
+	shallowCopy,
+} from "../shared/basic";
 import {
-    logDebug,
+	logDebug,
 } from "../shared/log";
 
-import {
-    shallowCopy,
-} from "../shared/basic";
-
 export default class ContextMenuManager {
-    constructor(commandHandler, metadataManager, translator) {
-        this.commandHandler = commandHandler;
-        this.metadataManager = metadataManager;
-        this.translator = translator;
+	constructor(commandHandler, metadataManager, translator) {
+		this.commandHandler = commandHandler;
+		this.metadataManager = metadataManager;
+		this.translator = translator;
 
-        if (!isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT) && browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0) {
-            this.actionMenuLimit = browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT;
-        } else {
-            this.actionMenuLimit = Number.MAX_SAFE_INTEGER;
-        }
+		if (!Number.isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT) && browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0) {
+			this.actionMenuLimit = browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT;
+		} else {
+			this.actionMenuLimit = Number.MAX_SAFE_INTEGER;
+		}
 
-        this.contextMenuOptionsCollection = [
-            {
-                free: true,
-                premium: true,
-                chrome: true,
-                webextension: true,
-                item: {
-                    id: "talkie-context-menu-start-stop",
-                    title: this.translator.translate("contextMenuStartStopText"),
-                    contexts: [
-                        "selection",
-                    ],
-                },
-            },
-            {
-                free: true,
-                premium: true,
-                chrome: true,
-                webextension: true,
-                item: {
-                    id: "start-stop",
-                    title: this.translator.translate("commandStartStopDescription"),
-                    contexts: [
-                        "browser_action",
-                    ],
-                },
-            },
-            {
-                free: true,
-                premium: true,
-                chrome: true,
-                // TODO: enable after Firefox 55 has landed?
-                webextension: false,
-                item: {
-                    id: "read-clipboard",
-                    title: this.translator.translate("commandReadClipboardDescription"),
-                    contexts: [
-                        "browser_action",
-                        "page",
-                    ],
-                },
-            },
-            {
-                free: true,
-                premium: true,
-                chrome: true,
-                webextension: true,
-                item: {
-                    id: "buttonContextMenuSeparator01",
-                    type: "separator",
-                    contexts: [
-                        "browser_action",
-                    ],
-                },
-            },
-            {
-                free: true,
-                premium: true,
-                chrome: true,
-                webextension: true,
-                item: {
-                    id: "open-website-main",
-                    title: this.translator.translate("commandOpenWebsiteMainDescription"),
-                    contexts: [
-                        "browser_action",
-                    ],
-                },
-            },
-            {
-                free: true,
-                premium: false,
-                chrome: true,
-                webextension: true,
-                item: {
-                    id: "open-website-upgrade",
-                    title: this.translator.translate("commandOpenWebsiteUpgradeDescription"),
-                    contexts: [
-                        "browser_action",
-                    ],
-                },
-            },
-        ];
-    }
+		this.contextMenuOptionsCollection = [
+			{
+				chrome: true,
+				free: true,
+				item: {
+					contexts: [
+						"selection",
+					],
+					id: "talkie-context-menu-start-stop",
+					title: this.translator.translate("contextMenuStartStopText"),
+				},
+				premium: true,
+				webextension: true,
+			},
+			{
+				chrome: true,
+				free: true,
+				item: {
+					contexts: [
+						"browser_action",
+					],
+					id: "start-stop",
+					title: this.translator.translate("commandStartStopDescription"),
+				},
+				premium: true,
+				webextension: true,
+			},
+			{
+				chrome: true,
+				free: true,
+				item: {
+					contexts: [
+						"browser_action",
+						"page",
+					],
+					id: "read-clipboard",
+					title: this.translator.translate("commandReadClipboardDescription"),
+				},
+				premium: true,
+				// TODO: enable after Firefox 55 has landed?
+				webextension: false,
+			},
+			{
+				chrome: true,
+				free: true,
+				item: {
+					contexts: [
+						"browser_action",
+					],
+					id: "buttonContextMenuSeparator01",
+					type: "separator",
+				},
+				premium: true,
+				webextension: true,
+			},
+			{
+				chrome: true,
+				free: true,
+				item: {
+					contexts: [
+						"browser_action",
+					],
+					id: "open-website-main",
+					title: this.translator.translate("commandOpenWebsiteMainDescription"),
+				},
+				premium: true,
+				webextension: true,
+			},
+			{
+				chrome: true,
+				free: true,
+				item: {
+					contexts: [
+						"browser_action",
+					],
+					id: "open-website-upgrade",
+					title: this.translator.translate("commandOpenWebsiteUpgradeDescription"),
+				},
+				premium: false,
+				webextension: true,
+			},
+		];
+	}
 
-    removeAll() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "Removing all context menus");
+	async removeAll() {
+		logDebug("Start", "Removing all context menus");
 
-                return browser.contextMenus.removeAll()
-                    .then((result) => {
-                        logDebug("Done", "Removing all context menus");
+		const result = await browser.contextMenus.removeAll();
 
-                        return result;
-                    });
-            },
-        );
-    }
+		logDebug("Done", "Removing all context menus");
 
-    createContextMenu(contextMenuOptions) {
-        return new Promise(
-            (resolve, reject) => {
-                try {
-                    logDebug("Start", "Creating context menu", contextMenuOptions);
+		return result;
+	}
 
-                    // NOTE: apparently Chrome modifies the context menu object after it has been passed in, by adding generatedId.
-                    // NOTE: Need to pass a clean object to avoid object reuse reference problems.
-                    const contextMenu = shallowCopy(contextMenuOptions);
+	async createContextMenu(contextMenuOptions) {
+		logDebug("Start", "Creating context menu", contextMenuOptions);
 
-                    // NOTE: Can't directly use a promise chain here, as the id is returned instead.
-                    // https://github.com/mozilla/webextension-polyfill/pull/26
-                    const contextMenuId = browser.contextMenus.create(
-                        contextMenu,
-                        () => {
-                            if (browser.runtime.lastError) {
-                                return reject(browser.runtime.lastError);
-                            }
+		// NOTE: apparently Chrome modifies the context menu object after it has been passed in, by adding generatedId.
+		// NOTE: Need to pass a clean object to avoid object reuse reference problems.
+		const contextMenu = shallowCopy(contextMenuOptions);
 
-                            logDebug("Done", "Creating context menu", contextMenu);
+		// NOTE: Can't directly use a promise chain here, as the id is returned instead.
+		// https://github.com/mozilla/webextension-polyfill/pull/26
+		const contextMenuId = browser.contextMenus.create(
+			contextMenu,
+			() => {
+				if (browser.runtime.lastError) {
+					throw browser.runtime.lastError;
+				}
 
-                            return resolve(contextMenuId);
-                        },
-                    );
-                } catch (error) {
-                    return reject(error);
-                }
-            },
-        );
-    }
+				logDebug("Done", "Creating context menu", contextMenu);
 
-    contextMenuClickAction(info) {
-        return promiseTry(
-            () => {
-                logDebug("Start", "contextMenuClickAction", info);
+				return contextMenuId;
+			},
+		);
+	}
 
-                if (!info) {
-                    throw new Error("Unknown context menu click action info object.");
-                }
+	async contextMenuClickAction(info) {
+		logDebug("Start", "contextMenuClickAction", info);
 
-                return promiseTry(
-                    () => {
-                        const id = info.menuItemId;
+		if (!info) {
+			throw new Error("Unknown context menu click action info object.");
+		}
 
-                        const selectionContextMenuStartStop = this.contextMenuOptionsCollection
-                            .reduce(
-                                (prev, obj) => {
-                                    if (obj.item.id === "talkie-context-menu-start-stop") {
-                                        return obj;
-                                    }
+		const id = info.menuItemId;
 
-                                    return prev;
-                                },
-                                null);
+		const selectionContextMenuStartStop = this.contextMenuOptionsCollection
+		// eslint-disable-next-line unicorn/no-reduce
+			.reduce(
+				(previous, object) => {
+					if (object.item.id === "talkie-context-menu-start-stop") {
+						return object;
+					}
 
-                        // TODO: use assertions?
-                        if (!selectionContextMenuStartStop) {
-                            throw new Error("Not found: selectionContextMenuStartStop");
-                        }
+					return previous;
+				},
+				null);
 
-                        if (id === selectionContextMenuStartStop.item.id) {
-                            const selection = info.selectionText || null;
+		// TODO: use assertions?
+		if (!selectionContextMenuStartStop) {
+			throw new Error("Not found: selectionContextMenuStartStop");
+		}
 
-                            if (!selection || typeof selection !== "string" || selection.length === 0) {
-                                throw new Error("Unknown context menu click action selection was empty.");
-                            }
+		if (id === selectionContextMenuStartStop.item.id) {
+			const selection = info.selectionText || null;
 
-                            return this.commandHandler.handle("start-text", selection);
-                        }
+			if (!selection || typeof selection !== "string" || selection.length === 0) {
+				throw new Error("Unknown context menu click action selection was empty.");
+			}
 
-                        // NOTE: context menu items default to being commands.
-                        return this.commandHandler.handle(id);
-                    },
-                )
-                    .then(() => {
-                        logDebug("Done", "contextMenuClickAction", info);
+			return this.commandHandler.handle("start-text", selection);
+		}
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		// NOTE: context menu items default to being commands.
+		await this.commandHandler.handle(id);
 
-    createContextMenus() {
-        return promiseTry(
-            () => {
-                return Promise.all([
-                    this.metadataManager.getEditionType(),
-                    this.metadataManager.getSystemType(),
-                ])
-                    .then(([editionType, systemType]) => {
-                        const applicableContextMenuOptions = this.contextMenuOptionsCollection
-                            .filter((contextMenuOption) => contextMenuOption[editionType] === true && contextMenuOption[systemType] === true);
+		logDebug("Done", "contextMenuClickAction", info);
+	}
 
-                        // // TODO: group by selected contexts before checking against limit.
-                        // if (applicableContextMenuOptions > this.actionMenuLimit) {
-                        //     throw new Error("Maximum number of menu items reached.");
-                        // }
+	async createContextMenus() {
+		const [
+			editionType,
+			systemType,
+		] = await Promise.all([
+			this.metadataManager.getEditionType(),
+			this.metadataManager.getSystemType(),
+		]);
 
-                        const contextMenuOptionsCollectionPromises = applicableContextMenuOptions
-                            .map((contextMenuOption) => this.createContextMenu(contextMenuOption.item));
+		const applicableContextMenuOptions = this.contextMenuOptionsCollection
+			.filter((contextMenuOption) => contextMenuOption[editionType] === true && contextMenuOption[systemType] === true);
 
-                        return Promise.all(contextMenuOptionsCollectionPromises);
-                    });
-            },
-        );
-    }
+		// // TODO: group by selected contexts before checking against limit.
+		// if (applicableContextMenuOptions > this.actionMenuLimit) {
+		// throw new Error("Maximum number of menu items reached.");
+		// }
+
+		const contextMenuOptionsCollectionPromises = applicableContextMenuOptions
+			.map((contextMenuOption) => this.createContextMenu(contextMenuOption.item));
+
+		return Promise.all(contextMenuOptionsCollectionPromises);
+	}
 }

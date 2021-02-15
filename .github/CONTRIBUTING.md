@@ -18,8 +18,6 @@
   </tr>
 </table>
 
-
-
 ## Problems?
 
 - Report any issues with installation, usage on specific webpages, crashes, etcetera [using the issue tracker](https://github.com/joelpurra/talkie/issues) or the [support pages](https://joelpurra.com/support/).
@@ -32,15 +30,12 @@
 - If you are [familiar with the debugging console for extensions](https://developer.chrome.com/extensions/tut_debugging), have a look there.
   - Get maximum logging by entering `this.setLoggingLevel("DEBG")` in the background page console.
 
-
 ## Have a patch?
 
 - Translations, bug fixes, and new features are very welcome!
 - See the [developer documentation](../DEVELOP.md).
 - Follow [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/) and use the `develop` branch as the base for your pull request.
 - All project contributors need to agree to the the [Contributor License Agreement (CLA)](../CLA.md).
-
-
 
 ---
 

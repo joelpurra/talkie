@@ -18,87 +18,80 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import ScaleRange from "./scale-range.jsx";
 
 export default class LogarithmicScaleRange extends React.PureComponent {
-    static defaultProps = {
-        listName: null,
-        min: 0,
-        defaultValue: 1,
-        initialValue: 1,
-        max: 10,
-        step: 0.1,
-        disabled: true,
-    };
+	static propTypes = {
+		defaultValue: PropTypes.number.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		initialValue: PropTypes.number.isRequired,
+		listName: PropTypes.string.isRequired,
+		max: PropTypes.number.isRequired,
+		min: PropTypes.number.isRequired,
+		onChange: PropTypes.func.isRequired,
+		onInput: PropTypes.func.isRequired,
+		// TODO: take step into consideration, at least when reporting back the converted number?
+		// eslint-disable-next-line react/no-unused-prop-types
+		step: PropTypes.number.isRequired,
+	};
 
-    static propTypes = {
-        onInput: PropTypes.func.isRequired,
-        onChange: PropTypes.func.isRequired,
-        listName: PropTypes.string.isRequired,
-        min: PropTypes.number.isRequired,
-        defaultValue: PropTypes.number.isRequired,
-        initialValue: PropTypes.number.isRequired,
-        max: PropTypes.number.isRequired,
-        step: PropTypes.number.isRequired,
-        disabled: PropTypes.bool.isRequired,
-    };
+	constructor(props) {
+		super(props);
 
-    constructor(props) {
-        super(props);
+		this.handleInput = this.handleInput.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
 
-        this.handleInput = this.handleInput.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
+	_toLogarithmicRangeScale(value) {
+		const log = Math.round10(Math.log10(value) * 1000, 0);
 
-    _toLogarithmicRangeScale(value) {
-        const log = Math.round10(Math.log10(value) * 1000, 0);
+		return log;
+	}
 
-        return log;
-    }
+	_fromLogarithmicRangeScale(value) {
+		const linear = 10 ** (value / 1000);
 
-    _fromLogarithmicRangeScale(value) {
-        const linear = Math.pow(10, value / 1000);
+		return linear;
+	}
 
-        return linear;
-    }
+	handleInput(value) {
+		const linearValue = this._fromLogarithmicRangeScale(value);
 
-    handleInput(value) {
-        const linearValue = this._fromLogarithmicRangeScale(value);
+		this.props.onInput(linearValue);
+	}
 
-        this.props.onInput(linearValue);
-    }
+	handleChange(value) {
+		const linearValue = this._fromLogarithmicRangeScale(value);
 
-    handleChange(value) {
-        const linearValue = this._fromLogarithmicRangeScale(value);
+		this.props.onChange(linearValue);
+	}
 
-        this.props.onChange(linearValue);
-    }
+	render() {
+		const {
+			listName,
+			min,
+			defaultValue,
+			initialValue,
+			max,
+			disabled,
+		} = this.props;
 
-    render() {
-        const {
-            listName,
-            min,
-            defaultValue,
-            initialValue,
-            max,
-            disabled,
-        } = this.props;
-
-        return (
-            <ScaleRange
-                listName={listName}
-                min={this._toLogarithmicRangeScale(min)}
-                defaultValue={this._toLogarithmicRangeScale(defaultValue)}
-                initialValue={this._toLogarithmicRangeScale(initialValue)}
-                max={this._toLogarithmicRangeScale(max)}
-                step={1}
-                disabled={disabled}
-                onInput={this.handleInput}
-                onChange={this.handleChange}
-            />
-        );
-    }
+		return (
+			<ScaleRange
+				defaultValue={this._toLogarithmicRangeScale(defaultValue)}
+				disabled={disabled}
+				initialValue={this._toLogarithmicRangeScale(initialValue)}
+				listName={listName}
+				max={this._toLogarithmicRangeScale(max)}
+				min={this._toLogarithmicRangeScale(min)}
+				step={1}
+				onChange={this.handleChange}
+				onInput={this.handleInput}
+			/>
+		);
+	}
 }

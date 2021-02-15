@@ -18,75 +18,77 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import translateAttribute from "../../../../shared/hocs/translate.jsx";
-
-import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 import * as formBase from "../../../../shared/styled/form/form-base.jsx";
+import * as tableBase from "../../../../shared/styled/table/table-base.jsx";
 
 export default
 @translateAttribute
 class ToggleDefault extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handleClick = this.handleClick.bind(this);
-    }
+		this.handleClick = this.handleClick.bind(this);
+	}
 
-    static defaultProps = {
-        languageCode: null,
-        voiceName: null,
-        disabled: true,
-    };
+	static defaultProps = {
+		languageCode: null,
+		voiceName: null,
+	};
 
-    static propTypes = {
-        onClick: PropTypes.func.isRequired,
-        languageCode: PropTypes.string,
-        voiceName: PropTypes.string,
-        disabled: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
-    };
+	static propTypes = {
+		// eslint-disable-next-line react/boolean-prop-naming
+		disabled: PropTypes.bool.isRequired,
+		languageCode: PropTypes.string,
+		onClick: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+		voiceName: PropTypes.string,
+	};
 
-    handleClick(/* eslint-disable no-unused-vars */e/* eslint-enable no-unused-vars */) {
-        this.props.onClick();
-    }
+	handleClick(
+		// eslint-disable-next-line no-unused-vars
+		event,
+	) {
+		this.props.onClick();
+	}
 
-    render() {
-        const {
-            disabled,
-            languageCode,
-            translate,
-            voiceName,
-        } = this.props;
+	render() {
+		const {
+			disabled,
+			languageCode,
+			translate,
+			voiceName,
+		} = this.props;
 
-        let buttonText = null;
+		let buttonText = null;
 
-        if (languageCode === null || voiceName === null) {
-            buttonText = translate("frontend_voicesSetAsLanguageEmptySelection");
-        } else {
-            const messageDetailsPlaceholders = [
-                languageCode,
-                voiceName,
-            ];
+		if (languageCode === null || voiceName === null) {
+			buttonText = translate("frontend_voicesSetAsLanguageEmptySelection");
+		} else {
+			const messageDetailsPlaceholders = [
+				languageCode,
+				voiceName,
+			];
 
-            buttonText = translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
-        }
+			buttonText = translate("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
+		}
 
-        return (
-            <tableBase.tbody>
-                <tableBase.tr>
-                    <tableBase.td>
-                        <formBase.button
-                            disabled={disabled || null}
-                            onClick={this.handleClick}
-                        >
-                            {buttonText}
-                        </formBase.button>
-                    </tableBase.td>
-                </tableBase.tr>
-            </tableBase.tbody>
-        );
-    }
+		return (
+			<tableBase.tbody>
+				<tableBase.tr>
+					<tableBase.td>
+						<formBase.button
+							disabled={disabled}
+							onClick={this.handleClick}
+						>
+							{buttonText}
+						</formBase.button>
+					</tableBase.td>
+				</tableBase.tr>
+			</tableBase.tbody>
+		);
+	}
 }

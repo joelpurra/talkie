@@ -19,91 +19,75 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    getCurrentActiveTab,
-    getCurrentActiveTabId,
+	getCurrentActiveTab,
+	getCurrentActiveTabId,
 } from "../shared/tabs";
 
 export default class SpeakingStatus {
-    constructor() {
-        this.currentSpeakingTab = null;
-    }
+	constructor() {
+		this.currentSpeakingTab = null;
+	}
 
-    getSpeakingTabId() {
-        return promiseTry(
-            () => this.currentSpeakingTab,
-        );
-    }
+	async getSpeakingTabId() {
+		return this.currentSpeakingTab;
+	}
 
-    setSpeakingTabId(tabId) {
-        return this.isSpeakingTabId(tabId)
-            .then((isTabSpeaking) => {
-                if (isTabSpeaking) {
-                    throw new Error(`Tried to set tab ${tabId} as speaking, but another tab was already speaking.`);
-                }
+	async setSpeakingTabId(tabId) {
+		const isTabSpeaking = await this.isSpeakingTabId(tabId);
 
-                this.currentSpeakingTab = tabId;
+		if (isTabSpeaking) {
+			throw new Error(`Tried to set tab ${tabId} as speaking, but another tab was already speaking.`);
+		}
 
-                return undefined;
-            });
-    }
+		this.currentSpeakingTab = tabId;
+	}
 
-    setDoneSpeaking() {
-        return promiseTry(
-            () => {
-                this.currentSpeakingTab = null;
-            },
-        );
-    }
+	async setDoneSpeaking() {
+		this.currentSpeakingTab = null;
+	}
 
-    setTabIsDoneSpeaking(tabId) {
-        return this.isSpeakingTabId(tabId)
-            .then((isTabSpeaking) => {
-                // TODO: throw if it's not the same tabId as the currently speaking tab?
-                if (isTabSpeaking) {
-                    return this.setDoneSpeaking();
-                }
+	async setTabIsDoneSpeaking(tabId) {
+		const isTabSpeaking = await this.isSpeakingTabId(tabId);
 
-                return undefined;
-            });
-    }
+		// TODO: throw if it's not the same tabId as the currently speaking tab?
+		if (isTabSpeaking) {
+			return this.setDoneSpeaking();
+		}
+	}
 
-    isSpeakingTabId(tabId) {
-        return promiseTry(
-            () => this.currentSpeakingTab !== null && tabId === this.currentSpeakingTab,
-        );
-    }
+	async isSpeakingTabId(tabId) {
+		return this.currentSpeakingTab !== null && tabId === this.currentSpeakingTab;
+	}
 
-    isSpeaking() {
-        return this.getSpeakingTabId()
-            // TODO: check synthesizer.speaking === true?
-            .then((speakingTabId) => speakingTabId !== null);
-    }
+	async isSpeaking() {
+		const speakingTabId = await this.getSpeakingTabId();
 
-    setActiveTabIsDoneSpeaking() {
-        return getCurrentActiveTabId()
-            .then((activeTabId) => this.setTabIsDoneSpeaking(activeTabId));
-    }
+		// TODO: check synthesizer.speaking === true?
+		return speakingTabId !== null;
+	}
 
-    setActiveTabAsSpeaking() {
-        return getCurrentActiveTab()
-            .then((activeTab) => {
-                // NOTE: some tabs can't be retreived.
-                if (!activeTab) {
-                    return undefined;
-                }
+	async setActiveTabIsDoneSpeaking() {
+		const activeTabId = await getCurrentActiveTabId();
 
-                const activeTabId = activeTab.id;
+		return this.setTabIsDoneSpeaking(activeTabId);
+	}
 
-                return this.setSpeakingTabId(activeTabId);
-            });
-    }
+	async setActiveTabAsSpeaking() {
+		const activeTab = await getCurrentActiveTab();
 
-    isActiveTabSpeaking() {
-        return getCurrentActiveTabId()
-            .then((activeTabId) => this.isSpeakingTabId(activeTabId));
-    }
+		// NOTE: some tabs can't be retrieved.
+		if (!activeTab) {
+			return;
+		}
+
+		const activeTabId = activeTab.id;
+
+		return this.setSpeakingTabId(activeTabId);
+	}
+
+	async isActiveTabSpeaking() {
+		const activeTabId = await getCurrentActiveTabId();
+
+		return this.isSpeakingTabId(activeTabId);
+	}
 }

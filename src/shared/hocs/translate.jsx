@@ -18,19 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export default function translateHoc(ComponentToWrap) {
-    return class TranslationHoc extends React.PureComponent {
-        static contextTypes = {
-            translate: PropTypes.func.isRequired,
-        }
+	return class TranslationHoc extends React.PureComponent {
+		static contextTypes = {
+			translate: PropTypes.func.isRequired,
+		}
 
-        render() {
-            return (
-                <ComponentToWrap {...this.props} translate={this.context.translate} />
-            );
-        }
-    };
-};
+		render() {
+			return (
+				<ComponentToWrap {...this.props} translate={this.context.translate}/>
+			);
+		}
+	};
+}

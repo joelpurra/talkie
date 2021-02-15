@@ -19,45 +19,45 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class VoiceManager {
-    constructor(voiceLanguageManager, voiceRateManager, voicePitchManager) {
-        this.voiceLanguageManager = voiceLanguageManager;
-        this.voiceRateManager = voiceRateManager;
-        this.voicePitchManager = voicePitchManager;
-    }
+	constructor(voiceLanguageManager, voiceRateManager, voicePitchManager) {
+		this.voiceLanguageManager = voiceLanguageManager;
+		this.voiceRateManager = voiceRateManager;
+		this.voicePitchManager = voicePitchManager;
+	}
 
-    getEffectiveVoiceForLanguage(...args) {
-        return this.voiceLanguageManager.getEffectiveVoiceForLanguage(...args);
-    }
+	getEffectiveVoiceForLanguage(...args) {
+		return this.voiceLanguageManager.getEffectiveVoiceForLanguage(...args);
+	}
 
-    isLanguageVoiceOverrideName(...args) {
-        return this.voiceLanguageManager.isLanguageVoiceOverrideName(...args);
-    }
+	isLanguageVoiceOverrideName(...args) {
+		return this.voiceLanguageManager.isLanguageVoiceOverrideName(...args);
+	}
 
-    toggleLanguageVoiceOverrideName(...args) {
-        return this.voiceLanguageManager.toggleLanguageVoiceOverrideName(...args);
-    }
+	toggleLanguageVoiceOverrideName(...args) {
+		return this.voiceLanguageManager.toggleLanguageVoiceOverrideName(...args);
+	}
 
-    getVoiceRateDefault(...args) {
-        return this.voiceRateManager.getVoiceRateDefault(...args);
-    }
+	getVoiceRateDefault(...args) {
+		return this.voiceRateManager.getVoiceRateDefault(...args);
+	}
 
-    getEffectiveRateForVoice(...args) {
-        return this.voiceRateManager.getEffectiveRateForVoice(...args);
-    }
+	getEffectiveRateForVoice(...args) {
+		return this.voiceRateManager.getEffectiveRateForVoice(...args);
+	}
 
-    setVoiceRateOverride(...args) {
-        return this.voiceRateManager.setVoiceRateOverride(...args);
-    }
+	setVoiceRateOverride(...args) {
+		return this.voiceRateManager.setVoiceRateOverride(...args);
+	}
 
-    getVoicePitchDefault(...args) {
-        return this.voicePitchManager.getVoicePitchDefault(...args);
-    }
+	getVoicePitchDefault(...args) {
+		return this.voicePitchManager.getVoicePitchDefault(...args);
+	}
 
-    getEffectivePitchForVoice(...args) {
-        return this.voicePitchManager.getEffectivePitchForVoice(...args);
-    }
+	getEffectivePitchForVoice(...args) {
+		return this.voicePitchManager.getEffectivePitchForVoice(...args);
+	}
 
-    setVoicePitchOverride(...args) {
-        return this.voicePitchManager.setVoicePitchOverride(...args);
-    }
+	setVoicePitchOverride(...args) {
+		return this.voicePitchManager.setVoicePitchOverride(...args);
+	}
 }

@@ -19,33 +19,24 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    registerUnhandledRejectionHandler,
-} from "../shared/error-handling";
-
-import {
-    eventToPromise,
-    startReactFrontend,
-    stopReactFrontend,
+	eventToPromise,
+	startReactFrontend,
+	stopReactFrontend,
 } from "../frontend/shared-frontend";
-
+import {
+	registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
 import loadRoot from "./load-root.jsx";
 
-const start = () => promiseTry(
-    () => Promise.resolve()
-        .then(() => startReactFrontend())
-        .then(() => loadRoot())
-        .then(() => undefined),
-);
+const start = async () => {
+	await startReactFrontend();
+	await loadRoot();
+};
 
-const stop = () => promiseTry(
-    // NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
-    () => stopReactFrontend()
-        .then(() => undefined),
-);
+const stop = async () => {
+	// NOTE: stopping probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
+	await stopReactFrontend();
+};
 
 registerUnhandledRejectionHandler();
 

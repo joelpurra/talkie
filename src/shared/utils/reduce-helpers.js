@@ -19,50 +19,58 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    jsonClone,
+	jsonClone,
 } from "./basic";
 
 export const actionMapReducer = (actionsMap, initialState) =>
-    (previousState = initialState, action) => {
-        let reduceFn = null;
+	(
+		// eslint-disable-next-line default-param-last
+		previousState = initialState,
+		action,
+	) => {
+		let reduceFn = null;
 
-        if (actionsMap[action.type]) {
-            reduceFn = actionsMap[action.type];
-        }
+		if (actionsMap[action.type]) {
+			reduceFn = actionsMap[action.type];
+		}
 
-        if (!reduceFn) {
-            return previousState;
-        }
+		if (!reduceFn) {
+			return previousState;
+		}
 
-        return reduceFn(previousState, action);
-    };
+		return reduceFn(previousState, action);
+	};
 
 const assignActionKeyToState = (previousState, action, key) => {
-    return {
-        ...previousState,
-        // TODO: replace generic deep clone with faster custom code per key.
-        [key]: jsonClone(action[key]),
-    };
+	return {
+		...previousState,
+		// TODO: replace generic deep clone with faster custom code per key.
+		[key]: jsonClone(action[key]),
+	};
 };
 
 const assignActionTypeToKey = (key) => (previousState, action) => {
-    return assignActionKeyToState(previousState, action, key);
+	return assignActionKeyToState(previousState, action, key);
 };
 
 export const createAssignmentActionMapReducer = (initialState, customActionsMap, assignActionsMap) => {
-    return (previousState = initialState, action) => {
-        let reduceFn = null;
+	return (
+		// eslint-disable-next-line default-param-last
+		previousState = initialState,
+		action,
+	) => {
+		let reduceFn = null;
 
-        if (customActionsMap[action.type]) {
-            reduceFn = customActionsMap[action.type];
-        } else if (assignActionsMap[action.type]) {
-            reduceFn = assignActionTypeToKey(assignActionsMap[action.type]);
-        }
+		if (customActionsMap[action.type]) {
+			reduceFn = customActionsMap[action.type];
+		} else if (assignActionsMap[action.type]) {
+			reduceFn = assignActionTypeToKey(assignActionsMap[action.type]);
+		}
 
-        if (!reduceFn) {
-            return previousState;
-        }
+		if (!reduceFn) {
+			return previousState;
+		}
 
-        return reduceFn(previousState, action);
-    };
+		return reduceFn(previousState, action);
+	};
 };

@@ -23,5 +23,8 @@ import * as actionTypes from "../constants/action-types-navigation";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const setShouldShowBackButton = (shouldShowBackButton) => {
-    return { type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON, shouldShowBackButton };
+	return {
+		shouldShowBackButton,
+		type: actionTypes.SET_SHOULD_SHOW_BACK_BUTTON,
+	};
 };

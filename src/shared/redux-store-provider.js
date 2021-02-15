@@ -19,34 +19,33 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    applyMiddleware,
-    createStore,
-    compose,
+	applyMiddleware,
+	compose,
+	createStore,
 } from "redux";
-
 import thunk from "redux-thunk";
 
 export default class ReduxStoreProvider {
-    createStore(initialState, rootReducer, api) {
-        const middlewares = applyMiddleware(thunk.withExtraArgument(api));
+	createStore(initialState, rootReducer, api) {
+		const middlewares = applyMiddleware(thunk.withExtraArgument(api));
 
-        const enhancer = compose(
-            middlewares,
-        );
+		const enhancer = compose(
+			middlewares,
+		);
 
-        const store = createStore(rootReducer, initialState, enhancer);
+		const store = createStore(rootReducer, initialState, enhancer);
 
-        // store.subscribe(() => {
-        //     const state = store.getState();
-        //
-        //     console.log(
-        //         "subscribe",
-        //         "state",
-        //         JSON.stringify(state).length,
-        //         state
-        //     );
-        // });
+		// store.subscribe(() => {
+		// const state = store.getState();
+		//
+		// console.log(
+		// "subscribe",
+		// "state",
+		// JSON.stringify(state).length,
+		// state
+		// );
+		// });
 
-        return store;
-    }
+		return store;
+	}
 }

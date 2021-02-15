@@ -18,84 +18,68 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    registerUnhandledRejectionHandler,
-} from "../shared/error-handling";
-
-import {
-    getBackgroundPage,
-} from "../shared/tabs";
-
-import {
-    eventToPromise,
-    startReactFrontend,
-    stopReactFrontend,
-} from "../frontend/shared-frontend";
-
-import loadRoot from "./load-root.jsx";
-
 import DualLogger from "../frontend/dual-log";
+import {
+	eventToPromise,
+	startReactFrontend,
+	stopReactFrontend,
+} from "../frontend/shared-frontend";
+import {
+	registerUnhandledRejectionHandler,
+} from "../shared/error-handling";
+import {
+	getBackgroundPage,
+} from "../shared/tabs";
+import loadRoot from "./load-root.jsx";
 
 const dualLogger = new DualLogger("popup.js");
 
-const passClickToBackground = () => promiseTry(
-    () => {
-        dualLogger.dualLogDebug("Start", "passClickToBackground");
+const passClickToBackground = async () => {
+	dualLogger.dualLogDebug("Start", "passClickToBackground");
 
-        return getBackgroundPage()
-            .then((background) => background.iconClick())
-            .then(() => {
-                dualLogger.dualLogDebug("Done", "passClickToBackground");
+	try {
+		const background = await getBackgroundPage();
 
-                return undefined;
-            })
-            .catch((error) => {
-                dualLogger.dualLogError("passClickToBackground", error);
+		await background.iconClick();
 
-                throw error;
-            });
-    },
-);
+		dualLogger.dualLogDebug("Done", "passClickToBackground");
+	} catch (error) {
+		dualLogger.dualLogError("passClickToBackground", error);
 
-const shouldPassClickOnLoad = () => {
-    const containsBlockerString = document.location
-        && typeof document.location.search === "string"
-        && document.location.search.length > 0
-        && document.location.search.includes("passclick=false");
-
-    return !containsBlockerString;
+		throw error;
+	}
 };
 
-const passClickToBackgroundOnLoad = () => promiseTry(
-    () => {
-        // NOTE: provide a way to link to the popup without triggering the "click".
-        if (!shouldPassClickOnLoad()) {
-            dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
+const shouldPassClickOnLoad = () => {
+	const containsBlockerString = document.location
+		&& typeof document.location.search === "string"
+		&& document.location.search.length > 0
+		&& document.location.search.includes("passclick=false");
 
-            return;
-        }
+	return !containsBlockerString;
+};
 
-        return passClickToBackground();
-    },
-);
+const passClickToBackgroundOnLoad = async () => {
+	// NOTE: provide a way to link to the popup without triggering the "click".
+	if (!shouldPassClickOnLoad()) {
+		dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
 
-const start = () => promiseTry(
-    () => Promise.resolve()
-        .then(() => startReactFrontend())
-        .then(() => passClickToBackgroundOnLoad())
-        .then(() => loadRoot())
-        .then(() => undefined),
-);
+		return;
+	}
 
-const stop = () => promiseTry(
-    // NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
-    () => stopReactFrontend()
-        .then(() => undefined),
-);
+	return passClickToBackground();
+};
+
+const start = async () => {
+	await startReactFrontend();
+	await passClickToBackgroundOnLoad();
+	await loadRoot();
+};
+
+const stop = async () => {
+	// NOTE: stopping probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
+	await stopReactFrontend();
+};
 
 registerUnhandledRejectionHandler();
 

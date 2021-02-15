@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import styled from "../../hocs/styled.jsx";
-
 import * as textBase from "../../styles/text/text-base";
 
 export const p = styled(textBase.text)("p");

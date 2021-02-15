@@ -18,54 +18,51 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
+import React from "react";
 import {
-    bindActionCreators,
+	connect,
+} from "react-redux";
+import {
+	bindActionCreators,
 } from "redux";
 
-import {
-    connect,
-} from "react-redux";
-
+import actionCreators from "../actions";
 import Editions from "../components/sections/editions.jsx";
 
-import actionCreators from "../actions";
-
 const mapStateToProps = (state) => {
-    return {
-        isPremiumEdition: state.shared.metadata.isPremiumEdition,
-    };
+	return {
+		isPremiumEdition: state.shared.metadata.isPremiumEdition,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        actions: {
-            sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
-        },
-    };
+	return {
+		actions: {
+			sharedMetadata: bindActionCreators(actionCreators.shared.metadata, dispatch),
+		},
+	};
 };
 
 export default
 @connect(mapStateToProps, mapDispatchToProps)
 class EditionsContainer extends React.PureComponent {
-    static propTypes = {
-        actions: PropTypes.object.isRequired,
-        isPremiumEdition: PropTypes.bool.isRequired,
-    }
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		isPremiumEdition: PropTypes.bool.isRequired,
+	}
 
-    render() {
-        const {
-            actions,
-            isPremiumEdition,
-        } = this.props;
+	render() {
+		const {
+			actions,
+			isPremiumEdition,
+		} = this.props;
 
-        return (
-            <Editions
-                actions={actions}
-                isPremiumEdition={isPremiumEdition}
-            />
-        );
-    }
+		return (
+			<Editions
+				actions={actions}
+				isPremiumEdition={isPremiumEdition}
+			/>
+		);
+	}
 }

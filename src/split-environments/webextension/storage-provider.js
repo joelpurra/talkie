@@ -19,39 +19,29 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../../shared/promise";
-
-import {
-    getBackgroundPage,
+	getBackgroundPage,
 } from "../../shared/tabs";
 
 export default class WebExtensionEnvironmentStorageProvider {
-    get(key) {
-        return promiseTry(() => getBackgroundPage()
-            .then((background) => {
-                const valueJson = background.localStorage.getItem(key);
+	async get(key) {
+		const background = await getBackgroundPage();
 
-                if (valueJson === null) {
-                    return null;
-                }
+		const valueJson = background.localStorage.getItem(key);
 
-                const value = JSON.parse(valueJson);
+		if (valueJson === null) {
+			return null;
+		}
 
-                return value;
-            }),
-        );
-    }
+		const value = JSON.parse(valueJson);
 
-    set(key, value) {
-        return promiseTry(() => getBackgroundPage()
-            .then((background) => {
-                const valueJson = JSON.stringify(value);
+		return value;
+	}
 
-                background.localStorage.setItem(key, valueJson);
+	async set(key, value) {
+		const background = await getBackgroundPage();
 
-                return undefined;
-            }),
-        );
-    }
+		const valueJson = JSON.stringify(value);
+
+		background.localStorage.setItem(key, valueJson);
+	}
 }

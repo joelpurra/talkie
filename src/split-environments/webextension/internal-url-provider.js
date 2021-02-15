@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class WebExtensionEnvironmentInternalUrlProvider {
-    getSync(url) {
-        // NOTE: synchronous call.
-        // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL
-        const internalUrl = browser.runtime.getURL(url);
+	getSync(url) {
+		// NOTE: synchronous call.
+		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL
+		const internalUrl = browser.runtime.getURL(url);
 
-        return internalUrl;
-    }
+		return internalUrl;
+	}
 }

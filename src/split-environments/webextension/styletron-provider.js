@@ -21,9 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import Styletron from "styletron-client";
 
 export default class WebExtensionEnvironmentTranslator {
-    getSync() {
-        const styletron = new Styletron();
+	getSync() {
+		const styletron = new Styletron();
 
-        return styletron;
-    }
+		return styletron;
+	}
 }

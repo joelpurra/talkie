@@ -18,43 +18,39 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import * as lighter from "../styled/text/lighter.jsx";
+import React from "react";
 
 import translateAttribute from "../hocs/translate.jsx";
+import * as lighter from "../styled/text/lighter.jsx";
 
 export default
 @translateAttribute
 class Loading extends React.PureComponent {
-    static defaultProps = {
-        enabled: false,
-    };
+	static propTypes = {
+		children: PropTypes.node.isRequired,
+		// eslint-disable-next-line react/boolean-prop-naming
+		enabled: PropTypes.bool.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    static propTypes = {
-        enabled: PropTypes.bool.isRequired,
-        translate: PropTypes.func.isRequired,
-        children: PropTypes.node.isRequired,
-    }
+	render() {
+		const {
+			enabled,
+			children,
+			translate,
+		} = this.props;
 
-    render() {
-        const {
-            enabled,
-            children,
-            translate,
-        } = this.props;
+		if (enabled) {
+			return children;
+		}
 
-        if (enabled) {
-            return children;
-        }
-
-        return (
-            <div>
-                <lighter.span>
-                    {translate("frontend_loading")}
-                </lighter.span>
-            </div>
-        );
-    }
+		return (
+			<div>
+				<lighter.span>
+					{translate("frontend_loading")}
+				</lighter.span>
+			</div>
+		);
+	}
 }

@@ -23,5 +23,8 @@ import * as actionTypes from "../constants/action-types-navigation";
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const setActiveTabId = (activeTabId) => {
-    return { type: actionTypes.SET_ACTIVE_TAB_ID, activeTabId };
+	return {
+		activeTabId,
+		type: actionTypes.SET_ACTIVE_TAB_ID,
+	};
 };

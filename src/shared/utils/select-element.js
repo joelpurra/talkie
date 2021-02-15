@@ -19,16 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const scrollIntoViewIfNeeded = (selectElement) => {
-    if (
-        selectElement
-        && selectElement.options
-        && selectElement.options.selectedIndex >= 0
-    ) {
-        const selectedOption = selectElement.options[selectElement.options.selectedIndex];
+	if (
+		selectElement
+		&& selectElement.options
+		&& selectElement.options.selectedIndex >= 0
+	) {
+		const selectedOption = selectElement.options[selectElement.options.selectedIndex];
 
-        if (typeof selectedOption.scrollIntoViewIfNeeded === "function"
-        ) {
-            selectedOption.scrollIntoViewIfNeeded(true);
-        }
-    }
+		if (typeof selectedOption.scrollIntoViewIfNeeded === "function"
+		) {
+			selectedOption.scrollIntoViewIfNeeded(true);
+		}
+	}
 };

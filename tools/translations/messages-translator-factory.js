@@ -19,32 +19,32 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const assert = require("assert");
-const Promise = require("bluebird");
+const Bluebird = require("bluebird");
 
 export default class MessagesTranslatorFactory {
-    constructor(translatorService, MessagesTranslator) {
-        assert(typeof translatorService === "object");
-        assert(typeof MessagesTranslator === "function");
+	constructor(translatorService, MessagesTranslator) {
+		assert(typeof translatorService === "object");
+		assert(typeof MessagesTranslator === "function");
 
-        this._translatorService = translatorService;
-        this._MessagesTranslator = MessagesTranslator;
-    }
+		this._translatorService = translatorService;
+		this._MessagesTranslator = MessagesTranslator;
+	}
 
-    create(base, locale) {
-        assert(typeof base === "object");
-        assert(typeof base.messages === "object");
-        assert(typeof base.language === "string");
-        assert(typeof locale === "object");
-        assert(typeof locale.messages === "object");
-        assert(typeof locale.language === "string");
+	create(base, locale) {
+		assert(typeof base === "object");
+		assert(typeof base.messages === "object");
+		assert(typeof base.language === "string");
+		assert(typeof locale === "object");
+		assert(typeof locale.messages === "object");
+		assert(typeof locale.language === "string");
 
-        // NOTE: ensure the base language isn't translated onto itself.
-        assert(typeof locale.language !== base.language);
+		// NOTE: ensure the base language isn't translated onto itself.
+		assert(typeof locale.language !== base.language);
 
-        return Promise.try(() => {
-            const messagesTranslator = new this._MessagesTranslator(this._translatorService, base, locale);
+		return Bluebird.try(() => {
+			const messagesTranslator = new this._MessagesTranslator(this._translatorService, base, locale);
 
-            return messagesTranslator;
-        });
-    }
+			return messagesTranslator;
+		});
+	}
 }

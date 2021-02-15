@@ -24,15 +24,17 @@ const inputName = "extension-translator";
 const fileExtension = "";
 const fileName = `${inputName}${fileExtension}`;
 
-export default {
-    plugins: [
-        license(inputName),
-    ],
-    input: `tools/translations/${fileName}.js`,
-    output: {
-        name: inputName,
-        format: "cjs",
-        file: `dist/${fileName}.js`,
-        sourcemap: true,
-    },
+const rollupConfiguration = {
+	input: `tools/translations/${fileName}.js`,
+	output: {
+		file: `dist/${fileName}.js`,
+		format: "cjs",
+		name: inputName,
+		sourcemap: true,
+	},
+	plugins: [
+		license(inputName),
+	],
 };
+
+export default rollupConfiguration;

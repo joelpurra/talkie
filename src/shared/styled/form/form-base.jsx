@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import styled from "../../hocs/styled.jsx";
-
 import * as formBase from "../../styles/form/form-base";
 
 export const form = styled(formBase.form)("form");

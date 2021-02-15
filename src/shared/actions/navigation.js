@@ -23,10 +23,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 /*eslint no-unused-vars: ["warn", { "args": "after-used" }] */
 
 export const openUrlInNewTab = (url) =>
-    (dispatch, getState, api) => api.openUrlInNewTab(url);
+	(dispatch, getState, api) => api.openUrlInNewTab(url);
 
 export const openShortKeysConfiguration = () =>
-    (dispatch, getState, api) => api.openShortKeysConfiguration();
+	(dispatch, getState, api) => api.openShortKeysConfiguration();
 
 export const openOptionsPage = () =>
-    (dispatch, getState, api) => api.openOptionsPage();
+	(dispatch, getState, api) => api.openOptionsPage();

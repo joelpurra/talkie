@@ -19,140 +19,106 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-    promiseSleep,
+	logDebug,
+	logInfo,
+} from "../shared/log";
+import {
+	promiseSleep,
 } from "../shared/promise";
 
-import {
-    logDebug,
-    logInfo,
-} from "../shared/log";
-
 export default class SuspensionManager {
-    constructor(suspensionConnectorManager) {
-        // NOTE: the iframe takes care of the SuspensionListenerManager.
-        this.suspensionConnectorManager = suspensionConnectorManager;
+	constructor(suspensionConnectorManager) {
+		// NOTE: the iframe takes care of the SuspensionListenerManager.
+		this.suspensionConnectorManager = suspensionConnectorManager;
 
-        this.stayAliveElementId = "stay-alive-iframe";
-        this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
-    }
+		this.stayAliveElementId = "stay-alive-iframe";
+		this.stayAliveHtmlPath = "/src/stay-alive/stay-alive.html";
+	}
 
-    _getExistingIframe() {
-        return promiseTry(
-            () => {
-                const existingIframe = document.getElementById(this.stayAliveElementId);
+	async _getExistingIframe() {
+		const existingIframe = document.querySelector(`#${this.stayAliveElementId}`);
 
-                return existingIframe;
-            },
-        );
-    }
+		return existingIframe;
+	}
 
-    _isInitialized() {
-        return this._getExistingIframe()
-            .then((existingIframe) => existingIframe !== null);
-    }
+	async _isInitialized() {
+		const existingIframe = await this._getExistingIframe();
 
-    _ensureIsInitialized() {
-        return this._isInitialized()
-            .then((isInitialized) => {
-                if (isInitialized === true) {
-                    return undefined;
-                }
+		return existingIframe !== null;
+	}
 
-                throw new Error("this.stayAliveElementId did not exist.");
-            });
-    }
+	async _ensureIsInitialized() {
+		const isInitialized = await this._isInitialized();
 
-    _ensureIsNotInitialized() {
-        return this._isInitialized()
-            .then((isInitialized) => {
-                if (isInitialized === false) {
-                    return undefined;
-                }
+		if (isInitialized === true) {
+			return;
+		}
 
-                throw new Error("this.stayAliveElementId exists.");
-            });
-    }
+		throw new Error("this.stayAliveElementId did not exist.");
+	}
 
-    _injectBackgroundFrame() {
-        return this._ensureIsNotInitialized()
-            .then(() => {
-                const iframe = document.createElement("iframe");
-                iframe.id = this.stayAliveElementId;
-                /* eslint-disable no-sync */
-                iframe.src = this.stayAliveHtmlPath;
-                /* eslint-enable no-sync */
-                document.body.appendChild(iframe);
+	async _ensureIsNotInitialized() {
+		const isInitialized = await this._isInitialized();
 
-                return undefined;
-            });
-    }
+		if (isInitialized === false) {
+			return;
+		}
 
-    _removeBackgroundFrame() {
-        return this._ensureIsInitialized()
-            .then(() => this._getExistingIframe())
-            .then((existingIframe) => {
-                // NOTE: trigger onunload.
-                // https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
-                existingIframe.src = "about:blank";
-                existingIframe.src = "the-id-does-not-matter-now";
+		throw new Error("this.stayAliveElementId exists.");
+	}
 
-                // NOTE: ensure the src change has time to take effect.
-                return promiseSleep(() => {
-                    existingIframe.parentNode.removeChild(existingIframe);
-                }, 10);
-            });
-    }
+	async _injectBackgroundFrame() {
+		await this._ensureIsNotInitialized();
 
-    initialize() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "SuspensionManager.initialize");
+		const iframe = document.createElement("iframe");
+		iframe.id = this.stayAliveElementId;
+		iframe.src = this.stayAliveHtmlPath;
+		document.body.append(iframe);
+	}
 
-                return this._injectBackgroundFrame()
-                    .then(() => {
-                        logDebug("Done", "SuspensionManager.initialize");
+	async _removeBackgroundFrame() {
+		await this._ensureIsInitialized();
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+		const existingIframe = await this._getExistingIframe();
 
-    unintialize() {
-        return promiseTry(
-            () => {
-                logDebug("Start", "SuspensionManager.unintialize");
+		// NOTE: trigger onunload.
+		// https://stackoverflow.com/questions/8677113/how-to-trigger-onunload-event-when-removing-iframe
+		existingIframe.src = "about:blank";
+		existingIframe.src = "the-id-does-not-matter-now";
 
-                return this._removeBackgroundFrame()
-                    .then(() => {
-                        logDebug("Done", "SuspensionManager.unintialize");
+		// NOTE: ensure the src change has time to take effect.
+		return promiseSleep(() => {
+			existingIframe.remove();
+		}, 10);
+	}
 
-                        return undefined;
-                    });
-            },
-        );
-    }
+	async initialize() {
+		logDebug("Start", "SuspensionManager.initialize");
 
-    preventExtensionSuspend() {
-        return promiseTry(
-            () => {
-                logInfo("SuspensionManager.preventExtensionSuspend");
+		await this._injectBackgroundFrame();
 
-                return this._ensureIsInitialized()
-                    .then(() => this.suspensionConnectorManager._connectToStayAlive());
-            },
-        );
-    }
+		logDebug("Done", "SuspensionManager.initialize");
+	}
 
-    allowExtensionSuspend() {
-        return promiseTry(
-            () => {
-                logInfo("SuspensionManager.allowExtensionSuspend");
+	async uninitialize() {
+		logDebug("Start", "SuspensionManager.uninitialize");
 
-                return this._ensureIsInitialized()
-                    .then(() => this.suspensionConnectorManager._disconnectToDie());
-            },
-        );
-    }
+		await this._removeBackgroundFrame();
+
+		logDebug("Done", "SuspensionManager.uninitialize");
+	}
+
+	async preventExtensionSuspend() {
+		logInfo("SuspensionManager.preventExtensionSuspend");
+
+		await this._ensureIsInitialized();
+		await this.suspensionConnectorManager._connectToStayAlive();
+	}
+
+	async allowExtensionSuspend() {
+		logInfo("SuspensionManager.allowExtensionSuspend");
+
+		await this._ensureIsInitialized();
+		await this.suspensionConnectorManager._disconnectToDie();
+	}
 }

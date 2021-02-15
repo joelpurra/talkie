@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class NodeEnvironmentInternalUrlProvider {
-    getSync(url) {
-        throw new Error(`NodeEnvironmentInternalUrlProvider not supported: ${url}`);
-    }
+	getSync(url) {
+		throw new Error(`NodeEnvironmentInternalUrlProvider not supported: ${url}`);
+	}
 }

@@ -18,76 +18,67 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../promise";
-
 import React from "react";
 
-import StyletronProvider from "../../split-environments/styletron-provider";
-
 import configurationObject from "../../configuration.json";
-
-import ManifestProvider from "../../split-environments/manifest-provider";
-import LocaleProvider from "../../split-environments/locale-provider";
-import TranslatorProvider from "../../split-environments/translator-provider";
+import Api from "../../split-environments/api";
 import BroadcasterProvider from "../../split-environments/broadcaster-provider";
+import LocaleProvider from "../../split-environments/locale-provider";
+import ManifestProvider from "../../split-environments/manifest-provider";
 import StorageProvider from "../../split-environments/storage-provider";
-
-import ReduxStoreProvider from "../redux-store-provider";
-import StorageManager from "../storage-manager";
-import SettingsManager from "../settings-manager";
-import MetadataManager from "../metadata-manager";
+import StyletronProvider from "../../split-environments/styletron-provider";
+import TranslatorProvider from "../../split-environments/translator-provider";
 import Configuration from "../configuration";
+import Root from "../containers/root.jsx";
+import MetadataManager from "../metadata-manager";
+import ReduxStoreProvider from "../redux-store-provider";
+import SettingsManager from "../settings-manager";
+import StorageManager from "../storage-manager";
 import TalkieLocaleHelper from "../talkie-locale-helper";
 
-import Api from "../../split-environments/api";
+// eslint-disable-next-line max-params
+const getRoot = async (store, translator, configuration, styletron, broadcaster, ChildComponent) => (
+	<Root
+		broadcaster={broadcaster}
+		configuration={configuration}
+		store={store}
+		styletron={styletron}
+		translator={translator}
+	>
+		<ChildComponent/>
+	</Root>
+);
 
-import Root from "../containers/root.jsx";
+const autoRoot = async (initialState, rootReducer, ChildComponent) => {
+	const storageProvider = new StorageProvider();
+	const storageManager = new StorageManager(storageProvider);
+	const settingsManager = new SettingsManager(storageManager);
+	const manifestProvider = new ManifestProvider();
+	const metadataManager = new MetadataManager(manifestProvider, settingsManager);
+	const configuration = new Configuration(metadataManager, configurationObject);
+	const localeProvider = new LocaleProvider();
+	const translatorProvider = new TranslatorProvider(localeProvider);
+	const broadcasterProvider = new BroadcasterProvider();
+	const talkieLocaleHelper = new TalkieLocaleHelper();
+	const api = new Api(metadataManager, configuration, translatorProvider, broadcasterProvider, talkieLocaleHelper);
 
-const getRoot = (store, translator, configuration, styletron, broadcaster, ChildComponent) => promiseTry(() => {
-    const root = <Root
-        store={store}
-        configuration={configuration}
-        translator={translator}
-        broadcaster={broadcaster}
-        styletron={styletron}
-    >
-        <ChildComponent />
-    </Root>;
+	const reduxStoreProvider = new ReduxStoreProvider();
+	const store = reduxStoreProvider.createStore(initialState, rootReducer, api);
 
-    return root;
-});
+	const styletronProvider = new StyletronProvider();
+	// eslint-disable-next-line no-sync
+	const styletron = styletronProvider.getSync();
 
-const autoRoot = (initialState, rootReducer, ChildComponent) => promiseTry(() => {
-    const storageProvider = new StorageProvider();
-    const storageManager = new StorageManager(storageProvider);
-    const settingsManager = new SettingsManager(storageManager);
-    const manifestProvider = new ManifestProvider();
-    const metadataManager = new MetadataManager(manifestProvider, settingsManager);
-    const configuration = new Configuration(metadataManager, configurationObject);
-    const localeProvider = new LocaleProvider();
-    const translatorProvider = new TranslatorProvider(localeProvider);
-    const broadcasterProvider = new BroadcasterProvider();
-    const talkieLocaleHelper = new TalkieLocaleHelper();
-    const api = new Api(metadataManager, configuration, translatorProvider, broadcasterProvider, talkieLocaleHelper);
+	// TODO: create a generic static/default/render-time preloaded state action provider attached to the component hierarchy?
+	const root = await getRoot(store, translatorProvider, configuration, styletron, broadcasterProvider, ChildComponent);
+	const rootObject = {
+		localeProvider,
+		root,
+		store,
+		styletron,
+	};
 
-    const reduxStoreProvider = new ReduxStoreProvider();
-    const store = reduxStoreProvider.createStore(initialState, rootReducer, api);
-
-    const styletronProvider = new StyletronProvider();
-    /* eslint-disable no-sync */
-    const styletron = styletronProvider.getSync();
-    /* eslint-enable no-sync */
-
-    // TODO: create a generic static/default/render-time preloaded state action provider attached to the component hierarchy?
-    return getRoot(store, translatorProvider, configuration, styletron, broadcasterProvider, ChildComponent)
-        .then((root) => ({
-            localeProvider,
-            root,
-            store,
-            styletron,
-        }));
-});
+	return rootObject;
+};
 
 export default autoRoot;

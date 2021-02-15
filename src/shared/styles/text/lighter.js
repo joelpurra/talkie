@@ -19,18 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const text = {
-    color: "#9b9b9b",
+	color: "#9b9b9b",
 };
 
 export const highlight = {
-    color: "#3497ff",
-    textDecoration: "none",
+	color: "#3497ff",
+	textDecoration: "none",
 };
 
 export const a = {
-    color: "#9b9b9b",
-    textDecoration: "none",
-    ":focus": highlight,
-    ":hover": highlight,
-    ":active": highlight,
+	":active": highlight,
+	":focus": highlight,
+	":hover": highlight,
+	color: "#9b9b9b",
+	textDecoration: "none",
 };

@@ -18,29 +18,28 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import * as actionTypes from "../constants/action-types-metadata";
 import {
-    createAssignmentActionMapReducer,
+	createAssignmentActionMapReducer,
 } from "../utils/reduce-helpers";
 
-import * as actionTypes from "../constants/action-types-metadata";
-
 const initialState = {
-    isPremiumEdition: false,
-    versionName: null,
-    versionNumber: null,
-    systemType: null,
-    osType: null,
+	isPremiumEdition: false,
+	osType: null,
+	systemType: null,
+	versionName: null,
+	versionNumber: null,
 };
 
 const customActionsMap = {};
 
 const assignActionsMap = {
-    [actionTypes.SET_IS_PREMIUM_EDITION]: "isPremiumEdition",
-    [actionTypes.SET_VERSION_NAME]: "versionName",
-    [actionTypes.SET_VERSION_NUMBER]: "versionNumber",
-    [actionTypes.SET_EDITION_TYPE]: "editionType",
-    [actionTypes.SET_SYSTEM_TYPE]: "systemType",
-    [actionTypes.SET_OS_TYPE]: "osType",
+	[actionTypes.SET_IS_PREMIUM_EDITION]: "isPremiumEdition",
+	[actionTypes.SET_VERSION_NAME]: "versionName",
+	[actionTypes.SET_VERSION_NUMBER]: "versionNumber",
+	[actionTypes.SET_EDITION_TYPE]: "editionType",
+	[actionTypes.SET_SYSTEM_TYPE]: "systemType",
+	[actionTypes.SET_OS_TYPE]: "osType",
 };
 
 export default createAssignmentActionMapReducer(initialState, customActionsMap, assignActionsMap);

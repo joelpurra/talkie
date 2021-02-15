@@ -19,64 +19,54 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    logDebug,
+	logDebug,
 } from "../shared/log";
 
 export default class IconManager {
-    constructor(metadataManager) {
-        this.metadataManager = metadataManager;
-    }
+	constructor(metadataManager) {
+		this.metadataManager = metadataManager;
+	}
 
-    getIconModePaths(editionType, name) {
-        return {
-            // NOTE: icons in use before Chrome 53 were 19x19 and 38x38.
-            // NOTE: icons in use from Chrome 53 (switching to Material design) are 16x16 and 32x32.
-            // NOTE: keeping larger icons to accomodate future changes.
-            "16": `resources/icon/${editionType}/icon-${name}/icon-16x16.png`,
-            "32": `resources/icon/${editionType}/icon-${name}/icon-32x32.png`,
-            "48": `resources/icon/${editionType}/icon-${name}/icon-48x48.png`,
-            "64": `resources/icon/${editionType}/icon-${name}/icon-64x64.png`,
+	getIconModePaths(editionType, name) {
+		return {
+			// NOTE: icons in use before Chrome 53 were 19x19 and 38x38.
+			// NOTE: icons in use from Chrome 53 (switching to Material design) are 16x16 and 32x32.
+			// NOTE: keeping larger icons to accomodate future changes.
+			16: `resources/icon/${editionType}/icon-${name}/icon-16x16.png`,
+			32: `resources/icon/${editionType}/icon-${name}/icon-32x32.png`,
+			48: `resources/icon/${editionType}/icon-${name}/icon-48x48.png`,
+			64: `resources/icon/${editionType}/icon-${name}/icon-64x64.png`,
 
-            // NOTE: passing the larger icons slowed down the UI by several hundred milliseconds per icon switch.
-            // "128": `resources/icon/${editionType}/icon-${name}/icon-128x128.png`,
-            // "256": `resources/icon/${editionType}/icon-${name}/icon-256x256.png`,
-            // "512": `resources/icon/${editionType}/icon-${name}/icon-512x512.png`,
-            // "1024": `resources/icon/${editionType}/icon-${name}/icon-1024x1024.png`,
-        };
-    };
+			// NOTE: passing the larger icons slowed down the UI by several hundred milliseconds per icon switch.
+			// "128": `resources/icon/${editionType}/icon-${name}/icon-128x128.png`,
+			// "256": `resources/icon/${editionType}/icon-${name}/icon-256x256.png`,
+			// "512": `resources/icon/${editionType}/icon-${name}/icon-512x512.png`,
+			// "1024": `resources/icon/${editionType}/icon-${name}/icon-1024x1024.png`,
+		};
+	}
 
-    setIconMode(name) {
-        return promiseTry(
-            () => {
-                logDebug("Start", "Changing icon to", name);
+	async setIconMode(name) {
+		logDebug("Start", "Changing icon to", name);
 
-                return this.metadataManager.getEditionType()
-                    .then((editionType) => {
-                        const paths = this.getIconModePaths(editionType, name);
-                        const details = {
-                            path: paths,
-                        };
+		const editionType = await this.metadataManager.getEditionType();
 
-                        return browser.browserAction.setIcon(details)
-                            .then((result) => {
-                                logDebug("Done", "Changing icon to", name);
+		const paths = this.getIconModePaths(editionType, name);
+		const details = {
+			path: paths,
+		};
 
-                                return result;
-                            });
-                    });
-            },
-        );
-    }
+		const result = await browser.browserAction.setIcon(details);
 
-    setIconModePlaying() {
-        return this.setIconMode("stop");
-    }
+		logDebug("Done", "Changing icon to", name);
 
-    setIconModeStopped() {
-        return this.setIconMode("play");
-    }
+		return result;
+	}
+
+	setIconModePlaying() {
+		return this.setIconMode("stop");
+	}
+
+	setIconModeStopped() {
+		return this.setIconMode("play");
+	}
 }

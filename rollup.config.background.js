@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import json from "@rollup/plugin-json";
-import globals from "rollup-plugin-node-globals";
 import replace from "@rollup/plugin-replace";
+import globals from "rollup-plugin-node-globals";
 
 import filesize from "./rollup.config.filesize.js";
 import license from "./rollup.config.license.js";
@@ -29,24 +29,26 @@ const inputName = "background";
 const fileExtension = "";
 const fileName = `${inputName}${fileExtension}`;
 
-export default {
-    plugins: [
-        json(),
-        globals(),
-        replace({
-            values: {
-                // TODO: configuration?
-                "SPLIT_ENVIRONMENT": "webextension",
-            },
-        }),
-        license(inputName),
-        filesize(),
-    ],
-    input: `src/${inputName}/${fileName}.js`,
-    output: {
-        name: inputName,
-        format: "umd",
-        file: `dist/${fileName}.js`,
-        sourcemap: true,
-    },
+const rollupConfiguration = {
+	input: `src/${inputName}/${fileName}.js`,
+	output: {
+		file: `dist/${fileName}.js`,
+		format: "umd",
+		name: inputName,
+		sourcemap: true,
+	},
+	plugins: [
+		json(),
+		globals(),
+		replace({
+			values: {
+				// TODO: configuration?
+				SPLIT_ENVIRONMENT: "webextension",
+			},
+		}),
+		license(inputName),
+		filesize(),
+	],
 };
+
+export default rollupConfiguration;

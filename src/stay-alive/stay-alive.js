@@ -18,46 +18,37 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-    promiseTry,
-} from "../shared/promise";
-
-import {
-    eventToPromise,
-} from "../frontend/shared-frontend";
-
-import SuspensionListenerManager from "./suspension-listener-manager";
-
 import DualLogger from "../frontend/dual-log";
+import {
+	eventToPromise,
+} from "../frontend/shared-frontend";
+import SuspensionListenerManager from "./suspension-listener-manager";
 
 const dualLogger = new DualLogger("stay-alive.js");
 
 const suspensionListenerManager = new SuspensionListenerManager();
 
 const startStayAliveListener = () => {
-    return suspensionListenerManager.start();
+	return suspensionListenerManager.start();
 };
 
-const stopStayAliveListener = () => {
-    return suspensionListenerManager.stop()
-        .catch((error) => {
-            dualLogger.dualLogError("stopStayAliveListener", "Swallowing error", error);
-
-            // NOTE: swallowing errors.
-            return undefined;
-        });
+const stopStayAliveListener = async () => {
+	try {
+		await suspensionListenerManager.stop();
+	} catch (error) {
+		// NOTE: swallowing errors.
+		dualLogger.dualLogError("stopStayAliveListener", "Swallowing error", error);
+	}
 };
 
-const start = () => promiseTry(
-    () => startStayAliveListener()
-        .then(() => undefined),
-);
+const start = async () => {
+	await startStayAliveListener();
+};
 
-const stop = () => promiseTry(
-    // NOTE: probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
-    () => stopStayAliveListener()
-        .then(() => undefined),
-);
+const stop = async () => {
+	// NOTE: stopping probably won't be correctly executed as before/unload doesn't guarantee asynchronous calls.
+	await stopStayAliveListener();
+};
 
 document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
 window.addEventListener("beforeunload", eventToPromise.bind(null, stop));

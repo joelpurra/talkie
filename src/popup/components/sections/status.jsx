@@ -18,102 +18,99 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import PropTypes from "prop-types";
-
-import translateAttribute from "../../../shared/hocs/translate.jsx";
-import styled from "../../../shared/hocs/styled.jsx";
-
-import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
-import * as textBase from "../../../shared/styled/text/text-base.jsx";
-import * as lighter from "../../../shared/styled/text/lighter.jsx";
-import * as tableBase from "../../../shared/styled/table/table-base.jsx";
+import React from "react";
 
 import Icon from "../../../shared/components/icon/icon.jsx";
-
+import styled from "../../../shared/hocs/styled.jsx";
+import translateAttribute from "../../../shared/hocs/translate.jsx";
+import * as layoutBase from "../../../shared/styled/layout/layout-base.jsx";
+import * as tableBase from "../../../shared/styled/table/table-base.jsx";
+import * as lighter from "../../../shared/styled/text/lighter.jsx";
+import * as textBase from "../../../shared/styled/text/text-base.jsx";
 import ProgressContainer from "../../containers/progress-container.jsx";
 
 export default
 @translateAttribute
 class Status extends React.PureComponent {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
+		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
-        this.styled = {
-            table: styled({
-                borderSpacing: 0,
-            })(tableBase.table),
+		this.styled = {
+			statusIconWrapper: styled({
+				paddingRight: "2em",
+			})(textBase.span),
 
-            tbody: styled({
-                borderSpacing: 0,
-            })(tableBase.tbody),
+			table: styled({
+				borderSpacing: 0,
+			})(tableBase.table),
 
-            tr: styled({
-                borderSpacing: 0,
-            })(tableBase.tr),
+			tbody: styled({
+				borderSpacing: 0,
+			})(tableBase.tbody),
 
-            td: styled({
-                borderSpacing: 0,
-                paddingLeft: 0,
-                paddingRight: 0,
-                paddingTop: 0,
-                paddingBottom: 0,
-            })(tableBase.td),
+			td: styled({
+				borderSpacing: 0,
+				paddingBottom: 0,
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingTop: 0,
+			})(tableBase.td),
 
-            statusIconWrapper: styled({
-                paddingRight: "2em",
-            })(textBase.span),
-        };
-    }
+			tr: styled({
+				borderSpacing: 0,
+			})(tableBase.tr),
+		};
+	}
 
-    static propTypes = {
-        playPauseClick: PropTypes.func.isRequired,
-        translate: PropTypes.func.isRequired,
-    }
+	static propTypes = {
+		playPauseClick: PropTypes.func.isRequired,
+		translate: PropTypes.func.isRequired,
+	}
 
-    handlePlayPauseClick(e) {
-        e.preventDefault();
-        e.stopPropagation();
+	handlePlayPauseClick(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
-        this.props.playPauseClick();
+		this.props.playPauseClick();
 
-        return false;
-    }
+		return false;
+	}
 
-    render() {
-        const {
-            translate,
-        } = this.props;
+	render() {
+		const {
+			translate,
+		} = this.props;
 
-        return (
-            <layoutBase.main>
-                <lighter.p>
-                    {translate("frontend_PopupUsageShort")}
-                </lighter.p>
+		return (
+			<layoutBase.main>
+				<lighter.p>
+					{translate("frontend_PopupUsageShort")}
+				</lighter.p>
 
-                <this.styled.table>
-                    <colgroup>
-                        <col width="0*" />
-                        <col width="100%" />
-                    </colgroup>
-                    <this.styled.tbody>
-                        <this.styled.tr>
-                            <this.styled.td>
-                                <this.styled.statusIconWrapper
-                                    onClick={this.handlePlayPauseClick}
-                                >
-                                    <Icon mode="standalone" className="icon-talkie-status" />
-                                </this.styled.statusIconWrapper>
-                            </this.styled.td>
-                            <this.styled.td>
-                                <ProgressContainer />
-                            </this.styled.td>
-                        </this.styled.tr>
-                    </this.styled.tbody>
-                </this.styled.table>
-            </layoutBase.main>
-        );
-    }
+				<this.styled.table>
+					<colgroup>
+						<col width="0*"/>
+						<col width="100%"/>
+					</colgroup>
+					<this.styled.tbody>
+						<this.styled.tr>
+							<this.styled.td>
+								<this.styled.statusIconWrapper
+									onClick={this.handlePlayPauseClick}
+								>
+									<Icon className="icon-talkie-status" mode="standalone"/>
+								</this.styled.statusIconWrapper>
+							</this.styled.td>
+							<this.styled.td>
+								<ProgressContainer/>
+							</this.styled.td>
+						</this.styled.tr>
+					</this.styled.tbody>
+				</this.styled.table>
+			</layoutBase.main>
+		);
+	}
 }

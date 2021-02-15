@@ -19,45 +19,43 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-    logTrace,
-    logDebug,
-    logInfo,
-    logWarn,
-    logError,
+	logDebug,
+	logError,
+	logInfo,
+	logTrace,
+	logWarn,
 } from "../shared/log";
-
 import {
-    getBackgroundPage,
+	getBackgroundPage,
 } from "../shared/tabs";
 
 export default class DualLogger {
-    constructor(localScriptName) {
-        this.localScriptName = localScriptName;
+	constructor(localScriptName) {
+		this.localScriptName = localScriptName;
 
-        this.dualLogTrace = this._generateLogger(logTrace, "logTrace");
-        this.dualLogDebug = this._generateLogger(logDebug, "logDebug");
-        this.dualLogInfo = this._generateLogger(logInfo, "logInfo");
-        this.dualLogWarn = this._generateLogger(logWarn, "logWarn");
-        this.dualLogError = this._generateLogger(logError, "logError");
-    }
+		this.dualLogTrace = this._generateLogger(logTrace, "logTrace");
+		this.dualLogDebug = this._generateLogger(logDebug, "logDebug");
+		this.dualLogInfo = this._generateLogger(logInfo, "logInfo");
+		this.dualLogWarn = this._generateLogger(logWarn, "logWarn");
+		this.dualLogError = this._generateLogger(logError, "logError");
+	}
 
-    _generateLogger(localLoggerFunctionName, backgroundLoggerFunctionName) {
-        const logger = (...args) => Promise.all([
-            localLoggerFunctionName(this.localScriptName, ...args),
+	_generateLogger(localLoggerFunctionName, backgroundLoggerFunctionName) {
+		const logInTheBackground = async (...args) => {
+			const background = await getBackgroundPage();
 
-            getBackgroundPage()
-                .then((background) => {
-                    background[backgroundLoggerFunctionName](this.localScriptName, ...args);
+			try {
+				background[backgroundLoggerFunctionName](this.localScriptName, ...args);
+			} catch (error) {
+				logError(this.localScriptName, "backgroundLoggerFunctionName", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
+			}
+		};
 
-                    return undefined;
-                })
-                .catch((error) => {
-                    logError(this.localScriptName, "backgroundLoggerFunctionName", "Error logging to background page", "Swallowing error", error, "arguments", ...args);
+		const logger = (...args) => Promise.all([
+			localLoggerFunctionName(this.localScriptName, ...args),
+			logInTheBackground(...args),
+		]);
 
-                    return undefined;
-                }),
-        ]);
-
-        return logger;
-    }
+		return logger;
+	}
 }

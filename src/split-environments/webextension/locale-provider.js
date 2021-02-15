@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default class WebExtensionEnvironmentLocaleProvider {
-    getUILocale() {
-        const locale = browser.i18n.getMessage("@@ui_locale");
+	getUILocale() {
+		const locale = browser.i18n.getMessage("@@ui_locale");
 
-        return locale;
-    }
+		return locale;
+	}
 
-    getTranslationLocale() {
-        const locale = browser.i18n.getMessage("extensionLocale");
+	getTranslationLocale() {
+		const locale = browser.i18n.getMessage("extensionLocale");
 
-        return locale;
-    }
+		return locale;
+	}
 }
