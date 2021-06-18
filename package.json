@@ -138,7 +138,7 @@
     "rollup-plugin-license": "^2.2.0",
     "rollup-plugin-node-globals": "^1.4.0",
     "rrssb": "^1.14.0",
-    "striptags": "^3.1.1",
+    "striptags": "^3.2.0",
     "styletron-client": "^3.0.4",
     "styletron-react": "^3.0.4",
     "web-ext": "^5.5.0",
