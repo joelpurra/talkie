@@ -1,0 +1,52 @@
+{
+  "name": "@talkie/renderer",
+  "version": "0.0.0",
+  "author": {
+    "email": "code+github@joelpurra.com",
+    "name": "Joel Purra",
+    "url": "https://joelpurra.com/"
+  },
+  "bundledDependencies": [
+    "react",
+    "react-dom",
+    "redux",
+    "type-fest"
+  ],
+  "dependencies": {
+    "@talkie/shared-application": "*",
+    "@talkie/shared-locales": "*",
+    "@talkie/split-environment-interfaces": "*",
+    "@talkie/split-environment-node": "*"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.0",
+    "@types/mkdirp": "^1.0.2",
+    "@types/styletron-engine-atomic": "^1.1.1",
+    "ejs": "^3.1.6",
+    "mkdirp": "^1.0.4",
+    "styletron-engine-atomic": "^1.4.8"
+  },
+  "exports": {
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.js"
+    }
+  },
+  "homepage": "https://joelpurra.com/projects/talkie/",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run --silent build:typescript",
+    "build:typescript": "tsc --build tsconfig.esm.json && tsc --build tsconfig.cjs.json",
+    "clean": "rimraf ./dist",
+    "rebuild": "npm run --silent clean && npm run --silent build",
+    "watch": "npm run --silent build -- --watch"
+  },
+  "typesVersions": {
+    "^4": {
+      "*": [
+        "src/*"
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "./src",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../split-environment-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-node/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-webextension/tsconfig.json"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/cjs",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.cjs.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../shared-application-helpers/tsconfig.cjs.json"
+    },
+    {
+      "path": "../shared-application/tsconfig.cjs.json"
+    },
+    {
+      "path": "../shared-locales/tsconfig.cjs.json"
+    },
+    {
+      "path": "../split-environment-webextension/tsconfig.cjs.json"
+    }
+  ]
+}

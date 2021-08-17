@@ -1,0 +1,4 @@
+{
+  "packageFile": "./{,packages/*/}package.json",
+  "reject": "@talkie/*,husky"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "@talkie/shared-locales",
+  "version": "0.0.0",
+  "author": {
+    "email": "code+github@joelpurra.com",
+    "name": "Joel Purra",
+    "url": "https://joelpurra.com/"
+  },
+  "dependencies": {
+    "@talkie/split-environment-interfaces": "*",
+    "@talkie/translator-tool": "*"
+  },
+  "exports": {
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.js"
+    }
+  },
+  "homepage": "https://joelpurra.com/projects/talkie/",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run --silent languages:refresh && npm run --silent build:typescript",
+    "build:typescript": "tsc --build tsconfig.esm.json && tsc --build tsconfig.cjs.json",
+    "clean": "rimraf ./dist && npm run --silent clean:locales",
+    "clean:locales": "( cd ./src/data/_locales/ && rimraf ./*/messages.json ; ) && rimraf ./src/data/languages/extracted.json ./src/data/languages/languages.json",
+    "languages:refresh": "( cd ./src/data/_locales/ && jq --slurp --sort-keys 'map({ (.extensionLocale.message): { direction: .extensionLocaleBidiDirection.message, sample: .frontend_voicesSampleText.message } }) | add' $(find . -name 'messages.json') > \"../languages/extracted.json~\" ; ) && mv \"./src/data/languages/extracted.json~\" \"./src/data/languages/extracted.json\" && jq --slurp --sort-keys '{ base: .[0], languages: .[1] } + .[3]' \"./src/data/languages/base.json\" \"./src/data/languages/extracted.json\" \"./src/data/languages/overrides.json\" > \"./src/data/languages/languages.json~\" && mv \"./src/data/languages/languages.json~\" \"./src/data/languages/languages.json\"",
+    "messages:count": "( cd ./src/data/_locales/ && for MESSAGES in $(find . -name 'messages.json'); do jq 'to_entries | .[].key' \"$MESSAGES\"; done | sort | uniq -c ; )",
+    "messages:download": "npm run --silent messages:sort && node ../translator-tool/dist/rollup/translator.js . en base.json automatic.json && npm run --silent messages:sort",
+    "messages:override:refresh": "( cd ./src/data/_locales/ && for MESSAGES in $(find . \\( -name 'override.json' -or -name 'manual.json' \\)); do jq --slurp --sort-keys '.[0] as $en | .[1] | with_entries(.key as $key | .value |= (.original = $en[$key].message) + if $en[$key].description then { description: $en[$key].description } else {} end + if $en[$key].placeholders then { placeholders: $en[$key].placeholders } else {} end)' \"./en/messages.json\" \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done ; )",
+    "messages:refresh": "[ ! -f ./src/data/_locales/en/messages.json ] && npm run --silent messages:sort && ./src/translation-merge.sh && npm run --silent messages:sort && npm run --silent messages:override:refresh",
+    "messages:sort": "( cd ./src/data/_locales/ && for MESSAGES in $(find . -name '*.json'); do jq --sort-keys '.' \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done ; )",
+    "messages:translate": "npm run --silent messages:download && npm run --silent messages:refresh && npm run --silent messages:count",
+    "rebuild": "npm run --silent clean && npm run --silent rebuild:messages && npm run --silent build",
+    "rebuild:messages": "npm run --silent messages:refresh",
+    "watch": "npm run --silent build:typescript -- --watch"
+  },
+  "typesVersions": {
+    "^4": {
+      "*": [
+        "src/*"
+      ]
+    }
+  }
+}

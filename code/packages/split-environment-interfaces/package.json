@@ -1,0 +1,40 @@
+{
+  "name": "@talkie/split-environment-interfaces",
+  "version": "0.0.0",
+  "author": {
+    "email": "code+github@joelpurra.com",
+    "name": "Joel Purra",
+    "url": "https://joelpurra.com/"
+  },
+  "bundledDependencies": [
+    "type-fest"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "styletron-standard": "^3.0.5",
+    "webextension-polyfill": "^0.8.0"
+  },
+  "exports": {
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.js"
+    }
+  },
+  "homepage": "https://joelpurra.com/projects/talkie/",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run --silent build:typescript",
+    "build:typescript": "tsc --build tsconfig.esm.json && tsc --build tsconfig.cjs.json",
+    "clean": "rimraf ./dist",
+    "rebuild": "npm run --silent clean && npm run --silent build",
+    "watch": "npm run --silent build -- --watch"
+  },
+  "typesVersions": {
+    "^4": {
+      "*": [
+        "src/*"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "./src",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../demo-renderer/tsconfig.json"
+    },
+    {
+      "path": "../options-renderer/tsconfig.json"
+    },
+    {
+      "path": "../popup-renderer/tsconfig.json"
+    },
+    {
+      "path": "../renderer/tsconfig.json"
+    },
+    {
+      "path": "../shared-locales/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-interfaces/tsconfig.json"
+    }
+  ]
+}

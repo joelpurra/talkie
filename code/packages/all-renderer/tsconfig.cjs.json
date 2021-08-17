@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/cjs",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.cjs.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../demo-renderer/tsconfig.cjs.json"
+    },
+    {
+      "path": "../options-renderer/tsconfig.cjs.json"
+    },
+    {
+      "path": "../popup-renderer/tsconfig.cjs.json"
+    },
+    {
+      "path": "../renderer/tsconfig.cjs.json"
+    },
+    {
+      "path": "../shared-locales/tsconfig.cjs.json"
+    }
+  ]
+}

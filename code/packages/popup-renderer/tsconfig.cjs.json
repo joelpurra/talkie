@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/cjs",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.cjs.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../popup-application/tsconfig.cjs.json"
+    },
+    {
+      "path": "../renderer/tsconfig.cjs.json"
+    }
+  ]
+}

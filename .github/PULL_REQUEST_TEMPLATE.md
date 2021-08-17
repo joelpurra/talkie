@@ -18,8 +18,8 @@ _Please fill out the following to help us help you. Replace `...` with your own 
 ### Translation checklist
 
 - [ ] All messages shown or spoken to the user are using `chrome.i18n.getMessage("myMessageName").`
-- [ ] Any new or changed message string have been updated in `_locales/en/base.json`.
-- [ ] Any new or changed message string have been updated in `_locales/*/override.json` for languages you know.
+- [ ] Any new or changed message string have been updated in `./packages/shared-locales/src/data/_locales/en/base.json`.
+- [ ] Any new or changed message string have been updated in `./packages/shared-locales/src/data/_locales/*/override.json` for languages you know.
 
 ### Code checklist
 

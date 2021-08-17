@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": ["ES2019", "DOM"],
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "noPropertyAccessFromIndexSignature": false,
+    "resolveJsonModule": true,
+    "rootDir": "packages",
+    "sourceMap": true,
+    "target": "ES2019"
+  },
+  "exclude": ["node_modules"],
+  "extends": "@sindresorhus/tsconfig"
+}
