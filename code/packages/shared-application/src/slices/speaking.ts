@@ -24,20 +24,24 @@ import {
 	PayloadAction,
 } from "@reduxjs/toolkit";
 import {
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceNameAndRateAndPitch,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 
 import {
 	IApiAsyncThunkConfig,
 } from "./slices-types";
 
-interface SpeakInVoiceArguments {
+export interface SpeakInCustomVoiceArguments {
 	text: string;
-	voice: IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch;
+	voice: IVoiceNameAndRateAndPitch;
 }
 
-interface SpeakTextInLanguageWithOverridesArguments {
+export interface SpeakTextInVoiceWithOverridesArguments {
+	text: string;
+	voiceName: string;
+}
+
+export interface SpeakTextInLanguageWithOverridesArguments {
 	text: string;
 	languageCode: string;
 }
@@ -61,15 +65,27 @@ export const iconClick = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	},
 );
 
-export const speakInVoice = createAsyncThunk<void, SpeakInVoiceArguments, IApiAsyncThunkConfig>(
-	`${prefix}/speakInVoice`,
+export const speakInCustomVoice = createAsyncThunk<void, SpeakInCustomVoiceArguments, IApiAsyncThunkConfig>(
+	`${prefix}/speakInCustomVoice`,
 	({
 		voice,
 		text,
 	}, thunkApi) => {
 		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
 		// TODO: rework debounced versions in api?
-		thunkApi.extra.debouncedSpeakTextInVoice(text, voice);
+		thunkApi.extra.debouncedSpeakTextInCustomVoice(text, voice);
+	},
+);
+
+export const speakTextInVoiceWithOverrides = createAsyncThunk<void, SpeakTextInVoiceWithOverridesArguments, IApiAsyncThunkConfig>(
+	`${prefix}/speakTextInVoiceWithOverrides`,
+	({
+		voiceName,
+		text,
+	}, thunkApi) => {
+		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
+		// TODO: rework debounced versions in api?
+		thunkApi.extra.debouncedSpeakTextInVoiceWithOverrides(text, voiceName);
 	},
 );
 

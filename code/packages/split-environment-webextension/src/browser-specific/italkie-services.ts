@@ -29,8 +29,7 @@ import {
 } from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
 import {
 	IVoiceNameAndLanguage,
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 
@@ -47,7 +46,8 @@ export interface ITalkieServices {
 	getAllVoicesSafeObjects: () => Promise<SafeVoiceObject[]>;
 	iconClick: () => Promise<void>;
 	stopSpeakFromFrontend: () => Promise<void>;
-	startSpeakFromFrontend: (frontendText: string, frontendVoice: IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch) => Promise<void>;
+	startSpeakFromFrontend: (frontendText: string, frontendVoice: Readonly<IVoiceNameAndRateAndPitch>) => Promise<void>;
+	startSpeakInVoiceWithOverridesFromFrontend: (frontendText: string, frontendVoiceName: string) => Promise<void>;
 	startSpeakInLanguageWithOverridesFromFrontend: (frontendText: string, frontendLanguageCode: string) => Promise<void>;
 	getVersionNumber: () => Promise<string | null>;
 	getVersionName: () => Promise<string | null>;

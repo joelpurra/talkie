@@ -42,7 +42,7 @@ import selectors from "../selectors/index";
 import {
 	actions,
 } from "../slices/index";
-import {
+import type {
 	PopupRootState,
 } from "../store";
 

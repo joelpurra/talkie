@@ -7,9 +7,6 @@
   "include": ["src/**/*"],
   "references": [
     {
-      "path": "../demo-renderer/tsconfig.json"
-    },
-    {
       "path": "../options-renderer/tsconfig.json"
     },
     {

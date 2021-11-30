@@ -20,10 +20,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	combineReducers,
-} from "redux";
+} from "../store/combine-reducers";
 
 import errors,
 * as errorsActions from "./errors";
+import languages,
+* as languagesActions from "./languages";
 import metadata,
 * as metadataActions from "./metadata";
 import navigation,
@@ -37,6 +39,7 @@ import voices,
 
 export const actions = {
 	errors: errorsActions,
+	languages: languagesActions,
 	metadata: metadataActions,
 	navigation: navigationActions,
 	progress: progressActions,
@@ -46,6 +49,7 @@ export const actions = {
 
 const reducers = combineReducers({
 	errors,
+	languages,
 	metadata,
 	navigation,
 	progress,

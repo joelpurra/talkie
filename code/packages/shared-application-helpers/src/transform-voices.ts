@@ -23,10 +23,22 @@ import {
 	IVoiceNameAndLanguage,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 
+// TODO: create type alias for generic language strings?
+// TODO: use parser which checks codes, regions, etcetera against BCP47.
+// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
+// https://en.wikipedia.org/wiki/IETF_language_tag
+// export type LangaugeGroup = string;
+// export type LangaugeCode = string;
+
 export type LanguagesByLanguageGroup = Readonly<Record<string, string[]>>;
 export type VoicesByLanguage<T extends IVoiceLanguage> = Readonly<Record<string, T[]>>;
 export type VoicesByLanguageGroup<T extends IVoiceLanguage> = Readonly<Record<string, T[]>>;
 export type VoicesByLanguagesByLanguageGroup<T extends IVoiceLanguage> = Readonly<Record<string, VoicesByLanguage<T>>>;
+
+export interface LanguageGroupWithNavigatorLanguage {
+	isNavigatorLanguage: boolean;
+	languageGroup: string;
+}
 
 export const getVoicesForLanguage = <T extends IVoiceLanguage>(voices: Readonly<T[]>, languageCode: string): Readonly<T[]> => {
 	const voicesForLanguage = voices.filter((voice) => voice.lang.startsWith(languageCode));
@@ -40,12 +52,46 @@ export const getVoicesForLanguageExact = <T extends IVoiceLanguage>(voices: Read
 	return voicesForLanguage;
 };
 
+export const isLanguageGroup = (language: Readonly<string>): Readonly<boolean> =>
+	// TODO: use parser which checks codes, regions, etcetera against BCP47.
+	// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
+	// https://en.wikipedia.org/wiki/IETF_language_tag
+	!language.includes("-");
+
 export const getLanguageGroupFromLanguage = (language: Readonly<string>): Readonly<string> => {
-	// TODO: check max length, valid characters, against ISO 639-1, etcetera.
-	// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-	const languageGroupCode = language.length === 2 ? language : language.slice(0, 2);
+	// TODO: use parser which checks codes, regions, etcetera against BCP47.
+	// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
+	// https://en.wikipedia.org/wiki/IETF_language_tag
+	if (isLanguageGroup(language)) {
+		return language;
+	}
+
+	const parts = language.split("-");
+	const languageGroupCode = parts[0];
+
+	if (!languageGroupCode) {
+		throw new TypeError("languageGroupCode");
+	}
 
 	return languageGroupCode;
+};
+
+export const getLanguageFromBcp47 = (bcp47: Readonly<string>): Readonly<string> => {
+	// TODO: use parser which checks codes, regions, etcetera against BCP47.
+	// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
+	// https://en.wikipedia.org/wiki/IETF_language_tag
+	if (isLanguageGroup(bcp47)) {
+		return bcp47;
+	}
+
+	const parts = bcp47.split("-");
+	const languageGroup = parts.slice(0, 2).join("-");
+
+	if (!languageGroup) {
+		throw new TypeError("languageGroup");
+	}
+
+	return languageGroup;
 };
 
 export const getLanguageGroupsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {
@@ -76,6 +122,12 @@ export const getLanguageGroupsFromVoices = <T extends IVoiceLanguage>(voices: Re
 	];
 
 	return languageGroups;
+};
+
+export const getLanguagesFromVoicesByLanguage = <T extends IVoiceLanguage>(voicesByLanguage: Readonly<VoicesByLanguage<T>>): Readonly<string[]> => {
+	const languages = Object.keys(voicesByLanguage);
+
+	return languages;
 };
 
 export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
@@ -162,7 +214,7 @@ export const getLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(
 	return languagesByLanguageGroup;
 };
 
-export const getLanguageForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(voices: Readonly<T[]>, voiceName: string): Readonly<T> => {
+export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(voices: Readonly<T[]>, voiceName: string): Readonly<T> => {
 	const matchingVoices = voices.filter((voice) => voice.name === voiceName);
 
 	if (matchingVoices.length !== 1) {
@@ -182,3 +234,12 @@ export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguages
 	// NOTE: preferring language groups over languages/dialects.
 	.concat(navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)))
 	.concat(navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)));
+
+export const getAvailableBrowserLanguageGroupsWithNavigatorLanguages = (navigatorLanguageGroups: Readonly<string[]>, languageGroups: Readonly<string[]>): LanguageGroupWithNavigatorLanguage[] =>
+	languageGroups
+		.map(
+			((languageGroup) => ({
+				isNavigatorLanguage: navigatorLanguageGroups.includes(languageGroup),
+				languageGroup,
+			})),
+		);

@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import SharingIcons from "@talkie/shared-application/components/sharing/sharing-icons";
 import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon";
 import configureAttribute, {
 	ConfigureProps,
@@ -34,17 +35,18 @@ import {
 	OsType,
 	SystemType,
 } from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
-import React from "react";
+import React, { ComponentProps } from "react";
+import { StyletronComponent, styled } from "styletron-react";
 
 export interface AboutStateProps {
 	isPremiumEdition: boolean;
-	languageGroups: readonly string[];
-	languages: readonly string[];
+	sortedLanguageGroups: readonly string[];
+	sortedLanguages: readonly string[];
 	navigatorLanguage?: string | null;
-	navigatorLanguages: readonly string[];
+	sortedNavigatorLanguages: readonly string[];
 	osType?: OsType | null;
 	systemType: SystemType | null;
-	translatedLanguages: Readonly<TalkieLocale[]>;
+	sortedTranslatedLanguages: Readonly<TalkieLocale[]>;
 	versionName: string | null;
 }
 
@@ -59,10 +61,24 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		osType: null,
 	};
 
+	private readonly styled: {
+		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
+
+		this.styled = {
+			sharingIcons: styled(
+				SharingIcons,
+				{
+					display: "inline-block",
+					verticalAlign: "middle",
+				},
+			),
+		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -81,13 +97,13 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		const {
 			configure,
 			isPremiumEdition,
-			languageGroups,
-			languages,
+			sortedLanguageGroups,
+			sortedLanguages,
 			navigatorLanguage,
-			navigatorLanguages,
+			sortedNavigatorLanguages,
 			osType,
 			systemType,
-			translatedLanguages,
+			sortedTranslatedLanguages,
 			translateSync,
 			versionName,
 			voiceNames,
@@ -100,28 +116,42 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 
 		return (
 			<section>
-				<listBase.ul>
-					<listBase.li>
-						<textBase.a href={configure("urls.support-feedback")}>
-							{translateSync("frontend_supportAndFeedback")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.rate")}>
-							{translateSync("frontend_rateIt")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.project")}>
-							{translateSync("frontend_aboutProjectPageLinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.github")}>
-							{translateSync("frontend_aboutCodeOnGithubLinkText")}
-						</textBase.a>
-					</listBase.li>
-				</listBase.ul>
+				<textBase.h2>
+					{translateSync("frontend_storyHeading")}
+				</textBase.h2>
+				<textBase.p>
+					{translateSync("frontend_storyDescription")}
+				</textBase.p>
+				<textBase.p>
+					{translateSync("frontend_storyThankYou")}
+				</textBase.p>
+				<textBase.p>
+					—
+					<textBase.a
+						href="https://joelpurra.com/"
+						lang="sv"
+					>
+						Joel Purra
+					</textBase.a>
+				</textBase.p>
+
+				<textBase.h2>
+					{translateSync("frontend_shareHeading")}
+				</textBase.h2>
+
+				<textBase.p>
+					{translateSync("frontend_sharePitch", [
+						translateSync("extensionShortName"),
+					])}
+				</textBase.p>
+
+				<div>
+					<this.styled.sharingIcons/>
+
+					<textBase.a href={configure("urls.rate")}>
+						{translateSync("frontend_rateIt")}
+					</textBase.a>
+				</div>
 
 				<textBase.h2>
 					{translateSync("frontend_systemHeading")}
@@ -183,39 +213,39 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						{translateSync("frontend_systemBrowserLanguagesHeading")}
 						{" "}
 						(
-						{navigatorLanguages.length}
+						{sortedNavigatorLanguages.length}
 						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
 					>
-						{navigatorLanguages.join(", ")}
+						{sortedNavigatorLanguages.join(", ")}
 					</listBase.dd>
 
 					<listBase.dt>
 						{translateSync("frontend_systemInstalledLanguagesHeading")}
 						{" "}
 						(
-						{languageGroups.length}
+						{sortedLanguageGroups.length}
 						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
 					>
-						{languageGroups.join(", ")}
+						{sortedLanguageGroups.join(", ")}
 					</listBase.dd>
 
 					<listBase.dt>
 						{translateSync("frontend_systemInstalledDialectsHeading")}
 						{" "}
 						(
-						{languages.length}
+						{sortedLanguages.length}
 						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
 					>
-						{languages.join(", ")}
+						{sortedLanguages.join(", ")}
 					</listBase.dd>
 
 					<listBase.dt>
@@ -242,13 +272,13 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						{translateSync("frontend_systemTalkieUILanguagesHeading")}
 						{" "}
 						(
-						{translatedLanguages.length}
+						{sortedTranslatedLanguages.length}
 						)
 					</listBase.dt>
 					<listBase.dd
 						lang="en"
 					>
-						{translatedLanguages.join(", ")}
+						{sortedTranslatedLanguages.join(", ")}
 					</listBase.dd>
 				</listBase.dl>
 
@@ -279,6 +309,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 							lang="en"
 						>
 							{translateSync("frontend_licenseCLALinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.github")}>
+							{translateSync("frontend_aboutCodeOnGithubLinkText")}
 						</textBase.a>
 					</listBase.li>
 				</listBase.ul>

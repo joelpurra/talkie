@@ -30,7 +30,7 @@ interface TextStateProps {
 }
 
 export interface TextDispatchProps {
-	storeSpeakLongTexts: typeof actions.voices.storeSpeakLongTexts;
+	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
 interface TextProps extends TextStateProps, TextDispatchProps {}

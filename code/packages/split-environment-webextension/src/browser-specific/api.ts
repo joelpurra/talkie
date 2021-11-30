@@ -37,8 +37,7 @@ import {
 } from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
 import ITalkieLocaleHelper from "@talkie/split-environment-interfaces/moved-here/italkie-locale-helper";
 import {
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
@@ -68,13 +67,16 @@ import {
 } from "./urls";
 
 export default class Api implements IApi {
-	debouncedSpeakTextInVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch>) => void;
+	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
+	debouncedSpeakTextInVoiceWithOverrides: (text: string, voiceName: string) => void;
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
 
 	// eslint-disable-next-line max-params
 	constructor(private readonly metadataManager: IMetadataManager, private readonly configuration: IConfiguration, private readonly translator: ITranslatorProvider, private readonly broadcastProvider: IBroadcasterProvider, private readonly talkieLocaleHelper: ITalkieLocaleHelper) {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedSpeakTextInVoice = debounce(this.speakInVoice.bind(this) as any, 200);
+		this.debouncedSpeakTextInCustomVoice = debounce(this.speakInCustomVoice.bind(this) as any, 200);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		this.debouncedSpeakTextInVoiceWithOverrides = debounce(this.speakTextInVoiceWithOverrides.bind(this) as any, 200);
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		this.debouncedSpeakTextInLanguageWithOverrides = debounce(this.speakTextInLanguageWithOverrides.bind(this) as any, 200);
 	}
@@ -94,7 +96,7 @@ export default class Api implements IApi {
 		await talkieServices.iconClick();
 	}
 
-	async speakInVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch>): Promise<void> {
+	async speakInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void> {
 		const talkieServices = await getTalkieServices();
 
 		await talkieServices.stopSpeakFromFrontend();
@@ -104,6 +106,13 @@ export default class Api implements IApi {
 		const backgroundVoice = jsonClone(voice);
 
 		await talkieServices.startSpeakFromFrontend(backgroundText, backgroundVoice);
+	}
+
+	async speakTextInVoiceWithOverrides(text: string, voiceName: string): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.stopSpeakFromFrontend();
+		await talkieServices.startSpeakInVoiceWithOverridesFromFrontend(text, voiceName);
 	}
 
 	async speakTextInLanguageWithOverrides(text: string, languageCode: string): Promise<void> {

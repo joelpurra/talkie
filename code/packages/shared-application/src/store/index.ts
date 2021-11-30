@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	combineReducers,
-} from "redux";
+} from "../store/combine-reducers";
 
 // TODO: merge shared/unshared slice "trees", or at least export them together?
 import sharedReducer from "../slices/index";

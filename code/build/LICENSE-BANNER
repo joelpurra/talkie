@@ -24,7 +24,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 - Generated: <%= moment().format() %>
 - Version: <%= pkg.version %>
 - License: <%= pkg.license %>
-- Author: <%= pkg.author.name %> <<%= pkg.author.email %>> (<%= pkg.author.url %>)
+- Author: <%= (pkg.author || {}).name %> <<%= (pkg.author || {}).email %>> (<%= (pkg.author || {}).url %>)
 - Homepage: <%= pkg.homepage %>
 
 
@@ -38,7 +38,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 - Name: <%= dependency.name %>
 - Version: <%= dependency.version %>
 - License: <%= dependency.license %>
-- Author: <%= dependency.author.name %> <<%= dependency.author.email %>> (<%= dependency.author.url %>)
+- Author: <%= (dependency.author || {}).name %> <<%= (dependency.author || {}).email %>> (<%= (dependency.author || {}).url %>)
 - Homepage: <%= dependency.homepage %>
 
 

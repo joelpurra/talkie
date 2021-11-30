@@ -30,6 +30,6 @@ export default class WelcomeManager {
 		// TODO: focus the tab's window to ensure that the welcome text selection works?
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/Tab
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows/update
-		return openInternalUrlFromConfigurationInNewTab("demo-welcome");
+		return openInternalUrlFromConfigurationInNewTab("options-welcome");
 	}
 }

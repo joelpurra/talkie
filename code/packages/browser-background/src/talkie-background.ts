@@ -31,9 +31,8 @@ import {
 import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider";
 import {
-	IVoiceNameAndLanguage,
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceName,
+	IVoiceNameAndRateAndPitch,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
 	knownEvents,
@@ -185,13 +184,13 @@ export default class TalkieBackground {
 		await this.talkieSpeaker.stopSpeaking();
 	}
 
-	async startSpeakingTextInVoiceAction(text: string, voice: IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch): Promise<void> {
+	async startSpeakingTextInVoiceAction(text: string, voice: Readonly<IVoiceNameAndRateAndPitch>): Promise<void> {
 		const createSpeech = async () => this.talkieSpeaker.speakTextInVoice(text, voice);
 
 		await this._enqueueSpeech(createSpeech);
 	}
 
-	async addRateAndPitchToSpecificVoice(voice: ReadonlyDeep<IVoiceNameAndLanguage>): Promise<IVoiceNameAndLanguageAndRateAndPitch> {
+	async addRateAndPitchToSpecificVoice(voice: ReadonlyDeep<IVoiceName>): Promise<IVoiceNameAndRateAndPitch> {
 		const [
 			effectiveRateForVoice,
 			effectivePitchForVoice,
@@ -200,7 +199,7 @@ export default class TalkieBackground {
 			this.voiceManager.getEffectivePitchForVoice(voice.name),
 		]);
 
-		const voiceWithPitchAndRate: IVoiceNameAndLanguageAndRateAndPitch = {
+		const voiceWithPitchAndRate: IVoiceNameAndRateAndPitch = {
 			...voice,
 			pitch: effectivePitchForVoice,
 			rate: effectiveRateForVoice,
@@ -209,16 +208,13 @@ export default class TalkieBackground {
 		return voiceWithPitchAndRate;
 	}
 
-	async startSpeakingTextInVoiceWithOverridesAction(text: string, voice: ReadonlyDeep<IVoiceNameAndLanguage>): Promise<void> {
+	async startSpeakingTextInVoiceWithOverridesAction(text: string, voiceName: string): Promise<void> {
+		const voice: IVoiceName = {
+			name: voiceName,
+		};
 		const voiceWithPitchAndRate = await this.addRateAndPitchToSpecificVoice(voice);
 
 		return this.startSpeakingTextInVoiceAction(text, voiceWithPitchAndRate);
-	}
-
-	async startSpeakingTextInLanguageAction(text: string, language: string): Promise<void> {
-		const createSpeech = async () => this.talkieSpeaker.speakTextInLanguage(text, language);
-
-		await this._enqueueSpeech(createSpeech);
 	}
 
 	async startSpeakingTextInLanguageWithOverridesAction(text: string, language: string): Promise<void> {
@@ -228,7 +224,7 @@ export default class TalkieBackground {
 			throw new Error(`Could not get effective voice for language: ${JSON.stringify(language)}`);
 		}
 
-		return this.startSpeakingTextInVoiceWithOverridesAction(text, effectiveVoiceForLanguage);
+		return this.startSpeakingTextInVoiceWithOverridesAction(text, effectiveVoiceForLanguage.name);
 	}
 
 	async startSpeakingCustomTextDetectLanguage(text: string): Promise<void> {

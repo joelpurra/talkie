@@ -17,6 +17,7 @@
     "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {
+    "@types/react": "^17.0.20",
     "redux": "^4.1.1"
   },
   "exports": {

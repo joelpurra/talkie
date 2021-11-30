@@ -77,12 +77,7 @@ export default class MetadataManager implements IMetadataManager {
 
 	async getVersionName(): Promise<string> {
 		const manifest = await this.getManifest();
-
-		// TODO: transition away from (deprecated? non-standard?) version_name.
-		/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-		// @ts-expect-error: version_name is non-standard. ts(2339)
 		const versionName = manifest.version_name;
-		/* eslint-enable @typescript-eslint/no-unsafe-assignment */
 
 		if (typeof versionName !== "string" || versionName.length === 0) {
 			throw new Error(`Invalid version name: ${typeof versionName} ${JSON.stringify(versionName)}`);

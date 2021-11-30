@@ -25,7 +25,6 @@ import {
 } from "@talkie/shared-application-helpers/voices";
 import {
 	IVoiceNameAndLanguage,
-	IVoiceNameAndLanguageOrNull,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
 	ReadonlyDeep,
@@ -43,12 +42,15 @@ export default class VoiceLanguageManager {
 	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: MetadataManager, private readonly talkieSpeaker: TalkieSpeaker) {}
 
 	async getLanguageVoiceDefault(languageName: string): Promise<IVoiceNameAndLanguage | null> {
-		const mappedVoice: IVoiceNameAndLanguageOrNull = {
-			lang: languageName,
-			name: null,
-		};
+		const resolvedVoice = await this.talkieSpeaker.resolveDefaultVoiceSafeObjectForLanguage(languageName);
 
-		return this.resolveVoiceAsMappedVoice(mappedVoice);
+		if (!resolvedVoice) {
+			return null;
+		}
+
+		const resolvedVoiceAsMappedVoice = getMappedVoice(resolvedVoice);
+
+		return resolvedVoiceAsMappedVoice;
 	}
 
 	async hasLanguageVoiceDefault(languageName: string): Promise<boolean> {
@@ -160,17 +162,5 @@ export default class VoiceLanguageManager {
 		}
 
 		return this.getLanguageVoiceDefault(languageName);
-	}
-
-	private async resolveVoiceAsMappedVoice<T extends IVoiceNameAndLanguageOrNull>(mappedVoice: T): Promise<IVoiceNameAndLanguage | null> {
-		const resolvedVoice = await this.talkieSpeaker.resolveVoiceSafeObject(mappedVoice);
-
-		if (!resolvedVoice) {
-			return null;
-		}
-
-		const resolvedVoiceAsMappedVoice = getMappedVoice(resolvedVoice);
-
-		return resolvedVoiceAsMappedVoice;
 	}
 }

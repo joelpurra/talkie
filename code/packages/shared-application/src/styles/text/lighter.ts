@@ -22,12 +22,14 @@ import {
 	StyleObject,
 } from "styletron-react";
 
+import * as colorBase from "../color/color-base";
+
 export const text: StyleObject = {
-	color: "#9b9b9b",
+	color: colorBase.textLighterColor,
 };
 
 export const highlight: StyleObject = {
-	color: "#3497ff",
+	color: colorBase.textLighterHighlightColor,
 	textDecoration: "none",
 };
 
@@ -35,6 +37,6 @@ export const a: StyleObject = {
 	":active": highlight,
 	":focus": highlight,
 	":hover": highlight,
-	color: "#9b9b9b",
+	color: colorBase.textLighterColor,
 	textDecoration: "none",
 };

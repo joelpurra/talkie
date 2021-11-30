@@ -41,21 +41,14 @@ import {
 export type DynamicConfigurationObject = {
 	shared: {
 		urls: {
-			["demo-about"]: string;
-			["demo-features"]: string;
-			["demo-support"]: string;
-			["demo-usage"]: string;
-			["demo-voices"]: string;
-			["demo-welcome"]: string;
-			["options-about-from-demo"]: string;
-			["options-about-from-popup"]: string;
-			["options-from-demo"]: string;
-			["options-from-popup"]: string;
-			["options-upgrade-from-demo"]: string;
-			["options-upgrade-from-menu"]: string;
-			["options-upgrade-from-popup"]: string;
+			["options-about"]: string;
+			["options-features"]: string;
+			["options-support"]: string;
+			["options-usage"]: string;
+			["options-upgrade"]: string;
+			["options-voices"]: string;
+			["options-welcome"]: string;
 			["popup-passclick-false"]: string;
-			demo: string;
 			options: string;
 			popup: string;
 			root: string;
@@ -72,30 +65,17 @@ export default class Configuration implements IConfiguration {
 
 		// TODO: since these urls are no longer very dynamic (merely repetitive), replace with hardcoded values in configuration.json?
 		configurationObject.shared.urls.root = "/";
-		configurationObject.shared.urls.demo = "/packages/demo-renderer/src/demo.html";
 		configurationObject.shared.urls.options = "/packages/options-renderer/src/options.html";
 		configurationObject.shared.urls.popup = "/packages/popup-renderer/src/popup.html";
 
 		// NOTE: direct links to individual tabs.
-		configurationObject.shared.urls["demo-about"] = configurationObject.shared.urls.demo + "#about";
-		configurationObject.shared.urls["demo-features"] = configurationObject.shared.urls.demo + "#features";
-		configurationObject.shared.urls["demo-support"] = configurationObject.shared.urls.demo + "#support";
-		configurationObject.shared.urls["demo-usage"] = configurationObject.shared.urls.demo + "#usage";
-		configurationObject.shared.urls["demo-voices"] = configurationObject.shared.urls.demo + "#voices";
-		configurationObject.shared.urls["demo-welcome"] = configurationObject.shared.urls.demo + "#welcome";
-
-		// NOTE: direct links to individual tabs.
-		// NOTE: need to pass a parameter to the options page.
-		configurationObject.shared.urls["options-from-demo"] = configurationObject.shared.urls.options + "?from=demo";
-		configurationObject.shared.urls["options-about-from-demo"] = configurationObject.shared.urls["options-from-demo"] + "#about";
-		configurationObject.shared.urls["options-upgrade-from-demo"] = configurationObject.shared.urls["options-from-demo"] + "#upgrade";
-
-		configurationObject.shared.urls["options-from-popup"] = configurationObject.shared.urls.options + "?from=popup";
-		configurationObject.shared.urls["options-about-from-popup"] = configurationObject.shared.urls["options-from-popup"] + "#about";
-		configurationObject.shared.urls["options-upgrade-from-popup"] = configurationObject.shared.urls["options-from-popup"] + "#upgrade";
-
-		// eslint-disable-next-line no-useless-concat
-		configurationObject.shared.urls["options-upgrade-from-menu"] = configurationObject.shared.urls.options + "?from=menu" + "#upgrade";
+		configurationObject.shared.urls["options-about"] = configurationObject.shared.urls.options + "#about";
+		configurationObject.shared.urls["options-features"] = configurationObject.shared.urls.options + "#features";
+		configurationObject.shared.urls["options-support"] = configurationObject.shared.urls.options + "#support";
+		configurationObject.shared.urls["options-upgrade"] = configurationObject.shared.urls.options + "#upgrade";
+		configurationObject.shared.urls["options-usage"] = configurationObject.shared.urls.options + "#usage";
+		configurationObject.shared.urls["options-voices"] = configurationObject.shared.urls.options + "#voices";
+		configurationObject.shared.urls["options-welcome"] = configurationObject.shared.urls.options + "#welcome";
 
 		configurationObject.shared.urls["popup-passclick-false"] = configurationObject.shared.urls.popup + "?passclick=false";
 
@@ -126,7 +106,7 @@ export default class Configuration implements IConfiguration {
 
 			if (typeof value !== "undefined" && (Object.prototype).hasOwnProperty.call(object, part)) {
 				if (parts.length === 0) {
-					return value;
+					return value as JsonValue;
 				}
 
 				// NOTE: cast to any to let the recursive call handle type errors.

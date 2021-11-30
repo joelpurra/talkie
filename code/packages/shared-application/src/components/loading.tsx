@@ -25,14 +25,24 @@ import translateAttribute, {
 } from "../hocs/translate";
 import * as lighter from "../styled/text/lighter";
 import {
+	ClassNameProp,
+} from "../styled/types";
+import {
 	ChildrenRequiredProps,
 } from "../types";
 
-export interface LoadingProps{
+export interface LoadingProps extends ChildrenRequiredProps, ClassNameProp {
 	enabled: boolean;
+	isBlockElement?: boolean;
 }
 
-class Loading<P extends LoadingProps & ChildrenRequiredProps & TranslateProps> extends React.PureComponent<P> {
+interface InternalProps extends LoadingProps, TranslateProps {}
+
+class Loading<P extends InternalProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		isBlockElement: false,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -40,23 +50,31 @@ class Loading<P extends LoadingProps & ChildrenRequiredProps & TranslateProps> e
 
 	override render(): React.ReactNode {
 		const {
-			enabled,
 			children,
+			className,
+			enabled,
+			isBlockElement,
 			translateSync,
-		} = this.props;
+		} = this.props as InternalProps;
 
 		if (enabled) {
 			return children;
 		}
 
+		const LoadingWrapper = isBlockElement
+			? lighter.p
+			: lighter.span;
+
 		return (
-			<lighter.span>
+			<LoadingWrapper
+				className={className}
+			>
 				{translateSync("frontend_loading")}
-			</lighter.span>
+			</LoadingWrapper>
 		);
 	}
 }
 
-export default translateAttribute<LoadingProps & ChildrenRequiredProps & TranslateProps>()(
+export default translateAttribute<InternalProps>()(
 	Loading,
 );

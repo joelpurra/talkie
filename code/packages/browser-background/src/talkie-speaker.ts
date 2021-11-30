@@ -36,14 +36,9 @@ import {
 	promiseTimeout,
 } from "@talkie/shared-application-helpers/promise";
 import {
-	copySpeechSynthesisVoice,
-	pitchRange,
-	rateRange,
-	resolveVoice,
-} from "@talkie/shared-application-helpers/voices";
-import {
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceLanguage,
+	IVoiceName,
+	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
@@ -54,6 +49,12 @@ import {
 } from "type-fest";
 
 import OnlyLastCaller from "./only-last-caller";
+import {
+	createSafeVoiceObjectFromSpeechSynthesisVoice,
+	resolveDefaultVoiceFromLanguage,
+	resolveVoice,
+	resolveVoiceFromName,
+} from "./talkie-speaker-helpers";
 import TextHelper from "./text-helper";
 
 declare global{
@@ -87,6 +88,7 @@ export default class TalkieSpeaker {
 	static async _asyncSynthesizerInitialization(): Promise<void> {
 		// NOTE: wraps the browser's speech synthesizer events to figure out when it is ready.
 		return new Promise<void>(
+			// TODO: register listener before first call to getVoices, to prevent race condition by ensuring that the event doesn't happen before listener registration?
 			(resolve, reject) => {
 				const handleVoicesChanged = () => {
 					window.speechSynthesis.removeEventListener("voiceschanged", handleVoicesChanged);
@@ -136,18 +138,41 @@ export default class TalkieSpeaker {
 	}
 
 	async getAllVoicesSafeObjects(): Promise<SafeVoiceObject[]> {
+		// NOTE: in the TalkieSpeaker class so it (plus the helper functions) is the only one to handle SpeechSynthesisVoice.
 		const voices = await this._getAllVoices();
 
-		// NOTE: the SpeechSynthesisVoice object cannot be transferred outside of the background page context without copying it.
-		const copy = voices.map((voice) => copySpeechSynthesisVoice(voice));
+		// NOTE: the SpeechSynthesisVoice object reference cannot be transferred outside of the background page context, need to transform/copy the object properties.
+		const copy = voices.map((voice) => createSafeVoiceObjectFromSpeechSynthesisVoice(voice));
 
 		return copy;
 	}
 
-	async resolveVoiceSafeObject<T extends IVoiceNameAndLanguageOrNull>(mappedVoice: T): Promise<SafeVoiceObject | null> {
-		const voices = await this.getAllVoicesSafeObjects();
+	async resolveVoiceSafeObject(voiceName: string): Promise<SafeVoiceObject | null> {
+		const voices = await this._getAllVoices();
+		const voice = await resolveVoiceFromName(voices, voiceName);
 
-		return resolveVoice(voices, mappedVoice);
+		if (!voice) {
+			// TODO: throw instead?
+			return null;
+		}
+
+		const safeVoiceObject = createSafeVoiceObjectFromSpeechSynthesisVoice(voice);
+
+		return safeVoiceObject;
+	}
+
+	async resolveDefaultVoiceSafeObjectForLanguage(language: string): Promise<SafeVoiceObject | null> {
+		const voices = await this._getAllVoices();
+		const voice = await resolveDefaultVoiceFromLanguage(voices, language);
+
+		if (!voice) {
+			// TODO: throw instead?
+			return null;
+		}
+
+		const safeVoiceObject = createSafeVoiceObjectFromSpeechSynthesisVoice(voice);
+
+		return safeVoiceObject;
 	}
 
 	async stopSpeaking(): Promise<void> {
@@ -161,7 +186,28 @@ export default class TalkieSpeaker {
 		void logDebug("Done", "stopSpeaking");
 	}
 
-	async speakPartOfText(utterance: ReadonlyDeep<SpeechSynthesisUtterance>): Promise<void> {
+	async speakTextInVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void> {
+		const resolvedVoice = await this._resolveSpeechSynthesisVoice({
+			name: voice.name,
+		});
+
+		await this.speakTextInResolvedVoice(text, resolvedVoice, voice.rate, voice.pitch);
+	}
+
+	async _getAllVoices(): Promise<SpeechSynthesisVoice[]> {
+		const synthesizer = await this.getSynthesizer();
+		const voices = synthesizer.getVoices();
+
+		// TODO: check if there are any voices installed, alert user if not.
+		if (!Array.isArray(voices)) {
+			// NOTE: the list of voices could still be empty, either due to slow loading (cold cache) or that there actually are no voices loaded.
+			throw new TypeError("Could not load list of voices from browser.");
+		}
+
+		return voices;
+	}
+
+	private async speakPartOfText(utterance: ReadonlyDeep<SpeechSynthesisUtterance>): Promise<void> {
 		const synthesizer = await this.getSynthesizer();
 
 		// NOTE: wraps the browser's speech synthesizer events to track progress.
@@ -200,8 +246,6 @@ export default class TalkieSpeaker {
 					synthesizer.pause();
 					synthesizer.resume();
 
-					void logDebug("Variable", "synthesizer", synthesizer);
-
 					void logDebug("Done", "speakPartOfText", `Speak text part (length ${utterance.text.length})`);
 				} catch (error: unknown) {
 					reject(error);
@@ -210,13 +254,13 @@ export default class TalkieSpeaker {
 		);
 	}
 
-	async splitAndSpeak(text: string, voice: IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch): Promise<void> {
+	private async splitAndSpeak(text: string, resolvedVoice: SpeechSynthesisVoice, rate: number, pitch: number): Promise<void> {
 		void logDebug("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
 		const speakingEventData: SpeakingEventData = {
-			language: voice.lang,
+			language: resolvedVoice.lang,
 			text,
-			voice: voice.name,
+			voice: resolvedVoice.name,
 		};
 
 		// NOTE: trying to avoid sending object references to broadcastEvent.
@@ -227,18 +271,7 @@ export default class TalkieSpeaker {
 		// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
 		delete window.talkieUtterance;
 
-		const [
-			actualVoice,
-			speakLongTexts,
-		] = await Promise.all([
-			this._resolveSpeechSynthesisVoice(voice),
-			this.settingsManager.getSpeakLongTexts(),
-		]);
-
-		if (!actualVoice) {
-			throw new Error(`Actual voice not found based on voice: ${typeof actualVoice} ${JSON.stringify(voice)}`);
-		}
-
+		const speakLongTexts = await this.settingsManager.getSpeakLongTexts();
 		const paragraphs = TextHelper.splitTextToParagraphs(text);
 
 		let textParts: string[] | null = null;
@@ -258,13 +291,8 @@ export default class TalkieSpeaker {
 		const textPartsPromiseFunctions = textParts
 			.map(
 				(textPart: string) => async () => {
-					// TODO: map default fallback values elsewhere.
-					// NOTE: there is also an utterance volume property.
-					const rate = "rate" in voice && typeof voice.rate === "number" ? voice.rate : rateRange.default;
-					const pitch = "pitch" in voice && typeof voice.pitch === "number" ? voice.pitch : pitchRange.default;
-
 					const speakingPartEventData: SpeakingEventPartData = {
-						actualVoice,
+						actualVoice: resolvedVoice,
 						pitch,
 						rate,
 						textPart,
@@ -273,7 +301,7 @@ export default class TalkieSpeaker {
 					// NOTE: trying to avoid sending object references to broadcastEvent.
 					const speakingPartEventDataCopy = jsonClone({
 						...speakingPartEventData,
-						actualVoice: copySpeechSynthesisVoice(actualVoice),
+						actualVoice: createSafeVoiceObjectFromSpeechSynthesisVoice(resolvedVoice),
 					});
 
 					// TODO: add a timeout in case the speech synthesizer crashes.
@@ -285,11 +313,11 @@ export default class TalkieSpeaker {
 
 						const utterance = new window.SpeechSynthesisUtterance(textPart);
 
-						utterance.voice = actualVoice;
+						utterance.voice = resolvedVoice;
 						utterance.rate = rate;
 						utterance.pitch = pitch;
 
-						void logDebug("Variable", "utterance", utterance);
+						// void logDebug("Variable", "utterance", utterance);
 
 						// HACK: keep a reference to the utterance attached to the window. Not sure why this helps, but might prevent garbage collection or something.
 						window.talkieUtterance = utterance;
@@ -311,53 +339,38 @@ export default class TalkieSpeaker {
 		}
 	}
 
-	async speakTextInVoice(text: string, voice: IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch): Promise<void> {
-		try {
-			await this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${JSON.stringify(voice.name)}, ${JSON.stringify(voice.lang)}): ${JSON.stringify(text)}`);
-		} catch (error: unknown) {
-			// NOTE: swallowing any logToPage() errors.
-			// NOTE: reduced logging for known tab/page access problems.
-			// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
-			if (error && typeof error === "object" && typeof (error as Error).message === "string" && (error as Error).message.startsWith("Cannot access")) {
-				void logDebug("speakTextInVoice", "Error", typeof error, JSON.stringify(error), error);
-			} else {
-				void logInfo("speakTextInVoice", "Error", typeof error, JSON.stringify(error), error);
+	private async speakTextInResolvedVoice(text: string, voice: SpeechSynthesisVoice, rate: number, pitch: number): Promise<void> {
+		void (async () => {
+			// NOTE: logging outside of promise chain.
+			try {
+				await this.contentLogger.logToPage(`Speaking text (length ${text.length}, ${JSON.stringify(voice.name)}, ${JSON.stringify(voice.lang)}}): ${JSON.stringify(text)}`);
+			} catch (error: unknown) {
+				// NOTE: swallowing any logToPage() errors.
+				// NOTE: reduced logging for known tab/page access problems.
+				// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
+				if (error && typeof error === "object" && typeof (error as Error).message === "string" && (error as Error).message.startsWith("Cannot access")) {
+					void logDebug("speakTextInResolvedVoice", "Error", typeof error, JSON.stringify(error), error);
+				} else {
+					void logInfo("speakTextInResolvedVoice", "Error", typeof error, JSON.stringify(error), error);
+				}
 			}
-		}
+		})();
 
-		await this.splitAndSpeak(text, voice);
+		await this.splitAndSpeak(text, voice, rate, pitch);
 
-		void logDebug("Done", "speakTextInVoice", `Speak text (length ${text.length}, ${JSON.stringify(voice.name)}, ${JSON.stringify(voice.lang)})`);
+		void logDebug("Done", "speakTextInResolvedVoice", `Speak text (length ${text.length}, ${JSON.stringify(voice.name)}, ${JSON.stringify(voice.lang)}})`);
 	}
 
-	async speakTextInLanguage(text: string, language: string): Promise<void> {
-		const voice: IVoiceNameAndLanguageOrNull = {
-			lang: language,
-			name: null,
-		};
-
-		await this.speakTextInVoice(text, voice);
-
-		void logDebug("Done", "speakTextInLanguage", `Speak text (length ${text.length}, ${language})`);
-	}
-
-	async _getAllVoices(): Promise<SpeechSynthesisVoice[]> {
-		const synthesizer = await this.getSynthesizer();
-		const voices = synthesizer.getVoices();
-
-		// TODO: check if there are any voices installed, alert user if not.
-		if (!Array.isArray(voices)) {
-			// NOTE: the list of voices could still be empty, either due to slow loading (cold cache) or that there actually are no voices loaded.
-			throw new TypeError("Could not load list of voices from browser.");
-		}
-
-		return voices;
-	}
-
-	private async _resolveSpeechSynthesisVoice<T extends IVoiceNameAndLanguageOrNull>(mappedVoice: T): Promise<SpeechSynthesisVoice | null> {
+	private async _resolveSpeechSynthesisVoice<T extends IVoiceName | IVoiceLanguage>(mappedVoice: T): Promise<SpeechSynthesisVoice> {
 		const voices = await this._getAllVoices();
 
-		return resolveVoice(voices, mappedVoice);
+		const resolvedVoice = await resolveVoice(voices, mappedVoice);
+
+		if (!resolvedVoice) {
+			throw new TypeError("resolvedVoice");
+		}
+
+		return resolvedVoice;
 	}
 
 	private async _getSynthesizerFromBrowser(): Promise<SpeechSynthesis> {
@@ -401,9 +414,9 @@ export default class TalkieSpeaker {
 		}
 
 		// NOTE: only for logging purposes.
-		const voices = window.speechSynthesis.getVoices();
-
-		void logDebug("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
+		// const voices = window.speechSynthesis.getVoices();
+		//
+		// void logDebug("Variable", "getSynthesizerFromBrowser", "voices[]", voices.length, voices);
 
 		return window.speechSynthesis;
 	}

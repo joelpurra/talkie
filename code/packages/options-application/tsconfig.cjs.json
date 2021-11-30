@@ -16,6 +16,9 @@
       "path": "../shared-application/tsconfig.cjs.json"
     },
     {
+      "path": "../shared-locales/tsconfig.cjs.json"
+    },
+    {
       "path": "../split-environment-interfaces/tsconfig.cjs.json"
     },
     {

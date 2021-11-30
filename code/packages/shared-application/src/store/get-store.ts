@@ -21,15 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	configureStore,
 } from "@reduxjs/toolkit";
-import {
-	NoInfer,
-} from "@reduxjs/toolkit/dist/tsHelpers";
 import IApi from "@talkie/split-environment-interfaces/iapi";
 import process from "node:process";
 import {
 	Action,
-	CombinedState,
-	Middleware,
 	PreloadedState,
 	Reducer,
 	Store,
@@ -48,7 +43,7 @@ const getStore = <S, A extends Action>(
 	// TODO: promote to function argument?
 	const isServerSideRendering = typeof initialState === "undefined";
 
-	const store = configureStore<S, A, Array<Middleware<ReadonlyDeep<IApi>, S>>>({
+	const store = configureStore({
 		devTools: process.env.TALKIE_ENV === "development",
 		middleware: (getDefaultMiddleware) => {
 			const defaultMiddlewareOptions = {
@@ -66,7 +61,7 @@ const getStore = <S, A extends Action>(
 
 			return getDefaultMiddleware(defaultMiddlewareOptions).concat(extraMiddlewares);
 		},
-		preloadedState: initialState as PreloadedState<CombinedState<NoInfer<S>>>,
+		preloadedState: initialState as any,
 		reducer: rootReducer,
 	});
 
@@ -76,10 +71,10 @@ const getStore = <S, A extends Action>(
 /**
  * Create an unusable store, but which generates the correct types for the given reducer.
  *
- * @param reducer A reducer for an application.
+ * @param rootReducer A reducer for an application.
  * @returns A store which is to be used only to deduce types.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getUnusableStoreForGeneratedTypes = <S, A extends Action>(reducer: Reducer<S, A>): Store<S, A> => getStore(undefined, reducer, null as any);
+export const getUnusableStoreForGeneratedTypes = <S, A extends Action>(rootReducer: Reducer<S, A>): Store<S, A> => getStore(undefined, rootReducer, null as any);
 
 export default getStore;

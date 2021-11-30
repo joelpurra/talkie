@@ -7,7 +7,6 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
-    "@talkie/demo-renderer": "*",
     "@talkie/options-renderer": "*",
     "@talkie/popup-renderer": "*",
     "@talkie/renderer": "*",

@@ -25,4 +25,5 @@ import {
 import * as buttonBase from "../../styles/button/button-base";
 
 export const button = styled("button", buttonBase.button);
+export const transparentButton = styled("button", buttonBase.transparentButton);
 export const a = styled("a", buttonBase.a);

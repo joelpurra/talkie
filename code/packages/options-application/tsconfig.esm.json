@@ -16,6 +16,9 @@
       "path": "../shared-application/tsconfig.esm.json"
     },
     {
+      "path": "../shared-locales/tsconfig.esm.json"
+    },
+    {
       "path": "../split-environment-interfaces/tsconfig.esm.json"
     },
     {

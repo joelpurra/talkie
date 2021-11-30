@@ -38,7 +38,7 @@ import selectors from "../selectors/index";
 import {
 	actions,
 } from "../slices/index";
-import {
+import type {
 	OptionsRootState,
 } from "../store";
 
@@ -50,9 +50,9 @@ interface StateProps extends AboutStateProps {
 }
 
 interface DispatchProps {
-	loadNavigatorLanguage: typeof actions.shared.voices.loadNavigatorLanguage;
-	loadNavigatorLanguages: typeof actions.shared.voices.loadNavigatorLanguages;
-	speakInVoice: typeof actions.shared.speaking.speakInVoice;
+	loadNavigatorLanguage: typeof actions.shared.languages.loadNavigatorLanguage;
+	loadNavigatorLanguages: typeof actions.shared.languages.loadNavigatorLanguages;
+	speakTextInVoiceWithOverrides: typeof actions.shared.speaking.speakTextInVoiceWithOverrides;
 }
 
 interface InternalAboutContainerProps extends StateProps, DispatchProps {}
@@ -60,21 +60,21 @@ interface InternalAboutContainerProps extends StateProps, DispatchProps {}
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalAboutContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
-	languageGroups: selectors.shared.voices.getLanguageGroups(state),
-	languages: selectors.shared.voices.getLanguages(state),
-	navigatorLanguage: state.shared.voices.navigatorLanguage,
-	navigatorLanguages: selectors.shared.voices.getNavigatorLanguages(state),
+	navigatorLanguage: state.shared.languages.navigatorLanguage,
 	osType: state.shared.metadata.osType,
+	sortedLanguageGroups: selectors.shared.voices.getSortedLanguageGroups(state),
+	sortedLanguages: selectors.shared.voices.getSortedLanguages(state),
+	sortedNavigatorLanguages: selectors.shared.languages.getSortedNavigatorLanguages(state),
+	sortedTranslatedLanguages: selectors.shared.languages.getSortedTranslatedLanguages(state),
 	systemType: state.shared.metadata.systemType,
-	translatedLanguages: state.shared.voices.translatedLanguages,
 	versionName: state.shared.metadata.versionName,
 	voices: selectors.shared.voices.getVoices(state),
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalAboutContainerProps> = (dispatch) => ({
-	loadNavigatorLanguage: bindActionCreators(actions.shared.voices.loadNavigatorLanguage, dispatch),
-	loadNavigatorLanguages: bindActionCreators(actions.shared.voices.loadNavigatorLanguages, dispatch),
-	speakInVoice: bindActionCreators(actions.shared.speaking.speakInVoice, dispatch),
+	loadNavigatorLanguage: bindActionCreators(actions.shared.languages.loadNavigatorLanguage, dispatch),
+	loadNavigatorLanguages: bindActionCreators(actions.shared.languages.loadNavigatorLanguages, dispatch),
+	speakTextInVoiceWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInVoiceWithOverrides, dispatch),
 });
 
 class AboutContainer<P extends InternalAboutContainerProps> extends React.PureComponent<P> {
@@ -97,51 +97,44 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 
 	handleLegaleseClick(text: string): void {
 		const legaleseText = text;
-		const legaleseVoice = {
-			lang: "en-US",
-			name: "Zarvox",
-		};
 
-		this.props.speakInVoice({
+		// TODO: allow defining a specific voice, with a specified text language as fallback.
+		// lang: "en-US",
+		const legaleseVoiceName = "Zarvox";
+
+		this.props.speakTextInVoiceWithOverrides({
 			text: legaleseText,
-			voice: legaleseVoice,
+			voiceName: legaleseVoiceName,
 		});
 	}
 
 	override render(): React.ReactNode {
 		const {
 			isPremiumEdition,
-			versionName,
-			systemType,
-			osType,
 			navigatorLanguage,
-			navigatorLanguages,
-			translatedLanguages,
+			osType,
+			sortedLanguageGroups,
+			sortedLanguages,
+			sortedNavigatorLanguages,
+			sortedTranslatedLanguages,
+			systemType,
+			versionName,
 			voices,
-			languages,
-			languageGroups,
 		} = this.props;
 
-		// TODO: voices/languages may already be sorted externally, but internally sorting at lower code/abstraction levels seems inefficient?
-		const sortedNavigatorLanguages = navigatorLanguages.slice().sort((a, b) => a.localeCompare(b));
-		const sortedLanguages = languages.slice().sort((a, b) => a.localeCompare(b));
-		const sortedLanguageGroups = languageGroups.slice().sort((a, b) => a.localeCompare(b));
-		const sortedTranslatedLanguages = translatedLanguages.slice().sort((a, b) => a.localeCompare(b));
-
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const sortedVoiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`);
-		sortedVoiceNames.sort((a, b) => a.localeCompare(b));
+		const sortedVoiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`).sort((a, b) => a.localeCompare(b));
 
 		return (
 			<About
 				isPremiumEdition={isPremiumEdition}
-				languageGroups={sortedLanguageGroups}
-				languages={sortedLanguages}
 				navigatorLanguage={navigatorLanguage}
-				navigatorLanguages={sortedNavigatorLanguages}
 				osType={osType}
+				sortedLanguageGroups={sortedLanguageGroups}
+				sortedLanguages={sortedLanguages}
+				sortedNavigatorLanguages={sortedNavigatorLanguages}
+				sortedTranslatedLanguages={sortedTranslatedLanguages}
 				systemType={systemType}
-				translatedLanguages={sortedTranslatedLanguages}
 				versionName={versionName}
 				voiceNames={sortedVoiceNames}
 				onLicenseClick={this.handleLegaleseClick}

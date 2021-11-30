@@ -25,13 +25,9 @@ export type IVoiceLanguage = {
 	lang: string;
 };
 export type IVoiceNameAndLanguage = IVoiceName & IVoiceLanguage;
-export type IVoiceNameAndLanguageAndRateAndPitch = IVoiceNameAndLanguage & {
+export type IVoiceNameAndRateAndPitch = IVoiceName & {
 	rate: number;
 	pitch: number;
-};
-export type IVoiceNameAndLanguageOrNull = {
-	lang: string | null;
-	name: string | null;
 };
 
 // TODO: add `extends JsonObject` when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite?

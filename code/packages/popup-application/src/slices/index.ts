@@ -26,7 +26,7 @@ import unshared, {
 } from "@talkie/shared-application/unshared/slices/index";
 import {
 	combineReducers,
-} from "redux";
+} from "@talkie/shared-application/store/combine-reducers";
 
 export const actions = {
 	shared: sharedActions,

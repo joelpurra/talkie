@@ -22,17 +22,28 @@ import {
 	StyleObject,
 } from "styletron-react";
 
-export const table: StyleObject = {
-	width: "100%",
-};
-
-export const tbody: StyleObject = {};
-export const th: StyleObject = {};
-export const tr: StyleObject = {};
-
-export const td: StyleObject = {
+export const cellPadding = {
 	paddingBottom: "0.5em",
 	paddingLeft: "0.5em",
 	paddingRight: "0.5em",
 	paddingTop: "0.5em",
+};
+
+export const commpactTable: StyleObject = {};
+export const wideTable: StyleObject = {
+	width: "100%",
+};
+
+export const tbody: StyleObject = {};
+export const thead: StyleObject = {};
+export const tfoot: StyleObject = {};
+export const tr: StyleObject = {};
+
+export const th: StyleObject = {
+	...cellPadding,
+	textAlign: "center",
+};
+
+export const td: StyleObject = {
+	...cellPadding,
 };

@@ -22,8 +22,9 @@ import {
 	StyleObject,
 } from "styletron-react";
 
+import * as colorBase from "../color/color-base";
+
 const layoutWithMargins: StyleObject = {
-	fontSize: "0.75em",
 	marginBottom: "0.5em",
 	marginLeft: "1em",
 	marginRight: "1em",
@@ -32,6 +33,7 @@ const layoutWithMargins: StyleObject = {
 
 export const header: StyleObject = layoutWithMargins;
 export const main: StyleObject = layoutWithMargins;
+export const section: StyleObject = layoutWithMargins;
 export const nav: StyleObject = layoutWithMargins;
 export const footer: StyleObject = layoutWithMargins;
 
@@ -42,7 +44,7 @@ export const hr: StyleObject = {
 	borderRightWidth: 0,
 	borderStyle: "solid",
 	borderTopWidth: "1px",
-	color: "#dddddd",
+	color: colorBase.dividerColor,
 };
 
 export const details: StyleObject = {};
@@ -51,7 +53,7 @@ export const summary: StyleObject = {
 };
 
 export const hero: StyleObject = {
-	backgroundColor: "#eceff5",
+	backgroundColor: colorBase.premiumSectionBackgroundColor,
 	borderRadius: "0.4em",
 	fontSize: "2em",
 	marginBottom: "2em",

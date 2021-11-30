@@ -46,7 +46,7 @@ const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDis
 		actions.metadata.loadSystemType() as unknown as A,
 		actions.metadata.loadVersionName() as unknown as A,
 		actions.metadata.loadVersionNumber() as unknown as A,
-		actions.voices.loadTranslatedLanguages() as unknown as A,
+		actions.languages.loadTranslatedLanguages() as unknown as A,
 	];
 
 	const allActionsToDispatch: Array<Readonly<A>> = [

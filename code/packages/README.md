@@ -32,7 +32,6 @@ These files are only generated locally during the build process, and not checked
 - [`browser-background`](./packages/browser-background/dist/metadata/stats.html)
 - [`browser-localeredirect`](./packages/browser-localeredirect/dist/metadata/stats.html)
 - [`browser-stayalive`](./packages/browser-stayalive/dist/metadata/stats.html)
-- [`demo-application`](./packages/demo-application/dist/metadata/stats.html)
 - [`options-application`](./packages/options-application/dist/metadata/stats.html)
 - [`popup-application`](./packages/popup-application/dist/metadata/stats.html)
 - [`translator-tool`](./packages/translator-tool/dist/metadata/stats.html)

@@ -40,7 +40,7 @@ export interface ConfigureProps {
 export default function configureAttribute<P extends ConfigureProps = ConfigureProps, U = Except<P, keyof ConfigureProps>>(): IHocConstructorGenerator<P, U> {
 	// eslint-disable-next-line func-names
 	return function configureHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
-		class ConfigurationHoc extends React.Component<P> {
+		class ConfigurationHoc extends React.PureComponent<P> {
 			static override contextType = ConfigurationContext;
 			declare context: React.ContextType<typeof ConfigurationContext>;
 

@@ -37,7 +37,7 @@ import Editions, {
 import {
 	actions,
 } from "../slices/index";
-import {
+import type {
 	OptionsRootState,
 } from "../store";
 

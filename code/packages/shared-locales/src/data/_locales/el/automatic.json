@@ -636,24 +636,6 @@
     "message": "Δείτε και δοκιμάστε τις εγκατεστημένες φωνές για κάθε γλώσσα στο πρόγραμμα περιήγησης. Talkie Premium χρήστες Talkie Premium μπορούν επίσης να Talkie Premium φωνή τους ως Talkie Premium ανά γλώσσα, καθώς και να Talkie Premium ταχύτητα και το βήμα για κάθε φωνή.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "Όλες οι εγκατεστημένες γλώσσες ( $LANGUAGE_GROUPS_COUNT$ ), οι διαλέκτριες ( $LANGUAGES_COUNT$ ) και οι φωνές ( $VOICES_COUNT$ )",
-    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "Φωνές",
     "original": "Voices"
@@ -673,10 +655,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "Οι προτιμώμενες γλώσσες του προγράμματος περιήγησης",
-    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",

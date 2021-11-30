@@ -45,7 +45,8 @@ export const dd: StyleObject = {
 };
 
 const sharedInlineList: StyleObject = {
-	listStyleType: "none",
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns
+	listStyleType: "'\\200B'",
 	marginBottom: "0.25em",
 	marginTop: "0.25em",
 	paddingBottom: 0,
@@ -59,7 +60,8 @@ export const inlineOl: StyleObject = sharedInlineList;
 
 export const inlineLi: StyleObject = {
 	display: "inline-block",
-	listStyleType: "none",
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns
+	listStyleType: "'\\200B'",
 	marginBottom: "0.25em",
 	marginLeft: 0,
 	marginRight: 0,

@@ -20,56 +20,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	IVoiceNameAndLanguage,
-	IVoiceNameAndLanguageOrNull,
-	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
-
-import {
-	getLanguageGroupFromLanguage,
-} from "./transform-voices";
-
-export const copySpeechSynthesisVoice = (speechSynthesisVoice: SpeechSynthesisVoice): SafeVoiceObject => ({
-	"default": speechSynthesisVoice.default,
-	isSafeVoiceObject: true,
-	lang: speechSynthesisVoice.lang,
-	localService: speechSynthesisVoice.localService,
-	name: speechSynthesisVoice.name,
-	voiceURI: speechSynthesisVoice.voiceURI,
-});
 
 export const getMappedVoice = <T extends IVoiceNameAndLanguage>(voice: T): IVoiceNameAndLanguage => ({
 	lang: voice.lang,
 	name: voice.name,
 });
-
-export const resolveVoice = async <T extends IVoiceNameAndLanguageOrNull, U extends (SpeechSynthesisVoice | SafeVoiceObject)>(voices: Readonly<U[]>, mappedVoice: T): Promise<U | null> => {
-	const actualMatchingVoicesByName = voices.filter((voice) => mappedVoice.name && (voice.name === mappedVoice.name));
-	const actualMatchingVoicesByLanguage = voices.filter((voice) => mappedVoice.lang && (voice.lang === mappedVoice.lang));
-	const mappedVoiceLanguageGroup = typeof mappedVoice?.lang === "string" ? getLanguageGroupFromLanguage(mappedVoice.lang) : "";
-	const actualMatchingVoicesByLanguageGroup = voices.filter((voice) => mappedVoice.lang && (voice.lang.startsWith(mappedVoiceLanguageGroup)));
-
-	const resolvedVoices = new Array<U>()
-		.concat(actualMatchingVoicesByName)
-		.concat(actualMatchingVoicesByLanguage)
-		.concat(actualMatchingVoicesByLanguageGroup);
-
-	if (resolvedVoices.length === 0) {
-		return null;
-	}
-
-	// NOTE: while there might be more than one voice for the particular voice name/language/language group, just consistently pick the first one.
-	// if (actualMatchingVoices.length !== 1) {
-	// throw new Error(`Found other matching voices: ${JSON.stringify(mappedVoice)} ${actualMatchingVoices.length}`);
-	// }
-
-	const resolvedVoice = resolvedVoices[0];
-
-	if (!resolvedVoice) {
-		throw new TypeError(`Could not resolve voice: ${JSON.stringify(mappedVoice)}`);
-	}
-
-	return resolvedVoice;
-};
 
 export const rateRange = {
 	"default": 1,

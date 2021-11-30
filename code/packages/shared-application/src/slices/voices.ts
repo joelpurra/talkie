@@ -23,31 +23,18 @@ import {
 	createSlice,
 } from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider";
-import {
 	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 
 import {
 	IApiAsyncThunkConfig,
 } from "./slices-types";
-import {
-	getNavigatorLanguage,
-	getNavigatorLanguages,
-} from "./voices-hack-functions";
 
 export type VoicesState = {
-	navigatorLanguage: string | null;
-	navigatorLanguages: Readonly<string[]>;
-	translatedLanguages: TalkieLocale[];
 	voices: SafeVoiceObject[];
 };
 
 const initialState: VoicesState = {
-	navigatorLanguage: null,
-	navigatorLanguages: [],
-	translatedLanguages: [],
 	voices: [],
 };
 
@@ -60,37 +47,11 @@ export const loadVoices = createAsyncThunk<SafeVoiceObject[], void, IApiAsyncThu
 	async (_, thunkApi) => thunkApi.extra.getVoices(),
 );
 
-export const loadNavigatorLanguage = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
-	`${prefix}/loadNavigatorLanguage`,
-	// TODO: convert to synchronous action?
-	() => getNavigatorLanguage(),
-);
-
-export const loadNavigatorLanguages = createAsyncThunk<Readonly<string[]>, void, IApiAsyncThunkConfig>(
-	`${prefix}/loadNavigatorLanguages`,
-	// TODO: convert to synchronous action?
-	() => getNavigatorLanguages(),
-);
-
-export const loadTranslatedLanguages = createAsyncThunk<TalkieLocale[], void, IApiAsyncThunkConfig>(
-	`${prefix}/loadTranslatedLanguages`,
-	async (_, thunkApi) => thunkApi.extra.getTranslatedLanguages(),
-);
-
 export const voicesSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(loadVoices.fulfilled, (state, action) => {
 				state.voices = action.payload;
-			})
-			.addCase(loadNavigatorLanguage.fulfilled, (state, action) => {
-				state.navigatorLanguage = action.payload;
-			})
-			.addCase(loadNavigatorLanguages.fulfilled, (state, action) => {
-				state.navigatorLanguages = action.payload as string[];
-			})
-			.addCase(loadTranslatedLanguages.fulfilled, (state, action) => {
-				state.translatedLanguages = action.payload;
 			});
 	},
 	initialState,

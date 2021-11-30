@@ -19,10 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import * as errors from "./errors";
+import * as languages from "./languages";
 import * as voices from "./voices";
 
 const actions = {
 	errors,
+	languages,
 	voices,
 };
 

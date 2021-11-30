@@ -26,6 +26,7 @@ import * as layoutBase from "../../styles/layout/layout-base";
 
 export const header = styled("header", layoutBase.header);
 export const main = styled("main", layoutBase.main);
+export const section = styled("section", layoutBase.section);
 export const nav = styled("nav", layoutBase.nav);
 export const footer = styled("footer", layoutBase.footer);
 export const hr = styled("hr", layoutBase.hr);

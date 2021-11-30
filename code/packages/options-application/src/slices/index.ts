@@ -26,22 +26,20 @@ import unshared, {
 } from "@talkie/shared-application/unshared/slices/index";
 import {
 	combineReducers,
-} from "redux";
+} from "@talkie/shared-application/store/combine-reducers";
 
-import navigation,
-* as navigationActions from "./navigation";
-import voices,
-* as voicesActions from "./voices";
+import voices, * as voicesActions from "./voices";
+import settings, * as settingsActions from "./settings";
 
 export const actions = {
-	navigation: navigationActions,
+	settings: settingsActions,
 	shared: sharedActions,
 	unshared: unsharedActions,
 	voices: voicesActions,
 };
 
 const reducers = combineReducers({
-	navigation,
+	settings,
 	shared,
 	unshared,
 	voices,

@@ -24,9 +24,18 @@ import {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
+import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions";
 import {
 	IApiAsyncThunkConfig,
 } from "@talkie/shared-application/slices/slices-types";
+import {
+	isLanguageGroup,
+} from "@talkie/shared-application-helpers/transform-voices";
+
+import type {
+	OptionsRootState,
+} from "../store";
+import { getFirstLanguageForSelectedLanguageGroup, getFirstVoiceForSelectedLanguageCode, getLanguageCountForSelectedLanguageGroup, getVoiceCountForSelectedLanguageCode } from "../selectors/voices";
 
 interface StoreVoiceRateOverrideArguments {
 	rate: number;
@@ -39,69 +48,83 @@ interface StoreVoicePitchOverrideArguments {
 }
 
 interface StoreEffectiveVoiceNameForLanguageArguments {
-	languageCode: string;
+	languageCodeOrGroup: string;
 	voiceName: string;
 }
 
 export interface VoicesState {
-	effectiveVoiceNameForSelectedLanguage: string | null;
+	// TODO: split slice to languages/language/dialects/dialect/voices/voice.
+	effectiveVoiceNameForSelectedLanguageCode: string | null;
+	effectiveVoiceNameForSelectedLanguageGroup: string | null;
 	pitchForSelectedVoice: number;
 	rateForSelectedVoice: number;
-	sampleText: string;
+	sampleTextForLanguageGroup: string | null;
 	selectedLanguageCode: string | null;
+	selectedLanguageGroup: string | null;
 	selectedVoiceName: string | null;
-	speakLongTexts: boolean;
 }
 
 const initialState: VoicesState = {
-	effectiveVoiceNameForSelectedLanguage: null,
+	effectiveVoiceNameForSelectedLanguageCode: null,
+	effectiveVoiceNameForSelectedLanguageGroup: null,
 	pitchForSelectedVoice: 1,
 	rateForSelectedVoice: 1,
-	sampleText: "",
+	sampleTextForLanguageGroup: null,
 	selectedLanguageCode: null,
+	selectedLanguageGroup: null,
 	selectedVoiceName: null,
-	speakLongTexts: false,
 };
 
 const prefix = "voices";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const loadSelectedLanguageCode = createAsyncThunk<void, string, IApiAsyncThunkConfig>(
+export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageCode`,
 	async (languageCode, thunkApi) => {
 		thunkApi.dispatch(setSelectedLanguageCode(languageCode));
-		await thunkApi.dispatch(loadEffectiveVoiceForLanguage(languageCode));
+		await thunkApi.dispatch(loadEffectiveVoiceForLanguageCode(languageCode));
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+		const state: OptionsRootState = thunkApi.getState() as any;
+		const voiceCountForSelectedLanguageCode = getVoiceCountForSelectedLanguageCode(state);
+		const voice = voiceCountForSelectedLanguageCode === 1
+			? getFirstVoiceForSelectedLanguageCode(state)
+			: null;
+		const voiceName = voice?.name ?? null;
+
+		await thunkApi.dispatch(loadSelectedVoiceName(voiceName));
 	},
 );
 
-export const loadSelectedVoiceName = createAsyncThunk<void, string, IApiAsyncThunkConfig>(
+export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
+	`${prefix}/loadSelectedLanguageGroup`,
+	async (languageGroup, thunkApi) => {
+		thunkApi.dispatch(setSelectedLanguageGroup(languageGroup));
+		await thunkApi.dispatch(loadEffectiveVoiceForLanguageGroup(languageGroup));
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+		const state: OptionsRootState = thunkApi.getState() as any;
+		const languageCountForSelectedLanguageGroup = getLanguageCountForSelectedLanguageGroup(state);
+		const language = languageCountForSelectedLanguageGroup === 1
+			? getFirstLanguageForSelectedLanguageGroup(state)
+			: null;
+
+		await thunkApi.dispatch(loadSelectedLanguageCode(language));
+	},
+);
+
+export const loadSelectedVoiceName = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedVoiceName`,
 	async (voiceName, thunkApi) => {
 		thunkApi.dispatch(setSelectedVoiceName(voiceName));
-		await Promise.all([
-			thunkApi.dispatch(loadEffectiveRateForVoice(voiceName)),
-			thunkApi.dispatch(loadEffectivePitchForVoice(voiceName)),
-		]);
-		await thunkApi.dispatch(speakState());
-	},
-);
 
-export const loadSampleText = createAsyncThunk<string, void, IApiAsyncThunkConfig>(
-	`${prefix}/loadSampleText`,
-	async (_, thunkApi) => thunkApi.extra.getSampleText(),
-);
-
-export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
-	`${prefix}/loadSpeakLongTexts`,
-	async (_, thunkApi) => thunkApi.extra.getSpeakLongTextsOption(),
-);
-
-export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
-	`${prefix}/storeSpeakLongTexts`,
-	async (speakLongTexts, thunkApi) => {
-		await thunkApi.extra.setSpeakLongTextsOption(speakLongTexts);
-		thunkApi.dispatch(setSpeakLongTexts(speakLongTexts));
+		if (typeof voiceName === "string") {
+			await Promise.all([
+				thunkApi.dispatch(loadEffectiveRateForVoice(voiceName)),
+				thunkApi.dispatch(loadEffectivePitchForVoice(voiceName)),
+			]);
+		}
 	},
 );
 
@@ -117,7 +140,7 @@ export const storeVoiceRateOverride = createAsyncThunk<void, StoreVoiceRateOverr
 	}, thunkApi) => {
 		await thunkApi.extra.setVoiceRateOverride(voiceName, rate);
 		thunkApi.dispatch(setRateForSelectedVoice(rate));
-		await thunkApi.dispatch(speakState());
+		void thunkApi.dispatch(speakInSelectedVoiceNameState());
 	},
 );
 
@@ -133,36 +156,32 @@ export const storeVoicePitchOverride = createAsyncThunk<void, StoreVoicePitchOve
 	}, thunkApi) => {
 		await thunkApi.extra.setVoicePitchOverride(voiceName, pitch);
 		thunkApi.dispatch(setPitchForSelectedVoice(pitch));
-		await thunkApi.dispatch(speakState());
+		void thunkApi.dispatch(speakInSelectedVoiceNameState());
 	},
 );
 
-export const loadEffectiveVoiceForLanguage = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
+export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguage`,
 	async (languageCode, thunkApi) => {
-		if (languageCode) {
+		if (typeof languageCode === "string") {
 			const effectiveVoiceForLanguage = await thunkApi.extra.getEffectiveVoiceForLanguage(languageCode);
 
 			thunkApi.dispatch(setEffectiveVoiceNameForSelectedLanguage(effectiveVoiceForLanguage));
-
-			if (typeof effectiveVoiceForLanguage === "string") {
-				await thunkApi.dispatch(loadSelectedVoiceName(effectiveVoiceForLanguage));
-			}
 		} else {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const state: any = thunkApi.getState();
+			thunkApi.dispatch(setEffectiveVoiceNameForSelectedLanguage(null));
+		}
+	},
+);
 
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-			const newSelectedVoiceName = state.shared.voices.voices.length > 0 ? state.shared.voices.voices[0]!.name : null;
+export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
+	`${prefix}/loadEffectiveVoiceForLanguageGroup`,
+	async (languageGroup, thunkApi) => {
+		if (typeof languageGroup === "string") {
+			const effectiveVoiceForLanguageGroup = await thunkApi.extra.getEffectiveVoiceForLanguage(languageGroup);
 
-			if (!newSelectedVoiceName) {
-				throw new TypeError("newSelectedVoiceName");
-			}
-
-			await Promise.all([
-				thunkApi.dispatch(setEffectiveVoiceNameForSelectedLanguage(null)),
-				thunkApi.dispatch(loadSelectedVoiceName(newSelectedVoiceName)),
-			]);
+			thunkApi.dispatch(setEffectiveVoiceNameForSelectedLanguageGroup(effectiveVoiceForLanguageGroup));
+		} else {
+			thunkApi.dispatch(setEffectiveVoiceNameForSelectedLanguageGroup(null));
 		}
 	},
 );
@@ -170,58 +189,64 @@ export const loadEffectiveVoiceForLanguage = createAsyncThunk<void, string | nul
 export const storeEffectiveVoiceNameForLanguage = createAsyncThunk<void, StoreEffectiveVoiceNameForLanguageArguments, IApiAsyncThunkConfig>(
 	`${prefix}/storeEffectiveVoiceNameForLanguage`,
 	async ({
-		languageCode, voiceName,
+		languageCodeOrGroup,
+		voiceName,
 	}, thunkApi) => {
-		await thunkApi.extra.toggleLanguageVoiceOverrideName(languageCode, voiceName);
-		await thunkApi.dispatch(loadEffectiveVoiceForLanguage(languageCode));
+		await thunkApi.extra.toggleLanguageVoiceOverrideName(languageCodeOrGroup, voiceName);
+
+		// HACK: duplicate function to set either language code or group?
+		await (isLanguageGroup(languageCodeOrGroup) ? thunkApi.dispatch(loadEffectiveVoiceForLanguageGroup(languageCodeOrGroup)) : thunkApi.dispatch(loadEffectiveVoiceForLanguageCode(languageCodeOrGroup)));
 	},
 );
 
-export const speakState = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
-	`${prefix}/speakState`,
+export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadSampleTextForLanguageGroup`,
 	async (_, thunkApi) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const state: any = thunkApi.getState();
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+		const state: OptionsRootState = thunkApi.getState() as any;
+		const {
+			selectedLanguageGroup,
+		} = state.voices;
 
-		// TODO: move to function and/or state?
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-		const readyToSpeak = typeof state?.voices?.sampleText === "string"
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-		&& state.voices.sampleText.length > 0
-							&& (
-								(
-									// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-									typeof state.voices.selectedLanguageCode === "string"
-									// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-									&& state.voices.selectedLanguageCode.length > 0
-								)
-								|| (
-									// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-									typeof state.voices.selectedVoiceName === "string"
-									// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-									&& state.voices.selectedVoiceName.length > 0
-								)
-							)
-							// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-							&& !Number.isNaN(state.voices.rateForSelectedVoice)
-							// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-							&& !Number.isNaN(state.voices.pitchForSelectedVoice);
+		const sampleTextForLanguageGroup = typeof selectedLanguageGroup === "string"
+			// eslint-disable-next-line no-sync
+			? HACKYHACKFUNCTIONS.getSampleTextForLanguageSync(selectedLanguageGroup)
+			: null;
 
-		if (readyToSpeak) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-			const text = state.voices.sampleText;
+		thunkApi.dispatch(setSampleTextForLanguageGroup(sampleTextForLanguageGroup));
+	},
+);
+
+export const speakInSelectedVoiceNameState = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+	`${prefix}/speakInSelectedVoiceNameState`,
+	async (_, thunkApi) => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+		const state: OptionsRootState = thunkApi.getState() as any;
+		const {
+			sampleTextForLanguageGroup,
+			selectedVoiceName,
+			rateForSelectedVoice,
+			pitchForSelectedVoice,
+		} = state.voices;
+
+		// TODO: move to function/state/selector?
+		// NOTE: all logic in the if statement, since typescript's typing doesn't like having a separate boolean variable.
+		if (
+			typeof sampleTextForLanguageGroup === "string"
+			&& sampleTextForLanguageGroup.length > 0
+			&& typeof selectedVoiceName === "string"
+			&& selectedVoiceName.length > 0
+			&& typeof rateForSelectedVoice === "number"
+			&& typeof pitchForSelectedVoice === "number"
+		) {
+			const text = sampleTextForLanguageGroup;
 			const voice = {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-				lang: state.voices.selectedLanguageCode ?? null,
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-				name: state.voices.selectedVoiceName ?? null,
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-				pitch: state.voices.pitchForSelectedVoice,
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-				rate: state.voices.rateForSelectedVoice,
+				name: selectedVoiceName,
+				pitch: pitchForSelectedVoice,
+				rate: rateForSelectedVoice,
 			};
 
-			thunkApi.extra.debouncedSpeakTextInVoice(text, voice);
+			thunkApi.extra.debouncedSpeakTextInCustomVoice(text, voice);
 		}
 	},
 );
@@ -236,20 +261,16 @@ export const voicesSlice = createSlice({
 			.addCase(loadEffectivePitchForVoice.fulfilled, (state, action) => {
 				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.pitchForSelectedVoice = action.payload;
-			})
-			.addCase(loadSpeakLongTexts.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
-				state.speakLongTexts = action.payload;
-			})
-			.addCase(loadSampleText.fulfilled, (state, action) => {
-				state.sampleText = action.payload;
 			});
 	},
 	initialState,
 	name: prefix,
 	reducers: {
 		setEffectiveVoiceNameForSelectedLanguage: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
-			state.effectiveVoiceNameForSelectedLanguage = action.payload;
+			state.effectiveVoiceNameForSelectedLanguageCode = action.payload;
+		},
+		setEffectiveVoiceNameForSelectedLanguageGroup: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+			state.effectiveVoiceNameForSelectedLanguageGroup = action.payload;
 		},
 		setPitchForSelectedVoice: (state: Draft<VoicesState>, action: PayloadAction<number>) => {
 			state.pitchForSelectedVoice = action.payload;
@@ -257,17 +278,17 @@ export const voicesSlice = createSlice({
 		setRateForSelectedVoice: (state: Draft<VoicesState>, action: PayloadAction<number>) => {
 			state.rateForSelectedVoice = action.payload;
 		},
-		setSampleText: (state: Draft<VoicesState>, action: PayloadAction<string>) => {
-			state.sampleText = action.payload;
+		setSampleTextForLanguageGroup: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+			state.sampleTextForLanguageGroup = action.payload;
 		},
 		setSelectedLanguageCode: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
 			state.selectedLanguageCode = action.payload;
 		},
+		setSelectedLanguageGroup: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+			state.selectedLanguageGroup = action.payload;
+		},
 		setSelectedVoiceName: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
 			state.selectedVoiceName = action.payload;
-		},
-		setSpeakLongTexts: (state: Draft<VoicesState>, action: PayloadAction<boolean>) => {
-			state.speakLongTexts = action.payload;
 		},
 	},
 });
@@ -276,11 +297,12 @@ export const voicesSlice = createSlice({
 
 export const {
 	setEffectiveVoiceNameForSelectedLanguage,
+	setEffectiveVoiceNameForSelectedLanguageGroup,
 	setPitchForSelectedVoice,
 	setRateForSelectedVoice,
-	setSampleText,
+	setSampleTextForLanguageGroup,
 	setSelectedLanguageCode,
+	setSelectedLanguageGroup,
 	setSelectedVoiceName,
-	setSpeakLongTexts,
 } = voicesSlice.actions;
 export default voicesSlice.reducer;

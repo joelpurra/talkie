@@ -35,7 +35,7 @@ import Text from "../components/sections/text";
 import {
 	actions,
 } from "../slices/index";
-import {
+import type {
 	OptionsRootState,
 } from "../store";
 
@@ -47,17 +47,17 @@ interface StateProps {
 }
 
 interface DispatchProps {
-	loadSpeakLongTexts: typeof actions.voices.loadSpeakLongTexts;
-	storeSpeakLongTexts: typeof actions.voices.storeSpeakLongTexts;
+	loadSpeakLongTexts: typeof actions.settings.loadSpeakLongTexts;
+	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
 const mapStateToProps: MapStateToProps<StateProps, TextContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
-	speakLongTexts: state.voices.speakLongTexts,
+	speakLongTexts: state.settings.speakLongTexts,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, TextContainerProps> = (dispatch) => ({
-	loadSpeakLongTexts: bindActionCreators(actions.voices.loadSpeakLongTexts, dispatch),
-	storeSpeakLongTexts: bindActionCreators(actions.voices.storeSpeakLongTexts, dispatch),
+	loadSpeakLongTexts: bindActionCreators(actions.settings.loadSpeakLongTexts, dispatch),
+	storeSpeakLongTexts: bindActionCreators(actions.settings.storeSpeakLongTexts, dispatch),
 });
 
 class TextContainer<P extends TextContainerProps & StateProps & DispatchProps> extends React.PureComponent<P> {

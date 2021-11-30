@@ -18,14 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+
 import {
-	createSelector,
-} from "reselect";
+	createDraftSafeSelector,
+} from "@reduxjs/toolkit";
 
 import {
 	RejectedAction,
 } from "../slices/errors";
-import {
+import type {
 	SharedRootState,
 } from "../store";
 
@@ -33,7 +34,7 @@ import {
 
 export const getErrors = <S extends SharedRootState>(state: S): Readonly<RejectedAction[]> => state.shared.errors.collected;
 
-export const getErrorsCount = createSelector<SharedRootState, Readonly<RejectedAction[]>, number>(
+export const getErrorsCount = createDraftSafeSelector(
 	[
 		getErrors,
 	],

@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	combineReducers,
-} from "redux";
+} from "../../store/combine-reducers";
 
 import tabs,
 * as tabsActions from "./tabs";

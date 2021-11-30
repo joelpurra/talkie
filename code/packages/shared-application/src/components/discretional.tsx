@@ -24,15 +24,15 @@ import {
 	ChildrenRequiredProps,
 } from "../types";
 
-export interface DiscretionalProps {
+export interface DiscretionalProps extends ChildrenRequiredProps {
 	enabled: boolean;
 }
 
-export default class Discretional<P extends DiscretionalProps & ChildrenRequiredProps> extends React.PureComponent<P> {
+export default class Discretional<P extends DiscretionalProps> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
-			enabled,
 			children,
+			enabled,
 		} = this.props;
 
 		if (enabled) {

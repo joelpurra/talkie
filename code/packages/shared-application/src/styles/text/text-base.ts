@@ -22,47 +22,49 @@ import {
 	StyleObject,
 } from "styletron-react";
 
-export const textColor = "#000000";
+import * as colorBase from "../color/color-base";
 
 export const text: StyleObject = {
-	color: textColor,
+	color: colorBase.textColor,
 };
 
-export const linkHighlightColor = "#3497ff";
-
 export const highlight: StyleObject = {
-	color: linkHighlightColor,
+	color: colorBase.linkHighlightColor,
 };
 
 export const a: StyleObject = {
 	":active": highlight,
 	":focus": highlight,
 	":hover": highlight,
-	color: textColor,
+	color: colorBase.textColor,
 };
 
-export const h1: StyleObject = {};
-export const h2: StyleObject = {};
-export const h3: StyleObject = {};
-export const h4: StyleObject = {};
-export const h5: StyleObject = {};
+export const heading: StyleObject = {
+	marginTop: "2em",
+};
+
+export const h1: StyleObject = heading;
+export const h2: StyleObject = heading;
+export const h3: StyleObject = heading;
+export const h4: StyleObject = heading;
+export const h5: StyleObject = heading;
 
 export const kbd: StyleObject = {
-	backgroundColor: "#fcfcfc",
-	borderBottomColor: "#bbb",
+	backgroundColor: colorBase.borderedBackgroundColor,
+	borderBottomColor: colorBase.borderDarkColor,
 	borderBottomWidth: "1px",
-	borderLeftColor: "#ccc",
+	borderLeftColor: colorBase.borderColor,
 	borderLeftWidth: "1px",
 	borderRadius: "0.3em",
-	borderRightColor: "#ccc",
+	borderRightColor: colorBase.borderColor,
 	borderRightWidth: "1px",
 	borderStyle: "solid",
-	borderTopColor: "#ccc",
+	borderTopColor: colorBase.borderColor,
 	borderTopWidth: "1px",
-	boxShadow: "inset 0 -1px 0 #bbb",
-	color: "#555",
+	boxShadow: `inset 0 -1px 0 ${colorBase.borderDarkColor}`,
+	color: colorBase.borderedTextColor,
 	display: "inline-block",
-	fontFamily: "Helvetica, Verdana, sans-serif",
+	fontFamily: "monospace, sans-serif",
 	paddingBottom: "0.1em",
 	paddingLeft: "0.3em",
 	paddingRight: "0.3em",
@@ -71,8 +73,10 @@ export const kbd: StyleObject = {
 };
 
 export const blockquote: StyleObject = {
-	background: "#fafafa",
-	borderLeft: "0.5em solid #cccccc",
+	background: colorBase.blockquoteBackgroundColor,
+	borderLeftColor: colorBase.borderColor,
+	borderLeftStyle: "solid",
+	borderLeftWidth: "0.5em",
 	marginBottom: "1em",
 	marginLeft: "0.5em",
 	marginTop: "1em",

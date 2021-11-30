@@ -37,7 +37,7 @@ export interface TranslateProps extends ITranslatorProvider {}
 export default function translateAttribute<P extends TranslateProps = TranslateProps, U = Except<P, keyof TranslateProps>>(): IHocConstructorGenerator<P, U> {
 	// eslint-disable-next-line func-names
 	return function translateHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
-		class TranslationHoc extends React.Component<P> {
+		class TranslationHoc extends React.PureComponent<P> {
 			static override contextType = TranslateContext;
 			declare context: React.ContextType<typeof TranslateContext>;
 

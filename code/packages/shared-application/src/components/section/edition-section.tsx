@@ -39,12 +39,14 @@ export type EditionSectionMode =
 	| "p"
 	| "h2";
 
-export interface EditionSectionProps {
+export interface EditionSectionProps extends ChildrenRequiredProps, ClassNameProp {
 	isPremiumEdition: boolean;
 	mode: EditionSectionMode;
 }
 
-class EditionSection<P extends EditionSectionProps & ChildrenRequiredProps & ConfigureProps & TranslateProps & ClassNameProp> extends React.PureComponent<P> {
+interface InternalProps extends EditionSectionProps, ConfigureProps, TranslateProps {}
+
+class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -54,10 +56,11 @@ class EditionSection<P extends EditionSectionProps & ChildrenRequiredProps & Con
 		const {
 			mode,
 			isPremiumEdition,
+			children,
 			className,
 			translateSync,
 			configure,
-		} = this.props;
+		} = this.props as InternalProps;
 
 		// TODO: move resolving the name to the state, like edition type?
 		const text = isPremiumEdition
@@ -93,7 +96,7 @@ class EditionSection<P extends EditionSectionProps & ChildrenRequiredProps & Con
 			<div className={classNames}>
 				<HeadingElement>
 					<textBase.a
-						href={configure("urls.options-upgrade-from-demo")}
+						href={configure("urls.options-upgrade")}
 						lang="en"
 					>
 						<TalkieEditionIcon
@@ -104,14 +107,14 @@ class EditionSection<P extends EditionSectionProps & ChildrenRequiredProps & Con
 					</textBase.a>
 				</HeadingElement>
 
-				{this.props.children}
+				{children}
 			</div>
 		);
 	}
 }
 
 export default translateAttribute<EditionSectionProps & ChildrenRequiredProps & TranslateProps & ClassNameProp>()(
-	configureAttribute<EditionSectionProps & ChildrenRequiredProps & ConfigureProps & TranslateProps & ClassNameProp>()(
+	configureAttribute<InternalProps>()(
 		EditionSection,
 	),
 );

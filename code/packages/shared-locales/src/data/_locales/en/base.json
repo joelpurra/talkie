@@ -84,7 +84,7 @@
     "message": "How can I install more voices in Talkie on macOS?"
   },
   "frontend_faq005A": {
-    "message": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+    "message": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your experiences are!"
   },
   "frontend_faq005Q": {
     "message": "How can I install more voices in Talkie on Linux?"
@@ -482,23 +482,6 @@
   "frontend_voicesDescription": {
     "message": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "Voices"
   },
@@ -515,9 +498,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
@@ -618,9 +598,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Welcome"

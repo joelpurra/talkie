@@ -7,9 +7,6 @@
   "include": ["src/**/*"],
   "references": [
     {
-      "path": "../options-application/tsconfig.cjs.json"
-    },
-    {
       "path": "../renderer/tsconfig.cjs.json"
     }
   ]

@@ -22,10 +22,10 @@ import Icon from "@talkie/shared-application/components/icon/icon";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-application/hocs/translate";
+import * as buttonBase from "@talkie/shared-application/styled/button/button-base";
 import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
 import * as tableBase from "@talkie/shared-application/styled/table/table-base";
 import * as lighter from "@talkie/shared-application/styled/text/lighter";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
 import React, {
 	ComponentProps,
 } from "react";
@@ -42,8 +42,8 @@ export interface StatusProps {
 
 class Status<P extends StatusProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		statusIconWrapper: StyletronComponent<ComponentProps<typeof textBase.span>>;
-		table: StyletronComponent<ComponentProps<typeof tableBase.table>>;
+		statusIconWrapper: StyletronComponent<ComponentProps<typeof buttonBase.transparentButton>>;
+		table: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
 		tbody: StyletronComponent<ComponentProps<typeof tableBase.tbody>>;
 		td: StyletronComponent<ComponentProps<typeof tableBase.td>>;
 		tr: StyletronComponent<ComponentProps<typeof tableBase.tr>>;
@@ -56,14 +56,14 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 
 		this.styled = {
 			statusIconWrapper: withStyleDeep(
-				textBase.span,
+				buttonBase.transparentButton,
 				{
-					paddingRight: "2em",
+					paddingRight: "1em",
 				},
 			),
 
 			table: withStyleDeep(
-				tableBase.table,
+				tableBase.wideTable,
 				{
 					borderSpacing: 0,
 				},

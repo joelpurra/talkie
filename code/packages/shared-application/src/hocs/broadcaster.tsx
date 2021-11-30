@@ -39,7 +39,7 @@ export interface BroadcasterProps {
 export default function broadcasterAttribute<P extends BroadcasterProps = BroadcasterProps, U = Except<P, keyof BroadcasterProps>>(): IHocConstructorGenerator<P, U> {
 	// eslint-disable-next-line func-names
 	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
-		class BroadcasterHoc extends React.Component<P> {
+		class BroadcasterHoc extends React.PureComponent<P> {
 			static override contextType = BroadcasterContext;
 			declare context: React.ContextType<typeof BroadcasterContext>;
 

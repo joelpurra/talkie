@@ -42,12 +42,12 @@ export type LanguagesData = {
 export default class TalkieLocaleHelper implements ITalkieLocaleHelper {
 	private static readonly languages = languagesJsonFile as LanguagesData;
 
-	getBidiDirectionSync(talkieLocale: TalkieLocale): string {
+	getBidiDirectionSync(talkieLocale: TalkieLocale): LanguageDirection {
 		// eslint-disable-next-line no-sync
-		return this._getSync(talkieLocale, "direction");
+		return this._getSync<LanguageDirection>(talkieLocale, "direction");
 	}
 
-	async getBidiDirection(talkieLocale: TalkieLocale): Promise<string> {
+	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageDirection> {
 		// eslint-disable-next-line no-sync
 		return this.getBidiDirectionSync(talkieLocale);
 	}
@@ -77,11 +77,12 @@ export default class TalkieLocaleHelper implements ITalkieLocaleHelper {
 		return this._getTalkieLocales().includes(languageCode as TalkieLocale);
 	}
 
-	private _getSync(talkieLocale: TalkieLocale, name: LanguageDataKey): string {
+	private _getSync<T extends string>(talkieLocale: TalkieLocale, name: LanguageDataKey): T {
 		const value = TalkieLocaleHelper.languages.languages[talkieLocale][name]
 			?? TalkieLocaleHelper.languages.base[name];
 
-		return value;
+		// TODO: retrieve T from the data structure instead.
+		return value as T;
 	}
 
 	private _getTalkieLocales(): TalkieLocale[] {

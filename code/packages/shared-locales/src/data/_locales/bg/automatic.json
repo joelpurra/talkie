@@ -636,24 +636,6 @@
     "message": "Вижте и тествайте инсталираните гласове за всеки език във вашия браузър. Потребителите Talkie Premium могат също да избират своя предпочитан глас като по подразбиране за всеки език, както и да зададат скорост и стъпка за всеки глас.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "Всички инсталирани езици ( $LANGUAGE_GROUPS_COUNT$ ), диалекти ( $LANGUAGES_COUNT$ ) и гласове ( $VOICES_COUNT$ )",
-    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "гласове",
     "original": "Voices"
@@ -673,10 +655,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "Вашите предпочитани езици на браузъра",
-    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",

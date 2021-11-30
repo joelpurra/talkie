@@ -41,7 +41,7 @@ import {
 } from "type-fest";
 
 import Configuration from "../configuration/configuration";
-import {
+import type {
 	SharedRootState,
 } from "../store";
 import {

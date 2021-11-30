@@ -32,7 +32,7 @@ import StyleRoot from "../components/style-root";
 import {
 	IsSpeakingProps,
 } from "../hocs/is-speaking-types";
-import {
+import type {
 	SharedRootState,
 } from "../store";
 import {

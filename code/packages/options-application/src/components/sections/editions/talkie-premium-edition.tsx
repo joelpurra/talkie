@@ -25,7 +25,6 @@ import configureAttribute, {
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-application/hocs/translate";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
 import React from "react";
 
 export interface TalkiePremiumEditionProps {
@@ -55,9 +54,6 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 
 		return (
 			<>
-				<textBase.h2>
-					{translateSync("frontend_upgradeHeading")}
-				</textBase.h2>
 				<p>
 					{translateSync("frontend_upgradeExplanation01")}
 				</p>

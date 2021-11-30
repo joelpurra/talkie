@@ -12,8 +12,6 @@
     "@talkie/browser-runtime-dependencies": "./packages/browser-runtime-dependencies/src",
     "@talkie/browser-shared": "./packages/browser-shared/src",
     "@talkie/browser-stayalive": "./packages/browser-stayalive/src",
-    "@talkie/demo-application": "./packages/demo-application/src",
-    "@talkie/demo-renderer": "./packages/demo-renderer/src",
     "@talkie/options-application": "./packages/options-application/src",
     "@talkie/options-renderer": "./packages/options-renderer/src",
     "@talkie/output-webext": "./packages/output-webext/src",

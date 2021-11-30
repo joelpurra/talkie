@@ -35,8 +35,7 @@ import {
 	SystemType,
 } from "./moved-here/imetadata-manager";
 import {
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
 } from "./moved-here/ivoices";
 import {
@@ -50,7 +49,9 @@ import {
 } from "./moved-here/listening-action-handler";
 
 export default interface IApi {
-	debouncedSpeakTextInVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch>) => void;
+	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
+
+	debouncedSpeakTextInVoiceWithOverrides: (text: string, voiceName: string) => void;
 
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
 
@@ -60,7 +61,9 @@ export default interface IApi {
 
 	iconClick(): Promise<void>;
 
-	speakInVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch>): Promise<void>;
+	speakInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void>;
+
+	speakTextInVoiceWithOverrides(text: string, voiceName: string): Promise<void>;
 
 	speakTextInLanguageWithOverrides(text: string, languageCode: string): Promise<void>;
 

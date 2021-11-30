@@ -33,6 +33,7 @@ import {
 import * as layoutBase from "../../styled/layout/layout-base";
 import * as tableBase from "../../styled/table/table-base";
 import * as textBase from "../../styled/text/text-base";
+import * as colorBase from "../../styles/color/color-base";
 
 export interface NavProps {
 	initialActiveTabId: string | null;
@@ -43,7 +44,7 @@ export interface NavProps {
 export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	private readonly styled: {
 		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
-		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.table>>;
+		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
 		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
 		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
 	};
@@ -63,7 +64,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			),
 
 			navTable: withStyleDeep(
-				tableBase.table,
+				tableBase.wideTable,
 				{
 					lineHeight: "1.5em",
 					textAlign: "center",
@@ -87,7 +88,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			selectedLink: withStyleDeep(
 				textBase.a,
 				{
-					color: "#3497ff",
+					color: colorBase.linkFocusColor,
 					fontWeight: "bold",
 				},
 			),

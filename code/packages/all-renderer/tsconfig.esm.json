@@ -7,9 +7,6 @@
   "include": ["src/**/*"],
   "references": [
     {
-      "path": "../demo-renderer/tsconfig.esm.json"
-    },
-    {
       "path": "../options-renderer/tsconfig.esm.json"
     },
     {

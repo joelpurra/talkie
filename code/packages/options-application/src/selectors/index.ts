@@ -20,8 +20,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import shared from "@talkie/shared-application/selectors/index";
 
+import * as voices from "./voices";
+
 const selectors = {
 	shared,
+	voices,
 };
 
 export default selectors;

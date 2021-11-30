@@ -24,7 +24,10 @@ import {
 
 import * as tableBase from "../../styles/table/table-base";
 
-export const table = styled("table", tableBase.table);
+export const compactTable = styled("table", tableBase.commpactTable);
+export const wideTable = styled("table", tableBase.wideTable);
+export const thead = styled("thead", tableBase.thead);
+export const tfoot = styled("tfoot", tableBase.tfoot);
 export const tbody = styled("tbody", tableBase.tbody);
 export const tr = styled("tr", tableBase.tr);
 export const th = styled("th", tableBase.th);

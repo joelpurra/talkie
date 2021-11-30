@@ -636,24 +636,6 @@
     "message": "在浏览器中查看并测试每种语言的已安装语音。 Talkie Premium用户还可以选择他们最喜欢的语音作为每种语言的默认值，以及为每个语音设置速度和音高。",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "所有安装的语言（ $LANGUAGE_GROUPS_COUNT$ ），方言（ $LANGUAGES_COUNT$ ）和声音（ $VOICES_COUNT$ ）",
-    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "声音",
     "original": "Voices"
@@ -673,10 +655,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "您的首选浏览器语言",
-    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",

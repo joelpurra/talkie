@@ -22,6 +22,8 @@ import {
 	StyleObject,
 } from "styletron-react";
 
+import * as colorBase from "../color/color-base";
+
 export const text: StyleObject = {
-	color: "#c09b9b",
+	color: colorBase.errorTextColor,
 };

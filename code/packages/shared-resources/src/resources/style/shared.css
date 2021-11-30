@@ -34,6 +34,11 @@ html {
     box-sizing: inherit;
 }
 
+details > * {
+	/* NOTE: this seems to reset to content-box, without any obvious reason why. Tested using the inspector in chrome 94. */
+    box-sizing: border-box;
+}
+
 
 /* NOTE: border-box for all elements. */
 
@@ -55,9 +60,13 @@ body {
 }
 
 body {
-    font-family: "Open Sans", OpenSans, "Helvetica Neue", "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-family: system-ui, sans-serif;
     font-size: 100%;
     color: #000000;
+}
+
+#react-root {
+	font-size: 0.75em;
 }
 
 .text-direction-rtl {

@@ -636,24 +636,6 @@
     "message": "브라우저에서 각 언어에 대한 설치된 음성을보고 테스트하십시오. Talkie Premium 사용자는 각 음성의 속도와 음높이를 설정할뿐만 아니라 원하는 언어를 기본 언어로 선택할 수 있습니다.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "설치된 모든 언어 ( $LANGUAGE_GROUPS_COUNT$ ), 방언 ( $LANGUAGES_COUNT$ ) 및 음성 ( $VOICES_COUNT$ )",
-    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "목소리",
     "original": "Voices"
@@ -673,10 +655,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "선호하는 브라우저 언어",
-    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",

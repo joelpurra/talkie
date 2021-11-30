@@ -101,26 +101,30 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 					enabled={!isPremiumEdition}
 				>
 					<this.styled.button
-						href={configure("urls.options-upgrade-from-demo")}
+						href={configure("urls.options-upgrade")}
 						id="header-premium-button"
 						lang="en"
+						rel="noopener noreferrer"
+						target="_blank"
 					>
 						{translateSync("extensionShortName_Premium")}
 					</this.styled.button>
 				</Discretional>
 
-				<textBase.span
+				<buttonBase.transparentButton
 					onClick={this.handlePlayPauseClick}
 				>
 					<TalkieEditionIcon
 						isPremiumEdition={isPremiumEdition}
 						mode="inline"
 					/>
-				</textBase.span>
+				</buttonBase.transparentButton>
 
 				<this.styled.extensionName
 					href={configure("urls.main")}
 					lang="en"
+					rel="noopener noreferrer"
+					target="_blank"
 				>
 					<ExtensionShortName
 						isPremiumEdition={isPremiumEdition}

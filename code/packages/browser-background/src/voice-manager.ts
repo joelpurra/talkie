@@ -27,6 +27,7 @@ import VoicePitchManager from "./voice-pitch-manager";
 import VoiceRateManager from "./voice-rate-manager";
 
 export default class VoiceManager {
+	// NOTE: there is also an utterance volume property.
 	constructor(private readonly voiceLanguageManager: VoiceLanguageManager, private readonly voiceRateManager: VoiceRateManager, private readonly voicePitchManager: VoicePitchManager) {}
 
 	async getEffectiveVoiceForLanguage(languageName: string): Promise<IVoiceNameAndLanguage | null> {

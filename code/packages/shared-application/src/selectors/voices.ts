@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	getAvailableBrowserLanguageGroupsWithNavigatorLanguages,
 	getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups,
 	getLanguageGroupsFromLanguages,
 	getLanguagesByLanguageGroupFromVoices,
@@ -26,97 +27,184 @@ import {
 	getVoicesByLanguageFromVoices,
 	getVoicesByLanguageGroupFromVoices,
 	getVoicesByLanguagesByLanguageGroupFromVoices,
-	LanguagesByLanguageGroup,
-	VoicesByLanguageGroup,
-	VoicesByLanguagesByLanguageGroup,
 } from "@talkie/shared-application-helpers/transform-voices";
 import {
 	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
-	createSelector,
-} from "reselect";
+	createDraftSafeSelector,
+} from "@reduxjs/toolkit";
 
-import {
+import type {
 	SharedRootState,
 } from "../store";
+import {
+	getNavigatorLanguageGroups,
+	getNavigatorLanguages,
+} from "./languages";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const getVoices = <S extends SharedRootState>(state: S): Readonly<SafeVoiceObject[]> => state.shared.voices.voices;
 
-export const getVoicesCount = createSelector<SharedRootState, Readonly<SafeVoiceObject[]>, number>(
+export const getVoicesCount = createDraftSafeSelector(
 	[
 		getVoices,
 	],
 	(voices) => voices.length,
 );
 
-export const getLanguages = createSelector<SharedRootState, Readonly<SafeVoiceObject[]>, Readonly<string[]>>(
+export const getSortedByNameVoices = createDraftSafeSelector(
+	[
+		getVoices,
+	],
+	(voices) => voices.slice().sort((a, b) => a.name.localeCompare(b.name)),
+);
+
+export const getHaveVoices = createDraftSafeSelector(
+	[
+		getVoicesCount,
+	],
+	(voiceCount) => voiceCount > 0,
+);
+
+export const getLanguages = createDraftSafeSelector(
 	[
 		getVoices,
 	],
 	(voices) => getLanguagesFromVoices(voices),
 );
 
-export const getLanguagesCount = createSelector(
+export const getSortedLanguages = createDraftSafeSelector(
+	[
+		getLanguages,
+	],
+	(languages) => languages.slice().sort((a, b) => a.localeCompare(b)),
+);
+
+export const getLanguagesCount = createDraftSafeSelector(
 	[
 		getLanguages,
 	],
 	(languages: Readonly<string[]>) => languages.length,
 );
 
-export const getLanguageGroups = createSelector(
+export const getLanguageGroups = createDraftSafeSelector(
 	[
 		getLanguages,
 	],
 	(languages: Readonly<string[]>) => getLanguageGroupsFromLanguages(languages),
 );
 
-export const getLanguageGroupsCount = createSelector(
+export const getLanguageGroupsCount = createDraftSafeSelector(
 	[
 		getLanguageGroups,
 	],
 	(languageGroups: Readonly<string[]>) => languageGroups.length,
 );
 
-export const getVoicesByLanguage = createSelector<SharedRootState, Readonly<SafeVoiceObject[]>, VoicesByLanguageGroup<SafeVoiceObject>>(
+export const getSortedLanguageGroups = createDraftSafeSelector(
+	[
+		getLanguageGroups,
+	],
+	(languageGroups) => languageGroups.slice().sort((a, b) => a.localeCompare(b)),
+);
+
+export const getVoicesByLanguage = createDraftSafeSelector(
 	[
 		getVoices,
 	],
 	(voices) => getVoicesByLanguageFromVoices(voices),
 );
 
-export const getVoicesByLanguageGroup = createSelector<SharedRootState, Readonly<SafeVoiceObject[]>, VoicesByLanguageGroup<SafeVoiceObject>>(
+export const getSortedByNameVoicesByLanguage = createDraftSafeSelector(
+	[
+		getVoicesByLanguage,
+	],
+	(voicesByLanguage) => {
+		for (const voices of Object.values(voicesByLanguage)) {
+			// TODO: ReadOnlyDeep.
+			voices.sort((a, b) => a.name.localeCompare(b.name));
+		}
+
+		// TODO HACK FIX: use/return immutable object.
+		return voicesByLanguage;
+	},
+);
+
+export const getVoicesByLanguageGroup = createDraftSafeSelector(
 	[
 		getVoices,
 	],
 	(voices) => getVoicesByLanguageGroupFromVoices(voices),
 );
 
-export const getLanguagesByLanguageGroup = createSelector<SharedRootState, Readonly<SafeVoiceObject[]>, LanguagesByLanguageGroup>(
+export const getSortedByNameVoicesByLanguageGroup = createDraftSafeSelector(
+	[
+		getVoicesByLanguageGroup,
+	],
+	(voicesByLanguageGroup) => {
+		for (const voices of Object.values(voicesByLanguageGroup)) {
+			// TODO: ReadOnlyDeep.
+			voices.sort((a, b) => a.name.localeCompare(b.name));
+		}
+
+		// TODO HACK FIX: use/return immutable object.
+		return voicesByLanguageGroup;
+	},
+);
+
+export const getLanguagesByLanguageGroup = createDraftSafeSelector(
 	[
 		getVoices,
 	],
 	(voices) => getLanguagesByLanguageGroupFromVoices(voices),
 );
 
-export const getVoicesByLanguagesByLanguageGroup = createSelector<SharedRootState, Readonly<SafeVoiceObject[]>, VoicesByLanguagesByLanguageGroup<SafeVoiceObject>>(
+export const getSortedLanguagesByLanguageGroup = createDraftSafeSelector(
+	[
+		getLanguagesByLanguageGroup,
+	],
+	(languagesByLanguageGroup) => {
+		for (const languages of Object.values(languagesByLanguageGroup)) {
+			// TODO: ReadOnlyDeep.
+			languages.sort((a, b) => a.localeCompare(b));
+		}
+
+		// TODO HACK FIX: use/return immutable object.
+		return languagesByLanguageGroup;
+	},
+);
+
+export const getVoicesByLanguagesByLanguageGroup = createDraftSafeSelector(
 	[
 		getVoices,
 	],
 	(voices) => getVoicesByLanguagesByLanguageGroupFromVoices(voices),
 );
 
-export const getNavigatorLanguages = <S extends SharedRootState>(state: S): Readonly<string[]> => state.shared.voices.navigatorLanguages;
-
-export const getAvailableBrowserLanguageWithInstalledVoice = createSelector(
+export const getAvailableBrowserLanguageWithInstalledVoice = createDraftSafeSelector(
 	[
 		getNavigatorLanguages,
 		getLanguages,
 		getLanguageGroups,
 	],
 	(navigatorLanguages, languages, languageGroups) => getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups(navigatorLanguages, languages, languageGroups),
+);
+
+export const getBrowserLanguageGroupsWithNavigatorLanguages = createDraftSafeSelector(
+	[
+		getNavigatorLanguageGroups,
+		getLanguageGroups,
+	],
+	(navigatorLanguageGroups, languageGroups) => getAvailableBrowserLanguageGroupsWithNavigatorLanguages(navigatorLanguageGroups, languageGroups),
+);
+
+export const getSortedBrowserLanguageGroupsWithNavigatorLanguages = createDraftSafeSelector(
+	[
+		getBrowserLanguageGroupsWithNavigatorLanguages,
+	],
+	(browserLanguageGroupsWithNavigatorLanguages) => browserLanguageGroupsWithNavigatorLanguages.slice().sort((a, b) => a.languageGroup.localeCompare(b.languageGroup)),
 );
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */

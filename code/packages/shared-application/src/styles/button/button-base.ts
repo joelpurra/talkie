@@ -22,27 +22,39 @@ import {
 	StyleObject,
 } from "styletron-react";
 
+import * as colorBase from "../color/color-base";
+
 export const hover: StyleObject = {
-	color: "#ffffff",
+	color: colorBase.buttonTextColor,
 };
 
 export const focus: StyleObject = {
-	backgroundImage: "linear-gradient(to bottom, #087eff, #087eff)",
-	color: "#ffffff",
+	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonDarkColor}, ${colorBase.buttonDarkColor})`,
+	color: colorBase.buttonTextColor,
 };
 
 export const button: StyleObject = {
 	":focus": focus,
 	":hover": hover,
-	backgroundImage: "linear-gradient(to bottom, #6bb3fa, #087eff)",
+	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonLightColor}, ${colorBase.buttonDarkColor})`,
 	borderRadius: "0.3em",
-	color: "#ffffff",
+	color: colorBase.buttonTextColor,
 	paddingBottom: "0.3em",
 	paddingLeft: "0.75em",
 	paddingRight: "0.75em",
 	paddingTop: "0.3em",
 	textAlign: "center",
 	textDecoration: "none",
+};
+
+export const transparentButton: StyleObject = {
+	":focus": {
+		outline: "revert",
+	},
+	":hover": {
+		cursor: "pointer",
+	},
+	all: "unset",
 };
 
 export const a: StyleObject = button;

@@ -34,8 +34,7 @@ import {
 	setStringOnlyOutput,
 } from "@talkie/shared-application-helpers/log";
 import {
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceNameAndRateAndPitch,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
 	ITalkieServices,
@@ -103,9 +102,19 @@ const createTalkieServices = async (
 			},
 
 			stopSpeakFromFrontend: async () => talkieBackground.stopSpeakingAction(),
-			startSpeakFromFrontend: async (text: string, voice: IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch) => {
+			startSpeakFromFrontend: async (text: string, voice: Readonly<IVoiceNameAndRateAndPitch>) => {
 				// NOTE: keeping the root chain separate from the speech chain.
 				void talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+			},
+
+			startSpeakInVoiceWithOverridesFromFrontend: async (frontendText: string, frontendVoiceName: string) => {
+				// NOTE: not sure if copying these variables have any effect.
+				// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+				const text = String(frontendText);
+				const voiceName = String(frontendVoiceName);
+
+				// NOTE: keeping the root chain separate from the speech chain.
+				void talkieBackground.startSpeakingTextInVoiceWithOverridesAction(text, voiceName);
 			},
 
 			startSpeakInLanguageWithOverridesFromFrontend: async (frontendText: string, frontendLanguageCode: string) => {

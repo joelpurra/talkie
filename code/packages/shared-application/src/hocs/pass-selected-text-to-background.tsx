@@ -42,7 +42,7 @@ import {
 export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS = unknown>(): IHocConstructorGenerator<P, P> {
 	// eslint-disable-next-line func-names
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<P> {
-		class PassSelectedTextToBackgroundHoc extends React.Component<P, S, SS> {
+		class PassSelectedTextToBackgroundHoc extends React.PureComponent<P, S, SS> {
 			static override contextType = BroadcasterContext;
 			declare context: React.ContextType<typeof BroadcasterContext>;
 

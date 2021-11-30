@@ -39,8 +39,7 @@ import {
 import ITalkieLocaleHelper from "@talkie/split-environment-interfaces/moved-here/italkie-locale-helper";
 import {
 	IVoiceNameAndLanguage,
-	IVoiceNameAndLanguageAndRateAndPitch,
-	IVoiceNameAndLanguageOrNull,
+	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
 } from "@talkie/split-environment-interfaces/moved-here/ivoices";
 import {
@@ -76,7 +75,11 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async debouncedSpeakTextInVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch>): void {
+	async debouncedSpeakTextInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): void {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async debouncedSpeakTextInVoiceWithOverrides(text: string, voiceName: string): void {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -84,7 +87,11 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async speakInVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndLanguageOrNull | IVoiceNameAndLanguageAndRateAndPitch>): Promise<void> {
+	async speakInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async speakTextInVoiceWithOverrides(text: string, voiceName: string): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 

@@ -32,7 +32,7 @@ import {
 } from "type-fest";
 
 import Progress from "../components/sections/progress";
-import {
+import type {
 	PopupRootState,
 } from "../store";
 

@@ -71,7 +71,8 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			ol: styled(
 				"ol",
 				{
-					listStyle: "none",
+					// https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns
+					listStyleType: "'\\200B'",
 					marginBottom: 0,
 					marginLeft: 0,
 					marginRight: 0,
@@ -95,25 +96,25 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			<layoutBase.nav>
 				<this.styled.ol>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.demo-voices")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.options-voices")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-voices" mode="inline"/>
 							{translateSync("frontend_PopupMenu_Voices")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.demo-usage")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.options-usage")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-usage" mode="inline"/>
 							{translateSync("frontend_PopupMenu_Usage")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.demo-features")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.options-features")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-features" mode="inline"/>
 							{translateSync("frontend_PopupMenu_Features")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.demo-support")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.options-support")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-feedback" mode="inline"/>
 							{translateSync("frontend_supportAndFeedback")}
 						</this.styled.a>

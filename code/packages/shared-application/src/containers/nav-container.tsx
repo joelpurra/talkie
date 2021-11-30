@@ -33,7 +33,7 @@ import {
 } from "type-fest";
 
 import Nav from "../components/navigation/nav";
-import {
+import type {
 	SharedRootState,
 } from "../store";
 import {
@@ -88,7 +88,7 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 		const isFirefox = typeof InstallTrigger !== "undefined";
 
 		// NOTE: this breaks navigation in the options page in the preferences pane in firefox, so skip.
-		// TODO: don't disable on other pages (demo, options in normal tab) in firefox.
+		// TODO: don't disable on other pages (options in normal tab) in firefox.
 		if (!isFirefox) {
 			document.location.hash = locationHash;
 		}

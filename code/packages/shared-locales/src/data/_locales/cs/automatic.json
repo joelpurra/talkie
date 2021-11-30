@@ -636,24 +636,6 @@
     "message": "Zobrazte a otestujte nainstalované hlasy pro každý jazyk ve vašem prohlížeči. Talkie Premium mohou také vybrat svůj oblíbený hlas jako výchozí pro každý jazyk, stejně jako nastavit rychlost a rozteč pro každý hlas.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "Všechny nainstalované jazyky ( $LANGUAGE_GROUPS_COUNT$ ), dialekty ( $LANGUAGES_COUNT$ ) a hlasy ( $VOICES_COUNT$ )",
-    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "Hlasy",
     "original": "Voices"
@@ -673,10 +655,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "Vaše preferované jazyky prohlížeče",
-    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",

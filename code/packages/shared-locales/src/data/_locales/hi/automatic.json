@@ -636,24 +636,6 @@
     "message": "अपने ब्राउज़र में प्रत्येक भाषा के लिए स्थापित आवाज देखें और जांचें। Talkie Premium प्रति पसंदीदा भाषा के रूप में अपनी पसंदीदा आवाज को चुन सकते हैं, साथ ही साथ प्रत्येक आवाज के लिए गति और पिच सेट कर सकते हैं।",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
-  "frontend_voicesInstalledHeading": {
-    "message": "सभी इंस्टॉल किए गए भाषाओं ( $LANGUAGE_GROUPS_COUNT$ ), बोली ( $LANGUAGES_COUNT$ ), और आवाज ( $VOICES_COUNT$ )",
-    "original": "All installed languages ($LANGUAGE_GROUPS_COUNT$), dialects ($LANGUAGES_COUNT$), and voices ($VOICES_COUNT$)",
-    "placeholders": {
-      "language_groups_count": {
-        "content": "$1",
-        "example": "27"
-      },
-      "languages_count": {
-        "content": "$2",
-        "example": "47"
-      },
-      "voices_count": {
-        "content": "$3",
-        "example": "66"
-      }
-    }
-  },
   "frontend_voicesLinkText": {
     "message": "आवाज़ें",
     "original": "Voices"
@@ -673,10 +655,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesPreferredHeading": {
-    "message": "आपकी पसंदीदा ब्राउज़र भाषाएं",
-    "original": "Your preferred browser languages"
   },
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",

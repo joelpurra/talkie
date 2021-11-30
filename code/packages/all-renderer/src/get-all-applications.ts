@@ -21,7 +21,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import demo from "@talkie/demo-renderer/demo-html";
 import options from "@talkie/options-renderer/options-html";
 import popup from "@talkie/popup-renderer/popup-html";
 import {
@@ -35,7 +34,6 @@ const getAllApps = async <S, A extends Action, P>(): Promise<Array<IRenderReactH
 	// NOTE: generic typing might be problematic when mixing several applications, as their state/actions/props are not the same (albeit superficially similar, sharing the same codebase).
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const renderReactHtmlApps: Array<IRenderReactHtmlToFile<any, any, any>> = [
-		demo,
 		popup,
 		options,
 	];

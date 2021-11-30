@@ -17,11 +17,12 @@
     "@talkie/browser-shared": "*",
     "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
-    "@talkie/split-environment": "*",
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.6.1"
+    "@reduxjs/toolkit": "^1.6.1",
+    "redux": "^4.1.1",
+    "reselect": "^4.0.0"
   },
   "exports": {
     "./*": {

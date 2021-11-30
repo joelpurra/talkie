@@ -27,41 +27,46 @@ import {
 import {
 	bindActionCreators,
 } from "redux";
-import {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Main, {
 	MainDispatchProps,
+	MainStateProps,
 } from "../components/main";
+import selectors from "../selectors/index";
 import {
 	actions,
 } from "../slices/index";
-import {
+import type {
 	OptionsRootState,
 } from "../store";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface AppProps {}
-
-interface StateProps {
-	activeTabId: string | null;
-	shouldShowBackButton: boolean;
-}
+interface StateProps extends MainStateProps {}
 
 interface DispatchProps extends MainDispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+export interface AppProps extends StateProps, DispatchProps {}
+
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	activeTabId: state.unshared.tabs.activeTabId,
-	shouldShowBackButton: state.navigation.shouldShowBackButton,
+	errorCount: selectors.shared.errors.getErrorsCount(state),
+	isPremiumEdition: state.shared.metadata.isPremiumEdition,
+	osType: state.shared.metadata.osType,
+	systemType: state.shared.metadata.systemType,
+	versionNumber: state.shared.metadata.versionNumber,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, AppProps> = (dispatch) => ({
+	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
+	openShortKeysConfiguration: bindActionCreators(actions.shared.navigation.openShortKeysConfiguration, dispatch),
 	openUrlInNewTab: bindActionCreators(actions.shared.navigation.openUrlInNewTab, dispatch),
-	setShouldShowBackButton: bindActionCreators(actions.navigation.setShouldShowBackButton, dispatch),
 });
 
-class App<P extends AppProps & StateProps & DispatchProps> extends React.PureComponent<P> {
+class App<P extends AppProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -70,22 +75,32 @@ class App<P extends AppProps & StateProps & DispatchProps> extends React.PureCom
 	override render(): React.ReactNode {
 		const {
 			activeTabId,
+			errorCount,
+			isPremiumEdition,
+			openOptionsPage,
+			openShortKeysConfiguration,
 			openUrlInNewTab,
-			setShouldShowBackButton,
-			shouldShowBackButton,
+			osType,
+			systemType,
+			versionNumber,
 		} = this.props;
 
 		return (
 			<Main
 				activeTabId={activeTabId}
+				errorCount={errorCount}
+				isPremiumEdition={isPremiumEdition}
+				openOptionsPage={openOptionsPage}
+				openShortKeysConfiguration={openShortKeysConfiguration}
 				openUrlInNewTab={openUrlInNewTab}
-				setShouldShowBackButton={setShouldShowBackButton}
-				shouldShowBackButton={shouldShowBackButton}
+				osType={osType ?? null}
+				systemType={systemType}
+				versionNumber={versionNumber}
 			/>
 		);
 	}
 }
 
-export default connect<StateProps, DispatchProps, AppProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
+export default connect(mapStateToProps, mapDispatchToProps)(
 	App,
 );

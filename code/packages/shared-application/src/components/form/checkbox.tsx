@@ -31,6 +31,7 @@ import {
 import * as formBase from "../../styles/form/form-base";
 
 export interface CheckBoxProps {
+	id?: string;
 	checked: boolean;
 	disabled: boolean;
 	onChange: (checked: boolean) => void;
@@ -51,8 +52,9 @@ class Checkbox<P extends CheckBoxProps & ClassNameProp> extends React.PureCompon
 	override render(): React.ReactNode {
 		const {
 			checked,
-			disabled,
 			className,
+			disabled,
+			id,
 		} = this.props;
 
 		return (
@@ -60,6 +62,7 @@ class Checkbox<P extends CheckBoxProps & ClassNameProp> extends React.PureCompon
 				checked={checked}
 				className={className}
 				disabled={disabled}
+				id={id}
 				type="checkbox"
 				onChange={this.handleOnChange}
 			/>

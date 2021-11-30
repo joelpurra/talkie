@@ -23,9 +23,6 @@ import NavContainer from "@talkie/shared-application/containers/nav-container";
 import {
 	NavLink,
 } from "@talkie/shared-application/containers/nav-container-types";
-import configureAttribute, {
-	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
 import passSelectedTextToBackground from "@talkie/shared-application/hocs/pass-selected-text-to-background";
 import translateAttribute, {
 	TranslateProps,
@@ -34,7 +31,11 @@ import * as layoutBase from "@talkie/shared-application/styled/layout/layout-bas
 import {
 	ClassNameProp,
 } from "@talkie/shared-application/styled/types";
-import DynamicEnvironment from "@talkie/split-environment/dynamic-environment";
+import * as colorBase from "@talkie/shared-application/styles/color/color-base";
+import {
+	OsType,
+	SystemType,
+} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
 import React, {
 	ComponentProps,
 } from "react";
@@ -46,29 +47,38 @@ import {
 } from "styletron-react";
 
 import AboutContainer from "../containers/about-container";
-import EditionsContainer from "../containers/editions-container";
 import TextContainer from "../containers/text-container";
-import VoicesContainer from "../containers/voices-container";
+import EditionsContainer from "../containers/editions-container";
+import VoicesContainer from "../containers/voices/voices-container";
+import WelcomeContainer from "../containers/welcome-container";
 import {
 	actions,
 } from "../slices/index";
+import Footer, {
+	FooterStateProps,
+} from "./footer";
+import Header from "./header";
+import Features from "./sections/features";
+import Support from "./sections/support";
+import Usage from "./sections/usage";
 
-export interface MainStateProps {
+export interface MainStateProps extends FooterStateProps {
 	activeTabId: string | null;
-	shouldShowBackButton: boolean;
+	isPremiumEdition: boolean;
+	osType: OsType | null;
+	systemType: SystemType | null;
 }
 
 export interface MainDispatchProps {
+	openShortKeysConfiguration: typeof actions.shared.navigation.openShortKeysConfiguration;
 	openUrlInNewTab: typeof actions.shared.navigation.openUrlInNewTab;
-	setShouldShowBackButton: typeof actions.navigation.setShouldShowBackButton;
+	openOptionsPage: typeof actions.shared.navigation.openOptionsPage;
 }
 
-interface MainProps extends MainStateProps, MainDispatchProps {}
-
-const dynamicEnvironment = new DynamicEnvironment();
+export interface MainProps extends MainStateProps, MainDispatchProps, TranslateProps, ClassNameProp {}
 
 const widthStyles = {
-	maxWidth: "600px",
+	maxWidth: "1000px",
 	minWidth: "400px",
 };
 
@@ -77,10 +87,16 @@ const styles: StyleObject = {
 	minHeight: "450px",
 	paddingBottom: "2em",
 };
-class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps> extends React.PureComponent<P> {
+
+class Main<P extends MainProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
 	private readonly links: NavLink[];
 
 	private readonly styled: {
+		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
 		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
 		navHeader: StyletronComponent<ComponentProps<"div">>;
 	};
@@ -88,15 +104,17 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 	constructor(props: P) {
 		super(props);
 
-		this.scrollToTop = this.scrollToTop.bind(this);
 		this.handleLinkClick = this.handleLinkClick.bind(this);
+		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
+		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 
 		// TODO: async load/unload logic for classes.
 		// TODO: better place to put navigation menu links?
 		this.links = [
 			{
-				text: "←",
-				url: this.props.configure("urls.popup-passclick-false"),
+				tabId: "welcome",
+				// eslint-disable-next-line no-sync
+				text: this.props.translateSync("frontend_welcomeLinkText"),
 			},
 			{
 				tabId: "voices",
@@ -104,14 +122,29 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 				text: this.props.translateSync("frontend_voicesLinkText"),
 			},
 			{
-				tabId: "text",
+				tabId: "usage",
 				// eslint-disable-next-line no-sync
-				text: this.props.translateSync("frontend_textLinkText"),
+				text: this.props.translateSync("frontend_usageLinkText"),
+			},
+			{
+				tabId: "features",
+				// eslint-disable-next-line no-sync
+				text: this.props.translateSync("frontend_featuresLinkText"),
 			},
 			{
 				tabId: "upgrade",
 				// eslint-disable-next-line no-sync
 				text: this.props.translateSync("frontend_upgradeLinkText"),
+			},
+			{
+				tabId: "text",
+				// eslint-disable-next-line no-sync
+				text: this.props.translateSync("frontend_textLinkText"),
+			},
+			{
+				tabId: "support",
+				// eslint-disable-next-line no-sync
+				text: this.props.translateSync("frontend_supportLinkText"),
 			},
 			{
 				tabId: "about",
@@ -121,10 +154,17 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 		];
 
 		this.styled = {
+			footerHr: withStyleDeep(
+				layoutBase.hr,
+				{
+					marginTop: "3em",
+				},
+			),
+
 			main: withStyleDeep(
 				layoutBase.main,
 				{
-					marginTop: "4em",
+					paddingTop: "10em",
 				},
 			),
 
@@ -132,7 +172,7 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 				"div",
 				{
 					...widthStyles,
-					backgroundColor: "#ffffff",
+					backgroundColor: colorBase.bodyBackgroundColor,
 					left: 0,
 					position: "fixed",
 					right: 0,
@@ -142,24 +182,8 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 		};
 	}
 
-	getLocationQuerystring(): string | null {
-		let queryString = null;
-
-		if (dynamicEnvironment.isWebExtension() && document.location && typeof document.location.search === "string" && document.location.search.length > 0) {
-			queryString = "?" + decodeURIComponent(document.location.search.replace("?", ""));
-		}
-
-		return queryString;
-	}
-
 	override componentDidMount(): void {
 		this.scrollToTop();
-
-		// TODO: move "loading shouldShowBackButton" from the querystring to an action, especially to avoid using the DynamicEnvironment in a component.
-		const queryString = this.getLocationQuerystring();
-		const shouldShowBackButton = Boolean(queryString?.includes("from=popup"));
-
-		this.props.setShouldShowBackButton(shouldShowBackButton);
 	}
 
 	override componentDidUpdate(previousProps: P): void {
@@ -178,22 +202,50 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 		}, 100);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	handleOpenShortKeysConfigurationClick(event: Readonly<React.MouseEvent>): false {
+		event.preventDefault();
+		event.stopPropagation();
+
+		this.props.openShortKeysConfiguration();
+
+		return false;
+	}
+
 	handleLinkClick(url: string): void {
 		this.props.openUrlInNewTab(url);
+	}
+
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	handleOptionsPageClick(event: React.MouseEvent): false {
+		event.preventDefault();
+		event.stopPropagation();
+
+		this.props.openOptionsPage();
+
+		return false;
 	}
 
 	override render(): React.ReactNode {
 		const {
 			activeTabId,
-			shouldShowBackButton,
 			className,
+			errorCount,
+			isPremiumEdition,
+			osType,
+			systemType,
+			versionNumber,
 		} = this.props;
 
-		const linksToShow = shouldShowBackButton ? this.links : this.links.slice(1);
+		const linksToShow = this.links;
 
 		return (
 			<div className={className}>
 				<this.styled.navHeader>
+					<Header
+						isPremiumEdition={isPremiumEdition}
+					/>
+
 					<NavContainer
 						links={linksToShow}
 					/>
@@ -201,7 +253,17 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 					<layoutBase.hr/>
 				</this.styled.navHeader>
 
+				<layoutBase.hr/>
+
 				<this.styled.main>
+					<TabContents
+						activeTabId={activeTabId}
+						id="welcome"
+						onLinkClick={this.handleLinkClick}
+					>
+						<WelcomeContainer/>
+					</TabContents>
+
 					<TabContents
 						activeTabId={activeTabId}
 						id="voices"
@@ -212,10 +274,26 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 
 					<TabContents
 						activeTabId={activeTabId}
-						id="text"
+						id="usage"
 						onLinkClick={this.handleLinkClick}
 					>
-						<TextContainer/>
+						<Usage
+							isPremiumEdition={isPremiumEdition}
+							osType={osType}
+							systemType={systemType}
+							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+						/>
+					</TabContents>
+
+					<TabContents
+						activeTabId={activeTabId}
+						id="features"
+						onLinkClick={this.handleLinkClick}
+					>
+						<Features
+							isPremiumEdition={isPremiumEdition}
+							systemType={systemType}
+						/>
 					</TabContents>
 
 					<TabContents
@@ -228,21 +306,47 @@ class Main<P extends MainProps & TranslateProps & ClassNameProp & ConfigureProps
 
 					<TabContents
 						activeTabId={activeTabId}
+						id="text"
+						onLinkClick={this.handleLinkClick}
+					>
+						<TextContainer/>
+					</TabContents>
+
+					<TabContents
+						activeTabId={activeTabId}
+						id="support"
+						onLinkClick={this.handleLinkClick}
+					>
+						<Support
+							osType={osType}
+							systemType={systemType}
+							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+						/>
+					</TabContents>
+
+					<TabContents
+						activeTabId={activeTabId}
 						id="about"
 						onLinkClick={this.handleLinkClick}
 					>
 						<AboutContainer/>
 					</TabContents>
 				</this.styled.main>
+
+				<this.styled.footerHr/>
+
+				<Footer
+					errorCount={errorCount}
+					versionNumber={versionNumber}
+				/>
 			</div>
 		);
 	}
 }
-
 export default styled(
-	configureAttribute<MainProps & ClassNameProp & ConfigureProps>()(
-		translateAttribute<MainProps & TranslateProps & ClassNameProp & ConfigureProps>()(
-			passSelectedTextToBackground<MainProps & TranslateProps & ClassNameProp & ConfigureProps>()(Main),
+	translateAttribute<MainProps>()(
+		passSelectedTextToBackground<MainProps>()(
+			Main,
 		),
 	),
 	styles,
