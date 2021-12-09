@@ -12,5 +12,6 @@
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
-  "private": true
+  "private": true,
+  "type": "module"
 }

@@ -24,21 +24,22 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import toolkit from "@reduxjs/toolkit";
+const {
 	bindActionCreators,
-} from "redux";
+} = toolkit;
 
 import Main, {
 	MainDispatchProps,
 	MainStateProps,
-} from "../components/main";
-import selectors from "../selectors/index";
+} from "../components/main.js";
+import selectors from "../selectors/index.mjs";
 import {
 	actions,
-} from "../slices/index";
+} from "../slices/index.mjs";
 import type {
 	OptionsRootState,
-} from "../store";
+} from "../store/index.mjs";
 
 interface StateProps extends MainStateProps {}
 

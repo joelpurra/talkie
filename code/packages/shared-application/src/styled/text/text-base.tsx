@@ -22,7 +22,7 @@ import {
 	styled,
 } from "styletron-react";
 
-import * as textBase from "../../styles/text/text-base";
+import * as textBase from "../../styles/text/text-base.mjs";
 
 export const p = styled("p", textBase.text);
 export const span = styled("span", textBase.text);

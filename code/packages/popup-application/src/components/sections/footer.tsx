@@ -18,16 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Icon from "@talkie/shared-application/components/icon/icon";
+import Icon from "@talkie/shared-application/components/icon/icon.js";
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
-import * as errors from "@talkie/shared-application/styled/text/errors";
-import * as lighter from "@talkie/shared-application/styled/text/lighter";
+} from "@talkie/shared-application/hocs/configure.js";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
+import * as errors from "@talkie/shared-application/styled/text/errors.js";
+import * as lighter from "@talkie/shared-application/styled/text/lighter.js";
 import {
 	OnOpenOptionsPageClickProp,
-} from "@talkie/shared-application/types";
+} from "@talkie/shared-application/types.mjs";
 import React, {
 	ComponentProps,
 } from "react";

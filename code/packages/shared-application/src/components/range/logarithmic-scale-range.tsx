@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import MathHelper from "@talkie/shared-application-helpers/math-helper";
+import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import React from "react";
 
 import ScaleRange, {
 	ScaleRangeProps,
-} from "./scale-range";
+} from "./scale-range.js";
 
 export default class LogarithmicScaleRange<P extends ScaleRangeProps> extends React.PureComponent<P> {
 	constructor(props: P) {

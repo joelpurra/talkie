@@ -22,10 +22,10 @@ import React from "react";
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
+} from "../../styled/types.js";
 import Icon, {
 	IconProps,
-} from "./icon";
+} from "./icon.js";
 
 export type SocialShareIconNetwork =
 	| "twitter"

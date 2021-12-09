@@ -18,21 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Discretional from "@talkie/shared-application/components/discretional";
-import Icon from "@talkie/shared-application/components/icon/icon";
-import Markdown from "@talkie/shared-application/components/markdown";
-import InformationSection from "@talkie/shared-application/components/section/information-section";
+import Discretional from "@talkie/shared-application/components/discretional.js";
+import Icon from "@talkie/shared-application/components/icon/icon.js";
+import Markdown from "@talkie/shared-application/components/markdown.js";
+import InformationSection from "@talkie/shared-application/components/section/information-section.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as buttonBase from "@talkie/shared-application/styled/button/button-base";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-application/styled/button/button-base.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import {
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices";
+} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
 import React from "react";
 
-import DialectVoiceOptionsContainer from "../../../containers/voices/dialect-voice-options-container";
+import DialectVoiceOptionsContainer from "../../../containers/voices/dialect-voice-options-container.js";
 
 interface DialectVoiceProps extends TranslateProps {
 	voice: SafeVoiceObject;

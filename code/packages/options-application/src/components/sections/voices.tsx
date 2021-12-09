@@ -18,19 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Loading from "@talkie/shared-application/components/loading";
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+import Loading from "@talkie/shared-application/components/loading.js";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import React from "react";
 
-import LanguageGroupContainer from "../../containers/voices/language-group-container";
-import LanguageGroupsContainer from "../../containers/voices/language-groups-container";
-import DialectsContainer from "../../containers/voices/dialects-container";
-import DialectContainer from "../../containers/voices/dialect-container";
-import DialectVoicesContainer from "../../containers/voices/dialect-voices-container";
-import DialectVoiceContainer from "../../containers/voices/dialect-voice-container";
-import Intro from "./voices/intro";
-import Discretional from "@talkie/shared-application/components/discretional";
+import LanguageGroupContainer from "../../containers/voices/language-group-container.js";
+import LanguageGroupsContainer from "../../containers/voices/language-groups-container.js";
+import DialectsContainer from "../../containers/voices/dialects-container.js";
+import DialectContainer from "../../containers/voices/dialect-container.js";
+import DialectVoicesContainer from "../../containers/voices/dialect-voices-container.js";
+import DialectVoiceContainer from "../../containers/voices/dialect-voice-container.js";
+import Intro from "./voices/intro.js";
+import Discretional from "@talkie/shared-application/components/discretional.js";
 
 export interface VoicesStateProps {
 	hasSelectedLanguageCode: boolean;

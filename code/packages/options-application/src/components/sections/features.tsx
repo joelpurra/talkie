@@ -18,22 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Discretional from "@talkie/shared-application/components/discretional";
-import TalkieFreeIcon from "@talkie/shared-application/components/icon/talkie-free-icon";
-import TalkiePremiumIcon from "@talkie/shared-application/components/icon/talkie-premium-icon";
-import FreeSection from "@talkie/shared-application/components/section/free-section";
-import PremiumSection from "@talkie/shared-application/components/section/premium-section";
+import Discretional from "@talkie/shared-application/components/discretional.js";
+import TalkieFreeIcon from "@talkie/shared-application/components/icon/talkie-free-icon.js";
+import TalkiePremiumIcon from "@talkie/shared-application/components/icon/talkie-premium-icon.js";
+import FreeSection from "@talkie/shared-application/components/section/free-section.js";
+import PremiumSection from "@talkie/shared-application/components/section/premium-section.js";
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
+} from "@talkie/shared-application/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as listBase from "@talkie/shared-application/styled/list/list-base";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as listBase from "@talkie/shared-application/styled/list/list-base.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import {
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
+} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";

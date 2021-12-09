@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import React from "react";
 import {
 	Except,
@@ -26,19 +26,15 @@ import {
 
 import {
 	BroadcasterContext,
-} from "../containers/providers";
-import {
-	IHocConstructor,
-	IHocConstructorGenerator,
-} from "./hoc-types";
+} from "../containers/providers.js";
 
 export interface BroadcasterProps {
 	broadcaster: IBroadcasterProvider;
 }
 
-export default function broadcasterAttribute<P extends BroadcasterProps = BroadcasterProps, U = Except<P, keyof BroadcasterProps>>(): IHocConstructorGenerator<P, U> {
+export default function broadcasterAttribute<P extends BroadcasterProps = BroadcasterProps, U = Except<P, keyof BroadcasterProps>>() {
 	// eslint-disable-next-line func-names
-	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
+	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>) {
 		class BroadcasterHoc extends React.PureComponent<P> {
 			static override contextType = BroadcasterContext;
 			declare context: React.ContextType<typeof BroadcasterContext>;

@@ -28,7 +28,7 @@ import {
 
 import {
 	ChildrenRequiredProps,
-} from "../types";
+} from "../types.mjs";
 
 export default class ErrorBoundary<P extends ChildrenRequiredProps> extends React.PureComponent<P> {
 	override state = {

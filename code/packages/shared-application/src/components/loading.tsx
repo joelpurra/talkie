@@ -22,14 +22,14 @@ import React from "react";
 
 import translateAttribute, {
 	TranslateProps,
-} from "../hocs/translate";
-import * as lighter from "../styled/text/lighter";
+} from "../hocs/translate.js";
+import * as lighter from "../styled/text/lighter.js";
 import {
 	ClassNameProp,
-} from "../styled/types";
+} from "../styled/types.js";
 import {
 	ChildrenRequiredProps,
-} from "../types";
+} from "../types.mjs";
 
 export interface LoadingProps extends ChildrenRequiredProps, ClassNameProp {
 	enabled: boolean;

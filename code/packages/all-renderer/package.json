@@ -6,6 +6,9 @@
     "name": "Joel Purra",
     "url": "https://joelpurra.com/"
   },
+  "bin": {
+    "talkie-all-renderer": "./dist/esm/all-renderer.mjs"
+  },
   "dependencies": {
     "@talkie/options-renderer": "*",
     "@talkie/popup-renderer": "*",
@@ -15,26 +18,26 @@
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
-    "@types/mkdirp": "^1.0.2",
-    "redux": "^4.1.1"
+    "@reduxjs/toolkit": "^1.6.1",
+    "@types/mkdirp": "^1.0.2"
   },
   "exports": {
     "./*": {
-      "import": "./dist/esm/*.js",
-      "require": "./dist/cjs/*.js"
+      "types": "./dist/esm/*",
+      "import": "./dist/esm/*"
     }
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "build": "npm run --silent build:typescript && npm run --silent build:rollup",
-    "build:rollup": "rollup --config rollup.config.js",
-    "build:typescript": "tsc --build tsconfig.esm.json && tsc --build tsconfig.cjs.json",
+    "build": "npm run --silent build:typescript",
+    "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
     "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build:rollup -- --watch --watch.buildDelay 5000"
   },
+  "type": "module",
   "typesVersions": {
     "^4": {
       "*": [

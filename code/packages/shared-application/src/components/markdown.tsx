@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from "react";
-// import ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 
 import {
 	ClassNameProp,
-} from "../styled/types";
+} from "../styled/types.js";
 
 export interface MarkdownProps extends ClassNameProp {
 	children: string;
@@ -53,14 +53,11 @@ class Markdown<P extends InternalProps> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
 			children,
-			// className,
+			className,
 		} = this.props as InternalProps;
 
-		// TODO: remove <> placeholder.
 		return (
-			<>
-				{/*
-				<ReactMarkdown
+			<ReactMarkdown
 					skipHtml
 					unwrapDisallowed
 					// NOTE: possibly disables some security by unwrapping the root <p> element, but still only allows <strong> in the output.
@@ -72,12 +69,8 @@ class Markdown<P extends InternalProps> extends React.PureComponent<P> {
 					transformImageUri={this.transformImageUri}
 					transformLinkUri={this.transformLinkUri}
 				>
-				*/}
 				{children}
-				{/*
-				</ReactMarkdown>
-				*/}
-			</>
+			</ReactMarkdown>
 		);
 	}
 }

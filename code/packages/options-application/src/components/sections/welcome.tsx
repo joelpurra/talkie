@@ -18,16 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Discretional from "@talkie/shared-application/components/discretional";
-import HeroSection from "@talkie/shared-application/components/hero-section/hero-section";
-import SharingIcons from "@talkie/shared-application/components/sharing/sharing-icons";
+import Discretional from "@talkie/shared-application/components/discretional.js";
+import HeroSection from "@talkie/shared-application/components/hero-section/hero-section.js";
+import SharingIcons from "@talkie/shared-application/components/sharing/sharing-icons.js";
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
+} from "@talkie/shared-application/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import React, {
 	ComponentProps,
 } from "react";
@@ -37,7 +37,7 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import InstallVoicesContainer from "../../containers/install-voices-container";
+import InstallVoicesContainer from "../../containers/install-voices-container.js";
 
 export interface WelcomeProps {
 	canSpeakInTranslatedLocale: boolean;

@@ -22,13 +22,13 @@ import React from "react";
 
 import configureAttribute, {
 	ConfigureProps,
-} from "../../hocs/configure";
-import * as listBase from "../../styled/list/list-base";
-import * as textBase from "../../styled/text/text-base";
+} from "../../hocs/configure.js";
+import * as listBase from "../../styled/list/list-base.js";
+import * as textBase from "../../styled/text/text-base.js";
 import {
 	ClassNameProp,
-} from "../../styled/types";
-import SocialShareIcon from "../icon/social-share-icon";
+} from "../../styled/types.js";
+import SocialShareIcon from "../icon/social-share-icon.js";
 
 class SharingIcons<P extends ConfigureProps & ClassNameProp> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor

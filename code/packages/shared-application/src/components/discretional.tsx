@@ -22,7 +22,7 @@ import React from "react";
 
 import {
 	ChildrenRequiredProps,
-} from "../types";
+} from "../types.mjs";
 
 export interface DiscretionalProps extends ChildrenRequiredProps {
 	enabled: boolean;

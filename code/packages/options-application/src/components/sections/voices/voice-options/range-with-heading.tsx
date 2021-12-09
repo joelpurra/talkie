@@ -20,17 +20,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	ScaleRangeProps,
-} from "@talkie/shared-application/components/range/scale-range";
+} from "@talkie/shared-application/components/range/scale-range.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as tableBase from "@talkie/shared-application/styled/table/table-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as tableBase from "@talkie/shared-application/styled/table/table-base.js";
 import {
 	debounce,
-} from "@talkie/shared-application-helpers/basic";
+} from "@talkie/shared-application-helpers/basic.mjs";
 import {
 	TranslateSync,
-} from "@talkie/split-environment-interfaces/itranslator-provider";
+} from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	ReadonlyDeep,

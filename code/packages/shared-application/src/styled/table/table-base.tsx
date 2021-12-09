@@ -22,7 +22,7 @@ import {
 	styled,
 } from "styletron-react";
 
-import * as tableBase from "../../styles/table/table-base";
+import * as tableBase from "../../styles/table/table-base.mjs";
 
 export const compactTable = styled("table", tableBase.commpactTable);
 export const wideTable = styled("table", tableBase.wideTable);

@@ -19,5 +19,6 @@
     "build": "echo",
     "clean": "rimraf ./dist",
     "rebuild": "npm run --silent clean && npm run --silent build"
-  }
+  },
+  "type": "module"
 }

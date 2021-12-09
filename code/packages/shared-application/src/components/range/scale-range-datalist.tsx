@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import React from "react";
 
-import ScaleRangeDatalistOption from "./scale-range-datalist-option";
+import ScaleRangeDatalistOption from "./scale-range-datalist-option.js";
 
 export interface ScaleRangeDatalistProps {
 	disabled: boolean;

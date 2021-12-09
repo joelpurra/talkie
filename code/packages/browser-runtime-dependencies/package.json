@@ -7,18 +7,15 @@
     "url": "https://joelpurra.com/"
   },
   "bundledDependencies": [
+    "@reduxjs/toolkit",
     "react",
-    "react-redux",
-    "redux",
     "styletron-react"
   ],
   "dependencies": {
     "@talkie/all-renderer": "*"
   },
   "devDependencies": {
-    "redux": "^4.1.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
+    "@reduxjs/toolkit": "^1.6.1",
     "webextension-polyfill": "^0.8.0"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
@@ -26,9 +23,10 @@
   "private": true,
   "scripts": {
     "build": "npm run --silent build:rollup",
-    "build:rollup": "rollup --config rollup.config.js",
+    "build:rollup": "rollup --config rollup.config.mjs",
     "clean": "rimraf ./dist",
     "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
-  }
+  },
+  "type": "module"
 }

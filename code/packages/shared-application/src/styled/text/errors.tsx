@@ -22,7 +22,7 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import * as errors from "../../styles/text/errors";
-import * as textBase from "./text-base";
+import * as errors from "../../styles/text/errors.mjs";
+import * as textBase from "./text-base.js";
 
 export const span = withStyleDeep(textBase.span, errors.text);

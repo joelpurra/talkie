@@ -22,8 +22,8 @@ import React from "react";
 
 import {
 	actions,
-} from "../../slices";
-import SpeakLongTexts from "./text/speak-long-texts";
+} from "../../slices/index.mjs";
+import SpeakLongTexts from "./text/speak-long-texts.js";
 
 interface TextStateProps {
 	speakLongTexts: boolean;

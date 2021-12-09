@@ -20,18 +20,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import ScaleRange, {
 	ScaleRangeProps,
-} from "@talkie/shared-application/components/range/scale-range";
+} from "@talkie/shared-application/components/range/scale-range.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
+} from "@talkie/shared-application/hocs/translate.js";
 import {
 	TranslateSync,
-} from "@talkie/split-environment-interfaces/itranslator-provider";
+} from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
 import RangeWithHeading, {
 	RangeWithHeadingProps,
-} from "./range-with-heading";
+} from "./range-with-heading.js";
 
 export interface PitchProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}
 

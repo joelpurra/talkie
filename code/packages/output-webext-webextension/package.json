@@ -7,6 +7,7 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
+    "@talkie/all-renderer": "*",
     "@talkie/output-webext": "*"
   },
   "devDependencies": {
@@ -17,9 +18,9 @@
   "private": true,
   "scripts": {
     "build": "npm run --silent build:rollup && npm run --silent build:webextension",
-    "build:patch": "( cd ./dist/webext/webextension/ && node -- ../../../../all-renderer/dist/rollup/all-renderer.js ; )",
+    "build:patch": "( cd ./dist/webext/webextension/ && talkie-all-renderer ; )",
     "build:patch:manifest": "json -Ie \"this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' WebExtension '); delete this.commands['read-clipboard'];\" -f ./dist/webext/webextension/manifest.json",
-    "build:rollup": "rollup --config rollup.config.js",
+    "build:rollup": "rollup --config rollup.config.mjs",
     "build:webextension": "npm run --silent build:patch:manifest && npm run --silent build:patch",
     "clean": "rimraf ./dist",
     "lint": "web-ext --source-dir=./dist/webext/webextension/ lint --ignore-files ./resources/style/options.css ./resources/style/shared.css",
@@ -27,5 +28,6 @@
     "publish": "echo '--- DISABLED ---' web-ext --source-dir=./dist/webext/webextension/ sign --id '{d83c8fb0-e51b-4d74-9c10-90e9610f16ca}' --channel listed && mv -n ./dist/web-ext-artifacts/talkie*.xpi \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.xpi\" && echo 'NOTE: Manually upload source code and check upload status on https://addons.mozilla.org/en-US/developers/addons'",
     "rebuild": "npm run --silent clean && npm run --silent build",
     "run:firefox": "web-ext --source-dir=./dist/webext/webextension/ run --target firefox-desktop --browser-console --start-url 'https://www.wikipedia.org/'"
-  }
+  },
+  "type": "module"
 }

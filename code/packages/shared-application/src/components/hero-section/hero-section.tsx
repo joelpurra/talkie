@@ -20,13 +20,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import React from "react";
 
-import * as layoutBase from "../../styled/layout/layout-base";
+import * as layoutBase from "../../styled/layout/layout-base.js";
 import {
 	ClassNameProp,
-} from "../../styled/types";
+} from "../../styled/types.js";
 import {
 	ChildrenRequiredProps,
-} from "../../types";
+} from "../../types.mjs";
 
 export default class HeroSection<P extends ChildrenRequiredProps & ClassNameProp> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor

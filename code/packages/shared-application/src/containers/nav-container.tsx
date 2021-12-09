@@ -18,30 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import DynamicEnvironment from "@talkie/split-environment/dynamic-environment";
+import DynamicEnvironment from "@talkie/split-environment/dynamic-environment.mjs";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import toolkit from "@reduxjs/toolkit";
+const {
 	bindActionCreators,
-} from "redux";
+} = toolkit;
 import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Nav from "../components/navigation/nav";
+import Nav from "../components/navigation/nav.js";
 import type {
 	SharedRootState,
-} from "../store";
+} from "../store/index.mjs";
 import {
 	actions,
-} from "../unshared/slices/index";
+} from "../unshared/slices/index.mjs";
 import {
 	NavContainerProps,
-} from "./nav-container-types";
+} from "./nav-container-types.mjs";
 
 interface StateProps {
 	activeTabId: string | null;

@@ -22,7 +22,7 @@ import {
 	styled,
 } from "styletron-react";
 
-import * as buttonBase from "../../styles/button/button-base";
+import * as buttonBase from "../../styles/button/button-base.mjs";
 
 export const button = styled("button", buttonBase.button);
 export const transparentButton = styled("button", buttonBase.transparentButton);

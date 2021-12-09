@@ -25,11 +25,11 @@ import {
 
 import {
 	ChildrenRequiredProps,
-} from "../../types";
+} from "../../types.mjs";
 import {
 	BubbledLinkClickHandler,
 	handleBubbledLinkClick,
-} from "../../utils/ui";
+} from "../../utils/ui.mjs";
 
 export interface TabContentsProps {
 	activeTabId: string | null;

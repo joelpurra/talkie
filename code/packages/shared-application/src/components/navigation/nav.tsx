@@ -29,11 +29,11 @@ import {
 
 import {
 	NavLink,
-} from "../../containers/nav-container-types";
-import * as layoutBase from "../../styled/layout/layout-base";
-import * as tableBase from "../../styled/table/table-base";
-import * as textBase from "../../styled/text/text-base";
-import * as colorBase from "../../styles/color/color-base";
+} from "../../containers/nav-container-types.mjs";
+import * as layoutBase from "../../styled/layout/layout-base.js";
+import * as tableBase from "../../styled/table/table-base.js";
+import * as textBase from "../../styled/text/text-base.js";
+import * as colorBase from "../../styles/color/color-base.mjs";
 
 export interface NavProps {
 	initialActiveTabId: string | null;

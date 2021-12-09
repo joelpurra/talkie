@@ -27,8 +27,8 @@ import {
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
-import * as formBase from "../../styles/form/form-base";
+} from "../../styled/types.js";
+import * as formBase from "../../styles/form/form-base.mjs";
 
 export interface CheckBoxProps {
 	id?: string;

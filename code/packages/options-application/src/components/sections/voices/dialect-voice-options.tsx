@@ -18,20 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import PremiumSection from "@talkie/shared-application/components/section/premium-section";
+import PremiumSection from "@talkie/shared-application/components/section/premium-section.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as tableBase from "@talkie/shared-application/styled/table/table-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as tableBase from "@talkie/shared-application/styled/table/table-base.js";
 import {
 	pitchRange,
 	rateRange,
-} from "@talkie/shared-application-helpers/voices";
+} from "@talkie/shared-application-helpers/voices.mjs";
 import React from "react";
 
-import Pitch from "./voice-options/pitch";
-import Rate from "./voice-options/rate";
-import ToggleDefault from "./voice-options/toggle-default";
+import Pitch from "./voice-options/pitch.js";
+import Rate from "./voice-options/rate.js";
+import ToggleDefault from "./voice-options/toggle-default.js";
 
 interface DialectVoiceOptionsStateProps {
 	isEffectiveVoiceNameForLanguageCode: boolean;

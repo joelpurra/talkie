@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	TalkieProgressData,
-} from "@talkie/shared-application/talkie-progress";
+} from "@talkie/shared-application/talkie-progress.mjs";
 import React from "react";
 import {
 	connect,
@@ -31,10 +31,10 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Progress from "../components/sections/progress";
+import Progress from "../components/sections/progress.js";
 import type {
 	PopupRootState,
-} from "../store";
+} from "../store/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProgressContainerProps {}

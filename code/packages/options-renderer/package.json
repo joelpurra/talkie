@@ -9,16 +9,16 @@
   "dependencies": {
     "@talkie/browser-localeredirect": "*",
     "@talkie/options-application": "*",
-    "@talkie/renderer": "*",
-    "redux": "^4.1.1"
+    "@talkie/renderer": "*"
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "react": "^17.0.2"
   },
   "exports": {
     "./*": {
-      "import": "./dist/esm/*.js",
-      "require": "./dist/cjs/*.js"
+      "types": "./dist/esm/*",
+      "import": "./dist/esm/*"
     }
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
@@ -26,11 +26,12 @@
   "private": true,
   "scripts": {
     "build": "npm run --silent build:typescript",
-    "build:typescript": "tsc --build tsconfig.esm.json && tsc --build tsconfig.cjs.json",
+    "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
     "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
+  "type": "module",
   "typesVersions": {
     "^4": {
       "*": [

@@ -22,10 +22,10 @@ import React from "react";
 
 import {
 	IsSpeakingProps,
-} from "../hocs/is-speaking-types";
+} from "../hocs/is-speaking-types.mjs";
 import {
 	ChildrenRequiredProps,
-} from "../types";
+} from "../types.mjs";
 
 export interface StyleRootProps {
 	isPremiumEdition: boolean;

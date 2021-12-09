@@ -20,28 +20,24 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch";
+} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events";
+} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
 import React from "react";
 
 import {
 	BroadcasterContext,
-} from "../containers/providers";
-import {
-	IHocConstructor,
-	IHocConstructorGenerator,
-} from "./hoc-types";
-import executeGetFramesSelectionTextAndLanguageCode from "./pass-selected-text-to-background-javascript";
+} from "../containers/providers.js";
+import executeGetFramesSelectionTextAndLanguageCode from "./pass-selected-text-to-background-javascript.mjs";
 import {
 	PerhapsSelectedTextWithFocusTimestamp,
-} from "./pass-selected-text-to-background-types";
+} from "./pass-selected-text-to-background-types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS = unknown>(): IHocConstructorGenerator<P, P> {
+export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS = unknown>() {
 	// eslint-disable-next-line func-names
-	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<P> {
+	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {
 		class PassSelectedTextToBackgroundHoc extends React.PureComponent<P, S, SS> {
 			static override contextType = BroadcasterContext;
 			declare context: React.ContextType<typeof BroadcasterContext>;

@@ -22,10 +22,10 @@ import React from "react";
 
 import {
 	actions,
-} from "../slices";
+} from "../slices/index.mjs";
 import progressAttribute, {
 	ProgressProps,
-} from "./progress";
+} from "./progress.js";
 
 export interface ProgressUpdaterStateProps extends ProgressProps {}
 

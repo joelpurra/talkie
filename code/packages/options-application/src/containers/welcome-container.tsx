@@ -18,28 +18,29 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions";
+import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions.mjs";
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider";
+} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import toolkit from "@reduxjs/toolkit";
+const {
 	bindActionCreators,
-} from "redux";
+} = toolkit;
 
-import Welcome from "../components/sections/welcome";
-import selectors from "../selectors/index";
+import Welcome from "../components/sections/welcome.js";
+import selectors from "../selectors/index.mjs";
 import {
 	actions,
-} from "../slices/index";
+} from "../slices/index.mjs";
 import type {
 	OptionsRootState,
-} from "../store";
+} from "../store/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface WelcomeContainerProps {}

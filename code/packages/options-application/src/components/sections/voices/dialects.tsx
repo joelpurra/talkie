@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as buttonBase from "@talkie/shared-application/styled/button/button-base";
-import * as listBase from "@talkie/shared-application/styled/list/list-base";
-import * as colorBase from "@talkie/shared-application/styles/color/color-base";
+import * as buttonBase from "@talkie/shared-application/styled/button/button-base.js";
+import * as listBase from "@talkie/shared-application/styled/list/list-base.js";
+import * as colorBase from "@talkie/shared-application/styles/color/color-base.mjs";
 import React, { ComponentProps } from "react";
 import { StyletronComponent, withStyleDeep } from "styletron-react";
 

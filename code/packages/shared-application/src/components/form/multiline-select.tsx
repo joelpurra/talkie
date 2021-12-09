@@ -30,11 +30,11 @@ import {
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
-import * as formBase from "../../styles/form/form-base";
+} from "../../styled/types.js";
+import * as formBase from "../../styles/form/form-base.mjs";
 import {
 	scrollIntoViewIfNeeded,
-} from "../../utils/select-element";
+} from "../../utils/select-element.mjs";
 
 export interface MultilineSelectProps {
 	disabled: boolean;

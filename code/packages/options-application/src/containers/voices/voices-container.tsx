@@ -27,15 +27,18 @@ import {
 
 import Voices, {
 	VoicesStateProps,
-} from "../../components/sections/voices";
-import selectors from "../../selectors/index";
+} from "../../components/sections/voices.js";
+import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
-} from "../../store";
+} from "../../store/index.mjs";
 import {
 	actions,
-} from "../../slices/index";
-import { bindActionCreators } from "redux";
+} from "../../slices/index.mjs";
+import toolkit from "@reduxjs/toolkit";
+const {
+	bindActionCreators,
+} = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface VoicesContainerProps {}

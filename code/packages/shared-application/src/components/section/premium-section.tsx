@@ -22,13 +22,13 @@ import React from "react";
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
+} from "../../styled/types.js";
 import {
 	ChildrenRequiredProps,
-} from "../../types";
+} from "../../types.mjs";
 import EditionSection, {
 	EditionSectionMode,
-} from "./edition-section";
+} from "./edition-section.js";
 
 export interface PremiumSectionProps {
 	mode: EditionSectionMode;

@@ -25,11 +25,7 @@ import {
 
 import {
 	ConfigurationContext,
-} from "../containers/providers";
-import {
-	IHocConstructor,
-	IHocConstructorGenerator,
-} from "./hoc-types";
+} from "../containers/providers.js";
 
 export type ConfigureProp = <T = unknown>(path: string) => T;
 
@@ -37,9 +33,9 @@ export interface ConfigureProps {
 	configure: ConfigureProp;
 }
 
-export default function configureAttribute<P extends ConfigureProps = ConfigureProps, U = Except<P, keyof ConfigureProps>>(): IHocConstructorGenerator<P, U> {
+export default function configureAttribute<P extends ConfigureProps = ConfigureProps, U = Except<P, keyof ConfigureProps>>() {
 	// eslint-disable-next-line func-names
-	return function configureHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
+	return function configureHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ConfigurationHoc extends React.PureComponent<P> {
 			static override contextType = ConfigurationContext;
 			declare context: React.ContextType<typeof ConfigurationContext>;

@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Except,
@@ -26,17 +26,13 @@ import {
 
 import {
 	TranslateContext,
-} from "../containers/providers";
-import {
-	IHocConstructor,
-	IHocConstructorGenerator,
-} from "./hoc-types";
+} from "../containers/providers.js";
 
 export interface TranslateProps extends ITranslatorProvider {}
 
-export default function translateAttribute<P extends TranslateProps = TranslateProps, U = Except<P, keyof TranslateProps>>(): IHocConstructorGenerator<P, U> {
+export default function translateAttribute<P extends TranslateProps = TranslateProps, U = Except<P, keyof TranslateProps>>() {
 	// eslint-disable-next-line func-names
-	return function translateHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
+	return function translateHoc(ComponentToWrap: React.ComponentType<P>) {
 		class TranslationHoc extends React.PureComponent<P> {
 			static override contextType = TranslateContext;
 			declare context: React.ContextType<typeof TranslateContext>;

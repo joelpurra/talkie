@@ -1,25 +1,28 @@
 <!doctype html>
 <html lang="<%- locals.locale %>">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Popup (<%- locals.locale %>) &mdash; Talkie</title>
-		<link rel="stylesheet" type="text/css" href="../../../shared-resources/src/resources/style/shared.css" />
-		<link rel="stylesheet" type="text/css" href="../../../shared-resources/src/resources/style/popup.css" />
-		<%- locals.stylesForHead %>
-		<noscript id="__PRERENDERED_STATE__"><%- locals.prerenderedStateJson %></noscript>
-	</head>
 
-	<body>
-		<div id="react-root"><%- locals.reactRootHtml %></div>
-		<script src="../../../browser-runtime-dependencies/dist/umd/browser-polyfill.js"></script>
-		<script src="../../../browser-runtime-dependencies/dist/umd/react.js"></script>
-		<script src="../../../browser-runtime-dependencies/dist/umd/react-dom.js"></script>
-		<script src="../../../browser-runtime-dependencies/dist/umd/react-redux.js"></script>
-		<script src="../../../browser-runtime-dependencies/dist/umd/redux.js"></script>
-		<script src="../../../browser-runtime-dependencies/dist/umd/redux-thunk.js"></script>
-		<script src="../../../browser-runtime-dependencies/dist/umd/reselect.js"></script>
-		<script src="../../../popup-application/dist/rollup/popup.js"></script>
-	</body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Popup (<%- locals.locale %>) &mdash; Talkie</title>
+	<link rel="stylesheet" type="text/css" href="../../../shared-resources/src/resources/style/shared.css" />
+	<link rel="stylesheet" type="text/css" href="../../../shared-resources/src/resources/style/popup.css" />
+	<%- locals.stylesForHead %>
+		<noscript id="__PRERENDERED_STATE__">
+			<%- locals.prerenderedStateJson %>
+		</noscript>
+</head>
+
+<body>
+	<div id="react-root">
+		<%- locals.reactRootHtml %>
+	</div>
+	<script src="../../../browser-runtime-dependencies/dist/umd/browser-polyfill.js"></script>
+	<script src="../../../browser-runtime-dependencies/dist/umd/react.js"></script>
+	<script src="../../../browser-runtime-dependencies/dist/umd/react-dom.js"></script>
+	<script src="../../../browser-runtime-dependencies/dist/umd/react-redux.js"></script>
+	<script src="../../../browser-runtime-dependencies/dist/umd/redux-toolkit.js"></script>
+	<script src="../../../popup-application/dist/rollup/popup.js"></script>
+</body>
 
 <!--
 This file is part of Talkie -- text-to-speech browser extension button.

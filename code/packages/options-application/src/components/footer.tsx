@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
-import * as errors from "@talkie/shared-application/styled/text/errors";
-import * as lighter from "@talkie/shared-application/styled/text/lighter";
+} from "@talkie/shared-application/hocs/configure.js";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
+import * as errors from "@talkie/shared-application/styled/text/errors.js";
+import * as lighter from "@talkie/shared-application/styled/text/lighter.js";
 import React from "react";
 import {
 	withStyleDeep,

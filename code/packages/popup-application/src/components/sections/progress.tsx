@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	TalkieProgressData,
-} from "@talkie/shared-application/talkie-progress";
+} from "@talkie/shared-application/talkie-progress.mjs";
 import React, {
 	ComponentProps,
 } from "react";

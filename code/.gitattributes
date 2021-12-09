@@ -6,10 +6,20 @@
 LICENSE text
 
 *.js text
-*.json text
-*.md text diff=markdown
-*.sh diff=bash
+*.jsx text
+*.cjs text
+*.mjs text
+
 *.ts text
+*.tsx text
+*.cts text
+*.mts text
+
+*.md text diff=markdown
+
+*.sh diff=bash
+
+*.json text
 
 *.css text diff=css
 *.html text diff=html

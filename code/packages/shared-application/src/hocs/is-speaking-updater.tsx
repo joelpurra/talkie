@@ -22,11 +22,11 @@ import React from "react";
 
 import {
 	actions,
-} from "../slices/index";
-import isSpeakingAttribute from "./is-speaking";
+} from "../slices/index.mjs";
+import isSpeakingAttribute from "./is-speaking.js";
 import {
 	IsSpeakingProps,
-} from "./is-speaking-types";
+} from "./is-speaking-types.mjs";
 
 export interface IsSpeakingUpdaterStateProps extends IsSpeakingProps {
 }

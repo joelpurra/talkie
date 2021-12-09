@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	LanguageGroupWithNavigatorLanguage,
-} from "@talkie/shared-application-helpers/transform-voices";
+} from "@talkie/shared-application-helpers/transform-voices.mjs";
 import React from "react";
 import {
 	connect,
@@ -28,11 +28,11 @@ import {
 	MapStateToProps,
 } from "react-redux";
 
-import LanguageGroups from "../../components/sections/voices/language-groups";
-import selectors from "../../selectors/index";
+import LanguageGroups from "../../components/sections/voices/language-groups.js";
+import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
-} from "../../store";
+} from "../../store/index.mjs";
 
 interface LanguageGroupsContainerProps {
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

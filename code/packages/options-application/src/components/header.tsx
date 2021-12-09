@@ -18,18 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Discretional from "@talkie/shared-application/components/discretional";
-import ExtensionShortName from "@talkie/shared-application/components/editions/extension-short-name";
-import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon";
+import Discretional from "@talkie/shared-application/components/discretional.js";
+import ExtensionShortName from "@talkie/shared-application/components/editions/extension-short-name.js";
+import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
+} from "@talkie/shared-application/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as buttonBase from "@talkie/shared-application/styled/button/button-base";
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-application/styled/button/button-base.js";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import React, {
 	ComponentProps,
 } from "react";

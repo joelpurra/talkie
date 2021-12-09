@@ -18,24 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import TabContents from "@talkie/shared-application/components/navigation/tab-contents";
-import NavContainer from "@talkie/shared-application/containers/nav-container";
+import TabContents from "@talkie/shared-application/components/navigation/tab-contents.js";
+import NavContainer from "@talkie/shared-application/containers/nav-container.js";
 import {
 	NavLink,
-} from "@talkie/shared-application/containers/nav-container-types";
-import passSelectedTextToBackground from "@talkie/shared-application/hocs/pass-selected-text-to-background";
+} from "@talkie/shared-application/containers/nav-container-types.mjs";
+import passSelectedTextToBackground from "@talkie/shared-application/hocs/pass-selected-text-to-background.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
 import {
 	ClassNameProp,
-} from "@talkie/shared-application/styled/types";
-import * as colorBase from "@talkie/shared-application/styles/color/color-base";
+} from "@talkie/shared-application/styled/types.js";
+import * as colorBase from "@talkie/shared-application/styles/color/color-base.mjs";
 import {
 	OsType,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
+} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";
@@ -46,21 +46,21 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import AboutContainer from "../containers/about-container";
-import TextContainer from "../containers/text-container";
-import EditionsContainer from "../containers/editions-container";
-import VoicesContainer from "../containers/voices/voices-container";
-import WelcomeContainer from "../containers/welcome-container";
+import AboutContainer from "../containers/about-container.js";
+import TextContainer from "../containers/text-container.js";
+import EditionsContainer from "../containers/editions-container.js";
+import VoicesContainer from "../containers/voices/voices-container.js";
+import WelcomeContainer from "../containers/welcome-container.js";
 import {
 	actions,
-} from "../slices/index";
+} from "../slices/index.mjs";
 import Footer, {
 	FooterStateProps,
-} from "./footer";
-import Header from "./header";
-import Features from "./sections/features";
-import Support from "./sections/support";
-import Usage from "./sections/usage";
+} from "./footer.js";
+import Header from "./header.js";
+import Features from "./sections/features.js";
+import Support from "./sections/support.js";
+import Usage from "./sections/usage.js";
 
 export interface MainStateProps extends FooterStateProps {
 	activeTabId: string | null;

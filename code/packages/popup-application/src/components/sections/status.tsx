@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Icon from "@talkie/shared-application/components/icon/icon";
+import Icon from "@talkie/shared-application/components/icon/icon.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as buttonBase from "@talkie/shared-application/styled/button/button-base";
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
-import * as tableBase from "@talkie/shared-application/styled/table/table-base";
-import * as lighter from "@talkie/shared-application/styled/text/lighter";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-application/styled/button/button-base.js";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
+import * as tableBase from "@talkie/shared-application/styled/table/table-base.js";
+import * as lighter from "@talkie/shared-application/styled/text/lighter.js";
 import React, {
 	ComponentProps,
 } from "react";
@@ -34,7 +34,7 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import ProgressContainer from "../../containers/progress-container";
+import ProgressContainer from "../../containers/progress-container.js";
 
 export interface StatusProps {
 	playPauseClick: () => void;

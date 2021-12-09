@@ -22,7 +22,7 @@ import {
 	styled,
 } from "styletron-react";
 
-import * as listBase from "../../styles/list/list-base";
+import * as listBase from "../../styles/list/list-base.mjs";
 
 export const ul = styled("ul", listBase.ul);
 export const ol = styled("ol", listBase.ol);

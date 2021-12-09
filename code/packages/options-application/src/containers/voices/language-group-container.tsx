@@ -18,26 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Loading from "@talkie/shared-application/components/loading";
-import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions";
+import Loading from "@talkie/shared-application/components/loading.js";
+import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions.mjs";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import toolkit from "@reduxjs/toolkit";
+const {
 	bindActionCreators,
-} from "redux";
+} = toolkit;
 
-import LanguageGroup from "../../components/sections/voices/language-group";
-import selectors from "../../selectors";
+import LanguageGroup from "../../components/sections/voices/language-group.js";
+import selectors from "../../selectors/index.mjs";
 import {
 	actions,
-} from "../../slices/index";
+} from "../../slices/index.mjs";
 import type {
 	OptionsRootState,
-} from "../../store";
+} from "../../store/index.mjs";
 
 interface LanguageGroupContainerProps {
 	speakSampleTextForLanguage: (language: string) => void;

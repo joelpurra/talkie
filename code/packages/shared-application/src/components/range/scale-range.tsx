@@ -20,8 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import React from "react";
 
-import * as formBase from "../../styled/form/form-base";
-import ScaleRangeDatalist from "./scale-range-datalist";
+import * as formBase from "../../styled/form/form-base.js";
+import ScaleRangeDatalist from "./scale-range-datalist.js";
 
 export interface ScaleRangeProps {
 	defaultValue: number;

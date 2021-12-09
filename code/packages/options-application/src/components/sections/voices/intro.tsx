@@ -20,11 +20,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import React from "react";
 
-import InstallVoicesContainer from "../../../containers/install-voices-container";
+import InstallVoicesContainer from "../../../containers/install-voices-container.js";
 
 interface IntroProps extends TranslateProps {}
 

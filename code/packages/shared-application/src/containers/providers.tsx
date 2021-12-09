@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
+} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
 import React from "react";
 import {
 	connect,
@@ -40,14 +40,14 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Configuration from "../configuration/configuration";
+import Configuration from "../configuration/configuration.mjs";
 import type {
 	SharedRootState,
-} from "../store";
+} from "../store/index.mjs";
 import {
 	ChildrenRequiredProps,
-} from "../types";
-import StateRoot from "./state-root";
+} from "../types.mjs";
+import StateRoot from "./state-root.js";
 
 type ConfigureContextProperty = (path: string) => JsonValue;
 

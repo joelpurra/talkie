@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Provider as StoreProvider,
@@ -27,17 +27,17 @@ import {
 import {
 	Action,
 	Store,
-} from "redux";
+} from "@reduxjs/toolkit";
 import {
 	StandardEngine,
 } from "styletron-standard";
 
-import ErrorBoundary from "../components/error-boundary";
-import Configuration from "../configuration/configuration";
+import ErrorBoundary from "../components/error-boundary.js";
+import Configuration from "../configuration/configuration.mjs";
 import {
 	ChildrenRequiredProps,
-} from "../types";
-import Providers from "./providers";
+} from "../types.mjs";
+import Providers from "./providers.js";
 
 export interface RootProps<S, A extends Action> {
 	broadcaster: IBroadcasterProvider;

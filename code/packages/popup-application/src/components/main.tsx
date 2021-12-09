@@ -18,13 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base";
+import * as layoutBase from "@talkie/shared-application/styled/layout/layout-base.js";
 import {
 	ClassNameProp,
-} from "@talkie/shared-application/styled/types";
+} from "@talkie/shared-application/styled/types.js";
 import {
 	handleBubbledLinkClick,
-} from "@talkie/shared-application/utils/ui";
+} from "@talkie/shared-application/utils/ui.mjs";
 import React from "react";
 import {
 	styled,
@@ -36,13 +36,13 @@ import {
 
 import {
 	actions,
-} from "../slices/index";
+} from "../slices/index.mjs";
 import Footer, {
 	FooterStateProps,
-} from "./sections/footer";
-import Header from "./sections/header";
-import Menu from "./sections/menu";
-import Status from "./sections/status";
+} from "./sections/footer.js";
+import Header from "./sections/header.js";
+import Menu from "./sections/menu.js";
+import Status from "./sections/status.js";
 
 export interface MainStateProps extends FooterStateProps {
 	isPremiumEdition: boolean;

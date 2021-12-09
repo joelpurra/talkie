@@ -18,23 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import SharingIcons from "@talkie/shared-application/components/sharing/sharing-icons";
-import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon";
+import SharingIcons from "@talkie/shared-application/components/sharing/sharing-icons.js";
+import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
+} from "@talkie/shared-application/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as listBase from "@talkie/shared-application/styled/list/list-base";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as listBase from "@talkie/shared-application/styled/list/list-base.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider";
+} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import {
 	OsType,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
+} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
 import React, { ComponentProps } from "react";
 import { StyletronComponent, styled } from "styletron-react";
 

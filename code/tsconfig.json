@@ -1,33 +1,49 @@
 {
+  "compilerOptions": {
+    "paths": {
+      "@talkie/all-renderer": ["./packages/all-renderer/src"],
+      "@talkie/browser-background": ["./packages/browser-background/src"],
+      "@talkie/browser-localeredirect": [
+        "./packages/browser-localeredirect/src"
+      ],
+      "@talkie/browser-runtime-dependencies": [
+        "./packages/browser-runtime-dependencies/src"
+      ],
+      "@talkie/browser-shared": ["./packages/browser-shared/src"],
+      "@talkie/browser-stayalive": ["./packages/browser-stayalive/src"],
+      "@talkie/options-application": ["./packages/options-application/src"],
+      "@talkie/options-renderer": ["./packages/options-renderer/src"],
+      "@talkie/output-webext": ["./packages/output-webext/src"],
+      "@talkie/output-webext-chrome": ["./packages/output-webext-chrome/src"],
+      "@talkie/output-webext-webextension": [
+        "./packages/output-webext-webextension/src"
+      ],
+      "@talkie/popup-application": ["./packages/popup-application/src"],
+      "@talkie/popup-renderer": ["./packages/popup-renderer/src"],
+      "@talkie/renderer": ["./packages/renderer/src"],
+      "@talkie/shared-application": ["./packages/shared-application/src"],
+      "@talkie/shared-application-helpers": [
+        "./packages/shared-application-helpers/src"
+      ],
+      "@talkie/shared-locales": ["./packages/shared-locales/src"],
+      "@talkie/shared-resources": ["./packages/shared-resources/src"],
+      "@talkie/split-environment": ["./packages/split-environment/src"],
+      "@talkie/split-environment-interfaces": [
+        "./packages/split-environment-interfaces/src"
+      ],
+      "@talkie/split-environment-node": [
+        "./packages/split-environment-node/src"
+      ],
+      "@talkie/split-environment-webextension": [
+        "./packages/split-environment-webextension/src"
+      ],
+      "@talkie/translator-tool": ["./packages/translator-tool/src"]
+    }
+  },
   "extends": "./tsconfig.esm.json",
   "include": [
     "packages/*/src/**/*",
     "packages/shared-application/src/data/configuration/configuration.json",
     "packages/shared-locales/src/data/languages/languages.json"
-  ],
-  "paths": {
-    "@talkie/all-renderer": "./packages/all-renderer/src",
-    "@talkie/browser-background": "./packages/browser-background/src",
-    "@talkie/browser-localeredirect": "./packages/browser-localeredirect/src",
-    "@talkie/browser-runtime-dependencies": "./packages/browser-runtime-dependencies/src",
-    "@talkie/browser-shared": "./packages/browser-shared/src",
-    "@talkie/browser-stayalive": "./packages/browser-stayalive/src",
-    "@talkie/options-application": "./packages/options-application/src",
-    "@talkie/options-renderer": "./packages/options-renderer/src",
-    "@talkie/output-webext": "./packages/output-webext/src",
-    "@talkie/output-webext-chrome": "./packages/output-webext-chrome/src",
-    "@talkie/output-webext-webextension": "./packages/output-webext-webextension/src",
-    "@talkie/popup-application": "./packages/popup-application/src",
-    "@talkie/popup-renderer": "./packages/popup-renderer/src",
-    "@talkie/renderer": "./packages/renderer/src",
-    "@talkie/shared-application": "./packages/shared-application/src",
-    "@talkie/shared-application-helpers": "./packages/shared-application-helpers/src",
-    "@talkie/shared-locales": "./packages/shared-locales/src",
-    "@talkie/shared-resources": "./packages/shared-resources/src",
-    "@talkie/split-environment": "./packages/split-environment/src",
-    "@talkie/split-environment-interfaces": "./packages/split-environment-interfaces/src",
-    "@talkie/split-environment-node": "./packages/split-environment-node/src",
-    "@talkie/split-environment-webextension": "./packages/split-environment-webextension/src",
-    "@talkie/translator-tool": "./packages/translator-tool/src"
-  }
+  ]
 }

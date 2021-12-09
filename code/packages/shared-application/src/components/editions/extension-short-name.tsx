@@ -22,8 +22,8 @@ import React from "react";
 
 import translateAttribute, {
 	TranslateProps,
-} from "../../hocs/translate";
-import * as textBase from "../../styled/text/text-base";
+} from "../../hocs/translate.js";
+import * as textBase from "../../styled/text/text-base.js";
 
 export interface ExtensionShortNameProps {
 	isPremiumEdition: boolean;

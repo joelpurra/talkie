@@ -22,7 +22,7 @@ import {
 	styled,
 } from "styletron-react";
 
-import * as layoutBase from "../../styles/layout/layout-base";
+import * as layoutBase from "../../styles/layout/layout-base.mjs";
 
 export const header = styled("header", layoutBase.header);
 export const main = styled("main", layoutBase.main);

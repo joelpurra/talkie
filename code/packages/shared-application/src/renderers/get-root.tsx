@@ -18,17 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider";
-import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Action,
 	Store,
-} from "redux";
+} from "@reduxjs/toolkit";
 
-import Configuration from "../configuration/configuration";
-import Root from "../containers/root";
+import Configuration from "../configuration/configuration.mjs";
+import Root from "../containers/root.js";
 
 const getRoot = async <S, A extends Action, P>(
 	store: Readonly<Store<S, A>>,

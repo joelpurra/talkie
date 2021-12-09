@@ -28,13 +28,11 @@ Some packages automatically generate a report with the size of each file `rollup
 
 These files are only generated locally during the build process, and not checked in to the repository. For this reason, the below links only work locally for developers.
 
-- [`all-renderer`](./packages/all-renderer/dist/metadata/stats.html)
-- [`browser-background`](./packages/browser-background/dist/metadata/stats.html)
-- [`browser-localeredirect`](./packages/browser-localeredirect/dist/metadata/stats.html)
-- [`browser-stayalive`](./packages/browser-stayalive/dist/metadata/stats.html)
-- [`options-application`](./packages/options-application/dist/metadata/stats.html)
-- [`popup-application`](./packages/popup-application/dist/metadata/stats.html)
-- [`translator-tool`](./packages/translator-tool/dist/metadata/stats.html)
+- [`browser-background`](./browser-background/dist/metadata/stats.html)
+- [`browser-localeredirect`](./browser-localeredirect/dist/metadata/stats.html)
+- [`browser-stayalive`](./browser-stayalive/dist/metadata/stats.html)
+- [`options-application`](./options-application/dist/metadata/stats.html)
+- [`popup-application`](./popup-application/dist/metadata/stats.html)
 
 ## Dependency graphs
 

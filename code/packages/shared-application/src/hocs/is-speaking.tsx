@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch";
+} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events";
+} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
 import React from "react";
 import {
 	Except,
@@ -32,19 +32,15 @@ import {
 
 import {
 	BroadcasterContext,
-} from "../containers/providers";
-import {
-	IHocConstructor,
-	IHocConstructorGenerator,
-} from "./hoc-types";
+} from "../containers/providers.js";
 import {
 	IsSpeakingHocState,
 	IsSpeakingProps,
-} from "./is-speaking-types";
+} from "./is-speaking-types.mjs";
 
-export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeakingProps, U = Except<P, keyof IsSpeakingProps>>(): IHocConstructorGenerator<P, U> {
+export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeakingProps, U = Except<P, keyof IsSpeakingProps>>() {
 	// eslint-disable-next-line func-names
-	return function isSpeakingHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
+	return function isSpeakingHoc(ComponentToWrap: React.ComponentType<P>) {
 		class IsSpeakingHoc extends React.Component<P, IsSpeakingHocState> {
 			static override contextType = BroadcasterContext;
 			declare context: React.ContextType<typeof BroadcasterContext>;

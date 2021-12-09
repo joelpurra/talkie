@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Checkbox from "@talkie/shared-application/components/form/checkbox";
+import Checkbox from "@talkie/shared-application/components/form/checkbox.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import React from "react";
 
 export interface SpeakLongTextsProps {

@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices";
+} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
 import React from "react";
 import {
 	connect,
@@ -28,11 +28,11 @@ import {
 	MapStateToProps,
 } from "react-redux";
 
-import DialectVoices from "../../components/sections/voices/dialect-voices";
-import selectors from "../../selectors";
+import DialectVoices from "../../components/sections/voices/dialect-voices.js";
+import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
-} from "../../store";
+} from "../../store/index.mjs";
 
 interface DialectVoicesContainerProps {
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

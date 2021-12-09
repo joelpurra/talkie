@@ -28,11 +28,11 @@ import {
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
-import * as colorBase from "../../styles/color/color-base";
+} from "../../styled/types.js";
+import * as colorBase from "../../styles/color/color-base.mjs";
 import {
 	ChildrenRequiredProps,
-} from "../../types";
+} from "../../types.mjs";
 
 export type InformationType =
 	| "information"

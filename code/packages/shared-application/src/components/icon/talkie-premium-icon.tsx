@@ -22,11 +22,11 @@ import React from "react";
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
+} from "../../styled/types.js";
 import {
 	IconProps,
-} from "./icon";
-import TalkieEditionIcon from "./talkie-edition-icon";
+} from "./icon.js";
+import TalkieEditionIcon from "./talkie-edition-icon.js";
 
 export default class TalkiePremiumIcon<P extends IconProps & ClassNameProp> extends React.PureComponent<P> {
 	override render(): React.ReactNode {

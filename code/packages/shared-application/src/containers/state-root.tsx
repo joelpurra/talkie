@@ -28,16 +28,16 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import StyleRoot from "../components/style-root";
+import StyleRoot from "../components/style-root.js";
 import {
 	IsSpeakingProps,
-} from "../hocs/is-speaking-types";
+} from "../hocs/is-speaking-types.mjs";
 import type {
 	SharedRootState,
-} from "../store";
+} from "../store/index.mjs";
 import {
 	ChildrenRequiredProps,
-} from "../types";
+} from "../types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StateRootProps {}

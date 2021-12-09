@@ -20,27 +20,28 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices";
+} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import toolkit from "@reduxjs/toolkit";
+const {
 	bindActionCreators,
-} from "redux";
+} = toolkit;
 
 import About, {
 	AboutStateProps,
-} from "../components/sections/about";
-import selectors from "../selectors/index";
+} from "../components/sections/about.js";
+import selectors from "../selectors/index.mjs";
 import {
 	actions,
-} from "../slices/index";
+} from "../slices/index.mjs";
 import type {
 	OptionsRootState,
-} from "../store";
+} from "../store/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AboutContainerProps {}

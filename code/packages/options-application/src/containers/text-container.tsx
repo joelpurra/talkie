@@ -24,20 +24,21 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import toolkit from "@reduxjs/toolkit";
+const {
 	bindActionCreators,
-} from "redux";
+} = toolkit;
 import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Text from "../components/sections/text";
+import Text from "../components/sections/text.js";
 import {
 	actions,
-} from "../slices/index";
+} from "../slices/index.mjs";
 import type {
 	OptionsRootState,
-} from "../store";
+} from "../store/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TextContainerProps {}

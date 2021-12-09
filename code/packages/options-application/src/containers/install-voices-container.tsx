@@ -27,11 +27,11 @@ import {
 
 import InstallVoices, {
 	InstallVoicesProps,
-} from "../components/support/install-voices";
-import selectors from "../selectors/index";
+} from "../components/support/install-voices.js";
+import selectors from "../selectors/index.mjs";
 import type {
 	OptionsRootState,
-} from "../store";
+} from "../store/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface InstallVoicesContainerProps {}

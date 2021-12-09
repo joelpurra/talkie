@@ -18,10 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Icon from "@talkie/shared-application/components/icon/icon";
-import Markdown from "@talkie/shared-application/components/markdown";
-import * as buttonBase from "@talkie/shared-application/styled/button/button-base";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+import Icon from "@talkie/shared-application/components/icon/icon.js";
+import Markdown from "@talkie/shared-application/components/markdown.js";
+import * as buttonBase from "@talkie/shared-application/styled/button/button-base.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import React, {
 	ComponentProps,
 } from "react";

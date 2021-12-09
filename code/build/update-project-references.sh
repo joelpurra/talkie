@@ -54,25 +54,25 @@ function updateTsconfigReferences() {
 	(
 		pushd 'packages' > /dev/null
 
-		declare -r jsonToDot='"digraph \"talkie\" {\n  rankdir=LR;\n" + (to_entries | map(.key as $p | "\n  \"\($p)\";\n" +(.value | map("  \"\($p)\" -> \"\(.)\";\n") | join(""))) | join("")) +"\n}"'
+		(
+			declare -r jsonToDot='"digraph \"talkie\" {\n  rankdir=LR;\n" + (to_entries | map(.key as $p | "\n  \"\($p)\";\n" +(.value | map("  \"\($p)\" -> \"\(.)\";\n") | join(""))) | join("")) +"\n}"'
 
-		find . -mindepth 1 -maxdepth 1 -type d | sed 's_./__' | sort | xargs --replace='{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | grep --invert-match 'SPLIT_ENVIRONMENT' | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" | jq --raw-input --slurp 'split("\n") | map(select(length > 0)) | reduce .[] as $l ([]; if $l | startswith("@talkie/") then .[-1].d+=[$l | split("@talkie/")[1]] else . + [{p:$l,d:[]}] end ) | map({(.p):.d}) | add' > 'talkie.packages.import.json'
+			find . -mindepth 1 -maxdepth 1 -type d | sed 's_./__' | sort | xargs --replace='{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | grep --invert-match 'SPLIT_ENVIRONMENT' | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" | jq --raw-input --slurp 'split("\n") | map(select(length > 0)) | reduce .[] as $l ([]; if $l | startswith("@talkie/") then .[-1].d+=[$l | split("@talkie/")[1]] else . + [{p:$l,d:[]}] end ) | map({(.p):.d}) | add' > 'talkie.packages.import.json'
 
-		jq --raw-output "$jsonToDot" 'talkie.packages.import.json' > 'talkie.packages.import.dot'
+			jq --raw-output "$jsonToDot" 'talkie.packages.import.json' > 'talkie.packages.import.dot'
 
-		dot -Tsvg 'talkie.packages.import.dot' > 'talkie.packages.import.svg'
+			dot -Tsvg 'talkie.packages.import.dot' > 'talkie.packages.import.svg'
 
-		jq --raw-output 'keys | .[]' 'talkie.packages.import.json' | ( while read p; do ( pushd "$p" > /dev/null; jq --arg p "$p" '.[$p]' '../talkie.packages.import.json' | jq --slurpfile package 'package.json' '. as $d | $package[0] | .dependencies |= (($d | map({("@talkie/\(.)"):"*"}) | add) + ((. // {}) | with_entries(select(.key | startswith("@talkie/") | not))) | to_entries | sort_by(.key) | from_entries)' > 'package.json~' && mv 'package.json~' 'package.json' ; ) done; )
+			jq --raw-output 'keys | .[]' 'talkie.packages.import.json' | ( while read p; do ( pushd "$p" > /dev/null; jq --arg p "$p" '.[$p]' '../talkie.packages.import.json' | jq --slurpfile package 'package.json' '. as $d | $package[0] | .dependencies |= (($d | map({("@talkie/\(.)"):"*"}) | add) + ((. // {}) | with_entries(select(.key | startswith("@talkie/") | not))) | to_entries | sort_by(.key) | from_entries)' > 'package.json~' && mv 'package.json~' 'package.json' ; ) done; )
 
-		updateTsconfigReferences 'tsconfig.json'
-		updateTsconfigReferences 'tsconfig.cjs.json'
-		updateTsconfigReferences 'tsconfig.esm.json'
+			updateTsconfigReferences 'tsconfig.json'
 
-		find . -mindepth 2 -maxdepth 2 -name 'package.json' | sort | xargs cat | jq --slurp 'map({(.name | split("@talkie/")[1]): (.dependencies | to_entries | map(select(.key | startswith("@talkie/"))) | map(.key | split("@talkie/")[1]))}) | add' > 'talkie.packages.dot.json'
+			find . -mindepth 2 -maxdepth 2 -name 'package.json' | sort | xargs cat | jq --slurp 'map({(.name | split("@talkie/")[1]): (.dependencies | to_entries | map(select(.key | startswith("@talkie/"))) | map(.key | split("@talkie/")[1]))}) | add' > 'talkie.packages.dot.json'
 
-		jq --raw-output "$jsonToDot" 'talkie.packages.dot.json' > 'talkie.packages.dot'
+			jq --raw-output "$jsonToDot" 'talkie.packages.dot.json' > 'talkie.packages.dot'
 
-		dot -Tsvg 'talkie.packages.dot' > 'talkie.packages.svg'
+			dot -Tsvg 'talkie.packages.dot' > 'talkie.packages.svg'
+		)
 
 		popd > /dev/null
 	)
@@ -80,7 +80,7 @@ function updateTsconfigReferences() {
 	popd > /dev/null
 )
 
-jq '.' './packages/talkie.packages.import.json' | jq --slurpfile tsconfig 'tsconfig.json' '. as $d | $tsconfig[0] | .paths = (($d | keys | map({("@talkie/\(.)"): "./packages/\(.)/src"})) | add | to_entries | sort_by(.key) | from_entries)' > 'tsconfig.json~' && mv 'tsconfig.json~' 'tsconfig.json'
+jq '.' './packages/talkie.packages.import.json' | jq --slurpfile tsconfig 'tsconfig.json' '. as $d | $tsconfig[0] | .compilerOptions.paths = (($d | keys | map({("@talkie/\(.)"): [ "./packages/\(.)/src" ]})) | add | to_entries | sort_by(.key) | from_entries)' > 'tsconfig.json~' && mv 'tsconfig.json~' 'tsconfig.json'
 
 # NOTE: jq and prettier do not agree on JSON formatting, so preemptively format checked in files potentially affected by this script. This should reduce linting warnings.
 {

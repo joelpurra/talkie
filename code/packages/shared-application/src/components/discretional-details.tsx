@@ -20,14 +20,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import React from "react";
 
-import * as layoutBase from "../styled/layout/layout-base";
+import * as layoutBase from "../styled/layout/layout-base.js";
 import {
 	ClassNameProp,
-} from "../styled/types";
+} from "../styled/types.js";
 import {
 	ChildrenRequiredProps,
-} from "../types";
-import Discretional from "./discretional";
+} from "../types.mjs";
+import Discretional from "./discretional.js";
 
 export interface DiscretionalDetailsProps extends ChildrenRequiredProps, ClassNameProp {
 	open: boolean;

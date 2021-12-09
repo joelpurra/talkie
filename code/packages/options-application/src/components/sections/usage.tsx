@@ -18,28 +18,28 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Discretional from "@talkie/shared-application/components/discretional";
-import Icon from "@talkie/shared-application/components/icon/icon";
-import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon";
-import TalkiePremiumIcon from "@talkie/shared-application/components/icon/talkie-premium-icon";
-import PremiumSection from "@talkie/shared-application/components/section/premium-section";
+import Discretional from "@talkie/shared-application/components/discretional.js";
+import Icon from "@talkie/shared-application/components/icon/icon.js";
+import TalkieEditionIcon from "@talkie/shared-application/components/icon/talkie-edition-icon.js";
+import TalkiePremiumIcon from "@talkie/shared-application/components/icon/talkie-premium-icon.js";
+import PremiumSection from "@talkie/shared-application/components/section/premium-section.js";
 import configureAttribute, {
 	ConfigureProps,
-} from "@talkie/shared-application/hocs/configure";
+} from "@talkie/shared-application/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import * as listBase from "@talkie/shared-application/styled/list/list-base";
-import * as tableBase from "@talkie/shared-application/styled/table/table-base";
-import * as lighter from "@talkie/shared-application/styled/text/lighter";
-import * as textBase from "@talkie/shared-application/styled/text/text-base";
+} from "@talkie/shared-application/hocs/translate.js";
+import * as listBase from "@talkie/shared-application/styled/list/list-base.js";
+import * as tableBase from "@talkie/shared-application/styled/table/table-base.js";
+import * as lighter from "@talkie/shared-application/styled/text/lighter.js";
+import * as textBase from "@talkie/shared-application/styled/text/text-base.js";
 import {
 	OnOpenShortcutKeysClickProp,
-} from "@talkie/shared-application/types";
+} from "@talkie/shared-application/types.mjs";
 import {
 	OsType,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager";
+} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";

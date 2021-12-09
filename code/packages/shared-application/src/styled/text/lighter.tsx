@@ -22,8 +22,8 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import * as lighter from "../../styles/text/lighter";
-import * as textBase from "./text-base";
+import * as lighter from "../../styles/text/lighter.mjs";
+import * as textBase from "./text-base.js";
 
 export const p = withStyleDeep(textBase.p, lighter.text);
 export const span = withStyleDeep(textBase.span, lighter.text);

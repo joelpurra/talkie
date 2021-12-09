@@ -22,8 +22,8 @@ import React from "react";
 
 import {
 	actions,
-} from "../../slices";
-import TalkiePremiumEdition from "./editions/talkie-premium-edition";
+} from "../../slices/index.mjs";
+import TalkiePremiumEdition from "./editions/talkie-premium-edition.js";
 
 interface EditionsStateProps {
 	isPremiumEdition: boolean;

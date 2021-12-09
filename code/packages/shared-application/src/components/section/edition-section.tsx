@@ -22,18 +22,18 @@ import React from "react";
 
 import configureAttribute, {
 	ConfigureProps,
-} from "../../hocs/configure";
+} from "../../hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
-} from "../../hocs/translate";
-import * as textBase from "../../styled/text/text-base";
+} from "../../hocs/translate.js";
+import * as textBase from "../../styled/text/text-base.js";
 import {
 	ClassNameProp,
-} from "../../styled/types";
+} from "../../styled/types.js";
 import {
 	ChildrenRequiredProps,
-} from "../../types";
-import TalkieEditionIcon from "../icon/talkie-edition-icon";
+} from "../../types.mjs";
+import TalkieEditionIcon from "../icon/talkie-edition-icon.js";
 
 export type EditionSectionMode =
 	| "p"

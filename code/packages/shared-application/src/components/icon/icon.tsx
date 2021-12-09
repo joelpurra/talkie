@@ -26,7 +26,7 @@ import {
 
 import {
 	ClassNameProp,
-} from "../../styled/types";
+} from "../../styled/types.js";
 
 export declare type IconMode =
 	| "inline"

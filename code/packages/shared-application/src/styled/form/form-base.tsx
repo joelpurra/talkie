@@ -22,7 +22,7 @@ import {
 	styled,
 } from "styletron-react";
 
-import * as formBase from "../../styles/form/form-base";
+import * as formBase from "../../styles/form/form-base.mjs";
 
 export const form = styled("form", formBase.form);
 export const button = styled("button", formBase.button);

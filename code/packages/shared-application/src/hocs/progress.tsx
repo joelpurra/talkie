@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch";
+} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events";
+} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
 import React from "react";
 import {
 	Except,
@@ -32,22 +32,18 @@ import {
 
 import {
 	BroadcasterContext,
-} from "../containers/providers";
+} from "../containers/providers.js";
 import {
 	TalkieProgressData,
-} from "../talkie-progress";
-import {
-	IHocConstructor,
-	IHocConstructorGenerator,
-} from "./hoc-types";
+} from "../talkie-progress.mjs";
 
 export interface ProgressProps extends TalkieProgressData {}
 
 type ProgressHocState = TalkieProgressData;
 
-export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>(): IHocConstructorGenerator<P, U> {
+export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {
 	// eslint-disable-next-line func-names
-	return function progressHoc(ComponentToWrap: React.ComponentType<P>): IHocConstructor<U> {
+	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
 			static override contextType = BroadcasterContext;
 			declare context: React.ContextType<typeof BroadcasterContext>;

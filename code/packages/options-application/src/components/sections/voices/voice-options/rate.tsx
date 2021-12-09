@@ -18,22 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import LogarithmicScaleRange from "@talkie/shared-application/components/range/logarithmic-scale-range";
+import LogarithmicScaleRange from "@talkie/shared-application/components/range/logarithmic-scale-range.js";
 import {
 	ScaleRangeProps,
-} from "@talkie/shared-application/components/range/scale-range";
+} from "@talkie/shared-application/components/range/scale-range.js";
 import translateAttribute, {
 	TranslateProps,
-} from "@talkie/shared-application/hocs/translate";
-import MathHelper from "@talkie/shared-application-helpers/math-helper";
+} from "@talkie/shared-application/hocs/translate.js";
+import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import {
 	TranslateSync,
-} from "@talkie/split-environment-interfaces/itranslator-provider";
+} from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
 import RangeWithHeading, {
 	RangeWithHeadingProps,
-} from "./range-with-heading";
+} from "./range-with-heading.js";
 
 export interface RateProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}
 

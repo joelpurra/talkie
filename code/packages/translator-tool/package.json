@@ -6,6 +6,9 @@
     "name": "Joel Purra",
     "url": "https://joelpurra.com/"
   },
+  "bin": {
+    "webext-translator": "./dist/esm/translator.mjs"
+  },
   "bundledDependencies": [
     "type-fest"
   ],
@@ -26,21 +29,21 @@
   },
   "exports": {
     "./*": {
-      "import": "./dist/esm/*.js",
-      "require": "./dist/cjs/*.js"
+      "types": "./dist/esm/*",
+      "import": "./dist/esm/*"
     }
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "build": "npm run --silent build:typescript && npm run --silent build:rollup",
-    "build:rollup": "rollup --config rollup.config.js",
-    "build:typescript": "tsc --build tsconfig.esm.json && tsc --build tsconfig.cjs.json",
+    "build": "npm run --silent build:typescript",
+    "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
     "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
+  "type": "module",
   "typesVersions": {
     "^4": {
       "*": [

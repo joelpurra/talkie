@@ -25,11 +25,11 @@ import {
 	MapStateToProps,
 } from "react-redux";
 
-import selectors from "../../selectors";
+import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
-} from "../../store";
-import Dialects from "../../components/sections/voices/dialects";
+} from "../../store/index.mjs";
+import Dialects from "../../components/sections/voices/dialects.js";
 
 interface DialectsContainerProps {
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
