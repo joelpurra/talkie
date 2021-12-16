@@ -14,8 +14,7 @@
   ],
   "dependencies": {
     "@talkie/shared-application-helpers": "*",
-    "@talkie/shared-locales": "*",
-    "@talkie/split-environment": "*",
+    "@talkie/shared-interfaces": "*",
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {

@@ -40,10 +40,10 @@ import {
 	IVoiceName,
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ReadonlyDeep,
 } from "type-fest";

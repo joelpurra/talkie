@@ -25,9 +25,10 @@
       "@talkie/shared-application-helpers": [
         "./packages/shared-application-helpers/src"
       ],
+      "@talkie/shared-interfaces": ["./packages/shared-interfaces/src"],
       "@talkie/shared-locales": ["./packages/shared-locales/src"],
       "@talkie/shared-resources": ["./packages/shared-resources/src"],
-      "@talkie/split-environment": ["./packages/split-environment/src"],
+      "@talkie/shared-ui": ["./packages/shared-ui/src"],
       "@talkie/split-environment-interfaces": [
         "./packages/split-environment-interfaces/src"
       ],

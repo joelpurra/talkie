@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // @ts-ignore: error TS7016: Could not find a declaration file for module.
 import languagesJson from "./languages.cjs";
-import { LanguageDirection, TalkieLocale } from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import { LanguageTextDirection, TalkieLocale } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 export type LanguageData = {
-	"direction": LanguageDirection;
+	"direction": LanguageTextDirection;
 	"sample": string;
 };
 

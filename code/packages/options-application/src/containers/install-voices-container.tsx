@@ -27,7 +27,7 @@ import {
 
 import InstallVoices, {
 	InstallVoicesProps,
-} from "../components/support/install-voices.js";
+} from "../app/support/install-voices.js";
 import selectors from "../selectors/index.mjs";
 import type {
 	OptionsRootState,

@@ -27,7 +27,7 @@ import {
 
 import Voices, {
 	VoicesStateProps,
-} from "../../components/sections/voices.js";
+} from "../../app/sections/voices.js";
 import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
@@ -93,11 +93,11 @@ class VoicesContainer<P extends InternalProps> extends React.PureComponent<P> {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	handleSelectLanguageCodeClick(selectedLanguageGroup: string | null, event: React.MouseEvent): false {
+	handleSelectLanguageCodeClick(selectedLanguageCode: string | null, event: React.MouseEvent): false {
 		event.preventDefault();
 		event.stopPropagation();
 
-		this.props.loadSelectedLanguageCode(selectedLanguageGroup);
+		this.props.loadSelectedLanguageCode(selectedLanguageCode);
 
 		return false;
 	}

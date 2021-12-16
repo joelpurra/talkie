@@ -20,13 +20,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	KillSwitch,
-} from "./moved-here/killswitch.mjs";
+} from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEventNames,
-} from "./moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ListeningActionHandler,
-} from "./moved-here/listening-action-handler.mjs";
+} from "@talkie/shared-interfaces/listening-action-handler.mjs";
 
 export type IBroadcasterProviderConstructor = new() => IBroadcasterProvider;
 

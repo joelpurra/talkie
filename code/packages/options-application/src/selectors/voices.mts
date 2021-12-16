@@ -23,7 +23,7 @@ import {
 	getLanguagesByLanguageGroup,
 	getVoices,
 	getVoicesByLanguagesByLanguageGroup,
-} from "@talkie/shared-application/selectors/voices.mjs";
+} from "@talkie/shared-ui/selectors/voices.mjs";
 import toolkit from "@reduxjs/toolkit";
 const {
 	createDraftSafeSelector,
@@ -36,6 +36,8 @@ import { getVoiceForVoiceNameFromVoices } from "@talkie/shared-application-helpe
 
 export const getSelectedLanguageGroup = <S extends OptionsRootState>(state: S): string | null => state.voices.selectedLanguageGroup;
 export const getSelectedLanguageCode = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.selectedLanguageCode;
+export const getIsSelectedLanguageGroupTalkieLocale = <S extends OptionsRootState>(state: S): boolean => state.voices.isSelectedLanguageGroupTalkieLocale;
+export const getTextDirectionForSelectedLanguageGroup = <S extends OptionsRootState>(state: S): string => state.voices.textDirectionForSelectedLanguageGroup;
 export const getSelectedVoiceName = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.selectedVoiceName;
 export const getEffectiveVoiceNameForSelectedLanguageCode = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.effectiveVoiceNameForSelectedLanguageCode;
 export const getEffectiveVoiceNameForSelectedLanguageGroup = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.effectiveVoiceNameForSelectedLanguageGroup;

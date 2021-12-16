@@ -32,7 +32,9 @@ import rootReducer, {
 const prerenderActionsToDispatch: Action[] = [];
 const postrenderActionsToDispatch: Action[] = [
 	actions.shared.voices.loadVoices() as unknown as Action,
+	actions.shared.languages.loadNavigatorLanguage() as unknown as Action,
 	actions.shared.languages.loadNavigatorLanguages() as unknown as Action,
+	actions.tabs.loadActiveTabFromLocationHash() as unknown as Action,
 ];
 
 export default async function hydrate(): Promise<void> {

@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
-import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
-import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
@@ -35,7 +35,7 @@ import {
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	ITalkieServices,
 } from "@talkie/split-environment-webextension/browser-specific/italkie-services.mjs";
@@ -52,10 +52,10 @@ const createTalkieServices = async (
 	broadcaster: ReadonlyDeep<Broadcaster>,
 	talkieSpeaker: ReadonlyDeep<TalkieSpeaker>,
 	talkieBackground: ReadonlyDeep<TalkieBackground>,
-	metadataManager: ReadonlyDeep<MetadataManager>,
+	metadataManager: ReadonlyDeep<IMetadataManager>,
 	settingsManager: ReadonlyDeep<SettingsManager>,
 	voiceManager: ReadonlyDeep<VoiceManager>,
-	configuration: ReadonlyDeep<Configuration>,
+	configuration: ReadonlyDeep<IConfiguration>,
 	storageManager: ReadonlyDeep<StorageManager>,
 	// eslint-disable-next-line max-params
 ): Promise<ITalkieServices> => {

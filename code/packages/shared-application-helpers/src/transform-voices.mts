@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	IVoiceLanguage,
 	IVoiceNameAndLanguage,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 // TODO: create type alias for generic language strings?
 // TODO: use parser which checks codes, regions, etcetera against BCP47.

@@ -15,6 +15,7 @@
   "dependencies": {
     "@talkie/browser-shared": "*",
     "@talkie/shared-application": "*",
+    "@talkie/shared-ui": "*",
     "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {

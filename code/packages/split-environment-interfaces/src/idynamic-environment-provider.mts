@@ -25,7 +25,15 @@ import type {
 export type IDynamicEnvironmentProviderConstructor = new() => IDynamicEnvironmentProvider;
 
 export default interface IDynamicEnvironmentProvider {
-	isNode(): boolean;
-	isWebExtension(): boolean;
+	/**
+	 * @deprecated TODO REMOVE
+	 */
+	isRunningPreRendering(): boolean;
+
+	/**
+	 * @deprecated TODO REMOVE
+	 */
+	isRunningLive(): boolean;
+
 	getOperatingSystemType(): Promise<Runtime.PlatformOs>;
 }

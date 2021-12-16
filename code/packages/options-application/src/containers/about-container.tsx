@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
@@ -34,7 +34,7 @@ const {
 
 import About, {
 	AboutStateProps,
-} from "../components/sections/about.js";
+} from "../app/sections/about.js";
 import selectors from "../selectors/index.mjs";
 import {
 	actions,
@@ -51,8 +51,6 @@ interface StateProps extends AboutStateProps {
 }
 
 interface DispatchProps {
-	loadNavigatorLanguage: typeof actions.shared.languages.loadNavigatorLanguage;
-	loadNavigatorLanguages: typeof actions.shared.languages.loadNavigatorLanguages;
 	speakTextInVoiceWithOverrides: typeof actions.shared.speaking.speakTextInVoiceWithOverrides;
 }
 
@@ -73,8 +71,6 @@ const mapStateToProps: MapStateToProps<StateProps, InternalAboutContainerProps, 
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalAboutContainerProps> = (dispatch) => ({
-	loadNavigatorLanguage: bindActionCreators(actions.shared.languages.loadNavigatorLanguage, dispatch),
-	loadNavigatorLanguages: bindActionCreators(actions.shared.languages.loadNavigatorLanguages, dispatch),
 	speakTextInVoiceWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInVoiceWithOverrides, dispatch),
 });
 
@@ -88,12 +84,6 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 		super(props);
 
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
-	}
-
-	override componentDidMount(): void {
-		// TODO: is this the best place to load data?
-		this.props.loadNavigatorLanguage();
-		this.props.loadNavigatorLanguages();
 	}
 
 	handleLegaleseClick(text: string): void {

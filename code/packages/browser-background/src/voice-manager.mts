@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	IVoiceNameAndLanguage,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 import VoiceLanguageManager from "./voice-language-manager.mjs";
 import VoicePitchManager from "./voice-pitch-manager.mjs";

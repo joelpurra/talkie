@@ -28,7 +28,7 @@ import {
 	MapStateToProps,
 } from "react-redux";
 
-import LanguageGroups from "../../components/sections/voices/language-groups.js";
+import LanguageGroups from "../../app/sections/voices/language-groups.js";
 import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,

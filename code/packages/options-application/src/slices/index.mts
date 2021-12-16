@@ -20,29 +20,30 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import shared, {
 	actions as sharedActions,
-} from "@talkie/shared-application/slices/index.mjs";
-import unshared, {
-	actions as unsharedActions,
-} from "@talkie/shared-application/unshared/slices/index.mjs";
+} from "@talkie/shared-ui/slices/index.mjs";
 import {
 	combineReducers,
-} from "@talkie/shared-application/store/combine-reducers.mjs";
+} from "@talkie/shared-ui/store/combine-reducers.mjs";
 
 import voices, * as voicesActions from "./voices.mjs";
 import settings, * as settingsActions from "./settings.mjs";
+import welcome, * as welcomeActions from "./welcome.mjs";
+import tabs, * as tabsActions from "./tabs.mjs";
 
 export const actions = {
 	settings: settingsActions,
 	shared: sharedActions,
-	unshared: unsharedActions,
 	voices: voicesActions,
+	welcome: welcomeActions,
+	tabs: tabsActions,
 };
 
 const reducers = combineReducers({
 	settings,
 	shared,
-	unshared,
 	voices,
+	welcome,
+	tabs,
 });
 
 export default reducers;

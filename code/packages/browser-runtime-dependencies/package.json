@@ -11,9 +11,7 @@
     "react",
     "styletron-react"
   ],
-  "dependencies": {
-    "@talkie/all-renderer": "*"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "webextension-polyfill": "^0.8.0"

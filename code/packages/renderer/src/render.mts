@@ -18,17 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import getRoot from "@talkie/shared-application/renderers/get-root.js";
+import getRoot from "@talkie/shared-ui/renderers/get-root.js";
 import {
 	actions,
-} from "@talkie/shared-application/slices/index.mjs";
-import getStore from "@talkie/shared-application/store/get-store.mjs";
+} from "@talkie/shared-ui/slices/index.mjs";
+import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
-} from "@talkie/shared-application/utils/store-helpers.mjs";
+} from "@talkie/shared-ui/utils/store-helpers.mjs";
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	Action,
 	Reducer,

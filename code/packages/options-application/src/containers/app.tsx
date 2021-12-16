@@ -32,7 +32,7 @@ const {
 import Main, {
 	MainDispatchProps,
 	MainStateProps,
-} from "../components/main.js";
+} from "../app/main.js";
 import selectors from "../selectors/index.mjs";
 import {
 	actions,
@@ -49,7 +49,7 @@ export interface AppProps extends StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
-	activeTabId: state.unshared.tabs.activeTabId,
+	activeTabId: state.tabs.activeTabId,
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	osType: state.shared.metadata.osType,

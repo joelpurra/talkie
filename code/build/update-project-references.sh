@@ -57,7 +57,7 @@ function updateTsconfigReferences() {
 		(
 			declare -r jsonToDot='"digraph \"talkie\" {\n  rankdir=LR;\n" + (to_entries | map(.key as $p | "\n  \"\($p)\";\n" +(.value | map("  \"\($p)\" -> \"\(.)\";\n") | join(""))) | join("")) +"\n}"'
 
-			find . -mindepth 1 -maxdepth 1 -type d | sed 's_./__' | sort | xargs --replace='{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | grep --invert-match 'SPLIT_ENVIRONMENT' | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" | jq --raw-input --slurp 'split("\n") | map(select(length > 0)) | reduce .[] as $l ([]; if $l | startswith("@talkie/") then .[-1].d+=[$l | split("@talkie/")[1]] else . + [{p:$l,d:[]}] end ) | map({(.p):.d}) | add' > 'talkie.packages.import.json'
+			find . -mindepth 1 -maxdepth 1 -type d | sed 's_./__' | sort | xargs --replace='{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" | jq --raw-input --slurp 'split("\n") | map(select(length > 0)) | reduce .[] as $l ([]; if $l | startswith("@talkie/") then .[-1].d+=[$l | split("@talkie/")[1]] else . + [{p:$l,d:[]}] end ) | map({(.p):.d}) | add' > 'talkie.packages.import.json'
 
 			jq --raw-output "$jsonToDot" 'talkie.packages.import.json' > 'talkie.packages.import.dot'
 

@@ -21,19 +21,34 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-import ILocaleProvider, {
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider, {
-	Locale,
-	LocaleMessages,
-} from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import jsonfile from "jsonfile";
 import path from "node:path";
 import {
 	JsonObject,
 	ReadonlyDeep,
 } from "type-fest";
+
+// NOTE: some types are duplicated to avoid sharing with the main Talkie code.
+// TODO: break out types? Create shared project?
+export type LocaleMessage = {
+	description?: string;
+	message: string;
+	placeholders?: Record<string, {
+		content: string;
+		example?: string;
+	}>;
+};
+
+export type LocaleMessages = Record<string, LocaleMessage>;
+
+export type Locale = {
+	[locale in TalkieLocale]: LocaleMessages;
+};
 
 export default class NodeEnvironmentTranslatorProvider implements ITranslatorProvider {
 	private readonly translations: Partial<Locale> = {};

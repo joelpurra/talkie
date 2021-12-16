@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
+import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
@@ -30,7 +30,7 @@ import TalkieBackground from "./talkie-background.mjs";
 
 export default class ReadClipboardManager {
 	// eslint-disable-next-line max-params
-	constructor(private readonly clipboardManager: ClipboardManager, private readonly talkieBackground: TalkieBackground, private readonly permissionsManager: PermissionsManager, private readonly metadataManager: MetadataManager, private readonly translator: ITranslatorProvider) {}
+	constructor(private readonly clipboardManager: ClipboardManager, private readonly talkieBackground: TalkieBackground, private readonly permissionsManager: PermissionsManager, private readonly metadataManager: IMetadataManager, private readonly translator: ITranslatorProvider) {}
 
 	async startSpeaking(): Promise<void> {
 		void logDebug("Start", "startSpeaking");

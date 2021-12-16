@@ -30,7 +30,7 @@ const {
 } = toolkit;
 
 import DialectVoiceOptions, {
-} from "../../components/sections/voices/dialect-voice-options.js";
+} from "../../app/sections/voices/dialect-voice-options.js";
 import selectors from "../../selectors/index.mjs";
 import {
 	actions,
@@ -115,10 +115,7 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 			// TODO: ensure this component never receives null values, since it should never be shown for that state.
 			&& typeof this.props.selectedVoiceName === "string"
 		) {
-			this.props.storeVoiceRateOverride({
-				rate: value,
-				voiceName: this.props.selectedVoiceName,
-			});
+			this.props.storeVoiceRateOverride(value);
 		}
 	}
 
@@ -129,10 +126,7 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 			// TODO: ensure this component never receives null values, since it should never be shown for that state.
 			&& typeof this.props.selectedVoiceName === "string"
 		) {
-			this.props.storeVoicePitchOverride({
-				pitch: value,
-				voiceName: this.props.selectedVoiceName,
-			});
+			this.props.storeVoicePitchOverride(value);
 		}
 	}
 

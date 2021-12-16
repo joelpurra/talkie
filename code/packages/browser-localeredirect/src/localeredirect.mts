@@ -66,9 +66,9 @@ const getGlobalExtension = (global: unknown): Browser => {
 	throw new TypeError("Could not find browser object.");
 };
 
-// NOTE: use this hacky solution for speed, or use ILocaleProvider for DRY?
 const globalExtension = getGlobalExtension(window);
 
+// NOTE: use this hacky solution for speed, or use ILocaleProvider for DRY?
 // NOTE: might be able to use @@ui_locale, but would miss out on locale directory fallback detection logic in the browser.
 const locale = globalExtension.i18n.getMessage("extensionLocale");
 const pageName: string = getPageName();

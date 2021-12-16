@@ -24,13 +24,13 @@ import type {
 } from "webextension-polyfill";
 
 export default class WebExtensionEnvironmentDynamicEnvironment implements IDynamicEnvironmentProvider {
-	isNode(): boolean {
+	isRunningPreRendering(): boolean {
 		const isNode = false;
 
 		return isNode;
 	}
 
-	isWebExtension(): boolean {
+	isRunningLive(): boolean {
 		const isWebExtension = true;
 
 		return isWebExtension;

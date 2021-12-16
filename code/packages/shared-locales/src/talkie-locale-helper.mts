@@ -19,21 +19,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageDirection,
+	LanguageTextDirection,
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITalkieLocaleHelper from "@talkie/split-environment-interfaces/moved-here/italkie-locale-helper.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import languages, { LanguageDataKey } from "./data/languages/languages.mjs";
 
 export default class TalkieLocaleHelper implements ITalkieLocaleHelper {
 	private static readonly languages = languages;
 
-	getBidiDirectionSync(talkieLocale: TalkieLocale): LanguageDirection {
+	getBidiDirectionSync(talkieLocale: TalkieLocale): LanguageTextDirection {
 		// eslint-disable-next-line no-sync
-		return this._getSync<LanguageDirection>(talkieLocale, "direction");
+		return this._getSync<LanguageTextDirection>(talkieLocale, "direction");
 	}
 
-	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageDirection> {
+	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection> {
 		// eslint-disable-next-line no-sync
 		return this.getBidiDirectionSync(talkieLocale);
 	}
@@ -59,8 +59,8 @@ export default class TalkieLocaleHelper implements ITalkieLocaleHelper {
 		return this.getTranslatedLanguagesSync();
 	}
 
-	isTalkieLocale(languageCode: string): languageCode is TalkieLocale {
-		return this._getTalkieLocales().includes(languageCode as TalkieLocale);
+	isTalkieLocale(languageGroup: string): languageGroup is TalkieLocale {
+		return this._getTalkieLocales().includes(languageGroup as TalkieLocale);
 	}
 
 	private _getSync<T extends string>(talkieLocale: TalkieLocale, name: LanguageDataKey): T {

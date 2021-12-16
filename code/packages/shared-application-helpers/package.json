@@ -7,7 +7,7 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
-    "@talkie/split-environment-interfaces": "*"
+    "@talkie/shared-interfaces": "*"
   },
   "exports": {
     "./*": {

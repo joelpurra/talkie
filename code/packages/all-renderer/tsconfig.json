@@ -16,10 +16,10 @@
       "path": "../renderer/tsconfig.json"
     },
     {
-      "path": "../shared-locales/tsconfig.json"
+      "path": "../shared-interfaces/tsconfig.json"
     },
     {
-      "path": "../split-environment-interfaces/tsconfig.json"
+      "path": "../shared-locales/tsconfig.json"
     }
   ]
 }

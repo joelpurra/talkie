@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
+import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
 	Action,
@@ -30,7 +30,7 @@ export default class ButtonPopupManager {
 		return "/packages/popup-renderer/src/popup.html";
 	}
 
-	constructor(private readonly translator: ITranslatorProvider, private readonly metadataManager: MetadataManager) {}
+	constructor(private readonly translator: ITranslatorProvider, private readonly metadataManager: IMetadataManager) {}
 
 	async _getExtensionShortName(): Promise<string> {
 		const isPremiumEdition = await this.metadataManager.isPremiumEdition();

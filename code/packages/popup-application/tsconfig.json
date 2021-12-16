@@ -13,6 +13,9 @@
       "path": "../shared-application/tsconfig.json"
     },
     {
+      "path": "../shared-ui/tsconfig.json"
+    },
+    {
       "path": "../split-environment-webextension/tsconfig.json"
     }
   ]

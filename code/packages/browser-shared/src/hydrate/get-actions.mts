@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	actions,
-} from "@talkie/shared-application/slices/index.mjs";
+} from "@talkie/shared-ui/slices/index.mjs";
 import {
 	Action,
 } from "@reduxjs/toolkit";

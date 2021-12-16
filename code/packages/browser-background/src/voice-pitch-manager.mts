@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
+import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	pitchRange,
@@ -34,7 +34,7 @@ export default class VoicePitchManager {
 		return "voice-pitch-overrides";
 	}
 
-	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: MetadataManager) {}
+	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: IMetadataManager) {}
 
 	async getVoicePitchDefault(
 		_voiceName: string,

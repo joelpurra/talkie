@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	JsonValue,
 	ValueOf,

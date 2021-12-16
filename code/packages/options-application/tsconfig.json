@@ -16,6 +16,12 @@
       "path": "../shared-application/tsconfig.json"
     },
     {
+      "path": "../shared-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../shared-ui/tsconfig.json"
+    },
+    {
       "path": "../split-environment-interfaces/tsconfig.json"
     }
   ]

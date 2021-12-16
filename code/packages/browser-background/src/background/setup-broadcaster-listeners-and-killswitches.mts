@@ -27,7 +27,7 @@ import {
 	KnownSettings,
 	SettingChangedEventData,
 } from "@talkie/shared-application/settings-manager.mjs";
-import TalkieProgress from "@talkie/shared-application/talkie-progress.mjs";
+import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
 import {
 	logDebug,
 	logError,
@@ -35,10 +35,10 @@ import {
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
+} from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ReadonlyDeep,
 } from "type-fest";

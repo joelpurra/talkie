@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import shared from "@talkie/shared-application/selectors/index.mjs";
+import shared from "@talkie/shared-ui/selectors/index.mjs";
 
 import * as voices from "./voices.mjs";
 

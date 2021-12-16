@@ -18,18 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
 	EditionType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 
 export type IconTypeName = "play" | "stop";
 
 export default class IconManager {
-	constructor(private readonly metadataManager: MetadataManager) {}
+	constructor(private readonly metadataManager: IMetadataManager) {}
 
 	getIconModePaths(editionType: EditionType, name: IconTypeName): Readonly<Record<string, string>> {
 		return {

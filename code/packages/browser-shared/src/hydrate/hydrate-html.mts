@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import "react";
-import getRoot from "@talkie/shared-application/renderers/get-root.js";
-import getStore from "@talkie/shared-application/store/get-store.mjs";
+import getRoot from "@talkie/shared-ui/renderers/get-root.js";
+import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
-} from "@talkie/shared-application/utils/store-helpers.mjs";
+} from "@talkie/shared-ui/utils/store-helpers.mjs";
 import ReactDOM from "react-dom";
 import {
 	Action,

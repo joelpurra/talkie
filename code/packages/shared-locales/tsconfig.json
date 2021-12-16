@@ -7,7 +7,7 @@
   "include": ["src/**/*", "src/data/languages/languages.json"],
   "references": [
     {
-      "path": "../split-environment-interfaces/tsconfig.json"
+      "path": "../shared-interfaces/tsconfig.json"
     },
     {
       "path": "../translator-tool/tsconfig.json"

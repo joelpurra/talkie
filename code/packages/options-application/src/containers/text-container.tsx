@@ -32,7 +32,7 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Text from "../components/sections/text.js";
+import Text from "../app/sections/text.js";
 import {
 	actions,
 } from "../slices/index.mjs";

@@ -24,31 +24,32 @@ import {
 } from "@talkie/shared-application-helpers/basic.mjs";
 import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import {
+	LanguageTextDirection,
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-import IConfiguration from "@talkie/split-environment-interfaces/moved-here/iconfiguration.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	EditionType,
 	IMetadataManager,
 	OsType,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
-import ITalkieLocaleHelper from "@talkie/split-environment-interfaces/moved-here/italkie-locale-helper.mjs";
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
+} from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEventNames,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ListeningActionHandler,
-} from "@talkie/split-environment-interfaces/moved-here/listening-action-handler.mjs";
+} from "@talkie/shared-interfaces/listening-action-handler.mjs";
 import {
 	JsonValue,
 	ReadonlyDeep,
@@ -72,7 +73,7 @@ export default class Api implements IApi {
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
 
 	// eslint-disable-next-line max-params
-	constructor(private readonly metadataManager: IMetadataManager, private readonly configuration: IConfiguration, private readonly translator: ITranslatorProvider, private readonly broadcastProvider: IBroadcasterProvider, private readonly talkieLocaleHelper: ITalkieLocaleHelper) {
+	constructor(private readonly metadataManager: IMetadataManager, private readonly configuration: IConfiguration, private readonly broadcastProvider: IBroadcasterProvider, private readonly talkieLocaleHelper: ITalkieLocaleHelper, private readonly localeProvider: ILocaleProvider) {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		this.debouncedSpeakTextInCustomVoice = debounce(this.speakInCustomVoice.bind(this) as any, 200);
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -82,11 +83,13 @@ export default class Api implements IApi {
 	}
 
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {
+		// TODO: separate "background API" from other functionality.
 		// eslint-disable-next-line no-sync
 		return this.configuration.getSync<T>(systemType, path);
 	}
 
 	async getConfigurationValue<T>(configurationPath: string): Promise<T> {
+		// TODO: separate "background API" from other functionality.
 		return this.configuration.get<T>(configurationPath);
 	}
 
@@ -152,11 +155,6 @@ export default class Api implements IApi {
 		await talkieServices.setSpeakLongTextsOption(speakLongTexts);
 	}
 
-	async getSampleText(): Promise<string> {
-		// eslint-disable-next-line no-sync
-		return this.translator.translateSync("frontend_voicesSampleText");
-	}
-
 	async getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null> {
 		const talkieServices = await getTalkieServices();
 		const effectiveVoiceForLanguage = await talkieServices.getEffectiveVoiceForLanguage(languageCode);
@@ -195,46 +193,102 @@ export default class Api implements IApi {
 	}
 
 	async getTranslatedLanguages(): Promise<TalkieLocale[]> {
+		// TODO: separate "background API" from other functionality.
 		return this.talkieLocaleHelper.getTranslatedLanguages();
 	}
 
 	async isPremiumEdition(): Promise<boolean> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.isPremiumEdition();
 	}
 
 	async getVersionName(): Promise<string | null> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getVersionName();
 	}
 
 	async getVersionNumber(): Promise<string | null> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getVersionNumber();
 	}
 
 	async getEditionType(): Promise<EditionType> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getEditionType();
 	}
 
 	async getSystemType(): Promise<SystemType> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getSystemType();
 	}
 
 	async getOperatingSystemType(): Promise<OsType> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getOperatingSystemType();
 	}
 
 	async openUrlInNewTab(url: string): Promise<Tabs.Tab> {
+		// TODO: separate "background API" from other functionality.
 		return sharedOpenUrlInNewTab(url);
 	}
 
 	async openShortKeysConfiguration(): Promise<Tabs.Tab> {
+		// TODO: separate "background API" from other functionality.
 		return sharedOpenShortKeysConfiguration();
 	}
 
 	async openOptionsPage(): Promise<void> {
+		// TODO: separate "background API" from other functionality.
 		return sharedOpenOptionsPage();
 	}
 
 	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
 		return this.broadcastProvider.registerListeningAction(actionName, listeningActionHandler);
+	}
+
+	async getLocationHash(): Promise<string | null> {
+		// TODO: separate "background API" from other functionality.
+		if (document.location && typeof document.location.hash === "string" && document.location.hash.length > 0) {
+			return document.location.hash;
+		}
+
+		return null;
+	}
+
+	async setLocationHash(locationHash: string): Promise<void> {
+		// TODO: separate "background API" from other functionality.
+		// TODO: use assign?
+		// https://developer.mozilla.org/en-US/docs/Web/API/Location/assign
+		document.location.hash = locationHash;
+	}
+
+	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection>{
+		// TODO: separate "background API" from other functionality.
+		return this.talkieLocaleHelper.getBidiDirection(talkieLocale);
+	}
+
+	async getSampleText(talkieLocale: TalkieLocale): Promise<string>{
+		// TODO: separate "background API" from other functionality.
+		return this.talkieLocaleHelper.getSampleText(talkieLocale);
+	}
+
+	async isTalkieLocale(languageGroup: string): Promise<boolean> {
+		// TODO: separate "background API" from other functionality.
+		return this.talkieLocaleHelper.isTalkieLocale(languageGroup);
+	}
+
+	async getTranslationLocale(): Promise<TalkieLocale> {
+		// TODO: separate "background API" from other functionality.
+		return this.localeProvider.getTranslationLocale();
+	}
+
+	async getNavigatorLanguage(): Promise<Readonly<string | null>> {
+		// TODO: separate "background API" from other functionality.
+		return window.navigator.language;
+	}
+
+	async getNavigatorLanguages(): Promise<Readonly<string[]>> {
+		// TODO: separate "background API" from other functionality.
+		return window.navigator.languages;
 	}
 }

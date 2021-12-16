@@ -13,8 +13,8 @@
     "@talkie/options-renderer": "*",
     "@talkie/popup-renderer": "*",
     "@talkie/renderer": "*",
+    "@talkie/shared-interfaces": "*",
     "@talkie/shared-locales": "*",
-    "@talkie/split-environment-interfaces": "*",
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {

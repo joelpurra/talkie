@@ -26,13 +26,13 @@ import {
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
+} from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEventNames,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ListeningActionHandler,
-} from "@talkie/split-environment-interfaces/moved-here/listening-action-handler.mjs";
+} from "@talkie/shared-interfaces/listening-action-handler.mjs";
 
 import {
 	isDeadWrapper,

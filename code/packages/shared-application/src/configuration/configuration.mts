@@ -21,10 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
-import IConfiguration from "@talkie/split-environment-interfaces/moved-here/iconfiguration.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
+	IMetadataManager,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	JsonArray,
 	JsonObject,
@@ -33,7 +34,6 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
-import MetadataManager from "../metadata-manager.mjs";
 import {
 	ConfigurationObject,
 } from "../data/configuration/configuration.mjs";
@@ -48,7 +48,6 @@ export type DynamicConfigurationObject = {
 			["options-upgrade"]: string;
 			["options-voices"]: string;
 			["options-welcome"]: string;
-			["popup-passclick-false"]: string;
 			options: string;
 			popup: string;
 			root: string;
@@ -60,7 +59,7 @@ export default class Configuration implements IConfiguration {
 	configurationObject: ReadonlyDeep<ConfigurationObject & DynamicConfigurationObject>;
 
 	// NOTE: keep SynchronousConfiguration and Configuration in... sync.
-	constructor(private readonly metadataManager: MetadataManager, baseConfigurationObject: ReadonlyDeep<ConfigurationObject>) {
+	constructor(private readonly metadataManager: IMetadataManager, baseConfigurationObject: ReadonlyDeep<ConfigurationObject>) {
 		const configurationObject: ConfigurationObject & PartialDeep<DynamicConfigurationObject> = jsonClone(baseConfigurationObject);
 
 		// TODO: since these urls are no longer very dynamic (merely repetitive), replace with hardcoded values in configuration.json?
@@ -76,8 +75,6 @@ export default class Configuration implements IConfiguration {
 		configurationObject.shared.urls["options-usage"] = configurationObject.shared.urls.options + "#usage";
 		configurationObject.shared.urls["options-voices"] = configurationObject.shared.urls.options + "#voices";
 		configurationObject.shared.urls["options-welcome"] = configurationObject.shared.urls.options + "#welcome";
-
-		configurationObject.shared.urls["popup-passclick-false"] = configurationObject.shared.urls.popup + "?passclick=false";
 
 		this.configurationObject = configurationObject as ConfigurationObject & ReadonlyDeep<DynamicConfigurationObject>;
 	}

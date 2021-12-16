@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import configurationObject from "@talkie/shared-application/data/configuration/configuration.mjs";
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
@@ -36,7 +37,7 @@ import TranslatorProvider from "@talkie/split-environment-webextension/translato
 export type BrowserDependencies = {
 	api: Api;
 	broadcasterProvider: BroadcasterProvider;
-	configuration: Configuration;
+	configuration: IConfiguration;
 	styletronProvider: StyletronProvider;
 	translatorProvider: TranslatorProvider;
 };
@@ -54,7 +55,7 @@ function getDependencies(): BrowserDependencies {
 	const translatorProvider = new TranslatorProvider(localeProvider);
 	const talkieLocaleHelper = new TalkieLocaleHelper();
 	const styletronProvider = new StyletronProvider();
-	const api = new Api(metadataManager, configuration, translatorProvider, broadcasterProvider, talkieLocaleHelper);
+	const api = new Api(metadataManager, configuration, broadcasterProvider, talkieLocaleHelper, localeProvider);
 
 	// NOTE: using poor man's dependency injection. Instances should only be created once, and reused across the execution.
 	return {

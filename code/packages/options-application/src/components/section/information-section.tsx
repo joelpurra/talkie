@@ -1,0 +1,139 @@
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://joelpurra.com/projects/talkie/>
+
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+import React, {
+	ComponentProps,
+} from "react";
+import {
+	styled,
+	StyletronComponent,
+} from "styletron-react";
+
+import {
+	ClassNameProp,
+} from "@talkie/shared-ui/styled/types.js";
+import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
+import {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
+
+export type InformationType =
+	| "information"
+	| "warning";
+
+export interface InformationSectionProps extends ChildrenRequiredProps, ClassNameProp {
+	informationType: InformationType;
+}
+
+class InformationSection<P extends InformationSectionProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		childBox: StyletronComponent<ComponentProps<"div">>;
+		glyphIcon: StyletronComponent<ComponentProps<"div">>;
+		informationBox: StyletronComponent<ComponentProps<"div">>;
+	};
+
+	constructor(props: P) {
+		super(props);
+
+		this.styled = {
+			childBox: styled(
+				"div",
+				{
+					paddingTop: "0.5em",
+				},
+			),
+			glyphIcon: styled(
+				"div",
+				{
+					display: "inline-block",
+					"float": "left",
+					fontSize: "2em",
+					marginBottom: "0.5em",
+					marginLeft: "0.5em",
+					marginRight: "0.5em",
+					marginTop: "0.5em",
+				},
+			),
+			informationBox: styled(
+				"div",
+				{
+					":after": {
+						// TODO: avoid float hacks.
+						clear: "both",
+						content: "''",
+						display: "table",
+					},
+					borderBottomLeftRadius: "0.5em",
+					borderBottomRightRadius: "0.5em",
+					borderColor: colorBase.borderColor,
+					borderStyle: "solid",
+					borderTopLeftRadius: "0.5em",
+					borderTopRightRadius: "0.5em",
+					borderWidth: "1px",
+					marginBottom: "1em",
+					marginLeft: "-0.5em",
+					marginRight: "-0.5em",
+					marginTop: "1em",
+					paddingBottom: "0.5em",
+					paddingLeft: "0.5em",
+					paddingRight: "0.5em",
+					paddingTop: "0.5em",
+				},
+			),
+		};
+	}
+
+	override render(): React.ReactNode {
+		const {
+			informationType,
+			children,
+			className,
+		} = this.props as InformationSectionProps;
+
+		let informationTypeGlyph = null;
+
+		switch (informationType) {
+			case "information":
+				informationTypeGlyph = "\u2139";
+				break;
+			case "warning":
+				informationTypeGlyph = "\u26A0";
+				break;
+			default:
+				throw new TypeError("informationType");
+		}
+
+		return (
+			<this.styled.informationBox
+				className={className}
+			>
+				<this.styled.glyphIcon>
+					{informationTypeGlyph}
+				</this.styled.glyphIcon>
+
+				<this.styled.childBox>
+					{children}
+				</this.styled.childBox>
+			</this.styled.informationBox>
+		);
+	}
+}
+
+export default InformationSection;

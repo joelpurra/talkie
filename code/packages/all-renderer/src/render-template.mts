@@ -24,7 +24,7 @@ import {
 } from "@talkie/renderer/render-types.mjs";
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	writeFile as writeFileCallback,
 } from "node:fs";

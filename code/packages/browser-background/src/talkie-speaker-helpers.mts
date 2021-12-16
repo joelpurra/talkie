@@ -26,7 +26,7 @@ import {
 	IVoiceLanguage,
 	IVoiceName,
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 export const createSafeVoiceObjectFromSpeechSynthesisVoice = (speechSynthesisVoice: SpeechSynthesisVoice): SafeVoiceObject => ({
 	"default": speechSynthesisVoice.default,

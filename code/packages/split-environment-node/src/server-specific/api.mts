@@ -1,8 +1,3 @@
-
-// TODO: implement or remove placeholder file.
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
@@ -23,34 +18,35 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// TODO: implement or remove placeholder file.
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import {
+	LanguageTextDirection,
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-import IConfiguration from "@talkie/split-environment-interfaces/moved-here/iconfiguration.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	EditionType,
 	IMetadataManager,
 	OsType,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
-import ITalkieLocaleHelper from "@talkie/split-environment-interfaces/moved-here/italkie-locale-helper.mjs";
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
-	IVoiceNameAndLanguage,
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	KillSwitch,
-} from "@talkie/split-environment-interfaces/moved-here/killswitch.mjs";
+} from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEventNames,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ListeningActionHandler,
-} from "@talkie/split-environment-interfaces/moved-here/listening-action-handler.mjs";
+} from "@talkie/shared-interfaces/listening-action-handler.mjs";
 import {
 	JsonValue,
 	ReadonlyDeep,
@@ -61,7 +57,7 @@ import type {
 
 export default class Api implements IApi {
 	// eslint-disable-next-line max-params
-	constructor(private readonly metadataManager: IMetadataManager, private readonly configuration: IConfiguration, private readonly translator: ITranslatorProvider, private readonly broadcastProvider: IBroadcasterProvider, private readonly talkieLocaleHelper: ITalkieLocaleHelper) {}
+	constructor(private readonly metadataManager: IMetadataManager, private readonly talkieLocaleHelper: ITalkieLocaleHelper, private readonly localeProvider: ILocaleProvider) {}
 
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
@@ -75,15 +71,15 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async debouncedSpeakTextInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): void {
+	async debouncedSpeakTextInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async debouncedSpeakTextInVoiceWithOverrides(text: string, voiceName: string): void {
+	async debouncedSpeakTextInVoiceWithOverrides(text: string, voiceName: string): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async debouncedSpeakTextInLanguageWithOverrides(text: string, languageCode: string): void {
+	async debouncedSpeakTextInLanguageWithOverrides(text: string, languageCode: string): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -119,10 +115,6 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getSampleText(): Promise<string> {
-		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
-	}
-
 	async getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
@@ -148,18 +140,22 @@ export default class Api implements IApi {
 	}
 
 	async getTranslatedLanguages(): Promise<TalkieLocale[]> {
+		// TODO: separate "background API" from other functionality.
 		return this.talkieLocaleHelper.getTranslatedLanguages();
 	}
 
 	async isPremiumEdition(): Promise<boolean> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.isPremiumEdition();
 	}
 
 	async getVersionName(): Promise<string | null> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getVersionName();
 	}
 
 	async getVersionNumber(): Promise<string | null> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getVersionNumber();
 	}
 
@@ -168,6 +164,7 @@ export default class Api implements IApi {
 	}
 
 	async getSystemType(): Promise<SystemType> {
+		// TODO: separate "background API" from other functionality.
 		return this.metadataManager.getSystemType();
 	}
 
@@ -188,6 +185,39 @@ export default class Api implements IApi {
 	}
 
 	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getLocationHash(): Promise<string | null> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async setLocationHash(locationHash: string): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection>{
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getSampleText(talkieLocale: TalkieLocale): Promise<string>{
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async isTalkieLocale(languageGroup: string): Promise<boolean> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getTranslationLocale(): Promise<TalkieLocale> {
+		// TODO: separate "background API" from other functionality.
+		return this.localeProvider.getTranslationLocale();
+	}
+
+	getNavigatorLanguage(): Promise<Readonly<string | null>> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	getNavigatorLanguages(): Promise<Readonly<string[]>> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 }

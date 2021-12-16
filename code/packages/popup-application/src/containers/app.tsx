@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import IsSpeakingUpdater, {
 	IsSpeakingUpdaterDispatchProps,
-} from "@talkie/shared-application/hocs/is-speaking-updater.js";
+} from "@talkie/shared-ui/hocs/is-speaking-updater.js";
 import ProgressUpdater, {
 	ProgressUpdaterDispatchProps,
-} from "@talkie/shared-application/hocs/progress-updater.js";
+} from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
 import {
 	connect,
@@ -38,7 +38,7 @@ const {
 import Main, {
 	MainDispatchProps,
 	MainStateProps,
-} from "../components/main.js";
+} from "../app/main.js";
 import selectors from "../selectors/index.mjs";
 import {
 	actions,

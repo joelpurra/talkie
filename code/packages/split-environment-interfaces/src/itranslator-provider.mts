@@ -18,26 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ILocaleProvider, {
-	TalkieLocale,
-} from "./ilocale-provider.mjs";
-
-// NOTE: some types are duplicated to avoid sharing with the main Talkie code.
-// TODO: break out types? Create shared project?
-export type LocaleMessage = {
-	description?: string;
-	message: string;
-	placeholders?: Record<string, {
-		content: string;
-		example?: string;
-	}>;
-};
-
-export type LocaleMessages = Record<string, LocaleMessage>;
-
-export type Locale = {
-	[locale in TalkieLocale]: LocaleMessages;
-};
+import ILocaleProvider from "./ilocale-provider.mjs";
 
 export type ITranslatorProviderConstructor = new(localeProvider: ILocaleProvider) => ITranslatorProvider;
 

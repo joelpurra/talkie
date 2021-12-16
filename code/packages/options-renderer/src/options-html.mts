@@ -19,9 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import App from "@talkie/options-application/containers/app.js";
-import rootReducer, {
-	actions,
-} from "@talkie/options-application/slices/index.mjs";
+import rootReducer, { actions } from "@talkie/options-application/slices/index.mjs";
 import {
 	OptionsRootState,
 } from "@talkie/options-application/store/index.mjs";
@@ -48,7 +46,7 @@ const htmlTemplatePath = new URL(
 );
 
 const prerenderActionsToDispatch: Action[] = [
-	actions.unshared.tabs.setActiveTabId("voices"),
+	actions.shared.languages.loadTranslationLocale() as unknown as Action,
 ];
 const postrenderActionsToDispatch: Action[] = [];
 

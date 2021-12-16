@@ -23,7 +23,7 @@ import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
 	FramesSelectionTextAndLanguageCode,
 	SelectedTextWithFocusTimestamp,
-} from "@talkie/shared-application/hocs/pass-selected-text-to-background-types.mjs";
+} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
 import {
 	logDebug,
 	logError,
@@ -33,10 +33,10 @@ import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslato
 import {
 	IVoiceName,
 	IVoiceNameAndRateAndPitch,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	knownEvents,
-} from "@talkie/split-environment-interfaces/moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	canTalkieRunInTab,
 	isCurrentPageInternalToTalkie,
@@ -111,16 +111,16 @@ export default class TalkieBackground {
 
 		// NOTE: can't perform (most) actions if it's not a "normal" tab.
 		if (!canRun) {
-			void logDebug("iconClickAction", "Did not detect a normal tab.");
+			void logDebug("speakSelectionOnPage", "Did not detect a normal tab.");
 
 			if (isInternalPage) {
-				void logDebug("iconClickAction", "Requesting text selection from internal page.");
+				void logDebug("speakSelectionOnPage", "Requesting text selection from internal page.");
 
 				const eventData = null;
 
 				const selectedTextsFromFrontend = await this.broadcaster.broadcastEvent<knownEvents.passSelectedTextToBackground, null, ReadonlyDeep<SelectedTextWithFocusTimestamp> | null>(knownEvents.passSelectedTextToBackground, eventData);
 
-				void logDebug("iconClickAction", "Received text selections from internal pages.", selectedTextsFromFrontend);
+				void logDebug("speakSelectionOnPage", "Received text selections from internal pages.", selectedTextsFromFrontend);
 
 				const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
 					.filter((t): t is ReadonlyDeep<NonNullable<SelectedTextWithFocusTimestamp>> => Boolean(t));
@@ -145,7 +145,7 @@ export default class TalkieBackground {
 				);
 
 				if (selectedTextFromFrontend === null) {
-					void logDebug("iconClickAction", "Did not receive text selection from internal page, doing nothing.");
+					void logDebug("speakSelectionOnPage", "Did not receive text selection from internal page, doing nothing.");
 
 					return;
 				}
@@ -160,7 +160,7 @@ export default class TalkieBackground {
 				return this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
 			}
 
-			void logDebug("iconClickAction", "Skipping speaking selection.");
+			void logDebug("speakSelectionOnPage", "Skipping speaking selection.");
 
 			const text = this.notAbleToSpeakTextFromThisSpecialTab.text;
 			const lang = this.notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;

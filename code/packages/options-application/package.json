@@ -16,6 +16,8 @@
     "@talkie/browser-shared": "*",
     "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
+    "@talkie/shared-interfaces": "*",
+    "@talkie/shared-ui": "*",
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {

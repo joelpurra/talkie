@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import type {
 	I18n,
 } from "webextension-polyfill";

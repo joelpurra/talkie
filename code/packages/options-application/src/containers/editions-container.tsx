@@ -34,7 +34,7 @@ import {
 
 import Editions, {
 	EditionsDispatchProps,
-} from "../components/sections/editions.js";
+} from "../app/sections/editions.js";
 import {
 	actions,
 } from "../slices/index.mjs";

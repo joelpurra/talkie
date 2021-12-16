@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	getUnusableStoreForGeneratedTypes,
-} from "@talkie/shared-application/store/get-store.mjs";
+} from "@talkie/shared-ui/store/get-store.mjs";
 
 import rootReducer from "../slices/index.mjs";
 

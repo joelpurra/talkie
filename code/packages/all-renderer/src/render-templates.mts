@@ -24,7 +24,7 @@ import {
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	Action,
 } from "@reduxjs/toolkit";

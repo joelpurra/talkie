@@ -26,12 +26,12 @@ import {
 	EditionType,
 	OsType,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	IVoiceNameAndLanguage,
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 export interface ITalkieServices {
 	broadcaster: () => IBroadcasterProvider;

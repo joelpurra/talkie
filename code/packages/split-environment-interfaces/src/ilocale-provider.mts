@@ -22,42 +22,7 @@ import type {
 	I18n,
 } from "webextension-polyfill";
 
-export type LanguageDirection = "ltr" | "rtl";
-
-// NOTE: should match directory names in _locales/
-export type TalkieLocale =
-| "ar"
-| "bg"
-| "cs"
-| "da"
-| "de"
-| "el"
-| "en"
-| "es"
-| "fi"
-| "fr"
-| "he"
-| "hi"
-| "hu"
-| "id"
-| "it"
-| "ja"
-| "ko"
-| "nb"
-| "nl"
-| "pl"
-| "pt"
-| "ro"
-| "ru"
-| "sk"
-| "sv"
-| "th"
-| "tr"
-| "zh";
-
-// TODO: create a list for UI locale, possibly based on Chromium or Firefox sources.
-// https://src.chromium.org/viewvc/chrome/trunk/src/third_party/cld/languages/internal/languages.cc
-// https://github.com/CLD2Owners/cld2/blob/b56fa78a2fe44ac2851bae5bf4f4693a0644da7b/internal/generated_language.cc
+import {TalkieLocale} from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 export type ILocaleProviderConstructor = new() => ILocaleProvider;
 

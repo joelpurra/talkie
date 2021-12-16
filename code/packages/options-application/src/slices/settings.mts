@@ -29,7 +29,7 @@ import type {
 } from "@reduxjs/toolkit";
 import {
 	IApiAsyncThunkConfig,
-} from "@talkie/shared-application/slices/slices-types.mjs";
+} from "@talkie/shared-ui/slices/slices-types.mjs";
 
 export interface VoicesState {
 	speakLongTexts: boolean;
@@ -45,14 +45,14 @@ const prefix = "settings";
 
 export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakLongTexts`,
-	async (_, thunkApi) => thunkApi.extra.getSpeakLongTextsOption(),
+	async (_, {extra}) => extra.getSpeakLongTextsOption(),
 );
 
 export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakLongTexts`,
-	async (speakLongTexts, thunkApi) => {
-		await thunkApi.extra.setSpeakLongTextsOption(speakLongTexts);
-		thunkApi.dispatch(setSpeakLongTexts(speakLongTexts));
+	async (speakLongTexts, {dispatch, extra}) => {
+		await extra.setSpeakLongTextsOption(speakLongTexts);
+		dispatch(setSpeakLongTexts(speakLongTexts));
 	},
 );
 

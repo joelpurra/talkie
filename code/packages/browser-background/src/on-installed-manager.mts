@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
+import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
@@ -43,7 +43,7 @@ export default class OnInstalledManager {
 	constructor(
 		private readonly storageManager: StorageManager,
 		private readonly settingsManager: SettingsManager,
-		private readonly metadataManager: MetadataManager,
+		private readonly metadataManager: IMetadataManager,
 		private readonly contextMenuManager: ContextMenuManager,
 		private readonly welcomeManager: WelcomeManager,
 		private readonly onInstallListenerEventQueue: OnInstallEvent[],

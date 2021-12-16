@@ -51,25 +51,7 @@ const passClickToBackground = async () => {
 	}
 };
 
-const shouldPassClickOnLoad = () => {
-	const containsBlockerString = document.location
-		&& typeof document.location.search === "string"
-		&& document.location.search.length > 0
-		&& document.location.search.includes("passclick=false");
-
-	return !containsBlockerString;
-};
-
-const passClickToBackgroundOnLoad = async () => {
-	// NOTE: provide a way to link to the popup without triggering the "click".
-	if (!shouldPassClickOnLoad()) {
-		void dualLogger.dualLogDebug("Skipped", "passClickToBackgroundOnLoad");
-
-		return;
-	}
-
-	return passClickToBackground();
-};
+const passClickToBackgroundOnLoad = async () => passClickToBackground();
 
 const start = async () => {
 	await startReactFrontend();

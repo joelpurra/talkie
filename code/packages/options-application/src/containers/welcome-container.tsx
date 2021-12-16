@@ -18,10 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions.mjs";
 import {
 	TalkieLocale,
-} from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import React from "react";
 import {
 	connect,
@@ -33,7 +32,7 @@ const {
 	bindActionCreators,
 } = toolkit;
 
-import Welcome from "../components/sections/welcome.js";
+import Welcome from "../app/sections/welcome.js";
 import selectors from "../selectors/index.mjs";
 import {
 	actions,
@@ -47,16 +46,18 @@ interface WelcomeContainerProps {}
 
 interface WelcomeContainerState {
 	loadVoicesRetryCount: number;
+	attemptedLoadingSampleText: boolean;
 }
 
 interface StateProps {
-	availableBrowserLanguageWithInstalledVoice: string[];
+	canSpeakInTranslatedLocale: boolean;
 	haveVoices: boolean;
-	languageGroups: readonly string[];
-	languages: readonly string[];
+	sampleText: string | null;
+	sampleTextLanguage: TalkieLocale | null;
 }
 
 interface DispatchProps {
+	loadSampleTextForAvailableBrowserLanguageWithInstalledVoice: typeof actions.welcome.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice;
 	loadVoices: typeof actions.shared.voices.loadVoices;
 	speakTextInLanguageWithOverrides: typeof actions.shared.speaking.speakTextInLanguageWithOverrides;
 }
@@ -65,13 +66,14 @@ interface InternalProps extends StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
-	availableBrowserLanguageWithInstalledVoice: selectors.shared.voices.getAvailableBrowserLanguageWithInstalledVoice(state),
+	canSpeakInTranslatedLocale: selectors.shared.voices.getCanSpeakInTranslatedLocale(state),
 	haveVoices: selectors.shared.voices.getHaveVoices(state),
-	languageGroups: selectors.shared.voices.getLanguageGroups(state),
-	languages: selectors.shared.voices.getLanguages(state),
+	sampleText: state.welcome.sampleText,
+	sampleTextLanguage: state.welcome.sampleTextLanguage,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
+	loadSampleTextForAvailableBrowserLanguageWithInstalledVoice: bindActionCreators(actions.welcome.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice, dispatch),
 	loadVoices: bindActionCreators(actions.shared.voices.loadVoices, dispatch),
 	speakTextInLanguageWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInLanguageWithOverrides, dispatch),
 });
@@ -81,6 +83,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 		{
 			loadVoicesRetryCount: 0,
+			attemptedLoadingSampleText: false,
 		} as S
 	);
 
@@ -91,13 +94,14 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 	}
 
 	override componentDidUpdate(_previousProps: P, previousState: S): void {
-		if (
-			!this.props.haveVoices
+		// TODO: move retrying/loading voices to an outer container, to separate and clean up logic.
+		const shouldRetryLoadingVoices = !this.props.haveVoices
 			&& (
 				this.state.loadVoicesRetryCount === 0
 				|| previousState.loadVoicesRetryCount !== this.state.loadVoicesRetryCount
-			)
-		) {
+			);
+
+		if (shouldRetryLoadingVoices) {
 			// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
 			// NOTE: sometimes the browser (Firefox?) has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
 			// NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
@@ -118,6 +122,25 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 				},
 				loadVoicesRetryDelay,
 			);
+		} else {
+			if(!this.state.attemptedLoadingSampleText) {
+				const loadSampleTextDelay = 50;
+
+				setTimeout(
+					() => {
+						this.setState(
+							(_state) => ({
+								attemptedLoadingSampleText: true,
+							}),
+							() => {
+								// TODO: is this the best place to load data?
+								this.props.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice();
+							},
+						);
+					},
+					loadSampleTextDelay,
+				);
+			}
 		}
 	}
 
@@ -128,54 +151,18 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		});
 	}
 
-	getTranslationLocale(): TalkieLocale {
-		// eslint-disable-next-line no-sync
-		return HACKYHACKFUNCTIONS.getTranslationLocaleSync();
-	}
-
-	isTalkieLocale(languageCode: string): languageCode is TalkieLocale {
-		// eslint-disable-next-line no-sync
-		return HACKYHACKFUNCTIONS.isTalkieLocaleSync(languageCode);
-	}
-
-	getSampleTextForLanguage(languageCode: string): string | null {
-		// eslint-disable-next-line no-sync
-		return HACKYHACKFUNCTIONS.getSampleTextForLanguageSync(languageCode);
-	}
-
 	override render(): React.ReactNode {
 		const {
-			availableBrowserLanguageWithInstalledVoice,
-			languageGroups,
-			languages,
+			canSpeakInTranslatedLocale,
+			sampleText,
+			sampleTextLanguage,
 		} = this.props;
-
-		// TODO: create action and store as redux state?
-		const sampleTextLanguageCode = availableBrowserLanguageWithInstalledVoice
-			.find((languageCode: string) => {
-				if (this.isTalkieLocale(languageCode)) {
-					return Boolean(this.getSampleTextForLanguage(languageCode));
-				}
-
-				return false;
-			});
-
-		// TODO: create action and store as redux state?
-		let sampleText = null;
-
-		if (typeof sampleTextLanguageCode === "string" && this.isTalkieLocale(sampleTextLanguageCode)) {
-			sampleText = this.getSampleTextForLanguage(sampleTextLanguageCode);
-		}
-
-		// TODO: create action and store as redux state?
-		const translationLocale = this.getTranslationLocale();
-		const canSpeakInTranslatedLocale = languages.includes(translationLocale) || languageGroups.includes(translationLocale);
 
 		return (
 			<Welcome
 				canSpeakInTranslatedLocale={canSpeakInTranslatedLocale}
 				sampleText={sampleText}
-				sampleTextLanguageCode={sampleTextLanguageCode}
+				sampleTextLanguage={sampleTextLanguage}
 				speakTextInLanguageWithOverrides={this.speakTextInLanguageWithOverrides}
 			/>
 		);

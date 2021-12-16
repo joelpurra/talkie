@@ -18,8 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Loading from "@talkie/shared-application/components/loading.js";
-import * as HACKYHACKFUNCTIONS from "@talkie/shared-application/slices/languages-hack-functions.mjs";
+import Loading from "../../components/loading.js";
 import React from "react";
 import {
 	connect,
@@ -31,7 +30,7 @@ const {
 	bindActionCreators,
 } = toolkit;
 
-import LanguageGroup from "../../components/sections/voices/language-group.js";
+import LanguageGroup from "../../app/sections/voices/language-group.js";
 import selectors from "../../selectors/index.mjs";
 import {
 	actions,
@@ -39,6 +38,7 @@ import {
 import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
+import { LanguageTextDirection } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 interface LanguageGroupContainerProps {
 	speakSampleTextForLanguage: (language: string) => void;
@@ -49,6 +49,7 @@ interface StateProps {
 	hasSampleTextForLanguageGroup: boolean;
 	sampleTextForLanguageGroup: string | null;
 	selectedLanguageGroup: string | null;
+	textDirectionForSelectedLanguageGroup: LanguageTextDirection;
 }
 
 interface DispatchProps {
@@ -64,6 +65,7 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 	hasSampleTextForLanguageGroup: selectors.voices.getHasSampleTextForLanguageGroup(state),
 	sampleTextForLanguageGroup: state.voices.sampleTextForLanguageGroup,
 	selectedLanguageGroup: state.voices.selectedLanguageGroup,
+	textDirectionForSelectedLanguageGroup: state.voices.textDirectionForSelectedLanguageGroup,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
@@ -71,20 +73,14 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProp
 });
 
 class LanguageGroupContainer<P extends InternalProps> extends React.PureComponent<P> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		this.getTextDirectionClassNameForLanguageGroup = this.getTextDirectionClassNameForLanguageGroup.bind(this);
 	}
 
 	override componentDidMount(): void {
 		// TODO: is this the best place to load data?
 		this.props.loadSampleTextForLanguageGroup();
-	}
-
-	getTextDirectionClassNameForLanguageGroup(languageCode: string): string {
-		// eslint-disable-next-line no-sync
-		return HACKYHACKFUNCTIONS.getTextDirectionClassNameForLanguageGroupSync(languageCode);
 	}
 
 	override render(): React.ReactNode {
@@ -94,6 +90,7 @@ class LanguageGroupContainer<P extends InternalProps> extends React.PureComponen
 			sampleTextForLanguageGroup,
 			selectedLanguageGroup,
 			speakSampleTextForLanguage,
+			textDirectionForSelectedLanguageGroup,
 		} = this.props as InternalProps;
 
 		if (typeof selectedLanguageGroup !== "string") {
@@ -108,11 +105,11 @@ class LanguageGroupContainer<P extends InternalProps> extends React.PureComponen
 			>
 				<LanguageGroup
 					effectiveVoiceNameForSelectedLanguageGroup={effectiveVoiceNameForSelectedLanguageGroup!}
-					getTextDirectionClassNameForLanguageGroup={this.getTextDirectionClassNameForLanguageGroup}
 					hasSampleTextForLanguageGroup={hasSampleTextForLanguageGroup}
 					languageGroup={selectedLanguageGroup}
 					sampleTextForLanguageGroup={sampleTextForLanguageGroup}
 					speakSampleTextForLanguage={speakSampleTextForLanguage}
+					textDirectionForLanguageGroup={textDirectionForSelectedLanguageGroup}
 				/>
 			</Loading>
 		);

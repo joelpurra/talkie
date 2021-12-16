@@ -14,7 +14,8 @@
     "@talkie/browser-stayalive": "*",
     "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
-    "@talkie/split-environment": "*",
+    "@talkie/shared-interfaces": "*",
+    "@talkie/shared-ui": "*",
     "@talkie/split-environment-interfaces": "*",
     "@talkie/split-environment-webextension": "*"
   },

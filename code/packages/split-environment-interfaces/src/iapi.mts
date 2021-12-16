@@ -26,27 +26,26 @@ import type {
 	Tabs,
 } from "webextension-polyfill";
 
-import {
-	TalkieLocale,
-} from "./ilocale-provider.mjs";
+import {LanguageTextDirection, TalkieLocale} from "@talkie/shared-interfaces/italkie-locale.mjs";
+
 import {
 	EditionType,
 	OsType,
 	SystemType,
-} from "./moved-here/imetadata-manager.mjs";
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
-} from "./moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	KillSwitch,
-} from "./moved-here/killswitch.mjs";
+} from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEventNames,
-} from "./moved-here/known-events.mjs";
+} from "@talkie/shared-interfaces/known-events.mjs";
 import {
 	ListeningActionHandler,
-} from "./moved-here/listening-action-handler.mjs";
+} from "@talkie/shared-interfaces/listening-action-handler.mjs";
 
 export default interface IApi {
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
@@ -76,8 +75,6 @@ export default interface IApi {
 	getSpeakLongTextsOption(): Promise<boolean>;
 
 	setSpeakLongTextsOption(speakLongTexts: boolean): Promise<void>;
-
-	getSampleText(): Promise<string>;
 
 	getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null>;
 
@@ -112,4 +109,20 @@ export default interface IApi {
 	openOptionsPage(): Promise<void>;
 
 	registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch>;
+
+	getLocationHash(): Promise<string | null>;
+
+	setLocationHash(locationHash: string): Promise<void>;
+
+	getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection>;
+
+	getSampleText(talkieLocale: TalkieLocale): Promise<string>;
+
+	isTalkieLocale(languageGroup: string): Promise<boolean>;
+
+	getTranslationLocale(): Promise<TalkieLocale>;
+
+	getNavigatorLanguage(): Promise<Readonly<string | null>>;
+
+	getNavigatorLanguages(): Promise<Readonly<string[]>>;
 }

@@ -24,7 +24,7 @@ import {
 	EditionType,
 	IMetadataManager,
 	SystemType,
-} from "@talkie/split-environment-interfaces/moved-here/imetadata-manager.mjs";
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	Manifest,
 	Runtime,

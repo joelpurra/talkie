@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import ContentLogger from "@talkie/browser-shared/content-logger.mjs";
 import {
 	FramesSelectionTextAndLanguageCode,
-} from "@talkie/shared-application/hocs/pass-selected-text-to-background-types.mjs";
+} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
 import {
 	isUndefinedOrNullOrEmptyOrWhitespace,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -33,7 +33,7 @@ import {
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	SafeVoiceObject,
-} from "@talkie/split-environment-interfaces/moved-here/ivoices.mjs";
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	Merge,
 	ReadonlyDeep,
