@@ -27,7 +27,7 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

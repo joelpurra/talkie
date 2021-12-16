@@ -21,14 +21,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import jsonfile from "jsonfile";
 import path from "node:path";
-import {
+import type {
 	JsonObject,
 	ReadonlyDeep,
 } from "type-fest";
@@ -90,7 +90,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 				"data",
 				messagesPath,
 			),
-			import.meta.url
+			import.meta.url,
 		);
 	}
 

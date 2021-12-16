@@ -18,11 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-import {
-	ReadonlyDeep,
-} from "type-fest";
-
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
@@ -30,6 +25,10 @@ import {
 	BubbledLinkClickHandler,
 	handleBubbledLinkClick,
 } from "@talkie/shared-ui/utils/ui.mjs";
+import React from "react";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
 
 export interface TabContentsProps {
 	activeTabId: string | null;

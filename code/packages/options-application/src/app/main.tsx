@@ -18,11 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import TabContents from "../components/navigation/tab-contents.js";
-import NavContainer from "../components/navigation/nav-container.js";
 import {
-	NavLink,
-} from "../components/navigation/nav-container-types.mjs";
+	OsType,
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import passSelectedTextToBackground from "@talkie/shared-ui/hocs/pass-selected-text-to-background.js";
 import translateAttribute, {
 	TranslateProps,
@@ -32,23 +31,26 @@ import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import {
-	OsType,
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";
-import {
-	styled,
+import type {
 	StyleObject,
 	StyletronComponent,
+} from "styletron-react";
+import {
+	styled,
 	withStyleDeep,
 } from "styletron-react";
 
+import NavContainer from "../components/navigation/nav-container.js";
+import {
+	NavLink,
+} from "../components/navigation/nav-container-types.mjs";
+import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
-import TextContainer from "../containers/text-container.js";
 import EditionsContainer from "../containers/editions-container.js";
+import TextContainer from "../containers/text-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
 import {
@@ -89,18 +91,6 @@ const styles: StyleObject = {
 };
 
 class Main<P extends MainProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		osType: null,
-	};
-
-	private readonly links: NavLink[];
-
-	private readonly styled: {
-		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
-		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
-		navHeader: StyletronComponent<ComponentProps<"div">>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -342,7 +332,20 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			</div>
 		);
 	}
+
+	static defaultProps = {
+		osType: null,
+	};
+
+	private readonly links: NavLink[];
+
+	private readonly styled: {
+		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
+		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
+		navHeader: StyletronComponent<ComponentProps<"div">>;
+	};
 }
+
 export default styled(
 	translateAttribute<MainProps>()(
 		passSelectedTextToBackground<MainProps>()(

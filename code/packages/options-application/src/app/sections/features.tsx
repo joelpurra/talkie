@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import TalkieFreeIcon from "@talkie/shared-ui/components/icon/talkie-free-icon.js";
 import TalkiePremiumIcon from "@talkie/shared-ui/components/icon/talkie-premium-icon.js";
-import FreeSection from "../../components/section/free-section.js";
-import PremiumSection from "../../components/section/premium-section.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -31,17 +32,19 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
 import {
 	styled,
-	StyletronComponent,
 	withStyleDeep,
 } from "styletron-react";
+
+import FreeSection from "../../components/section/free-section.js";
+import PremiumSection from "../../components/section/premium-section.js";
 
 export interface FeaturesProps {
 	isPremiumEdition: boolean;
@@ -49,13 +52,6 @@ export interface FeaturesProps {
 }
 
 class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		storeLink: StyletronComponent<ComponentProps<"div">>;
-		storeLinks: StyletronComponent<ComponentProps<"div">>;
-		storeLinksP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-		storeLinksPFirst: StyletronComponent<ComponentProps<typeof textBase.p>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -225,6 +221,13 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 			</section>
 		);
 	}
+
+	private readonly styled: {
+		storeLink: StyletronComponent<ComponentProps<"div">>;
+		storeLinks: StyletronComponent<ComponentProps<"div">>;
+		storeLinksP: StyletronComponent<ComponentProps<typeof textBase.p>>;
+		storeLinksPFirst: StyletronComponent<ComponentProps<typeof textBase.p>>;
+	};
 }
 
 export default configureAttribute<FeaturesProps & ConfigureProps>()(

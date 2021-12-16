@@ -8,11 +8,10 @@
   },
   "dependencies": {
     "@talkie/all-renderer": "*",
-    "@talkie/output-webext": "*",
-    "chrome-webstore-manager": "^0.5.0"
+    "@talkie/output-webext": "*"
   },
   "devDependencies": {
-    "webextension-polyfill": "^0.8.0"
+    "chrome-webstore-manager": "^0.5.0"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",

@@ -18,11 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
 import {
 	OsType,
 	SystemType,
@@ -31,6 +28,13 @@ import {
 import {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 export interface MetadataState {
 	isPremiumEdition: boolean;
@@ -55,12 +59,16 @@ const prefix = "metadata";
 
 export const loadIsPremiumEdition = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadIsPremiumEdition`,
-	async (_, {extra}) => extra.isPremiumEdition(),
+	async (_, {
+		extra,
+	}) => extra.isPremiumEdition(),
 );
 
 export const storeIsPremiumEdition = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeIsPremiumEdition`,
-	async (isPremiumEdition, {dispatch, extra}) => {
+	async (isPremiumEdition, {
+		dispatch, extra,
+	}) => {
 		await extra.setIsPremiumEditionOption(isPremiumEdition);
 
 		// TODO: reconsider post-store "sideffect" here?
@@ -70,22 +78,30 @@ export const storeIsPremiumEdition = createAsyncThunk<void, boolean, IApiAsyncTh
 
 export const loadVersionName = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadVersionName`,
-	async (_, {extra}) => extra.getVersionName(),
+	async (_, {
+		extra,
+	}) => extra.getVersionName(),
 );
 
 export const loadVersionNumber = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadVersionNumber`,
-	async (_, {extra}) => extra.getVersionNumber(),
+	async (_, {
+		extra,
+	}) => extra.getVersionNumber(),
 );
 
 export const loadSystemType = createAsyncThunk<SystemType | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSystemType`,
-	async (_, {extra}) => extra.getSystemType(),
+	async (_, {
+		extra,
+	}) => extra.getSystemType(),
 );
 
 export const loadOsType = createAsyncThunk<OsType | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadOsType`,
-	async (_, {extra}) => extra.getOperatingSystemType(),
+	async (_, {
+		extra,
+	}) => extra.getOperatingSystemType(),
 );
 
 export const metadataSlice = createSlice({

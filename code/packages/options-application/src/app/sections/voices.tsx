@@ -18,19 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Loading from "../../components/loading.js";
+import Discretional from "@talkie/shared-ui/components/discretional.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
+import Loading from "../../components/loading.js";
+import DialectContainer from "../../containers/voices/dialect-container.js";
+import DialectVoiceContainer from "../../containers/voices/dialect-voice-container.js";
+import DialectVoicesContainer from "../../containers/voices/dialect-voices-container.js";
+import DialectsContainer from "../../containers/voices/dialects-container.js";
 import LanguageGroupContainer from "../../containers/voices/language-group-container.js";
 import LanguageGroupsContainer from "../../containers/voices/language-groups-container.js";
-import DialectsContainer from "../../containers/voices/dialects-container.js";
-import DialectContainer from "../../containers/voices/dialect-container.js";
-import DialectVoicesContainer from "../../containers/voices/dialect-voices-container.js";
-import DialectVoiceContainer from "../../containers/voices/dialect-voice-container.js";
 import Intro from "./voices/intro.js";
-import Discretional from "@talkie/shared-ui/components/discretional.js";
 
 export interface VoicesStateProps {
 	hasSelectedLanguageCode: boolean;
@@ -89,87 +89,109 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 					<Intro/>
 				</layoutBase.section>
 
-				<Loading
-					enabled={haveVoices}
-				>
-					<layoutBase.section>
+				<layoutBase.section>
+					<Loading
+						enabled={haveVoices}
+					>
 						{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
 						<textBase.h2
-								// eslint-disable-next-line react/jsx-no-bind
-								onClick={onSelectLanguageGroupClick.bind(null, null)}
+							// eslint-disable-next-line react/jsx-no-bind
+							onClick={onSelectLanguageGroupClick.bind(null, null)}
 						>
-							{"Installed languages"}
-							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup}`}
+							Installed languages
+							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? "(Error: no selected language group.)"}`}
 							{hasSelectedLanguageGroup && languageGroupsCount > 1 && ` (${"show all"})`}
 						</textBase.h2>
 
-						{hasSelectedLanguageGroup || <LanguageGroupsContainer
-							onSelectLanguageGroupClick={onSelectLanguageGroupClick}
-						/>}
+						<Discretional
+							enabled={!hasSelectedLanguageGroup}
+						>
+							<LanguageGroupsContainer
+								onSelectLanguageGroupClick={onSelectLanguageGroupClick}
+							/>
+						</Discretional>
 
-						{hasSelectedLanguageGroup && <LanguageGroupContainer
-							speakSampleTextForLanguage={speakSampleTextForLanguage}
-						/>}
-					</layoutBase.section>
-
-					<Discretional
-						enabled={hasSelectedLanguageGroup}
-					>
-						<layoutBase.section>
-							{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
-							<textBase.h3
-									// eslint-disable-next-line react/jsx-no-bind
-									onClick={onSelectLanguageCodeClick.bind(null, null)}
-								>
-								{"Installed dialects"}
-								{hasSelectedLanguageCode && `: ${selectedLanguageCode}`}
-								{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && ` (${"show all"})`}
-							</textBase.h3>
-
-							{hasSelectedLanguageCode || <p>
-									{`Found ${languageCountForSelectedLanguageGroup} dialects for ${selectedLanguageGroup}.`}
-								</p>
-							}
-
-							{hasSelectedLanguageCode || <DialectsContainer
-								onSelectLanguageCodeClick={onSelectLanguageCodeClick}
-							/>}
-
-							{hasSelectedLanguageCode && <DialectContainer
+						<Discretional
+							enabled={hasSelectedLanguageGroup}
+						>
+							<LanguageGroupContainer
 								speakSampleTextForLanguage={speakSampleTextForLanguage}
-							/>}
-						</layoutBase.section>
-					</Discretional>
+							/>
+						</Discretional>
+					</Loading>
+				</layoutBase.section>
 
-					<Discretional
-						enabled={hasSelectedLanguageGroup && hasSelectedLanguageCode}
-					>
-						<layoutBase.section>
-							{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
-							<textBase.h4
-									// eslint-disable-next-line react/jsx-no-bind
-									onClick={onSelectVoiceNameClick.bind(null, null)}
-								>
-								{"Installed voices"}
-								{hasSelectedVoiceName && `: ${selectedVoiceName}`}
-								{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && ` (${"show all"})`}
-							</textBase.h4>
+				<Discretional
+					enabled={haveVoices && hasSelectedLanguageGroup}
+				>
+					<layoutBase.section>
+						{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
+						<textBase.h3
+							// eslint-disable-next-line react/jsx-no-bind
+							onClick={onSelectLanguageCodeClick.bind(null, null)}
+						>
+							Installed dialects
+							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? "(Error: no selected language code.)"}`}
+							{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && ` (${"show all"})`}
+						</textBase.h3>
 
-							{hasSelectedVoiceName || <p>
-									{`Found ${voiceCountForSelectedLanguageCode} voices for ${selectedLanguageCode}.`}
-								</p>
-							}
+						<Discretional
+							enabled={!hasSelectedLanguageCode}
+						>
+							<p>
+								{`Found ${languageCountForSelectedLanguageGroup} dialects for ${selectedLanguageGroup ?? "(Error: no selected language group.)"}.`}
+							</p>
 
-							{hasSelectedVoiceName || <DialectVoicesContainer
+							<DialectsContainer
+								onSelectLanguageCodeClick={onSelectLanguageCodeClick}
+							/>
+						</Discretional>
+
+						<Discretional
+							enabled={hasSelectedLanguageCode}
+						>
+							<DialectContainer
+								speakSampleTextForLanguage={speakSampleTextForLanguage}
+							/>
+						</Discretional>
+					</layoutBase.section>
+				</Discretional>
+
+				<Discretional
+					enabled={hasSelectedLanguageGroup && hasSelectedLanguageCode}
+				>
+					<layoutBase.section>
+						{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
+						<textBase.h4
+							// eslint-disable-next-line react/jsx-no-bind
+							onClick={onSelectVoiceNameClick.bind(null, null)}
+						>
+							Installed voices
+							{hasSelectedVoiceName && `: ${selectedVoiceName ?? "(Error: no selected voice name.)"}`}
+							{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && ` (${"show all"})`}
+						</textBase.h4>
+
+						<Discretional
+							enabled={!hasSelectedVoiceName}
+						>
+							<p>
+								{`Found ${voiceCountForSelectedLanguageCode} voices for ${selectedLanguageCode ?? "(Error: no selected language code.)"}.`}
+							</p>
+
+							<DialectVoicesContainer
 								onSelectVoiceNameClick={onSelectVoiceNameClick}
-							/>}
+							/>
+						</Discretional>
 
-							{hasSelectedVoiceName && <DialectVoiceContainer
+						<Discretional
+							enabled={hasSelectedVoiceName}
+						>
+							<DialectVoiceContainer
 								speakSampleTextForVoiceName={speakSampleTextForVoiceName}
-							/>}
-						</layoutBase.section>
-					</Discretional>
-				</Loading>
+							/>
+						</Discretional>
+					</layoutBase.section>
+				</Discretional>
 			</>
 		);
 	}

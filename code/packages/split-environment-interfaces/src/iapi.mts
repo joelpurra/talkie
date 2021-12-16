@@ -19,20 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	JsonValue,
-	ReadonlyDeep,
-} from "type-fest";
-import type {
-	Tabs,
-} from "webextension-polyfill";
-
-import {LanguageTextDirection, TalkieLocale} from "@talkie/shared-interfaces/italkie-locale.mjs";
-
-import {
 	EditionType,
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	LanguageTextDirection,
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
@@ -46,6 +40,13 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
+import type {
+	JsonValue,
+	ReadonlyDeep,
+} from "type-fest";
+import type {
+	Tabs,
+} from "webextension-polyfill";
 
 export default interface IApi {
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;

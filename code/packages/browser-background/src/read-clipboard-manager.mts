@@ -18,10 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
+import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 
 import ClipboardManager from "./clipboard-manager.mjs";

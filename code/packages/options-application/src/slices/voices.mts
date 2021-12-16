@@ -18,27 +18,45 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
 import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
-import {
-	IApiAsyncThunkConfig,
-} from "@talkie/shared-ui/slices/slices-types.mjs";
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
 import {
 	isLanguageGroup,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
+import {
+	DefaultLanguageDirection,
+	LanguageTextDirection,
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+import {
+	IApiAsyncThunkConfig,
+} from "@talkie/shared-ui/slices/slices-types.mjs";
 
+import {
+	getFirstLanguageForSelectedLanguageGroup,
+	getFirstVoiceForSelectedLanguageCode,
+	getIsSelectedLanguageGroupTalkieLocale,
+	getLanguageCountForSelectedLanguageGroup,
+	getSampleTextForLanguageGroup,
+	getSelectedLanguageCode,
+	getSelectedLanguageGroup,
+	getSelectedVoiceName,
+	getVoiceCountForSelectedLanguageCode,
+} from "../selectors/voices.mjs";
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
-import { getFirstLanguageForSelectedLanguageGroup, getFirstVoiceForSelectedLanguageCode, getIsSelectedLanguageGroupTalkieLocale, getLanguageCountForSelectedLanguageGroup, getSampleTextForLanguageGroup, getSelectedLanguageCode, getSelectedLanguageGroup, getSelectedVoiceName, getVoiceCountForSelectedLanguageCode } from "../selectors/voices.mjs";
-import { TalkieLocale, LanguageTextDirection, DefaultLanguageDirection } from "@talkie/shared-interfaces/italkie-locale.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 interface StoreEffectiveVoiceNameForLanguageArguments {
 	languageCodeOrGroup: string;
@@ -78,23 +96,22 @@ const prefix = "voices";
 
 export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageCode`,
-	async (languageCode, {dispatch,getState}) => {
+	async (languageCode, {
+		dispatch, getState,
+	}) => {
 		{
 			// TODO: separate slices to avoid having to repeatedly check/verify/validate state.
 			// TODO: re-architecture to avoid getState() in action -- in particular when also directly/indirectly updating the state in the same call tree.
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
-			if(typeof selectedLanguageGroup == "string") {
-				if(typeof languageCode === "string"){
-					// TODO: better language group/code assertion/validation.
-					if(languageCode.length === 0){
-						throw new RangeError("languageCode");
-					}
+			if (typeof selectedLanguageGroup === "string" && typeof languageCode === "string") {
+				// TODO: better language group/code assertion/validation.
+				if (languageCode.length === 0) {
+					throw new RangeError("languageCode");
+				}
 
-					if(!languageCode.startsWith(selectedLanguageGroup)){
-						throw new Error("selectedLanguageGroup");
-					}
+				if (!languageCode.startsWith(selectedLanguageGroup)) {
+					throw new Error("selectedLanguageGroup");
 				}
 			}
 		}
@@ -103,10 +120,8 @@ export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IA
 		await dispatch(loadEffectiveVoiceForLanguageCode());
 
 		// TODO: re-architecture to avoid getState() in action -- in particular when also directly/indirectly updating the state in the same call tree.
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const voiceCountForSelectedLanguageCode = getVoiceCountForSelectedLanguageCode(getState() as OptionsRootState);
 		const voice = voiceCountForSelectedLanguageCode === 1
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			? getFirstVoiceForSelectedLanguageCode(getState() as OptionsRootState)
 			: null;
 		const voiceName = voice?.name ?? null;
@@ -117,7 +132,9 @@ export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IA
 
 export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageGroup`,
-	async (languageGroup, {dispatch, getState}) => {
+	async (languageGroup, {
+		dispatch, getState,
+	}) => {
 		dispatch(setSelectedLanguageGroup(languageGroup));
 
 		// NOTE: dependent properties load from the selected language group in the state, instead of an argument, to avoid discrepancies.
@@ -128,10 +145,8 @@ export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, I
 		await dispatch(loadTextDirectionForSelectedLanguageGroup());
 		await dispatch(loadSampleTextForLanguageGroup());
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const languageCountForSelectedLanguageGroup = getLanguageCountForSelectedLanguageGroup(getState() as OptionsRootState);
 		const languageCode = languageCountForSelectedLanguageGroup === 1
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			? getFirstLanguageForSelectedLanguageGroup(getState() as OptionsRootState)
 			: null;
 
@@ -141,32 +156,34 @@ export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, I
 
 export const loadIsSelectedLanguageGroupTalkieLocale = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadIsSelectedLanguageGroupTalkieLocale`,
-	async (_, {extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		extra, getState,
+	}) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
-		if(typeof selectedLanguageGroup !== "string") {
+		if (typeof selectedLanguageGroup !== "string") {
 			return false;
 		}
 
-		return extra.isTalkieLocale(selectedLanguageGroup)
+		return extra.isTalkieLocale(selectedLanguageGroup);
 	},
 );
 
 export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<LanguageTextDirection, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTextDirectionForSelectedLanguageGroup`,
-	async (_, {extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		extra, getState,
+	}) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
-		if(typeof selectedLanguageGroup !== "string") {
+		if (typeof selectedLanguageGroup !== "string") {
 			return DefaultLanguageDirection;
 		}
 
 		const isTalkieLocale = await extra.isTalkieLocale(selectedLanguageGroup);
 
-		if(isTalkieLocale){
-			return extra.getBidiDirection(selectedLanguageGroup as TalkieLocale)
+		if (isTalkieLocale) {
+			return extra.getBidiDirection(selectedLanguageGroup as TalkieLocale);
 		}
 
 		return DefaultLanguageDirection;
@@ -175,7 +192,9 @@ export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<Langua
 
 export const loadSelectedVoiceName = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedVoiceName`,
-	async (voiceName, {dispatch}) => {
+	async (voiceName, {
+		dispatch,
+	}) => {
 		dispatch(setSelectedVoiceName(voiceName));
 
 		if (typeof voiceName === "string") {
@@ -189,11 +208,12 @@ export const loadSelectedVoiceName = createAsyncThunk<void, string | null, IApiA
 
 export const loadEffectiveRateForVoice = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveRateForVoice`,
-	async (_, {extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		extra, getState,
+	}) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
-		if(typeof selectedVoiceName === "string"){
+		if (typeof selectedVoiceName === "string") {
 			return extra.getEffectiveRateForVoice(selectedVoiceName);
 		}
 
@@ -203,12 +223,13 @@ export const loadEffectiveRateForVoice = createAsyncThunk<number, void, IApiAsyn
 
 export const storeVoiceRateOverride = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeVoiceRateOverride`,
-	async (rate, {dispatch, extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (rate, {
+		dispatch, extra, getState,
+	}) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
-		if(typeof selectedVoiceName !== "string") {
-			throw new Error("selectedVoiceName");
+		if (typeof selectedVoiceName !== "string") {
+			throw new TypeError("selectedVoiceName");
 		}
 
 		await extra.setVoiceRateOverride(selectedVoiceName, rate);
@@ -219,12 +240,13 @@ export const storeVoiceRateOverride = createAsyncThunk<void, number, IApiAsyncTh
 
 export const loadEffectivePitchForVoice = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectivePitchForVoice`,
-	async (_, {extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		extra, getState,
+	}) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
-		if(typeof selectedVoiceName === "string"){
-		return extra.getEffectivePitchForVoice(selectedVoiceName);
+		if (typeof selectedVoiceName === "string") {
+			return extra.getEffectivePitchForVoice(selectedVoiceName);
 		}
 
 		return initialState.pitchForSelectedVoice;
@@ -233,13 +255,15 @@ export const loadEffectivePitchForVoice = createAsyncThunk<number, void, IApiAsy
 
 export const storeVoicePitchOverride = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeVoicePitchOverride`,
-	async (pitch, {dispatch, extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (pitch, {
+		dispatch, extra, getState,
+	}) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
-		if(typeof selectedVoiceName !== "string") {
-			throw new Error("selectedVoiceName");
+		if (typeof selectedVoiceName !== "string") {
+			throw new TypeError("selectedVoiceName");
 		}
+
 		await extra.setVoicePitchOverride(selectedVoiceName, pitch);
 		dispatch(setPitchForSelectedVoice(pitch));
 		void dispatch(speakInSelectedVoiceNameState());
@@ -248,8 +272,9 @@ export const storeVoicePitchOverride = createAsyncThunk<void, number, IApiAsyncT
 
 export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguageCode`,
-	async (_, {dispatch, extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		dispatch, extra, getState,
+	}) => {
 		const selectedLanguageCode = getSelectedLanguageCode(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageCode === "string") {
@@ -264,8 +289,9 @@ export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, void, IA
 
 export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguageGroup`,
-	async (_, {dispatch, extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		dispatch, extra, getState,
+	}) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageGroup === "string") {
@@ -283,22 +309,26 @@ export const storeEffectiveVoiceNameForLanguage = createAsyncThunk<void, StoreEf
 	async ({
 		languageCodeOrGroup,
 		voiceName,
-	}, {dispatch, extra}) => {
+	}, {
+		dispatch, extra,
+	}) => {
 		await extra.toggleLanguageVoiceOverrideName(languageCodeOrGroup, voiceName);
 
 		// HACK: duplicate function to set either language code or group?
-		isLanguageGroup(languageCodeOrGroup)
-			? await dispatch(loadEffectiveVoiceForLanguageGroup())
-			: await dispatch(loadEffectiveVoiceForLanguageCode());
+		const loader = isLanguageGroup(languageCodeOrGroup)
+			? loadEffectiveVoiceForLanguageGroup()
+			: loadEffectiveVoiceForLanguageCode();
+
+		await dispatch(loader);
 	},
 );
 
 export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSampleTextForLanguageGroup`,
-	async (_, {dispatch,getState,extra}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		dispatch, getState, extra,
+	}) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const isTalkieLocale = getIsSelectedLanguageGroupTalkieLocale(getState() as OptionsRootState);
 
 		const sampleTextForLanguageGroup = isTalkieLocale
@@ -311,10 +341,10 @@ export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiA
 
 export const speakInSelectedVoiceNameState = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/speakInSelectedVoiceNameState`,
-	async (_, {extra,getState}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (_, {
+		extra, getState,
+	}) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const sampleTextForLanguageGroup = getSampleTextForLanguageGroup(getState() as OptionsRootState);
 
 		// TODO: does every property have to have a selector?

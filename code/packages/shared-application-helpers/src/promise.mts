@@ -18,10 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	Promisable,
 } from "type-fest";
 
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const promiseFunctionSeries = async <T,>(promiseFunctions: Readonly<Array<(state?: T) => Promisable<T>>>, state?: T): Promise<T> => {
 	if (promiseFunctions.length === 0) {
 		throw new TypeError("Empty promiseFunctions.");
@@ -56,6 +57,7 @@ export function isPromiseTimeout(error: unknown): error is PromiseTimeout {
 	return Boolean(error) && typeof error === "object" && error instanceof Error && error.name === "PromiseTimeout";
 }
 
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, limit: number): Promise<T> => {
 	// NOTE: using promise objects for the race.
 	const timeoutPromise = new Promise<void>((resolve) => {
@@ -83,6 +85,7 @@ export const promiseDelay = async (sleep: number): Promise<void> =>
 		setTimeout(resolve, sleep);
 	});
 
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const promiseSleep = async <T,>(fn: () => Promisable<T>, sleep: number): Promise<T> =>
 	new Promise<T>((resolve, reject) => {
 		setTimeout(

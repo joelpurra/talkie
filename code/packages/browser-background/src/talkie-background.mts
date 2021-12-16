@@ -21,15 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import Execute from "@talkie/browser-shared/execute.mjs";
 import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
-	FramesSelectionTextAndLanguageCode,
-	SelectedTextWithFocusTimestamp,
-} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
-import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	IVoiceName,
 	IVoiceNameAndRateAndPitch,
@@ -38,10 +32,16 @@ import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
+	FramesSelectionTextAndLanguageCode,
+	SelectedTextWithFocusTimestamp,
+} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
+import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import {
 	canTalkieRunInTab,
 	isCurrentPageInternalToTalkie,
 } from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {

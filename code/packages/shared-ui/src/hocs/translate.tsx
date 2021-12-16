@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
-import {
+import type {
 	Except,
 } from "type-fest";
 
@@ -31,12 +31,9 @@ import {
 export interface TranslateProps extends ITranslatorProvider {}
 
 export default function translateAttribute<P extends TranslateProps = TranslateProps, U = Except<P, keyof TranslateProps>>() {
-	// eslint-disable-next-line func-names
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function translateHoc(ComponentToWrap: React.ComponentType<P>) {
 		class TranslationHoc extends React.PureComponent<P> {
-			static override contextType = TranslateContext;
-			declare context: React.ContextType<typeof TranslateContext>;
-
 			override render(): React.ReactNode {
 				return (
 					<ComponentToWrap
@@ -45,6 +42,9 @@ export default function translateAttribute<P extends TranslateProps = TranslateP
 						translateSync={this.context.translateSync}/>
 				);
 			}
+
+			static override contextType = TranslateContext;
+			declare context: React.ContextType<typeof TranslateContext>;
 		}
 
 		return TranslationHoc as unknown as React.ComponentClass<U>;

@@ -18,9 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
-import HeroSection from "../../components/hero-section/hero-section.js";
-import SharingIcons from "../../components/sharing/sharing-icons.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -28,16 +29,19 @@ import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import { TalkieLocale } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import React, {
 	ComponentProps,
 } from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
 import {
 	styled,
-	StyletronComponent,
 	withStyleDeep,
 } from "styletron-react";
 
+import HeroSection from "../../components/hero-section/hero-section.js";
+import SharingIcons from "../../components/sharing/sharing-icons.js";
 import InstallVoicesContainer from "../../containers/install-voices-container.js";
 
 export interface WelcomeProps {
@@ -58,17 +62,6 @@ export type WelcomeSample = {
 };
 
 class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
-	private spokeSample = false;
-	private welcomeSampleTextElement: HTMLElement | null = null;
-	private readonly styled: {
-		HeroEditionSection: StyletronComponent<ComponentProps<typeof HeroSection>>;
-		heroDiv: StyletronComponent<ComponentProps<"div">>;
-		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-		sharingDiv: StyletronComponent<ComponentProps<"div">>;
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
-		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -158,7 +151,7 @@ class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends 
 
 		this.props.speakTextInLanguageWithOverrides(
 			welcomeSample.text,
-			welcomeSample.languageCode
+			welcomeSample.languageCode,
 		);
 	}
 
@@ -248,6 +241,17 @@ class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends 
 			</section>
 		);
 	}
+
+	private spokeSample = false;
+	private welcomeSampleTextElement: HTMLElement | null = null;
+	private readonly styled: {
+		HeroEditionSection: StyletronComponent<ComponentProps<typeof HeroSection>>;
+		heroDiv: StyletronComponent<ComponentProps<"div">>;
+		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
+		sharingDiv: StyletronComponent<ComponentProps<"div">>;
+		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
+		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
+	};
 }
 
 export default configureAttribute<WelcomeProps & ConfigureProps>()(

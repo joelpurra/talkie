@@ -43,6 +43,7 @@ interface StateProps {
 	voicesForSelectedLanguageCode: Readonly<SafeVoiceObject[]>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
 interface InternalProps extends DialectVoicesContainerProps, StateProps, DispatchProps {}
@@ -68,8 +69,8 @@ class DialectVoicesContainer<P extends InternalProps> extends React.PureComponen
 
 		return (
 			<DialectVoices
-				onSelectVoiceNameClick={onSelectVoiceNameClick}
 				voices={voicesForSelectedLanguageCode}
+				onSelectVoiceNameClick={onSelectVoiceNameClick}
 			/>
 		);
 	}

@@ -18,9 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// @ts-ignore: error TS7016: Could not find a declaration file for module.
+import {
+	LanguageTextDirection,
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+
+// @ts-expect-error: File is not a module.ts(2306)
 import languagesJson from "./languages.cjs";
-import { LanguageTextDirection, TalkieLocale } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 export type LanguageData = {
 	"direction": LanguageTextDirection;

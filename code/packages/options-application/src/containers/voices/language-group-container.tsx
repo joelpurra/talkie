@@ -18,19 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Loading from "../../components/loading.js";
+import toolkit from "@reduxjs/toolkit";
+import {
+	LanguageTextDirection,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
 
 import LanguageGroup from "../../app/sections/voices/language-group.js";
+import Loading from "../../components/loading.js";
 import selectors from "../../selectors/index.mjs";
 import {
 	actions,
@@ -38,7 +38,10 @@ import {
 import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
-import { LanguageTextDirection } from "@talkie/shared-interfaces/italkie-locale.mjs";
+
+const {
+	bindActionCreators,
+} = toolkit;
 
 interface LanguageGroupContainerProps {
 	speakSampleTextForLanguage: (language: string) => void;

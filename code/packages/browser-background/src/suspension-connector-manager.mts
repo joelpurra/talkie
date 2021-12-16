@@ -26,12 +26,12 @@ import type {
 } from "webextension-polyfill";
 
 export default class SuspensionConnectorManager {
+	private talkiePreventSuspensionPort: Runtime.Port | null = null;
+
 	// NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
 	private get preventSuspensionPortName() {
 		return "talkie-prevents-suspension";
 	}
-
-	private talkiePreventSuspensionPort: Runtime.Port | null = null;
 
 	async _connectToStayAlive(): Promise<void> {
 		void logDebug("Start", "_connectToStayAlive");
@@ -62,6 +62,8 @@ export default class SuspensionConnectorManager {
 		// NOTE: this message listener is unnecessary.
 		this.talkiePreventSuspensionPort.onMessage.addListener(_onMessageHandler);
 
+		// TODO: set message target.
+		// eslint-disable-next-line unicorn/require-post-message-target-origin
 		this.talkiePreventSuspensionPort.postMessage("Hello from the SuspensionConnectorManager.");
 
 		void logDebug("Done", "_connectToStayAlive");
@@ -78,6 +80,8 @@ export default class SuspensionConnectorManager {
 			return;
 		}
 
+		// TODO: set message target.
+		// eslint-disable-next-line unicorn/require-post-message-target-origin
 		this.talkiePreventSuspensionPort.postMessage("Goodbye from the SuspensionConnectorManager.");
 
 		// https://developer.chrome.com/extensions/runtime#type-Port

@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import assert from "node:assert";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

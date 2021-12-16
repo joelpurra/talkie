@@ -22,7 +22,7 @@ import {
 	logDebug,
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {
@@ -37,11 +37,6 @@ type SuspendConnectionPort = {
 };
 
 export default class SuspensionListenerManager {
-	// NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
-	private get preventSuspensionPortName() {
-		return "talkie-prevents-suspension";
-	}
-
 	private connectionCounter = 0;
 	private activeSuspendConnections = 0;
 	private suspendConnectionPorts: SuspendConnectionPort[] = [];
@@ -50,6 +45,11 @@ export default class SuspensionListenerManager {
 	private _preventSuspendPromiseResolve: (() => void) | null = null;
 
 	private _onConnectHandlerBound: ((port: ReadonlyDeep<Runtime.Port>) => void) | null = null;
+
+	// NOTE: could be made configurable, in case there are multiple reasons to manage suspension.
+	private get preventSuspensionPortName() {
+		return "talkie-prevents-suspension";
+	}
 
 	async start(): Promise<void> {
 		void logDebug("Start", "SuspensionListenerManager.start");
@@ -134,6 +134,8 @@ export default class SuspensionListenerManager {
 				throw new Error(`Could not find the port for the current connection: ${currentConnectionId} ${typeof suspendConnectionPort} ${JSON.stringify(suspendConnectionPort)}`);
 			}
 
+			// TODO: set message target.
+			// eslint-disable-next-line unicorn/require-post-message-target-origin
 			suspendConnectionPort.port.postMessage(`Ah, ha, ha, ha, stayin' alive, stayin' alive: ${currentConnectionId}, ${this.activeSuspendConnections}`);
 		};
 

@@ -25,25 +25,29 @@ import {
 	combineReducers,
 } from "@talkie/shared-ui/store/combine-reducers.mjs";
 
-import voices, * as voicesActions from "./voices.mjs";
-import settings, * as settingsActions from "./settings.mjs";
-import welcome, * as welcomeActions from "./welcome.mjs";
-import tabs, * as tabsActions from "./tabs.mjs";
+import settings,
+* as settingsActions from "./settings.mjs";
+import tabs,
+* as tabsActions from "./tabs.mjs";
+import voices,
+* as voicesActions from "./voices.mjs";
+import welcome,
+* as welcomeActions from "./welcome.mjs";
 
 export const actions = {
 	settings: settingsActions,
 	shared: sharedActions,
+	tabs: tabsActions,
 	voices: voicesActions,
 	welcome: welcomeActions,
-	tabs: tabsActions,
 };
 
 const reducers = combineReducers({
 	settings,
 	shared,
+	tabs,
 	voices,
 	welcome,
-	tabs,
 });
 
 export default reducers;

@@ -25,39 +25,46 @@ import replace from "@rollup/plugin-replace";
 import filesize from "./rollup.config.filesize.mjs";
 import rollupConfig from "./rollup.config.base.mjs";
 
-const NODE_ENV = typeof process.env.NODE_ENV === "string" ? process.env.NODE_ENV : "production";
-const TALKIE_ENV = typeof process.env.TALKIE_ENV === "string" ? process.env.TALKIE_ENV : "production";
+const NODE_ENV =
+	typeof process.env.NODE_ENV === "string"
+		? process.env.NODE_ENV
+		: "production";
+const TALKIE_ENV =
+	typeof process.env.TALKIE_ENV === "string"
+		? process.env.TALKIE_ENV
+		: "production";
 
-const rollupConfiguration = (name) => mergeOptions.call(
-	{
-		concatArrays: true,
-	},
-	rollupConfig(name),
-	{
-		onwarn(warning, warn) {
-			// TODO: allowlist specific warnings for known packages.
-			if (warning.code === "THIS_IS_UNDEFINED"){
-				return
-			};
+const rollupConfiguration = (name) =>
+	mergeOptions.call(
+		{
+			concatArrays: true,
+		},
+		rollupConfig(name),
+		{
+			onwarn(warning, warn) {
+				// TODO: allowlist specific warnings for known packages.
+				if (warning.code === "THIS_IS_UNDEFINED") {
+					return;
+				}
 
-			warn(warning);
-		},
-		output: {
-			exports: "auto",
-			format: "iife",
-		},
-		plugins: [
-			replace({
-				preventAssignment: true,
-				"process.env.NODE_ENV": JSON.stringify(NODE_ENV),
-				"process.env.TALKIE_ENV":  JSON.stringify(TALKIE_ENV),
-			}),
-			nodeResolve({
-				browser: true,
-			}),
-			filesize(),
-		],
-	},
-);
+				warn(warning);
+			},
+			output: {
+				exports: "auto",
+				format: "iife",
+			},
+			plugins: [
+				replace({
+					preventAssignment: true,
+					"process.env.NODE_ENV": JSON.stringify(NODE_ENV),
+					"process.env.TALKIE_ENV": JSON.stringify(TALKIE_ENV),
+				}),
+				nodeResolve({
+					browser: true,
+				}),
+				filesize(),
+			],
+		}
+	);
 
 export default rollupConfiguration;

@@ -24,7 +24,7 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
@@ -59,10 +59,6 @@ const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootSta
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, StateRootProps> = (_dispatch) => ({});
 
 class StateRoot<P extends StateRootProps & StateProps & DispatchProps & ChildrenRequiredProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		versionName: null,
-	};
-
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -85,6 +81,10 @@ class StateRoot<P extends StateRootProps & StateProps & DispatchProps & Children
 			</StyleRoot>
 		);
 	}
+
+	static defaultProps = {
+		versionName: null,
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

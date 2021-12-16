@@ -18,8 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
 	ClassNameProp,
@@ -27,6 +25,7 @@ import {
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
+import React from "react";
 
 export default class HeroSection<P extends ChildrenRequiredProps & ClassNameProp> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor

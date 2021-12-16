@@ -21,8 +21,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, { ComponentProps } from "react";
-import { StyletronComponent, withStyleDeep } from "styletron-react";
+import React, {
+	ComponentProps,
+} from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
+import {
+	withStyleDeep,
+} from "styletron-react";
 
 interface DialectsProps {
 	languages: Readonly<string[]>;
@@ -31,12 +38,6 @@ interface DialectsProps {
 }
 
 class Dialects<P extends DialectsProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -95,25 +96,28 @@ class Dialects<P extends DialectsProps> extends React.PureComponent<P> {
 				{
 					languages
 						.map(
-							// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-							(language) => {
-								return (
-									<this.styled.dialectLi
-										key={language}
-										// eslint-disable-next-line react/jsx-no-bind
-										onClick={onSelectLanguageCodeClick.bind(null, language)}
-									>
-										<buttonBase.transparentButton>
-											{language}
-										</buttonBase.transparentButton>
-									</this.styled.dialectLi>
-								);
-							},
+							(language) => (
+								<this.styled.dialectLi
+									key={language}
+									// eslint-disable-next-line react/jsx-no-bind
+									onClick={onSelectLanguageCodeClick.bind(null, language)}
+								>
+									<buttonBase.transparentButton>
+										{language}
+									</buttonBase.transparentButton>
+								</this.styled.dialectLi>
+							),
 						)
 				}
 			</this.styled.dialectsUl>
 		);
 	}
+
+	private readonly styled: {
+		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
+		dialectLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
+		dialectsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
+	};
 }
 
 export default Dialects;

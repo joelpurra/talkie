@@ -24,7 +24,7 @@ import {
 import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {

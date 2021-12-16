@@ -18,19 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
 	Action,
 } from "webextension-polyfill";
 
 export default class ButtonPopupManager {
+	constructor(
+		private readonly translator: ITranslatorProvider,
+		private readonly metadataManager: IMetadataManager,
+	) {}
+
 	private get _popupUrl() {
 		// NOTE: relative to background.html, rooted in the browser extension package root.
 		return "/packages/popup-renderer/src/popup.html";
 	}
-
-	constructor(private readonly translator: ITranslatorProvider, private readonly metadataManager: IMetadataManager) {}
 
 	async _getExtensionShortName(): Promise<string> {
 		const isPremiumEdition = await this.metadataManager.isPremiumEdition();

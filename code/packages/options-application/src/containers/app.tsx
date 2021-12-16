@@ -18,16 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import React from "react";
-import {
-	connect,
+import type {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
+import {
+	connect,
+} from "react-redux";
 
 import Main, {
 	MainDispatchProps,
@@ -40,6 +39,10 @@ import {
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
+
+const {
+	bindActionCreators,
+} = toolkit;
 
 interface StateProps extends MainStateProps {}
 
@@ -64,10 +67,6 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, AppProps> = 
 });
 
 class App<P extends AppProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		osType: null,
-	};
-
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -100,6 +99,10 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 			/>
 		);
 	}
+
+	static defaultProps = {
+		osType: null,
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

@@ -18,11 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
-
-import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 
 export type TalkieProgressData = {
 	current: number;

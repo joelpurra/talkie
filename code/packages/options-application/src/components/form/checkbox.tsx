@@ -18,17 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	ClassNameProp,
+} from "@talkie/shared-ui/styled/types.js";
+import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import React, {
 	ChangeEvent,
 } from "react";
 import {
 	styled,
 } from "styletron-react";
-
-import {
-	ClassNameProp,
-} from "@talkie/shared-ui/styled/types.js";
-import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 
 export interface CheckBoxProps {
 	id?: string;

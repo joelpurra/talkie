@@ -18,17 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line react/no-typos, import/no-unassigned-import
 import "react";
+
+import type {
+	Action,
+	Reducer,
+} from "@reduxjs/toolkit";
 import getRoot from "@talkie/shared-ui/renderers/get-root.js";
 import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
 } from "@talkie/shared-ui/utils/store-helpers.mjs";
 import ReactDOM from "react-dom";
-import {
-	Action,
-	Reducer,
-} from "@reduxjs/toolkit";
 
 import {
 	getPostrenderActionsToDispatch,

@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -27,10 +28,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
 
 import Welcome from "../app/sections/welcome.js";
 import selectors from "../selectors/index.mjs";
@@ -40,6 +37,10 @@ import {
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
+
+const {
+	bindActionCreators,
+} = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface WelcomeContainerProps {}
@@ -79,14 +80,6 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProp
 });
 
 class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState> extends React.PureComponent<P, S> {
-	override state = (
-		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-		{
-			loadVoicesRetryCount: 0,
-			attemptedLoadingSampleText: false,
-		} as S
-	);
-
 	constructor(props: P) {
 		super(props);
 
@@ -122,25 +115,23 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 				},
 				loadVoicesRetryDelay,
 			);
-		} else {
-			if(!this.state.attemptedLoadingSampleText) {
-				const loadSampleTextDelay = 50;
+		} else if (!this.state.attemptedLoadingSampleText) {
+			const loadSampleTextDelay = 50;
 
-				setTimeout(
-					() => {
-						this.setState(
-							(_state) => ({
-								attemptedLoadingSampleText: true,
-							}),
-							() => {
-								// TODO: is this the best place to load data?
-								this.props.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice();
-							},
-						);
-					},
-					loadSampleTextDelay,
-				);
-			}
+			setTimeout(
+				() => {
+					this.setState(
+						(_state) => ({
+							attemptedLoadingSampleText: true,
+						}),
+						() => {
+							// TODO: is this the best place to load data?
+							this.props.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice();
+						},
+					);
+				},
+				loadSampleTextDelay,
+			);
 		}
 	}
 
@@ -167,6 +158,14 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 			/>
 		);
 	}
+
+	override state = (
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		{
+			attemptedLoadingSampleText: false,
+			loadVoicesRetryCount: 0,
+		} as S
+	);
 }
 
 export default connect<StateProps, DispatchProps, InternalProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(

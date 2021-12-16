@@ -18,16 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
 
 import DialectVoiceOptions, {
 } from "../../app/sections/voices/dialect-voice-options.js";
@@ -38,6 +35,10 @@ import {
 import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
+
+const {
+	bindActionCreators,
+} = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DialectVoiceOptionsContainerProps {}

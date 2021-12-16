@@ -25,11 +25,11 @@ import {
 import PermissionsManager from "./permissions-manager.mjs";
 
 export default class ClipboardManager {
+	constructor(private readonly permissionsManager: PermissionsManager) {}
+
 	private get copyPasteTargetElementId() {
 		return "copy-paste-textarea";
 	}
-
-	constructor(private readonly permissionsManager: PermissionsManager) {}
 
 	async _getExistingTextareaOrNull(): Promise<Element | null> {
 		const existingTextarea = document.querySelector(`#${this.copyPasteTargetElementId}`);

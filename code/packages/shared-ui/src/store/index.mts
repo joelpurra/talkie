@@ -18,11 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import sharedReducer from "../slices/index.mjs";
 import {
 	combineReducers,
 } from "../store/combine-reducers.mjs";
-
-import sharedReducer from "../slices/index.mjs";
 import {
 	getUnusableStoreForGeneratedTypes,
 } from "./get-store.mjs";

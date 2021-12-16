@@ -22,7 +22,7 @@ import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-
 import {
 	Server as StyletronServer,
 } from "styletron-engine-atomic";
-import {
+import type {
 	StandardEngine,
 } from "styletron-standard";
 

@@ -18,12 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
+import {
+	IApiAsyncThunkConfig,
+} from "@talkie/shared-ui/slices/slices-types.mjs";
+
 const {
+	// eslint-disable-next-line import/no-named-as-default-member
 	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
 	createSlice,
 } = toolkit;
-import { IApiAsyncThunkConfig } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 export interface TabsState {
 	activeTabId: string | null;
@@ -36,23 +42,26 @@ const initialState: TabsState = {
 const prefix = "tabs";
 
 // TODO: move/reuse helpers.
-const isTabId = (tabId: string | null): tabId is string => {
-	return typeof tabId === "string"
+const isTabId = (tabId: string | null): tabId is string => typeof tabId === "string"
 		&& tabId.length > 0
 		&& tabId.split("#").length === 1;
-};
 
 // TODO: move/reuse helpers.
-const isLocationHash = (locationHash: string | null): locationHash is string => {
-	return typeof locationHash === "string"
+const isLocationHash = (locationHash: string | null): locationHash is string => typeof locationHash === "string"
 		&& locationHash.length > 1
 		&& locationHash.startsWith("#")
 		&& locationHash.split("#").length === 2;
-};
 
 export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadLocationHashAsActiveTab`,
-	async (_, {dispatch, extra}) => {
+	async (
+		_,
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		{
+			dispatch,
+			extra,
+		},
+	) => {
 		const locationHash = await extra.getLocationHash();
 
 		if (isLocationHash(locationHash)) {
@@ -63,13 +72,18 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 		} else {
 			await dispatch(setActiveTabId(null));
 		}
-
 	},
 );
 
 export const setActiveTabId = createAsyncThunk<string | null, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/setActiveTabId`,
-	async (activeTabId, {extra}) => {
+	async (
+		activeTabId,
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		{
+			extra,
+		},
+	) => {
 		if (isTabId(activeTabId)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
 			const locationHash = `#${activeTabId}`;
@@ -87,13 +101,13 @@ export const setActiveTabId = createAsyncThunk<string | null, string | null, IAp
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const tabsSlice = createSlice({
-	initialState,
 	extraReducers: (builder) => {
 		builder
 			.addCase(setActiveTabId.fulfilled, (state, action) => {
 				state.activeTabId = action.payload;
 			});
 	},
+	initialState,
 	name: prefix,
 	reducers: {},
 });

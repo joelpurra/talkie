@@ -22,13 +22,15 @@ import {
 	logInfo,
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
-import {
+import type {
 	JsonValue,
 } from "type-fest";
 
 import Execute from "./execute.mjs";
 
 export default class ContentLogger {
+	constructor(private readonly execute: Execute) {}
+
 	private get executeLogToPageCode() {
 		return "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPage', error); } }());";
 	}
@@ -36,8 +38,6 @@ export default class ContentLogger {
 	private get executeLogToPageWithColorCode() {
 		return "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPageWithColor', error); } }());";
 	}
-
-	constructor(private readonly execute: Execute) {}
 
 	async logToPage(...args: Readonly<JsonValue[]>): Promise<void> {
 		const now = new Date().toISOString();

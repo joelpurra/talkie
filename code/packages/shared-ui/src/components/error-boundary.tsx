@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React, {
 	ErrorInfo,
 } from "react";
-import {
+import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
@@ -31,13 +31,6 @@ import {
 } from "../types.mjs";
 
 export default class ErrorBoundary<P extends ChildrenRequiredProps> extends React.PureComponent<P> {
-	override state = {
-		componentStack: null,
-		hasError: false,
-		message: null,
-		stacktrace: null,
-	};
-
 	override componentDidCatch(error: ReadonlyDeep<Error>, info: ReadonlyDeep<ErrorInfo>): void {
 		// TODO: use DualLogger?
 		// eslint-disable-next-line no-console
@@ -191,4 +184,11 @@ Hope this helps =)
 
 `;
 	}
+
+	override state = {
+		componentStack: null,
+		hasError: false,
+		message: null,
+		stacktrace: null,
+	};
 }

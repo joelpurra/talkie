@@ -18,11 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -30,6 +27,13 @@ import {
 import {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 export type LanguagesState = {
 	navigatorLanguage: string | null;
@@ -52,23 +56,31 @@ const prefix = "languages";
 export const loadNavigatorLanguage = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadNavigatorLanguage`,
 	// TODO: convert to synchronous action?
-	(_, {extra}) => extra.getNavigatorLanguage(),
+	async (_, {
+		extra,
+	}) => extra.getNavigatorLanguage(),
 );
 
 export const loadNavigatorLanguages = createAsyncThunk<Readonly<string[]>, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadNavigatorLanguages`,
 	// TODO: convert to synchronous action?
-	(_, {extra}) => extra.getNavigatorLanguages(),
+	async (_, {
+		extra,
+	}) => extra.getNavigatorLanguages(),
 );
 
 export const loadTranslatedLanguages = createAsyncThunk<TalkieLocale[], void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTranslatedLanguages`,
-	async (_, {extra}) => extra.getTranslatedLanguages(),
+	async (_, {
+		extra,
+	}) => extra.getTranslatedLanguages(),
 );
 
 export const loadTranslationLocale = createAsyncThunk<TalkieLocale, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTranslationLocale`,
-	async (_, {extra}) => extra.getTranslationLocale(),
+	async (_, {
+		extra,
+	}) => extra.getTranslationLocale(),
 );
 
 export const languagesSlice = createSlice({

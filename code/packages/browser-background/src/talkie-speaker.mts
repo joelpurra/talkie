@@ -44,7 +44,7 @@ import {
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

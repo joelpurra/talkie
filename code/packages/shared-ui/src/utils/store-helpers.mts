@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	Action,
 	Store,
 } from "@reduxjs/toolkit";

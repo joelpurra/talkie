@@ -18,8 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-
+import SocialShareIcon from "@talkie/shared-ui/components/icon/social-share-icon.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -28,7 +27,7 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
-import SocialShareIcon from "@talkie/shared-ui/components/icon/social-share-icon.js";
+import React from "react";
 
 class SharingIcons<P extends ConfigureProps & ClassNameProp> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor

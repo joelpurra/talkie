@@ -18,14 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React, {
-	ComponentProps,
-} from "react";
-import {
-	styled,
-	StyletronComponent,
-} from "styletron-react";
-
 import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
@@ -33,6 +25,15 @@ import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
+import React, {
+	ComponentProps,
+} from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
+import {
+	styled,
+} from "styletron-react";
 
 export type InformationType =
 	| "information"
@@ -43,12 +44,6 @@ export interface InformationSectionProps extends ChildrenRequiredProps, ClassNam
 }
 
 class InformationSection<P extends InformationSectionProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		childBox: StyletronComponent<ComponentProps<"div">>;
-		glyphIcon: StyletronComponent<ComponentProps<"div">>;
-		informationBox: StyletronComponent<ComponentProps<"div">>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -134,6 +129,12 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 			</this.styled.informationBox>
 		);
 	}
+
+	private readonly styled: {
+		childBox: StyletronComponent<ComponentProps<"div">>;
+		glyphIcon: StyletronComponent<ComponentProps<"div">>;
+		informationBox: StyletronComponent<ComponentProps<"div">>;
+	};
 }
 
 export default InformationSection;

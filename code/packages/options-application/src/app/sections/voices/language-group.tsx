@@ -18,19 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	LanguageTextDirection,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
-import Markdown from "../../../components/markdown.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import { LanguageTextDirection } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
 
+import Markdown from "../../../components/markdown.js";
 
 export interface LanguageGroupStateProps {
 	effectiveVoiceNameForSelectedLanguageGroup: string;
@@ -48,10 +52,6 @@ interface LanguageGroupProps extends LanguageGroupStateProps, LanguageGroupDispa
 }
 
 class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		sampleTextBlockQuote: StyletronComponent<ComponentProps<typeof textBase.blockquote>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -88,7 +88,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			textDirectionForLanguageGroup,
 		} = this.props as LanguageGroupProps;
 
-		const textDirectionClassNameForLanguageGroup = `text-direction-${textDirectionForLanguageGroup}`
+		const textDirectionClassNameForLanguageGroup = `text-direction-${textDirectionForLanguageGroup}`;
 		const sampleTextBlockQuote = hasSampleTextForLanguageGroup
 			? (
 				<this.styled.sampleTextBlockQuote
@@ -158,6 +158,10 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			</>
 		);
 	}
+
+	private readonly styled: {
+		sampleTextBlockQuote: StyletronComponent<ComponentProps<typeof textBase.blockquote>>;
+	};
 }
 
 export default LanguageGroup;

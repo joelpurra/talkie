@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
 import options from "@talkie/options-renderer/options-html.mjs";
 import popup from "@talkie/popup-renderer/popup-html.mjs";
 import {
 	IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
-import {
-	Action,
-} from "@reduxjs/toolkit";
 
 const getAllApps = async <S, A extends Action, P>(): Promise<Array<IRenderReactHtmlToFile<S, A, P>>> => {
 	// NOTE: generic typing might be problematic when mixing several applications, as their state/actions/props are not the same (albeit superficially similar, sharing the same codebase).

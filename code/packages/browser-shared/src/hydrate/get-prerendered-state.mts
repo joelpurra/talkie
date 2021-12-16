@@ -18,10 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	PreloadedState,
 } from "@reduxjs/toolkit";
 
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 const getPrerenderedState = <S,>(): PreloadedState<S> => {
 	// NOTE: use preloaded state from the pre-rendered html.
 	const prerenderedStateSelector = "#__PRERENDERED_STATE__";

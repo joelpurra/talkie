@@ -31,8 +31,10 @@ import {
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
 
@@ -49,13 +51,6 @@ export interface FooterProps extends FooterStateProps, FooterDispatchProps {
 }
 
 class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent<P> {
-	styled: {
-		footer: StyletronComponent<ComponentProps<typeof layoutBase.footer>>;
-		footerFirstLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerSecondLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerErrorLink: StyletronComponent<ComponentProps<typeof errors.span>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -118,9 +113,9 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 			<this.styled.footer>
 				<this.styled.footerFirstLink
 					href={configure("urls.options")}
-					onClick={optionsPageClick}
 					rel="noopener noreferrer"
 					target="_blank"
+					onClick={optionsPageClick}
 				>
 					<Icon
 						className="icon-settings"
@@ -143,6 +138,13 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 			</this.styled.footer>
 		);
 	}
+
+	styled: {
+		footer: StyletronComponent<ComponentProps<typeof layoutBase.footer>>;
+		footerFirstLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
+		footerSecondLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
+		footerErrorLink: StyletronComponent<ComponentProps<typeof errors.span>>;
+	};
 }
 
 export default configureAttribute<FooterProps & ConfigureProps>()(

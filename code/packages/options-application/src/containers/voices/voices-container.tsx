@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
@@ -29,13 +30,13 @@ import Voices, {
 	VoicesStateProps,
 } from "../../app/sections/voices.js";
 import selectors from "../../selectors/index.mjs";
-import type {
-	OptionsRootState,
-} from "../../store/index.mjs";
 import {
 	actions,
 } from "../../slices/index.mjs";
-import toolkit from "@reduxjs/toolkit";
+import type {
+	OptionsRootState,
+} from "../../store/index.mjs";
+
 const {
 	bindActionCreators,
 } = toolkit;
@@ -112,6 +113,7 @@ class VoicesContainer<P extends InternalProps> extends React.PureComponent<P> {
 		return false;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	handleSelectVoiceNameClick(voiceName: string | null, event: React.MouseEvent): false {
 		event.preventDefault();
 		event.stopPropagation();
@@ -163,17 +165,17 @@ class VoicesContainer<P extends InternalProps> extends React.PureComponent<P> {
 				hasSelectedLanguageGroup={hasSelectedLanguageGroup}
 				hasSelectedVoiceName={hasSelectedVoiceName}
 				haveVoices={haveVoices}
-				languageGroupsCount={languageGroupsCount}
 				languageCountForSelectedLanguageGroup={languageCountForSelectedLanguageGroup}
+				languageGroupsCount={languageGroupsCount}
+				selectedLanguageCode={selectedLanguageCode}
+				selectedLanguageGroup={selectedLanguageGroup}
+				selectedVoiceName={selectedVoiceName}
+				speakSampleTextForLanguage={this.speakSampleTextForLanguage}
+				speakSampleTextForVoiceName={this.speakSampleTextForVoiceName}
+				voiceCountForSelectedLanguageCode={voiceCountForSelectedLanguageCode}
 				onSelectLanguageCodeClick={this.handleSelectLanguageCodeClick}
 				onSelectLanguageGroupClick={this.handleSelectLanguageGroupClick}
 				onSelectVoiceNameClick={this.handleSelectVoiceNameClick}
-				selectedLanguageGroup={selectedLanguageGroup}
-				selectedLanguageCode={selectedLanguageCode}
-				selectedVoiceName={selectedVoiceName}
-				voiceCountForSelectedLanguageCode={voiceCountForSelectedLanguageCode}
-				speakSampleTextForLanguage={this.speakSampleTextForLanguage}
-				speakSampleTextForVoiceName={this.speakSampleTextForVoiceName}
 			/>
 		);
 	}

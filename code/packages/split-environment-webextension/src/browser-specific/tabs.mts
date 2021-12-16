@@ -22,7 +22,7 @@ import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
 import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {

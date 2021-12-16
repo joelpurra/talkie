@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import React from "react";
-import {
+import type {
 	Except,
 } from "type-fest";
 
@@ -33,17 +33,17 @@ export interface BroadcasterProps {
 }
 
 export default function broadcasterAttribute<P extends BroadcasterProps = BroadcasterProps, U = Except<P, keyof BroadcasterProps>>() {
-	// eslint-disable-next-line func-names
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>) {
 		class BroadcasterHoc extends React.PureComponent<P> {
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
-
 			override render(): React.ReactNode {
 				return (
 					<ComponentToWrap {...this.props} broadcaster={this.context.broadcaster}/>
 				);
 			}
+
+			static override contextType = BroadcasterContext;
+			declare context: React.ContextType<typeof BroadcasterContext>;
 		}
 
 		return BroadcasterHoc as unknown as React.ComponentClass<U>;

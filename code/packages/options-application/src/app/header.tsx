@@ -33,8 +33,10 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
 
@@ -43,11 +45,6 @@ export interface HeaderProps {
 }
 
 class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		button: StyletronComponent<ComponentProps<typeof buttonBase.a>>;
-		extensionName: StyletronComponent<ComponentProps<typeof textBase.a>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -116,6 +113,11 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 			</layoutBase.header>
 		);
 	}
+
+	private readonly styled: {
+		button: StyletronComponent<ComponentProps<typeof buttonBase.a>>;
+		extensionName: StyletronComponent<ComponentProps<typeof textBase.a>>;
+	};
 }
 
 export default configureAttribute<HeaderProps & ConfigureProps>()(

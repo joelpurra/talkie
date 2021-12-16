@@ -22,6 +22,8 @@ import ContentLogger from "./content-logger.mjs";
 import Execute from "./execute.mjs";
 
 export default class Plug {
+	constructor(private readonly contentLogger: ContentLogger, private readonly execute: Execute) {}
+
 	private get executeGetTalkieWasPluggedCode() {
 		return "(function(){ return window.talkieWasPlugged; }());";
 	}
@@ -29,8 +31,6 @@ export default class Plug {
 	private get executeSetTalkieWasPluggedCode() {
 		return "(function(){ window.talkieWasPlugged = true; }());";
 	}
-
-	constructor(private readonly contentLogger: ContentLogger, private readonly execute: Execute) {}
 
 	async executePlug(): Promise<void> {
 		// TODO: premium version of the same message?

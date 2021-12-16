@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
-import {
+import type {
 	JsonValue,
 } from "type-fest";
 

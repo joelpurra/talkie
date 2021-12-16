@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from "react";
-import {
+import type {
 	Except,
 } from "type-fest";
 
@@ -34,17 +34,17 @@ export interface ConfigureProps {
 }
 
 export default function configureAttribute<P extends ConfigureProps = ConfigureProps, U = Except<P, keyof ConfigureProps>>() {
-	// eslint-disable-next-line func-names
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function configureHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ConfigurationHoc extends React.PureComponent<P> {
-			static override contextType = ConfigurationContext;
-			declare context: React.ContextType<typeof ConfigurationContext>;
-
 			override render(): React.ReactNode {
 				return (
 					<ComponentToWrap {...this.props} configure={this.context.configure}/>
 				);
 			}
+
+			static override contextType = ConfigurationContext;
+			declare context: React.ContextType<typeof ConfigurationContext>;
 		}
 
 		return ConfigurationHoc as unknown as React.ComponentClass<U>;

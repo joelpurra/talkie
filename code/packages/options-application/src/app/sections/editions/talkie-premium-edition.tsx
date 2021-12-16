@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Checkbox from "../../../components/form/checkbox.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -26,6 +25,8 @@ import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import React from "react";
+
+import Checkbox from "../../../components/form/checkbox.js";
 
 export interface TalkiePremiumEditionProps {
 	disabled: boolean;

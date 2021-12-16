@@ -18,12 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type {
 	Mutable,
 	ReadonlyDeep,
 } from "type-fest";
@@ -44,9 +46,6 @@ export interface ContextMenuOptions {
 export default class ContextMenuManager {
 	actionMenuLimit: number;
 	contextMenuOptionsCollection: ReadonlyDeep<ContextMenuOptions[]>;
-	private get contextMenuStartStopId() {
-		return "talkie-context-menu-start-stop";
-	}
 
 	constructor(private readonly commandHandler: CommandHandler, private readonly metadataManager: IMetadataManager, private readonly translator: ITranslatorProvider) {
 		this.actionMenuLimit = !Number.isNaN(browser.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT)
@@ -142,6 +141,10 @@ export default class ContextMenuManager {
 				webextension: true,
 			},
 		];
+	}
+
+	private get contextMenuStartStopId() {
+		return "talkie-context-menu-start-stop";
 	}
 
 	async removeAll(): Promise<void> {

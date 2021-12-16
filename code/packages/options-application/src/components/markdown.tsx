@@ -18,12 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-import ReactMarkdown from "react-markdown";
-
 import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
+import React from "react";
+import ReactMarkdown from "react-markdown";
 
 export interface MarkdownProps extends ClassNameProp {
 	children: string;
@@ -32,10 +31,6 @@ export interface MarkdownProps extends ClassNameProp {
 interface InternalProps extends MarkdownProps {}
 
 class Markdown<P extends InternalProps> extends React.PureComponent<P> {
-	linkTarget: (...args: Readonly<unknown[]>) => never;
-	transformImageUri: (...args: Readonly<unknown[]>) => never;
-	transformLinkUri: (...args: Readonly<unknown[]>) => never;
-
 	constructor(props: P) {
 		super(props);
 
@@ -58,21 +53,25 @@ class Markdown<P extends InternalProps> extends React.PureComponent<P> {
 
 		return (
 			<ReactMarkdown
-					skipHtml
-					unwrapDisallowed
-					// NOTE: possibly disables some security by unwrapping the root <p> element, but still only allows <strong> in the output.
-					allowedElements={[
-						"strong",
-					]}
-					className={className}
-					linkTarget={this.linkTarget}
-					transformImageUri={this.transformImageUri}
-					transformLinkUri={this.transformLinkUri}
-				>
+				skipHtml
+				unwrapDisallowed
+				// NOTE: possibly disables some security by unwrapping the root <p> element, but still only allows <strong> in the output.
+				allowedElements={[
+					"strong",
+				]}
+				className={className}
+				linkTarget={this.linkTarget}
+				transformImageUri={this.transformImageUri}
+				transformLinkUri={this.transformLinkUri}
+			>
 				{children}
 			</ReactMarkdown>
 		);
 	}
+
+	linkTarget: (...args: Readonly<unknown[]>) => never;
+	transformImageUri: (...args: Readonly<unknown[]>) => never;
+	transformLinkUri: (...args: Readonly<unknown[]>) => never;
 }
 
 export default Markdown;

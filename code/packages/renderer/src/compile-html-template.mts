@@ -31,7 +31,8 @@ import {
 	ReactHtmlTemplateLocalsVariables,
 } from "./render-types.mjs";
 
-const compileEjs = async (templatePath: URL): Promise<ClientFunction> => {
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const compileEjs = async (templatePath: Readonly<URL>): Promise<ClientFunction> => {
 	const template = await readFile(templatePath);
 	const compilerOptions: Options & {async: false; client: true} = {
 		_with: false,
@@ -44,6 +45,7 @@ const compileEjs = async (templatePath: URL): Promise<ClientFunction> => {
 	return templateFunction;
 };
 
-const compileHtmlTemplate = async (templatePath: URL): Promise<ReactHtmlTemplateLocalsVariables> => compileEjs(templatePath) as unknown as ReactHtmlTemplateLocalsVariables;
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const compileHtmlTemplate = async (templatePath: Readonly<URL>): Promise<ReactHtmlTemplateLocalsVariables> => compileEjs(templatePath) as unknown as ReactHtmlTemplateLocalsVariables;
 
 export default compileHtmlTemplate;

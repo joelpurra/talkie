@@ -21,18 +21,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // TODO: implement or remove placeholder file.
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import {
-	LanguageTextDirection,
-	TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	EditionType,
 	IMetadataManager,
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	LanguageTextDirection,
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
@@ -47,7 +45,9 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
-import {
+import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
@@ -56,7 +56,6 @@ import type {
 } from "webextension-polyfill";
 
 export default class Api implements IApi {
-	// eslint-disable-next-line max-params
 	constructor(private readonly metadataManager: IMetadataManager, private readonly talkieLocaleHelper: ITalkieLocaleHelper, private readonly localeProvider: ILocaleProvider) {}
 
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {
@@ -196,11 +195,11 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection>{
+	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getSampleText(talkieLocale: TalkieLocale): Promise<string>{
+	async getSampleText(talkieLocale: TalkieLocale): Promise<string> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -213,11 +212,11 @@ export default class Api implements IApi {
 		return this.localeProvider.getTranslationLocale();
 	}
 
-	getNavigatorLanguage(): Promise<Readonly<string | null>> {
+	async getNavigatorLanguage(): Promise<Readonly<string | null>> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	getNavigatorLanguages(): Promise<Readonly<string[]>> {
+	async getNavigatorLanguages(): Promise<Readonly<string[]>> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 }

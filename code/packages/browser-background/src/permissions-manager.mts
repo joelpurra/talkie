@@ -22,7 +22,7 @@ import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-import {
+import type {
 	Mutable,
 	Promisable,
 	ReadonlyDeep,

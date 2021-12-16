@@ -18,19 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-
-
 import type {
-	Reducer, ReducersMapObject,
+	Reducer,
+	ReducersMapObject,
 } from "@reduxjs/toolkit";
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
+
 const {
 	combineReducers: reduxCombineReducers,
 } = toolkit;
 
 type CombineReducers = <S>(
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	reducers: ReducersMapObject<S, any>
-  ) => Reducer<S>
+) => Reducer<S>;
 
 // NOTE: mimicing the original combineReducers export.
 export const combineReducers: CombineReducers = reduxCombineReducers;

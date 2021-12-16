@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	connect,
@@ -32,15 +33,14 @@ import {
 import {
 	Provider,
 } from "styletron-react";
-import {
+import type {
 	StandardEngine,
 } from "styletron-standard";
-import {
+import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
 
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import type {
 	SharedRootState,
 } from "../store/index.mjs";
@@ -76,15 +76,15 @@ export interface ProvidersProps {
 }
 
 interface StateProps {
-	systemType: SystemType;
+	// TODO: fix null case.
+	systemType: SystemType | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
 const mapStateToProps: MapStateToProps<StateProps, ProvidersProps, SharedRootState> = (state: ReadonlyDeep<SharedRootState>) => ({
-	// TODO: fix null case.
-	systemType: state.shared.metadata.systemType!,
+	systemType: state.shared.metadata.systemType,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, ProvidersProps> = (_dispatch) => ({});
@@ -95,28 +95,17 @@ export const TranslateContext = React.createContext<TranslationProviderContext>(
 export const BroadcasterContext = React.createContext<BroadcasterProviderContext>(undefined as unknown as BroadcasterProviderContext);
 
 class Providers<P extends ProvidersProps & StateProps & DispatchProps & ChildrenRequiredProps, S extends ProvidersState = ProvidersState> extends React.PureComponent<P, S> {
-	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-	override state = {
-		broadcasterContextValue: {
-			broadcaster: this.props.broadcaster,
-		},
-		configurationContextValue: {
-			configure: Providers.getConfigure(this.props.configuration, this.props.systemType),
-		},
-		systemType: this.props.systemType,
-		translateContextValue: {
-			translateSync: (key: string, extras?: Readonly<string[]>) =>
-				// eslint-disable-next-line no-sync
-				this.props.translator.translateSync(key, extras),
-		},
-	} as S;
-
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
 	}
 
-	static getConfigure(configuration: Readonly<IConfiguration>, systemType: SystemType): ConfigureContextProperty {
+	static getConfigure(configuration: Readonly<IConfiguration>, systemType: SystemType | null): ConfigureContextProperty {
+		// TODO: fix null case.
+		if (typeof systemType !== "string") {
+			throw new TypeError("systemType");
+		}
+
 		// eslint-disable-next-line no-sync
 		return (path: string) => configuration.getSync(systemType, path);
 	}
@@ -160,6 +149,22 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 			</ConfigurationContext.Provider>
 		);
 	}
+
+	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+	override state = {
+		broadcasterContextValue: {
+			broadcaster: this.props.broadcaster,
+		},
+		configurationContextValue: {
+			configure: Providers.getConfigure(this.props.configuration, this.props.systemType),
+		},
+		systemType: this.props.systemType,
+		translateContextValue: {
+			translateSync: (key: string, extras?: Readonly<string[]>) =>
+				// eslint-disable-next-line no-sync
+				this.props.translator.translateSync(key, extras),
+		},
+	} as S;
 }
 
 export default connect<StateProps, DispatchProps, ProvidersProps, SharedRootState>(mapStateToProps, mapDispatchToProps)(

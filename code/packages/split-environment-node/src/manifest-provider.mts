@@ -23,7 +23,7 @@ import jsonfile from "jsonfile";
 import assert from "node:assert";
 import path from "node:path";
 import process from "node:process";
-import {
+import type {
 	JsonObject,
 } from "type-fest";
 import type {

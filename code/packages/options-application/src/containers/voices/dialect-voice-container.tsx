@@ -43,6 +43,7 @@ interface StateProps {
 	voiceForSelectedVoiceName: Readonly<SafeVoiceObject> | null;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
 interface InternalProps extends DialectVoicesContainerProps, StateProps, DispatchProps {}

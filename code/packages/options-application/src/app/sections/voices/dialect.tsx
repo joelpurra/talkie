@@ -19,11 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
-import Loading from "../../../components/loading.js";
-import Markdown from "../../../components/markdown.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
+
+import Loading from "../../../components/loading.js";
+import Markdown from "../../../components/markdown.js";
 
 interface DialectProps {
 	effectiveVoiceNameForSelectedLanguage: string | null;

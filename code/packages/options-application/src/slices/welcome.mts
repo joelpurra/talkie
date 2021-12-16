@@ -18,17 +18,28 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+import {
+	getAvailableBrowserLanguageWithInstalledVoice,
+} from "@talkie/shared-ui/selectors/voices.mjs";
 import {
 	IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
-import { TalkieLocale } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import { OptionsRootState } from "../store/index.mjs";
-import {getAvailableBrowserLanguageWithInstalledVoice} from "@talkie/shared-ui/selectors/voices.mjs";
+
+import {
+	OptionsRootState,
+} from "../store/index.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 export interface VoicesState {
 	sampleText: string | null;
@@ -51,13 +62,18 @@ const prefix = "welcome";
 
 export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = createAsyncThunk<SampleTextAndLanguage, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSampleTextForAvailableBrowserLanguageWithInstalledVoice`,
-	async (_, {getState,extra}) => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async (
+		_,
+		{
+			getState,
+			extra,
+		},
+	) => {
 		const availableBrowserLanguageWithInstalledVoice = getAvailableBrowserLanguageWithInstalledVoice(getState() as OptionsRootState);
 
 		let sampleTextLanguage: TalkieLocale | null = null;
 
-		for (const languageCode of availableBrowserLanguageWithInstalledVoice){
+		for await (const languageCode of availableBrowserLanguageWithInstalledVoice) {
 			// TODO: isTalkieLocale assertion.
 			const isTalkieLocale = await extra.isTalkieLocale(languageCode);
 

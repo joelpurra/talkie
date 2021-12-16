@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
 import {
 	actions,
 } from "@talkie/shared-ui/slices/index.mjs";
-import {
-	Action,
-} from "@reduxjs/toolkit";
 
 export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
 	const browserDefaults: Readonly<A[]> = [];

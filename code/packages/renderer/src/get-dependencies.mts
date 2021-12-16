@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import configurationObject from "@talkie/shared-application/data/configuration/configuration.mjs";
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import BroadcasterProvider from "@talkie/split-environment-node/broadcaster-provider.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-node/dynamic-environment.mjs";

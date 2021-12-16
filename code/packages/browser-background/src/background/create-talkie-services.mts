@@ -19,8 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
@@ -33,13 +31,17 @@ import {
 	setLevel,
 	setStringOnlyOutput,
 } from "@talkie/shared-application-helpers/log.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	ITalkieServices,
 } from "@talkie/split-environment-webextension/browser-specific/italkie-services.mjs";
-import {
+import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";

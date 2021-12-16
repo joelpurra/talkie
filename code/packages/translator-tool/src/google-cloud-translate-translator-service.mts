@@ -29,7 +29,7 @@ import {
 } from "ent";
 import assert from "node:assert";
 import striptags from "striptags";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
@@ -48,21 +48,6 @@ export default class GoogleCloudTranslateTranslator {
 	private readonly _googleTranslate: v2.Translate;
 	private readonly maxChunkSize: number;
 
-	private get __TEMP_TALKIE_PREMIUM__() {
-		// NOTE: must not contain characters which could be mistaken for regexp code.
-		return "__TTP__";
-	}
-
-	private get __TEMP_TALKIE__() {
-		// NOTE: must not contain characters which could be mistaken for regexp code.
-		return "__TT__";
-	}
-
-	private get __TEMP_PREMIUM__() {
-		// NOTE: must not contain characters which could be mistaken for regexp code.
-		return "__TP__";
-	}
-
 	constructor(private readonly _googleCloudTranslateApiKeyFilePath: string) {
 		this._googleTranslateOptions = Object.assign(
 			{
@@ -78,6 +63,21 @@ export default class GoogleCloudTranslateTranslator {
 
 		// NOTE: there is a limit to how many items can be translated per call.
 		this.maxChunkSize = 128;
+	}
+
+	private get __TEMP_TALKIE_PREMIUM__() {
+		// NOTE: must not contain characters which could be mistaken for regexp code.
+		return "__TTP__";
+	}
+
+	private get __TEMP_TALKIE__() {
+		// NOTE: must not contain characters which could be mistaken for regexp code.
+		return "__TT__";
+	}
+
+	private get __TEMP_PREMIUM__() {
+		// NOTE: must not contain characters which could be mistaken for regexp code.
+		return "__TP__";
 	}
 
 	async translate(fromLanguage: string, toLanguage: string, original: ReadonlyDeep<BaseLocaleMessages>): Promise<ReadonlyDeep<LocaleMessages>> {

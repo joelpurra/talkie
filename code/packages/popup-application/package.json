@@ -9,6 +9,7 @@
   "bundledDependencies": [
     "@reduxjs/toolkit",
     "react",
+    "react-redux",
     "styletron-react",
     "type-fest"
   ],

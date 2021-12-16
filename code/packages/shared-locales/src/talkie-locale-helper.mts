@@ -23,7 +23,10 @@ import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
-import languages, { LanguageDataKey } from "./data/languages/languages.mjs";
+
+import languages, {
+	LanguageDataKey,
+} from "./data/languages/languages.mjs";
 
 export default class TalkieLocaleHelper implements ITalkieLocaleHelper {
 	private static readonly languages = languages;

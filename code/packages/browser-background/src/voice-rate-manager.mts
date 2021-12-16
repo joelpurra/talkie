@@ -18,23 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	rateRange,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 export type VoiceRateOverrides = Record<string, number>;
 
 export default class VoiceRateManager {
+	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: IMetadataManager) {}
+
 	private get voiceRateRateOverridesStorageKey() {
 		return "voice-rate-overrides";
 	}
-
-	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: IMetadataManager) {}
 
 	async getVoiceRateDefault(
 		_voiceName: string,

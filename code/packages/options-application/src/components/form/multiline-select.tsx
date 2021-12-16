@@ -18,16 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React, {
-	ChangeEvent,
-} from "react";
-import {
-	styled,
-} from "styletron-react";
-import {
-	ReadonlyDeep,
-} from "type-fest";
-
 import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
@@ -35,6 +25,15 @@ import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import {
 	scrollIntoViewIfNeeded,
 } from "@talkie/shared-ui/utils/select-element.mjs";
+import React, {
+	ChangeEvent,
+} from "react";
+import {
+	styled,
+} from "styletron-react";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
 
 export interface MultilineSelectProps {
 	disabled: boolean;
@@ -44,12 +43,6 @@ export interface MultilineSelectProps {
 }
 
 class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends React.PureComponent<P, unknown> {
-	static defaultProps = {
-		value: null,
-	};
-
-	selectRef: React.RefObject<HTMLSelectElement>;
-
 	constructor(props: P) {
 		super(props);
 
@@ -95,6 +88,12 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends Re
 			</select>
 		);
 	}
+
+	static defaultProps = {
+		value: null,
+	};
+
+	selectRef: React.RefObject<HTMLSelectElement>;
 }
 
 export default styled(MultilineSelect, formBase.multilineSelect);

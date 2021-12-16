@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Loading from "../../components/loading.js";
 import {
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
@@ -29,11 +28,12 @@ import {
 	MapStateToProps,
 } from "react-redux";
 
+import Dialect from "../../app/sections/voices/dialect.js";
+import Loading from "../../components/loading.js";
 import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
-import Dialect from "../../app/sections/voices/dialect.js";
 
 interface DialectContainerProps {
 	speakSampleTextForLanguage: (language: string) => void;

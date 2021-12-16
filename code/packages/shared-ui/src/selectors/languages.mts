@@ -18,20 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
 import {
 	getLanguageGroupsFromLanguages,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import toolkit from "@reduxjs/toolkit";
-const {
-	createDraftSafeSelector,
-} = toolkit;
 
 import type {
 	SharedRootState,
 } from "../store/index.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createDraftSafeSelector,
+} = toolkit;
 
 export const getTranslationLocale = <S extends SharedRootState>(state: S): Readonly<TalkieLocale> => state.shared.languages.translationLocale;
 export const getNavigatorLanguages = <S extends SharedRootState>(state: S): Readonly<string[]> => state.shared.languages.navigatorLanguages;

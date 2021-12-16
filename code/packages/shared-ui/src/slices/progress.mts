@@ -18,14 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
-const {
-	createSlice,
-} = toolkit;
 import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 export interface ProgressState {
 	current: number;

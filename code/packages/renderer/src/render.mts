@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+	Reducer,
+} from "@reduxjs/toolkit";
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import getRoot from "@talkie/shared-ui/renderers/get-root.js";
 import {
 	actions,
@@ -26,13 +33,6 @@ import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
 } from "@talkie/shared-ui/utils/store-helpers.mjs";
-import {
-	TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
-import {
-	Action,
-	Reducer,
-} from "@reduxjs/toolkit";
 
 import compileHtmlTemplate from "./compile-html-template.mjs";
 import getDependencies from "./get-dependencies.mjs";
@@ -70,8 +70,13 @@ const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDis
 
 const EMPTY_INITIAL_STATE = undefined;
 
-// eslint-disable-next-line max-params
-const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>, customPrerenderedActionsToDispatch: Readonly<A[]>, customPostrenderActionsToDispatch: Readonly<A[]>, reactHtmlTemplatePath: URL, talkieLocale: TalkieLocale, ChildComponent: React.ComponentType<P>): Promise<string> => {
+const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
+	customPrerenderedActionsToDispatch: Readonly<A[]>,
+	customPostrenderActionsToDispatch: Readonly<A[]>,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	reactHtmlTemplatePath: Readonly<URL>,
+	// eslint-disable-next-line max-params
+	talkieLocale: TalkieLocale, ChildComponent: React.ComponentType<P>): Promise<string> => {
 	const {
 		api,
 		broadcasterProvider,

@@ -24,7 +24,6 @@ import {
 import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
 	KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
@@ -34,6 +33,7 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 
 export default class NodeEnvironmentBroadcasterProvider implements IBroadcasterProvider {
 	async broadcastEvent<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {

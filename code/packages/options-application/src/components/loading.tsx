@@ -18,8 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -30,6 +28,7 @@ import {
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
+import React from "react";
 
 export interface LoadingProps extends ChildrenRequiredProps, ClassNameProp {
 	enabled: boolean;
@@ -39,10 +38,6 @@ export interface LoadingProps extends ChildrenRequiredProps, ClassNameProp {
 interface InternalProps extends LoadingProps, TranslateProps {}
 
 class Loading<P extends InternalProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		isBlockElement: false,
-	};
-
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -73,6 +68,10 @@ class Loading<P extends InternalProps> extends React.PureComponent<P> {
 			</LoadingWrapper>
 		);
 	}
+
+	static defaultProps = {
+		isBlockElement: false,
+	};
 }
 
 export default translateAttribute<InternalProps>()(

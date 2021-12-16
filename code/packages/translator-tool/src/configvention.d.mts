@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 module "configvention" {
-	import {
+	import type {
 		JsonValue,
 	} from "type-fest";
 

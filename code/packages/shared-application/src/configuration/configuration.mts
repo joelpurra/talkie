@@ -26,7 +26,7 @@ import {
 	IMetadataManager,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import {
+import type {
 	JsonArray,
 	JsonObject,
 	JsonValue,
@@ -103,6 +103,7 @@ export default class Configuration implements IConfiguration {
 
 			if (typeof value !== "undefined" && (Object.prototype).hasOwnProperty.call(object, part)) {
 				if (parts.length === 0) {
+					// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 					return value as JsonValue;
 				}
 

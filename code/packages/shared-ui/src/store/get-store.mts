@@ -18,24 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-
-import toolkit from "@reduxjs/toolkit";
-const {
-	configureStore,
-} = toolkit;
-
-import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
-import process from "node:process";
-import {
+import type {
 	Action,
 	PreloadedState,
 	Reducer,
 	Store,
 } from "@reduxjs/toolkit";
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
+import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
+import process from "node:process";
 import logger from "redux-logger";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	configureStore,
+} = toolkit;
 
 const getStore = <S, A extends Action>(
 	initialState: PreloadedState<S> | undefined,
@@ -62,8 +63,10 @@ const getStore = <S, A extends Action>(
 				extraMiddlewares.push(logger);
 			}
 
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			return getDefaultMiddleware(defaultMiddlewareOptions).concat(extraMiddlewares as any);
 		},
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
 		preloadedState: initialState as any,
 		reducer: rootReducer,
 	});

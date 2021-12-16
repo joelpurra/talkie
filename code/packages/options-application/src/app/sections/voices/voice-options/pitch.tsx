@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ScaleRange, {
-	ScaleRangeProps,
-} from "../../../../components/range/scale-range.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -29,6 +26,9 @@ import {
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
+import ScaleRange, {
+	ScaleRangeProps,
+} from "../../../../components/range/scale-range.js";
 import RangeWithHeading, {
 	RangeWithHeadingProps,
 } from "./range-with-heading.js";
@@ -36,10 +36,6 @@ import RangeWithHeading, {
 export interface PitchProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}
 
 class Pitch<P extends PitchProps & TranslateProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		voiceName: null,
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -93,6 +89,10 @@ class Pitch<P extends PitchProps & TranslateProps> extends React.PureComponent<P
 			/>
 		);
 	}
+
+	static defaultProps = {
+		voiceName: null,
+	};
 }
 
 export default translateAttribute<PitchProps & TranslateProps>()(

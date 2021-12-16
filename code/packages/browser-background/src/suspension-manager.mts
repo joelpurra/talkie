@@ -29,6 +29,10 @@ import {
 import SuspensionConnectorManager from "./suspension-connector-manager.mjs";
 
 export default class SuspensionManager {
+	constructor(private readonly suspensionConnectorManager: SuspensionConnectorManager) {
+		// NOTE: the iframe takes care of the SuspensionListenerManager.
+	}
+
 	private get stayAliveElementId() {
 		return "stayalive-iframe";
 	}
@@ -36,10 +40,6 @@ export default class SuspensionManager {
 	private get stayAliveHtmlPath() {
 		// NOTE: relative to background.html, rooted in the browser extension package root.
 		return "/packages/browser-stayalive/src/stayalive.html";
-	}
-
-	constructor(private readonly suspensionConnectorManager: SuspensionConnectorManager) {
-		// NOTE: the iframe takes care of the SuspensionListenerManager.
 	}
 
 	async _getExistingIframeOrNull(): Promise<HTMLIFrameElement | null> {

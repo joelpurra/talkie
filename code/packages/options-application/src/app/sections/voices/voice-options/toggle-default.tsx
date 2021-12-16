@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Checkbox from "../../../../components/form/checkbox.js";
-import Markdown from "../../../../components/markdown.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import React from "react";
+
+import Checkbox from "../../../../components/form/checkbox.js";
+import Markdown from "../../../../components/markdown.js";
 
 export interface ToggleDefaultProps {
 	disabled: boolean;

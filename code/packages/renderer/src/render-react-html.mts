@@ -18,20 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+	Store,
+} from "@reduxjs/toolkit";
 import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
 import {
 	ReactElement,
 } from "react";
 import ReactDOMServer from "react-dom/server.js";
-import {
-	Action,
-	Store,
-} from "@reduxjs/toolkit";
-import {
+import type {
 	Server as StyletronServer,
 } from "styletron-engine-atomic";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

@@ -18,10 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
 	I18n,
 } from "webextension-polyfill";

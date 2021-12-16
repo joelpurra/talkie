@@ -18,30 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Nav from "./nav.js";
-import type {
-	OptionsRootState,
-} from "../../store/index.mjs";
 import {
 	actions,
 } from "../../slices/index.mjs";
+import type {
+	OptionsRootState,
+} from "../../store/index.mjs";
+import Nav from "./nav.js";
 import {
 	NavContainerProps,
 } from "./nav-container-types.mjs";
+
+const {
+	bindActionCreators,
+} = toolkit;
 
 interface StateProps {
 	activeTabId: string | null;
@@ -65,15 +66,22 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 	constructor(props: P) {
 		super(props);
 
+		this.componentCleanup = this.componentCleanup.bind(this);
 		this.handleHashChange = this.handleHashChange.bind(this);
 		this.handleTabChange = this.handleTabChange.bind(this);
 	}
 
 	override componentDidMount(): void {
+		window.addEventListener("beforeunload", this.componentCleanup);
 		window.addEventListener("hashchange", this.handleHashChange);
 	}
 
 	override componentWillUnmount(): void {
+		this.componentCleanup();
+	}
+
+	componentCleanup() {
+		window.removeEventListener("beforeunload", this.componentCleanup);
 		window.removeEventListener("hashchange", this.handleHashChange);
 	}
 

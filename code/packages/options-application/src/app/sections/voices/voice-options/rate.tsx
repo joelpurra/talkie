@@ -18,19 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
-import {
-	ScaleRangeProps,
-} from "../../../../components/range/scale-range.js";
+import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
-import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import {
 	TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
+import LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
+import {
+	ScaleRangeProps,
+} from "../../../../components/range/scale-range.js";
 import RangeWithHeading, {
 	RangeWithHeadingProps,
 } from "./range-with-heading.js";
@@ -38,10 +38,6 @@ import RangeWithHeading, {
 export interface RateProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}
 
 class Rate<P extends RateProps & TranslateProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		voiceName: null,
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -98,6 +94,10 @@ class Rate<P extends RateProps & TranslateProps> extends React.PureComponent<P> 
 			/>
 		);
 	}
+
+	static defaultProps = {
+		voiceName: null,
+	};
 }
 
 export default translateAttribute<RateProps & TranslateProps>()(

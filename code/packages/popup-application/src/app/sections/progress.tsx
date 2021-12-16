@@ -24,18 +24,16 @@ import {
 import React, {
 	ComponentProps,
 } from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
 import {
 	styled,
-	StyletronComponent,
 } from "styletron-react";
 
 export interface StatusProps extends TalkieProgressData {}
 
 export default class Status<P extends StatusProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		progress: StyletronComponent<ComponentProps<"progress">>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -68,4 +66,8 @@ export default class Status<P extends StatusProps> extends React.PureComponent<P
 			/>
 		);
 	}
+
+	private readonly styled: {
+		progress: StyletronComponent<ComponentProps<"progress">>;
+	};
 }

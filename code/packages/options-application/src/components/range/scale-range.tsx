@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import * as formBase from "@talkie/shared-ui/styled/form/form-base.js";
 import React from "react";
 
-import * as formBase from "@talkie/shared-ui/styled/form/form-base.js";
 import ScaleRangeDatalist from "./scale-range-datalist.js";
 
 export interface ScaleRangeProps {

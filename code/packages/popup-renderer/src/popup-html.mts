@@ -18,6 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
 import App from "@talkie/popup-application/containers/app.js";
 import rootReducer from "@talkie/popup-application/slices/index.mjs";
 import {
@@ -30,9 +33,6 @@ import path from "node:path";
 import {
 	ComponentProps,
 } from "react";
-import {
-	Action,
-} from "@reduxjs/toolkit";
 
 // NOTE: relative to the compiled file being executed.
 const htmlTemplatePath = new URL(

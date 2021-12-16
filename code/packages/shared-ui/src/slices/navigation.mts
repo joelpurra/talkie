@@ -18,15 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
 
 import {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NavigationState {}
@@ -39,21 +43,27 @@ const prefix = "navigation";
 
 export const openUrlInNewTab = createAsyncThunk<void, string, IApiAsyncThunkConfig>(
 	`${prefix}/openUrlInNewTab`,
-	async (url, {extra}) => {
+	async (url, {
+		extra,
+	}) => {
 		await extra.openUrlInNewTab(url);
 	},
 );
 
 export const openShortKeysConfiguration = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/openShortKeysConfiguration`,
-	async (_, {extra}) => {
+	async (_, {
+		extra,
+	}) => {
 		await extra.openShortKeysConfiguration();
 	},
 );
 
 export const openOptionsPage = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/openOptionsPage`,
-	async (_, {extra}) => {
+	async (_, {
+		extra,
+	}) => {
 		await extra.openOptionsPage();
 	},
 );

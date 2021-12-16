@@ -18,22 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import React from "react";
-import {
+import type {
 	StyletronComponent,
-	withStyleDeep,
 } from "styletron-react";
 import {
+	withStyleDeep,
+} from "styletron-react";
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import {
 	NavLink,
 } from "./nav-container-types.mjs";
-import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
-import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 
 export interface NavProps {
 	initialActiveTabId: string | null;
@@ -42,13 +44,6 @@ export interface NavProps {
 }
 
 export default class Nav<P extends NavProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
-		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
-		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
-		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -176,4 +171,11 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			</this.styled.nav>
 		);
 	}
+
+	private readonly styled: {
+		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
+		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
+		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
+		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
+	};
 }

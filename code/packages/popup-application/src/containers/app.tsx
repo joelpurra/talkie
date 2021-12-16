@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import IsSpeakingUpdater, {
 	IsSpeakingUpdaterDispatchProps,
 } from "@talkie/shared-ui/hocs/is-speaking-updater.js";
@@ -25,15 +26,13 @@ import ProgressUpdater, {
 	ProgressUpdaterDispatchProps,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
-import {
-	connect,
+import type {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
+import {
+	connect,
+} from "react-redux";
 
 import Main, {
 	MainDispatchProps,
@@ -47,14 +46,18 @@ import type {
 	PopupRootState,
 } from "../store/index.mjs";
 
+const {
+	bindActionCreators,
+} = toolkit;
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AppProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<MainStateProps, AppProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
-	errorCount: selectors.shared.errors.getErrorsCount(state as any),
-	isPremiumEdition: (state as any).shared.metadata.isPremiumEdition,
-	versionNumber: (state as any).shared.metadata.versionNumber,
+	errorCount: selectors.shared.errors.getErrorsCount(state),
+	isPremiumEdition: state.shared.metadata.isPremiumEdition,
+	versionNumber: state.shared.metadata.versionNumber,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<MainDispatchProps & IsSpeakingUpdaterDispatchProps & ProgressUpdaterDispatchProps, AppProps> = (dispatch) => ({

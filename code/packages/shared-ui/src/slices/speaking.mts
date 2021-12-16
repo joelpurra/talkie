@@ -18,14 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
 import type {
 	PayloadAction,
 } from "@reduxjs/toolkit";
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
 import {
 	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
@@ -33,6 +30,13 @@ import {
 import {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 export interface SpeakInCustomVoiceArguments {
 	text: string;
@@ -63,7 +67,9 @@ const prefix = "speaking";
 
 export const iconClick = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/iconClick`,
-	async (_, {extra}) => {
+	async (_, {
+		extra,
+	}) => {
 		await extra.iconClick();
 	},
 );
@@ -73,7 +79,9 @@ export const speakInCustomVoice = createAsyncThunk<void, SpeakInCustomVoiceArgum
 	({
 		voice,
 		text,
-	}, {extra}) => {
+	}, {
+		extra,
+	}) => {
 		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
 		// TODO: rework debounced versions in api?
 		extra.debouncedSpeakTextInCustomVoice(text, voice);
@@ -85,7 +93,9 @@ export const speakTextInVoiceWithOverrides = createAsyncThunk<void, SpeakTextInV
 	({
 		voiceName,
 		text,
-	}, {extra}) => {
+	}, {
+		extra,
+	}) => {
 		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
 		// TODO: rework debounced versions in api?
 		extra.debouncedSpeakTextInVoiceWithOverrides(text, voiceName);
@@ -97,7 +107,9 @@ export const speakTextInLanguageWithOverrides = createAsyncThunk<void, SpeakText
 	({
 		languageCode,
 		text,
-	}, {extra}) => {
+	}, {
+		extra,
+	}) => {
 		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
 		// TODO: rework debounced versions in api?
 		extra.debouncedSpeakTextInLanguageWithOverrides(text, languageCode);

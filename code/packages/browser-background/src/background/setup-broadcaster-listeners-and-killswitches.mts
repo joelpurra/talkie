@@ -27,7 +27,6 @@ import {
 	KnownSettings,
 	SettingChangedEventData,
 } from "@talkie/shared-application/settings-manager.mjs";
-import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
 import {
 	logDebug,
 	logError,
@@ -39,7 +38,8 @@ import {
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
-import {
+import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

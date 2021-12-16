@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// @ts-ignore: error TS7016: Could not find a declaration file for module.
+// @ts-expect-error: File is not a module.ts(2306)
 import configurationJson from "./configuration.cjs";
 
 // NOTE: manually mapped from JSON.

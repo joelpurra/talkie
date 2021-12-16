@@ -25,7 +25,7 @@ import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import React from "react";
-import {
+import type {
 	Except,
 	ReadonlyDeep,
 } from "type-fest";
@@ -42,21 +42,9 @@ export interface ProgressProps extends TalkieProgressData {}
 type ProgressHocState = TalkieProgressData;
 
 export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {
-	// eslint-disable-next-line func-names
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
-
-			isListeningToBroadcasts = false;
-			killSwitches: KillSwitch[] = [];
-
-			override state = {
-				current: 0,
-				max: 0,
-				min: 0,
-			};
-
 			constructor(props: P) {
 				super(props);
 
@@ -71,9 +59,13 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 			}
 
 			override componentWillUnmount(): void {
-				window.removeEventListener("beforeunload", this.componentCleanup);
-
 				this.componentCleanup();
+			}
+
+			componentCleanup(): void {
+				window.removeEventListener("beforeunload", this.componentCleanup);
+				this.isListeningToBroadcasts = false;
+				this.executeKillSwitches();
 			}
 
 			override shouldComponentUpdate(
@@ -83,11 +75,6 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 				// NOTE: always update.
 				// TODO: optimize by comparing old and new props/state.
 				return this.isListeningToBroadcasts;
-			}
-
-			componentCleanup(): void {
-				this.isListeningToBroadcasts = false;
-				this.executeKillSwitches();
 			}
 
 			override render(): React.ReactNode {
@@ -160,6 +147,18 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 
 				this.killSwitches.push(killSwitch);
 			}
+
+			static override contextType = BroadcasterContext;
+			declare context: React.ContextType<typeof BroadcasterContext>;
+
+			isListeningToBroadcasts = false;
+			killSwitches: KillSwitch[] = [];
+
+			override state = {
+				current: 0,
+				max: 0,
+				min: 0,
+			};
 		}
 
 		return ProgressHoc as unknown as React.ComponentClass<U>;

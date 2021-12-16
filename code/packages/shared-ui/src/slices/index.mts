@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	combineReducers,
 } from "../store/combine-reducers.mjs";
-
 import errors,
 * as errorsActions from "./errors.mjs";
 import languages,

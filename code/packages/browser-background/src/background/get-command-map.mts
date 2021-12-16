@@ -22,7 +22,7 @@ import {
 	openInternalUrlFromConfigurationInNewTab,
 	openUrlFromConfigurationInNewTab,
 } from "@talkie/split-environment-webextension/browser-specific/urls.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

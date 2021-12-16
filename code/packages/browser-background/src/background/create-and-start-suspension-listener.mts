@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	loggedPromiseCallback,
 } from "@talkie/shared-application/promise-logging.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

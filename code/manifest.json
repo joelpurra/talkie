@@ -20,13 +20,8 @@
     "page": "./packages/browser-background/src/background.html",
     "persistent": false
   },
-  "permissions": [
-    "activeTab",
-    "contextMenus"
-  ],
-  "optional_permissions": [
-    "clipboardRead"
-  ],
+  "permissions": ["activeTab", "contextMenus"],
+  "optional_permissions": ["clipboardRead"],
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {

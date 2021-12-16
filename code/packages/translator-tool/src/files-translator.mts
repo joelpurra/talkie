@@ -22,7 +22,7 @@ import Bluebird from "bluebird";
 import clone from "clone";
 import jsonfile from "jsonfile";
 import assert from "node:assert";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

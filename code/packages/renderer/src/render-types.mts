@@ -18,13 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
-import {
+import type {
 	Action,
 	Reducer,
 } from "@reduxjs/toolkit";
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 // NOTE: this type must match the "locals" variables used in the ejs html templates.
 export type ReactHtmlTemplateLocalsVariables = (data: Readonly<{
@@ -41,7 +41,7 @@ export interface IRenderReactHtml<S, A extends Action, P> {
 	 * @deprecated Post-render actions have no effect when pre-rendering html on the server-side.
 	 */
 	customPostrenderActionsToDispatch: Readonly<A[]>;
-	reactHtmlTemplatePath: URL;
+	reactHtmlTemplatePath: Readonly<URL>;
 	ChildComponent: React.ComponentType<P>;
 }
 

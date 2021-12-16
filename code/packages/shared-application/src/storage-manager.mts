@@ -24,7 +24,7 @@ import {
 	logTrace,
 } from "@talkie/shared-application-helpers/log.mjs";
 import IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
-import {
+import type {
 	JsonValue,
 } from "type-fest";
 

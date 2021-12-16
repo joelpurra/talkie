@@ -25,11 +25,11 @@ import {
 	MapStateToProps,
 } from "react-redux";
 
+import Dialects from "../../app/sections/voices/dialects.js";
 import selectors from "../../selectors/index.mjs";
 import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
-import Dialects from "../../app/sections/voices/dialects.js";
 
 interface DialectsContainerProps {
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -40,6 +40,7 @@ interface StateProps {
 	sortedLanguagesForSelectedLanguageGroup: string[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
 interface InternalProps extends DialectsContainerProps, StateProps, DispatchProps {}
@@ -56,7 +57,6 @@ class DialectsContainer<P extends InternalProps> extends React.PureComponent<P> 
 	constructor(props: P) {
 		super(props);
 	}
-
 
 	override render(): React.ReactNode {
 		const {

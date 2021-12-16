@@ -23,12 +23,14 @@ import Execute from "@talkie/browser-shared/execute.mjs";
 import Plug from "@talkie/browser-shared/plug.mjs";
 import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import configurationObject from "@talkie/shared-application/data/configuration/configuration.mjs";
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-webextension/dynamic-environment.mjs";
 import InternalUrlProvider from "@talkie/split-environment-webextension/internal-url-provider.mjs";

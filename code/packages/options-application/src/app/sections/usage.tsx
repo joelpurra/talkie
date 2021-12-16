@@ -18,11 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	OsType,
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import TalkiePremiumIcon from "@talkie/shared-ui/components/icon/talkie-premium-icon.js";
-import PremiumSection from "../../components/section/premium-section.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -36,17 +39,17 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import {
-	OsType,
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
+
+import PremiumSection from "../../components/section/premium-section.js";
 
 export interface UsageProps {
 	isPremiumEdition: boolean;
@@ -56,15 +59,6 @@ export interface UsageProps {
 }
 
 class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		osType: null,
-	};
-
-	private readonly styled: {
-		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -317,6 +311,15 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 			</section>
 		);
 	}
+
+	static defaultProps = {
+		osType: null,
+	};
+
+	private readonly styled: {
+		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
+		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
+	};
 }
 
 export default configureAttribute<UsageProps & ConfigureProps>()(

@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import toolkit from "@reduxjs/toolkit";
 import {
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
@@ -27,10 +28,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import toolkit from "@reduxjs/toolkit";
-const {
-	bindActionCreators,
-} = toolkit;
 
 import About, {
 	AboutStateProps,
@@ -42,6 +39,10 @@ import {
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
+
+const {
+	bindActionCreators,
+} = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AboutContainerProps {}
@@ -75,11 +76,6 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalAbou
 });
 
 class AboutContainer<P extends InternalAboutContainerProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		navigatorLanguage: null,
-		osType: null,
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -132,6 +128,11 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			/>
 		);
 	}
+
+	static defaultProps = {
+		navigatorLanguage: null,
+		osType: null,
+	};
 }
 
 export default connect<StateProps, DispatchProps, InternalAboutContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(

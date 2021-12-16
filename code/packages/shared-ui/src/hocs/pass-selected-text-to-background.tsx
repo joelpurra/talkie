@@ -36,16 +36,9 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS = unknown>() {
-	// eslint-disable-next-line func-names
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {
 		class PassSelectedTextToBackgroundHoc extends React.PureComponent<P, S, SS> {
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
-
-			killSwitches: KillSwitch[];
-			isListeningToBroadcasts: boolean;
-			mostRecentUse: number;
-
 			constructor(props: P) {
 				super(props);
 
@@ -155,6 +148,13 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 
 				this.killSwitches.push(killSwitch);
 			}
+
+			static override contextType = BroadcasterContext;
+			declare context: React.ContextType<typeof BroadcasterContext>;
+
+			killSwitches: KillSwitch[];
+			isListeningToBroadcasts: boolean;
+			mostRecentUse: number;
 		}
 
 		return PassSelectedTextToBackgroundHoc as unknown as React.ComponentClass<P, S>;

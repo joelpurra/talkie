@@ -18,8 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-
+import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -33,7 +32,7 @@ import {
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
+import React from "react";
 
 export type EditionSectionMode =
 	| "p"

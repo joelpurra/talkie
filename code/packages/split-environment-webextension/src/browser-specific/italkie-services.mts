@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	LoggingLevel,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
 	EditionType,
 	OsType,
@@ -32,6 +31,7 @@ import {
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 
 export interface ITalkieServices {
 	broadcaster: () => IBroadcasterProvider;

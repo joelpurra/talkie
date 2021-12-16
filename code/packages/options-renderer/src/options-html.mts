@@ -18,8 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
 import App from "@talkie/options-application/containers/app.js";
-import rootReducer, { actions } from "@talkie/options-application/slices/index.mjs";
+import rootReducer, {
+	actions,
+} from "@talkie/options-application/slices/index.mjs";
 import {
 	OptionsRootState,
 } from "@talkie/options-application/store/index.mjs";
@@ -30,9 +35,6 @@ import path from "node:path";
 import {
 	ComponentProps,
 } from "react";
-import {
-	Action,
-} from "@reduxjs/toolkit";
 
 // NOTE: relative to the compiled file being executed.
 const htmlTemplatePath = new URL(

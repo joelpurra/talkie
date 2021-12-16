@@ -22,13 +22,6 @@ import {
 	debounce,
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
-import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import {
-	LanguageTextDirection,
-	TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	EditionType,
@@ -36,6 +29,10 @@ import {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	LanguageTextDirection,
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
@@ -50,7 +47,10 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
-import {
+import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
@@ -262,12 +262,12 @@ export default class Api implements IApi {
 		document.location.hash = locationHash;
 	}
 
-	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection>{
+	async getBidiDirection(talkieLocale: TalkieLocale): Promise<LanguageTextDirection> {
 		// TODO: separate "background API" from other functionality.
 		return this.talkieLocaleHelper.getBidiDirection(talkieLocale);
 	}
 
-	async getSampleText(talkieLocale: TalkieLocale): Promise<string>{
+	async getSampleText(talkieLocale: TalkieLocale): Promise<string> {
 		// TODO: separate "background API" from other functionality.
 		return this.talkieLocaleHelper.getSampleText(talkieLocale);
 	}

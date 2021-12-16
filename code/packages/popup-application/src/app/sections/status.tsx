@@ -29,8 +29,10 @@ import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
 
@@ -41,14 +43,6 @@ export interface StatusProps {
 }
 
 class Status<P extends StatusProps & TranslateProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		statusIconWrapper: StyletronComponent<ComponentProps<typeof buttonBase.transparentButton>>;
-		table: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		tbody: StyletronComponent<ComponentProps<typeof tableBase.tbody>>;
-		td: StyletronComponent<ComponentProps<typeof tableBase.td>>;
-		tr: StyletronComponent<ComponentProps<typeof tableBase.tr>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -143,6 +137,14 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 			</layoutBase.main>
 		);
 	}
+
+	private readonly styled: {
+		statusIconWrapper: StyletronComponent<ComponentProps<typeof buttonBase.transparentButton>>;
+		table: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
+		tbody: StyletronComponent<ComponentProps<typeof tableBase.tbody>>;
+		td: StyletronComponent<ComponentProps<typeof tableBase.td>>;
+		tr: StyletronComponent<ComponentProps<typeof tableBase.tr>>;
+	};
 }
 
 export default translateAttribute<StatusProps & TranslateProps>()(

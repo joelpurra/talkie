@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	JsonObject,
 	Promisable,
 } from "type-fest";
@@ -32,6 +32,7 @@ export const jsonClone = <T extends JsonObject>(object: T): T => {
 };
 
 // TODO: use library.
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
 	if (indexable.length === 0) {
 		throw new RangeError("Indexable length 0.");
@@ -53,9 +54,11 @@ export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
 };
 
 // TODO: use library.
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const last = <T,>(indexable: Readonly<T[]>): T | undefined => indexable[indexable.length - 1];
 
 // TODO: use library.
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const flatten = <T,>(deepArray: undefined | T | T[] | T[][] | T[][][] | T[][][][] | T[][][][][]): T[] => {
 	if (typeof deepArray === "undefined") {
 		// NOTE: mostly a typing workaround to avoid issues with the possibly undefined type of array element accessors.
@@ -137,4 +140,5 @@ export const debounce = <T extends (...args: V[]) => Promisable<U>, U, V = unkno
 	return limiter;
 };
 
+// eslint-disable-next-line @typescript-eslint/comma-dangle
 export const noopDummyFunction = <T = void,>(): T => undefined as unknown as T;

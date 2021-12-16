@@ -18,10 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import hydrateHtml from "@talkie/browser-shared/hydrate/hydrate-html.mjs";
-import {
+import type {
 	Action,
 } from "@reduxjs/toolkit";
+import hydrateHtml from "@talkie/browser-shared/hydrate/hydrate-html.mjs";
 
 import App from "./containers/app.js";
 import rootReducer, {

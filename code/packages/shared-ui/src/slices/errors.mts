@@ -18,17 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+	AsyncThunk,
+} from "@reduxjs/toolkit";
+// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
+
 const {
+	// eslint-disable-next-line import/no-named-as-default-member
 	createSlice,
 } = toolkit;
-import type {
-	AsyncThunk
-} from "@reduxjs/toolkit";
-
-import {
-	Action,
-} from "@reduxjs/toolkit";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericAsyncThunk = AsyncThunk<any, any, any>;

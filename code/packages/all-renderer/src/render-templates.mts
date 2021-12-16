@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	Action,
+} from "@reduxjs/toolkit";
+import {
 	IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
-import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import {
-	Action,
-} from "@reduxjs/toolkit";
+import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 
 import getAllApplications from "./get-all-applications.mjs";
 import renderTemplate from "./render-template.mjs";
@@ -48,6 +48,7 @@ const renderTemplates = async <S, A extends Action, P>(baseDirectory: string): P
 	// NOTE: parallel rendering.
 	await Promise.all<void[]>(
 		renderReactHtmlApps.map(
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			async (app: Readonly<IRenderReactHtmlToFile<S, A, P>>) => Promise.all<void>(
 				talkieLocales.map(
 					async (talkieLocale: TalkieLocale) => renderTemplate(baseDirectory, app, talkieLocale),

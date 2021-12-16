@@ -19,22 +19,23 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ScaleRangeProps,
-} from "../../../../components/range/scale-range.js";
+	debounce,
+} from "@talkie/shared-application-helpers/basic.mjs";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import {
-	debounce,
-} from "@talkie/shared-application-helpers/basic.mjs";
-import {
 	TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	ScaleRangeProps,
+} from "../../../../components/range/scale-range.js";
 
 export interface RangeWithHeadingProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,16 +51,6 @@ interface RangeWithHeadingState {
 }
 
 class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & TranslateProps> extends React.PureComponent<P, RangeWithHeadingState> {
-	static defaultProps = {
-		voiceName: null,
-	};
-
-	override state = {
-		value: this.props.initialValue,
-	};
-
-	debouncedOnChange: (value: number) => void;
-
 	constructor(props: P) {
 		super(props);
 
@@ -149,6 +140,16 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 			</tableBase.tbody>
 		);
 	}
+
+	static defaultProps = {
+		voiceName: null,
+	};
+
+	override state = {
+		value: this.props.initialValue,
+	};
+
+	debouncedOnChange: (value: number) => void;
 }
 
 export default translateAttribute<RangeWithHeadingProps & ScaleRangeProps & TranslateProps>()(

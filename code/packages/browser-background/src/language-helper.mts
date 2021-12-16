@@ -20,9 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import ContentLogger from "@talkie/browser-shared/content-logger.mjs";
 import {
-	FramesSelectionTextAndLanguageCode,
-} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
-import {
 	isUndefinedOrNullOrEmptyOrWhitespace,
 } from "@talkie/shared-application-helpers/basic.mjs";
 import {
@@ -30,11 +27,14 @@ import {
 	logError,
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
+	FramesSelectionTextAndLanguageCode,
+} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
+import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type {
 	Merge,
 	ReadonlyDeep,
 } from "type-fest";
@@ -71,11 +71,6 @@ export default class LanguageHelper {
 		ji: "yi",
 	};
 
-	// The language fallback value is "und", so treat it as "no language".
-	private get NoLanguageDetectedCode() {
-		return "und";
-	}
-
 	constructor(private readonly contentLogger: ContentLogger, private readonly translator: ITranslatorProvider) {
 		// TODO: async load/unload logic for classes.
 		this.noTextSelectedMessage = {
@@ -91,6 +86,11 @@ export default class LanguageHelper {
 			// eslint-disable-next-line no-sync
 			text: this.translator.translateSync("noVoiceForLanguageDetectedMessage"),
 		};
+	}
+
+	// The language fallback value is "und", so treat it as "no language".
+	private get NoLanguageDetectedCode() {
+		return "und";
 	}
 
 	async detectPageLanguage(): Promise<string | null> {

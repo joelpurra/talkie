@@ -18,22 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+	Store,
+} from "@reduxjs/toolkit";
+import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Provider as StoreProvider,
 } from "react-redux";
-import {
-	Action,
-	Store,
-} from "@reduxjs/toolkit";
-import {
+import type {
 	StandardEngine,
 } from "styletron-standard";
 
 import ErrorBoundary from "../components/error-boundary.js";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	ChildrenRequiredProps,
 } from "../types.mjs";

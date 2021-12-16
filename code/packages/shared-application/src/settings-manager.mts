@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
-import {
+import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type {
 	JsonValue,
 	ValueOf,
 } from "type-fest";
@@ -44,6 +44,10 @@ export interface SettingChangedEventData<T extends JsonValue> {
 }
 
 export default class SettingsManager {
+	constructor(private readonly storageManager: StorageManager, private readonly broadcaster: IBroadcasterProvider) {
+		// TODO: shared place for default/fallback values for booleans etcetera.
+	}
+
 	private get _isPremiumEditionStorageKey() {
 		return KnownSettings.IsPremiumEdition;
 	}
@@ -58,10 +62,6 @@ export default class SettingsManager {
 
 	private get _speakLongTextsStorageKeyDefaultValue() {
 		return false;
-	}
-
-	constructor(private readonly storageManager: StorageManager, private readonly broadcaster: IBroadcasterProvider) {
-		// TODO: shared place for default/fallback values for booleans etcetera.
 	}
 
 	async setIsPremiumEdition(isPremiumEdition: boolean): Promise<void> {

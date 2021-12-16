@@ -26,11 +26,13 @@ import {
 	handleBubbledLinkClick,
 } from "@talkie/shared-ui/utils/ui.mjs";
 import React from "react";
-import {
-	styled,
+import type {
 	StyleObject,
 } from "styletron-react";
 import {
+	styled,
+} from "styletron-react";
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

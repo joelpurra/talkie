@@ -18,26 +18,29 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	OsType,
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
-import Loading from "../../components/loading.js";
-import Markdown from "../../components/markdown.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
-	OsType,
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
+
+import Loading from "../../components/loading.js";
+import Markdown from "../../components/markdown.js";
 
 export interface InstallVoicesProps {
 	haveVoices: boolean;
@@ -49,16 +52,6 @@ export interface InstallVoicesProps {
 }
 
 class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		osType: null,
-		sampleText: null,
-		sampleTextLanguageCode: null,
-	};
-
-	private readonly styled: {
-		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h3>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -243,6 +236,16 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			</section>
 		);
 	}
+
+	static defaultProps = {
+		osType: null,
+		sampleText: null,
+		sampleTextLanguageCode: null,
+	};
+
+	private readonly styled: {
+		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h3>>;
+	};
 }
 
 export default translateAttribute<InstallVoicesProps & TranslateProps>()(

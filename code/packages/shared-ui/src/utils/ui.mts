@@ -18,12 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 export type BubbledLinkClickHandler = (url: string) => void;
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export function handleBubbledLinkClick(handleUrl: BubbledLinkClickHandler, event: ReadonlyDeep<React.MouseEvent>): false | undefined {
 	let element: HTMLElement | null = event.target as HTMLElement;
 

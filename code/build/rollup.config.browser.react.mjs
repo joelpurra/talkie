@@ -21,9 +21,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import mergeOptions from "./rollup.config.merge.mjs";
 import rollupConfig from "./rollup.config.browser.mjs";
 
-const rollupConfiguration = (name) => mergeOptions(
-	rollupConfig(name),
-	{
+const rollupConfiguration = (name) =>
+	mergeOptions(rollupConfig(name), {
 		external: [
 			"@reduxjs/toolkit",
 			"react-dom",
@@ -44,7 +43,6 @@ const rollupConfiguration = (name) => mergeOptions(
 				"webextension-polyfill": "browser",
 			},
 		},
-	},
-);
+	});
 
 export default rollupConfiguration;

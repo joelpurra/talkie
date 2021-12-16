@@ -19,9 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from "react";
+import type {
+	StyleObject,
+} from "styletron-react";
 import {
 	styled,
-	StyleObject,
 } from "styletron-react";
 
 import {
@@ -40,13 +42,6 @@ export interface IconProps {
 }
 
 export default class Icon<P extends IconProps & ClassNameProp> extends React.PureComponent<P> {
-	static defaultProps = {
-		// TODO: break out default css values to styles?
-		marginLeft: "0.3em",
-		marginRight: "0.3em",
-		size: "1.3em",
-	};
-
 	override render(): React.ReactNode {
 		const {
 			mode,
@@ -85,4 +80,11 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 			/>
 		);
 	}
+
+	static defaultProps = {
+		// TODO: break out default css values to styles?
+		marginLeft: "0.3em",
+		marginRight: "0.3em",
+		size: "1.3em",
+	};
 }

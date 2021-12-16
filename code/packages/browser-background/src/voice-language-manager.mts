@@ -18,15 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	getMappedVoice,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
 	IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
@@ -35,11 +37,11 @@ import TalkieSpeaker from "./talkie-speaker.mjs";
 export type LanguageVoiceOverride = Record<string, string>;
 
 export default class VoiceLanguageManager {
+	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: IMetadataManager, private readonly talkieSpeaker: TalkieSpeaker) {}
+
 	private get languageLanguageVoiceOverrideNamesStorageKey() {
 		return "language-voice-overrides";
 	}
-
-	constructor(private readonly storageManager: StorageManager, private readonly metadataManager: IMetadataManager, private readonly talkieSpeaker: TalkieSpeaker) {}
 
 	async getLanguageVoiceDefault(languageName: string): Promise<IVoiceNameAndLanguage | null> {
 		const resolvedVoice = await this.talkieSpeaker.resolveDefaultVoiceSafeObjectForLanguage(languageName);

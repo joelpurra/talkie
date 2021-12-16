@@ -22,7 +22,7 @@ import {
 	loggedPromiseCallback,
 	PromiseFunction,
 } from "@talkie/shared-application/promise-logging.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {

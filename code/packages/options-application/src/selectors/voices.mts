@@ -18,26 +18,33 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/no-unassigned-import
 import "reselect";
+
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
+import {
+	getVoiceForVoiceNameFromVoices,
+} from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
 	getLanguagesByLanguageGroup,
 	getVoices,
 	getVoicesByLanguagesByLanguageGroup,
 } from "@talkie/shared-ui/selectors/voices.mjs";
-import toolkit from "@reduxjs/toolkit";
-const {
-	createDraftSafeSelector,
-} = toolkit;
 
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
-import { getVoiceForVoiceNameFromVoices } from "@talkie/shared-application-helpers/transform-voices.mjs";
 
-export const getSelectedLanguageGroup = <S extends OptionsRootState>(state: S): string | null => state.voices.selectedLanguageGroup;
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createDraftSafeSelector,
+} = toolkit;
+
+export const getSelectedLanguageGroup = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.selectedLanguageGroup;
 export const getSelectedLanguageCode = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.selectedLanguageCode;
 export const getIsSelectedLanguageGroupTalkieLocale = <S extends OptionsRootState>(state: S): boolean => state.voices.isSelectedLanguageGroupTalkieLocale;
-export const getTextDirectionForSelectedLanguageGroup = <S extends OptionsRootState>(state: S): string => state.voices.textDirectionForSelectedLanguageGroup;
+export const getTextDirectionForSelectedLanguageGroup = <S extends OptionsRootState>(state: S): Readonly<string> => state.voices.textDirectionForSelectedLanguageGroup;
 export const getSelectedVoiceName = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.selectedVoiceName;
 export const getEffectiveVoiceNameForSelectedLanguageCode = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.effectiveVoiceNameForSelectedLanguageCode;
 export const getEffectiveVoiceNameForSelectedLanguageGroup = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.effectiveVoiceNameForSelectedLanguageGroup;
@@ -63,8 +70,8 @@ export const getVoicesByLanguageForSelectedLanguageGroup = createDraftSafeSelect
 	[
 		getVoicesObjectByLanguageForSelectedLanguageGroup,
 	],
-		// TODO: at some point in the hierarchy, switch to using an array insted of a nested object?
-		(voicesObjectByLanguagesByLanguageGroup) => Object.values(voicesObjectByLanguagesByLanguageGroup),
+	// TODO: at some point in the hierarchy, switch to using an array insted of a nested object?
+	(voicesObjectByLanguagesByLanguageGroup) => Object.values(voicesObjectByLanguagesByLanguageGroup),
 );
 
 export const getSortedVoicesByLanguageForSelectedLanguageGroup = createDraftSafeSelector(
@@ -105,6 +112,7 @@ export const getLanguageCountForSelectedLanguageGroup = createDraftSafeSelector(
 	[
 		getLanguagesForSelectedLanguageGroup,
 	],
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(languagesForSelectedLanguageGroup) => languagesForSelectedLanguageGroup.length,
 );
 
@@ -113,7 +121,8 @@ export const getFirstLanguageForSelectedLanguageGroup = createDraftSafeSelector(
 		getLanguagesForSelectedLanguageGroup,
 	],
 	// TODO: assert count and type.
-	(languagesForSelectedLanguageGroup) => languagesForSelectedLanguageGroup[0] || null,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	(languagesForSelectedLanguageGroup) => languagesForSelectedLanguageGroup[0] ?? null,
 );
 
 export const getHasSelectedLanguageCode = createDraftSafeSelector(
@@ -136,6 +145,7 @@ export const getVoiceCountForSelectedLanguageCode = createDraftSafeSelector(
 	[
 		getVoicesForSelectedLanguageCode,
 	],
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(voicesForSelectedLanguageCode) => voicesForSelectedLanguageCode.length,
 );
 
@@ -144,7 +154,8 @@ export const getFirstVoiceForSelectedLanguageCode = createDraftSafeSelector(
 		getVoicesForSelectedLanguageCode,
 	],
 	// TODO: assert count and type.
-	(voicesForSelectedLanguageCode) => voicesForSelectedLanguageCode[0] || null,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	(voicesForSelectedLanguageCode) => voicesForSelectedLanguageCode[0] ?? null,
 );
 
 export const getHasSelectedVoiceName = createDraftSafeSelector(
@@ -160,6 +171,7 @@ export const getVoiceForSelectedVoiceName = createDraftSafeSelector(
 		getSelectedVoiceName,
 	],
 	// TODO: assert type.
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(voices, selectedVoiceName) => selectedVoiceName ? getVoiceForVoiceNameFromVoices(voices, selectedVoiceName) : null,
 );
 

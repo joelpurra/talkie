@@ -18,13 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
 import {
 	EditionType,
 	IMetadataManager,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
+import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
 import type {
 	Manifest,
 	Runtime,
@@ -33,6 +33,8 @@ import type {
 import SettingsManager from "./settings-manager.mjs";
 
 export default class MetadataManager implements IMetadataManager {
+	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider, private readonly settingsManager: SettingsManager) {}
+
 	private get _editionTypePremium() {
 		return "premium" as EditionType;
 	}
@@ -58,8 +60,6 @@ export default class MetadataManager implements IMetadataManager {
 	private get webextensionVersionNameSubstring() {
 		return " WebExtension ";
 	}
-
-	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider, private readonly settingsManager: SettingsManager) {}
 
 	async isPremiumEdition(): Promise<boolean> {
 		return this.settingsManager.getIsPremiumEdition();

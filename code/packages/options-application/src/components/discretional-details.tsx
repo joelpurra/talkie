@@ -18,8 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
-
+import Discretional from "@talkie/shared-ui/components/discretional.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
 	ClassNameProp,
@@ -27,7 +26,7 @@ import {
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import Discretional from "@talkie/shared-ui/components/discretional.js";
+import React from "react";
 
 export interface DiscretionalDetailsProps extends ChildrenRequiredProps, ClassNameProp {
 	open: boolean;
@@ -46,8 +45,6 @@ export interface DiscretionalDetailsProps extends ChildrenRequiredProps, ClassNa
 }
 
 export default class DiscretionalDetails<P extends DiscretionalDetailsProps> extends React.PureComponent<P> {
-	wrappedDetailsRef: React.RefObject<HTMLDetailsElement>;
-
 	constructor(props: P) {
 		super(props);
 
@@ -112,4 +109,6 @@ export default class DiscretionalDetails<P extends DiscretionalDetailsProps> ext
 			</layoutBase.details>
 		);
 	}
+
+	wrappedDetailsRef: React.RefObject<HTMLDetailsElement>;
 }

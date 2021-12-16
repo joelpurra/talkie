@@ -18,13 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {IMetadataManager} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
+import {
+	IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	Runtime,
 } from "webextension-polyfill";

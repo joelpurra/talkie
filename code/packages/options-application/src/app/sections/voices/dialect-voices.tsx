@@ -18,14 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
-import React, { ComponentProps } from "react";
-import { StyletronComponent, withStyleDeep } from "styletron-react";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
+import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
+import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
+import React, {
+	ComponentProps,
+} from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
+import {
+	withStyleDeep,
+} from "styletron-react";
 
 interface DialectVoicesProps {
 	voices: Readonly<SafeVoiceObject[]>;
@@ -34,12 +41,6 @@ interface DialectVoicesProps {
 }
 
 class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -99,24 +100,28 @@ class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P>
 					voices
 						.map(
 							// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-							(voice) => {
-								return (
-									<this.styled.dialectLi
-										key={voice.name}
-										// eslint-disable-next-line react/jsx-no-bind
-										onClick={onSelectVoiceNameClick.bind(null, voice.name)}
-									>
-										<buttonBase.transparentButton>
-											{voice.name}
-										</buttonBase.transparentButton>
-									</this.styled.dialectLi>
-								);
-							},
+							(voice) => (
+								<this.styled.dialectLi
+									key={voice.name}
+									// eslint-disable-next-line react/jsx-no-bind
+									onClick={onSelectVoiceNameClick.bind(null, voice.name)}
+								>
+									<buttonBase.transparentButton>
+										{voice.name}
+									</buttonBase.transparentButton>
+								</this.styled.dialectLi>
+							),
 						)
 				}
 			</this.styled.dialectsUl>
 		);
 	}
+
+	private readonly styled: {
+		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
+		dialectLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
+		dialectsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
+	};
 }
 
 export default DialectVoices;

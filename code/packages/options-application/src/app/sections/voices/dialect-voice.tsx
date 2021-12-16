@@ -18,20 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	SafeVoiceObject,
+} from "@talkie/shared-interfaces/ivoices.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
-import Markdown from "../../../components/markdown.js";
-import InformationSection from "../../../components/section/information-section.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
-	SafeVoiceObject,
-} from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 
+import Markdown from "../../../components/markdown.js";
+import InformationSection from "../../../components/section/information-section.js";
 import DialectVoiceOptionsContainer from "../../../containers/voices/dialect-voice-options-container.js";
 
 interface DialectVoiceProps extends TranslateProps {

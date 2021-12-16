@@ -18,6 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
 import render from "@talkie/renderer/render.mjs";
 import {
 	IRenderReactHtmlToFile,
@@ -31,15 +34,17 @@ import {
 import {
 	promisify,
 } from "node:util";
-import {
-	Action,
-} from "@reduxjs/toolkit";
 
 import ensureAndGetOutputPath from "./ensure-and-get-output-path.mjs";
 
 const writeFile = promisify(writeFileCallback);
 
-const renderTemplate = async <S, A extends Action, P>(baseDirectory: string, app: Readonly<IRenderReactHtmlToFile<S, A, P>>, talkieLocale: TalkieLocale): Promise<void> => {
+const renderTemplate = async <S, A extends Action, P>(
+	baseDirectory: string,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	app: Readonly<IRenderReactHtmlToFile<S, A, P>>,
+	talkieLocale: TalkieLocale,
+): Promise<void> => {
 	const html = await render(
 		app.rootReducer,
 		app.customPrerenderedActionsToDispatch,

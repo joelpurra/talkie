@@ -22,7 +22,7 @@ import {
 	logInfo,
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 

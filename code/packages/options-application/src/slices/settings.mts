@@ -18,18 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
-const {
-	createAsyncThunk,
-	createSlice,
-} = toolkit;
 import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
 import {
 	IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
+
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createAsyncThunk,
+	// eslint-disable-next-line import/no-named-as-default-member
+	createSlice,
+} = toolkit;
 
 export interface VoicesState {
 	speakLongTexts: boolean;
@@ -45,12 +49,16 @@ const prefix = "settings";
 
 export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakLongTexts`,
-	async (_, {extra}) => extra.getSpeakLongTextsOption(),
+	async (_, {
+		extra,
+	}) => extra.getSpeakLongTextsOption(),
 );
 
 export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakLongTexts`,
-	async (speakLongTexts, {dispatch, extra}) => {
+	async (speakLongTexts, {
+		dispatch, extra,
+	}) => {
 		await extra.setSpeakLongTextsOption(speakLongTexts);
 		dispatch(setSpeakLongTexts(speakLongTexts));
 	},

@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {fileURLToPath} from 'node:url';
-import path from 'node:path';
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 
 import commonjs from "@rollup/plugin-commonjs";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -31,10 +31,7 @@ import license from "./rollup.config.license.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const projectRoot = path.join(
-	__dirname,
-	"..",
-);
+const projectRoot = path.join(__dirname, "..");
 
 const rollupConfiguration = (name) => ({
 	output: {
@@ -57,7 +54,7 @@ const rollupConfiguration = (name) => ({
 				"node_modules/**",
 			],
 		}),
-	]
+	],
 });
 
 export default rollupConfiguration;

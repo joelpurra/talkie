@@ -18,7 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import SharingIcons from "../../components/sharing/sharing-icons.js";
+import {
+	OsType,
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
 	ConfigureProps,
@@ -28,15 +34,17 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import React, {
+	ComponentProps,
+} from "react";
+import type {
+	StyletronComponent,
+} from "styletron-react";
 import {
-	TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
-import {
-	OsType,
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import React, { ComponentProps } from "react";
-import { StyletronComponent, styled } from "styletron-react";
+	styled,
+} from "styletron-react";
+
+import SharingIcons from "../../components/sharing/sharing-icons.js";
 
 export interface AboutStateProps {
 	isPremiumEdition: boolean;
@@ -56,15 +64,6 @@ interface AboutProps extends AboutStateProps {
 }
 
 class About<P extends AboutProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
-	static defaultProps = {
-		navigatorLanguage: null,
-		osType: null,
-	};
-
-	private readonly styled: {
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -320,6 +319,15 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 			</section>
 		);
 	}
+
+	static defaultProps = {
+		navigatorLanguage: null,
+		osType: null,
+	};
+
+	private readonly styled: {
+		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
+	};
 }
 
 export default configureAttribute<AboutProps & ConfigureProps>()(

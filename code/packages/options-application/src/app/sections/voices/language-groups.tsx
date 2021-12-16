@@ -18,17 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
 	LanguageGroupWithNavigatorLanguage,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
+import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
+import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import React, {
 	ComponentProps,
 } from "react";
-import {
+import type {
 	StyletronComponent,
+} from "styletron-react";
+import {
 	withStyleDeep,
 } from "styletron-react";
 
@@ -39,12 +41,6 @@ interface LanguageGroupsProps {
 }
 
 class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<P> {
-	private readonly styled: {
-		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		languageGroupLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		languageGroupsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
-	};
-
 	constructor(props: P) {
 		super(props);
 
@@ -131,6 +127,12 @@ class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<
 			</this.styled.languageGroupsUl>
 		);
 	}
+
+	private readonly styled: {
+		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
+		languageGroupLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
+		languageGroupsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
+	};
 }
 
 export default LanguageGroups;
