@@ -21,8 +21,8 @@
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.6.1",
-    "reselect": "^4.0.0"
+    "@reduxjs/toolkit": "^1.7.1",
+    "reselect": "^4.1.5"
   },
   "exports": {
     "./*": {

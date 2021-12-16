@@ -12,7 +12,7 @@
     "@talkie/renderer": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.6.1",
+    "@reduxjs/toolkit": "^1.7.1",
     "react": "^17.0.2"
   },
   "exports": {
