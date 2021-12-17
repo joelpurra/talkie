@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie in zwei Editionen erhältlich: Talkie und Talkie Premium. Die kostenlose Edition eignet sich hervorragend für die meisten Anwendungsfälle, die Premium Edition bietet jedoch zusätzliche Optionen und Funktionen.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Der Preis für Talkie Premium ist nicht festgelegt. Stattdessen zahlen Sie, was Sie wollen, je nachdem, wie viel Ihnen die Premium-Funktionen Ihrer Meinung nach wert sind. Sie können sogar entscheiden, nichts zu bezahlen.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Nach dem Senden der Zahlung müssen keine Upgrade-Codes eingegeben, keine Benutzerkonten registriert oder andere Zahlungsüberprüfungen durchgeführt werden. Stattdessen verwendet Talkie Premium das Talkie Premium .",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Bitte beachten Sie, dass Talkie keine Werbung, Benutzerverfolgung oder Datenerfassung als alternatives Mittel zur Monetarisierung enthält. Zahlungen werden als Spenden für die Open Source-Softwareentwicklung gekennzeichnet.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

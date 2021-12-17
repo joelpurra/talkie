@@ -98,7 +98,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 					enabled={!isPremiumEdition}
 				>
 					<this.styled.button
-						href={configure("urls.options-upgrade")}
+						href={configure("urls.options-features")}
 						id="header-premium-button"
 						lang="en"
 						rel="noopener noreferrer"

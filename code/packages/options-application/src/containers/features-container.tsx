@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
+import {
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React from "react";
 import {
 	connect,
@@ -29,9 +32,9 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Editions, {
-	EditionsDispatchProps,
-} from "../app/sections/editions.js";
+import Features, {
+	FeaturesDispatchProps,
+} from "../app/sections/features.js";
 import {
 	actions,
 } from "../slices/index.mjs";
@@ -44,26 +47,28 @@ const {
 } = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface EditionsContainerProps {}
+export interface FeaturesContainerProps {}
 
 interface StateProps {
 	isPremiumEdition: boolean;
+	systemType: SystemType | null;
 }
 
-interface DispatchProps extends EditionsDispatchProps {
+interface DispatchProps extends FeaturesDispatchProps {
 }
 
-export interface InternalEditionsContainerProps extends StateProps, DispatchProps {}
+export interface InternalFeaturesContainerProps extends StateProps, DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, EditionsContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
+	systemType: state.shared.metadata.systemType,
 });
 
-const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, EditionsContainerProps> = (dispatch) => ({
+const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, FeaturesContainerProps> = (dispatch) => ({
 	storeIsPremiumEdition: bindActionCreators(actions.shared.metadata.storeIsPremiumEdition, dispatch),
 });
 
-class EditionsContainer<P extends InternalEditionsContainerProps> extends React.PureComponent<P> {
+class FeaturesContainer<P extends InternalFeaturesContainerProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -73,17 +78,19 @@ class EditionsContainer<P extends InternalEditionsContainerProps> extends React.
 		const {
 			isPremiumEdition,
 			storeIsPremiumEdition,
+			systemType,
 		} = this.props;
 
 		return (
-			<Editions
+			<Features
 				isPremiumEdition={isPremiumEdition}
 				storeIsPremiumEdition={storeIsPremiumEdition}
+				systemType={systemType}
 			/>
 		);
 	}
 }
 
-export default connect<StateProps, DispatchProps, InternalEditionsContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
-	EditionsContainer,
-) as unknown as React.ComponentType<EditionsContainerProps>;
+export default connect<StateProps, DispatchProps, InternalFeaturesContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
+	FeaturesContainer,
+) as unknown as React.ComponentType<FeaturesContainerProps>;

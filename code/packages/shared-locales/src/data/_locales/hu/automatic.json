@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie két kiadásban jelenik meg: Talkie és Talkie Premium. Az ingyenes kiadás nagyszerű a legtöbb használati esetben, de a prémium kiadás további lehetőségeket és funkciókat kínál.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "A Talkie Premium ára nincs rögzítve. Ehelyett azt fizeti, amit akar, attól függően, hogy szerinted mennyit érnek Önnek a prémium funkciók. Még úgy is dönthet, hogy nem fizet semmit.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "A befizetés elküldése után nincsenek frissítési kódok, amelyeket meg kell adni, nincsenek felhasználói fiókok, amelyeket regisztrálni kell, vagy bármilyen más fizetési ellenőrzés érvényes. Ehelyett Talkie Premium a becsületrendszert használja.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Felhívjuk figyelmét, hogy a Talkie semmilyen hirdetési, felhasználói nyomonkövetési vagy adatgyűjtési lehetőséget nem Talkie a bevételszerzés alternatív eszközeként. A kifizetéseket adományként jelölik a nyílt forráskódú szoftverek fejlesztéséhez.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

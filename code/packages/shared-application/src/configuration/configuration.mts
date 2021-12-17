@@ -45,7 +45,6 @@ export type DynamicConfigurationObject = {
 			["options-features"]: string;
 			["options-support"]: string;
 			["options-usage"]: string;
-			["options-upgrade"]: string;
 			["options-voices"]: string;
 			["options-welcome"]: string;
 			options: string;
@@ -71,7 +70,6 @@ export default class Configuration implements IConfiguration {
 		configurationObject.shared.urls["options-about"] = configurationObject.shared.urls.options + "#about";
 		configurationObject.shared.urls["options-features"] = configurationObject.shared.urls.options + "#features";
 		configurationObject.shared.urls["options-support"] = configurationObject.shared.urls.options + "#support";
-		configurationObject.shared.urls["options-upgrade"] = configurationObject.shared.urls.options + "#upgrade";
 		configurationObject.shared.urls["options-usage"] = configurationObject.shared.urls.options + "#usage";
 		configurationObject.shared.urls["options-voices"] = configurationObject.shared.urls.options + "#voices";
 		configurationObject.shared.urls["options-welcome"] = configurationObject.shared.urls.options + "#welcome";

@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie มีสองฉบับ: Talkie และ Talkie Premium รุ่นฟรีเหมาะสำหรับกรณีการใช้งานส่วนใหญ่ แต่รุ่นพรีเมี่ยมมีตัวเลือกและคุณสมบัติเพิ่มเติม",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "ราคาสำหรับ Talkie Premium ไม่คงที่ แทนที่จะจ่ายตามที่คุณต้องการขึ้นอยู่กับว่าคุณคิดว่าคุณสมบัติพิเศษมีค่าสำหรับคุณมากแค่ไหน คุณสามารถตัดสินใจที่จะไม่จ่ายอะไรเลย",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "หลังจากส่งการชำระเงินแล้วจะไม่มีรหัสอัปเกรดให้ป้อนไม่มีบัญชีผู้ใช้ที่จะลงทะเบียนหรือยืนยันการชำระเงินอื่น ๆ Talkie Premium แทนใช้ระบบเกียรติยศ",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "โปรดทราบว่า Talkie ไม่มีการโฆษณาการติดตามผู้ใช้หรือการรวบรวมข้อมูลเป็นวิธีอื่นในการสร้างรายได้ การชำระเงินจะระบุว่าเป็นการบริจาคสำหรับการพัฒนาซอฟต์แวร์โอเพนซอร์ส",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

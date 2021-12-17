@@ -40,7 +40,7 @@ const getCommandMap = (
 		await openUrlFromConfigurationInNewTab("main");
 	},
 	"open-website-upgrade": async () => {
-		await openInternalUrlFromConfigurationInNewTab("options-upgrade");
+		await openInternalUrlFromConfigurationInNewTab("options-features");
 	},
 	"read-clipboard": async () => {
 		// NOTE: keeping the root chain separate from the speech chain.

@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie vine în două ediții: Talkie și Talkie Premium. Ediția gratuită este excelentă pentru majoritatea cazurilor de utilizare, dar ediția premium oferă opțiuni și caracteristici suplimentare.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Prețul pentru Talkie Premium nu este fix. În schimb, plătești ceea ce vrei, în funcție de cât crezi că merită pentru tine funcțiile premium. Puteți chiar să decideți să nu plătiți nimic.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "După trimiterea plății, nu mai există coduri de upgrade de introdus, conturi de utilizator de înregistrat sau nicio altă verificare de plată. În schimb, Talkie Premium folosește sistemul de onoare.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Rețineți că Talkie nu are publicitate, urmărire utilizator sau colectare de date ca mijloace alternative de generare de bani. Plățile sunt etichetate ca donații pentru dezvoltarea de software open source.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

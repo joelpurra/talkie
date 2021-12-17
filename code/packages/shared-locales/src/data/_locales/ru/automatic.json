@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie поставляется в двух редакциях: Talkie и Talkie Premium. Бесплатная версия отлично подходит для большинства случаев использования, но премиум-версия предлагает дополнительные параметры и функции.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Цена на Talkie Premium не фиксирована. Вместо этого вы платите столько, сколько хотите, в зависимости от того, сколько, по вашему мнению, стоят для вас премиум-функции. Можно даже ничего не платить.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "После отправки платежа нет кодов обновления для ввода, нет учетных записей пользователей для регистрации или любой другой проверки платежа на месте. Вместо этого Talkie Premium использует систему чести.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Обратите внимание, что Talkie не имеет рекламы, отслеживания пользователей или сбора данных в качестве альтернативных средств монетизации. Платежи помечаются как пожертвования на разработку программного обеспечения с открытым исходным кодом.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

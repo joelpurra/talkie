@@ -84,18 +84,8 @@ body {
     margin-right: -0.5em;
 }
 
-div.free-section,
-div.premium-section {
-    padding: 0.5em;
-}
-
 .premium-section {
     background-color: #eceff5;
-}
-
-.premium-section p:first-of-type,
-.premium-section h2:first-of-type {
-    margin-top: 0;
 }
 
 tr.premium-section:first-of-type td:first-of-type,

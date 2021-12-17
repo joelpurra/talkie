@@ -31,14 +31,16 @@ import EditionSection, {
 } from "./edition-section.js";
 
 export interface FreeSectionProps {
+	headingLink?: boolean;
 	mode: EditionSectionMode;
 }
 
 export default class FreeSection<P extends FreeSectionProps & ChildrenRequiredProps & ClassNameProp> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
-			mode,
 			className,
+			headingLink,
+			mode,
 		} = this.props;
 
 		const isPremiumEdition = false;
@@ -46,6 +48,7 @@ export default class FreeSection<P extends FreeSectionProps & ChildrenRequiredPr
 		return (
 			<EditionSection
 				className={className}
+				headingLink={headingLink}
 				isPremiumEdition={isPremiumEdition}
 				mode={mode}
 			>
@@ -53,4 +56,8 @@ export default class FreeSection<P extends FreeSectionProps & ChildrenRequiredPr
 			</EditionSection>
 		);
 	}
+
+	static defaultProps = {
+		headingLink: true,
+	};
 }

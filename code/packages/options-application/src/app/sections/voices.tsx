@@ -19,7 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Discretional from "@talkie/shared-ui/components/discretional.js";
-import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
@@ -85,11 +84,11 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 
 		return (
 			<>
-				<layoutBase.section>
+				<section>
 					<Intro/>
-				</layoutBase.section>
+				</section>
 
-				<layoutBase.section>
+				<section>
 					<Loading
 						enabled={haveVoices}
 					>
@@ -119,12 +118,12 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							/>
 						</Discretional>
 					</Loading>
-				</layoutBase.section>
+				</section>
 
 				<Discretional
 					enabled={haveVoices && hasSelectedLanguageGroup}
 				>
-					<layoutBase.section>
+					<section>
 						{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
 						<textBase.h3
 							// eslint-disable-next-line react/jsx-no-bind
@@ -154,13 +153,13 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 								speakSampleTextForLanguage={speakSampleTextForLanguage}
 							/>
 						</Discretional>
-					</layoutBase.section>
+					</section>
 				</Discretional>
 
 				<Discretional
 					enabled={hasSelectedLanguageGroup && hasSelectedLanguageCode}
 				>
-					<layoutBase.section>
+					<section>
 						{/* TODO: decide on which level to put sections/headings; perhaps move to own class. */}
 						<textBase.h4
 							// eslint-disable-next-line react/jsx-no-bind
@@ -190,7 +189,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 								speakSampleTextForVoiceName={speakSampleTextForVoiceName}
 							/>
 						</Discretional>
-					</layoutBase.section>
+					</section>
 				</Discretional>
 			</>
 		);

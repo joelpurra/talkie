@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie έρχεται σε δύο εκδόσεις: Talkie και Talkie Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει επιπλέον επιλογές και δυνατότητες.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Η τιμή για Talkie Premium δεν είναι σταθερή. Αντ 'αυτού πληρώνετε ό, τι θέλετε, ανάλογα με το πόσο πιστεύετε ότι τα premium χαρακτηριστικά σας αξίζουν. Μπορείτε ακόμη και να αποφασίσετε να μην πληρώσετε τίποτα.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Μετά την αποστολή της πληρωμής δεν υπάρχουν κωδικοί αναβάθμισης για εισαγωγή, δεν υπάρχουν λογαριασμοί χρηστών για εγγραφή ή άλλη επαλήθευση πληρωμής. Αντίθετα, το Talkie Premium χρησιμοποιεί το σύστημα τιμής.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Λάβετε υπόψη ότι το Talkie δεν διαθέτει διαφημίσεις, παρακολούθηση χρηστών ή συλλογή δεδομένων ως εναλλακτικό μέσο δημιουργίας εσόδων. Οι πληρωμές χαρακτηρίζονται ως δωρεές για ανάπτυξη λογισμικού ανοιχτού κώδικα.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

@@ -23,7 +23,6 @@ import {
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import TalkieFreeIcon from "@talkie/shared-ui/components/icon/talkie-free-icon.js";
-import TalkiePremiumIcon from "@talkie/shared-ui/components/icon/talkie-premium-icon.js";
 import configureAttribute, {
 	ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -40,16 +39,25 @@ import type {
 } from "styletron-react";
 import {
 	styled,
-	withStyleDeep,
 } from "styletron-react";
 
 import FreeSection from "../../components/section/free-section.js";
 import PremiumSection from "../../components/section/premium-section.js";
+import {
+	actions,
+} from "../../slices/index.mjs";
+import TalkiePremiumEdition from "./features/talkie-premium-edition.js";
 
-export interface FeaturesProps {
+export interface FeaturesStateProps {
 	isPremiumEdition: boolean;
 	systemType: SystemType | null;
 }
+
+export interface FeaturesDispatchProps {
+	storeIsPremiumEdition: typeof actions.shared.metadata.storeIsPremiumEdition;
+}
+
+interface FeaturesProps extends FeaturesStateProps, FeaturesDispatchProps {}
 
 class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extends React.PureComponent<P> {
 	constructor(props: P) {
@@ -59,7 +67,10 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 			storeLink: styled(
 				"div",
 				{
-					marginTop: "0.5em",
+					marginBottom: "2em",
+					marginLeft: "2em",
+					marginRight: "2em",
+					marginTop: "2em",
 					textAlign: "center",
 				},
 			),
@@ -67,28 +78,11 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 			storeLinks: styled(
 				"div",
 				{
-					"@media (min-width: 450px)": {
-						columns: 2,
+					"@media (min-width: 500px)": {
+						"align-items": "flex-end",
+						display: "flex",
+						"justify-content": "space-evenly",
 					},
-					marginTop: "0.5em",
-					textAlign: "center",
-				},
-			),
-
-			storeLinksP: withStyleDeep(
-				textBase.p,
-				{
-					marginBottom: "0.5em",
-				},
-			),
-
-			storeLinksPFirst: withStyleDeep(
-				textBase.p,
-				{
-					"@media (min-width: 450px)": {
-						marginTop: 0,
-					},
-					marginBottom: "0.5em",
 				},
 			),
 		};
@@ -97,10 +91,14 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 	override render(): React.ReactNode {
 		const {
 			isPremiumEdition,
+			storeIsPremiumEdition,
 			systemType,
 			translateSync,
 			configure,
 		} = this.props;
+
+		const cwsAltText = "Talkie is available for installation from the Chrome Web Store";
+		const amoAltText = "Talkie is available for installation from Mozilla Addons";
 
 		return (
 			<section>
@@ -124,7 +122,63 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 					</p>
 				</Discretional>
 
+				<FreeSection
+					headingLink={false}
+					mode="h2"
+				>
+					<listBase.ul>
+						<listBase.li>
+							{translateSync("frontend_featuresFree_List01")}
+						</listBase.li>
+						<listBase.li>
+							{translateSync("frontend_featuresFree_List02")}
+						</listBase.li>
+						<listBase.li>
+							{translateSync("frontend_featuresFree_List03")}
+						</listBase.li>
+						<listBase.li>
+							{translateSync("frontend_featuresFree_List04")}
+						</listBase.li>
+						<listBase.li>
+							{translateSync("frontend_featuresFree_List05")}
+						</listBase.li>
+						<listBase.li>
+							{translateSync("frontend_featuresFree_List06")}
+						</listBase.li>
+					</listBase.ul>
+
+					<this.styled.storeLinks>
+						<this.styled.storeLink>
+							<textBase.a
+								href={configure("urls.chromewebstore")}
+								lang="en"
+							>
+								<img alt={cwsAltText} height="75" src="../../../shared-resources/src/resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" width="248"/>
+								<br/>
+								<TalkieFreeIcon
+									mode="inline"
+								/>
+								{translateSync("extensionShortName_Free")}
+							</textBase.a>
+						</this.styled.storeLink>
+						<this.styled.storeLink>
+							<textBase.a
+								href={configure("urls.firefox-amo")}
+								lang="en"
+							>
+								<img alt={amoAltText} height="60" src="../../../shared-resources/src/resources/firefox-amo/AMO-button_1.png" width="172"/>
+								<br/>
+								<TalkieFreeIcon
+									mode="inline"
+								/>
+								{translateSync("extensionShortName_Free")}
+							</textBase.a>
+						</this.styled.storeLink>
+					</this.styled.storeLinks>
+				</FreeSection>
+
 				<PremiumSection
+					headingLink={false}
 					mode="h2"
 				>
 					<listBase.ul>
@@ -151,73 +205,13 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 							{translateSync("frontend_featuresPremium_List04")}
 						</listBase.li>
 					</listBase.ul>
-
-					<this.styled.storeLink>
-						<textBase.a
-							href={configure("urls.options-upgrade")}
-							lang="en"
-						>
-							<TalkiePremiumIcon
-								mode="inline"
-							/>
-							{translateSync("frontend_featuresUpgradeToTalkiePremiumLinkText")}
-						</textBase.a>
-					</this.styled.storeLink>
 				</PremiumSection>
 
-				<FreeSection
-					mode="h2"
-				>
-					<listBase.ul>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List01")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List02")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List03")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List04")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List05")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List06")}
-						</listBase.li>
-					</listBase.ul>
-
-					<this.styled.storeLinks>
-						<this.styled.storeLinksPFirst>
-							<textBase.a
-								href={configure("urls.chromewebstore")}
-								lang="en"
-							>
-								<img alt="Talkie is available for installation from the Chrome Web Store" height="75" src="../../../shared-resources/src/resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" width="248"/>
-								<br/>
-								<TalkieFreeIcon
-									mode="inline"
-								/>
-								{translateSync("extensionShortName_Free")}
-							</textBase.a>
-						</this.styled.storeLinksPFirst>
-						<this.styled.storeLinksP>
-							<textBase.a
-								href={configure("urls.firefox-amo")}
-								lang="en"
-							>
-								<img alt="Talkie is available for installation from the Chrome Web Store" height="60" src="../../../shared-resources/src/resources/firefox-amo/AMO-button_1.png" width="172"/>
-								<br/>
-								<TalkieFreeIcon
-									mode="inline"
-								/>
-								{translateSync("extensionShortName_Free")}
-							</textBase.a>
-						</this.styled.storeLinksP>
-					</this.styled.storeLinks>
-				</FreeSection>
+				<TalkiePremiumEdition
+					disabled={false}
+					isPremiumEdition={isPremiumEdition}
+					onChange={storeIsPremiumEdition}
+				/>
 			</section>
 		);
 	}
@@ -225,8 +219,6 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 	private readonly styled: {
 		storeLink: StyletronComponent<ComponentProps<"div">>;
 		storeLinks: StyletronComponent<ComponentProps<"div">>;
-		storeLinksP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-		storeLinksPFirst: StyletronComponent<ComponentProps<typeof textBase.p>>;
 	};
 }
 

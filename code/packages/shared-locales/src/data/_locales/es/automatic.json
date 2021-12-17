@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie viene en dos ediciones: Talkie y Talkie Premium. La edición gratuita es ideal para la mayoría de los casos de uso, pero la edición premium ofrece opciones y funciones adicionales.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "El precio de Talkie Premium no es fijo. En su lugar, paga lo que quiere, dependiendo de cuánto cree que valen para usted las funciones premium. Incluso puede decidir no pagar nada.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Después de enviar el pago, no hay códigos de actualización para ingresar, no hay cuentas de usuario para registrar ni ninguna otra verificación de pago en su lugar. En Talkie Premium lugar, Talkie Premium usa el sistema de honor.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Tenga en cuenta que Talkie no tiene publicidad, seguimiento de usuarios ni recopilación de datos como medios alternativos de monetización. Los pagos se etiquetan como donaciones para el desarrollo de software de código abierto.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

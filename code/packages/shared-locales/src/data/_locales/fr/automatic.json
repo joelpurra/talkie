@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie est disponible en deux éditions: Talkie et Talkie Premium. L'édition gratuite est idéale pour la plupart des cas d'utilisation, mais l'édition premium offre des options et des fonctionnalités supplémentaires.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Le prix de Talkie Premium n'est pas fixe. Au lieu de cela, vous payez ce que vous voulez, en fonction de ce que vous pensez que les fonctionnalités premium valent pour vous. Vous pouvez même décider de ne rien payer.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Après l'envoi du paiement, il n'y a aucun code de mise à niveau à saisir, aucun compte utilisateur à enregistrer ou toute autre vérification de paiement en place. Au lieu de cela, Talkie Premium utilise le système d'honneur.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Veuillez noter que Talkie n'a pas de publicité, de suivi des utilisateurs ou de collecte de données comme moyen alternatif de monétisation. Les paiements sont étiquetés comme des dons pour le développement de logiciels open source.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

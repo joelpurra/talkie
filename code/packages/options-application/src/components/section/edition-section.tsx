@@ -29,16 +29,25 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
+import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React from "react";
+import React, {
+	ComponentProps,
+} from "react";
+import {
+	styled,
+	StyletronComponent,
+	withStyleDeep,
+} from "styletron-react";
 
 export type EditionSectionMode =
 	| "p"
 	| "h2";
 
 export interface EditionSectionProps extends ChildrenRequiredProps, ClassNameProp {
+	headingLink?: boolean;
 	isPremiumEdition: boolean;
 	mode: EditionSectionMode;
 }
@@ -46,14 +55,51 @@ export interface EditionSectionProps extends ChildrenRequiredProps, ClassNamePro
 interface InternalProps extends EditionSectionProps, ConfigureProps, TranslateProps {}
 
 class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
-	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
+
+		const partialStyled = {
+			h2ModeHeading: styled(
+				textBase.h2,
+				{
+					marginTop: "1em",
+				},
+			),
+			wrapperBase: styled(
+				"div",
+				{
+					...layoutBase.rounded,
+					marginLeft: "-0.5em",
+					marginRight: "-0.5em",
+					marginTop: "2em",
+					paddingLeft: "0.5em",
+					paddingRight: "0.5em",
+					paddingTop: "0.5em",
+				},
+			),
+		};
+
+		this.styled = {
+			...partialStyled,
+			h2ModeWrapper: withStyleDeep(
+				partialStyled.wrapperBase,
+				{
+					paddingBottom: "2em",
+				},
+			),
+			pModeWrapper: withStyleDeep(
+				partialStyled.wrapperBase,
+				{
+					paddingBottom: "0.5em",
+				},
+			),
+		};
 	}
 
 	override render(): React.ReactNode {
 		const {
 			mode,
+			headingLink,
 			isPremiumEdition,
 			children,
 			className,
@@ -66,7 +112,9 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			? translateSync("extensionShortName_Premium")
 			: translateSync("extensionShortName_Free");
 
-		const versionClassName = isPremiumEdition ? "premium-section" : "free-section";
+		const versionClassName = isPremiumEdition
+			? "premium-section"
+			: "free-section";
 
 		const classNames = [
 			versionClassName,
@@ -75,41 +123,71 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			.join(" ")
 			.trim();
 
-		let HeadingElement = null;
+		let Wrapper = null;
+		let Heading = null;
 
 		switch (mode) {
 			// TODO: create separate components instead of a flag.
 			case "p":
-				HeadingElement = textBase.p;
+				Wrapper = this.styled.pModeWrapper;
+				Heading = textBase.p;
 				break;
 
 			case "h2":
-				HeadingElement = textBase.h2;
+				Wrapper = this.styled.h2ModeWrapper;
+				Heading = this.styled.h2ModeHeading;
 				break;
 
 			default:
 				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
 		}
 
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		const LinkOrNot: React.FC = ({
+			children,
+		}) => headingLink
+			? (
+				<textBase.a
+					href={configure("urls.options-features")}
+					lang="en"
+				>
+					{children}
+				</textBase.a>
+			)
+			: (
+				// eslint-disable-next-line react/jsx-no-useless-fragment
+				<>
+					{children}
+				</>
+			);
+
 		return (
-			<div className={classNames}>
-				<HeadingElement>
-					<textBase.a
-						href={configure("urls.options-upgrade")}
-						lang="en"
-					>
+			<Wrapper className={classNames}>
+				<Heading>
+					<LinkOrNot>
 						<TalkieEditionIcon
 							isPremiumEdition={isPremiumEdition}
 							mode="inline"
 						/>
 						{text}
-					</textBase.a>
-				</HeadingElement>
+					</LinkOrNot>
+				</Heading>
 
 				{children}
-			</div>
+			</Wrapper>
 		);
 	}
+
+	static defaultProps = {
+		headingLink: true,
+	};
+
+	private readonly styled: {
+		h2ModeHeading: StyletronComponent<ComponentProps<"h2">>;
+		wrapperBase: StyletronComponent<ComponentProps<"div">>;
+		h2ModeWrapper: StyletronComponent<ComponentProps<"div">>;
+		pModeWrapper: StyletronComponent<ComponentProps<"div">>;
+	};
 }
 
 export default translateAttribute<EditionSectionProps & ChildrenRequiredProps & TranslateProps & ClassNameProp>()(

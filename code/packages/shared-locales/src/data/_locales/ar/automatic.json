@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie يأتي في نسختين: Talkie و Talkie Premium. يعد الإصدار المجاني رائعًا لمعظم حالات الاستخدام ، ولكن الإصدار المميز يوفر خيارات وميزات إضافية.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "سعر Talkie Premium غير ثابت. بدلاً من ذلك ، تدفع ما تريد ، اعتمادًا على المبلغ الذي تعتقد أن الميزات المتميزة تستحقه. يمكنك حتى أن تقرر عدم دفع أي شيء.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "بعد إرسال الدفعة ، لا توجد رموز ترقية لإدخالها ، ولا توجد حسابات مستخدمين للتسجيل ، أو أي تحقق دفع آخر في المكان. بدلاً من ذلك ، يستخدم Talkie Premium نظام الشرف.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "يرجى ملاحظة أن Talkie ليس لديه أي إعلانات أو تتبع مستخدم أو جمع بيانات كوسائل بديلة لتحقيق الدخل. يتم تصنيف المدفوعات على أنها تبرعات لتطوير برامج مفتوحة المصدر.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

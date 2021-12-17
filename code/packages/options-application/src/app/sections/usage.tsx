@@ -236,7 +236,7 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 							<tableBase.tr className="premium-section">
 								<tableBase.td colSpan={2}>
 									<textBase.a
-										href={configure("urls.options-upgrade")}
+										href={configure("urls.options-features")}
 										lang="en"
 									>
 										<TalkiePremiumIcon

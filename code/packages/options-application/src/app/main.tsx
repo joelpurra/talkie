@@ -49,7 +49,7 @@ import {
 } from "../components/navigation/nav-container-types.mjs";
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
-import EditionsContainer from "../containers/editions-container.js";
+import FeaturesContainer from "../containers/features-container.js";
 import TextContainer from "../containers/settings-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
@@ -60,7 +60,6 @@ import Footer, {
 	FooterStateProps,
 } from "./footer.js";
 import Header from "./header.js";
-import Features from "./sections/features.js";
 import Support from "./sections/support.js";
 import Usage from "./sections/usage.js";
 
@@ -121,11 +120,6 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				tabId: "features",
 				// eslint-disable-next-line no-sync
 				text: this.props.translateSync("frontend_featuresLinkText"),
-			},
-			{
-				tabId: "upgrade",
-				// eslint-disable-next-line no-sync
-				text: this.props.translateSync("frontend_upgradeLinkText"),
 			},
 			{
 				tabId: "settings",
@@ -282,18 +276,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 						id="features"
 						onLinkClick={this.handleLinkClick}
 					>
-						<Features
-							isPremiumEdition={isPremiumEdition}
-							systemType={systemType}
-						/>
-					</TabContents>
-
-					<TabContents
-						activeTabId={activeTabId}
-						id="upgrade"
-						onLinkClick={this.handleLinkClick}
-					>
-						<EditionsContainer/>
+						<FeaturesContainer/>
 					</TabContents>
 
 					<TabContents

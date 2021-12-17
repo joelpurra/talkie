@@ -537,18 +537,14 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie geleverd in twee edities: Talkie en Talkie Premium. De gratis editie is geweldig voor de meeste gebruiksscenario's, maar de premium-editie biedt extra opties en functies.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "De prijs voor Talkie Premium staat niet vast. In plaats daarvan betaalt u wat u wilt, afhankelijk van hoeveel u denkt dat de premiumfuncties u waard zijn. U kunt zelfs besluiten om niets te betalen.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Na het verzenden van de betaling hoeft u geen upgradecodes in te voeren, geen gebruikersaccounts om te registreren of enige andere betalingsverificatie. In plaats Talkie Premium gebruikt Talkie Premium het eer-systeem.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Houd er rekening mee dat Talkie geen advertenties, gebruikersregistratie of gegevensverzameling heeft als alternatieve manier om inkomsten te genereren. Betalingen worden bestempeld als donaties voor de ontwikkeling van open source software.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

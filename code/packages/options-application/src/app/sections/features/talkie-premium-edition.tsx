@@ -24,6 +24,7 @@ import configureAttribute, {
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
 import Checkbox from "../../../components/form/checkbox.js";
@@ -55,11 +56,12 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 
 		return (
 			<>
+				<textBase.h2>
+					{translateSync("frontend_upgradeHeading")}
+				</textBase.h2>
+
 				<p>
 					{translateSync("frontend_upgradeExplanation01")}
-				</p>
-				<p>
-					{translateSync("frontend_upgradeExplanation02")}
 				</p>
 				<ul>
 					<li>
@@ -74,7 +76,7 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 					</li>
 				</ul>
 				<p>
-					{translateSync("frontend_upgradeExplanation03")}
+					{translateSync("frontend_upgradeExplanation02")}
 				</p>
 				<p>
 					<label>
@@ -88,7 +90,7 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 					</label>
 				</p>
 				<p>
-					{translateSync("frontend_upgradeExplanation04")}
+					{translateSync("frontend_upgradeExplanation03")}
 				</p>
 			</>
 		);
