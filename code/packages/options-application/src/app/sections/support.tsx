@@ -48,6 +48,7 @@ import {
 export interface SupportProps {
 	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
 	osType?: OsType | null;
+	showAdditionalDetails: boolean;
 	systemType: SystemType | null;
 }
 
@@ -103,14 +104,12 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 	override render(): React.ReactNode {
 		const {
-			systemType,
-			osType,
-			translateSync,
 			configure,
+			osType,
+			showAdditionalDetails,
+			systemType,
+			translateSync,
 		} = this.props;
-
-		// TODO: configuration.
-		const devModeShowAll = false;
 
 		return (
 			<section>
@@ -144,7 +143,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				{this.standardFaqEntry(1)}
 
 				<Discretional
-					enabled={devModeShowAll || osType === "win"}
+					enabled={showAdditionalDetails || osType === "win"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
@@ -189,7 +188,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				</Discretional>
 
 				<Discretional
-					enabled={devModeShowAll || osType === "cros"}
+					enabled={showAdditionalDetails || osType === "cros"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
@@ -216,7 +215,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				</Discretional>
 
 				<Discretional
-					enabled={devModeShowAll || osType === "mac"}
+					enabled={showAdditionalDetails || osType === "mac"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
@@ -245,7 +244,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				</Discretional>
 
 				<Discretional
-					enabled={devModeShowAll || osType === "linux"}
+					enabled={showAdditionalDetails || osType === "linux"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
@@ -275,7 +274,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 				{/* NOTE: can't change shortcut keys in Firefox */}
 				<Discretional
-					enabled={devModeShowAll || systemType === "chrome"}
+					enabled={showAdditionalDetails || systemType === "chrome"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
@@ -302,7 +301,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 				{/* NOTE: can't change shortcut keys in Firefox */}
 				<Discretional
-					enabled={devModeShowAll || systemType === "webextension"}
+					enabled={showAdditionalDetails || systemType === "webextension"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>

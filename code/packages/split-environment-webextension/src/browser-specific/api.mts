@@ -155,6 +155,18 @@ export default class Api implements IApi {
 		await talkieServices.setSpeakLongTextsOption(speakLongTexts);
 	}
 
+	async getShowAdditionalDetailsOption(): Promise<boolean> {
+		const talkieServices = await getTalkieServices();
+
+		return talkieServices.getShowAdditionalDetailsOption();
+	}
+
+	async setShowAdditionalDetailsOption(showAdditionalDetails: boolean): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.setShowAdditionalDetailsOption(showAdditionalDetails);
+	}
+
 	async getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null> {
 		const talkieServices = await getTalkieServices();
 		const effectiveVoiceForLanguage = await talkieServices.getEffectiveVoiceForLanguage(languageCode);

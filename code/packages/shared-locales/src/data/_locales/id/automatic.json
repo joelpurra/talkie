@@ -440,6 +440,10 @@
     "message": "Tinjau Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Teks",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Beritahu teman Anda tentang Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie bahasa antarmuka pengguna",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Teks",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie hadir dalam dua edisi: Talkie dan Talkie Premium. Edisi gratis sangat bagus untuk sebagian besar kasus penggunaan, tetapi edisi premium menawarkan opsi dan fitur tambahan.",

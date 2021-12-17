@@ -31,9 +31,11 @@ import rootReducer, {
 // NOTE: empty to not modify the server state before hydrating the prerendered state on the client.
 const prerenderActionsToDispatch: Action[] = [];
 const postrenderActionsToDispatch: Action[] = [
-	actions.shared.voices.loadVoices() as unknown as Action,
+	// NOTE: don't want to keep track of when to load these, preemptively loading.
+	actions.settings.loadShowAdditionalDetails() as unknown as Action,
 	actions.shared.languages.loadNavigatorLanguage() as unknown as Action,
 	actions.shared.languages.loadNavigatorLanguages() as unknown as Action,
+	actions.shared.voices.loadVoices() as unknown as Action,
 	actions.tabs.loadActiveTabFromLocationHash() as unknown as Action,
 ];
 

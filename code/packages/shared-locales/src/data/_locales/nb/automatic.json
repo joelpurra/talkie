@@ -440,6 +440,10 @@
     "message": "Gjennomgå Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Tekst",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Fortell vennene dine om Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie brukergrensesnittspråk",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Tekst",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie kommer i to utgaver: Talkie og Talkie Premium. Den gratis utgaven er flott for de fleste brukstilfeller, men premiumutgaven tilbyr flere alternativer og funksjoner.",

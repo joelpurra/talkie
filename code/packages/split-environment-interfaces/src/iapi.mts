@@ -77,6 +77,10 @@ export default interface IApi {
 
 	setSpeakLongTextsOption(speakLongTexts: boolean): Promise<void>;
 
+	getShowAdditionalDetailsOption(): Promise<boolean>;
+
+	setShowAdditionalDetailsOption(ShowAdditionalDetails: boolean): Promise<void>;
+
 	getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null>;
 
 	getEffectiveRateForVoice(voiceName: string): Promise<number>;

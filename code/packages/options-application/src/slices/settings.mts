@@ -35,17 +35,36 @@ const {
 	createSlice,
 } = toolkit;
 
-export interface VoicesState {
+export interface SettingsState {
+	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
 }
 
-const initialState: VoicesState = {
+const initialState: SettingsState = {
+	showAdditionalDetails: false,
 	speakLongTexts: false,
 };
 
 const prefix = "settings";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
+
+export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadShowAdditionalDetails`,
+	async (_, {
+		extra,
+	}) => extra.getShowAdditionalDetailsOption(),
+);
+
+export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+	`${prefix}/storeShowAdditionalDetails`,
+	async (showAdditionalDetails, {
+		dispatch, extra,
+	}) => {
+		await extra.setShowAdditionalDetailsOption(showAdditionalDetails);
+		dispatch(setShowAdditionalDetails(showAdditionalDetails));
+	},
+);
 
 export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakLongTexts`,
@@ -64,9 +83,13 @@ export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThun
 	},
 );
 
-export const voicesSlice = createSlice({
+export const settingsSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
+			.addCase(loadShowAdditionalDetails.fulfilled, (state, action) => {
+				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
+				state.showAdditionalDetails = action.payload;
+			})
 			.addCase(loadSpeakLongTexts.fulfilled, (state, action) => {
 				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.speakLongTexts = action.payload;
@@ -75,7 +98,10 @@ export const voicesSlice = createSlice({
 	initialState,
 	name: prefix,
 	reducers: {
-		setSpeakLongTexts: (state: Draft<VoicesState>, action: PayloadAction<boolean>) => {
+		setShowAdditionalDetails: (state: Draft<SettingsState>, action: PayloadAction<boolean>) => {
+			state.showAdditionalDetails = action.payload;
+		},
+		setSpeakLongTexts: (state: Draft<SettingsState>, action: PayloadAction<boolean>) => {
 			state.speakLongTexts = action.payload;
 		},
 	},
@@ -84,6 +110,8 @@ export const voicesSlice = createSlice({
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const {
+	setShowAdditionalDetails,
 	setSpeakLongTexts,
-} = voicesSlice.actions;
-export default voicesSlice.reducer;
+} = settingsSlice.actions;
+
+export default settingsSlice.reducer;

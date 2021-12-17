@@ -440,6 +440,10 @@
     "message": "Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Κείμενο",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Πείτε στους φίλους σας για το Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie γλώσσες διεπαφής χρήστη",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Κείμενο",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie έρχεται σε δύο εκδόσεις: Talkie και Talkie Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει επιπλέον επιλογές και δυνατότητες.",

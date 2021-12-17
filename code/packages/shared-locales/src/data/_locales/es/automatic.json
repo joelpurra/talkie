@@ -440,6 +440,10 @@
     "message": "Revisar Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Texto",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Dile a tus amigos sobre Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie idiomas de interfaz de usuario",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Texto",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie viene en dos ediciones: Talkie y Talkie Premium. La edición gratuita es ideal para la mayoría de los casos de uso, pero la edición premium ofrece opciones y funciones adicionales.",

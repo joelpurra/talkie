@@ -332,6 +332,9 @@
   "frontend_rateIt": {
     "message": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Settings"
+  },
   "frontend_storyDescription": {
     "message": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
@@ -391,9 +394,6 @@
   },
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
@@ -525,6 +525,18 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "Show additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "Show additional details"
   },
   "frontend_voicesShowAllVoices": {
     "message": "Show all voices"

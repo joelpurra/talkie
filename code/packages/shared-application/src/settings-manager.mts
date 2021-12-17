@@ -32,6 +32,7 @@ import StorageManager from "./storage-manager.mjs";
 export enum KnownSettings {
 	IsPremiumEdition = "is-premium-edition",
 	SpeakLongTexts = "speak-long-texts",
+	ShowAdditionalDetails = "show-additional-details",
 }
 export type KnownSettingNames = keyof typeof KnownSettings;
 export type KnownSettingValues = ValueOf<KnownSettings>;
@@ -56,11 +57,19 @@ export default class SettingsManager {
 		return KnownSettings.SpeakLongTexts;
 	}
 
+	private get _showAdditionalDetailsStorageKey() {
+		return KnownSettings.ShowAdditionalDetails;
+	}
+
 	private get _isPremiumEditionDefaultValue() {
 		return false;
 	}
 
 	private get _speakLongTextsStorageKeyDefaultValue() {
+		return false;
+	}
+
+	private get _showAdditionalDetailsStorageKeyDefaultValue() {
 		return false;
 	}
 
@@ -82,6 +91,16 @@ export default class SettingsManager {
 		const speakLongTexts = await this.storageManager.getStoredValue<boolean>(this._speakLongTextsStorageKey);
 
 		return speakLongTexts ?? this._speakLongTextsStorageKeyDefaultValue;
+	}
+
+	async setShowAdditionalDetails(showAdditionalDetails: boolean): Promise<void> {
+		return this._setStoredValue(this._showAdditionalDetailsStorageKey, showAdditionalDetails);
+	}
+
+	async getShowAdditionalDetails(): Promise<boolean> {
+		const showAdditionalDetails = await this.storageManager.getStoredValue<boolean>(this._showAdditionalDetailsStorageKey);
+
+		return showAdditionalDetails ?? this._showAdditionalDetailsStorageKeyDefaultValue;
 	}
 
 	private async _getStoredValue<T>(key: string): Promise<T | null> {

@@ -440,6 +440,10 @@
     "message": "עיין ב- Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "טֶקסט",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "ספר לחברים שלך על Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie שפות ממשק משתמש",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "טֶקסט",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie מגיע בשתי מהדורות: Talkie ו- Talkie Premium. המהדורה החינמית נהדרת עבור מרבית מקרי השימוש, אך מהדורת הפרימיום מציעה אפשרויות ותכונות נוספות.",

@@ -440,6 +440,10 @@
     "message": "Преглед Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Текст",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Кажете на приятелите си за Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie потребителския интерфейс",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Текст",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie предлага в две издания: Talkie и Talkie Premium. Безплатното издание е чудесно за повечето случаи на употреба, но премиум изданието предлага допълнителни опции и функции.",

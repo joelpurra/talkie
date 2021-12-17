@@ -440,6 +440,10 @@
     "message": "arvostelu Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Teksti",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Kerro ystävillesi Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie käyttöliittymän kielet",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Teksti",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie on saatavana kahtena versiona: Talkie ja Talkie Premium. Ilmainen versio on loistava useimmissa käyttötapauksissa, mutta premium-versio tarjoaa lisämahdollisuuksia ja -ominaisuuksia.",

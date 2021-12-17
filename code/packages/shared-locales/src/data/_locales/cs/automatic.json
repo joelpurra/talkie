@@ -440,6 +440,10 @@
     "message": "Recenze Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Text",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Řekněte svým přátelům o Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie jazyky uživatelského rozhraní",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Text",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie přichází ve dvou vydáních: Talkie a Talkie Premium. Bezplatná edice je skvělá pro většinu případů použití, ale prémiová edice nabízí další možnosti a funkce.",

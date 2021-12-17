@@ -440,6 +440,10 @@
     "message": "Обзор Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Текст",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Talkie своим друзьям о Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie языки пользовательского интерфейса",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Текст",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie поставляется в двух редакциях: Talkie и Talkie Premium. Бесплатная версия отлично подходит для большинства случаев использования, но премиум-версия предлагает дополнительные параметры и функции.",

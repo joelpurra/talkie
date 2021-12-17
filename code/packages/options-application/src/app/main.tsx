@@ -50,7 +50,7 @@ import {
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
 import EditionsContainer from "../containers/editions-container.js";
-import TextContainer from "../containers/text-container.js";
+import TextContainer from "../containers/settings-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
 import {
@@ -68,6 +68,7 @@ export interface MainStateProps extends FooterStateProps {
 	activeTabId: string | null;
 	isPremiumEdition: boolean;
 	osType: OsType | null;
+	showAdditionalDetails: boolean;
 	systemType: SystemType | null;
 }
 
@@ -127,9 +128,9 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				text: this.props.translateSync("frontend_upgradeLinkText"),
 			},
 			{
-				tabId: "text",
+				tabId: "settings",
 				// eslint-disable-next-line no-sync
-				text: this.props.translateSync("frontend_textLinkText"),
+				text: this.props.translateSync("frontend_settingsLinkText"),
 			},
 			{
 				tabId: "support",
@@ -223,6 +224,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			errorCount,
 			isPremiumEdition,
 			osType,
+			showAdditionalDetails,
 			systemType,
 			versionNumber,
 		} = this.props;
@@ -296,7 +298,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 					<TabContents
 						activeTabId={activeTabId}
-						id="text"
+						id="settings"
 						onLinkClick={this.handleLinkClick}
 					>
 						<TextContainer/>
@@ -309,6 +311,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					>
 						<Support
 							osType={osType}
+							showAdditionalDetails={showAdditionalDetails}
 							systemType={systemType}
 							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
 						/>

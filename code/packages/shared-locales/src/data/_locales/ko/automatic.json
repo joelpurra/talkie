@@ -440,6 +440,10 @@
     "message": "Talkie 검토",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "본문",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "친구들에게 Talkie 에 대해 Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie 사용자 인터페이스 언어",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "본문",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie 는 Talkie 및 Talkie Premium 두 가지 버전으로 제공됩니다. 무료 버전은 대부분의 사용 사례에 적합하지만 프리미엄 버전은 추가 옵션과 기능을 제공합니다.",

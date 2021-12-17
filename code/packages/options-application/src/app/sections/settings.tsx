@@ -23,13 +23,16 @@ import React from "react";
 import {
 	actions,
 } from "../../slices/index.mjs";
-import SpeakLongTexts from "./text/speak-long-texts.js";
+import ShowAdditionalDetails from "./settings/show-additional-details.js";
+import SpeakLongTexts from "./settings/speak-long-texts.js";
 
 interface TextStateProps {
+	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
 }
 
 export interface TextDispatchProps {
+	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
@@ -43,7 +46,9 @@ export default class Text<P extends TextProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
+			showAdditionalDetails,
 			speakLongTexts,
+			storeShowAdditionalDetails,
 			storeSpeakLongTexts,
 		} = this.props;
 		return (
@@ -52,6 +57,11 @@ export default class Text<P extends TextProps> extends React.PureComponent<P> {
 					disabled={false}
 					speakLongTexts={speakLongTexts}
 					onChange={storeSpeakLongTexts}
+				/>
+				<ShowAdditionalDetails
+					disabled={false}
+					showAdditionalDetails={showAdditionalDetails}
+					onChange={storeShowAdditionalDetails}
 				/>
 			</section>
 		);

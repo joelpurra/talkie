@@ -440,6 +440,10 @@
     "message": "Tekintse Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Szöveg",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Mesélj a barátaidnak Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie felhasználói felület nyelvek",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Szöveg",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie két kiadásban jelenik meg: Talkie és Talkie Premium. Az ingyenes kiadás nagyszerű a legtöbb használati esetben, de a prémium kiadás további lehetőségeket és funkciókat kínál.",

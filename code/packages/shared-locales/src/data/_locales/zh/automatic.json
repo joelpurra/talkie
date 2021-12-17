@@ -440,6 +440,10 @@
     "message": "查看Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "文本",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "告诉你的朋友关于Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie用户界面语言",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "文本",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版非常适合大多数用例，但高级版提供了更多选项和功能。",

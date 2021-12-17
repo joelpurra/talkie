@@ -440,6 +440,10 @@
     "message": "समीक्षा Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "टेक्स्ट",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "अपने दोस्तों को Talkie बारे में Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie उपयोगकर्ता इंटरफ़ेस भाषाएं",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "टेक्स्ट",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie दो संस्करणों में आता है: Talkie और Talkie Premium । अधिकांश उपयोग मामलों के लिए मुफ्त संस्करण महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प और सुविधाएँ प्रदान करता है।",

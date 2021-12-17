@@ -29,7 +29,7 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import Text from "../app/sections/text.js";
+import Settings from "../app/sections/settings.js";
 import {
 	actions,
 } from "../slices/index.mjs";
@@ -42,51 +42,62 @@ const {
 } = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface TextContainerProps {}
+export interface SettingsContainerProps {}
 
 interface StateProps {
+	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
 }
 
 interface DispatchProps {
+	loadShowAdditionalDetails: typeof actions.settings.loadShowAdditionalDetails;
 	loadSpeakLongTexts: typeof actions.settings.loadSpeakLongTexts;
+	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, TextContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,
 });
 
-const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, TextContainerProps> = (dispatch) => ({
+const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, SettingsContainerProps> = (dispatch) => ({
+	loadShowAdditionalDetails: bindActionCreators(actions.settings.loadShowAdditionalDetails, dispatch),
 	loadSpeakLongTexts: bindActionCreators(actions.settings.loadSpeakLongTexts, dispatch),
+	storeShowAdditionalDetails: bindActionCreators(actions.settings.storeShowAdditionalDetails, dispatch),
 	storeSpeakLongTexts: bindActionCreators(actions.settings.storeSpeakLongTexts, dispatch),
 });
 
-class TextContainer<P extends TextContainerProps & StateProps & DispatchProps> extends React.PureComponent<P> {
+class TextContainer<P extends SettingsContainerProps & StateProps & DispatchProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
 	}
 
 	override componentDidMount(): void {
+		this.props.loadShowAdditionalDetails();
 		this.props.loadSpeakLongTexts();
 	}
 
 	override render(): React.ReactNode {
 		const {
-			storeSpeakLongTexts,
+			showAdditionalDetails,
 			speakLongTexts,
+			storeShowAdditionalDetails,
+			storeSpeakLongTexts,
 		} = this.props;
 
 		return (
-			<Text
+			<Settings
+				showAdditionalDetails={showAdditionalDetails}
 				speakLongTexts={speakLongTexts}
+				storeShowAdditionalDetails={storeShowAdditionalDetails}
 				storeSpeakLongTexts={storeSpeakLongTexts}
 			/>
 		);
 	}
 }
 
-export default connect<StateProps, DispatchProps, TextContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
+export default connect<StateProps, DispatchProps, SettingsContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
 	TextContainer,
 );

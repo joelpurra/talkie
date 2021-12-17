@@ -440,6 +440,10 @@
     "message": "İnceleme Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Metin",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Talkie hakkında bilgi Talkie",
     "original": "Tell your friends about Talkie"
@@ -531,10 +535,6 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie kullanıcı arabirimi dilleri",
     "original": "Talkie user interface languages"
-  },
-  "frontend_textLinkText": {
-    "message": "Metin",
-    "original": "Text"
   },
   "frontend_upgradeExplanation01": {
     "message": "Talkie iki baskı Talkie gelir: Talkie ve Talkie Premium. Ücretsiz sürüm çoğu kullanım durumu için harikadır ancak premium sürüm ek seçenekler ve özellikler sunar.",
