@@ -11,13 +11,7 @@
       "chromewebstore": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
       "firefox-amo": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
       "primary-payment": "https://www.paypal.me/joelpurrade",
-      "alternative-payment": "https://joelpurra.com/donate/",
-      "share": {
-        "twitter": "https://twitter.com/intent/tweet?text=Using%20Talkie%20to%20read%20text%20for%20me%20-%20text%20to%20speech%20works%20great!&url=https://joelpurra.com/projects/talkie/&via=joelpurra&related=&hashtags=texttospeech,tts",
-        "facebook": "https://www.facebook.com/sharer/sharer.php?u=https%3A//joelpurra.com/projects/talkie/",
-        "googleplus": "https://plus.google.com/share?url=https%3A//joelpurra.com/projects/talkie/",
-        "linkedin": "https://www.linkedin.com/shareArticle?url=https%3A//joelpurra.com/projects/talkie/"
-      }
+      "alternative-payment": "https://joelpurra.com/donate/"
     }
   },
   "chrome": {

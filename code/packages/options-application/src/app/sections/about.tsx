@@ -34,17 +34,7 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	styled,
-} from "styletron-react";
-
-import SharingIcons from "../../components/sharing/sharing-icons.js";
+import React from "react";
 
 export interface AboutStateProps {
 	isPremiumEdition: boolean;
@@ -68,16 +58,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		super(props);
 
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
-
-		this.styled = {
-			sharingIcons: styled(
-				SharingIcons,
-				{
-					display: "inline-block",
-					verticalAlign: "middle",
-				},
-			),
-		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -133,24 +113,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						Joel Purra
 					</textBase.a>
 				</textBase.p>
-
-				<textBase.h2>
-					{translateSync("frontend_shareHeading")}
-				</textBase.h2>
-
-				<textBase.p>
-					{translateSync("frontend_sharePitch", [
-						translateSync("extensionShortName"),
-					])}
-				</textBase.p>
-
-				<div>
-					<this.styled.sharingIcons/>
-
-					<textBase.a href={configure("urls.rate")}>
-						{translateSync("frontend_rateIt")}
-					</textBase.a>
-				</div>
 
 				<textBase.h2>
 					{translateSync("frontend_systemHeading")}
@@ -323,10 +285,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 	static defaultProps = {
 		navigatorLanguage: null,
 		osType: null,
-	};
-
-	private readonly styled: {
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
 	};
 }
 

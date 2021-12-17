@@ -37,12 +37,6 @@ export type ConfigurationObject = {
 			"firefox-amo": string;
 			"primary-payment": string;
 			"alternative-payment": string;
-			"share": {
-				"twitter": string;
-				"facebook": string;
-				"googleplus": string;
-				"linkedin": string;
-			};
 		};
 	};
 	"chrome": {

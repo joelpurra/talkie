@@ -42,11 +42,8 @@ import type {
 	StyletronComponent,
 } from "styletron-react";
 import {
-	styled,
 	withStyleDeep,
 } from "styletron-react";
-
-import SharingIcons from "../../components/sharing/sharing-icons.js";
 
 export interface SupportProps {
 	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
@@ -61,15 +58,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 
 		this.styled = {
-			sharingIcons: styled(
-				SharingIcons,
-				{
-					display: "inline-block",
-					fontSize: "0.5em",
-					verticalAlign: "middle",
-				},
-			),
-
 			summaryHeading: withStyleDeep(
 				textBase.h4,
 				{
@@ -329,26 +317,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				</Discretional>
 
 				{this.standardFaqEntry(19)}
-
-				<layoutBase.details>
-					<layoutBase.summary>
-						<this.styled.summaryHeading>
-							{translateSync("frontend_faq020Q")}
-						</this.styled.summaryHeading>
-					</layoutBase.summary>
-					<textBase.p>
-						{translateSync("frontend_faq020A")}
-					</textBase.p>
-
-					<div>
-						<this.styled.sharingIcons/>
-
-						<textBase.a href={configure("urls.rate")}>
-							{translateSync("frontend_rateIt")}
-						</textBase.a>
-					</div>
-				</layoutBase.details>
-
+				{this.standardFaqEntry(20)}
 				{this.standardFaqEntry(25)}
 
 				<textBase.h3>
@@ -385,7 +354,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 	};
 
 	private readonly styled: {
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
 		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h4>>;
 	};
 }

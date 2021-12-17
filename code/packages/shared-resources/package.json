@@ -7,9 +7,6 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {},
-  "devDependencies": {
-    "rrssb": "^1.14.0"
-  },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
   "private": true,
