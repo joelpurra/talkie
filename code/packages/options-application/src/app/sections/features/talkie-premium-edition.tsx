@@ -27,7 +27,7 @@ import translateAttribute, {
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
-import Checkbox from "../../../components/form/checkbox.js";
+import CheckboxWithLabel from "../../../components/form/checkbox-with-label.js";
 
 export interface TalkiePremiumEditionProps {
 	disabled: boolean;
@@ -79,15 +79,13 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 					{translateSync("frontend_upgradeExplanation02")}
 				</p>
 				<p>
-					<label>
-						<Checkbox
-							checked={isPremiumEdition}
-							disabled={disabled}
-							onChange={this.handleChange}
-						/>
-						{" "}
+					<CheckboxWithLabel
+						checked={isPremiumEdition}
+						disabled={disabled}
+						onChange={this.handleChange}
+					>
 						{translateSync("frontend_upgradeLabel")}
-					</label>
+					</CheckboxWithLabel>
 				</p>
 				<p>
 					{translateSync("frontend_upgradeExplanation03")}

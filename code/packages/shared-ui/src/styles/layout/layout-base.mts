@@ -52,9 +52,16 @@ export const summary: StyleObject = {
 	cursor: "pointer",
 };
 
+export const rounded: (radius: string) => StyleObject = (radius) => ({
+	borderBottomLeftRadius: radius,
+	borderBottomRightRadius: radius,
+	borderTopLeftRadius: radius,
+	borderTopRightRadius: radius,
+});
+
 export const hero: StyleObject = {
+	...rounded("0.5em"),
 	backgroundColor: colorBase.premiumSectionBackgroundColor,
-	borderRadius: "0.4em",
 	fontSize: "2em",
 	marginBottom: "2em",
 	marginLeft: "2em",
@@ -65,3 +72,11 @@ export const hero: StyleObject = {
 	paddingRight: "1em",
 	paddingTop: "1em",
 };
+
+export const roundedWithBorder: (radius: string) => StyleObject = (radius) => ({
+	...rounded(radius),
+	borderColor: colorBase.borderColor,
+	borderStyle: "solid",
+	borderWidth: "1px",
+});
+

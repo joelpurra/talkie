@@ -27,6 +27,7 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import * as layoutBaseStyles from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import React, {
 	ComponentProps,
 } from "react";
@@ -46,7 +47,7 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			a: withStyleDeep(
 				textBase.a,
 				{
-					borderRadius: "0.3em",
+					...layoutBaseStyles.rounded("0.3em"),
 					display: "block",
 					height: "2em",
 					lineHeight: "2em",

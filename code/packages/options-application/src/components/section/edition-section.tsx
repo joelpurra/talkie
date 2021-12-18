@@ -68,7 +68,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			wrapperBase: styled(
 				"div",
 				{
-					...layoutBase.rounded,
+					...layoutBase.rounded("0.5em"),
 					marginLeft: "-0.5em",
 					marginRight: "-0.5em",
 					marginTop: "2em",

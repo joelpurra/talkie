@@ -24,7 +24,7 @@ import translateAttribute, {
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
-import Checkbox from "../../../components/form/checkbox.js";
+import CheckboxWithLabel from "../../../components/form/checkbox-with-label.js";
 
 export interface ShowAdditionalDetailsProps {
 	disabled: boolean;
@@ -62,15 +62,13 @@ class ShowAdditionalDetails<P extends ShowAdditionalDetailsProps & TranslateProp
 					{translateSync("frontend_voicesShowAdditionalDetailsExplanation02")}
 				</p>
 				<p>
-					<label>
-						<Checkbox
-							checked={showAdditionalDetails}
-							disabled={disabled}
-							onChange={this.handleChange}
-						/>
-						{" "}
+					<CheckboxWithLabel
+						checked={showAdditionalDetails}
+						disabled={disabled}
+						onChange={this.handleChange}
+					>
 						{translateSync("frontend_voicesShowAdditionalDetailsLabel")}
-					</label>
+					</CheckboxWithLabel>
 				</p>
 			</>
 		);

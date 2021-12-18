@@ -23,6 +23,7 @@ import type {
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
+import * as layoutBase from "../layout/layout-base.mjs";
 
 export const text: StyleObject = {
 	color: colorBase.textColor,
@@ -50,12 +51,12 @@ export const h4: StyleObject = heading;
 export const h5: StyleObject = heading;
 
 export const kbd: StyleObject = {
+	...layoutBase.rounded("0.3em"),
 	backgroundColor: colorBase.borderedBackgroundColor,
 	borderBottomColor: colorBase.borderDarkColor,
 	borderBottomWidth: "1px",
 	borderLeftColor: colorBase.borderColor,
 	borderLeftWidth: "1px",
-	borderRadius: "0.3em",
 	borderRightColor: colorBase.borderColor,
 	borderRightWidth: "1px",
 	borderStyle: "solid",

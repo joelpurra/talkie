@@ -23,7 +23,7 @@
     "build:patch:manifest": "json -Ie \"this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' Chrome Extension '); delete this.applications;\" -f ./dist/webext/chrome/manifest.json",
     "build:rollup": "rollup --config rollup.config.mjs",
     "clean": "rimraf ./dist",
-    "lint": "echo web-ext linting ./dist/webext/chrome/ && web-ext --source-dir=./dist/webext/chrome/ lint --ignore-files ./resources/style/options.css ./resources/style/shared.css",
+    "lint": "echo web-ext linting ./dist/webext/chrome/ && web-ext --source-dir=./dist/webext/chrome/ lint --ignore-files ./resources/style/bidi.css",
     "output": "rimraf ./dist/web-ext-artifacts/ && web-ext --source-dir=./dist/webext/chrome/ build && mkdirp ./dist/publish && mv -n ./dist/web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome.zip\"",
     "publish": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run publish:update && npm run publish:publish",
     "publish:publish": "echo '--- DISABLED ---' chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk",

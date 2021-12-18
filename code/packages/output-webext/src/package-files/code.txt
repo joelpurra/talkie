@@ -54,6 +54,7 @@ packages/shared-resources/src/resources/icon/premium/icon-stop/icon-48x48.png
 packages/shared-resources/src/resources/icon/premium/icon-stop/icon-512x512.png
 packages/shared-resources/src/resources/icon/premium/icon-stop/icon-64x64.png
 packages/shared-resources/src/resources/icon/premium/icon-stop/icon-96x96.png
+packages/shared-resources/src/resources/style/bidi.css
 packages/shared-resources/src/resources/style/options.css
 packages/shared-resources/src/resources/style/popup.css
 packages/shared-resources/src/resources/style/shared.css

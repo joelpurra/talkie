@@ -23,6 +23,7 @@ import type {
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
+import * as layoutBase from "../layout/layout-base.mjs";
 
 export const hover: StyleObject = {
 	color: colorBase.buttonTextColor,
@@ -34,10 +35,10 @@ export const focus: StyleObject = {
 };
 
 export const button: StyleObject = {
+	...layoutBase.rounded("0.3em"),
 	":focus": focus,
 	":hover": hover,
 	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonLightColor}, ${colorBase.buttonDarkColor})`,
-	borderRadius: "0.3em",
 	color: colorBase.buttonTextColor,
 	paddingBottom: "0.3em",
 	paddingLeft: "0.75em",
