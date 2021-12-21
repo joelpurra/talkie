@@ -19,9 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
-import configureAttribute, {
-	ConfigureProps,
-} from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -52,7 +49,7 @@ export interface EditionSectionProps extends ChildrenRequiredProps, ClassNamePro
 	mode: EditionSectionMode;
 }
 
-interface InternalProps extends EditionSectionProps, ConfigureProps, TranslateProps {}
+interface InternalProps extends EditionSectionProps, TranslateProps {}
 
 class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 	constructor(props: P) {
@@ -104,7 +101,6 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			children,
 			className,
 			translateSync,
-			configure,
 		} = this.props as InternalProps;
 
 		// TODO: move resolving the name to the state, like edition type?
@@ -148,7 +144,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 		}) => headingLink
 			? (
 				<textBase.a
-					href={configure("urls.options-features")}
+					href="#features"
 					lang="en"
 				>
 					{children}
@@ -190,8 +186,6 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 	};
 }
 
-export default translateAttribute<EditionSectionProps & ChildrenRequiredProps & TranslateProps & ClassNameProp>()(
-	configureAttribute<InternalProps>()(
-		EditionSection,
-	),
+export default translateAttribute<InternalProps>()(
+	EditionSection,
 );

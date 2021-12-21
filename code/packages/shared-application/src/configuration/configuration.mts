@@ -30,7 +30,6 @@ import type {
 	JsonArray,
 	JsonObject,
 	JsonValue,
-	PartialDeep,
 	ReadonlyDeep,
 } from "type-fest";
 
@@ -38,43 +37,11 @@ import {
 	ConfigurationObject,
 } from "../data/configuration/configuration.mjs";
 
-export type DynamicConfigurationObject = {
-	shared: {
-		urls: {
-			["options-about"]: string;
-			["options-features"]: string;
-			["options-support"]: string;
-			["options-usage"]: string;
-			["options-voices"]: string;
-			["options-welcome"]: string;
-			options: string;
-			popup: string;
-			root: string;
-		};
-	};
-};
-
 export default class Configuration implements IConfiguration {
-	configurationObject: ReadonlyDeep<ConfigurationObject & DynamicConfigurationObject>;
+	configurationObject: ReadonlyDeep<ConfigurationObject>;
 
-	// NOTE: keep SynchronousConfiguration and Configuration in... sync.
 	constructor(private readonly metadataManager: IMetadataManager, baseConfigurationObject: ReadonlyDeep<ConfigurationObject>) {
-		const configurationObject: ConfigurationObject & PartialDeep<DynamicConfigurationObject> = jsonClone(baseConfigurationObject);
-
-		// TODO: since these urls are no longer very dynamic (merely repetitive), replace with hardcoded values in configuration.json?
-		configurationObject.shared.urls.root = "/";
-		configurationObject.shared.urls.options = "/packages/options-renderer/src/options.html";
-		configurationObject.shared.urls.popup = "/packages/popup-renderer/src/popup.html";
-
-		// NOTE: direct links to individual tabs.
-		configurationObject.shared.urls["options-about"] = configurationObject.shared.urls.options + "#about";
-		configurationObject.shared.urls["options-features"] = configurationObject.shared.urls.options + "#features";
-		configurationObject.shared.urls["options-support"] = configurationObject.shared.urls.options + "#support";
-		configurationObject.shared.urls["options-usage"] = configurationObject.shared.urls.options + "#usage";
-		configurationObject.shared.urls["options-voices"] = configurationObject.shared.urls.options + "#voices";
-		configurationObject.shared.urls["options-welcome"] = configurationObject.shared.urls.options + "#welcome";
-
-		this.configurationObject = configurationObject as ConfigurationObject & ReadonlyDeep<DynamicConfigurationObject>;
+		this.configurationObject = jsonClone(baseConfigurationObject);
 	}
 
 	private static _resolvePath<T extends JsonValue, D extends JsonObject>(object: Readonly<D>, path: string): Readonly<T> | Readonly<JsonObject> | Readonly<JsonArray> | string | number | boolean | null {

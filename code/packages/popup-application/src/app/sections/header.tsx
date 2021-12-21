@@ -98,7 +98,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 					enabled={!isPremiumEdition}
 				>
 					<this.styled.button
-						href={configure("urls.options-features")}
+						href={configure("urls.internal.options-features")}
 						id="header-premium-button"
 						lang="en"
 						rel="noopener noreferrer"
@@ -118,7 +118,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 				</buttonBase.transparentButton>
 
 				<this.styled.extensionName
-					href={configure("urls.main")}
+					href={configure("urls.external.main")}
 					lang="en"
 					rel="noopener noreferrer"
 					target="_blank"

@@ -258,7 +258,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 				<listBase.ul>
 					<listBase.li>
 						<textBase.a
-							href={configure("urls.gpl")}
+							href={configure("urls.external.gpl")}
 							lang="en"
 						>
 							{translateSync("frontend_licenseGPLLinkText")}
@@ -266,14 +266,14 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 					</listBase.li>
 					<listBase.li>
 						<textBase.a
-							href={configure("urls.cla")}
+							href={configure("urls.external.cla")}
 							lang="en"
 						>
 							{translateSync("frontend_licenseCLALinkText")}
 						</textBase.a>
 					</listBase.li>
 					<listBase.li>
-						<textBase.a href={configure("urls.github")}>
+						<textBase.a href={configure("urls.external.github")}>
 							{translateSync("frontend_aboutCodeOnGithubLinkText")}
 						</textBase.a>
 					</listBase.li>

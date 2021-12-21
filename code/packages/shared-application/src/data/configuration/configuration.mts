@@ -18,38 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	ReadonlyDeep,
+} from "type-fest";
+
 // @ts-expect-error: File is not a module.ts(2306)
 import configurationJson from "./configuration.cjs";
 
-// NOTE: manually mapped from JSON.
 // TODO: skip JSON file, just put data here?
-export type ConfigurationObject = {
-	"shared": {
-		"urls": {
-			"cla": string;
-			"github": string;
-			"gpl": string;
-			"main": string;
-			"project": string;
-			"shortcut-keys": string;
-			"support-feedback": string;
-			"chromewebstore": string;
-			"firefox-amo": string;
-			"primary-payment": string;
-			"alternative-payment": string;
-		};
-	};
-	"chrome": {
-		"urls": {
-			"rate": string;
-			"support-feedback": string;
-		};
-	};
-	"webextension": {
-		"urls": {
-			"rate": string;
-		};
-	};
-};
+export type ConfigurationObject = ReadonlyDeep<Record<SystemType | "shared", Record<string, string | Record<string, string>>>>;
 
 export default configurationJson as Readonly<ConfigurationObject>;

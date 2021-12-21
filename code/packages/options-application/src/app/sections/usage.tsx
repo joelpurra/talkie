@@ -236,7 +236,7 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 							<tableBase.tr className="premium-section">
 								<tableBase.td colSpan={2}>
 									<textBase.a
-										href={configure("urls.options-features")}
+										href="#features"
 										lang="en"
 									>
 										<TalkiePremiumIcon
@@ -301,7 +301,7 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 				>
 					<p>
 						<textBase.a
-							href={configure("urls.shortcut-keys")}
+							href={configure("urls.external.shortcut-keys")}
 							onClick={this.handleOpenShortKeysConfigurationClick}
 						>
 							{translateSync("frontend_usageShortcutKeyAlternative04")}

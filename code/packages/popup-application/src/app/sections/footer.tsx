@@ -112,7 +112,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		return (
 			<this.styled.footer>
 				<this.styled.footerFirstLink
-					href={configure("urls.options")}
+					href={configure("urls.internal.options")}
 					rel="noopener noreferrer"
 					target="_blank"
 					onClick={optionsPageClick}
@@ -127,7 +127,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 				{ErrorCount}
 
 				<this.styled.footerSecondLink
-					href={configure("urls.options-about")}
+					href={configure("urls.internal.options-about")}
 					id="footer-about-link"
 					rel="noopener noreferrer"
 					target="_blank"

@@ -59,9 +59,9 @@ export const openInternalUrlInNewTab = async (url: string): Promise<Tabs.Tab> =>
 	});
 };
 
-export const openUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
+export const openExternalUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
 	const background = await getTalkieServices();
-	const url = await background.getConfigurationValue(`urls.${id}`);
+	const url = await background.getConfigurationValue(`urls.external.${id}`);
 
 	if (typeof url !== "string") {
 		throw new TypeError("Bad url for id: " + id);
@@ -72,7 +72,7 @@ export const openUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs
 
 export const openInternalUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
 	const talkieServices = await getTalkieServices();
-	const url = await talkieServices.getConfigurationValue(`urls.${id}`);
+	const url = await talkieServices.getConfigurationValue(`urls.internal.${id}`);
 
 	if (typeof url !== "string") {
 		throw new TypeError("Bad url for id: " + id);

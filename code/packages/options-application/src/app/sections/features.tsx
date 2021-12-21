@@ -150,7 +150,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 					<this.styled.storeLinks>
 						<this.styled.storeLink>
 							<textBase.a
-								href={configure("urls.chromewebstore")}
+								href={configure("urls.external.chromewebstore")}
 								lang="en"
 							>
 								<img alt={cwsAltText} height="75" src="../../../shared-resources/src/resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" width="248"/>
@@ -163,7 +163,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 						</this.styled.storeLink>
 						<this.styled.storeLink>
 							<textBase.a
-								href={configure("urls.firefox-amo")}
+								href={configure("urls.external.firefox-amo")}
 								lang="en"
 							>
 								<img alt={amoAltText} height="60" src="../../../shared-resources/src/resources/firefox-amo/AMO-button_1.png" width="172"/>

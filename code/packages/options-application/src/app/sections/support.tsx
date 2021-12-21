@@ -121,12 +121,12 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 				<listBase.ul>
 					<listBase.li>
-						<textBase.a href={configure("urls.support-feedback")}>
+						<textBase.a href={configure("urls.external.support-feedback")}>
 							{translateSync("frontend_supportAndFeedback")}
 						</textBase.a>
 					</listBase.li>
 					<listBase.li>
-						<textBase.a href={configure("urls.project")}>
+						<textBase.a href={configure("urls.external.project")}>
 							{translateSync("frontend_aboutProjectPageLinkText")}
 						</textBase.a>
 					</listBase.li>
@@ -289,7 +289,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						<listBase.ul>
 							<listBase.li>
 								<textBase.a
-									href={configure("urls.shortcut-keys")}
+									href={configure("urls.external.shortcut-keys")}
 									onClick={this.handleOpenShortKeysConfigurationClick}
 								>
 									{translateSync("frontend_usageShortcutKeyAlternative04")}
