@@ -42,6 +42,9 @@ import {
 	styled,
 	withStyleDeep,
 } from "styletron-react";
+import {
+	ReadonlyDeep,
+} from "type-fest";
 
 import NavContainer from "../components/navigation/nav-container.js";
 import {
@@ -98,8 +101,6 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 
-		// TODO: async load/unload logic for classes.
-		// TODO: better place to put navigation menu links?
 		this.links = [
 			{
 				tabId: "welcome",
@@ -197,7 +198,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		return false;
 	}
 
-	handleLinkClick(url: string): void {
+	handleLinkClick(url: ReadonlyDeep<URL>): void {
 		this.props.openUrlInNewTab(url);
 	}
 

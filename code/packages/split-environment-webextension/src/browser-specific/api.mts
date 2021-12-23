@@ -239,7 +239,7 @@ export default class Api implements IApi {
 		return this.metadataManager.getOperatingSystemType();
 	}
 
-	async openUrlInNewTab(url: string): Promise<Tabs.Tab> {
+	async openUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
 		// TODO: separate "background API" from other functionality.
 		return sharedOpenUrlInNewTab(url);
 	}

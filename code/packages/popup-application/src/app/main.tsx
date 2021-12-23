@@ -75,7 +75,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 		this.props.iconClick();
 	}
 
-	handleLinkClick(url: string): void {
+	handleLinkClick(url: ReadonlyDeep<URL>): void {
 		this.props.openUrlInNewTab(url);
 	}
 

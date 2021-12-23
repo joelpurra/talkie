@@ -18,6 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	ReadonlyDeep,
+} from "type-fest";
 import type {
 	Tabs,
 } from "webextension-polyfill";
@@ -26,19 +29,21 @@ import {
 	getTalkieServices,
 } from "./tabs.mjs";
 
-export const openUrlInNewTab = async (url: string): Promise<Tabs.Tab> => {
-	if (typeof url !== "string") {
+export const openUrlInNewTab = async (url: ReadonlyDeep<URL>): Promise<Tabs.Tab> => {
+	if (!(url instanceof URL)) {
 		throw new TypeError(`Bad url: ${typeof url}`);
 	}
 
 	// NOTE: only https urls.
-	if (!url.startsWith("https://")) {
+	if (url.protocol !== "https:") {
 		throw new Error(`Bad url, only https:// allowed: ${JSON.stringify(url)}`);
 	}
 
+	const href = url.toString();
+
 	return browser.tabs.create({
 		active: true,
-		url,
+		url: href,
 	});
 };
 
@@ -67,7 +72,9 @@ export const openExternalUrlFromConfigurationInNewTab = async (id: string): Prom
 		throw new TypeError("Bad url for id: " + id);
 	}
 
-	return openUrlInNewTab(url);
+	const urlObject = new URL(url);
+
+	return openUrlInNewTab(urlObject);
 };
 
 export const openInternalUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
