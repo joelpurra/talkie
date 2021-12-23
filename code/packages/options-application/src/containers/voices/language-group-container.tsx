@@ -48,10 +48,10 @@ interface LanguageGroupContainerProps {
 }
 
 interface StateProps {
+	assertedSelectedLanguageGroup: string;
 	effectiveVoiceNameForSelectedLanguageGroup: string | null;
 	hasSampleTextForLanguageGroup: boolean;
 	sampleTextForLanguageGroup: string | null;
-	selectedLanguageGroup: string | null;
 	textDirectionForSelectedLanguageGroup: LanguageTextDirection;
 }
 
@@ -63,11 +63,11 @@ interface InternalProps extends LanguageGroupContainerProps, StateProps, Dispatc
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
+	assertedSelectedLanguageGroup: selectors.voices.getAssertedSelectedLanguageGroup(state),
 	effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguageCode,
 	effectiveVoiceNameForSelectedLanguageGroup: state.voices.effectiveVoiceNameForSelectedLanguageGroup,
 	hasSampleTextForLanguageGroup: selectors.voices.getHasSampleTextForLanguageGroup(state),
 	sampleTextForLanguageGroup: state.voices.sampleTextForLanguageGroup,
-	selectedLanguageGroup: state.voices.selectedLanguageGroup,
 	textDirectionForSelectedLanguageGroup: state.voices.textDirectionForSelectedLanguageGroup,
 });
 
@@ -88,17 +88,13 @@ class LanguageGroupContainer<P extends InternalProps> extends React.PureComponen
 
 	override render(): React.ReactNode {
 		const {
+			assertedSelectedLanguageGroup,
 			effectiveVoiceNameForSelectedLanguageGroup,
 			hasSampleTextForLanguageGroup,
 			sampleTextForLanguageGroup,
-			selectedLanguageGroup,
 			speakSampleTextForLanguage,
 			textDirectionForSelectedLanguageGroup,
 		} = this.props as InternalProps;
-
-		if (typeof selectedLanguageGroup !== "string") {
-			throw new TypeError("selectedLanguageGroup");
-		}
 
 		const hasLoaded = typeof effectiveVoiceNameForSelectedLanguageGroup === "string";
 
@@ -109,7 +105,7 @@ class LanguageGroupContainer<P extends InternalProps> extends React.PureComponen
 				<LanguageGroup
 					effectiveVoiceNameForSelectedLanguageGroup={effectiveVoiceNameForSelectedLanguageGroup!}
 					hasSampleTextForLanguageGroup={hasSampleTextForLanguageGroup}
-					languageGroup={selectedLanguageGroup}
+					languageGroup={assertedSelectedLanguageGroup}
 					sampleTextForLanguageGroup={sampleTextForLanguageGroup}
 					speakSampleTextForLanguage={speakSampleTextForLanguage}
 					textDirectionForLanguageGroup={textDirectionForSelectedLanguageGroup}

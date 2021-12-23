@@ -49,11 +49,9 @@ interface StateProps {
 	isPremiumEdition: boolean;
 	pitchForSelectedVoice: number;
 	rateForSelectedVoice: number;
-	selectedLanguageCode: string | null;
-	selectedLanguageGroup: string | null;
-	selectedVoiceName: string | null;
-	hasSelectedLanguageCode: boolean;
-	hasSelectedVoiceName: boolean;
+	assertedSelectedLanguageCode: string;
+	assertedSelectedLanguageGroup: string;
+	assertedSelectedVoiceName: string;
 }
 
 interface DispatchProps {
@@ -66,6 +64,9 @@ interface InternalProps extends StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
+	assertedSelectedLanguageCode: selectors.voices.getAssertedSelectedLanguageCode(state),
+	assertedSelectedLanguageGroup: selectors.voices.getAssertedSelectedLanguageGroup(state),
+	assertedSelectedVoiceName: selectors.voices.getAssertedSelectedVoiceName(state),
 	hasSelectedLanguageCode: selectors.voices.getHasSelectedLanguageCode(state),
 	hasSelectedLanguageGroup: selectors.voices.getHasSelectedLanguageGroup(state),
 	hasSelectedVoiceName: selectors.voices.getHasSelectedVoiceName(state),
@@ -75,9 +76,6 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 	navigatorLanguages: selectors.shared.languages.getNavigatorLanguages(state),
 	pitchForSelectedVoice: state.voices.pitchForSelectedVoice,
 	rateForSelectedVoice: state.voices.rateForSelectedVoice,
-	selectedLanguageCode: state.voices.selectedLanguageCode,
-	selectedLanguageGroup: state.voices.selectedLanguageGroup,
-	selectedVoiceName: state.voices.selectedVoiceName,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
@@ -96,39 +94,18 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 	}
 
 	handlePickDefaultClick(languageCodeOrGroup: string): void {
-		if (
-			this.props.hasSelectedVoiceName
-			// NOTE: type safety check duplication.
-			// TODO: ensure this component never receives null values, since it should never be shown for that state.
-			&& typeof this.props.selectedVoiceName === "string"
-		) {
-			this.props.storeEffectiveVoiceNameForLanguage({
-				languageCodeOrGroup,
-				voiceName: this.props.selectedVoiceName,
-			});
-		}
+		this.props.storeEffectiveVoiceNameForLanguage({
+			languageCodeOrGroup,
+			voiceName: this.props.assertedSelectedVoiceName,
+		});
 	}
 
 	handleRateChange(value: number): void {
-		if (
-			this.props.hasSelectedVoiceName
-			// NOTE: type safety check duplication.
-			// TODO: ensure this component never receives null values, since it should never be shown for that state.
-			&& typeof this.props.selectedVoiceName === "string"
-		) {
-			this.props.storeVoiceRateOverride(value);
-		}
+		this.props.storeVoiceRateOverride(value);
 	}
 
 	handlePitchChange(value: number): void {
-		if (
-			this.props.hasSelectedLanguageCode
-			// NOTE: type safety check duplication.
-			// TODO: ensure this component never receives null values, since it should never be shown for that state.
-			&& typeof this.props.selectedVoiceName === "string"
-		) {
-			this.props.storeVoicePitchOverride(value);
-		}
+		this.props.storeVoicePitchOverride(value);
 	}
 
 	override render(): React.ReactNode {
@@ -138,25 +115,10 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 			isPremiumEdition,
 			pitchForSelectedVoice,
 			rateForSelectedVoice,
-			selectedLanguageCode,
-			selectedLanguageGroup,
-			selectedVoiceName,
+			assertedSelectedLanguageCode,
+			assertedSelectedLanguageGroup,
+			assertedSelectedVoiceName,
 		} = this.props as InternalProps;
-
-		if (!selectedLanguageGroup) {
-			// TODO: ensure this component never receives null values, since it should never be shown for that state.
-			throw new TypeError("selectedLanguageGroup");
-		}
-
-		if (!selectedLanguageCode) {
-			// TODO: ensure this component never receives null values, since it should never be shown for that state.
-			throw new TypeError("selectedLanguageCode");
-		}
-
-		if (!selectedVoiceName) {
-			// TODO: ensure this component never receives null values, since it should never be shown for that state.
-			throw new TypeError("selectedVoiceName");
-		}
 
 		return (
 			<DialectVoiceOptions
@@ -165,9 +127,9 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 				isPremiumEdition={isPremiumEdition}
 				pitchForSelectedVoice={pitchForSelectedVoice}
 				rateForSelectedVoice={rateForSelectedVoice}
-				selectedLanguageCode={selectedLanguageCode}
-				selectedLanguageGroup={selectedLanguageGroup}
-				selectedVoiceName={selectedVoiceName}
+				selectedLanguageCode={assertedSelectedLanguageCode}
+				selectedLanguageGroup={assertedSelectedLanguageGroup}
+				selectedVoiceName={assertedSelectedVoiceName}
 				onPickDefaultClick={this.handlePickDefaultClick}
 				onPitchChange={this.handlePitchChange}
 				onRateChange={this.handleRateChange}

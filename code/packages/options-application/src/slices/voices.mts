@@ -37,8 +37,10 @@ import {
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
+	getAssertedSelectedVoiceName,
 	getFirstLanguageForSelectedLanguageGroup,
 	getFirstVoiceForSelectedLanguageCode,
+	getHasSelectedLanguageGroup,
 	getIsSelectedLanguageGroupTalkieLocale,
 	getLanguageCountForSelectedLanguageGroup,
 	getSampleTextForLanguageGroup,
@@ -145,10 +147,16 @@ export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, I
 		await dispatch(loadTextDirectionForSelectedLanguageGroup());
 		await dispatch(loadSampleTextForLanguageGroup());
 
-		const languageCountForSelectedLanguageGroup = getLanguageCountForSelectedLanguageGroup(getState() as OptionsRootState);
-		const languageCode = languageCountForSelectedLanguageGroup === 1
-			? getFirstLanguageForSelectedLanguageGroup(getState() as OptionsRootState)
-			: null;
+		const hasSelectedLanguageGroup = getHasSelectedLanguageGroup(getState() as OptionsRootState);
+		let languageCode = null;
+
+		if (hasSelectedLanguageGroup) {
+			const languageCountForSelectedLanguageGroup = getLanguageCountForSelectedLanguageGroup(getState() as OptionsRootState);
+
+			languageCode = languageCountForSelectedLanguageGroup === 1
+				? getFirstLanguageForSelectedLanguageGroup(getState() as OptionsRootState)
+				: null;
+		}
 
 		await dispatch(loadSelectedLanguageCode(languageCode));
 	},
@@ -226,13 +234,9 @@ export const storeVoiceRateOverride = createAsyncThunk<void, number, IApiAsyncTh
 	async (rate, {
 		dispatch, extra, getState,
 	}) => {
-		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
+		const assertedSelectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
 
-		if (typeof selectedVoiceName !== "string") {
-			throw new TypeError("selectedVoiceName");
-		}
-
-		await extra.setVoiceRateOverride(selectedVoiceName, rate);
+		await extra.setVoiceRateOverride(assertedSelectedVoiceName, rate);
 		dispatch(setRateForSelectedVoice(rate));
 		void dispatch(speakInSelectedVoiceNameState());
 	},
@@ -258,13 +262,9 @@ export const storeVoicePitchOverride = createAsyncThunk<void, number, IApiAsyncT
 	async (pitch, {
 		dispatch, extra, getState,
 	}) => {
-		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
+		const assertedSelectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
 
-		if (typeof selectedVoiceName !== "string") {
-			throw new TypeError("selectedVoiceName");
-		}
-
-		await extra.setVoicePitchOverride(selectedVoiceName, pitch);
+		await extra.setVoicePitchOverride(assertedSelectedVoiceName, pitch);
 		dispatch(setPitchForSelectedVoice(pitch));
 		void dispatch(speakInSelectedVoiceNameState());
 	},

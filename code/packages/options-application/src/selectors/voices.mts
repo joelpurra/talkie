@@ -54,7 +54,21 @@ export const getHasSelectedLanguageGroup = createDraftSafeSelector(
 	[
 		getSelectedLanguageGroup,
 	],
-	(selectedLanguageGroup) => typeof selectedLanguageGroup === "string",
+	(selectedLanguageGroup) => typeof selectedLanguageGroup === "string" && selectedLanguageGroup.length > 0,
+);
+
+export const getAssertedSelectedLanguageGroup = createDraftSafeSelector(
+	[
+		getSelectedLanguageGroup,
+	],
+	(selectedLanguageGroup) => {
+		// NOTE: duplicated logic to satisfy typing.
+		if (typeof selectedLanguageGroup !== "string" || selectedLanguageGroup.length === 0) {
+			throw new TypeError(`getAssertedSelectedLanguageGroup selectedLanguageGroup: ${JSON.stringify(selectedLanguageGroup)}`);
+		}
+
+		return selectedLanguageGroup;
+	},
 );
 
 export const getVoicesObjectByLanguageForSelectedLanguageGroup = createDraftSafeSelector(
@@ -63,7 +77,7 @@ export const getVoicesObjectByLanguageForSelectedLanguageGroup = createDraftSafe
 		getSelectedLanguageGroup,
 	],
 	// TODO: eliminate null case.
-	(voicesByLanguagesByLanguageGroup, selectedLanguageGroup) => voicesByLanguagesByLanguageGroup[selectedLanguageGroup ?? ""] ?? {},
+	(voicesByLanguagesByLanguageGroup, selectedLanguageGroup) => voicesByLanguagesByLanguageGroup[selectedLanguageGroup ?? "selectedLanguageGroup-does-not-exist"] ?? {},
 );
 
 export const getVoicesByLanguageForSelectedLanguageGroup = createDraftSafeSelector(
@@ -86,7 +100,6 @@ export const getSortedVoicesByLanguageForSelectedLanguageGroup = createDraftSafe
 			voices.sort((a, b) => a.name.localeCompare(b.name));
 		}
 
-		// TODO HACK FIX: use/return immutable object.
 		return voicesObjectByLanguagesByLanguageGroup;
 	},
 );
@@ -97,7 +110,7 @@ export const getLanguagesForSelectedLanguageGroup = createDraftSafeSelector(
 		getSelectedLanguageGroup,
 	],
 	// TODO: eliminate null case.
-	(languagesByLanguageGroupFromVoices, selectedLanguageGroup) => languagesByLanguageGroupFromVoices[selectedLanguageGroup ?? ""] ?? [],
+	(languagesByLanguageGroupFromVoices, selectedLanguageGroup) => languagesByLanguageGroupFromVoices[selectedLanguageGroup ?? "selectedLanguageGroup-does-not-exist"] ?? [],
 );
 
 export const getSortedLanguagesForSelectedLanguageGroup = createDraftSafeSelector(
@@ -132,13 +145,26 @@ export const getHasSelectedLanguageCode = createDraftSafeSelector(
 	(selectedLanguageCode) => typeof selectedLanguageCode === "string" && selectedLanguageCode.length > 0,
 );
 
+export const getAssertedSelectedLanguageCode = createDraftSafeSelector(
+	[
+		getSelectedLanguageCode,
+	],
+	(selectedLanguageCode) => {
+		// NOTE: duplicated logic to satisfy typing.
+		if (typeof selectedLanguageCode !== "string" || selectedLanguageCode.length === 0) {
+			throw new TypeError(`getAssertedSelectedLanguageCode selectedLanguageCode: ${JSON.stringify(selectedLanguageCode)}`);
+		}
+
+		return selectedLanguageCode;
+	},
+);
+
 export const getVoicesForSelectedLanguageCode = createDraftSafeSelector(
 	[
 		getSortedVoicesByLanguageForSelectedLanguageGroup,
 		getSelectedLanguageCode,
 	],
-	// TODO: eliminate null case.
-	(sortedVoicesByLanguageForSelectedLanguageGroup, selectedLanguageCode) => sortedVoicesByLanguageForSelectedLanguageGroup[selectedLanguageCode ?? ""] ?? [],
+	(sortedVoicesByLanguageForSelectedLanguageGroup, selectedLanguageCode) => sortedVoicesByLanguageForSelectedLanguageGroup[selectedLanguageCode ?? "selectedLanguageCode-does-not-exist"] ?? [],
 );
 
 export const getVoiceCountForSelectedLanguageCode = createDraftSafeSelector(
@@ -165,34 +191,44 @@ export const getHasSelectedVoiceName = createDraftSafeSelector(
 	(selectedVoiceName) => typeof selectedVoiceName === "string" && selectedVoiceName.length > 0,
 );
 
+export const getAssertedSelectedVoiceName = createDraftSafeSelector(
+	[
+		getSelectedVoiceName,
+	],
+	(selectedVoiceName) => {
+		// NOTE: duplicated logic to satisfy typing.
+		if (typeof selectedVoiceName !== "string" || selectedVoiceName.length === 0) {
+			throw new TypeError(`getAssertedSelectedVoiceName selectedVoiceName: ${JSON.stringify(selectedVoiceName)}`);
+		}
+
+		return selectedVoiceName;
+	},
+);
+
 export const getVoiceForSelectedVoiceName = createDraftSafeSelector(
 	[
 		getVoices,
 		getSelectedVoiceName,
 	],
-	// TODO: assert type.
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(voices, selectedVoiceName) => selectedVoiceName ? getVoiceForVoiceNameFromVoices(voices, selectedVoiceName) : null,
 );
 
 export const getIsEffectiveVoiceNameForLanguageCode = createDraftSafeSelector(
 	[
-		getHasSelectedVoiceName,
 		getSelectedVoiceName,
 		getEffectiveVoiceNameForSelectedLanguageCode,
 	],
 	// NOTE: not doing type safety check duplication.
-	(hasSelectedVoiceName, selectedVoiceName, effectiveVoiceNameForSelectedLanguageCode) => hasSelectedVoiceName && selectedVoiceName === effectiveVoiceNameForSelectedLanguageCode,
+	(selectedVoiceName, effectiveVoiceNameForSelectedLanguageCode) => selectedVoiceName !== null && selectedVoiceName === effectiveVoiceNameForSelectedLanguageCode,
 );
 
 export const getIsEffectiveVoiceNameForLanguageGroup = createDraftSafeSelector(
 	[
-		getHasSelectedVoiceName,
 		getSelectedVoiceName,
 		getEffectiveVoiceNameForSelectedLanguageGroup,
 	],
-	// NOTE: not doing type safety check duplication.
-	(hasSelectedVoiceName, selectedVoiceName, effectiveVoiceNameForSelectedLanguageGroup) => hasSelectedVoiceName && selectedVoiceName === effectiveVoiceNameForSelectedLanguageGroup,
+	(selectedVoiceName, effectiveVoiceNameForSelectedLanguageGroup) => selectedVoiceName !== null && selectedVoiceName === effectiveVoiceNameForSelectedLanguageGroup,
 );
 
 export const getHasSampleTextForLanguageGroup = createDraftSafeSelector(
