@@ -36,3 +36,9 @@ export const h5 = styled("h5", textBase.h5);
 
 export const kbd = styled("kbd", textBase.kbd);
 export const blockquote = styled("blockquote", textBase.blockquote);
+
+export const summaryHeading1 = styled("h1", textBase.summaryHeading1);
+export const summaryHeading2 = styled("h2", textBase.summaryHeading2);
+export const summaryHeading3 = styled("h3", textBase.summaryHeading3);
+export const summaryHeading4 = styled("h4", textBase.summaryHeading4);
+export const summaryHeading5 = styled("h5", textBase.summaryHeading5);

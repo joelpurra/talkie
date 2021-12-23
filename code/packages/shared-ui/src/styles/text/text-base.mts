@@ -86,3 +86,36 @@ export const blockquote: StyleObject = {
 	paddingRight: "0.5em",
 	paddingTop: "0.5em",
 };
+
+export const summaryHeading: StyleObject = {
+	display: "inline-block",
+	marginBottom: 0,
+	marginLeft: 0,
+	marginRight: 0,
+	marginTop: 0,
+	paddingBottom: "0.5em",
+	paddingLeft: "0.5em",
+	paddingRight: "0.5em",
+	paddingTop: "0.5em",
+};
+
+export const summaryHeading1: StyleObject = {
+	...h1,
+	...summaryHeading,
+};
+export const summaryHeading2: StyleObject = {
+	...h2,
+	...summaryHeading,
+};
+export const summaryHeading3: StyleObject = {
+	...h3,
+	...summaryHeading,
+};
+export const summaryHeading4: StyleObject = {
+	...h4,
+	...summaryHeading,
+};
+export const summaryHeading5: StyleObject = {
+	...h5,
+	...summaryHeading,
+};

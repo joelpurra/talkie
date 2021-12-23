@@ -35,15 +35,7 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import React from "react";
 
 import InstallVoicesFaq from "../support/install-voices-faq.js";
 
@@ -59,23 +51,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 		super(props);
 
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
-
-		this.styled = {
-			summaryHeading: withStyleDeep(
-				textBase.h4,
-				{
-					display: "inline-block",
-					marginBottom: 0,
-					marginLeft: 0,
-					marginRight: 0,
-					marginTop: 0,
-					paddingBottom: "0.5em",
-					paddingLeft: "0.5em",
-					paddingRight: "0.5em",
-					paddingTop: "0.5em",
-				},
-			),
-		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -93,9 +68,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 		return (
 			<layoutBase.details>
 				<layoutBase.summary>
-					<this.styled.summaryHeading>
+					<textBase.summaryHeading4>
 						{translateSync(`frontend_faq${paddedId}Q`)}
-					</this.styled.summaryHeading>
+					</textBase.summaryHeading4>
 				</layoutBase.summary>
 				<textBase.p>
 					{translateSync(`frontend_faq${paddedId}A`)}
@@ -155,9 +130,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq017Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq017A")}
@@ -182,9 +157,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq018Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq018A")}
@@ -259,10 +234,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 	static defaultProps = {
 		osType: null,
-	};
-
-	private readonly styled: {
-		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h4>>;
 	};
 }
 

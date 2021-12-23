@@ -28,15 +28,7 @@ import translateAttribute, {
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import React from "react";
 
 export interface InstallVoicesFaqProps {
 	osType?: OsType | null;
@@ -44,26 +36,9 @@ export interface InstallVoicesFaqProps {
 }
 
 class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends React.PureComponent<P> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		this.styled = {
-			summaryHeading: withStyleDeep(
-				// TODO: share style across components.
-				textBase.h4,
-				{
-					display: "inline-block",
-					marginBottom: 0,
-					marginLeft: 0,
-					marginRight: 0,
-					marginTop: 0,
-					paddingBottom: "0.5em",
-					paddingLeft: "0.5em",
-					paddingRight: "0.5em",
-					paddingTop: "0.5em",
-				},
-			),
-		};
 	}
 
 	override render(): React.ReactNode {
@@ -80,9 +55,9 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq002Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq002A")}
@@ -124,9 +99,9 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq003Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq003A")}
@@ -150,9 +125,9 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq004Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq004A")}
@@ -178,9 +153,9 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq005Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq005A")}
@@ -193,10 +168,6 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 
 	static defaultProps = {
 		osType: null,
-	};
-
-	private readonly styled: {
-		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h4>>;
 	};
 }
 
