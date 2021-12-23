@@ -80,10 +80,9 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProp
 });
 
 class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState> extends React.PureComponent<P, S> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		this.speakTextInLanguageWithOverrides = this.speakTextInLanguageWithOverrides.bind(this);
 	}
 
 	override componentDidUpdate(_previousProps: P, previousState: S): void {
@@ -96,7 +95,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 
 		if (shouldRetryLoadingVoices) {
 			// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
-			// NOTE: sometimes the browser (Firefox?) has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
+			// NOTE: sometimes the browser has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
 			// NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
 			const loadVoicesRetryDelay = 50 * (2 ** this.state.loadVoicesRetryCount);
 
@@ -135,18 +134,12 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		}
 	}
 
-	speakTextInLanguageWithOverrides(text: string, languageCode: string) {
-		this.props.speakTextInLanguageWithOverrides({
-			languageCode,
-			text,
-		});
-	}
-
 	override render(): React.ReactNode {
 		const {
 			canSpeakInTranslatedLocale,
 			sampleText,
 			sampleTextLanguage,
+			speakTextInLanguageWithOverrides,
 		} = this.props;
 
 		return (
@@ -154,7 +147,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 				canSpeakInTranslatedLocale={canSpeakInTranslatedLocale}
 				sampleText={sampleText}
 				sampleTextLanguage={sampleTextLanguage}
-				speakTextInLanguageWithOverrides={this.speakTextInLanguageWithOverrides}
+				speakTextInLanguageWithOverrides={speakTextInLanguageWithOverrides}
 			/>
 		);
 	}

@@ -38,12 +38,15 @@ import {
 
 import HeroSection from "../../components/hero-section/hero-section.js";
 import InstallVoicesContainer from "../../containers/install-voices-container.js";
+import {
+	actions,
+} from "../../slices/index.mjs";
 
 export interface WelcomeProps {
 	canSpeakInTranslatedLocale: boolean;
 	sampleText: string | null;
 	sampleTextLanguage: TalkieLocale | null;
-	speakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
+	speakTextInLanguageWithOverrides: typeof actions.shared.speaking.speakTextInLanguageWithOverrides;
 }
 
 export type WelcomeSample = {
@@ -56,9 +59,16 @@ export type WelcomeSample = {
 	text: string;
 };
 
-class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureComponent<P> {
+interface WelcomeState {
+	// NOTE: keep spokeSample in state because it depends on the selected text in the rendered sample HTML element.
+	spokeSample: boolean;
+}
+
+class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureComponent<P, WelcomeState> {
 	constructor(props: P) {
 		super(props);
+
+		this.welcomeSampleTextElementRef = React.createRef<HTMLSpanElement>();
 
 		this.playWelcomeMessage = this.playWelcomeMessage.bind(this);
 		this.selectTextInElement = this.selectTextInElement.bind(this);
@@ -94,7 +104,11 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 			return;
 		}
 
-		if (!this.welcomeSampleTextElement) {
+		if (!this.welcomeSampleTextElementRef.current) {
+			return;
+		}
+
+		if (this.state.spokeSample) {
 			return;
 		}
 
@@ -104,17 +118,23 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 			return;
 		}
 
-		if (this.spokeSample) {
-			return;
-		}
+		this.setState(
+			{
+				spokeSample: true,
+			},
+			() => {
+				if (!this.welcomeSampleTextElementRef.current) {
+					return;
+				}
 
-		this.spokeSample = true;
+				this.selectTextInElement(this.welcomeSampleTextElementRef.current);
 
-		this.selectTextInElement(this.welcomeSampleTextElement);
-
-		this.props.speakTextInLanguageWithOverrides(
-			welcomeSample.text,
-			welcomeSample.languageCode,
+				// NOTE: can not use iconClick(), to simulate regular Talkie usage, because it requires a user action to access the current tab.
+				this.props.speakTextInLanguageWithOverrides({
+					languageCode: welcomeSample.languageCode,
+					text: welcomeSample.text,
+				});
+			},
 		);
 	}
 
@@ -165,9 +185,7 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 					>
 						<this.styled.sampleHeroP>
 							<span
-								ref={(welcomeSampleTextElement) => {
-									this.welcomeSampleTextElement = welcomeSampleTextElement;
-								}}
+								ref={this.welcomeSampleTextElementRef}
 								lang={welcomeSample.languageCode}
 							>
 								{welcomeSample.text}
@@ -194,8 +212,11 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 		);
 	}
 
-	private spokeSample = false;
-	private welcomeSampleTextElement: HTMLElement | null = null;
+	override state = {
+		spokeSample: false,
+	};
+
+	private readonly welcomeSampleTextElementRef: React.RefObject<HTMLSpanElement>;
 	private readonly styled: {
 		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
 		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
