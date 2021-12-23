@@ -22,17 +22,8 @@ import {
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import React from "react";
 
 interface DialectVoicesProps {
 	voices: Readonly<SafeVoiceObject[]>;
@@ -41,51 +32,9 @@ interface DialectVoicesProps {
 }
 
 class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		const partialStyled = {
-			dialectLi: withStyleDeep(
-				listBase.li,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					"::marker": {
-						// NOTE: uses the same bullet, but transparent, to ensure horizontal size is the same.
-						color: "transparent",
-					},
-					cursor: "pointer",
-					listStylePosition: "inside",
-					listStyleType: "'\\2605\\0020'",
-					overflow: "hidden",
-					textOverflow: "clip",
-					whiteSpace: "nowrap",
-				},
-			),
-			dialectsUl: withStyleDeep(
-				listBase.ul,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					columnCount: 3,
-					columnRuleColor: colorBase.dividerColor,
-					columnRuleStyle: "solid",
-					columnRuleWidth: "thin",
-					fontWeight: "bold",
-				},
-			),
-		};
-
-		this.styled = {
-			...partialStyled,
-			isNavigatorLanguageLi: withStyleDeep(
-				partialStyled.dialectLi,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					"::marker": {
-						color: colorBase.textColor,
-					},
-				},
-			),
-		};
 	}
 
 	override render(): React.ReactNode {
@@ -95,13 +44,13 @@ class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P>
 		} = this.props as DialectVoicesProps;
 
 		return (
-			<this.styled.dialectsUl>
+			<layoutBase.columnsUl3>
 				{
 					voices
 						.map(
 							// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 							(voice) => (
-								<this.styled.dialectLi
+								<layoutBase.columnsLi
 									key={voice.name}
 									// eslint-disable-next-line react/jsx-no-bind
 									onClick={onSelectVoiceNameClick.bind(null, voice.name)}
@@ -109,19 +58,13 @@ class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P>
 									<buttonBase.transparentButton>
 										{voice.name}
 									</buttonBase.transparentButton>
-								</this.styled.dialectLi>
+								</layoutBase.columnsLi>
 							),
 						)
 				}
-			</this.styled.dialectsUl>
+			</layoutBase.columnsUl3>
 		);
 	}
-
-	private readonly styled: {
-		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
-	};
 }
 
 export default DialectVoices;

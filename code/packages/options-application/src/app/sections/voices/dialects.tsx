@@ -19,17 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import React from "react";
 
 interface DialectsProps {
 	languages: Readonly<string[]>;
@@ -38,51 +29,9 @@ interface DialectsProps {
 }
 
 class Dialects<P extends DialectsProps> extends React.PureComponent<P> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		const partialStyled = {
-			dialectLi: withStyleDeep(
-				listBase.li,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					"::marker": {
-						// NOTE: uses the same bullet, but transparent, to ensure horizontal size is the same.
-						color: "transparent",
-					},
-					cursor: "pointer",
-					listStylePosition: "inside",
-					listStyleType: "'\\2605\\0020'",
-					overflow: "hidden",
-					textOverflow: "clip",
-					whiteSpace: "nowrap",
-				},
-			),
-			dialectsUl: withStyleDeep(
-				listBase.ul,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					columnCount: 6,
-					columnRuleColor: colorBase.dividerColor,
-					columnRuleStyle: "solid",
-					columnRuleWidth: "thin",
-					fontWeight: "bold",
-				},
-			),
-		};
-
-		this.styled = {
-			...partialStyled,
-			isNavigatorLanguageLi: withStyleDeep(
-				partialStyled.dialectLi,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					"::marker": {
-						color: colorBase.textColor,
-					},
-				},
-			),
-		};
 	}
 
 	override render(): React.ReactNode {
@@ -92,12 +41,12 @@ class Dialects<P extends DialectsProps> extends React.PureComponent<P> {
 		} = this.props as DialectsProps;
 
 		return (
-			<this.styled.dialectsUl>
+			<layoutBase.columnsUl3>
 				{
 					languages
 						.map(
 							(language) => (
-								<this.styled.dialectLi
+								<layoutBase.columnsLi
 									key={language}
 									// eslint-disable-next-line react/jsx-no-bind
 									onClick={onSelectLanguageCodeClick.bind(null, language)}
@@ -105,19 +54,13 @@ class Dialects<P extends DialectsProps> extends React.PureComponent<P> {
 									<buttonBase.transparentButton>
 										{language}
 									</buttonBase.transparentButton>
-								</this.styled.dialectLi>
+								</layoutBase.columnsLi>
 							),
 						)
 				}
-			</this.styled.dialectsUl>
+			</layoutBase.columnsUl3>
 		);
 	}
-
-	private readonly styled: {
-		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		dialectsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
-	};
 }
 
 export default Dialects;

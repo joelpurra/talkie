@@ -22,17 +22,8 @@ import {
 	LanguageGroupWithNavigatorLanguage,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import React from "react";
 
 interface LanguageGroupsProps {
 	languageGroupsWithNavigatorLanguages: Readonly<LanguageGroupWithNavigatorLanguage[]>;
@@ -41,51 +32,9 @@ interface LanguageGroupsProps {
 }
 
 class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<P> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		const partialStyled = {
-			languageGroupLi: withStyleDeep(
-				listBase.li,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					"::marker": {
-						// NOTE: uses the same bullet, but transparent, to ensure horizontal size is the same.
-						color: "transparent",
-					},
-					cursor: "pointer",
-					listStylePosition: "inside",
-					listStyleType: "'\\2605\\0020'",
-					overflow: "hidden",
-					textOverflow: "clip",
-					whiteSpace: "nowrap",
-				},
-			),
-			languageGroupsUl: withStyleDeep(
-				listBase.ul,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					columnCount: 6,
-					columnRuleColor: colorBase.dividerColor,
-					columnRuleStyle: "solid",
-					columnRuleWidth: "thin",
-					fontWeight: "bold",
-				},
-			),
-		};
-
-		this.styled = {
-			...partialStyled,
-			isNavigatorLanguageLi: withStyleDeep(
-				partialStyled.languageGroupLi,
-				{
-					// TODO: copy-pasted; make column lists reusable.
-					"::marker": {
-						color: colorBase.textColor,
-					},
-				},
-			),
-		};
 	}
 
 	override render(): React.ReactNode {
@@ -95,7 +44,7 @@ class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<
 		} = this.props as LanguageGroupsProps;
 
 		return (
-			<this.styled.languageGroupsUl>
+			<layoutBase.columnsUl6>
 				{
 					languageGroupsWithNavigatorLanguages
 						.map(
@@ -107,8 +56,8 @@ class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<
 								} = languageGroupWithNavigatorLanguage;
 
 								const ListItemType = isNavigatorLanguage
-									? this.styled.isNavigatorLanguageLi
-									: this.styled.languageGroupLi;
+									? layoutBase.columnsLiMarked
+									: layoutBase.columnsLi;
 
 								return (
 									<ListItemType
@@ -124,15 +73,9 @@ class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<
 							},
 						)
 				}
-			</this.styled.languageGroupsUl>
+			</layoutBase.columnsUl6>
 		);
 	}
-
-	private readonly styled: {
-		isNavigatorLanguageLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		languageGroupLi: StyletronComponent<ComponentProps<typeof listBase.li>>;
-		languageGroupsUl: StyletronComponent<ComponentProps<typeof listBase.ul>>;
-	};
 }
 
 export default LanguageGroups;
