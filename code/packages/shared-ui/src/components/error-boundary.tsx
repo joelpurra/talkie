@@ -30,17 +30,34 @@ import {
 	ChildrenRequiredProps,
 } from "../types.mjs";
 
-export default class ErrorBoundary<P extends ChildrenRequiredProps> extends React.PureComponent<P> {
-	override componentDidCatch(error: ReadonlyDeep<Error>, info: ReadonlyDeep<ErrorInfo>): void {
+interface ErrorBoundaryState {
+	componentStack: string | null;
+	hasError: boolean;
+	message: string | null;
+	stacktrace: string | null;
+}
+
+export default class ErrorBoundary<P extends ChildrenRequiredProps> extends React.PureComponent<P, ErrorBoundaryState> {
+	static getDerivedStateFromError(error: unknown): Partial<ErrorBoundaryState> {
+		// NOTE: React doesn't enforce the Error type; it's merely best practice to throw Error objects (as opposed to "anything").
+		const errorObject = error instanceof Error
+			? error
+			: null;
+
+		return {
+			hasError: true,
+			message: errorObject?.message ?? JSON.stringify(error) ?? null,
+			stacktrace: errorObject?.stack?.toString() ?? null,
+		};
+	}
+
+	override componentDidCatch(error: unknown, info: ReadonlyDeep<ErrorInfo>): void {
 		// TODO: use DualLogger?
 		// eslint-disable-next-line no-console
 		console.error("ErrorBoundary", error, info);
 
 		this.setState({
-			componentStack: info.componentStack,
-			hasError: true,
-			message: error.message,
-			stacktrace: error.stack?.toString(),
+			componentStack: info ? info.componentStack ?? null : null,
 		});
 	}
 
@@ -65,6 +82,48 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 			const body = this._getBodyText();
 			const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
+			const messageElement = this.state.message
+				? (
+					<blockquote>
+						<pre>
+							{this.state.message}
+						</pre>
+					</blockquote>
+				)
+				: null;
+
+			const componentStackElement = this.state.componentStack
+				? (
+					<details>
+						<summary>
+							Component stack
+						</summary>
+
+						<blockquote>
+							<pre>
+								{this.state.componentStack}
+							</pre>
+						</blockquote>
+					</details>
+				)
+				: null;
+
+			const stackTraceElement = this.state.stacktrace
+				? (
+					<details>
+						<summary>
+							Error stack trace
+						</summary>
+
+						<blockquote>
+							<pre>
+								{this.state.stacktrace}
+							</pre>
+						</blockquote>
+					</details>
+				)
+				: null;
+
 			// TODO: could avoid avoiding using a HOC or similar?
 			return (
 				<div>
@@ -85,6 +144,8 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 					</p>
 
 					<p>
+						&mdash;
+						{" "}
 						<a
 							href="https://joelpurra.com/"
 							lang="en"
@@ -101,11 +162,7 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 						Talkie
 					</p>
 
-					<blockquote>
-						<pre>
-							{this.state.message}
-						</pre>
-					</blockquote>
+					{messageElement}
 
 					<p>
 						<a
@@ -119,29 +176,9 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 						</a>
 					</p>
 
-					<details>
-						<summary>
-							Component stack
-						</summary>
+					{componentStackElement}
 
-						<blockquote>
-							<pre>
-								{this.state.componentStack}
-							</pre>
-						</blockquote>
-					</details>
-
-					<details>
-						<summary>
-							Error stack trace
-						</summary>
-
-						<blockquote>
-							<pre>
-								{this.state.stacktrace}
-							</pre>
-						</blockquote>
-					</details>
+					{stackTraceElement}
 				</div>
 			);
 		}
@@ -185,7 +222,7 @@ Hope this helps =)
 `;
 	}
 
-	override state = {
+	override state: ErrorBoundaryState = {
 		componentStack: null,
 		hasError: false,
 		message: null,
