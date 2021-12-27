@@ -49,6 +49,8 @@ export const getSelectedVoiceName = <S extends OptionsRootState>(state: S): Read
 export const getEffectiveVoiceNameForSelectedLanguageCode = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.effectiveVoiceNameForSelectedLanguageCode;
 export const getEffectiveVoiceNameForSelectedLanguageGroup = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.effectiveVoiceNameForSelectedLanguageGroup;
 export const getSampleTextForLanguageGroup = <S extends OptionsRootState>(state: S): Readonly<string | null> => state.voices.sampleTextForLanguageGroup;
+export const getRateForSelectedVoice = <S extends OptionsRootState>(state: S): Readonly<number> => state.voices.rateForSelectedVoice;
+export const getPitchForSelectedVoice = <S extends OptionsRootState>(state: S): Readonly<number> => state.voices.pitchForSelectedVoice;
 
 export const getHasSelectedLanguageGroup = createDraftSafeSelector(
 	[
@@ -236,4 +238,20 @@ export const getHasSampleTextForLanguageGroup = createDraftSafeSelector(
 		getSampleTextForLanguageGroup,
 	],
 	(sampleTextForLanguageGroup) => typeof sampleTextForLanguageGroup === "string" && sampleTextForLanguageGroup.length > 0,
+);
+
+export const getCanSpeakInSelectedVoiceName = createDraftSafeSelector(
+	[
+		getSelectedVoiceName,
+		getSampleTextForLanguageGroup,
+		getRateForSelectedVoice,
+		getPitchForSelectedVoice,
+	],
+	(selectedVoiceName, sampleTextForLanguageGroup, rateForSelectedVoice, pitchForSelectedVoice) =>
+		typeof sampleTextForLanguageGroup === "string"
+		&& sampleTextForLanguageGroup.length > 0
+		&& typeof selectedVoiceName === "string"
+		&& selectedVoiceName.length > 0
+		&& typeof rateForSelectedVoice === "number"
+		&& typeof pitchForSelectedVoice === "number",
 );

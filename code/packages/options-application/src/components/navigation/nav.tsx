@@ -33,6 +33,11 @@ import {
 import {
 	NavLink,
 } from "./nav-container-types.mjs";
+import {
+	getLocationHashFromTabId,
+	getTabIdFromLocationHash,
+	isLocationHash,
+} from "./nav-helpers.mjs";
 
 export interface NavProps {
 	initialActiveTabId: string | null;
@@ -94,8 +99,8 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		if (anchor.tagName === "A") {
 			const href = anchor.getAttribute("href");
 
-			if (typeof href === "string" && href.startsWith("#")) {
-				const tabId = href.replace("#", "");
+			if (isLocationHash(href)) {
+				const tabId = getTabIdFromLocationHash(href);
 
 				event.preventDefault();
 				event.stopPropagation();
@@ -123,7 +128,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			if (typeof link.tabId === "string" && link.url instanceof URL) {
 				throw new TypeError(`Has both a link and a tab id: ${JSON.stringify(link)}`);
 			} else if (typeof link.tabId === "string") {
-				resolvedUrl = `#${link.tabId}`;
+				resolvedUrl = getLocationHashFromTabId(link.tabId);
 			} else if (link.url instanceof URL) {
 				resolvedUrl = link.url.toString();
 			} else {

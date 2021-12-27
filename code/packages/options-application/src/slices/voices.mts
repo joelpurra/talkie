@@ -38,11 +38,14 @@ import {
 
 import {
 	getAssertedSelectedVoiceName,
+	getCanSpeakInSelectedVoiceName,
 	getFirstLanguageForSelectedLanguageGroup,
 	getFirstVoiceForSelectedLanguageCode,
 	getHasSelectedLanguageGroup,
 	getIsSelectedLanguageGroupTalkieLocale,
 	getLanguageCountForSelectedLanguageGroup,
+	getPitchForSelectedVoice,
+	getRateForSelectedVoice,
 	getSampleTextForLanguageGroup,
 	getSelectedLanguageCode,
 	getSelectedLanguageGroup,
@@ -98,9 +101,12 @@ const prefix = "voices";
 
 export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageCode`,
-	async (languageCode, {
-		dispatch, getState,
-	}) => {
+	async (
+		languageCode, {
+			dispatch,
+			getState,
+		},
+	) => {
 		{
 			// TODO: separate slices to avoid having to repeatedly check/verify/validate state.
 			// TODO: re-architecture to avoid getState() in action -- in particular when also directly/indirectly updating the state in the same call tree.
@@ -134,14 +140,17 @@ export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IA
 
 export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageGroup`,
-	async (languageGroup, {
-		dispatch, getState,
-	}) => {
+	async (
+		languageGroup, {
+			dispatch,
+			getState,
+		},
+	) => {
 		dispatch(setSelectedLanguageGroup(languageGroup));
 
 		// NOTE: dependent properties load from the selected language group in the state, instead of an argument, to avoid discrepancies.
 		// TODO: merge the results into a single object, as the result of this action?
-		// TODO: create a slice for the selected language group, including all depdendent properties?
+		// TODO: create a slice for the selected language group, including all dependent properties?
 		await dispatch(loadEffectiveVoiceForLanguageGroup());
 		await dispatch(loadIsSelectedLanguageGroupTalkieLocale());
 		await dispatch(loadTextDirectionForSelectedLanguageGroup());
@@ -164,9 +173,12 @@ export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, I
 
 export const loadIsSelectedLanguageGroupTalkieLocale = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadIsSelectedLanguageGroupTalkieLocale`,
-	async (_, {
-		extra, getState,
-	}) => {
+	async (
+		_, {
+			extra,
+			getState,
+		},
+	) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageGroup !== "string") {
@@ -179,9 +191,12 @@ export const loadIsSelectedLanguageGroupTalkieLocale = createAsyncThunk<boolean,
 
 export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<LanguageTextDirection, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTextDirectionForSelectedLanguageGroup`,
-	async (_, {
-		extra, getState,
-	}) => {
+	async (
+		_, {
+			extra,
+			getState,
+		},
+	) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageGroup !== "string") {
@@ -200,9 +215,11 @@ export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<Langua
 
 export const loadSelectedVoiceName = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedVoiceName`,
-	async (voiceName, {
-		dispatch,
-	}) => {
+	async (
+		voiceName, {
+			dispatch,
+		},
+	) => {
 		dispatch(setSelectedVoiceName(voiceName));
 
 		if (typeof voiceName === "string") {
@@ -216,9 +233,12 @@ export const loadSelectedVoiceName = createAsyncThunk<void, string | null, IApiA
 
 export const loadEffectiveRateForVoice = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveRateForVoice`,
-	async (_, {
-		extra, getState,
-	}) => {
+	async (
+		_, {
+			extra,
+			getState,
+		},
+	) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
 		if (typeof selectedVoiceName === "string") {
@@ -231,9 +251,13 @@ export const loadEffectiveRateForVoice = createAsyncThunk<number, void, IApiAsyn
 
 export const storeVoiceRateOverride = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeVoiceRateOverride`,
-	async (rate, {
-		dispatch, extra, getState,
-	}) => {
+	async (
+		rate, {
+			dispatch,
+			extra,
+			getState,
+		},
+	) => {
 		const assertedSelectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
 
 		await extra.setVoiceRateOverride(assertedSelectedVoiceName, rate);
@@ -244,9 +268,12 @@ export const storeVoiceRateOverride = createAsyncThunk<void, number, IApiAsyncTh
 
 export const loadEffectivePitchForVoice = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectivePitchForVoice`,
-	async (_, {
-		extra, getState,
-	}) => {
+	async (
+		_, {
+			extra,
+			getState,
+		},
+	) => {
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
 		if (typeof selectedVoiceName === "string") {
@@ -259,9 +286,13 @@ export const loadEffectivePitchForVoice = createAsyncThunk<number, void, IApiAsy
 
 export const storeVoicePitchOverride = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeVoicePitchOverride`,
-	async (pitch, {
-		dispatch, extra, getState,
-	}) => {
+	async (
+		pitch, {
+			dispatch,
+			extra,
+			getState,
+		},
+	) => {
 		const assertedSelectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
 
 		await extra.setVoicePitchOverride(assertedSelectedVoiceName, pitch);
@@ -272,9 +303,13 @@ export const storeVoicePitchOverride = createAsyncThunk<void, number, IApiAsyncT
 
 export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguageCode`,
-	async (_, {
-		dispatch, extra, getState,
-	}) => {
+	async (
+		_, {
+			dispatch,
+			extra,
+			getState,
+		},
+	) => {
 		const selectedLanguageCode = getSelectedLanguageCode(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageCode === "string") {
@@ -289,9 +324,13 @@ export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, void, IA
 
 export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguageGroup`,
-	async (_, {
-		dispatch, extra, getState,
-	}) => {
+	async (
+		_, {
+			dispatch,
+			extra,
+			getState,
+		},
+	) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageGroup === "string") {
@@ -306,12 +345,15 @@ export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<void, void, I
 
 export const storeEffectiveVoiceNameForLanguage = createAsyncThunk<void, StoreEffectiveVoiceNameForLanguageArguments, IApiAsyncThunkConfig>(
 	`${prefix}/storeEffectiveVoiceNameForLanguage`,
-	async ({
-		languageCodeOrGroup,
-		voiceName,
-	}, {
-		dispatch, extra,
-	}) => {
+	async (
+		{
+			languageCodeOrGroup,
+			voiceName,
+		}, {
+			dispatch,
+			extra,
+		},
+	) => {
 		await extra.toggleLanguageVoiceOverrideName(languageCodeOrGroup, voiceName);
 
 		// HACK: duplicate function to set either language code or group?
@@ -325,9 +367,13 @@ export const storeEffectiveVoiceNameForLanguage = createAsyncThunk<void, StoreEf
 
 export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSampleTextForLanguageGroup`,
-	async (_, {
-		dispatch, getState, extra,
-	}) => {
+	async (
+		_, {
+			dispatch,
+			getState,
+			extra,
+		},
+	) => {
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 		const isTalkieLocale = getIsSelectedLanguageGroupTalkieLocale(getState() as OptionsRootState);
 
@@ -341,29 +387,21 @@ export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiA
 
 export const speakInSelectedVoiceNameState = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/speakInSelectedVoiceNameState`,
-	async (_, {
-		extra, getState,
-	}) => {
-		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
-		const sampleTextForLanguageGroup = getSampleTextForLanguageGroup(getState() as OptionsRootState);
+	async (
+		_, {
+			extra,
+			getState,
+		},
+	) => {
+		const canSpeakInSelectedVoiceName = getCanSpeakInSelectedVoiceName(getState() as OptionsRootState);
 
-		// TODO: does every property have to have a selector?
-		const {
-			rateForSelectedVoice,
-			pitchForSelectedVoice,
-		} = (getState() as OptionsRootState).voices;
+		if (canSpeakInSelectedVoiceName) {
+			const selectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
+			const sampleTextForLanguageGroup = getSampleTextForLanguageGroup(getState() as OptionsRootState);
+			const rateForSelectedVoice = getRateForSelectedVoice(getState() as OptionsRootState);
+			const pitchForSelectedVoice = getPitchForSelectedVoice(getState() as OptionsRootState);
 
-		// TODO: move to function/state/selector?
-		// NOTE: all logic in the if statement, since typescript's typing doesn't like having a separate boolean variable.
-		if (
-			typeof sampleTextForLanguageGroup === "string"
-			&& sampleTextForLanguageGroup.length > 0
-			&& typeof selectedVoiceName === "string"
-			&& selectedVoiceName.length > 0
-			&& typeof rateForSelectedVoice === "number"
-			&& typeof pitchForSelectedVoice === "number"
-		) {
-			const text = sampleTextForLanguageGroup;
+			const text = sampleTextForLanguageGroup!;
 			const voice = {
 				name: selectedVoiceName,
 				pitch: pitchForSelectedVoice,

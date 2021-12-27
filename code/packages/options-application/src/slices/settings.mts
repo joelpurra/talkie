@@ -51,16 +51,21 @@ const prefix = "settings";
 
 export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadShowAdditionalDetails`,
-	async (_, {
-		extra,
-	}) => extra.getShowAdditionalDetailsOption(),
+	async (
+		_, {
+			extra,
+		},
+	) => extra.getShowAdditionalDetailsOption(),
 );
 
 export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeShowAdditionalDetails`,
-	async (showAdditionalDetails, {
-		dispatch, extra,
-	}) => {
+	async (
+		showAdditionalDetails, {
+			dispatch,
+			extra,
+		},
+	) => {
 		await extra.setShowAdditionalDetailsOption(showAdditionalDetails);
 		dispatch(setShowAdditionalDetails(showAdditionalDetails));
 	},
@@ -68,16 +73,21 @@ export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAs
 
 export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakLongTexts`,
-	async (_, {
-		extra,
-	}) => extra.getSpeakLongTextsOption(),
+	async (
+		_, {
+			extra,
+		},
+	) => extra.getSpeakLongTextsOption(),
 );
 
 export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakLongTexts`,
-	async (speakLongTexts, {
-		dispatch, extra,
-	}) => {
+	async (
+		speakLongTexts, {
+			dispatch,
+			extra,
+		},
+	) => {
 		await extra.setSpeakLongTextsOption(speakLongTexts);
 		dispatch(setSpeakLongTexts(speakLongTexts));
 	},
