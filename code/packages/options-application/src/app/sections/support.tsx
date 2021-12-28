@@ -115,28 +115,15 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 		return (
 			<section>
+				<textBase.h2>
+					{translateSync("frontend_faqHeading")}
+				</textBase.h2>
+
 				<textBase.p>
 					{translateSync("frontend_supportDescription", [
 						translateSync("extensionShortName"),
 					])}
 				</textBase.p>
-
-				<listBase.ul>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.support-feedback")}>
-							{translateSync("frontend_supportAndFeedback")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.project")}>
-							{translateSync("frontend_aboutProjectPageLinkText")}
-						</textBase.a>
-					</listBase.li>
-				</listBase.ul>
-
-				<textBase.h2>
-					{translateSync("frontend_faqHeading")}
-				</textBase.h2>
 
 				<textBase.h3>
 					{translateSync("frontend_faqVoicesHeading")}
@@ -234,6 +221,38 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				{this.standardFaqEntry(11)}
 				{this.standardFaqEntry(12)}
 				{this.standardFaqEntry(13)}
+
+				<textBase.h2>
+					{translateSync("frontend_supportLinksHeading")}
+				</textBase.h2>
+
+				<listBase.ul>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.project")}>
+							{translateSync("frontend_aboutProjectPageLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.github")}>
+							{translateSync("frontend_aboutCodeOnGithubLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.github-issues")}>
+							{translateSync("frontend_aboutIssuesOnGithubLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.support-feedback")}>
+							{translateSync("frontend_supportAndFeedback")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.rate")}>
+							{translateSync("frontend_rateIt")}
+						</textBase.a>
+					</listBase.li>
+				</listBase.ul>
 			</section>
 		);
 	}

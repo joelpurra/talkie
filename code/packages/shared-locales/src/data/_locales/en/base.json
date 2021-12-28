@@ -53,6 +53,9 @@
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Source code on Github"
   },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Feature requests and bug reports on Github"
+  },
   "frontend_aboutLinkText": {
     "message": "About"
   },
@@ -358,6 +361,9 @@
   },
   "frontend_supportLinkText": {
     "message": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "Support links"
   },
   "frontend_systemBrowserLanguageHeading": {
     "message": "Preferred browser language"
