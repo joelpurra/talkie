@@ -42,11 +42,12 @@ const {
 } = toolkit;
 
 export interface TabsState {
-	activeTabId: TabId | null;
+	// TODO: list known tabs.
+	activeTabId: TabId | "fallback-tab";
 }
 
 const initialState: TabsState = {
-	activeTabId: null,
+	activeTabId: "fallback-tab",
 };
 
 const prefix = "tabs";
@@ -74,7 +75,7 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 	},
 );
 
-export const setActiveTabId = createAsyncThunk<string | null, TabId | null, IApiAsyncThunkConfig>(
+export const setActiveTabId = createAsyncThunk<string | "fallback-tab", TabId | null, IApiAsyncThunkConfig>(
 	`${prefix}/setActiveTabId`,
 	async (
 		activeTabId,
@@ -93,7 +94,7 @@ export const setActiveTabId = createAsyncThunk<string | null, TabId | null, IApi
 		}
 
 		// TODO: assertion/throw error?
-		return null;
+		return "fallback-tab";
 	},
 );
 

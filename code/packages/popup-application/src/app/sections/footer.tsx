@@ -112,7 +112,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		return (
 			<this.styled.footer>
 				<this.styled.footerFirstLink
-					href={configure("urls.internal.options")}
+					href={configure("urls.internal.options-settings")}
 					rel="noopener noreferrer"
 					target="_blank"
 					onClick={optionsPageClick}

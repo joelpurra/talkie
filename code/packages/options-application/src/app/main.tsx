@@ -46,6 +46,7 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
+import Loading from "../components/loading.js";
 import NavContainer from "../components/navigation/nav-container.js";
 import {
 	NavLink,
@@ -243,6 +244,22 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				<layoutBase.hr/>
 
 				<this.styled.main>
+					<TabContents
+						// NOTE: used when prerendering the static per-language template.
+						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
+						activeTabId={activeTabId}
+						id="fallback-tab"
+						onLinkClick={this.handleLinkClick}
+					>
+						<Loading
+							// NOTE: always "loading", as it is assumed the active tab (selected by the hash in the url) will be switched as soon as possible.
+							isBlockElement
+							enabled={false}
+						>
+							{/* NOTE: empty/loading placeholder for the "fallback-tab" default active tab id. */}
+						</Loading>
+					</TabContents>
+
 					<TabContents
 						activeTabId={activeTabId}
 						id="welcome"

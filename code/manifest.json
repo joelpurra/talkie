@@ -46,7 +46,7 @@
     }
   },
   "options_ui": {
-    "page": "./packages/options-renderer/src/options.html",
+    "page": "./packages/options-renderer/src/options.html#settings",
     "chrome_style": false,
     "browser_style": false,
     "open_in_tab": true
