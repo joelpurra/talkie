@@ -7,15 +7,11 @@
 	<link rel="stylesheet" type="text/css" href="../../../shared-resources/src/resources/style/shared.css" />
 	<link rel="stylesheet" type="text/css" href="../../../shared-resources/src/resources/style/options.css" />
 	<%- locals.stylesForHead %>
-		<noscript id="__PRERENDERED_STATE__">
-			<%- locals.prerenderedStateJson %>
-		</noscript>
+	<noscript id="__PRERENDERED_STATE__"><%- locals.prerenderedStateJson %></noscript>
 </head>
 
 <body>
-	<div id="react-root">
-		<%- locals.reactRootHtml %>
-	</div>
+	<div id="react-root"><%- locals.reactRootHtml %></div>
 	<script src="../../../browser-runtime-dependencies/dist/umd/browser-polyfill.js"></script>
 	<script src="../../../browser-runtime-dependencies/dist/umd/react.js"></script>
 	<script src="../../../browser-runtime-dependencies/dist/umd/react-dom.js"></script>
