@@ -91,10 +91,16 @@ export default class Configuration implements IConfiguration {
 	getSync<T extends JsonValue>(systemType: SystemType, path: string): T {
 		const systemValue = Configuration._resolvePath(this.configurationObject[systemType], path);
 		const sharedValue = Configuration._resolvePath(this.configurationObject.shared, path);
+		const customValue = Configuration._resolvePath(this.configurationObject, path);
 
 		const value = systemValue
 						?? sharedValue
+						?? customValue
 						?? null;
+
+		if (!value) {
+			throw new Error(`Invalid value for ${(JSON.stringify(systemType))} on ${JSON.stringify(path)}: ${JSON.stringify(value)}`);
+		}
 
 		// TODO: verify type at runtime.
 		return value as unknown as T;

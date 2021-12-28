@@ -295,19 +295,15 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 					{translateSync("frontend_usageShortcutKeyAlternative03")}
 				</lighter.p>
 
-				{/* NOTE: can't change shortcut keys in Firefox */}
-				<Discretional
-					enabled={systemType === "chrome"}
-				>
-					<p>
-						<textBase.a
-							href={configure("urls.external.shortcut-keys")}
-							onClick={this.handleOpenShortKeysConfigurationClick}
-						>
-							{translateSync("frontend_usageShortcutKeyAlternative04")}
-						</textBase.a>
-					</p>
-				</Discretional>
+				<p>
+					<textBase.a
+						href={configure("urls.external.shortcut-keys")}
+						// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
+						onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
+					>
+						{translateSync("frontend_usageShortcutKeyAlternative04")}
+					</textBase.a>
+				</p>
 			</section>
 		);
 	}

@@ -38,7 +38,8 @@
   "webextension": {
     "urls": {
       "external": {
-        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/"
+        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/",
+        "shortcut-keys": "https://support.mozilla.org/kb/manage-extension-shortcuts-firefox"
       }
     }
   }

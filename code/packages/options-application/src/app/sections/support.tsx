@@ -55,6 +55,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	handleOpenShortKeysConfigurationClick(event: React.MouseEvent): false {
+		// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
 		return this.props.onOpenShortKeysConfigurationClick(event);
 	}
 
@@ -124,7 +125,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				{this.standardFaqEntry(15)}
 				{this.standardFaqEntry(16)}
 
-				{/* NOTE: can't change shortcut keys in Firefox */}
 				<Discretional
 					enabled={showAdditionalDetails || systemType === "chrome"}
 				>
@@ -141,8 +141,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						<listBase.ul>
 							<listBase.li>
 								<textBase.a
-									href={configure("urls.external.shortcut-keys")}
-									onClick={this.handleOpenShortKeysConfigurationClick}
+									href={configure("shared.urls.external.shortcut-keys")}
+									// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
+									onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
 								>
 									{translateSync("frontend_usageShortcutKeyAlternative04")}
 								</textBase.a>
@@ -151,7 +152,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					</layoutBase.details>
 				</Discretional>
 
-				{/* NOTE: can't change shortcut keys in Firefox */}
 				<Discretional
 					enabled={showAdditionalDetails || systemType === "webextension"}
 				>
@@ -164,6 +164,16 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						<textBase.p>
 							{translateSync("frontend_faq018A")}
 						</textBase.p>
+
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href={configure("webextension.urls.external.shortcut-keys")}
+								>
+									{translateSync("frontend_usageShortcutKeyAlternative04")}
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
 					</layoutBase.details>
 				</Discretional>
 

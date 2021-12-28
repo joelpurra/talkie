@@ -94,6 +94,8 @@ If the shortcut key does not work, please check that it is not already in use by
 <details>
 <summary>How to check or change the Talkie shortcut keys in Firefox</summary>
 
+See also the official documentation on [how to manage extension shortcuts in Firefox](https://support.mozilla.org/kb/manage-extension-shortcuts-firefox).
+
 1. In Firefox, click [**Add-ons**](about:addons) in the **Tools** menu.
 1. From the Add-ons page, click **Extensions** in the left side menu.
    > <img src="./code/packages/shared-resources/src/resources/keyboard-shortcuts/talkie-shortcuts-firefox-01.png" alt="Screenshot of Firefox's list of installed extensions, focusing on Talkie" title="Firefox's installed extensions"  width="565" height="387" />
