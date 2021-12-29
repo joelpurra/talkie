@@ -63,7 +63,7 @@
     "message": "Project page on joelpurra.com"
   },
   "frontend_faq001A": {
-    "message": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+    "message": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ."
   },
   "frontend_faq001Q": {
     "message": "How does Talkie detect installed voices?"
@@ -72,22 +72,22 @@
     "message": "You can add more voices from both Microsoft and others; see separate installation instructions."
   },
   "frontend_faq002Q": {
-    "message": "How can I install more voices in Talkie on Windows?"
+    "message": "How can I install more voices in Talkie on Microsoft Windows?"
   },
   "frontend_faq003A": {
-    "message": "Any additions to ChromeOS should be available in the Chrome Web Store."
+    "message": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may be available in the Chrome Web Store."
   },
   "frontend_faq003Q": {
-    "message": "How can I install more voices in Talkie on ChromeOS?"
+    "message": "How can I install more voices in Talkie on Google ChromeOS?"
   },
   "frontend_faq004A": {
     "message": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
   },
   "frontend_faq004Q": {
-    "message": "How can I install more voices in Talkie on macOS?"
+    "message": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your experiences are!"
+    "message": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
   },
   "frontend_faq005Q": {
     "message": "How can I install more voices in Talkie on Linux?"
@@ -259,6 +259,24 @@
   },
   "frontend_faq033Q": {
     "message": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "Do open source voices work with Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Bugs"

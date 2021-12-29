@@ -29,8 +29,8 @@ import translateAttribute, {
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
-import Loading from "../../components/loading.js";
-import Markdown from "../../components/markdown.js";
+import Loading from "../../../components/loading.js";
+import Markdown from "../../../components/markdown.js";
 import InstallVoicesFaq from "./install-voices-faq.js";
 
 interface InstallVoicesState {

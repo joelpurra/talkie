@@ -52,6 +52,8 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 			translateSync,
 		} = this.props;
 
+		// TODO: translate system settings paths.
+
 		return (
 			<>
 				<Discretional
@@ -70,13 +72,21 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 						<listBase.ul>
 							<listBase.li>
 								<textBase.a
+									href="https://support.microsoft.com/en-us/windows/appendix-a-supported-languages-and-voices-4486e345-7730-53da-fcfe-55cc64300f01"
+									lang="en"
+								>
+									Windows 11
+								</textBase.a>
+								: Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language&nbsp;&amp;&nbsp;Region &rarr;&nbsp;Add a language
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
 									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
 									lang="en"
 								>
 									Windows 10
 								</textBase.a>
-								: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
-								{/* TODO: translate system settings path. */}
+								: Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language &rarr;&nbsp;Add a language
 							</listBase.li>
 							<listBase.li>
 								<textBase.a
@@ -114,6 +124,15 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 						<listBase.ul>
 							<listBase.li>
 								<textBase.a
+									href="https://support.google.com/chromebook/answer/9032490"
+									lang="en"
+								>
+									ChromeOS
+								</textBase.a>
+								: Settings &rarr;&nbsp;Manage&nbsp;accessibility&nbsp;features &rarr;&nbsp;Text-to-Speech&nbsp;voice&nbsp;settings &rarr;&nbsp;Speech&nbsp;Engines
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
 									href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
 									lang="en"
 								>
@@ -145,8 +164,7 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 								>
 									macOS
 								</textBase.a>
-								: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
-								{/* TODO: translate system settings path. */}
+								: System&nbsp;Preferences &rarr;&nbsp;Accessibility &rarr;&nbsp;Speech &rarr;&nbsp;System&nbsp;voice &rarr;&nbsp;Customize...
 							</listBase.li>
 						</listBase.ul>
 					</layoutBase.details>
@@ -164,6 +182,17 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 						<textBase.p>
 							{translateSync("frontend_faq005A")}
 						</textBase.p>
+
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://askubuntu.com/questions/953509/how-can-i-change-the-voice-used-by-firefox-reader-view-narrator-in-ubuntu"
+									lang="en"
+								>
+									Ask Ubuntu: How can I change the voice used by Firefox in Ubuntu?
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
 					</layoutBase.details>
 				</Discretional>
 			</>
