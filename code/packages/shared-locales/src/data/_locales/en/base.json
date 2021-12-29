@@ -341,6 +341,12 @@
   "frontend_featuresUpgradeToTalkiePremiumLinkText": {
     "message": "Upgrade to Talkie Premium"
   },
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "No text-to-speech voices found"
+  },
   "frontend_licenseCLADescription": {
     "message": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
@@ -488,11 +494,60 @@
   "frontend_voicesAvailableVoices": {
     "message": "Available voices"
   },
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
   "frontend_voicesDescription": {
     "message": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
+  "frontend_voicesFoundDialects": {
+    "message": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
   "frontend_voicesLinkText": {
     "message": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
   },
   "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",

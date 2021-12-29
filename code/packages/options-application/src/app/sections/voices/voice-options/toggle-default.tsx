@@ -52,11 +52,13 @@ class ToggleDefault<P extends InternalProps> extends React.PureComponent<P> {
 			voiceName,
 		} = this.props as InternalProps;
 
-		const messageDetailsPlaceholders: string[] = [
-			`**${languageCode}**`,
-			`**${voiceName}**`,
-		];
-		const buttonTextMarkdown = translateSync("frontend_voicesSetAsLanguageUseVoiceAsDefault", messageDetailsPlaceholders);
+		const buttonTextMarkdown = translateSync(
+			"frontend_voicesSetAsLanguageUseVoiceAsDefault",
+			[
+				`**${languageCode}**`,
+				`**${voiceName}**`,
+			],
+		);
 		const checkboxId = `toggle-default-voice-checkbox-${languageCode}`;
 
 		// TODO: styling the the disabled label.

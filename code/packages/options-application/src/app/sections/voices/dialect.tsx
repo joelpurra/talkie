@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
+import translateAttribute, {
+	TranslateProps,
+} from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
@@ -26,7 +29,7 @@ import React from "react";
 import Loading from "../../../components/loading.js";
 import Markdown from "../../../components/markdown.js";
 
-interface DialectProps {
+interface DialectProps extends TranslateProps {
 	effectiveVoiceNameForSelectedLanguage: string | null;
 	hasSampleTextForLanguageGroup: boolean;
 	language: string;
@@ -57,6 +60,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			effectiveVoiceNameForSelectedLanguage,
 			hasSampleTextForLanguageGroup,
 			language,
+			translateSync,
 		} = this.props as DialectProps;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -83,12 +87,6 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 				</>
 			);
 
-		const boldedLanguageMarkdown = `**${language}**`;
-		const boldedEffectiveVoiceNameForSelectedLanguageMarkdown = `**${effectiveVoiceNameForSelectedLanguage ?? ".."}**`;
-
-		// TODO: translate.
-		const effectiveVoiceDescriptionMarkdown = `The default voice for the dialect ${boldedLanguageMarkdown} is ${boldedEffectiveVoiceNameForSelectedLanguageMarkdown}.`;
-
 		return (
 			<textBase.p>
 				<SpeakSampleButton>
@@ -96,7 +94,13 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 						enabled={typeof effectiveVoiceNameForSelectedLanguage === "string"}
 					>
 						<Markdown>
-							{effectiveVoiceDescriptionMarkdown}
+							{translateSync(
+								"frontend_voicesDefaultVoiceForDialect",
+								[
+									`**${language}**`,
+									`**${effectiveVoiceNameForSelectedLanguage ?? ".."}**`,
+								],
+							)}
 						</Markdown>
 					</Loading>
 				</SpeakSampleButton>
@@ -105,4 +109,6 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 	}
 }
 
-export default Dialect;
+export default translateAttribute<DialectProps>()(
+	Dialect,
+);

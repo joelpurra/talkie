@@ -59,8 +59,9 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
-			voice,
 			hasSampleTextForLanguageGroup,
+			translateSync,
+			voice,
 		} = this.props as DialectVoiceProps;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -101,9 +102,13 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 				</Discretional>
 
 				<SpeakSampleButton>
-					{/* TODO: translate. */}
 					<Markdown>
-						{`Listen to a voice sample of **${voice.name}**.`}
+						{translateSync(
+							"frontend_voicesListenToVoiceSample",
+							[
+								`**${voice.name}**`,
+							],
+						)}
 					</Markdown>
 				</SpeakSampleButton>
 

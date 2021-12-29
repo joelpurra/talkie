@@ -22,6 +22,9 @@ import {
 	LanguageTextDirection,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
+import translateAttribute, {
+	TranslateProps,
+} from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React, {
@@ -47,7 +50,7 @@ export interface LanguageGroupStateProps {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface LanguageGroupDispatchProps {}
 
-interface LanguageGroupProps extends LanguageGroupStateProps, LanguageGroupDispatchProps {
+interface LanguageGroupProps extends LanguageGroupStateProps, LanguageGroupDispatchProps, TranslateProps {
 	speakSampleTextForLanguage: (language: string) => void;
 }
 
@@ -90,6 +93,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			languageGroup,
 			sampleTextForLanguageGroup,
 			textDirectionForLanguageGroup,
+			translateSync,
 		} = this.props as LanguageGroupProps;
 
 		const textDirectionClassNameForLanguageGroup = `text-direction-${textDirectionForLanguageGroup}`;
@@ -133,12 +137,6 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 				</>
 			);
 
-		const boldedLanguageGroupMarkdown = `**${languageGroup}**`;
-		const boldedEffectiveVoiceNameForSelectedLanguageGroupMarkdown = `**${effectiveVoiceNameForSelectedLanguageGroup}**`;
-
-		// TODO: translate.
-		const effectiveVoiceDescriptionMarkdown = `The default voice for the language ${boldedLanguageGroupMarkdown} is ${boldedEffectiveVoiceNameForSelectedLanguageGroupMarkdown}.`;
-
 		return (
 			<>
 				<textBase.p>
@@ -157,7 +155,13 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 				<textBase.p>
 					<SpeakSampleButton>
 						<Markdown>
-							{effectiveVoiceDescriptionMarkdown}
+							{translateSync(
+								"frontend_voicesDefaultVoiceForLanguage",
+								[
+									`**${languageGroup}**`,
+									`**${effectiveVoiceNameForSelectedLanguageGroup}**`,
+								],
+							)}
 						</Markdown>
 					</SpeakSampleButton>
 				</textBase.p>
@@ -166,4 +170,6 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 	}
 }
 
-export default LanguageGroup;
+export default translateAttribute<LanguageGroupProps>()(
+	LanguageGroup,
+);

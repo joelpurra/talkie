@@ -165,8 +165,13 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							enabled={!hasSelectedLanguageCode}
 						>
 							<p>
-								{/* TODO: translate. */}
-								{`Found ${languageCountForSelectedLanguageGroup} dialects for ${selectedLanguageGroup ?? " (Error: no selected language group.)"}.`}
+								{translateSync(
+									"frontend_voicesFoundDialects",
+									[
+										languageCountForSelectedLanguageGroup.toString(10),
+										selectedLanguageGroup ?? " (Error: no selected language group.)",
+									],
+								)}
 							</p>
 
 							<DialectsContainer
