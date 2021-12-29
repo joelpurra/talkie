@@ -97,7 +97,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 			// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
 			// NOTE: sometimes the browser has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
 			// NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
-			const loadVoicesRetryDelay = 50 * (2 ** this.state.loadVoicesRetryCount);
+			const loadVoicesRetryDelay = 500 * (2 ** this.state.loadVoicesRetryCount);
 
 			// NOTE: execute outside the synchronous rendering.
 			setTimeout(

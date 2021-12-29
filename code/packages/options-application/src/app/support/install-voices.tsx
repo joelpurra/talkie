@@ -22,6 +22,7 @@ import {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -32,6 +33,10 @@ import Loading from "../../components/loading.js";
 import Markdown from "../../components/markdown.js";
 import InstallVoicesFaq from "./install-voices-faq.js";
 
+interface InstallVoicesState {
+	hasWaitedLongEnoughForVoicesToLoad: boolean;
+}
+
 export interface InstallVoicesProps {
 	haveVoices: boolean;
 	languageGroupsCount: number;
@@ -41,10 +46,21 @@ export interface InstallVoicesProps {
 	voicesCount: number;
 }
 
-class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React.PureComponent<P> {
+class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React.PureComponent<P, InstallVoicesState> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
+	}
+
+	override componentDidMount() {
+		setTimeout(
+			() => {
+				this.setState({
+					hasWaitedLongEnoughForVoicesToLoad: true,
+				});
+			},
+			5000,
+		);
 	}
 
 	override render(): React.ReactNode {
@@ -81,15 +97,34 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 
 		return (
 			<section>
-				<textBase.p>
+				<Discretional
+					enabled={haveVoices || !this.state.hasWaitedLongEnoughForVoicesToLoad}
+				>
 					<Loading
+						isBlockElement
 						enabled={haveVoices}
 					>
-						<Markdown>
-							{moreVoicesCountsMarkdown}
-						</Markdown>
+						<textBase.p>
+							<Markdown>
+								{moreVoicesCountsMarkdown}
+							</Markdown>
+						</textBase.p>
 					</Loading>
-				</textBase.p>
+				</Discretional>
+
+				<Discretional
+					enabled={!haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad}
+				>
+					<textBase.h3>
+						{/* TODO: translate. */}
+						No text-to-speech voices found
+					</textBase.h3>
+
+					<textBase.p>
+						{/* TODO: translate. */}
+						Please install some voices on your system, otherwise Talkie will not work. Sorry!
+					</textBase.p>
+				</Discretional>
 
 				<InstallVoicesFaq
 					osType={osType}
@@ -103,6 +138,10 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 		osType: null,
 		sampleText: null,
 		sampleTextLanguageCode: null,
+	};
+
+	override state = {
+		hasWaitedLongEnoughForVoicesToLoad: false,
 	};
 }
 
