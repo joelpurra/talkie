@@ -559,6 +559,9 @@
   "frontend_voicesShowAdditionalDetailsLabel": {
     "message": "Show additional details"
   },
+  "frontend_voicesShowAllListItems": {
+    "message": "Show all"
+  },
   "frontend_voicesShowAllVoices": {
     "message": "Show all voices"
   },

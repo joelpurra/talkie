@@ -42,3 +42,5 @@ export const summaryHeading2 = styled("h2", textBase.summaryHeading2);
 export const summaryHeading3 = styled("h3", textBase.summaryHeading3);
 export const summaryHeading4 = styled("h4", textBase.summaryHeading4);
 export const summaryHeading5 = styled("h5", textBase.summaryHeading5);
+
+export const headingActionSpan = styled("span", textBase.headingActionSpan);

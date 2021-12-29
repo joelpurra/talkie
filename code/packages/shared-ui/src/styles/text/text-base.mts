@@ -29,6 +29,16 @@ export const text: StyleObject = {
 	color: colorBase.textColor,
 };
 
+export const lighterText: StyleObject = {
+	...text,
+	fontWeight: "lighter",
+};
+
+export const smallerText: StyleObject = {
+	...text,
+	fontSize: "smaller",
+};
+
 export const highlight: StyleObject = {
 	color: colorBase.linkHighlightColor,
 };
@@ -121,4 +131,11 @@ export const summaryHeading4: StyleObject = {
 export const summaryHeading5: StyleObject = {
 	...h5,
 	...summaryHeading,
+};
+
+export const headingActionSpan: StyleObject = {
+	...lighterText,
+	...smallerText,
+	paddingLeft: "1em",
+	paddingRight: "1em",
 };
