@@ -24,6 +24,16 @@ import {
 	IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
+import {
+	TabId,
+} from "../components/navigation/nav-container-types.mjs";
+import {
+	getLocationHashFromTabId,
+	getTabIdFromLocationHash,
+	isLocationHash,
+	isTabId,
+} from "../components/navigation/nav-helpers.mjs";
+
 const {
 	// eslint-disable-next-line import/no-named-as-default-member
 	createAsyncThunk,
@@ -32,25 +42,15 @@ const {
 } = toolkit;
 
 export interface TabsState {
-	activeTabId: string | null;
+	// TODO: list known tabs.
+	activeTabId: TabId | "fallback-tab";
 }
 
 const initialState: TabsState = {
-	activeTabId: null,
+	activeTabId: "fallback-tab",
 };
 
 const prefix = "tabs";
-
-// TODO: move/reuse helpers.
-const isTabId = (tabId: string | null): tabId is string => typeof tabId === "string"
-		&& tabId.length > 0
-		&& tabId.split("#").length === 1;
-
-// TODO: move/reuse helpers.
-const isLocationHash = (locationHash: string | null): locationHash is string => typeof locationHash === "string"
-		&& locationHash.length > 1
-		&& locationHash.startsWith("#")
-		&& locationHash.split("#").length === 2;
 
 export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadLocationHashAsActiveTab`,
@@ -66,7 +66,7 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 
 		if (isLocationHash(locationHash)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
-			const activeTabId = locationHash.replace(/^#/, "");
+			const activeTabId = getTabIdFromLocationHash(locationHash);
 
 			await dispatch(setActiveTabId(activeTabId));
 		} else {
@@ -75,7 +75,7 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 	},
 );
 
-export const setActiveTabId = createAsyncThunk<string | null, string | null, IApiAsyncThunkConfig>(
+export const setActiveTabId = createAsyncThunk<string | "fallback-tab", TabId | null, IApiAsyncThunkConfig>(
 	`${prefix}/setActiveTabId`,
 	async (
 		activeTabId,
@@ -86,7 +86,7 @@ export const setActiveTabId = createAsyncThunk<string | null, string | null, IAp
 	) => {
 		if (isTabId(activeTabId)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
-			const locationHash = `#${activeTabId}`;
+			const locationHash = getLocationHashFromTabId(activeTabId);
 
 			await extra.setLocationHash(locationHash);
 
@@ -94,7 +94,7 @@ export const setActiveTabId = createAsyncThunk<string | null, string | null, IAp
 		}
 
 		// TODO: assertion/throw error?
-		return null;
+		return "fallback-tab";
 	},
 );
 

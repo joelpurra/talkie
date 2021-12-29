@@ -120,6 +120,7 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 						<this.styled.tr>
 							<this.styled.td>
 								<this.styled.statusIconWrapper
+									type="button"
 									onClick={this.handlePlayPauseClick}
 								>
 									<Icon

@@ -20,8 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 
 /* NOTE: border-box for all elements. */
-
-
 /* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 
 html {
@@ -35,21 +33,8 @@ html {
 }
 
 details > * {
-	/* NOTE: this seems to reset to content-box, without any obvious reason why. Tested using the inspector in chrome 94. */
+    /* NOTE: the details element seems to reset to content-box, without any obvious reason why. Tested using the inspector in chrome 94. */
     box-sizing: border-box;
-}
-
-
-/* NOTE: border-box for all elements. */
-
-
-/* NOTE: automatic text direction */
-
-
-/* https://developer.chrome.com/extensions/i18n#overview-predefined */
-
-body {
-    direction: __MSG_@@bidi_dir__;
 }
 
 html,
@@ -66,7 +51,7 @@ body {
 }
 
 #react-root {
-	font-size: 0.75em;
+    font-size: 0.75em;
 }
 
 .text-direction-rtl {
@@ -77,27 +62,15 @@ body {
   direction: ltr;
 }
 
-.free-section,
-.premium-section {
-    border-radius: 0.4em;
-    margin-left: -0.5em;
-    margin-right: -0.5em;
-}
-
-div.free-section,
-div.premium-section {
-    padding: 0.5em;
-}
-
 .premium-section {
     background-color: #eceff5;
 }
 
-.premium-section p:first-of-type,
-.premium-section h2:first-of-type {
-    margin-top: 0;
+tr.free-section,
+tr.premium-section {
+    margin-left: -0.5em;
+    margin-right: -0.5em;
 }
-
 tr.premium-section:first-of-type td:first-of-type,
 tr:not(.premium-section)+tr.premium-section td:first-of-type {
     border-top-left-radius: 0.5em;

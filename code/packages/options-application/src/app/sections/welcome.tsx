@@ -22,9 +22,6 @@ import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
-import configureAttribute, {
-	ConfigureProps,
-} from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -36,19 +33,20 @@ import type {
 	StyletronComponent,
 } from "styletron-react";
 import {
-	styled,
 	withStyleDeep,
 } from "styletron-react";
 
 import HeroSection from "../../components/hero-section/hero-section.js";
-import SharingIcons from "../../components/sharing/sharing-icons.js";
 import InstallVoicesContainer from "../../containers/install-voices-container.js";
+import {
+	actions,
+} from "../../slices/index.mjs";
 
 export interface WelcomeProps {
 	canSpeakInTranslatedLocale: boolean;
 	sampleText: string | null;
 	sampleTextLanguage: TalkieLocale | null;
-	speakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
+	speakTextInLanguageWithOverrides: typeof actions.shared.speaking.speakTextInLanguageWithOverrides;
 }
 
 export type WelcomeSample = {
@@ -61,50 +59,25 @@ export type WelcomeSample = {
 	text: string;
 };
 
-class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
+interface WelcomeState {
+	// NOTE: keep spokeSample in state because it depends on the selected text in the rendered sample HTML element.
+	spokeSample: boolean;
+}
+
+class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureComponent<P, WelcomeState> {
 	constructor(props: P) {
 		super(props);
+
+		this.welcomeSampleTextElementRef = React.createRef<HTMLSpanElement>();
 
 		this.playWelcomeMessage = this.playWelcomeMessage.bind(this);
 		this.selectTextInElement = this.selectTextInElement.bind(this);
 
 		this.styled = {
-			HeroEditionSection: styled(
-				HeroSection,
-				{
-					// NOTE: atomic css class ordering seems to not work well in this case.
-					marginBottom: 0,
-				},
-			),
-
-			heroDiv: styled(
-				"div",
-				{
-					marginBottom: "2em",
-				},
-			),
-
 			sampleHeroP: withStyleDeep(
 				textBase.p,
 				{
 					marginTop: 0,
-				},
-			),
-
-			sharingDiv: styled(
-				"div",
-				{
-					marginLeft: "6em",
-					marginRight: "6em",
-					marginTop: "-4em",
-				},
-			),
-
-			sharingIcons: styled(
-				SharingIcons,
-				{
-					display: "inline-block",
-					verticalAlign: "middle",
 				},
 			),
 
@@ -131,7 +104,11 @@ class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends 
 			return;
 		}
 
-		if (!this.welcomeSampleTextElement) {
+		if (!this.welcomeSampleTextElementRef.current) {
+			return;
+		}
+
+		if (this.state.spokeSample) {
 			return;
 		}
 
@@ -141,17 +118,23 @@ class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends 
 			return;
 		}
 
-		if (this.spokeSample) {
-			return;
-		}
+		this.setState(
+			{
+				spokeSample: true,
+			},
+			() => {
+				if (!this.welcomeSampleTextElementRef.current) {
+					return;
+				}
 
-		this.spokeSample = true;
+				this.selectTextInElement(this.welcomeSampleTextElementRef.current);
 
-		this.selectTextInElement(this.welcomeSampleTextElement);
-
-		this.props.speakTextInLanguageWithOverrides(
-			welcomeSample.text,
-			welcomeSample.languageCode,
+				// NOTE: can not use iconClick(), to simulate regular Talkie usage, because it requires a user action to access the current tab.
+				this.props.speakTextInLanguageWithOverrides({
+					languageCode: welcomeSample.languageCode,
+					text: welcomeSample.text,
+				});
+			},
 		);
 	}
 
@@ -190,72 +173,56 @@ class Welcome<P extends WelcomeProps & ConfigureProps & TranslateProps> extends 
 		const {
 			canSpeakInTranslatedLocale,
 			translateSync,
-			configure,
 		} = this.props;
 
 		const welcomeSample = this.getWelcomeSample();
 
 		return (
 			<section>
-				<this.styled.heroDiv>
-					<this.styled.HeroEditionSection>
-						<Discretional
-							enabled={welcomeSample.hasSampleText}
-						>
-							<this.styled.sampleHeroP>
-								<span
-									ref={(welcomeSampleTextElement) => {
-										this.welcomeSampleTextElement = welcomeSampleTextElement;
-									}}
-									lang={welcomeSample.languageCode}
-								>
-									{welcomeSample.text}
-								</span>
-							</this.styled.sampleHeroP>
-						</Discretional>
-
-						<this.styled.welcomeHeroP>
-							{translateSync("frontend_welcomeHero01", [
-								translateSync("extensionShortName"),
-							])}
-
-							<Discretional
-								enabled={canSpeakInTranslatedLocale}
+				<HeroSection>
+					<Discretional
+						enabled={welcomeSample.hasSampleText}
+					>
+						<this.styled.sampleHeroP>
+							<span
+								ref={this.welcomeSampleTextElementRef}
+								lang={welcomeSample.languageCode}
 							>
-								{" "}
-								{translateSync("frontend_welcomeHero02")}
-							</Discretional>
-						</this.styled.welcomeHeroP>
-					</this.styled.HeroEditionSection>
+								{welcomeSample.text}
+							</span>
+						</this.styled.sampleHeroP>
+					</Discretional>
 
-					<this.styled.sharingDiv>
-						<this.styled.sharingIcons/>
+					<this.styled.welcomeHeroP>
+						{translateSync("frontend_welcomeHero01", [
+							translateSync("extensionShortName"),
+						])}
 
-						<textBase.a href={configure("urls.rate")}>
-							{translateSync("frontend_rateIt")}
-						</textBase.a>
-					</this.styled.sharingDiv>
-				</this.styled.heroDiv>
+						<Discretional
+							enabled={canSpeakInTranslatedLocale}
+						>
+							{" "}
+							{translateSync("frontend_welcomeHero02")}
+						</Discretional>
+					</this.styled.welcomeHeroP>
+				</HeroSection>
 
 				<InstallVoicesContainer/>
 			</section>
 		);
 	}
 
-	private spokeSample = false;
-	private welcomeSampleTextElement: HTMLElement | null = null;
+	override state = {
+		spokeSample: false,
+	};
+
+	private readonly welcomeSampleTextElementRef: React.RefObject<HTMLSpanElement>;
 	private readonly styled: {
-		HeroEditionSection: StyletronComponent<ComponentProps<typeof HeroSection>>;
-		heroDiv: StyletronComponent<ComponentProps<"div">>;
 		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-		sharingDiv: StyletronComponent<ComponentProps<"div">>;
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
 		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
 	};
 }
 
-export default configureAttribute<WelcomeProps & ConfigureProps>()(
-	translateAttribute<WelcomeProps & ConfigureProps & TranslateProps>()(
-		Welcome,
-	),
+export default translateAttribute<WelcomeProps & TranslateProps>()(
+	Welcome,
 );

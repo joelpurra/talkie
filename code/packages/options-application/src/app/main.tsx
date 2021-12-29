@@ -42,15 +42,19 @@ import {
 	styled,
 	withStyleDeep,
 } from "styletron-react";
+import {
+	ReadonlyDeep,
+} from "type-fest";
 
+import Loading from "../components/loading.js";
 import NavContainer from "../components/navigation/nav-container.js";
 import {
 	NavLink,
 } from "../components/navigation/nav-container-types.mjs";
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
-import EditionsContainer from "../containers/editions-container.js";
-import TextContainer from "../containers/text-container.js";
+import FeaturesContainer from "../containers/features-container.js";
+import TextContainer from "../containers/settings-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
 import {
@@ -60,7 +64,6 @@ import Footer, {
 	FooterStateProps,
 } from "./footer.js";
 import Header from "./header.js";
-import Features from "./sections/features.js";
 import Support from "./sections/support.js";
 import Usage from "./sections/usage.js";
 
@@ -68,6 +71,7 @@ export interface MainStateProps extends FooterStateProps {
 	activeTabId: string | null;
 	isPremiumEdition: boolean;
 	osType: OsType | null;
+	showAdditionalDetails: boolean;
 	systemType: SystemType | null;
 }
 
@@ -98,8 +102,6 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 
-		// TODO: async load/unload logic for classes.
-		// TODO: better place to put navigation menu links?
 		this.links = [
 			{
 				tabId: "welcome",
@@ -122,14 +124,9 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				text: this.props.translateSync("frontend_featuresLinkText"),
 			},
 			{
-				tabId: "upgrade",
+				tabId: "settings",
 				// eslint-disable-next-line no-sync
-				text: this.props.translateSync("frontend_upgradeLinkText"),
-			},
-			{
-				tabId: "text",
-				// eslint-disable-next-line no-sync
-				text: this.props.translateSync("frontend_textLinkText"),
+				text: this.props.translateSync("frontend_settingsLinkText"),
 			},
 			{
 				tabId: "support",
@@ -202,7 +199,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		return false;
 	}
 
-	handleLinkClick(url: string): void {
+	handleLinkClick(url: ReadonlyDeep<URL>): void {
 		this.props.openUrlInNewTab(url);
 	}
 
@@ -223,6 +220,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			errorCount,
 			isPremiumEdition,
 			osType,
+			showAdditionalDetails,
 			systemType,
 			versionNumber,
 		} = this.props;
@@ -246,6 +244,22 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				<layoutBase.hr/>
 
 				<this.styled.main>
+					<TabContents
+						// NOTE: used when prerendering the static per-language template.
+						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
+						activeTabId={activeTabId}
+						id="fallback-tab"
+						onLinkClick={this.handleLinkClick}
+					>
+						<Loading
+							// NOTE: always "loading", as it is assumed the active tab (selected by the hash in the url) will be switched as soon as possible.
+							isBlockElement
+							enabled={false}
+						>
+							{/* NOTE: empty/loading placeholder for the "fallback-tab" default active tab id. */}
+						</Loading>
+					</TabContents>
+
 					<TabContents
 						activeTabId={activeTabId}
 						id="welcome"
@@ -280,23 +294,12 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 						id="features"
 						onLinkClick={this.handleLinkClick}
 					>
-						<Features
-							isPremiumEdition={isPremiumEdition}
-							systemType={systemType}
-						/>
+						<FeaturesContainer/>
 					</TabContents>
 
 					<TabContents
 						activeTabId={activeTabId}
-						id="upgrade"
-						onLinkClick={this.handleLinkClick}
-					>
-						<EditionsContainer/>
-					</TabContents>
-
-					<TabContents
-						activeTabId={activeTabId}
-						id="text"
+						id="settings"
 						onLinkClick={this.handleLinkClick}
 					>
 						<TextContainer/>
@@ -309,6 +312,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					>
 						<Support
 							osType={osType}
+							showAdditionalDetails={showAdditionalDetails}
 							systemType={systemType}
 							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
 						/>

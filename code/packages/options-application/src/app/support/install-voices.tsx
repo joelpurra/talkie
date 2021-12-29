@@ -26,21 +26,16 @@ import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
-import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import React from "react";
 
 import Loading from "../../components/loading.js";
 import Markdown from "../../components/markdown.js";
+import InstallVoicesFaq from "./install-voices-faq.js";
+
+interface InstallVoicesState {
+	hasWaitedLongEnoughForVoicesToLoad: boolean;
+}
 
 export interface InstallVoicesProps {
 	haveVoices: boolean;
@@ -51,26 +46,21 @@ export interface InstallVoicesProps {
 	voicesCount: number;
 }
 
-class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React.PureComponent<P> {
+class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React.PureComponent<P, InstallVoicesState> {
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
+	}
 
-		this.styled = {
-			summaryHeading: withStyleDeep(
-				textBase.h3,
-				{
-					display: "inline-block",
-					marginBottom: 0,
-					marginLeft: 0,
-					marginRight: 0,
-					marginTop: 0,
-					paddingBottom: "0.5em",
-					paddingLeft: "0.5em",
-					paddingRight: "0.5em",
-					paddingTop: "0.5em",
-				},
-			),
-		};
+	override componentDidMount() {
+		setTimeout(
+			() => {
+				this.setState({
+					hasWaitedLongEnoughForVoicesToLoad: true,
+				});
+			},
+			5000,
+		);
 	}
 
 	override render(): React.ReactNode {
@@ -84,8 +74,8 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			voicesCount,
 		} = this.props;
 
-		// TODO: configuration.
-		const devModeShowAll = false;
+		// NOTE: don't show additional details on the welcome page.
+		const showAdditionalDetails = false;
 
 		// TODO: translated, pretty name.
 		const systemTypePrettyName = systemType ?? "(unknown system type)";
@@ -107,132 +97,39 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 
 		return (
 			<section>
-				<textBase.p>
+				<Discretional
+					enabled={haveVoices || !this.state.hasWaitedLongEnoughForVoicesToLoad}
+				>
 					<Loading
+						isBlockElement
 						enabled={haveVoices}
 					>
-						<Markdown>
-							{moreVoicesCountsMarkdown}
-						</Markdown>
+						<textBase.p>
+							<Markdown>
+								{moreVoicesCountsMarkdown}
+							</Markdown>
+						</textBase.p>
 					</Loading>
-				</textBase.p>
-
-				<Discretional
-					enabled={devModeShowAll || osType === "win"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq002Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq002A")}
-						</textBase.p>
-
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
-									lang="en"
-								>
-									Windows 10
-								</textBase.a>
-								: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
-								{/* TODO: translate system settings path. */}
-							</listBase.li>
-							<listBase.li>
-								<textBase.a
-									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
-									lang="en"
-								>
-									Windows 8
-								</textBase.a>
-							</listBase.li>
-							<listBase.li>
-								<textBase.a
-									href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
-									lang="en"
-								>
-									Windows 7
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
 				</Discretional>
 
 				<Discretional
-					enabled={devModeShowAll || osType === "cros"}
+					enabled={!haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad}
 				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq003Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq003A")}
-						</textBase.p>
+					<textBase.h3>
+						{/* TODO: translate. */}
+						No text-to-speech voices found
+					</textBase.h3>
 
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
-									lang="en"
-								>
-									US English Female Text-to-speech (by Google)
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
+					<textBase.p>
+						{/* TODO: translate. */}
+						Please install some voices on your system, otherwise Talkie will not work. Sorry!
+					</textBase.p>
 				</Discretional>
 
-				<Discretional
-					enabled={devModeShowAll || osType === "mac"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq004Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq004A")}
-						</textBase.p>
-
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
-									lang="en"
-								>
-									macOS
-								</textBase.a>
-								: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
-								{/* TODO: translate system settings path. */}
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
-
-				<Discretional
-					enabled={devModeShowAll || osType === "linux"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq005Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq005A")}
-						</textBase.p>
-					</layoutBase.details>
-				</Discretional>
+				<InstallVoicesFaq
+					osType={osType}
+					showAdditionalDetails={showAdditionalDetails}
+				/>
 			</section>
 		);
 	}
@@ -243,8 +140,8 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 		sampleTextLanguageCode: null,
 	};
 
-	private readonly styled: {
-		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h3>>;
+	override state = {
+		hasWaitedLongEnoughForVoicesToLoad: false,
 	};
 }
 

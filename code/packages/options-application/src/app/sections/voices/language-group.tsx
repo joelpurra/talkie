@@ -96,6 +96,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 					lang={languageGroup}
 				>
 					<buttonBase.transparentButton
+						type="button"
 						onClick={this.handleSpeakLanguageGroupClick}
 					>
 						{sampleTextForLanguageGroup}
@@ -110,6 +111,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 		}) => hasSampleTextForLanguageGroup
 			? (
 				<buttonBase.transparentButton
+					type="button"
 					onClick={this.handleSpeakLanguageGroupClick}
 				>
 					<Icon

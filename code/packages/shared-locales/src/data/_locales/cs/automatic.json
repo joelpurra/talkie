@@ -440,6 +440,10 @@
     "message": "Recenze Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Text",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Řekněte svým přátelům o Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie jazyky uživatelského rozhraní",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Text",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie přichází ve dvou vydáních: Talkie a Talkie Premium. Bezplatná edice je skvělá pro většinu případů použití, ale prémiová edice nabízí další možnosti a funkce.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Cena za Talkie Premium není pevná. Místo toho zaplatíte, co chcete, podle toho, kolik si myslíte, že vám prémiové funkce stojí za to. Můžete se dokonce rozhodnout nic neplatit.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Po odeslání platby nejsou k dispozici žádné kódy pro upgrade, žádné uživatelské účty k registraci ani žádné jiné ověření platby. Místo toho Talkie Premium používá čestný systém.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Upozorňujeme, že Talkie nemá jako alternativní způsob zpeněžení žádnou reklamu, sledování uživatelů ani shromažďování údajů. Platby jsou označeny jako dary za vývoj softwaru s otevřeným zdrojovým kódem.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

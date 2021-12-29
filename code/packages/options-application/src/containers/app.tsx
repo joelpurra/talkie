@@ -56,6 +56,7 @@ const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> =
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	osType: state.shared.metadata.osType,
+	showAdditionalDetails: state.settings.showAdditionalDetails,
 	systemType: state.shared.metadata.systemType,
 	versionNumber: state.shared.metadata.versionNumber,
 });
@@ -81,6 +82,7 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 			openShortKeysConfiguration,
 			openUrlInNewTab,
 			osType,
+			showAdditionalDetails,
 			systemType,
 			versionNumber,
 		} = this.props;
@@ -94,6 +96,7 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 				openShortKeysConfiguration={openShortKeysConfiguration}
 				openUrlInNewTab={openUrlInNewTab}
 				osType={osType ?? null}
+				showAdditionalDetails={showAdditionalDetails}
 				systemType={systemType}
 				versionNumber={versionNumber}
 			/>

@@ -440,6 +440,10 @@
     "message": "İnceleme Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Metin",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Talkie hakkında bilgi Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie kullanıcı arabirimi dilleri",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Metin",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie iki baskı Talkie gelir: Talkie ve Talkie Premium. Ücretsiz sürüm çoğu kullanım durumu için harikadır ancak premium sürüm ek seçenekler ve özellikler sunar.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Talkie Premium için fiyat sabit değildir. Bunun yerine, premium özelliklerin sizin için ne kadar değerli olduğunu düşündüğünüze bağlı olarak istediğiniz kadar ödersiniz. Hiçbir şey ödememeye bile karar verebilirsiniz.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Ödemeyi gönderdikten sonra girilecek yükseltme kodu, kaydedilecek kullanıcı hesabı veya başka herhangi bir ödeme doğrulaması yoktur. Bunun yerine Talkie Premium , onur sistemini kullanır.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Lütfen Talkie alternatif para kazanma yöntemi olarak reklam, kullanıcı takibi veya veri toplamasının olmadığını unutmayın. Ödemeler, açık kaynak yazılım geliştirme için bağış olarak etiketlenir.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

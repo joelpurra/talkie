@@ -20,6 +20,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
+import {
+	ReadonlyDeep,
+} from "type-fest";
 
 import {
 	IApiAsyncThunkConfig,
@@ -41,7 +44,7 @@ const prefix = "navigation";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const openUrlInNewTab = createAsyncThunk<void, string, IApiAsyncThunkConfig>(
+export const openUrlInNewTab = createAsyncThunk<void, ReadonlyDeep<URL>, IApiAsyncThunkConfig>(
 	`${prefix}/openUrlInNewTab`,
 	async (url, {
 		extra,

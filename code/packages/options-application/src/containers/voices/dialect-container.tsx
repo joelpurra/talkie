@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	SafeVoiceObject,
-} from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
@@ -40,13 +37,9 @@ interface DialectContainerProps {
 }
 
 interface StateProps {
+	assertedSelectedLanguageCode: string;
 	effectiveVoiceNameForSelectedLanguage: string | null;
-	effectiveVoiceNameForSelectedLanguageGroup: string | null;
 	hasSampleTextForLanguageGroup: boolean;
-	selectedLanguageCode: string | null;
-	selectedLanguageGroup: string | null;
-	selectedVoiceName: string | null;
-	voicesForSelectedLanguageCode: SafeVoiceObject[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -56,13 +49,9 @@ interface InternalProps extends DialectContainerProps, StateProps, DispatchProps
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
+	assertedSelectedLanguageCode: selectors.voices.getAssertedSelectedLanguageCode(state),
 	effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguageCode,
-	effectiveVoiceNameForSelectedLanguageGroup: state.voices.effectiveVoiceNameForSelectedLanguageGroup,
 	hasSampleTextForLanguageGroup: selectors.voices.getHasSampleTextForLanguageGroup(state),
-	selectedLanguageCode: state.voices.selectedLanguageCode,
-	selectedLanguageGroup: state.voices.selectedLanguageGroup,
-	selectedVoiceName: state.voices.selectedVoiceName,
-	voicesForSelectedLanguageCode: selectors.voices.getVoicesForSelectedLanguageCode(state),
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (_dispatch) => ({});
@@ -75,26 +64,14 @@ class DialectContainer<P extends InternalProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
+			assertedSelectedLanguageCode,
 			effectiveVoiceNameForSelectedLanguage,
-			effectiveVoiceNameForSelectedLanguageGroup,
 			hasSampleTextForLanguageGroup,
-			selectedLanguageCode,
-			selectedLanguageGroup,
-			selectedVoiceName,
 			speakSampleTextForLanguage,
-			voicesForSelectedLanguageCode,
 		} = this.props as InternalProps;
 
-		if (typeof selectedLanguageGroup !== "string") {
-			throw new TypeError("selectedLanguageGroup");
-		}
-
-		if (typeof selectedLanguageCode !== "string") {
-			throw new TypeError("selectedLanguageCode");
-		}
-
 		// TODO: state/selector?
-		const hasLoaded = typeof effectiveVoiceNameForSelectedLanguageGroup === "string";
+		const hasLoaded = typeof effectiveVoiceNameForSelectedLanguage === "string";
 
 		return (
 			<Loading
@@ -103,10 +80,8 @@ class DialectContainer<P extends InternalProps> extends React.PureComponent<P> {
 				<Dialect
 					effectiveVoiceNameForSelectedLanguage={effectiveVoiceNameForSelectedLanguage}
 					hasSampleTextForLanguageGroup={hasSampleTextForLanguageGroup}
-					language={selectedLanguageCode}
-					selectedVoiceName={selectedVoiceName}
+					language={assertedSelectedLanguageCode}
 					speakSampleTextForLanguage={speakSampleTextForLanguage}
-					voices={voicesForSelectedLanguageCode}
 				/>
 			</Loading>
 		);

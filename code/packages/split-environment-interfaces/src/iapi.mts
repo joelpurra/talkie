@@ -77,6 +77,10 @@ export default interface IApi {
 
 	setSpeakLongTextsOption(speakLongTexts: boolean): Promise<void>;
 
+	getShowAdditionalDetailsOption(): Promise<boolean>;
+
+	setShowAdditionalDetailsOption(ShowAdditionalDetails: boolean): Promise<void>;
+
 	getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null>;
 
 	getEffectiveRateForVoice(voiceName: string): Promise<number>;
@@ -103,7 +107,7 @@ export default interface IApi {
 
 	getOperatingSystemType(): Promise<OsType>;
 
-	openUrlInNewTab(url: string): Promise<Tabs.Tab>;
+	openUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab>;
 
 	openShortKeysConfiguration(): Promise<Tabs.Tab>;
 

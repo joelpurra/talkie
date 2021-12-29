@@ -114,6 +114,14 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
+	async getShowAdditionalDetailsOption(): Promise<boolean> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async setShowAdditionalDetailsOption(showAdditionalDetails: boolean): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
 	async getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
@@ -171,7 +179,7 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async openUrlInNewTab(url: string): Promise<Tabs.Tab> {
+	async openUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 

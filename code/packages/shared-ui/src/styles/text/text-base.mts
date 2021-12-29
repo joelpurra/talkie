@@ -23,6 +23,7 @@ import type {
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
+import * as layoutBase from "../layout/layout-base.mjs";
 
 export const text: StyleObject = {
 	color: colorBase.textColor,
@@ -50,12 +51,12 @@ export const h4: StyleObject = heading;
 export const h5: StyleObject = heading;
 
 export const kbd: StyleObject = {
+	...layoutBase.rounded("0.3em"),
 	backgroundColor: colorBase.borderedBackgroundColor,
 	borderBottomColor: colorBase.borderDarkColor,
 	borderBottomWidth: "1px",
 	borderLeftColor: colorBase.borderColor,
 	borderLeftWidth: "1px",
-	borderRadius: "0.3em",
 	borderRightColor: colorBase.borderColor,
 	borderRightWidth: "1px",
 	borderStyle: "solid",
@@ -84,4 +85,37 @@ export const blockquote: StyleObject = {
 	paddingLeft: "0.5em",
 	paddingRight: "0.5em",
 	paddingTop: "0.5em",
+};
+
+export const summaryHeading: StyleObject = {
+	display: "inline-block",
+	marginBottom: 0,
+	marginLeft: 0,
+	marginRight: 0,
+	marginTop: 0,
+	paddingBottom: "0.5em",
+	paddingLeft: "0.5em",
+	paddingRight: "0.5em",
+	paddingTop: "0.5em",
+};
+
+export const summaryHeading1: StyleObject = {
+	...h1,
+	...summaryHeading,
+};
+export const summaryHeading2: StyleObject = {
+	...h2,
+	...summaryHeading,
+};
+export const summaryHeading3: StyleObject = {
+	...h3,
+	...summaryHeading,
+};
+export const summaryHeading4: StyleObject = {
+	...h4,
+	...summaryHeading,
+};
+export const summaryHeading5: StyleObject = {
+	...h5,
+	...summaryHeading,
 };

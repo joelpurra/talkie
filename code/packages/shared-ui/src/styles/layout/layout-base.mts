@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type {
+import {
 	StyleObject,
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
+import * as listBase from "../list/list-base.mjs";
 
 const layoutWithMargins: StyleObject = {
 	marginBottom: "0.5em",
@@ -52,9 +53,16 @@ export const summary: StyleObject = {
 	cursor: "pointer",
 };
 
+export const rounded: (radius: string) => StyleObject = (radius) => ({
+	borderBottomLeftRadius: radius,
+	borderBottomRightRadius: radius,
+	borderTopLeftRadius: radius,
+	borderTopRightRadius: radius,
+});
+
 export const hero: StyleObject = {
+	...rounded("0.5em"),
 	backgroundColor: colorBase.premiumSectionBackgroundColor,
-	borderRadius: "0.4em",
 	fontSize: "2em",
 	marginBottom: "2em",
 	marginLeft: "2em",
@@ -64,4 +72,41 @@ export const hero: StyleObject = {
 	paddingLeft: "1em",
 	paddingRight: "1em",
 	paddingTop: "1em",
+};
+
+export const roundedWithBorder: (radius: string) => StyleObject = (radius) => ({
+	...rounded(radius),
+	borderColor: colorBase.borderColor,
+	borderStyle: "solid",
+	borderWidth: "1px",
+});
+
+export const columnsUl: (columnCount: number) => StyleObject = (columnCount) => ({
+	...listBase.ul,
+	columnCount,
+	columnRuleColor: colorBase.dividerColor,
+	columnRuleStyle: "solid",
+	columnRuleWidth: "thin",
+	fontWeight: "bold",
+});
+
+export const columnsLi: StyleObject = {
+	...listBase.li,
+	"::marker": {
+		// NOTE: uses the same bullet as the marked version, but transparent, to ensure horizontal size is the same.
+		color: "transparent",
+	},
+	cursor: "pointer",
+	listStylePosition: "inside",
+	listStyleType: "'\\2605\\0020'",
+	overflow: "hidden",
+	textOverflow: "clip",
+	whiteSpace: "nowrap",
+};
+
+export const columnsLiMarked: StyleObject = {
+	...columnsLi,
+	"::marker": {
+		color: colorBase.textColor,
+	},
 };

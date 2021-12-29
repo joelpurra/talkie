@@ -440,6 +440,10 @@
     "message": "查看Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "文本",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "告诉你的朋友关于Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie用户界面语言",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "文本",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版非常适合大多数用例，但高级版提供了更多选项和功能。",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Talkie Premium的价格Talkie Premium 。取而代之的是，您要支付所需的费用，具体取决于您认为这些高级功能对您来说值得多少。您甚至可以决定不支付任何费用。",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "发送付款后，无需输入升级代码，没有要注册的用户帐户或任何其他付款验证。相反， Talkie Premium使用荣誉制度。",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "请注意， Talkie没有任何广告，用户跟踪或数据收集作为替代获利手段。付款被标记为对开源软件开发的捐赠。",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

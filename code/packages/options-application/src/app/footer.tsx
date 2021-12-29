@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import configureAttribute, {
-	ConfigureProps,
-} from "@talkie/shared-ui/hocs/configure.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as errors from "@talkie/shared-ui/styled/text/errors.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
@@ -39,7 +36,7 @@ interface FooterDispatchProps {}
 
 interface FooterProps extends FooterStateProps, FooterDispatchProps {}
 
-class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent<P> {
+export default class Footer<P extends FooterProps> extends React.PureComponent<P> {
 	constructor(props: P) {
 		super(props);
 
@@ -81,7 +78,6 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 
 	override render(): React.ReactNode {
 		const {
-			configure,
 			errorCount,
 			versionNumber,
 		} = this.props;
@@ -109,7 +105,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 
 				{ErrorCount}
 
-				<this.styled.footerSecondLink href={configure("urls.options-about")} id="footer-about-link">
+				<this.styled.footerSecondLink href="#about" id="footer-about-link">
 					v
 					{versionNumber}
 				</this.styled.footerSecondLink>
@@ -124,7 +120,3 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		footerErrorLink: typeof errors.span;
 	};
 }
-
-export default configureAttribute<FooterProps & ConfigureProps>()(
-	Footer,
-);

@@ -440,6 +440,10 @@
     "message": "Gjennomgå Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Tekst",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Fortell vennene dine om Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie brukergrensesnittspråk",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Tekst",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie kommer i to utgaver: Talkie og Talkie Premium. Den gratis utgaven er flott for de fleste brukstilfeller, men premiumutgaven tilbyr flere alternativer og funksjoner.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Prisen for Talkie Premium er ikke fast. I stedet betaler du det du vil, avhengig av hvor mye du synes premiumfunksjonene er verdt for deg. Du kan til og med bestemme deg for å betale ingenting.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Etter at betalingen er sendt, er det ingen oppgraderingskoder å angi, ingen brukerkontoer å registrere eller noen annen betalingsbekreftelse på plass. I stedet bruker Talkie Premium .",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Vær oppmerksom på at Talkie ikke har noen reklame, brukersporing eller datainnsamling som alternativ måte å tjene penger på. Betalinger er merket som donasjoner for programvareutvikling med åpen kildekode.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

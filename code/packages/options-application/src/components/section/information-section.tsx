@@ -21,18 +21,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
+import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React, {
 	ComponentProps,
 } from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
 import {
 	styled,
+	StyletronComponent,
 } from "styletron-react";
 
 export type InformationType =
@@ -69,19 +67,13 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 			informationBox: styled(
 				"div",
 				{
+					...layoutBase.roundedWithBorder("0.5em"),
 					":after": {
 						// TODO: avoid float hacks.
 						clear: "both",
 						content: "''",
 						display: "table",
 					},
-					borderBottomLeftRadius: "0.5em",
-					borderBottomRightRadius: "0.5em",
-					borderColor: colorBase.borderColor,
-					borderStyle: "solid",
-					borderTopLeftRadius: "0.5em",
-					borderTopRightRadius: "0.5em",
-					borderWidth: "1px",
 					marginBottom: "1em",
 					marginLeft: "-0.5em",
 					marginRight: "-0.5em",

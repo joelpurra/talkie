@@ -35,22 +35,14 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	styled,
-	withStyleDeep,
-} from "styletron-react";
+import React from "react";
 
-import SharingIcons from "../../components/sharing/sharing-icons.js";
+import InstallVoicesFaq from "../support/install-voices-faq.js";
 
 export interface SupportProps {
 	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
 	osType?: OsType | null;
+	showAdditionalDetails: boolean;
 	systemType: SystemType | null;
 }
 
@@ -59,36 +51,11 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 		super(props);
 
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
-
-		this.styled = {
-			sharingIcons: styled(
-				SharingIcons,
-				{
-					display: "inline-block",
-					fontSize: "0.5em",
-					verticalAlign: "middle",
-				},
-			),
-
-			summaryHeading: withStyleDeep(
-				textBase.h4,
-				{
-					display: "inline-block",
-					marginBottom: 0,
-					marginLeft: 0,
-					marginRight: 0,
-					marginTop: 0,
-					paddingBottom: "0.5em",
-					paddingLeft: "0.5em",
-					paddingRight: "0.5em",
-					paddingTop: "0.5em",
-				},
-			),
-		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	handleOpenShortKeysConfigurationClick(event: React.MouseEvent): false {
+		// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
 		return this.props.onOpenShortKeysConfigurationClick(event);
 	}
 
@@ -102,9 +69,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 		return (
 			<layoutBase.details>
 				<layoutBase.summary>
-					<this.styled.summaryHeading>
+					<textBase.summaryHeading4>
 						{translateSync(`frontend_faq${paddedId}Q`)}
-					</this.styled.summaryHeading>
+					</textBase.summaryHeading4>
 				</layoutBase.summary>
 				<textBase.p>
 					{translateSync(`frontend_faq${paddedId}A`)}
@@ -115,39 +82,24 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 	override render(): React.ReactNode {
 		const {
-			systemType,
-			osType,
-			translateSync,
 			configure,
+			osType,
+			showAdditionalDetails,
+			systemType,
+			translateSync,
 		} = this.props;
-
-		// TODO: configuration.
-		const devModeShowAll = false;
 
 		return (
 			<section>
+				<textBase.h2>
+					{translateSync("frontend_faqHeading")}
+				</textBase.h2>
+
 				<textBase.p>
 					{translateSync("frontend_supportDescription", [
 						translateSync("extensionShortName"),
 					])}
 				</textBase.p>
-
-				<listBase.ul>
-					<listBase.li>
-						<textBase.a href={configure("urls.support-feedback")}>
-							{translateSync("frontend_supportAndFeedback")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.project")}>
-							{translateSync("frontend_aboutProjectPageLinkText")}
-						</textBase.a>
-					</listBase.li>
-				</listBase.ul>
-
-				<textBase.h2>
-					{translateSync("frontend_faqHeading")}
-				</textBase.h2>
 
 				<textBase.h3>
 					{translateSync("frontend_faqVoicesHeading")}
@@ -155,122 +107,10 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 				{this.standardFaqEntry(1)}
 
-				<Discretional
-					enabled={devModeShowAll || osType === "win"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq002Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq002A")}
-						</textBase.p>
-
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
-									lang="en"
-								>
-									Windows 10
-								</textBase.a>
-								: Settings &gt;&nbsp;Time&nbsp;&amp;&nbsp;Language &gt;&nbsp;Language
-								{/* TODO: translate system settings path. */}
-							</listBase.li>
-							<listBase.li>
-								<textBase.a
-									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
-									lang="en"
-								>
-									Windows 8
-								</textBase.a>
-							</listBase.li>
-							<listBase.li>
-								<textBase.a
-									href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
-									lang="en"
-								>
-									Windows 7
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
-
-				<Discretional
-					enabled={devModeShowAll || osType === "cros"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq003Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq003A")}
-						</textBase.p>
-
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
-									lang="en"
-								>
-									US English Female Text-to-speech (by Google)
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
-
-				<Discretional
-					enabled={devModeShowAll || osType === "mac"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq004Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq004A")}
-						</textBase.p>
-
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
-									lang="en"
-								>
-									macOS
-								</textBase.a>
-								: System&nbsp;Preferences &gt;&nbsp;Accessibility &gt;&nbsp;Speech &gt;&nbsp;System&nbsp;voice &gt;&nbsp;Customize...
-								{/* TODO: translate system settings path. */}
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
-
-				<Discretional
-					enabled={devModeShowAll || osType === "linux"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<this.styled.summaryHeading>
-								{translateSync("frontend_faq005Q")}
-							</this.styled.summaryHeading>
-						</layoutBase.summary>
-						{/* NOTE: this entry are duplicated between the support FAQ and welcome pages. */}
-						<textBase.p>
-							{translateSync("frontend_faq005A")}
-						</textBase.p>
-					</layoutBase.details>
-				</Discretional>
+				<InstallVoicesFaq
+					osType={osType}
+					showAdditionalDetails={showAdditionalDetails}
+				/>
 
 				{this.standardFaqEntry(6)}
 				{this.standardFaqEntry(7)}
@@ -285,15 +125,14 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				{this.standardFaqEntry(15)}
 				{this.standardFaqEntry(16)}
 
-				{/* NOTE: can't change shortcut keys in Firefox */}
 				<Discretional
-					enabled={devModeShowAll || systemType === "chrome"}
+					enabled={showAdditionalDetails || systemType === "chrome"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq017Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq017A")}
@@ -302,8 +141,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						<listBase.ul>
 							<listBase.li>
 								<textBase.a
-									href={configure("urls.shortcut-keys")}
-									onClick={this.handleOpenShortKeysConfigurationClick}
+									href={configure("shared.urls.external.shortcut-keys")}
+									// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
+									onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
 								>
 									{translateSync("frontend_usageShortcutKeyAlternative04")}
 								</textBase.a>
@@ -312,43 +152,33 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					</layoutBase.details>
 				</Discretional>
 
-				{/* NOTE: can't change shortcut keys in Firefox */}
 				<Discretional
-					enabled={devModeShowAll || systemType === "webextension"}
+					enabled={showAdditionalDetails || systemType === "webextension"}
 				>
 					<layoutBase.details>
 						<layoutBase.summary>
-							<this.styled.summaryHeading>
+							<textBase.summaryHeading4>
 								{translateSync("frontend_faq018Q")}
-							</this.styled.summaryHeading>
+							</textBase.summaryHeading4>
 						</layoutBase.summary>
 						<textBase.p>
 							{translateSync("frontend_faq018A")}
 						</textBase.p>
+
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href={configure("webextension.urls.external.shortcut-keys")}
+								>
+									{translateSync("frontend_usageShortcutKeyAlternative04")}
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
 					</layoutBase.details>
 				</Discretional>
 
 				{this.standardFaqEntry(19)}
-
-				<layoutBase.details>
-					<layoutBase.summary>
-						<this.styled.summaryHeading>
-							{translateSync("frontend_faq020Q")}
-						</this.styled.summaryHeading>
-					</layoutBase.summary>
-					<textBase.p>
-						{translateSync("frontend_faq020A")}
-					</textBase.p>
-
-					<div>
-						<this.styled.sharingIcons/>
-
-						<textBase.a href={configure("urls.rate")}>
-							{translateSync("frontend_rateIt")}
-						</textBase.a>
-					</div>
-				</layoutBase.details>
-
+				{this.standardFaqEntry(20)}
 				{this.standardFaqEntry(25)}
 
 				<textBase.h3>
@@ -376,17 +206,44 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 				{this.standardFaqEntry(11)}
 				{this.standardFaqEntry(12)}
 				{this.standardFaqEntry(13)}
+
+				<textBase.h2>
+					{translateSync("frontend_supportLinksHeading")}
+				</textBase.h2>
+
+				<listBase.ul>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.project")}>
+							{translateSync("frontend_aboutProjectPageLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.github")}>
+							{translateSync("frontend_aboutCodeOnGithubLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.github-issues")}>
+							{translateSync("frontend_aboutIssuesOnGithubLinkText")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.support-feedback")}>
+							{translateSync("frontend_supportAndFeedback")}
+						</textBase.a>
+					</listBase.li>
+					<listBase.li>
+						<textBase.a href={configure("urls.external.rate")}>
+							{translateSync("frontend_rateIt")}
+						</textBase.a>
+					</listBase.li>
+				</listBase.ul>
 			</section>
 		);
 	}
 
 	static defaultProps = {
 		osType: null,
-	};
-
-	private readonly styled: {
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
-		summaryHeading: StyletronComponent<ComponentProps<typeof textBase.h4>>;
 	};
 }
 

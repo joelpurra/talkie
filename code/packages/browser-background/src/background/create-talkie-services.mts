@@ -141,6 +141,8 @@ const createTalkieServices = async (
 			setIsPremiumEditionOption: async (isPremiumEdition: boolean) => settingsManager.setIsPremiumEdition(isPremiumEdition),
 			getSpeakLongTextsOption: async () => settingsManager.getSpeakLongTexts(),
 			setSpeakLongTextsOption: async (speakLongTexts: boolean) => settingsManager.setSpeakLongTexts(speakLongTexts),
+			getShowAdditionalDetailsOption: async () => settingsManager.getShowAdditionalDetails(),
+			setShowAdditionalDetailsOption: async (showAdditionalDetails: boolean) => settingsManager.setShowAdditionalDetails(showAdditionalDetails),
 
 			getEffectiveVoiceForLanguage: async (languageName: string) => voiceManager.getEffectiveVoiceForLanguage(languageName),
 			isLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName),

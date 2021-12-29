@@ -19,11 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export type NavLink = {
-	tabId?: string;
+	tabId: string;
 	text: string;
-	url?: string;
+	url?: never;
+} | {
+	tabId?: never;
+	text: string;
+	url: URL;
 };
 
 export interface NavContainerProps {
 	links: NavLink[];
 }
+
+export type TabId = string;
+export type LocationHash = string;

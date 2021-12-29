@@ -22,7 +22,7 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-export type BubbledLinkClickHandler = (url: string) => void;
+export type BubbledLinkClickHandler = (url: ReadonlyDeep<URL>) => void;
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export function handleBubbledLinkClick(handleUrl: BubbledLinkClickHandler, event: ReadonlyDeep<React.MouseEvent>): false | undefined {
@@ -36,7 +36,9 @@ export function handleBubbledLinkClick(handleUrl: BubbledLinkClickHandler, event
 				event.preventDefault();
 				event.stopPropagation();
 
-				handleUrl(href);
+				const url = new URL(href);
+
+				handleUrl(url);
 
 				// NOTE: stop propagation.
 				return false;

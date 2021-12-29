@@ -440,6 +440,10 @@
     "message": "समीक्षा Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "टेक्स्ट",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "अपने दोस्तों को Talkie बारे में Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie उपयोगकर्ता इंटरफ़ेस भाषाएं",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "टेक्स्ट",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie दो संस्करणों में आता है: Talkie और Talkie Premium । अधिकांश उपयोग मामलों के लिए मुफ्त संस्करण महान है, लेकिन प्रीमियम संस्करण अतिरिक्त विकल्प और सुविधाएँ प्रदान करता है।",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Talkie Premium लिए मूल्य निर्धारित नहीं है। इसके बजाय आप भुगतान करते हैं कि आप क्या चाहते हैं, इस पर निर्भर करता है कि आपको लगता है कि प्रीमियम सुविधाएँ आपके लायक हैं। आप कुछ भी नहीं देने का फैसला कर सकते हैं।",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "भुगतान भेजने के बाद प्रवेश करने के लिए कोई अपग्रेड कोड नहीं हैं, पंजीकरण के लिए कोई उपयोगकर्ता खाते या कोई अन्य भुगतान सत्यापन नहीं है। इसके बजाय Talkie Premium सम्मान प्रणाली का उपयोग करता है।",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "कृपया ध्यान दें कि Talkie वैकल्पिक साधन के रूप में कोई विज्ञापन, उपयोगकर्ता ट्रैकिंग या डेटा संग्रह नहीं है। भुगतान को खुले स्रोत सॉफ़्टवेयर विकास के लिए दान के रूप में लेबल किया जाता है।",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

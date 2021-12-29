@@ -18,17 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import {
-	ReadonlyDeep,
-} from "type-fest";
+/*
+* NOTE: webext automatic text direction in a separate file to reduce webext linter warnings
+* https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#locale-dependent_css
+* https://github.com/mozilla/addons-linter/issues/1299
+* https://developer.chrome.com/extensions/i18n#overview-predefined
+*/
 
-// @ts-expect-error: File is not a module.ts(2306)
-import configurationJson from "./configuration.cjs";
+body {
+    direction: __MSG_@@bidi_dir__;
+}
 
-// TODO: skip JSON file, just put data here?
-export type ConfigurationObject = ReadonlyDeep<Record<SystemType | "shared", Record<string, string | Record<string, string>>>>;
+#header-premium-button {
+    float: __MSG_@@bidi_end_edge__;
+}
 
-export default configurationJson as Readonly<ConfigurationObject>;
+#footer-about-link {
+    float: __MSG_@@bidi_end_edge__;
+}

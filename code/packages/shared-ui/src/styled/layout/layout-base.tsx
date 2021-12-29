@@ -34,3 +34,9 @@ export const details = styled("details", layoutBase.details);
 export const summary = styled("summary", layoutBase.summary);
 
 export const hero = styled("div", layoutBase.hero);
+
+// TODO: convert constant "variables" to component properties?
+export const columnsUl3 = styled("ul", layoutBase.columnsUl(3));
+export const columnsUl6 = styled("ul", layoutBase.columnsUl(6));
+export const columnsLi = styled("li", layoutBase.columnsLi);
+export const columnsLiMarked = styled("li", layoutBase.columnsLiMarked);

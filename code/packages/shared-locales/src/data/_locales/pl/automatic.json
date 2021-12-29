@@ -440,6 +440,10 @@
     "message": "Recenzja Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Tekst",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Powiedz swoim znajomym o Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie języki interfejsu użytkownika",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Tekst",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie jest dostępny w dwóch wersjach: Talkie i Talkie Premium. Wersja bezpłatna jest świetna w większości przypadków użycia, ale wersja premium oferuje dodatkowe opcje i funkcje.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Cena za Talkie Premium nie jest ustalona. Zamiast tego płacisz, co chcesz, w zależności od tego, ile uważasz, że funkcje premium są dla Ciebie warte. Możesz nawet zdecydować się nic nie płacić.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Po wysłaniu płatności nie ma żadnych kodów aktualizacyjnych do wprowadzenia, kont użytkowników do rejestracji ani żadnej innej weryfikacji płatności. Zamiast tego Talkie Premium używa systemu honoru.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Należy pamiętać, że Talkie nie oferuje żadnych reklam, śledzenia użytkowników ani gromadzenia danych jako alternatywnych sposobów zarabiania. Płatności są oznaczone jako darowizny na rozwój oprogramowania typu open source.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

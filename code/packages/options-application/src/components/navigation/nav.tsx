@@ -29,13 +29,15 @@ import type {
 import {
 	withStyleDeep,
 } from "styletron-react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	NavLink,
 } from "./nav-container-types.mjs";
+import {
+	getLocationHashFromTabId,
+	getTabIdFromLocationHash,
+	isLocationHash,
+} from "./nav-helpers.mjs";
 
 export interface NavProps {
 	initialActiveTabId: string | null;
@@ -91,13 +93,14 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	handleClick(event: Readonly<React.MouseEvent<HTMLTableDataCellElement>>): false | undefined {
-		const anchor = event.target as HTMLTableDataCellElement;
+	handleClick(event: Readonly<React.MouseEvent<HTMLTableCellElement>>): false | undefined {
+		const anchor = event.target as HTMLTableCellElement;
+
 		if (anchor.tagName === "A") {
 			const href = anchor.getAttribute("href");
 
-			if (typeof href === "string" && href.startsWith("#")) {
-				const tabId = href.replace("#", "");
+			if (isLocationHash(href)) {
+				const tabId = getTabIdFromLocationHash(href);
 
 				event.preventDefault();
 				event.stopPropagation();
@@ -107,7 +110,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				return false;
 			}
 
-			// TODO: warn about mismatched link style?
+			// TODO: warn about mismatched link element type?
 		}
 
 		return undefined;
@@ -117,41 +120,38 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		const {
 			links,
 			initialActiveTabId,
-		} = this.props;
+		} = this.props as NavProps;
 
-		const linkCells = (links as ReadonlyDeep<NavLink[]>)
-			.map((link) => {
-				const {
-					tabId,
-					url,
-				} = link;
+		const linkCells = links.map((link) => {
+			let resolvedUrl: string | null = null;
 
-				// TODO: use URL class/constructor, subtyping, or proper type checking.
-				const isValidLink = (typeof url !== "string" && typeof tabId !== "string") || (typeof url === "string" && typeof tabId === "string");
+			if (typeof link.tabId === "string" && link.url instanceof URL) {
+				throw new TypeError(`Has both a link and a tab id: ${JSON.stringify(link)}`);
+			} else if (typeof link.tabId === "string") {
+				resolvedUrl = getLocationHashFromTabId(link.tabId);
+			} else if (link.url instanceof URL) {
+				resolvedUrl = link.url.toString();
+			} else {
+				throw new TypeError(`Need either a link or a tab id: ${JSON.stringify(link)}`);
+			}
 
-				if (isValidLink) {
-					throw new TypeError(`Need either a link or a tab id: ${JSON.stringify(link)}`);
-				}
+			const SelectedLinkType = initialActiveTabId === link.tabId
+				? this.styled.selectedLink
+				: textBase.a;
 
-				const SelectedLinkType = initialActiveTabId === tabId
-					? this.styled.selectedLink
-					: textBase.a;
-
-				const resolvedUrl = url ?? `#${tabId!}`;
-
-				return (
-					<this.styled.navTableTd
-						key={resolvedUrl}
-						onClick={this.handleClick}
+			return (
+				<this.styled.navTableTd
+					key={resolvedUrl}
+					onClick={this.handleClick}
+				>
+					<SelectedLinkType
+						href={resolvedUrl}
 					>
-						<SelectedLinkType
-							href={resolvedUrl}
-						>
-							{link.text}
-						</SelectedLinkType>
-					</this.styled.navTableTd>
-				);
-			});
+						{link.text}
+					</SelectedLinkType>
+				</this.styled.navTableTd>
+			);
+		});
 
 		// const colCount = linkCells.length;
 		const colWidth = `${100 / linkCells.length}%`;

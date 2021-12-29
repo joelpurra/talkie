@@ -31,14 +31,16 @@ import EditionSection, {
 } from "./edition-section.js";
 
 export interface PremiumSectionProps {
+	headingLink?: boolean;
 	mode: EditionSectionMode;
 }
 
 export default class PremiumSection<P extends PremiumSectionProps & ChildrenRequiredProps & ClassNameProp> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
-			mode,
 			className,
+			headingLink,
+			mode,
 		} = this.props;
 
 		const isPremiumEdition = true;
@@ -46,6 +48,7 @@ export default class PremiumSection<P extends PremiumSectionProps & ChildrenRequ
 		return (
 			<EditionSection
 				className={className}
+				headingLink={headingLink}
 				isPremiumEdition={isPremiumEdition}
 				mode={mode}
 			>
@@ -53,4 +56,8 @@ export default class PremiumSection<P extends PremiumSectionProps & ChildrenRequ
 			</EditionSection>
 		);
 	}
+
+	static defaultProps = {
+		headingLink: true,
+	};
 }

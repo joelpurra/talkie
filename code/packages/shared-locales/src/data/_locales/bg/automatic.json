@@ -440,6 +440,10 @@
     "message": "Преглед Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Текст",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Кажете на приятелите си за Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie потребителския интерфейс",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Текст",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie предлага в две издания: Talkie и Talkie Premium. Безплатното издание е чудесно за повечето случаи на употреба, но премиум изданието предлага допълнителни опции и функции.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Цената за Talkie Premium не е фиксирана. Вместо това плащате това, което искате, в зависимост от това колко мислите, че първокласните функции ви струват. Можете дори да решите да не плащате нищо.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "След изпращане на плащането няма кодове за надграждане, които да въведете, няма потребителски акаунти, които да се регистрират, или каквато и да е друга проверка на плащането Вместо това Talkie Premium използва системата за почитане.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Моля, обърнете внимание, че Talkie няма никакви реклами, проследяване на потребители или събиране на данни като алтернативни средства за осигуряване на приходи. Плащанията са етикетирани като дарения за разработване на софтуер с отворен код.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

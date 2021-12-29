@@ -24,7 +24,7 @@ import translateAttribute, {
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
-import Checkbox from "../../../components/form/checkbox.js";
+import CheckboxWithLabel from "../../../components/form/checkbox-with-label.js";
 
 export interface SpeakLongTextsProps {
 	disabled: boolean;
@@ -62,15 +62,13 @@ class SpeakLongTexts<P extends SpeakLongTextsProps & TranslateProps> extends Rea
 					{translateSync("frontend_voicesSpeakLongTextsExplanation02")}
 				</p>
 				<p>
-					<label>
-						<Checkbox
-							checked={speakLongTexts}
-							disabled={disabled}
-							onChange={this.handleChange}
-						/>
-						{" "}
+					<CheckboxWithLabel
+						checked={speakLongTexts}
+						disabled={disabled}
+						onChange={this.handleChange}
+					>
 						{translateSync("frontend_voicesSpeakLongTextsLabel")}
-					</label>
+					</CheckboxWithLabel>
 				</p>
 			</>
 		);

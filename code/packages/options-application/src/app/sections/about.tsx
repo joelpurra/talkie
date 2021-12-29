@@ -32,19 +32,10 @@ import configureAttribute, {
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	styled,
-} from "styletron-react";
-
-import SharingIcons from "../../components/sharing/sharing-icons.js";
+import React from "react";
 
 export interface AboutStateProps {
 	isPremiumEdition: boolean;
@@ -60,7 +51,7 @@ export interface AboutStateProps {
 
 interface AboutProps extends AboutStateProps {
 	onLicenseClick: (legaleseText: string) => void;
-	voiceNames: string[];
+	voiceNamesAndLanguages: string[];
 }
 
 class About<P extends AboutProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
@@ -68,16 +59,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		super(props);
 
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
-
-		this.styled = {
-			sharingIcons: styled(
-				SharingIcons,
-				{
-					display: "inline-block",
-					verticalAlign: "middle",
-				},
-			),
-		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -105,7 +86,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 			sortedTranslatedLanguages,
 			translateSync,
 			versionName,
-			voiceNames,
+			voiceNamesAndLanguages,
 		} = this.props as AboutProps & ConfigureProps & TranslateProps;
 
 		// TODO: move resolving the name to the state, like edition type?
@@ -133,24 +114,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						Joel Purra
 					</textBase.a>
 				</textBase.p>
-
-				<textBase.h2>
-					{translateSync("frontend_shareHeading")}
-				</textBase.h2>
-
-				<textBase.p>
-					{translateSync("frontend_sharePitch", [
-						translateSync("extensionShortName"),
-					])}
-				</textBase.p>
-
-				<div>
-					<this.styled.sharingIcons/>
-
-					<textBase.a href={configure("urls.rate")}>
-						{translateSync("frontend_rateIt")}
-					</textBase.a>
-				</div>
 
 				<textBase.h2>
 					{translateSync("frontend_systemHeading")}
@@ -251,11 +214,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						{translateSync("frontend_systemInstalledVoicesHeading")}
 						{" "}
 						(
-						{voiceNames.length}
+						{voiceNamesAndLanguages.length}
 						)
 					</listBase.dt>
 					<listBase.dd>
-						{voiceNames.join(", ")}
+						{voiceNamesAndLanguages.join(", ")}
 					</listBase.dd>
 
 					<listBase.dt>
@@ -288,7 +251,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 					lang="en"
 					onClick={this.handleLegaleseClick}
 				>
-					{translateSync("frontend_licenseGPLDescription")}
+					<buttonBase.transparentButton
+						type="button"
+					>
+						{translateSync("frontend_licenseGPLDescription")}
+					</buttonBase.transparentButton>
 				</p>
 				<p>
 					{translateSync("frontend_licenseCLADescription")}
@@ -296,7 +263,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 				<listBase.ul>
 					<listBase.li>
 						<textBase.a
-							href={configure("urls.gpl")}
+							href={configure("urls.external.gpl")}
 							lang="en"
 						>
 							{translateSync("frontend_licenseGPLLinkText")}
@@ -304,14 +271,14 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 					</listBase.li>
 					<listBase.li>
 						<textBase.a
-							href={configure("urls.cla")}
+							href={configure("urls.external.cla")}
 							lang="en"
 						>
 							{translateSync("frontend_licenseCLALinkText")}
 						</textBase.a>
 					</listBase.li>
 					<listBase.li>
-						<textBase.a href={configure("urls.github")}>
+						<textBase.a href={configure("urls.external.github")}>
 							{translateSync("frontend_aboutCodeOnGithubLinkText")}
 						</textBase.a>
 					</listBase.li>
@@ -323,10 +290,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 	static defaultProps = {
 		navigatorLanguage: null,
 		osType: null,
-	};
-
-	private readonly styled: {
-		sharingIcons: StyletronComponent<ComponentProps<typeof SharingIcons>>;
 	};
 }
 

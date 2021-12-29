@@ -22,30 +22,44 @@ import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
+import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
+import {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import React, {
-	ChangeEvent,
+	ComponentProps,
 } from "react";
 import {
 	styled,
+	StyletronComponent,
 } from "styletron-react";
 
-export interface CheckboxProps {
-	id?: string;
+import Checkbox from "./checkbox.js";
+
+export interface CheckboxWithLabelProps {
 	checked: boolean;
 	disabled: boolean;
+	id?: string;
 	onChange: (checked: boolean) => void;
 }
 
-class Checkbox<P extends CheckboxProps & ClassNameProp> extends React.PureComponent<P> {
+class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P> {
 	constructor(props: P) {
 		super(props);
 
-		this.handleOnChange = this.handleOnChange.bind(this);
-	}
-
-	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	handleOnChange(event: Readonly<ChangeEvent<HTMLInputElement>>): void {
-		this.props.onChange(event.target.checked);
+		this.styled = {
+			labelForCheckbox: styled(
+				"label",
+				{
+					...layoutBase.roundedWithBorder("0.5em"),
+					display: "inline-block",
+					paddingBottom: "1em",
+					paddingLeft: "1em",
+					paddingRight: "1em",
+					paddingTop: "1em",
+				},
+			),
+		};
 	}
 
 	override render(): React.ReactNode {
@@ -54,19 +68,28 @@ class Checkbox<P extends CheckboxProps & ClassNameProp> extends React.PureCompon
 			className,
 			disabled,
 			id,
+			children,
+			onChange,
 		} = this.props;
 
 		return (
-			<input
-				checked={checked}
-				className={className}
-				disabled={disabled}
-				id={id}
-				type="checkbox"
-				onChange={this.handleOnChange}
-			/>
+			<this.styled.labelForCheckbox>
+				<Checkbox
+					checked={checked}
+					className={className}
+					disabled={disabled}
+					id={id}
+					onChange={onChange}
+				/>
+				{" "}
+				{children}
+			</this.styled.labelForCheckbox>
 		);
 	}
+
+	private readonly styled: {
+		labelForCheckbox: StyletronComponent<ComponentProps<"label">>;
+	};
 }
 
-export default styled(Checkbox, formBase.checkbox);
+export default styled(CheckboxWithLabel, formBase.checkbox);

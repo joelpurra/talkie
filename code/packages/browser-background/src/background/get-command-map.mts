@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	openExternalUrlFromConfigurationInNewTab,
 	openInternalUrlFromConfigurationInNewTab,
-	openUrlFromConfigurationInNewTab,
 } from "@talkie/split-environment-webextension/browser-specific/urls.mjs";
 import type {
 	ReadonlyDeep,
@@ -37,10 +37,10 @@ const getCommandMap = (
 	readClipboardManager: ReadonlyDeep<ReadClipboardManager>,
 ): IBrowserCommandMap => ({
 	"open-website-main": async () => {
-		await openUrlFromConfigurationInNewTab("main");
+		await openExternalUrlFromConfigurationInNewTab("main");
 	},
 	"open-website-upgrade": async () => {
-		await openInternalUrlFromConfigurationInNewTab("options-upgrade");
+		await openInternalUrlFromConfigurationInNewTab("options-features");
 	},
 	"read-clipboard": async () => {
 		// NOTE: keeping the root chain separate from the speech chain.

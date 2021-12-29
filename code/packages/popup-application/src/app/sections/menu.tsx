@@ -27,6 +27,7 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import * as layoutBaseStyles from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import React, {
 	ComponentProps,
 } from "react";
@@ -46,7 +47,7 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			a: withStyleDeep(
 				textBase.a,
 				{
-					borderRadius: "0.3em",
+					...layoutBaseStyles.rounded("0.3em"),
 					display: "block",
 					height: "2em",
 					lineHeight: "2em",
@@ -92,25 +93,25 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			<layoutBase.nav>
 				<this.styled.ol>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.options-voices")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.internal.options-voices")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-voices" mode="inline"/>
 							{translateSync("frontend_PopupMenu_Voices")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.options-usage")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.internal.options-usage")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-usage" mode="inline"/>
 							{translateSync("frontend_PopupMenu_Usage")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.options-features")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.internal.options-features")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-features" mode="inline"/>
 							{translateSync("frontend_PopupMenu_Features")}
 						</this.styled.a>
 					</this.styled.li>
 					<this.styled.li>
-						<this.styled.a href={configure("urls.options-support")} rel="noopener noreferrer" target="_blank">
+						<this.styled.a href={configure("urls.internal.options-support")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-feedback" mode="inline"/>
 							{translateSync("frontend_supportAndFeedback")}
 						</this.styled.a>

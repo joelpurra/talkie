@@ -440,6 +440,10 @@
     "message": "Tinjau Talkie",
     "original": "Review Talkie"
   },
+  "frontend_settingsLinkText": {
+    "message": "Teks",
+    "original": "Text"
+  },
   "frontend_shareHeading": {
     "message": "Beritahu teman Anda tentang Talkie",
     "original": "Tell your friends about Talkie"
@@ -532,23 +536,15 @@
     "message": "Talkie bahasa antarmuka pengguna",
     "original": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Teks",
-    "original": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie hadir dalam dua edisi: Talkie dan Talkie Premium. Edisi gratis sangat bagus untuk sebagian besar kasus penggunaan, tetapi edisi premium menawarkan opsi dan fitur tambahan.",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "Harga untuk Talkie Premium tidak tetap. Alih-alih Anda membayar apa yang Anda inginkan, bergantung pada seberapa besar nilai fitur premium tersebut bagi Anda. Anda bahkan dapat memutuskan untuk tidak membayar apa pun.",
     "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "Setelah mengirim pembayaran, tidak ada kode peningkatan untuk dimasukkan, tidak ada akun pengguna untuk didaftarkan, atau verifikasi pembayaran lainnya yang diterapkan. Sebaliknya Talkie Premium menggunakan sistem honor.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Harap perhatikan bahwa Talkie tidak memiliki iklan, pelacakan pengguna, atau pengumpulan data apa pun sebagai cara alternatif untuk memonetisasi. Pembayaran diberi label sebagai sumbangan untuk pengembangan perangkat lunak sumber terbuka.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },

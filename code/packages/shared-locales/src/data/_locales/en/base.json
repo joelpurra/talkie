@@ -39,7 +39,7 @@
     "message": "About"
   },
   "frontend_PopupMenu_Features": {
-    "message": "Features"
+    "message": "Features and upgrade"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Usage and shortcuts"
@@ -52,6 +52,9 @@
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Feature requests and bug reports on Github"
   },
   "frontend_aboutLinkText": {
     "message": "About"
@@ -162,7 +165,7 @@
     "message": "How to change shortcut keys in Google Chrome?"
   },
   "frontend_faq018A": {
-    "message": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+    "message": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
   },
   "frontend_faq018Q": {
     "message": "How to change shortcut keys in Firefox?"
@@ -332,17 +335,8 @@
   "frontend_rateIt": {
     "message": "Review Talkie"
   },
-  "frontend_shareHeading": {
-    "message": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+  "frontend_settingsLinkText": {
+    "message": "Settings"
   },
   "frontend_storyDescription": {
     "message": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
@@ -367,6 +361,9 @@
   },
   "frontend_supportLinkText": {
     "message": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "Support links"
   },
   "frontend_systemBrowserLanguageHeading": {
     "message": "Preferred browser language"
@@ -404,19 +401,13 @@
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie user interface languages"
   },
-  "frontend_textLinkText": {
-    "message": "Text"
-  },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
-  },
-  "frontend_upgradeExplanation02": {
     "message": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
   },
-  "frontend_upgradeExplanation03": {
+  "frontend_upgradeExplanation02": {
     "message": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
-  "frontend_upgradeExplanation04": {
+  "frontend_upgradeExplanation03": {
     "message": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },
   "frontend_upgradeHeading": {
@@ -537,6 +528,18 @@
         "example": "Alva"
       }
     }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "Show additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "Show additional details"
   },
   "frontend_voicesShowAllVoices": {
     "message": "Show all voices"

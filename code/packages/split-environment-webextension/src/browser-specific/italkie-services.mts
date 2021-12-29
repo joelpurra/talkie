@@ -59,6 +59,8 @@ export interface ITalkieServices {
 	setIsPremiumEditionOption: (isPremiumEdition: boolean) => Promise<void>;
 	getSpeakLongTextsOption: () => Promise<boolean>;
 	setSpeakLongTextsOption: (speakLongTexts: boolean) => Promise<void>;
+	getShowAdditionalDetailsOption: () => Promise<boolean>;
+	setShowAdditionalDetailsOption: (showAdditionalDetails: boolean) => Promise<void>;
 	getEffectiveVoiceForLanguage: (languageName: string) => Promise<IVoiceNameAndLanguage | null>;
 	isLanguageVoiceOverrideName: (languageName: string, voiceName: string) => Promise<boolean>;
 	toggleLanguageVoiceOverrideName: (languageName: string, voiceName: string) => Promise<boolean>;
