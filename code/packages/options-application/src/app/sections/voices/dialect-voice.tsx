@@ -70,6 +70,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 			? (
 				<textBase.p>
 					<buttonBase.transparentButton
+						type="button"
 						onClick={this.handleSpeakVoiceNameClick}
 					>
 						<Icon

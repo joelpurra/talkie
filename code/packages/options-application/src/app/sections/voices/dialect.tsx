@@ -65,6 +65,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 		}) => hasSampleTextForLanguageGroup
 			? (
 				<buttonBase.transparentButton
+					type="button"
 					onClick={this.handleSpeakLanguageClick}
 				>
 					<Icon

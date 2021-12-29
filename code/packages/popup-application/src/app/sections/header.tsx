@@ -109,6 +109,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 				</Discretional>
 
 				<buttonBase.transparentButton
+					type="button"
 					onClick={this.handlePlayPauseClick}
 				>
 					<TalkieEditionIcon

@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Discretional from "@talkie/shared-ui/components/discretional.js";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
@@ -98,8 +99,20 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							onClick={onSelectLanguageGroupClick.bind(null, null)}
 						>
 							Installed languages
-							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? "(Error: no selected language group.)"}`}
-							{hasSelectedLanguageGroup && languageGroupsCount > 1 && ` (${"show all"})`}
+							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? " (Error: no selected language group.)"}`}
+							{hasSelectedLanguageGroup && languageGroupsCount > 1 && (
+								<>
+									{" "}
+									(
+									<buttonBase.transparentButton
+										type="button"
+									>
+										{/* TODO: translate. */}
+										show all
+									</buttonBase.transparentButton>
+									)
+								</>
+							)}
 						</textBase.h2>
 
 						<Discretional
@@ -130,15 +143,28 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							onClick={onSelectLanguageCodeClick.bind(null, null)}
 						>
 							Installed dialects
-							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? "(Error: no selected language code.)"}`}
-							{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && ` (${"show all"})`}
+							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? " (Error: no selected language code.)"}`}
+							{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && (
+								<>
+									{" "}
+									(
+									<buttonBase.transparentButton
+										type="button"
+									>
+										{/* TODO: translate. */}
+										show all
+									</buttonBase.transparentButton>
+									)
+								</>
+							)}
 						</textBase.h3>
 
 						<Discretional
 							enabled={!hasSelectedLanguageCode}
 						>
 							<p>
-								{`Found ${languageCountForSelectedLanguageGroup} dialects for ${selectedLanguageGroup ?? "(Error: no selected language group.)"}.`}
+								{/* TODO: translate. */}
+								{`Found ${languageCountForSelectedLanguageGroup} dialects for ${selectedLanguageGroup ?? " (Error: no selected language group.)"}.`}
 							</p>
 
 							<DialectsContainer
@@ -166,8 +192,20 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							onClick={onSelectVoiceNameClick.bind(null, null)}
 						>
 							Installed voices
-							{hasSelectedVoiceName && `: ${selectedVoiceName ?? "(Error: no selected voice name.)"}`}
-							{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && ` (${"show all"})`}
+							{hasSelectedVoiceName && `: ${selectedVoiceName ?? " (Error: no selected voice name.)"}`}
+							{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && (
+								<>
+									{" "}
+									(
+									<buttonBase.transparentButton
+										type="button"
+									>
+										{/* TODO: translate. */}
+										show all
+									</buttonBase.transparentButton>
+									)
+								</>
+							)}
 						</textBase.h4>
 
 						<Discretional

@@ -55,7 +55,9 @@ class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P>
 									// eslint-disable-next-line react/jsx-no-bind
 									onClick={onSelectVoiceNameClick.bind(null, voice.name)}
 								>
-									<buttonBase.transparentButton>
+									<buttonBase.transparentButton
+										type="button"
+									>
 										{voice.name}
 									</buttonBase.transparentButton>
 								</layoutBase.columnsLi>

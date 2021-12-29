@@ -59,6 +59,20 @@ export const getVoicesCount = createDraftSafeSelector(
 	(voices) => voices.length,
 );
 
+export const getVoiceNames = createDraftSafeSelector(
+	[
+		getVoices,
+	],
+	(voices) => voices.map((voice) => voice.name),
+);
+
+export const getSortedVoiceNames = createDraftSafeSelector(
+	[
+		getVoiceNames,
+	],
+	(voiceNames) => voiceNames.slice().sort((a, b) => a.localeCompare(b)),
+);
+
 export const getSortedByNameVoices = createDraftSafeSelector(
 	[
 		getVoices,

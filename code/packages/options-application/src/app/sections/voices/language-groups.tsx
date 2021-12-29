@@ -65,7 +65,9 @@ class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<
 										// eslint-disable-next-line react/jsx-no-bind
 										onClick={onSelectLanguageGroupClick.bind(null, languageGroup)}
 									>
-										<buttonBase.transparentButton>
+										<buttonBase.transparentButton
+											type="button"
+										>
 											{languageGroup}
 										</buttonBase.transparentButton>
 									</ListItemType>

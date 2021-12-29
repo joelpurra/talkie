@@ -51,7 +51,9 @@ class Dialects<P extends DialectsProps> extends React.PureComponent<P> {
 									// eslint-disable-next-line react/jsx-no-bind
 									onClick={onSelectLanguageCodeClick.bind(null, language)}
 								>
-									<buttonBase.transparentButton>
+									<buttonBase.transparentButton
+										type="button"
+									>
 										{language}
 									</buttonBase.transparentButton>
 								</layoutBase.columnsLi>

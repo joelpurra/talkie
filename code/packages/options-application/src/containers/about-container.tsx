@@ -48,10 +48,12 @@ const {
 interface AboutContainerProps {}
 
 interface StateProps extends AboutStateProps {
-	voices: readonly SafeVoiceObject[];
+	sortedByNameVoices: readonly SafeVoiceObject[];
+	voiceNames: string[];
 }
 
 interface DispatchProps {
+	speakTextInLanguageWithOverrides: typeof actions.shared.speaking.speakTextInLanguageWithOverrides;
 	speakTextInVoiceWithOverrides: typeof actions.shared.speaking.speakTextInVoiceWithOverrides;
 }
 
@@ -62,16 +64,18 @@ const mapStateToProps: MapStateToProps<StateProps, InternalAboutContainerProps, 
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	navigatorLanguage: state.shared.languages.navigatorLanguage,
 	osType: state.shared.metadata.osType,
+	sortedByNameVoices: selectors.shared.voices.getSortedByNameVoices(state),
 	sortedLanguageGroups: selectors.shared.voices.getSortedLanguageGroups(state),
 	sortedLanguages: selectors.shared.voices.getSortedLanguages(state),
 	sortedNavigatorLanguages: selectors.shared.languages.getSortedNavigatorLanguages(state),
 	sortedTranslatedLanguages: selectors.shared.languages.getSortedTranslatedLanguages(state),
 	systemType: state.shared.metadata.systemType,
 	versionName: state.shared.metadata.versionName,
-	voices: selectors.shared.voices.getVoices(state),
+	voiceNames: selectors.shared.voices.getVoiceNames(state),
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalAboutContainerProps> = (dispatch) => ({
+	speakTextInLanguageWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInLanguageWithOverrides, dispatch),
 	speakTextInVoiceWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInVoiceWithOverrides, dispatch),
 });
 
@@ -85,14 +89,21 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 	handleLegaleseClick(text: string): void {
 		const legaleseText = text;
 
-		// TODO: allow defining a specific voice, with a specified text language as fallback.
-		// lang: "en-US",
+		// TODO: helper allowing a specific voice, with a specified text language as fallback.
 		const legaleseVoiceName = "Zarvox";
+		const legaleseLanguageCode = "en-US";
 
-		this.props.speakTextInVoiceWithOverrides({
-			text: legaleseText,
-			voiceName: legaleseVoiceName,
-		});
+		if (this.props.voiceNames.includes(legaleseVoiceName)) {
+			this.props.speakTextInVoiceWithOverrides({
+				text: legaleseText,
+				voiceName: legaleseVoiceName,
+			});
+		} else {
+			this.props.speakTextInLanguageWithOverrides({
+				languageCode: legaleseLanguageCode,
+				text: legaleseText,
+			});
+		}
 	}
 
 	override render(): React.ReactNode {
@@ -100,17 +111,17 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			isPremiumEdition,
 			navigatorLanguage,
 			osType,
+			sortedByNameVoices,
 			sortedLanguageGroups,
 			sortedLanguages,
 			sortedNavigatorLanguages,
 			sortedTranslatedLanguages,
 			systemType,
 			versionName,
-			voices,
 		} = this.props;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const sortedVoiceNames = voices.map((voice) => `${voice.name} (${voice.lang})`).sort((a, b) => a.localeCompare(b));
+		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice) => `${voice.name} (${voice.lang})`);
 
 		return (
 			<About
@@ -123,7 +134,7 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 				sortedTranslatedLanguages={sortedTranslatedLanguages}
 				systemType={systemType}
 				versionName={versionName}
-				voiceNames={sortedVoiceNames}
+				voiceNamesAndLanguages={sortedVoiceNamesAndLanguages}
 				onLicenseClick={this.handleLegaleseClick}
 			/>
 		);

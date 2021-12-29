@@ -32,6 +32,7 @@ import configureAttribute, {
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
@@ -50,7 +51,7 @@ export interface AboutStateProps {
 
 interface AboutProps extends AboutStateProps {
 	onLicenseClick: (legaleseText: string) => void;
-	voiceNames: string[];
+	voiceNamesAndLanguages: string[];
 }
 
 class About<P extends AboutProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
@@ -85,7 +86,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 			sortedTranslatedLanguages,
 			translateSync,
 			versionName,
-			voiceNames,
+			voiceNamesAndLanguages,
 		} = this.props as AboutProps & ConfigureProps & TranslateProps;
 
 		// TODO: move resolving the name to the state, like edition type?
@@ -213,11 +214,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						{translateSync("frontend_systemInstalledVoicesHeading")}
 						{" "}
 						(
-						{voiceNames.length}
+						{voiceNamesAndLanguages.length}
 						)
 					</listBase.dt>
 					<listBase.dd>
-						{voiceNames.join(", ")}
+						{voiceNamesAndLanguages.join(", ")}
 					</listBase.dd>
 
 					<listBase.dt>
@@ -250,7 +251,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 					lang="en"
 					onClick={this.handleLegaleseClick}
 				>
-					{translateSync("frontend_licenseGPLDescription")}
+					<buttonBase.transparentButton
+						type="button"
+					>
+						{translateSync("frontend_licenseGPLDescription")}
+					</buttonBase.transparentButton>
 				</p>
 				<p>
 					{translateSync("frontend_licenseCLADescription")}
