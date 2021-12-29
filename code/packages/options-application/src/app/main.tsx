@@ -163,7 +163,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			main: withStyleDeep(
 				layoutBase.main,
 				{
-					paddingTop: "10em",
+					marginTop: "10em",
 				},
 			),
 

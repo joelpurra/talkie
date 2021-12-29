@@ -44,7 +44,10 @@ export const heading: StyleObject = {
 	marginTop: "2em",
 };
 
-export const h1: StyleObject = heading;
+export const h1: StyleObject = {
+	...heading,
+	marginTop: "1em",
+};
 export const h2: StyleObject = heading;
 export const h3: StyleObject = heading;
 export const h4: StyleObject = heading;
