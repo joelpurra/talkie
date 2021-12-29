@@ -63,7 +63,7 @@ export const rounded: (radius: string) => StyleObject = (radius) => ({
 export const hero: StyleObject = {
 	...rounded("0.5em"),
 	backgroundColor: colorBase.premiumSectionBackgroundColor,
-	fontSize: "2em",
+	fontSize: "1.5em",
 	marginBottom: "2em",
 	marginLeft: "2em",
 	marginRight: "2em",

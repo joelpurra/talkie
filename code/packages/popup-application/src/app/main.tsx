@@ -57,8 +57,8 @@ export interface MainDispatchProps {
 }
 
 const styles: StyleObject = {
-	maxWidth: "300px",
-	minWidth: "300px",
+	maxWidth: "400px",
+	minWidth: "400px",
 };
 
 class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends React.PureComponent<P> {
