@@ -263,10 +263,6 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 						>
 							<tableBase.tr className="premium-section">
 								<tableBase.td>
-									<Icon
-										className="icon-small-speaker"
-										mode="inline"/>
-
 									{translateSync("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
 								</tableBase.td>
 								<this.styled.shortcutKeysTd>
