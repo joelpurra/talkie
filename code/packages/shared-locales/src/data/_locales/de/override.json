@@ -116,16 +116,6 @@
     "original": "Click the Talkie button in your browser toolbar",
     "translated-from": "Click the Talkie button in your browser bar"
   },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Verfügbare Sprachen",
-    "original": "Available languages",
-    "translated-from": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Verfügbare Stimmen",
-    "original": "Available voices",
-    "translated-from": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Talkie hat eine automatische Spracherkennung, aber nicht alle Sprachen sind in jedem Browser verfügbar. Hier kannst du alle installierten Stimmen für jede Sprache sehen und testen.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
@@ -141,16 +131,6 @@
     "message": "Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.",
     "original": "The quick brown fox jumps over the lazy dog.",
     "translated-from": "The quick brown fox jumps over the lazy dog."
-  },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Beispieltext für Talkie zum Vorlesen",
-    "original": "Sample text for Talkie to read out loud",
-    "translated-from": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Alle Stimmen anzeigen",
-    "original": "Show all voices",
-    "translated-from": "Show all voices"
   },
   "noTextSelectedMessage": {
     "message": "Bitte wähle zuerst den gewünschten Text auf der Website aus. Du kannst auch Text markieren, dann mit der rechten Maustaste darauf klicken und im Menü Talkie auswählen.",

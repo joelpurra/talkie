@@ -44,10 +44,6 @@
     "message": "Snelle, gemakkelijke tekst-naar-spraak van hoge kwaliteit in meer dan 40 talen. Voorlezen van websites, pdf, e-mail. Spreek tekst met TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Over",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Kenmerken",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Lees tekst van het klembord! Kopieer gewoon tekst overal in elk Talkie Premium en gebruik Talkie Premium om het te lezen!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Upgrade naar Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Alle bijdragen aan Talkie zijn gemaakt in het kader van de Inzender License Agreement (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Tekst",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Vertel je vrienden over Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Vind je $NAME$? Als dat zo is, zou ik blij zijn als je een mooie ⭐️ beoordeling en beoordeling zou kunnen geven 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie werd een paar dagen voor het nieuwe jaar 2016/2017 ontwikkeld op een uitdaging van een vriend. De uitdaging begon met de vraag: is het mogelijk om tijdens het woon-werkverkeer naar een artikel te luisteren in plaats van het te lezen? Makkelijk, zei ik, en ik wilde het bewijzen — of in ieder geval mijn browser tekst laten uitspreken met een dwaze computerstem. De basiseditie, zonder enige gebruikersinterface, bleek triviaal om te maken. Het toevoegen van een gebruikersinterface duurde iets langer. Door de juiste taaldetectie nog een heleboel code toe te voegen. Het overwinnen van bugs in de browser is nog meer werk. De lijst met verbeteringen en functies gaat maar door — en een paar duizend regels code later kijk je naar het eindresultaat.",
@@ -556,10 +534,6 @@
     "message": "Ik heb betaald voor Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Upgrade",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Meer betaalmethoden via de donatiepagina",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Klik op de knop Talkie in de browserwerkbalk",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "online",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Beschikbare talen",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "beschikbare stemmen",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Bekijk en test geïnstalleerde stemmen voor elke taal in je browser. Talkie Premium kunnen hun Talkie Premium stem ook Talkie Premium als de Talkie Premium per taal, evenals de snelheid en de pitch voor elke stem.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "De snelle bruine vos springt over de luie hond.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Tekst van de steekproef voor Talkie hardop lezen",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Gebruik als standaard stem voor taal",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Gebruik $VOICE$ als standaard stem voor tekst in $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Toon alle stemmen",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "In sommige browsers is het niet mogelijk om lange teksten continu te lezen. Om dit te Talkie introduceert Talkie een kleine pauze tussen zinnen/clausules en na andere leestekens.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Wilt u meer stemmen installeren?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Welkom",

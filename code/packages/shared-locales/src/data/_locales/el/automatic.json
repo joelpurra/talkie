@@ -44,10 +44,6 @@
     "message": "Γρήγορο, εύκολο, υψηλής ποιότητας κείμενο σε ομιλία σε περισσότερες από 40 γλώσσες. Διαβάστε δυνατά από ιστότοπους, PDF, email. Εκφώνηση κειμένου με TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Σχετικά με",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Χαρακτηριστικά",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Διαβάστε το κείμενο από το πρόχειρο! Απλά Talkie Premium κείμενο από Talkie Premium σε Talkie Premium και Talkie Premium για να το Talkie Premium !",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Αναβάθμιση σε Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Όλες οι συνεισφορές στο Talkie βάσει της Συμφωνίας Άδειας Συνεργατών (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Κείμενο",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Πείτε στους φίλους σας για το Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Σας αρέσει $NAME$? Αν ναι, θα ήμουν χαρούμενος αν θα μπορούσατε να δώσετε μια ωραία βαθμολογία και μια κριτική 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie αναπτύχθηκε λίγες μέρες πριν από το νέο έτος 2016/2017, σε μια πρόκληση από έναν φίλο. Η πρόκληση ξεκίνησε με την ερώτηση: ενώ μετακινείστε στη δουλειά, είναι δυνατόν να ακούσετε ένα άρθρο αντί να το διαβάσετε; Εύκολο, είπα και ξεκίνησα να το αποδείξω — ή τουλάχιστον να κάνω το πρόγραμμα περιήγησής μου να εκφωνεί κείμενο χρησιμοποιώντας μια ανόητη φωνή υπολογιστή. Η βασική έκδοση, χωρίς καμία διεπαφή χρήστη, αποδείχθηκε ασήμαντη για τη δημιουργία. Η προσθήκη διεπαφής χρήστη, χρειάστηκε λίγο περισσότερο. Προσθέτοντας σωστή γλωσσική ανίχνευση περισσότερους κωδικούς. Η υπερνίκηση σφαλμάτων στο πρόγραμμα περιήγησης ακόμη περισσότερο δουλεύει. Η λίστα με τις βελτιώσεις και τα χαρακτηριστικά συνεχίζεται — και μερικές χιλιάδες γραμμές κώδικα αργότερα, εξετάζετε το τελικό αποτέλεσμα.",
@@ -556,10 +534,6 @@
     "message": "Έχω πληρώσει για Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Αναβαθμίζω",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Περισσότερες μέθοδοι πληρωμής μέσω της σελίδας δωρεών",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Κάντε κλικ στο κουμπί Talkie στη γραμμή εργαλείων του προγράμματος περιήγησης",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "σε απευθείας σύνδεση",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Διαθέσιμες γλώσσες",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Διαθέσιμες φωνές",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Δείτε και δοκιμάστε τις εγκατεστημένες φωνές για κάθε γλώσσα στο πρόγραμμα περιήγησης. Talkie Premium χρήστες Talkie Premium μπορούν επίσης να Talkie Premium φωνή τους ως Talkie Premium ανά γλώσσα, καθώς και να Talkie Premium ταχύτητα και το βήμα για κάθε φωνή.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Η γρήγορη καφέ αλεπού πηδάει πάνω από το τεμπέλικο σκυλί.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Δείγμα κειμένου για Talkie για να Talkie δυνατά",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Χρησιμοποιήστε την προεπιλεγμένη φωνή για τη γλώσσα",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Χρησιμοποιήστε $VOICE$ ως προεπιλεγμένη φωνή για κείμενο σε $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Εμφάνιση όλων των φωνών",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "Σε ορισμένα προγράμματα περιήγησης, δεν είναι δυνατή η συνεχής ανάγνωση μεγάλων κειμένων. Για να το επεξεργαστείτε, το Talkie εισάγει μια μικρή παύση ανάμεσα σε προτάσεις/ρήτρες και μετά από άλλες στίχους.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Θέλετε να εγκαταστήσετε περισσότερες φωνές;",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "καλως ΗΡΘΑΤΕ",

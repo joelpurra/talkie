@@ -44,10 +44,6 @@
     "message": "Nopea, helppo ja korkealaatuinen teksti puheeksi yli 40 kielellä. Lue ääneen verkkosivustoilta, PDF-tiedostoista ja sähköpostista. Puhu tekstiä TTS: n avulla.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Noin",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "ominaisuudet",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Lue leikepöydän! Vain kopioida tekstiä mistä tahansa missä tahansa ohjelmassa, ja käyttää Talkie Premium lukea sitä!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Päivitä Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Kaikki maksut Talkie tehdään alla Contributor License Agreement (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Teksti",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Kerro ystävillesi Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Pidätkö $NAME$? Jos näin on, olisin onnellinen, jos voisit antaa hyvän ⭐️-luokituksen ja tarkistaa 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie kehitettiin muutama päivä ennen uutta vuotta 2016/2017 ystävän haasteena. Haaste alkoi kysymyksellä: Voiko työmatkalla työskennellessäsi kuunnella artikkelia lukemisen sijaan? Helppo, sanoin, ja aloitin todistaa sen — tai ainakin saada selaimen puhumaan tekstiä typerällä tietokoneäänellä. Perusversio ilman käyttöliittymää osoittautui triviaaliseksi luoda. Käyttöliittymän lisääminen kesti hieman kauemmin. Oikean kielentunnistuksen lisääminen joukko lisää koodia. Selaimen virheiden poistaminen toimii vieläkin enemmän. Luettelo parannuksista ja ominaisuuksista jatkuu — ja muutama tuhat koodiriviä myöhemmin tarkastelet lopputulosta.",
@@ -556,10 +534,6 @@
     "message": "Olen maksanut Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Päivitä",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Lisää maksutapoja lahjoitussivun kautta",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Napsauta Talkie -painiketta selaimen työkalupalkissa",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "verkossa",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "käytettävissä olevat kielet",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "käytettävissä ääniä",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Katso ja testaa asennetut äänet kullekin kielelle selaimessa. Talkie Premium käyttäjät voivat myös valita suosikki äänensä oletukseksi kieltä kohden, sekä määrittää pyörimisnopeuden ja nousun jokaisen äänen.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Nopea ruskea kettu hyppää laiskan koiran yli.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Näyte teksti Talkie lukea ääneen",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Käytä oletushakukoneena ääni kielten",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Käytä $VOICE$ oletuksena ääni tekstiä $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Kaikki äänet",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "Joissakin selaimissa ei ole mahdollista lukea pitkiä tekstejä jatkuvasti. Voit kiertää tätä Talkie esittää pienen tauon lauseiden/lausekkeiden ja muiden välimerkkien jälkeen.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Haluatko asentaa lisää ääniä?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Tervetuloa",

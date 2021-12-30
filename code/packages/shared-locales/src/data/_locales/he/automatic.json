@@ -44,10 +44,6 @@
     "message": "טקסט לדיבור מהיר, קל ואיכותי בלמעלה מ -40 שפות. קרא בקול רם מאתרים, PDF, דוא\"ל. אמור טקסט עם TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "על אודות",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "מאפיינים",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "קרא טקסט מתוך הלוח! פשוט העתק טקסט מכל מקום ובכל תוכנית, והשתמש ב- Talkie Premium כדי לקרוא אותו!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "שדרג ל- Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "כל התרומות ל Talkie מבוצעות במסגרת הסכם הרישיון של התורמים (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "טֶקסט",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "ספר לחברים שלך על Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "האם אתה אוהב $NAME$? אם כן, אני אשמח אם אתה יכול לתת דירוג ⭐️ נחמד וסקירה 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie פותח כמה ימים לפני השנה החדשה 2016/2017, על אתגר של חבר. האתגר התחיל בשאלה: האם תוך כדי נסיעה לעבודה האם ניתן להקשיב למאמר במקום לקרוא אותו? קל, אמרתי ויצאתי להוכיח זאת — או לפחות לגרום לדפדפן שלי להביע טקסט באמצעות קול מחשב מטופש. המהדורה הבסיסית, ללא כל ממשק משתמש, התבררה כטריוויאלית ליצירה. הוספת ממשק משתמש לקחה זמן רב יותר. הוספת זיהוי שפה תקין עוד חבורה קוד. התגברות על באגים בדפדפן עובדת עוד יותר. רשימת השיפורים והתכונות נמשכת — וכמה אלפי שורות קוד מאוחר יותר, אתה מסתכל על התוצאה הסופית.",
@@ -556,10 +534,6 @@
     "message": "שילמתי עבור Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "שדרוג",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "אמצעי תשלום נוספים באמצעות עמוד התרומות",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "לחץ על הלחצן Talkie בסרגל הכלים של הדפדפן",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "באינטרנט",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "שפות זמינות",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "קולות זמינים",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "לראות ולבדוק קולות מותקנים עבור כל שפה בדפדפן שלך. Talkie Premium משתמשים יכולים גם לבחור את הקול המועדף עליהם כברירת מחדל לכל שפה, כמו גם להגדיר מהירות ומגרש לכל קול.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "השועל החום המהיר קופץ מעל הכלב העצל.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "טקסט לדוגמה עבור Talkie כדי לקרוא בקול רם",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "השתמש כשפת ברירת מחדל עבור השפה",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "השתמש ב- $VOICE$ כברירת מחדל עבור טקסט ב- $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "הצג את כל הקולות",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "בדפדפנים מסוימים, לא ניתן לקרוא טקסטים ארוכים ברציפות. כדי לעקוף זאת, Talkie מציג הפסקה קצרה בין משפטים/סעיפים ואחרי פיסוק אחר.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "רוצה להתקין יותר קולות?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "ברוך הבא",

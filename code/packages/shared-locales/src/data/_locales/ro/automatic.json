@@ -44,10 +44,6 @@
     "message": "Text rapid, ușor și de înaltă calitate în vorbire în peste 40 de limbi. Citiți cu voce tare de pe site-uri web, PDF, e-mail. Rostiți text cu TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Despre",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Caracteristici",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Citiți textul din clipboard! Doar copiați textul de oriunde din orice program și folosiți Talkie Premium pentru ao citi!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Treceți la Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Toate contribuțiile la Talkie se fac în conformitate cu Acordul de licență pentru colaboratori (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Text",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Spune Talkie tăi despre Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Îți place $NAME$? Dacă da, aș fi fericit dacă ai putea da o evaluare ⭐️ și o revizuire 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie fost dezvoltat cu câteva zile înainte de Anul Nou 2016/2017, la provocarea unui prieten. Provocarea a început cu întrebarea: în timp ce faceți naveta la serviciu, este posibil să ascultați un articol în loc să îl citiți? Ușor, am spus, și mi-am propus să dovedesc acest lucru — sau cel puțin să-mi fac browserul să rostească text folosind o voce prostească de computer. Ediția de bază, fără nicio interfață cu utilizatorul, s-a dovedit a fi banală de creat. Adăugarea unei interfețe cu utilizatorul a durat puțin mai mult. Adăugând detecția corectă a limbii, mai multe coduri. Depășirea erorilor din browser funcționează și mai mult. Lista de îmbunătățiri și caracteristici continuă — și câteva mii de linii de cod mai târziu, vă uitați la rezultatul final.",
@@ -556,10 +534,6 @@
     "message": "Am plătit pentru Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Actualizare",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Mai multe metode de plată prin pagina de donații",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Faceți clic pe butonul Talkie din bara de instrumente a browserului dvs.",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "pe net",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Limbi disponibile",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Voci disponibile",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Vedeți și testați vocile instalate pentru fiecare limbă din browserul dvs. Talkie Premium pot de asemenea să aleagă vocea Talkie Premium fiecare limbă, precum și să Talkie Premium viteza și pasul pentru fiecare voce.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Vulpea brună se scurge peste câinele leneș.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Text de Talkie pentru Talkie pentru a citi cu voce tare",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Utilizați ca voce implicită pentru limbă",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$VOICE$ ca voce implicită pentru text în $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Afișați toate vocile",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "În unele browsere, nu este posibilă citirea continuă a textelor lungi. Pentru a rezolva acest lucru, Talkie introduce o mică pauză între propoziții/clauze și după alte semne de punctuație.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Doriți să instalați mai multe voci?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Bine ati venit",

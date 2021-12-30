@@ -35,9 +35,6 @@
     "description": "For the browsers/web stores. Maximum 132 characters.",
     "message": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Features and upgrade"
   },
@@ -338,9 +335,6 @@
   "frontend_featuresPremium_List05": {
     "message": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Upgrade to Talkie Premium"
-  },
   "frontend_installVoicesNoVoiceFound": {
     "message": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
   },
@@ -440,9 +434,6 @@
   "frontend_upgradeLabel": {
     "message": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "More payment methods via the donations page"
   },
@@ -484,15 +475,6 @@
   },
   "frontend_usageStep02": {
     "message": "Click the Talkie button in your browser toolbar"
-  },
-  "frontend_voiceFeatureOnline": {
-    "message": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Available voices"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
@@ -581,13 +563,6 @@
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
     "message": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Use $VOICE$ as default voice for text in $LANGUAGE$",
@@ -616,9 +591,6 @@
   },
   "frontend_voicesShowAllListItems": {
     "message": "Show all"
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."

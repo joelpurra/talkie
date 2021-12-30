@@ -44,10 +44,6 @@
     "message": "快速，轻松，高质量的文本到40种语言的语音转换。从网站，PDF，电子邮件中大声朗读。用TTS朗读文字。",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "关于",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "特征",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "从剪贴板读取文本！只需从任何程序的任何地方复制文本，并使用Talkie Premium来阅读它！",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "升级到Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "对Talkie所有贡献都是根据“贡献者许可协议”（CLA）进行的。",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "文本",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "告诉你的朋友关于Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "你喜欢$NAME$吗？如果是这样，我会很高兴，如果你可以给一个很好的⭐️评级和审查😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie是在2016/ Talkie年新年前几天，在朋友的挑战下开发的。挑战始于以下问题：通勤上班时，是否可以听文章而不是阅读文章？我说，很容易，然后开始证明这一点-或至少让我的浏览器使用愚蠢的计算机语音朗读文本。没有任何用户界面的基本版创建起来很简单。添加用户界面需要花费更长的时间。添加适当的语言检测还有更多代码。克服浏览器中的错误甚至可以做更多的工作。改进和功能列表不胜枚举-几千年后的代码，您正在寻找最终结果。",
@@ -556,10 +534,6 @@
     "message": "我已支付Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "升级",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "通过捐赠页面更多付款方式",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "点击浏览器工具栏中的Talkie按钮",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "线上",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "可用语言",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "可用声音",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "在浏览器中查看并测试每种语言的已安装语音。 Talkie Premium用户还可以选择他们最喜欢的语音作为每种语言的默认值，以及为每个语音设置速度和音高。",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "敏捷的棕色狐狸跳过了懒狗。",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Talkie示例文本大声朗读",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "用作语言的默认语音",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "使用$VOICE$作为$LANGUAGE$中的文本的默认语音",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "显示所有声音",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "在某些浏览器中，不可能连续读取长文本。为了解决这个问题， Talkie在句子/子句之间和其他标点符号之间引入一个小的暂停。",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "想要安装更多的声音？",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "欢迎",

@@ -44,10 +44,6 @@
     "message": "40 개 이상의 언어로 빠르고 쉬운 고품질 텍스트 음성 변환. 웹 사이트, PDF, 이메일에서 소리내어 읽으십시오. TTS로 텍스트를 말합니다.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "약",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "풍모",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "클립 보드에서 텍스트를 읽으십시오! 어떤 프로그램에서든 텍스트를 복사하고 Talkie Premium 을 사용하여 읽을 수 있습니다!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Talkie Premium 업그레이드",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Talkie에 Talkie 모든 기고는 Contributor License Agreement (CLA)에 의거하여 작성됩니다.",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "본문",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "친구들에게 Talkie 에 대해 Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "$NAME$ 를) 좋아하니? 만약 그렇다면, 당신이 좋은 ⭐️ 등급을주고 리뷰 할 수 있다면 기쁠 것입니다. 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie 는 2016/2017 새해가되기 며칠 전에 친구의 도전으로 개발되었습니다. 문제는 다음과 같은 질문에서 시작되었습니다. 출근하는 동안 기사를 읽는 대신들을 수 있습니까? 나는 쉬웠다 고 말했고 그것을 증명하거나 적어도 내 브라우저가 어리석은 컴퓨터 음성을 사용하여 텍스트를 말하도록 만들려고했다. 사용자 인터페이스가없는 기본 버전은 작성하기가 쉽지 않았습니다. 사용자 인터페이스를 추가하는 데 시간이 조금 더 걸립니다. 적절한 언어 감지를 추가하면 더 많은 코드가 추가됩니다. 브라우저의 버그 극복은 더 많은 작업을합니다. 개선 사항 및 기능 목록은 계속됩니다. 나중에 수천 줄의 코드를 입력하면 최종 결과를 볼 수 있습니다.",
@@ -556,10 +534,6 @@
     "message": "Talkie Premium 비용을 지불했습니다 Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "업그레이드",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "기부 페이지를 통한 더 많은 지불 방법",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "브라우저 툴바에서 Talkie 버튼을 클릭하십시오.",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "온라인",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "사용 가능한 언어",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "사용 가능한 목소리",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "브라우저에서 각 언어에 대한 설치된 음성을보고 테스트하십시오. Talkie Premium 사용자는 각 음성의 속도와 음높이를 설정할뿐만 아니라 원하는 언어를 기본 언어로 선택할 수 있습니다.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "빠른 갈색 여우는 게으른 개를 뛰어 넘습니다.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "소리내어 읽는 Talkie 샘플 텍스트",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "언어에 기본 음성으로 사용",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$LANGUAGE$ 텍스트에 기본 음성으로 $VOICE$ 사용",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "모든 목소리 보이기",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "일부 브라우저에서는 긴 텍스트를 계속 읽을 수 없습니다. 이 문제를 해결하기 위해 Talkie 은 문장/절 사이 및 다른 문장 부호 뒤에 작은 일시 중지를 도입합니다.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "더 많은 목소리를 설치하고 싶습니까?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "환영",

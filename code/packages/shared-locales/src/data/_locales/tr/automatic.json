@@ -44,10 +44,6 @@
     "message": "40'tan fazla dilde hızlı, kolay, yüksek kaliteli metin okuma. Web sitelerinden, PDF'den, e-postadan yüksek sesle okuyun. TTS ile metni konuşun.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "hakkında",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Özellikler",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Panoya metni okuyun! Herhangi bir Talkie Premium herhangi bir yerden metni Talkie Premium okumak için Talkie Premium kullanın!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Talkie Premium sürümüne yükseltin",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Talkie tüm katkıları Talkie Bulunan Lisans Sözleşmesi (CLA) kapsamında yapılır.",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Metin",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Talkie hakkında bilgi Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "$NAME$ beğendiniz mi? Eğer öyleyse, hoş bir ⭐️ derecelendirme ve inceleme 😃 yapabilirseniz mutlu olurum",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie , 2016/2017 Yeni Yılından birkaç gün önce bir arkadaşın meydan okumasıyla geliştirildi. Zorluk şu soruyla başladı: işe giderken bir makaleyi okumak yerine dinlemek mümkün mü? Kolay, dedim ve bunu ispatlamak için yola çıktım — ya da en azından tarayıcımın aptal bir bilgisayar sesi kullanarak metni konuşmasını sağlamak için. Herhangi bir kullanıcı arayüzü olmayan temel sürümün oluşturulması önemsiz olduğu ortaya çıktı. Bir kullanıcı arayüzü eklemek biraz daha uzun sürdü. Doğru dil tespiti ekleyerek bir grup daha kod. Tarayıcıdaki hataların üstesinden gelmek daha da fazla çalışır. İyileştirmelerin ve özelliklerin listesi devam ediyor — ve birkaç bin satır kod sonra, sonuca bakıyorsunuz.",
@@ -556,10 +534,6 @@
     "message": "Talkie Premium için ödeme Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Yükselt",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Bağışlar sayfasından daha fazla ödeme yöntemi",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Tarayıcınızın araç çubuğundaki Talkie düğmesini tıklayın",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "internet üzerinden",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Kullanılabilir diller",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Mevcut sesler",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Tarayıcınızda her dile ait yüklü sesleri görün ve test edin. Talkie Premium , dil başına Talkie Premium olarak en Talkie Premium , ayrıca her ses için hız ve adım aralığı Talkie Premium .",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Hızlı kahverengi tilki tembel köpeği atlar.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Yüksek sesle okumak için Talkie örnek metni",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Dil için varsayılan ses olarak kullanın",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$LANGUAGE$ içindeki metin için $VOICE$ ses olarak $VOICE$ kullanın",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Tüm sesleri göster",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "Bazı tarayıcılarda, uzun metinleri sürekli okumak mümkün değildir. Bu Talkie , Talkie , cümleler/cümleler arasında ve diğer noktalama işaretlerinden sonra küçük bir duraklama meydana Talkie .",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Daha fazla ses yüklemek mi istiyorsunuz?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Hoşgeldiniz",

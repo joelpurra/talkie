@@ -28,11 +28,12 @@
     "messages:count": "( cd ./src/data/_locales/ && for MESSAGES in $(find . -name 'messages.json'); do jq 'to_entries | .[].key' \"$MESSAGES\"; done | sort | uniq -c | sort -n -r ; )",
     "messages:download": "npm run --silent messages:sort && webext-translator . en base.json automatic.json && npm run --silent messages:sort",
     "messages:override:refresh": "( cd ./src/data/_locales/ && for MESSAGES in $(find . \\( -name 'override.json' -or -name 'manual.json' \\)); do jq --slurp --sort-keys '.[0] as $en | .[1] | with_entries(.key as $key | .value |= (.original = $en[$key].message) + if $en[$key].description then { description: $en[$key].description } else {} end + if $en[$key].placeholders then { placeholders: $en[$key].placeholders } else {} end)' \"./en/messages.json\" \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done ; )",
+    "messages:prune": "find ./src/data/_locales -type f -iname 'override.json' -or -iname 'automatic.json' | while read P; do jq --argjson messageNames \"$(jq --compact-output 'to_entries | map(.key)' ./src/data/_locales/en/base.json)\" 'with_entries(select(.key as $key | $messageNames | indices($key) | length == 1))' \"$P\" > \"${P}~\" && mv \"${P}~\" \"$P\"; done",
     "messages:refresh": "[ ! -f ./src/data/_locales/en/messages.json ] && npm run --silent messages:sort && ./src/translation-merge.sh && npm run --silent messages:sort && npm run --silent messages:override:refresh",
     "messages:sort": "( cd ./src/data/_locales/ && for MESSAGES in $(find . -name '*.json'); do jq --sort-keys '.' \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done ; )",
     "messages:translate": "npm run --silent messages:download && npm run --silent messages:refresh && npm run --silent messages:count",
     "rebuild": "npm run --silent clean && npm run --silent rebuild:messages && npm run --silent build",
-    "rebuild:messages": "npm run --silent messages:refresh",
+    "rebuild:messages": "npm run --silent messages:refresh && npm run --silent messages:prune",
     "watch": "npm run --silent build:typescript -- --watch"
   },
   "type": "module",

@@ -44,10 +44,6 @@
     "message": "Snabb, enkel, högkvalitativ text till tal på över 40 språk. Läs högt från webbplatser, PDF, e-post. Tala text med TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Handla om",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Funktioner",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Läs text från klippbordet! Kopiera text från var som helst i något program och använd Talkie Premium att läsa det!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Uppgradera till Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie sker under medlem licensavtal (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Text",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Berätta för dina vänner om Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Gillar du $NAME$? Om så är fallet, skulle jag vara glad om du kunde ge ett bra betyg och granska 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie utvecklades några dagar före nyåret 2016/2017, på en utmaning från en vän. Utmaningen började med frågan: är det möjligt att lyssna på en artikel istället för att läsa den när man pendlar till jobbet? Lätt, sa jag och satte mig för att bevisa det — eller åtminstone för att få min webbläsare att tala ut text med en dum datorröst. Grundversionen, utan något användargränssnitt, visade sig vara trivial att skapa. Att ta ett användargränssnitt tog lite längre tid. Lägga till korrekt språkidentifiering en massa mer kod. Att övervinna buggar i webbläsaren fungerar ännu mer. Listan över förbättringar och funktioner fortsätter — och några tusen rader kod senare tittar du på slutresultatet.",
@@ -556,10 +534,6 @@
     "message": "Jag har betalat för Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Uppgradera",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Fler betalningsmetoder via donationssidan",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Klicka på knappen Talkie i verktygsfältet i din webbläsare",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "uppkopplad",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "tillgängliga språk",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "tillgängliga röster",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Se och testa installerade röster för varje språk i din webbläsare. Talkie Premium kan också välja sin Talkie Premium som standard per språk, samt ställa in Talkie Premium för varje röst.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Den snabba bruna räven hoppar över den lata hunden.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Exempeltext för Talkie att läsa högt",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Använd som standard röst för språk",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Använd $VOICE$ som standard röst för text i $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Visa alla röster",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "I vissa webbläsare är det inte möjligt att kontinuerligt läsa långa texter. För att arbeta runt detta införs Talkie en liten paus mellan meningar/klausuler och efter annan interpunktion.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Vill du installera fler röster?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Välkommen",

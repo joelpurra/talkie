@@ -44,10 +44,6 @@
     "message": "Rýchly, ľahký a vysoko kvalitný prevod textu na reč vo viac ako 40 jazykoch. Čítajte nahlas z webových stránok, PDF, e-mailov. Hovorte text pomocou TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "o",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Vlastnosti",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Čítať text zo schránky! Stačí Talkie Premium text z Talkie Premium programu a pomocou Talkie Premium môžete prečítať!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Inovovať na Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Všetky príspevky k Talkie sa Talkie podľa Zmluvy o licencii prispievateľa (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "text",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Povedzte svojim Talkie o Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Páči sa vám $NAME$? Ak áno, bol by som rád, keby ste mohli dať pekný rating a revíziu 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie bol vyvinutý niekoľko dní pred Novým rokom 2016/2017 na výzvu priateľa. Výzva sa začala otázkou: je možné pri dochádzaní do práce počúvať článok namiesto jeho čítania? Ľahko, povedal som a vydal som sa dokázať to — alebo aspoň prinútiť môj prehliadač, aby hovoril text hlúpym počítačovým hlasom. Ukázalo sa, že základné vydanie bez akéhokoľvek používateľského rozhrania bolo triviálne. Pridanie používateľského rozhrania trvalo o niečo dlhšie. Pridaním správnej detekcie jazyka získate viac kódu. Prekonávanie chýb v prehliadači funguje ešte viac. Zoznam vylepšení a funkcií pokračuje — a o niekoľko tisíc riadkov kódu neskôr sa pozeráte na konečný výsledok.",
@@ -556,10 +534,6 @@
     "message": "Zaplatil som za Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Inovovať",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Viac spôsobov platby prostredníctvom stránky darov",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Kliknite na tlačidlo Talkie na paneli s nástrojmi prehliadača",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "on-line",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Dostupné jazyky",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Dostupné hlasy",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Zobrazte a otestujte nainštalované hlasy pre každý jazyk v prehliadači. Talkie Premium môžu tiež vybrať svoj obľúbený hlas ako Talkie Premium pre každý jazyk, ako aj nastaviť rýchlosť a rozstup pre každý hlas.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Rýchla hnedá liška preskakuje lenivého psa.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Ukážkový text pre Talkie na čítanie nahlas",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Používa sa ako predvolený jazyk pre jazyk",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Použite $VOICE$ ako predvolený hlas pre text v $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Zobraziť všetky hlasy",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "V niektorých prehliadačoch nie je možné čítať dlhé texty nepretržite. Ak to chcete Talkie , Talkie predstavuje malú prestávku medzi vetami/klauzulami a po iných interpunkciách.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Chcete nainštalovať ďalšie hlasy?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "vitajte",

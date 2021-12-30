@@ -44,10 +44,6 @@
     "message": "40以上の言語での高速、簡単、高品質のテキスト読み上げ。ウェブサイト、PDF、電子メールから声を出して読んでください。 TTSでテキストを話します。",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "約",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "特徴",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "クリップボードからテキストを読み込みます！任意のプログラムのどこからでもテキストをコピーし、それを読むにはTalkie Premiumを使用してください！",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Talkie PremiumアップグレードしTalkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Talkieへのすべての貢献は、コントリビュータライセンス契約（CLA）の下で行われます。",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "テキスト",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Talkieについてお友達にTalkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "あなたは$NAME$が好きですか？もしそうなら、私はあなたが素晴らしい⭐️評価を与え、😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkieは、2016/2017年の新年の数日前に、友人からの挑戦を受けて開発されました。課題は、通勤中に記事を読む代わりに聞くことは可能かという質問から始まりました。簡単だと私は言った、そしてそれを証明するために着手した-あるいは少なくとも私のブラウザにばかげたコンピュータの声を使ってテキストを話させるために。ユーザーインターフェイスのない基本版は、作成するのが簡単であることがわかりました。ユーザーインターフェイスの追加には、少し時間がかかりました。適切な言語検出を追加すると、さらに多くのコードが追加されます。ブラウザのバグを克服することはさらに多くの仕事をします。改善点と機能のリストは続きます—そして数千行のコードの後、あなたは最終結果を見ています。",
@@ -556,10 +534,6 @@
     "message": "Talkie Premium料金をTalkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "アップグレード",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "寄付ページを介したその他の支払い方法",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "ブラウザツールバーのTalkieボタンをクリックします",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "オンライン",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "利用可能な言語",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "利用可能な音声",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "ブラウザで各言語のインストールされた音声を確認してテストします。 Talkie Premiumユーザーは、お気に入りの声を言語ごとのデフォルトとして選択し、各声の速度とピッチを設定することもできます。",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "クイックブラウンキツネは怠惰な犬の上を飛ぶ。",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "大声でTalkieサンプルテキスト",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "言語のデフォルトボイスとして使用する",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "$LANGUAGE$テキストには、デフォルトの音声として$VOICE$を使用します",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "すべての声を表示",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "一部のブラウザでは、長いテキストを連続して読み取ることはできません。この問題を回避するために、 Talkieでは、文/句と句読点の間に小さな休止が導入されています。",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "より多くの声をインストールしたいですか？",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "ようこそ",

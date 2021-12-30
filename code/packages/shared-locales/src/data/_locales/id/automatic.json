@@ -44,10 +44,6 @@
     "message": "Text to speech yang cepat, mudah, dan berkualitas tinggi dalam lebih dari 40 bahasa. Bacalah dengan lantang dari situs web, PDF, email. Ucapkan teks dengan TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Tentang",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "fitur",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Baca teks dari clipboard! Cukup salin teks dari manapun ke program mana pun, dan gunakan Talkie Premium untuk Talkie Premium !",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Tingkatkan ke Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Semua kontribusi ke Talkie dibuat berdasarkan Perjanjian Lisensi Kontributor (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Teks",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Beritahu teman Anda tentang Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Apakah kamu menyukai $NAME$? Jika demikian, saya akan senang jika Anda bisa memberikan ⭐️ rating dan review yang bagus 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie dikembangkan beberapa hari sebelum Tahun Baru 2016/2017, atas tantangan dari seorang teman. Tantangannya dimulai dengan pertanyaan: saat dalam perjalanan ke kantor, apakah mungkin mendengarkan artikel daripada membacanya? Mudah, kataku, dan mulai membuktikannya — atau setidaknya membuat browser saya mengucapkan teks menggunakan suara komputer yang konyol. Edisi dasar, tanpa antarmuka pengguna, ternyata mudah dibuat. Menambahkan antarmuka pengguna, membutuhkan waktu lebih lama. Menambahkan deteksi bahasa yang tepat lebih banyak kode. Mengatasi bug di browser lebih banyak pekerjaan. Daftar peningkatan dan fitur terus berjalan — dan beberapa ribu baris kode kemudian, Anda sedang melihat hasil akhirnya.",
@@ -556,10 +534,6 @@
     "message": "Saya telah membayar untuk Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Meningkatkan",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Metode pembayaran lainnya melalui halaman donasi",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Klik tombol Talkie di bilah alat browser Anda",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "on line",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Bahasa yang tersedia",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Suara yang tersedia",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Lihat dan uji suara terinstal untuk setiap bahasa di browser Anda. Talkie Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengatur Talkie Premium dan nada untuk setiap suara.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Rubah coklat cepat melompati anjing malas itu.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Contoh teks untuk Talkie untuk Talkie dengan keras",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Gunakan sebagai suara default untuk bahasa",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Gunakan $VOICE$ sebagai suara default untuk teks dalam $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Tampilkan semua suara",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "Di beberapa browser, tidak mungkin membaca teks panjang secara terus menerus. Untuk mengatasi hal ini, Talkie memperkenalkan jeda kecil antara kalimat/klausa dan setelah tanda baca lainnya.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Ingin memasang lebih banyak suara?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "SELAMAT DATANG",

@@ -192,16 +192,6 @@
     "original": "Click the Talkie button in your browser toolbar",
     "translated-from": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Tillgängliga språk",
-    "original": "Available languages",
-    "translated-from": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Tillgängliga röster",
-    "original": "Available voices",
-    "translated-from": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Se och testa installerade röster för varje språk i din webbläsare. Talkie Premium-användare kan även välja sin favoritröst per språk, samt läshastighet och tonhöj för varje röst.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
@@ -254,17 +244,6 @@
     "original": "The quick brown fox jumps over the lazy dog.",
     "translated-from": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Exempeltext för Talkie att läsa upp",
-    "original": "Sample text for Talkie to read out loud",
-    "translated-from": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Använd som standardröst för språk",
-    "original": "Use as default voice for language",
-    "translated-from": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Använd $VOICE$ som standardröst för text på $LANGUAGE$",
@@ -280,11 +259,6 @@
       }
     },
     "translated-from": "Use $VOICE$ as default voice for text in $LANGUAGE$"
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Visa alla röster",
-    "original": "Show all voices",
-    "translated-from": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "I vissa webbläsare är det inte möjligt att kontinuerligt läsa långa texter. För att arbeta runt detta har Talkie infört en liten paus mellan meningar/klausuler och efter annan interpunktion.",

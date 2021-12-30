@@ -44,10 +44,6 @@
     "message": "Gyors, egyszerű, kiváló minőségű szövegfelolvasás több mint 40 nyelven. Olvassa el hangosan a weboldalakról, a PDF-ből, az e-mailből. Beszéljen szöveget a TTS segítségével.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Ról ről",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Jellemzők",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Beolvassa a szöveget a vágólapra! Csak másolja a szöveget bárhonnan bármilyen programot, és Talkie Premium olvasni!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Frissítés Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Minden hozzájárulások Talkie alatt végzik a Közreműködő licencszerződés (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Szöveg",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Mesélj a barátaidnak Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Tetszik $NAME$? Ha igen, akkor boldog lennék, ha jó ⭐️ minősítést és véleményt adhatsz",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie néhány nappal a 2016/2017-es újév előtt fejlesztették ki, egy barátjának kihívására. A kihívás azzal a kérdéssel kezdődött: a munkába járás közben lehet-e meghallgatni egy cikket olvasás helyett? Könnyű, mondtam, és nekiláttam, hogy ezt bizonyítsam — vagy legalábbis arra, hogy a böngészőm ostoba számítógépes hangon szólaljon meg. A felhasználói felület nélküli alapkiadás elenyészőnek bizonyult. A felhasználói felület hozzáadása kissé tovább tartott. Megfelelő nyelvészlelés hozzáadása egy csomó további kódot. A böngésző hibáinak leküzdése még jobban működik. A továbbfejlesztések és szolgáltatások listája folytatódik — és néhány ezer sornyi kóddal később a végeredményt nézzük.",
@@ -556,10 +534,6 @@
     "message": "Kifizettem Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Frissítés",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "További fizetési módok az adományok oldalon keresztül",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Kattintson a Talkie gombra a böngésző eszköztárában",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "online",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Rendelkezésre álló nyelvek",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Elérhető hangok",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Lásd és tesztelése telepített hangokat az egyes nyelvek a böngészőben. Talkie Premium felhasználók is kiválaszthatja kedvenc hangot az alapértelmezett nyelvenként, valamint beállított sebesség és szurok minden hang.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "A gyors barna róka átugorja a lusta kutyát.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Minta szöveg Talkie olvasni hangosan",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Használja az alapértelmezett hang nyelv",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Felhasználási $VOICE$ alapértelmezett hang a szöveg $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Összes hangok",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "Bizonyos böngészőkben hosszú szövegeket nem lehet folyamatosan olvasni. Ennek érdekében a Talkie kis szünetet Talkie be a mondatok/záradékok és más írásjelek után.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Több hangot szeretne telepíteni?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Üdvözöljük",

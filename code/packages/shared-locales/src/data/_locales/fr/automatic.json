@@ -44,10 +44,6 @@
     "message": "Synthèse vocale rapide, simple et de haute qualité dans plus de 40 langues. Lisez à haute voix des sites Web, PDF, e-mail. Parlez du texte avec TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Sur",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
     "message": "Caractéristiques",
     "original": "Features"
@@ -420,10 +416,6 @@
     "message": "Lisez le texte du presse-papiers! Il suffit de copier du texte Talkie Premium où dans Talkie Premium et d'utiliser Talkie Premium pour le lire!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Talkie Premium à Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
-  },
   "frontend_licenseCLADescription": {
     "message": "Toutes les contributions à Talkie sont Talkie en vertu du contrat de licence de contributeur (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
@@ -443,20 +435,6 @@
   "frontend_settingsLinkText": {
     "message": "Texte",
     "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Dites à vos amis à propos de Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Aimez-vous $NAME$? Si c'est le cas, je serais heureux si vous pouviez donner une bonne note and et avis 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
   },
   "frontend_storyDescription": {
     "message": "Talkie été développé quelques jours avant le Nouvel An 2016/2017, sur le défi d'un ami. Le défi a commencé par la question: en se rendant au travail, est-il possible d'écouter un article au lieu de le lire? Facile, ai-je dit, et j'ai entrepris de le prouver — ou du moins de faire en sorte que mon navigateur prononce un texte avec une voix informatique idiote. L'édition de base, sans aucune interface utilisateur, s'est avérée facile à créer. L'ajout d'une interface utilisateur a pris un peu plus de temps. Ajout d'une détection de langue appropriée, un tas de code supplémentaire. Surmonter les bogues dans le navigateur encore plus de travail. La liste des améliorations et des fonctionnalités continue — et quelques milliers de lignes de code plus tard, vous regardez le résultat final.",
@@ -556,10 +534,6 @@
     "message": "J'ai payé Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Améliorer",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "Plus de modes de paiement via la page des dons",
     "original": "More payment methods via the donations page"
@@ -616,18 +590,6 @@
     "message": "Cliquez sur le bouton Talkie dans la barre d'outils de votre navigateur",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "en ligne",
-    "original": "online"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Langues disponibles",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Voix disponibles",
-    "original": "Available voices"
-  },
   "frontend_voicesDescription": {
     "message": "Voir et tester les voix installées pour chaque langue dans votre navigateur. Talkie Premium les Talkie Premium peuvent Talkie Premium leur voix préférée comme par défaut par langue, ainsi que définir la vitesse et le pitch pour chaque voix.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
@@ -673,15 +635,6 @@
     "message": "Le renard brun rapide saute sur le chien paresseux.",
     "original": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Exemple de texte pour Talkie lire à fond",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Utiliser comme voix par défaut pour la langue",
-    "original": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Utilisez $VOICE$ comme voix par défaut pour le texte dans $LANGUAGE$",
@@ -696,10 +649,6 @@
         "example": "Alva"
       }
     }
-  },
-  "frontend_voicesShowAllVoices": {
-    "message": "Afficher toutes les voix",
-    "original": "Show all voices"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "Dans certains navigateurs, il n'est pas possible de lire continuellement de longs textes. Pour contourner cela, Talkie introduit une petite pause entre phrases/clauses et après une autre ponctuation.",
@@ -766,10 +715,6 @@
         "example": "66"
       }
     }
-  },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Voulez-vous installer plus de voix?",
-    "original": "Want to install more voices?"
   },
   "frontend_welcomeLinkText": {
     "message": "Bienvenue",
