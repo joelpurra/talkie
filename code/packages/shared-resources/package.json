@@ -7,8 +7,16 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {},
+  "devDependencies": {
+    "svgo": "^2.8.0"
+  },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
   "private": true,
+  "scripts": {
+    "minify": "npm run --silent minify:svg",
+    "minify:svg": "find ./src/resources -type f -iname '*.svg' -not -iname '*.min.svg' | while read P; do svgo --quiet --multipass --input \"$P\" --output \"${P%.svg}.min.svg\"; done",
+    "rebuild": "npm run --silent minify"
+  },
   "type": "module"
 }

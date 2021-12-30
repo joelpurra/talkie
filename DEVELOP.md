@@ -69,7 +69,7 @@ The build process assumes that current stable versions of the following are avai
 
 ## Building
 
-```bash
+```shell
 # Go to the directory where you cloned the repository.
 cd talkie
 cd code
@@ -87,7 +87,7 @@ npm run --silent rebuild
 - Uses a temporary (empty) browser user profile, when possible.
 - Might not work on all systems; try to install/use another browser if one fails.
 
-```bash
+```shell
 # Assumes you have `google-chrome`/`chromium`/`vivaldi` in your path.
 cd ./packages/output-webext-chrome/
 npm run --silent run:chrome
@@ -123,7 +123,7 @@ Development mode:
 - Uses non-minimized development versions of script files of dependencies.
 - Enables [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) to track down potential problems.
 
-```bash
+```shell
 # Enable some additional debugging features.
 TALKIE_ENV='development' npm run --silent rebuild
 ```
@@ -181,7 +181,7 @@ Translation files are merged in this order. The last value for a specific key/na
 - These steps assume you are using the `hub` and `git-flow` tools.
 - Expect to have your contribution scrutinized, so make sure your code is well-written. You may be asked to fix some stuff before your pull request is accepted.
 
-```bash
+```shell
 # Fork the repository to your user on github.
 hub fork
 
@@ -238,7 +238,7 @@ hub browse
 
 Keep package dependencies up to date and synchronized across monorepo sub-packages. These commands are helpful.
 
-```bash
+```shell
 # List outdated packages, or version mismatches.
 npm run --silent dependencies:check
 
@@ -251,7 +251,7 @@ npm run --silent dependencies:upgrade
 
 Packaging all extension variants for release in the different distribution channels, as well as a `.zip` file with the source code. These steps are only performed by the project owner.
 
-```bash
+```shell
 # Finish up any features, switch to develop.
 git checkout develop
 
