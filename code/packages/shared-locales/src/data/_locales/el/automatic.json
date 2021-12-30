@@ -558,11 +558,11 @@
     "message": "Πλήκτρα συντόμευσης",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Εάν το πλήκτρο συντόμευσης δεν λειτουργεί, βεβαιωθείτε ότι δεν χρησιμοποιείται ήδη από άλλη επέκταση ή πρόγραμμα.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Ελέγξτε ή αλλάξτε τα Talkie πλήκτρα Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

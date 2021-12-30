@@ -558,11 +558,11 @@
     "message": "快捷键",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "如果快捷键不起作用，请检查它是否还没有被其他分机或程序使用。",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "检查或更改Talkie快捷键。",
     "original": "Check or change the Talkie shortcut keys."
   },

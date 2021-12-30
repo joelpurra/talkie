@@ -558,11 +558,11 @@
     "message": "Tombol pintas",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Jika tombol pintas tidak bekerja, periksa apakah itu belum digunakan oleh ekstensi atau program lain.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Periksa atau ganti tombol pintas Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

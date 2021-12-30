@@ -558,11 +558,11 @@
     "message": "Teclas de atalho",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Se a tecla de atalho não funcionar, verifique se ela ainda não está em uso por outra extensão ou programa.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie ou altere as teclas de atalho Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

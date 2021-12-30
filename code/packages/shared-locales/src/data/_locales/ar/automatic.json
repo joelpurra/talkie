@@ -558,11 +558,11 @@
     "message": "مفاتيح الاختصار",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "إذا كان مفتاح الاختصار لا يعمل، يرجى التحقق من أنه ليس قيد الاستخدام من قبل ملحق أو برنامج آخر.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "تحقق من مفاتيح الاختصار Talkie أو قم Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

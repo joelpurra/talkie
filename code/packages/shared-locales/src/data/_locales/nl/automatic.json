@@ -558,11 +558,11 @@
     "message": "Sneltoetsen",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Als de sneltoets niet werkt, controleer dan of het nog niet in gebruik is door een andere extensie of programma.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie of verander de Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

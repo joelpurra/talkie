@@ -558,11 +558,11 @@
     "message": "מקשי קיצור",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "אם מפתח הקיצור אינו פועל, ודא שהוא אינו בשימוש כבר על ידי תוסף או תוכנית אחרת.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "בדוק או שנה את מקשי הקיצור Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

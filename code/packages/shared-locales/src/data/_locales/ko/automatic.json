@@ -558,11 +558,11 @@
     "message": "바로 가기 키",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "바로 가기 키가 작동하지 않으면 다른 확장 프로그램이나 프로그램에서 이미 사용 중이 아닌지 확인하십시오.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie 바로 가기 키를 확인하거나 변경하십시오.",
     "original": "Check or change the Talkie shortcut keys."
   },

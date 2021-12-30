@@ -558,11 +558,11 @@
     "message": "Kısayol tuşları",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Kısayol tuşu çalışmazsa, lütfen başka bir dahili program veya program tarafından kullanılmadığını kontrol edin.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie kısayol Talkie kontrol edin veya Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

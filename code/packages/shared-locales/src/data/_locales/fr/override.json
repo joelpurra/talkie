@@ -91,12 +91,12 @@
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
     "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Si la touche de raccourci ne fonctionne pas, vérifiez qu'elle n'est pas déjà utilisée par une autre extension.",
-    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else.",
     "translated-from": "If the key does not work, please check that it is not already in use by another extension."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Vérifier ou modifier la touche de raccourci Talkie.",
     "original": "Check or change the Talkie shortcut keys.",
     "translated-from": "How to check or change the Talkie shortcut keys."

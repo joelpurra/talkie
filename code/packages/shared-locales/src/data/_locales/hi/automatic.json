@@ -558,11 +558,11 @@
     "message": "शॉर्टकट कुंजियाँ",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "यदि शॉर्टकट कुंजी काम नहीं करती है, तो कृपया जांच लें कि यह पहले से किसी अन्य एक्सटेंशन या प्रोग्राम द्वारा उपयोग में नहीं है।",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie शॉर्टकट कुंजी को चेक या बदलें।",
     "original": "Check or change the Talkie shortcut keys."
   },

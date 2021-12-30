@@ -558,11 +558,11 @@
     "message": "Tasti di scelta rapida",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Se la chiave di scelta rapida non funziona, verificare che non sia già in uso da un'altra estensione o un programma.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie o Talkie i tasti di scelta rapida Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

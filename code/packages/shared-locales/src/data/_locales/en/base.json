@@ -453,9 +453,12 @@
     "message": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
+    "message": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
   },
   "frontend_usageShortcutKeyAlternative04": {
+    "message": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {

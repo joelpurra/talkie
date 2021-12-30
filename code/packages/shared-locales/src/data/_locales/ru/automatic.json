@@ -558,11 +558,11 @@
     "message": "Клавиши быстрого доступа",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Если клавиша быстрого доступа не работает, проверьте, что она еще не используется другим расширением или программой.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie или измените Talkie клавиш Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

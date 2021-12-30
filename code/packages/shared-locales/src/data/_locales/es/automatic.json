@@ -558,11 +558,11 @@
     "message": "Teclas de atajo",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Si la tecla de acceso directo no funciona, compruebe que no esté ya en uso por otra extensión o programa.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie o cambie las teclas de acceso directo Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

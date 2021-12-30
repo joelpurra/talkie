@@ -558,11 +558,11 @@
     "message": "pikanäppäimet",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Jos pikanäppäin ei toimi, tarkista, että se ei ole jo käytössä toisen laajennuksen tai ohjelman.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Tarkista tai muuta Talkie pikanäppäimiä.",
     "original": "Check or change the Talkie shortcut keys."
   },

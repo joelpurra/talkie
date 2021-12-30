@@ -558,11 +558,11 @@
     "message": "Snabbtangenter",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Om genvägsnyckeln inte fungerar, kontrollera att den inte redan används av en annan anknytning eller ett program.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie eller ändra Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

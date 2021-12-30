@@ -296,9 +296,13 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 					</tableBase.tbody>
 				</this.styled.shortcutKeysTable>
 
-				<lighter.p>
+				<textBase.p>
 					{translateSync("frontend_usageShortcutKeyAlternative03")}
-				</lighter.p>
+				</textBase.p>
+
+				<textBase.p>
+					{translateSync("frontend_usageShortcutKeyAlternative04")}
+				</textBase.p>
 
 				<p>
 					<textBase.a
@@ -306,7 +310,7 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 						// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
 						onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
 					>
-						{translateSync("frontend_usageShortcutKeyAlternative04")}
+						{translateSync("frontend_usageShortcutKeyAlternative05")}
 					</textBase.a>
 				</p>
 			</section>

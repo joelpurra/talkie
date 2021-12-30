@@ -558,11 +558,11 @@
     "message": "Klávesové skratky",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Ak klávesová skratka nefunguje, skontrolujte, či ju ešte nepoužíva iná prípona alebo program.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie alebo zmente Talkie skratky.",
     "original": "Check or change the Talkie shortcut keys."
   },

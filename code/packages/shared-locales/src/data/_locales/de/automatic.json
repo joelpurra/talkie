@@ -558,11 +558,11 @@
     "message": "Tastenkombinationen",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Wenn die Tastenkombination nicht funktioniert, überprüfen Sie bitte, dass sie nicht bereits von einer anderen Erweiterung oder einem Programm verwendet wird.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie oder ändern Sie die Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },

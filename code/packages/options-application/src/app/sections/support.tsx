@@ -187,7 +187,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 									// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
 									onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
 								>
-									{translateSync("frontend_usageShortcutKeyAlternative04")}
+									{translateSync("frontend_usageShortcutKeyAlternative05")}
 								</textBase.a>
 							</listBase.li>
 						</listBase.ul>
@@ -212,7 +212,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 								<textBase.a
 									href={configure("webextension.urls.external.shortcut-keys")}
 								>
-									{translateSync("frontend_usageShortcutKeyAlternative04")}
+									{translateSync("frontend_usageShortcutKeyAlternative05")}
 								</textBase.a>
 							</listBase.li>
 						</listBase.ul>

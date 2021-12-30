@@ -558,11 +558,11 @@
     "message": "Hurtigtaster",
     "original": "Shortcut keys"
   },
-  "frontend_usageShortcutKeyAlternative03": {
+  "frontend_usageShortcutKeyAlternative04": {
     "message": "Hvis snarveien ikke fungerer, må du kontrollere at den ikke allerede er i bruk av en annen utvidelse eller et program.",
     "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Talkie eller endre snarveis tastene Talkie .",
     "original": "Check or change the Talkie shortcut keys."
   },
