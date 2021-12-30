@@ -8,8 +8,6 @@
   Text-to-speech browser extension button
 </p>
 
-## Installation
-
 <table>
   <tr>
     <td align="center">
@@ -20,6 +18,15 @@
     </td>
   </tr>
 </table>
+
+## Installation
+
+- [Install Talkie from Google Chrome Web Store](https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk) when using:
+  - Google Chrome
+  - Microsoft Edge
+  - Brave, Chromium, Vivaldi, etcetera.
+- [Install Talkie from Mozilla Firefox Addons](hhttps://addons.mozilla.org/en-US/firefox/addon/talkie/) when using:
+  - Mozilla Firefox
 
 Developer option: [use the source code](./DEVELOP.md) directly.
 
