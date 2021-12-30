@@ -2,7 +2,7 @@
   "buttonDefaultTitle": {
     "description": "Hover on the Talkie button, dynamically set.",
     "message": "อ่านข้อความที่เลือกออกมาดัง ๆ กับ $NAME$",
-    "original": "Read text selection out loud with $NAME$",
+    "original": "",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -13,448 +13,448 @@
   "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
     "message": "อ่านข้อความที่เลือกออกมาดัง ๆ ด้วย Talkie",
-    "original": "Read text selection out loud with Talkie"
+    "original": ""
   },
   "buttonStopTitle": {
     "message": "หยุดพูด",
-    "original": "Stop talking"
+    "original": ""
   },
   "commandBrowserActionDescription": {
     "message": "อ่านข้อความที่เลือกออกมาดัง ๆ",
-    "original": "Read text selection out loud"
+    "original": ""
   },
   "commandOpenWebsiteMainDescription": {
     "message": "เว็บไซต์ Talkie",
-    "original": "The Talkie website"
+    "original": ""
   },
   "commandOpenWebsiteUpgradeDescription": {
     "message": "อัปเกรดเป็น Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
+    "original": ""
   },
   "commandReadClipboardDescription": {
     "message": "อ่านจากคลิปบอร์ด",
-    "original": "Read from the clipboard"
+    "original": ""
   },
   "commandStartStopDescription": {
     "message": "เริ่ม/หยุดการเลือกการอ่าน",
-    "original": "Start/stop reading selection"
+    "original": ""
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
     "message": "ข้อความเป็นคำพูดที่รวดเร็วง่ายและมีคุณภาพสูงในกว่า 40 ภาษา อ่านออกเสียงจากเว็บไซต์ PDF อีเมล พูดข้อความกับ TTS",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "original": ""
   },
   "frontend_PopupMenu_Features": {
     "message": "คุณสมบัติ",
-    "original": "Features"
+    "original": ""
   },
   "frontend_PopupMenu_Usage": {
     "message": "การใช้งานและทางลัด",
-    "original": "Usage and shortcuts"
+    "original": ""
   },
   "frontend_PopupMenu_Voices": {
     "message": "เสียงและภาษา",
-    "original": "Voices and languages"
+    "original": ""
   },
   "frontend_PopupUsageShort": {
     "message": "เลือกข้อความที่ต้องการในหน้าเว็บใด ๆ และคลิกปุ่ม Talkie ในแถบเครื่องมือของเบราเซอร์",
-    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
+    "original": ""
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "รหัสแหล่งที่มาใน Github",
-    "original": "Source code on Github"
+    "original": ""
   },
   "frontend_aboutLinkText": {
     "message": "เกี่ยวกับ",
-    "original": "About"
+    "original": ""
   },
   "frontend_aboutProjectPageLinkText": {
     "message": "หน้าโครงการเกี่ยวกับ joelpurra.com",
-    "original": "Project page on joelpurra.com"
+    "original": ""
   },
   "frontend_faq001A": {
     "message": "เสียงมาจากทั้งระบบปฏิบัติการ (Windows, ChromeOS, macOS, Linux ฯลฯ ) และในเบราว์เซอร์ปัจจุบันของคุณ (Google Chrome, Firefox, etcetera) ซึ่งหมายความว่าคุณสามารถดาวน์โหลดและติดตั้งเสียงใด ๆ ที่คุณต้องการใช้ในคอมพิวเตอร์ของคุณและ Talkie ควรจดจำเสียงดังกล่าวโดยอัตโนมัติ",
-    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+    "original": ""
   },
   "frontend_faq001Q": {
     "message": "Talkie ตรวจพบเสียงที่ติดตั้งได้อย่างไร?",
-    "original": "How does Talkie detect installed voices?"
+    "original": ""
   },
   "frontend_faq002A": {
     "message": "คุณสามารถเพิ่มเสียงได้มากขึ้นจากทั้ง Microsoft และอื่น ๆ ดูคำแนะนำในการติดตั้งแยกต่างหาก",
-    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+    "original": ""
   },
   "frontend_faq002Q": {
     "message": "ฉันจะติดตั้งเสียงเพิ่มเติมใน Talkie บน Windows ได้อย่างไร?",
-    "original": "How can I install more voices in Talkie on Windows?"
+    "original": ""
   },
   "frontend_faq003A": {
     "message": "ChromeOS ควรมีการเพิ่ม ChromeOS ใด ๆ ใน Chrome เว็บสโตร์",
-    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+    "original": ""
   },
   "frontend_faq003Q": {
     "message": "ฉันจะติดตั้งเสียงเพิ่มเติมใน Talkie บน ChromeOS ได้อย่างไร",
-    "original": "How can I install more voices in Talkie on ChromeOS?"
+    "original": ""
   },
   "frontend_faq004A": {
     "message": "เสียงเพิ่มเติมสามารถติดตั้งโดยอัตโนมัติจากการตั้งค่าระบบ macOS สำหรับการพูด; ดูคำแนะนำในการติดตั้งแยกต่างหาก",
-    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+    "original": ""
   },
   "frontend_faq004Q": {
     "message": "ฉันจะติดตั้งเสียงเพิ่มเติมใน Talkie บน macOS ได้อย่างไร?",
-    "original": "How can I install more voices in Talkie on macOS?"
+    "original": ""
   },
   "frontend_faq005A": {
     "message": "ขณะนี้ยังไม่แน่ใจว่าจะติดตั้งเสียงเพิ่มเติมอย่างไรเนื่องจากยังไม่ได้ลองใช้ ยังเป็นเรื่องของถ้าและวิธีการที่เบราว์เซอร์ตรวจพบเสียงที่ติดตั้ง ดูคำแนะนำในการติดตั้งแยกต่างหาก กรุณาแจ้งให้เราทราบว่า expirences ของคุณคืออะไร!",
-    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+    "original": ""
   },
   "frontend_faq005Q": {
     "message": "ฉันจะติดตั้งเสียงเพิ่มเติมใน Talkie บน Linux ได้อย่างไร?",
-    "original": "How can I install more voices in Talkie on Linux?"
+    "original": ""
   },
   "frontend_faq006A": {
     "message": "ใช่และไม่. Talkie ไม่รวมเสียงใด ๆ ในตัวเอง แต่ใช้เสียงที่ติดตั้งไว้ในคอมพิวเตอร์ของคุณแล้ว คุณสามารถติดตั้งเสียงเพิ่มเติมที่คุณต้องการได้",
-    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+    "original": ""
   },
   "frontend_faq006Q": {
     "message": "คุณสามารถเพิ่มการสนับสนุนสำหรับ <a new voice> ใน Talkie หรือไม่?",
-    "original": "Can you add support for <a new voice> in Talkie?"
+    "original": ""
   },
   "frontend_faq007A": {
     "message": "ใช่และไม่. เนื่องจาก Talkie ใช้เสียงที่ติดตั้งไว้ในคอมพิวเตอร์ของคุณคุณต้องติดตั้งเสียงใหม่ซึ่งสนับสนุนภาษาที่คุณต้องการใช้",
-    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+    "original": ""
   },
   "frontend_faq007Q": {
     "message": "คุณสามารถเพิ่มการสนับสนุนสำหรับ <a new language> ใน Talkie หรือไม่?",
-    "original": "Can you add support for <a new language> in Talkie?"
+    "original": ""
   },
   "frontend_faq008A": {
     "message": "ใช่ถ้ามีการติดตั้งเสียงไว้ในแบบออฟไลน์ คุณสามารถดูในรายการเสียงที่ทำเครื่องหมายว่าออนไลน์",
-    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+    "original": ""
   },
   "frontend_faq008Q": {
     "message": "ทำงาน Talkie แบบออฟไลน์หรือไม่?",
-    "original": "Does Talkie work offline?"
+    "original": ""
   },
   "frontend_faq009A": {
     "message": "ไม่ Talkie Premium มีเสียงเหมือนกับ Talkie คุณสามารถติดตั้งเสียงได้มากขึ้นในระบบของคุณและสามารถใช้ได้อย่างเท่าเทียมกัน ใน Talkie Premium คุณสามารถกำหนดค่าการเลือกเสียงต่อภาษาได้",
-    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+    "original": ""
   },
   "frontend_faq009Q": {
     "message": "Talkie Premium มีเสียงมากกว่า Talkie หรือไม่?",
-    "original": "Does Talkie Premium have more voices than Talkie?"
+    "original": ""
   },
   "frontend_faq010A": {
     "message": "Google Chrome (และอาจเป็นเบราว์เซอร์ที่ใช้โครเมียมอื่น ๆ ) มีปัญหา/ข้อบกพร่องนี้มาตั้งแต่อย่างน้อยปี 2014 Talkie มีการแก้ไขปัญหาบางอย่างและมีตัวเลือกในการเปิด/ปิดการอ่านข้อความในส่วนที่สั้นกว่า ฉันจะยังคงปรับปรุงวิธีแก้ปัญหา แต่จนกว่าทีม Chromium จะทำงานได้อาจใช้งานได้ไม่สมบูรณ์ 100% หากคุณพบปัญหานี้โปรดแจ้งให้เราทราบว่าเบราว์เซอร์และเวอร์ชันระบบปฏิบัติการและเวอร์ชันใดรวมทั้งภาษา/เสียงที่คุณใช้อยู่",
-    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+    "original": ""
   },
   "frontend_faq010Q": {
     "message": "ทำไม Talkie หยุดอ่านหลังจาก 20-30 คำหรือไม่กี่วินาที?",
-    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+    "original": ""
   },
   "frontend_faq011A": {
     "message": "มีสองเหตุผล ประการแรกถ้าเสียงที่ใช้งานออนไลน์จำเป็นต้องดาวน์โหลดไฟล์คำพูดก่อนที่จะเล่น ซึ่งหมายถึงเวลาหยุดชั่วคราวที่เพิ่มขึ้นซึ่งขึ้นอยู่กับความเร็วในการเชื่อมต่ออินเทอร์เน็ตของคุณ คุณสามารถตรวจสอบเสียงที่ออนไลน์ในรายการเสียง เหตุผลที่สองคือการแก้ปัญหาสำหรับการพูดข้อความยาว ๆ จะทำให้ข้อความสั้นลงโดยปกติจะเป็นประโยคต่อประโยค ซึ่งสามารถเพิ่มการหยุดชั่วคราวชั่วคราวสำหรับแต่ละช่วงหยุดชั่วคราว คุณสามารถเปิดใช้งานการอ่านข้อความยาวเป็นส่วนหนึ่งในตัวเลือกซึ่งควรลบการหยุดชั่วคราวในระบบที่สนับสนุน",
-    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+    "original": ""
   },
   "frontend_faq011Q": {
     "message": "เหตุใด Talkie บางครั้งจึงมีการหยุดชั่วคราวระหว่างประโยคและคำ",
-    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+    "original": ""
   },
   "frontend_faq012A": {
     "message": "น่าเสียดายที่ไม่มี ปรากฎว่า Google Docs (เช่นเดียวกับ Google Spreadsheet, Google Drive และอื่น ๆ ที่คล้ายกัน) ไม่ใช่เว็บไซต์ แต่เป็น \"แอปพลิเคชันพิเศษในเบราว์เซอร์\" ที่ Google สร้างขึ้น Talkie ไม่สามารถเข้าถึงข้อความที่เลือกหรือเพิ่มรายการเมนูบริบท ฉันจะตรวจสอบเพิ่มเติมว่ามีวิธีใดบ้างในการเพิ่มการสนับสนุน Google เอกสารใน Talkie",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "original": ""
   },
   "frontend_faq012Q": {
     "message": "Talkie ทำงานใน Google เอกสารหรือไม่?",
-    "original": "Does Talkie work in Google Docs?"
+    "original": ""
   },
   "frontend_faq013A": {
     "message": "ได้โปรด! ใช้หน้าสนับสนุนหรือติดต่อฉันโดยตรง โปรดระบุข้อมูลให้มากที่สุดเท่าที่จะเป็นไปได้เช่นเบราว์เซอร์และเวอร์ชันระบบปฏิบัติการและเวอร์ชันและภาษา/เสียงที่คุณใช้อยู่ รวมถึงข้อมูลเกี่ยวกับเว็บไซต์เฉพาะที่คุณเห็นข้อบกพร่องโดยควรมีลิงก์",
-    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "original": ""
   },
   "frontend_faq013Q": {
     "message": "ฉันควรจะรายงานข้อบกพร่องหรือไม่?",
-    "original": "Should I report bugs?"
+    "original": ""
   },
   "frontend_faq014A": {
     "message": "โดยปกติ! หากคุณสามารถเลือกข้อความใน PDF ให้คลิกขวาที่ไฟล์แล้วเลือก Talkie ในเมนู หากไม่สามารถเลือกข้อความหากเป็นส่วนหนึ่งของรูปภาพระบบจะไม่สามารถใช้งานได้",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "original": ""
   },
   "frontend_faq014Q": {
     "message": "สามารถอ่าน Talkie ไฟล์ PDF ได้หรือไม่?",
-    "original": "Can Talkie read PDF files?"
+    "original": ""
   },
   "frontend_faq015A": {
     "message": "ไม่ได้ Talkie มีการใช้งานได้ไม่ จำกัด — คุณสามารถอ่านคำศัพท์และคำศัพท์ได้นานเท่าที่คุณต้องการ",
-    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+    "original": ""
   },
   "frontend_faq015Q": {
     "message": "มีขีด จำกัด ของคำว่า Talkie หรือไม่?",
-    "original": "Does Talkie have a word limit?"
+    "original": ""
   },
   "frontend_faq016A": {
     "message": "แน่นอน! เพียงติดต่อฉันผ่านทางหน้าการสนับสนุนหรือโครงการ",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "original": ""
   },
   "frontend_faq016Q": {
     "message": "ฉันสามารถขอคุณสมบัติใหม่ได้หรือไม่?",
-    "original": "Can I request new features?"
+    "original": ""
   },
   "frontend_faq017A": {
     "message": "มีตัวแก้ไขแป้นพิมพ์ลัดซึ่งคุณสามารถดูได้ที่ด้านล่างของหน้าส่วนขยายใน Google Chrome",
-    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+    "original": ""
   },
   "frontend_faq017Q": {
     "message": "วิธีการเปลี่ยนคีย์ลัดใน Google Chrome",
-    "original": "How to change shortcut keys in Google Chrome?"
+    "original": ""
   },
   "frontend_faq018A": {
     "message": "แต่น่าเสียดายที่ดูเหมือนจะเป็นไปไม่ได้ในเวลานี้ โปรดขอให้ทีม Firefox เพิ่มคุณลักษณะนี้!",
-    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+    "original": ""
   },
   "frontend_faq018Q": {
     "message": "วิธีการเปลี่ยนคีย์ลัดใน Firefox?",
-    "original": "How to change shortcut keys in Firefox?"
+    "original": ""
   },
   "frontend_faq019A": {
     "message": "แน่นอน! ขอความช่วยเหลือในการแปล Talkie เพื่อทดสอบ Talkie ในระบบใหม่เพื่อตรวจสอบข้อผิดพลาดและเพิ่มคุณลักษณะใหม่ ๆ โปรดดูที่หน้าโครงการเพื่อดูคำแนะนำ",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "original": ""
   },
   "frontend_faq019Q": {
     "message": "ฉันสามารถช่วยพัฒนา Talkie หรือไม่?",
-    "original": "Can I help develop Talkie?"
+    "original": ""
   },
   "frontend_faq020A": {
     "message": "ใช่ — โปรดบอกเพื่อนของคุณเกี่ยวกับ Talkie! อาจส่งลิงก์ไปยังผู้มีชื่อเสียงอินเทอร์เน็ตกลุ่มหรือจดหมายข่าวที่คุณชื่นชอบ คุณยังสามารถขอให้เจ้านายของคุณติดตั้งได้ในคอมพิวเตอร์ทุกเครื่องที่ทำงานหรือครูของคุณเพื่อติดตั้งในโรงเรียน การแพร่กระจายคำเกี่ยวกับ Talkie เป็นที่นิยมมาก!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "original": ""
   },
   "frontend_faq020Q": {
     "message": "ฉันสามารถช่วย Talkie ในลักษณะอื่นได้หรือไม่?",
-    "original": "Can I help Talkie in any other way?"
+    "original": ""
   },
   "frontend_faq021A": {
     "message": "ต้องใช้เวลาและความพยายามอย่างมากในการพัฒนาและดูแล Talkie — หลายร้อยชั่วโมง กระนั้น Talkie ให้ทุกคนใช้งานได้ฟรีเท่าที่ต้องการ เพื่อสนับสนุนทางการเงินเพิ่มเติมทั้งการพัฒนาการบำรุงรักษาและการรักษา Talkie ฟรีคุณลักษณะบางอย่างมีให้เฉพาะผู้ใช้ Talkie Premium",
-    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
+    "original": ""
   },
   "frontend_faq021Q": {
     "message": "เหตุใดจึงมี Talkie สองฉบับ",
-    "original": "Why are there two editions of Talkie?"
+    "original": ""
   },
   "frontend_faq022A": {
     "message": "ใช่มีตัวเลือกการชำระเงินหลายแบบ",
-    "original": "Yes, there are multiple payment options available."
+    "original": ""
   },
   "frontend_faq022Q": {
     "message": "ฉันสามารถชำระเงินโดยใช้ PayPal โอนเงินผ่านธนาคาร ฯลฯ ได้หรือไม่?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "original": ""
   },
   "frontend_faq023A": {
     "message": "ได้หากคุณชำระเงินโดยใช้ PayPal หรือ Stripe ซึ่งมีการจัดการการคืนเงินแบบง่ายๆ โดยทั่วไปการคืนเงินจะไม่สามารถใช้ได้สำหรับวิธีการชำระเงินอื่น ๆ เนื่องจากจำนวนงานพิเศษที่ต้องใช้บวกกับความเสี่ยงที่เงินจะได้รับคืนไปยังบัญชีที่ไม่ถูกต้อง",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "original": ""
   },
   "frontend_faq023Q": {
     "message": "ฉันสามารถขอรับเงินคืนได้หรือไม่?",
-    "original": "Can I get a refund?"
+    "original": ""
   },
   "frontend_faq024A": {
     "message": "ชัวร์! เพียงเปิดใช้งานการอัปเกรด Talkie Premium เพื่อทดลองใช้",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "original": ""
   },
   "frontend_faq024Q": {
     "message": "ฉันสามารถทดลองใช้ Talkie Premium ฟรีได้หรือไม่",
-    "original": "Can I try out Talkie Premium for free?"
+    "original": ""
   },
   "frontend_faq025A": {
     "message": "ไม่มีโฆษณาการรวบรวมข้อมูลหรือการติดตามผู้ใช้ใน Talkie ผู้ใช้มีความสุขที่จ่ายเงินให้กับ Talkie Premium เป็นการสร้างรายได้เพียงอย่างเดียว",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "original": ""
   },
   "frontend_faq025Q": {
     "message": "ส่วนขยาย Talkie มีโฆษณารวบรวมข้อมูลหรือติดตามผู้ใช้หรือไม่",
-    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+    "original": ""
   },
   "frontend_faq026A": {
     "message": "ระบบเกียรติยศคือเมื่อบุคคลได้รับความไว้วางใจให้ซื่อสัตย์และยึดมั่นในแนวทางปฏิบัติโดยไม่มีการตรวจสอบบังคับอย่างเคร่งครัด สำหรับ Talkie Premium ไว้วางใจว่าผู้ที่อัปเกรดได้ชำระเงินแล้ว",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "original": ""
   },
   "frontend_faq026Q": {
     "message": "ระบบเกียรติยศคืออะไร?",
-    "original": "What is the honor system?"
+    "original": ""
   },
   "frontend_faq027A": {
     "message": "เนื่องจากผู้คนทั่วโลกใช้สกุลเงินที่แตกต่างกันมีระดับรายได้ที่ใช้แล้วทิ้งที่แตกต่างกันและมีระดับความชื่นชมที่แตกต่างกันสำหรับ Talkie Premium ของ Talkie Premium ไม่มีราคาตายตัวเดียวที่ใช้ได้ผลดีกับทุกคนในโลก ยิ่งไปกว่านั้นความผันผวนของสกุลเงินแนวโน้มของวัฏจักรเศรษฐกิจความผันแปรของภูมิภาค/ภายในประเทศ ฯลฯ สรุปแล้วการตั้งราคาสำหรับผลิตภัณฑ์ที่จำหน่ายทั่วโลกมีความซับซ้อน มันง่ายกว่าที่จะให้ทุกคนกำหนดราคาของตัวเองและตรวจสอบให้แน่ใจว่าผลิตภัณฑ์นั้นดีพอที่จะรับประกันการชำระเงิน",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "original": ""
   },
   "frontend_faq027Q": {
     "message": "ทำไมตั้งราคาเองได้",
-    "original": "Why can I set my own price?"
+    "original": ""
   },
   "frontend_faq028A": {
     "message": "เนื่องจากฉันไม่รู้ว่าคุณจะสามารถใช้จ่ายซอฟต์แวร์แปลงข้อความเป็นคำพูดเป็นเงินเท่าไหร่ฉันจึงต้องการให้คุณจ่ายในสิ่งที่คุณคิดว่า Talkie Premium มีค่าสำหรับคุณไม่มากไม่น้อย ในกรณีที่คุณกำลังมองหากรอบอ้างอิงเมื่อ Google จัดการการชำระเงินสำหรับ Talkie Premium ค่าสมัครสมาชิก $$ 25 (ดอลลาร์สหรัฐ) ต่อปีในสหรัฐอเมริกา โปรดทราบว่า Google ปรับราคาสำหรับประเทศและสกุลเงินทั่วโลกเพื่อให้ตรงกับเงื่อนไขในท้องถิ่นดังนั้นจึงอาจมากหรือน้อยกว่านี้ ในขณะเดียวกันใครก็ตามที่ถามอย่างสุภาพสามารถรับ Talkie Premium ได้ฟรี",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "original": ""
   },
   "frontend_faq028Q": {
     "message": "คุณแนะนำให้ฉันจ่ายเท่าไหร่?",
-    "original": "How much do you recommend I pay?"
+    "original": ""
   },
   "frontend_faq029A": {
     "message": "เนื่องจากการติดตั้งระบบสำหรับการชำระเงินและการตรวจสอบต้องใช้เวลาและความพยายามเป็นอย่างมากและสันนิษฐานว่าค่าใช้จ่ายในการดำเนินการตรวจสอบการชำระเงินที่เข้มงวดนั้นสูงกว่าความสูญเสียจากบุคคลที่โกงระบบ การตรวจสอบการชำระเงินยังต้องการการรวบรวมข้อมูลในระดับหนึ่งจากระบบของผู้ใช้และผู้ใช้ที่มีทักษะทางเทคนิคมักจะสามารถหลีกเลี่ยงการตรวจสอบได้ ดังนั้นจากมุมมองด้านเทคนิคและธุรกิจแม้ว่าจะไม่มีการค้ำประกัน แต่ก็ง่ายกว่าที่จะเชื่อมั่นว่าผู้ใช้ยึดมั่นในระบบเกียรติยศ",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "original": ""
   },
   "frontend_faq029Q": {
     "message": "เหตุใดจึงไม่มีการยืนยันการชำระเงิน",
-    "original": "Why is there no payment verification?"
+    "original": ""
   },
   "frontend_faq030A": {
     "message": "การตัดสินใจไม่ใช้การยืนยันการชำระเงินหมายความว่าไม่สามารถยืนยันจำนวนเงินที่ชำระได้ นอกจากนี้ต้นทุนในการ \"ผลิต\" สำเนาดิจิทัลของ Talkie Premium จึงเป็นศูนย์ดังนั้นการมอบให้โดยเปล่าประโยชน์ไม่ได้หมายความถึงการสูญเสียทางการเงินสำหรับนักพัฒนา นอกจากนี้ยังมีความหวังว่าถ้าคุณชอบ Talkie Premium คุณจะบอกเพื่อนของคุณเกี่ยวกับเรื่องนี้ การให้ Talkie Premium ยังถือเป็นการพยายามทางการตลาด",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "original": ""
   },
   "frontend_faq030Q": {
     "message": "ทำไมฉันถึงเลือกที่จะไม่จ่ายอะไรเลย?",
-    "original": "Why can I choose to pay nothing?"
+    "original": ""
   },
   "frontend_faq031A": {
     "message": "ใช่โดยใช้ Stripe ดูตัวเลือกการชำระเงินเพิ่มเติม",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "original": ""
   },
   "frontend_faq031Q": {
     "message": "ฉันสามารถชำระเงินเป็นประจำทุกเดือนหรือรายปีได้หรือไม่?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "original": ""
   },
   "frontend_faq032A": {
     "message": "ได้หากคุณขอทางอีเมล โปรดระบุชื่อที่อยู่และตัวระบุภาษีมูลค่าเพิ่ม (VAT) ของคุณ (หรือเทียบเท่า)",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "original": ""
   },
   "frontend_faq032Q": {
     "message": "ฉันจะรับใบเสร็จสำหรับการชำระเงินได้หรือไม่?",
-    "original": "Can I get a receipt for my payment?"
+    "original": ""
   },
   "frontend_faq033A": {
     "message": "เนื่องจากคุณชอบคุณลักษณะเพิ่มเติมที่ Talkie Premium มอบให้และความรู้สึกมีความสุขที่ได้มีส่วนร่วมในการพัฒนาซอฟต์แวร์โอเพนซอร์สโดยนักพัฒนาอิสระ เนื่องจากต้นทุนในการพัฒนาและบำรุงรักษาบุคคลที่ค่อนข้างสูง แต่ต้นทุนของสำเนาดิจิทัล \"การผลิต\" เป็นศูนย์การชำระเงินสำหรับ Talkie Premium ยังถือเป็นการให้การสนับสนุนสำหรับการพัฒนาและการบำรุงรักษาในอนาคตเมื่อเทียบกับมูลค่าของผลิตภัณฑ์ในขณะชำระเงิน .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "original": ""
   },
   "frontend_faq033Q": {
     "message": "เหตุใดฉันจึงต้องจ่ายเงินเพื่ออัปเกรด",
-    "original": "Why should I pay to upgrade?"
+    "original": ""
   },
   "frontend_faqBugsHeading": {
     "message": "เป็นโรคจิต",
-    "original": "Bugs"
+    "original": ""
   },
   "frontend_faqGeneralHeading": {
     "message": "ทั่วไป",
-    "original": "General"
+    "original": ""
   },
   "frontend_faqHeading": {
     "message": "คำถามที่พบบ่อย",
-    "original": "Frequently asked questions"
+    "original": ""
   },
   "frontend_faqTalkiePremiumHeading": {
     "message": "Talkie Premium",
-    "original": "Talkie Premium"
+    "original": ""
   },
   "frontend_faqVoicesHeading": {
     "message": "เสียง",
-    "original": "Voices"
+    "original": ""
   },
   "frontend_featuresEdition_Free": {
     "message": "ขณะนี้ใช้ Talkie รุ่นที่ให้บริการฟรีและมีฟีเจอร์จำนวน จำกัด ให้ใช้งาน บางที Talkie Premium อาจเป็นทางเลือกที่ดีกว่าสำหรับคุณ",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "original": ""
   },
   "frontend_featuresEdition_Premium": {
     "message": "ขณะนี้กำลังใช้ Talkie Premium และมีคุณลักษณะทั้งหมด ขอบคุณมากมันอุ่นหัวใจของฉัน!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "original": ""
   },
   "frontend_featuresEditions": {
     "message": "Talkie มีสองฉบับ: Talkie และ Talkie Premium รุ่นฟรีเหมาะสำหรับกรณีการใช้งานส่วนใหญ่ แต่รุ่นพรีเมี่ยมมีตัวเลือกและคุณสมบัติเพิ่มเติม",
-    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+    "original": ""
   },
   "frontend_featuresFree_List01": {
     "message": "การตรวจจับภาษาอัตโนมัติ",
-    "original": "Automatic language detection."
+    "original": ""
   },
   "frontend_featuresFree_List02": {
     "message": "เลือกเสียงอัตโนมัติ",
-    "original": "Automatic voice selection."
+    "original": ""
   },
   "frontend_featuresFree_List03": {
     "message": "อ่านข้อความที่เลือกโดยการคลิกปุ่มทางลัดหรือคลิกขวาที่เมนู",
-    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+    "original": ""
   },
   "frontend_featuresFree_List04": {
     "message": "อ่านข้อความและบทความที่ยาวออกมาดัง ๆ แม้ว่าในขณะที่แท็บอยู่ด้านหลังก็ตาม",
-    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+    "original": ""
   },
   "frontend_featuresFree_List05": {
     "message": "รหัสนี้เป็นโอเพนซอร์สและสามารถใช้ได้ฟรีสำหรับผู้ใช้ทั้งหมด",
-    "original": "Code is open source and available for free to all users."
+    "original": ""
   },
   "frontend_featuresFree_List06": {
     "message": "ฟรี!",
-    "original": "Free!"
+    "original": ""
   },
   "frontend_featuresLinkText": {
     "message": "คุณสมบัติ",
-    "original": "Features"
+    "original": ""
   },
   "frontend_featuresPremium_List01": {
     "message": "เลือกเสียงเริ่มต้นของคุณเองสำหรับแต่ละภาษา เยี่ยมยอดหากคุณเบื่อหน่ายระบบเสียง!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "original": ""
   },
   "frontend_featuresPremium_List02": {
     "message": "เลือกความเร็วในการอ่านและระดับเสียงต่อเสียง ปรับเสียงให้เป็นที่ชื่นชอบของคุณ!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "original": ""
   },
   "frontend_featuresPremium_List03": {
     "message": "รู้สึกอุ่น ๆ เลือนลื่นที่คุณได้รับเมื่อสนับสนุนซอฟต์แวร์โอเพนซอร์สโดยนักพัฒนาอิสระ",
-    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+    "original": ""
   },
   "frontend_featuresPremium_List04": {
     "message": "การปรับปรุงในอนาคต Premium รวมฟรี",
-    "original": "Future Premium updates included for free."
+    "original": ""
   },
   "frontend_featuresPremium_List05": {
     "message": "อ่านข้อความจากคลิปบอร์ด! เพียงคัดลอกข้อความจากที่ใดก็ได้ในโปรแกรมใด ๆ และใช้ Talkie Premium เพื่ออ่าน!",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "original": ""
   },
   "frontend_licenseCLADescription": {
     "message": "การสนับสนุนทั้งหมดที่มีต่อ Talkie จะทำขึ้นภายใต้ข้อตกลงการให้สิทธิ์ผู้ร่วมให้ข้อมูล (CLA)",
-    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+    "original": ""
   },
   "frontend_licenseHeading": {
     "message": "การอนุญาต",
-    "original": "License"
+    "original": ""
   },
   "frontend_loading": {
     "message": "กำลังโหลด ...",
-    "original": "Loading..."
+    "original": ""
   },
   "frontend_rateIt": {
     "message": "รีวิว Talkie",
-    "original": "Review Talkie"
+    "original": ""
   },
   "frontend_settingsLinkText": {
     "message": "ข้อความ",
-    "original": "Text"
+    "original": ""
   },
   "frontend_storyDescription": {
     "message": "Talkie ได้รับการพัฒนาไม่กี่วันก่อนปีใหม่ 2016/2017 โดยได้ Talkie ท้าจากเพื่อน ความท้าทายเริ่มต้นด้วยคำถาม: ขณะเดินทางไปทำงานเป็นไปได้ไหมที่จะฟังบทความแทนที่จะอ่าน ง่ายมากฉันพูดและออกเดินทางเพื่อพิสูจน์ — หรืออย่างน้อยที่สุดก็เพื่อให้เบราว์เซอร์ของฉันพูดข้อความโดยใช้เสียงคอมพิวเตอร์โง่ ๆ รุ่นพื้นฐานที่ไม่มีอินเทอร์เฟซผู้ใช้ใด ๆ กลายเป็นเรื่องไม่สำคัญในการสร้าง การเพิ่มอินเทอร์เฟซผู้ใช้ใช้เวลานานขึ้นเล็กน้อย การเพิ่มการตรวจจับภาษาที่เหมาะสมจะต้องมีโค้ดมากขึ้น การเอาชนะจุดบกพร่องในเบราว์เซอร์ทำงานได้มากขึ้น รายการการปรับปรุงและคุณสมบัติต่างๆจะดำเนินต่อไป — และโค้ดสองสามพันบรรทัดในภายหลังคุณกำลังดูผลลัพธ์สุดท้าย",
-    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+    "original": ""
   },
   "frontend_storyHeading": {
     "message": "เริ่มต้นใช้งาน Talkie แล้ว",
-    "original": "How Talkie got started"
+    "original": ""
   },
   "frontend_storyThankYou": {
     "message": "ขอบคุณที่ใช้ Talkie — ถ้าคุณชอบบอกเพื่อนของคุณ!",
-    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+    "original": ""
   },
   "frontend_supportAndFeedback": {
     "message": "การสนับสนุนและข้อเสนอแนะ",
-    "original": "Support and feedback"
+    "original": ""
   },
   "frontend_supportDescription": {
     "message": "มีคำถาม? ต้องการความช่วยเหลือด้วยอะไร? สำหรับคำตอบที่รวดเร็วสำหรับคำถามทั่วไปโปรดดูคำถามที่พบบ่อยด้านล่างนี้ หากยังไม่มีคำตอบโปรดส่งคำถามมาให้คุณ ฉันยินดีเป็นอย่างยิ่งที่ประสบการณ์การใช้ $NAME$ จะราบรื่นและสนุกสนาน!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "original": "",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -464,149 +464,149 @@
   },
   "frontend_supportLinkText": {
     "message": "สนับสนุน",
-    "original": "Support"
+    "original": ""
   },
   "frontend_systemBrowserLanguageHeading": {
     "message": "ภาษาเบราเซอร์ที่ต้องการ",
-    "original": "Preferred browser language"
+    "original": ""
   },
   "frontend_systemBrowserLanguagesHeading": {
     "message": "ภาษาเบราเซอร์ที่ต้องการ",
-    "original": "Preferred browser languages"
+    "original": ""
   },
   "frontend_systemBrowserTypeHeading": {
     "message": "ประเภทเบราเซอร์",
-    "original": "Browser type"
+    "original": ""
   },
   "frontend_systemCurrentEditionHeading": {
     "message": "ฉบับปัจจุบัน",
-    "original": "Current edition"
+    "original": ""
   },
   "frontend_systemHeading": {
     "message": "รายละเอียดของระบบ",
-    "original": "System details"
+    "original": ""
   },
   "frontend_systemInstalledDialectsHeading": {
     "message": "ติดตั้ง Voice Dialects",
-    "original": "Installed voice dialects"
+    "original": ""
   },
   "frontend_systemInstalledLanguagesHeading": {
     "message": "ติดตั้งภาษาเสียงแล้ว",
-    "original": "Installed voice languages"
+    "original": ""
   },
   "frontend_systemInstalledVersionHeading": {
     "message": "รุ่นที่ติดตั้งแล้ว",
-    "original": "Installed version"
+    "original": ""
   },
   "frontend_systemInstalledVoicesHeading": {
     "message": "ติดตั้งเสียงแล้ว",
-    "original": "Installed voices"
+    "original": ""
   },
   "frontend_systemOSHeading": {
     "message": "ประเภทระบบปฏิบัติการ",
-    "original": "Operating system type"
+    "original": ""
   },
   "frontend_systemTalkieUILanguageHeading": {
     "message": "ภาษาอินเทอร์เฟซผู้ใช้ Talkie",
-    "original": "Talkie user interface language"
+    "original": ""
   },
   "frontend_systemTalkieUILanguagesHeading": {
     "message": "Talkie ภาษาอินเทอร์เฟซผู้ใช้",
-    "original": "Talkie user interface languages"
+    "original": ""
   },
   "frontend_upgradeExplanation01": {
     "message": "ราคาสำหรับ Talkie Premium ไม่คงที่ แทนที่จะจ่ายตามที่คุณต้องการขึ้นอยู่กับว่าคุณคิดว่าคุณสมบัติพิเศษมีค่าสำหรับคุณมากแค่ไหน คุณสามารถตัดสินใจที่จะไม่จ่ายอะไรเลย",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+    "original": ""
   },
   "frontend_upgradeExplanation02": {
     "message": "หลังจากส่งการชำระเงินแล้วจะไม่มีรหัสอัปเกรดให้ป้อนไม่มีบัญชีผู้ใช้ที่จะลงทะเบียนหรือยืนยันการชำระเงินอื่น ๆ Talkie Premium แทนใช้ระบบเกียรติยศ",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "original": ""
   },
   "frontend_upgradeExplanation03": {
     "message": "โปรดทราบว่า Talkie ไม่มีการโฆษณาการติดตามผู้ใช้หรือการรวบรวมข้อมูลเป็นวิธีอื่นในการสร้างรายได้ การชำระเงินจะระบุว่าเป็นการบริจาคสำหรับการพัฒนาซอฟต์แวร์โอเพนซอร์ส",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "original": ""
   },
   "frontend_upgradeHeading": {
     "message": "อัปเกรดเป็น Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
+    "original": ""
   },
   "frontend_upgradeLabel": {
     "message": "ฉันได้จ่ายเงินสำหรับ Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "original": ""
   },
   "frontend_upgradePaymentAlternativesLinkText": {
     "message": "วิธีการชำระเงินเพิ่มเติมผ่านหน้าการบริจาค",
-    "original": "More payment methods via the donations page"
+    "original": ""
   },
   "frontend_upgradePaymentPrimaryLinkText": {
     "message": "ชำระเงินด้วย PayPal",
-    "original": "Pay using PayPal"
+    "original": ""
   },
   "frontend_usageLinkText": {
     "message": "การใช้",
-    "original": "Usage"
+    "original": ""
   },
   "frontend_usageReadclipboard": {
     "message": "อ่านข้อความใด ๆ ที่คัดลอกไปยังคลิปบอร์ดของคุณ — ใช้คีย์ลัดเพื่อฟังข้อความจากที่ใดก็ได้นอกเบราว์เซอร์ นอกจากนี้คุณยังสามารถคลิกขวาที่ปุ่ม Talkie Premium หรือในพื้นที่ว่างของเว็บไซต์และเลือกอ่านจากคลิปบอร์ด",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
+    "original": ""
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "นอกจากนี้คุณยังสามารถเลือกข้อความจากนั้นคลิกขวาที่ไอคอนและเลือก Talkie ในเมนู ด้วยวิธีนี้จะทำงานในไฟล์ PDF และหน้าเว็บบางประเภทในเบราเซอร์",
-    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+    "original": ""
   },
   "frontend_usageShortcutHeading": {
     "message": "ปุ่มลัด",
-    "original": "Shortcut keys"
+    "original": ""
   },
   "frontend_usageShortcutKeyAlternative04": {
     "message": "หากคีย์ลัดไม่ทำงานโปรดตรวจสอบว่าไม่ได้ใช้ส่วนขยายหรือโปรแกรมอื่นอยู่แล้ว",
-    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
+    "original": ""
   },
   "frontend_usageShortcutKeyAlternative05": {
     "message": "ตรวจสอบหรือเปลี่ยนปุ่มลัด Talkie",
-    "original": "Check or change the Talkie shortcut keys."
+    "original": ""
   },
   "frontend_usageShortcutKeyDescription": {
     "message": "ตัวเลือกที่สะดวกคือใช้ปุ่มลัด Talkie :",
-    "original": "A convenient option is to use the Talkie shortcut keys:"
+    "original": ""
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
     "message": "อ่านข้อความจากคลิปบอร์ดในโปรแกรมใดก็ได้",
-    "original": "Read text from clipboard in any program"
+    "original": ""
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "เริ่มหยุด",
-    "original": "Start/stop"
+    "original": ""
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
     "message": "เริ่มหยุด",
-    "original": "Start/stop"
+    "original": ""
   },
   "frontend_usageStep01": {
     "message": "เลือกข้อความที่ต้องการในเว็บเพจใดก็ได้",
-    "original": "Select desired text on any web page."
+    "original": ""
   },
   "frontend_usageStep02": {
     "message": "คลิกปุ่ม Talkie ในแถบเครื่องมือของเบราเซอร์",
-    "original": "Click the Talkie button in your browser toolbar"
+    "original": ""
   },
   "frontend_voicesDescription": {
     "message": "ดูและทดสอบเสียงที่ติดตั้งสำหรับแต่ละภาษาในเบราว์เซอร์ของคุณ Talkie Premium ผู้ใช้ยังสามารถเลือกเสียงที่ชื่นชอบเป็นค่าเริ่มต้นสำหรับแต่ละภาษารวมถึงกำหนดความเร็วและระดับเสียงสำหรับแต่ละเสียง",
-    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+    "original": ""
   },
   "frontend_voicesLinkText": {
     "message": "เสียง",
-    "original": "Voices"
+    "original": ""
   },
   "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
     "message": "Pitch for Voice",
-    "original": "Pitch for voice"
+    "original": ""
   },
   "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
     "message": "Pitch for $VOICE$",
-    "original": "Pitch for $VOICE$",
+    "original": "",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -617,12 +617,12 @@
   "frontend_voicesRateEmptyHeading": {
     "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
     "message": "ความเร็วสำหรับเสียง",
-    "original": "Speed for voice"
+    "original": ""
   },
   "frontend_voicesRateHeading": {
     "description": "The per-voice speed options heading, including the voice name",
     "message": "ความเร็ว $VOICE$",
-    "original": "Speed for $VOICE$",
+    "original": "",
     "placeholders": {
       "voice": {
         "content": "$1",
@@ -633,12 +633,12 @@
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
     "message": "สุนัขจิ้งจอกสีน้ำตาลเร็วกระโดดข้ามสุนัขขี้เกียจ",
-    "original": "The quick brown fox jumps over the lazy dog."
+    "original": ""
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "ใช้ $VOICE$ เป็นเสียงเริ่มต้นสำหรับข้อความใน $LANGUAGE$",
-    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "original": "",
     "placeholders": {
       "language": {
         "content": "$1",
@@ -652,27 +652,27 @@
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "ในเบราว์เซอร์บางประเภทคุณไม่สามารถอ่านข้อความยาวได้อย่างต่อเนื่อง ในการแก้ไขปัญหานี้ Talkie แนะนำให้หยุดชั่วคราวระหว่างประโยค/ประโยคและหลังเครื่องหมายวรรคตอนอื่น ๆ",
-    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+    "original": ""
   },
   "frontend_voicesSpeakLongTextsExplanation02": {
     "message": "ถ้าคุณเปิดใช้งานตัวเลือกนี้และการอ่านข้อความยาวจะหยุดลงหลังจาก 10-20 วินาทีโปรดปิดใช้งานอีกครั้ง",
-    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+    "original": ""
   },
   "frontend_voicesSpeakLongTextsHeading": {
     "message": "พยายามอ่านข้อความที่ยาวโดยไม่หยุดชั่วคราว",
-    "original": "Try to read long texts without pauses"
+    "original": ""
   },
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "อ่านข้อความที่ยาวโดยไม่หยุดชั่วคราว (ทดลอง)",
-    "original": "Read long texts without pauses (experimental)"
+    "original": ""
   },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "ด้วย Talkie Premium คุณสามารถเปลี่ยนเสียงเริ่มต้นสำหรับแต่ละภาษาตลอดจนเสียงและระดับเสียงสำหรับแต่ละเสียง",
-    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+    "original": ""
   },
   "frontend_welcomeHero01": {
     "message": "ยินดีต้อนรับสู่ $NAME$! ขณะนี้คุณใช้ส่วนขยายเบราว์เซอร์แบบข้อความเป็นคำพูดที่ดีที่สุดในโลก",
-    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "original": "",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -682,7 +682,7 @@
   },
   "frontend_welcomeHero02": {
     "message": "ไปข้างหน้าและเลือกข้อความนี้แล้วคลิกปุ่ม $NAME$ ในแถบเครื่องมือของเบราเซอร์ สนุก!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "original": "",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -692,7 +692,7 @@
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
     "message": "Talkie ปัจจุบันสามารถ Talkie $VOICES_COUNT$ ให้ $LANGUAGE_GROUPS_COUNT$ ใน $LANGUAGES_COUNT$ ท้องถิ่น $LANGUAGES_COUNT$ ในเบราว์เซอร์ $SYSTEM_TYPE_PRETTY_NAME$ ใช้ระบบปฏิบัติการ $OSTYPE_PRETTY_NAME$",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "original": "",
     "placeholders": {
       "language_groups_count": {
         "content": "$2",
@@ -718,31 +718,31 @@
   },
   "frontend_welcomeLinkText": {
     "message": "ยินดีต้อนรับ",
-    "original": "Welcome"
+    "original": ""
   },
   "noTextSelectedMessage": {
     "message": "โปรดเลือกข้อความที่ต้องการในเว็บไซต์ก่อน นอกจากนี้คุณยังสามารถเลือกข้อความจากนั้นคลิกขวาและเลือก Talkie ในเมนู",
-    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+    "original": ""
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
     "message": "Talkie ไม่สามารถเข้าถึงข้อความที่เลือกได้จากหน้าเว็บประเภทนี้ เป็นหน้าพิเศษและมีข้อ จำกัด ด้านความปลอดภัยในเบราว์เซอร์ นอกจากนี้คุณยังสามารถลองเลือกข้อความจากนั้นคลิกขวาและเลือก Talkie ในเมนู ฉันขอโทษสำหรับความไม่สะดวก.",
-    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+    "original": ""
   },
   "readClipboardIsAPremiumFeature": {
     "message": "ฉันขอโทษ แต่การอ่านข้อความจากคลิปบอร์ดเป็น Talkie Premium คุณคิดว่าการอัพเกรดหรือไม่?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "original": ""
   },
   "readClipboardNeedsBrowserSupport": {
     "message": "ขออภัยเว็บเบราเซอร์ไม่สนับสนุนการอ่านจากคลิปบอร์ด ยังไม่ถึงอย่างน้อย โปรดลองอีกครั้งในหนึ่งเดือนหรือ!",
-    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "original": ""
   },
   "readClipboardNeedsPermission": {
     "message": "Talkie ไม่มีสิทธิ์เข้าถึงจากคลิปบอร์ด ไม่เป็นไร แต่การอ่านข้อความจากคลิปบอร์ดจะไม่ทำงาน",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "original": ""
   },
   "readClipboardNoSuitableText": {
     "message": "ไม่พบข้อความที่เหมาะสมในคลิปบอร์ด คุณสามารถลองคัดลอกสิ่งอื่นได้หรือไม่?",
-    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
+    "original": ""
   }
 }
