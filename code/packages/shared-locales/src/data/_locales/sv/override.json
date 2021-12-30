@@ -119,7 +119,7 @@
   },
   "frontend_featuresPremium_List04": {
     "message": "Överkomligt pris. Framtida Premium-uppdateringar ingår kostnadsfritt.",
-    "original": "Future Premium updates included for free.",
+    "original": "Future Premium updates included without additional cost.",
     "translated-from": "Future Premium updates included for free."
   },
   "frontend_licenseCLADescription": {
@@ -272,12 +272,12 @@
   },
   "frontend_voicesSpeakLongTextsHeading": {
     "message": "Försök läsa upp långa texter utan pauser",
-    "original": "Try to read long texts without pauses",
+    "original": "Reading longer text",
     "translated-from": "Try to read long texts without pauses"
   },
   "frontend_voicesSpeakLongTextsLabel": {
     "message": "Läs upp långa texter utan pauser (experimentellt)",
-    "original": "Read long texts without pauses (experimental)",
+    "original": "Read longer texts without pauses (experimental)",
     "translated-from": "Read long texts without pauses (experimental)"
   },
   "noTextSelectedMessage": {
@@ -298,8 +298,8 @@
   },
   "readClipboardNeedsBrowserSupport": {
     "message": "Jag är ledsen, men den här webbläsaren stöder inte läsning från Urklipp. Inte än, åtminstone. Försök igen om en månad eller så!",
-    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!",
-    "translated-from": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!",
+    "translated-from": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
   },
   "readClipboardNeedsPermission": {
     "message": "Talkie har inte behörighet att komma åt ur Urklipp. Det är okej, men då kommer funktionen läsa text från Urklipp inte att fungera.",

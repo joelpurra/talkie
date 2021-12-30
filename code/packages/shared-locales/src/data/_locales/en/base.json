@@ -60,25 +60,25 @@
     "message": "Project page on joelpurra.com"
   },
   "frontend_faq001A": {
-    "message": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ."
+    "message": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
   },
   "frontend_faq001Q": {
     "message": "How does Talkie detect installed voices?"
   },
   "frontend_faq002A": {
-    "message": "You can add more voices from both Microsoft and others; see separate installation instructions."
+    "message": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
   },
   "frontend_faq002Q": {
     "message": "How can I install more voices in Talkie on Microsoft Windows?"
   },
   "frontend_faq003A": {
-    "message": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may be available in the Chrome Web Store."
+    "message": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
   },
   "frontend_faq003Q": {
     "message": "How can I install more voices in Talkie on Google ChromeOS?"
   },
   "frontend_faq004A": {
-    "message": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+    "message": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
   },
   "frontend_faq004Q": {
     "message": "How can I install more voices in Talkie on Apple macOS?"
@@ -108,7 +108,7 @@
     "message": "Does Talkie work offline?"
   },
   "frontend_faq009A": {
-    "message": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+    "message": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
   },
   "frontend_faq009Q": {
     "message": "Does Talkie Premium have more voices than Talkie?"
@@ -126,13 +126,13 @@
     "message": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Should I report bugs?"
@@ -330,7 +330,7 @@
     "message": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "Future Premium updates included for free."
+    "message": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
     "message": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
@@ -587,7 +587,7 @@
     "message": "This includes support information for other browsers and operating systems."
   },
   "frontend_voicesShowAdditionalDetailsHeading": {
-    "message": "Show additional details"
+    "message": "Additional details"
   },
   "frontend_voicesShowAdditionalDetailsLabel": {
     "message": "Show additional details"
@@ -602,10 +602,10 @@
     "message": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
   },
   "frontend_voicesSpeakLongTextsHeading": {
-    "message": "Try to read long texts without pauses"
+    "message": "Reading longer text"
   },
   "frontend_voicesSpeakLongTextsLabel": {
-    "message": "Read long texts without pauses (experimental)"
+    "message": "Read longer texts without pauses (experimental)"
   },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
@@ -667,7 +667,7 @@
     "message": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
   },
   "readClipboardNeedsPermission": {
     "message": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
