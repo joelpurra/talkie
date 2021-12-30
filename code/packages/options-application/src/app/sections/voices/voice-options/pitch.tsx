@@ -36,6 +36,10 @@ import RangeWithHeading, {
 export interface PitchProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}
 
 class Pitch<P extends PitchProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		voiceName: null,
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -89,10 +93,6 @@ class Pitch<P extends PitchProps & TranslateProps> extends React.PureComponent<P
 			/>
 		);
 	}
-
-	static defaultProps = {
-		voiceName: null,
-	};
 }
 
 export default translateAttribute<PitchProps & TranslateProps>()(

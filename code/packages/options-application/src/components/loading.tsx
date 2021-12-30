@@ -38,6 +38,10 @@ export interface LoadingProps extends ChildrenRequiredProps, ClassNameProp {
 interface InternalProps extends LoadingProps, TranslateProps {}
 
 class Loading<P extends InternalProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		isBlockElement: false,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -68,10 +72,6 @@ class Loading<P extends InternalProps> extends React.PureComponent<P> {
 			</LoadingWrapper>
 		);
 	}
-
-	static defaultProps = {
-		isBlockElement: false,
-	};
 }
 
 export default translateAttribute<InternalProps>()(

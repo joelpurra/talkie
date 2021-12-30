@@ -51,6 +51,13 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 		};
 	}
 
+	override state: ErrorBoundaryState = {
+		componentStack: null,
+		hasError: false,
+		message: null,
+		stacktrace: null,
+	};
+
 	override componentDidCatch(error: unknown, info: ReadonlyDeep<ErrorInfo>): void {
 		// TODO: use DualLogger?
 		// eslint-disable-next-line no-console
@@ -221,11 +228,4 @@ Hope this helps =)
 
 `;
 	}
-
-	override state: ErrorBoundaryState = {
-		componentStack: null,
-		hasError: false,
-		message: null,
-		stacktrace: null,
-	};
 }

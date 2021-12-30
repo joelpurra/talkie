@@ -23,4 +23,22 @@ module.exports = {
 		"eslint-config-joelpurra/react",
 		"eslint-config-joelpurra/typescript",
 	],
+	"overrides": [
+		{
+			"files": "./packages/*/**/*.tsx",
+			"rules": {
+				"@typescript-eslint/naming-convention": [
+					"error",
+					  {
+						"selector": "function",
+						"format": [
+							// https://github.com/typescript-eslint/typescript-eslint/issues/2607
+							"PascalCase",
+							"strictCamelCase",
+						]
+					}
+				]
+			}
+		}
+	]
 };

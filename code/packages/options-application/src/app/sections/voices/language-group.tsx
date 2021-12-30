@@ -52,6 +52,10 @@ interface LanguageGroupProps extends LanguageGroupStateProps, LanguageGroupDispa
 }
 
 class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		sampleTextBlockQuote: StyletronComponent<ComponentProps<typeof textBase.blockquote>>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -160,10 +164,6 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			</>
 		);
 	}
-
-	private readonly styled: {
-		sampleTextBlockQuote: StyletronComponent<ComponentProps<typeof textBase.blockquote>>;
-	};
 }
 
 export default LanguageGroup;

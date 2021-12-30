@@ -23,3 +23,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // HACK: trick dependency automation scripts to ensure the correct build order, by "fake importing" from the dependencies.
 // NOTE: it's it's actually the renderer packages which should depend in this package, but since there's a separate packaging step it doesn't matter.
+
+const dummy = null;
+export default dummy;

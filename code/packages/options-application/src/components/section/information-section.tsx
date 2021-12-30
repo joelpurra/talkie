@@ -42,6 +42,12 @@ export interface InformationSectionProps extends ChildrenRequiredProps, ClassNam
 }
 
 class InformationSection<P extends InformationSectionProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		childBox: StyletronComponent<ComponentProps<"div">>;
+		glyphIcon: StyletronComponent<ComponentProps<"div">>;
+		informationBox: StyletronComponent<ComponentProps<"div">>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -121,12 +127,6 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 			</this.styled.informationBox>
 		);
 	}
-
-	private readonly styled: {
-		childBox: StyletronComponent<ComponentProps<"div">>;
-		glyphIcon: StyletronComponent<ComponentProps<"div">>;
-		informationBox: StyletronComponent<ComponentProps<"div">>;
-	};
 }
 
 export default InformationSection;

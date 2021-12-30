@@ -45,6 +45,18 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
+			static override contextType = BroadcasterContext;
+			declare context: React.ContextType<typeof BroadcasterContext>;
+
+			isListeningToBroadcasts = false;
+			killSwitches: KillSwitch[] = [];
+
+			override state = {
+				current: 0,
+				max: 0,
+				min: 0,
+			};
+
 			constructor(props: P) {
 				super(props);
 
@@ -147,18 +159,6 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 
 				this.killSwitches.push(killSwitch);
 			}
-
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
-
-			isListeningToBroadcasts = false;
-			killSwitches: KillSwitch[] = [];
-
-			override state = {
-				current: 0,
-				max: 0,
-				min: 0,
-			};
 		}
 
 		return ProgressHoc as unknown as React.ComponentClass<U>;

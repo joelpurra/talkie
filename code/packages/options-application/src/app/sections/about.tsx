@@ -55,6 +55,11 @@ interface AboutProps extends AboutStateProps {
 }
 
 class About<P extends AboutProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		navigatorLanguage: null,
+		osType: null,
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -286,11 +291,6 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 			</section>
 		);
 	}
-
-	static defaultProps = {
-		navigatorLanguage: null,
-		osType: null,
-	};
 }
 
 export default configureAttribute<AboutProps & ConfigureProps>()(

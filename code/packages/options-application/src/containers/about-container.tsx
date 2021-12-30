@@ -80,6 +80,11 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalAbou
 });
 
 class AboutContainer<P extends InternalAboutContainerProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		navigatorLanguage: null,
+		osType: null,
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -139,11 +144,6 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			/>
 		);
 	}
-
-	static defaultProps = {
-		navigatorLanguage: null,
-		osType: null,
-	};
 }
 
 export default connect<StateProps, DispatchProps, InternalAboutContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(

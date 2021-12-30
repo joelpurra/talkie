@@ -38,6 +38,10 @@ import RangeWithHeading, {
 export interface RateProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}
 
 class Rate<P extends RateProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		voiceName: null,
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -94,10 +98,6 @@ class Rate<P extends RateProps & TranslateProps> extends React.PureComponent<P> 
 			/>
 		);
 	}
-
-	static defaultProps = {
-		voiceName: null,
-	};
 }
 
 export default translateAttribute<RateProps & TranslateProps>()(

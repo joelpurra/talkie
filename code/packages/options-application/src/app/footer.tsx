@@ -37,6 +37,13 @@ interface FooterDispatchProps {}
 interface FooterProps extends FooterStateProps, FooterDispatchProps {}
 
 export default class Footer<P extends FooterProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		footer: typeof layoutBase.footer;
+		footerFirstLink: typeof lighter.a;
+		footerSecondLink: typeof lighter.a;
+		footerErrorLink: typeof errors.span;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -112,11 +119,4 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 			</this.styled.footer>
 		);
 	}
-
-	private readonly styled: {
-		footer: typeof layoutBase.footer;
-		footerFirstLink: typeof lighter.a;
-		footerSecondLink: typeof lighter.a;
-		footerErrorLink: typeof errors.span;
-	};
 }

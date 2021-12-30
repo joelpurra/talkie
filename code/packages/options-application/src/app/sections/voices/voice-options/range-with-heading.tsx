@@ -51,17 +51,9 @@ interface RangeWithHeadingState {
 }
 
 class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & TranslateProps> extends React.PureComponent<P, RangeWithHeadingState> {
-	constructor(props: P) {
-		super(props);
-
-		this.handleInput = this.handleInput.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-
-		this.onChange = this.onChange.bind(this);
-
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedOnChange = debounce(this.onChange as any, 200);
-	}
+	static defaultProps = {
+		voiceName: null,
+	};
 
 	static getDerivedStateFromProps(props: ReadonlyDeep<RangeWithHeadingProps>, state: ReadonlyDeep<RangeWithHeadingState>) {
 		if (props.initialValue !== state.value) {
@@ -72,6 +64,24 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 		}
 
 		return null;
+	}
+
+	override state = {
+		value: this.props.initialValue,
+	};
+
+	debouncedOnChange: (value: number) => void;
+
+	constructor(props: P) {
+		super(props);
+
+		this.handleInput = this.handleInput.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+
+		this.onChange = this.onChange.bind(this);
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		this.debouncedOnChange = debounce(this.onChange as any, 200);
 	}
 
 	onChange(value: number): void {
@@ -101,6 +111,7 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 			getHeading,
 			voiceName,
 			translateSync,
+
 			ScaleRangeElementClass,
 			min,
 			defaultValue,
@@ -140,16 +151,6 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 			</tableBase.tbody>
 		);
 	}
-
-	static defaultProps = {
-		voiceName: null,
-	};
-
-	override state = {
-		value: this.props.initialValue,
-	};
-
-	debouncedOnChange: (value: number) => void;
 }
 
 export default translateAttribute<RangeWithHeadingProps & ScaleRangeProps & TranslateProps>()(

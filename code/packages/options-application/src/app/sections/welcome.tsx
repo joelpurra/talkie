@@ -65,6 +65,16 @@ interface WelcomeState {
 }
 
 class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureComponent<P, WelcomeState> {
+	override state = {
+		spokeSample: false,
+	};
+
+	private readonly welcomeSampleTextElementRef: React.RefObject<HTMLSpanElement>;
+	private readonly styled: {
+		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
+		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -211,16 +221,6 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 			</section>
 		);
 	}
-
-	override state = {
-		spokeSample: false,
-	};
-
-	private readonly welcomeSampleTextElementRef: React.RefObject<HTMLSpanElement>;
-	private readonly styled: {
-		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-	};
 }
 
 export default translateAttribute<WelcomeProps & TranslateProps>()(

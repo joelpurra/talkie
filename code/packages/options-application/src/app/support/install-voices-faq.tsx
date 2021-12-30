@@ -36,6 +36,10 @@ export interface InstallVoicesFaqProps {
 }
 
 class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -165,10 +169,6 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 			</>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-	};
 }
 
 export default translateAttribute<InstallVoicesFaqProps & TranslateProps>()(

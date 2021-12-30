@@ -43,6 +43,11 @@ export interface MultilineSelectProps {
 }
 
 class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends React.PureComponent<P, unknown> {
+	static defaultProps = {
+		value: null,
+	};
+
+	selectRef: React.RefObject<HTMLSelectElement>;
 	constructor(props: P) {
 		super(props);
 
@@ -88,12 +93,6 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends Re
 			</select>
 		);
 	}
-
-	static defaultProps = {
-		value: null,
-	};
-
-	selectRef: React.RefObject<HTMLSelectElement>;
 }
 
 export default styled(MultilineSelect, formBase.multilineSelect);

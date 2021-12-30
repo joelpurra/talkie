@@ -59,6 +59,15 @@ export interface UsageProps {
 }
 
 class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
+	private readonly styled: {
+		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
+		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -307,15 +316,6 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 			</section>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-	};
-
-	private readonly styled: {
-		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
-	};
 }
 
 export default configureAttribute<UsageProps & ConfigureProps>()(

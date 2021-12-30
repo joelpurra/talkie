@@ -36,6 +36,10 @@ export interface PremiumSectionProps {
 }
 
 export default class PremiumSection<P extends PremiumSectionProps & ChildrenRequiredProps & ClassNameProp> extends React.PureComponent<P> {
+	static defaultProps = {
+		headingLink: true,
+	};
+
 	override render(): React.ReactNode {
 		const {
 			className,
@@ -56,8 +60,4 @@ export default class PremiumSection<P extends PremiumSectionProps & ChildrenRequ
 			</EditionSection>
 		);
 	}
-
-	static defaultProps = {
-		headingLink: true,
-	};
 }

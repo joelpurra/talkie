@@ -95,6 +95,18 @@ const styles: StyleObject = {
 };
 
 class Main<P extends MainProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
+	private readonly links: NavLink[];
+
+	private readonly styled: {
+		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
+		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
+		navHeader: StyletronComponent<ComponentProps<"div">>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -336,18 +348,6 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			</div>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-	};
-
-	private readonly links: NavLink[];
-
-	private readonly styled: {
-		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
-		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
-		navHeader: StyletronComponent<ComponentProps<"div">>;
-	};
 }
 
 export default styled(

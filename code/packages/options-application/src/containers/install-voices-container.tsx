@@ -56,6 +56,10 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (_dispatch) => ({});
 
 class InstallVoicesContainer<P extends InternalProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -82,10 +86,6 @@ class InstallVoicesContainer<P extends InternalProps> extends React.PureComponen
 			/>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-	};
 }
 
 export default connect<StateProps, DispatchProps, InternalProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(

@@ -80,6 +80,14 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProp
 });
 
 class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState> extends React.PureComponent<P, S> {
+	override state = (
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		{
+			attemptedLoadingSampleText: false,
+			loadVoicesRetryCount: 0,
+		} as S
+	);
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -151,14 +159,6 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 			/>
 		);
 	}
-
-	override state = (
-		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-		{
-			attemptedLoadingSampleText: false,
-			loadVoicesRetryCount: 0,
-		} as S
-	);
 }
 
 export default connect<StateProps, DispatchProps, InternalProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
