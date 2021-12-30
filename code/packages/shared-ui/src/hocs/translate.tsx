@@ -34,6 +34,9 @@ export default function translateAttribute<P extends TranslateProps = TranslateP
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function translateHoc(ComponentToWrap: React.ComponentType<P>) {
 		class TranslationHoc extends React.PureComponent<P> {
+			static override contextType = TranslateContext;
+			declare context: React.ContextType<typeof TranslateContext>;
+
 			override render(): React.ReactNode {
 				return (
 					<ComponentToWrap
@@ -42,9 +45,6 @@ export default function translateAttribute<P extends TranslateProps = TranslateP
 						translateSync={this.context.translateSync}/>
 				);
 			}
-
-			static override contextType = TranslateContext;
-			declare context: React.ContextType<typeof TranslateContext>;
 		}
 
 		return TranslationHoc as unknown as React.ComponentClass<U>;

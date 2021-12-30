@@ -44,6 +44,10 @@ export interface CheckboxWithLabelProps {
 }
 
 class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		labelForCheckbox: StyletronComponent<ComponentProps<"label">>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -86,10 +90,6 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 			</this.styled.labelForCheckbox>
 		);
 	}
-
-	private readonly styled: {
-		labelForCheckbox: StyletronComponent<ComponentProps<"label">>;
-	};
 }
 
 export default styled(CheckboxWithLabel, formBase.checkbox);

@@ -47,6 +47,10 @@ export interface SupportProps {
 }
 
 class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -241,10 +245,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 			</section>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-	};
 }
 
 export default configureAttribute<SupportProps & ConfigureProps>()(

@@ -95,11 +95,6 @@ export const TranslateContext = React.createContext<TranslationProviderContext>(
 export const BroadcasterContext = React.createContext<BroadcasterProviderContext>(undefined as unknown as BroadcasterProviderContext);
 
 class Providers<P extends ProvidersProps & StateProps & DispatchProps & ChildrenRequiredProps, S extends ProvidersState = ProvidersState> extends React.PureComponent<P, S> {
-	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
-	constructor(props: P) {
-		super(props);
-	}
-
 	static getConfigure(configuration: Readonly<IConfiguration>, systemType: SystemType | null): ConfigureContextProperty {
 		// TODO: fix null case.
 		if (typeof systemType !== "string") {
@@ -122,6 +117,27 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 		}
 
 		return null;
+	}
+
+	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+	override state = {
+		broadcasterContextValue: {
+			broadcaster: this.props.broadcaster,
+		},
+		configurationContextValue: {
+			configure: Providers.getConfigure(this.props.configuration, this.props.systemType),
+		},
+		systemType: this.props.systemType,
+		translateContextValue: {
+			translateSync: (key: string, extras?: Readonly<string[]>) =>
+				// eslint-disable-next-line no-sync
+				this.props.translator.translateSync(key, extras),
+		},
+	} as S;
+
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
+	constructor(props: P) {
+		super(props);
 	}
 
 	override render(): React.ReactNode {
@@ -149,22 +165,6 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 			</ConfigurationContext.Provider>
 		);
 	}
-
-	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-	override state = {
-		broadcasterContextValue: {
-			broadcaster: this.props.broadcaster,
-		},
-		configurationContextValue: {
-			configure: Providers.getConfigure(this.props.configuration, this.props.systemType),
-		},
-		systemType: this.props.systemType,
-		translateContextValue: {
-			translateSync: (key: string, extras?: Readonly<string[]>) =>
-				// eslint-disable-next-line no-sync
-				this.props.translator.translateSync(key, extras),
-		},
-	} as S;
 }
 
 export default connect<StateProps, DispatchProps, ProvidersProps, SharedRootState>(mapStateToProps, mapDispatchToProps)(

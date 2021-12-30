@@ -37,14 +37,14 @@ export default function configureAttribute<P extends ConfigureProps = ConfigureP
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function configureHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ConfigurationHoc extends React.PureComponent<P> {
+			static override contextType = ConfigurationContext;
+			declare context: React.ContextType<typeof ConfigurationContext>;
+
 			override render(): React.ReactNode {
 				return (
 					<ComponentToWrap {...this.props} configure={this.context.configure}/>
 				);
 			}
-
-			static override contextType = ConfigurationContext;
-			declare context: React.ContextType<typeof ConfigurationContext>;
 		}
 
 		return ConfigurationHoc as unknown as React.ComponentClass<U>;

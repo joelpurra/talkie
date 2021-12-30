@@ -40,6 +40,12 @@ import {
 } from "styletron-react";
 
 class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		a: StyletronComponent<ComponentProps<typeof textBase.a>>;
+		li: StyletronComponent<ComponentProps<"li">>;
+		ol: StyletronComponent<ComponentProps<"ol">>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -120,12 +126,6 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			</layoutBase.nav>
 		);
 	}
-
-	private readonly styled: {
-		a: StyletronComponent<ComponentProps<typeof textBase.a>>;
-		li: StyletronComponent<ComponentProps<"li">>;
-		ol: StyletronComponent<ComponentProps<"ol">>;
-	};
 }
 
 export default configureAttribute()(

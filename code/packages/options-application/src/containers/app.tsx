@@ -68,6 +68,10 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, AppProps> = 
 });
 
 class App<P extends AppProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		osType: null,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -102,10 +106,6 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 			/>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

@@ -36,14 +36,14 @@ export default function broadcasterAttribute<P extends BroadcasterProps = Broadc
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>) {
 		class BroadcasterHoc extends React.PureComponent<P> {
+			static override contextType = BroadcasterContext;
+			declare context: React.ContextType<typeof BroadcasterContext>;
+
 			override render(): React.ReactNode {
 				return (
 					<ComponentToWrap {...this.props} broadcaster={this.context.broadcaster}/>
 				);
 			}
-
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
 		}
 
 		return BroadcasterHoc as unknown as React.ComponentClass<U>;

@@ -60,6 +60,11 @@ export interface FeaturesDispatchProps {
 interface FeaturesProps extends FeaturesStateProps, FeaturesDispatchProps {}
 
 class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		storeLink: StyletronComponent<ComponentProps<"div">>;
+		storeLinks: StyletronComponent<ComponentProps<"div">>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -215,11 +220,6 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 			</section>
 		);
 	}
-
-	private readonly styled: {
-		storeLink: StyletronComponent<ComponentProps<"div">>;
-		storeLinks: StyletronComponent<ComponentProps<"div">>;
-	};
 }
 
 export default configureAttribute<FeaturesProps & ConfigureProps>()(

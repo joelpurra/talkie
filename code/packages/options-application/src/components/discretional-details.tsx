@@ -45,6 +45,8 @@ export interface DiscretionalDetailsProps extends ChildrenRequiredProps, ClassNa
 }
 
 export default class DiscretionalDetails<P extends DiscretionalDetailsProps> extends React.PureComponent<P> {
+	wrappedDetailsRef: React.RefObject<HTMLDetailsElement>;
+
 	constructor(props: P) {
 		super(props);
 
@@ -109,6 +111,4 @@ export default class DiscretionalDetails<P extends DiscretionalDetailsProps> ext
 			</layoutBase.details>
 		);
 	}
-
-	wrappedDetailsRef: React.RefObject<HTMLDetailsElement>;
 }

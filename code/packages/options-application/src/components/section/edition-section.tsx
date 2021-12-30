@@ -52,6 +52,17 @@ export interface EditionSectionProps extends ChildrenRequiredProps, ClassNamePro
 interface InternalProps extends EditionSectionProps, TranslateProps {}
 
 class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		headingLink: true,
+	};
+
+	private readonly styled: {
+		h2ModeHeading: StyletronComponent<ComponentProps<"h2">>;
+		wrapperBase: StyletronComponent<ComponentProps<"div">>;
+		h2ModeWrapper: StyletronComponent<ComponentProps<"div">>;
+		pModeWrapper: StyletronComponent<ComponentProps<"div">>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -173,17 +184,6 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			</Wrapper>
 		);
 	}
-
-	static defaultProps = {
-		headingLink: true,
-	};
-
-	private readonly styled: {
-		h2ModeHeading: StyletronComponent<ComponentProps<"h2">>;
-		wrapperBase: StyletronComponent<ComponentProps<"div">>;
-		h2ModeWrapper: StyletronComponent<ComponentProps<"div">>;
-		pModeWrapper: StyletronComponent<ComponentProps<"div">>;
-	};
 }
 
 export default translateAttribute<InternalProps>()(

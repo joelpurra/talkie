@@ -36,6 +36,10 @@ export interface FreeSectionProps {
 }
 
 export default class FreeSection<P extends FreeSectionProps & ChildrenRequiredProps & ClassNameProp> extends React.PureComponent<P> {
+	static defaultProps = {
+		headingLink: true,
+	};
+
 	override render(): React.ReactNode {
 		const {
 			className,
@@ -56,8 +60,4 @@ export default class FreeSection<P extends FreeSectionProps & ChildrenRequiredPr
 			</EditionSection>
 		);
 	}
-
-	static defaultProps = {
-		headingLink: true,
-	};
 }

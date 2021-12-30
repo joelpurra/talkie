@@ -46,6 +46,13 @@ export interface NavProps {
 }
 
 export default class Nav<P extends NavProps> extends React.PureComponent<P> {
+	private readonly styled: {
+		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
+		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
+		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
+		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -171,11 +178,4 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			</this.styled.nav>
 		);
 	}
-
-	private readonly styled: {
-		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
-		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
-		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
-		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
-	};
 }

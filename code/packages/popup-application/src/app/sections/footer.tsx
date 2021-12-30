@@ -51,6 +51,13 @@ export interface FooterProps extends FooterStateProps, FooterDispatchProps {
 }
 
 class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent<P> {
+	styled: {
+		footer: StyletronComponent<ComponentProps<typeof layoutBase.footer>>;
+		footerFirstLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
+		footerSecondLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
+		footerErrorLink: StyletronComponent<ComponentProps<typeof errors.span>>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
@@ -99,6 +106,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		} = this.props;
 
 		// TODO: create a component class.
+
 		const ErrorCount = errorCount === 0
 			? null
 			: (
@@ -138,13 +146,6 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 			</this.styled.footer>
 		);
 	}
-
-	styled: {
-		footer: StyletronComponent<ComponentProps<typeof layoutBase.footer>>;
-		footerFirstLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerSecondLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerErrorLink: StyletronComponent<ComponentProps<typeof errors.span>>;
-	};
 }
 
 export default configureAttribute<FooterProps & ConfigureProps>()(

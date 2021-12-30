@@ -47,6 +47,16 @@ export interface InstallVoicesProps {
 }
 
 class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React.PureComponent<P, InstallVoicesState> {
+	static defaultProps = {
+		osType: null,
+		sampleText: null,
+		sampleTextLanguageCode: null,
+	};
+
+	override state = {
+		hasWaitedLongEnoughForVoicesToLoad: false,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -133,16 +143,6 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			</section>
 		);
 	}
-
-	static defaultProps = {
-		osType: null,
-		sampleText: null,
-		sampleTextLanguageCode: null,
-	};
-
-	override state = {
-		hasWaitedLongEnoughForVoicesToLoad: false,
-	};
 }
 
 export default translateAttribute<InstallVoicesProps & TranslateProps>()(

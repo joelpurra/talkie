@@ -42,6 +42,16 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
 	return function isSpeakingHoc(ComponentToWrap: React.ComponentType<P>) {
 		class IsSpeakingHoc extends React.Component<P, IsSpeakingHocState> {
+			static override contextType = BroadcasterContext;
+			declare context: React.ContextType<typeof BroadcasterContext>;
+
+			override state = {
+				isSpeaking: false,
+			};
+
+			isListeningToBroadcasts: boolean;
+			killSwitches: KillSwitch[];
+
 			constructor(props: P) {
 				super(props);
 
@@ -154,16 +164,6 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 					this.killSwitches.push(killSwitch);
 				}
 			}
-
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
-
-			override state = {
-				isSpeaking: false,
-			};
-
-			isListeningToBroadcasts: boolean;
-			killSwitches: KillSwitch[];
 		}
 
 		return IsSpeakingHoc as unknown as React.ComponentClass<U>;
