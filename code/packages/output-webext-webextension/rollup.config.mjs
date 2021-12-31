@@ -31,7 +31,7 @@ const rollupConfiguration = {
 		name: fileName,
 	},
 	plugins: [
-		webext("../../..", ".", "./dist/webext/webextension/"),
+		webext("../../..", ".", "./dist/webext/"),
 	]
 };
 

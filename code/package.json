@@ -88,7 +88,7 @@
     "lint:xo": "xo",
     "lint:xo:fix": "xo --fix",
     "output": "lerna run output && npm run --silent output:source && npm run --silent output:list",
-    "output:list": "node --eval \"console.log(require('fs').readdirSync('publish').filter(n => n.endsWith('.zip') || n.endsWith('.xpi')))\"",
+    "output:list": "lerna run output:list && ls -l *.zip",
     "output:source": "git archive --format zip -9 --output ./talkie-joelpurra.com-$(npm run --silent version:get:head)-source.zip HEAD",
     "preoutput": "npm run --silent rebuild && npm run --silent test && npm run --silent lint && ( cd packages/shared-locales && npm run --silent messages:count ; )",
     "rebuild": "npm run --silent clean && npm run --silent rebuild:project-references && npm run --silent rebuild:lerna",

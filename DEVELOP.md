@@ -64,8 +64,8 @@ The build process assumes that current stable versions of the following are avai
 - From the browser extensions settings page:
   - Enable developer mode.
   - Load one of the output directories as an unpacked extension.
-    - `./packages/output-webext-chrome/dist/chrome/` for Google Chrome, Chromium, Vivaldi, and similar browsers.
-    - `./packages/output-webext-webextension/dist/webextension/` for Firefox, and other browsers.
+    - `./packages/output-webext-chrome/dist/webext/` for Google Chrome, Chromium, Vivaldi, and similar browsers.
+    - `./packages/output-webext-webextension/dist/webext/` for Firefox, and other browsers.
 
 ## Building
 

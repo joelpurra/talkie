@@ -15,16 +15,17 @@
   "private": true,
   "scripts": {
     "build": "npm run --silent build:rollup && npm run --silent build:webextension",
-    "build:patch": "( cd ./dist/webext/webextension/ && talkie-all-renderer ; )",
-    "build:patch:manifest": "json -Ie \"this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' WebExtension '); delete this.commands['read-clipboard'];\" -f ./dist/webext/webextension/manifest.json",
+    "build:patch": "( cd ./dist/webext/ && talkie-all-renderer ; )",
+    "build:patch:manifest": "json -Ie \"this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' WebExtension '); delete this.commands['read-clipboard'];\" -f ./dist/webext/manifest.json",
     "build:rollup": "rollup --config rollup.config.mjs",
     "build:webextension": "npm run --silent build:patch:manifest && npm run --silent build:patch",
     "clean": "rimraf ./dist",
-    "lint": "web-ext --source-dir=./dist/webext/webextension/ lint --ignore-files ./resources/style/bidi.css",
-    "output": "rimraf ./dist/web-ext-artifacts/ && web-ext --source-dir=./dist/webext/webextension/ build && mkdirp ./dist/publish && mv -n ./dist/web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.zip\"",
-    "publish": "web-ext --source-dir=./dist/webext/webextension/ sign --id '{d83c8fb0-e51b-4d74-9c10-90e9610f16ca}' --channel listed && mv -n ./dist/web-ext-artifacts/talkie*.xpi \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.xpi\" && echo 'NOTE: Manually upload source code and check upload status on https://addons.mozilla.org/en-US/developers/addons'",
+    "lint": "web-ext --source-dir=./dist/webext/ lint --ignore-files ./resources/style/bidi.css",
+    "output": "rimraf ./web-ext-artifacts/ && web-ext --source-dir=./dist/webext/ build && mkdirp ./dist/publish && mv -n ./web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.zip\"",
+    "output:list": "ls -l ./dist/publish/",
+    "publish": "web-ext --source-dir=./dist/webext/ sign --id '{d83c8fb0-e51b-4d74-9c10-90e9610f16ca}' --channel listed && mv -n ./web-ext-artifacts/talkie*.xpi \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.xpi\" && echo 'NOTE: Manually upload source code and check upload status on https://addons.mozilla.org/en-US/developers/addons'",
     "rebuild": "npm run --silent clean && npm run --silent build",
-    "run:firefox": "mkdirp ./dist/profiles/firefox/ && web-ext --source-dir=./dist/webext/webextension/ run --target firefox-desktop ---firefox-profile \"${PWD}/dist/profiles/firefox/\" --keep-profile-changes --browser-console --start-url 'https://www.wikipedia.org/'"
+    "run:firefox": "mkdirp ./dist/profiles/firefox/ && web-ext --source-dir=./dist/webext/ run --target firefox-desktop ---firefox-profile \"${PWD}/dist/profiles/firefox/\" --keep-profile-changes --browser-console --start-url 'https://www.wikipedia.org/'"
   },
   "type": "module"
 }
