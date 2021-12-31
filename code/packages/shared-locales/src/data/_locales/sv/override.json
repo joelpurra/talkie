@@ -117,6 +117,11 @@
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers.",
     "translated-from": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
+  "frontend_featuresPremium_List04": {
+    "message": "Framtida Premium-uppdateringar ingår utan extra kostnad.",
+    "original": "Future Premium updates included without additional cost.",
+    "translated-from": "Future Premium updates included without additional cost."
+  },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA).",
@@ -259,6 +264,16 @@
     "message": "Om du aktiverar det här alternativet och uppläsning av långa texter stannar efter 10-20 sekunder, stäng av det igen.",
     "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again.",
     "translated-from": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Läs upp längre texter",
+    "original": "Reading longer text",
+    "translated-from": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Läs upp längre texter utan pauser (experimentellt)",
+    "original": "Read longer texts without pauses (experimental)",
+    "translated-from": "Read longer texts without pauses (experimental)"
   },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",

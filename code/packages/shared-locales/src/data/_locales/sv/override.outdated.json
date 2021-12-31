@@ -1,22 +1,7 @@
 {
-  "frontend_featuresPremium_List04": {
-    "message": "Överkomligt pris. Framtida Premium-uppdateringar ingår kostnadsfritt.",
-    "original": "Future Premium updates included without additional cost.",
-    "translated-from": "Future Premium updates included for free."
-  },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan används av något annat tillägg eller program.",
+    "message": "Det är vanligt med konflikter för kortkommandon för olika tillägg och program. Om kortkommandot inte fungerar, kontrollera att det inte redan används av något annat.",
     "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else.",
     "translated-from": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
-  },
-  "frontend_voicesSpeakLongTextsHeading": {
-    "message": "Försök läsa upp långa texter utan pauser",
-    "original": "Reading longer text",
-    "translated-from": "Try to read long texts without pauses"
-  },
-  "frontend_voicesSpeakLongTextsLabel": {
-    "message": "Läs upp långa texter utan pauser (experimentellt)",
-    "original": "Read longer texts without pauses (experimental)",
-    "translated-from": "Read long texts without pauses (experimental)"
   }
 }
