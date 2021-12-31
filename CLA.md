@@ -10,10 +10,10 @@
 <table>
   <tr>
     <td align="center">
-      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./code/packages/shared-resources/src/resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" alt="Talkie is available for installation from Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./code/packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
+      <a href="https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk"><img src="./code/packages/shared-resources/src/resources/chrome-web-store/HRs9MPufa1J1h5glNhut.png" alt="Talkie is available for installation from Chrome Web Store" width="248" height="75" border="0" /><br /><img src="./code/packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
     <td align="center">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./code/packages/shared-resources/src/resources/firefox-amo/AMO-button_1.png" alt="Talkie is available for installation from Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./code/packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/talkie/"><img src="./code/packages/shared-resources/src/resources/firefox-amo/get-the-addon-fx-apr-2020.min.svg" alt="Talkie is available for installation from Chrome Web Store" width="172" height="60" border="0" /><br /><img src="./code/packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" /> Talkie</a><br />&nbsp;
     </td>
   </tr>
 </table>
