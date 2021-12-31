@@ -67,7 +67,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 		super(props);
 
 		const partialStyled = {
-			h2ModeHeading: styled(
+			h2ModeHeading: withStyleDeep(
 				textBase.h2,
 				{
 					marginTop: "1em",

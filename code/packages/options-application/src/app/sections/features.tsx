@@ -158,7 +158,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 								href={configure("urls.external.chromewebstore")}
 								lang="en"
 							>
-								<img alt={cwsAltText} height="75" src="../../../shared-resources/src/resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png" width="248"/>
+								<img alt={cwsAltText} height="75" src="../../../shared-resources/src/resources/chrome-web-store/HRs9MPufa1J1h5glNhut.png" width="248"/>
 								<br/>
 								<TalkieFreeIcon
 									mode="inline"
@@ -171,7 +171,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 								href={configure("urls.external.firefox-amo")}
 								lang="en"
 							>
-								<img alt={amoAltText} height="60" src="../../../shared-resources/src/resources/firefox-amo/AMO-button_1.png" width="172"/>
+								<img alt={amoAltText} height="60" src="../../../shared-resources/src/resources/firefox-amo/get-the-addon-fx-apr-2020.min.svg" width="172"/>
 								<br/>
 								<TalkieFreeIcon
 									mode="inline"

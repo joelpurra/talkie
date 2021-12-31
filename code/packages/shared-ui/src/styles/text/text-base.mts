@@ -29,6 +29,16 @@ export const text: StyleObject = {
 	color: colorBase.textColor,
 };
 
+export const lighterText: StyleObject = {
+	...text,
+	fontWeight: "lighter",
+};
+
+export const smallerText: StyleObject = {
+	...text,
+	fontSize: "smaller",
+};
+
 export const highlight: StyleObject = {
 	color: colorBase.linkHighlightColor,
 };
@@ -44,7 +54,10 @@ export const heading: StyleObject = {
 	marginTop: "2em",
 };
 
-export const h1: StyleObject = heading;
+export const h1: StyleObject = {
+	...heading,
+	marginTop: "1em",
+};
 export const h2: StyleObject = heading;
 export const h3: StyleObject = heading;
 export const h4: StyleObject = heading;
@@ -118,4 +131,11 @@ export const summaryHeading4: StyleObject = {
 export const summaryHeading5: StyleObject = {
 	...h5,
 	...summaryHeading,
+};
+
+export const headingActionSpan: StyleObject = {
+	...lighterText,
+	...smallerText,
+	paddingLeft: "1em",
+	paddingRight: "1em",
 };

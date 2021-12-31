@@ -118,9 +118,9 @@
     "translated-from": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "Överkomligt pris. Framtida Premium-uppdateringar ingår kostnadsfritt.",
-    "original": "Future Premium updates included for free.",
-    "translated-from": "Future Premium updates included for free."
+    "message": "Framtida Premium-uppdateringar ingår utan extra kostnad.",
+    "original": "Future Premium updates included without additional cost.",
+    "translated-from": "Future Premium updates included without additional cost."
   },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
@@ -167,12 +167,7 @@
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
     "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
-  "frontend_usageShortcutKeyAlternative03": {
-    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan används av något annat tillägg eller program.",
-    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program.",
-    "translated-from": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
-  },
-  "frontend_usageShortcutKeyAlternative04": {
+  "frontend_usageShortcutKeyAlternative05": {
     "message": "Kontrollera eller ändra Talkies kortkommandon.",
     "original": "Check or change the Talkie shortcut keys.",
     "translated-from": "Check or change the Talkie shortcut keys."
@@ -191,16 +186,6 @@
     "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält",
     "original": "Click the Talkie button in your browser toolbar",
     "translated-from": "Click the Talkie button in your browser toolbar"
-  },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Tillgängliga språk",
-    "original": "Available languages",
-    "translated-from": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Tillgängliga röster",
-    "original": "Available voices",
-    "translated-from": "Available voices"
   },
   "frontend_voicesDescription": {
     "message": "Se och testa installerade röster för varje språk i din webbläsare. Talkie Premium-användare kan även välja sin favoritröst per språk, samt läshastighet och tonhöj för varje röst.",
@@ -254,17 +239,6 @@
     "original": "The quick brown fox jumps over the lazy dog.",
     "translated-from": "The quick brown fox jumps over the lazy dog."
   },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Exempeltext för Talkie att läsa upp",
-    "original": "Sample text for Talkie to read out loud",
-    "translated-from": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Använd som standardröst för språk",
-    "original": "Use as default voice for language",
-    "translated-from": "Use as default voice for language"
-  },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
     "message": "Använd $VOICE$ som standardröst för text på $LANGUAGE$",
@@ -281,11 +255,6 @@
     },
     "translated-from": "Use $VOICE$ as default voice for text in $LANGUAGE$"
   },
-  "frontend_voicesShowAllVoices": {
-    "message": "Visa alla röster",
-    "original": "Show all voices",
-    "translated-from": "Show all voices"
-  },
   "frontend_voicesSpeakLongTextsExplanation01": {
     "message": "I vissa webbläsare är det inte möjligt att kontinuerligt läsa långa texter. För att arbeta runt detta har Talkie infört en liten paus mellan meningar/klausuler och efter annan interpunktion.",
     "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation.",
@@ -297,14 +266,14 @@
     "translated-from": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
   },
   "frontend_voicesSpeakLongTextsHeading": {
-    "message": "Försök läsa upp långa texter utan pauser",
-    "original": "Try to read long texts without pauses",
-    "translated-from": "Try to read long texts without pauses"
+    "message": "Läs upp längre texter",
+    "original": "Reading longer text",
+    "translated-from": "Reading longer text"
   },
   "frontend_voicesSpeakLongTextsLabel": {
-    "message": "Läs upp långa texter utan pauser (experimentellt)",
-    "original": "Read long texts without pauses (experimental)",
-    "translated-from": "Read long texts without pauses (experimental)"
+    "message": "Läs upp längre texter utan pauser (experimentellt)",
+    "original": "Read longer texts without pauses (experimental)",
+    "translated-from": "Read longer texts without pauses (experimental)"
   },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",
@@ -324,8 +293,8 @@
   },
   "readClipboardNeedsBrowserSupport": {
     "message": "Jag är ledsen, men den här webbläsaren stöder inte läsning från Urklipp. Inte än, åtminstone. Försök igen om en månad eller så!",
-    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!",
-    "translated-from": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!",
+    "translated-from": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
   },
   "readClipboardNeedsPermission": {
     "message": "Talkie har inte behörighet att komma åt ur Urklipp. Det är okej, men då kommer funktionen läsa text från Urklipp inte att fungera.",

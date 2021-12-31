@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Discretional from "@talkie/shared-ui/components/discretional.js";
+import translateAttribute, {
+	TranslateProps,
+} from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
@@ -56,7 +59,7 @@ interface VoicesDispatchProps {
 	speakSampleTextForVoiceName: (voiceName: string) => void;
 }
 
-interface VoicesProps extends VoicesStateProps, VoicesDispatchProps {}
+interface VoicesProps extends VoicesStateProps, VoicesDispatchProps, TranslateProps {}
 
 class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -80,6 +83,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 			selectedVoiceName,
 			speakSampleTextForLanguage,
 			speakSampleTextForVoiceName,
+			translateSync,
 			voiceCountForSelectedLanguageCode,
 		} = this.props as VoicesProps;
 
@@ -101,17 +105,16 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							Installed languages
 							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? " (Error: no selected language group.)"}`}
 							{hasSelectedLanguageGroup && languageGroupsCount > 1 && (
-								<>
+								<textBase.headingActionSpan>
 									{" "}
 									(
 									<buttonBase.transparentButton
 										type="button"
 									>
-										{/* TODO: translate. */}
-										show all
+										{translateSync("frontend_voicesShowAllListItems")}
 									</buttonBase.transparentButton>
 									)
-								</>
+								</textBase.headingActionSpan>
 							)}
 						</textBase.h2>
 
@@ -145,17 +148,16 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							Installed dialects
 							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? " (Error: no selected language code.)"}`}
 							{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && (
-								<>
+								<textBase.headingActionSpan>
 									{" "}
 									(
 									<buttonBase.transparentButton
 										type="button"
 									>
-										{/* TODO: translate. */}
-										show all
+										{translateSync("frontend_voicesShowAllListItems")}
 									</buttonBase.transparentButton>
 									)
-								</>
+								</textBase.headingActionSpan>
 							)}
 						</textBase.h3>
 
@@ -163,8 +165,13 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							enabled={!hasSelectedLanguageCode}
 						>
 							<p>
-								{/* TODO: translate. */}
-								{`Found ${languageCountForSelectedLanguageGroup} dialects for ${selectedLanguageGroup ?? " (Error: no selected language group.)"}.`}
+								{translateSync(
+									"frontend_voicesFoundDialects",
+									[
+										languageCountForSelectedLanguageGroup.toString(10),
+										selectedLanguageGroup ?? " (Error: no selected language group.)",
+									],
+								)}
 							</p>
 
 							<DialectsContainer
@@ -194,17 +201,16 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							Installed voices
 							{hasSelectedVoiceName && `: ${selectedVoiceName ?? " (Error: no selected voice name.)"}`}
 							{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && (
-								<>
+								<textBase.headingActionSpan>
 									{" "}
 									(
 									<buttonBase.transparentButton
 										type="button"
 									>
-										{/* TODO: translate. */}
-										show all
+										{translateSync("frontend_voicesShowAllListItems")}
 									</buttonBase.transparentButton>
 									)
-								</>
+								</textBase.headingActionSpan>
 							)}
 						</textBase.h4>
 
@@ -234,4 +240,6 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 	}
 }
 
-export default Voices;
+export default translateAttribute<VoicesProps & TranslateProps>()(
+	Voices,
+);

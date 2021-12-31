@@ -37,7 +37,8 @@ import {
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
-import InstallVoicesFaq from "../support/install-voices-faq.js";
+import InstallVoicesFaq from "./support/install-voices-faq.js";
+import SupportEntry from "./support/support-entry.js";
 
 export interface SupportProps {
 	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
@@ -61,27 +62,6 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 	handleOpenShortKeysConfigurationClick(event: React.MouseEvent): false {
 		// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
 		return this.props.onOpenShortKeysConfigurationClick(event);
-	}
-
-	standardFaqEntry(id: number): React.ReactNode {
-		const {
-			translateSync,
-		} = this.props;
-
-		const paddedId = id.toString(10).padStart(3, "0");
-
-		return (
-			<layoutBase.details>
-				<layoutBase.summary>
-					<textBase.summaryHeading4>
-						{translateSync(`frontend_faq${paddedId}Q`)}
-					</textBase.summaryHeading4>
-				</layoutBase.summary>
-				<textBase.p>
-					{translateSync(`frontend_faq${paddedId}A`)}
-				</textBase.p>
-			</layoutBase.details>
-		);
 	}
 
 	override render(): React.ReactNode {
@@ -109,25 +89,83 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					{translateSync("frontend_faqVoicesHeading")}
 				</textBase.h3>
 
-				{this.standardFaqEntry(1)}
+				<SupportEntry id={1}/>
+				<SupportEntry id={9}/>
 
 				<InstallVoicesFaq
 					osType={osType}
 					showAdditionalDetails={showAdditionalDetails}
 				/>
 
-				{this.standardFaqEntry(6)}
-				{this.standardFaqEntry(7)}
-				{this.standardFaqEntry(8)}
-				{this.standardFaqEntry(9)}
+				<SupportEntry id={6}/>
+				<SupportEntry id={7}/>
+				<SupportEntry id={8}/>
+
+				<Discretional
+					enabled={showAdditionalDetails || osType === "win"}
+				>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<textBase.summaryHeading4>
+								{translateSync("frontend_faq034Q")}
+							</textBase.summaryHeading4>
+						</layoutBase.summary>
+						<textBase.p>
+							{translateSync("frontend_faq034A")}
+						</textBase.p>
+
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://en.wikipedia.org/wiki/Microsoft_Speech_API"
+									lang="en"
+								>
+									Speech Application Programming Interface (SAPI)
+								</textBase.a>
+							</listBase.li>
+							<listBase.li>
+								<textBase.a
+									href="https://en.wikipedia.org/wiki/Microsoft_text-to-speech_voices"
+									lang="en"
+								>
+									Microsoft text-to-speech voices
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+
+					<layoutBase.details>
+						<layoutBase.summary>
+							<textBase.summaryHeading4>
+								{translateSync("frontend_faq035Q")}
+							</textBase.summaryHeading4>
+						</layoutBase.summary>
+						<textBase.p>
+							{translateSync("frontend_faq035A")}
+						</textBase.p>
+
+						<listBase.ul>
+							<listBase.li>
+								<textBase.a
+									href="https://stackoverflow.com/questions/40406719/windows-10-tts-voices-not-showing-up"
+									lang="en"
+								>
+									StackOverflow: Windows 10 TTS voices not showing up?
+								</textBase.a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+				</Discretional>
+
+				<SupportEntry id={36}/>
 
 				<textBase.h3>
 					{translateSync("frontend_faqGeneralHeading")}
 				</textBase.h3>
 
-				{this.standardFaqEntry(14)}
-				{this.standardFaqEntry(15)}
-				{this.standardFaqEntry(16)}
+				<SupportEntry id={14}/>
+				<SupportEntry id={15}/>
+				<SupportEntry id={16}/>
 
 				<Discretional
 					enabled={showAdditionalDetails || systemType === "chrome"}
@@ -149,7 +187,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 									// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
 									onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
 								>
-									{translateSync("frontend_usageShortcutKeyAlternative04")}
+									{translateSync("frontend_usageShortcutKeyAlternative05")}
 								</textBase.a>
 							</listBase.li>
 						</listBase.ul>
@@ -174,42 +212,42 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 								<textBase.a
 									href={configure("webextension.urls.external.shortcut-keys")}
 								>
-									{translateSync("frontend_usageShortcutKeyAlternative04")}
+									{translateSync("frontend_usageShortcutKeyAlternative05")}
 								</textBase.a>
 							</listBase.li>
 						</listBase.ul>
 					</layoutBase.details>
 				</Discretional>
 
-				{this.standardFaqEntry(19)}
-				{this.standardFaqEntry(20)}
-				{this.standardFaqEntry(25)}
+				<SupportEntry id={19}/>
+				<SupportEntry id={20}/>
+				<SupportEntry id={25}/>
 
 				<textBase.h3>
 					{translateSync("frontend_faqTalkiePremiumHeading")}
 				</textBase.h3>
 
-				{this.standardFaqEntry(21)}
-				{this.standardFaqEntry(33)}
-				{this.standardFaqEntry(24)}
-				{this.standardFaqEntry(22)}
-				{this.standardFaqEntry(23)}
-				{this.standardFaqEntry(26)}
-				{this.standardFaqEntry(27)}
-				{this.standardFaqEntry(28)}
-				{this.standardFaqEntry(29)}
-				{this.standardFaqEntry(30)}
-				{this.standardFaqEntry(31)}
-				{this.standardFaqEntry(32)}
+				<SupportEntry id={21}/>
+				<SupportEntry id={33}/>
+				<SupportEntry id={24}/>
+				<SupportEntry id={22}/>
+				<SupportEntry id={23}/>
+				<SupportEntry id={26}/>
+				<SupportEntry id={27}/>
+				<SupportEntry id={28}/>
+				<SupportEntry id={29}/>
+				<SupportEntry id={30}/>
+				<SupportEntry id={31}/>
+				<SupportEntry id={32}/>
 
 				<textBase.h3>
 					{translateSync("frontend_faqBugsHeading")}
 				</textBase.h3>
 
-				{this.standardFaqEntry(10)}
-				{this.standardFaqEntry(11)}
-				{this.standardFaqEntry(12)}
-				{this.standardFaqEntry(13)}
+				<SupportEntry id={10}/>
+				<SupportEntry id={11}/>
+				<SupportEntry id={12}/>
+				<SupportEntry id={13}/>
 
 				<textBase.h2>
 					{translateSync("frontend_supportLinksHeading")}

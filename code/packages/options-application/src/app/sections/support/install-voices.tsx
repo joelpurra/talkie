@@ -29,8 +29,8 @@ import translateAttribute, {
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
-import Loading from "../../components/loading.js";
-import Markdown from "../../components/markdown.js";
+import Loading from "../../../components/loading.js";
+import Markdown from "../../../components/markdown.js";
 import InstallVoicesFaq from "./install-voices-faq.js";
 
 interface InstallVoicesState {
@@ -87,22 +87,16 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 		// NOTE: don't show additional details on the welcome page.
 		const showAdditionalDetails = false;
 
-		// TODO: translated, pretty name.
-		const systemTypePrettyName = systemType ?? "(unknown system type)";
-
-		// TODO: translated, pretty name.
-		const osTypePrettyName = osType ?? "(unknown operating system)";
-
-		const boldedVoicesCountMarkdown = `**${voicesCount.toString(10)}**`;
-		const boldedLanguageGroupsCountMarkdown = `**${languageGroupsCount.toString(10)}**`;
-		const boldedLanguagesCountMarkdown = `**${languagesCount.toString(10)}**`;
-
 		const moreVoicesCountsMarkdown = translateSync("frontend_welcomeInstallMoreVoicesDescription", [
-			boldedVoicesCountMarkdown,
-			boldedLanguageGroupsCountMarkdown,
-			boldedLanguagesCountMarkdown,
-			systemTypePrettyName,
-			osTypePrettyName,
+			`**${voicesCount.toString(10)}**`,
+			`**${languageGroupsCount.toString(10)}**`,
+			`**${languagesCount.toString(10)}**`,
+
+			// TODO: translated fallback.
+			systemType ?? "(ERROR: unknown system type)",
+
+			// TODO: translated fallback.
+			osType ?? "(ERROR: unknown operating system)",
 		]);
 
 		return (
@@ -126,13 +120,11 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 					enabled={!haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad}
 				>
 					<textBase.h3>
-						{/* TODO: translate. */}
-						No text-to-speech voices found
+						{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
 					</textBase.h3>
 
 					<textBase.p>
-						{/* TODO: translate. */}
-						Please install some voices on your system, otherwise Talkie will not work. Sorry!
+						{translateSync("frontend_installVoicesNoVoiceFound")}
 					</textBase.p>
 				</Discretional>
 

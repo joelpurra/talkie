@@ -84,13 +84,13 @@ export interface MainDispatchProps {
 export interface MainProps extends MainStateProps, MainDispatchProps, TranslateProps, ClassNameProp {}
 
 const widthStyles = {
-	maxWidth: "1000px",
-	minWidth: "400px",
+	maxWidth: "1400px",
+	minWidth: "600px",
 };
 
 const styles: StyleObject = {
 	...widthStyles,
-	minHeight: "450px",
+	minHeight: "600px",
 	paddingBottom: "2em",
 };
 
@@ -163,7 +163,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			main: withStyleDeep(
 				layoutBase.main,
 				{
-					paddingTop: "10em",
+					marginTop: "10em",
 				},
 			),
 

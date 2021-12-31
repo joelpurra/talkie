@@ -1,0 +1,865 @@
+{
+  "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "$NAME$ দিয়ে উচ্চস্বরে পাঠ্য নির্বাচন পড়ুন",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Static": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Talkie দিয়ে উচ্চস্বরে পাঠ্য নির্বাচন পড়ুন",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonStopTitle": {
+    "message": "কথা বন্ধ করুন",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "উচ্চস্বরে পাঠ্য নির্বাচন পড়ুন",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Talkie ওয়েবসাইট",
+    "original": "The Talkie website"
+  },
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Talkie Premium আপগ্রেড করুন",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "commandReadClipboardDescription": {
+    "message": "ক্লিপবোর্ড থেকে পড়ুন",
+    "original": "Read from the clipboard"
+  },
+  "commandStartStopDescription": {
+    "message": "নির্বাচন পড়া শুরু/বন্ধ করুন",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "40 টিরও বেশি ভাষায় বক্তৃতার জন্য দ্রুত, সহজ, উচ্চ-মানের পাঠ্য। ওয়েবসাইট, পিডিএফ, ইমেল থেকে উচ্চস্বরে পড়ুন। TTS দিয়ে টেক্সট বলুন।",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "বৈশিষ্ট্য এবং আপগ্রেড",
+    "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "ব্যবহার এবং শর্টকাট",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "ভয়েস এবং ভাষা",
+    "original": "Voices and languages"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "যেকোনো ওয়েব পৃষ্ঠায় পছন্দসই পাঠ্য নির্বাচন করুন এবং আপনার ব্রাউজার টুলবারে Talkie",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Github-এ সোর্স কোড",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Github-এ ফিচার রিকোয়েস্ট এবং বাগ রিপোর্ট",
+    "original": "Feature requests and bug reports on Github"
+  },
+  "frontend_aboutLinkText": {
+    "message": "সম্পর্কিত",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "joelpurra.com এ প্রজেক্ট পেজ",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "ভয়েসগুলি অপারেটিং সিস্টেম (উইন্ডোজ, ক্রোমওএস, ম্যাকওএস, লিনাক্স, ইত্যাদি) এবং আপনার বর্তমান ব্রাউজার (গুগল ক্রোম, মাইক্রোসফ্ট এজ, ফায়ারফক্স, ইত্যাদি) উভয় থেকেই আসে। এর মানে হল যে আপনি যে কোনো ভয়েস ডাউনলোড এবং ইনস্টল করতে পারেন, আপনার কম্পিউটার রিবুট করতে পারেন এবং Talkie স্বয়ংক্রিয়ভাবে তাদের চিনতে পারে। আপনি একটি ভিন্ন ব্রাউজার ব্যবহার করার চেষ্টা করতে পারেন, কারণ একই সিস্টেমে ভয়েস সমর্থন ভিন্ন হতে পারে।",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
+  },
+  "frontend_faq001Q": {
+    "message": "কিভাবে Talkie ইনস্টল করা ভয়েস সনাক্ত করে?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "আপনি Microsoft এবং অন্যান্য উভয় থেকে আরও ভয়েস যোগ করতে পারেন। সিস্টেম সেটিংসে একটি নতুন ভাষা যোগ করা সবচেয়ে সহজ। নিশ্চিত করুন যে আপনি ভাষার জন্য ভয়েসও ইনস্টল করেছেন। পৃথক ইনস্টলেশন নির্দেশাবলী দেখুন।",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "আমি কিভাবে Microsoft Windows Talkie এ আরো ভয়েস ইনস্টল করতে পারি?",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "আপনি সহজেই সিস্টেম সেটিংসে অতিরিক্ত ভয়েস এবং ভাষা ইনস্টল করতে পারেন। ChromeOS-এর জন্য ভয়েসগুলি Chrome ওয়েব স্টোরেও উপলব্ধ হতে পারে৷",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "আমি কীভাবে Google ChromeOS- Talkie এ আরও ভয়েস ইনস্টল করতে পারি?",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "বক্তৃতার জন্য macOS সিস্টেম পছন্দগুলি থেকে অতিরিক্ত ভয়েস সহজেই ইনস্টল করা যেতে পারে। পৃথক ইনস্টলেশন নির্দেশাবলী দেখুন।",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "আমি কীভাবে Apple Talkie এ Talkie এ আরও ভয়েস ইনস্টল করতে পারি?",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "এটি নির্ভর করে আপনি কোন লিনাক্স ডিস্ট্রিবিউশন, ব্রাউজার এবং প্যাকেজ ডিস্ট্রিবিউশন সিস্টেম ব্যবহার করেন তার উপর। আপনার সফ্টওয়্যার সংমিশ্রণের জন্য পৃথক ইনস্টলেশন নির্দেশাবলী দেখুন। সবচেয়ে সহজ হতে পারে অন্য একটি ব্রাউজার ব্যবহার করে দেখুন এবং এটিতে একটি উপযুক্ত ভয়েস আগে থেকে ইনস্টল করা আছে কিনা। উদাহরণস্বরূপ, উবুন্টু 21.10-এ ফায়ারফক্স v95 অ্যাপটিটিউড বা স্ন্যাপ ব্যবহার করে ইনস্টল করা যেতে পারে; আগেরটিতে 8611টি eSpeak ভয়েস রয়েছে যা 7358টি উপভাষায় 95টি ভাষা সক্ষম করে, কিন্তু পরবর্তীটিতে 0টি কণ্ঠ রয়েছে। আরেকটি উদাহরণ হল উবুন্টু 21.10-এ Google Chrome v96, যা ডিফল্টরূপে 19টি ভয়েস অন্তর্ভুক্ত করে 18টি উপভাষায় 14টি ভাষা সক্ষম করে। আপনার অভিজ্ঞতা কি আমাকে জানাতে দয়া করে!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "আমি কীভাবে লিনাক্সে Talkie এ আরও ভয়েস ইনস্টল করতে পারি?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "হ্যা এবং না. Talkie নিজের মধ্যে কোনো ভয়েস অন্তর্ভুক্ত করে না, তবে আপনার কম্পিউটারে ইতিমধ্যেই ইনস্টল করা ভয়েসগুলি ব্যবহার করে। আপনি চান যে কোনো অতিরিক্ত ভয়েস ইনস্টল করতে পারেন।",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "আপনি <a নতুন voice> জন্য সমর্থন যোগ করা যাবে না Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "হ্যা এবং না. যেহেতু Talkie আপনার কম্পিউটারে ইনস্টল করা ভয়েসগুলি ব্যবহার করে, আপনাকে একটি নতুন ভয়েস ইনস্টল করতে হবে যা আপনি যে ভাষাটি ব্যবহার করতে চান তা সমর্থন করে৷",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Talkie নতুন ভাষা> এর জন্য সমর্থন যোগ করতে পারেন?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "হ্যাঁ, যদি ইনস্টল করা ভয়েসগুলি অফলাইনেও পাওয়া যায়। আপনি অনলাইন হিসাবে চিহ্নিত ভয়েসগুলির তালিকায় দেখতে পারেন৷",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie কি অফলাইনে কাজ করে?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "না, Talkie Premium এর Talkie এর মতোই একই কণ্ঠস্বর Talkie । আপনি আপনার সিস্টেমে আরও ভয়েস ইনস্টল করতে পারেন এবং সেগুলি সমানভাবে উপলব্ধ। Talkie Premium আপনি যদিও ভাষা ও উপভাষা অনুযায়ী পছন্দের ভয়েস কাস্টমাইজ করতে পারবেন।",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
+  },
+  "frontend_faq009Q": {
+    "message": "নেই Talkie Premium চেয়ে বেশি কণ্ঠ আছে Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Google Chrome (এবং সম্ভবত অন্যান্য ক্রোমিয়াম ভিত্তিক ব্রাউজারগুলিতে) কমপক্ষে 2014 সাল থেকে এই সমস্যা/বাগ রয়েছে৷ Talkie এর কিছু সমাধান রয়েছে এবং ছোট অংশে পাঠ্য পড়া সক্ষম/অক্ষম করার একটি বিকল্প রয়েছে৷ আমি সমাধানের উন্নতি চালিয়ে যাব, কিন্তু Chromium টিম কাজ না করা পর্যন্ত এটি 100% কাজ নাও করতে পারে। আপনি যদি এই সমস্যাটি অনুভব করেন তবে দয়া করে আমাকে জানান যে আপনি কোন ব্রাউজার এবং সংস্করণ, অপারেটিং সিস্টেম এবং সংস্করণ এবং ভাষা/ভয়েস ব্যবহার করছেন৷",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "কেন Talkie 20-30 শব্দ বা কয়েক সেকেন্ড পরে পড়া বন্ধ করে?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "দুটি কারণ আছে। প্রথমত, সক্রিয় ভয়েস অনলাইন থাকলে এটি চালানোর আগে স্পিচ ফাইলটি ডাউনলোড করতে হবে। এর অর্থ একটি অতিরিক্ত বিরতি যা আপনার ইন্টারনেট সংযোগের গতির উপর নির্ভর করে। আপনি ভয়েসের তালিকায় কোন ভয়েসগুলি অনলাইনে আছে তা পরীক্ষা করতে পারেন। দ্বিতীয় কারণটি হল দীর্ঘ টেক্সট বলার জন্য ওয়ার্কঅ্যারাউন্ড টেক্সটটিকে ছোট অংশে কেটে দেয়, সাধারণত প্রতি বাক্যে বা প্রতি ধারায়। এটি প্রতিটি বিরতির জন্য একটি অতিরিক্ত বিরতি যোগ করতে পারে। আপনি বিকল্পগুলির একটি অংশ হিসাবে দীর্ঘ পাঠ্য পড়া সক্ষম করতে পারেন, যা সমর্থিত সিস্টেমগুলিতে বিরতি মুছে ফেলা উচিত।",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "কেন Talkie মাঝে মাঝে বাক্য এবং শব্দের মধ্যে দীর্ঘ বিরতি থাকে?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "দুর্ভাগ্যক্রমে, সম্পূর্ণ নয়। Talkie Premium ব্যবহারকারীদের জন্য পাঠ্য অনুলিপি করা এবং ক্লিপবোর্ড থেকে পড়া সম্ভব। দেখা যাচ্ছে যে Google ডক্স (পাশাপাশি Google স্প্রেডশীট, Google ড্রাইভ এবং অনুরূপ) কোনও ওয়েবসাইট নয়, তবে Google দ্বারা তৈরি একটি বিশেষ \"ব্রাউজারে অ্যাপ্লিকেশন\"। Talkie নির্বাচিত পাঠ্য অ্যাক্সেস করতে পারে না, বা প্রসঙ্গ মেনু আইটেম যোগ করতে পারে না, তাই Talkie বোতামটি কাজ করে না।",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+  },
+  "frontend_faq012Q": {
+    "message": "Talkie কি Google ডক্সে কাজ করে?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "হ্যাঁ! গিথুবে একটি সমস্যা প্রতিবেদন তৈরি করুন, যাতে অন্যরাও সাহায্য করতে পারে। অনুগ্রহ করে যতটা সম্ভব তথ্য অন্তর্ভুক্ত করুন, যেমন কোন ব্রাউজার এবং সংস্করণ, অপারেটিং সিস্টেম এবং সংস্করণ, এবং ভাষা/ভয়েস আপনি ব্যবহার করছেন। এছাড়াও নির্দিষ্ট ওয়েবসাইট সম্পর্কিত তথ্য অন্তর্ভুক্ত করুন যেখানে আপনি বাগ দেখতে পান, বিশেষত একটি লিঙ্ক সহ।",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "আমি বাগ রিপোর্ট করা উচিত?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "সাধারণত! আপনি যদি পিডিএফ-এ পাঠ্যটি নির্বাচন করতে পারেন তবে এটিতে ডান ক্লিক করুন এবং মেনুতে Talkie যদি পাঠ্য নির্বাচন করা না যায়, যদি এটি একটি চিত্রের অংশ হয়, তবে এটি কাজ করবে না।",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Talkie কি PDF ফাইল পড়তে পারে?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "না। Talkie এর সীমাহীন ব্যবহার রয়েছে — আপনি যতগুলো শব্দ এবং যত লম্বা পাঠ্য চান পড়তে পারেন।",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Talkie কি একটি শব্দ সীমা আছে?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "নিশ্চয়ই! শুধু সমর্থন বা প্রকল্প পৃষ্ঠার মাধ্যমে আমার সাথে যোগাযোগ করুন.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "আমি কি নতুন বৈশিষ্ট্যের জন্য অনুরোধ করতে পারি?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "একটি কীবোর্ড শর্টকাট সম্পাদক রয়েছে, যা আপনি Google Chrome-এ এক্সটেনশন পৃষ্ঠার নীচে খুঁজে পেতে পারেন৷",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "গুগল ক্রোমে শর্টকাট কী কীভাবে পরিবর্তন করবেন?",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "আপনি অ্যাড-অনগুলির জন্য Firefox সেটিংসে শর্টকাট কীগুলি পরিবর্তন বা সরাতে পারেন। শর্টকাট কী সম্পাদক খুঁজতে cogwheel বোতামে ক্লিক করুন।",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
+  },
+  "frontend_faq018Q": {
+    "message": "ফায়ারফক্সে কীভাবে শর্টকাট কী পরিবর্তন করবেন?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "নিশ্চয়ই! Talkie অনুবাদ Talkie , Talkie পরীক্ষা করার জন্য, বাগগুলি তদন্ত করতে এবং নতুন বৈশিষ্ট্য যোগ করতে সাহায্য পাওয়া খুব ভালো হবে৷ নির্দেশাবলীর জন্য প্রকল্প পৃষ্ঠা দেখুন.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Talkie বিকাশে সাহায্য করতে পারি?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "হ্যাঁ — অনুগ্রহ করে আপনার বন্ধুদের Talkie সম্পর্কে বলুন! সম্ভবত আপনার প্রিয় ইন্টারনেট সেলিব্রিটি, অনলাইন গ্রুপ, বা নিউজলেটার একটি লিঙ্ক পাঠান. এমনকি আপনি আপনার বসকে কর্মক্ষেত্রে সমস্ত কম্পিউটারে এটি ইনস্টল করতে বা আপনার শিক্ষককে এটি স্কুলে ইনস্টল করতে বলতে পারেন। Talkie সম্পর্কে শব্দ ছড়িয়ে দেওয়া খুব প্রশংসা করা হয়!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "আমি কি অন্য কোন উপায়ে Talkie কে সাহায্য করতে পারি?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Talkie বিকাশ ও বজায় রাখতে অনেক সময় এবং প্রচেষ্টা লাগে — এখন পর্যন্ত কয়েকশ ঘণ্টা। তবুও, Talkie প্রত্যেকের জন্য তাদের পছন্দ মতো ব্যবহার করার জন্য বিনামূল্যে। বিকাশ, রক্ষণাবেক্ষণ এবং বিনামূল্যে Talkie বিনামূল্যে রাখা উভয়কেই আর্থিকভাবে সহায়তা করতে, কিছু বৈশিষ্ট্য শুধুমাত্র Talkie Premium ব্যবহারকারীদের জন্য উপলব্ধ।",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Talkie দুটি সংস্করণ আছে?",
+    "original": "Why are there two editions of Talkie?"
+  },
+  "frontend_faq022A": {
+    "message": "হ্যাঁ, একাধিক পেমেন্ট বিকল্প উপলব্ধ আছে।",
+    "original": "Yes, there are multiple payment options available."
+  },
+  "frontend_faq022Q": {
+    "message": "আমি কি পেপ্যাল, ব্যাঙ্ক ট্রান্সফার, ইত্যাদি ব্যবহার করে পেমেন্ট করতে পারি?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "হ্যাঁ, যদি আপনি PayPal বা Stripe ব্যবহার করে অর্থ প্রদান করেন, যা সহজ ফেরত ব্যবস্থাপনা অফার করে। অর্থপ্রদানের অন্যান্য পদ্ধতির জন্য রিফান্ড সাধারণত উপলভ্য নয় কারণ এটির জন্য প্রয়োজনীয় অতিরিক্ত কাজের পরিমাণ এবং সেই সাথে ভুল অ্যাকাউন্টে অর্থ ফেরত পাওয়ার ঝুঁকির কারণে।",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+  },
+  "frontend_faq023Q": {
+    "message": "আমি কি ফেরত পেতে পারি?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "নিশ্চিত! এটি চেষ্টা করার জন্য শুধু Talkie Premium",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+  },
+  "frontend_faq024Q": {
+    "message": "আমি কি বিনামূল্যে Talkie Premium",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie কোনো বিজ্ঞাপন, তথ্য সংগ্রহ বা ব্যবহারকারীর ট্র্যাকিং নেই। খুশি ব্যবহারকারীরা Talkie Premium জন্য অর্থ প্রদান করাই একমাত্র নগদীকরণ।",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie এক্সটেনশনে কি বিজ্ঞাপন থাকে, ডেটা সংগ্রহ করে বা ব্যবহারকারীদের ট্র্যাক করে?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "সম্মানের ব্যবস্থা হল যখন ব্যক্তিদের সৎ হতে বিশ্বাস করা হয় এবং কঠোরভাবে প্রয়োগ করা চেক ছাড়াই নির্দেশিকা মেনে চলে। Talkie Premium বিশ্বাস করে যে যারা আপগ্রেড করেছে তারা এর জন্য অর্থ প্রদান করেছে।",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "সম্মান ব্যবস্থা কি?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "কারণ সারা বিশ্বের লোকেরা বিভিন্ন মুদ্রা ব্যবহার করে, বিভিন্ন স্তরের নিষ্পত্তিযোগ্য আয় রয়েছে এবং Talkie Premium এর বৈশিষ্ট্যগুলির জন্য বিভিন্ন স্তরের উপলব্ধি রয়েছে৷ এমন কোনো একক, নির্দিষ্ট মূল্য নেই যা বিশ্বের সকলের জন্য ভাল কাজ করে। এর উপরে মুদ্রার ওঠানামা, অর্থনৈতিক চক্রের প্রবণতা, আঞ্চলিক/আন্তঃদেশীয় বৈচিত্র্য, ইত্যাদি আসে। সব মিলিয়ে, বিশ্বব্যাপী বিক্রি হওয়া পণ্যের মূল্য নির্ধারণ করা জটিল। প্রত্যেককে তাদের নিজস্ব মূল্য নির্ধারণ করতে দেওয়া এবং পণ্যটি অর্থপ্রদানের নিশ্চয়তা দেওয়ার জন্য যথেষ্ট ভাল তা নিশ্চিত করা সহজ।",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "কেন আমি আমার নিজের মূল্য নির্ধারণ করতে পারি?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "যেহেতু আমি জানি না আপনি টেক্সট-টু-স্পিচ সফ্টওয়্যারে কত টাকা খরচ করতে পারবেন, তাই আমি পছন্দ করি যে আপনি যা মনে করেন Talkie Premium কাছে মূল্যবান — আর বেশি নয়, কম নয়। আপনি যদি রেফারেন্সের একটি ফ্রেম খুঁজছেন, যখন Google Talkie Premium এর জন্য অর্থপ্রদান পরিচালনা করে তখন মার্কিন যুক্তরাষ্ট্রে প্রতি বছর সাবস্ক্রিপশন খরচ $$25 (ইউএস ডলার)। মনে রাখবেন যে Google স্থানীয় অবস্থার সাথে সামঞ্জস্যপূর্ণ দেশ এবং মুদ্রাগুলির জন্য আশেপাশে দামগুলি সামঞ্জস্য করে, তাই এটি কম বা বেশি হতে পারে৷ একই সময়ে, যে কেউ বিনয়ের সাথে জিজ্ঞাসা Talkie Premium বিনামূল্যে Talkie Premium পেতে পারে।",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "আপনি আমি কত দিতে সুপারিশ?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "কারণ অর্থপ্রদান এবং যাচাইকরণের জন্য একটি সিস্টেম বাস্তবায়নে অনেক সময় এবং প্রচেষ্টা লাগে এবং এটি অনুমান করা হয় যে কঠোর অর্থপ্রদান যাচাইকরণ বাস্তবায়নের খরচ সিস্টেমের সাথে প্রতারণাকারী ব্যক্তিদের ক্ষতির চেয়ে বেশি। অর্থপ্রদান যাচাইকরণের জন্য ব্যবহারকারীদের সিস্টেম থেকে কিছু স্তরের ডেটা সংগ্রহেরও প্রয়োজন হয় এবং প্রযুক্তিগতভাবে দক্ষ ব্যবহারকারীরা প্রায়শই যাচাইকরণের চারপাশে কাজ করতে পারেন। তাই প্রযুক্তিগত এবং ব্যবসায়িক দৃষ্টিকোণ থেকে, যদিও কোনও গ্যারান্টি নেই, ব্যবহারকারীরা যে সম্মানের ব্যবস্থা মেনে চলেন তা বিশ্বাস করা সহজ।",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "পেমেন্ট ভেরিফিকেশন নেই কেন?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "অর্থপ্রদান যাচাইকরণ বাস্তবায়ন না করার সিদ্ধান্তের অর্থ হল প্রদত্ত পরিমাণ যাচাই করা যাবে না। Talkie Premium একটি ডিজিটাল কপি \"উৎপাদন\" করার খরচ শূন্য, তাই এটিকে বিনা মূল্যে দেওয়া ডেভেলপারের জন্য আর্থিক ক্ষতি বোঝায় না। এছাড়াও আশা আছে যে আপনি যদি Talkie Premium পছন্দ করেন তবে আপনি এটি সম্পর্কে আপনার বন্ধুদের জানাবেন। Talkie Premium প্রদান করা একটি বিপণন প্রচেষ্টা হিসাবেও দেখা যেতে পারে।",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "আমি কেন কিছুই দিতে পারি না?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "হ্যাঁ, স্ট্রাইপ ব্যবহার করে। অতিরিক্ত অর্থপ্রদানের বিকল্পগুলি দেখুন।",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "আমি কি পুনরাবৃত্ত মাসিক বা বার্ষিক অর্থপ্রদান করতে পারি?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "হ্যাঁ, যদি আপনি ইমেলের মাধ্যমে অনুরোধ করেন। অনুগ্রহ করে আপনার নাম, ঠিকানা এবং ঐচ্ছিকভাবে আপনার ভ্যালু অ্যাডেড ট্যাক্স (ভ্যাট) শনাক্তকারী (বা সমতুল্য) অন্তর্ভুক্ত করুন।",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "আমি কি আমার পেমেন্টের রসিদ পেতে পারি?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Talkie Premium প্রদান করে অতিরিক্ত বৈশিষ্ট্য এবং স্বাধীন বিকাশকারীদের দ্বারা ওপেন সোর্স সফ্টওয়্যার বিকাশে অবদান রাখার আনন্দদায়ক অনুভূতি পছন্দ করেন। উন্নয়ন এবং রক্ষণাবেক্ষণের তুলনামূলকভাবে উচ্চ ব্যক্তিগত খরচের কারণে, কিন্তু \"উৎপাদন\" ডিজিটাল কপির শূন্য খরচের কারণে, Talkie Premium জন্য অর্থপ্রদানকে ভবিষ্যতের উন্নয়ন এবং রক্ষণাবেক্ষণের জন্য সহায়তা প্রদান হিসাবেও দেখা যেতে পারে, অর্থপ্রদানের সময় পণ্যের মূল্যের বিপরীতে .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "আমি কেন আপগ্রেড করার জন্য অর্থ প্রদান করব?",
+    "original": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "সংক্ষিপ্ত উত্তর হল: সম্ভবত না। দেখা যাচ্ছে যে মাইক্রোসফ্ট উইন্ডোজে আধুনিক ভয়েস এবং পুরানো ভয়েস রয়েছে। যখন আমি শেষ পরীক্ষা করেছিলাম, তখন ডাচ ভয়েস \"Microsoft Frank\" Microsoft Edge-এ উপলব্ধ ছিল, কিন্তু Google Chrome বা Mozilla Firefox-এ নয়৷ একটি কারণ হল যে কিছু ভয়েস নতুন WinRT স্পিচ সিস্টেমের জন্য তৈরি করা হয়েছে, এবং কিছু পুরানো স্পিচ অ্যাপ্লিকেশন প্রোগ্রামিং ইন্টারফেস (SAPI) এর জন্য। ব্রাউজারগুলি পুরানো এবং নতুন উভয় স্পিচ সিস্টেমকে সমর্থন নাও করতে পারে, যার অর্থ একটি ভয়েস যা আসলে ইনস্টল করা আছে, আপনার প্রিয় ব্রাউজারে এখনও উপলব্ধ নাও হতে পারে। সময়ের সাথে সাথে, বেশিরভাগ ব্রাউজার সম্ভবত নতুন WinRT সিস্টেমকে সমর্থন করবে। আপনি যদি আপনার ভাষায় কণ্ঠস্বর অনুপস্থিত থাকেন, তাহলে একটি পরামর্শ হল Microsoft Talkie",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "মাইক্রোসফ্ট উইন্ডোজের সমস্ত ভয়েস কি Talkie সাথে কাজ করে?",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "সম্ভবত, অনেক প্রচেষ্টার সঙ্গে. পুরানো SAPI-সক্ষম ব্রাউজারগুলির সাথে কাজ করার জন্য নতুন WinRT ভয়েস পাওয়ার জন্য কিছু অনানুষ্ঠানিক সমাধানও রয়েছে, তবে এটি একটি অত্যন্ত প্রযুক্তিগত প্রচেষ্টা এবং অ-প্রযুক্তিগত ব্যবহারকারীদের জন্য সুপারিশ করা হয় না।",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "WinRT ভয়েস কি Microsoft Windows এ SAPI-সক্ষম ব্রাউজারে কাজ করতে পারে?",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "হ্যাঁ, কেউ কেউ করে। আপনার সিস্টেম এবং ব্রাউজারের জন্য ইনস্টলেশন নির্দেশাবলী অনুসরণ করুন. একবার আপনার ব্রাউজারে ভয়েসগুলি ইনস্টল হয়ে গেলে, Talkie স্বয়ংক্রিয়ভাবে সেগুলি সনাক্ত করবে৷ আপনার কোন টিপস শেয়ার করুন!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "ওপেন সোর্স ভয়েস কি Talkie সাথে কাজ করে?",
+    "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "বাগস",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "সাধারণ",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "সচরাচর জিজ্ঞাস্য",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "কণ্ঠস্বর",
+    "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Talkie এর বিনামূল্যের সংস্করণ ব্যবহার করা হচ্ছে, এবং বৈশিষ্ট্যের একটি সীমিত সেট উপলব্ধ। সম্ভবত Talkie Premium আপনার জন্য একটি ভাল পছন্দ হবে?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "বর্তমানে Talkie Premium ব্যবহার করছেন, এবং সমস্ত বৈশিষ্ট্য উপলব্ধ। আপনাকে অনেক ধন্যবাদ, এটা আমার হৃদয় উষ্ণ!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie দুটি সংস্করণে আসে: Talkie এবং Talkie Premium । বিনামূল্যের সংস্করণটি বেশিরভাগ ব্যবহারের ক্ষেত্রে দুর্দান্ত, তবে প্রিমিয়াম সংস্করণ অতিরিক্ত বিকল্প এবং বৈশিষ্ট্যগুলি অফার করে৷",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_featuresFree_List01": {
+    "message": "স্বয়ংক্রিয় ভাষা সনাক্তকরণ।",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "স্বয়ংক্রিয় ভয়েস নির্বাচন।",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "একটি বোতাম ক্লিক, শর্টকাট কী, বা ডান-ক্লিক মেনু দ্বারা নির্বাচিত পাঠ্য পড়ে।",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "ট্যাবটি ব্যাকগ্রাউন্ডে থাকা অবস্থায়ও লম্বা টেক্সট এবং আর্টিকেল জোরে জোরে পড়ে।",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "কোডটি ওপেন সোর্স এবং সকল ব্যবহারকারীর জন্য বিনামূল্যে উপলব্ধ।",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "বিনামূল্যে!",
+    "original": "Free!"
+  },
+  "frontend_featuresLinkText": {
+    "message": "বৈশিষ্ট্য",
+    "original": "Features"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "প্রতিটি ভাষার জন্য আপনার নিজস্ব ডিফল্ট ভয়েস চয়ন করুন। আপনি সিস্টেম ভয়েস ক্লান্ত হয়ে গেলে মহান!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "প্রতি ভয়েস পড়ার গতি এবং পিচ চয়ন করুন। আপনার পছন্দ অনুযায়ী ভয়েস সামঞ্জস্য করুন!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "স্বাধীন বিকাশকারীদের দ্বারা ওপেন সোর্স সফ্টওয়্যার সমর্থন করার সময় আপনি যে উষ্ণ, অস্পষ্ট অনুভূতি পান।",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "ভবিষ্যতের Premium আপডেটগুলি অতিরিক্ত খরচ ছাড়াই অন্তর্ভুক্ত।",
+    "original": "Future Premium updates included without additional cost."
+  },
+  "frontend_featuresPremium_List05": {
+    "message": "ক্লিপবোর্ড থেকে পাঠ্য পড়ুন! যেকোন প্রোগ্রামের যেকোন জায়গা থেকে শুধু টেক্সট কপি করুন, এবং এটি পড়ার Talkie Premium",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "আপনার সিস্টেমে কিছু ভয়েস ইনস্টল করুন, অন্যথায় Talkie কাজ করবে না। দুঃখিত!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "কোনো টেক্সট-টু-স্পিচ ভয়েস পাওয়া যায়নি",
+    "original": "No text-to-speech voices found"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Talkie সমস্ত অবদান কন্ট্রিবিউটর লাইসেন্স চুক্তির (CLA) অধীনে করা হয়।",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "লাইসেন্স",
+    "original": "License"
+  },
+  "frontend_loading": {
+    "message": "লোড হচ্ছে...",
+    "original": "Loading..."
+  },
+  "frontend_rateIt": {
+    "message": "পর্যালোচনা করুন Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_settingsLinkText": {
+    "message": "সেটিংস",
+    "original": "Settings"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie নতুন বছরের 2016/2017 এর কয়েক দিন আগে, বন্ধুর কাছ থেকে একটি চ্যালেঞ্জের ভিত্তিতে তৈরি করা হয়েছিল৷ চ্যালেঞ্জটি প্রশ্ন দিয়ে শুরু হয়েছিল: কাজে যাওয়ার সময়, এটি পড়ার পরিবর্তে একটি নিবন্ধ শোনা কি সম্ভব? সহজ, আমি বলেছিলাম, এবং এটি প্রমাণ করার জন্য প্রস্তুত — অথবা অন্তত আমার ব্রাউজারকে একটি নির্বোধ কম্পিউটার ভয়েস ব্যবহার করে পাঠ্য বলতে। মৌলিক সংস্করণ, কোন ব্যবহারকারী ইন্টারফেস ছাড়া, তৈরি করা তুচ্ছ হতে পরিণত. একটি ইউজার ইন্টারফেস যোগ করা, একটু বেশি সময় লেগেছে। সঠিক ভাষা সনাক্তকরণ একটি গুচ্ছ আরো কোড যোগ করা. ব্রাউজারে বাগ কাটিয়ে ওঠা আরও বেশি কাজ করে। উন্নতি এবং বৈশিষ্ট্যগুলির তালিকা চলতে থাকে — এবং কোডের কয়েক হাজার লাইন পরে, আপনি শেষ ফলাফলটি দেখছেন।",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "কিভাবে Talkie শুরু হলো",
+    "original": "How Talkie got started"
+  },
+  "frontend_storyThankYou": {
+    "message": "Talkie ব্যবহার করার জন্য আপনাকে ধন্যবাদ — যদি আপনি এটি পছন্দ করেন, আপনার বন্ধুদের বলুন!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "সমর্থন এবং প্রতিক্রিয়া",
+    "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "একটি প্রশ্ন আছে? কিছু সাহায্য প্রয়োজন? সাধারণ প্রশ্নের দ্রুত উত্তরের জন্য, নীচের প্রায়শই জিজ্ঞাসিত প্রশ্নগুলি দেখুন। যদি এটি আপনাকে একটি উত্তর না দেয়, তাহলে আপনার কোন প্রশ্ন থাকতে পারে দয়া করে আমাকে পাঠান। $NAME$ ব্যবহার করার অভিজ্ঞতা মসৃণ এবং আনন্দদায়ক হলে আমি খুশি হব!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "সমর্থন",
+    "original": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "সমর্থন লিঙ্ক",
+    "original": "Support links"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "পছন্দের ব্রাউজার ভাষা",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "পছন্দের ব্রাউজার ভাষা",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "ব্রাউজার প্রকার",
+    "original": "Browser type"
+  },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "বর্তমান সংস্করণ",
+    "original": "Current edition"
+  },
+  "frontend_systemHeading": {
+    "message": "সিস্টেমের বিশদ বিবরণ",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "ইনস্টল করা ভয়েস উপভাষা",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "ইনস্টল করা ভয়েস ভাষা",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "ইনস্টল করা সংস্করণ",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "ইনস্টল করা ভয়েস",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "অপারেটিং সিস্টেমের ধরন",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie ব্যবহারকারী ইন্টারফেস ভাষা",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie ব্যবহারকারী ইন্টারফেস ভাষা",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie Premium এর মূল্য নির্ধারিত নেই। পরিবর্তে আপনি প্রিমিয়াম বৈশিষ্ট্যগুলি আপনার কাছে কতটা মূল্যবান বলে মনে করেন তার উপর নির্ভর করে আপনি যা চান তা পরিশোধ করুন। এমনকি আপনি কিছুই দিতে না করার সিদ্ধান্ত নিতে পারেন।",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "অর্থপ্রদান পাঠানোর পর প্রবেশ করার জন্য কোনো আপগ্রেড কোড নেই, নিবন্ধনের জন্য কোনো ব্যবহারকারীর অ্যাকাউন্ট নেই, বা অন্য কোনো অর্থপ্রদান যাচাইকরণ নেই। পরিবর্তে Talkie Premium সম্মান সিস্টেম ব্যবহার করে।",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "অনুগ্রহ করে মনে রাখবেন যে Talkie নগদীকরণের বিকল্প উপায় হিসাবে কোনো বিজ্ঞাপন, ব্যবহারকারী ট্র্যাকিং বা ডেটা সংগ্রহ নেই। পেমেন্টগুলিকে ওপেন সোর্স সফ্টওয়্যার বিকাশের জন্য অনুদান হিসাবে লেবেল করা হয়৷",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Talkie Premium আপগ্রেড করুন",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Talkie Premium জন্য অর্থ প্রদান করেছি",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "অনুদান পৃষ্ঠার মাধ্যমে আরও অর্থপ্রদানের পদ্ধতি",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "PayPal ব্যবহার করে অর্থ প্রদান করুন",
+    "original": "Pay using PayPal"
+  },
+  "frontend_usageLinkText": {
+    "message": "ব্যবহার",
+    "original": "Usage"
+  },
+  "frontend_usageReadclipboard": {
+    "message": "আপনার ক্লিপবোর্ডে অনুলিপি করা যেকোনো পাঠ্য পড়ুন — ব্রাউজারের বাইরে যেকোনো স্থান থেকে পাঠ্য শুনতে একটি শর্টকাট কী দিয়ে এটি ব্যবহার করুন। Talkie Premium বোতামে ডান-ক্লিক করতে পারেন, অথবা কোনো ওয়েবসাইটের খালি জায়গায়, এবং ক্লিপবোর্ড থেকে পঠন নির্বাচন করতে পারেন।",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "আপনি পাঠ্যটি নির্বাচন করতে পারেন, তারপরে এটিতে ডান ক্লিক করুন এবং মেনুতে Talkie এইভাবে পিডিএফ-ফাইল এবং ব্রাউজারে কিছু বিশেষ ধরনের পেজেও কাজ করে।",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "শর্টকাট কী",
+    "original": "Shortcut keys"
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "এগুলি হল প্রস্তাবিত শর্টকাট কী, যা আপনার ব্রাউজারের এক্সটেনশন সেটিংস পৃষ্ঠা থেকে পরিবর্তন করা যেতে পারে৷",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "এটি সাধারণ যে বিভিন্ন এক্সটেনশন এবং প্রোগ্রামের কীবোর্ড শর্টকাটগুলির মধ্যে দ্বন্দ্ব রয়েছে। যদি একটি শর্টকাট কী কাজ না করে, অনুগ্রহ করে নিশ্চিত করুন যে এটি ইতিমধ্যে অন্য কিছুর জন্য কনফিগার করা নেই।",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Talkie শর্টকাট কী চেক বা পরিবর্তন করুন।",
+    "original": "Check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "একটি সুবিধাজনক বিকল্প হল Talkie শর্টকাট কী ব্যবহার করা:",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "যেকোনো প্রোগ্রামে ক্লিপবোর্ড থেকে পাঠ্য পড়ুন",
+    "original": "Read text from clipboard in any program"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "আপনি সব",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "আপনি সব",
+    "original": "Start/stop"
+  },
+  "frontend_usageStep01": {
+    "message": "যেকোনো ওয়েব পৃষ্ঠায় পছন্দসই পাঠ্য নির্বাচন করুন।",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "আপনার ব্রাউজার টুলবারে Talkie বোতামে ক্লিক করুন",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "$LANGUAGE_CODE$ উপভাষার ডিফল্ট ভয়েস হল $VOICE$ ।",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "$LANGUAGE_GROUP$ ভাষার ডিফল্ট ভয়েস হল $VOICE$ ।",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDescription": {
+    "message": "আপনার ব্রাউজারে প্রতিটি ভাষার জন্য ইনস্টল করা ভয়েস দেখুন এবং পরীক্ষা করুন। Talkie Premium ব্যবহারকারীরা ভাষা প্রতি ডিফল্ট হিসাবে তাদের প্রিয় ভয়েস নির্বাচন করতে পারেন, সেইসাথে প্রতিটি ভয়েসের জন্য গতি এবং পিচ সেট করতে পারেন।",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesFoundDialects": {
+    "message": "$LANGUAGE_GROUP$ জন্য $DIALECT_COUNT$ উপভাষা পাওয়া গেছে।",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
+  "frontend_voicesLinkText": {
+    "message": "কণ্ঠস্বর",
+    "original": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "$VOICE$ এর একটি ভয়েস নমুনা শুনুন।",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
+  },
+  "frontend_voicesPitchEmptyHeading": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "ভয়েস জন্য পিচ",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "$VOICE$ জন্য পিচ করুন",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesRateEmptyHeading": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "ভয়েসের জন্য গতি",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "$VOICE$ গতি",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "দ্রুত বাদামী শিয়াল অলস কুকুরের উপর ঝাঁপিয়ে পড়ে।",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "$LANGUAGE$ পাঠ্যের জন্য ডিফল্ট ভয়েস হিসাবে $VOICE$ ব্যবহার করুন",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "ইউজার ইন্টারফেসকে অগোছালো করতে, কিছু বিবরণ ডিফল্টরূপে দেখানো হয় না। আপনি যদি এই বিকল্পটি সক্ষম করেন, অতিরিক্ত তথ্য দেখানো হবে৷",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "এটি অন্যান্য ব্রাউজার এবং অপারেটিং সিস্টেমের জন্য সমর্থন তথ্য অন্তর্ভুক্ত করে।",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "অতিরিক্ত তথ্য",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "অতিরিক্ত বিবরণ দেখান",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "সব দেখাও",
+    "original": "Show all"
+  },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "কিছু ব্রাউজারে একটানা দীর্ঘ লেখা পড়া সম্ভব হয় না। এটিকে ঘিরে কাজ করার জন্য, Talkie বাক্য/ধারা এবং অন্যান্য বিরাম চিহ্নের পরে একটি ছোট বিরতি প্রবর্তন করে।",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "আপনি যদি এই বিকল্পটি সক্ষম করেন এবং 10-20 সেকেন্ড পরে দীর্ঘ পাঠ্য পড়া বন্ধ হয়ে যায়, অনুগ্রহ করে এটি আবার অক্ষম করুন।",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "দীর্ঘ টেক্সট পড়া",
+    "original": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "বিরতি ছাড়াই দীর্ঘ পাঠ্য পড়ুন (পরীক্ষামূলক)",
+    "original": "Read longer texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Talkie Premium আপনি প্রতিটি ভাষার জন্য ডিফল্ট ভয়েস, সেইসাথে প্রতিটি ভয়েসের জন্য ভয়েস এবং পিচ পরিবর্তন করতে পারেন।",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "$NAME$ এ স্বাগতম! আপনি এখন বিশ্বের অন্যতম সেরা টেক্সট-টু-স্পীচ ব্রাউজার এক্সটেনশন ব্যবহার করছেন।",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "এগিয়ে যান এবং এই পাঠ্যটি নির্বাচন করুন, তারপর ব্রাউজার টুলবারে $NAME$ উপভোগ করুন!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie বর্তমানে জানতে পারেন $VOICES_COUNT$ সক্রিয় ভয়েসেস $LANGUAGE_GROUPS_COUNT$ ভাষায় $LANGUAGES_COUNT$ উপভাষা আপনার ইনস্টল $SYSTEM_TYPE_PRETTY_NAME$ একটি চলমান ব্রাউজার $OSTYPE_PRETTY_NAME$ অপারেটিং সিস্টেম।",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeLinkText": {
+    "message": "স্বাগত",
+    "original": "Welcome"
+  },
+  "noTextSelectedMessage": {
+    "message": "প্রথমে ওয়েবসাইটে পছন্দসই পাঠ্য নির্বাচন করুন. এছাড়াও আপনি পাঠ্য নির্বাচন করতে পারেন, তারপরে এটিতে ডান ক্লিক করুন এবং মেনুতে Talkie",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie এই ধরনের পৃষ্ঠা থেকে নির্বাচিত পাঠ্য অ্যাক্সেস করতে পারে না। এটি একটি খুব বিশেষ পৃষ্ঠা, এবং ব্রাউজার দ্বারা রাখা নিরাপত্তা সীমাবদ্ধতা আছে। আপনি পাঠ্য নির্বাচন করার চেষ্টা করতে পারেন, তারপরে এটিতে ডান ক্লিক করুন এবং মেনুতে Talkie আমি অসুবিধার জন্য দুঃখিত.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "আমি দুঃখিত, কিন্তু ক্লিপবোর্ড থেকে পাঠ্য পড়া একটি Talkie Premium বৈশিষ্ট্য। আপনি আপগ্রেড বিবেচনা করেছেন?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "আমি দুঃখিত, কিন্তু এই ব্রাউজারটি ক্লিপবোর্ড থেকে পড়া সমর্থন করে না। এখনও না, অন্তত. এক মাস বা তার পরে আবার চেষ্টা করুন!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie ক্লিপবোর্ড থেকে অ্যাক্সেস করার অনুমতি নেই৷ এটা ঠিক আছে, কিন্তু তারপর ক্লিপবোর্ড পাঠ্য পড়া কাজ করবে না।",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "ক্লিপবোর্ডে উপযুক্ত পাঠ্য খুঁজে পাওয়া যায়নি। আপনি অন্য কিছু অনুলিপি চেষ্টা করতে পারেন?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
+  }
+}

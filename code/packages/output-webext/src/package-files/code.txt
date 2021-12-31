@@ -14,8 +14,8 @@ packages/options-application/dist/rollup/options.js
 packages/options-renderer/src/options.html
 packages/popup-application/dist/rollup/popup.js
 packages/popup-renderer/src/popup.html
-packages/shared-resources/src/resources/chrome-web-store/ChromeWebStore_Badge_v2_496x150.png
-packages/shared-resources/src/resources/firefox-amo/AMO-button_1.png
+packages/shared-resources/src/resources/chrome-web-store/HRs9MPufa1J1h5glNhut.png
+packages/shared-resources/src/resources/firefox-amo/get-the-addon-fx-apr-2020.min.svg
 packages/shared-resources/src/resources/icon/free/icon-play/icon-1024x1024.png
 packages/shared-resources/src/resources/icon/free/icon-play/icon-128x128.png
 packages/shared-resources/src/resources/icon/free/icon-play/icon-16x16.png

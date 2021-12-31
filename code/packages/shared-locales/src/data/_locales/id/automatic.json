@@ -1,7 +1,7 @@
 {
   "buttonDefaultTitle": {
     "description": "Hover on the Talkie button, dynamically set.",
-    "message": "Baca seleksi teks dengan suara keras dengan $NAME$",
+    "message": "Baca pilihan teks dengan keras dengan $NAME$",
     "original": "Read text selection out loud with $NAME$",
     "placeholders": {
       "name": {
@@ -12,7 +12,7 @@
   },
   "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
-    "message": "Baca seleksi teks dengan keras dengan Talkie",
+    "message": "Baca pilihan teks dengan keras dengan Talkie",
     "original": "Read text selection out loud with Talkie"
   },
   "buttonStopTitle": {
@@ -20,11 +20,11 @@
     "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "Baca seleksi teks dengan lantang",
+    "message": "Baca pilihan teks dengan keras",
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Situs Talkie",
+    "message": "Situs web Talkie",
     "original": "The Talkie website"
   },
   "commandOpenWebsiteUpgradeDescription": {
@@ -32,28 +32,24 @@
     "original": "Upgrade to Talkie Premium"
   },
   "commandReadClipboardDescription": {
-    "message": "Baca dari clipboard",
+    "message": "Baca dari papan klip",
     "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
-    "message": "Mulai/berhenti membaca seleksi",
+    "message": "Mulai/berhenti membaca pilihan",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Text to speech yang cepat, mudah, dan berkualitas tinggi dalam lebih dari 40 bahasa. Bacalah dengan lantang dari situs web, PDF, email. Ucapkan teks dengan TTS.",
+    "message": "Text to speech yang cepat, mudah, dan berkualitas tinggi dalam lebih dari 40 bahasa. Bacakan dari situs web, PDF, email. Ucapkan teks dengan TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Tentang",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
-    "message": "fitur",
-    "original": "Features"
+    "message": "Fitur dan peningkatan",
+    "original": "Features and upgrade"
   },
   "frontend_PopupMenu_Usage": {
-    "message": "Penggunaan dan jalan pintas",
+    "message": "Penggunaan dan pintasan",
     "original": "Usage and shortcuts"
   },
   "frontend_PopupMenu_Voices": {
@@ -61,12 +57,16 @@
     "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "Pilih teks yang diinginkan pada halaman web manapun dan klik tombol Talkie di toolbar browser Anda.",
+    "message": "Pilih teks yang diinginkan pada halaman web mana pun dan klik Talkie di bilah alat browser Anda.",
     "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
-    "message": "Kode sumber di github",
+    "message": "Kode sumber di Github",
     "original": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Permintaan fitur dan laporan bug di Github",
+    "original": "Feature requests and bug reports on Github"
   },
   "frontend_aboutLinkText": {
     "message": "Tentang",
@@ -77,63 +77,63 @@
     "original": "Project page on joelpurra.com"
   },
   "frontend_faq001A": {
-    "message": "Suara itu berasal dari sistem operasi (Windows, ChromeOS, macos, Linux, dan sebagainya) dan di browser Anda saat ini (Google Chrome, Firefox, dan sebagainya). Ini juga berarti Anda dapat mendownload dan memasang suara yang ingin Anda miliki di komputer Anda, dan Talkie harus mengenali mereka secara otomatis.",
-    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+    "message": "Suara-suara itu berasal dari sistem operasi (Windows, ChromeOS, macOS, Linux, dan sebagainya) dan browser Anda saat ini (Google Chrome, Microsoft Edge, Firefox, dan sebagainya). Ini juga berarti bahwa Anda dapat mengunduh dan memasang suara apa pun yang Anda inginkan, mem-boot ulang komputer Anda, dan Talkie akan mengenalinya secara otomatis. Anda juga dapat mencoba menggunakan browser yang berbeda, karena dukungan suara mungkin berbeda bahkan pada sistem yang sama.",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
   },
   "frontend_faq001Q": {
-    "message": "Bagaimana Talkie mendeteksi suara yang terpasang?",
+    "message": "Bagaimana cara Talkie mendeteksi suara yang terpasang?",
     "original": "How does Talkie detect installed voices?"
   },
   "frontend_faq002A": {
-    "message": "Anda dapat menambahkan lebih banyak suara dari Microsoft dan lainnya; lihat petunjuk instalasi terpisah.",
-    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+    "message": "Anda dapat menambahkan lebih banyak suara dari Microsoft dan lainnya. Cara termudah adalah menambahkan bahasa baru di pengaturan sistem. Pastikan Anda juga memasang suara untuk bahasa tersebut. Lihat petunjuk pemasangan terpisah.",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
   },
   "frontend_faq002Q": {
-    "message": "Bagaimana cara memasang lebih banyak suara di Talkie di Windows?",
-    "original": "How can I install more voices in Talkie on Windows?"
+    "message": "Bagaimana cara menginstal lebih banyak suara di Talkie di Microsoft Windows?",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
   },
   "frontend_faq003A": {
-    "message": "Penambahan ChromeOS harus tersedia di Toko Web Chrome.",
-    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+    "message": "Anda dapat dengan mudah menginstal suara dan bahasa tambahan di pengaturan sistem. Voice untuk ChromeOS mungkin juga tersedia di Toko Web Chrome.",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
   },
   "frontend_faq003Q": {
-    "message": "Bagaimana cara memasang lebih banyak suara di Talkie di ChromeOS?",
-    "original": "How can I install more voices in Talkie on ChromeOS?"
+    "message": "Bagaimana cara memasang lebih banyak suara di Talkie di Google ChromeOS?",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
   },
   "frontend_faq004A": {
-    "message": "Suara tambahan dapat dipasang secara otomatis dari preferensi sistem macos untuk pidato; lihat petunjuk instalasi terpisah.",
-    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+    "message": "Suara tambahan dapat dengan mudah diinstal dari preferensi sistem macOS untuk ucapan. Lihat petunjuk pemasangan terpisah.",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
   },
   "frontend_faq004Q": {
-    "message": "Bagaimana cara memasang lebih banyak suara di Talkie di macOS?",
-    "original": "How can I install more voices in Talkie on macOS?"
+    "message": "Bagaimana cara memasang lebih banyak suara di Talkie di Apple macOS?",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Saat ini tidak yakin bagaimana cara memasang suara tambahan, karena saya belum mencobanya sendiri. Ini juga masalah bagaimana dan bagaimana browser mendeteksi suara yang terinstal. Lihat petunjuk pemasangan terpisah. Tolong beritahu saya apa expirences Anda!",
-    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+    "message": "Itu tergantung pada distribusi Linux, browser, dan sistem distribusi paket yang Anda gunakan. Lihat petunjuk penginstalan terpisah untuk kombinasi perangkat lunak Anda. Cara termudah mungkin adalah dengan mencoba peramban lain dan melihat apakah peramban tersebut memiliki suara yang sesuai yang telah dipasang sebelumnya. Misalnya, Firefox v95 di Ubuntu 21.10 dapat diinstal menggunakan Aptitude atau Snap; yang pertama mencakup 8611 suara eSpeak yang memungkinkan 95 bahasa dalam 7358 dialek, tetapi yang terakhir mencakup 0 suara. Contoh lain adalah Google Chrome v96 di Ubuntu 21.10, yang secara default menyertakan 19 suara yang memungkinkan 14 bahasa dalam 18 dialek. Tolong beri tahu saya apa pengalaman Anda!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
   },
   "frontend_faq005Q": {
-    "message": "Bagaimana cara memasang lebih banyak suara di Talkie di Linux?",
+    "message": "Bagaimana cara menginstal lebih banyak suara di Talkie di Linux?",
     "original": "How can I install more voices in Talkie on Linux?"
   },
   "frontend_faq006A": {
-    "message": "Iya dan tidak. Talkie tidak termasuk suara sendiri, namun menggunakan suara yang sudah terpasang di komputer Anda. Anda dapat memasang suara tambahan yang Anda inginkan.",
+    "message": "Iya dan tidak. Talkie tidak menyertakan suara itu sendiri, tetapi menggunakan suara yang sudah terpasang di komputer Anda. Anda dapat memasang suara tambahan apa pun yang Anda inginkan.",
     "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
   },
   "frontend_faq006Q": {
-    "message": "Dapatkah Anda menambahkan dukungan untuk <a new voice> di Talkie ?",
+    "message": "Bisakah Anda menambahkan dukungan untuk <a new voice> di Talkie ?",
     "original": "Can you add support for <a new voice> in Talkie?"
   },
   "frontend_faq007A": {
-    "message": "Iya dan tidak. Saat Talkie menggunakan suara yang terpasang di komputer Anda, Anda perlu memasang suara baru yang mendukung bahasa yang ingin Anda gunakan.",
+    "message": "Iya dan tidak. Karena Talkie menggunakan suara yang diinstal pada komputer Anda, Anda perlu menginstal suara baru yang mendukung bahasa yang ingin Anda gunakan.",
     "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
   },
   "frontend_faq007Q": {
-    "message": "Dapatkah Anda menambahkan dukungan untuk <a new language> di Talkie ?",
+    "message": "Bisakah Anda menambahkan dukungan untuk <a new language> di Talkie ?",
     "original": "Can you add support for <a new language> in Talkie?"
   },
   "frontend_faq008A": {
-    "message": "Ya, jika suara yang terinstal juga tersedia secara offline. Anda dapat melihat daftar suara yang ditandai sebagai online.",
+    "message": "Ya, jika suara yang dipasang juga tersedia secara offline. Anda dapat melihat di daftar suara yang ditandai sebagai online.",
     "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
   },
   "frontend_faq008Q": {
@@ -141,15 +141,15 @@
     "original": "Does Talkie work offline?"
   },
   "frontend_faq009A": {
-    "message": "Tidak, Talkie Premium memiliki suara yang sama persis dengan Talkie. Anda dapat menginstal lebih banyak suara pada sistem Anda, dan keduanya tersedia sama sekali. Di Talkie Premium Anda dapat menyesuaikan pilihan suara per bahasa sekalipun.",
-    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+    "message": "Tidak, Talkie Premium memiliki suara yang sama persis dengan Talkie. Anda dapat menginstal lebih banyak suara di sistem Anda, dan semuanya tersedia secara merata. Di Talkie Premium Anda dapat menyesuaikan suara pilihan per bahasa dan dialek.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
   },
   "frontend_faq009Q": {
     "message": "Apakah Talkie Premium memiliki lebih banyak suara daripada Talkie ?",
     "original": "Does Talkie Premium have more voices than Talkie?"
   },
   "frontend_faq010A": {
-    "message": "Google Chrome (dan mungkin peramban berbasis Chromium lainnya) mengalami masalah/bug ini setidaknya sejak tahun 2014. Talkie memiliki beberapa solusi, dan opsi untuk mengaktifkan/menonaktifkan teks bacaan di bagian yang lebih pendek. Saya akan terus memperbaiki solusi, tapi sampai tim Chromium berhasil, mungkin tidak bekerja 100%. Jika Anda mengalami masalah ini, beri tahu kami browser dan versi, sistem operasi dan versi, dan bahasa/suara yang Anda gunakan.",
+    "message": "Google Chrome (dan mungkin browser berbasis Chromium lainnya) memiliki masalah/bug ini setidaknya sejak tahun 2014. Talkie memiliki beberapa solusi, dan opsi untuk mengaktifkan/menonaktifkan membaca teks di bagian yang lebih pendek. Saya akan terus meningkatkan solusinya, tetapi sampai tim Chromium bekerja, mungkin tidak akan berhasil 100%. Jika Anda mengalami masalah ini, beri tahu saya browser dan versi, sistem operasi dan versi, serta bahasa/suara yang Anda gunakan.",
     "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
   },
   "frontend_faq010Q": {
@@ -157,31 +157,31 @@
     "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
   },
   "frontend_faq011A": {
-    "message": "Ada dua alasan. Pertama, jika suara aktif online perlu mendownload file ucapan sebelum memainkannya. Ini berarti jeda tambahan yang tergantung pada kecepatan koneksi internet Anda. Anda dapat memeriksa suara mana yang sedang online dalam daftar suara. Alasan kedua adalah bahwa solusi untuk berbicara teks panjang memotong teks di bagian yang lebih pendek, biasanya per kalimat atau per klausa. Ini bisa menambahkan jeda ekstra untuk setiap jeda. Anda dapat mengaktifkan membaca teks panjang sebagai satu bagian dalam pilihan, yang harus menghapus jeda pada sistem yang didukung.",
+    "message": "Ada dua alasan. Pertama, jika suara aktif sedang online perlu mengunduh file ucapan sebelum memutarnya. Ini berarti jeda tambahan yang tergantung pada kecepatan koneksi internet Anda. Anda dapat memeriksa suara mana yang online di daftar suara. Alasan kedua adalah bahwa solusi untuk mengucapkan teks panjang memotong teks menjadi bagian yang lebih pendek, biasanya per kalimat atau per klausa. Ini dapat menambahkan jeda ekstra untuk setiap jeda. Anda dapat mengaktifkan membaca teks panjang sebagai satu bagian dalam opsi, yang akan menghapus jeda pada sistem yang didukung.",
     "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
   },
   "frontend_faq011Q": {
-    "message": "Mengapa Talkie kadang ada jeda panjang antara kalimat dan kata-kata?",
+    "message": "Mengapa Talkie terkadang memiliki jeda yang lama antara kalimat dan kata?",
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Sayangnya tidak ada. Ternyata Google Docs (juga Google Spreadsheet, Google Drive, dan sejenisnya) bukanlah sebuah situs web, melainkan sebuah \"aplikasi di dalam peramban\" khusus yang dibuat oleh Google. Talkie tidak dapat mengakses teks yang dipilih, atau menambahkan item menu konteks. Saya akan menyelidiki lebih lanjut jika ada cara untuk menambahkan dukungan Google Dokumen ke Talkie .",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Sayangnya, tidak sepenuhnya. Untuk Talkie Premium dimungkinkan untuk menyalin teks, dan membacanya dari clipboard. Ternyata Google Docs (juga Google Spreadsheet, Google Drive, dan sejenisnya) bukanlah sebuah website, melainkan sebuah \"aplikasi di browser\" khusus yang dibuat oleh Google. Talkie tidak dapat mengakses teks yang dipilih, atau menambahkan item menu konteks, sehingga Talkie tidak berfungsi.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
-    "message": "Apakah Talkie bekerja di Google Documents?",
+    "message": "Apakah Talkie berfungsi di Google Documents?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Ya silahkan! Gunakan halaman dukungan atau hubungi saya langsung. Harap sertakan informasi sebanyak mungkin, seperti browser dan versi, sistem operasi dan versi, dan bahasa/suara yang Anda gunakan. Juga sertakan informasi mengenai situs web tertentu tempat Anda melihat bug, sebaiknya dengan tautan.",
-    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Ya silahkan! Sebaiknya buat laporan masalah di Github, sehingga orang lain juga dapat membantu. Harap sertakan informasi sebanyak mungkin, seperti browser dan versi, sistem operasi dan versi, serta bahasa/suara yang Anda gunakan. Sertakan juga informasi mengenai situs web tertentu tempat Anda melihat bug, sebaiknya dengan tautan.",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Haruskah saya melaporkan bug?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Biasanya! Jika Anda bisa memilih teks dalam PDF, klik kanan padanya dan pilih Talkie pada menu. Jika teks tidak dapat dipilih, jika itu adalah bagian dari gambar, maka teks itu tidak akan berfungsi.",
+    "message": "Biasanya! Jika Anda dapat memilih teks dalam PDF, klik kanan padanya dan pilih Talkie di menu. Jika teks tidak dapat dipilih, jika itu adalah bagian dari gambar, maka itu tidak akan berfungsi.",
     "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
@@ -189,7 +189,7 @@
     "original": "Can Talkie read PDF files?"
   },
   "frontend_faq015A": {
-    "message": "Tidak. Talkie memiliki penggunaan tak terbatas — Anda dapat membaca banyak kata dan teks panjang yang Anda inginkan.",
+    "message": "Tidak. Talkie memiliki penggunaan tak terbatas — Anda dapat membaca sebanyak mungkin kata dan teks sepanjang yang Anda inginkan.",
     "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
   },
   "frontend_faq015Q": {
@@ -197,15 +197,15 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Pasti! Hubungi saja saya melalui halaman dukungan atau proyek.",
+    "message": "Tentu! Hubungi saya melalui halaman dukungan atau proyek.",
     "original": "Certainly! Just contact me through the support or project pages."
   },
   "frontend_faq016Q": {
-    "message": "Dapatkah saya meminta fitur baru?",
+    "message": "Bisakah saya meminta fitur baru?",
     "original": "Can I request new features?"
   },
   "frontend_faq017A": {
-    "message": "Ada editor pintasan Keyboard, yang dapat Anda temukan di bagian bawah laman Ekstensi di Google Chrome.",
+    "message": "Ada editor pintasan Keyboard, yang dapat Anda temukan di bagian bawah halaman Ekstensi di Google Chrome.",
     "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
   },
   "frontend_faq017Q": {
@@ -213,15 +213,15 @@
     "original": "How to change shortcut keys in Google Chrome?"
   },
   "frontend_faq018A": {
-    "message": "Sayangnya, rasanya tidak mungkin saat ini. Silakan meminta tim Firefox untuk menambahkan fitur ini!",
-    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+    "message": "Anda dapat mengubah atau menghapus tombol pintasan di pengaturan Firefox untuk Pengaya. Klik tombol roda gigi untuk menemukan editor tombol pintasan.",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
   },
   "frontend_faq018Q": {
     "message": "Bagaimana cara mengubah tombol pintas di Firefox?",
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Pasti! Sebaiknya Anda meminta bantuan untuk menerjemahkan Talkie , untuk menguji Talkie tentang sistem baru, untuk menyelidiki bug, dan menambahkan fitur baru. Silakan lihat halaman proyek untuk mendapatkan petunjuk.",
+    "message": "Tentu! Akan sangat bagus untuk mendapatkan bantuan menerjemahkan Talkie , untuk menguji Talkie pada sistem baru, untuk menyelidiki bug, dan untuk menambahkan fitur baru. Silakan lihat halaman proyek untuk instruksi.",
     "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
@@ -229,7 +229,7 @@
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Ya — tolong beritahu temanmu tentang Talkie! Mungkin mengirim link ke selebriti internet favorit Anda, grup online, atau newsletter. Anda bahkan dapat meminta atasan Anda untuk memasangnya di semua komputer di tempat kerja, atau guru Anda untuk memasangnya di sekolah. Menyebarkan berita tentang Talkie sangat dihargai!",
+    "message": "Ya — tolong beri tahu teman Anda tentang Talkie! Mungkin mengirim tautan ke selebritas internet, grup online, atau buletin favorit Anda. Anda bahkan dapat meminta atasan Anda untuk menginstalnya di semua komputer di tempat kerja, atau guru Anda untuk menginstalnya di sekolah. Menyebarkan berita tentang Talkie sangat kami hargai!",
     "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
   },
   "frontend_faq020Q": {
@@ -237,7 +237,7 @@
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Perlu banyak waktu dan tenaga untuk mengembangkan dan memelihara Talkie — ratusan jam sejauh ini. Namun, Talkie gratis bagi semua orang untuk digunakan sesuka mereka. Untuk mendukung secara finansial lebih lanjut pengembangan, pemeliharaan, dan menjaga agar Talkie gratis, beberapa fitur hanya tersedia untuk Talkie Premium pengguna.",
+    "message": "Dibutuhkan cukup banyak waktu dan upaya untuk mengembangkan dan memelihara Talkie — ratusan jam sejauh ini. Namun, Talkie gratis untuk digunakan semua orang sebanyak yang mereka suka. Untuk mendukung lebih lanjut secara finansial baik pengembangan, pemeliharaan, dan menjaga Talkie gratis, beberapa fitur hanya tersedia untuk pengguna Talkie Premium",
     "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
@@ -245,27 +245,27 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Ya, ada beberapa pilihan pembayaran yang tersedia.",
+    "message": "Ya, ada beberapa opsi pembayaran yang tersedia.",
     "original": "Yes, there are multiple payment options available."
   },
   "frontend_faq022Q": {
-    "message": "Bisakah saya membayar menggunakan PayPal, transfer bank, dll.?",
+    "message": "Bisakah saya membayar menggunakan PayPal, transfer bank, dan sebagainya?",
     "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Ya, jika Anda membayar menggunakan PayPal atau Stripe, yang menawarkan manajemen pengembalian uang sederhana. Pengembalian dana umumnya tidak tersedia untuk metode pembayaran lain karena jumlah kerja ekstra yang diperlukan, ditambah risiko uang tersebut dikembalikan ke rekening yang salah.",
+    "message": "Ya, jika Anda membayar menggunakan PayPal atau Stripe, yang menawarkan manajemen pengembalian dana sederhana. Pengembalian dana umumnya tidak tersedia untuk metode pembayaran lain karena jumlah kerja ekstra yang diperlukan, ditambah risiko uang dikembalikan ke rekening yang salah.",
     "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
-    "message": "Dapatkah saya mendapatkan pengembalian dana?",
+    "message": "Bisakah saya mendapatkan pengembalian dana?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Tentu! Cukup aktifkan peningkatan Talkie Premium untuk mencobanya.",
+    "message": "Tentu! Cukup aktifkan Talkie Premium untuk mencobanya.",
     "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
-    "message": "Dapatkah saya mencoba Talkie Premium gratis?",
+    "message": "Dapatkah saya mencoba Talkie Premium secara gratis?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
@@ -273,19 +273,19 @@
     "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
-    "message": "Apakah ekstensi Talkie berisi iklan, mengumpulkan data, atau melacak pengguna?",
+    "message": "Apakah Talkie berisi iklan, mengumpulkan data, atau melacak pengguna?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Sistem kehormatan adalah ketika individu dipercaya untuk jujur, dan mematuhi pedoman tanpa pemeriksaan yang ketat. Untuk Talkie Premium mempercayai bahwa mereka yang meningkatkan versi telah membayarnya.",
+    "message": "Sistem kehormatan adalah ketika individu dipercaya untuk jujur, dan mematuhi pedoman tanpa pemeriksaan yang ketat. Untuk Talkie Premium percaya bahwa mereka yang meningkatkan telah membayarnya.",
     "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
   },
   "frontend_faq026Q": {
-    "message": "Apa sistem kehormatannya?",
+    "message": "Apa itu sistem kehormatan?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Karena orang di seluruh dunia menggunakan mata uang yang berbeda, memiliki tingkat pendapatan yang dapat dibuang yang berbeda, dan memiliki tingkat apresiasi yang berbeda untuk fitur Talkie Premium. Tidak ada satu pun harga tetap yang cocok untuk semua orang di dunia. Selain itu, ada fluktuasi mata uang, tren siklus ekonomi, variasi regional/intra-negara, dan sebagainya. Secara keseluruhan, pengaturan harga untuk produk yang dijual di seluruh dunia itu rumit. Lebih mudah membiarkan setiap orang menetapkan harga mereka sendiri, dan memastikan bahwa produk cukup baik untuk menjamin pembayaran.",
+    "message": "Karena orang di seluruh dunia menggunakan mata uang yang berbeda, memiliki tingkat pendapatan yang berbeda, dan memiliki tingkat apresiasi yang berbeda untuk fitur Talkie Premium Tidak ada harga tetap tunggal yang bekerja dengan baik untuk semua orang di dunia. Selain itu muncul fluktuasi mata uang, tren siklus ekonomi, variasi regional/intra-negara, dan sebagainya. Secara keseluruhan, pengaturan harga untuk produk yang dijual di seluruh dunia rumit. Lebih mudah untuk membiarkan setiap orang menetapkan harga mereka sendiri, dan memastikan bahwa produk tersebut cukup baik untuk menjamin pembayaran.",
     "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
   },
   "frontend_faq027Q": {
@@ -293,15 +293,15 @@
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Karena saya tidak tahu berapa banyak uang yang dapat Anda belanjakan untuk perangkat lunak text-to-speech, saya lebih suka Anda membayar apa yang menurut Anda Talkie Premium berharga bagi Anda — tidak lebih, tidak kurang. Jika Anda mencari kerangka acuan, saat Google menangani pembayaran untuk Talkie Premium biaya langganan $$ 25 (Dolar AS) per tahun di Amerika Serikat. Perhatikan bahwa Google menyesuaikan harga di sekitar negara dan mata uang di dunia agar sesuai dengan kondisi lokal, jadi bisa lebih atau kurang. Pada saat yang sama, siapa pun yang meminta dengan sopan juga dapat menerima Talkie Premium secara gratis.",
+    "message": "Karena saya tidak tahu berapa banyak uang yang dapat Anda keluarkan untuk perangkat lunak text-to-speech, saya lebih suka Anda membayar apa yang menurut Anda Talkie Premium — tidak lebih, tidak kurang. Jika Anda mencari kerangka acuan, saat Google menangani pembayaran untuk Talkie Premium biaya langganan $$25 (Dolar AS) per tahun di Amerika Serikat. Perhatikan bahwa Google menyesuaikan harga di sekitar negara dan mata uang dunia agar sesuai dengan kondisi lokal, jadi bisa lebih atau kurang. Pada saat yang sama, siapa pun yang meminta dengan sopan juga dapat menerima Talkie Premium secara gratis.",
     "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
   },
   "frontend_faq028Q": {
-    "message": "Berapa yang Anda rekomendasikan agar saya membayar?",
+    "message": "Berapa banyak yang Anda sarankan saya bayar?",
     "original": "How much do you recommend I pay?"
   },
   "frontend_faq029A": {
-    "message": "Karena menerapkan sistem pembayaran dan verifikasi membutuhkan banyak waktu dan tenaga, dan diasumsikan bahwa biaya penerapan verifikasi pembayaran yang ketat lebih tinggi daripada kerugian dari individu yang menipu sistem. Verifikasi pembayaran juga memerlukan beberapa tingkat pengumpulan data dari sistem pengguna, dan pengguna yang secara teknis terampil sering kali dapat mengatasi verifikasi. Jadi dari segi teknis dan bisnis, meskipun tidak ada jaminan, lebih mudah untuk mempercayai bahwa pengguna mematuhi sistem kehormatan.",
+    "message": "Karena menerapkan sistem pembayaran dan verifikasi membutuhkan banyak waktu dan tenaga, dan diasumsikan bahwa biaya penerapan verifikasi pembayaran yang ketat lebih tinggi daripada kerugian individu yang menipu sistem. Verifikasi pembayaran juga memerlukan beberapa tingkat pengumpulan data dari sistem pengguna, dan pengguna yang ahli secara teknis sering kali dapat mengatasi verifikasi. Jadi dari perspektif teknis dan bisnis, meskipun tidak ada jaminan, lebih mudah untuk mempercayai bahwa pengguna mematuhi sistem kehormatan.",
     "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
@@ -309,7 +309,7 @@
     "original": "Why is there no payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Keputusan untuk tidak melaksanakan verifikasi pembayaran berarti jumlah yang dibayarkan tidak dapat diverifikasi. Selain itu, biaya \"membuat\" salinan digital Talkie Premium adalah nol, jadi memberikannya secara Talkie Premium — Talkie Premium tidak menyiratkan kerugian finansial bagi pengembang. Ada juga harapan jika Anda suka Talkie Premium , Anda akan memberitahu teman-teman Anda tentang hal itu. Memberikan Talkie Premium juga dapat dilihat sebagai upaya pemasaran.",
+    "message": "Keputusan untuk tidak melaksanakan verifikasi pembayaran berarti jumlah yang dibayarkan tidak dapat diverifikasi. Selain itu, biaya \"pembuatan\" salinan digital Talkie Premium adalah nol, jadi memberikannya secara cuma-cuma tidak berarti kerugian finansial bagi pengembang. Ada juga harapan bahwa jika Anda menyukai Talkie Premium , Anda akan memberi tahu teman-teman Anda tentang hal itu. Memberikan Talkie Premium juga dapat dilihat sebagai upaya pemasaran.",
     "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
   },
   "frontend_faq030Q": {
@@ -321,11 +321,11 @@
     "original": "Yes, by using Stripe. See additional payment options."
   },
   "frontend_faq031Q": {
-    "message": "Dapatkah saya melakukan pembayaran bulanan atau tahunan berulang?",
+    "message": "Bisakah saya melakukan pembayaran bulanan atau tahunan berulang?",
     "original": "Can I make a recurring monthly or yearly payment?"
   },
   "frontend_faq032A": {
-    "message": "Ya, jika Anda memintanya melalui email. Harap sertakan nama, alamat, dan secara opsional pengenal pajak pertambahan nilai (PPN) (atau yang setara).",
+    "message": "Ya, jika Anda memintanya melalui email. Harap sertakan nama, alamat, dan opsional pengenal pajak pertambahan nilai (PPN) Anda (atau yang setara).",
     "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
   },
   "frontend_faq032Q": {
@@ -333,12 +333,36 @@
     "original": "Can I get a receipt for my payment?"
   },
   "frontend_faq033A": {
-    "message": "Karena Anda menyukai fitur tambahan yang Talkie Premium , dan perasaan senang karena berkontribusi pada pengembangan perangkat lunak sumber terbuka oleh pengembang independen. Karena biaya pengembangan dan pemeliharaan personel yang relatif tinggi, tetapi tanpa biaya untuk salinan digital \"pembuatan\", pembayaran untuk Talkie Premium juga dapat dilihat sebagai memberikan dukungan untuk pengembangan dan pemeliharaan di masa mendatang, yang bertentangan dengan nilai produk pada saat pembayaran .",
+    "message": "Karena Anda menyukai fitur tambahan yang Talkie Premium , dan perasaan senang berkontribusi pada pengembangan perangkat lunak sumber terbuka oleh pengembang independen. Karena biaya pengembangan dan pemeliharaan personel yang relatif tinggi, tetapi nol biaya \"pembuatan\" salinan digital, pembayaran untuk Talkie Premium juga dapat dilihat sebagai memberikan dukungan untuk pengembangan dan pemeliharaan di masa mendatang, yang bertentangan dengan nilai produk pada saat pembayaran .",
     "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
   },
   "frontend_faq033Q": {
     "message": "Mengapa saya harus membayar untuk meningkatkan?",
     "original": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "Jawaban singkatnya adalah: mungkin tidak. Ternyata ada suara modern dan suara lama di Microsoft Windows. Ketika saya terakhir menguji, suara Belanda \"Microsoft Frank\" tersedia di Microsoft Edge, tetapi tidak di Google Chrome atau Mozilla Firefox. Salah satu alasannya adalah bahwa beberapa suara dibuat untuk sistem ucapan WinRT yang lebih baru, dan beberapa untuk Antarmuka Pemrograman Aplikasi Ucapan (SAPI) yang lebih lama. Browser mungkin tidak mendukung sistem ucapan lama dan baru, yang berarti bahwa suara yang sebenarnya diinstal, mungkin masih belum tersedia di browser favorit Anda. Seiring waktu, sebagian besar browser mungkin akan mendukung sistem WinRT yang lebih baru. Jika Anda kehilangan suara dalam bahasa Anda, satu saran adalah mencoba menggunakan Talkie di Microsoft Edge.",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "Apakah semua suara untuk Microsoft Windows berfungsi dengan Talkie ?",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "Mungkin, dengan banyak usaha. Ada juga beberapa solusi tidak resmi untuk membuat suara WinRT baru bekerja dengan browser berkemampuan SAPI yang lebih lama, tetapi ini adalah upaya yang sangat teknis dan tidak disarankan untuk pengguna non-teknis.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "Bisakah suara WinRT bekerja di browser berkemampuan SAPI di Microsoft Windows?",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "Ya, beberapa melakukannya. Ikuti petunjuk penginstalan untuk sistem dan browser Anda. Setelah suara dipasang di browser Anda, Talkie akan mendeteksinya secara otomatis. Silakan bagikan tips apa pun yang Anda miliki!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "Apakah suara sumber terbuka berfungsi dengan Talkie ?",
+    "original": "Do open source voices work with Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Bug",
@@ -361,11 +385,11 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "Saat ini menggunakan edisi gratis Talkie , dan tersedia serangkaian fitur terbatas. Mungkin Talkie Premium akan menjadi pilihan yang lebih baik untuk Anda?",
+    "message": "Saat ini menggunakan edisi gratis Talkie , dan serangkaian fitur terbatas tersedia. Mungkin Talkie Premium akan menjadi pilihan yang lebih baik untuk Anda?",
     "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "Saat ini menggunakan Talkie Premium , dan semua fitur tersedia. Terima kasih banyak, ini menghangatkan hatiku!",
+    "message": "Saat ini menggunakan Talkie Premium , dan semua fitur tersedia. Terima kasih banyak, itu menghangatkan hatiku!",
     "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
@@ -381,15 +405,15 @@
     "original": "Automatic voice selection."
   },
   "frontend_featuresFree_List03": {
-    "message": "Membaca teks yang dipilih dengan mengklik tombol, tombol pintas, atau menu klik kanan.",
+    "message": "Membaca teks yang dipilih dengan klik tombol, tombol pintas, atau menu klik kanan.",
     "original": "Reads selected text by a button click, shortcut key, or right-click menu."
   },
   "frontend_featuresFree_List04": {
-    "message": "Membaca teks panjang dan artikel dengan suara keras, bahkan saat tab berada di latar belakang.",
+    "message": "Membaca teks panjang dan artikel dengan lantang, bahkan saat tab berada di latar belakang.",
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Kode adalah open source dan tersedia secara gratis untuk semua pengguna.",
+    "message": "Kode bersifat open source dan tersedia gratis untuk semua pengguna.",
     "original": "Code is open source and available for free to all users."
   },
   "frontend_featuresFree_List06": {
@@ -397,32 +421,36 @@
     "original": "Free!"
   },
   "frontend_featuresLinkText": {
-    "message": "fitur",
+    "message": "Fitur",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Pilih suara default Anda untuk setiap bahasa. Bagus jika Anda bosan dengan suara sistem!",
+    "message": "Pilih suara default Anda sendiri untuk setiap bahasa. Bagus jika Anda bosan dengan suara sistem!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "Pilih kecepatan membaca dan nada per suara. Sesuaikan suara sesuai dengan keinginan anda!",
+    "message": "Pilih kecepatan membaca dan nada per suara. Sesuaikan suara sesuai keinginan Anda!",
     "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
-    "message": "Perasaan hangat dan kabur yang Anda dapatkan saat mendukung perangkat lunak open source oleh pengembang independen.",
+    "message": "Perasaan hangat dan kabur yang Anda dapatkan saat mendukung perangkat lunak sumber terbuka oleh pengembang independen.",
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "Premium masa depan gratis.",
-    "original": "Future Premium updates included for free."
+    "message": "Premium disertakan tanpa biaya tambahan.",
+    "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Baca teks dari clipboard! Cukup salin teks dari manapun ke program mana pun, dan gunakan Talkie Premium untuk Talkie Premium !",
+    "message": "Baca teks dari clipboard! Cukup salin teks dari mana saja di program apa pun, dan gunakan Talkie Premium untuk membacanya!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Tingkatkan ke Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "Harap instal beberapa suara di sistem Anda, jika tidak Talkie tidak akan berfungsi. Maaf!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "Tidak ada suara text-to-speech yang ditemukan",
+    "original": "No text-to-speech voices found"
   },
   "frontend_licenseCLADescription": {
     "message": "Semua kontribusi ke Talkie dibuat berdasarkan Perjanjian Lisensi Kontributor (CLA).",
@@ -433,7 +461,7 @@
     "original": "License"
   },
   "frontend_loading": {
-    "message": "Pemuatan...",
+    "message": "Memuat...",
     "original": "Loading..."
   },
   "frontend_rateIt": {
@@ -441,33 +469,19 @@
     "original": "Review Talkie"
   },
   "frontend_settingsLinkText": {
-    "message": "Teks",
-    "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Beritahu teman Anda tentang Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Apakah kamu menyukai $NAME$? Jika demikian, saya akan senang jika Anda bisa memberikan ⭐️ rating dan review yang bagus 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Pengaturan",
+    "original": "Settings"
   },
   "frontend_storyDescription": {
-    "message": "Talkie dikembangkan beberapa hari sebelum Tahun Baru 2016/2017, atas tantangan dari seorang teman. Tantangannya dimulai dengan pertanyaan: saat dalam perjalanan ke kantor, apakah mungkin mendengarkan artikel daripada membacanya? Mudah, kataku, dan mulai membuktikannya — atau setidaknya membuat browser saya mengucapkan teks menggunakan suara komputer yang konyol. Edisi dasar, tanpa antarmuka pengguna, ternyata mudah dibuat. Menambahkan antarmuka pengguna, membutuhkan waktu lebih lama. Menambahkan deteksi bahasa yang tepat lebih banyak kode. Mengatasi bug di browser lebih banyak pekerjaan. Daftar peningkatan dan fitur terus berjalan — dan beberapa ribu baris kode kemudian, Anda sedang melihat hasil akhirnya.",
+    "message": "Talkie dikembangkan beberapa hari sebelum Tahun Baru 2016/2017, atas tantangan dari seorang teman. Tantangannya dimulai dengan pertanyaan: dalam perjalanan ke tempat kerja, apakah mungkin mendengarkan artikel daripada membacanya? Mudah, kata saya, dan mulai membuktikannya — atau setidaknya membuat browser saya mengucapkan teks menggunakan suara komputer yang konyol. Edisi dasar, tanpa antarmuka pengguna apa pun, ternyata sepele untuk dibuat. Menambahkan antarmuka pengguna, membutuhkan waktu sedikit lebih lama. Menambahkan deteksi bahasa yang tepat lebih banyak kode. Mengatasi bug di browser pun semakin berhasil. Daftar peningkatan dan fitur terus berlanjut — dan beberapa ribu baris kode kemudian, Anda melihat hasil akhirnya.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
-    "message": "Talkie memulai",
+    "message": "Bagaimana Talkie memulai",
     "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
-    "message": "Terima kasih telah Talkie — jika Anda suka, beritahu teman Anda!",
+    "message": "Terima kasih telah menggunakan Talkie — jika Anda menyukainya, beri tahu teman Anda!",
     "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
@@ -475,7 +489,7 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Punya pertanyaan? Butuh bantuan dengan sesuatu? Untuk jawaban cepat atas pertanyaan umum, lihat pertanyaan umum di bawah ini. Jika itu tidak memberi jawaban, tolong kirimi saya pertanyaan yang mungkin Anda miliki. Saya akan senang jika pengalaman Anda menggunakan $NAME$ itu lancar dan menyenangkan!",
+    "message": "Punya pertanyaan? Butuh bantuan dengan sesuatu? Untuk jawaban cepat atas pertanyaan umum, lihat pertanyaan umum di bawah ini. Jika itu tidak memberi Anda jawaban, kirimkan saya pertanyaan apa pun yang mungkin Anda miliki. Saya akan senang jika pengalaman Anda menggunakan $NAME$ lancar dan menyenangkan!",
     "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
     "placeholders": {
       "name": {
@@ -488,6 +502,10 @@
     "message": "Mendukung",
     "original": "Support"
   },
+  "frontend_supportLinksHeading": {
+    "message": "Tautan dukungan",
+    "original": "Support links"
+  },
   "frontend_systemBrowserLanguageHeading": {
     "message": "Bahasa browser pilihan",
     "original": "Preferred browser language"
@@ -497,7 +515,7 @@
     "original": "Preferred browser languages"
   },
   "frontend_systemBrowserTypeHeading": {
-    "message": "Tipe browser",
+    "message": "Jenis peramban",
     "original": "Browser type"
   },
   "frontend_systemCurrentEditionHeading": {
@@ -505,15 +523,15 @@
     "original": "Current edition"
   },
   "frontend_systemHeading": {
-    "message": "Rincian sistem",
+    "message": "Detail sistem",
     "original": "System details"
   },
   "frontend_systemInstalledDialectsHeading": {
-    "message": "Dialek suara terpasang",
+    "message": "Dialek suara yang terpasang",
     "original": "Installed voice dialects"
   },
   "frontend_systemInstalledLanguagesHeading": {
-    "message": "Bahasa suara yang terpasang",
+    "message": "Bahasa suara yang diinstal",
     "original": "Installed voice languages"
   },
   "frontend_systemInstalledVersionHeading": {
@@ -521,7 +539,7 @@
     "original": "Installed version"
   },
   "frontend_systemInstalledVoicesHeading": {
-    "message": "Terpasang suara",
+    "message": "Suara terpasang",
     "original": "Installed voices"
   },
   "frontend_systemOSHeading": {
@@ -537,15 +555,15 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Harga untuk Talkie Premium tidak tetap. Alih-alih Anda membayar apa yang Anda inginkan, bergantung pada seberapa besar nilai fitur premium tersebut bagi Anda. Anda bahkan dapat memutuskan untuk tidak membayar apa pun.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+    "message": "Harga untuk Talkie Premium tidak tetap. Alih-alih, Anda membayar apa yang Anda inginkan, tergantung pada seberapa banyak fitur premium yang menurut Anda layak untuk Anda. Anda bahkan dapat memutuskan untuk tidak membayar apa pun.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Setelah mengirim pembayaran, tidak ada kode peningkatan untuk dimasukkan, tidak ada akun pengguna untuk didaftarkan, atau verifikasi pembayaran lainnya yang diterapkan. Sebaliknya Talkie Premium menggunakan sistem honor.",
+    "message": "Setelah mengirim pembayaran, tidak ada kode peningkatan untuk dimasukkan, tidak ada akun pengguna untuk didaftarkan, atau verifikasi pembayaran lainnya. Sebaliknya Talkie Premium menggunakan sistem kehormatan.",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Harap perhatikan bahwa Talkie tidak memiliki iklan, pelacakan pengguna, atau pengumpulan data apa pun sebagai cara alternatif untuk memonetisasi. Pembayaran diberi label sebagai sumbangan untuk pengembangan perangkat lunak sumber terbuka.",
+    "message": "Harap perhatikan bahwa Talkie tidak memiliki iklan, pelacakan pengguna, atau pengumpulan data apa pun sebagai sarana monetisasi alternatif. Pembayaran diberi label sebagai sumbangan untuk pengembangan perangkat lunak sumber terbuka.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },
   "frontend_upgradeHeading": {
@@ -556,12 +574,8 @@
     "message": "Saya telah membayar untuk Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Meningkatkan",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Metode pembayaran lainnya melalui halaman donasi",
+    "message": "Lebih banyak metode pembayaran melalui halaman donasi",
     "original": "More payment methods via the donations page"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
@@ -569,15 +583,15 @@
     "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
-    "message": "Pemakaian",
+    "message": "Penggunaan",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "Baca teks yang disalin ke clipboard Anda — gunakan dengan tombol shortcut untuk mendengarkan teks dari manapun di luar browser. Anda juga bisa klik kanan pada tombol Talkie Premium , atau di area kosong sebuah situs web, dan pilih baca dari clipboard.",
+    "message": "Baca teks apa pun yang disalin ke clipboard Anda — gunakan dengan tombol pintas untuk mendengarkan teks dari mana saja di luar browser. Anda juga dapat mengklik Talkie Premium tombol Talkie Premium, atau di area kosong situs web, dan memilih baca dari clipboard.",
     "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "Anda juga bisa memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Cara ini juga bekerja dalam file PDF dan beberapa jenis halaman khusus di browser.",
+    "message": "Anda juga dapat memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Cara ini juga berfungsi di file PDF dan beberapa jenis halaman khusus di browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutHeading": {
@@ -585,19 +599,23 @@
     "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Jika tombol pintas tidak bekerja, periksa apakah itu belum digunakan oleh ekstensi atau program lain.",
-    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
+    "message": "Ini adalah tombol pintas yang disarankan, yang dapat diubah dari halaman pengaturan ekstensi browser Anda.",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Periksa atau ganti tombol pintas Talkie .",
+    "message": "Adalah umum bahwa ada konflik antara pintasan keyboard dari ekstensi dan program yang berbeda. Jika tombol pintasan tidak berfungsi, pastikan tombol itu belum dikonfigurasi untuk hal lain.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Periksa atau ubah tombol pintas Talkie",
     "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
-    "message": "Pilihan yang mudah Talkie adalah Talkie tombol pintas Talkie :",
+    "message": "Opsi yang mudah digunakan adalah menggunakan tombol pintasan Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Baca teks dari clipboard dalam program apapun",
+    "message": "Baca teks dari clipboard di program apa pun",
     "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
@@ -609,41 +627,82 @@
     "original": "Start/stop"
   },
   "frontend_usageStep01": {
-    "message": "Pilih teks yang diinginkan pada halaman web manapun.",
+    "message": "Pilih teks yang diinginkan pada halaman web mana pun.",
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "Klik tombol Talkie di bilah alat browser Anda",
+    "message": "Klik Talkie di bilah alat browser Anda",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "on line",
-    "original": "online"
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "Suara default untuk dialek $LANGUAGE_CODE$ adalah $VOICE$ .",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
   },
-  "frontend_voicesAvailableLanguages": {
-    "message": "Bahasa yang tersedia",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "Suara yang tersedia",
-    "original": "Available voices"
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "Suara default untuk bahasa $LANGUAGE_GROUP$ adalah $VOICE$ .",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
   },
   "frontend_voicesDescription": {
-    "message": "Lihat dan uji suara terinstal untuk setiap bahasa di browser Anda. Talkie Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengatur Talkie Premium dan nada untuk setiap suara.",
+    "message": "Lihat dan uji suara yang dipasang untuk setiap bahasa di browser Anda. Talkie Premium pengguna juga dapat memilih suara favorit mereka sebagai default per bahasa, serta mengatur kecepatan dan nada untuk setiap suara.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesFoundDialects": {
+    "message": "Ditemukan $DIALECT_COUNT$ dialek untuk $LANGUAGE_GROUP$ .",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
   },
   "frontend_voicesLinkText": {
     "message": "Suara",
     "original": "Voices"
   },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "Dengarkan sampel suara $VOICE$ .",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
+  },
   "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "Pitch untuk suara",
+    "message": "Nada untuk suara",
     "original": "Pitch for voice"
   },
   "frontend_voicesPitchHeading": {
     "description": "The per-voice pitch options heading, including the voice name",
-    "message": "Pitch seharga $VOICE$",
+    "message": "Tawarkan untuk $VOICE$",
     "original": "Pitch for $VOICE$",
     "placeholders": {
       "voice": {
@@ -670,17 +729,8 @@
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
-    "message": "Rubah coklat cepat melompati anjing malas itu.",
+    "message": "Rubah coklat cepat melompati anjing malas.",
     "original": "The quick brown fox jumps over the lazy dog."
-  },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Contoh teks untuk Talkie untuk Talkie dengan keras",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Gunakan sebagai suara default untuk bahasa",
-    "original": "Use as default voice for language"
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
@@ -697,25 +747,41 @@
       }
     }
   },
-  "frontend_voicesShowAllVoices": {
-    "message": "Tampilkan semua suara",
-    "original": "Show all voices"
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "Untuk merapikan antarmuka pengguna, beberapa detail tidak ditampilkan secara default. Jika Anda mengaktifkan opsi ini, informasi tambahan akan ditampilkan.",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "Ini termasuk informasi dukungan untuk browser dan sistem operasi lain.",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "Detil tambahan",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "Tampilkan detail tambahan",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "Tunjukkan semua",
+    "original": "Show all"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
-    "message": "Di beberapa browser, tidak mungkin membaca teks panjang secara terus menerus. Untuk mengatasi hal ini, Talkie memperkenalkan jeda kecil antara kalimat/klausa dan setelah tanda baca lainnya.",
+    "message": "Di beberapa browser, tidak mungkin membaca teks panjang secara terus-menerus. Untuk mengatasinya, Talkie memperkenalkan jeda kecil antara kalimat/klausa dan setelah tanda baca lainnya.",
     "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
   },
   "frontend_voicesSpeakLongTextsExplanation02": {
-    "message": "Jika Anda mengaktifkan opsi ini dan membaca teks panjang berhenti setelah 10-20 detik, tolong nonaktifkan lagi.",
+    "message": "Jika Anda mengaktifkan opsi ini dan membaca teks panjang berhenti setelah 10-20 detik, harap nonaktifkan lagi.",
     "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
   },
   "frontend_voicesSpeakLongTextsHeading": {
-    "message": "Cobalah membaca teks panjang tanpa jeda",
-    "original": "Try to read long texts without pauses"
+    "message": "Membaca teks yang lebih panjang",
+    "original": "Reading longer text"
   },
   "frontend_voicesSpeakLongTextsLabel": {
-    "message": "Baca teks panjang tanpa jeda (eksperimen)",
-    "original": "Read long texts without pauses (experimental)"
+    "message": "Membaca teks yang lebih panjang tanpa jeda (eksperimental)",
+    "original": "Read longer texts without pauses (experimental)"
   },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Dengan Talkie Premium Anda dapat mengubah suara default untuk setiap bahasa, serta suara dan nada untuk setiap suara.",
@@ -732,7 +798,7 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Silakan pilih teks ini, lalu klik tombol $NAME$ di bilah alat browser. Nikmati!",
+    "message": "Silakan pilih teks ini, lalu klik tombol $NAME$ di bilah alat peramban. Menikmati!",
     "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
     "placeholders": {
       "name": {
@@ -742,7 +808,7 @@
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie saat ini dapat menemukan $VOICES_COUNT$ suara yang memungkinkan $LANGUAGE_GROUPS_COUNT$ languages ​​dalam $LANGUAGES_COUNT$ dialek yang terpasang di browser $SYSTEM_TYPE_PRETTY_NAME$ berjalan pada sistem operasi $OSTYPE_PRETTY_NAME$ .",
+    "message": "Talkie saat ini dapat menemukan $VOICES_COUNT$ suara yang mengaktifkan $LANGUAGE_GROUPS_COUNT$ bahasa dalam $LANGUAGES_COUNT$ dialek yang dipasang di $SYSTEM_TYPE_PRETTY_NAME$ berjalan pada sistem operasi $OSTYPE_PRETTY_NAME$",
     "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
     "placeholders": {
       "language_groups_count": {
@@ -767,37 +833,33 @@
       }
     }
   },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Ingin memasang lebih banyak suara?",
-    "original": "Want to install more voices?"
-  },
   "frontend_welcomeLinkText": {
-    "message": "SELAMAT DATANG",
+    "message": "Selamat datang",
     "original": "Welcome"
   },
   "noTextSelectedMessage": {
-    "message": "Silahkan pilih teks yang diinginkan di website terlebih dahulu. Anda juga bisa memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu.",
+    "message": "Silakan pilih teks yang diinginkan di situs web terlebih dahulu. Anda juga dapat memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
-    "message": "Talkie tidak dapat Talkie teks yang dipilih dari jenis halaman ini. Ini adalah halaman yang sangat spesial, dan ada batasan keamanan yang dimasukkan ke dalam browser. Anda juga bisa mencoba memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Saya minta maaf atas ketidaknyamanannya.",
+    "message": "Talkie tidak dapat mengakses teks yang dipilih dari jenis halaman ini. Ini adalah halaman yang sangat istimewa, dan ada batasan keamanan yang dipasang oleh browser. Anda juga dapat mencoba memilih teks, lalu klik kanan padanya, dan pilih Talkie di menu. Saya minta maaf atas ketidaknyamanannya.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Maaf, tapi membaca teks dari clipboard adalah fitur Talkie Premium. Sudahkah anda mempertimbangkan untuk mengupgrade?",
+    "message": "Maaf, tapi membaca teks dari clipboard adalah fitur Talkie Premium Sudahkah Anda mempertimbangkan untuk meningkatkan?",
     "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Maaf, tapi browser web ini tidak mendukung membaca dari clipboard. Belum, setidaknya. Silakan coba lagi dalam satu bulan atau lebih!",
-    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Maaf, tetapi browser ini tidak mendukung pembacaan dari clipboard. Belum, setidaknya. Silakan coba lagi dalam satu bulan atau lebih!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie tidak memiliki izin untuk mengakses dari clipboard. Tidak apa, tapi membaca teks clipboard tidak akan berhasil.",
+    "message": "Talkie tidak memiliki izin untuk mengakses dari papan klip. Tidak apa-apa, tetapi membaca teks clipboard tidak akan berhasil.",
     "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
   },
   "readClipboardNoSuitableText": {
-    "message": "Tidak dapat menemukan teks yang sesuai di papan klip. Dapatkah Anda mencoba menyalin sesuatu yang lain?",
+    "message": "Tidak dapat menemukan teks yang sesuai di papan klip. Bisakah Anda mencoba menyalin sesuatu yang lain?",
     "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }

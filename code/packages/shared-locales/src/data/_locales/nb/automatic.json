@@ -1,7 +1,7 @@
 {
   "buttonDefaultTitle": {
     "description": "Hover on the Talkie button, dynamically set.",
-    "message": "Les tekstvalg høyt med $NAME$",
+    "message": "Les tekstutvalget høyt med $NAME$",
     "original": "Read text selection out loud with $NAME$",
     "placeholders": {
       "name": {
@@ -12,7 +12,7 @@
   },
   "buttonDefaultTitle_Static": {
     "description": "Hover on the Talkie button, set from manifest.json.",
-    "message": "Les tekstvalg høyt med Talkie",
+    "message": "Les tekstutvalget høyt med Talkie",
     "original": "Read text selection out loud with Talkie"
   },
   "buttonStopTitle": {
@@ -20,11 +20,11 @@
     "original": "Stop talking"
   },
   "commandBrowserActionDescription": {
-    "message": "Les teksten utvalg høyt",
+    "message": "Les tekstutvalget høyt",
     "original": "Read text selection out loud"
   },
   "commandOpenWebsiteMainDescription": {
-    "message": "Talkie",
+    "message": "Talkie nettstedet",
     "original": "The Talkie website"
   },
   "commandOpenWebsiteUpgradeDescription": {
@@ -36,21 +36,17 @@
     "original": "Read from the clipboard"
   },
   "commandStartStopDescription": {
-    "message": "Starte/stoppe å lese valg",
+    "message": "Start/stopp lesing valg",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Rask, enkel tekst til tale av høy kvalitet på over 40 språk. Les høyt fra nettsteder, PDF, e-post. Snakk tekst med TTS.",
+    "message": "Rask, enkel tekst til tale av høy kvalitet på over 40 språk. Les høyt fra nettsteder, PDF, e-post. Les tekst med TTS.",
     "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
   },
-  "frontend_PopupMenu_About": {
-    "message": "Handle om",
-    "original": "About"
-  },
   "frontend_PopupMenu_Features": {
-    "message": "Egenskaper",
-    "original": "Features"
+    "message": "Funksjoner og oppgradering",
+    "original": "Features and upgrade"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Bruk og snarveier",
@@ -61,79 +57,83 @@
     "original": "Voices and languages"
   },
   "frontend_PopupUsageShort": {
-    "message": "Velg ønsket tekst på en hvilken som helst nettside, og klikk på knappen Talkie i verktøylinjen på nettleseren.",
+    "message": "Velg ønsket tekst på en hvilken som helst nettside og klikk på Talkie knappen i nettleserens verktøylinje.",
     "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Kildekode på Github",
     "original": "Source code on Github"
   },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Funksjonsforespørsler og feilrapporter på Github",
+    "original": "Feature requests and bug reports on Github"
+  },
   "frontend_aboutLinkText": {
-    "message": "Handle om",
+    "message": "Om",
     "original": "About"
   },
   "frontend_aboutProjectPageLinkText": {
-    "message": "Prosjekt side på joelpurra.com",
+    "message": "Prosjektside på joelpurra.com",
     "original": "Project page on joelpurra.com"
   },
   "frontend_faq001A": {
-    "message": "Stemmen kommer fra både operativsystemet (Windows, ChromeOS, MacOS, Linux, etc.) og i din nåværende nettleser (Google Chrome, Firefox, etc.). Dette betyr også at du kan laste ned og installere noen stemmer du vil ha på datamaskinen din, og Talkie burde gjenkjenne dem automatisk.",
-    "original": "The voice come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and in your current browser (Google Chrome, Firefox, etcetera). This also means that you can download and install any voices you would like to have on your computer, and Talkie should recognize them automatically."
+    "message": "Stemmene kommer både fra operativsystemet (Windows, ChromeOS, macOS, Linux, etcetera) og din nåværende nettleser (Google Chrome, Microsoft Edge, Firefox, etcetera). Dette betyr også at du kan laste ned og installere alle stemmer du vil ha, starte datamaskinen på nytt, og Talkie skal gjenkjenne dem automatisk. Du kan også prøve å bruke en annen nettleser, siden stemmestøtte kan variere selv på samme system.",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
   },
   "frontend_faq001Q": {
-    "message": "Hvordan oppdager Talkie installerte stemmer?",
+    "message": "Hvordan Talkie installerte stemmer?",
     "original": "How does Talkie detect installed voices?"
   },
   "frontend_faq002A": {
-    "message": "Du kan legge til flere stemmer fra både Microsoft og andre; se separate installeringsinstruksjoner.",
-    "original": "You can add more voices from both Microsoft and others; see separate installation instructions."
+    "message": "Du kan legge til flere stemmer fra både Microsoft og andre. Det enkleste er å legge til et nytt språk i systeminnstillingene. Pass på at du også installerer stemmen for språket. Se egen monteringsanvisning.",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
   },
   "frontend_faq002Q": {
-    "message": "Hvordan kan jeg installere flere stemmer i Talkie på Windows?",
-    "original": "How can I install more voices in Talkie on Windows?"
+    "message": "Hvordan kan jeg installere flere stemmer i Talkie på Microsoft Windows?",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
   },
   "frontend_faq003A": {
-    "message": "Eventuelle tillegg til ChromeOS skal være tilgjengelig i Chrome Nettmarked.",
-    "original": "Any additions to ChromeOS should be available in the Chrome Web Store."
+    "message": "Du kan enkelt installere flere stemmer og språk i systeminnstillingene. Stemmer for ChromeOS kan også være tilgjengelig i Chrome Nettmarked.",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
   },
   "frontend_faq003Q": {
-    "message": "Hvordan kan jeg installere flere stemmer i Talkie på ChromeOS?",
-    "original": "How can I install more voices in Talkie on ChromeOS?"
+    "message": "Hvordan kan jeg installere flere stemmer i Talkie på Google ChromeOS?",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
   },
   "frontend_faq004A": {
-    "message": "Ekstra stemmer kan automatisk installeres fra MacOS-systeminnstillingene for tale; se separate installeringsinstruksjoner.",
-    "original": "Additional voices can be automatically installed from the macOS system preferences for speech; see separate installation instructions."
+    "message": "Ytterligere stemmer kan enkelt installeres fra macOS-systempreferansene for tale. Se egen monteringsanvisning.",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
   },
   "frontend_faq004Q": {
-    "message": "Hvordan kan jeg installere flere stemmer i Talkie på macOS?",
-    "original": "How can I install more voices in Talkie on macOS?"
+    "message": "Hvordan kan jeg installere flere stemmer i Talkie på Apple macOS?",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Foreløpig ikke sikker på hvordan du installerer flere stemmer, som jeg ikke har prøvd det selv. Det er også et spørsmål om hvis og hvordan nettlesere oppdager installerte stemmer. Se separate installeringsanvisninger. Gi meg beskjed om hva dine utløp er!",
-    "original": "Currently not sure how to install additional voices, as I have not tried it myself. It is also a matter of if and how browsers detect installed voices. See separate installation instructions. Please let me know what your expirences are!"
+    "message": "Det avhenger av hvilken Linux-distribusjon, nettleser og pakkedistribusjonssystem du bruker. Se separate installasjonsinstruksjoner for kombinasjonen av programvare. Det enkleste kan være å prøve en annen nettleser og se om den har en passende stemme forhåndsinstallert. For eksempel kan Firefox v95 på Ubuntu 21.10 installeres ved hjelp av Aptitude eller Snap; førstnevnte inkluderer 8611 eSpeak-stemmer som muliggjør 95 språk i 7358 dialekter, men sistnevnte inkluderer 0 stemmer. Et annet eksempel er Google Chrome v96 på Ubuntu 21.10, som som standard inkluderer 19 stemmer som muliggjør 14 språk på 18 dialekter. Fortell meg gjerne hva dine erfaringer er!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
   },
   "frontend_faq005Q": {
     "message": "Hvordan kan jeg installere flere stemmer i Talkie på Linux?",
     "original": "How can I install more voices in Talkie on Linux?"
   },
   "frontend_faq006A": {
-    "message": "Ja og nei. Talkie inneholder ikke noen stemmer i seg selv, men bruker stemmer som allerede er installert på datamaskinen. Du kan installere eventuelle ekstra stemmer du vil ha.",
+    "message": "Ja og nei. Talkie inkluderer ingen stemmer i seg selv, men bruker stemmene som allerede er installert på datamaskinen din. Du kan installere eventuelle ekstra stemmer du ønsker.",
     "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
   },
   "frontend_faq006Q": {
-    "message": "Kan du legge til støtte for <a new voice> i Talkie ?",
+    "message": "Kan du legge til støtte for <en ny stemme> i Talkie ?",
     "original": "Can you add support for <a new voice> in Talkie?"
   },
   "frontend_faq007A": {
-    "message": "Ja og nei. Da Talkie bruker stemmer som er installert på datamaskinen din, må du installere en ny stemme som støtter språket du vil bruke.",
+    "message": "Ja og nei. Siden Talkie bruker stemmene som er installert på datamaskinen din, må du installere en ny stemme som støtter språket du ønsker å bruke.",
     "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
   },
   "frontend_faq007Q": {
-    "message": "Kan du legge til støtte for <a new language> i Talkie ?",
+    "message": "Kan du legge til støtte for <et nytt språk> i Talkie ?",
     "original": "Can you add support for <a new language> in Talkie?"
   },
   "frontend_faq008A": {
-    "message": "Ja, hvis stemmeene er installert, er de også tilgjengelige offline. Du kan se i listen over stemmer som er merket som online.",
+    "message": "Ja, hvis stemmene som er installert også er tilgjengelige offline. Du kan se i listen over stemmer som er merket som online.",
     "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
   },
   "frontend_faq008Q": {
@@ -141,15 +141,15 @@
     "original": "Does Talkie work offline?"
   },
   "frontend_faq009A": {
-    "message": "Nei, Talkie Premium har nøyaktig samme stemmer som Talkie. Du kan installere flere stemmer på systemet, og de er like tilgjengelige. I Talkie Premium kan du imidlertid tilpasse Talkie Premium per språk.",
-    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the voice selection per language though."
+    "message": "Nei, Talkie Premium har nøyaktig de samme stemmene som Talkie. Du kan installere flere stemmer på systemet ditt, og de er like tilgjengelige. I Talkie Premium kan du imidlertid tilpasse den foretrukne stemmen per språk og dialekt.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
   },
   "frontend_faq009Q": {
     "message": "Har Talkie Premium flere stemmer enn Talkie ?",
     "original": "Does Talkie Premium have more voices than Talkie?"
   },
   "frontend_faq010A": {
-    "message": "Google Chrome (og antagelig andre Chrome-baserte nettlesere) har hatt dette problemet/feil siden minst år 2014. Talkie har noen løsninger på plass, og et alternativ for å aktivere/deaktivere lese tekst i kortere deler. Jeg vil fortsette å forbedre løsningen, men inntil Chrometeamet fungerer, kan det hende at det ikke fungerer 100%. Hvis du opplever dette problemet, vennligst gi meg beskjed om hvilken nettleser og versjon, operativsystem og versjon og språk/tale du bruker.",
+    "message": "Google Chrome (og antagelig andre Chromium-baserte nettlesere) har hatt dette problemet/feilen siden minst år 2014. Talkie har noen løsninger på plass, og et alternativ for å aktivere/deaktivere lesing av tekst i kortere deler. Jeg vil fortsette å forbedre løsningen, men før Chromium-teamet fungerer, fungerer det kanskje ikke 100 %. Hvis du opplever dette problemet, vennligst gi meg beskjed om hvilken nettleser og versjon, operativsystem og versjon, og språk/stemme du bruker.",
     "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
   },
   "frontend_faq010Q": {
@@ -157,31 +157,31 @@
     "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
   },
   "frontend_faq011A": {
-    "message": "Det er to grunner. For det første, hvis den aktive stemmen er online, må den laste ned talefilen før den spilles. Dette betyr en ekstra pause som avhenger av hastigheten på internett. Du kan sjekke hvilke stemmer som er online i listen over stemmer. Den andre grunnen er at løsningen for å snakke lange tekster kutter opp teksten i kortere deler, vanligvis per setning eller per klausul. Dette kan legge til en ekstra pause for hver pause. Du kan aktivere å lese lange tekster som en del i alternativene, som bør fjerne pause på støttede systemer.",
+    "message": "Det er to grunner. For det første, hvis den aktive stemmen er online, må den laste ned talefilen før du spiller den. Dette betyr en ekstra pause som er avhengig av hastigheten på Internett-tilkoblingen din. Du kan sjekke hvilke stemmer som er online i listen over stemmer. Den andre grunnen er at løsningen for å snakke lange tekster kutter opp teksten i kortere deler, vanligvis per setning eller per klausul. Dette kan legge til en ekstra pause for hver pause. Du kan aktivere lesing av lange tekster som én del i alternativene, noe som bør fjerne pausen på støttede systemer.",
     "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
   },
   "frontend_faq011Q": {
-    "message": "Hvorfor har Talkie gang en lang pause mellom setninger og ord?",
+    "message": "Hvorfor har Talkie noen ganger en lang pause mellom setninger og ord?",
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Dessverre ikke. Det viser seg at Google Docs (i tillegg til Google Spreadsheet, Google Drive og lignende) ikke er et nettsted, men et spesielt \"program i nettleseren\" opprettet av Google. Talkie har ikke tilgang til den valgte teksten, og kan heller ikke legge til kontekstmenyelementer. Jeg vil undersøke nærmere om det er noen måte å legge til Google Docs-støtte til Talkie .",
-    "original": "Unfortunately, no. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items. I will investigate further if there is some way to add Google Docs support to Talkie."
+    "message": "Dessverre ikke fullt ut. For Talkie Premium brukere er det mulig å kopiere tekst og lese den fra utklippstavlen. Det viser seg at Google Docs (samt Google Spreadsheet, Google Drive og lignende) ikke er et nettsted, men en spesiell «applikasjon i nettleseren» laget av Google. Talkie kan ikke få tilgang til den valgte teksten eller legge til kontekstmenyelementer, så Talkie knappen fungerer ikke.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Fungerer Talkie i Google Dokumenter?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Ja takk! Bruk enten støttesiden eller kontakt meg direkte. Ta med så mye informasjon som mulig, for eksempel hvilken nettleser og versjon, operativsystem og versjon og språk/stemme du bruker. Ta også med informasjon om bestemte nettsteder hvor du ser feilen, helst med en lenke.",
-    "original": "Yes, please! Use either the support page or contact me directly. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Ja takk! Lag helst en problemrapport på Github, slik at andre også kan hjelpe. Vennligst inkluder så mye informasjon som mulig, for eksempel hvilken nettleser og versjon, operativsystem og versjon, og språk/stemme du bruker. Ta også med informasjon om spesifikke nettsider der du ser feilen, gjerne med en lenke.",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
-    "message": "Skal jeg rapportere feil?",
+    "message": "Bør jeg rapportere feil?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Som oftest! Hvis du kan velge teksten i PDF-filen, høyreklikker du på den og velger Talkie i menyen. Hvis teksten ikke kan velges, hvis den er en del av et bilde, virker det ikke.",
+    "message": "Som oftest! Hvis du kan velge teksten i PDF-en, høyreklikk på den og velg Talkie i menyen. Hvis teksten ikke kan velges, hvis den er en del av et bilde, vil den ikke fungere.",
     "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
@@ -189,7 +189,7 @@
     "original": "Can Talkie read PDF files?"
   },
   "frontend_faq015A": {
-    "message": "Nei. Talkie har ubegrenset bruk — du kan lese så mange ord og så lange tekster som du vil.",
+    "message": "Nei. Talkie har ubegrenset bruk — du kan lese så mange ord og så lange tekster du vil.",
     "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
   },
   "frontend_faq015Q": {
@@ -197,7 +197,7 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Sikkert! Bare kontakt meg gjennom støtte eller prosjekt sider.",
+    "message": "Sikkert! Bare kontakt meg gjennom støtte- eller prosjektsidene.",
     "original": "Certainly! Just contact me through the support or project pages."
   },
   "frontend_faq016Q": {
@@ -205,39 +205,39 @@
     "original": "Can I request new features?"
   },
   "frontend_faq017A": {
-    "message": "Det finnes et hurtigtaster for redigeringsverktøy, som du finner nederst på siden for utvidelser i Google Chrome.",
+    "message": "Det er et hurtigtastredigeringsprogram, som du finner nederst på utvidelsessiden i Google Chrome.",
     "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
   },
   "frontend_faq017Q": {
-    "message": "Slik endrer du hurtigtaster i Google Chrome?",
+    "message": "Hvordan endre hurtigtaster i Google Chrome?",
     "original": "How to change shortcut keys in Google Chrome?"
   },
   "frontend_faq018A": {
-    "message": "Dessverre virker det ikke som det er på dette tidspunktet. Vennligst spørg Firefox-teamet for å legge til denne funksjonen!",
-    "original": "Unfortunately, that does not seem possible at this time. Please ask the Firefox team to add this feature!"
+    "message": "Du kan endre eller fjerne hurtigtaster i Firefox-innstillingene for tillegg. Klikk på tannhjulknappen for å finne hurtigtastredigeringsprogrammet.",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
   },
   "frontend_faq018Q": {
-    "message": "Slik endrer du hurtigtaster i Firefox?",
+    "message": "Hvordan endre hurtigtaster i Firefox?",
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Sikkert! Det ville være flott å få hjelp til å oversette Talkie , for å teste Talkie på nye systemer, for å undersøke feil og legge til nye funksjoner. Vennligst se prosjektsiden for instruksjoner.",
+    "message": "Sikkert! Det ville vært flott å få hjelp til å oversette Talkie , teste Talkie på nye systemer, undersøke feil og legge til nye funksjoner. Vennligst se prosjektsiden for instruksjoner.",
     "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
-    "message": "Kan jeg bidra til å utvikle Talkie ?",
+    "message": "Kan jeg hjelpe med å utvikle Talkie ?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Ja — vennligst fortell vennene dine om Talkie! Kanskje send en lenke til din favoritt internettkjendis, online gruppe eller nyhetsbrev. Du kan til og med be sjefen din om å installere den på alle datamaskiner på jobben, eller læreren din installerer den på skolen. Spredning av ordet om Talkie er veldig verdsatt!",
+    "message": "Ja – vennligst fortell vennene dine om Talkie! Kanskje send en lenke til din favoritt internettkjendis, nettgruppe eller nyhetsbrev. Du kan til og med be sjefen din om å installere den på alle datamaskinene på jobben, eller læreren din om å installere den på skolen. Å spre ordet om Talkie blir satt stor pris på!",
     "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
   },
   "frontend_faq020Q": {
-    "message": "Kan jeg hjelpe Talkie på annen måte?",
+    "message": "Kan jeg hjelpe Talkie på noen annen måte?",
     "original": "Can I help Talkie in any other way?"
   },
   "frontend_faq021A": {
-    "message": "Det tar ganske mye tid og krefter å utvikle og vedlikeholde Talkie — hundrevis av timer så langt. Likevel er Talkie gratis for alle å bruke så mye de vil. For å støtte økonomisk utvikling, vedlikehold og holde gratis Talkie gratis, er noen funksjoner bare tilgjengelige for brukere av Talkie Premium .",
+    "message": "Det tar ganske mye tid og krefter å utvikle og vedlikeholde Talkie — hundrevis av timer så langt. Likevel er Talkie gratis for alle å bruke så mye de vil. For å støtte økonomisk videre både utvikling, vedlikehold og å holde den gratis Talkie gratis, er noen funksjoner kun tilgjengelige for Talkie Premium brukere.",
     "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
   },
   "frontend_faq021Q": {
@@ -253,11 +253,11 @@
     "original": "Can I pay using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Ja, hvis du betalte med PayPal eller Stripe, som tilbyr enkel administrasjon av refusjon. Refusjoner er vanligvis ikke tilgjengelige for andre betalingsmåter på grunn av mengden ekstra arbeid det krever, pluss risikoen for at pengene blir tilbakebetalt til feil konto.",
+    "message": "Ja, hvis du har betalt med PayPal eller Stripe, som tilbyr enkel refusjonsadministrasjon. Refusjon er vanligvis ikke tilgjengelig for andre betalingsmåter på grunn av mengden ekstra arbeid det krever, pluss risikoen for at pengene blir refundert til feil konto.",
     "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
   },
   "frontend_faq023Q": {
-    "message": "Kan jeg få tilbakebetaling?",
+    "message": "Kan jeg få refusjon?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
@@ -269,23 +269,23 @@
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Det er ingen annonse, datainnsamling eller brukersporing i Talkie. Glade brukere som betaler for Talkie Premium er den eneste inntektsgenerering.",
+    "message": "Det er ingen reklame, datainnsamling eller brukersporing i Talkie. Fornøyde brukere som betaler for Talkie Premium er den eneste inntektsgenereringen.",
     "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
-    "message": "Inneholder Talkie utvidelser reklame, samler inn data eller sporer brukere?",
+    "message": "Inneholder Talkie utvidelsene reklame, samler inn data eller sporer brukere?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Æresystemet er når enkeltpersoner stoler på å være ærlige, og følger retningslinjer uten strengt håndhevede kontroller. For Talkie Premium stoler på at de som oppgraderer har betalt for det.",
+    "message": "Æresystemet er når enkeltpersoner er klarert for å være ærlige, og følger retningslinjer uten strengt håndhevede kontroller. For Talkie Premium stole på at de som oppgraderer har betalt for det.",
     "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
   },
   "frontend_faq026Q": {
-    "message": "Hva er æresystemet?",
+    "message": "Hva er æressystemet?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Fordi mennesker over hele verden bruker forskjellige valutaer, har forskjellige nivåer av disponibel inntekt og har forskjellige nivåer av forståelse for Talkie Premium s funksjoner. Det er ingen enkelt, fast pris som fungerer bra for alle i verden. På toppen av det kommer svingninger i valutaer, konjunkturutvikling, regionale/internasjonale variasjoner osv. Alt i alt er innstillingsprisene for et produkt som selges over hele verden kompliserte. Det er lettere å la alle sette sin egen pris, og sørge for at produktet er godt nok til å garantere en betaling.",
+    "message": "Fordi folk rundt om i verden bruker forskjellige valutaer, har forskjellige nivåer av disponibel inntekt og har forskjellige nivåer av verdsettelse for Talkie Premium til Talkie Premium. Det er ingen enkelt, fast pris som fungerer bra for alle i verden. I tillegg kommer svingninger i valutaer, konjunkturtrender, regionale/intra-land variasjoner osv. Alt i alt er innstillingspriser for et produkt som selges over hele verden komplisert. Det er lettere å la alle sette sin egen pris, og sørge for at produktet er godt nok til å berettige en betaling.",
     "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
   },
   "frontend_faq027Q": {
@@ -293,7 +293,7 @@
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Siden jeg ikke vet hvor mye penger du kan bruke på tekst-til-tale-programvare, foretrekker jeg at du betaler det du synes Talkie Premium er verdt for deg — ikke mer, ikke mindre. I tilfelle du leter etter en referanseramme, når Google håndterte betalinger for Talkie Premium kostet abonnementet $$ 25 (US Dollar) per år i USA. Vær oppmerksom på at Google justerte prisene for land og valutaer i verden for å matche lokale forhold, så det kan være mer eller mindre. Samtidig kunne alle som spurte høflig også motta Talkie Premium gratis.",
+    "message": "Siden jeg ikke vet hvor mye penger du kan bruke på tekst-til-tale-programvare, foretrekker jeg at du betaler det du tror Talkie Premium er verdt for deg — verken mer eller mindre. I tilfelle du leter etter en referanseramme, da Google håndterte betalinger for Talkie Premium kostet abonnementet $$25 (US Dollar) per år i USA. Merk at Google har justert prisene rundt for land og valutaer i verden for å matche lokale forhold, så det kan være mer eller mindre. Samtidig kunne alle som spurte høflig også motta Talkie Premium gratis.",
     "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
   },
   "frontend_faq028Q": {
@@ -301,19 +301,19 @@
     "original": "How much do you recommend I pay?"
   },
   "frontend_faq029A": {
-    "message": "Fordi implementering av et system for betalinger og verifisering tar mye tid og krefter, og det antas at kostnadene for å implementere streng betalingsverifisering er høyere enn tapene fra enkeltpersoner som jukser systemet. Betalingsverifisering krever også et visst nivå av datainnsamling fra brukernes systemer, og teknisk dyktige brukere kan ofte jobbe rundt verifiseringen uansett. Så fra et teknisk og forretningsmessig perspektiv, selv om det ikke er noen garantier, er det lettere å bare stole på at brukerne følger æresystemet.",
+    "message": "Fordi å implementere et system for betalinger og verifikasjon tar mye tid og krefter, og det antas at kostnadene ved å implementere streng betalingsverifisering er høyere enn tapene fra enkeltpersoner som jukser systemet. Betalingsverifisering krever også en viss grad av datainnsamling fra brukernes systemer, og teknisk dyktige brukere kan ofte omgå verifiseringen uansett. Så fra et teknisk og forretningsmessig perspektiv, selv om det ikke er noen garantier, er det lettere å bare stole på at brukerne følger æressystemet.",
     "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Hvorfor er det ingen betalingsbekreftelse?",
+    "message": "Hvorfor er det ingen betalingsverifisering?",
     "original": "Why is there no payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Beslutningen om ikke å implementere betalingsbekreftelse betyr at det betalte beløpet ikke kan bekreftes. I tillegg er kostnadene ved å \"produsere\" en digital kopi av Talkie Premium null, så å gi den bort for ingenting innebærer ikke et økonomisk tap for utvikleren. Det er også håp om at hvis du liker Talkie Premium , vil du fortelle vennene dine om det. Å gi bort Talkie Premium kan også sees på som et markedsføringsarbeid.",
+    "message": "Beslutningen om å ikke gjennomføre betalingsverifisering betyr at beløpet som er betalt ikke kan verifiseres. I tillegg er kostnaden for å \"produsere\" en digital kopi av Talkie Premium null, så å gi den bort for ingenting innebærer ikke et økonomisk tap for utvikleren. Det er også håp om at hvis du liker Talkie Premium , vil du fortelle vennene dine om det. Å gi bort Talkie Premium kan også sees på som en markedsføringsinnsats.",
     "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Hvorfor kan jeg velge å betale ingenting?",
+    "message": "Hvorfor kan jeg velge å ikke betale noe?",
     "original": "Why can I choose to pay nothing?"
   },
   "frontend_faq031A": {
@@ -321,11 +321,11 @@
     "original": "Yes, by using Stripe. See additional payment options."
   },
   "frontend_faq031Q": {
-    "message": "Kan jeg foreta en månedlig eller årlig betaling?",
+    "message": "Kan jeg foreta en gjentakende månedlig eller årlig betaling?",
     "original": "Can I make a recurring monthly or yearly payment?"
   },
   "frontend_faq032A": {
-    "message": "Ja, hvis du ber om det via e-post. Vennligst oppgi navn, adresse og eventuelt merverdiavgiftsidentifikatoren (eller tilsvarende).",
+    "message": "Ja, hvis du ber om det via e-post. Inkluder navn, adresse og eventuelt merverdiavgiftsidentifikasjon (eller tilsvarende).",
     "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
   },
   "frontend_faq032Q": {
@@ -333,15 +333,39 @@
     "original": "Can I get a receipt for my payment?"
   },
   "frontend_faq033A": {
-    "message": "Fordi du liker tilleggsfunksjonene Talkie Premium gir, og den glade følelsen av å bidra til åpen kildekode programvareutvikling av uavhengige utviklere. På grunn av relativt høye personalkostnader for utvikling og vedlikehold, men null kostnad for å \"produsere\" digitale kopier, kan betalinger for Talkie Premium også sees på som å gi støtte for fremtidig utvikling og vedlikehold, i motsetning til verdien av produktet på betalingstidspunktet .",
+    "message": "Fordi du liker tilleggsfunksjonene Talkie Premium gir, og den glade følelsen av å bidra til åpen kildekode-programvareutvikling av uavhengige utviklere. På grunn av relativt høye personalkostnader for utvikling og vedlikehold, men null kostnader ved å \"produsere\" digitale kopier, kan betalinger for Talkie Premium også sees på som støtte for fremtidig utvikling og vedlikehold, i motsetning til verdien av produktet på betalingstidspunktet .",
     "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
   },
   "frontend_faq033Q": {
     "message": "Hvorfor skal jeg betale for å oppgradere?",
     "original": "Why should I pay to upgrade?"
   },
+  "frontend_faq034A": {
+    "message": "Det korte svaret er: sannsynligvis ikke. Det viser seg at det er moderne stemmer og gamle stemmer på Microsoft Windows. Da jeg sist testet, var den nederlandske stemmen «Microsoft Frank» tilgjengelig i Microsoft Edge, men ikke i Google Chrome eller Mozilla Firefox. En grunn er at noen stemmer er bygget for det nyere WinRT talesystemet, og noen for det eldre speech Application Programming Interface (SAPI). Nettlesere støtter kanskje ikke både det gamle og det nye talesystemet, noe som betyr at en stemme som faktisk er installert, kanskje fortsatt ikke er tilgjengelig i favorittnettleseren din. Over tid vil nok de fleste nettlesere støtte det nyere WinRT-systemet. Hvis du mangler stemmer på språket ditt, er et forslag å prøve å bruke Talkie i Microsoft Edge.",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "Fungerer alle stemmer for Microsoft Windows med Talkie ?",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "Kanskje, med mye innsats. Det er også noen uoffisielle løsninger for å få nye WinRT-stemmer til å fungere med eldre SAPI-aktiverte nettlesere, men dette er et svært teknisk forsøk og anbefales ikke for ikke-tekniske brukere.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "Kan WinRT-stemmer fungere i SAPI-aktiverte nettlesere på Microsoft Windows?",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "Ja, noen gjør det. Følg installasjonsinstruksjonene for systemet og nettleseren. Når stemmene er installert i nettleseren din, Talkie oppdage dem automatisk. Del gjerne tips du har!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "Talkie åpen kildekode-stemmer med Talkie?",
+    "original": "Do open source voices work with Talkie?"
+  },
   "frontend_faqBugsHeading": {
-    "message": "bugs",
+    "message": "Bugs",
     "original": "Bugs"
   },
   "frontend_faqGeneralHeading": {
@@ -357,23 +381,23 @@
     "original": "Talkie Premium"
   },
   "frontend_faqVoicesHeading": {
-    "message": "Voices",
+    "message": "Stemmer",
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "For tiden bruker den gratis utgaven av Talkie , og et begrenset sett med funksjoner er tilgjengelig. Kanskje Talkie Premium ville være et bedre valg for deg?",
+    "message": "Bruker for øyeblikket gratisutgaven av Talkie , og et begrenset sett med funksjoner er tilgjengelig. Kanskje Talkie Premium ville være et bedre valg for deg?",
     "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "For øyeblikket bruker Talkie Premium , og alle funksjonene er tilgjengelige. Tusen takk, det varmer mitt hjerte!",
+    "message": "Bruker for øyeblikket Talkie Premium , og alle funksjoner er tilgjengelige. Tusen takk, det varmer hjertet mitt!",
     "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
-    "message": "Talkie kommer i to utgaver: Talkie og Talkie Premium. Den gratis utgaven er flott for de fleste brukstilfeller, men premiumutgaven tilbyr flere alternativer og funksjoner.",
+    "message": "Talkie kommer i to utgaver: Talkie og Talkie Premium. Gratisutgaven er flott for de fleste brukstilfeller, men premium-utgaven tilbyr flere alternativer og funksjoner.",
     "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
   },
   "frontend_featuresFree_List01": {
-    "message": "Automatisk gjenkjenning av språk.",
+    "message": "Automatisk språkdeteksjon.",
     "original": "Automatic language detection."
   },
   "frontend_featuresFree_List02": {
@@ -381,15 +405,15 @@
     "original": "Automatic voice selection."
   },
   "frontend_featuresFree_List03": {
-    "message": "Leser markert tekst med et knappetrykk, hurtigtast, eller høyreklikkmenyen.",
+    "message": "Leser valgt tekst med et knappeklikk, hurtigtast eller høyreklikkmeny.",
     "original": "Reads selected text by a button click, shortcut key, or right-click menu."
   },
   "frontend_featuresFree_List04": {
-    "message": "Leser lange tekster og artikler høyt, selv når kategorien er i bakgrunnen.",
+    "message": "Leser lange tekster og artikler høyt, selv mens fanen er i bakgrunnen.",
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Koden er åpen kildekode og gratis tilgjengelig for alle brukere.",
+    "message": "Koden er åpen kildekode og tilgjengelig gratis for alle brukere.",
     "original": "Code is open source and available for free to all users."
   },
   "frontend_featuresFree_List06": {
@@ -397,35 +421,39 @@
     "original": "Free!"
   },
   "frontend_featuresLinkText": {
-    "message": "Egenskaper",
+    "message": "Funksjoner",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Velg din egen standard stemme for hvert språk. Flott hvis du blir lei av systemet stemme!",
+    "message": "Velg din egen standardstemme for hvert språk. Flott hvis du blir lei av systemstemmen!",
     "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
   },
   "frontend_featuresPremium_List02": {
-    "message": "Velg lesehastighet og pitch per stemme. Juster stemmene til din smak!",
+    "message": "Velg lesehastighet og tonehøyde per stemme. Juster stemmene etter din smak!",
     "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
   },
   "frontend_featuresPremium_List03": {
-    "message": "At varm og god følelse du får når støtte åpen kildekode av uavhengige utviklere.",
+    "message": "Den varme, uklare følelsen du får når du støtter åpen kildekode-programvare fra uavhengige utviklere.",
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
   "frontend_featuresPremium_List04": {
-    "message": "Fremtidige Premium oppdateringer inkludert gratis.",
-    "original": "Future Premium updates included for free."
+    "message": "Fremtidige Premium oppdateringer inkludert uten ekstra kostnad.",
+    "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Les tekst fra utklippstavlen! Bare kopier tekst fra hvor som helst i hvilket som helst program, og bruk Talkie Premium å lese det!",
+    "message": "Les tekst fra utklippstavlen! Bare kopier tekst fra hvor som helst i et hvilket som helst program, og bruk Talkie Premium å lese den!",
     "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
-  "frontend_featuresUpgradeToTalkiePremiumLinkText": {
-    "message": "Oppgrader til Talkie Premium",
-    "original": "Upgrade to Talkie Premium"
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "Installer noen stemmer på systemet ditt, ellers vil ikke Talkie Beklager!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "Fant ingen tekst-til-tale-stemmer",
+    "original": "No text-to-speech voices found"
   },
   "frontend_licenseCLADescription": {
-    "message": "Alle bidrag til Talkie er gjort under den bidragsyter License Agreement (CLA).",
+    "message": "Alle bidrag til Talkie er gitt under Contributor License Agreement (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
   },
   "frontend_licenseHeading": {
@@ -433,7 +461,7 @@
     "original": "License"
   },
   "frontend_loading": {
-    "message": "Laster ...",
+    "message": "Laster inn...",
     "original": "Loading..."
   },
   "frontend_rateIt": {
@@ -441,25 +469,11 @@
     "original": "Review Talkie"
   },
   "frontend_settingsLinkText": {
-    "message": "Tekst",
-    "original": "Text"
-  },
-  "frontend_shareHeading": {
-    "message": "Fortell vennene dine om Talkie",
-    "original": "Tell your friends about Talkie"
-  },
-  "frontend_sharePitch": {
-    "message": "Liker du $NAME$? Hvis ja, ville jeg være glad hvis du kunne gi en fin vurdering og gjennomgang 😃",
-    "original": "Do you like $NAME$? If so, I would be happy if you could give a nice ⭐️ rating and review 😃",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Innstillinger",
+    "original": "Settings"
   },
   "frontend_storyDescription": {
-    "message": "Talkie ble utviklet noen dager før nyttår 2016/2017, på en utfordring fra en venn. Utfordringen startet med spørsmålet: Er det mulig å lytte til en artikkel mens du pendler til jobb i stedet for å lese den? Enkelt, sa jeg, og satte meg for å bevise det — eller i det minste å få nettleseren til å snakke ut tekst ved hjelp av en dum datamaskinstemme. Den grunnleggende utgaven, uten noe brukergrensesnitt, viste seg å være triviell å lage. Det tok litt lengre tid å legge til et brukergrensesnitt. Legge til riktig språkoppdagelse en mengde mer kode. Å overvinne feil i nettleseren enda mer arbeid. Listen over forbedringer og funksjoner fortsetter — og noen få tusen linjer med kode senere ser du på sluttresultatet.",
+    "message": "Talkie ble utviklet noen dager før nyttår 2016/2017, på en utfordring fra en venn. Utfordringen startet med spørsmålet: er det mulig å lytte til en artikkel i stedet for å lese den mens du pendler til jobben? Enkelt, sa jeg, og satte meg for å bevise det – eller i det minste få nettleseren min til å si ut tekst ved å bruke en dum datastemme. Grunnutgaven, uten noe brukergrensesnitt, viste seg å være triviell å lage. Det tok litt lengre tid å legge til et brukergrensesnitt. Legger til riktig språkdeteksjon en haug mer kode. Å overvinne feil i nettleseren enda mer arbeid. Listen over forbedringer og funksjoner fortsetter — og noen tusen linjer med kode senere ser du på sluttresultatet.",
     "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
   },
   "frontend_storyHeading": {
@@ -467,15 +481,15 @@
     "original": "How Talkie got started"
   },
   "frontend_storyThankYou": {
-    "message": "Takk for at du bruker Talkie — hvis du liker det, fortell dine venner!",
+    "message": "Takk for at du bruker Talkie — hvis du liker det, fortell det til vennene dine!",
     "original": "Thank you for using Talkie — if you like it, tell your friends!"
   },
   "frontend_supportAndFeedback": {
-    "message": "Support og tilbakemeldinger",
+    "message": "Støtte og tilbakemelding",
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Har et spørsmål? Trenger du hjelp med noe? For svar på vanlige spørsmål, se de vanlige spørsmålene nedenfor. Hvis det ikke gir deg svar, vennligst send meg eventuelle spørsmål du måtte ha. Jeg ville være glad hvis din erfaring med å bruke $NAME$ er glatt og hyggelig!",
+    "message": "Har et spørsmål? Trenger du hjelp med noe? For raske svar på vanlige spørsmål, se de vanlige spørsmålene nedenfor. Hvis det ikke gir deg svar, vennligst send meg spørsmål du måtte ha. Jeg ville bli glad hvis opplevelsen din med $NAME$ er jevn og hyggelig!",
     "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
     "placeholders": {
       "name": {
@@ -488,12 +502,16 @@
     "message": "Brukerstøtte",
     "original": "Support"
   },
+  "frontend_supportLinksHeading": {
+    "message": "Støttelenker",
+    "original": "Support links"
+  },
   "frontend_systemBrowserLanguageHeading": {
     "message": "Foretrukket nettleserspråk",
     "original": "Preferred browser language"
   },
   "frontend_systemBrowserLanguagesHeading": {
-    "message": "Foretrukne nettleser språk",
+    "message": "Foretrukket nettleserspråk",
     "original": "Preferred browser languages"
   },
   "frontend_systemBrowserTypeHeading": {
@@ -537,15 +555,15 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Prisen for Talkie Premium er ikke fast. I stedet betaler du det du vil, avhengig av hvor mye du synes premiumfunksjonene er verdt for deg. Du kan til og med bestemme deg for å betale ingenting.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decided to pay nothing."
+    "message": "Prisen for Talkie Premium er ikke fast. I stedet betaler du det du vil, avhengig av hvor mye du tror premiumfunksjonene er verdt for deg. Du kan til og med bestemme deg for å ikke betale noe.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Etter at betalingen er sendt, er det ingen oppgraderingskoder å angi, ingen brukerkontoer å registrere eller noen annen betalingsbekreftelse på plass. I stedet bruker Talkie Premium .",
+    "message": "Etter å ha sendt betalingen er det ingen oppgraderingskoder å angi, ingen brukerkontoer å registrere eller noen annen betalingsverifisering på plass. I stedet bruker Talkie Premium",
     "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Vær oppmerksom på at Talkie ikke har noen reklame, brukersporing eller datainnsamling som alternativ måte å tjene penger på. Betalinger er merket som donasjoner for programvareutvikling med åpen kildekode.",
+    "message": "Vær oppmerksom på at Talkie ikke har noen annonsering, brukersporing eller datainnsamling som alternativ måte å tjene penger på. Betalinger er merket som donasjoner for utvikling av åpen kildekode.",
     "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
   },
   "frontend_upgradeHeading": {
@@ -556,12 +574,8 @@
     "message": "Jeg har betalt for Talkie Premium",
     "original": "I have paid for Talkie Premium"
   },
-  "frontend_upgradeLinkText": {
-    "message": "Oppgradering",
-    "original": "Upgrade"
-  },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Flere betalingsmåter via donasjonssiden",
+    "message": "Flere betalingsmetoder via donasjonssiden",
     "original": "More payment methods via the donations page"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
@@ -569,31 +583,35 @@
     "original": "Pay using PayPal"
   },
   "frontend_usageLinkText": {
-    "message": "bruk",
+    "message": "Bruk",
     "original": "Usage"
   },
   "frontend_usageReadclipboard": {
-    "message": "Les noen tekst som er kopiert til utklippstavlen din — bruk den med en hurtigtast for å lytte til tekst fra hvor som helst utenfor nettleseren. Du kan også Talkie Premium knappen Talkie Premium , eller i et tomt område på et nettsted, og velg les fra utklippstavlen.",
+    "message": "Les all tekst som er kopiert til utklippstavlen – bruk den med en hurtigtast for å lytte til tekst fra hvor som helst utenfor nettleseren. Du kan også høyreklikke på Talkie Premium knappen, eller i et tomt område på et nettsted, og velge les fra utklippstavlen.",
     "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
-    "message": "Du kan også velge teksten, deretter høyreklikk på den og velg Talkie i menyen. På denne måten fungerer også i PDF-filer og noen spesielle typer sider i nettleseren.",
+    "message": "Du kan også velge teksten, høyreklikke på den og velge Talkie i menyen. Denne måten fungerer også i PDF-filer og noen spesielle typer sider i nettleseren.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
   "frontend_usageShortcutHeading": {
-    "message": "Hurtigtaster",
+    "message": "Snarveistaster",
     "original": "Shortcut keys"
   },
   "frontend_usageShortcutKeyAlternative03": {
-    "message": "Hvis snarveien ikke fungerer, må du kontrollere at den ikke allerede er i bruk av en annen utvidelse eller et program.",
-    "original": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
+    "message": "Dette er de foreslåtte hurtigtastene, som kan endres fra siden for utvidelsesinnstillinger i nettleseren din.",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
   },
   "frontend_usageShortcutKeyAlternative04": {
-    "message": "Talkie eller endre snarveis tastene Talkie .",
+    "message": "Det er vanlig at det er konflikter mellom tastatursnarveiene til forskjellige utvidelser og programmer. Hvis en snarvei ikke fungerer, må du kontrollere at den ikke allerede er konfigurert for noe annet.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Kontroller eller endre Talkie snarveistastene.",
     "original": "Check or change the Talkie shortcut keys."
   },
   "frontend_usageShortcutKeyDescription": {
-    "message": "En praktisk alternativ er å bruke Talkie hurtigtaster:",
+    "message": "Et praktisk alternativ er å bruke Talkie snarveistastene:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
   "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
@@ -609,36 +627,77 @@
     "original": "Start/stop"
   },
   "frontend_usageStep01": {
-    "message": "Velg ønsket tekst på en nettside.",
+    "message": "Velg ønsket tekst på en hvilken som helst nettside.",
     "original": "Select desired text on any web page."
   },
   "frontend_usageStep02": {
-    "message": "Klikk på knappen Talkie i verktøylinjen på nettleseren din",
+    "message": "Klikk på Talkie knappen i nettleserens verktøylinje",
     "original": "Click the Talkie button in your browser toolbar"
   },
-  "frontend_voiceFeatureOnline": {
-    "message": "på nett",
-    "original": "online"
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "Standardstemmen for dialekten $LANGUAGE_CODE$ er $VOICE$ .",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
   },
-  "frontend_voicesAvailableLanguages": {
-    "message": "tilgjengelige språk",
-    "original": "Available languages"
-  },
-  "frontend_voicesAvailableVoices": {
-    "message": "tilgjengelige stemmer",
-    "original": "Available voices"
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "Standardstemmen for språket $LANGUAGE_GROUP$ er $VOICE$ .",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
   },
   "frontend_voicesDescription": {
-    "message": "Se og test installerte stemmer for hvert språk i nettleseren din. Talkie Premium brukere kan også velge Talkie Premium som standard per språk, samt angi Talkie Premium for hver stemme.",
+    "message": "Se og test installerte stemmer for hvert språk i nettleseren din. Talkie Premium brukere kan også velge sin favorittstemme som standard per språk, samt angi hastighet og tonehøyde for hver stemme.",
     "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
   },
+  "frontend_voicesFoundDialects": {
+    "message": "Fant $DIALECT_COUNT$ dialekter for $LANGUAGE_GROUP$ .",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
   "frontend_voicesLinkText": {
-    "message": "Voices",
+    "message": "Stemmer",
     "original": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "Lytt til et stemmeeksempel av $VOICE$ .",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
   },
   "frontend_voicesPitchEmptyHeading": {
     "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
-    "message": "Pitch for voice",
+    "message": "Tonehøyde for stemme",
     "original": "Pitch for voice"
   },
   "frontend_voicesPitchHeading": {
@@ -670,21 +729,12 @@
   },
   "frontend_voicesSampleText": {
     "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
-    "message": "Den raske brune reven hopper over den late hunden.",
+    "message": "Den raske brunreven hopper over den late hunden.",
     "original": "The quick brown fox jumps over the lazy dog."
-  },
-  "frontend_voicesSampleTextHeading": {
-    "message": "Eksempeltekst for Talkie å lese høyt",
-    "original": "Sample text for Talkie to read out loud"
-  },
-  "frontend_voicesSetAsLanguageEmptySelection": {
-    "description": "This should be the same/similar format as frontend_voicesSetAsLanguageUseVoiceAsDefault, but without the variables.",
-    "message": "Bruk som standard stemme for språk",
-    "original": "Use as default voice for language"
   },
   "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
     "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
-    "message": "Bruk $VOICE$ som standard stemme for tekst i $LANGUAGE$",
+    "message": "Bruk $VOICE$ som standardstemme for tekst på $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
       "language": {
@@ -697,32 +747,48 @@
       }
     }
   },
-  "frontend_voicesShowAllVoices": {
-    "message": "Vis alle stemmene",
-    "original": "Show all voices"
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "For å rydde opp i brukergrensesnittet, vises ikke noen detaljer som standard. Hvis du aktiverer dette alternativet, vil tilleggsinformasjon vises.",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "Dette inkluderer støtteinformasjon for andre nettlesere og operativsystemer.",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "Ekstra detaljer",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "Vis ytterligere detaljer",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "Vis alt",
+    "original": "Show all"
   },
   "frontend_voicesSpeakLongTextsExplanation01": {
-    "message": "I noen nettlesere er det ikke mulig å lese lange tekster kontinuerlig. For å omgå dette, introduserer Talkie en liten pause mellom setninger/klausuler og etter annen tegnsetting.",
+    "message": "I enkelte nettlesere er det ikke mulig å lese lange tekster kontinuerlig. For å omgå dette, Talkie en liten pause mellom setninger/ledd og etter annen tegnsetting.",
     "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
   },
   "frontend_voicesSpeakLongTextsExplanation02": {
-    "message": "Hvis du aktiverer dette alternativet og leser lange tekster stopper etter 10-20 sekunder, må du deaktivere den på nytt.",
+    "message": "Hvis du aktiverer dette alternativet og lesing av lange tekster stopper etter 10-20 sekunder, vennligst deaktiver det igjen.",
     "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
   },
   "frontend_voicesSpeakLongTextsHeading": {
-    "message": "Prøv å lese lange tekster uten pauser",
-    "original": "Try to read long texts without pauses"
+    "message": "Leser lengre tekst",
+    "original": "Reading longer text"
   },
   "frontend_voicesSpeakLongTextsLabel": {
-    "message": "Les lange tekster uten pauser (eksperimentelle)",
-    "original": "Read long texts without pauses (experimental)"
+    "message": "Les lengre tekster uten pauser (eksperimentell)",
+    "original": "Read longer texts without pauses (experimental)"
   },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Med Talkie Premium kan du endre standardstemmen for hvert språk, samt stemme og tonehøyde for hver stemme.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
   },
   "frontend_welcomeHero01": {
-    "message": "Velkommen til $NAME$! Du bruker nå en av de beste tekst-til-tale-nettleserutvidelsene i verden.",
+    "message": "Velkommen til $NAME$! Du bruker nå en av de beste tekst-til-tale nettleserutvidelsene i verden.",
     "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
     "placeholders": {
       "name": {
@@ -732,7 +798,7 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Gå videre og velg denne teksten, og klikk deretter knappen $NAME$ i nettleserens verktøylinje. Nyt!",
+    "message": "Gå videre og velg denne teksten, og klikk deretter på $NAME$ -knappen i nettleserens verktøylinje. Nyt!",
     "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
     "placeholders": {
       "name": {
@@ -742,7 +808,7 @@
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie kan for tiden finne $VOICES_COUNT$ stemmer som aktiverer $LANGUAGE_GROUPS_COUNT$ språk i $LANGUAGES_COUNT$ dialekter installert i $SYSTEM_TYPE_PRETTY_NAME$ nettleseren som kjører på et $OSTYPE_PRETTY_NAME$ operativsystem.",
+    "message": "Talkie kan for øyeblikket finne $VOICES_COUNT$ aktiverer $LANGUAGE_GROUPS_COUNT$ $-språk på $LANGUAGES_COUNT$ $-dialekter installert i $SYSTEM_TYPE_PRETTY_NAME$ kjører på et $OSTYPE_PRETTY_NAME$ -operativsystem.",
     "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
     "placeholders": {
       "language_groups_count": {
@@ -767,21 +833,17 @@
       }
     }
   },
-  "frontend_welcomeInstallMoreVoicesHeading": {
-    "message": "Vil du installere flere stemmer?",
-    "original": "Want to install more voices?"
-  },
   "frontend_welcomeLinkText": {
     "message": "Velkommen",
     "original": "Welcome"
   },
   "noTextSelectedMessage": {
-    "message": "Vennligst velg ønsket tekst på nettsiden først. Du kan også velge tekst, og deretter høyreklikk på den og velg Talkie i menyen.",
+    "message": "Velg ønsket tekst på nettsiden først. Du kan også velge tekst, deretter høyreklikke på den og velge Talkie i menyen.",
     "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
   },
   "notAbleToSpeakTextFromThisSpecialTab": {
     "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
-    "message": "Talkie får ikke tilgang til den markerte teksten fra denne typen siden. Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt i av nettleseren. Du kan også prøve å velge tekst, og deretter høyreklikk på den og velg Talkie i menyen. Jeg beklager bryet.",
+    "message": "Talkie kan ikke få tilgang til den valgte teksten fra denne typen side. Det er en veldig spesiell side, og det er sikkerhetsbegrensninger satt inn av nettleseren. Du kan også prøve å velge tekst, deretter høyreklikke på den og velge Talkie i menyen. Jeg beklager bryet.",
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
@@ -789,15 +851,15 @@
     "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Beklager, men denne nettleseren støtter ikke lesing fra utklippstavlen. Ikke enda, i det minste. Vennligst prøv igjen om en måned eller så!",
-    "original": "I'm sorry, but this web browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Beklager, men denne nettleseren støtter ikke lesing fra utklippstavlen. Ikke ennå, i hvert fall. Prøv igjen om en måned eller så!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie har ikke tillatelse til å få tilgang fra utklippstavlen. Det er ok, men det vil ikke fungere å lese utklippstavlen.",
+    "message": "Talkie har ikke tillatelse til å få tilgang fra utklippstavlen. Det er ok, men da vil det ikke fungere å lese utklippstavlen.",
     "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
   },
   "readClipboardNoSuitableText": {
-    "message": "Kunne ikke finne passende tekst i utklippstavlen. Kan du prøve å kopiere noe annet?",
+    "message": "Fant ikke passende tekst i utklippstavlen. Kan du prøve å kopiere noe annet?",
     "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }
 }
