@@ -1,0 +1,865 @@
+{
+  "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "$NAME$ உடன் உரைத் தேர்வை உரக்கப் படிக்கவும்",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Static": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Talkie மூலம் உரைத் தேர்வை உரக்கப் படிக்கவும்",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonStopTitle": {
+    "message": "பேசுவதை நிறுத்து",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "உரை தேர்வை சத்தமாக வாசிக்கவும்",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Talkie இணையதளம்",
+    "original": "The Talkie website"
+  },
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Talkie Premium க்கு மேம்படுத்து",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "commandReadClipboardDescription": {
+    "message": "கிளிப்போர்டில் இருந்து படிக்கவும்",
+    "original": "Read from the clipboard"
+  },
+  "commandStartStopDescription": {
+    "message": "படிப்பைத் தொடங்க/நிறுத்தும் தேர்வை",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "40க்கும் மேற்பட்ட மொழிகளில் வேகமான, எளிதான, உயர்தர உரை முதல் பேச்சு வரை. இணையதளங்கள், PDF, மின்னஞ்சல் ஆகியவற்றிலிருந்து சத்தமாகப் படிக்கவும். TTS உடன் உரையைப் பேசுங்கள்.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "அம்சங்கள் மற்றும் மேம்படுத்தல்",
+    "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "பயன்பாடு மற்றும் குறுக்குவழிகள்",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "குரல்கள் மற்றும் மொழிகள்",
+    "original": "Voices and languages"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "எந்த இணையப் பக்கத்திலும் விரும்பிய உரையைத் தேர்ந்தெடுத்து, உங்கள் உலாவி கருவிப்பட்டியில் உள்ள Talkie",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Github இல் மூல குறியீடு",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Github இல் அம்ச கோரிக்கைகள் மற்றும் பிழை அறிக்கைகள்",
+    "original": "Feature requests and bug reports on Github"
+  },
+  "frontend_aboutLinkText": {
+    "message": "பற்றி",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "joelpurra.com இல் திட்டப் பக்கம்",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "இயக்க முறைமை (Windows, ChromeOS, macOS, Linux, முதலியன) மற்றும் உங்கள் தற்போதைய உலாவி (Google Chrome, Microsoft Edge, Firefox போன்றவை) இரண்டிலிருந்தும் குரல்கள் வருகின்றன. நீங்கள் விரும்பும் எந்த குரல்களையும் பதிவிறக்கம் செய்து நிறுவலாம், உங்கள் கணினியை மறுதொடக்கம் செய்யலாம், மேலும் Talkie தானாகவே அவற்றை அடையாளம் காண வேண்டும். அதே கணினியில் குரல் ஆதரவு வேறுபடலாம் என்பதால், நீங்கள் வேறு உலாவியைப் பயன்படுத்தவும் முயற்சி செய்யலாம்.",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
+  },
+  "frontend_faq001Q": {
+    "message": "நிறுவப்பட்ட குரல்களை Talkie எவ்வாறு கண்டறிகிறது?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "மைக்ரோசாப்ட் மற்றும் பிற இரண்டிலிருந்தும் நீங்கள் அதிக குரல்களைச் சேர்க்கலாம். கணினி அமைப்புகளில் புதிய மொழியைச் சேர்ப்பது எளிதானது. மொழிக்கான குரலையும் நிறுவுவதை உறுதிசெய்யவும். தனி நிறுவல் வழிமுறைகளைப் பார்க்கவும்.",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "மைக்ரோசாஃப்ட் விண்டோஸில் Talkie இல் அதிக குரல்களை எவ்வாறு நிறுவுவது?",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "கணினி அமைப்புகளில் கூடுதல் குரல்களையும் மொழியையும் எளிதாக நிறுவலாம். ChromeOS க்கான குரல்கள் Chrome இணைய அங்காடியிலும் கிடைக்கலாம்.",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "Google ChromeOS Talkie இல் கூடுதல் குரல்களை எவ்வாறு நிறுவுவது?",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "பேச்சுக்கான macOS அமைப்பு விருப்பங்களிலிருந்து கூடுதல் குரல்களை எளிதாக நிறுவலாம். தனி நிறுவல் வழிமுறைகளைப் பார்க்கவும்.",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "Apple macOS Talkie இல் அதிக குரல்களை எவ்வாறு நிறுவுவது?",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "இது நீங்கள் பயன்படுத்தும் லினக்ஸ் விநியோகம், உலாவி மற்றும் தொகுப்பு விநியோக அமைப்பு ஆகியவற்றைப் பொறுத்தது. உங்கள் மென்பொருளின் சேர்க்கைக்கான தனி நிறுவல் வழிமுறைகளைப் பார்க்கவும். மற்றொரு உலாவியை முயற்சித்து, அதில் பொருத்தமான குரல் முன்பே நிறுவப்பட்டுள்ளதா என்பதைப் பார்ப்பது மிகவும் எளிதானது. எடுத்துக்காட்டாக, உபுண்டு 21.10 இல் Firefox v95 ஆப்டிட்யூட் அல்லது ஸ்னாப்பைப் பயன்படுத்தி நிறுவலாம்; முந்தையது 7358 பேச்சுவழக்குகளில் 95 மொழிகளை செயல்படுத்தும் 8611 eSpeak குரல்களை உள்ளடக்கியது, ஆனால் பிந்தையது 0 குரல்களை உள்ளடக்கியது. மற்றொரு உதாரணம் உபுண்டு 21.10 இல் உள்ள Google Chrome v96 ஆகும், இது இயல்பாக 18 பேச்சுவழக்குகளில் 14 மொழிகளை இயக்கும் 19 குரல்களை உள்ளடக்கியது. உங்கள் அனுபவங்கள் என்ன என்பதை எனக்குத் தெரியப்படுத்துங்கள்!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "லினக்ஸில் Talkie இல் அதிக குரல்களை எவ்வாறு நிறுவுவது?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "ஆமாம் மற்றும் இல்லை. Talkie எந்த குரல்களையும் தன்னுள் சேர்க்கவில்லை, ஆனால் உங்கள் கணினியில் ஏற்கனவே நிறுவப்பட்ட குரல்களைப் பயன்படுத்துகிறது. நீங்கள் விரும்பும் கூடுதல் குரல்களை நிறுவலாம்.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "நீங்கள் <a புதிய voice> ஆதரவு சேர்க்க முடியுமா Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "ஆமாம் மற்றும் இல்லை. Talkie பயன்படுத்துவதால், நீங்கள் பயன்படுத்த விரும்பும் மொழியை ஆதரிக்கும் புதிய குரலை நிறுவ வேண்டும்.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Talkie <ஒரு புதிய மொழி>க்கான ஆதரவைச் சேர்க்க முடியுமா?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "ஆம், நிறுவப்பட்ட குரல்கள் ஆஃப்லைனிலும் கிடைக்கும். ஆன்லைனில் எனக் குறிக்கப்பட்ட குரல்களின் பட்டியலில் நீங்கள் பார்க்கலாம்.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Talkie ஆஃப்லைனில் வேலை செய்கிறதா?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "இல்லை, Talkie Premium க்கு Talkie போன்ற அதே குரல்கள் Talkie. உங்கள் கணினியில் அதிக குரல்களை நிறுவலாம், மேலும் அவை சமமாக கிடைக்கும். Talkie Premium நீங்கள் மொழி மற்றும் பேச்சுவழக்குக்கு விருப்பமான குரலைத் தனிப்பயனாக்க முடியும்.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
+  },
+  "frontend_faq009Q": {
+    "message": "Talkie Premium ஐ விட அதிகமான குரல்கள் Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "கூகுள் குரோம் (மற்றும் பிற குரோமியம் சார்ந்த உலாவிகளில்) குறைந்தது 2014 ஆம் ஆண்டு முதல் இந்தச் சிக்கல்/பிழை உள்ளது. Talkie க்கு சில தீர்வுகள் உள்ளன, மேலும் உரையை குறுகிய பகுதிகளாகப் படிக்கும்/முடக்க ஒரு விருப்பமும் உள்ளது. தீர்வைத் தொடர்ந்து மேம்படுத்துவேன், ஆனால் Chromium குழு வேலை செய்யும் வரை அது 100% வேலை செய்யாமல் போகலாம். இந்தச் சிக்கலை நீங்கள் சந்தித்தால், எந்த உலாவி மற்றும் பதிப்பு, இயக்க முறைமை மற்றும் பதிப்பு மற்றும் மொழி/குரல் ஆகியவற்றைப் பயன்படுத்துகிறீர்கள் என்பதை எனக்குத் தெரியப்படுத்தவும்.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Talkie ஏன் 20-30 வார்த்தைகள் அல்லது சில நொடிகளுக்குப் பிறகு படிப்பதை நிறுத்துகிறது?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "இரண்டு காரணங்கள் உள்ளன. முதலில், செயலில் உள்ள குரல் ஆன்லைனில் இருந்தால், அதை இயக்கும் முன் பேச்சு கோப்பை பதிவிறக்கம் செய்ய வேண்டும். இது உங்கள் இணைய இணைப்பு வேகத்தைப் பொறுத்து கூடுதல் இடைநிறுத்தத்தைக் குறிக்கிறது. குரல்களின் பட்டியலில் ஆன்லைனில் எந்த குரல்கள் உள்ளன என்பதை நீங்கள் சரிபார்க்கலாம். இரண்டாவது காரணம் என்னவென்றால், நீண்ட உரைகளைப் பேசுவதற்கான தீர்வு, பொதுவாக ஒரு வாக்கியத்திற்கு அல்லது ஒரு உட்பிரிவுக்கு, உரையை குறுகிய பகுதிகளாக வெட்டுகிறது. இது ஒவ்வொரு இடைநிறுத்தத்திற்கும் கூடுதல் இடைநிறுத்தத்தை சேர்க்கலாம். விருப்பங்களில் ஒரு பகுதியாக நீண்ட உரைகளைப் படிக்க நீங்கள் இயக்கலாம், இது ஆதரிக்கப்படும் கணினிகளில் இடைநிறுத்தத்தை அகற்றும்.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "ஏன் Talkie சில நேரங்களில் வாக்கியங்களுக்கும் சொற்களுக்கும் இடையில் நீண்ட இடைநிறுத்தத்தை ஏற்படுத்துகிறது?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "துரதிருஷ்டவசமாக, முழுமையாக இல்லை. Talkie Premium பயனர்களுக்கு உரையை நகலெடுத்து, கிளிப்போர்டில் இருந்து படிக்க முடியும். கூகுள் டாக்ஸ் (அத்துடன் கூகுள் விரிதாள், கூகுள் டிரைவ் மற்றும் அது போன்றது) ஒரு இணையதளம் அல்ல, ஆனால் கூகிள் உருவாக்கிய சிறப்பு \"உலாவியில் உள்ள பயன்பாடு\" என்று மாறிவிடும். Talkie தேர்ந்தெடுக்கப்பட்ட உரையை அணுக முடியாது, அல்லது சூழல் மெனு உருப்படிகளைச் சேர்க்க முடியாது, எனவே Talkie பொத்தான் வேலை செய்யாது.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+  },
+  "frontend_faq012Q": {
+    "message": "Google டாக்ஸில் Talkie வேலை செய்கிறதா?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "ஆமாம் தயவு செய்து! Github இல் சிக்கல் அறிக்கையை உருவாக்குவது சிறந்தது, அதனால் மற்றவர்களும் உதவ முடியும். எந்த உலாவி மற்றும் பதிப்பு, இயக்க முறைமை மற்றும் பதிப்பு மற்றும் நீங்கள் பயன்படுத்தும் மொழி/குரல் போன்ற தகவல்களை முடிந்தவரை சேர்க்கவும். நீங்கள் பிழையைக் காணும் குறிப்பிட்ட இணையதளங்கள் தொடர்பான தகவல்களையும் சேர்த்து, முன்னுரிமை இணைப்புடன்.",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "நான் பிழைகளைப் புகாரளிக்க வேண்டுமா?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "பொதுவாக! PDF இல் உள்ள உரையை நீங்கள் தேர்ந்தெடுக்க Talkie , அதன் மீது வலது கிளிக் செய்து, மெனுவில் Talkie என்பதைத் தேர்ந்தெடுக்கவும். உரையைத் தேர்ந்தெடுக்க முடியாவிட்டால், அது ஒரு படத்தின் பகுதியாக இருந்தால், அது வேலை செய்யாது.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Talkie PDF கோப்புகளைப் படிக்க முடியுமா?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "எண். Talkie க்கு வரம்பற்ற பயன்பாடு உள்ளது — நீங்கள் விரும்பும் பல சொற்களையும் நீண்ட உரைகளையும் படிக்கலாம்.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Talkie வார்த்தை வரம்பு உள்ளதா?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "நிச்சயமாக! ஆதரவு அல்லது திட்டப் பக்கங்கள் மூலம் என்னைத் தொடர்பு கொள்ளுங்கள்.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "நான் புதிய அம்சங்களைக் கோரலாமா?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "விசைப்பலகை குறுக்குவழிகள் எடிட்டர் உள்ளது, அதை நீங்கள் Google Chrome இல் நீட்டிப்புகள் பக்கத்தின் கீழே காணலாம்.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "கூகுள் குரோமில் ஷார்ட்கட் கீகளை மாற்றுவது எப்படி?",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "செருகு நிரல்களுக்கான Firefox அமைப்புகளில் குறுக்குவழி விசைகளை மாற்றலாம் அல்லது அகற்றலாம். ஷார்ட்கட் கீ எடிட்டரைக் கண்டறிய கோக்வீல் பொத்தானைக் கிளிக் செய்யவும்.",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
+  },
+  "frontend_faq018Q": {
+    "message": "பயர்பாக்ஸில் ஷார்ட்கட் கீகளை மாற்றுவது எப்படி?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "நிச்சயமாக! Talkie Talkie ஐச் சோதிப்பதற்கும், பிழைகளை ஆய்வு செய்வதற்கும், புதிய அம்சங்களைச் சேர்ப்பதற்கும் உதவி பெறுவது நன்றாக இருக்கும். வழிமுறைகளுக்கு திட்டப் பக்கத்தைப் பார்க்கவும்.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Talkie ஐ உருவாக்க நான் உதவ முடியுமா?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "Talkie பற்றி உங்கள் நண்பர்களிடம் சொல்லுங்கள்! உங்களுக்குப் பிடித்த இணையப் பிரபலம், ஆன்லைன் குழு அல்லது செய்திமடலுக்கு இணைப்பை அனுப்பலாம். பணியிடத்தில் உள்ள அனைத்து கணினிகளிலும் இதை நிறுவுமாறு உங்கள் முதலாளியிடம் கேட்கலாம் அல்லது உங்கள் ஆசிரியரை பள்ளியில் நிறுவும்படி கேட்கலாம். Talkie பற்றிய செய்தியைப் பரப்புவது மிகவும் பாராட்டத்தக்கது!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "Talkie க்கு வேறு வழியில் உதவ முடியுமா?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Talkie ஐ உருவாக்கி பராமரிக்க நிறைய நேரமும் முயற்சியும் தேவை — இதுவரை நூற்றுக்கணக்கான மணிநேரங்கள். இருப்பினும், Talkie அனைவருக்கும் அவர்கள் விரும்பும் அளவுக்குப் பயன்படுத்த இலவசம். Talkie இலவசமாக வைத்திருப்பது ஆகிய இரண்டையும் நிதி ரீதியாக ஆதரிக்க, சில அம்சங்கள் Talkie Premium பயனர்களுக்கு மட்டுமே கிடைக்கும்.",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Talkie இன் இரண்டு பதிப்புகள் ஏன் உள்ளன?",
+    "original": "Why are there two editions of Talkie?"
+  },
+  "frontend_faq022A": {
+    "message": "ஆம், பல கட்டண விருப்பங்கள் உள்ளன.",
+    "original": "Yes, there are multiple payment options available."
+  },
+  "frontend_faq022Q": {
+    "message": "பேபால், வங்கிப் பரிமாற்றம் போன்றவற்றைப் பயன்படுத்தி நான் பணம் செலுத்தலாமா?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "ஆம், எளிய பணத்தைத் திரும்பப்பெறும் நிர்வாகத்தை வழங்கும் PayPal அல்லது ஸ்ட்ரைப் பயன்படுத்தி நீங்கள் பணம் செலுத்தியிருந்தால். பணம் திரும்பப்பெறுவதற்குத் தேவைப்படும் கூடுதல் வேலையின் அளவு மற்றும் தவறான கணக்கில் பணம் திரும்பப் பெறப்படும் அபாயம் ஆகியவற்றின் காரணமாக பணம் செலுத்துவதற்கான பிற முறைகளுக்கு பொதுவாக பணத்தைத் திரும்பப்பெற முடியாது.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+  },
+  "frontend_faq023Q": {
+    "message": "நான் பணத்தைத் திரும்பப் பெற முடியுமா?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "நிச்சயம்! அதை முயற்சிக்க Talkie Premium",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+  },
+  "frontend_faq024Q": {
+    "message": "நான் Talkie Premium ஐ இலவசமாக முயற்சிக்கலாமா?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie விளம்பரம், தரவு சேகரிப்பு அல்லது பயனர் கண்காணிப்பு இல்லை. மகிழ்ச்சியான பயனர்கள் Talkie Premium க்கு பணம் செலுத்துவது மட்டுமே பணமாக்குதல்.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie நீட்டிப்புகளில் விளம்பரம் உள்ளதா, தரவைச் சேகரிக்கிறதா அல்லது பயனர்களைக் கண்காணிக்கிறதா?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "மரியாதை அமைப்பு என்பது தனிநபர்கள் நேர்மையானவர்கள் என்று நம்பப்படுவதும், கண்டிப்பாக அமல்படுத்தப்பட்ட சோதனைகள் இல்லாமல் வழிகாட்டுதல்களைப் பின்பற்றுவதும் ஆகும். Talkie Premium மேம்படுத்துபவர்கள் பணம் செலுத்தியதாக நம்புகிறார்கள்.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "மரியாதை அமைப்பு என்றால் என்ன?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "உலகெங்கிலும் உள்ள மக்கள் வெவ்வேறு நாணயங்களைப் பயன்படுத்துவதால், வெவ்வேறு அளவிலான செலவழிப்பு வருமானம் மற்றும் Talkie Premium இன் அம்சங்களுக்கு வெவ்வேறு நிலைகளில் பாராட்டுகள் உள்ளன. உலகில் உள்ள அனைவருக்கும் நன்றாக வேலை செய்யும் ஒற்றை, நிலையான விலை இல்லை. அதற்கு மேல் கரன்சிகளில் ஏற்ற இறக்கங்கள், பொருளாதார சுழற்சி போக்குகள், பிராந்திய/நாட்டிற்குள் மாறுபாடுகள் போன்றவை வரும். மொத்தத்தில், உலகம் முழுவதும் விற்கப்படும் ஒரு பொருளின் விலை அமைப்பு சிக்கலானது. ஒவ்வொருவரும் தங்களுடைய விலையை நிர்ணயம் செய்ய அனுமதிப்பதும், பணம் செலுத்துவதற்கு உத்தரவாதம் அளிக்கும் அளவுக்கு தயாரிப்பு நன்றாக இருப்பதை உறுதி செய்வதும் எளிதானது.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "நான் ஏன் என் சொந்த விலையை நிர்ணயிக்க முடியும்?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "உரையிலிருந்து பேச்சு மென்பொருளுக்கு நீங்கள் எவ்வளவு பணம் செலவழிக்க முடியும் என்று Talkie Premium உங்களுக்கு மதிப்புள்ளதாக நீங்கள் நினைக்கும் பணத்தைச் செலுத்த விரும்புகிறேன் — அதிகமாகவோ, குறைவாகவோ இல்லை. Talkie Premium க்கான பேமெண்ட்டுகளை Google கையாண்டபோது, அமெரிக்காவில் ஒரு வருடத்திற்கு $25 (அமெரிக்க டாலர்) சந்தா செலவாகும். உலக நாடுகள் மற்றும் நாணயங்களின் விலையை உள்ளூர் நிலைமைகளுக்கு ஏற்றவாறு Google மாற்றியமைத்துள்ளது என்பதை நினைவில் கொள்ளவும், எனவே அது அதிகமாகவோ அல்லது குறைவாகவோ இருக்கலாம். அதே நேரத்தில், Talkie Premium கேட்கும் எவரும் Talkie Premiumஐ இலவசமாகப் பெறலாம்.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "நான் எவ்வளவு செலுத்த பரிந்துரைக்கிறேன்?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "பணம் செலுத்துதல் மற்றும் சரிபார்ப்புக்கான ஒரு அமைப்பைச் செயல்படுத்துவதற்கு நிறைய நேரமும் முயற்சியும் தேவைப்படுவதால், கடுமையான கட்டணச் சரிபார்ப்பைச் செயல்படுத்துவதற்கான செலவு, கணினியை ஏமாற்றும் தனிநபர்களால் ஏற்படும் இழப்புகளை விட அதிகமாக இருக்கும் என்று கருதப்படுகிறது. கட்டணச் சரிபார்ப்புக்கு பயனர்களின் அமைப்புகளிலிருந்து சில அளவிலான தரவு சேகரிப்பு தேவைப்படுகிறது, மேலும் தொழில்நுட்ப ரீதியாக திறமையான பயனர்கள் எப்படியும் சரிபார்ப்பைச் சுற்றி வேலை செய்யலாம். எனவே, தொழில்நுட்ப மற்றும் வணிகக் கண்ணோட்டத்தில், எந்த உத்தரவாதமும் இல்லை என்றாலும், பயனர்கள் மரியாதை முறையைப் பின்பற்றுகிறார்கள் என்று நம்புவது எளிது.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "ஏன் கட்டணம் சரிபார்ப்பு இல்லை?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "கட்டணச் சரிபார்ப்பைச் செயல்படுத்துவதில்லை என்ற முடிவு, செலுத்தப்பட்ட தொகையைச் சரிபார்க்க முடியாது என்பதாகும். Talkie Premium இன் டிஜிட்டல் நகலை \"உற்பத்தி செய்வதற்கான\" செலவு பூஜ்ஜியமாகும், எனவே அதை ஒன்றுமில்லாமல் கொடுப்பது டெவலப்பருக்கு நிதி இழப்பைக் குறிக்காது. Talkie Premium விரும்பினால், அதைப் பற்றி உங்கள் நண்பர்களிடம் கூறுவீர்கள் என்ற நம்பிக்கையும் உள்ளது. Talkie Premium கொடுப்பதை சந்தைப்படுத்தல் முயற்சியாகவும் பார்க்கலாம்.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "நான் ஏன் எதுவும் செலுத்தாமல் தேர்வு செய்யலாம்?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "ஆம், ஸ்ட்ரைப் பயன்படுத்துவதன் மூலம். கூடுதல் கட்டண விருப்பங்களைப் பார்க்கவும்.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "நான் தொடர்ச்சியான மாதாந்திர அல்லது வருடாந்திர கட்டணத்தை செலுத்த முடியுமா?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "ஆம், நீங்கள் அதை மின்னஞ்சல் மூலம் கோரினால். உங்கள் பெயர், முகவரி மற்றும் விருப்பமாக உங்கள் மதிப்பு கூட்டப்பட்ட வரி (VAT) அடையாளங்காட்டியை (அல்லது அதற்கு சமமான) சேர்க்கவும்.",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "நான் செலுத்தியதற்கான ரசீது கிடைக்குமா?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Talkie Premium வழங்கும் கூடுதல் அம்சங்களை நீங்கள் விரும்புகிறீர்கள், மேலும் சுதந்திரமான டெவலப்பர்களால் திறந்த மூல மென்பொருள் உருவாக்கத்தில் பங்களிப்பதில் மகிழ்ச்சியான உணர்வு. மேம்பாடு மற்றும் பராமரிப்புக்கான ஒப்பீட்டளவில் அதிக தனிநபர் செலவு, ஆனால் \"உற்பத்தி\" டிஜிட்டல் நகல்களின் பூஜ்ஜிய செலவு காரணமாக, Talkie Premium க்கான கட்டணங்கள், பணம் செலுத்தும் நேரத்தில் தயாரிப்பின் மதிப்புக்கு மாறாக, எதிர்கால மேம்பாடு மற்றும் பராமரிப்புக்கான ஆதரவை வழங்குவதாகவும் கருதப்படுகிறது. .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "மேம்படுத்துவதற்கு நான் ஏன் பணம் செலுத்த வேண்டும்?",
+    "original": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "குறுகிய பதில்: அநேகமாக இல்லை. மைக்ரோசாப்ட் விண்டோஸில் நவீன குரல்கள் மற்றும் பழைய குரல்கள் உள்ளன. நான் கடைசியாக சோதித்தபோது, டச்சு குரல் \"மைக்ரோசாஃப்ட் ஃபிராங்க்\" மைக்ரோசாப்ட் எட்ஜில் கிடைத்தது, ஆனால் கூகுள் குரோம் அல்லது மொஸில்லா பயர்பாக்ஸில் இல்லை. ஒரு காரணம், சில குரல்கள் புதிய WinRT பேச்சு அமைப்பிற்காகவும், சில பழைய பேச்சு பயன்பாட்டு நிரலாக்க இடைமுகத்திற்காகவும் (SAPI) உருவாக்கப்பட்டுள்ளன. உலாவிகள் பழைய மற்றும் புதிய பேச்சு அமைப்புகளை ஆதரிக்காது, அதாவது உண்மையில் நிறுவப்பட்ட குரல் உங்களுக்கு பிடித்த உலாவியில் கிடைக்காமல் போகலாம். காலப்போக்கில், பெரும்பாலான உலாவிகள் புதிய WinRT அமைப்பை ஆதரிக்கலாம். உங்கள் மொழியில் குரல்கள் இல்லை என்றால், மைக்ரோசாஃப்ட் எட்ஜில் Talkie",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "Microsoft Windowsக்கான அனைத்து குரல்களும் Talkie உடன் வேலை செய்யுமா?",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "ஒருவேளை, நிறைய முயற்சியுடன். பழைய SAPI-இயக்கப்பட்ட உலாவிகளுடன் வேலை செய்ய புதிய WinRT குரல்களைப் பெறுவதற்கு சில அதிகாரப்பூர்வமற்ற தீர்வுகளும் உள்ளன, ஆனால் இது மிகவும் தொழில்நுட்ப முயற்சி மற்றும் தொழில்நுட்பம் அல்லாத பயனர்களுக்கு பரிந்துரைக்கப்படவில்லை.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "மைக்ரோசாப்ட் விண்டோஸில் SAPI-இயக்கப்பட்ட உலாவிகளில் WinRT குரல்கள் வேலை செய்ய முடியுமா?",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "ஆம், சிலர் செய்கிறார்கள். உங்கள் கணினி மற்றும் உலாவிக்கான நிறுவல் வழிமுறைகளைப் பின்பற்றவும். உங்கள் உலாவியில் குரல்கள் நிறுவப்பட்டதும், Talkie தானாகவே அவற்றைக் கண்டறிய வேண்டும். உங்களிடம் உள்ள உதவிக்குறிப்புகளைப் பகிரவும்!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "திறந்த மூல குரல்கள் Talkie உடன் வேலை செய்யுமா?",
+    "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "பிழைகள்",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "பொது",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "குரல்கள்",
+    "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Talkie இன் இலவச பதிப்பைப் பயன்படுத்துகிறது மற்றும் வரையறுக்கப்பட்ட அம்சங்கள் உள்ளன. ஒருவேளை Talkie Premium உங்களுக்கு சிறந்த தேர்வாக இருக்குமா?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "Talkie Premium ஐப் பயன்படுத்துகிறது, மேலும் அனைத்து அம்சங்களும் கிடைக்கின்றன. மிக்க நன்றி, இது என் இதயத்தை சூடேற்றுகிறது!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie இரண்டு பதிப்புகளில் வருகிறது: Talkie மற்றும் Talkie Premium. பெரும்பாலான பயன்பாட்டு நிகழ்வுகளுக்கு இலவச பதிப்பு சிறந்தது, ஆனால் பிரீமியம் பதிப்பு கூடுதல் விருப்பங்களையும் அம்சங்களையும் வழங்குகிறது.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_featuresFree_List01": {
+    "message": "தானியங்கி மொழி கண்டறிதல்.",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "தானியங்கி குரல் தேர்வு.",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "பட்டன் கிளிக், ஷார்ட்கட் கீ அல்லது வலது கிளிக் மெனு மூலம் தேர்ந்தெடுக்கப்பட்ட உரையைப் படிக்கும்.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "தாவல் பின்னணியில் இருந்தாலும், நீண்ட உரைகளையும் கட்டுரைகளையும் சத்தமாக வாசிக்கும்.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "குறியீடு திறந்த மூலமானது மற்றும் அனைத்து பயனர்களுக்கும் இலவசமாகக் கிடைக்கிறது.",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "இலவசம்!",
+    "original": "Free!"
+  },
+  "frontend_featuresLinkText": {
+    "message": "அம்சங்கள்",
+    "original": "Features"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "ஒவ்வொரு மொழிக்கும் உங்கள் சொந்த இயல்புக் குரலைத் தேர்வு செய்யவும். நீங்கள் கணினி குரல் சோர்வாக இருந்தால் நல்லது!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "ஒரு குரலுக்கு வாசிப்பு வேகத்தையும் சுருதியையும் தேர்வு செய்யவும். உங்கள் விருப்பப்படி குரல்களை சரிசெய்யவும்!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "சுதந்திரமான டெவலப்பர்களால் திறந்த மூல மென்பொருளை ஆதரிக்கும் போது நீங்கள் பெறும் சூடான, தெளிவற்ற உணர்வு.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "எதிர்கால Premium புதுப்பிப்புகள் கூடுதல் செலவு இல்லாமல் சேர்க்கப்பட்டுள்ளது.",
+    "original": "Future Premium updates included without additional cost."
+  },
+  "frontend_featuresPremium_List05": {
+    "message": "கிளிப்போர்டிலிருந்து உரையைப் படிக்கவும்! Talkie Premium எங்கிருந்தும் உரையை நகலெடுத்து, அதைப் படிக்க Talkie Premium ஐப் பயன்படுத்தவும்!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "உங்கள் கணினியில் சில குரல்களை நிறுவவும், இல்லையெனில் Talkie வேலை செய்யாது. மன்னிக்கவும்!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "உரையிலிருந்து பேச்சுக் குரல்கள் எதுவும் இல்லை",
+    "original": "No text-to-speech voices found"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Talkie அனைத்து பங்களிப்புகளும் பங்களிப்பாளர் உரிம ஒப்பந்தத்தின் (CLA) கீழ் செய்யப்படுகின்றன.",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "உரிமம்",
+    "original": "License"
+  },
+  "frontend_loading": {
+    "message": "ஏற்றுகிறது...",
+    "original": "Loading..."
+  },
+  "frontend_rateIt": {
+    "message": "மதிப்பாய்வு Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_settingsLinkText": {
+    "message": "அமைப்புகள்",
+    "original": "Settings"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie புத்தாண்டு 2016/2017 க்கு சில நாட்களுக்கு முன்பு, Talkie சவாலானது கேள்வியுடன் தொடங்கியது: வேலைக்குச் செல்லும் போது, ஒரு கட்டுரையைப் படிப்பதற்குப் பதிலாக அதைக் கேட்க முடியுமா? எளிதானது, நான் சொன்னேன், அதை நிரூபிக்கத் தொடங்கினேன் — அல்லது குறைந்தபட்சம் எனது உலாவி ஒரு வேடிக்கையான கணினிக் குரலைப் பயன்படுத்தி உரையைப் பேச வைக்க வேண்டும். அடிப்படை பதிப்பு, எந்த பயனர் இடைமுகமும் இல்லாமல், உருவாக்குவது அற்பமானது. ஒரு பயனர் இடைமுகத்தைச் சேர்க்க, சிறிது நேரம் எடுத்தது. சரியான மொழி கண்டறிதலைச் சேர்ப்பது மேலும் ஒரு குறியீடாகும். உலாவியில் பிழைகளை சமாளிப்பது இன்னும் அதிகமாக வேலை செய்கிறது. மேம்பாடுகள் மற்றும் அம்சங்களின் பட்டியல் நீண்டு கொண்டே செல்கிறது — மேலும் சில ஆயிரம் கோடுகள் பின்னர், நீங்கள் இறுதி முடிவைப் பார்க்கிறீர்கள்.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Talkie எப்படி தொடங்கியது",
+    "original": "How Talkie got started"
+  },
+  "frontend_storyThankYou": {
+    "message": "Talkie ஐப் பயன்படுத்தியதற்கு நன்றி — நீங்கள் விரும்பினால், உங்கள் நண்பர்களிடம் சொல்லுங்கள்!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "ஆதரவு மற்றும் கருத்து",
+    "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "ஒரு கேள்வி இருக்கிறதா? ஏதாவது உதவி வேண்டுமா? பொதுவான கேள்விகளுக்கான விரைவான பதில்களுக்கு, கீழே அடிக்கடி கேட்கப்படும் கேள்விகளைப் பார்க்கவும். அது உங்களுக்கு பதில் அளிக்கவில்லை என்றால், உங்களிடம் ஏதேனும் கேள்விகள் இருந்தால் எனக்கு அனுப்பவும். $NAME$ ஐப் பயன்படுத்தும் உங்கள் அனுபவம் சுமுகமாகவும் சுவாரஸ்யமாகவும் இருந்தால் நான் மகிழ்ச்சியடைவேன்!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "ஆதரவு",
+    "original": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "ஆதரவு இணைப்புகள்",
+    "original": "Support links"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "விருப்பமான உலாவி மொழி",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "விருப்பமான உலாவி மொழிகள்",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "உலாவி வகை",
+    "original": "Browser type"
+  },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "தற்போதைய பதிப்பு",
+    "original": "Current edition"
+  },
+  "frontend_systemHeading": {
+    "message": "கணினி விவரங்கள்",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "நிறுவப்பட்ட குரல் பேச்சுவழக்குகள்",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "நிறுவப்பட்ட குரல் மொழிகள்",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "நிறுவப்பட்ட பதிப்பு",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "நிறுவப்பட்ட குரல்கள்",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "இயக்க முறைமை வகை",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie பயனர் இடைமுக மொழி",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie பயனர் இடைமுக மொழிகள்",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Talkie Premium க்கான விலை நிர்ணயிக்கப்படவில்லை. அதற்குப் பதிலாக, பிரீமியம் அம்சங்கள் உங்களுக்கு எவ்வளவு மதிப்புள்ளதாக நீங்கள் நினைக்கிறீர்கள் என்பதைப் பொறுத்து, நீங்கள் விரும்பியதைச் செலுத்துகிறீர்கள். நீங்கள் எதுவும் செலுத்த வேண்டாம் என்று கூட முடிவு செய்யலாம்.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "கட்டணத்தை அனுப்பிய பிறகு உள்ளிடுவதற்கு மேம்படுத்தல் குறியீடுகள் எதுவும் இல்லை, பதிவு செய்ய பயனர் கணக்குகள் இல்லை அல்லது வேறு எந்த கட்டணச் சரிபார்ப்பும் இல்லை. மாறாக Talkie Premium மரியாதை முறையைப் பயன்படுத்துகிறது.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Talkie விளம்பரம், பயனர் கண்காணிப்பு அல்லது தரவு சேகரிப்பு இல்லை என்பதை நினைவில் கொள்ளவும். கட்டணங்கள் திறந்த மூல மென்பொருள் மேம்பாட்டிற்கான நன்கொடைகள் என பெயரிடப்பட்டுள்ளன.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Talkie Premium க்கு மேம்படுத்து",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Talkie Premium பணம் செலுத்திவிட்டேன்",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "நன்கொடைகள் பக்கத்தின் மூலம் கூடுதல் கட்டண முறைகள்",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "பேபால் பயன்படுத்தி பணம் செலுத்துங்கள்",
+    "original": "Pay using PayPal"
+  },
+  "frontend_usageLinkText": {
+    "message": "பயன்பாடு",
+    "original": "Usage"
+  },
+  "frontend_usageReadclipboard": {
+    "message": "உங்கள் கிளிப்போர்டுக்கு நகலெடுக்கப்பட்ட எந்த உரையையும் படிக்கவும் — உலாவிக்கு வெளியே எங்கிருந்தும் உரையைக் கேட்க குறுக்குவழி விசையுடன் அதைப் பயன்படுத்தவும். Talkie Premium பட்டனில் வலது கிளிக் செய்யவும் அல்லது இணையதளத்தின் வெற்றுப் பகுதியில் கிளிக் செய்து, கிளிப்போர்டில் இருந்து படிக்கவும் என்பதைத் தேர்ந்தெடுக்கவும்.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "நீங்கள் உரையைத் தேர்ந்தெடுத்து, அதன் மீது வலது கிளிக் செய்து, மெனுவில் Talkie இந்த வழி PDF கோப்புகள் மற்றும் உலாவியில் சில சிறப்பு வகை பக்கங்களிலும் வேலை செய்கிறது.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "குறுக்குவழி விசைகள்",
+    "original": "Shortcut keys"
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "இவை பரிந்துரைக்கப்படும் ஷார்ட்கட் விசைகள், இவை உங்கள் உலாவியின் நீட்டிப்பு அமைப்புகள் பக்கத்தில் இருந்து மாற்றப்படலாம்.",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "வெவ்வேறு நீட்டிப்புகள் மற்றும் நிரல்களின் விசைப்பலகை குறுக்குவழிகளுக்கு இடையே முரண்பாடுகள் இருப்பது பொதுவானது. ஷார்ட்கட் கீ வேலை செய்யவில்லை என்றால், அது ஏற்கனவே வேறு எதற்காக கட்டமைக்கப்படவில்லை என்பதை உறுதிப்படுத்தவும்.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Talkie ஷார்ட்கட் கீகளை சரிபார்க்கவும் அல்லது மாற்றவும்.",
+    "original": "Check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Talkie குறுக்குவழி விசைகளைப் பயன்படுத்துவது ஒரு வசதியான விருப்பமாகும்:",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "எந்தவொரு நிரலிலும் கிளிப்போர்டிலிருந்து உரையைப் படிக்கவும்",
+    "original": "Read text from clipboard in any program"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "தொடங்கு/நிறுத்து",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "தொடங்கு/நிறுத்து",
+    "original": "Start/stop"
+  },
+  "frontend_usageStep01": {
+    "message": "எந்த இணையப் பக்கத்திலும் விரும்பிய உரையைத் தேர்ந்தெடுக்கவும்.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "உங்கள் உலாவி கருவிப்பட்டியில் உள்ள Talkie பொத்தானைக் கிளிக் செய்யவும்",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "$LANGUAGE_CODE$ என்ற பேச்சுவழக்குக்கான இயல்புநிலை குரல் $VOICE$ .",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "$LANGUAGE_GROUP$ இயல்புநிலை குரல் $VOICE$ .",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDescription": {
+    "message": "உங்கள் உலாவியில் ஒவ்வொரு மொழிக்கும் நிறுவப்பட்ட குரல்களைப் பார்த்து சோதிக்கவும். Talkie Premium பயனர்கள் தங்களுக்குப் பிடித்த குரலை ஒரு மொழிக்கு இயல்புநிலையாகத் தேர்ந்தெடுக்கலாம், மேலும் ஒவ்வொரு குரலுக்கும் வேகம் மற்றும் சுருதியை அமைக்கலாம்.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesFoundDialects": {
+    "message": "$LANGUAGE_GROUP$ க்கான $DIALECT_COUNT$ பேச்சுவழக்குகள் கண்டறியப்பட்டன.",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
+  "frontend_voicesLinkText": {
+    "message": "குரல்கள்",
+    "original": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "$VOICE$ இன் குரல் மாதிரியைக் கேளுங்கள்.",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
+  },
+  "frontend_voicesPitchEmptyHeading": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "குரலுக்கான சுருதி",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "$VOICE$ க்கான பிட்ச்",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesRateEmptyHeading": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "குரலுக்கான வேகம்",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "$VOICE$ க்கான வேகம்",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "வேகமான பழுப்பு நரி சோம்பேறி நாயின் மீது குதிக்கிறது.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "$LANGUAGE$ உரைக்கான இயல்புநிலை குரலாக $VOICE$",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "பயனர் இடைமுகத்தை ஒழுங்கீனப்படுத்த, சில விவரங்கள் இயல்பாகக் காட்டப்படாது. இந்த விருப்பத்தை இயக்கினால், கூடுதல் தகவல்கள் காண்பிக்கப்படும்.",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "பிற உலாவிகள் மற்றும் இயக்க முறைமைகளுக்கான ஆதரவுத் தகவல் இதில் அடங்கும்.",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "கூடுதல் விவரங்கள்",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "கூடுதல் விவரங்களைக் காட்டு",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "அனைத்தையும் காட்டு",
+    "original": "Show all"
+  },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "சில உலாவிகளில், நீண்ட உரைகளைத் தொடர்ந்து படிக்க முடியாது. இதைச் Talkie , Talkie வாக்கியங்கள்/பிரிவுகளுக்கு இடையில் மற்றும் பிற நிறுத்தற்குறிகளுக்கு இடையே ஒரு சிறிய இடைநிறுத்தத்தை அறிமுகப்படுத்துகிறது.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "நீங்கள் இந்த விருப்பத்தை இயக்கி, நீண்ட உரைகளைப் படிப்பது 10-20 வினாடிகளுக்குப் பிறகு நிறுத்தப்பட்டால், தயவுசெய்து அதை மீண்டும் முடக்கவும்.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "நீண்ட உரையைப் படித்தல்",
+    "original": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "இடைநிறுத்தங்கள் இல்லாமல் நீண்ட உரைகளைப் படிக்கவும் (பரிசோதனை)",
+    "original": "Read longer texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Talkie Premium நீங்கள் ஒவ்வொரு மொழிக்கும் இயல்புநிலை குரலையும், ஒவ்வொரு குரலுக்கான குரல் மற்றும் சுருதியையும் மாற்றலாம்.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "$NAME$ க்கு வரவேற்கிறோம்! நீங்கள் இப்போது உலகின் சிறந்த உரை-க்கு-பேச்சு உலாவி நீட்டிப்புகளில் ஒன்றைப் பயன்படுத்துகிறீர்கள்.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "மேலே சென்று, இந்த உரையைத் தேர்ந்தெடுத்து, உலாவி கருவிப்பட்டியில் உள்ள $NAME$ மகிழுங்கள்!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie தற்போது காணலாம் $VOICES_COUNT$ முடிகிறது குரல்கள் $LANGUAGE_GROUPS_COUNT$ மொழிகளில் $LANGUAGES_COUNT$ உங்கள் நிறுவப்படும் வட்டார $SYSTEM_TYPE_PRETTY_NAME$ ஒரு இயங்கும் உலாவி $OSTYPE_PRETTY_NAME$ இயங்கு.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeLinkText": {
+    "message": "வரவேற்பு",
+    "original": "Welcome"
+  },
+  "noTextSelectedMessage": {
+    "message": "முதலில் இணையதளத்தில் விரும்பிய உரையைத் தேர்ந்தெடுக்கவும். நீங்கள் உரையைத் தேர்ந்தெடுத்து, அதன் மீது வலது கிளிக் செய்து, மெனுவில் Talkie",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "இந்த வகைப் பக்கத்திலிருந்து தேர்ந்தெடுக்கப்பட்ட உரையை Talkie இது மிகவும் சிறப்பான பக்கமாகும், மேலும் உலாவியால் பாதுகாப்பு வரம்புகள் உள்ளன. நீங்கள் உரையைத் தேர்ந்தெடுக்கவும் முயற்சி செய்யலாம், பின்னர் அதன் மீது வலது கிளிக் செய்து, மெனுவில் Talkie சிரமத்திற்கு வருந்துகிறேன்.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "மன்னிக்கவும், கிளிப்போர்டில் இருந்து உரையைப் படிப்பது Talkie Premium அம்சமாகும். மேம்படுத்துவது பற்றி யோசித்தீர்களா?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "மன்னிக்கவும், இந்த உலாவி கிளிப்போர்டில் இருந்து படிப்பதை ஆதரிக்காது. இன்னும் இல்லை, குறைந்தபட்சம். ஒரு மாதத்திற்குப் பிறகு மீண்டும் முயற்சிக்கவும்!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie க்கு அனுமதி இல்லை. அது சரி, ஆனால் கிளிப்போர்டு உரையைப் படிப்பது வேலை செய்யாது.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "கிளிப்போர்டில் பொருத்தமான உரையைக் கண்டறிய முடியவில்லை. வேறு எதையாவது நகலெடுக்க முயற்சிக்க முடியுமா?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
+  }
+}
