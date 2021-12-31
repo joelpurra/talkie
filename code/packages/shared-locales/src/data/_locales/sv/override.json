@@ -117,11 +117,6 @@
     "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers.",
     "translated-from": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
   },
-  "frontend_featuresPremium_List04": {
-    "message": "Överkomligt pris. Framtida Premium-uppdateringar ingår kostnadsfritt.",
-    "original": "Future Premium updates included without additional cost.",
-    "translated-from": "Future Premium updates included for free."
-  },
   "frontend_licenseCLADescription": {
     "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
     "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA).",
@@ -166,11 +161,6 @@
     "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
     "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
-  },
-  "frontend_usageShortcutKeyAlternative04": {
-    "message": "Om kortkommandot inte fungerar, kontrollera att det inte redan används av något annat tillägg eller program.",
-    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else.",
-    "translated-from": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
   },
   "frontend_usageShortcutKeyAlternative05": {
     "message": "Kontrollera eller ändra Talkies kortkommandon.",
@@ -269,16 +259,6 @@
     "message": "Om du aktiverar det här alternativet och uppläsning av långa texter stannar efter 10-20 sekunder, stäng av det igen.",
     "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again.",
     "translated-from": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
-  },
-  "frontend_voicesSpeakLongTextsHeading": {
-    "message": "Försök läsa upp långa texter utan pauser",
-    "original": "Reading longer text",
-    "translated-from": "Try to read long texts without pauses"
-  },
-  "frontend_voicesSpeakLongTextsLabel": {
-    "message": "Läs upp långa texter utan pauser (experimentellt)",
-    "original": "Read longer texts without pauses (experimental)",
-    "translated-from": "Read long texts without pauses (experimental)"
   },
   "noTextSelectedMessage": {
     "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",
