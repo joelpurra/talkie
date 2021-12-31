@@ -25,7 +25,7 @@
   - Google Chrome
   - Microsoft Edge
   - Brave, Chromium, Vivaldi, etcetera.
-- [Install Talkie from Mozilla Firefox Addons](hhttps://addons.mozilla.org/en-US/firefox/addon/talkie/) when using:
+- [Install Talkie from Mozilla Firefox Addons](https://addons.mozilla.org/en-US/firefox/addon/talkie/) when using:
   - Mozilla Firefox
 
 Developer option: [use the source code](./DEVELOP.md) directly.
