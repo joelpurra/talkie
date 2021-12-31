@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declarationMap": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "noPropertyAccessFromIndexSignature": false,
+    "resolveJsonModule": true,
+    "rootDir": "packages",
+    "sourceMap": true,
+    "target": "ES2019"
+  },
+  "exclude": ["node_modules"],
+  "extends": "@sindresorhus/tsconfig"
+}

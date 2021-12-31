@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/esm",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../browser-shared/tsconfig.json"
+    },
+    {
+      "path": "../browser-stayalive/tsconfig.json"
+    },
+    {
+      "path": "../shared-application-helpers/tsconfig.json"
+    },
+    {
+      "path": "../shared-application/tsconfig.json"
+    },
+    {
+      "path": "../shared-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../shared-ui/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-webextension/tsconfig.json"
+    }
+  ]
+}

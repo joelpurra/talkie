@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/esm",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*", "src/data/languages/languages.json"],
+  "references": [
+    {
+      "path": "../shared-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../translator-tool/tsconfig.json"
+    }
+  ]
+}

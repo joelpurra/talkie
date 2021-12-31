@@ -1,0 +1,865 @@
+{
+  "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Lue tekstivalinta ääneen $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Static": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Lue tekstivalinta ääneen Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonStopTitle": {
+    "message": "Lopeta puhuminen",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "Lue tekstivalinta ääneen",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Talkie verkkosivusto",
+    "original": "The Talkie website"
+  },
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Päivitä Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Lue leikepöydältä",
+    "original": "Read from the clipboard"
+  },
+  "commandStartStopDescription": {
+    "message": "Lukemisen aloitus/lopetusvalinta",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "Nopea, helppo ja laadukas teksti puheeksi yli 40 kielellä. Lue ääneen verkkosivuilta, PDF:stä, sähköpostista. Puhu tekstiä TTS:n kanssa.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Ominaisuudet ja päivitys",
+    "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Käyttö ja pikakuvakkeet",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Äänet ja kielet",
+    "original": "Voices and languages"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Valitse haluamasi teksti millä tahansa verkkosivulla ja napsauta selaimen työkalupalkin Talkie",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Lähdekoodi Githubissa",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Ominaisuuspyynnöt ja virheraportit Githubissa",
+    "original": "Feature requests and bug reports on Github"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Noin",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "Projektisivu osoitteessa joelpurra.com",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "Äänet tulevat sekä käyttöjärjestelmästä (Windows, ChromeOS, macOS, Linux jne.) että nykyisestä selaimestasi (Google Chrome, Microsoft Edge, Firefox jne.). Tämä tarkoittaa myös, että voit ladata ja asentaa haluamasi äänet, käynnistää tietokoneesi uudelleen ja Talkie tunnistaa ne automaattisesti. Voit myös kokeilla toista selainta, koska puhetuki voi vaihdella jopa samassa järjestelmässä.",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
+  },
+  "frontend_faq001Q": {
+    "message": "Kuinka Talkie tunnistaa asennetut äänet?",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "Voit lisätä ääniä sekä Microsoftilta että muilta. Helpoin on lisätä uusi kieli järjestelmäasetuksiin. Varmista, että asennat myös kielen äänen. Katso erilliset asennusohjeet.",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "Kuinka voin asentaa lisää ääniä Talkie Microsoft Windowsissa?",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "Voit helposti asentaa lisää ääniä ja kieliä järjestelmäasetuksiin. Voices for ChromeOS voi olla saatavilla myös Chrome Web Storesta.",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "Kuinka voin asentaa lisää ääniä Google ChromeOS Talkie",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "Lisäääniä voidaan helposti asentaa macOS-järjestelmän puheasetuksista. Katso erilliset asennusohjeet.",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "Kuinka voin asentaa lisää ääniä Apple macOS Talkie",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "Se riippuu käyttämästäsi Linux-jakelusta, selaimesta ja pakettien jakelujärjestelmästä. Katso erilliset asennusohjeet ohjelmistoyhdistelmällesi. Helpoin voisi olla kokeilla toista selainta ja katsoa, onko siihen esiasennettu sopiva ääni. Esimerkiksi Ubuntu 21.10:n Firefox v95 voidaan asentaa käyttämällä Aptitudea tai Snapia; edellinen sisältää 8611 eSpeak-ääntä mahdollistaen 95 kielen 7358 murteessa, mutta jälkimmäinen sisältää 0 ääntä. Toinen esimerkki on Ubuntu 21.10:n Google Chrome v96, joka sisältää oletuksena 19 ääntä mahdollistaen 14 kielen 18 murteessa. Kertokaa mitä kokemuksia teillä on!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "Kuinka voin asentaa lisää ääniä Talkie Linuxissa?",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "Kyllä ja ei. Talkie ei sisällä ääniä sinänsä, vaan käyttää ääniä, jotka on jo asennettu tietokoneellesi. Voit asentaa haluamasi lisääänet.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "Voitko lisätä tuen <uudelle äänelle> tiedostoon Talkie ?",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "Kyllä ja ei. Koska Talkie käyttää tietokoneellesi asennettuja ääniä, sinun on asennettava uusi ääni, joka tukee haluamaasi kieltä.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Voitko lisätä tuen <uudelle kielelle> kieleen Talkie ?",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "Kyllä, jos asennetut äänet ovat saatavilla myös offline-tilassa. Näet online-tilassa oleviksi merkittyjen äänien luettelossa.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Toimiiko Talkie offline-tilassa?",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "Ei, Talkie Premium sisältää täsmälleen samat äänet kuin Talkie. Voit asentaa enemmän ääniä järjestelmääsi, ja ne ovat yhtä saatavilla. Talkie Premium voit kuitenkin mukauttaa ensisijaisen äänen kielen ja murteen mukaan.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
+  },
+  "frontend_faq009Q": {
+    "message": "Onko Talkie Premium enemmän ääniä kuin Talkie ?",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Google Chromessa (ja oletettavasti muissa Chromium-pohjaisissa selaimissa) on ollut tämä ongelma/virhe ainakin vuodesta 2014 lähtien. Talkie on olemassa joitakin kiertotapoja ja mahdollisuus ottaa käyttöön tai poistaa käytöstä tekstin lukeminen lyhyemmissä osissa. Jatkan kiertotavan parantamista, mutta ennen kuin Chromium-tiimi toimii, se ei ehkä toimi 100 %. Jos kohtaat tämän ongelman, kerro minulle, mitä selainta ja versiota, käyttöjärjestelmää ja versiota sekä kieltä/ääntä käytät.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Miksi Talkie lopettaa lukemisen 20–30 sanan tai muutaman sekunnin jälkeen?",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "Siihen on kaksi syytä. Ensinnäkin, jos aktiivinen ääni on online-tilassa, sen on ladattava puhetiedosto ennen sen toistamista. Tämä tarkoittaa lisättyä taukoa, joka riippuu Internet-yhteytesi nopeudesta. Voit tarkistaa, mitkä äänet ovat online-tilassa ääniluettelosta. Toinen syy on se, että pitkien tekstien puhumisen kiertotapa pilkkoo tekstin lyhyempiin osiin, yleensä lauseeseen tai lauseeseen. Tämä voi lisätä ylimääräisen tauon jokaiselle tauolle. Voit ottaa pitkien tekstien lukemisen käyttöön yhtenä osana vaihtoehdoista, minkä pitäisi poistaa tauko tuetuissa järjestelmissä.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "Miksi Talkie joskus pitkän tauon lauseiden ja sanojen välillä?",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "Valitettavasti ei täysin. Talkie Premium käyttäjille on mahdollista kopioida tekstiä ja lukea se leikepöydältä. Osoittautuu, että Google Docs (sekä Google Spreadsheet, Google Drive ja vastaavat) ei ole verkkosivusto, vaan Googlen luoma erityinen \"sovellus selaimessa\". Talkie ei voi käyttää valittua tekstiä eikä lisätä kontekstivalikon kohteita, joten Talkie painike ei toimi.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+  },
+  "frontend_faq012Q": {
+    "message": "Toimiiko Talkie Google Docsissa?",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "Kyllä kiitos! Luo mieluiten ongelmaraportti Githubissa, jotta muutkin voivat auttaa. Liitä mukaan mahdollisimman paljon tietoja, kuten käyttämäsi selain ja versio, käyttöjärjestelmä ja versio sekä kieli/ääni. Liitä mukaan myös tiedot tietyistä verkkosivustoista, joilla näet virheen, mieluiten linkin kera.",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "Pitäisikö minun ilmoittaa bugeista?",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "Yleensä! Jos voit valita tekstin PDF-tiedostosta, napsauta sitä hiiren kakkospainikkeella ja valitse valikosta Talkie Jos tekstiä ei voi valita, jos se on osa kuvaa, se ei toimi.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Voiko Talkie lukea PDF-tiedostoja?",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "Ei. Talkie on rajoittamaton käyttö — voit lukea niin monta sanaa ja niin pitkiä tekstejä kuin haluat.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Onko Talkie ?",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "Varmasti! Ota minuun yhteyttä tuki- tai projektisivujen kautta.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "Voinko pyytää uusia ominaisuuksia?",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "Siellä on pikanäppäineditori, jonka löydät Google Chromen Laajennukset-sivun alalaidasta.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "Kuinka muuttaa pikanäppäimiä Google Chromessa?",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "Voit muuttaa tai poistaa pikanäppäimiä Firefoxin lisäosien asetuksista. Napsauta hammaspyöräpainiketta löytääksesi pikanäppäineditori.",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
+  },
+  "frontend_faq018Q": {
+    "message": "Kuinka muuttaa pikanäppäimiä Firefoxissa?",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "Varmasti! Olisi hienoa saada apua Talkie kääntämiseen, testata Talkie uusissa järjestelmissä, tutkia vikoja ja lisätä uusia ominaisuuksia. Katso ohjeet projektin sivulta.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Voinko auttaa kehittämään Talkie ?",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "Kyllä – kerro ystävillesi aiheesta Talkie! Ehkä lähetä linkki suosikki Internet-julkkiksiisi, online-ryhmään tai uutiskirjeeseen. Voit jopa pyytää pomoasi asentamaan sen kaikkiin työpaikan tietokoneisiin tai opettajaasi asentamaan sen koulussa. Sanan levittäminen aiheesta Talkie on erittäin arvokasta!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "Voinko auttaa Talkie jollain muulla tavalla?",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Talkie kehittäminen ja ylläpito vie melko paljon aikaa ja vaivaa — satoja tunteja tähän mennessä. Silti Talkie on ilmainen, ja jokainen voi käyttää niin paljon kuin haluaa. Tukeaksemme taloudellisesti kehitystä, ylläpitoa ja ilmaisen Talkie ilmaisena pitämistä, jotkin ominaisuudet ovat vain Talkie Premium käyttäjien saatavilla.",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Talkie on kaksi versiota?",
+    "original": "Why are there two editions of Talkie?"
+  },
+  "frontend_faq022A": {
+    "message": "Kyllä, maksuvaihtoehtoja on useita.",
+    "original": "Yes, there are multiple payment options available."
+  },
+  "frontend_faq022Q": {
+    "message": "Voinko maksaa PayPalilla, pankkisiirrolla tms.?",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "Kyllä, jos maksoit PayPalilla tai Stripellä, jotka tarjoavat yksinkertaisen hyvityksen hallinnan. Muilla maksutavoilla ei yleensä ole hyvitystä, koska se vaatii ylimääräistä työtä sekä riskiä, että rahat palautetaan väärälle tilille.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+  },
+  "frontend_faq023Q": {
+    "message": "Voinko saada hyvityksen?",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "Varma! Ota Talkie Premium päivitys käyttöön kokeillaksesi sitä.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+  },
+  "frontend_faq024Q": {
+    "message": "Voinko kokeilla Talkie Premium ilmaiseksi?",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie ei sisällä mainoksia, tietojen keräämistä tai käyttäjien seurantaa. Onnelliset käyttäjät, jotka maksavat Talkie Premium on ainoa kaupallistaminen.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie laajennukset mainoksia, keräävätkö ne tietoja vai seuraavatko käyttäjiä?",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Kunniajärjestelmä tarkoittaa sitä, että yksilöiden uskotaan olevan rehellisiä ja noudattavat ohjeita ilman tiukasti pakotettuja tarkastuksia. Sillä Talkie Premium luottaa siihen, että päivittäjät ovat maksaneet siitä.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Mikä on kunniajärjestelmä?",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Koska ihmiset ympäri maailmaa käyttävät eri valuuttoja, heillä on erilaiset käytettävissä olevat tulot ja he arvostavat erilaisia Talkie Premium :n ominaisuuksia. Ei ole olemassa yhtä kiinteää hintaa, joka toimisi hyvin kaikille maailmassa. Tämän lisäksi valuuttojen vaihtelut, suhdannetrendit, alueelliset/maan sisäiset vaihtelut jne. Kaiken kaikkiaan maailmanlaajuisesti myytävän tuotteen hintojen asettaminen on monimutkaista. On helpompi antaa jokaisen päättää itse hintansa ja varmistaa, että tuote on riittävän hyvä maksaakseen.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "Miksi voin asettaa oman hinnan?",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Koska en tiedä, kuinka paljon rahaa pystyt käyttämään tekstistä puheeksi -ohjelmistoon, pidän parempana, että maksat sen Talkie Premium olevan sinulle arvoinen – ei enempää eikä vähempää. Jos etsit viitekehystä, tilaus maksoi 25 dollaria (USD) vuodessa Talkie Premium Huomaa, että Google mukautti hintoja eri maiden ja valuuttojen mukaan vastaamaan paikallisia olosuhteita, joten hinta voi olla enemmän tai vähemmän. Samalla kuka tahansa kohteliaasti kysynyt sai myös Talkie Premium ilmaiseksi.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Kuinka paljon suosittelet maksamaan?",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Koska maksu- ja varmistusjärjestelmän käyttöönotto vie paljon aikaa ja vaivaa, ja oletetaan, että tiukan maksuvarmentamisen toteuttamisen kustannukset ovat korkeammat kuin järjestelmää huijaavien henkilöiden tappiot. Maksun todentaminen vaatii myös jonkinasteista tiedonkeruuta käyttäjien järjestelmistä, ja teknisesti taitaneet käyttäjät voivat usein kiertää varmennuksen joka tapauksessa. Joten teknisestä ja liiketoiminnallisesta näkökulmasta, vaikka takuita ei ole, on helpompi yksinkertaisesti luottaa siihen, että käyttäjät noudattavat kunniajärjestelmää.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "Miksi maksun vahvistusta ei ole?",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Päätös olla toteuttamatta maksun varmentamista tarkoittaa, että maksettua summaa ei voida tarkistaa. Talkie Premium n digitaalisen kopion \"valmistus\" on nolla, joten sen luovuttaminen turhaan ei tarkoita taloudellista tappiota kehittäjälle. On myös toivoa, että jos pidät Talkie Premium , kerrot siitä ystävillesi. Talkie Premium voidaan nähdä myös markkinointiponnisteluna.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "Miksi voin valita, etten maksa mitään?",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Kyllä, Stripen avulla. Katso lisämaksuvaihtoehdot.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Voinko suorittaa toistuvan kuukausi- tai vuosimaksun?",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Kyllä, jos pyydät sitä sähköpostitse. Liitä mukaan nimesi, osoitteesi ja valinnaisesti arvonlisäverotunnuksesi (tai vastaava).",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Voinko saada kuitin maksustani?",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Koska pidät Talkie Premium tarjoamista lisäominaisuuksista ja iloisesta tunteesta osallistua riippumattomien kehittäjien avoimen lähdekoodin ohjelmistokehitykseen. Koska kehitys- ja ylläpitokustannukset ovat suhteellisen korkeat, mutta digitaalisten kopioiden \"valmistuskustannukset\" ovat nolla, Talkie Premium maksujen voidaan katsoa tukevan myös tulevaa kehitystä ja ylläpitoa, toisin kuin tuotteen arvo maksuhetkellä. .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "Miksi minun pitäisi maksaa päivittämisestä?",
+    "original": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "Lyhyt vastaus on: luultavasti ei. Osoittautuu, että Microsoft Windowsissa on nykyaikaisia ääniä ja vanhoja ääniä. Kun viimeksi testasin, hollantilainen ääni \"Microsoft Frank\" oli saatavilla Microsoft Edgessä, mutta ei Google Chromessa tai Mozilla Firefoxissa. Yksi syy on se, että jotkut äänet on rakennettu uudempaa WinRT-puhejärjestelmää varten ja jotkut vanhemmalle Speech Application Programming Interface (SAPI) -liittymälle. Selaimet eivät välttämättä tue sekä vanhoja että uusia puhejärjestelmiä, mikä tarkoittaa, että ääni, joka on itse asiassa asennettu, ei ehkä silti ole käytettävissä suosikkiselaimessasi. Ajan myötä useimmat selaimet tukevat todennäköisesti uudempaa WinRT-järjestelmää. Jos kielelläsi puuttuu ääniä, yksi ehdotus on kokeilla Talkie käyttöä Microsoft Edgessä.",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "Toimivatko kaikki Microsoft Windowsin äänet Talkie ?",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "Ehkä suurella vaivalla. On myös joitakin epävirallisia keinoja saada uudet WinRT-äänet toimimaan vanhempien SAPI-yhteensopivien selainten kanssa, mutta tämä on erittäin tekninen yritys, eikä sitä suositella ei-teknisille käyttäjille.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "Voivatko WinRT-äänet toimia SAPI-yhteensopivilla selaimilla Microsoft Windowsissa?",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "Kyllä, jotkut tekevät. Noudata järjestelmäsi ja selaimesi asennusohjeita. Kun äänet on asennettu selaimeesi, Talkie tunnistaa ne automaattisesti. Ole hyvä ja jaa vinkkejä mitä sinulla on!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "Toimivatko avoimen lähdekoodin äänet Talkie ?",
+    "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "Bugeja",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "Kenraali",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "Usein Kysytyt Kysymykset",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "Äänet",
+    "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Tällä hetkellä käytössä on Talkie ilmainen versio, ja saatavilla on rajoitettu joukko ominaisuuksia. Ehkä Talkie Premium olisi parempi valinta sinulle?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "Tällä hetkellä käytössä Talkie Premium , ja kaikki ominaisuudet ovat käytettävissä. Kiitos paljon, se lämmittää sydäntäni!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie on kaksi versiota: Talkie ja Talkie Premium. Ilmainen versio on loistava useimpiin käyttötapauksiin, mutta premium-versio tarjoaa lisävaihtoehtoja ja -ominaisuuksia.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_featuresFree_List01": {
+    "message": "Automaattinen kielen tunnistus.",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "Automaattinen äänivalinta.",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "Lukee valitun tekstin napsautuksella, pikanäppäimellä tai hiiren kakkospainikkeella.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "Lukee pitkiä tekstejä ja artikkeleita ääneen, vaikka välilehti on taustalla.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "Koodi on avoimen lähdekoodin ja saatavilla ilmaiseksi kaikille käyttäjille.",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "Vapaa!",
+    "original": "Free!"
+  },
+  "frontend_featuresLinkText": {
+    "message": "ominaisuudet",
+    "original": "Features"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "Valitse oma oletusääni kullekin kielelle. Hienoa, jos olet kyllästynyt järjestelmän ääneen!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "Valitse lukunopeus ja äänenkorkeus ääntä kohti. Säädä äänet mieleiseksesi!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "Se lämmin, sumea tunne, jonka saat, kun tuet riippumattomien kehittäjien avoimen lähdekoodin ohjelmistoja.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "Tulevat Premium päivitykset sisältyvät ilman lisäkustannuksia.",
+    "original": "Future Premium updates included without additional cost."
+  },
+  "frontend_featuresPremium_List05": {
+    "message": "Lue teksti leikepöydältä! Kopioi vain tekstiä mistä tahansa ohjelmasta ja käytä Talkie Premium sen lukemiseen!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "Asenna joitakin ääniä järjestelmääsi, muuten Talkie ei toimi. Anteeksi!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "Tekstistä puheeksi -ääniä ei löytynyt",
+    "original": "No text-to-speech voices found"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Kaikki Talkie tehdään Contributor License Agreement (CLA) -lisenssisopimuksen mukaisesti.",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Lisenssi",
+    "original": "License"
+  },
+  "frontend_loading": {
+    "message": "Ladataan...",
+    "original": "Loading..."
+  },
+  "frontend_rateIt": {
+    "message": "Tarkista Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_settingsLinkText": {
+    "message": "asetukset",
+    "original": "Settings"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie kehitettiin muutama päivä ennen uutta vuotta 2016/2017 ystävän haasteesta. Haaste lähti liikkeelle kysymyksestä: onko töissä mahdollista kuunnella artikkelia lukemisen sijaan? Helppoa, sanoin ja päätin todistaa sen – tai ainakin saada selaimeni puhumaan tekstiä typerällä tietokoneäänellä. Perusversio ilman käyttöliittymää osoittautui triviaaliksi luoda. Käyttöliittymän lisääminen kesti hieman kauemmin. Oikean kielentunnistuksen lisääminen lisää koodia. Selaimen virheiden poistaminen on entistäkin enemmän työtä. Lista parannuksista ja ominaisuuksista jatkuu – ja muutama tuhat koodiriviä myöhemmin katsot lopputulosta.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Kuinka Talkie sai alkunsa",
+    "original": "How Talkie got started"
+  },
+  "frontend_storyThankYou": {
+    "message": "Kiitos, että käytät Talkie — jos pidät siitä, kerro ystävillesi!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Tuki ja palaute",
+    "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "On kysymys? Tarvitsetko apua johonkin? Katso nopeita vastauksia yleisiin kysymyksiin alla olevista usein kysytyistä kysymyksistä. Jos tämä ei anna sinulle vastausta, lähetä minulle kaikki kysymyksesi. Olisin iloinen, jos kokemuksesi $NAME$ on sujuvaa ja nautinnollista!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "Tuki",
+    "original": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "Tukilinkit",
+    "original": "Support links"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "Ensisijainen selaimen kieli",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "Ensisijaiset selainkielet",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "Selaimen tyyppi",
+    "original": "Browser type"
+  },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Nykyinen painos",
+    "original": "Current edition"
+  },
+  "frontend_systemHeading": {
+    "message": "Järjestelmän tiedot",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "Asennettu äänimurteet",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "Asennetut puhekielet",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "Asennettu versio",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "Asennetut äänet",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "Käyttöjärjestelmän tyyppi",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie käyttöliittymän kieli",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie käyttöliittymän kieliä",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Hinta Talkie Premium ei ole kiinteä. Maksat sen sijaan mitä haluat sen mukaan, kuinka paljon premium-ominaisuudet mielestäsi ovat sinulle arvokkaita. Voit jopa päättää olla maksamatta mitään.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Maksun lähettämisen jälkeen ei tarvitse syöttää päivityskoodeja, rekisteröityä käyttäjätilejä tai muita maksun vahvistusta. Sen sijaan Talkie Premium käyttää kunniajärjestelmää.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Huomaa, että Talkie ei käytä mainontaa, käyttäjien seurantaa tai tiedonkeruuta vaihtoehtoisina kaupallistamiskeinoina. Maksut on merkitty lahjoituksiksi avoimen lähdekoodin ohjelmistojen kehittämiseen.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Päivitä Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Olen maksanut Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Lisää maksutapoja lahjoitussivulla",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "Maksa PayPalin kautta",
+    "original": "Pay using PayPal"
+  },
+  "frontend_usageLinkText": {
+    "message": "Käyttö",
+    "original": "Usage"
+  },
+  "frontend_usageReadclipboard": {
+    "message": "Lue leikepöydälle kopioitu teksti – käytä sitä pikanäppäimellä kuunnellaksesi tekstiä mistä tahansa selaimen ulkopuolelta. Voit myös napsauttaa hiiren oikealla painikkeella Talkie Premium painiketta tai verkkosivuston tyhjää aluetta ja valita lue leikepöydältä.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Voit myös valita tekstin, napsauttaa sitä hiiren kakkospainikkeella ja valita valikosta Talkie Tämä tapa toimii myös PDF-tiedostoissa ja tietyillä selaimen erikoissivuilla.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Pikanäppäimet",
+    "original": "Shortcut keys"
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Nämä ovat ehdotettuja pikanäppäimiä, joita voi muuttaa selaimesi laajennusasetussivulta.",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "On yleistä, että eri laajennusten ja ohjelmien pikanäppäinten välillä on ristiriitoja. Jos pikanäppäin ei toimi, varmista, ettei sitä ole jo määritetty jollekin muulle.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Tarkista tai muuta Talkie pikanäppäimiä.",
+    "original": "Check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Kätevä vaihtoehto on käyttää pikanäppäimiä Talkie",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Lue tekstiä leikepöydältä missä tahansa ohjelmassa",
+    "original": "Read text from clipboard in any program"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Käynnistä/pysäytys",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Käynnistä/pysäytys",
+    "original": "Start/stop"
+  },
+  "frontend_usageStep01": {
+    "message": "Valitse haluamasi teksti millä tahansa verkkosivulla.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Napsauta selaimen työkalupalkin Talkie",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "Murteen $LANGUAGE_CODE$ oletusääni on $VOICE$ .",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "Oletusääni kielelle $LANGUAGE_GROUP$ on $VOICE$ .",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDescription": {
+    "message": "Katso ja testaa asennettuja ääniä jokaiselle selaimesi kielelle. Talkie Premium käyttäjät voivat myös valita suosikkiäänensä oletusasetukseksi kielen mukaan sekä määrittää kullekin äänelle nopeuden ja äänenkorkeuden.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesFoundDialects": {
+    "message": "Löytyi $DIALECT_COUNT$ murteita $LANGUAGE_GROUP$ .",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
+  "frontend_voicesLinkText": {
+    "message": "Äänet",
+    "original": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "Kuuntele ääninäyte kappaleesta $VOICE$ .",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
+  },
+  "frontend_voicesPitchEmptyHeading": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Äänenkorkeus",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "Pitch hintaan $VOICE$",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesRateEmptyHeading": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "Nopeutta äänelle",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "Nopeus $VOICE$",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Nopea ruskea kettu hyppää laiskan koiran yli.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "Käytä $VOICE$ oletusäänenä tekstille kielellä $LANGUAGE$",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "Käyttöliittymän selkeyttämiseksi joitain yksityiskohtia ei näytetä oletusarvoisesti. Jos otat tämän vaihtoehdon käyttöön, näkyviin tulee lisätietoja.",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "Tämä sisältää tukitiedot muille selaimille ja käyttöjärjestelmille.",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "Lisätiedot",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "Näytä lisätiedot",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "Näytä kaikki",
+    "original": "Show all"
+  },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "Joissakin selaimissa ei ole mahdollista lukea pitkiä tekstejä jatkuvasti. Tämän kiertämiseksi Talkie pienen tauon lauseiden/lauseiden väliin ja muiden välimerkkien jälkeen.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Jos otat tämän vaihtoehdon käyttöön ja pitkien tekstien lukeminen pysähtyy 10-20 sekunnin kuluttua, poista se uudelleen käytöstä.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Pidemmän tekstin lukeminen",
+    "original": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Lue pidempiä tekstejä ilman taukoja (kokeellinen)",
+    "original": "Read longer texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Talkie Premium voit muuttaa kunkin kielen oletusääntä sekä kunkin äänen ääntä ja äänenkorkeutta.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "Tervetuloa $NAME$! Käytät nyt yhtä maailman parhaista tekstistä puheeksi -selainlaajennuksista.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "Valitse tämä teksti ja napsauta sitten selaimen työkalupalkin $NAME$ Nauttia!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie löytää tällä hetkellä $VOICES_COUNT$ ääntä, jotka mahdollistavat $LANGUAGE_GROUPS_COUNT$ kielen $LANGUAGES_COUNT$ murteella, jotka on asennettu $SYSTEM_TYPE_PRETTY_NAME$ -selaimeen, jossa on $OSTYPE_PRETTY_NAME$ käyttöjärjestelmä.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeLinkText": {
+    "message": "Tervetuloa",
+    "original": "Welcome"
+  },
+  "noTextSelectedMessage": {
+    "message": "Valitse ensin haluamasi teksti verkkosivulta. Voit myös valita tekstiä, klikata sitä hiiren kakkospainikkeella ja valita valikosta Talkie",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie ei voi käyttää valittua tekstiä tämän tyyppiseltä sivulta. Se on hyvin erikoinen sivu, ja selaimen asettamat tietoturvarajoitukset. Voit myös yrittää valita tekstiä, klikata sitä hiiren kakkospainikkeella ja valita valikosta Talkie Olen pahoillani häiriöstä.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Olen pahoillani, mutta tekstin lukeminen leikepöydältä on Talkie Premium ominaisuus. Oletko harkinnut päivittämistä?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Olen pahoillani, mutta tämä selain ei tue lukemista leikepöydältä. Ei ainakaan vielä. Yritä uudelleen kuukauden kuluttua!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie ei voi käyttää leikepöydältä. Se on ok, mutta silloin leikepöydän tekstin lukeminen ei toimi.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Leikepöydältä ei löytynyt sopivaa tekstiä. Voitko yrittää kopioida jotain muuta?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
+  }
+}

@@ -1,0 +1,5 @@
+dist/
+node_modules/
+rollup.config.*.mjs
+rollup.config.mjs
+syncpack.config.cjs

@@ -1,0 +1,7 @@
+{
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Det är vanligt med konflikter för kortkommandon för olika tillägg och program. Om kortkommandot inte fungerar, kontrollera att det inte redan används av något annat.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else.",
+    "translated-from": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
+  }
+}

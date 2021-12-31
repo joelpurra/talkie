@@ -1,0 +1,13 @@
+# NOTE: order matters; have put the negated patterns after the non-negated.
+*.d.ts
+!/*.d.ts
+
+*.js
+!rollup.*.js
+
+*.d.ts.map
+*.js.map
+
+talkie.packages.*
+
+dist/

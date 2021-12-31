@@ -1,0 +1,309 @@
+{
+  "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Läs upp markerad text med $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    },
+    "translated-from": "Read text selection out loud with $NAME$"
+  },
+  "buttonStopTitle": {
+    "message": "Sluta läsa upp",
+    "original": "Stop talking",
+    "translated-from": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "Sluta läsa upp",
+    "original": "Read text selection out loud",
+    "translated-from": "Read text selection out loud"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Talkies webbplats",
+    "original": "The Talkie website",
+    "translated-from": "The Talkie website"
+  },
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Uppgradera till Talkie Premium",
+    "original": "Upgrade to Talkie Premium",
+    "translated-from": "Upgrade to Talkie Premium"
+  },
+  "commandStartStopDescription": {
+    "message": "Börja/sluta läsa upp markerad text",
+    "original": "Start/stop reading selection",
+    "translated-from": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "Snabb, enkel, kvalitativ text till tal för över 40 språk. Läs högt från webbplatser, PDF, email. Prata med TTS.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS.",
+    "translated-from": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Källkod på Github",
+    "original": "Source code on Github",
+    "translated-from": "Source code on Github"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Alternativ",
+    "original": "About",
+    "translated-from": "About"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "För närvarande används den konstnadsfria utgåvan av Talkie och tillgänglig funktionalitet är begränsad. Kanske skulle Talkie Premium vara ett bättre val för dig?",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?",
+    "translated-from": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "För närvarande används premiumutgåvan av Talkie och all funktionalitet är tillgänglig. Tack så mycket, det värmer mitt hjärta!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!",
+    "translated-from": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie finns i två utgåvor: Talkie och Talkie Premium. Den konstnadsfria utgåvan fungerar bra för de flesta användningsfall, men premiumutgåvan har fler inställningar och funktioner.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features.",
+    "translated-from": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_featuresFree_List01": {
+    "message": "Automatisk språkidentifiering.",
+    "original": "Automatic language detection.",
+    "translated-from": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "Automatiskt val av ljud.",
+    "original": "Automatic voice selection.",
+    "translated-from": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "Läser upp markerad text genom en knapptryckning, kortkommando, eller högerklicksmeny.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu.",
+    "translated-from": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "Läser långa texter och artiklar högt, även när fliken är i bakgrunden.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background.",
+    "translated-from": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "Öppen källkod som finns tillgänglig kostnadsfritt för alla användare.",
+    "original": "Code is open source and available for free to all users.",
+    "translated-from": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "Kostnadsfri!",
+    "original": "Free!",
+    "translated-from": "Free!"
+  },
+  "frontend_featuresLinkText": {
+    "message": "Funktionalitet",
+    "original": "Features",
+    "translated-from": "Features"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "Välj egen standardröst för varje språk. Bra om du tröttnat på systemrösten!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!",
+    "translated-from": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "Välj läshastigheten och tonhöjd per röst. Justera röster för att passa dig!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!",
+    "translated-from": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "Det varma, sprudlande känslan man får när genom att stödja öppen källkod skriven av oberoende utvecklare.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers.",
+    "translated-from": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "Framtida Premium-uppdateringar ingår utan extra kostnad.",
+    "original": "Future Premium updates included without additional cost.",
+    "translated-from": "Future Premium updates included without additional cost."
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Alla bidrag till Talkie görs med tillstånd av Contributor License Agreement (CLA).",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA).",
+    "translated-from": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Licens",
+    "original": "License",
+    "translated-from": "License"
+  },
+  "frontend_rateIt": {
+    "message": "Betygsätt Talkie",
+    "original": "Review Talkie",
+    "translated-from": "Review Talkie"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie utvecklades ett par dagar före nyår 2016-2017, på utmaning av en kompis. Utmaningen började med frågan: under pendlingen till jobbet, är det möjligt att lyssna på en artikel istället för att läsa den? Lätt som en plätt, sa jag, och satte igång med att bevisa det — eller i alla fall att få min webbläsare att läsa upp text med en knasig röst. Den grundläggande utgåvan, utan något användargränssnitt, visade sig vara trivial att skapa. Att lägga till ett användargränssnitt tog längre tid. Att lägga till ordentlig språkdetektering krävde en drös mer kod. Att bemästra buggar i webbläsaren ännu mer jobb. Listan på förbättringar och nyttigheter växer — och ett par tusen rader kod senare, ser du resultatet.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result.",
+    "translated-from": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Hur Talkie kom till",
+    "original": "How Talkie got started",
+    "translated-from": "How Talkie got started"
+  },
+  "frontend_storyThankYou": {
+    "message": "Tack för att du använder Talkie — om du gillar det, berätta för dina vänner!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!",
+    "translated-from": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Hjälp och feedback",
+    "original": "Support and feedback",
+    "translated-from": "Support and feedback"
+  },
+  "frontend_usageLinkText": {
+    "message": "Användning",
+    "original": "Usage",
+    "translated-from": "Usage"
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Du kan även markera text, högerklicka på den, och välja Talkie i menyn. Sättet fungerar också i PDF-filer och vissa typer av speciella sidor i Chrome.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
+    "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Kontrollera eller ändra Talkies kortkommandon.",
+    "original": "Check or change the Talkie shortcut keys.",
+    "translated-from": "Check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Ett bekvämt sätt är att använda Talkie-kortkommandot:",
+    "original": "A convenient option is to use the Talkie shortcut keys:",
+    "translated-from": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageStep01": {
+    "message": "Markera önskad text på valfri webbplats.",
+    "original": "Select desired text on any web page.",
+    "translated-from": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Klicka på Talkie-knappen i din webbläsares verktygsfält",
+    "original": "Click the Talkie button in your browser toolbar",
+    "translated-from": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesDescription": {
+    "message": "Se och testa installerade röster för varje språk i din webbläsare. Talkie Premium-användare kan även välja sin favoritröst per språk, samt läshastighet och tonhöj för varje röst.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice.",
+    "translated-from": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesLinkText": {
+    "message": "Röster",
+    "original": "Voices",
+    "translated-from": "Voices"
+  },
+  "frontend_voicesPitchEmptyHeading": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Tonhöjd för röst",
+    "original": "Pitch for voice",
+    "translated-from": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "Tonhöjd för $VOICE$",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    },
+    "translated-from": "Pitch for $VOICE$"
+  },
+  "frontend_voicesRateEmptyHeading": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "Hastighet för röst",
+    "original": "Speed for voice",
+    "translated-from": "Speed for voice"
+  },
+  "frontend_voicesRateHeading": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "Hastighet för $VOICE$",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    },
+    "translated-from": "Speed for $VOICE$"
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Flygande bäckasiner söka hwila på mjuka tuvor.",
+    "original": "The quick brown fox jumps over the lazy dog.",
+    "translated-from": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "Använd $VOICE$ som standardröst för text på $LANGUAGE$",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    },
+    "translated-from": "Use $VOICE$ as default voice for text in $LANGUAGE$"
+  },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "I vissa webbläsare är det inte möjligt att kontinuerligt läsa långa texter. För att arbeta runt detta har Talkie infört en liten paus mellan meningar/klausuler och efter annan interpunktion.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation.",
+    "translated-from": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Om du aktiverar det här alternativet och uppläsning av långa texter stannar efter 10-20 sekunder, stäng av det igen.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again.",
+    "translated-from": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Läs upp längre texter",
+    "original": "Reading longer text",
+    "translated-from": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Läs upp längre texter utan pauser (experimentellt)",
+    "original": "Read longer texts without pauses (experimental)",
+    "translated-from": "Read longer texts without pauses (experimental)"
+  },
+  "noTextSelectedMessage": {
+    "message": "Vänligen markera önskad text först. Du kan även markera text, sedan högerklicka på den, och välja Talkie i menyn.",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu.",
+    "translated-from": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie kan inte komma åt den markerade texten från denna typ av sida. Det är en mycket speciell sida, och det finns säkerhetsbegränsningar i webbläsaren. Du kan även testa att markera text, sedan högerklicka på den, och välja Talkie i menyn. Jag ber om ursäkt för besväret.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience.",
+    "translated-from": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Jag är ledsen, men läsning av text från Urklipp är en funktion i Talkie Premium. Har du övervägt att uppgradera?",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?",
+    "translated-from": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Jag är ledsen, men den här webbläsaren stöder inte läsning från Urklipp. Inte än, åtminstone. Försök igen om en månad eller så!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!",
+    "translated-from": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie har inte behörighet att komma åt ur Urklipp. Det är okej, men då kommer funktionen läsa text från Urklipp inte att fungera.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work.",
+    "translated-from": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Det gick inte att hitta lämplig text i Urklippet. Kan du försöka kopiera något annat?",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?",
+    "translated-from": "Could not find suitable text in the clipboard. Can you try copying something else?"
+  }
+}

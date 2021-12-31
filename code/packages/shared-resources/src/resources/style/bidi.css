@@ -1,0 +1,38 @@
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://joelpurra.com/projects/talkie/>
+
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+/*
+* NOTE: webext automatic text direction in a separate file to reduce webext linter warnings
+* https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#locale-dependent_css
+* https://github.com/mozilla/addons-linter/issues/1299
+* https://developer.chrome.com/extensions/i18n#overview-predefined
+*/
+
+body {
+    direction: __MSG_@@bidi_dir__;
+}
+
+#header-premium-button {
+    float: __MSG_@@bidi_end_edge__;
+}
+
+#footer-about-link {
+    float: __MSG_@@bidi_end_edge__;
+}

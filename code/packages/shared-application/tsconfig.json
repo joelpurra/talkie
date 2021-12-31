@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/esm",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*", "src/data/configuration/configuration.json"],
+  "references": [
+    {
+      "path": "../shared-application-helpers/tsconfig.json"
+    },
+    {
+      "path": "../shared-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-interfaces/tsconfig.json"
+    }
+  ]
+}

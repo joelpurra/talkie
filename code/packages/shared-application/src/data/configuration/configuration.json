@@ -1,0 +1,46 @@
+{
+  "shared": {
+    "urls": {
+      "external": {
+        "alternative-payment": "https://joelpurra.com/donate/",
+        "chromewebstore": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
+        "cla": "https://joelpurra.com/projects/talkie/CLA.md",
+        "firefox-amo": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",
+        "github": "https://github.com/joelpurra/talkie",
+        "github-issues": "https://github.com/joelpurra/talkie/issues",
+        "gpl": "https://www.gnu.org/licenses/gpl.html",
+        "main": "https://joelpurra.com/projects/talkie/",
+        "primary-payment": "https://www.paypal.me/joelpurrade",
+        "project": "https://joelpurra.com/projects/talkie/",
+        "shortcut-keys": "https://joelpurra.com/projects/talkie/#shortcut-keys",
+        "support-feedback": "https://joelpurra.com/support/"
+      },
+      "internal": {
+        "options-about": "/packages/options-renderer/src/options.html#about",
+        "options-features": "/packages/options-renderer/src/options.html#features",
+        "options-settings": "/packages/options-renderer/src/options.html#settings",
+        "options-support": "/packages/options-renderer/src/options.html#support",
+        "options-usage": "/packages/options-renderer/src/options.html#usage",
+        "options-voices": "/packages/options-renderer/src/options.html#voices",
+        "options-welcome": "/packages/options-renderer/src/options.html#welcome",
+        "popup": "/packages/popup-renderer/src/popup.html"
+      }
+    }
+  },
+  "chrome": {
+    "urls": {
+      "external": {
+        "rate": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk/reviews",
+        "support-feedback": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk/support"
+      }
+    }
+  },
+  "webextension": {
+    "urls": {
+      "external": {
+        "rate": "https://addons.mozilla.org/en-US/firefox/addon/talkie/reviews/",
+        "shortcut-keys": "https://support.mozilla.org/kb/manage-extension-shortcuts-firefox"
+      }
+    }
+  }
+}

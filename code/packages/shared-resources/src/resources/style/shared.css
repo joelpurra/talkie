@@ -1,0 +1,120 @@
+/*
+This file is part of Talkie -- text-to-speech browser extension button.
+<https://joelpurra.com/projects/talkie/>
+
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+
+Talkie is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Talkie is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+
+/* NOTE: border-box for all elements. */
+/* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+details > * {
+    /* NOTE: the details element seems to reset to content-box, without any obvious reason why. Tested using the inspector in chrome 94. */
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    font-size: 100%;
+    color: #000000;
+}
+
+#react-root {
+    font-size: 1em;
+}
+
+.text-direction-rtl {
+  direction: rtl;
+}
+
+.text-direction-ltr {
+  direction: ltr;
+}
+
+.premium-section {
+    background-color: #eceff5;
+}
+
+tr.free-section,
+tr.premium-section {
+    margin-left: -0.5em;
+    margin-right: -0.5em;
+}
+tr.premium-section:first-of-type td:first-of-type,
+tr:not(.premium-section)+tr.premium-section td:first-of-type {
+    border-top-left-radius: 0.5em;
+}
+
+tr.premium-section:first-of-type td:first-of-type,
+tr:not(.premium-section)+tr.premium-section td:first-of-type {
+    border-top-right-radius: 0.5em;
+}
+
+tr.premium-section:last-of-type td:first-of-type {
+    border-bottom-left-radius: 0.5em;
+}
+
+tr.premium-section:last-of-type td:last-of-type {
+    border-bottom-right-radius: 0.5em;
+}
+
+.talkie-free .icon.icon-talkie:before,
+.talkie-free .icon.icon-talkie.free:before,
+.talkie-premium .icon.icon-talkie.free:before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMwMEFDNkMiIGQ9Ik01MTIuNSAyLjVjLTI4MC42IDAtNTA4IDIyNy40LTUwOCA1MDggMCA4NyAyMS45IDE2OC45IDYwLjQgMjQwLjVsLTUuNiAyMC45TDQuNiA5NzUuNmMtNi44IDI3LjEgMTguMSA1MS45IDQ0LjYgNDQuNmwyMDMuMi01NS4zIDIxLjYtNS44YzcxLjEgMzcuOSAxNTIuMyA1OS40IDIzOC41IDU5LjQgMjgwLjYgMCA1MDgtMjI3LjQgNTA4LTUwOHMtMjI3LjQtNTA4LTUwOC01MDh6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTI5OS40IDI3OC4xYzAtMzEgMzMuNi01MC40IDYwLjItMzQuNWwyMDIuNSAxMTYuNyAyMDIuNSAxMTUuOWMyNi41IDE1IDI2LjUgNTMuOSAwIDY5LjlMNTYyLjEgNjYyLjggMzU5LjYgNzgwLjRjLTI2LjUgMTUuOS02MC4yLTMuNS02MC4yLTM0LjVWMjc4LjF6Ii8+PC9zdmc+");
+}
+
+.talkie-premium .icon.icon-talkie:before,
+.talkie-free .icon.icon-talkie.premium:before,
+.talkie-premium .icon.icon-talkie.premium:before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMxRTlDRDgiIGQ9Ik01MTIuNSAyLjVjLTI4MC42IDAtNTA4IDIyNy40LTUwOCA1MDggMCA4NyAyMS45IDE2OC45IDYwLjQgMjQwLjVsLTUuNiAyMC45TDQuNiA5NzUuNmMtNi44IDI3LjEgMTguMSA1MS45IDQ0LjYgNDQuNmwyMDMuMi01NS4zIDIxLjYtNS44YzcxLjEgMzcuOSAxNTIuMyA1OS40IDIzOC41IDU5LjQgMjgwLjYgMCA1MDgtMjI3LjQgNTA4LTUwOHMtMjI3LjQtNTA4LTUwOC01MDh6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTI5OS40IDI3OC4xYzAtMzEgMzMuNi01MC40IDYwLjItMzQuNWwyMDIuNSAxMTYuNyAyMDIuNSAxMTUuOWMyNi41IDE1IDI2LjUgNTMuOSAwIDY5LjlMNTYyLjEgNjYyLjggMzU5LjYgNzgwLjRjLTI2LjUgMTUuOS02MC4yLTMuNS02MC4yLTM0LjVWMjc4LjF6Ii8+PC9zdmc+");
+}
+
+.icon.icon-small-play:before,
+.icon.icon-talkie-status:before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA4IDgpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iIzAwQUM2QyIgY3g9IjgiIGN5PSI4IiByPSI4Ii8+PHBhdGggZD0iTTcuMDMxIDUuNjUzYy41NDctLjk1NiAxLjQzOC0uOTQ3IDEuOTggMGwyLjA2NSAzLjYxNWMuNTQ3Ljk1Ny4wODggMS43MzItMS4wMTUgMS43MzJoLTQuMDljLTEuMTAyIDAtMS41NDYtLjc4NS0xLjAwNS0xLjczMkw3LjAzIDUuNjUzeiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz4K");
+}
+
+.icon.icon-small-stop:before,
+.talkie-speaking .icon.icon-talkie-status:before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iI0U2NTMzMSIgY3g9IjgiIGN5PSI4IiByPSI4Ii8+PHJlY3QgZmlsbD0iI0ZGRiIgeD0iNSIgeT0iNSIgd2lkdGg9IjYiIGhlaWdodD0iNiIgcng9IjEiLz48L2c+PC9zdmc+");
+}
+
+.icon.icon-settings:before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNy4xNjUgOS45NGMtLjczNi0uMDIzLTEuMzQ2LS4yNzYtMS44My0uNzYtLjQ4My0uNDgzLS43MjQtMS4wOTMtLjcyNC0xLjgyOXMuMjQxLTEuMzQ2LjcyNS0xLjgyOWMuNDgzLS40ODMgMS4wOTMtLjcyNSAxLjgyOS0uNzI1czEuMzQ2LjI0MiAxLjgyOS43MjVjLjQ4My40ODMuNzI1IDEuMDkzLjcyNSAxLjgzIDAgLjczNS0uMjQyIDEuMzQ1LS43MjUgMS44MjgtLjQ4My40ODQtMS4wOTMuNzM3LTEuODMuNzZ6bTUuNDg3LTEuODY0YTcuMjkgNy4yOSAwIDAgMCAuMDM1LS43MjUgNy4yOSA3LjI5IDAgMCAwLS4wMzUtLjcyNWwxLjU1My0xLjIwOGMuMTM4LS4xMzguMTYxLS4yOTkuMDctLjQ4M0wxMi43OSAyLjM4MWMtLjA5Mi0uMTYtLjI0MS0uMjA3LS40NDgtLjEzOGwtMS44My43MjVhNC43ODYgNC43ODYgMCAwIDAtMS4yNDItLjcyNUw4Ljk5NC4zMTFDOC45NDguMTA0IDguODMzIDAgOC42NDkgMEg1LjY4Yy0uMTg0IDAtLjMuMTA0LS4zNDUuMzFMNS4wNiAyLjI0NGMtLjQ2LjE4NC0uODc1LjQyNi0xLjI0My43MjVsLTEuODMtLjcyNWMtLjIwNi0uMDY5LS4zNTYtLjAyMy0uNDQ4LjEzOEwuMDU1IDQuOTM1Yy0uMDkyLjE4NC0uMDY5LjM0NS4wNy40ODNsMS41NTIgMS4yMDhhNy4yOSA3LjI5IDAgMCAwLS4wMzQuNzI1YzAgLjI1My4wMTEuNDk1LjAzNC43MjVMLjEyNCA5LjI4NGMtLjEzOC4xMzgtLjE2LjI5OS0uMDY5LjQ4M2wxLjQ4NCAyLjU1NGMuMDkyLjE2MS4yNDIuMjA3LjQ0OS4xMzhsMS44My0uNzI1Yy4zNjcuMy43ODEuNTQgMS4yNDIuNzI1bC4yNzYgMS45MzNjLjA0Ni4yMDcuMTYuMzEuMzQ1LjMxaDIuOTY4Yy4xODQgMCAuMjk5LS4xMDMuMzQ1LS4zMWwuMjc2LTEuOTMzYTQuNzggNC43OCAwIDAgMCAxLjI0My0uNzI1bDEuODI5LjcyNWMuMjA3LjA2OS4zNTYuMDIzLjQ0OC0uMTM4bDEuNDg0LTIuNTU0Yy4wOTItLjE4NC4wNy0uMzQ1LS4wNjktLjQ4M2wtMS41NTMtMS4yMDh6IiBmaWxsPSIjQzdDOUNGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=");
+}
+
+.icon.icon-voices:before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC4zOTMgMHYxLjU3MWE1LjE1IDUuMTUgMCAwIDEgMi43MTQgMS44NzVjLjY5LjkxNyAxLjAzNiAxLjk5NCAxLjAzNiAzLjIzMyAwIDEuMjM4LS4zNDUgMi4zMS0xLjAzNiAzLjIxNC0uNjkuOTA1LTEuNTk1IDEuNTM2LTIuNzE0IDEuODkzdjEuNTcxYzEuNTQ3LS4zOCAyLjgxNS0xLjE3MiAzLjgwMy0yLjM3NS45ODktMS4yMDIgMS40OTQtMi42MzcgMS41MTgtNC4zMDMtLjAyNC0xLjY2Ny0uNTMtMy4xMDItMS41MTgtNC4zMDRDMTEuMjA4IDEuMTczIDkuOTQuMzgxIDguMzkzIDB6bTEuODkzIDYuNjc5YzAtLjY5LS4xNzMtMS4zMDQtLjUxOC0xLjg0YTMuNDM0IDMuNDM0IDAgMCAwLTEuMzc1LTEuMjMydjYuMTA3YTMuMTg2IDMuMTg2IDAgMCAwIDEuMzc1LTEuMTk2Yy4zNDUtLjUzNi41MTgtMS4xNDkuNTE4LTEuODR6TTAgNC4zOTN2NC41NzFoMy4wMzZsMy44MjEgMy44MjJWLjU3TDMuMDM2IDQuMzkzSDB6IiBmaWxsPSIjQzdDOUNGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=");
+}

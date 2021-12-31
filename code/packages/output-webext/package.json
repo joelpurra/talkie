@@ -1,0 +1,24 @@
+{
+  "name": "@talkie/output-webext",
+  "version": "0.0.0",
+  "author": {
+    "email": "code+github@joelpurra.com",
+    "name": "Joel Purra",
+    "url": "https://joelpurra.com/"
+  },
+  "dependencies": {
+    "@talkie/all-renderer": "*",
+    "@talkie/browser-background": "*",
+    "@talkie/browser-runtime-dependencies": "*",
+    "@talkie/shared-resources": "*"
+  },
+  "homepage": "https://joelpurra.com/projects/talkie/",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "build": "echo",
+    "clean": "rimraf ./dist",
+    "rebuild": "npm run --silent clean && npm run --silent build"
+  },
+  "type": "module"
+}

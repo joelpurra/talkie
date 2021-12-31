@@ -1,0 +1,30 @@
+{
+  "name": "@talkie/browser-runtime-dependencies",
+  "version": "0.0.0",
+  "author": {
+    "email": "code+github@joelpurra.com",
+    "name": "Joel Purra",
+    "url": "https://joelpurra.com/"
+  },
+  "bundledDependencies": [
+    "@reduxjs/toolkit",
+    "react",
+    "styletron-react"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.7.1",
+    "webextension-polyfill": "^0.8.0"
+  },
+  "homepage": "https://joelpurra.com/projects/talkie/",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run --silent build:rollup",
+    "build:rollup": "rollup --config rollup.config.mjs",
+    "clean": "rimraf ./dist",
+    "rebuild": "npm run --silent clean && npm run --silent build",
+    "watch": "npm run --silent build -- --watch"
+  },
+  "type": "module"
+}

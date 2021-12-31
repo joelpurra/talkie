@@ -1,0 +1,865 @@
+{
+  "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "انتخاب متن را با صدای بلند با $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Static": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "خواندن متن انتخابی با صدای بلند با Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonStopTitle": {
+    "message": "حرف نزن",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "انتخاب متن را با صدای بلند بخوانید",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "وب سایت Talkie",
+    "original": "The Talkie website"
+  },
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "ارتقا به Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "commandReadClipboardDescription": {
+    "message": "از کلیپ بورد بخوانید",
+    "original": "Read from the clipboard"
+  },
+  "commandStartStopDescription": {
+    "message": "شروع/توقف خواندن انتخاب",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "متن به گفتار سریع، آسان و با کیفیت بالا در بیش از 40 زبان. با صدای بلند از وب سایت ها، PDF، ایمیل بخوانید. متن را با TTS صحبت کنید.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "امکانات و ارتقاء",
+    "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "استفاده و میانبرها",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "صداها و زبان ها",
+    "original": "Voices and languages"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "متن مورد نظر را در هر صفحه وب انتخاب کنید و روی Talkie در نوار ابزار مرورگر خود کلیک کنید.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "کد منبع در Github",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "درخواست های ویژگی و گزارش اشکال در Github",
+    "original": "Feature requests and bug reports on Github"
+  },
+  "frontend_aboutLinkText": {
+    "message": "در باره",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "صفحه پروژه در joelpurra.com",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "صداها هم از سیستم عامل (Windows، ChromeOS، macOS، Linux، و غیره) و مرورگر فعلی شما (Google Chrome، Microsoft Edge، Firefox، و غیره) می آیند. این همچنین به این معنی است که می توانید هر صدایی را که می خواهید داشته باشید دانلود و نصب کنید، رایانه خود را راه اندازی مجدد کنید و Talkie باید آنها را به طور خودکار تشخیص دهد. همچنین می‌توانید از مرورگر دیگری استفاده کنید، زیرا پشتیبانی صوتی ممکن است حتی در همان سیستم متفاوت باشد.",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
+  },
+  "frontend_faq001Q": {
+    "message": "Talkie چگونه صداهای نصب شده را تشخیص می دهد؟",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "می‌توانید صداهای بیشتری را هم از مایکروسافت و هم از دیگران اضافه کنید. ساده ترین کار اضافه کردن یک زبان جدید در تنظیمات سیستم است. مطمئن شوید که صدا را برای زبان نیز نصب کرده اید. دستورالعمل نصب جداگانه را ببینید.",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "چگونه می توانم صداهای بیشتری را در Talkie در Microsoft Windows نصب کنم؟",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "به راحتی می توانید صداها و زبان های اضافی را در تنظیمات سیستم نصب کنید. Voices برای ChromeOS نیز ممکن است در فروشگاه وب Chrome در دسترس باشد.",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "چگونه می توانم صداهای بیشتری را در Talkie در Google ChromeOS نصب کنم؟",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "صداهای اضافی را می توان به راحتی از تنظیمات برگزیده سیستم macOS برای گفتار نصب کرد. دستورالعمل نصب جداگانه را ببینید.",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "چگونه می توانم صداهای بیشتری را در Talkie در Apple macOS نصب کنم؟",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "بستگی به توزیع لینوکس، مرورگر و سیستم توزیع بسته شما دارد. دستورالعمل های نصب جداگانه برای ترکیب نرم افزار خود را ببینید. ساده ترین راه ممکن است این باشد که مرورگر دیگری را امتحان کنید و ببینید آیا صدای مناسبی از قبل نصب شده است یا خیر. به عنوان مثال، فایرفاکس v95 در اوبونتو 21.10 را می توان با استفاده از Aptitude یا Snap نصب کرد. اولی شامل 8611 صدای eSpeak است که 95 زبان را در 7358 گویش فعال می کند، اما دومی شامل 0 صدا است. نمونه دیگر Google Chrome v96 در اوبونتو 21.10 است که به طور پیش فرض شامل 19 صدا است که 14 زبان را در 18 گویش فعال می کند. لطفاً تجربیات خود را به من بگویید!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "چگونه می توانم صداهای بیشتری را در Talkie در لینوکس نصب کنم؟",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "بله و خیر. Talkie هیچ صدایی را به خود اختصاص نمی دهد، اما از صداهایی استفاده می کند که از قبل بر روی رایانه شما نصب شده اند. شما می توانید هر صدای اضافی را که می خواهید نصب کنید.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "آیا می‌توانید برای <a new voice> در Talkie پشتیبانی اضافه کنید؟",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "بله و خیر. از آنجایی که Talkie از صداهای نصب شده در رایانه شما استفاده می کند، باید صدای جدیدی را نصب کنید که از زبانی که می خواهید استفاده کنید پشتیبانی می کند.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "آیا می توانید برای <a new language> در Talkie پشتیبانی اضافه کنید؟",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "بله، اگر صداهای نصب شده به صورت آفلاین نیز در دسترس باشند. می توانید در لیست صداهایی که به عنوان آنلاین علامت گذاری شده اند را مشاهده کنید.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "آیا Talkie آفلاین کار می کند؟",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "نه، Talkie Premium دقیقاً همان صداهای Talkie. می توانید صداهای بیشتری را روی سیستم خود نصب کنید و به همان اندازه در دسترس هستند. در Talkie Premium می‌توانید صدای دلخواه را برای هر زبان و گویش شخصی‌سازی کنید.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
+  },
+  "frontend_faq009Q": {
+    "message": "آیا Talkie Premium صداهای بیش از Talkie ؟",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Google Chrome (و احتمالاً سایر مرورگرهای مبتنی بر Chromium) حداقل از سال 2014 با این مشکل/اشکال Talkie. Talkie راه‌حل‌هایی دارد، و گزینه‌ای برای فعال/غیرفعال کردن خواندن متن در قسمت‌های کوتاه‌تر. من به بهبود راه حل ادامه خواهم داد، اما تا زمانی که تیم Chromium کار نکند، ممکن است 100٪ کار نکند. اگر با این مشکل مواجه شدید، لطفاً به من بگویید از کدام مرورگر و نسخه، سیستم عامل و نسخه، و زبان/صدا استفاده می‌کنید.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Talkie بعد از 20-30 کلمه یا چند ثانیه خواندن را متوقف می کند؟",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "دو دلیل وجود دارد. در مرحله اول، اگر صدای فعال آنلاین است، باید فایل گفتار را قبل از پخش آن دانلود کنید. این به معنای یک مکث اضافه است که بستگی به سرعت اتصال اینترنت شما دارد. می توانید بررسی کنید که کدام صداها در لیست صداها آنلاین هستند. دلیل دوم این است که راه حل برای بیان متون طولانی، متن را در قسمت های کوتاه تر، معمولاً در هر جمله یا هر بند، خرد می کند. این می تواند یک مکث اضافی برای هر مکث اضافه کند. می‌توانید خواندن متن‌های طولانی را به‌عنوان بخشی از گزینه‌ها فعال کنید، که باید مکث در سیستم‌های پشتیبانی‌شده را حذف کند.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "چرا Talkie گاهی اوقات مکث طولانی بین جملات و کلمات دارد؟",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "متاسفانه نه به طور کامل. برای Talkie Premium امکان کپی کردن متن و خواندن آن از کلیپ بورد وجود دارد. معلوم می شود که Google Docs (و همچنین Google Spreadsheet، Google Drive و موارد مشابه) یک وب سایت نیست، بلکه یک \"برنامه کاربردی در مرورگر\" خاص است که توسط Google ایجاد شده است. Talkie نمی تواند به متن انتخاب شده دسترسی پیدا کند، یا آیتم های منوی زمینه را اضافه نمی کند، بنابراین Talkie کار نمی کند.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+  },
+  "frontend_faq012Q": {
+    "message": "آیا Talkie در Google Docs کار می کند؟",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "بله لطفا! ترجیحاً یک گزارش مشکل در Github ایجاد کنید تا دیگران نیز بتوانند کمک کنند. لطفاً تا آنجا که ممکن است اطلاعاتی مانند مرورگر و نسخه، سیستم عامل و نسخه و زبان/صدا را که استفاده می‌کنید وارد کنید. همچنین اطلاعات مربوط به وب‌سایت‌های خاصی را که در آن‌ها باگ را مشاهده می‌کنید، ترجیحاً همراه با یک پیوند قرار دهید.",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "آیا باید اشکالات را گزارش کنم؟",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "معمولا! اگر می توانید متن را در PDF انتخاب کنید، روی آن کلیک راست کرده و Talkie در منو انتخاب کنید. اگر متن قابل انتخاب نباشد، اگر بخشی از یک تصویر باشد، کار نخواهد کرد.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "آیا Talkie تواند فایل های PDF را بخواند؟",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "Talkie استفاده نامحدودی دارد — می‌توانید هر تعداد کلمه و متن طولانی را که دوست دارید بخوانید.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "آیا Talkie محدودیت کلمه دارد؟",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "قطعا! فقط از طریق صفحات پشتیبانی یا پروژه با من تماس بگیرید.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "آیا می توانم ویژگی های جدید را درخواست کنم؟",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "یک ویرایشگر میانبرهای صفحه کلید وجود دارد که می توانید آن را در پایین صفحه افزونه ها در Google Chrome پیدا کنید.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "چگونه کلیدهای میانبر را در گوگل کروم تغییر دهیم؟",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "می‌توانید کلیدهای میانبر را در تنظیمات فایرفاکس برای افزونه‌ها تغییر دهید یا حذف کنید. روی دکمه چرخ دنده کلیک کنید تا ویرایشگر کلید میانبر را پیدا کنید.",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
+  },
+  "frontend_faq018Q": {
+    "message": "چگونه کلیدهای میانبر را در فایرفاکس تغییر دهیم؟",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "قطعا! دریافت کمک برای ترجمه Talkie ، آزمایش Talkie در سیستم های جدید، بررسی اشکالات، و افزودن ویژگی های جدید بسیار عالی خواهد بود. لطفاً صفحه پروژه را برای دستورالعمل ها ببینید.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "آیا می توانم به توسعه Talkie کمک کنم؟",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "بله — لطفاً در مورد Talkie به دوستان خود بگویید! شاید پیوندی به افراد مشهور اینترنتی، گروه آنلاین یا خبرنامه مورد علاقه خود ارسال کنید. حتی می توانید از رئیس خود بخواهید آن را روی همه رایانه های محل کار نصب کند، یا از معلم خود بخواهید آن را در مدرسه نصب کند. انتشار کلمه در مورد Talkie بسیار قدردانی می شود!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "آیا می توانم به روش دیگری Talkie",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "برای توسعه و نگهداری Talkie — صدها ساعت تا کنون، زمان و تلاش بسیار زیادی لازم است. با این حال، Talkie برای همه رایگان است تا هر اندازه که دوست دارند استفاده کنند. برای حمایت مالی بیشتر از توسعه، نگهداری و رایگان نگه داشتن Talkie رایگان، برخی از ویژگی ها فقط برای کاربران Talkie Premium",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "چرا دو نسخه Talkie ؟",
+    "original": "Why are there two editions of Talkie?"
+  },
+  "frontend_faq022A": {
+    "message": "بله، چندین گزینه پرداخت وجود دارد.",
+    "original": "Yes, there are multiple payment options available."
+  },
+  "frontend_faq022Q": {
+    "message": "آیا می توانم با استفاده از PayPal، انتقال بانکی و غیره پرداخت کنم؟",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "بله، اگر با استفاده از PayPal یا Stripe پرداخت کرده اید که مدیریت بازپرداخت ساده را ارائه می دهند. بازپرداخت معمولاً برای سایر روش‌های پرداخت به دلیل مقدار کار اضافی مورد نیاز، به علاوه خطر بازپرداخت پول به حساب اشتباه، در دسترس نیست.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+  },
+  "frontend_faq023Q": {
+    "message": "آیا می توانم بازپرداخت دریافت کنم؟",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "مطمئن! Talkie Premium را فعال کنید تا آن را امتحان کنید.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+  },
+  "frontend_faq024Q": {
+    "message": "آیا می توانم Talkie Premium به صورت رایگان امتحان کنم؟",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Talkie هیچ تبلیغ، جمع آوری داده یا ردیابی کاربر وجود ندارد. کاربران خوشحالی که برای Talkie Premium پرداخت می کنند تنها راه درآمدزایی است.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "آیا Talkie حاوی تبلیغات، جمع آوری داده ها یا ردیابی کاربران است؟",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "سیستم افتخار زمانی است که به افراد اعتماد می شود که صادق باشند و بدون بررسی های دقیق به دستورالعمل ها پایبند باشند. برای Talkie Premium اعتماد به اینکه کسانی که ارتقاء می دهند هزینه آن را پرداخت کرده اند.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "نظام افتخار چیست؟",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "از آنجا که مردم در سراسر جهان از ارزهای مختلف استفاده می کنند، سطوح مختلف درآمد قابل تصرفی دارند و سطوح متفاوتی از ویژگی های Talkie Premium هیچ قیمت واحد و ثابتی وجود ندارد که برای همه افراد در جهان خوب عمل کند. علاوه بر این، نوسانات در ارزها، روند چرخه اقتصادی، تغییرات منطقه ای/درون کشوری و غیره وجود دارد. در مجموع، تنظیمات قیمت برای محصولی که در سراسر جهان فروخته می شود، پیچیده است. راحت‌تر است که به همه اجازه دهید قیمت خود را تعیین کنند و اطمینان حاصل کنید که محصول به اندازه کافی خوب است که پرداخت را تضمین کند.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "چرا می توانم قیمت خود را تعیین کنم؟",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "از آنجایی که نمی‌دانم چقدر می‌توانید برای نرم‌افزار تبدیل متن به گفتار خرج کنید، ترجیح می‌دهم آنچه را که فکر می‌کنید Talkie Premium برای شما ارزش دارد، بپردازید — نه بیشتر، نه کمتر. اگر به دنبال یک چارچوب مرجع هستید، زمانی که Google پرداخت‌های Talkie Premium ، هزینه اشتراک ۲۵ دلار آمریکا (دلار آمریکا) در سال در ایالات متحده آمریکا است. توجه داشته باشید که Google قیمت‌ها را برای کشورها و ارزهای دنیا تنظیم کرده است تا با شرایط محلی مطابقت داشته باشد، بنابراین می‌تواند بیشتر یا کمتر باشد. در عین حال، هر کسی که مودبانه درخواست می‌کرد، می‌توانست Talkie Premium را نیز به صورت رایگان دریافت کند.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "توصیه می کنید چقدر پرداخت کنم؟",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "زیرا پیاده‌سازی سیستم پرداخت و تأیید زمان و تلاش زیادی را می‌طلبد و فرض بر این است که هزینه اجرای تأیید دقیق پرداخت بیشتر از ضرر افراد تقلب در سیستم است. راستی‌آزمایی پرداخت همچنین به سطحی از جمع‌آوری داده‌ها از سیستم‌های کاربران نیاز دارد، و کاربران ماهر از نظر فنی اغلب می‌توانند به هر حال روی تأیید کار کنند. بنابراین، از منظر فنی و تجاری، حتی اگر هیچ تضمینی وجود نداشته باشد، به سادگی می توان به پایبندی کاربران به سیستم افتخار اعتماد کرد.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "چرا تایید پرداخت وجود ندارد؟",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "تصمیم برای عدم اجرای راستی‌آزمایی پرداخت به این معنی است که مبلغ پرداختی قابل تأیید نیست. علاوه بر این، هزینه \"ساخت\" یک کپی دیجیتالی Talkie Premium صفر است، بنابراین ارائه آن به هیچ عنوان به معنای زیان مالی برای توسعه دهنده نیست. همچنین این امید وجود دارد که اگر Talkie Premium دوست دارید، آن را به دوستان خود بگویید. دادن Talkie Premium می توان به عنوان یک تلاش بازاریابی نیز در نظر گرفت.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "چرا می توانم انتخاب کنم که هیچ پرداختی نداشته باشم؟",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "بله، با استفاده از Stripe. گزینه های پرداخت اضافی را ببینید.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "آیا می توانم پرداخت ماهانه یا سالانه مکرر انجام دهم؟",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "بله، اگر از طریق ایمیل درخواست کنید. لطفاً نام، آدرس، و در صورت تمایل، شناسه مالیات بر ارزش افزوده (VAT) (یا معادل) خود را وارد کنید.",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "آیا می توانم برای پرداخت خود رسید دریافت کنم؟",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "زیرا ویژگی‌های اضافی که Talkie Premium فراهم می‌کند و احساس خوشحالی از مشارکت در توسعه نرم‌افزار منبع باز توسط توسعه‌دهندگان مستقل را دوست دارید. با توجه به هزینه نسبتاً بالای توسعه و نگهداری پرسنل، اما هزینه صفر «تولید» نسخه‌های دیجیتال، پرداخت‌های Talkie Premium را می‌توان به‌عنوان پشتیبانی برای توسعه و نگهداری آینده در نظر گرفت، برخلاف ارزش محصول در زمان پرداخت. .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "چرا باید برای ارتقا هزینه کنم؟",
+    "original": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "پاسخ کوتاه این است: احتمالاً نه. به نظر می رسد صداهای مدرن و صداهای قدیمی در مایکروسافت ویندوز وجود دارد. وقتی آخرین بار آزمایش کردم، صدای هلندی \"Microsoft Frank\" در Microsoft Edge در دسترس بود، اما نه در Google Chrome و نه Mozilla Firefox. یکی از دلایل این است که برخی صداها برای سیستم گفتار جدیدتر WinRT و برخی برای رابط برنامه نویسی برنامه گفتار قدیمی (SAPI) ساخته شده اند. مرورگرها ممکن است از سیستم گفتار قدیمی و جدید پشتیبانی نکنند، به این معنی که صدایی که در واقع نصب شده است، ممکن است همچنان در مرورگر مورد علاقه شما در دسترس نباشد. با گذشت زمان، اکثر مرورگرها احتمالاً از سیستم جدیدتر WinRT پشتیبانی می کنند. اگر صدایی در زبان خود ندارید، یک پیشنهاد این است که از Talkie در Microsoft Edge استفاده کنید.",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "آیا همه صداهای مایکروسافت ویندوز با Talkie کار می کنند؟",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "شاید با تلاش زیاد. همچنین راه‌حل‌های غیررسمی برای کارکردن صداهای WinRT جدید با مرورگرهای قدیمی‌تر دارای SAPI وجود دارد، اما این یک تلاش بسیار فنی است و برای کاربران غیر فنی توصیه نمی‌شود.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "آیا صدای WinRT در مرورگرهای دارای SAPI در مایکروسافت ویندوز کار می کند؟",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "بله، برخی انجام می دهند. دستورالعمل های نصب سیستم و مرورگر خود را دنبال کنید. هنگامی که صداها در مرورگر شما نصب شدند، Talkie باید آنها را به طور خودکار شناسایی کند. لطفا هر نکته ای که دارید به اشتراک بگذارید!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "آیا صداهای منبع باز با Talkie کار می کنند؟",
+    "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "اشکالات",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "عمومی",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "سوالات متداول",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "صداها",
+    "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "در حال حاضر از نسخه رایگان Talkie و مجموعه محدودی از ویژگی ها در دسترس است. شاید Talkie Premium انتخاب بهتری برای شما باشد؟",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "در حال حاضر از Talkie Premium استفاده می شود و همه ویژگی ها در دسترس هستند. خیلی ممنون، قلبم را گرم می کند!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie در دو نسخه ارائه می شود: Talkie و Talkie Premium. نسخه رایگان برای بیشتر موارد استفاده عالی است، اما نسخه پریمیوم گزینه ها و ویژگی های اضافی را ارائه می دهد.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_featuresFree_List01": {
+    "message": "تشخیص خودکار زبان",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "انتخاب خودکار صدا",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "متن انتخاب شده را با کلیک دکمه، کلید میانبر یا منوی راست کلیک می خواند.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "متن ها و مقالات طولانی را با صدای بلند می خواند، حتی زمانی که برگه در پس زمینه است.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "کد منبع باز است و به صورت رایگان در دسترس همه کاربران است.",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "رایگان!",
+    "original": "Free!"
+  },
+  "frontend_featuresLinkText": {
+    "message": "امکانات",
+    "original": "Features"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "صدای پیش فرض خود را برای هر زبان انتخاب کنید. عالی است اگر از صدای سیستم خسته شدید!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "سرعت خواندن و زیر و بم هر صدا را انتخاب کنید. صداها را مطابق میل خود تنظیم کنید!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "احساس گرم و مبهمی که هنگام پشتیبانی از نرم افزار منبع باز توسط توسعه دهندگان مستقل به شما دست می دهد.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "به روز رسانی های آینده Premium بدون هزینه اضافی گنجانده شده است.",
+    "original": "Future Premium updates included without additional cost."
+  },
+  "frontend_featuresPremium_List05": {
+    "message": "متن را از کلیپ بورد بخوانید! فقط متن را از هر جایی در هر برنامه کپی کنید و از Talkie Premium برای خواندن آن استفاده کنید!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "لطفاً چند صدا را روی سیستم خود نصب کنید، در غیر این صورت Talkie کار نخواهد کرد. متاسف!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "هیچ صدای تبدیل متن به گفتار پیدا نشد",
+    "original": "No text-to-speech voices found"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "همه مشارکت‌ها در Talkie تحت موافقتنامه مجوز مشارکت (CLA) انجام می‌شود.",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "مجوز",
+    "original": "License"
+  },
+  "frontend_loading": {
+    "message": "بارگذاری...",
+    "original": "Loading..."
+  },
+  "frontend_rateIt": {
+    "message": "بازبینی Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_settingsLinkText": {
+    "message": "تنظیمات",
+    "original": "Settings"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie چند روز قبل از سال جدید 2016/2017، در چالشی از یک دوست توسعه داده شد. چالش با این سوال شروع شد: آیا هنگام رفت و آمد به محل کار، آیا می توان به جای خواندن مقاله به آن گوش داد؟ گفتم، آسان است، و تصمیم گرفتم آن را ثابت کنم — یا حداقل کاری کنم که مرورگرم متن را با استفاده از صدای احمقانه رایانه ای بیان کند. نسخه اصلی، بدون هیچ رابط کاربری، ایجاد آن بی اهمیت بود. افزودن یک رابط کاربری، کمی بیشتر طول کشید. اضافه کردن تشخیص زبان مناسب تعداد زیادی کد بیشتر. غلبه بر اشکالات در مرورگر حتی بیشتر کار می کند. لیست پیشرفت ها و ویژگی ها ادامه دارد — و چند هزار خط کد بعد، به نتیجه نهایی نگاه می کنید.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Talkie چگونه شروع شد",
+    "original": "How Talkie got started"
+  },
+  "frontend_storyThankYou": {
+    "message": "از اینکه از Talkie — اگر دوست داشتید، به دوستان خود بگویید!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "پشتیبانی و بازخورد",
+    "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "سوالی دارید؟ برای چیزی به کمک نیاز دارید؟ برای پاسخ سریع به سوالات رایج، به سوالات متداول زیر مراجعه کنید. اگر پاسخ شما را نمی دهد، لطفاً هر سؤالی که ممکن است دارید برای من ارسال کنید. خوشحال می شوم اگر تجربه شما از استفاده از $NAME$ روان و لذت بخش باشد!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "حمایت کردن",
+    "original": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "لینک های پشتیبانی",
+    "original": "Support links"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "زبان مرورگر برگزیده",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "زبان های مرورگر برگزیده",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "نوع مرورگر",
+    "original": "Browser type"
+  },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "نسخه فعلی",
+    "original": "Current edition"
+  },
+  "frontend_systemHeading": {
+    "message": "جزئیات سیستم",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "لهجه های صوتی نصب شده",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "زبان های صوتی نصب شده",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "نسخه نصب شده",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "صداهای نصب شده",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "نوع سیستم عامل",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie زبان رابط کاربری",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie زبان های رابط کاربری",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "قیمت Talkie Premium ثابت نیست. در عوض، بسته به اینکه فکر می کنید ویژگی های برتر برای شما چقدر ارزش دارند، آنچه را که می خواهید پرداخت می کنید. شما حتی می توانید تصمیم بگیرید که هیچ پرداختی نکنید.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "پس از ارسال پرداخت، هیچ کد ارتقایی برای وارد کردن، هیچ حساب کاربری برای ثبت نام، یا تأیید پرداخت دیگری وجود ندارد. در عوض Talkie Premium از سیستم افتخار استفاده می کند.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "لطفاً توجه داشته باشید که Talkie هیچگونه تبلیغات، ردیابی کاربر، یا جمع آوری داده به عنوان ابزار جایگزین برای کسب درآمد ندارد. پرداخت ها به عنوان کمک های مالی برای توسعه نرم افزار منبع باز برچسب گذاری می شوند.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "ارتقا به Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "من برای Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "روش های پرداخت بیشتر از طریق صفحه کمک های مالی",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "با استفاده از پی پال پرداخت کنید",
+    "original": "Pay using PayPal"
+  },
+  "frontend_usageLinkText": {
+    "message": "استفاده",
+    "original": "Usage"
+  },
+  "frontend_usageReadclipboard": {
+    "message": "هر متنی را که در کلیپ بورد خود کپی شده است بخوانید — از آن با یک کلید میانبر برای گوش دادن به متن از هر نقطه خارج از مرورگر استفاده کنید. همچنین می‌توانید روی Talkie Premium یا در قسمت خالی یک وب‌سایت کلیک راست کرده و خواندن از کلیپ‌بورد را انتخاب کنید.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "همچنین می توانید متن را انتخاب کنید، سپس روی آن کلیک راست کرده و Talkie در منو انتخاب کنید. این روش در فایل های PDF و برخی از انواع صفحات خاص در مرورگر نیز کار می کند.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "کلیدهای میانبر",
+    "original": "Shortcut keys"
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "اینها کلیدهای میانبر پیشنهادی هستند که از صفحه تنظیمات افزونه مرورگر شما قابل تغییر هستند.",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "معمولاً تداخل بین میانبرهای صفحه کلید برنامه‌های افزودنی و برنامه‌های مختلف وجود دارد. اگر یک کلید میانبر کار نمی کند، لطفاً مطمئن شوید که قبلاً برای چیز دیگری پیکربندی نشده است.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "کلیدهای میانبر Talkie بررسی یا تغییر دهید.",
+    "original": "Check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "یک گزینه مناسب استفاده از کلیدهای میانبر Talkie",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "خواندن متن از کلیپ بورد در هر برنامه",
+    "original": "Read text from clipboard in any program"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "شروع پایان",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "شروع پایان",
+    "original": "Start/stop"
+  },
+  "frontend_usageStep01": {
+    "message": "متن دلخواه را در هر صفحه وب انتخاب کنید.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "روی Talkie در نوار ابزار مرورگر خود کلیک کنید",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "صدای پیش فرض برای گویش $LANGUAGE_CODE$ $VOICE$ .",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "صدای پیش فرض برای زبان $LANGUAGE_GROUP$ $VOICE$ .",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDescription": {
+    "message": "صداهای نصب شده برای هر زبان را در مرورگر خود مشاهده و آزمایش کنید. Talkie Premium همچنین می توانند صدای مورد علاقه خود را به عنوان پیش فرض در هر زبان انتخاب کنند، همچنین سرعت و زیر و بم را برای هر صدا تنظیم کنند.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesFoundDialects": {
+    "message": "$DIALECT_COUNT$ گویش برای $LANGUAGE_GROUP$ .",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
+  "frontend_voicesLinkText": {
+    "message": "صداها",
+    "original": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "به یک نمونه صدای $VOICE$ .",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
+  },
+  "frontend_voicesPitchEmptyHeading": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "زمین برای صدا",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "پیشنهاد برای $VOICE$",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesRateEmptyHeading": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "سرعت برای صدا",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "سرعت برای $VOICE$",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "روباه قهوه ای سریع از روی سگ تنبل می پرد.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "از $VOICE$ به عنوان صدای پیش فرض برای متن در $LANGUAGE$",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "برای شل کردن رابط کاربری، برخی از جزئیات به طور پیش فرض نشان داده نمی شوند. اگر این گزینه را فعال کنید، اطلاعات تکمیلی نشان داده می شود.",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "این شامل اطلاعات پشتیبانی برای سایر مرورگرها و سیستم عامل ها می شود.",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "توضیحات بیشتر",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "نمایش جزئیات بیشتر",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "نمایش همه",
+    "original": "Show all"
+  },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "در برخی از مرورگرها امکان خواندن مداوم متون طولانی وجود ندارد. برای حل این مشکل، Talkie یک مکث کوچک بین جملات/بندها و بعد از سایر علائم نگارشی معرفی می کند.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "اگر این گزینه را فعال کردید و خواندن متون طولانی بعد از 10-20 ثانیه متوقف شد، لطفاً دوباره آن را غیرفعال کنید.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "خواندن متن طولانی تر",
+    "original": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "خواندن متون طولانی بدون مکث (تجربی)",
+    "original": "Read longer texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "با Talkie Premium می‌توانید صدای پیش‌فرض برای هر زبان و همچنین صدا و زیر و بم هر صدا را تغییر دهید.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "$NAME$ خوش آمدید! شما اکنون از یکی از بهترین افزونه های مرورگر تبدیل متن به گفتار در جهان استفاده می کنید.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "ادامه دهید و این متن را انتخاب کنید، سپس روی دکمه $NAME$ در نوار ابزار مرورگر کلیک کنید. لذت بردن!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie در حال حاضر می توانید پیدا کنید $VOICES_COUNT$ صدای قادر می سازد $LANGUAGE_GROUPS_COUNT$ زبان در $LANGUAGES_COUNT$ گویش های نصب شده در خود را $SYSTEM_TYPE_PRETTY_NAME$ مرورگر در حال اجرا در $OSTYPE_PRETTY_NAME$ سیستم عامل.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeLinkText": {
+    "message": "خوش آمدی",
+    "original": "Welcome"
+  },
+  "noTextSelectedMessage": {
+    "message": "لطفا ابتدا متن مورد نظر را در وب سایت انتخاب کنید. همچنین می توانید متن را انتخاب کنید، سپس روی آن کلیک راست کرده و Talkie در منو انتخاب کنید.",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie نمی تواند به متن انتخاب شده از این نوع صفحه دسترسی پیدا کند. این یک صفحه بسیار خاص است و محدودیت های امنیتی توسط مرورگر وجود دارد. همچنین می توانید سعی کنید متن را انتخاب کنید، سپس روی آن کلیک راست کرده و Talkie در منو انتخاب کنید. من برای ناراحتی متاسفم.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "متاسفم، اما خواندن متن از کلیپ بورد یک Talkie Premium است. آیا به ارتقاء فکر کرده اید؟",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "متاسفم، اما این مرورگر از خواندن از کلیپ بورد پشتیبانی نمی کند. هنوز نه، حداقل. لطفاً یک ماه دیگر دوباره امتحان کنید!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie اجازه دسترسی از کلیپ بورد را ندارد. اشکالی ندارد، اما خواندن متن کلیپ بورد کار نخواهد کرد.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "متن مناسب در کلیپ بورد یافت نشد. آیا می توانید چیز دیگری را کپی کنید؟",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
+  }
+}

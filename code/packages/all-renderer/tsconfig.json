@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/esm",
+    "rootDir": "./src"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../options-renderer/tsconfig.json"
+    },
+    {
+      "path": "../popup-renderer/tsconfig.json"
+    },
+    {
+      "path": "../renderer/tsconfig.json"
+    },
+    {
+      "path": "../shared-interfaces/tsconfig.json"
+    },
+    {
+      "path": "../shared-locales/tsconfig.json"
+    }
+  ]
+}

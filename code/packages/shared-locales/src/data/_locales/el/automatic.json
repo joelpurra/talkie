@@ -1,0 +1,865 @@
+{
+  "buttonDefaultTitle": {
+    "description": "Hover on the Talkie button, dynamically set.",
+    "message": "Διαβάστε δυνατά την επιλογή κειμένου με $NAME$",
+    "original": "Read text selection out loud with $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "buttonDefaultTitle_Static": {
+    "description": "Hover on the Talkie button, set from manifest.json.",
+    "message": "Διαβάστε δυνατά την επιλογή κειμένου με Talkie",
+    "original": "Read text selection out loud with Talkie"
+  },
+  "buttonStopTitle": {
+    "message": "Σταμάτα να μιλάς",
+    "original": "Stop talking"
+  },
+  "commandBrowserActionDescription": {
+    "message": "Διαβάστε δυνατά την επιλογή κειμένου",
+    "original": "Read text selection out loud"
+  },
+  "commandOpenWebsiteMainDescription": {
+    "message": "Ο ιστότοπος Talkie",
+    "original": "The Talkie website"
+  },
+  "commandOpenWebsiteUpgradeDescription": {
+    "message": "Αναβάθμιση σε Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "commandReadClipboardDescription": {
+    "message": "Διαβάστε από το πρόχειρο",
+    "original": "Read from the clipboard"
+  },
+  "commandStartStopDescription": {
+    "message": "Έναρξη/διακοπή επιλογής ανάγνωσης",
+    "original": "Start/stop reading selection"
+  },
+  "extensionDescription": {
+    "description": "For the browsers/web stores. Maximum 132 characters.",
+    "message": "Γρήγορο, εύκολο, υψηλής ποιότητας κείμενο σε ομιλία σε περισσότερες από 40 γλώσσες. Διαβάστε δυνατά από ιστότοπους, PDF, email. Εκφώνηση κειμένου με TTS.",
+    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+  },
+  "frontend_PopupMenu_Features": {
+    "message": "Χαρακτηριστικά και αναβάθμιση",
+    "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Usage": {
+    "message": "Χρήση και συντομεύσεις",
+    "original": "Usage and shortcuts"
+  },
+  "frontend_PopupMenu_Voices": {
+    "message": "Φωνές και γλώσσες",
+    "original": "Voices and languages"
+  },
+  "frontend_PopupUsageShort": {
+    "message": "Επιλέξτε το επιθυμητό κείμενο σε οποιαδήποτε ιστοσελίδα και κάντε κλικ στο Talkie στη γραμμή εργαλείων του προγράμματος περιήγησής σας.",
+    "original": "Select desired text on any web page and click the Talkie button in your browser toolbar."
+  },
+  "frontend_aboutCodeOnGithubLinkText": {
+    "message": "Πηγαίος κώδικας στο Github",
+    "original": "Source code on Github"
+  },
+  "frontend_aboutIssuesOnGithubLinkText": {
+    "message": "Αιτήματα δυνατοτήτων και αναφορές σφαλμάτων στο Github",
+    "original": "Feature requests and bug reports on Github"
+  },
+  "frontend_aboutLinkText": {
+    "message": "Σχετικά με",
+    "original": "About"
+  },
+  "frontend_aboutProjectPageLinkText": {
+    "message": "Σελίδα έργου στο joelpurra.com",
+    "original": "Project page on joelpurra.com"
+  },
+  "frontend_faq001A": {
+    "message": "Οι φωνές προέρχονται τόσο από το λειτουργικό σύστημα (Windows, ChromeOS, macOS, Linux, κ.λπ.) όσο και από το τρέχον πρόγραμμα περιήγησής σας (Google Chrome, Microsoft Edge, Firefox, κ.λπ.). Αυτό σημαίνει επίσης ότι μπορείτε να κατεβάσετε και να εγκαταστήσετε όποιες φωνές θέλετε να έχετε, να επανεκκινήσετε τον υπολογιστή σας και ο Talkie θα πρέπει να τις αναγνωρίσει αυτόματα. Μπορείτε επίσης να δοκιμάσετε να χρησιμοποιήσετε διαφορετικό πρόγραμμα περιήγησης, καθώς η φωνητική υποστήριξη μπορεί να διαφέρει ακόμη και στο ίδιο σύστημα.",
+    "original": "The voices come from both from the operating system (Windows, ChromeOS, macOS, Linux, etcetera) and your current browser (Google Chrome, Microsoft Edge, Firefox, etcetera). This also means that you can download and install any voices you would like to have, reboot your computer, and Talkie should recognize them automatically. You can also try using a different browser, as voice support may differ even on the same system."
+  },
+  "frontend_faq001Q": {
+    "message": "Πώς Talkie εγκατεστημένες φωνές;",
+    "original": "How does Talkie detect installed voices?"
+  },
+  "frontend_faq002A": {
+    "message": "Μπορείτε να προσθέσετε περισσότερες φωνές τόσο από τη Microsoft όσο και από άλλες. Το πιο εύκολο είναι να προσθέσετε μια νέα γλώσσα στις ρυθμίσεις συστήματος. Βεβαιωθείτε ότι έχετε εγκαταστήσει επίσης τη φωνή για τη γλώσσα. Δείτε ξεχωριστές οδηγίες εγκατάστασης.",
+    "original": "You can add more voices from both Microsoft and others. The easiest is to add a new language in the system settings. Make sure you also install the voice for the language. See separate installation instructions."
+  },
+  "frontend_faq002Q": {
+    "message": "Πώς μπορώ να εγκαταστήσω περισσότερες φωνές στο Talkie στα Microsoft Windows;",
+    "original": "How can I install more voices in Talkie on Microsoft Windows?"
+  },
+  "frontend_faq003A": {
+    "message": "Μπορείτε εύκολα να εγκαταστήσετε πρόσθετες φωνές και γλώσσα στις ρυθμίσεις συστήματος. Το Voices για το ChromeOS μπορεί επίσης να είναι διαθέσιμο στο Chrome Web Store.",
+    "original": "You can easily install additional voices and language in the system settings. Voices for ChromeOS may also be available in the Chrome Web Store."
+  },
+  "frontend_faq003Q": {
+    "message": "Πώς μπορώ να εγκαταστήσω περισσότερες φωνές στο Talkie στο Google ChromeOS;",
+    "original": "How can I install more voices in Talkie on Google ChromeOS?"
+  },
+  "frontend_faq004A": {
+    "message": "Πρόσθετες φωνές μπορούν εύκολα να εγκατασταθούν από τις προτιμήσεις του συστήματος macOS για την ομιλία. Δείτε ξεχωριστές οδηγίες εγκατάστασης.",
+    "original": "Additional voices can be easily installed from the macOS system preferences for speech. See separate installation instructions."
+  },
+  "frontend_faq004Q": {
+    "message": "Πώς μπορώ να εγκαταστήσω περισσότερες φωνές στο Talkie στο Apple macOS;",
+    "original": "How can I install more voices in Talkie on Apple macOS?"
+  },
+  "frontend_faq005A": {
+    "message": "Εξαρτάται από το σύστημα διανομής Linux, πρόγραμμα περιήγησης και διανομής πακέτων που χρησιμοποιείτε. Δείτε ξεχωριστές οδηγίες εγκατάστασης για το συνδυασμό του λογισμικού σας. Το πιο εύκολο μπορεί να είναι να δοκιμάσετε ένα άλλο πρόγραμμα περιήγησης και να δείτε εάν έχει προεγκατεστημένη την κατάλληλη φωνή. Για παράδειγμα, το Firefox v95 στο Ubuntu 21.10 μπορεί να εγκατασταθεί χρησιμοποιώντας το Aptitude ή το Snap. Το πρώτο περιλαμβάνει 8611 φωνές eSpeak που επιτρέπουν 95 γλώσσες σε 7358 διαλέκτους, αλλά το δεύτερο περιλαμβάνει 0 φωνές. Ένα άλλο παράδειγμα είναι το Google Chrome v96 στο Ubuntu 21.10, το οποίο από προεπιλογή περιλαμβάνει 19 φωνές που επιτρέπουν 14 γλώσσες σε 18 διαλέκτους. Παρακαλώ ενημερώστε με ποιες είναι οι εμπειρίες σας!",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+  },
+  "frontend_faq005Q": {
+    "message": "Πώς μπορώ να εγκαταστήσω περισσότερες φωνές στο Talkie στο Linux;",
+    "original": "How can I install more voices in Talkie on Linux?"
+  },
+  "frontend_faq006A": {
+    "message": "Ναι και ΟΧΙ. Talkie δεν περιλαμβάνει φωνές από μόνο του, αλλά χρησιμοποιεί τις φωνές που είναι ήδη εγκατεστημένες στον υπολογιστή σας. Μπορείτε να εγκαταστήσετε τυχόν πρόσθετες φωνές που θέλετε.",
+    "original": "Yes and no. Talkie does not include any voices in itself, but uses the voices which are already installed on your computer. You can install any additional voices you would like."
+  },
+  "frontend_faq006Q": {
+    "message": "Μπορείτε να προσθέσετε υποστήριξη για <μια νέα φωνή> στο Talkie ;",
+    "original": "Can you add support for <a new voice> in Talkie?"
+  },
+  "frontend_faq007A": {
+    "message": "Ναι και ΟΧΙ. Καθώς το Talkie χρησιμοποιεί τις φωνές που είναι εγκατεστημένες στον υπολογιστή σας, πρέπει να εγκαταστήσετε μια νέα φωνή που να υποστηρίζει τη γλώσσα που θέλετε να χρησιμοποιήσετε.",
+    "original": "Yes and no. As Talkie uses the voices which are installed on your computer, you need to install a new voice which supports the language you would like to use."
+  },
+  "frontend_faq007Q": {
+    "message": "Μπορείτε να προσθέσετε υποστήριξη για <μια νέα γλώσσα> στο Talkie ;",
+    "original": "Can you add support for <a new language> in Talkie?"
+  },
+  "frontend_faq008A": {
+    "message": "Ναι, εάν οι εγκατεστημένες φωνές είναι επίσης διαθέσιμες εκτός σύνδεσης. Μπορείτε να δείτε στη λίστα με τις φωνές που έχουν επισημανθεί ως online.",
+    "original": "Yes, if the voices installed are also available offline. You can see in the list of voices which are marked as online."
+  },
+  "frontend_faq008Q": {
+    "message": "Το Talkie λειτουργεί εκτός σύνδεσης;",
+    "original": "Does Talkie work offline?"
+  },
+  "frontend_faq009A": {
+    "message": "Όχι, ο Talkie Premium έχει τις ίδιες ακριβώς φωνές με τον Talkie. Μπορείτε να εγκαταστήσετε περισσότερες φωνές στο σύστημά σας και είναι εξίσου διαθέσιμες. Talkie Premium στο Talkie Premium μπορείτε να προσαρμόσετε την προτιμώμενη φωνή ανά γλώσσα και διάλεκτο.",
+    "original": "No, Talkie Premium has the exact same voices as Talkie. You can install more voices on your system, and they are equally available. In Talkie Premium you are able to customize the preferred voice per language and dialect though."
+  },
+  "frontend_faq009Q": {
+    "message": "Το Talkie Premium έχει περισσότερες φωνές από Talkie ;",
+    "original": "Does Talkie Premium have more voices than Talkie?"
+  },
+  "frontend_faq010A": {
+    "message": "Το Google Chrome (και πιθανώς άλλα προγράμματα περιήγησης που βασίζονται στο Chromium) έχουν αυτό το πρόβλημα/σφάλμα τουλάχιστον από το 2014. Το Talkie έχει κάποιες λύσεις και μια επιλογή για ενεργοποίηση/απενεργοποίηση της ανάγνωσης κειμένου σε μικρότερα μέρη. Θα συνεχίσω να βελτιώνω τη λύση, αλλά μέχρι να λειτουργήσει η ομάδα του Chromium μπορεί να μην λειτουργεί 100%. Εάν αντιμετωπίζετε αυτό το πρόβλημα, ενημερώστε με ποιο πρόγραμμα περιήγησης και έκδοση, λειτουργικό σύστημα και έκδοση και γλώσσα/φωνή χρησιμοποιείτε.",
+    "original": "Google Chrome (and presumably other Chromium based browsers) have had this issue/bug since at least year 2014. Talkie has some workarounds in place, and an option to enable/disable reading text in shorter parts. I will continue to improve the workaround, but until the Chromium team works it might not work 100%. If you experience this issue, please let me know which browser and version, operating system and version, and language/voice you are using."
+  },
+  "frontend_faq010Q": {
+    "message": "Γιατί ο Talkie σταματά να διαβάζει μετά από 20-30 λέξεις ή λίγα δευτερόλεπτα;",
+    "original": "Why does Talkie stop reading after 20-30 words or a few seconds?"
+  },
+  "frontend_faq011A": {
+    "message": "Υπάρχουν δύο λόγοι. Πρώτον, εάν η ενεργή φωνή είναι συνδεδεμένη, πρέπει να πραγματοποιήσει λήψη του αρχείου ομιλίας πριν το παίξει. Αυτό σημαίνει μια πρόσθετη παύση που εξαρτάται από την ταχύτητα της σύνδεσής σας στο Διαδίκτυο. Μπορείτε να ελέγξετε ποιες φωνές είναι συνδεδεμένες στη λίστα με τις φωνές. Ο δεύτερος λόγος είναι ότι η λύση για την εκφώνηση μεγάλων κειμένων κόβει το κείμενο σε μικρότερα μέρη, συνήθως ανά πρόταση ή ανά ρήτρα. Αυτό μπορεί να προσθέσει μια επιπλέον παύση για κάθε παύση. Μπορείτε να ενεργοποιήσετε την ανάγνωση μεγάλων κειμένων ως ένα μέρος στις επιλογές, οι οποίες θα πρέπει να καταργήσουν την παύση στα υποστηριζόμενα συστήματα.",
+    "original": "There are two reasons. Firstly, if the active voice is online it needs to download the speech file before playing it. This means an added pause which is depending on your internet connection speed. You can check which voices are online in the list of voices. The second reason is that the workaround for speaking long texts chops up the text in shorter parts, usually per sentence or per clause. This can add an extra pause for each pause. You can enable reading long texts as one part in the options, which should remove the pause on supported systems."
+  },
+  "frontend_faq011Q": {
+    "message": "Γιατί ο Talkie κάνει κάποια στιγμή μεγάλη παύση μεταξύ των προτάσεων και των λέξεων;",
+    "original": "Why does Talkie sometime have a long pause between sentences and words?"
+  },
+  "frontend_faq012A": {
+    "message": "Δυστυχώς, όχι πλήρως. Για Talkie Premium είναι δυνατή η αντιγραφή κειμένου και η ανάγνωση του από το πρόχειρο. Αποδεικνύεται ότι τα Έγγραφα Google (καθώς και το Google Spreadsheet, το Google Drive και παρόμοια) δεν είναι ιστότοπος, αλλά μια ειδική \"εφαρμογή στο πρόγραμμα περιήγησης\" που δημιουργήθηκε από την Google. Talkie δεν μπορεί να έχει πρόσβαση στο επιλεγμένο κείμενο, ούτε να προσθέσει στοιχεία μενού περιβάλλοντος, επομένως το Talkie δεν λειτουργεί.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+  },
+  "frontend_faq012Q": {
+    "message": "Το Talkie λειτουργεί στα Έγγραφα Google;",
+    "original": "Does Talkie work in Google Docs?"
+  },
+  "frontend_faq013A": {
+    "message": "Ναι παρακαλώ! Κατά προτίμηση δημιουργήστε μια αναφορά ζητήματος στο Github, ώστε να βοηθήσουν και άλλοι. Συμπεριλάβετε όσο το δυνατόν περισσότερες πληροφορίες, όπως το πρόγραμμα περιήγησης και την έκδοση, το λειτουργικό σύστημα και την έκδοση και τη γλώσσα/φωνή που χρησιμοποιείτε. Συμπεριλάβετε επίσης πληροφορίες σχετικά με συγκεκριμένους ιστότοπους όπου βλέπετε το σφάλμα, κατά προτίμηση με έναν σύνδεσμο.",
+    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+  },
+  "frontend_faq013Q": {
+    "message": "Πρέπει να αναφέρω σφάλματα;",
+    "original": "Should I report bugs?"
+  },
+  "frontend_faq014A": {
+    "message": "Συνήθως! Εάν μπορείτε να επιλέξετε το κείμενο στο PDF, κάντε δεξί κλικ πάνω του και επιλέξτε Talkie στο μενού. Εάν το κείμενο δεν μπορεί να επιλεγεί, εάν είναι μέρος μιας εικόνας, τότε δεν θα λειτουργήσει.",
+    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+  },
+  "frontend_faq014Q": {
+    "message": "Μπορεί ο Talkie διαβάσει αρχεία PDF;",
+    "original": "Can Talkie read PDF files?"
+  },
+  "frontend_faq015A": {
+    "message": "Όχι. Talkie έχει απεριόριστη χρήση — μπορείτε να διαβάσετε όσες λέξεις και μεγάλα κείμενα θέλετε.",
+    "original": "No. Talkie has unlimited usage — you can read as many words and as long texts as you like."
+  },
+  "frontend_faq015Q": {
+    "message": "Το Talkie έχει όριο λέξεων;",
+    "original": "Does Talkie have a word limit?"
+  },
+  "frontend_faq016A": {
+    "message": "Σίγουρα! Απλώς επικοινωνήστε μαζί μου μέσω των σελίδων υποστήριξης ή έργου.",
+    "original": "Certainly! Just contact me through the support or project pages."
+  },
+  "frontend_faq016Q": {
+    "message": "Μπορώ να ζητήσω νέα χαρακτηριστικά;",
+    "original": "Can I request new features?"
+  },
+  "frontend_faq017A": {
+    "message": "Υπάρχει ένα πρόγραμμα επεξεργασίας συντομεύσεων πληκτρολογίου, το οποίο μπορείτε να βρείτε στο κάτω μέρος της σελίδας Επεκτάσεις στο Google Chrome.",
+    "original": "There is a Keyboard shortcuts editor, which you can find at the bottom of the Extensions page in Google Chrome."
+  },
+  "frontend_faq017Q": {
+    "message": "Πώς να αλλάξετε τα πλήκτρα συντόμευσης στο Google Chrome;",
+    "original": "How to change shortcut keys in Google Chrome?"
+  },
+  "frontend_faq018A": {
+    "message": "Μπορείτε να αλλάξετε ή να αφαιρέσετε τα πλήκτρα συντόμευσης στις ρυθμίσεις του Firefox για πρόσθετα. Κάντε κλικ στο κουμπί του οδοντωτού τροχού για να βρείτε το πρόγραμμα επεξεργασίας πλήκτρων συντόμευσης.",
+    "original": "You can change or remove shortcut keys in Firefox settings for Add-Ons. Click the cogwheel button to find the shortcut key editor."
+  },
+  "frontend_faq018Q": {
+    "message": "Πώς να αλλάξετε τα πλήκτρα συντόμευσης στον Firefox;",
+    "original": "How to change shortcut keys in Firefox?"
+  },
+  "frontend_faq019A": {
+    "message": "Σίγουρα! Θα ήταν υπέροχο να λάβετε βοήθεια για τη μετάφραση του Talkie , να δοκιμάσετε το Talkie σε νέα συστήματα, να διερευνήσετε σφάλματα και να προσθέσετε νέες δυνατότητες. Δείτε τη σελίδα του έργου για οδηγίες.",
+    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+  },
+  "frontend_faq019Q": {
+    "message": "Μπορώ να βοηθήσω στην ανάπτυξη Talkie ;",
+    "original": "Can I help develop Talkie?"
+  },
+  "frontend_faq020A": {
+    "message": "Ναι — πείτε στους φίλους σας για Talkie! Ίσως στείλετε έναν σύνδεσμο προς την αγαπημένη σας διασημότητα, διαδικτυακή ομάδα ή ενημερωτικό δελτίο. Μπορείτε ακόμη και να ζητήσετε από το αφεντικό σας να το εγκαταστήσει σε όλους τους υπολογιστές στη δουλειά ή από τον δάσκαλό σας να το εγκαταστήσει στο σχολείο. Η διάδοση της λέξης για Talkie εκτιμάται πολύ!",
+    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+  },
+  "frontend_faq020Q": {
+    "message": "Μπορώ να βοηθήσω τον Talkie με οποιονδήποτε άλλο τρόπο;",
+    "original": "Can I help Talkie in any other way?"
+  },
+  "frontend_faq021A": {
+    "message": "Χρειάζεται πολύς χρόνος και προσπάθεια για την ανάπτυξη και τη διατήρηση του Talkie — εκατοντάδες ώρες μέχρι στιγμής. Ωστόσο, το Talkie είναι δωρεάν για τον καθένα να χρησιμοποιεί όσο θέλει. Για την οικονομική υποστήριξη της περαιτέρω ανάπτυξης, συντήρησης και διατήρησης του δωρεάν Talkie δωρεάν, ορισμένες λειτουργίες είναι διαθέσιμες μόνο στους χρήστες Talkie Premium",
+    "original": "It takes quite a lot of time and effort to develop and maintain Talkie — hundreds of hours so far. Yet, Talkie is free for everyone to use as much as they like. To financially support further both development, maintenance and keeping the free Talkie free, some features are only available to Talkie Premium users."
+  },
+  "frontend_faq021Q": {
+    "message": "Γιατί υπάρχουν δύο εκδόσεις του Talkie ;",
+    "original": "Why are there two editions of Talkie?"
+  },
+  "frontend_faq022A": {
+    "message": "Ναι, υπάρχουν πολλές διαθέσιμες επιλογές πληρωμής.",
+    "original": "Yes, there are multiple payment options available."
+  },
+  "frontend_faq022Q": {
+    "message": "Μπορώ να πληρώσω χρησιμοποιώντας PayPal, τραπεζικό έμβασμα κ.λπ.;",
+    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+  },
+  "frontend_faq023A": {
+    "message": "Ναι, εάν πληρώσατε χρησιμοποιώντας PayPal ή Stripe, τα οποία προσφέρουν απλή διαχείριση επιστροφής χρημάτων. Οι επιστροφές χρημάτων γενικά δεν είναι διαθέσιμες για άλλες μεθόδους πληρωμής λόγω του όγκου της επιπλέον εργασίας που απαιτεί, συν τον κίνδυνο να επιστραφούν τα χρήματα σε λάθος λογαριασμό.",
+    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+  },
+  "frontend_faq023Q": {
+    "message": "Μπορώ να λάβω επιστροφή χρημάτων;",
+    "original": "Can I get a refund?"
+  },
+  "frontend_faq024A": {
+    "message": "Σίγουρος! Απλώς ενεργοποιήστε την Talkie Premium για να τη δοκιμάσετε.",
+    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+  },
+  "frontend_faq024Q": {
+    "message": "Μπορώ να δοκιμάσω Talkie Premium δωρεάν;",
+    "original": "Can I try out Talkie Premium for free?"
+  },
+  "frontend_faq025A": {
+    "message": "Δεν υπάρχει διαφήμιση, συλλογή δεδομένων ή παρακολούθηση χρηστών στο Talkie. Οι ευχαριστημένοι χρήστες που πληρώνουν για Talkie Premium είναι η μόνη δημιουργία εσόδων.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+  },
+  "frontend_faq025Q": {
+    "message": "Talkie επεκτάσεις Talkie περιέχουν διαφημίσεις, συλλέγουν δεδομένα ή παρακολουθούν χρήστες;",
+    "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
+  },
+  "frontend_faq026A": {
+    "message": "Το σύστημα τιμής είναι όταν τα άτομα έχουν εμπιστοσύνη ότι είναι ειλικρινή και τηρούν τις οδηγίες χωρίς αυστηρούς ελέγχους. Για Talkie Premium ότι όσοι κάνουν αναβάθμιση έχουν πληρώσει για αυτό.",
+    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+  },
+  "frontend_faq026Q": {
+    "message": "Τι είναι το σύστημα τιμής;",
+    "original": "What is the honor system?"
+  },
+  "frontend_faq027A": {
+    "message": "Επειδή οι άνθρωποι σε όλο τον κόσμο χρησιμοποιούν διαφορετικά νομίσματα, έχουν διαφορετικά επίπεδα διαθέσιμου εισοδήματος και έχουν διαφορετικά επίπεδα εκτίμησης για τα χαρακτηριστικά του Talkie Premium Δεν υπάρχει ενιαία, σταθερή τιμή που να λειτουργεί καλά για όλους στον κόσμο. Επιπλέον, έρχονται οι διακυμάνσεις στα νομίσματα, οι τάσεις του οικονομικού κύκλου, οι περιφερειακές/εντός χώρας διακυμάνσεις κ.λπ. Συνολικά, οι ρυθμίσεις τιμών για ένα προϊόν που πωλείται παγκοσμίως είναι περίπλοκες. Είναι πιο εύκολο να αφήσετε τον καθένα να ορίσει τη δική του τιμή και να διασφαλίσει ότι το προϊόν είναι αρκετά καλό ώστε να εγγυάται μια πληρωμή.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+  },
+  "frontend_faq027Q": {
+    "message": "Γιατί μπορώ να ορίσω τη δική μου τιμή;",
+    "original": "Why can I set my own price?"
+  },
+  "frontend_faq028A": {
+    "message": "Talkie Premium κειμένου σε ομιλία, προτιμώ να πληρώσετε αυτό που πιστεύετε ότι σας αξίζει το Talkie Premium — ούτε περισσότερο, ούτε λιγότερο. Σε περίπτωση που αναζητάτε ένα πλαίσιο αναφοράς, όταν η Google διαχειριζόταν πληρωμές για Talkie Premium η συνδρομή κόστιζε $25 (Δολάριο ΗΠΑ) ετησίως στις Ηνωμένες Πολιτείες της Αμερικής. Λάβετε υπόψη ότι η Google προσάρμοσε τις τιμές για χώρες και νομίσματα σε όλο τον κόσμο, ώστε να ταιριάζουν με τις τοπικές συνθήκες, επομένως θα μπορούσε να είναι περισσότερο ή λιγότερο. Ταυτόχρονα, όποιος ζήτησε ευγενικά μπορούσε επίσης να λάβει Talkie Premium δωρεάν.",
+    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+  },
+  "frontend_faq028Q": {
+    "message": "Πόσο μου προτείνετε να πληρώσω;",
+    "original": "How much do you recommend I pay?"
+  },
+  "frontend_faq029A": {
+    "message": "Επειδή η εφαρμογή ενός συστήματος πληρωμών και επαλήθευσης απαιτεί πολύ χρόνο και προσπάθεια, και υποτίθεται ότι το κόστος της εφαρμογής αυστηρής επαλήθευσης πληρωμών είναι υψηλότερο από τις απώλειες από άτομα που εξαπατούν το σύστημα. Η επαλήθευση πληρωμής απαιτεί επίσης κάποιο επίπεδο συλλογής δεδομένων από τα συστήματα των χρηστών και οι τεχνικά καταρτισμένοι χρήστες μπορούν συχνά να επιλύσουν την επαλήθευση ούτως ή άλλως. Επομένως, από τεχνική και επιχειρηματική άποψη, παρόλο που δεν υπάρχουν εγγυήσεις, είναι ευκολότερο να εμπιστευτείτε απλώς ότι οι χρήστες συμμορφώνονται με το σύστημα τιμής.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+  },
+  "frontend_faq029Q": {
+    "message": "Γιατί δεν υπάρχει επαλήθευση πληρωμής;",
+    "original": "Why is there no payment verification?"
+  },
+  "frontend_faq030A": {
+    "message": "Η απόφαση να μην εφαρμοστεί η επαλήθευση πληρωμής σημαίνει ότι το ποσό που καταβλήθηκε δεν μπορεί να επαληθευτεί. Επιπλέον, το κόστος της \"κατασκευής\" ενός ψηφιακού αντιγράφου του Talkie Premium είναι μηδενικό, επομένως η δωρεάν παράδοση του δεν συνεπάγεται οικονομική ζημία για τον προγραμματιστή. Υπάρχει επίσης η ελπίδα ότι αν σας αρέσει Talkie Premium , θα το πείτε στους φίλους σας. Η Talkie Premium μπορεί επίσης να θεωρηθεί ως προσπάθεια μάρκετινγκ.",
+    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+  },
+  "frontend_faq030Q": {
+    "message": "Γιατί μπορώ να επιλέξω να μην πληρώσω τίποτα;",
+    "original": "Why can I choose to pay nothing?"
+  },
+  "frontend_faq031A": {
+    "message": "Ναι, χρησιμοποιώντας το Stripe. Δείτε πρόσθετες επιλογές πληρωμής.",
+    "original": "Yes, by using Stripe. See additional payment options."
+  },
+  "frontend_faq031Q": {
+    "message": "Μπορώ να κάνω επαναλαμβανόμενη μηνιαία ή ετήσια πληρωμή;",
+    "original": "Can I make a recurring monthly or yearly payment?"
+  },
+  "frontend_faq032A": {
+    "message": "Ναι, αν το ζητήσετε μέσω email. Συμπεριλάβετε το όνομά σας, τη διεύθυνσή σας και προαιρετικά το αναγνωριστικό φόρου προστιθέμενης αξίας (ΦΠΑ) (ή ισοδύναμο).",
+    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+  },
+  "frontend_faq032Q": {
+    "message": "Μπορώ να λάβω απόδειξη για την πληρωμή μου;",
+    "original": "Can I get a receipt for my payment?"
+  },
+  "frontend_faq033A": {
+    "message": "Επειδή σας αρέσουν οι πρόσθετες δυνατότητες που Talkie Premium και η ευχάριστη αίσθηση της συνεισφοράς στην ανάπτυξη λογισμικού ανοιχτού κώδικα από ανεξάρτητους προγραμματιστές. Λόγω του σχετικά υψηλού κόστους ανάπτυξης και συντήρησης προσωπικού, αλλά μηδενικού κόστους \"κατασκευής\" ψηφιακών αντιγράφων, οι πληρωμές για Talkie Premium μπορούν επίσης να θεωρηθούν ότι παρέχουν υποστήριξη για μελλοντική ανάπτυξη και συντήρηση, σε αντίθεση με την αξία του προϊόντος κατά τη στιγμή της πληρωμής .",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+  },
+  "frontend_faq033Q": {
+    "message": "Γιατί να πληρώσω για αναβάθμιση;",
+    "original": "Why should I pay to upgrade?"
+  },
+  "frontend_faq034A": {
+    "message": "Η σύντομη απάντηση είναι: μάλλον όχι. Αποδεικνύεται ότι υπάρχουν σύγχρονες φωνές και παλιές φωνές στα Microsoft Windows. Όταν δοκίμασα τελευταία, η ολλανδική φωνή \"Microsoft Frank\" ήταν διαθέσιμη στον Microsoft Edge, αλλά όχι στο Google Chrome ούτε στο Mozilla Firefox. Ένας λόγος είναι ότι ορισμένες φωνές έχουν κατασκευαστεί για το νεότερο σύστημα ομιλίας WinRT και κάποιες για την παλαιότερη Διασύνδεση Προγραμματισμού Εφαρμογών Ομιλίας (SAPI). Τα προγράμματα περιήγησης ενδέχεται να μην υποστηρίζουν τόσο το παλιό όσο και το νέο σύστημα ομιλίας, πράγμα που σημαίνει ότι μια φωνή που είναι στην πραγματικότητα εγκατεστημένη, μπορεί να μην είναι ακόμα διαθέσιμη στο αγαπημένο σας πρόγραμμα περιήγησης. Με τον καιρό, τα περισσότερα προγράμματα περιήγησης θα υποστηρίζουν πιθανώς το νεότερο σύστημα WinRT. Αν σας λείπουν φωνές στη γλώσσα σας, μια πρόταση είναι να δοκιμάσετε να χρησιμοποιήσετε Talkie στον Microsoft Edge.",
+    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+  },
+  "frontend_faq034Q": {
+    "message": "Όλες οι φωνές για τα Microsoft Windows λειτουργούν με Talkie ;",
+    "original": "Does all voices for Microsoft Windows work with Talkie?"
+  },
+  "frontend_faq035A": {
+    "message": "Ίσως, με πολύ κόπο. Υπάρχουν επίσης ορισμένες ανεπίσημες λύσεις για να λειτουργήσουν οι νέες φωνές WinRT με παλαιότερα προγράμματα περιήγησης με δυνατότητα SAPI, αλλά αυτό είναι μια εξαιρετικά τεχνική προσπάθεια και δεν συνιστάται για μη τεχνικούς χρήστες.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+  },
+  "frontend_faq035Q": {
+    "message": "Μπορούν οι φωνές WinRT να λειτουργήσουν σε προγράμματα περιήγησης με δυνατότητα SAPI στα Microsoft Windows;",
+    "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
+  },
+  "frontend_faq036A": {
+    "message": "Ναι, κάποιοι το κάνουν. Ακολουθήστε τις οδηγίες εγκατάστασης για το σύστημα και το πρόγραμμα περιήγησής σας. Μόλις εγκατασταθούν οι φωνές στο πρόγραμμα περιήγησής σας, ο Talkie θα πρέπει να τις εντοπίσει αυτόματα. Μοιραστείτε τυχόν συμβουλές που έχετε!",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+  },
+  "frontend_faq036Q": {
+    "message": "Οι φωνές ανοιχτού κώδικα λειτουργούν με Talkie ;",
+    "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faqBugsHeading": {
+    "message": "Σφάλματα",
+    "original": "Bugs"
+  },
+  "frontend_faqGeneralHeading": {
+    "message": "Γενικός",
+    "original": "General"
+  },
+  "frontend_faqHeading": {
+    "message": "Συχνές ερωτήσεις",
+    "original": "Frequently asked questions"
+  },
+  "frontend_faqTalkiePremiumHeading": {
+    "message": "Talkie Premium",
+    "original": "Talkie Premium"
+  },
+  "frontend_faqVoicesHeading": {
+    "message": "Φωνές",
+    "original": "Voices"
+  },
+  "frontend_featuresEdition_Free": {
+    "message": "Αυτήν τη στιγμή χρησιμοποιείται η δωρεάν έκδοση του Talkie και είναι διαθέσιμο ένα περιορισμένο σύνολο λειτουργιών. Ίσως Talkie Premium θα ήταν καλύτερη επιλογή για εσάς;",
+    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+  },
+  "frontend_featuresEdition_Premium": {
+    "message": "Αυτήν τη στιγμή χρησιμοποιείται Talkie Premium και όλες οι λειτουργίες είναι διαθέσιμες. Ευχαριστώ πολύ, μου ζεσταίνει την καρδιά!",
+    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+  },
+  "frontend_featuresEditions": {
+    "message": "Talkie διατίθεται σε δύο εκδόσεις: Talkie και Talkie Premium. Η δωρεάν έκδοση είναι ιδανική για τις περισσότερες περιπτώσεις χρήσης, αλλά η premium έκδοση προσφέρει πρόσθετες επιλογές και δυνατότητες.",
+    "original": "Talkie comes in two editions: Talkie and Talkie Premium. The free edition is great for most use cases, but the premium edition offers additional options and features."
+  },
+  "frontend_featuresFree_List01": {
+    "message": "Αυτόματος εντοπισμός γλώσσας.",
+    "original": "Automatic language detection."
+  },
+  "frontend_featuresFree_List02": {
+    "message": "Αυτόματη επιλογή φωνής.",
+    "original": "Automatic voice selection."
+  },
+  "frontend_featuresFree_List03": {
+    "message": "Διαβάζει το επιλεγμένο κείμενο με ένα κλικ κουμπιού, με ένα πλήκτρο συντόμευσης ή με δεξί κλικ στο μενού.",
+    "original": "Reads selected text by a button click, shortcut key, or right-click menu."
+  },
+  "frontend_featuresFree_List04": {
+    "message": "Διαβάζει μεγάλα κείμενα και άρθρα δυνατά, ακόμη και όταν η καρτέλα είναι στο παρασκήνιο.",
+    "original": "Reads long texts and articles out loud, even while the tab is in the background."
+  },
+  "frontend_featuresFree_List05": {
+    "message": "Ο κώδικας είναι ανοιχτού κώδικα και διατίθεται δωρεάν σε όλους τους χρήστες.",
+    "original": "Code is open source and available for free to all users."
+  },
+  "frontend_featuresFree_List06": {
+    "message": "Ελεύθερος!",
+    "original": "Free!"
+  },
+  "frontend_featuresLinkText": {
+    "message": "Χαρακτηριστικά",
+    "original": "Features"
+  },
+  "frontend_featuresPremium_List01": {
+    "message": "Επιλέξτε τη δική σας προεπιλεγμένη φωνή για κάθε γλώσσα. Υπέροχο αν κουραστείτε από τη φωνή του συστήματος!",
+    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+  },
+  "frontend_featuresPremium_List02": {
+    "message": "Επιλέξτε ταχύτητα ανάγνωσης και τόνο ανά φωνή. Προσαρμόστε τις φωνές σύμφωνα με τις προτιμήσεις σας!",
+    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+  },
+  "frontend_featuresPremium_List03": {
+    "message": "Αυτή η ζεστή, ασαφή αίσθηση που νιώθετε όταν υποστηρίζετε λογισμικό ανοιχτού κώδικα από ανεξάρτητους προγραμματιστές.",
+    "original": "That warm, fuzzy feeling you get when supporting open source software by independent developers."
+  },
+  "frontend_featuresPremium_List04": {
+    "message": "Μελλοντικές Premium περιλαμβάνονται χωρίς επιπλέον κόστος.",
+    "original": "Future Premium updates included without additional cost."
+  },
+  "frontend_featuresPremium_List05": {
+    "message": "Διαβάστε κείμενο από το πρόχειρο! Απλώς αντιγράψτε κείμενο από οπουδήποτε σε οποιοδήποτε πρόγραμμα και χρησιμοποιήστε Talkie Premium για να το διαβάσετε!",
+    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+  },
+  "frontend_installVoicesNoVoiceFound": {
+    "message": "Εγκαταστήστε μερικές φωνές στο σύστημά σας, διαφορετικά το Talkie δεν θα λειτουργήσει. Συγνώμη!",
+    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+  },
+  "frontend_installVoicesNoVoiceFoundHeading": {
+    "message": "Δεν βρέθηκαν φωνές μετατροπής κειμένου σε ομιλία",
+    "original": "No text-to-speech voices found"
+  },
+  "frontend_licenseCLADescription": {
+    "message": "Όλες οι συνεισφορές στο Talkie γίνονται σύμφωνα με τη Συμφωνία Άδειας Χρήσης Συνεισφέρον (CLA).",
+    "original": "All contributions to Talkie are made under the Contributor License Agreement (CLA)."
+  },
+  "frontend_licenseHeading": {
+    "message": "Αδεια",
+    "original": "License"
+  },
+  "frontend_loading": {
+    "message": "Φόρτωση...",
+    "original": "Loading..."
+  },
+  "frontend_rateIt": {
+    "message": "Αξιολόγηση Talkie",
+    "original": "Review Talkie"
+  },
+  "frontend_settingsLinkText": {
+    "message": "Ρυθμίσεις",
+    "original": "Settings"
+  },
+  "frontend_storyDescription": {
+    "message": "Talkie αναπτύχθηκε λίγες μέρες πριν την Πρωτοχρονιά 2016/2017, σε μια πρόκληση από έναν φίλο. Η πρόκληση ξεκίνησε με το ερώτημα: ενώ μετακινείστε στη δουλειά, είναι δυνατόν να ακούσετε ένα άρθρο αντί να το διαβάσετε; Εύκολο, είπα, και ξεκίνησα να το αποδείξω — ή τουλάχιστον να κάνω το πρόγραμμα περιήγησής μου να εκφωνήσει κείμενο χρησιμοποιώντας μια ανόητη φωνή υπολογιστή. Η βασική έκδοση, χωρίς καμία διεπαφή χρήστη, αποδείχθηκε ασήμαντη στη δημιουργία. Η προσθήκη διεπαφής χρήστη χρειάστηκε λίγο περισσότερο χρόνο. Προσθήκη κατάλληλης ανίχνευσης γλώσσας μάτσο περισσότερο κώδικα. Η υπέρβαση σφαλμάτων στο πρόγραμμα περιήγησης λειτουργεί ακόμη περισσότερο. Η λίστα με τις βελτιώσεις και τις δυνατότητες συνεχίζεται — και μερικές χιλιάδες γραμμές κώδικα αργότερα, βλέπετε το τελικό αποτέλεσμα.",
+    "original": "Talkie was developed a few days before the New Year 2016/2017, on a challenge from a friend. The challenge started with the question: while commuting to work, is it possible to listen to an article instead of reading it? Easy, I said, and set out to prove it — or at least to make my browser speak out text using a silly computer voice. The basic edition, without any user interface, turned out to be trivial to create. Adding a user interface, took a bit longer. Adding proper language detection a bunch more code. Overcoming bugs in the browser even more work. The list of improvements and features goes on — and a few thousand lines of code later, you're looking at the end result."
+  },
+  "frontend_storyHeading": {
+    "message": "Πώς ξεκίνησε η Talkie",
+    "original": "How Talkie got started"
+  },
+  "frontend_storyThankYou": {
+    "message": "Σας ευχαριστούμε που χρησιμοποιείτε το Talkie — αν σας αρέσει, πείτε το στους φίλους σας!",
+    "original": "Thank you for using Talkie — if you like it, tell your friends!"
+  },
+  "frontend_supportAndFeedback": {
+    "message": "Υποστήριξη και ανατροφοδότηση",
+    "original": "Support and feedback"
+  },
+  "frontend_supportDescription": {
+    "message": "Εχω μια ερώτηση? Χρειάζεστε βοήθεια με κάτι; Για γρήγορες απαντήσεις σε συνήθεις ερωτήσεις, δείτε τις συχνές ερωτήσεις παρακάτω. Εάν αυτό δεν σας δώσει απάντηση, στείλτε μου τυχόν ερωτήσεις που μπορεί να έχετε. Θα χαιρόμουν εάν η εμπειρία σας με τη χρήση του $NAME$ είναι ομαλή και ευχάριστη!",
+    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_supportLinkText": {
+    "message": "Υποστήριξη",
+    "original": "Support"
+  },
+  "frontend_supportLinksHeading": {
+    "message": "Σύνδεσμοι υποστήριξης",
+    "original": "Support links"
+  },
+  "frontend_systemBrowserLanguageHeading": {
+    "message": "Προτιμώμενη γλώσσα προγράμματος περιήγησης",
+    "original": "Preferred browser language"
+  },
+  "frontend_systemBrowserLanguagesHeading": {
+    "message": "Προτιμώμενες γλώσσες προγράμματος περιήγησης",
+    "original": "Preferred browser languages"
+  },
+  "frontend_systemBrowserTypeHeading": {
+    "message": "Τύπος προγράμματος περιήγησης",
+    "original": "Browser type"
+  },
+  "frontend_systemCurrentEditionHeading": {
+    "message": "Τρέχουσα έκδοση",
+    "original": "Current edition"
+  },
+  "frontend_systemHeading": {
+    "message": "Λεπτομέρειες συστήματος",
+    "original": "System details"
+  },
+  "frontend_systemInstalledDialectsHeading": {
+    "message": "Εγκατεστημένες φωνητικές διαλέκτους",
+    "original": "Installed voice dialects"
+  },
+  "frontend_systemInstalledLanguagesHeading": {
+    "message": "Εγκατεστημένες γλώσσες φωνής",
+    "original": "Installed voice languages"
+  },
+  "frontend_systemInstalledVersionHeading": {
+    "message": "Εγκατεστημένη έκδοση",
+    "original": "Installed version"
+  },
+  "frontend_systemInstalledVoicesHeading": {
+    "message": "Εγκατεστημένες φωνές",
+    "original": "Installed voices"
+  },
+  "frontend_systemOSHeading": {
+    "message": "Τύπος λειτουργικού συστήματος",
+    "original": "Operating system type"
+  },
+  "frontend_systemTalkieUILanguageHeading": {
+    "message": "Talkie γλώσσα διεπαφής χρήστη",
+    "original": "Talkie user interface language"
+  },
+  "frontend_systemTalkieUILanguagesHeading": {
+    "message": "Talkie γλώσσες διεπαφής χρήστη",
+    "original": "Talkie user interface languages"
+  },
+  "frontend_upgradeExplanation01": {
+    "message": "Η τιμή για Talkie Premium δεν είναι σταθερή. Αντίθετα πληρώνετε ό,τι θέλετε, ανάλογα με το πόσο πιστεύετε ότι σας αξίζουν τα premium χαρακτηριστικά. Μπορείτε ακόμη και να αποφασίσετε να μην πληρώσετε τίποτα.",
+    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+  },
+  "frontend_upgradeExplanation02": {
+    "message": "Μετά την αποστολή της πληρωμής, δεν υπάρχουν κωδικοί αναβάθμισης για εισαγωγή, λογαριασμοί χρήστη για εγγραφή ή οποιαδήποτε άλλη επαλήθευση πληρωμής. Αντίθετα, ο Talkie Premium χρησιμοποιεί το σύστημα τιμής.",
+    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+  },
+  "frontend_upgradeExplanation03": {
+    "message": "Λάβετε υπόψη ότι το Talkie δεν διαθέτει διαφημίσεις, παρακολούθηση χρηστών ή συλλογή δεδομένων ως εναλλακτικό μέσο δημιουργίας εσόδων. Οι πληρωμές χαρακτηρίζονται ως δωρεές για ανάπτυξη λογισμικού ανοιχτού κώδικα.",
+    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+  },
+  "frontend_upgradeHeading": {
+    "message": "Αναβάθμιση σε Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
+  },
+  "frontend_upgradeLabel": {
+    "message": "Έχω πληρώσει για Talkie Premium",
+    "original": "I have paid for Talkie Premium"
+  },
+  "frontend_upgradePaymentAlternativesLinkText": {
+    "message": "Περισσότεροι τρόποι πληρωμής μέσω της σελίδας δωρεών",
+    "original": "More payment methods via the donations page"
+  },
+  "frontend_upgradePaymentPrimaryLinkText": {
+    "message": "Πληρώστε χρησιμοποιώντας PayPal",
+    "original": "Pay using PayPal"
+  },
+  "frontend_usageLinkText": {
+    "message": "Χρήση",
+    "original": "Usage"
+  },
+  "frontend_usageReadclipboard": {
+    "message": "Διαβάστε οποιοδήποτε κείμενο έχει αντιγραφεί στο πρόχειρό σας — χρησιμοποιήστε το με ένα πλήκτρο συντόμευσης για να ακούσετε κείμενο από οπουδήποτε εκτός του προγράμματος περιήγησης. Μπορείτε επίσης να κάνετε δεξί κλικ στο Talkie Premium ή σε μια κενή περιοχή ενός ιστότοπου και να επιλέξετε ανάγνωση από το πρόχειρο.",
+    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
+  },
+  "frontend_usageSelectionContextMenuDescription": {
+    "message": "Μπορείτε επίσης να επιλέξετε το κείμενο, να κάνετε δεξί κλικ πάνω του και να επιλέξετε Talkie στο μενού. Αυτός ο τρόπος λειτουργεί επίσης σε αρχεία PDF και σε ορισμένους ειδικούς τύπους σελίδων στο πρόγραμμα περιήγησης.",
+    "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
+  },
+  "frontend_usageShortcutHeading": {
+    "message": "Πλήκτρα συντόμευσης",
+    "original": "Shortcut keys"
+  },
+  "frontend_usageShortcutKeyAlternative03": {
+    "message": "Αυτά είναι τα προτεινόμενα πλήκτρα συντόμευσης, τα οποία μπορούν να αλλάξουν από τη σελίδα ρυθμίσεων επέκτασης του προγράμματος περιήγησής σας.",
+    "original": "These are the suggested shortcut keys, which can be changed from the extension settings page of your browser."
+  },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Είναι σύνηθες ότι υπάρχουν διενέξεις μεταξύ των συντομεύσεων πληκτρολογίου διαφορετικών επεκτάσεων και προγραμμάτων. Εάν ένα πλήκτρο συντόμευσης δεν λειτουργεί, βεβαιωθείτε ότι δεν έχει ήδη ρυθμιστεί για κάτι άλλο.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
+  "frontend_usageShortcutKeyAlternative05": {
+    "message": "Ελέγξτε ή αλλάξτε τα Talkie συντόμευσης Talkie.",
+    "original": "Check or change the Talkie shortcut keys."
+  },
+  "frontend_usageShortcutKeyDescription": {
+    "message": "Μια βολική επιλογή είναι να χρησιμοποιήσετε τα Talkie συντόμευσης Talkie:",
+    "original": "A convenient option is to use the Talkie shortcut keys:"
+  },
+  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
+    "message": "Διαβάστε κείμενο από το πρόχειρο σε οποιοδήποτε πρόγραμμα",
+    "original": "Read text from clipboard in any program"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
+    "message": "Ξεκίνα σταμάτα",
+    "original": "Start/stop"
+  },
+  "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
+    "message": "Ξεκίνα σταμάτα",
+    "original": "Start/stop"
+  },
+  "frontend_usageStep01": {
+    "message": "Επιλέξτε το επιθυμητό κείμενο σε οποιαδήποτε ιστοσελίδα.",
+    "original": "Select desired text on any web page."
+  },
+  "frontend_usageStep02": {
+    "message": "Κάντε κλικ στο Talkie στη γραμμή εργαλείων του προγράμματος περιήγησής σας",
+    "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesDefaultVoiceForDialect": {
+    "message": "Η προεπιλεγμένη φωνή για τη διάλεκτο $LANGUAGE_CODE$ είναι $VOICE$ .",
+    "original": "The default voice for the dialect $LANGUAGE_CODE$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDefaultVoiceForLanguage": {
+    "message": "Η προεπιλεγμένη φωνή για τη γλώσσα $LANGUAGE_GROUP$ είναι $VOICE$ .",
+    "original": "The default voice for the language $LANGUAGE_GROUP$ is $VOICE$.",
+    "placeholders": {
+      "LANGUAGE_GROUP": {
+        "content": "$1",
+        "example": "nl-NL"
+      },
+      "VOICE": {
+        "content": "$2",
+        "example": "Dutch+Rob"
+      }
+    }
+  },
+  "frontend_voicesDescription": {
+    "message": "Δείτε και δοκιμάστε τις εγκατεστημένες φωνές για κάθε γλώσσα στο πρόγραμμα περιήγησής σας. Talkie Premium χρήστες Talkie Premium μπορούν επίσης να επιλέξουν την αγαπημένη τους φωνή ως προεπιλογή ανά γλώσσα, καθώς και να ορίσουν την ταχύτητα και τον τόνο για κάθε φωνή.",
+    "original": "See and test installed voices for each language in your browser. Talkie Premium users can also select their favorite voice as the default per language, as well as set speed and pitch for each voice."
+  },
+  "frontend_voicesFoundDialects": {
+    "message": "Βρέθηκαν $DIALECT_COUNT$ διάλεκτοι για $LANGUAGE_GROUP$ .",
+    "original": "Found $DIALECT_COUNT$ dialects for $LANGUAGE_GROUP$.",
+    "placeholders": {
+      "dialect_count": {
+        "content": "$1",
+        "example": "123"
+      },
+      "language_group": {
+        "content": "$2",
+        "example": "ko"
+      }
+    }
+  },
+  "frontend_voicesLinkText": {
+    "message": "Φωνές",
+    "original": "Voices"
+  },
+  "frontend_voicesListenToVoiceSample": {
+    "description": "The $VOICE$ the name of the voice",
+    "message": "Ακούστε ένα δείγμα φωνής του $VOICE$ .",
+    "original": "Listen to a voice sample of $VOICE$.",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google 普通话（中国大陆）"
+      }
+    }
+  },
+  "frontend_voicesPitchEmptyHeading": {
+    "description": "The per-voice pitch options heading, without the voice name variable as none has been selected",
+    "message": "Βήμα για φωνή",
+    "original": "Pitch for voice"
+  },
+  "frontend_voicesPitchHeading": {
+    "description": "The per-voice pitch options heading, including the voice name",
+    "message": "Προώθηση για $VOICE$",
+    "original": "Pitch for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesRateEmptyHeading": {
+    "description": "The per-voice speed options heading, without the voice name variable as none has been selected",
+    "message": "Ταχύτητα για φωνή",
+    "original": "Speed for voice"
+  },
+  "frontend_voicesRateHeading": {
+    "description": "The per-voice speed options heading, including the voice name",
+    "message": "Ταχύτητα για $VOICE$",
+    "original": "Speed for $VOICE$",
+    "placeholders": {
+      "voice": {
+        "content": "$1",
+        "example": "Google italiano"
+      }
+    }
+  },
+  "frontend_voicesSampleText": {
+    "description": "The original sentence is a popuplar English pangram. Translators are encouraged to use pangrams in their own languages. https://en.wikipedia.org/wiki/Pangram",
+    "message": "Η γρήγορη καφέ αλεπού πηδάει πάνω από το τεμπέλικο σκυλί.",
+    "original": "The quick brown fox jumps over the lazy dog."
+  },
+  "frontend_voicesSetAsLanguageUseVoiceAsDefault": {
+    "description": "The $LANGUAGE$ is the name (or ISO 639 code such as sv or sv-SE) of the language, the $VOICE$ the name of the voice",
+    "message": "Χρησιμοποιήστε το $VOICE$ ως προεπιλεγμένη φωνή για κείμενο στα $LANGUAGE$",
+    "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
+    "placeholders": {
+      "language": {
+        "content": "$1",
+        "example": "sv-SE"
+      },
+      "voice": {
+        "content": "$2",
+        "example": "Alva"
+      }
+    }
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation01": {
+    "message": "Για να αποφορτιστεί η διεπαφή χρήστη, ορισμένες λεπτομέρειες δεν εμφανίζονται από προεπιλογή. Εάν ενεργοποιήσετε αυτήν την επιλογή, θα εμφανιστούν πρόσθετες πληροφορίες.",
+    "original": "To unclutter the user interface, some details are not shown by default. If you enable this option, additional information will be shown."
+  },
+  "frontend_voicesShowAdditionalDetailsExplanation02": {
+    "message": "Αυτό περιλαμβάνει πληροφορίες υποστήριξης για άλλα προγράμματα περιήγησης και λειτουργικά συστήματα.",
+    "original": "This includes support information for other browsers and operating systems."
+  },
+  "frontend_voicesShowAdditionalDetailsHeading": {
+    "message": "Επιπλέον Λεπτομέρειες",
+    "original": "Additional details"
+  },
+  "frontend_voicesShowAdditionalDetailsLabel": {
+    "message": "Εμφάνιση πρόσθετων λεπτομερειών",
+    "original": "Show additional details"
+  },
+  "frontend_voicesShowAllListItems": {
+    "message": "Προβολή όλων",
+    "original": "Show all"
+  },
+  "frontend_voicesSpeakLongTextsExplanation01": {
+    "message": "Σε ορισμένα προγράμματα περιήγησης, δεν είναι δυνατή η συνεχής ανάγνωση μεγάλων κειμένων. Για να επιλύσετε αυτό, το Talkie εισάγει μια μικρή παύση μεταξύ των προτάσεων/προτάσεων και μετά από άλλα σημεία στίξης.",
+    "original": "In some browsers, it is not possible to read long texts continuously. To work around this, Talkie introduces a small pause between sentences/clauses and after other punctuation."
+  },
+  "frontend_voicesSpeakLongTextsExplanation02": {
+    "message": "Εάν ενεργοποιήσετε αυτήν την επιλογή και η ανάγνωση μεγάλων κειμένων σταματά μετά από 10-20 δευτερόλεπτα, απενεργοποιήστε την ξανά.",
+    "original": "If you enable this option and reading long texts stops after 10-20 seconds, please disable it again."
+  },
+  "frontend_voicesSpeakLongTextsHeading": {
+    "message": "Διαβάζοντας μεγαλύτερο κείμενο",
+    "original": "Reading longer text"
+  },
+  "frontend_voicesSpeakLongTextsLabel": {
+    "message": "Διαβάστε μεγαλύτερα κείμενα χωρίς παύσεις (πειραματικό)",
+    "original": "Read longer texts without pauses (experimental)"
+  },
+  "frontend_voicesTalkiePremiumPitch": {
+    "message": "Με Talkie Premium μπορείτε να αλλάξετε την προεπιλεγμένη φωνή για κάθε γλώσσα, καθώς και τη φωνή και τον τόνο για κάθε φωνή.",
+    "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_welcomeHero01": {
+    "message": "Καλώς ορίσατε στο $NAME$! Τώρα χρησιμοποιείτε μία από τις καλύτερες επεκτάσεις προγράμματος περιήγησης κειμένου σε ομιλία στον κόσμο.",
+    "original": "Welcome to $NAME$! You are now using one of the best text-to-speech browser extensions in the world.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeHero02": {
+    "message": "Προχωρήστε και επιλέξτε αυτό το κείμενο και, στη συνέχεια, κάντε κλικ στο κουμπί $NAME$ στη γραμμή εργαλείων του προγράμματος περιήγησης. Απολαμβάνω!",
+    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Talkie Premium"
+      }
+    }
+  },
+  "frontend_welcomeInstallMoreVoicesDescription": {
+    "message": "Talkie μπορεί αυτήν τη στιγμή να βρει $VOICES_COUNT$ φωνές που ενεργοποιούν τις γλώσσες $LANGUAGE_GROUPS_COUNT$ $LANGUAGES_COUNT$ διαλέκτους που είναι εγκατεστημένες στο πρόγραμμα περιήγησής $SYSTEM_TYPE_PRETTY_NAME$ εκτελείται σε λειτουργικό σύστημα $OSTYPE_PRETTY_NAME$",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "placeholders": {
+      "language_groups_count": {
+        "content": "$2",
+        "example": "27"
+      },
+      "languages_count": {
+        "content": "$3",
+        "example": "47"
+      },
+      "ostype_pretty_name": {
+        "content": "$5",
+        "example": "mac"
+      },
+      "system_type_pretty_name": {
+        "content": "$4",
+        "example": "chrome"
+      },
+      "voices_count": {
+        "content": "$1",
+        "example": "66"
+      }
+    }
+  },
+  "frontend_welcomeLinkText": {
+    "message": "καλως ΗΡΘΑΤΕ",
+    "original": "Welcome"
+  },
+  "noTextSelectedMessage": {
+    "message": "Επιλέξτε πρώτα το επιθυμητό κείμενο στον ιστότοπο. Μπορείτε επίσης να επιλέξετε κείμενο, να κάνετε δεξί κλικ πάνω του και να επιλέξετε Talkie στο μενού.",
+    "original": "Please select desired text on the website first. You can also select text, then right click on it, and choose Talkie in the menu."
+  },
+  "notAbleToSpeakTextFromThisSpecialTab": {
+    "description": "Some tabs can't be accessed by WebExtensions, such as chrome:// and the Chrome Web Store/Firefox Add-ons. This message warns users.",
+    "message": "Talkie δεν μπορεί να έχει πρόσβαση στο επιλεγμένο κείμενο από αυτόν τον τύπο σελίδας. Είναι μια πολύ ιδιαίτερη σελίδα και υπάρχουν περιορισμοί ασφαλείας που θέτει το πρόγραμμα περιήγησης. Μπορείτε επίσης να δοκιμάσετε να επιλέξετε κείμενο, μετά κάντε δεξί κλικ πάνω του και επιλέξτε Talkie στο μενού. Λυπάμαι για την ταλαιπωρία.",
+    "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Λυπάμαι, αλλά η ανάγνωση κειμένου από το πρόχειρο είναι μια δυνατότητα Talkie Premium Έχετε σκεφτεί την αναβάθμιση;",
+    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Λυπάμαι, αλλά αυτό το πρόγραμμα περιήγησης δεν υποστηρίζει ανάγνωση από το πρόχειρο. Όχι ακόμα, τουλάχιστον. Δοκιμάστε ξανά σε ένα μήνα περίπου!",
+    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie δεν έχει άδεια πρόσβασης από το πρόχειρο. Δεν πειράζει, αλλά η ανάγνωση του κειμένου του προχείρου δεν θα λειτουργήσει.",
+    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+  },
+  "readClipboardNoSuitableText": {
+    "message": "Δεν ήταν δυνατή η εύρεση του κατάλληλου κειμένου στο πρόχειρο. Μπορείς να δοκιμάσεις να αντιγράψεις κάτι άλλο;",
+    "original": "Could not find suitable text in the clipboard. Can you try copying something else?"
+  }
+}
