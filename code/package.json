@@ -97,7 +97,7 @@
     "test": "npm run --silent lint:fast",
     "version:get:head": "git describe --always --dirty --long --match 'v*'",
     "version:get:release": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/v_v_ p'",
-    "version:update": "export TALKIE_RELEASE_VERSION=$(npm run --silent version:get:release | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update-name:file -- manifest.json && npm run --silent version:update:file -- package.json && npm run --silent version:update:file -- package-lock.json && npm run --silent version:update-root-package:file -- package-lock.json && git add manifest.json package.json package-lock.json && git commit -m \"v${TALKIE_RELEASE_VERSION}\"",
+    "version:update": "export TALKIE_RELEASE_VERSION=$(npm run --silent version:get:release | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update-name:file -- manifest.json && npm run --silent version:update:file -- package.json && npm run --silent version:update:file -- package-lock.json && npm run --silent version:update-root-package:file -- package-lock.json && npm run --silent lint:fix && git add manifest.json package.json package-lock.json && git commit -m \"v${TALKIE_RELEASE_VERSION}\"",
     "version:update-name:file": "json -Ie \"this.version_name='v' + this.version + ' MANIFEST_VERSION_NAME_TYPE (' + new Date().toISOString().substring(0,10) + ')'\" -f",
     "version:update-root-package:file": "json -Ie \"this.packages[\\\"\\\"].version=this.version\" -f",
     "version:update:file": "json -Ie \"this.version='${TALKIE_RELEASE_VERSION}'\" -f"
