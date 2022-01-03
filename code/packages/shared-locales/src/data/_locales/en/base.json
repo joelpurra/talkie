@@ -347,6 +347,9 @@
   "frontend_licenseHeading": {
     "message": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Loading..."
   },

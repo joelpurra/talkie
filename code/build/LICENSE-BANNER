@@ -28,26 +28,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 - Homepage: <%= pkg.homepage %>
 
 
-# Detected third-party dependencies for this file
+# Third-party dependencies
 
-See the <%=
+Detected <%=
 	dependencies
 		.filter((dependency) => !dependency.name.startsWith("@talkie/"))
 		.length
-%> individual packages for details.
-
-<%
-dependencies
-	.slice()
-	.filter((dependency) => !dependency.name.startsWith("@talkie/"))
-	.sort((a, b) => a.name.localeCompare(b.name))
-	.forEach((dependency, index) => {
-%>
-## <%= (index + 1) %>. <%= dependency.name %>
-
-- Version: <%= dependency.version %>
-- License: <%= dependency.license %>
-- Author: <%= (dependency.author || {}).name %> <<%= (dependency.author || {}).email %>> (<%= (dependency.author || {}).url %>)
-- Homepage: <%= dependency.homepage %>
-
-<% }) %>
+%> third-party dependencies for this file. See <%= data.rollupName %>.dependencies.txt for details.

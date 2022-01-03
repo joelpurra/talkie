@@ -33,6 +33,7 @@ import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
+import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
@@ -98,6 +99,17 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		const extensionShortName = isPremiumEdition
 			? translateSync("extensionShortName_Premium")
 			: translateSync("extensionShortName_Free");
+
+		// TODO: generate list during build, load as data?
+		const licenseLinkNames = [
+			"browser-polyfill",
+			"options-dependencies",
+			"popup-dependencies",
+			"react",
+			"react-dom",
+			"react-redux",
+			"redux-toolkit",
+		].sort((a, b) => a.localeCompare(b));
 
 		return (
 			<section>
@@ -265,6 +277,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 				<p>
 					{translateSync("frontend_licenseCLADescription")}
 				</p>
+
 				<listBase.ul>
 					<listBase.li>
 						<textBase.a
@@ -283,11 +296,41 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						</textBase.a>
 					</listBase.li>
 					<listBase.li>
-						<textBase.a href={configure("urls.external.github")}>
+						<textBase.a
+							href={configure("urls.external.github")}
+						>
 							{translateSync("frontend_aboutCodeOnGithubLinkText")}
 						</textBase.a>
 					</listBase.li>
 				</listBase.ul>
+
+				<layoutBase.details>
+					<summary>
+						<textBase.summaryHeading3>
+							{translateSync("frontend_licenseThirdPartyHeading")}
+						</textBase.summaryHeading3>
+					</summary>
+
+					<listBase.ul>
+						{licenseLinkNames.map((licenseLinkName) => (
+							<listBase.li
+								key={licenseLinkName}
+							>
+								<textBase.a
+									href={configure(`urls.license.${licenseLinkName}`)}
+									lang="en"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									<code>
+										{licenseLinkName}
+									</code>
+								</textBase.a>
+							</listBase.li>
+						))}
+					</listBase.ul>
+				</layoutBase.details>
+
 			</section>
 		);
 	}

@@ -24,6 +24,15 @@
         "options-voices": "/packages/options-renderer/src/options.html#voices",
         "options-welcome": "/packages/options-renderer/src/options.html#welcome",
         "popup": "/packages/popup-renderer/src/popup.html"
+      },
+      "license": {
+        "browser-polyfill": "/packages/browser-runtime-dependencies/dist/umd/browser-polyfill.license.txt",
+        "options-dependencies": "/packages/options-application/dist/rollup/options.dependencies.txt",
+        "popup-dependencies": "/packages/popup-application/dist/rollup/popup.dependencies.txt",
+        "react": "/packages/browser-runtime-dependencies/dist/umd/react.license.txt",
+        "react-dom": "/packages/browser-runtime-dependencies/dist/umd/react-dom.license.txt",
+        "react-redux": "/packages/browser-runtime-dependencies/dist/umd/react-redux.license.txt",
+        "redux-toolkit": "/packages/browser-runtime-dependencies/dist/umd/redux-toolkit.license.txt"
       }
     }
   },

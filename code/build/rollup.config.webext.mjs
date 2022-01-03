@@ -20,9 +20,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import path from "path";
 import copy from "rollup-plugin-copy";
-import { readFileSync } from "fs";
+import {
+	readFileSync,
+	statSync,
+} from "fs";
 
 const extensionFiles = "code.txt";
+const licensesFiles = "licenses.txt";
 const localesFiles = "locales.txt";
 const rootFiles = "root.txt";
 
@@ -60,16 +64,23 @@ const getCopyTargets = (
 	const file = readFileSync(fileListFilePath);
 	const lines = getLines(file);
 
-	const targets = lines.map((file) => ({
-		src: path.join(resolvedSource, file),
-
-		dest: path.join(
+	const targets = lines.map((file) => {
+		const src = path.join(resolvedSource, file);
+		const dest = path.join(
 			resolvedDestination,
 
 			// NOTE: make sure destination is the containing directory, otherwise a directory with the same name as the file will be created.
 			path.dirname(file)
-		),
-	}));
+		);
+
+		// NOTE: check if the source file exists.
+		statSync(src);
+
+		return ({
+			src,
+			dest,
+		});
+	});
 
 	return targets;
 };
@@ -87,6 +98,14 @@ const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
 			),
 			...getCopyTargets(
 				extensionFiles,
+				repositoryRoot,
+				sourceBase,
+				"../..",
+				destinationBase,
+				"."
+			),
+			...getCopyTargets(
+				licensesFiles,
 				repositoryRoot,
 				sourceBase,
 				"../..",
