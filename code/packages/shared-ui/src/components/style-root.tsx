@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import {
-	type IsSpeakingProps,
-} from "../hocs/is-speaking-types.mjs";
-import {
 	type ChildrenRequiredProps,
 } from "../types.mjs";
 
@@ -31,20 +28,13 @@ export interface StyleRootProps {
 	isPremiumEdition: boolean;
 }
 
-export default class StyleRoot<P extends StyleRootProps & IsSpeakingProps & ChildrenRequiredProps> extends React.PureComponent<P> {
+export default class StyleRoot<P extends StyleRootProps & ChildrenRequiredProps> extends React.PureComponent<P> {
 	getStateClasses(): string[] {
 		const {
-			isSpeaking,
 			isPremiumEdition,
 		} = this.props;
 
 		const stateClasses: string[] = [];
-
-		if (isSpeaking) {
-			stateClasses.push("talkie-speaking");
-		} else {
-			stateClasses.push("talkie-not-speaking");
-		}
 
 		if (isPremiumEdition) {
 			stateClasses.push("talkie-premium");

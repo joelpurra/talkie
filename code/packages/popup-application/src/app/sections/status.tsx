@@ -37,6 +37,7 @@ import {
 import ProgressContainer from "../../containers/progress-container.js";
 
 export interface StatusProps {
+	isSpeaking: boolean;
 	playPauseClick: () => void;
 }
 
@@ -108,8 +109,11 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 
 	override render(): React.ReactNode {
 		const {
+			isSpeaking,
 			translateSync,
 		} = this.props;
+
+		const statusIconClassName = `icon-small-${isSpeaking ? "stop" : "play"}`;
 
 		return (
 			<layoutBase.main>
@@ -130,7 +134,7 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 									onClick={this.handlePlayPauseClick}
 								>
 									<Icon
-										className="icon-talkie-status"
+										className={statusIconClassName}
 										mode="standalone"
 									/>
 								</this.styled.statusIconWrapper>

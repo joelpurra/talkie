@@ -19,9 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import IsSpeakingUpdater, {
-	type IsSpeakingUpdaterDispatchProps,
-} from "@talkie/shared-ui/hocs/is-speaking-updater.js";
+import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
 import ProgressUpdater, {
 	type ProgressUpdaterDispatchProps,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
@@ -57,20 +55,20 @@ export interface AppProps {}
 const mapStateToProps: MapStateToProps<MainStateProps, AppProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
+	isSpeaking: state.shared.speaking.isSpeaking,
 	versionNumber: state.shared.metadata.versionNumber,
 });
 
-const mapDispatchToProps: MapDispatchToPropsFunction<MainDispatchProps & IsSpeakingUpdaterDispatchProps & ProgressUpdaterDispatchProps, AppProps> = (dispatch) => ({
+const mapDispatchToProps: MapDispatchToPropsFunction<MainDispatchProps & ProgressUpdaterDispatchProps, AppProps> = (dispatch) => ({
 	iconClick: bindActionCreators(actions.shared.speaking.iconClick, dispatch),
 	openExternalUrlInNewTab: bindActionCreators(actions.shared.navigation.openExternalUrlInNewTab, dispatch),
 	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
 	setCurrent: bindActionCreators(actions.shared.progress.setCurrent, dispatch),
-	setIsSpeaking: bindActionCreators(actions.shared.speaking.setIsSpeaking, dispatch),
 	setMax: bindActionCreators(actions.shared.progress.setMax, dispatch),
 	setMin: bindActionCreators(actions.shared.progress.setMin, dispatch),
 });
 
-class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUpdaterDispatchProps & ProgressUpdaterDispatchProps> extends React.PureComponent<P> {
+class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpdaterDispatchProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -81,10 +79,10 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 			errorCount,
 			iconClick,
 			isPremiumEdition,
-			openOptionsPage,
+			isSpeaking,
 			openExternalUrlInNewTab,
+			openOptionsPage,
 			setCurrent,
-			setIsSpeaking,
 			setMax,
 			setMin,
 			versionNumber,
@@ -92,9 +90,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 
 		return (
 			<>
-				<IsSpeakingUpdater
-					setIsSpeaking={setIsSpeaking}
-				/>
+				<IsSpeakingListenerContainer/>
 
 				<ProgressUpdater
 					setCurrent={setCurrent}
@@ -106,6 +102,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 					errorCount={errorCount}
 					iconClick={iconClick}
 					isPremiumEdition={isPremiumEdition}
+					isSpeaking={isSpeaking}
 					openExternalUrlInNewTab={openExternalUrlInNewTab}
 					openOptionsPage={openOptionsPage}
 					versionNumber={versionNumber}

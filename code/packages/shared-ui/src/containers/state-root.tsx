@@ -26,9 +26,6 @@ import {
 } from "react-redux";
 
 import StyleRoot from "../components/style-root.js";
-import {
-	type IsSpeakingProps,
-} from "../hocs/is-speaking-types.mjs";
 import type {
 	SharedRootState,
 } from "../store/index.mjs";
@@ -36,21 +33,18 @@ import {
 	type ChildrenRequiredProps,
 } from "../types.mjs";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StateRootProps {}
+export type StateRootProps = Record<string, unknown>;
 
-interface StateProps extends IsSpeakingProps {
+interface StateProps {
 	isPremiumEdition: boolean;
 	versionName?: string | null;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface DispatchProps {}
+type DispatchProps = Record<string, unknown>;
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootState> = (state: Readonly<SharedRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
-	isSpeaking: state.shared.speaking.isSpeaking,
 	versionName: state.shared.metadata.versionName,
 });
 
@@ -68,7 +62,6 @@ class StateRoot<P extends StateRootProps & StateProps & DispatchProps & Children
 
 	override render(): React.ReactNode {
 		const {
-			isSpeaking,
 			isPremiumEdition,
 			versionName,
 		} = this.props;
@@ -76,7 +69,6 @@ class StateRoot<P extends StateRootProps & StateProps & DispatchProps & Children
 		return (
 			<StyleRoot
 				isPremiumEdition={isPremiumEdition}
-				isSpeaking={isSpeaking}
 				versionName={versionName}
 			>
 				{React.Children.only(this.props.children)}

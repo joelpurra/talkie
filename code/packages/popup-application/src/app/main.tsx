@@ -48,6 +48,7 @@ import Status from "./sections/status.js";
 
 export interface MainStateProps extends FooterStateProps {
 	isPremiumEdition: boolean;
+	isSpeaking: boolean;
 }
 
 export interface MainDispatchProps {
@@ -100,6 +101,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 			className,
 			errorCount,
 			isPremiumEdition,
+			isSpeaking,
 			versionNumber,
 		} = this.props;
 
@@ -114,6 +116,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 				/>
 
 				<Status
+					isSpeaking={isSpeaking}
 					playPauseClick={this.handlePlayPauseClick}
 				/>
 
