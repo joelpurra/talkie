@@ -77,7 +77,7 @@ export interface MainStateProps extends FooterStateProps {
 
 export interface MainDispatchProps {
 	openShortKeysConfiguration: typeof actions.shared.navigation.openShortKeysConfiguration;
-	openUrlInNewTab: typeof actions.shared.navigation.openUrlInNewTab;
+	openExternalUrlInNewTab: typeof actions.shared.navigation.openExternalUrlInNewTab;
 	openOptionsPage: typeof actions.shared.navigation.openOptionsPage;
 }
 
@@ -212,7 +212,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	}
 
 	handleLinkClick(url: ReadonlyDeep<URL>): void {
-		this.props.openUrlInNewTab(url);
+		this.props.openExternalUrlInNewTab(url);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

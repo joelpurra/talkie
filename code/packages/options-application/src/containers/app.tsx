@@ -62,9 +62,9 @@ const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> =
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, AppProps> = (dispatch) => ({
+	openExternalUrlInNewTab: bindActionCreators(actions.shared.navigation.openExternalUrlInNewTab, dispatch),
 	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
 	openShortKeysConfiguration: bindActionCreators(actions.shared.navigation.openShortKeysConfiguration, dispatch),
-	openUrlInNewTab: bindActionCreators(actions.shared.navigation.openUrlInNewTab, dispatch),
 });
 
 class App<P extends AppProps> extends React.PureComponent<P> {
@@ -84,7 +84,7 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 			isPremiumEdition,
 			openOptionsPage,
 			openShortKeysConfiguration,
-			openUrlInNewTab,
+			openExternalUrlInNewTab,
 			osType,
 			showAdditionalDetails,
 			systemType,
@@ -96,9 +96,9 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 				activeTabId={activeTabId}
 				errorCount={errorCount}
 				isPremiumEdition={isPremiumEdition}
+				openExternalUrlInNewTab={openExternalUrlInNewTab}
 				openOptionsPage={openOptionsPage}
 				openShortKeysConfiguration={openShortKeysConfiguration}
-				openUrlInNewTab={openUrlInNewTab}
 				osType={osType ?? null}
 				showAdditionalDetails={showAdditionalDetails}
 				systemType={systemType}

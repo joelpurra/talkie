@@ -52,8 +52,8 @@ export interface MainStateProps extends FooterStateProps {
 
 export interface MainDispatchProps {
 	iconClick: typeof actions.shared.speaking.iconClick;
+	openExternalUrlInNewTab: typeof actions.shared.navigation.openExternalUrlInNewTab;
 	openOptionsPage: typeof actions.shared.navigation.openOptionsPage;
-	openUrlInNewTab: typeof actions.shared.navigation.openUrlInNewTab;
 }
 
 const styles: StyleObject = {
@@ -76,7 +76,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 	}
 
 	handleLinkClick(url: ReadonlyDeep<URL>): void {
-		this.props.openUrlInNewTab(url);
+		this.props.openExternalUrlInNewTab(url);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

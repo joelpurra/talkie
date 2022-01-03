@@ -179,7 +179,7 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async openUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
+	async openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 

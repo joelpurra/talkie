@@ -107,7 +107,7 @@ export default interface IApi {
 
 	getOperatingSystemType(): Promise<OsType>;
 
-	openUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab>;
+	openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab>;
 
 	openShortKeysConfiguration(): Promise<Tabs.Tab>;
 

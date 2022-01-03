@@ -62,9 +62,9 @@ import {
 	getTalkieServices,
 } from "./tabs.mjs";
 import {
+	openExternalUrlInNewTab as sharedOpenExternalUrlInNewTab,
 	openOptionsPage as sharedOpenOptionsPage,
 	openShortKeysConfiguration as sharedOpenShortKeysConfiguration,
-	openUrlInNewTab as sharedOpenUrlInNewTab,
 } from "./urls.mjs";
 
 export default class Api implements IApi {
@@ -239,9 +239,9 @@ export default class Api implements IApi {
 		return this.metadataManager.getOperatingSystemType();
 	}
 
-	async openUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
+	async openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
 		// TODO: separate "background API" from other functionality.
-		return sharedOpenUrlInNewTab(url);
+		return sharedOpenExternalUrlInNewTab(url);
 	}
 
 	async openShortKeysConfiguration(): Promise<Tabs.Tab> {

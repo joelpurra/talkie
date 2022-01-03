@@ -62,8 +62,8 @@ const mapStateToProps: MapStateToProps<MainStateProps, AppProps, PopupRootState>
 
 const mapDispatchToProps: MapDispatchToPropsFunction<MainDispatchProps & IsSpeakingUpdaterDispatchProps & ProgressUpdaterDispatchProps, AppProps> = (dispatch) => ({
 	iconClick: bindActionCreators(actions.shared.speaking.iconClick, dispatch),
+	openExternalUrlInNewTab: bindActionCreators(actions.shared.navigation.openExternalUrlInNewTab, dispatch),
 	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
-	openUrlInNewTab: bindActionCreators(actions.shared.navigation.openUrlInNewTab, dispatch),
 	setCurrent: bindActionCreators(actions.shared.progress.setCurrent, dispatch),
 	setIsSpeaking: bindActionCreators(actions.shared.speaking.setIsSpeaking, dispatch),
 	setMax: bindActionCreators(actions.shared.progress.setMax, dispatch),
@@ -82,7 +82,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 			iconClick,
 			isPremiumEdition,
 			openOptionsPage,
-			openUrlInNewTab,
+			openExternalUrlInNewTab,
 			setCurrent,
 			setIsSpeaking,
 			setMax,
@@ -106,8 +106,8 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 					errorCount={errorCount}
 					iconClick={iconClick}
 					isPremiumEdition={isPremiumEdition}
+					openExternalUrlInNewTab={openExternalUrlInNewTab}
 					openOptionsPage={openOptionsPage}
-					openUrlInNewTab={openUrlInNewTab}
 					versionNumber={versionNumber}
 				/>
 			</>

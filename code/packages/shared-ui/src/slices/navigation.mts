@@ -44,29 +44,38 @@ const prefix = "navigation";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const openUrlInNewTab = createAsyncThunk<void, ReadonlyDeep<URL>, IApiAsyncThunkConfig>(
-	`${prefix}/openUrlInNewTab`,
-	async (url, {
-		extra,
-	}) => {
-		await extra.openUrlInNewTab(url);
+export const openExternalUrlInNewTab = createAsyncThunk<void, ReadonlyDeep<URL>, IApiAsyncThunkConfig>(
+	`${prefix}/openExternalUrlInNewTab`,
+	async (
+		url,
+		{
+			extra,
+		},
+	) => {
+		await extra.openExternalUrlInNewTab(url);
 	},
 );
 
 export const openShortKeysConfiguration = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/openShortKeysConfiguration`,
-	async (_, {
-		extra,
-	}) => {
+	async (
+		_,
+		{
+			extra,
+		},
+	) => {
 		await extra.openShortKeysConfiguration();
 	},
 );
 
 export const openOptionsPage = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/openOptionsPage`,
-	async (_, {
-		extra,
-	}) => {
+	async (
+		_,
+		{
+			extra,
+		},
+	) => {
 		await extra.openOptionsPage();
 	},
 );

@@ -29,7 +29,7 @@ import {
 	getTalkieServices,
 } from "./tabs.mjs";
 
-export const openUrlInNewTab = async (url: ReadonlyDeep<URL>): Promise<Tabs.Tab> => {
+export const openExternalUrlInNewTab = async (url: ReadonlyDeep<URL>): Promise<Tabs.Tab> => {
 	if (!(url instanceof URL)) {
 		throw new TypeError(`Bad url: ${typeof url}`);
 	}
@@ -74,7 +74,7 @@ export const openExternalUrlFromConfigurationInNewTab = async (id: string): Prom
 
 	const urlObject = new URL(url);
 
-	return openUrlInNewTab(urlObject);
+	return openExternalUrlInNewTab(urlObject);
 };
 
 export const openInternalUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
