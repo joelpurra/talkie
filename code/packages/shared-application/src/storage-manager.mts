@@ -36,10 +36,11 @@ export type StorageFormatVersion =
 | "v1.2.0"
 | "v1.3.0"
 | "v1.4.0"
-| "v1.5.0";
+| "v1.5.0"
+| "v1.6.0";
 
 export default class StorageManager {
-	currentStorageFormatVersion: StorageFormatVersion = "v1.5.0";
+	currentStorageFormatVersion: StorageFormatVersion = "v1.6.0";
 	storageMetadataId = "_storage-metadata";
 	allKnownStorageKeys: Record<StorageFormatVersion, Record<string, string>> = {
 		"v1.0.0": {
@@ -74,6 +75,16 @@ export default class StorageManager {
 			"language-voice-overrides": "language-voice-overrides",
 			"show-additional-details": "show-additional-details",
 			"speak-long-texts": "speak-long-texts",
+			"voice-pitch-overrides": "voice-pitch-overrides",
+			"voice-rate-overrides": "voice-rate-overrides",
+		},
+		"v1.6.0": {
+			"is-premium-edition": "is-premium-edition",
+			"language-voice-overrides": "language-voice-overrides",
+			"show-additional-details": "show-additional-details",
+			"speak-long-texts": "speak-long-texts",
+			"speaking-history": "speaking-history",
+			"speaking-history-limit": "speaking-history-limit",
 			"voice-pitch-overrides": "voice-pitch-overrides",
 			"voice-rate-overrides": "voice-rate-overrides",
 		},
@@ -122,6 +133,11 @@ export default class StorageManager {
 			"v1.4.0": {
 				"v1.5.0": {
 					upgradeKey: this._createIdentityUpgrader("v1.4.0", "v1.5.0"),
+				},
+			},
+			"v1.5.0": {
+				"v1.6.0": {
+					upgradeKey: this._createIdentityUpgrader("v1.5.0", "v1.6.0"),
 				},
 			},
 		};

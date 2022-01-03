@@ -54,7 +54,13 @@ interface InternalProps extends StateProps, DispatchProps {}
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, SharedRootState> = (_state: Readonly<SharedRootState>) => ({});
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
+	loadSpeakingHistory: bindActionCreators(actions.speaking.loadSpeakingHistory, dispatch),
 	setIsSpeaking: bindActionCreators(actions.speaking.setIsSpeaking, dispatch),
+	setMostRecentLanguage: bindActionCreators(actions.speaking.setMostRecentLanguage, dispatch),
+	setMostRecentPitch: bindActionCreators(actions.speaking.setMostRecentPitch, dispatch),
+	setMostRecentRate: bindActionCreators(actions.speaking.setMostRecentRate, dispatch),
+	setMostRecentText: bindActionCreators(actions.speaking.setMostRecentText, dispatch),
+	setMostRecentVoiceName: bindActionCreators(actions.speaking.setMostRecentVoiceName, dispatch),
 });
 
 class IsSpeakingListenerContainer<P extends InternalProps> extends React.PureComponent<P> {
@@ -65,12 +71,24 @@ class IsSpeakingListenerContainer<P extends InternalProps> extends React.PureCom
 
 	override render(): React.ReactNode {
 		const {
+			loadSpeakingHistory,
 			setIsSpeaking,
+			setMostRecentLanguage,
+			setMostRecentPitch,
+			setMostRecentRate,
+			setMostRecentText,
+			setMostRecentVoiceName,
 		} = this.props;
 
 		return (
 			<IsSpeakingListener
+				loadSpeakingHistory={loadSpeakingHistory}
 				setIsSpeaking={setIsSpeaking}
+				setMostRecentLanguage={setMostRecentLanguage}
+				setMostRecentPitch={setMostRecentPitch}
+				setMostRecentRate={setMostRecentRate}
+				setMostRecentText={setMostRecentText}
+				setMostRecentVoiceName={setMostRecentVoiceName}
 			/>
 		);
 	}

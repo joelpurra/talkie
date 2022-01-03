@@ -20,9 +20,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import shared from "@talkie/shared-ui/selectors/index.mjs";
 
+import * as settings from "./settings.mjs";
 import * as voices from "./voices.mjs";
 
 const selectors = {
+	settings,
 	shared,
 	voices,
 };

@@ -22,81 +22,69 @@ import {
 	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
-import {
-	type ChildrenRequiredProps,
-} from "@talkie/shared-ui/types.mjs";
-import {
-	scrollIntoViewIfNeeded,
-} from "@talkie/shared-ui/utils/select-element.mjs";
 import React, {
 	type ChangeEvent,
 } from "react";
 import {
 	styled,
 } from "styletron-react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
-export interface MultilineSelectProps {
+export interface InputProps {
+	// NOTE: <input> tags are complex; allowing custom properties/attributes.
+	[key: string]: unknown;
 	disabled: boolean;
+	id?: string;
 	onChange: (value: string) => void;
-	size: number;
-	value?: string | null;
+	// TODO: more types, dynamically collected.
+	type: string;
+	value: string;
 }
 
-class MultilineSelect<P extends MultilineSelectProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P, unknown> {
-	static defaultProps = {
-		value: null,
-	};
-
-	selectRef: React.RefObject<HTMLSelectElement>;
+class Input<P extends InputProps & ClassNameProp> extends React.PureComponent<P> {
+	inputRef: React.RefObject<HTMLInputElement>;
 
 	constructor(props: P) {
 		super(props);
 
-		this.selectRef = React.createRef();
+		this.inputRef = React.createRef();
 		this.handleOnChange = this.handleOnChange.bind(this);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	handleOnChange({
 		target,
-	}: ChangeEvent<HTMLSelectElement>): void {
-		if (this.selectRef.current) {
+	}: Readonly<ChangeEvent<HTMLInputElement>>): void {
+		// TODO: is this ref needed?
+		if (this.inputRef.current) {
 			this.props.onChange(target.value);
-
-			scrollIntoViewIfNeeded(this.selectRef.current as ReadonlyDeep<HTMLSelectElement>);
-		}
-	}
-
-	override componentDidMount(): void {
-		if (this.selectRef.current) {
-			scrollIntoViewIfNeeded(this.selectRef.current as ReadonlyDeep<HTMLSelectElement>);
 		}
 	}
 
 	override render(): React.ReactNode {
 		const {
-			size,
-			value,
-			disabled,
 			className,
+			disabled,
+			id,
+			// NOTE: extracting onChange so it won't accidentally overwrite via ...other below.
+			onChange,
+			type,
+			value,
+			...other
 		} = this.props;
 
 		return (
-			<select
-				ref={this.selectRef}
+			<input
+				{...other}
+				ref={this.inputRef}
 				className={className}
 				disabled={disabled}
-				size={size}
-				value={value ?? ""}
+				id={id}
+				type={type}
+				value={value}
 				onChange={this.handleOnChange}
-			>
-				{this.props.children}
-			</select>
+			/>
 		);
 	}
 }
 
-export default styled(MultilineSelect, formBase.multilineSelect);
+export default styled(Input, formBase.checkbox);

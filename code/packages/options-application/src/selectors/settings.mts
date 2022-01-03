@@ -18,34 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type JsonObject,
-} from "type-fest";
+// eslint-disable-next-line import/no-unassigned-import
+import "reselect";
 
-export interface IVoiceName {
-	name: string;
-}
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
 
-export interface IVoiceLanguage {
-	lang: string;
-}
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
 
-export interface IVoiceNameAndLanguage extends IVoiceName, IVoiceLanguage {}
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createDraftSafeSelector,
+} = toolkit;
 
-export interface IVoiceNameAndRateAndPitch extends IVoiceName {
-	rate: number;
-	pitch: number;
-}
+export const getSpeakingHistoryLimit = <S extends OptionsRootState>(state: S): Readonly<number> => state.settings.speakingHistoryLimit;
 
-export interface MutableSafeVoiceObject extends JsonObject {
-	isSafeVoiceObject: true;
-	default: boolean;
-	lang: string;
-	localService: boolean;
-	name: string;
-	voiceUri: string;
-}
-
-export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
-
-export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
+export const getIsSpeakingHistoryEnabled = createDraftSafeSelector(
+	[
+		getSpeakingHistoryLimit,
+	],
+	(speakingHistoryLimit) => speakingHistoryLimit > 0,
+);

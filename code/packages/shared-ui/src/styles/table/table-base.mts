@@ -33,6 +33,10 @@ export const commpactTable: StyleObject = {};
 export const wideTable: StyleObject = {
 	width: "100%",
 };
+export const wideFixedTable: StyleObject = {
+	...wideTable,
+	tableLayout: "fixed",
+};
 
 export const tbody: StyleObject = {};
 export const thead: StyleObject = {};

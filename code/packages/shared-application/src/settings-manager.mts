@@ -21,88 +21,135 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import type {
+	JsonArray,
 	JsonObject,
 	JsonValue,
+	ReadonlyDeep,
 	ValueOf,
 } from "type-fest";
 
-import StorageManager from "./storage-manager.mjs";
+import type StorageManager from "./storage-manager.mjs";
 
-export enum KnownSettings {
+// TODO: merge parallel objects.
+export enum KnownSettingStorageKeys {
 	IsPremiumEdition = "is-premium-edition",
-	SpeakLongTexts = "speak-long-texts",
 	ShowAdditionalDetails = "show-additional-details",
+	SpeakingHistory = "speaking-history",
+	SpeakingHistoryLimit = "speaking-history-limit",
+	SpeakLongTexts = "speak-long-texts",
 }
-export type KnownSettingNames = keyof typeof KnownSettings;
-export type KnownSettingValues = ValueOf<KnownSettings>;
+export type KnownSettingNames = keyof typeof KnownSettingStorageKeys;
+export type KnownSettingValues = ValueOf<KnownSettingStorageKeys>;
 
-export interface SettingChangedEventData<T extends JsonValue> extends JsonObject {
-	// TODO: use a stricter type mapping than string enum to fit in JsonObject?
-	// key: KnownSettingValues;
-	key: string;
+export const KnownSettingDefaults = {
+	IsPremiumEdition: false,
+	ShowAdditionalDetails: false,
+	SpeakLongTexts: false,
+	SpeakingHistory: [],
+	SpeakingHistoryLimit: 10,
+};
+export type KnownSettingDefaultNames = keyof typeof KnownSettingDefaults;
+export type KnownSettingDefaultValues = ValueOf<typeof KnownSettingDefaults>;
+
+export interface SettingRange {
+	max: number;
+	min: number;
+}
+export const KnownSettingRanges = {
+	SpeakingHistoryLimit: {
+		max: 100,
+		min: 0,
+	},
+};
+export type KnownSettingRangeNames = keyof typeof KnownSettingRanges;
+export type KnownSettingRangeValues = ValueOf<typeof KnownSettingRanges>;
+
+export type SettingChangedEventData<T extends JsonValue> = {
+	key: KnownSettingValues;
 	previousValue: T | null;
 	value: T;
-}
+} & JsonObject;
 
 export default class SettingsManager {
 	constructor(private readonly storageManager: StorageManager, private readonly broadcaster: IBroadcasterProvider) {
 		// TODO: shared place for default/fallback values for booleans etcetera.
 	}
 
-	private get _isPremiumEditionStorageKey() {
-		return KnownSettings.IsPremiumEdition;
-	}
-
-	private get _speakLongTextsStorageKey() {
-		return KnownSettings.SpeakLongTexts;
-	}
-
-	private get _showAdditionalDetailsStorageKey() {
-		return KnownSettings.ShowAdditionalDetails;
-	}
-
-	private get _isPremiumEditionDefaultValue() {
-		return false;
-	}
-
-	private get _speakLongTextsStorageKeyDefaultValue() {
-		return false;
-	}
-
-	private get _showAdditionalDetailsStorageKeyDefaultValue() {
-		return false;
-	}
-
 	async setIsPremiumEdition(isPremiumEdition: boolean): Promise<void> {
-		return this._setStoredValue(this._isPremiumEditionStorageKey, isPremiumEdition);
+		return this._setStoredValue(KnownSettingStorageKeys.IsPremiumEdition, isPremiumEdition);
 	}
 
 	async getIsPremiumEdition(): Promise<boolean> {
-		const isPremiumEdition = await this._getStoredValue<boolean>(this._isPremiumEditionStorageKey);
+		const isPremiumEdition = await this._getStoredValue<boolean>(KnownSettingStorageKeys.IsPremiumEdition);
 
-		return isPremiumEdition ?? this._isPremiumEditionDefaultValue;
+		return isPremiumEdition ?? KnownSettingDefaults.IsPremiumEdition;
 	}
 
 	async setSpeakLongTexts(speakLongTexts: boolean): Promise<void> {
-		return this._setStoredValue(this._speakLongTextsStorageKey, speakLongTexts);
+		return this._setStoredValue(KnownSettingStorageKeys.SpeakLongTexts, speakLongTexts);
 	}
 
 	async getSpeakLongTexts(): Promise<boolean> {
-		const speakLongTexts = await this.storageManager.getStoredValue<boolean>(this._speakLongTextsStorageKey);
+		const speakLongTexts = await this.storageManager.getStoredValue<boolean>(KnownSettingStorageKeys.SpeakLongTexts);
 
-		return speakLongTexts ?? this._speakLongTextsStorageKeyDefaultValue;
+		return speakLongTexts ?? KnownSettingDefaults.SpeakLongTexts;
 	}
 
 	async setShowAdditionalDetails(showAdditionalDetails: boolean): Promise<void> {
-		return this._setStoredValue(this._showAdditionalDetailsStorageKey, showAdditionalDetails);
+		return this._setStoredValue(KnownSettingStorageKeys.ShowAdditionalDetails, showAdditionalDetails);
 	}
 
 	async getShowAdditionalDetails(): Promise<boolean> {
-		const showAdditionalDetails = await this.storageManager.getStoredValue<boolean>(this._showAdditionalDetailsStorageKey);
+		const showAdditionalDetails = await this.storageManager.getStoredValue<boolean>(KnownSettingStorageKeys.ShowAdditionalDetails);
 
-		return showAdditionalDetails ?? this._showAdditionalDetailsStorageKeyDefaultValue;
+		return showAdditionalDetails ?? KnownSettingDefaults.ShowAdditionalDetails;
+	}
+
+	async setSpeakingHistory(speakingHistory: ReadonlyDeep<SpeakingHistoryEntry[]>): Promise<void> {
+		// NOTE: extraenous validation, should already be taken care of.
+		if (speakingHistory.length > KnownSettingRanges.SpeakingHistoryLimit.max) {
+			throw new RangeError(`Cannot set a speaking history with length greater than ${KnownSettingRanges.SpeakingHistoryLimit.max}: ${JSON.stringify(speakingHistory)}`);
+		}
+
+		// TODO: function/assert type cast.
+		const speakingHistoryJson: JsonArray = speakingHistory as unknown as JsonArray;
+
+		return this._setStoredValue(KnownSettingStorageKeys.SpeakingHistory, speakingHistoryJson);
+	}
+
+	async getSpeakingHistory(): Promise<SpeakingHistoryEntry[]> {
+		const speakingHistoryJson = await this.storageManager.getStoredValue<JsonArray>(KnownSettingStorageKeys.SpeakingHistory);
+
+		// TODO: assert function for SpeakingHistoryEntry[].
+		const speakingHistoryOrDefault: SpeakingHistoryEntry[] = (speakingHistoryJson as unknown as SpeakingHistoryEntry[]) ?? KnownSettingDefaults.SpeakingHistory;
+
+		const limitedSpeakingHistory = speakingHistoryOrDefault.slice(0, KnownSettingRanges.SpeakingHistoryLimit.max);
+
+		return limitedSpeakingHistory;
+	}
+
+	async setSpeakingHistoryLimit(speakingHistoryLimit: number): Promise<void> {
+		// TODO: proper range validation instead of two separate validations.
+		if (speakingHistoryLimit < KnownSettingRanges.SpeakingHistoryLimit.min) {
+			throw new RangeError(`Cannot set a speaking history limit less than ${KnownSettingRanges.SpeakingHistoryLimit.min}: ${JSON.stringify(speakingHistoryLimit)}`);
+		}
+
+		if (speakingHistoryLimit > KnownSettingRanges.SpeakingHistoryLimit.max) {
+			throw new RangeError(`Cannot set a speaking history limit greater than ${KnownSettingRanges.SpeakingHistoryLimit.max}: ${JSON.stringify(speakingHistoryLimit)}`);
+		}
+
+		return this._setStoredValue(KnownSettingStorageKeys.SpeakingHistoryLimit, speakingHistoryLimit);
+	}
+
+	async getSpeakingHistoryLimit(): Promise<number> {
+		const speakingHistoryLimit = await this.storageManager.getStoredValue<number>(KnownSettingStorageKeys.SpeakingHistoryLimit);
+
+		return speakingHistoryLimit ?? KnownSettingDefaults.SpeakingHistoryLimit;
 	}
 
 	private async _getStoredValue<T extends JsonValue>(key: string): Promise<T | null> {

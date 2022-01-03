@@ -18,6 +18,7 @@
     "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
     "@talkie/shared-interfaces": "*",
+    "@talkie/shared-locales": "*",
     "@talkie/shared-ui": "*",
     "@talkie/split-environment-interfaces": "*"
   },

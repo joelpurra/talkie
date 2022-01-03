@@ -20,11 +20,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as errors from "./errors.mjs";
 import * as languages from "./languages.mjs";
+import * as speaking from "./speaking.mjs";
 import * as voices from "./voices.mjs";
 
 const actions = {
 	errors,
 	languages,
+	speaking,
 	voices,
 };
 

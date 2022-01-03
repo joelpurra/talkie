@@ -33,7 +33,7 @@ import {
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 import InformationSection from "../../../components/section/information-section.js";
 import DialectVoiceOptionsContainer from "../../../containers/voices/dialect-voice-options-container.js";
 
@@ -67,7 +67,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 			voice,
 		} = this.props as DialectVoiceProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
 		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
@@ -98,22 +98,22 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 						informationType="information"
 					>
 						<textBase.p>
-							<Markdown>
+							<MarkdownStrong>
 								{`**${voice.name}** is an online voice. Usage may require an active internet connection to access third-party services.`}
-							</Markdown>
+							</MarkdownStrong>
 						</textBase.p>
 					</InformationSection>
 				</Discretional>
 
 				<SpeakSampleButton>
-					<Markdown>
+					<MarkdownStrong>
 						{translateSync(
 							"frontend_voicesListenToVoiceSample",
 							[
 								`**${voice.name}**`,
 							],
 						)}
-					</Markdown>
+					</MarkdownStrong>
 				</SpeakSampleButton>
 
 				<DialectVoiceOptionsContainer/>

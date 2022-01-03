@@ -90,12 +90,20 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 	override render(): React.ReactNode {
 		const {
 			configure,
+			translatePlaceholderSync,
 			translateSync,
 		} = this.props;
 
 		return (
 			<layoutBase.nav>
 				<this.styled.ol>
+					<this.styled.li>
+						<this.styled.a href={configure("urls.internal.options-status")} rel="noopener noreferrer" target="_blank">
+							{/* TODO: use status/history icon. */}
+							<Icon className="icon-about" mode="inline"/>
+							{translatePlaceholderSync("Status and history" /* "frontend_PopupMenu_Status" */)}
+						</this.styled.a>
+					</this.styled.li>
 					<this.styled.li>
 						<this.styled.a href={configure("urls.internal.options-voices")} rel="noopener noreferrer" target="_blank">
 							<Icon className="icon-voices" mode="inline"/>

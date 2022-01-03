@@ -18,20 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
-import {
-	type TalkieProgressData,
-} from "@talkie/shared-ui/talkie-progress.mjs";
 import React from "react";
 import {
 	styled,
 } from "styletron-react";
 
-export interface StatusProps extends TalkieProgressData {}
+import {
+	type TalkieStyletronComponent,
+} from "../styled/types.js";
+import {
+	type TalkieProgressData,
+} from "../talkie-progress.mjs";
 
-export default class Status<P extends StatusProps> extends React.PureComponent<P> {
+export interface ProgressProps extends TalkieProgressData {}
+
+export default class Progress<P extends ProgressProps> extends React.PureComponent<P> {
 	private readonly styled: {
 		progress: TalkieStyletronComponent<"progress">;
 	};
@@ -58,7 +59,7 @@ export default class Status<P extends StatusProps> extends React.PureComponent<P
 			// min,
 			current,
 			max,
-		} = this.props as StatusProps;
+		} = this.props as ProgressProps;
 
 		return (
 			<this.styled.progress

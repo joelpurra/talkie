@@ -45,6 +45,9 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
+import {
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
 import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
@@ -67,6 +70,10 @@ export default class Api implements IApi {
 	}
 
 	async iconClick(): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async stopSpeaking(): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -98,27 +105,59 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getIsPremiumEditionOption(): Promise<boolean> {
+	async getIsPremiumEdition(): Promise<boolean> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async setIsPremiumEditionOption(isPremiumEdition: boolean): Promise<void> {
+	async setIsPremiumEdition(isPremiumEdition: boolean): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getSpeakLongTextsOption(): Promise<boolean> {
+	async getSpeakLongTexts(): Promise<boolean> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async setSpeakLongTextsOption(speakLongTexts: boolean): Promise<void> {
+	async setSpeakLongTexts(speakLongTexts: boolean): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getShowAdditionalDetailsOption(): Promise<boolean> {
+	async getShowAdditionalDetails(): Promise<boolean> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async setShowAdditionalDetailsOption(showAdditionalDetails: boolean): Promise<void> {
+	async setShowAdditionalDetails(showAdditionalDetails: boolean): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getSpeakingHistoryLimit(): Promise<number> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async setSpeakingHistoryLimit(speakingHistoryLimit: number): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getMostRecentSpeakingEntry(): Promise<SpeakingHistoryEntry | null> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getSpeakingHistory(): Promise<SpeakingHistoryEntry[]> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async clearSpeakingHistory(): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async pruneSpeakingHistory(): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async removeSpeakingHistoryEntry(hash: number): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async storeMostRecentSpeakingEntry(speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>): Promise<void> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 

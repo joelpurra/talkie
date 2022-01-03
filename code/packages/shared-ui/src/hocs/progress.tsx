@@ -39,7 +39,7 @@ import {
 
 export interface ProgressProps extends TalkieProgressData {}
 
-type ProgressHocState = TalkieProgressData;
+interface ProgressHocState extends TalkieProgressData {}
 
 export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
@@ -134,6 +134,7 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 			}
 
 			executeKillSwitches(): void {
+				// TODO: base component class for other components with broadcast listeners and kill switches.
 			// NOTE: expected to have only synchronous methods for the relevant parts.
 				const killSwitchesToExecute = this.killSwitches;
 				this.killSwitches = [];

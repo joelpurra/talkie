@@ -30,7 +30,7 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
 import Loading from "../../../components/loading.js";
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 import InstallVoicesFaq from "./install-voices-faq.js";
 
 interface InstallVoicesState {
@@ -109,9 +109,9 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 						enabled={haveVoices}
 					>
 						<textBase.p>
-							<Markdown>
+							<MarkdownStrong>
 								{moreVoicesCountsMarkdown}
-							</Markdown>
+							</MarkdownStrong>
 						</textBase.p>
 					</Loading>
 				</Discretional>

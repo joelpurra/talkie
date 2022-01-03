@@ -19,6 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
+import ProgressContainer from "@talkie/shared-ui/containers/progress-container.js";
+import configureAttribute, {
+	type ConfigureProps,
+} from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -26,6 +30,7 @@ import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
@@ -34,14 +39,12 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import ProgressContainer from "../../containers/progress-container.js";
-
 export interface StatusProps {
 	isSpeaking: boolean;
 	playPauseClick: () => void;
 }
 
-class Status<P extends StatusProps & TranslateProps> extends React.PureComponent<P> {
+class Status<P extends StatusProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
 		statusIconWrapper: TalkieStyletronComponent<typeof buttonBase.transparentButton>;
 		table: TalkieStyletronComponent<typeof tableBase.wideTable>;
@@ -109,6 +112,7 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 
 	override render(): React.ReactNode {
 		const {
+			configure,
 			isSpeaking,
 			translateSync,
 		} = this.props;
@@ -140,7 +144,13 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 								</this.styled.statusIconWrapper>
 							</this.styled.td>
 							<this.styled.td>
-								<ProgressContainer/>
+								<textBase.a
+									href={configure("urls.internal.options-status")}
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									<ProgressContainer/>
+								</textBase.a>
 							</this.styled.td>
 						</this.styled.tr>
 					</this.styled.tbody>
@@ -150,6 +160,8 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 	}
 }
 
-export default translateAttribute<StatusProps & TranslateProps>()(
-	Status,
+export default configureAttribute<StatusProps & ConfigureProps>()(
+	translateAttribute<StatusProps & ConfigureProps & TranslateProps>()(
+		Status,
+	),
 );

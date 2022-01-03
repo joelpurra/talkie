@@ -38,7 +38,7 @@ import {
 	withStyleDeep,
 } from "styletron-react";
 
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 
 export interface LanguageGroupStateProps {
 	effectiveVoiceNameForSelectedLanguageGroup: string;
@@ -114,7 +114,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			)
 			: null;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
 		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
@@ -156,7 +156,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 
 				<textBase.p>
 					<SpeakSampleButton>
-						<Markdown>
+						<MarkdownStrong>
 							{translateSync(
 								"frontend_voicesDefaultVoiceForLanguage",
 								[
@@ -164,7 +164,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 									`**${effectiveVoiceNameForSelectedLanguageGroup}**`,
 								],
 							)}
-						</Markdown>
+						</MarkdownStrong>
 					</SpeakSampleButton>
 				</textBase.p>
 			</>

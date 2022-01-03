@@ -26,11 +26,13 @@ import * as colorBase from "../color/color-base.mjs";
 import * as layoutBase from "../layout/layout-base.mjs";
 
 export const hover: StyleObject = {
+	border: "none",
 	color: colorBase.buttonTextColor,
 };
 
 export const focus: StyleObject = {
 	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonDarkColor}, ${colorBase.buttonDarkColor})`,
+	border: "none",
 	color: colorBase.buttonTextColor,
 };
 
@@ -39,6 +41,7 @@ export const button: StyleObject = {
 	":focus": focus,
 	":hover": hover,
 	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonLightColor}, ${colorBase.buttonDarkColor})`,
+	border: "none",
 	color: colorBase.buttonTextColor,
 	paddingBottom: "0.3em",
 	paddingLeft: "0.75em",
@@ -56,6 +59,13 @@ export const transparentButton: StyleObject = {
 		cursor: "pointer",
 	},
 	all: "unset",
+};
+
+export const transparentButtonDisabled: StyleObject = {
+	...transparentButton,
+	":hover": {
+		cursor: "not-allowed",
+	},
 };
 
 export const a: StyleObject = button;

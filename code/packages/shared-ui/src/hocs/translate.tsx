@@ -44,6 +44,8 @@ export default function translateAttribute<P extends TranslateProps = TranslateP
 					<ComponentToWrap
 						{...this.props}
 						// eslint-disable-next-line no-sync
+						translatePlaceholderSync={this.context.translatePlaceholderSync}
+						// eslint-disable-next-line no-sync
 						translateSync={this.context.translateSync}/>
 				);
 			}

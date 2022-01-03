@@ -151,6 +151,7 @@ In order to offer Talkie in as many languages as possible, translations are auto
 
 - The `_locales` directory usually present in the root of webextensions is located in `./packages/shared-locales/src/data/_locales`. This is the base directory referenced below.
 - The translation files are assembled before being copied to the webextension output packages.
+- During development, there translation placeholder methods may be used. They help keep track of which strings have not yet been translated.
 
 ### Human translations
 

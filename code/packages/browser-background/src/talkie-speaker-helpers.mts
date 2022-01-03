@@ -38,7 +38,7 @@ export const createSafeVoiceObjectFromSpeechSynthesisVoice = (speechSynthesisVoi
 
 	localService: speechSynthesisVoice.localService,
 	name: speechSynthesisVoice.name,
-	voiceURI: speechSynthesisVoice.voiceURI,
+	voiceUri: speechSynthesisVoice.voiceURI,
 });
 
 const _pickFirstVoice = async <T extends IVoiceName | IVoiceLanguage>(resolvedVoices: Readonly<SpeechSynthesisVoice[]>, mappedVoiceForLogging: T): Promise<SpeechSynthesisVoice | null> => {
@@ -90,8 +90,10 @@ export const resolveVoiceFromName = async (voices: Readonly<SpeechSynthesisVoice
 	);
 };
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const isIVoiceName = (input: unknown): input is IVoiceName => typeof input === "object" && input !== null && "name" in input && typeof (input as IVoiceName).name === "string";
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const isIVoiceLanguage = (input: unknown): input is IVoiceLanguage => typeof input === "object" && input !== null && "lang" in input && typeof (input as IVoiceLanguage).lang === "string";
 
 export const resolveVoice = async <T extends IVoiceName | IVoiceLanguage>(voices: Readonly<SpeechSynthesisVoice[]>, mappedVoice: T): Promise<SpeechSynthesisVoice | null> => {

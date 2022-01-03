@@ -31,6 +31,9 @@ export const text: StyleObject = {
 
 export const lighterText: StyleObject = {
 	...text,
+
+	// TODO: disambiguate lighter (text color) and lighter (font weight).
+	// TODO: move to (or merge with) the "lighter" file?
 	fontWeight: "lighter",
 };
 

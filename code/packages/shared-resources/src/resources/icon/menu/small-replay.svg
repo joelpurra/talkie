@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" transform="scale(-1, 1)" transform-origin="center">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>small-replay</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons-16px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Talkie">
+            <g id="small-replay" transform="translate(8.000000, 8.000000) rotate(90.000000) translate(-8.000000, -8.000000) ">
+                <circle id="Oval" fill="#00AC6C" cx="8" cy="8" r="8"></circle>
+                <path d="M7.0314443,5.65332278 C7.57789768,4.69702935 8.46919172,4.70633593 9.01032707,5.65332278 L11.0761298,9.26847757 C11.6225832,10.224771 11.164304,11 10.0612561,11 L7.27395041,11 L5.9705922,11 C4.8691199,11 4.42450621,10.2154644 4.96564156,9.26847757 L7.0314443,5.65332278 Z" id="Triangle" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -31,6 +31,9 @@ import {
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
+import {
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
 	JsonValue,
@@ -58,12 +61,20 @@ export interface ITalkieServices {
 	isPremiumEdition: () => Promise<boolean>;
 	getSystemType: () => Promise<SystemType>;
 	getOperatingSystemType: () => Promise<OsType>;
-	getIsPremiumEditionOption: () => Promise<boolean>;
-	setIsPremiumEditionOption: (isPremiumEdition: boolean) => Promise<void>;
-	getSpeakLongTextsOption: () => Promise<boolean>;
-	setSpeakLongTextsOption: (speakLongTexts: boolean) => Promise<void>;
-	getShowAdditionalDetailsOption: () => Promise<boolean>;
-	setShowAdditionalDetailsOption: (showAdditionalDetails: boolean) => Promise<void>;
+	getIsPremiumEdition: () => Promise<boolean>;
+	setIsPremiumEdition: (isPremiumEdition: boolean) => Promise<void>;
+	getSpeakLongTexts: () => Promise<boolean>;
+	setSpeakLongTexts: (speakLongTexts: boolean) => Promise<void>;
+	getShowAdditionalDetails: () => Promise<boolean>;
+	setShowAdditionalDetails: (showAdditionalDetails: boolean) => Promise<void>;
+	getSpeakingHistoryLimit: () => Promise<number>;
+	setSpeakingHistoryLimit: (speakingHistoryLimit: number) => Promise<void>;
+	getMostRecentSpeakingEntry: () => Promise<SpeakingHistoryEntry | null>;
+	getSpeakingHistory: () => Promise<SpeakingHistoryEntry[]>;
+	clearSpeakingHistory: () => Promise<void>;
+	pruneSpeakingHistory: () => Promise<void>;
+	removeSpeakingHistoryEntry: (hash: number) => Promise<void>;
+	storeMostRecentSpeakingEntry: (speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) => Promise<void>;
 	getEffectiveVoiceForLanguage: (languageName: string) => Promise<IVoiceNameAndLanguage | null>;
 	isLanguageVoiceOverrideName: (languageName: string, voiceName: string) => Promise<boolean>;
 	toggleLanguageVoiceOverrideName: (languageName: string, voiceName: string) => Promise<boolean>;

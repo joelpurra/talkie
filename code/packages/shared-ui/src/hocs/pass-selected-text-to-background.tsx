@@ -132,6 +132,7 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 			}
 
 			executeKillSwitches() {
+				// TODO: base component class for other components with broadcast listeners and kill switches.
 				// NOTE: expected to have only synchronous methods for the relevant parts.
 				const killSwitchesToExecute = this.killSwitches;
 				this.killSwitches = [];

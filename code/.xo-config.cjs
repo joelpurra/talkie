@@ -25,7 +25,10 @@ module.exports = {
 	],
 	"overrides": [
 		{
-			"files": "./packages/*/**/*.tsx",
+			"files": [
+				"./packages/*/**/*.mts",
+				"./packages/*/**/*.tsx",
+			],
 			"rules": {
 				"@typescript-eslint/consistent-type-definitions": [
 					"error",

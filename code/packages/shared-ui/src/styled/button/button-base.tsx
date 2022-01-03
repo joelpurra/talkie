@@ -29,4 +29,5 @@ import {
 
 export const button: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.button);
 export const transparentButton: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.transparentButton);
+export const transparentButtonDisabled: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.transparentButtonDisabled);
 export const a: TalkieStyletronComponent<React.ElementType<"a">> = styled("a", buttonBase.a);

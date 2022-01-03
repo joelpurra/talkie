@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type TalkieProgressData,
-} from "@talkie/shared-ui/talkie-progress.mjs";
 import React from "react";
 import {
 	connect,
@@ -28,10 +25,13 @@ import {
 	type MapStateToProps,
 } from "react-redux";
 
-import Progress from "../app/sections/progress.js";
+import Progress from "../components/progress.js";
 import type {
-	PopupRootState,
+	SharedRootState,
 } from "../store/index.mjs";
+import {
+	type TalkieProgressData,
+} from "../talkie-progress.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProgressContainerProps {}
@@ -42,7 +42,7 @@ interface StateProps extends TalkieProgressData {}
 interface DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, SharedRootState> = (state: Readonly<SharedRootState>) => ({
 	current: state.shared.progress.current,
 	max: state.shared.progress.max,
 	min: state.shared.progress.min,
@@ -73,6 +73,6 @@ class ProgressContainer<P extends ProgressContainerProps & StateProps & Dispatch
 	}
 }
 
-export default connect<StateProps, DispatchProps, ProgressContainerProps, PopupRootState>(mapStateToProps, mapDispatchToProps)(
+export default connect<StateProps, DispatchProps, ProgressContainerProps, SharedRootState>(mapStateToProps, mapDispatchToProps)(
 	ProgressContainer,
 );

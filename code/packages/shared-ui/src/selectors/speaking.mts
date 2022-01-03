@@ -18,34 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// eslint-disable-next-line import/default
+import toolkit from "@reduxjs/toolkit";
 import {
-	type JsonObject,
-} from "type-fest";
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
 
-export interface IVoiceName {
-	name: string;
-}
+import type {
+	SharedRootState,
+} from "../store/index.mjs";
 
-export interface IVoiceLanguage {
-	lang: string;
-}
+const {
+	// eslint-disable-next-line import/no-named-as-default-member
+	createDraftSafeSelector,
+} = toolkit;
 
-export interface IVoiceNameAndLanguage extends IVoiceName, IVoiceLanguage {}
+export const getSpeakingHistory = <S extends SharedRootState>(state: S): Readonly<SpeakingHistoryEntry[]> => state.shared.speaking.history;
 
-export interface IVoiceNameAndRateAndPitch extends IVoiceName {
-	rate: number;
-	pitch: number;
-}
-
-export interface MutableSafeVoiceObject extends JsonObject {
-	isSafeVoiceObject: true;
-	default: boolean;
-	lang: string;
-	localService: boolean;
-	name: string;
-	voiceUri: string;
-}
-
-export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
-
-export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
+export const getSpeakingHistoryCount = createDraftSafeSelector(
+	[
+		getSpeakingHistory,
+	],
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	(speakingHistory) => speakingHistory.length,
+);

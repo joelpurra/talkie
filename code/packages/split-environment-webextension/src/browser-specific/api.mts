@@ -47,6 +47,9 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
+import {
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
 import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
@@ -73,7 +76,13 @@ export default class Api implements IApi {
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
 
 	// eslint-disable-next-line max-params
-	constructor(private readonly metadataManager: IMetadataManager, private readonly configuration: IConfiguration, private readonly broadcastProvider: IBroadcasterProvider, private readonly talkieLocaleHelper: ITalkieLocaleHelper, private readonly localeProvider: ILocaleProvider) {
+	constructor(
+		private readonly metadataManager: IMetadataManager,
+		private readonly configuration: IConfiguration,
+		private readonly broadcastProvider: IBroadcasterProvider,
+		private readonly talkieLocaleHelper: ITalkieLocaleHelper,
+		private readonly localeProvider: ILocaleProvider,
+	) {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		this.debouncedSpeakTextInCustomVoice = debounce(this.speakInCustomVoice.bind(this) as any, 200);
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -97,6 +106,12 @@ export default class Api implements IApi {
 		const talkieServices = await getTalkieServices();
 
 		await talkieServices.iconClick();
+	}
+
+	async stopSpeaking(): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.stopSpeakFromFrontend();
 	}
 
 	async speakInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void> {
@@ -131,40 +146,88 @@ export default class Api implements IApi {
 		return talkieServices.getAllVoicesSafeObjects();
 	}
 
-	async getIsPremiumEditionOption(): Promise<boolean> {
+	async getIsPremiumEdition(): Promise<boolean> {
 		const talkieServices = await getTalkieServices();
 
-		return talkieServices.getIsPremiumEditionOption();
+		return talkieServices.getIsPremiumEdition();
 	}
 
-	async setIsPremiumEditionOption(isPremiumEdition: boolean): Promise<void> {
+	async setIsPremiumEdition(isPremiumEdition: boolean): Promise<void> {
 		const talkieServices = await getTalkieServices();
 
-		await talkieServices.setIsPremiumEditionOption(isPremiumEdition);
+		await talkieServices.setIsPremiumEdition(isPremiumEdition);
 	}
 
-	async getSpeakLongTextsOption(): Promise<boolean> {
+	async getSpeakLongTexts(): Promise<boolean> {
 		const talkieServices = await getTalkieServices();
 
-		return talkieServices.getSpeakLongTextsOption();
+		return talkieServices.getSpeakLongTexts();
 	}
 
-	async setSpeakLongTextsOption(speakLongTexts: boolean): Promise<void> {
+	async setSpeakLongTexts(speakLongTexts: boolean): Promise<void> {
 		const talkieServices = await getTalkieServices();
 
-		await talkieServices.setSpeakLongTextsOption(speakLongTexts);
+		await talkieServices.setSpeakLongTexts(speakLongTexts);
 	}
 
-	async getShowAdditionalDetailsOption(): Promise<boolean> {
+	async getShowAdditionalDetails(): Promise<boolean> {
 		const talkieServices = await getTalkieServices();
 
-		return talkieServices.getShowAdditionalDetailsOption();
+		return talkieServices.getShowAdditionalDetails();
 	}
 
-	async setShowAdditionalDetailsOption(showAdditionalDetails: boolean): Promise<void> {
+	async setShowAdditionalDetails(showAdditionalDetails: boolean): Promise<void> {
 		const talkieServices = await getTalkieServices();
 
-		await talkieServices.setShowAdditionalDetailsOption(showAdditionalDetails);
+		await talkieServices.setShowAdditionalDetails(showAdditionalDetails);
+	}
+
+	async getSpeakingHistoryLimit(): Promise<number> {
+		const talkieServices = await getTalkieServices();
+
+		return talkieServices.getSpeakingHistoryLimit();
+	}
+
+	async setSpeakingHistoryLimit(speakingHistoryLimit: number): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.setSpeakingHistoryLimit(speakingHistoryLimit);
+	}
+
+	async getMostRecentSpeakingEntry(): Promise<SpeakingHistoryEntry | null> {
+		const talkieServices = await getTalkieServices();
+
+		return talkieServices.getMostRecentSpeakingEntry();
+	}
+
+	async getSpeakingHistory(): Promise<SpeakingHistoryEntry[]> {
+		const talkieServices = await getTalkieServices();
+
+		return talkieServices.getSpeakingHistory();
+	}
+
+	async clearSpeakingHistory(): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.clearSpeakingHistory();
+	}
+
+	async pruneSpeakingHistory(): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.pruneSpeakingHistory();
+	}
+
+	async removeSpeakingHistoryEntry(hash: number): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.removeSpeakingHistoryEntry(hash);
+	}
+
+	async storeMostRecentSpeakingEntry(speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.storeMostRecentSpeakingEntry(speakingHistoryEntry);
 	}
 
 	async getEffectiveVoiceForLanguage(languageCode: string): Promise<string | null> {

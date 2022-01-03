@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Plug from "@talkie/browser-shared/plug.mjs";
-import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
+import type Plug from "@talkie/browser-shared/plug.mjs";
+import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
-	PromiseFunction,
+	type PromiseFunction,
 } from "@talkie/shared-application/promise-logging.mjs";
 import {
-	KnownSettings,
-	SettingChangedEventData,
+	KnownSettingStorageKeys,
+	type SettingChangedEventData,
 } from "@talkie/shared-application/settings-manager.mjs";
 import {
 	logDebug,
@@ -33,25 +33,193 @@ import {
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	KillSwitch,
+	getSpeakingHistoryEntryTextHash,
+} from "@talkie/shared-application-helpers/speaking-history.mjs";
+import {
+	type SpeakingEventData,
+	type SpeakingEventPartData,
+} from "@talkie/shared-interfaces/ispeaking-event.mjs";
+import {
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
-import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
+import {
+	type SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
+import type TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import ButtonPopupManager from "../button-popup-manager.mjs";
-import IconManager from "../icon-manager.mjs";
-import OnlyLastCaller from "../only-last-caller.mjs";
-import SpeakingStatus from "../speaking-status.mjs";
-import SuspensionManager from "../suspension-manager.mjs";
-import {
-	SpeakingEventData,
-	SpeakingEventPartData,
-} from "../talkie-speaker.mjs";
+import type ButtonPopupManager from "../button-popup-manager.mjs";
+import type HistoryManager from "../history-manager.mjs";
+import type IconManager from "../icon-manager.mjs";
+import type OnlyLastCaller from "../only-last-caller.mjs";
+import type SpeakingStatus from "../speaking-status.mjs";
+import type SuspensionManager from "../suspension-manager.mjs";
+
+const registerLastCallerListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	onlyLastCaller: ReadonlyDeep<OnlyLastCaller>,
+) => [
+	broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => {
+		onlyLastCaller.incrementCallerId();
+	}),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
+		onlyLastCaller.incrementCallerId();
+	}),
+];
+
+const registerPlugOnceListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	plug: ReadonlyDeep<Plug>,
+) => [
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
+		try {
+			await plug.once();
+		} catch (error: unknown) {
+			// NOTE: swallowing any plug.once() errors.
+			// NOTE: reduced logging for known tab/page access problems.
+			// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
+			if (error && typeof error === "object" && typeof (error as Error).message === "string" && (error as Error).message.startsWith("Cannot access")) {
+				void logDebug("plug.once", "Error swallowed", typeof error, JSON.stringify(error), error);
+			} else {
+				void logInfo("plug.once", "Error swallowed", typeof error, JSON.stringify(error), error);
+			}
+		}
+	}),
+];
+
+const registerSpeakingStatusListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	speakingStatus: ReadonlyDeep<SpeakingStatus>,
+) => [
+	broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => speakingStatus.setActiveTabAsSpeaking()),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => speakingStatus.setDoneSpeaking()),
+];
+
+const registerIconListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	iconManager: ReadonlyDeep<IconManager>,
+) => [
+	broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => {
+		// NOTE: setting icons async outside of the root chain.
+		void iconManager.setIconModePlaying();
+	}),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
+		// NOTE: setting icons async outside of the root chain.
+		void iconManager.setIconModeStopped();
+	}),
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	broadcaster.registerListeningAction<knownEvents.settingChanged, SettingChangedEventData<boolean>, void>(knownEvents.settingChanged, async (_name: knownEvents.settingChanged, data: Readonly<SettingChangedEventData<boolean>>) => {
+		if (data.key === KnownSettingStorageKeys.IsPremiumEdition) {
+			// NOTE: setting icons async outside of the root chain.
+			// NOTE: if speech is playing, this will show the wrong icon.
+			void iconManager.setIconModeStopped();
+		}
+	}),
+];
+
+const registerPopupListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	buttonPopupManager: ReadonlyDeep<ButtonPopupManager>,
+) => [
+	broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => {
+		// NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
+		// NOTE: enable/disable popup async outside of the root chain.
+		void buttonPopupManager.disablePopup();
+	}),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
+		// NOTE: enable/disable popup async outside of the root chain.
+		void buttonPopupManager.enablePopup();
+	}),
+];
+
+const registerSuspensionListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	suspensionManager: ReadonlyDeep<SuspensionManager>,
+) => [
+	broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => suspensionManager.preventExtensionSuspend()),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => suspensionManager.allowExtensionSuspend()),
+];
+
+const registerTabChangeListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	onTabRemovedListener: PromiseFunction<any>,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	onTabUpdatedListener: PromiseFunction<any>,
+): Array<Promise<KillSwitch>> => [
+	broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
+		browser.tabs.onRemoved.addListener(onTabRemovedListener);
+	}),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
+		browser.tabs.onRemoved.removeListener(onTabRemovedListener);
+	}),
+
+	broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
+		browser.tabs.onUpdated.addListener(onTabUpdatedListener);
+	}),
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
+		browser.tabs.onUpdated.removeListener(onTabUpdatedListener);
+	}),
+];
+
+const registerProgressListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	progress: ReadonlyDeep<TalkieProgress>,
+): Array<Promise<KillSwitch>> => [
+	broadcaster.registerListeningAction<knownEvents.beforeSpeaking, Readonly<SpeakingEventData>, void>(
+		knownEvents.beforeSpeaking,
+		async (
+			_actionName,
+			actionData,
+		) => progress.resetProgress(0, actionData.text.length, 0),
+	),
+	broadcaster.registerListeningAction<knownEvents.beforeSpeakingPart, Readonly<SpeakingEventPartData>, void>(
+		knownEvents.beforeSpeakingPart,
+		async (
+			_actionName,
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+			actionData,
+		) => {
+			await progress.startSegment(actionData.textPart.length);
+		},
+	),
+
+	broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, async () => {
+		await progress.endSegment();
+	}),
+
+	broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
+		await progress.finishProgress();
+	}),
+];
+
+const registerHistoryListeners = (
+	broadcaster: ReadonlyDeep<Broadcaster>,
+	historyManager: ReadonlyDeep<HistoryManager>,
+): Array<Promise<KillSwitch>> => [
+	broadcaster.registerListeningAction<knownEvents.beforeSpeaking, Readonly<SpeakingEventData>, void>(
+		knownEvents.beforeSpeaking,
+		async (
+			_actionName,
+
+			actionData,
+		) => {
+			const speakingHistoryEntry: SpeakingHistoryEntry = {
+				hash: getSpeakingHistoryEntryTextHash(actionData.text),
+				language: actionData.language,
+				text: actionData.text,
+				voiceName: actionData.voiceName,
+			};
+
+			return historyManager.storeMostRecentSpeakingEntry(speakingHistoryEntry);
+		},
+	),
+];
 
 const setupBroadcasterListenersAndKillswitches = async (
 	broadcaster: ReadonlyDeep<Broadcaster>,
@@ -66,6 +234,7 @@ const setupBroadcasterListenersAndKillswitches = async (
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	onTabUpdatedListener: PromiseFunction<any>,
 	progress: ReadonlyDeep<TalkieProgress>,
+	historyManager: ReadonlyDeep<HistoryManager>,
 	// eslint-disable-next-line max-params
 ): Promise<void> => {
 	const killSwitches: KillSwitch[] = [];
@@ -87,66 +256,15 @@ const setupBroadcasterListenersAndKillswitches = async (
 	});
 
 	const registeredKillSwitches = await Promise.all([
-		broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId()),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId()),
-
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
-			try {
-				await plug.once();
-			} catch (error: unknown) {
-				// NOTE: swallowing any plug.once() errors.
-				// NOTE: reduced logging for known tab/page access problems.
-				// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
-				if (error && typeof error === "object" && typeof (error as Error).message === "string" && (error as Error).message.startsWith("Cannot access")) {
-					void logDebug("plug.once", "Error swallowed", typeof error, JSON.stringify(error), error);
-				} else {
-					void logInfo("plug.once", "Error swallowed", typeof error, JSON.stringify(error), error);
-				}
-			}
-		}),
-
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
-
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
-			// NOTE: setting icons async outside of the root chain.
-			void iconManager.setIconModePlaying();
-		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
-			// NOTE: setting icons async outside of the root chain.
-			void iconManager.setIconModeStopped();
-		}),
-		broadcaster.registerListeningAction<knownEvents.settingChanged, SettingChangedEventData<boolean>, void>(knownEvents.settingChanged, async (_name: knownEvents.settingChanged, data: Readonly<SettingChangedEventData<boolean>>) => {
-			if (data.key === KnownSettings.IsPremiumEdition) {
-				// NOTE: setting icons async outside of the root chain.
-				// NOTE: if speech is playing, this will show the wrong icon.
-				void iconManager.setIconModeStopped();
-			}
-		}),
-
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
-			// NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
-			// NOTE: enable/disable popup async outside of the root chain.
-			void buttonPopupManager.disablePopup();
-		}),
-			// NOTE: enable/disable popup async outside of the root chain.
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
-			void buttonPopupManager.enablePopup();
-		}),
-
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
-
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onRemoved.addListener(onTabRemovedListener)),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onRemoved.removeListener(onTabRemovedListener)),
-
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
-
-		broadcaster.registerListeningAction<knownEvents.beforeSpeaking, Readonly<SpeakingEventData>, void>(knownEvents.beforeSpeaking, async (_actionName: knownEvents.beforeSpeaking, actionData: Readonly<SpeakingEventData>) => progress.resetProgress(0, actionData.text.length, 0)),
-		broadcaster.registerListeningAction<knownEvents.beforeSpeakingPart, Readonly<SpeakingEventPartData>, void>(knownEvents.beforeSpeakingPart, (_actionName: knownEvents.beforeSpeakingPart, actionData: Readonly<SpeakingEventPartData>) => progress.startSegment(actionData.textPart.length)),
-		broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
+		...registerLastCallerListeners(broadcaster, onlyLastCaller),
+		...registerPlugOnceListeners(broadcaster, plug),
+		...registerSpeakingStatusListeners(broadcaster, speakingStatus),
+		...registerIconListeners(broadcaster, iconManager),
+		...registerPopupListeners(broadcaster, buttonPopupManager),
+		...registerSuspensionListeners(broadcaster, suspensionManager),
+		...registerTabChangeListeners(broadcaster, onTabRemovedListener, onTabUpdatedListener),
+		...registerProgressListeners(broadcaster, progress),
+		...registerHistoryListeners(broadcaster, historyManager),
 	]);
 
 	// NOTE: don't want to replace the existing killSwitches array.

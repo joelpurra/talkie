@@ -26,7 +26,12 @@ import {
 	type MapStateToProps,
 } from "react-redux";
 
-import Settings from "../app/sections/settings.js";
+import Settings,
+{
+	type SettingsDispatchProps,
+	type SettingsStateProps,
+} from "../app/sections/settings.js";
+import selectors from "../selectors/index.mjs";
 import {
 	actions,
 } from "../slices/index.mjs";
@@ -39,34 +44,41 @@ const {
 } = toolkit;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SettingsContainerProps {}
+interface SettingsContainerProps {}
 
-interface StateProps {
-	showAdditionalDetails: boolean;
-	speakLongTexts: boolean;
-}
+interface StateProps extends SettingsStateProps {}
 
-interface DispatchProps {
+interface DispatchProps extends SettingsDispatchProps {
 	loadShowAdditionalDetails: typeof actions.settings.loadShowAdditionalDetails;
 	loadSpeakLongTexts: typeof actions.settings.loadSpeakLongTexts;
-	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
-	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
+	loadSpeakingHistory: typeof actions.shared.speaking.loadSpeakingHistory;
+	loadSpeakingHistoryLimit: typeof actions.settings.loadSpeakingHistoryLimit;
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,
+	speakingHistory: state.shared.speaking.history,
+	speakingHistoryCount: selectors.shared.speaking.getSpeakingHistoryCount(state),
+	speakingHistoryLimit: state.settings.speakingHistoryLimit,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, SettingsContainerProps> = (dispatch) => ({
+	clearSpeakingHistory: bindActionCreators(actions.shared.speaking.clearSpeakingHistory, dispatch),
 	loadShowAdditionalDetails: bindActionCreators(actions.settings.loadShowAdditionalDetails, dispatch),
 	loadSpeakLongTexts: bindActionCreators(actions.settings.loadSpeakLongTexts, dispatch),
+	loadSpeakingHistory: bindActionCreators(actions.shared.speaking.loadSpeakingHistory, dispatch),
+	loadSpeakingHistoryLimit: bindActionCreators(actions.settings.loadSpeakingHistoryLimit, dispatch),
+	removeSpeakingHistoryEntry: bindActionCreators(actions.shared.speaking.removeSpeakingHistoryEntry, dispatch),
 	storeShowAdditionalDetails: bindActionCreators(actions.settings.storeShowAdditionalDetails, dispatch),
 	storeSpeakLongTexts: bindActionCreators(actions.settings.storeSpeakLongTexts, dispatch),
+	storeSpeakingHistoryLimit: bindActionCreators(actions.settings.storeSpeakingHistoryLimit, dispatch),
 });
 
-class TextContainer<P extends SettingsContainerProps & StateProps & DispatchProps> extends React.PureComponent<P> {
+interface InternalProps extends SettingsContainerProps, StateProps, DispatchProps {}
+
+class SettingsContainer<P extends InternalProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -75,27 +87,41 @@ class TextContainer<P extends SettingsContainerProps & StateProps & DispatchProp
 	override componentDidMount(): void {
 		this.props.loadShowAdditionalDetails();
 		this.props.loadSpeakLongTexts();
+		this.props.loadSpeakingHistoryLimit();
+		this.props.loadSpeakingHistory();
 	}
 
 	override render(): React.ReactNode {
 		const {
+			clearSpeakingHistory,
+			removeSpeakingHistoryEntry,
 			showAdditionalDetails,
 			speakLongTexts,
+			speakingHistory,
+			speakingHistoryCount,
+			speakingHistoryLimit,
 			storeShowAdditionalDetails,
 			storeSpeakLongTexts,
-		} = this.props;
+			storeSpeakingHistoryLimit,
+		} = this.props as InternalProps;
 
 		return (
 			<Settings
+				clearSpeakingHistory={clearSpeakingHistory}
+				removeSpeakingHistoryEntry={removeSpeakingHistoryEntry}
 				showAdditionalDetails={showAdditionalDetails}
 				speakLongTexts={speakLongTexts}
+				speakingHistory={speakingHistory}
+				speakingHistoryCount={speakingHistoryCount}
+				speakingHistoryLimit={speakingHistoryLimit}
 				storeShowAdditionalDetails={storeShowAdditionalDetails}
 				storeSpeakLongTexts={storeSpeakLongTexts}
+				storeSpeakingHistoryLimit={storeSpeakingHistoryLimit}
 			/>
 		);
 	}
 }
 
 export default connect<StateProps, DispatchProps, SettingsContainerProps, OptionsRootState>(mapStateToProps, mapDispatchToProps)(
-	TextContainer,
+	SettingsContainer,
 );

@@ -28,10 +28,14 @@ export const button: StyleObject = {
 	width: "100%",
 };
 
-export const checkbox: StyleObject = {
+export const input: StyleObject = {
 	verticalAlign: "middle",
 };
+export const checkbox: StyleObject = {
+	...input,
+};
 export const range: StyleObject = {
+	...input,
 	width: "100%",
 };
 

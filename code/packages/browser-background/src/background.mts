@@ -75,24 +75,25 @@ const main = async () => {
 	void logDebug("Start", "Main background function");
 
 	const {
-		onInstalledManager,
-		suspensionManager,
-		talkieBackground,
 		broadcaster,
+		buttonPopupManager,
+		configuration,
+		contextMenuManager,
+		historyManager,
+		iconManager,
+		metadataManager,
+		onInstalledManager,
 		onlyLastCaller,
 		plug,
-		speakingStatus,
-		iconManager,
-		buttonPopupManager,
 		progress,
-		contextMenuManager,
-		shortcutKeyManager,
-		talkieSpeaker,
-		metadataManager,
 		settingsManager,
-		voiceManager,
-		configuration,
+		shortcutKeyManager,
+		speakingStatus,
 		storageManager,
+		suspensionManager,
+		talkieBackground,
+		talkieSpeaker,
+		voiceManager,
 	} = getDependencies(onInstallListenerEventQueue);
 
 	await addOnInstalledEventQueuePolling(onInstalledManager);
@@ -101,11 +102,33 @@ const main = async () => {
 	await suspensionManager.initialize();
 
 	const tabChangeListeners = await createAndStartTabListeners(talkieBackground);
-	await setupBroadcasterListenersAndKillswitches(broadcaster, onlyLastCaller, plug, speakingStatus, iconManager, buttonPopupManager, suspensionManager, tabChangeListeners.onTabRemovedListener, tabChangeListeners.onTabUpdatedListener, progress);
+	await setupBroadcasterListenersAndKillswitches(
+		broadcaster,
+		onlyLastCaller,
+		plug,
+		speakingStatus,
+		iconManager,
+		buttonPopupManager,
+		suspensionManager,
+		tabChangeListeners.onTabRemovedListener,
+		tabChangeListeners.onTabUpdatedListener,
+		progress,
+		historyManager,
+	);
 	await createAndStartSuspensionListener(talkieBackground);
 	await createAndStartCommandListeners(talkieBackground, contextMenuManager, shortcutKeyManager);
 
-	window.talkieServices = await createTalkieServices(broadcaster, talkieSpeaker, talkieBackground, metadataManager, settingsManager, voiceManager, configuration, storageManager);
+	window.talkieServices = await createTalkieServices(
+		broadcaster,
+		configuration,
+		historyManager,
+		metadataManager,
+		settingsManager,
+		storageManager,
+		talkieBackground,
+		talkieSpeaker,
+		voiceManager,
+	);
 
 	await buttonPopupManager.enablePopup();
 

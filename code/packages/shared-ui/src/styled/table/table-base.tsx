@@ -29,6 +29,7 @@ import {
 
 export const compactTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.commpactTable);
 export const wideTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.wideTable);
+export const wideFixedTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.wideFixedTable);
 export const thead: TalkieStyletronComponent<React.ElementType<"thead">> = styled("thead", tableBase.thead);
 export const tfoot: TalkieStyletronComponent<React.ElementType<"tfoot">> = styled("tfoot", tableBase.tfoot);
 export const tbody: TalkieStyletronComponent<React.ElementType<"tbody">> = styled("tbody", tableBase.tbody);

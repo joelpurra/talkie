@@ -18,6 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	type SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
 import React from "react";
 
 import {
@@ -25,20 +28,27 @@ import {
 } from "../../slices/index.mjs";
 import ShowAdditionalDetails from "./settings/show-additional-details.js";
 import SpeakLongTexts from "./settings/speak-long-texts.js";
+import SpeakingHistoryLimit from "./settings/speaking-history-limit.js";
 
-interface TextStateProps {
+export interface SettingsStateProps {
 	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
+	speakingHistoryCount: number;
+	speakingHistoryLimit: number;
+	speakingHistory: SpeakingHistoryEntry[];
 }
 
-export interface TextDispatchProps {
+export interface SettingsDispatchProps {
+	clearSpeakingHistory: typeof actions.shared.speaking.clearSpeakingHistory;
+	removeSpeakingHistoryEntry: typeof actions.shared.speaking.removeSpeakingHistoryEntry;
 	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
+	storeSpeakingHistoryLimit: typeof actions.settings.storeSpeakingHistoryLimit;
 }
 
-interface TextProps extends TextStateProps, TextDispatchProps {}
+interface SettingsProps extends SettingsStateProps, SettingsDispatchProps {}
 
-export default class Text<P extends TextProps> extends React.PureComponent<P> {
+export default class Settings<P extends SettingsProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -46,9 +56,15 @@ export default class Text<P extends TextProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
+			clearSpeakingHistory,
+			removeSpeakingHistoryEntry,
 			showAdditionalDetails,
+			speakingHistory,
+			speakingHistoryCount,
+			speakingHistoryLimit,
 			speakLongTexts,
 			storeShowAdditionalDetails,
+			storeSpeakingHistoryLimit,
 			storeSpeakLongTexts,
 		} = this.props;
 		return (
@@ -62,6 +78,15 @@ export default class Text<P extends TextProps> extends React.PureComponent<P> {
 					disabled={false}
 					showAdditionalDetails={showAdditionalDetails}
 					onChange={storeShowAdditionalDetails}
+				/>
+				<SpeakingHistoryLimit
+					clearSpeakingHistory={clearSpeakingHistory}
+					disabled={false}
+					removeSpeakingHistoryEntry={removeSpeakingHistoryEntry}
+					speakingHistory={speakingHistory}
+					speakingHistoryCount={speakingHistoryCount}
+					speakingHistoryLimit={speakingHistoryLimit}
+					onChange={storeSpeakingHistoryLimit}
 				/>
 			</section>
 		);

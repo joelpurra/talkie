@@ -55,6 +55,23 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 
 	constructor(private readonly localeProvider: ILocaleProvider) {}
 
+	async translatePlaceholder(key: string, extras?: Readonly<string[]>): Promise<string> {
+		// eslint-disable-next-line no-sync
+		return this.translatePlaceholderSync(key, extras);
+	}
+
+	translatePlaceholderSync(key: string, extras?: Readonly<string[]>): string {
+		// TODO: inject logging provider?
+		// eslint-disable-next-line no-console
+		console.warn("Untranslated placeholder:", key, extras);
+
+		const placeholderExtras = extras
+			? ` ${JSON.stringify(extras)}`
+			: "";
+
+		return key + placeholderExtras;
+	}
+
 	async translate(key: string, extras?: Readonly<string[]>): Promise<string> {
 		// eslint-disable-next-line no-sync
 		return this.translateSync(key, extras);

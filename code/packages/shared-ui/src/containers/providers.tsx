@@ -129,6 +129,9 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 		},
 		systemType: this.props.systemType,
 		translateContextValue: {
+			translatePlaceholderSync: (key: string, extras?: Readonly<string[]>) =>
+				// eslint-disable-next-line no-sync
+				this.props.translator.translatePlaceholderSync(key, extras),
 			translateSync: (key: string, extras?: Readonly<string[]>) =>
 				// eslint-disable-next-line no-sync
 				this.props.translator.translateSync(key, extras),

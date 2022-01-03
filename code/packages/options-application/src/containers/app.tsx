@@ -19,6 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
+import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
+import ProgressUpdater, {
+	type ProgressUpdaterDispatchProps,
+} from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
 import type {
 	MapDispatchToPropsFunction,
@@ -50,8 +54,10 @@ interface DispatchProps extends MainDispatchProps {}
 
 export interface AppProps extends StateProps, DispatchProps {}
 
+interface InternalProps extends StateProps, DispatchProps, ProgressUpdaterDispatchProps {}
+
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	activeTabId: state.tabs.activeTabId,
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
@@ -61,13 +67,16 @@ const mapStateToProps: MapStateToProps<StateProps, AppProps, OptionsRootState> =
 	versionNumber: state.shared.metadata.versionNumber,
 });
 
-const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, AppProps> = (dispatch) => ({
+const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
 	openExternalUrlInNewTab: bindActionCreators(actions.shared.navigation.openExternalUrlInNewTab, dispatch),
 	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
 	openShortKeysConfiguration: bindActionCreators(actions.shared.navigation.openShortKeysConfiguration, dispatch),
+	setCurrent: bindActionCreators(actions.shared.progress.setCurrent, dispatch),
+	setMax: bindActionCreators(actions.shared.progress.setMax, dispatch),
+	setMin: bindActionCreators(actions.shared.progress.setMin, dispatch),
 });
 
-class App<P extends AppProps> extends React.PureComponent<P> {
+class App<P extends InternalProps> extends React.PureComponent<P> {
 	static defaultProps = {
 		osType: null,
 	};
@@ -82,28 +91,41 @@ class App<P extends AppProps> extends React.PureComponent<P> {
 			activeTabId,
 			errorCount,
 			isPremiumEdition,
+			openExternalUrlInNewTab,
 			openOptionsPage,
 			openShortKeysConfiguration,
-			openExternalUrlInNewTab,
 			osType,
+			setCurrent,
+			setMax,
+			setMin,
 			showAdditionalDetails,
 			systemType,
 			versionNumber,
 		} = this.props;
 
 		return (
-			<Main
-				activeTabId={activeTabId}
-				errorCount={errorCount}
-				isPremiumEdition={isPremiumEdition}
-				openExternalUrlInNewTab={openExternalUrlInNewTab}
-				openOptionsPage={openOptionsPage}
-				openShortKeysConfiguration={openShortKeysConfiguration}
-				osType={osType ?? null}
-				showAdditionalDetails={showAdditionalDetails}
-				systemType={systemType}
-				versionNumber={versionNumber}
-			/>
+			<>
+				<IsSpeakingListenerContainer/>
+
+				<ProgressUpdater
+					setCurrent={setCurrent}
+					setMax={setMax}
+					setMin={setMin}
+				/>
+
+				<Main
+					activeTabId={activeTabId}
+					errorCount={errorCount}
+					isPremiumEdition={isPremiumEdition}
+					openExternalUrlInNewTab={openExternalUrlInNewTab}
+					openOptionsPage={openOptionsPage}
+					openShortKeysConfiguration={openShortKeysConfiguration}
+					osType={osType ?? null}
+					showAdditionalDetails={showAdditionalDetails}
+					systemType={systemType}
+					versionNumber={versionNumber}
+				/>
+			</>
 		);
 	}
 }

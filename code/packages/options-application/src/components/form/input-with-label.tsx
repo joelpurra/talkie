@@ -32,25 +32,29 @@ import {
 	styled,
 } from "styletron-react";
 
-import Checkbox from "./checkbox.js";
+import Input from "./input.js";
 
-export interface CheckboxWithLabelProps {
-	checked: boolean;
+export interface InputWithLabelProps {
+	// NOTE: <input> tags are complex; allowing custom properties/attributes.
+	[key: string]: unknown;
 	disabled: boolean;
 	id?: string;
-	onChange: (checked: boolean) => void;
+	onChange: (value: string) => void;
+	// TODO: more types, dynamically collected.
+	type: string;
+	value: string;
 }
 
-class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P> {
+class InputWithLabel<P extends InputWithLabelProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		labelForCheckbox: TalkieStyletronComponent<"label">;
+		labelForInput: TalkieStyletronComponent<"label">;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		this.styled = {
-			labelForCheckbox: styled(
+			labelForInput: styled(
 				"label",
 				{
 					...layoutBase.roundedWithBorder("0.5em"),
@@ -66,29 +70,34 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 
 	override render(): React.ReactNode {
 		const {
-			checked,
+			children,
 			className,
 			disabled,
 			id,
-			children,
 			onChange,
+			type,
+			value,
+			...other
 		} = this.props;
 
 		return (
-			<this.styled.labelForCheckbox>
-				<Checkbox
-					checked={checked}
+			<this.styled.labelForInput>
+				{/* TODO: pass extra CSS className property styling to the inner element. */}
+				<Input
+					{...other}
 					className={className}
 					disabled={disabled}
 					id={id}
+					type={type}
+					value={value}
 					onChange={onChange}
 				/>
 				{/* TODO: padding instead of a literal space. */}
 				{" "}
 				{children}
-			</this.styled.labelForCheckbox>
+			</this.styled.labelForInput>
 		);
 	}
 }
 
-export default styled(CheckboxWithLabel, formBase.checkbox);
+export default styled(InputWithLabel, formBase.input);

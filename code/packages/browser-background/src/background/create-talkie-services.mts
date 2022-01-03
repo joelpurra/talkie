@@ -39,6 +39,9 @@ import {
 	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
+import {
 	ITalkieServices,
 } from "@talkie/split-environment-webextension/browser-specific/italkie-services.mjs";
 import type {
@@ -46,19 +49,21 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
+import HistoryManager from "../history-manager.mjs";
 import TalkieBackground from "../talkie-background.mjs";
 import TalkieSpeaker from "../talkie-speaker.mjs";
 import VoiceManager from "../voice-manager.mjs";
 
 const createTalkieServices = async (
 	broadcaster: ReadonlyDeep<Broadcaster>,
-	talkieSpeaker: ReadonlyDeep<TalkieSpeaker>,
-	talkieBackground: ReadonlyDeep<TalkieBackground>,
+	configuration: ReadonlyDeep<IConfiguration>,
+	historyManager: ReadonlyDeep<HistoryManager>,
 	metadataManager: ReadonlyDeep<IMetadataManager>,
 	settingsManager: ReadonlyDeep<SettingsManager>,
-	voiceManager: ReadonlyDeep<VoiceManager>,
-	configuration: ReadonlyDeep<IConfiguration>,
 	storageManager: ReadonlyDeep<StorageManager>,
+	talkieBackground: ReadonlyDeep<TalkieBackground>,
+	talkieSpeaker: ReadonlyDeep<TalkieSpeaker>,
+	voiceManager: ReadonlyDeep<VoiceManager>,
 	// eslint-disable-next-line max-params
 ): Promise<ITalkieServices> => {
 	// TODO: group methods.
@@ -137,12 +142,21 @@ const createTalkieServices = async (
 			getSystemType: async () => metadataManager.getSystemType(),
 			getOperatingSystemType: async () => metadataManager.getOperatingSystemType(),
 
-			getIsPremiumEditionOption: async () => settingsManager.getIsPremiumEdition(),
-			setIsPremiumEditionOption: async (isPremiumEdition: boolean) => settingsManager.setIsPremiumEdition(isPremiumEdition),
-			getSpeakLongTextsOption: async () => settingsManager.getSpeakLongTexts(),
-			setSpeakLongTextsOption: async (speakLongTexts: boolean) => settingsManager.setSpeakLongTexts(speakLongTexts),
-			getShowAdditionalDetailsOption: async () => settingsManager.getShowAdditionalDetails(),
-			setShowAdditionalDetailsOption: async (showAdditionalDetails: boolean) => settingsManager.setShowAdditionalDetails(showAdditionalDetails),
+			getIsPremiumEdition: async () => settingsManager.getIsPremiumEdition(),
+			setIsPremiumEdition: async (isPremiumEdition: boolean) => settingsManager.setIsPremiumEdition(isPremiumEdition),
+			getSpeakLongTexts: async () => settingsManager.getSpeakLongTexts(),
+			setSpeakLongTexts: async (speakLongTexts: boolean) => settingsManager.setSpeakLongTexts(speakLongTexts),
+			getShowAdditionalDetails: async () => settingsManager.getShowAdditionalDetails(),
+			setShowAdditionalDetails: async (showAdditionalDetails: boolean) => settingsManager.setShowAdditionalDetails(showAdditionalDetails),
+			getSpeakingHistoryLimit: async () => settingsManager.getSpeakingHistoryLimit(),
+			setSpeakingHistoryLimit: async (speakingHistoryLimit: number) => settingsManager.setSpeakingHistoryLimit(speakingHistoryLimit),
+
+			getMostRecentSpeakingEntry: async () => historyManager.getMostRecentSpeakingEntry(),
+			getSpeakingHistory: async () => historyManager.getSpeakingHistory(),
+			clearSpeakingHistory: async () => historyManager.clearSpeakingHistory(),
+			pruneSpeakingHistory: async () => historyManager.pruneSpeakingHistory(),
+			removeSpeakingHistoryEntry: async (hash: number) => historyManager.removeSpeakingHistoryEntry(hash),
+			storeMostRecentSpeakingEntry: async (speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>) => historyManager.storeMostRecentSpeakingEntry(speakingHistoryEntry),
 
 			getEffectiveVoiceForLanguage: async (languageName: string) => voiceManager.getEffectiveVoiceForLanguage(languageName),
 			isLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName),
@@ -153,6 +167,7 @@ const createTalkieServices = async (
 			getVoicePitchDefault: async (voiceName: string) => voiceManager.getVoicePitchDefault(voiceName),
 			setVoicePitchOverride: async (voiceName: string, pitch: number) => voiceManager.setVoicePitchOverride(voiceName, pitch),
 			getEffectivePitchForVoice: async (voiceName: string) => voiceManager.getEffectivePitchForVoice(voiceName),
+
 			getStoredValue: async <T extends JsonValue>(key: string) => storageManager.getStoredValue<T>(key),
 			setStoredValue: async (key: string, value: JsonValue) => storageManager.setStoredValue(key, value),
 			getConfigurationValue: async <T extends JsonValue>(path: string) => configuration.get<T>(path),

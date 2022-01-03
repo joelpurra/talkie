@@ -66,14 +66,9 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 	constructor(props: P) {
 		super(props);
 
-		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 		this.handleLinkClick = this.handleLinkClick.bind(this);
 		this.handleCheckLinkClick = this.handleCheckLinkClick.bind(this);
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
-	}
-
-	handlePlayPauseClick(): void {
-		this.props.iconClick();
 	}
 
 	handleLinkClick(url: ReadonlyDeep<URL>): void {
@@ -100,6 +95,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 		const {
 			className,
 			errorCount,
+			iconClick,
 			isPremiumEdition,
 			isSpeaking,
 			versionNumber,
@@ -112,12 +108,12 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 			>
 				<Header
 					isPremiumEdition={isPremiumEdition}
-					playPauseClick={this.handlePlayPauseClick}
+					playPauseClick={iconClick}
 				/>
 
 				<Status
 					isSpeaking={isSpeaking}
-					playPauseClick={this.handlePlayPauseClick}
+					playPauseClick={iconClick}
 				/>
 
 				<layoutBase.hr/>

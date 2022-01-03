@@ -27,5 +27,20 @@ export type TranslateSync = (key: string, extras?: Readonly<string[]>) => string
 
 export default interface ITranslatorProvider {
 	translate: Translate;
+
+	/**
+	 * This is a temporary placeholder for untranslated strings.
+	 *
+	 * @deprecated Should be replaced with translated strings before publishing.
+	 */
+	translatePlaceholder: Translate;
+
+	/**
+	 * This is a temporary placeholder for untranslated strings.
+	 *
+	 * @deprecated Should be replaced with translated strings before publishing.
+	 */
+	translatePlaceholderSync: TranslateSync;
+
 	translateSync: TranslateSync;
 }

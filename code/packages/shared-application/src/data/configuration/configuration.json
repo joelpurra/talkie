@@ -19,6 +19,7 @@
         "options-about": "/packages/options-renderer/src/options.html#about",
         "options-features": "/packages/options-renderer/src/options.html#features",
         "options-settings": "/packages/options-renderer/src/options.html#settings",
+        "options-status": "/packages/options-renderer/src/options.html#status",
         "options-support": "/packages/options-renderer/src/options.html#support",
         "options-usage": "/packages/options-renderer/src/options.html#usage",
         "options-voices": "/packages/options-renderer/src/options.html#voices",

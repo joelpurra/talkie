@@ -27,6 +27,9 @@ import toolkit from "@reduxjs/toolkit";
 import {
 	IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
+import {
+	loadSpeakingHistory,
+} from "@talkie/shared-ui/slices/speaking.mjs";
 
 const {
 	// eslint-disable-next-line import/no-named-as-default-member
@@ -38,11 +41,13 @@ const {
 export interface SettingsState {
 	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
+	speakingHistoryLimit: number;
 }
 
 const initialState: SettingsState = {
 	showAdditionalDetails: false,
 	speakLongTexts: false,
+	speakingHistoryLimit: 0,
 };
 
 const prefix = "settings";
@@ -56,7 +61,7 @@ export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsy
 		{
 			extra,
 		},
-	) => extra.getShowAdditionalDetailsOption(),
+	) => extra.getShowAdditionalDetails(),
 );
 
 export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
@@ -68,7 +73,7 @@ export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAs
 			extra,
 		},
 	) => {
-		await extra.setShowAdditionalDetailsOption(showAdditionalDetails);
+		await extra.setShowAdditionalDetails(showAdditionalDetails);
 		dispatch(setShowAdditionalDetails(showAdditionalDetails));
 	},
 );
@@ -80,7 +85,7 @@ export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunk
 		{
 			extra,
 		},
-	) => extra.getSpeakLongTextsOption(),
+	) => extra.getSpeakLongTexts(),
 );
 
 export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
@@ -92,8 +97,34 @@ export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThun
 			extra,
 		},
 	) => {
-		await extra.setSpeakLongTextsOption(speakLongTexts);
+		await extra.setSpeakLongTexts(speakLongTexts);
 		dispatch(setSpeakLongTexts(speakLongTexts));
+	},
+);
+
+export const loadSpeakingHistoryLimit = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadSpeakingHistoryLimit`,
+	async (
+		_,
+		{
+			extra,
+		},
+	) => extra.getSpeakingHistoryLimit(),
+);
+
+export const storeSpeakingHistoryLimit = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
+	`${prefix}/storeSpeakingHistoryLimit`,
+	async (
+		speakingHistoryLimit,
+		{
+			dispatch,
+			extra,
+		},
+	) => {
+		await extra.setSpeakingHistoryLimit(speakingHistoryLimit);
+		await extra.pruneSpeakingHistory();
+		await dispatch(loadSpeakingHistory());
+		dispatch(setSpeakingHistoryLimit(speakingHistoryLimit));
 	},
 );
 
@@ -107,6 +138,10 @@ export const settingsSlice = createSlice({
 			.addCase(loadSpeakLongTexts.fulfilled, (state, action) => {
 				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.speakLongTexts = action.payload;
+			})
+			.addCase(loadSpeakingHistoryLimit.fulfilled, (state, action) => {
+				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
+				state.speakingHistoryLimit = action.payload;
 			});
 	},
 	initialState,
@@ -118,6 +153,9 @@ export const settingsSlice = createSlice({
 		setSpeakLongTexts(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.speakLongTexts = action.payload;
 		},
+		setSpeakingHistoryLimit: (state: Draft<SettingsState>, action: PayloadAction<number>) => {
+			state.speakingHistoryLimit = action.payload;
+		},
 	},
 });
 
@@ -126,6 +164,7 @@ export const settingsSlice = createSlice({
 export const {
 	setShowAdditionalDetails,
 	setSpeakLongTexts,
+	setSpeakingHistoryLimit,
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

@@ -25,7 +25,7 @@ import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import React from "react";
 
 import Checkbox from "../../../../components/form/checkbox.js";
-import Markdown from "../../../../components/markdown.js";
+import MarkdownStrong from "../../../../components/markdown/strong.js";
 
 export interface ToggleDefaultProps {
 	disabled: boolean;
@@ -79,9 +79,9 @@ class ToggleDefault<P extends InternalProps> extends React.PureComponent<P> {
 						<label
 							htmlFor={checkboxId}
 						>
-							<Markdown>
+							<MarkdownStrong>
 								{buttonTextMarkdown}
-							</Markdown>
+							</MarkdownStrong>
 						</label>
 					</tableBase.td>
 				</tableBase.tr>

@@ -19,6 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	type SpeakingEventData,
+	type SpeakingEventPartData,
+} from "@talkie/shared-interfaces/ispeaking-event.mjs";
+import {
 	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
@@ -37,7 +41,13 @@ import {
 interface IsSpeakingListenerStateProps {}
 
 export interface IsSpeakingListenerDispatchProps {
+	loadSpeakingHistory: typeof actions.speaking.loadSpeakingHistory;
 	setIsSpeaking: typeof actions.speaking.setIsSpeaking;
+	setMostRecentLanguage: typeof actions.speaking.setMostRecentLanguage;
+	setMostRecentPitch: typeof actions.speaking.setMostRecentPitch;
+	setMostRecentRate: typeof actions.speaking.setMostRecentRate;
+	setMostRecentText: typeof actions.speaking.setMostRecentText;
+	setMostRecentVoiceName: typeof actions.speaking.setMostRecentVoiceName;
 }
 
 export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps & IsSpeakingListenerDispatchProps> extends React.PureComponent<P> {
@@ -46,14 +56,13 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 	// eslint-disable-next-line react/static-property-placement
 	declare context: React.ContextType<typeof BroadcasterContext>;
 
-	isListeningToBroadcasts: boolean;
 	killSwitches: KillSwitch[];
 
 	constructor(props: P) {
 		super(props);
 
 		this.componentCleanup = this.componentCleanup.bind(this);
-		this.isListeningToBroadcasts = false;
+		this.updateIsSpeaking = this.updateIsSpeaking.bind(this);
 		this.killSwitches = [];
 	}
 
@@ -61,17 +70,15 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 		window.addEventListener("beforeunload", this.componentCleanup);
 
 		void this.registerBroadcastListeners();
-		this.isListeningToBroadcasts = true;
 	}
 
 	override componentWillUnmount(): void {
-		window.removeEventListener("beforeunload", this.componentCleanup);
-
 		this.componentCleanup();
 	}
 
 	componentCleanup(): void {
-		this.isListeningToBroadcasts = false;
+		window.removeEventListener("beforeunload", this.componentCleanup);
+
 		this.executeKillSwitches();
 	}
 
@@ -80,14 +87,39 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 	}
 
 	updateIsSpeaking(isSpeaking: boolean): void {
-		if (!this.isListeningToBroadcasts) {
-			return;
-		}
-
+		// TODO: move other listener feature types out of the class.
 		this.props.setIsSpeaking(isSpeaking);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	updateSpeakingEventPartData(actionData: Readonly<SpeakingEventPartData>): void {
+		this.updateIsSpeaking(true);
+
+		// TODO: separate most recent spoken from other listeners.
+		// this.props.setMostRecentTextPart(actionData.textPart);
+		// this.props.setMostRecentTextPartOffset(actionData.textPartOffset);
+		// this.props.setMostRecentVoiceName(actionData.actualVoice);
+		this.props.setMostRecentPitch(actionData.pitch);
+		this.props.setMostRecentRate(actionData.rate);
+	}
+
+	updateSpeakingEventData(actionData: Readonly<SpeakingEventData>): void {
+		this.updateIsSpeaking(true);
+
+		// TODO: separate most recent spoken from other listeners.
+		this.props.setMostRecentLanguage(actionData.language);
+		this.props.setMostRecentText(actionData.text);
+		this.props.setMostRecentVoiceName(actionData.voiceName);
+
+		// TODO: separate speaking history from other listeners.
+		// NOTE: storing the speaking history entry is also event-driven, so listener order matters.
+		// HACK: wait until the speaking history entry has (hopefully) been stored.
+		// TODO: add pre/post events?
+		setTimeout(() => this.props.loadSpeakingHistory(), 100);
+	}
+
 	executeKillSwitches(): void {
+		// TODO: base component class for other components with broadcast listeners and kill switches.
 		// NOTE: expected to have only synchronous methods for the relevant parts.
 		const killSwitchesToExecute = this.killSwitches;
 		this.killSwitches = [];
@@ -109,17 +141,26 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 		const killSwitches = await Promise.all([
 			this.context.broadcaster.registerListeningAction(
 				knownEvents.beforeSpeaking,
-				(_actionName: string, _actionData: unknown) => {
-					this.updateIsSpeaking(true);
+				(
+					_actionName,
+					actionData: Readonly<SpeakingEventData>,
+				) => {
+					this.updateSpeakingEventData(actionData);
 				}),
+
 			this.context.broadcaster.registerListeningAction(
 				knownEvents.beforeSpeakingPart,
-				(_actionName: string, _actionData: unknown) => {
-					this.updateIsSpeaking(true);
+				(
+					_actionName,
+					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+					actionData: Readonly<SpeakingEventPartData>,
+				) => {
+					this.updateSpeakingEventPartData(actionData);
 				}),
+
 			this.context.broadcaster.registerListeningAction(
 				knownEvents.afterSpeaking,
-				(_actionName: string, _actionData: unknown) => {
+				(_actionName, _actionData: unknown) => {
 					this.updateIsSpeaking(false);
 				}),
 		]);

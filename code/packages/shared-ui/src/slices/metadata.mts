@@ -70,7 +70,7 @@ export const storeIsPremiumEdition = createAsyncThunk<void, boolean, IApiAsyncTh
 		dispatch,
 		extra,
 	}) => {
-		await extra.setIsPremiumEditionOption(isPremiumEdition);
+		await extra.setIsPremiumEdition(isPremiumEdition);
 
 		// TODO: reconsider post-store "sideffect" here?
 		await dispatch(loadIsPremiumEdition()).unwrap();

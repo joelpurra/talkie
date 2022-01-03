@@ -30,7 +30,7 @@ export interface MarkdownProps extends ClassNameProp {
 
 interface InternalProps extends MarkdownProps {}
 
-class Markdown<P extends InternalProps> extends React.PureComponent<P> {
+class MarkdownStrong<P extends InternalProps> extends React.PureComponent<P> {
 	linkTarget: (...args: Readonly<unknown[]>) => never;
 	transformImageUri: (...args: Readonly<unknown[]>) => never;
 	transformLinkUri: (...args: Readonly<unknown[]>) => never;
@@ -74,4 +74,4 @@ class Markdown<P extends InternalProps> extends React.PureComponent<P> {
 	}
 }
 
-export default Markdown;
+export default MarkdownStrong;

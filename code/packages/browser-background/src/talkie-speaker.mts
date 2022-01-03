@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ContentLogger from "@talkie/browser-shared/content-logger.mjs";
-import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
-import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
+import type ContentLogger from "@talkie/browser-shared/content-logger.mjs";
+import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
+import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import {
 	flatten,
 	jsonClone,
@@ -36,21 +36,24 @@ import {
 	promiseTimeout,
 } from "@talkie/shared-application-helpers/promise.mjs";
 import {
-	IVoiceLanguage,
-	IVoiceName,
-	IVoiceNameAndRateAndPitch,
-	SafeVoiceObject,
-	SafeVoiceObjects,
+	type SpeakingEventData,
+	type SpeakingEventPartData,
+} from "@talkie/shared-interfaces/ispeaking-event.mjs";
+import {
+	type IVoiceLanguage,
+	type IVoiceName,
+	type IVoiceNameAndRateAndPitch,
+	type SafeVoiceObject,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import type {
-	JsonObject,
 	ReadonlyDeep,
 } from "type-fest";
 
-import OnlyLastCaller from "./only-last-caller.mjs";
+import type OnlyLastCaller from "./only-last-caller.mjs";
 import {
 	createSafeVoiceObjectFromSpeechSynthesisVoice,
 	resolveDefaultVoiceFromLanguage,
@@ -65,28 +68,7 @@ declare global{
 	}
 }
 
-// TODO: merge SpeakingEventData and SpeakingEventPartData?
-export interface SpeakingEventData extends JsonObject {
-	language: string | null;
-	text: string;
-	voice: string | null;
-};
-
-export interface SpeakingEventPartData extends JsonObject {
-	textPart: string;
-	actualVoice: Readonly<SpeechSynthesisVoice>;
-	rate: number;
-	pitch: number;
-};
-
 export default class TalkieSpeaker {
-	MAX_UTTERANCE_TEXT_LENGTH = 100;
-
-	// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
-	// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
-	// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
-	constructor(private readonly broadcaster: Broadcaster, private readonly shouldContinueSpeakingProvider: OnlyLastCaller, private readonly contentLogger: ContentLogger, private readonly settingsManager: SettingsManager) {}
-
 	static async _asyncSynthesizerInitialization(): Promise<void> {
 		// NOTE: wraps the browser's speech synthesizer events to figure out when it is ready.
 		return new Promise<void>(
@@ -115,6 +97,15 @@ export default class TalkieSpeaker {
 			},
 		);
 	}
+
+	private static get maxUtteranceTextLength() {
+		return 100;
+	}
+
+	// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
+	// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
+	// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
+	constructor(private readonly broadcaster: Broadcaster, private readonly shouldContinueSpeakingProvider: OnlyLastCaller, private readonly contentLogger: ContentLogger, private readonly settingsManager: SettingsManager) {}
 
 	async resetSynthesizer(): Promise<void> {
 		void logDebug("Start", "resetSynthesizer");
@@ -262,7 +253,7 @@ export default class TalkieSpeaker {
 		const speakingEventData: SpeakingEventData = {
 			language: resolvedVoice.lang,
 			text,
-			voice: resolvedVoice.name,
+			voiceName: resolvedVoice.name,
 		};
 
 		// NOTE: trying to avoid sending object references to broadcastEvent.
@@ -281,7 +272,7 @@ export default class TalkieSpeaker {
 		if (speakLongTexts) {
 			textParts = paragraphs;
 		} else {
-			const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, this.MAX_UTTERANCE_TEXT_LENGTH));
+			const cleanTextParts = paragraphs.map((paragraph) => TextHelper.splitTextToSentencesOfMaxLength(paragraph, TalkieSpeaker.maxUtteranceTextLength));
 			textParts = flatten<string>(cleanTextParts);
 		}
 
@@ -289,22 +280,24 @@ export default class TalkieSpeaker {
 
 		const shouldContinueSpeaking = this.shouldContinueSpeakingProvider.getShouldContinueSpeakingProvider();
 
+		let textPartOffset = 0;
+
 		// TODO: generator, yielding text parts?
 		const textPartsPromiseFunctions = textParts
 			.map(
 				(textPart: string) => async () => {
+					textPartOffset += textPart.length;
+
 					const speakingPartEventData: SpeakingEventPartData = {
-						actualVoice: resolvedVoice,
+						actualVoice: createSafeVoiceObjectFromSpeechSynthesisVoice(resolvedVoice),
 						pitch,
 						rate,
 						textPart,
+						textPartOffset,
 					};
 
 					// NOTE: trying to avoid sending object references to broadcastEvent.
-					const speakingPartEventDataCopy = jsonClone({
-						...speakingPartEventData,
-						actualVoice: createSafeVoiceObjectFromSpeechSynthesisVoice(resolvedVoice),
-					});
+					const speakingPartEventDataCopy = jsonClone(speakingPartEventData);
 
 					// TODO: add a timeout in case the speech synthesizer crashes.
 					// Seems to be the case for some voices, such as Fred (English) on macOS.

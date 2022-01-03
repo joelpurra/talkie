@@ -22,30 +22,21 @@ import {
 	type JsonObject,
 } from "type-fest";
 
-export interface IVoiceName {
-	name: string;
+import {
+	type SafeVoiceObject,
+} from "./ivoices.mjs";
+
+// TODO: merge SpeakingEventData and SpeakingEventPartData?
+export interface SpeakingEventData extends JsonObject {
+	language: string | null;
+	text: string;
+	voiceName: string | null;
 }
 
-export interface IVoiceLanguage {
-	lang: string;
-}
-
-export interface IVoiceNameAndLanguage extends IVoiceName, IVoiceLanguage {}
-
-export interface IVoiceNameAndRateAndPitch extends IVoiceName {
-	rate: number;
+export interface SpeakingEventPartData extends JsonObject {
+	actualVoice: SafeVoiceObject;
 	pitch: number;
+	rate: number;
+	textPart: string;
+	textPartOffset: number;
 }
-
-export interface MutableSafeVoiceObject extends JsonObject {
-	isSafeVoiceObject: true;
-	default: boolean;
-	lang: string;
-	localService: boolean;
-	name: string;
-	voiceUri: string;
-}
-
-export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
-
-export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}

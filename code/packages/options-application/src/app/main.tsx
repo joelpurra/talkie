@@ -52,7 +52,8 @@ import {
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
 import FeaturesContainer from "../containers/features-container.js";
-import TextContainer from "../containers/settings-container.js";
+import SettingsContainer from "../containers/settings-container.js";
+import StatusContainer from "../containers/status-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
 import {
@@ -117,6 +118,11 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				tabId: "welcome",
 				// eslint-disable-next-line no-sync
 				text: this.props.translateSync("frontend_welcomeLinkText"),
+			},
+			{
+				tabId: "status",
+				// eslint-disable-next-line no-sync
+				text: this.props.translatePlaceholderSync("Status" /* "frontend_statusLinkText" */),
 			},
 			{
 				tabId: "voices",
@@ -280,6 +286,14 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 					<TabContents
 						activeTabId={activeTabId}
+						id="status"
+						onLinkClick={this.handleLinkClick}
+					>
+						<StatusContainer/>
+					</TabContents>
+
+					<TabContents
+						activeTabId={activeTabId}
 						id="voices"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -312,7 +326,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 						id="settings"
 						onLinkClick={this.handleLinkClick}
 					>
-						<TextContainer/>
+						<SettingsContainer/>
 					</TabContents>
 
 					<TabContents

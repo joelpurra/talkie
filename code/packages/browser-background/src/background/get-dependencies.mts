@@ -46,6 +46,7 @@ import {
 	IBrowserCommandMap,
 } from "../command-handler-types.mjs";
 import ContextMenuManager from "../context-menu-manager.mjs";
+import HistoryManager from "../history-manager.mjs";
 import IconManager from "../icon-manager.mjs";
 import LanguageHelper from "../language-helper.mjs";
 import NonBreakingChain from "../non-breaking-chain.mjs";
@@ -74,6 +75,7 @@ export interface BackgroundDependencies{
 	buttonPopupManager: ButtonPopupManager;
 	configuration: IConfiguration;
 	contextMenuManager: ContextMenuManager;
+	historyManager: HistoryManager;
 	iconManager: IconManager;
 	metadataManager: IMetadataManager;
 	onInstalledManager: OnInstalledManager;
@@ -119,10 +121,27 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[]): Backgro
 
 	// NOTE: using a chainer to be able to add user (click/shortcut key/context menu) initialized speech events one after another.
 	const speechChain = new NonBreakingChain();
-	const talkieBackground = new TalkieBackground(speechChain, broadcaster, talkieSpeaker, speakingStatus, voiceManager, languageHelper, execute, translatorProvider, internalUrlProvider);
+	const talkieBackground = new TalkieBackground(
+		speechChain,
+		broadcaster,
+		talkieSpeaker,
+		speakingStatus,
+		voiceManager,
+		languageHelper,
+		execute,
+		translatorProvider,
+		internalUrlProvider,
+	);
 	const permissionsManager = new PermissionsManager();
 	const clipboardManager = new ClipboardManager(permissionsManager);
-	const readClipboardManager = new ReadClipboardManager(clipboardManager, talkieBackground, permissionsManager, metadataManager, translatorProvider);
+	const readClipboardManager = new ReadClipboardManager(
+		clipboardManager,
+		talkieBackground,
+		permissionsManager,
+		metadataManager,
+		translatorProvider,
+	);
+	const historyManager = new HistoryManager(settingsManager);
 
 	const commandMap: IBrowserCommandMap = getCommandMap(talkieBackground, readClipboardManager);
 
@@ -140,13 +159,21 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[]): Backgro
 	const plug = new Plug(contentLogger, execute);
 
 	const welcomeManager = new WelcomeManager();
-	const onInstalledManager = new OnInstalledManager(storageManager, settingsManager, metadataManager, contextMenuManager, welcomeManager, onInstallListenerEventQueue);
+	const onInstalledManager = new OnInstalledManager(
+		storageManager,
+		settingsManager,
+		metadataManager,
+		contextMenuManager,
+		welcomeManager,
+		onInstallListenerEventQueue,
+	);
 
 	return {
 		broadcaster,
 		buttonPopupManager,
 		configuration,
 		contextMenuManager,
+		historyManager,
 		iconManager,
 		metadataManager,
 		onInstalledManager,

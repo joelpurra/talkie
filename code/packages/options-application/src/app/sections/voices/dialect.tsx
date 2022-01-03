@@ -30,7 +30,7 @@ import {
 import React from "react";
 
 import Loading from "../../../components/loading.js";
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 
 interface DialectProps extends TranslateProps {
 	effectiveVoiceNameForSelectedLanguage: string | null;
@@ -66,7 +66,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			translateSync,
 		} = this.props as DialectProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
 		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
@@ -97,7 +97,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 					<Loading
 						enabled={typeof effectiveVoiceNameForSelectedLanguage === "string"}
 					>
-						<Markdown>
+						<MarkdownStrong>
 							{translateSync(
 								"frontend_voicesDefaultVoiceForDialect",
 								[
@@ -105,7 +105,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 									`**${effectiveVoiceNameForSelectedLanguage ?? ".."}**`,
 								],
 							)}
-						</Markdown>
+						</MarkdownStrong>
 					</Loading>
 				</SpeakSampleButton>
 			</textBase.p>

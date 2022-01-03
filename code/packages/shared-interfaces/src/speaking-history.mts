@@ -18,34 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type JsonObject,
-} from "type-fest";
-
-export interface IVoiceName {
-	name: string;
+export interface SpeakingHistoryEntry {
+	hash: number;
+	language: string | null;
+	text: string;
+	voiceName: string | null;
 }
-
-export interface IVoiceLanguage {
-	lang: string;
-}
-
-export interface IVoiceNameAndLanguage extends IVoiceName, IVoiceLanguage {}
-
-export interface IVoiceNameAndRateAndPitch extends IVoiceName {
-	rate: number;
-	pitch: number;
-}
-
-export interface MutableSafeVoiceObject extends JsonObject {
-	isSafeVoiceObject: true;
-	default: boolean;
-	lang: string;
-	localService: boolean;
-	name: string;
-	voiceUri: string;
-}
-
-export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
-
-export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
