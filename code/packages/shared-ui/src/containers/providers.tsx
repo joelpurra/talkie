@@ -47,7 +47,6 @@ import type {
 import {
 	type ChildrenRequiredProps,
 } from "../types.mjs";
-import StateRoot from "./state-root.js";
 
 type ConfigureContextProperty = (path: string) => JsonValue;
 
@@ -157,9 +156,7 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 				<TranslateContext.Provider value={translateContextValue}>
 					<BroadcasterContext.Provider value={broadcasterContextValue}>
 						<Provider value={styletron}>
-							<StateRoot>
-								{React.Children.only(this.props.children)}
-							</StateRoot>
+							{React.Children.only(this.props.children)}
 						</Provider>
 					</BroadcasterContext.Provider>
 				</TranslateContext.Provider>

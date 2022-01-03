@@ -42,10 +42,8 @@ export default class TalkieEditionIcon<P extends TalkieEditionIconProps & IconPr
 			isPremiumEdition,
 		} = this.props as TalkieEditionIconProps & IconProps & ClassNameProp;
 
-		const isPremiumEditionClassName = isPremiumEdition ? "premium" : "free";
-
+		const isPremiumEditionClassName = `icon-talkie-${isPremiumEdition ? "premium" : "free"}`;
 		const classNames = [
-			"icon-talkie",
 			isPremiumEditionClassName,
 			className,
 		]
