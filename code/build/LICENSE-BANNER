@@ -18,7 +18,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 ---
 
-# About the package "<%= pkg.name %>"
+# About this package
 
 - Name: <%= pkg.name %>
 - Generated: <%= moment().format() %>
@@ -28,18 +28,26 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 - Homepage: <%= pkg.homepage %>
 
 
-## Detected dependencies for this file:
+# Detected third-party dependencies for this file
 
-- Count: <%= dependencies.length %>
+See the <%=
+	dependencies
+		.filter((dependency) => !dependency.name.startsWith("@talkie/"))
+		.length
+%> individual packages for details.
 
-<% _.forEach(dependencies, function (dependency) { %>
-### About the dependency "<%= dependency.name %>"
+<%
+dependencies
+	.slice()
+	.filter((dependency) => !dependency.name.startsWith("@talkie/"))
+	.sort((a, b) => a.name.localeCompare(b.name))
+	.forEach((dependency, index) => {
+%>
+## <%= (index + 1) %>. <%= dependency.name %>
 
-- Name: <%= dependency.name %>
 - Version: <%= dependency.version %>
 - License: <%= dependency.license %>
 - Author: <%= (dependency.author || {}).name %> <<%= (dependency.author || {}).email %>> (<%= (dependency.author || {}).url %>)
 - Homepage: <%= dependency.homepage %>
-
 
 <% }) %>
