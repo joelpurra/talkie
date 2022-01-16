@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>about</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons-16px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Talkie" transform="translate(-1.000000, 0.000000)">
+            <g id="about" transform="translate(8.500000, 7.500000) rotate(90.000000) translate(-8.500000, -7.500000) translate(1.000000, 0.000000)">
+                <circle id="Oval" fill="#C7C9CF" cx="7.5" cy="7.5" r="7.5"></circle>
+                <path d="M12.0024644,7.32527529 C12.4270813,6.88163531 12.9063267,7.00092133 13.0730264,7.59219639 L14.900387,14.0737447 C15.0670252,14.6648011 14.7199216,15.0237234 14.1228582,14.8748588 L7.65651511,13.2626184 C7.06045963,13.1140051 6.92132417,12.634053 7.34609817,12.1902489 L12.0024644,7.32527529" id="Triangle-Copy" fill="#C7C9CF"></path>
+                <path d="M6.50811176,4.50368244 C7.05591651,3.54502413 7.94239892,3.54207613 8.49188824,4.50368244 L10.9525562,8.80985139 C11.500361,9.7685097 11.0432133,10.5456558 9.94960427,10.5456558 L5.05039573,10.5456558 C3.94867592,10.5456558 3.49795447,9.77145769 4.04744379,8.80985139 L6.50811176,4.50368244 Z" id="Triangle" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
