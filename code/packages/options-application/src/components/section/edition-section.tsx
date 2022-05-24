@@ -149,7 +149,8 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
 		}
 
-		const LinkOrNot: React.FC = ({
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		const LinkOrNot: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => headingLink
 			? (

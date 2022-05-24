@@ -48,7 +48,7 @@ class LanguageGroups<P extends LanguageGroupsProps> extends React.PureComponent<
 				{
 					languageGroupsWithNavigatorLanguages
 						.map(
-
+							// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 							(languageGroupWithNavigatorLanguage) => {
 								const {
 									isNavigatorLanguage,

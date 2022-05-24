@@ -67,7 +67,8 @@ export const loadIsPremiumEdition = createAsyncThunk<boolean, void, IApiAsyncThu
 export const storeIsPremiumEdition = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeIsPremiumEdition`,
 	async (isPremiumEdition, {
-		dispatch, extra,
+		dispatch,
+		extra,
 	}) => {
 		await extra.setIsPremiumEditionOption(isPremiumEdition);
 
@@ -105,7 +106,7 @@ export const loadOsType = createAsyncThunk<OsType | null, void, IApiAsyncThunkCo
 );
 
 export const metadataSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(loadIsPremiumEdition.fulfilled, (state, action) => {
 				state.isPremiumEdition = action.payload;

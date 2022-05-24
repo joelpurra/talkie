@@ -52,7 +52,8 @@ const prefix = "settings";
 export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadShowAdditionalDetails`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 		},
 	) => extra.getShowAdditionalDetailsOption(),
@@ -61,7 +62,8 @@ export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsy
 export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeShowAdditionalDetails`,
 	async (
-		showAdditionalDetails, {
+		showAdditionalDetails,
+		{
 			dispatch,
 			extra,
 		},
@@ -74,7 +76,8 @@ export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAs
 export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakLongTexts`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 		},
 	) => extra.getSpeakLongTextsOption(),
@@ -83,7 +86,8 @@ export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunk
 export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakLongTexts`,
 	async (
-		speakLongTexts, {
+		speakLongTexts,
+		{
 			dispatch,
 			extra,
 		},
@@ -94,7 +98,7 @@ export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThun
 );
 
 export const settingsSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(loadShowAdditionalDetails.fulfilled, (state, action) => {
 				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
@@ -108,10 +112,10 @@ export const settingsSlice = createSlice({
 	initialState,
 	name: prefix,
 	reducers: {
-		setShowAdditionalDetails: (state: Draft<SettingsState>, action: PayloadAction<boolean>) => {
+		setShowAdditionalDetails(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.showAdditionalDetails = action.payload;
 		},
-		setSpeakLongTexts: (state: Draft<SettingsState>, action: PayloadAction<boolean>) => {
+		setSpeakLongTexts(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.speakLongTexts = action.payload;
 		},
 	},

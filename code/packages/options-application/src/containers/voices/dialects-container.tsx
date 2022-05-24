@@ -45,6 +45,7 @@ interface DispatchProps {}
 
 interface InternalProps extends DialectsContainerProps, StateProps, DispatchProps {}
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
 	sortedLanguagesForSelectedLanguageGroup: selectors.voices.getSortedLanguagesForSelectedLanguageGroup(state),
 });

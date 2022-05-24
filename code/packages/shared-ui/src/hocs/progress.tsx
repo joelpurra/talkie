@@ -42,7 +42,7 @@ export interface ProgressProps extends TalkieProgressData {}
 type ProgressHocState = TalkieProgressData;
 
 export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {
-	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
 			static override contextType = BroadcasterContext;

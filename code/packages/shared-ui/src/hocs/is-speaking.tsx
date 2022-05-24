@@ -39,7 +39,7 @@ import {
 } from "./is-speaking-types.mjs";
 
 export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeakingProps, U = Except<P, keyof IsSpeakingProps>>() {
-	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function isSpeakingHoc(ComponentToWrap: React.ComponentType<P>) {
 		class IsSpeakingHoc extends React.Component<P, IsSpeakingHocState> {
 			static override contextType = BroadcasterContext;

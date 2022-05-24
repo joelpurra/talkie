@@ -31,7 +31,7 @@ import {
 export interface TranslateProps extends ITranslatorProvider {}
 
 export default function translateAttribute<P extends TranslateProps = TranslateProps, U = Except<P, keyof TranslateProps>>() {
-	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function translateHoc(ComponentToWrap: React.ComponentType<P>) {
 		class TranslationHoc extends React.PureComponent<P> {
 			static override contextType = TranslateContext;

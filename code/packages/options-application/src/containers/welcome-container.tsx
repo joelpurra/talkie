@@ -65,6 +65,7 @@ interface DispatchProps {
 
 interface InternalProps extends StateProps, DispatchProps {}
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	canSpeakInTranslatedLocale: selectors.shared.voices.getCanSpeakInTranslatedLocale(state),
 	haveVoices: selectors.shared.voices.getHaveVoices(state),

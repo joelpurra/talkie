@@ -36,6 +36,7 @@ const getRoot = async <S, A extends Action, P>(
 	configuration: Readonly<IConfiguration>,
 	styletronProvider: Readonly<IStyletronProvider>,
 	broadcasterProvider: Readonly<IBroadcasterProvider>,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	ChildComponent: React.ComponentType<P>,
 	// eslint-disable-next-line max-params
 ): Promise<React.ReactElement> => {

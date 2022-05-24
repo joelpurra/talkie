@@ -120,7 +120,7 @@ export const speakingSlice = createSlice({
 	initialState,
 	name: prefix,
 	reducers: {
-		setIsSpeaking: (state, action: PayloadAction<boolean>) => {
+		setIsSpeaking(state, action: PayloadAction<boolean>) {
 			state.isSpeaking = action.payload;
 		},
 	},

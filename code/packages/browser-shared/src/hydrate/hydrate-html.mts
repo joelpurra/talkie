@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line react/no-typos, import/no-unassigned-import
-import "react";
-
 import type {
 	Action,
 	Reducer,
@@ -30,6 +27,7 @@ import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
 } from "@talkie/shared-ui/utils/store-helpers.mjs";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import {
@@ -45,6 +43,7 @@ const hydrateReactDom = async (root: Readonly<JSX.Element>) => {
 	ReactDOM.hydrate(root, rootElement);
 };
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const hydrateHtml = async <S, A extends Action, P>(rootReducer: Reducer<S, A>, customPrerenderedActionsToDispatch: Readonly<A[]>, customPostrenderActionsToDispatch: Readonly<A[]>, ChildComponent: React.ComponentType<P>): Promise<void> => {
 	const {
 		api,

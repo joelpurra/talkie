@@ -129,6 +129,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			initialActiveTabId,
 		} = this.props as NavProps;
 
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const linkCells = links.map((link) => {
 			let resolvedUrl: string | null = null;
 

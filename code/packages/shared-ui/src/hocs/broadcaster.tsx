@@ -33,7 +33,7 @@ export interface BroadcasterProps {
 }
 
 export default function broadcasterAttribute<P extends BroadcasterProps = BroadcasterProps, U = Except<P, keyof BroadcasterProps>>() {
-	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>) {
 		class BroadcasterHoc extends React.PureComponent<P> {
 			static override contextType = BroadcasterContext;

@@ -59,6 +59,7 @@ interface DispatchProps {
 
 interface InternalAboutContainerProps extends StateProps, DispatchProps {}
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalAboutContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	navigatorLanguage: state.shared.languages.navigatorLanguage,
@@ -124,7 +125,7 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			versionName,
 		} = this.props;
 
-		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice) => `${voice.name} (${voice.lang})`);
+		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice: Readonly<SafeVoiceObject>) => `${voice.name} (${voice.lang})`);
 
 		return (
 			<About
