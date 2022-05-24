@@ -53,7 +53,6 @@ const {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AppProps {}
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<MainStateProps, AppProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,

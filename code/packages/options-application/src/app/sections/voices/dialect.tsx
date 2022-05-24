@@ -63,7 +63,6 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			translateSync,
 		} = this.props as DialectProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const SpeakSampleButton: React.FC = ({
 			children,
 		}) => hasSampleTextForLanguageGroup

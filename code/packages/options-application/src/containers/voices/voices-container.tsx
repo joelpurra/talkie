@@ -58,7 +58,6 @@ interface DispatchProps {
 
 interface InternalProps extends StateProps, DispatchProps {}
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	// TODO: layer to separate components by selected language group, language code, voice name.
 	// TODO: remove the null case for all components which only depended on previously selected data.

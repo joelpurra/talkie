@@ -48,7 +48,7 @@ class DialectVoices<P extends DialectVoicesProps> extends React.PureComponent<P>
 				{
 					voices
 						.map(
-							// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+
 							(voice) => (
 								<layoutBase.columnsLi
 									key={voice.name}

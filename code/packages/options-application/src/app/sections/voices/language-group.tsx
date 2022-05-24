@@ -113,7 +113,6 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			)
 			: null;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const SpeakSampleButton: React.FC = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
