@@ -34,7 +34,7 @@ export interface ConfigureProps {
 }
 
 export default function configureAttribute<P extends ConfigureProps = ConfigureProps, U = Except<P, keyof ConfigureProps>>() {
-	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function configureHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ConfigurationHoc extends React.PureComponent<P> {
 			static override contextType = ConfigurationContext;

@@ -28,6 +28,9 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import Markdown from "../../../components/markdown.js";
@@ -65,7 +68,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 		} = this.props as DialectVoiceProps;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const SpeakSampleButton: React.FC = ({
+		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (

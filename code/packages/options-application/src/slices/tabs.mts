@@ -43,6 +43,7 @@ const {
 
 export interface TabsState {
 	// TODO: list known tabs.
+	// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 	activeTabId: TabId | "fallback-tab";
 }
 
@@ -75,6 +76,7 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 	},
 );
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export const setActiveTabId = createAsyncThunk<string | "fallback-tab", TabId | null, IApiAsyncThunkConfig>(
 	`${prefix}/setActiveTabId`,
 	async (
@@ -101,7 +103,7 @@ export const setActiveTabId = createAsyncThunk<string | "fallback-tab", TabId | 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const tabsSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(setActiveTabId.fulfilled, (state, action) => {
 				state.activeTabId = action.payload;

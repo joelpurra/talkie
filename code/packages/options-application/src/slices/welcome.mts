@@ -95,7 +95,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 );
 
 export const voicesSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(loadSampleTextForAvailableBrowserLanguageWithInstalledVoice.fulfilled, (state, action) => {
 				state.sampleText = action.payload.sampleText;

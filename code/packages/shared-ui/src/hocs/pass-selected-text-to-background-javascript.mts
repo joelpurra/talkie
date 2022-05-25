@@ -30,6 +30,7 @@ import {
 // NOTE: duplicated elsewhere in the codebase.
 const executeGetFramesSelectionTextAndLanguageCode: () => FramesSelectionTextAndLanguageCode | null = () => {
 	try {
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		function talkieGetParentElementLanguages(element: HTMLElement | Node | null): Array<ReadonlyDeep<string | null>> {
 			return (new Array<ReadonlyDeep<string | null>>())
 				.concat((element || null) && element && (element as HTMLElement).getAttribute && (element as HTMLElement).getAttribute("lang"))

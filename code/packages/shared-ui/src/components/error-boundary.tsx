@@ -68,6 +68,7 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 		});
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	prettyPrintForEmailBody(value: JsonValue, limit: number): string {
 		const string = value ? String(value) : JSON.stringify(value);
 		let pretty = string

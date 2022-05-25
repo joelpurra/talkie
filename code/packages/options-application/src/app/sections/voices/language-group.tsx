@@ -27,6 +27,9 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import React, {
 	ComponentProps,
 } from "react";
@@ -114,7 +117,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			: null;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const SpeakSampleButton: React.FC = ({
+		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (

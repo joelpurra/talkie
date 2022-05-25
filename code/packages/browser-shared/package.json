@@ -7,6 +7,7 @@
     "url": "https://joelpurra.com/"
   },
   "bundledDependencies": [
+    "react",
     "react-dom",
     "type-fest"
   ],
@@ -19,9 +20,7 @@
     "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.7.1",
-    "@types/react": "^17.0.38",
-    "react": "^17.0.2"
+    "@reduxjs/toolkit": "^1.7.1"
   },
   "exports": {
     "./*": {

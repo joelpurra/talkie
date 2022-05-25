@@ -23,6 +23,9 @@ import {
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
+import {
 	scrollIntoViewIfNeeded,
 } from "@talkie/shared-ui/utils/select-element.mjs";
 import React, {
@@ -42,7 +45,7 @@ export interface MultilineSelectProps {
 	value?: string | null;
 }
 
-class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends React.PureComponent<P, unknown> {
+class MultilineSelect<P extends MultilineSelectProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P, unknown> {
 	static defaultProps = {
 		value: null,
 	};

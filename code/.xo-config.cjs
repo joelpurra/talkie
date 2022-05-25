@@ -27,6 +27,10 @@ module.exports = {
 		{
 			"files": "./packages/*/**/*.tsx",
 			"rules": {
+				"jsx-quotes": [
+					"error",
+					"prefer-double",
+				],
 				"@typescript-eslint/naming-convention": [
 					"error",
 					  {
