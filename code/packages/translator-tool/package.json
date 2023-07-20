@@ -16,7 +16,7 @@
     "@google-cloud/translate": "^6.3.1",
     "bluebird": "^3.7.2",
     "clone": "^2.1.2",
-    "configvention": "^2.0.0",
+    "configvention": "^3.0.1",
     "ent": "^2.2.0",
     "jsonfile": "^6.1.0",
     "striptags": "^3.2.0"

@@ -33,7 +33,7 @@
     "react-redux": "^7.2.9",
     "redux-logger": "^3.0.6",
     "renamer": "^4.0.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.1",
     "rollup": "^3.26.3",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-copy": "^3.4.0",
