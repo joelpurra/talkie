@@ -11,9 +11,8 @@
     "react",
     "styletron-react"
   ],
-  "dependencies": {},
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.7.1",
+    "@reduxjs/toolkit": "^1.9.5",
     "webextension-polyfill": "^0.8.0"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",

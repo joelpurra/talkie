@@ -6,7 +6,6 @@
     "name": "Joel Purra",
     "url": "https://joelpurra.com/"
   },
-  "dependencies": {},
   "devDependencies": {
     "webextension-polyfill": "^0.8.0"
   },
