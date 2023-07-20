@@ -48,6 +48,9 @@
     "web-ext": "^6.8.0",
     "xo": "^0.49.0"
   },
+  "engines": {
+    "node": "^20.0.0"
+  },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "husky": {
     "hooks": {
