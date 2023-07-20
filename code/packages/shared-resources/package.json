@@ -6,6 +6,7 @@
     "name": "Joel Purra",
     "url": "https://joelpurra.com/"
   },
+  "dependencies": {},
   "devDependencies": {
     "svgo": "^2.8.0"
   },
