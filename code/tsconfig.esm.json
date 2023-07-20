@@ -3,12 +3,12 @@
     "composite": true,
     "declarationMap": true,
     "experimentalDecorators": true,
-    "jsx": "react",
     "noPropertyAccessFromIndexSignature": false,
     "resolveJsonModule": true,
     "rootDir": "packages",
     "sourceMap": true,
-    "target": "ES2019"
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"]
   },
   "exclude": ["node_modules"],
   "extends": "@sindresorhus/tsconfig"
