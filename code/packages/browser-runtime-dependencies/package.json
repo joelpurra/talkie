@@ -14,7 +14,7 @@
   "dependencies": {},
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.5",
-    "webextension-polyfill": "^0.8.0"
+    "webextension-polyfill": "^0.10.0"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
