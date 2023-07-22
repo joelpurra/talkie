@@ -28,31 +28,27 @@ import {
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	FramesSelectionTextAndLanguageCode,
 } from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-import type {
-	Merge,
-	ReadonlyDeep,
-} from "type-fest";
 
-export type FramesSelectionTextAndLanguageCodeWithValidText = Merge<FramesSelectionTextAndLanguageCode, {
+export interface FramesSelectionTextAndLanguageCodeWithValidText extends FramesSelectionTextAndLanguageCode {
 	text: string;
-}>;
+};
 
-export type FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage = FramesSelectionTextAndLanguageCodeWithValidText & {
+export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage extends FramesSelectionTextAndLanguageCodeWithValidText {
 	detectedTextLanguage: string | null;
 };
-export type FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages = Merge<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage, {
-	parentElementsLanguages: string[];
-}>;
-export type FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage = FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages & {
+export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage {
+	parentElementsLanguages: readonly string[];
+};
+export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages {
 	effectiveLanguage: string | null;
 };
-export type TextAndEffectiveLanguage = {
+export interface TextAndEffectiveLanguage {
 	effectiveLanguage: string;
 	text: string;
 };
@@ -172,10 +168,10 @@ export default class LanguageHelper {
 		return primaryDetectedTextLanguage;
 	}
 
-	async getSelectionsWithValidText(selections: ReadonlyDeep<FramesSelectionTextAndLanguageCode[]>): Promise<ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidText[]>> {
-		const isNonNullObject = (selection: ReadonlyDeep<FramesSelectionTextAndLanguageCode>) => Boolean(selection) && typeof selection === "object";
-		const hasValidText = (selection: ReadonlyDeep<FramesSelectionTextAndLanguageCode>): selection is FramesSelectionTextAndLanguageCodeWithValidText => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
-		const trimText = (selection: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidText>): ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidText> => ({
+	async getSelectionsWithValidText(selections: Readonly<FramesSelectionTextAndLanguageCode[]>): Promise<Readonly<FramesSelectionTextAndLanguageCodeWithValidText[]>> {
+		const isNonNullObject = (selection: Readonly<FramesSelectionTextAndLanguageCode>) => Boolean(selection) && typeof selection === "object";
+		const hasValidText = (selection: Readonly<FramesSelectionTextAndLanguageCode>): selection is FramesSelectionTextAndLanguageCodeWithValidText => !isUndefinedOrNullOrEmptyOrWhitespace(selection.text);
+		const trimText = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidText>): Readonly<FramesSelectionTextAndLanguageCodeWithValidText> => ({
 			...selection,
 			text: selection.text.trim(),
 		});
@@ -183,17 +179,17 @@ export default class LanguageHelper {
 		const selectionsWithValidText = selections
 			.filter((selection) => isNonNullObject(selection))
 			// eslint-disable-next-line unicorn/no-array-callback-reference
-			.filter<ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidText>>(hasValidText)
+			.filter<Readonly<FramesSelectionTextAndLanguageCodeWithValidText>>(hasValidText)
 			.map((selection) => trimText(selection))
 			.filter((selection) => hasValidText(selection));
 
 		return selectionsWithValidText;
 	}
 
-	async detectAndAddLanguageForSelections(selectionsWithValidText: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidText[]>): Promise<ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]>> {
+	async detectAndAddLanguageForSelections(selectionsWithValidText: Readonly<FramesSelectionTextAndLanguageCodeWithValidText[]>): Promise<Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]>> {
 		return Promise.all(
 			selectionsWithValidText.map(
-				async (selection): Promise<ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>> => ({
+				async (selection): Promise<Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>> => ({
 					...selection,
 					detectedTextLanguage: await this.detectTextLanguage(selection.text),
 				}),
@@ -201,7 +197,7 @@ export default class LanguageHelper {
 		);
 	}
 
-	isKnownVoiceLanguage(allVoices: ReadonlyDeep<SafeVoiceObject[]>, elementLanguage: string): boolean {
+	isKnownVoiceLanguage(allVoices: SafeVoiceObjects, elementLanguage: string): boolean {
 		return allVoices.some((voice) => voice.lang.startsWith(elementLanguage));
 	}
 
@@ -219,7 +215,7 @@ export default class LanguageHelper {
 		return language;
 	}
 
-	cleanupLanguagesArray(allVoices: ReadonlyDeep<SafeVoiceObject[]>, languages: Readonly<Array<string | null | undefined>> | null): Readonly<string[]> {
+	cleanupLanguagesArray(allVoices: SafeVoiceObjects, languages: Readonly<Array<string | null | undefined>> | null): Readonly<string[]> {
 		const copy = (languages ?? [])
 			.filter<string>((string): string is string => !isUndefinedOrNullOrEmptyOrWhitespace(string))
 			.map((language) => this.mapIso639Aliases(language))
@@ -228,8 +224,8 @@ export default class LanguageHelper {
 		return copy;
 	}
 
-	async getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices: ReadonlyDeep<SafeVoiceObject[]>, detectedPageLanguage: string | null, selectionsWithValidTextAndDetectedLanguage: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]>): Promise<ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]>> {
-		const cleanupParentElementsLanguages = (selection: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>): ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages> => ({
+	async getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices: SafeVoiceObjects, detectedPageLanguage: string | null, selectionsWithValidTextAndDetectedLanguage: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]>): Promise<Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]>> {
+		const cleanupParentElementsLanguages = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>): Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages> => ({
 			...selection,
 			parentElementsLanguages: this.cleanupLanguagesArray(allVoices, selection.parentElementsLanguages),
 		});
@@ -243,7 +239,7 @@ export default class LanguageHelper {
 			return (_language: string) => true;
 		};
 
-		const setEffectiveLanguage = (selection: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages>): ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage> => {
+		const setEffectiveLanguage = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages>): Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage> => {
 			const detectedLanguages = [
 				selection.detectedTextLanguage,
 				selection.parentElementsLanguages[0] ?? null,
@@ -304,14 +300,14 @@ export default class LanguageHelper {
 		};
 
 		const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = selectionsWithValidTextAndDetectedLanguage
-			.map<ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages>>((selection) => cleanupParentElementsLanguages(selection))
+			.map<Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages>>((selection) => cleanupParentElementsLanguages(selection))
 			.map((selection) => setEffectiveLanguage(selection));
 
 		return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
 	}
 
-	async useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]>): Promise<ReadonlyDeep<TextAndEffectiveLanguage[]>> {
-		const fallbackMessageForNoLanguageDetected = (selection: ReadonlyDeep<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage>): TextAndEffectiveLanguage => {
+	async useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]>): Promise<Readonly<TextAndEffectiveLanguage[]>> {
+		const fallbackMessageForNoLanguageDetected = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage>): TextAndEffectiveLanguage => {
 			if (selection.effectiveLanguage === null) {
 				return this.noVoiceForLanguageDetectedMessage;
 			}
@@ -319,13 +315,13 @@ export default class LanguageHelper {
 			return selection as TextAndEffectiveLanguage;
 		};
 
-		const mapResults = (selection: ReadonlyDeep<TextAndEffectiveLanguage>): ReadonlyDeep<TextAndEffectiveLanguage> => ({
+		const mapResults = (selection: Readonly<TextAndEffectiveLanguage>): Readonly<TextAndEffectiveLanguage> => ({
 			effectiveLanguage: selection.effectiveLanguage,
 			text: selection.text,
 		});
 
 		const results = selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage
-			.map<ReadonlyDeep<TextAndEffectiveLanguage>>((selection) => fallbackMessageForNoLanguageDetected(selection))
+			.map<Readonly<TextAndEffectiveLanguage>>((selection) => fallbackMessageForNoLanguageDetected(selection))
 			.map((selection) => mapResults(selection));
 
 		if (results.length === 0) {
@@ -337,7 +333,7 @@ export default class LanguageHelper {
 		return results;
 	}
 
-	async cleanupSelections(allVoices: ReadonlyDeep<SafeVoiceObject[]>, detectedPageLanguage: string | null, selections: ReadonlyDeep<FramesSelectionTextAndLanguageCode[]>): Promise<ReadonlyDeep<TextAndEffectiveLanguage[]>> {
+	async cleanupSelections(allVoices: SafeVoiceObjects, detectedPageLanguage: string | null, selections: Readonly<FramesSelectionTextAndLanguageCode[]>): Promise<Readonly<TextAndEffectiveLanguage[]>> {
 		const selectionsWithValidText = await this.getSelectionsWithValidText(selections);
 		const selectionsWithValidTextAndDetectedLanguage = await this.detectAndAddLanguageForSelections(selectionsWithValidText);
 		const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = await this.getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage);

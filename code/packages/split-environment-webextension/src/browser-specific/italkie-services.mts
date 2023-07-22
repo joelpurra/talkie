@@ -29,9 +29,12 @@ import {
 import {
 	IVoiceNameAndLanguage,
 	IVoiceNameAndRateAndPitch,
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	JsonValue,
+} from "type-fest";
 
 export interface ITalkieServices {
 	broadcaster: () => IBroadcasterProvider;
@@ -43,7 +46,7 @@ export interface ITalkieServices {
 	setLoggingLevel: (nextLevel: LoggingLevel) => void;
 	setLoggingStringOnlyOutput: (stringOnly: boolean) => void;
 	// setStringOnlyOutput: (stringOnly: boolean) => void;
-	getAllVoicesSafeObjects: () => Promise<SafeVoiceObject[]>;
+	getAllVoicesSafeObjects: () => Promise<SafeVoiceObjects>;
 	iconClick: () => Promise<void>;
 	stopSpeakFromFrontend: () => Promise<void>;
 	startSpeakFromFrontend: (frontendText: string, frontendVoice: Readonly<IVoiceNameAndRateAndPitch>) => Promise<void>;
@@ -70,7 +73,7 @@ export interface ITalkieServices {
 	getVoicePitchDefault: (voiceName: string) => Promise<number>;
 	setVoicePitchOverride: (voiceName: string, pitch: number) => Promise<void>;
 	getEffectivePitchForVoice: (voiceName: string) => Promise<number>;
-	getStoredValue: <T>(key: string) => Promise<T | null>;
-	setStoredValue: <T>(key: string, value: T) => Promise<void>;
-	getConfigurationValue: <T=unknown>(path: string) => Promise<T>;
+	getStoredValue: <T extends JsonValue>(key: string) => Promise<T | null>;
+	setStoredValue: <T extends JsonValue>(key: string, value: T) => Promise<void>;
+	getConfigurationValue: <T extends JsonValue>(path: string) => Promise<T>;
 }

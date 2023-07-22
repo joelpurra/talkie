@@ -23,7 +23,6 @@ import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
-// @ts-expect-error: File is not a module.ts(2306)
 import languagesJson from "./languages.cjs";
 
 export type LanguageData = {

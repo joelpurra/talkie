@@ -19,20 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type {
-	Merge,
+	JsonObject,
 } from "type-fest";
 
-export interface FramesSelectionTextAndLanguageCode {
+export interface FramesSelectionTextAndLanguageCode extends JsonObject {
 	htmlTagLanguage: string | null;
-	parentElementsLanguages: Array<string | null>;
+	parentElementsLanguages: readonly (string | null)[];
 	text: string | null;
 }
 
-export type PerhapsSelectedTextWithFocusTimestamp = {
+export interface PerhapsSelectedTextWithFocusTimestamp extends JsonObject {
 	mostRecentUse: number;
 	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode | null;
 };
 
-export type SelectedTextWithFocusTimestamp = Merge<PerhapsSelectedTextWithFocusTimestamp, {
+export interface SelectedTextWithFocusTimestamp extends PerhapsSelectedTextWithFocusTimestamp {
 	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode;
-}>;
+};

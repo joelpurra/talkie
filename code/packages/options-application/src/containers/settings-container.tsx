@@ -25,9 +25,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Settings from "../app/sections/settings.js";
 import {
@@ -56,7 +53,7 @@ interface DispatchProps {
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,
 });

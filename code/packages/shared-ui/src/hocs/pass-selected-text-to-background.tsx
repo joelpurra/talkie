@@ -147,10 +147,10 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 				}
 			}
 
-			async registerBroadcastListeners(): Promise<void> {
+			async registerBroadcastListeners() {
 				const killSwitch = await this.context.broadcaster.registerListeningAction(
 					knownEvents.passSelectedTextToBackground,
-					async (_actionName: string, _actionData: unknown) => this.getSelectedTextWithFocusTimestamp(),
+					(_actionName, _actionData) => this.getSelectedTextWithFocusTimestamp(),
 				);
 
 				this.killSwitches.push(killSwitch);

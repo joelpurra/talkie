@@ -29,7 +29,7 @@ import {
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	KillSwitch,
@@ -57,7 +57,7 @@ export default interface IApi {
 
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T;
 
-	getConfigurationValue<T>(configurationPath: string): Promise<T>;
+	getConfigurationValue<T extends JsonValue>(configurationPath: string): Promise<T>;
 
 	iconClick(): Promise<void>;
 
@@ -67,7 +67,7 @@ export default interface IApi {
 
 	speakTextInLanguageWithOverrides(text: string, languageCode: string): Promise<void>;
 
-	getVoices(): Promise<SafeVoiceObject[]>;
+	getVoices(): Promise<SafeVoiceObjects>;
 
 	getIsPremiumEditionOption(): Promise<boolean>;
 
@@ -113,7 +113,7 @@ export default interface IApi {
 
 	openOptionsPage(): Promise<void>;
 
-	registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch>;
+	registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch>;
 
 	getLocationHash(): Promise<string | null>;
 

@@ -145,19 +145,13 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 				const killSwitches = await Promise.all([
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeaking,
-						(_actionName: string, _actionData: unknown) => {
-							this.updateIsSpeaking(true);
-						}),
+						(_actionName, _actionData) => this.updateIsSpeaking(true)),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeakingPart,
-						(_actionName: string, _actionData: unknown) => {
-							this.updateIsSpeaking(true);
-						}),
+						(_actionName, _actionData) => this.updateIsSpeaking(true)),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.afterSpeaking,
-						(_actionName: string, _actionData: unknown) => {
-							this.updateIsSpeaking(false);
-						}),
+						(_actionName, _actionData) => this.updateIsSpeaking(false)),
 				]);
 
 				for (const killSwitch of killSwitches) {

@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
 import {
@@ -36,7 +36,7 @@ const {
 } = toolkit;
 
 export type VoicesState = {
-	voices: SafeVoiceObject[];
+	voices: SafeVoiceObjects;
 };
 
 const initialState: VoicesState = {
@@ -47,7 +47,7 @@ const prefix = "voices";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const loadVoices = createAsyncThunk<SafeVoiceObject[], void, IApiAsyncThunkConfig>(
+export const loadVoices = createAsyncThunk<SafeVoiceObjects, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadVoices`,
 	async (_, {
 		extra,
@@ -58,7 +58,8 @@ export const voicesSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(loadVoices.fulfilled, (state, action) => {
-				state.voices = action.payload;
+				// TODO: remove "any" when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite.
+				state.voices = action.payload as any;
 			});
 	},
 	initialState,

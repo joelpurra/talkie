@@ -40,7 +40,7 @@ interface DialectVoicesContainerProps {
 
 interface StateProps {
 	hasSampleTextForLanguageGroup: boolean;
-	voiceForSelectedVoiceName: Readonly<SafeVoiceObject> | null;
+	voiceForSelectedVoiceName: SafeVoiceObject | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -49,7 +49,7 @@ interface DispatchProps {}
 interface InternalProps extends DialectVoicesContainerProps, StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
+const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	hasSampleTextForLanguageGroup: selectors.voices.getHasSampleTextForLanguageGroup(state),
 	voiceForSelectedVoiceName: selectors.voices.getVoiceForSelectedVoiceName(state),
 });

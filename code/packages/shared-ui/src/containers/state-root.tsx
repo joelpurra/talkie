@@ -24,9 +24,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import StyleRoot from "../components/style-root.js";
 import {
@@ -50,7 +47,7 @@ interface StateProps extends IsSpeakingProps {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootState> = (state: ReadonlyDeep<SharedRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootState> = (state: Readonly<SharedRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	isSpeaking: state.shared.speaking.isSpeaking,
 	versionName: state.shared.metadata.versionName,

@@ -133,7 +133,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		const linkCells = links.map((link) => {
 			let resolvedUrl: string | null = null;
 
-			if (typeof link.tabId === "string" && link.url instanceof URL) {
+			if (typeof link.tabId === "string" && (link.url as any) instanceof URL) {
 				throw new TypeError(`Has both a link and a tab id: ${JSON.stringify(link)}`);
 			} else if (typeof link.tabId === "string") {
 				resolvedUrl = getLocationHashFromTabId(link.tabId);

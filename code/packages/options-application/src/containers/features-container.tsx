@@ -28,9 +28,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Features, {
 	FeaturesDispatchProps,
@@ -59,7 +56,7 @@ interface DispatchProps extends FeaturesDispatchProps {
 
 export interface InternalFeaturesContainerProps extends StateProps, DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	systemType: state.shared.metadata.systemType,
 });

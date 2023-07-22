@@ -23,6 +23,7 @@ import {
 } from "@talkie/shared-interfaces/known-events.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import type {
+	JsonObject,
 	JsonValue,
 	ValueOf,
 } from "type-fest";
@@ -37,9 +38,10 @@ export enum KnownSettings {
 export type KnownSettingNames = keyof typeof KnownSettings;
 export type KnownSettingValues = ValueOf<KnownSettings>;
 
-// TODO: use T extends JsonValue when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite.
-export interface SettingChangedEventData<T extends JsonValue> {
-	key: KnownSettingValues;
+export interface SettingChangedEventData<T extends JsonValue> extends JsonObject {
+	// TODO: use a stricter type mapping than string enum to fit in JsonObject?
+	// key: KnownSettingValues;
+	key: string;
 	previousValue: T | null;
 	value: T;
 }
@@ -103,7 +105,7 @@ export default class SettingsManager {
 		return showAdditionalDetails ?? this._showAdditionalDetailsStorageKeyDefaultValue;
 	}
 
-	private async _getStoredValue<T>(key: string): Promise<T | null> {
+	private async _getStoredValue<T extends JsonValue>(key: string): Promise<T | null> {
 		return this.storageManager.getStoredValue<T>(key);
 	}
 

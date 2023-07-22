@@ -87,12 +87,8 @@ const setupBroadcasterListenersAndKillswitches = async (
 	});
 
 	const registeredKillSwitches = await Promise.all([
-		broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => {
-			onlyLastCaller.incrementCallerId();
-		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
-			onlyLastCaller.incrementCallerId();
-		}),
+		broadcaster.registerListeningAction(knownEvents.stopSpeaking, () => onlyLastCaller.incrementCallerId()),
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => onlyLastCaller.incrementCallerId()),
 
 		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
 			try {
@@ -109,18 +105,18 @@ const setupBroadcasterListenersAndKillswitches = async (
 			}
 		}),
 
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => speakingStatus.setActiveTabAsSpeaking()),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => speakingStatus.setDoneSpeaking()),
+		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => speakingStatus.setActiveTabAsSpeaking()),
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => speakingStatus.setDoneSpeaking()),
 
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => {
+		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
 			// NOTE: setting icons async outside of the root chain.
 			void iconManager.setIconModePlaying();
 		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
 			// NOTE: setting icons async outside of the root chain.
 			void iconManager.setIconModeStopped();
 		}),
-		broadcaster.registerListeningAction<knownEvents.settingChanged, SettingChangedEventData<boolean>, void>(knownEvents.settingChanged, async (_name: knownEvents.settingChanged, data: ReadonlyDeep<SettingChangedEventData<boolean>>) => {
+		broadcaster.registerListeningAction<knownEvents.settingChanged, SettingChangedEventData<boolean>, void>(knownEvents.settingChanged, async (_name: knownEvents.settingChanged, data: Readonly<SettingChangedEventData<boolean>>) => {
 			if (data.key === KnownSettings.IsPremiumEdition) {
 				// NOTE: setting icons async outside of the root chain.
 				// NOTE: if speech is playing, this will show the wrong icon.
@@ -128,45 +124,29 @@ const setupBroadcasterListenersAndKillswitches = async (
 			}
 		}),
 
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => {
+		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
 			// NOTE: a feeble attempt to make the popup window render properly, instead of only a tiny box flashing away, as the reflow() has questionable effect.
 			// NOTE: enable/disable popup async outside of the root chain.
 			void buttonPopupManager.disablePopup();
 		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
 			// NOTE: enable/disable popup async outside of the root chain.
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
 			void buttonPopupManager.enablePopup();
 		}),
 
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, async () => suspensionManager.preventExtensionSuspend()),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => suspensionManager.allowExtensionSuspend()),
+		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => suspensionManager.preventExtensionSuspend()),
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => suspensionManager.allowExtensionSuspend()),
 
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
-			browser.tabs.onRemoved.addListener(onTabRemovedListener);
-		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
-			browser.tabs.onRemoved.removeListener(onTabRemovedListener);
-		}),
+		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onRemoved.addListener(onTabRemovedListener)),
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onRemoved.removeListener(onTabRemovedListener)),
 
-		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => {
-			browser.tabs.onUpdated.addListener(onTabUpdatedListener);
-		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => {
-			browser.tabs.onUpdated.removeListener(onTabUpdatedListener);
-		}),
+		broadcaster.registerListeningAction(knownEvents.beforeSpeaking, () => browser.tabs.onUpdated.addListener(onTabUpdatedListener)),
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => browser.tabs.onUpdated.removeListener(onTabUpdatedListener)),
 
-		broadcaster.registerListeningAction<knownEvents.beforeSpeaking, Readonly<SpeakingEventData>, void>(knownEvents.beforeSpeaking, async (_actionName: knownEvents.beforeSpeaking, actionData: Readonly<SpeakingEventData>) => {
-			await progress.resetProgress(0, actionData.text.length, 0);
-		}),
-		broadcaster.registerListeningAction<knownEvents.beforeSpeakingPart, Readonly<SpeakingEventPartData>, void>(knownEvents.beforeSpeakingPart, async (_actionName: knownEvents.beforeSpeakingPart, actionData: Readonly<SpeakingEventPartData>) => {
-			await progress.startSegment(actionData.textPart.length);
-		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, async () => {
-			await progress.endSegment();
-		}),
-		broadcaster.registerListeningAction(knownEvents.afterSpeaking, async () => {
-			await progress.finishProgress();
-		}),
+		broadcaster.registerListeningAction<knownEvents.beforeSpeaking, Readonly<SpeakingEventData>, void>(knownEvents.beforeSpeaking, async (_actionName: knownEvents.beforeSpeaking, actionData: Readonly<SpeakingEventData>) => progress.resetProgress(0, actionData.text.length, 0)),
+		broadcaster.registerListeningAction<knownEvents.beforeSpeakingPart, Readonly<SpeakingEventPartData>, void>(knownEvents.beforeSpeakingPart, (_actionName: knownEvents.beforeSpeakingPart, actionData: Readonly<SpeakingEventPartData>) => progress.startSegment(actionData.textPart.length)),
+		broadcaster.registerListeningAction(knownEvents.afterSpeakingPart, () => progress.endSegment()),
+		broadcaster.registerListeningAction(knownEvents.afterSpeaking, () => progress.finishProgress()),
 	]);
 
 	// NOTE: don't want to replace the existing killSwitches array.

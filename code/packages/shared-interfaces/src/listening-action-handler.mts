@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type {
+	JsonValue,
 	Promisable,
-	ReadonlyDeep,
 } from "type-fest";
 
 import {
 	knownEventNames,
 } from "./known-events.mjs";
 
-export type ListeningActionHandler<TEvent extends knownEventNames, TData = unknown, TReturn = unknown> = (name: TEvent, data: ReadonlyDeep<TData>) => Promisable<ReadonlyDeep<TReturn>>;
+export type ListeningActionHandler<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void> = (name: TEvent, data: Readonly<TData>) => Promisable<TReturn>;
 

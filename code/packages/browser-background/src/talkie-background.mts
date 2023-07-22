@@ -42,9 +42,6 @@ import {
 	isCurrentPageInternalToTalkie,
 } from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
 import type {
-	ReadonlyDeep,
-} from "type-fest";
-import type {
 	Tabs,
 } from "webextension-polyfill";
 
@@ -118,16 +115,16 @@ export default class TalkieBackground {
 
 				const eventData = null;
 
-				const selectedTextsFromFrontend = await this.broadcaster.broadcastEvent<knownEvents.passSelectedTextToBackground, null, ReadonlyDeep<SelectedTextWithFocusTimestamp> | null>(knownEvents.passSelectedTextToBackground, eventData);
+				const selectedTextsFromFrontend = await this.broadcaster.broadcastEvent<knownEvents.passSelectedTextToBackground, null, Readonly<SelectedTextWithFocusTimestamp> | null>(knownEvents.passSelectedTextToBackground, eventData);
 
 				void logDebug("speakSelectionOnPage", "Received text selections from internal pages.", selectedTextsFromFrontend);
 
 				const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
-					.filter((t): t is ReadonlyDeep<NonNullable<SelectedTextWithFocusTimestamp>> => Boolean(t));
+					.filter((t): t is Readonly<NonNullable<SelectedTextWithFocusTimestamp>> => Boolean(t));
 
 				const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
 					// eslint-disable-next-line unicorn/no-array-reduce
-					.reduce<ReadonlyDeep<SelectedTextWithFocusTimestamp> | null>(
+					.reduce<Readonly<SelectedTextWithFocusTimestamp> | null>(
 					(previous, selectedTextWithFocusTimestamp) => {
 						// NOTE: first take the first available internal page.
 						if (previous === null) {
@@ -190,7 +187,7 @@ export default class TalkieBackground {
 		await this._enqueueSpeech(createSpeech);
 	}
 
-	async addRateAndPitchToSpecificVoice(voice: ReadonlyDeep<IVoiceName>): Promise<IVoiceNameAndRateAndPitch> {
+	async addRateAndPitchToSpecificVoice(voice: Readonly<IVoiceName>): Promise<IVoiceNameAndRateAndPitch> {
 		const [
 			effectiveRateForVoice,
 			effectivePitchForVoice,
@@ -259,7 +256,7 @@ export default class TalkieBackground {
 		}
 	}
 
-	async onTabUpdatedHandler(tabId: number, changeInfo: ReadonlyDeep<Tabs.OnUpdatedChangeInfoType>): Promise<void> {
+	async onTabUpdatedHandler(tabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType>): Promise<void> {
 		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(tabId);
 
 		// NOTE: changeInfo only has properties which have changed.
@@ -298,7 +295,7 @@ export default class TalkieBackground {
 		return nonEmptyFramesSelectionTextAndLanguage;
 	}
 
-	async detectLanguagesAndSpeakAllSelections(selections: ReadonlyDeep<FramesSelectionTextAndLanguageCode[]>, detectedPageLanguage: string | null): Promise<void> {
+	async detectLanguagesAndSpeakAllSelections(selections: Readonly<FramesSelectionTextAndLanguageCode[]>, detectedPageLanguage: string | null): Promise<void> {
 		void logDebug("Start", "Speaking all selections");
 
 		void logDebug("Variable", `selections (length ${(selections?.length) || 0})`, selections);

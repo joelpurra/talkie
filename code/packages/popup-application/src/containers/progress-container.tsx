@@ -27,9 +27,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Progress from "../app/sections/progress.js";
 import type {
@@ -44,7 +41,7 @@ interface StateProps extends TalkieProgressData {}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, PopupRootState> = (state: ReadonlyDeep<PopupRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
 	current: state.shared.progress.current,
 	max: state.shared.progress.max,
 	min: state.shared.progress.min,

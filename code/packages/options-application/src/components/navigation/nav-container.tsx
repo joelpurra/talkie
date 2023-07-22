@@ -25,9 +25,6 @@ import {
 	MapDispatchToPropsFunction,
 	MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	actions,
@@ -53,7 +50,7 @@ interface DispatchProps {
 	setActiveTabId: typeof actions.tabs.setActiveTabId;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	activeTabId: state.tabs.activeTabId,
 });
 
