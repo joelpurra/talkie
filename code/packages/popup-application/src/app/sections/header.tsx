@@ -30,12 +30,10 @@ import translateAttribute, {
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -47,8 +45,8 @@ export interface HeaderProps {
 
 class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		button: StyletronComponent<ComponentProps<typeof buttonBase.a>>;
-		extensionName: StyletronComponent<ComponentProps<typeof textBase.a>>;
+		button: TalkieStyletronComponent<typeof buttonBase.a>;
+		extensionName: TalkieStyletronComponent<typeof textBase.a>;
 	};
 
 	constructor(props: P) {

@@ -28,14 +28,14 @@ import {
 } from "@talkie/shared-ui/styled/types.js";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import React from "react";
 import {
 	styled,
-	StyletronComponent,
 	withStyleDeep,
 } from "styletron-react";
 
@@ -57,23 +57,23 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 	};
 
 	private readonly styled: {
-		h2ModeHeading: StyletronComponent<ComponentProps<"h2">>;
-		wrapperBase: StyletronComponent<ComponentProps<"div">>;
-		h2ModeWrapper: StyletronComponent<ComponentProps<"div">>;
-		pModeWrapper: StyletronComponent<ComponentProps<"div">>;
+		h2ModeHeading: TalkieStyletronComponent<"h2">;
+		wrapperBase: TalkieStyletronComponent<"div">;
+		h2ModeWrapper: TalkieStyletronComponent<"div">;
+		pModeWrapper: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		const partialStyled = {
-			h2ModeHeading: withStyleDeep(
+			h2ModeHeading: withStyleDeep<typeof this.styled.h2ModeHeading, any>(
 				textBase.h2,
 				{
 					marginTop: "1em",
 				},
 			),
-			wrapperBase: styled(
+			wrapperBase: styled<"div", any>(
 				"div",
 				{
 					...layoutBase.rounded("0.5em"),

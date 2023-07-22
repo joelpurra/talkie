@@ -26,14 +26,12 @@ import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as errors from "@talkie/shared-ui/styled/text/errors.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	OnOpenOptionsPageClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -52,10 +50,10 @@ export interface FooterProps extends FooterStateProps, FooterDispatchProps {
 
 class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent<P> {
 	styled: {
-		footer: StyletronComponent<ComponentProps<typeof layoutBase.footer>>;
-		footerFirstLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerSecondLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerErrorLink: StyletronComponent<ComponentProps<typeof errors.span>>;
+		footer: TalkieStyletronComponent<typeof layoutBase.footer>;
+		footerFirstLink: TalkieStyletronComponent<typeof lighter.a>;
+		footerSecondLink: TalkieStyletronComponent<typeof lighter.a>;
+		footerErrorLink: TalkieStyletronComponent<typeof errors.span>;
 	};
 
 	constructor(props: P) {

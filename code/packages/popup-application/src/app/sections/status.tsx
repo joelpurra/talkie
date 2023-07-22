@@ -26,12 +26,10 @@ import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -44,11 +42,11 @@ export interface StatusProps {
 
 class Status<P extends StatusProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		statusIconWrapper: StyletronComponent<ComponentProps<typeof buttonBase.transparentButton>>;
-		table: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		tbody: StyletronComponent<ComponentProps<typeof tableBase.tbody>>;
-		td: StyletronComponent<ComponentProps<typeof tableBase.td>>;
-		tr: StyletronComponent<ComponentProps<typeof tableBase.tr>>;
+		statusIconWrapper: TalkieStyletronComponent<typeof buttonBase.transparentButton>;
+		table: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		tbody: TalkieStyletronComponent<typeof tableBase.tbody>;
+		td: TalkieStyletronComponent<typeof tableBase.td>;
+		tr: TalkieStyletronComponent<typeof tableBase.tr>;
 	};
 
 	constructor(props: P) {

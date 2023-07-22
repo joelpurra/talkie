@@ -28,12 +28,10 @@ import translateAttribute, {
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import * as layoutBaseStyles from "@talkie/shared-ui/styles/layout/layout-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import {
 	styled,
 	withStyleDeep,
@@ -41,9 +39,9 @@ import {
 
 class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		a: StyletronComponent<ComponentProps<typeof textBase.a>>;
-		li: StyletronComponent<ComponentProps<"li">>;
-		ol: StyletronComponent<ComponentProps<"ol">>;
+		a: TalkieStyletronComponent<typeof textBase.a>;
+		li: TalkieStyletronComponent<"li">;
+		ol: TalkieStyletronComponent<"ol">;
 	};
 
 	constructor(props: P) {

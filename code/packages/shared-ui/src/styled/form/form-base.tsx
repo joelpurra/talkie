@@ -19,16 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	TalkieStyletronComponent,
+} from "../types.js";
+import {
 	styled,
 } from "styletron-react";
 
 import * as formBase from "../../styles/form/form-base.mjs";
 
-export const form = styled("form", formBase.form);
-export const button = styled("button", formBase.button);
-// export const checkbox = styled("input", formBase.checkbox);
-export const range = styled("input", formBase.range);
-export const textarea = styled("textarea", formBase.textarea);
-export const select = styled("select", formBase.select);
-export const option = styled("option", formBase.option);
-export const multilineSelect = styled("select", formBase.multilineSelect);
+export const form: TalkieStyletronComponent<React.ElementType<"form">> = styled("form", formBase.form);
+export const button: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", formBase.button);
+// export const checkbox: TalkieStyletronComponent<React.ElementType<"input">> = styled("input", formBase.checkbox);
+export const range: TalkieStyletronComponent<React.ElementType<"input">> = styled("input", formBase.range);
+export const textarea: TalkieStyletronComponent<React.ElementType<"textarea">> = styled("textarea", formBase.textarea);
+export const select: TalkieStyletronComponent<React.ElementType<"select">> = styled("select", formBase.select);
+export const option: TalkieStyletronComponent<React.ElementType<"option">> = styled("option", formBase.option);
+export const multilineSelect: TalkieStyletronComponent<React.ElementType<"select">> = styled("select", formBase.multilineSelect);

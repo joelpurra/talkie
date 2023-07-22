@@ -19,14 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	TalkieProgressData,
 } from "@talkie/shared-ui/talkie-progress.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	styled,
 } from "styletron-react";
@@ -35,7 +33,7 @@ export interface StatusProps extends TalkieProgressData {}
 
 export default class Status<P extends StatusProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		progress: StyletronComponent<ComponentProps<"progress">>;
+		progress: TalkieStyletronComponent<"progress">;
 	};
 
 	constructor(props: P) {

@@ -19,24 +19,27 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	TalkieStyletronComponent,
+} from "../types.js";
+import {
 	styled,
 } from "styletron-react";
 
 import * as layoutBase from "../../styles/layout/layout-base.mjs";
 
-export const header = styled("header", layoutBase.header);
-export const main = styled("main", layoutBase.main);
-export const section = styled("section", layoutBase.section);
-export const nav = styled("nav", layoutBase.nav);
-export const footer = styled("footer", layoutBase.footer);
-export const hr = styled("hr", layoutBase.hr);
-export const details = styled("details", layoutBase.details);
-export const summary = styled("summary", layoutBase.summary);
+export const header: TalkieStyletronComponent<React.ElementType<"header">> = styled("header", layoutBase.header);
+export const main: TalkieStyletronComponent<React.ElementType<"main">> = styled("main", layoutBase.main);
+export const section: TalkieStyletronComponent<React.ElementType<"section">> = styled("section", layoutBase.section);
+export const nav: TalkieStyletronComponent<React.ElementType<"nav">> = styled("nav", layoutBase.nav);
+export const footer: TalkieStyletronComponent<React.ElementType<"footer">> = styled("footer", layoutBase.footer);
+export const hr: TalkieStyletronComponent<React.ElementType<"hr">> = styled("hr", layoutBase.hr);
+export const details: TalkieStyletronComponent<React.ElementType<"details">> = styled("details", layoutBase.details);
+export const summary: TalkieStyletronComponent<React.ElementType<"summary">> = styled("summary", layoutBase.summary);
 
-export const hero = styled("div", layoutBase.hero);
+export const hero: TalkieStyletronComponent<React.ElementType<"div">> = styled("div", layoutBase.hero);
 
 // TODO: convert constant "variables" to component properties?
-export const columnsUl3 = styled("ul", layoutBase.columnsUl(3));
-export const columnsUl6 = styled("ul", layoutBase.columnsUl(6));
-export const columnsLi = styled("li", layoutBase.columnsLi);
-export const columnsLiMarked = styled("li", layoutBase.columnsLiMarked);
+export const columnsUl3: TalkieStyletronComponent<React.ElementType<"ul">> = styled("ul", layoutBase.columnsUl(3));
+export const columnsUl6: TalkieStyletronComponent<React.ElementType<"ul">> = styled("ul", layoutBase.columnsUl(6));
+export const columnsLi: TalkieStyletronComponent<React.ElementType<"li">> = styled("li", layoutBase.columnsLi);
+export const columnsLiMarked: TalkieStyletronComponent<React.ElementType<"li">> = styled("li", layoutBase.columnsLiMarked);

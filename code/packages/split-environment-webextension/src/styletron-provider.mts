@@ -21,9 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 /// <ref types="dom" />
 
 import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
-import type {
-	ClientOptions,
-} from "styletron-engine-atomic";
 import {
 	Client as StyletronClient,
 } from "styletron-engine-atomic";
@@ -37,7 +34,7 @@ export default class WebExtensionEnvironmentStyletronProvider implements IStylet
 	getInstanceSync(): StandardEngine {
 		if (this._instance === null) {
 			const styleElements = document.querySelectorAll<HTMLStyleElement>("._styletron_hydrate_");
-			const clientOptions: ClientOptions = {
+			const clientOptions: ConstructorParameters<typeof StyletronClient>[0] = {
 				hydrate: styleElements,
 			};
 			this._instance = new StyletronClient(clientOptions);

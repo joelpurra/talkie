@@ -29,14 +29,12 @@ import configureAttribute, {
 import translateAttribute, {
 	TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	styled,
 } from "styletron-react";
@@ -61,8 +59,8 @@ interface FeaturesProps extends FeaturesStateProps, FeaturesDispatchProps {}
 
 class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		storeLink: StyletronComponent<ComponentProps<"div">>;
-		storeLinks: StyletronComponent<ComponentProps<"div">>;
+		storeLink: TalkieStyletronComponent<"div">;
+		storeLinks: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {

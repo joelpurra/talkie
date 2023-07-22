@@ -22,10 +22,10 @@ import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
+import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -47,10 +47,10 @@ export interface NavProps {
 
 export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
-		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
-		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
-		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
+		nav: TalkieStyletronComponent<typeof layoutBase.nav>;
+		navTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		navTableTd: TalkieStyletronComponent<typeof tableBase.td>;
+		selectedLink: TalkieStyletronComponent<typeof textBase.a>;
 	};
 
 	constructor(props: P) {

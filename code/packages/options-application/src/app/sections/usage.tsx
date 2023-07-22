@@ -37,14 +37,12 @@ import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -64,8 +62,8 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 	};
 
 	private readonly styled: {
-		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
+		shortcutKeysTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		shortcutKeysTd: TalkieStyletronComponent<typeof tableBase.td>;
 	};
 
 	constructor(props: P) {

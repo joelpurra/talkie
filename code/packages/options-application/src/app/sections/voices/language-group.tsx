@@ -28,14 +28,12 @@ import translateAttribute, {
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -59,7 +57,7 @@ interface LanguageGroupProps extends LanguageGroupStateProps, LanguageGroupDispa
 
 class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		sampleTextBlockQuote: StyletronComponent<ComponentProps<typeof textBase.blockquote>>;
+		sampleTextBlockQuote: TalkieStyletronComponent<typeof textBase.blockquote>;
 	};
 
 	constructor(props: P) {

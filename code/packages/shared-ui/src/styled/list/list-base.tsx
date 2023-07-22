@@ -19,17 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	TalkieStyletronComponent,
+} from "../types.js";
+import {
 	styled,
 } from "styletron-react";
 
 import * as listBase from "../../styles/list/list-base.mjs";
 
-export const ul = styled("ul", listBase.ul);
-export const ol = styled("ol", listBase.ol);
-export const li = styled("li", listBase.li);
-export const dl = styled("dl", listBase.dl);
-export const dt = styled("dt", listBase.dt);
-export const dd = styled("dd", listBase.dd);
-export const inlineUl = styled("ul", listBase.inlineUl);
-export const inlineOl = styled("ol", listBase.inlineOl);
-export const inlineLi = styled("li", listBase.inlineLi);
+export const ul: TalkieStyletronComponent<React.ElementType<"ul">> = styled("ul", listBase.ul);
+export const ol: TalkieStyletronComponent<React.ElementType<"ol">> = styled("ol", listBase.ol);
+export const li: TalkieStyletronComponent<React.ElementType<"li">> = styled("li", listBase.li);
+export const dl: TalkieStyletronComponent<React.ElementType<"dl">> = styled("dl", listBase.dl);
+export const dt: TalkieStyletronComponent<React.ElementType<"dt">> = styled("dt", listBase.dt);
+export const dd: TalkieStyletronComponent<React.ElementType<"dd">> = styled("dd", listBase.dd);
+export const inlineUl: TalkieStyletronComponent<React.ElementType<"ul">> = styled("ul", listBase.inlineUl);
+export const inlineOl: TalkieStyletronComponent<React.ElementType<"ol">> = styled("ol", listBase.inlineOl);
+export const inlineLi: TalkieStyletronComponent<React.ElementType<"li">> = styled("li", listBase.inlineLi);

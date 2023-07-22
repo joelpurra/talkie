@@ -23,14 +23,14 @@ import {
 } from "@talkie/shared-ui/styled/types.js";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import React from "react";
 import {
 	styled,
-	StyletronComponent,
 } from "styletron-react";
 
 export type InformationType =
@@ -43,9 +43,9 @@ export interface InformationSectionProps extends ChildrenRequiredProps, ClassNam
 
 class InformationSection<P extends InformationSectionProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		childBox: StyletronComponent<ComponentProps<"div">>;
-		glyphIcon: StyletronComponent<ComponentProps<"div">>;
-		informationBox: StyletronComponent<ComponentProps<"div">>;
+		childBox: TalkieStyletronComponent<"div">;
+		glyphIcon: TalkieStyletronComponent<"div">;
+		informationBox: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {

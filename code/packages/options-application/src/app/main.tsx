@@ -31,12 +31,12 @@ import {
 	ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import type {
 	StyleObject,
-	StyletronComponent,
 } from "styletron-react";
 import {
 	styled,
@@ -102,9 +102,9 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	private readonly links: NavLink[];
 
 	private readonly styled: {
-		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
-		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
-		navHeader: StyletronComponent<ComponentProps<"div">>;
+		footerHr: TalkieStyletronComponent<typeof layoutBase.hr>;
+		main: TalkieStyletronComponent<typeof layoutBase.main>;
+		navHeader: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {

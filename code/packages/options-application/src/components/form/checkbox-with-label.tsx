@@ -24,14 +24,14 @@ import {
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import React from "react";
 import {
 	styled,
-	StyletronComponent,
 } from "styletron-react";
 
 import Checkbox from "./checkbox.js";
@@ -45,7 +45,7 @@ export interface CheckboxWithLabelProps {
 
 class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		labelForCheckbox: StyletronComponent<ComponentProps<"label">>;
+		labelForCheckbox: TalkieStyletronComponent<"label">;
 	};
 
 	constructor(props: P) {

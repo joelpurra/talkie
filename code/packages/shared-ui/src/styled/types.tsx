@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	type StyletronComponent,
+} from "styletron-react";
+
 export interface ClassNameProp {
 	className?: string;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface TalkieStyletronComponent<D extends React.ElementType> extends StyletronComponent<D, any> {}
