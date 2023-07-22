@@ -30,7 +30,10 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "build": "npm run --silent build:typescript",
+    "build": "npm run --silent build:typescript && npm run --silent build:bin",
+    "build:bin": "echo 'HACK: fix bin symlinking in npm workspaces.' && chmod -v +x ./dist/esm/all-renderer.mjs && npm run --silent build:bin:local && npm run --silent build:bin:global",
+    "build:bin:global": "mkdir -p ../../node_modules/.bin/ && cd ../../node_modules/.bin/ && ln -v -f -s ../../packages/all-renderer/dist/esm/all-renderer.mjs talkie-all-renderer",
+    "build:bin:local": "mkdir -p ./node_modules/.bin/ && cd ./node_modules/.bin/ && ln -v -f -s ../../dist/esm/all-renderer.mjs talkie-all-renderer",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
     "rebuild": "npm run --silent clean && npm run --silent build",

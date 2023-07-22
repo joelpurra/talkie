@@ -106,5 +106,31 @@
     "version:update-root-package:file": "json -Ie \"this.packages[\\\"\\\"].version=this.version\" -f",
     "version:update:file": "json -Ie \"this.version='${TALKIE_RELEASE_VERSION}'\" -f"
   },
-  "type": "module"
+  "type": "module",
+  "workspaces": [
+    "./packages/all-renderer/",
+    "./packages/browser-background/",
+    "./packages/browser-localeredirect/",
+    "./packages/browser-runtime-dependencies/",
+    "./packages/browser-shared/",
+    "./packages/browser-stayalive/",
+    "./packages/options-application/",
+    "./packages/options-renderer/",
+    "./packages/output-webext-chrome/",
+    "./packages/output-webext-webextension/",
+    "./packages/output-webext/",
+    "./packages/popup-application/",
+    "./packages/popup-renderer/",
+    "./packages/renderer/",
+    "./packages/shared-application-helpers/",
+    "./packages/shared-application/",
+    "./packages/shared-interfaces/",
+    "./packages/shared-locales/",
+    "./packages/shared-resources/",
+    "./packages/shared-ui/",
+    "./packages/split-environment-interfaces/",
+    "./packages/split-environment-node/",
+    "./packages/split-environment-webextension/",
+    "./packages/translator-tool/"
+  ]
 }

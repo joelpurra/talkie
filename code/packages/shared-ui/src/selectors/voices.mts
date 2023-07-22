@@ -33,6 +33,9 @@ import {
 import {
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import type {
 	SharedRootState,
@@ -232,7 +235,7 @@ export const getCanSpeakInTranslatedLocale = createDraftSafeSelector(
 		getLanguages,
 		getTranslationLocale,
 	],
-	(languageGroups, languages, translationLocale) => languages.includes(translationLocale) || languageGroups.includes(translationLocale),
+	(languageGroups, languages, translationLocale: Readonly<TalkieLocale>) => languages.includes(translationLocale) || languageGroups.includes(translationLocale),
 );
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
