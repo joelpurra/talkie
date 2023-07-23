@@ -20,19 +20,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import {
-	TranslateSync,
+	type TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
 import LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
 import {
-	ScaleRangeProps,
+	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";
 import RangeWithHeading, {
-	RangeWithHeadingProps,
+	type RangeWithHeadingProps,
 } from "./range-with-heading.js";
 
 export interface RateProps extends Pick<RangeWithHeadingProps & ScaleRangeProps, "defaultValue" | "disabled" | "initialValue" | "listName" | "max" | "min" | "onChange" | "step" | "voiceName"> {}

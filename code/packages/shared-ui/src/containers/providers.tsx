@@ -18,17 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
-	SystemType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 import {
 	Provider,
@@ -45,7 +45,7 @@ import type {
 	SharedRootState,
 } from "../store/index.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "../types.mjs";
 import StateRoot from "./state-root.js";
 

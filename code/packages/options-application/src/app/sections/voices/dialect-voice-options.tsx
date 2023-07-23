@@ -23,7 +23,7 @@ import {
 	rateRange,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import React from "react";

@@ -22,8 +22,8 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import {
@@ -34,7 +34,7 @@ import type {
 } from "../../store/index.mjs";
 import Nav from "./nav.js";
 import {
-	NavContainerProps,
+	type NavContainerProps,
 } from "./nav-container-types.mjs";
 
 const {

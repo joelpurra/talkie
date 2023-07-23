@@ -22,9 +22,9 @@ import type {
 	Action,
 	Store,
 } from "@reduxjs/toolkit";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Provider as StoreProvider,
@@ -35,7 +35,7 @@ import type {
 
 import ErrorBoundary from "../components/error-boundary.js";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "../types.mjs";
 import Providers from "./providers.js";
 

@@ -19,10 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieStyletronComponent,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import {
-	TalkieProgressData,
+	type TalkieProgressData,
 } from "@talkie/shared-ui/talkie-progress.mjs";
 import React from "react";
 import {

@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
@@ -31,7 +31,7 @@ import {
 } from "../containers/providers.js";
 import executeGetFramesSelectionTextAndLanguageCode from "./pass-selected-text-to-background-javascript.mjs";
 import {
-	PerhapsSelectedTextWithFocusTimestamp,
+	type PerhapsSelectedTextWithFocusTimestamp,
 } from "./pass-selected-text-to-background-types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -150,7 +150,7 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 			async registerBroadcastListeners() {
 				const killSwitch = await this.context.broadcaster.registerListeningAction(
 					knownEvents.passSelectedTextToBackground,
-					(_actionName, _actionData) => this.getSelectedTextWithFocusTimestamp(),
+					async (_actionName, _actionData) => this.getSelectedTextWithFocusTimestamp(),
 				);
 
 				this.killSwitches.push(killSwitch);

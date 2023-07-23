@@ -20,17 +20,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import {
-	SystemType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import Features, {
-	FeaturesDispatchProps,
+	type FeaturesDispatchProps,
 } from "../app/sections/features.js";
 import {
 	actions,

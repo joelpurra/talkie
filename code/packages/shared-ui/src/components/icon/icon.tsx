@@ -27,7 +27,7 @@ import {
 } from "styletron-react";
 
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "../../styled/types.js";
 
 export declare type IconMode =
@@ -82,7 +82,7 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 		// TODO: use a separate component per mode?
 		return (
 			<StyledIcon
-				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+
 				className={`icon icon-${mode} icon-${size} ${className}`}
 			/>
 		);

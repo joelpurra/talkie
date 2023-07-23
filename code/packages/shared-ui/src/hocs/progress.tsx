@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
@@ -34,7 +34,7 @@ import {
 	BroadcasterContext,
 } from "../containers/providers.js";
 import {
-	TalkieProgressData,
+	type TalkieProgressData,
 } from "../talkie-progress.mjs";
 
 export interface ProgressProps extends TalkieProgressData {}

@@ -29,8 +29,8 @@ import {
 } from "react-redux";
 
 import Main, {
-	MainDispatchProps,
-	MainStateProps,
+	type MainDispatchProps,
+	type MainStateProps,
 } from "../app/main.js";
 import selectors from "../selectors/index.mjs";
 import {

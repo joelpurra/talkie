@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SafeVoiceObject,
+	type SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import DialectVoice from "../../app/sections/voices/dialect-voice.js";

@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieStyletronComponent,
-} from "../types.js";
-import {
 	styled,
 } from "styletron-react";
 
 import * as tableBase from "../../styles/table/table-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
 export const compactTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.commpactTable);
 export const wideTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.wideTable);

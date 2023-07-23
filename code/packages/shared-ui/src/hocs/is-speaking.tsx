@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
@@ -34,8 +34,8 @@ import {
 	BroadcasterContext,
 } from "../containers/providers.js";
 import {
-	IsSpeakingHocState,
-	IsSpeakingProps,
+	type IsSpeakingHocState,
+	type IsSpeakingProps,
 } from "./is-speaking-types.mjs";
 
 export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeakingProps, U = Except<P, keyof IsSpeakingProps>>() {
@@ -145,13 +145,19 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 				const killSwitches = await Promise.all([
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeaking,
-						(_actionName, _actionData) => this.updateIsSpeaking(true)),
+						(_actionName, _actionData) => {
+							this.updateIsSpeaking(true);
+						}),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeakingPart,
-						(_actionName, _actionData) => this.updateIsSpeaking(true)),
+						(_actionName, _actionData) => {
+							this.updateIsSpeaking(true);
+						}),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.afterSpeaking,
-						(_actionName, _actionData) => this.updateIsSpeaking(false)),
+						(_actionName, _actionData) => {
+							this.updateIsSpeaking(false);
+						}),
 				]);
 
 				for (const killSwitch of killSwitches) {

@@ -20,18 +20,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	ClassNameProp,
+	type ClassNameProp,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
-	TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
-import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 import {
@@ -67,13 +65,13 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 		super(props);
 
 		const partialStyled = {
-			h2ModeHeading: withStyleDeep<typeof this.styled.h2ModeHeading, any>(
+			h2ModeHeading: withStyleDeep<typeof this.styled.h2ModeHeading, unknown>(
 				textBase.h2,
 				{
 					marginTop: "1em",
 				},
 			),
-			wrapperBase: styled<"div", any>(
+			wrapperBase: styled<"div", unknown>(
 				"div",
 				{
 					...layoutBase.rounded("0.5em"),
@@ -135,18 +133,21 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 
 		switch (mode) {
 			// TODO: create separate components instead of a flag.
-			case "p":
+			case "p": {
 				Wrapper = this.styled.pModeWrapper;
 				Heading = textBase.p;
 				break;
+			}
 
-			case "h2":
+			case "h2": {
 				Wrapper = this.styled.h2ModeWrapper;
 				Heading = this.styled.h2ModeHeading;
 				break;
+			}
 
-			default:
+			default: {
 				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
+			}
 		}
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

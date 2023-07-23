@@ -21,19 +21,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import StyleRoot from "../components/style-root.js";
 import {
-	IsSpeakingProps,
+	type IsSpeakingProps,
 } from "../hocs/is-speaking-types.mjs";
 import type {
 	SharedRootState,
 } from "../store/index.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "../types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieStyletronComponent,
-} from "../types.js";
-import {
 	styled,
 } from "styletron-react";
 
 import * as listBase from "../../styles/list/list-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
 export const ul: TalkieStyletronComponent<React.ElementType<"ul">> = styled("ul", listBase.ul);
 export const ol: TalkieStyletronComponent<React.ElementType<"ol">> = styled("ol", listBase.ol);

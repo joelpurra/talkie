@@ -21,11 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import {
-	actions,
+	type actions,
 } from "../slices/index.mjs";
 import isSpeakingAttribute from "./is-speaking.js";
 import {
-	IsSpeakingProps,
+	type IsSpeakingProps,
 } from "./is-speaking-types.mjs";
 
 export interface IsSpeakingUpdaterStateProps extends IsSpeakingProps {

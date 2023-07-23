@@ -22,8 +22,8 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import Settings from "../app/sections/settings.js";

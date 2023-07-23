@@ -20,14 +20,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import {
-	TalkieStyletronComponent,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 import {

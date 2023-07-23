@@ -21,10 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import {
-	actions,
+	type actions,
 } from "../slices/index.mjs";
 import progressAttribute, {
-	ProgressProps,
+	type ProgressProps,
 } from "./progress.js";
 
 export interface ProgressUpdaterStateProps extends ProgressProps {}

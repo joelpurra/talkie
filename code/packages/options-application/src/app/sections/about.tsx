@@ -19,18 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	OsType,
-	SystemType,
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";

@@ -19,19 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageTextDirection,
+	type LanguageTextDirection,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	TalkieStyletronComponent,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 import {

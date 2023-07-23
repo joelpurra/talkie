@@ -19,10 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import {
-	BubbledLinkClickHandler,
+	type BubbledLinkClickHandler,
 	handleBubbledLinkClick,
 } from "@talkie/shared-ui/utils/ui.mjs";
 import React from "react";

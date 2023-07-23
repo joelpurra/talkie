@@ -22,7 +22,7 @@ import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import React from "react";
 
 import ScaleRange, {
-	ScaleRangeProps,
+	type ScaleRangeProps,
 } from "./scale-range.js";
 
 export default class LogarithmicScaleRange<P extends ScaleRangeProps> extends React.PureComponent<P> {

@@ -20,16 +20,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as errors from "@talkie/shared-ui/styled/text/errors.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import {
-	TalkieStyletronComponent,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import {
-	OnOpenOptionsPageClickProp,
+	type OnOpenOptionsPageClickProp,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 import {

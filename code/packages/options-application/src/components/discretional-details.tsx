@@ -21,10 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 

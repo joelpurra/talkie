@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	TalkieStyletronComponent,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 import {
@@ -37,7 +37,7 @@ import {
 import HeroSection from "../../components/hero-section/hero-section.js";
 import InstallVoicesContainer from "../../containers/install-voices-container.js";
 import {
-	actions,
+	type actions,
 } from "../../slices/index.mjs";
 
 export interface WelcomeProps {
@@ -157,7 +157,9 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 	}
 
 	getWelcomeSample(): WelcomeSample {
-		const sampleText = this.props.sampleText;
+		const {
+			sampleText,
+		} = this.props;
 		const sampleTextLanguageCode = this.props.sampleTextLanguage;
 
 		const welcomeSample: WelcomeSample = typeof sampleText === "string"

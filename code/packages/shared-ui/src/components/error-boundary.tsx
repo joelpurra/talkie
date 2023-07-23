@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React, {
-	ErrorInfo,
+	type ErrorInfo,
 } from "react";
 import type {
 	JsonValue,
@@ -27,7 +27,7 @@ import type {
 } from "type-fest";
 
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "../types.mjs";
 
 interface ErrorBoundaryState {
@@ -73,7 +73,7 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 		const string = value ? String(value) : JSON.stringify(value);
 		let pretty = string
 			.trim()
-			.replace(/\n/g, "\n> ");
+			.replaceAll("\n", "\n> ");
 
 		if (pretty.length > limit) {
 			pretty = pretty.slice(0, Math.max(0, limit)) + "...";

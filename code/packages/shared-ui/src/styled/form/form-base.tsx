@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieStyletronComponent,
-} from "../types.js";
-import {
 	styled,
 } from "styletron-react";
 
 import * as formBase from "../../styles/form/form-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
 export const form: TalkieStyletronComponent<React.ElementType<"form">> = styled("form", formBase.form);
 export const button: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", formBase.button);
