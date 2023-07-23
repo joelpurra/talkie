@@ -83,6 +83,7 @@ interface StateProps {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, ProvidersProps, SharedRootState> = (state: Readonly<SharedRootState>) => ({
 	systemType: state.shared.metadata.systemType,
 });

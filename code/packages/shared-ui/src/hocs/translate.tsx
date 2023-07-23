@@ -35,6 +35,8 @@ export default function translateAttribute<P extends TranslateProps = TranslateP
 	return function translateHoc(ComponentToWrap: React.ComponentType<P>) {
 		class TranslationHoc extends React.PureComponent<P> {
 			static override contextType = TranslateContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof TranslateContext>;
 
 			override render(): React.ReactNode {

@@ -87,8 +87,7 @@ export default class DiscretionalDetails<P extends DiscretionalDetailsProps> ext
 		}
 
 		const dynamicSummaryElement: React.ReactNode = summaryElement
-			? summaryElement
-			: (
+			?? (
 				<summary>
 					{summary}
 				</summary>

@@ -43,6 +43,8 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 	return function isSpeakingHoc(ComponentToWrap: React.ComponentType<P>) {
 		class IsSpeakingHoc extends React.Component<P, IsSpeakingHocState> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			override state = {
@@ -145,17 +147,17 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 				const killSwitches = await Promise.all([
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeaking,
-						(_actionName, _actionData) => {
+						() => {
 							this.updateIsSpeaking(true);
 						}),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeakingPart,
-						(_actionName, _actionData) => {
+						() => {
 							this.updateIsSpeaking(true);
 						}),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.afterSpeaking,
-						(_actionName, _actionData) => {
+						() => {
 							this.updateIsSpeaking(false);
 						}),
 				]);

@@ -126,6 +126,7 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			versionName,
 		} = this.props;
 
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice: SafeVoiceObject) => `${voice.name} (${voice.lang})`);
 
 		return (

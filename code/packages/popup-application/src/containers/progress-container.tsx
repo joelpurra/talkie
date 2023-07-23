@@ -41,6 +41,7 @@ interface StateProps extends TalkieProgressData {}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
 	current: state.shared.progress.current,
 	max: state.shared.progress.max,

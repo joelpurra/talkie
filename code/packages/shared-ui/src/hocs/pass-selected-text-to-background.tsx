@@ -40,6 +40,8 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {
 		class PassSelectedTextToBackgroundHoc extends React.PureComponent<P, S, SS> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			killSwitches: KillSwitch[];
@@ -150,7 +152,7 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 			async registerBroadcastListeners() {
 				const killSwitch = await this.context.broadcaster.registerListeningAction(
 					knownEvents.passSelectedTextToBackground,
-					async (_actionName, _actionData) => this.getSelectedTextWithFocusTimestamp(),
+					async () => this.getSelectedTextWithFocusTimestamp(),
 				);
 
 				this.killSwitches.push(killSwitch);

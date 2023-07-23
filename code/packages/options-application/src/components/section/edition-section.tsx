@@ -150,7 +150,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			}
 		}
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
 		const LinkOrNot: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => headingLink

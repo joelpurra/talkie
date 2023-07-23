@@ -53,6 +53,7 @@ interface DispatchProps {
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,

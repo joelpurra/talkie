@@ -37,6 +37,8 @@ export default function broadcasterAttribute<P extends BroadcasterProps = Broadc
 	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>) {
 		class BroadcasterHoc extends React.PureComponent<P> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			override render(): React.ReactNode {

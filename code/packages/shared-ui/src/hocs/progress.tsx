@@ -46,6 +46,8 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			isListeningToBroadcasts = false;

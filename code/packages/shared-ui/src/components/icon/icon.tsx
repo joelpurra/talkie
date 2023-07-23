@@ -82,7 +82,6 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 		// TODO: use a separate component per mode?
 		return (
 			<StyledIcon
-
 				className={`icon icon-${mode} icon-${size} ${className}`}
 			/>
 		);

@@ -47,6 +47,7 @@ interface StateProps extends IsSpeakingProps {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootState> = (state: Readonly<SharedRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	isSpeaking: state.shared.speaking.isSpeaking,
