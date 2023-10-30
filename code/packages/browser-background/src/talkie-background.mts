@@ -256,8 +256,8 @@ export default class TalkieBackground {
 		await this.detectLanguagesAndSpeakAllSelections(selections, detectedPageLanguage);
 	}
 
-	async onTabRemovedHandler(tabId: number, _removeInfo: Readonly<Tabs.OnRemovedRemoveInfoType>): Promise<void> {
-		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(tabId);
+	async onTabRemovedHandler(browserTabId: number, _removeInfo: Readonly<Tabs.OnRemovedRemoveInfoType>): Promise<void> {
+		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(browserTabId);
 
 		if (isTabSpeaking) {
 			// TODO: user preference whether or not to stop speaking when a tab is removed/closed/updated.
@@ -266,8 +266,8 @@ export default class TalkieBackground {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	async onTabUpdatedHandler(tabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType>): Promise<void> {
-		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(tabId);
+	async onTabUpdatedHandler(browserTabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType>): Promise<void> {
+		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(browserTabId);
 
 		// NOTE: changeInfo only has properties which have changed.
 		// https://developer.chrome.com/extensions/tabs#event-onUpdated

@@ -32,5 +32,5 @@ export interface NavContainerProps {
 	links: NavLink[];
 }
 
-export type TabId = string;
-export type LocationHash = string;
+export type NavigationTabId = string;
+export type NavigationLocationHash = string;

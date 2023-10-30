@@ -18,14 +18,5 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type JsonPrimitive,
-} from "type-fest";
-
-// HACK: replaced JsonObject as a workaround for: Type instantiation is excessively deep and possibly infinite. ts(2589)
-export interface SpeakingHistoryEntry extends Record<string, JsonPrimitive> {
-	hash: number;
-	language: string | null;
-	text: string;
-	voiceName: string | null;
-}
+// NOTE: replace some instances of the full (webextension-polyfill) browser.Tab.Tab object with the unique tab identifier (if available), enabling lookups if needed.
+export type BrowserTabId = number | undefined;

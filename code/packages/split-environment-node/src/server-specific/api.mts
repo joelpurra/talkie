@@ -48,6 +48,9 @@ import {
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
+import {
+	type BrowserTabId,
+} from "@talkie/shared-interfaces/webext.mjs";
 import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
@@ -61,6 +64,7 @@ import type {
 export default class Api implements IApi {
 	constructor(private readonly metadataManager: IMetadataManager, private readonly talkieLocaleHelper: ITalkieLocaleHelper, private readonly localeProvider: ILocaleProvider) {}
 
+	/* eslint-disable prefer-rest-params */
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
@@ -218,11 +222,11 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
+	async openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<BrowserTabId> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async openShortKeysConfiguration(): Promise<Tabs.Tab> {
+	async openShortKeysConfiguration(): Promise<BrowserTabId> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -266,4 +270,5 @@ export default class Api implements IApi {
 	async getNavigatorLanguages(): Promise<Readonly<string[]>> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
+	/* eslint-enable prefer-rest-params */
 }

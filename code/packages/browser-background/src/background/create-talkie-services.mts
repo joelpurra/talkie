@@ -22,6 +22,9 @@ import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
+	jsonClone,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
 	logDebug,
 	logError,
 	type LoggingLevel,
@@ -66,6 +69,7 @@ const createTalkieServices = async (
 	voiceManager: ReadonlyDeep<VoiceManager>,
 	// eslint-disable-next-line max-params
 ): Promise<ITalkieServices> => {
+	// HACK: re-serialize/deserialize non-primitives _received from_ the frontend pages using jsonClone(), to avoid references dying ("can't access dead object").
 	// TODO: group methods.
 	/* eslint-disable sort-keys */
 	const talkieServices: ITalkieServices = {
@@ -106,7 +110,7 @@ const createTalkieServices = async (
 		stopSpeakFromFrontend: async () => talkieBackground.stopSpeakingAction(),
 		async startSpeakFromFrontend(text: string, voice: Readonly<IVoiceNameAndRateAndPitch>) {
 			// NOTE: keeping the root chain separate from the speech chain.
-			void talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+			void talkieBackground.startSpeakingTextInVoiceAction(text, jsonClone(voice));
 		},
 
 		async startSpeakInVoiceWithOverridesFromFrontend(frontendText: string, frontendVoiceName: string) {
@@ -149,7 +153,7 @@ const createTalkieServices = async (
 		clearSpeakingHistory: async () => historyManager.clearSpeakingHistory(),
 		pruneSpeakingHistory: async () => historyManager.pruneSpeakingHistory(),
 		removeSpeakingHistoryEntry: async (hash: number) => historyManager.removeSpeakingHistoryEntry(hash),
-		storeMostRecentSpeakingEntry: async (speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>) => historyManager.storeMostRecentSpeakingEntry(speakingHistoryEntry),
+		storeMostRecentSpeakingEntry: async (speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>) => historyManager.storeMostRecentSpeakingEntry(jsonClone(speakingHistoryEntry)),
 
 		getEffectiveVoiceForLanguage: async (languageName: string) => voiceManager.getEffectiveVoiceForLanguage(languageName),
 		isLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName),
@@ -163,7 +167,7 @@ const createTalkieServices = async (
 
 		getStoredValue: async <T extends JsonValue>(key: string) => storageManager.getStoredValue<T>(key),
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		setStoredValue: async (key: string, value: Readonly<JsonValue>) => storageManager.setStoredValue(key, value),
+		setStoredValue: async (key: string, value: Readonly<JsonValue>) => storageManager.setStoredValue(key, jsonClone(value)),
 		getConfigurationValue: async <T extends JsonValue>(path: string) => configuration.get<T>(path),
 	};
 	/* eslint-enable sort-keys */

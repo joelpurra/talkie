@@ -39,13 +39,13 @@ export interface TabChangeListeners {
 const createAndStartTabListeners = async (talkieBackground: ReadonlyDeep<TalkieBackground>): Promise<TabChangeListeners> => {
 	// NOTE: cache listeners so they can be added and removed by reference before/after speaking.
 	const onTabRemovedListener = loggedPromiseCallback(
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		async (tabId: number, removeInfo: Readonly<Tabs.OnRemovedRemoveInfoType> | any) => talkieBackground.onTabRemovedHandler(tabId, removeInfo),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
+		async (browserTabId: number, removeInfo: Readonly<Tabs.OnRemovedRemoveInfoType> | any) => talkieBackground.onTabRemovedHandler(browserTabId, removeInfo),
 		"onRemoved",
 	);
 	const onTabUpdatedListener = loggedPromiseCallback(
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		async (tabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType> | any) => talkieBackground.onTabUpdatedHandler(tabId, changeInfo),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
+		async (browserTabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType> | any) => talkieBackground.onTabUpdatedHandler(browserTabId, changeInfo),
 		"onUpdated",
 	);
 

@@ -19,17 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	type BrowserTabId,
+} from "@talkie/shared-interfaces/webext.mjs";
+import {
 	type ReadonlyDeep,
 } from "type-fest";
-import type {
-	Tabs,
-} from "webextension-polyfill";
 
 import {
 	getTalkieServices,
 } from "./tabs.mjs";
 
-export const openExternalUrlInNewTab = async (url: ReadonlyDeep<URL>): Promise<Tabs.Tab> => {
+export const openExternalUrlInNewTab = async (url: ReadonlyDeep<URL>): Promise<BrowserTabId> => {
 	if (!(url instanceof URL)) {
 		throw new TypeError(`Bad url: ${typeof url}`);
 	}
@@ -41,13 +41,16 @@ export const openExternalUrlInNewTab = async (url: ReadonlyDeep<URL>): Promise<T
 
 	const href = url.toString();
 
-	return browser.tabs.create({
+	// NOTE: prefer returning the primitive BrowserTabId identifier over the full (webextension-polyfill) browser.Tabs.Tab object.
+	const tab = await browser.tabs.create({
 		active: true,
 		url: href,
 	});
+
+	return tab.id;
 };
 
-export const openInternalUrlInNewTab = async (url: string): Promise<Tabs.Tab> => {
+export const openInternalUrlInNewTab = async (url: string): Promise<BrowserTabId> => {
 	if (typeof url !== "string") {
 		throw new TypeError(`Bad url: ${typeof url}`);
 	}
@@ -58,13 +61,16 @@ export const openInternalUrlInNewTab = async (url: string): Promise<Tabs.Tab> =>
 		throw new Error(`Bad url, only internally rooted allowed: ${JSON.stringify(url)}`);
 	}
 
-	return browser.tabs.create({
+	// NOTE: prefer returning the primitive BrowserTabId identifier over the full (webextension-polyfill) browser.Tabs.Tab object.
+	const tab = await browser.tabs.create({
 		active: true,
 		url,
 	});
+
+	return tab.id;
 };
 
-export const openExternalUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
+export const openExternalUrlFromConfigurationInNewTab = async (id: string): Promise<BrowserTabId> => {
 	const background = await getTalkieServices();
 	const url = await background.getConfigurationValue(`urls.external.${id}`);
 
@@ -77,7 +83,7 @@ export const openExternalUrlFromConfigurationInNewTab = async (id: string): Prom
 	return openExternalUrlInNewTab(urlObject);
 };
 
-export const openInternalUrlFromConfigurationInNewTab = async (id: string): Promise<Tabs.Tab> => {
+export const openInternalUrlFromConfigurationInNewTab = async (id: string): Promise<BrowserTabId> => {
 	const talkieServices = await getTalkieServices();
 	const url = await talkieServices.getConfigurationValue(`urls.internal.${id}`);
 
@@ -88,13 +94,16 @@ export const openInternalUrlFromConfigurationInNewTab = async (id: string): Prom
 	return openInternalUrlInNewTab(url);
 };
 
-export const openShortKeysConfiguration = async (): Promise<Tabs.Tab> => {
+export const openShortKeysConfiguration = async (): Promise<BrowserTabId> => {
 	const url = "chrome://extensions/configureCommands";
 
-	return browser.tabs.create({
+	// NOTE: prefer returning the primitive BrowserTabId identifier over the full (webextension-polyfill) browser.Tabs.Tab object.
+	const tab = await browser.tabs.create({
 		active: true,
 		url,
 	});
+
+	return tab.id;
 };
 
 export const openOptionsPage = async (): Promise<void> => browser.runtime.openOptionsPage();

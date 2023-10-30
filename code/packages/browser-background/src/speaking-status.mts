@@ -29,31 +29,31 @@ export default class SpeakingStatus {
 		return this.currentSpeakingTab;
 	}
 
-	async setSpeakingTabId(tabId: number): Promise<void> {
-		const isTabSpeaking = await this.isSpeakingTabId(tabId);
+	async setSpeakingTabId(browserTabId: number): Promise<void> {
+		const isTabSpeaking = await this.isSpeakingTabId(browserTabId);
 
 		if (isTabSpeaking) {
-			throw new Error(`Tried to set tab ${tabId} as speaking, but another tab was already speaking.`);
+			throw new Error(`Tried to set tab ${browserTabId} as speaking, but another tab was already speaking.`);
 		}
 
-		this.currentSpeakingTab = tabId;
+		this.currentSpeakingTab = browserTabId;
 	}
 
 	async setDoneSpeaking(): Promise<void> {
 		this.currentSpeakingTab = null;
 	}
 
-	async setTabIsDoneSpeaking(tabId: number): Promise<void> {
-		const isTabSpeaking = await this.isSpeakingTabId(tabId);
+	async setTabIsDoneSpeaking(browserTabId: number): Promise<void> {
+		const isTabSpeaking = await this.isSpeakingTabId(browserTabId);
 
-		// TODO: throw if it's not the same tabId as the currently speaking tab?
+		// TODO: throw if it's not the same browserTabId as the currently speaking tab?
 		if (isTabSpeaking) {
 			await this.setDoneSpeaking();
 		}
 	}
 
-	async isSpeakingTabId(tabId: number): Promise<boolean> {
-		return this.currentSpeakingTab !== null && tabId === this.currentSpeakingTab;
+	async isSpeakingTabId(browserTabId: number): Promise<boolean> {
+		return this.currentSpeakingTab !== null && browserTabId === this.currentSpeakingTab;
 	}
 
 	async isSpeaking(): Promise<boolean> {

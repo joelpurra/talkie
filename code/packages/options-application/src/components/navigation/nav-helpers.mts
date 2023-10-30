@@ -19,20 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	type LocationHash,
-	type TabId,
+	type NavigationLocationHash,
+	type NavigationTabId,
 } from "./nav-container-types.mjs";
 
-export const isTabId = (tabId: string | null): tabId is TabId => typeof tabId === "string"
+export const isTabId = (tabId: string | null): tabId is NavigationTabId => typeof tabId === "string"
 		&& tabId.length > 0
 		&& tabId.split("#").length === 1;
 
-export const isLocationHash = (locationHash: string | null): locationHash is LocationHash => typeof locationHash === "string"
+export const isLocationHash = (locationHash: string | null): locationHash is NavigationLocationHash => typeof locationHash === "string"
 		&& locationHash.length > 1
 		&& locationHash.startsWith("#")
 		&& locationHash.split("#").length === 2;
 
-export const getTabIdFromLocationHash = (locationHash: LocationHash): TabId => {
+export const getTabIdFromLocationHash = (locationHash: NavigationLocationHash): NavigationTabId => {
 	if (!isLocationHash(locationHash)) {
 		// TODO: assertions.
 		throw new TypeError("locationHash");
@@ -48,7 +48,7 @@ export const getTabIdFromLocationHash = (locationHash: LocationHash): TabId => {
 	return tabId;
 };
 
-export const getLocationHashFromTabId = (tabId: TabId): LocationHash => {
+export const getLocationHashFromTabId = (tabId: NavigationTabId): NavigationLocationHash => {
 	if (!isTabId(tabId)) {
 		// TODO: assertions.
 		throw new TypeError("tabId");

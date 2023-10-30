@@ -25,7 +25,7 @@ import {
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
-	type TabId,
+	type NavigationTabId,
 } from "../components/navigation/nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
@@ -44,7 +44,7 @@ const {
 export interface TabsState {
 	// TODO: list known tabs.
 
-	activeTabId: TabId | "fallback-tab";
+	activeTabId: NavigationTabId | "fallback-tab";
 }
 
 const initialState: TabsState = {
@@ -76,7 +76,7 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 	},
 );
 
-export const setActiveTabId = createAsyncThunk<string | "fallback-tab", TabId | null, IApiAsyncThunkConfig>(
+export const setActiveTabId = createAsyncThunk<string | "fallback-tab", NavigationTabId | null, IApiAsyncThunkConfig>(
 	`${prefix}/setActiveTabId`,
 	async (
 		activeTabId,

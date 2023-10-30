@@ -75,7 +75,7 @@ const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
 	customPostrenderActionsToDispatch: Readonly<A[]>,
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	reactHtmlTemplatePath: Readonly<URL>,
-	// eslint-disable-next-line max-params
+	// eslint-disable-next-line max-params, @typescript-eslint/prefer-readonly-parameter-types
 	talkieLocale: TalkieLocale, ChildComponent: React.ComponentType<P>): Promise<string> => {
 	const {
 		api,

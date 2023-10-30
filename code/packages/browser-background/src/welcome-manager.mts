@@ -19,14 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	type BrowserTabId,
+} from "@talkie/shared-interfaces/webext.mjs";
+import {
 	openInternalUrlFromConfigurationInNewTab,
 } from "@talkie/split-environment-webextension/browser-specific/urls.mjs";
-import type {
-	Tabs,
-} from "webextension-polyfill";
 
 export default class WelcomeManager {
-	async openWelcomePage(): Promise<Tabs.Tab> {
+	async openWelcomePage(): Promise<BrowserTabId> {
 		// TODO: focus the tab's window to ensure that the welcome text selection works?
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/Tab
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows/update

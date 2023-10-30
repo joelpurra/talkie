@@ -50,6 +50,9 @@ import {
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
+import {
+	type BrowserTabId,
+} from "@talkie/shared-interfaces/webext.mjs";
 import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
@@ -57,9 +60,6 @@ import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
-import type {
-	Tabs,
-} from "webextension-polyfill";
 
 import {
 	getTalkieServices,
@@ -83,6 +83,8 @@ export default class Api implements IApi {
 		private readonly talkieLocaleHelper: ITalkieLocaleHelper,
 		private readonly localeProvider: ILocaleProvider,
 	) {
+		// HACK: re-serialize/deserialize non-primitives _received from_ the background page using jsonClone(), to avoid references dying ("can't access dead object").
+
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		this.debouncedSpeakTextInCustomVoice = debounce(this.speakInCustomVoice.bind(this) as any, 200);
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -94,12 +96,12 @@ export default class Api implements IApi {
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {
 		// TODO: separate "background API" from other functionality.
 		// eslint-disable-next-line no-sync
-		return this.configuration.getSync<T>(systemType, path);
+		return jsonClone(this.configuration.getSync<T>(systemType, path));
 	}
 
 	async getConfigurationValue<T extends JsonValue>(configurationPath: string): Promise<T> {
 		// TODO: separate "background API" from other functionality.
-		return this.configuration.get<T>(configurationPath);
+		return jsonClone(await this.configuration.get<T>(configurationPath));
 	}
 
 	async iconClick(): Promise<void> {
@@ -143,7 +145,7 @@ export default class Api implements IApi {
 	async getVoices(): Promise<SafeVoiceObjects> {
 		const talkieServices = await getTalkieServices();
 
-		return talkieServices.getAllVoicesSafeObjects();
+		return jsonClone(await talkieServices.getAllVoicesSafeObjects());
 	}
 
 	async getIsPremiumEdition(): Promise<boolean> {
@@ -197,13 +199,13 @@ export default class Api implements IApi {
 	async getMostRecentSpeakingEntry(): Promise<SpeakingHistoryEntry | null> {
 		const talkieServices = await getTalkieServices();
 
-		return talkieServices.getMostRecentSpeakingEntry();
+		return jsonClone(await talkieServices.getMostRecentSpeakingEntry());
 	}
 
 	async getSpeakingHistory(): Promise<SpeakingHistoryEntry[]> {
 		const talkieServices = await getTalkieServices();
 
-		return talkieServices.getSpeakingHistory();
+		return jsonClone(await talkieServices.getSpeakingHistory());
 	}
 
 	async clearSpeakingHistory(): Promise<void> {
@@ -269,7 +271,7 @@ export default class Api implements IApi {
 
 	async getTranslatedLanguages(): Promise<TalkieLocale[]> {
 		// TODO: separate "background API" from other functionality.
-		return this.talkieLocaleHelper.getTranslatedLanguages();
+		return jsonClone(await this.talkieLocaleHelper.getTranslatedLanguages());
 	}
 
 	async isPremiumEdition(): Promise<boolean> {
@@ -302,12 +304,12 @@ export default class Api implements IApi {
 		return this.metadataManager.getOperatingSystemType();
 	}
 
-	async openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab> {
+	async openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<BrowserTabId> {
 		// TODO: separate "background API" from other functionality.
 		return sharedOpenExternalUrlInNewTab(url);
 	}
 
-	async openShortKeysConfiguration(): Promise<Tabs.Tab> {
+	async openShortKeysConfiguration(): Promise<BrowserTabId> {
 		// TODO: separate "background API" from other functionality.
 		return sharedOpenShortKeysConfiguration();
 	}

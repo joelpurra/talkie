@@ -43,13 +43,13 @@ import {
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
+import {
+	type BrowserTabId,
+} from "@talkie/shared-interfaces/webext.mjs";
 import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
-import type {
-	Tabs,
-} from "webextension-polyfill";
 
 interface IApi {
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
@@ -90,8 +90,8 @@ interface IApi {
 	getEditionType(): Promise<EditionType>;
 	getSystemType(): Promise<SystemType>;
 	getOperatingSystemType(): Promise<OsType>;
-	openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<Tabs.Tab>;
-	openShortKeysConfiguration(): Promise<Tabs.Tab>;
+	openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<BrowserTabId>;
+	openShortKeysConfiguration(): Promise<BrowserTabId>;
 	openOptionsPage(): Promise<void>;
 
 	registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch>;
@@ -105,4 +105,5 @@ interface IApi {
 	getNavigatorLanguage(): Promise<Readonly<string | null>>;
 	getNavigatorLanguages(): Promise<Readonly<string[]>>;
 }
+
 export default IApi;
