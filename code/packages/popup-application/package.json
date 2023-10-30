@@ -20,7 +20,7 @@
     "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.5"
+    "@reduxjs/toolkit": "^1.9.7"
   },
   "exports": {
     "./*": {

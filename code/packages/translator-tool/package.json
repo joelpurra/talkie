@@ -22,10 +22,10 @@
     "striptags": "^3.2.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.38",
-    "@types/clone": "^2.1.1",
-    "@types/ent": "^2.2.5",
-    "@types/jsonfile": "^6.1.1"
+    "@types/bluebird": "^3.5.41",
+    "@types/clone": "^2.1.3",
+    "@types/ent": "^2.2.7",
+    "@types/jsonfile": "^6.1.3"
   },
   "exports": {
     "./*": {

@@ -17,7 +17,7 @@
     "@talkie/shared-locales": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^1.9.7",
     "mkdirp": "^3.0.1"
   },
   "exports": {
