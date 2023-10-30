@@ -23,7 +23,7 @@ import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 
-export interface TalkieProgressData {
+export interface TalkieProgressData extends Record<string, number> {
 	current: number;
 	max: number;
 	min: number;
@@ -141,6 +141,7 @@ export default class TalkieProgress {
 	}
 
 	async endSegment(): Promise<void> {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		clearInterval(this.interval);
 
 		this.interval = null;

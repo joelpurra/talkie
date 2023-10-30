@@ -20,8 +20,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
-import ProgressUpdater, {
+import {
 	type ProgressUpdaterDispatchProps,
+	ProgressUpdaterTypehack,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
 import type {
@@ -107,7 +108,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 			<>
 				<IsSpeakingListenerContainer/>
 
-				<ProgressUpdater
+				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}
 					setMax={setMax}
 					setMin={setMin}

@@ -120,12 +120,19 @@ export default class TalkieBackground {
 				void logDebug("speakSelectionOnPage", "Received text selections from internal pages.", selectedTextsFromFrontend);
 
 				const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
-					.filter(Boolean);
+					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, unicorn/prefer-native-coercion-functions
+					.filter((t): t is Readonly<NonNullable<SelectedTextWithFocusTimestamp>> => Boolean(t));
 
 				const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
 					// eslint-disable-next-line unicorn/no-array-reduce
 					.reduce<Readonly<SelectedTextWithFocusTimestamp> | null>(
+					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 					(previous, selectedTextWithFocusTimestamp) => {
+						// TODO: assertions.
+						if (selectedTextWithFocusTimestamp === null) {
+							throw new TypeError("selectedTextWithFocusTimestamp");
+						}
+
 						// NOTE: first take the first available internal page.
 						if (previous === null) {
 							return selectedTextWithFocusTimestamp;
@@ -258,6 +265,7 @@ export default class TalkieBackground {
 		}
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	async onTabUpdatedHandler(tabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType>): Promise<void> {
 		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(tabId);
 
@@ -291,12 +299,14 @@ export default class TalkieBackground {
 			throw new Error("framesSelectionTextAndLanguage");
 		}
 
-		const nonEmptyFramesSelectionTextAndLanguage = framesSelectionTextAndLanguage
-			.filter(Boolean);
+		const nonEmptyFramesSelectionTextAndLanguage: FramesSelectionTextAndLanguageCode[] = framesSelectionTextAndLanguage
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, unicorn/prefer-native-coercion-functions
+			.filter((t): t is NonNullable<FramesSelectionTextAndLanguageCode> => Boolean(t));
 
 		return nonEmptyFramesSelectionTextAndLanguage;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	async detectLanguagesAndSpeakAllSelections(selections: Readonly<FramesSelectionTextAndLanguageCode[]>, detectedPageLanguage: string | null): Promise<void> {
 		void logDebug("Start", "Speaking all selections");
 
@@ -309,6 +319,7 @@ export default class TalkieBackground {
 
 		await Promise.all(
 			cleanedupSelections.map(
+				// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 				async (selection) => {
 					void logDebug("Text", `Speaking selection (length ${selection.text.length}, effectiveLanguage ${selection.effectiveLanguage})`, selection);
 

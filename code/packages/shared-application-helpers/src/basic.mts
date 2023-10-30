@@ -19,12 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type {
-	JsonObject,
+	JsonValue,
 	Promisable,
 } from "type-fest";
 
 // TODO: use library?
-export const jsonClone = <T extends JsonObject>(object: T): T => {
+export const jsonClone = <T extends Readonly<JsonValue>>(object: T): T => {
 	const json = JSON.stringify(object);
 	const restored: T = JSON.parse(json) as T;
 
@@ -58,7 +58,7 @@ export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
 export const last = <T,>(indexable: Readonly<T[]>): T | undefined => indexable.at(-1);
 
 // TODO: use library.
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/comma-dangle, @typescript-eslint/prefer-readonly-parameter-types
 export const flatten = <T,>(deepArray: undefined | T | T[] | T[][] | T[][][] | T[][][][] | T[][][][][]): T[] => {
 	if (deepArray === undefined) {
 		// NOTE: mostly a typing workaround to avoid issues with the possibly undefined type of array element accessors.
@@ -76,10 +76,15 @@ export const flatten = <T,>(deepArray: undefined | T | T[] | T[][] | T[][][] | T
 	}
 
 	if (deepArray.length === 1) {
-		return new Array<T>().concat(flatten(deepArray[0]));
+		return [
+			...flatten(deepArray[0]),
+		];
 	}
 
-	return new Array<T>().concat(flatten(deepArray[0])).concat(flatten(deepArray.slice(1)));
+	return [
+		...flatten(deepArray[0]),
+		...flatten(deepArray.slice(1)),
+	];
 };
 
 export const isUndefinedOrNullOrEmptyOrWhitespace = (value: unknown): value is string => !(value && typeof value === "string" && value.length > 0 && value.trim().length > 0);
@@ -120,18 +125,14 @@ export const debounce = <T extends (...args: V[]) => Promisable<U>, U, V = unkno
 	let timeout: any | null = null;
 
 	const limiter = (...limiterArgs: Parameters<T>): void => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		clearTimeout(timeout);
 
 		timeout = setTimeout(
 			async () => {
 				timeout = null;
 
-				try {
-					await fn(...limiterArgs);
-				} catch (error: unknown) {
-					// TODO: log/handle success/errors?
-					throw error;
-				}
+				await fn(...limiterArgs);
 			},
 			limit,
 		);

@@ -162,7 +162,8 @@ const createTalkieServices = async (
 		getEffectivePitchForVoice: async (voiceName: string) => voiceManager.getEffectivePitchForVoice(voiceName),
 
 		getStoredValue: async <T extends JsonValue>(key: string) => storageManager.getStoredValue<T>(key),
-		setStoredValue: async (key: string, value: JsonValue) => storageManager.setStoredValue(key, value),
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		setStoredValue: async (key: string, value: Readonly<JsonValue>) => storageManager.setStoredValue(key, value),
 		getConfigurationValue: async <T extends JsonValue>(path: string) => configuration.get<T>(path),
 	};
 	/* eslint-enable sort-keys */

@@ -69,6 +69,14 @@ class ProgressUpdater<P extends ProgressUpdaterStateProps & ProgressUpdaterDispa
 	}
 }
 
-export default progressAttribute<ProgressUpdaterStateProps & ProgressUpdaterDispatchProps>()(
+const ProgressUpdaterWorkaround = progressAttribute<ProgressUpdaterStateProps & ProgressUpdaterDispatchProps>()(
 	ProgressUpdater,
 );
+
+/**
+* @deprecated HACK: fix generic component class type propagation.
+*/
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ProgressUpdaterTypehack: React.ComponentClass<any> = ProgressUpdaterWorkaround;
+
+export default ProgressUpdaterWorkaround;
