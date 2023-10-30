@@ -71,7 +71,8 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 					marginTop: "1em",
 				},
 			),
-			wrapperBase: styled<"div", unknown>(
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			wrapperBase: styled<"div", any>(
 				"div",
 				{
 					...layoutBase.rounded("0.5em"),
