@@ -19,16 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
-	knownEventNames,
+	type knownEventNames,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
-	ListeningActionHandler,
+	type ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
 import {
-	JsonValue,
+	type JsonValue,
 } from "type-fest";
 
 export type IBroadcasterProviderConstructor = new() => IBroadcasterProvider;

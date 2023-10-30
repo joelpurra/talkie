@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 
 export default class WebExtensionEnvironmentTranslatorProvider implements ITranslatorProvider {
 	constructor(

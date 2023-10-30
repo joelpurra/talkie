@@ -21,17 +21,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	getAvailableBrowserLanguageWithInstalledVoice,
 } from "@talkie/shared-ui/selectors/voices.mjs";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
-	OptionsRootState,
+	type OptionsRootState,
 } from "../store/index.mjs";
 
 const {

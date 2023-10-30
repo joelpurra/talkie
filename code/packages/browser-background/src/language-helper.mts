@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ContentLogger from "@talkie/browser-shared/content-logger.mjs";
+import type ContentLogger from "@talkie/browser-shared/content-logger.mjs";
 import {
 	isUndefinedOrNullOrEmptyOrWhitespace,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -28,30 +28,30 @@ import {
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	SafeVoiceObjects,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
-	FramesSelectionTextAndLanguageCode,
+	type FramesSelectionTextAndLanguageCode,
 } from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 
 export interface FramesSelectionTextAndLanguageCodeWithValidText extends FramesSelectionTextAndLanguageCode {
 	text: string;
-};
+}
 
 export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage extends FramesSelectionTextAndLanguageCodeWithValidText {
 	detectedTextLanguage: string | null;
-};
+}
 export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage {
 	parentElementsLanguages: readonly string[];
-};
+}
 export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages {
 	effectiveLanguage: string | null;
-};
+}
 export interface TextAndEffectiveLanguage {
 	effectiveLanguage: string;
 	text: string;
-};
+}
 
 export default class LanguageHelper {
 	private readonly noTextSelectedMessage: TextAndEffectiveLanguage;
@@ -124,11 +124,7 @@ export default class LanguageHelper {
 
 		const MINIMUM_RELIABILITY_PERCENTAGE = 50;
 
-		const noLanguagesDetected = !result
-			// NOTE: the "isReliable" flag can apparently be false for languages with 100% reliability.
-			// NOTE: using the percentage instead.
-			// || !result.isReliable
-			|| !result.languages
+		const noLanguagesDetected = !result?.languages
 			|| result.languages.length === 0;
 
 		if (noLanguagesDetected) {

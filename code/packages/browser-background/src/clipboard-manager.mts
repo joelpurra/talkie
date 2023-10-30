@@ -22,7 +22,7 @@ import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
 
-import PermissionsManager from "./permissions-manager.mjs";
+import type PermissionsManager from "./permissions-manager.mjs";
 
 export default class ClipboardManager {
 	constructor(private readonly permissionsManager: PermissionsManager) {}
@@ -130,7 +130,7 @@ export default class ClipboardManager {
 				"clipboardRead",
 			],
 			[],
-			(granted) => granted ? this._getTextFromClipboard() : null,
+			async (granted) => granted ? this._getTextFromClipboard() : null,
 		);
 
 		void logDebug("Done", "getClipboardText", text);

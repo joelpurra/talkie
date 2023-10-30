@@ -18,6 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import process from "node:process";
+
 import type {
 	Action,
 	PreloadedState,
@@ -26,8 +28,7 @@ import type {
 } from "@reduxjs/toolkit";
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
-import process from "node:process";
+import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import logger from "redux-logger";
 import type {
 	ReadonlyDeep,
@@ -45,11 +46,11 @@ const getStore = <S, A extends Action>(
 ): Store<S, A> => {
 	// HACK: assumes that the initial state is empty during server-side rendering.
 	// TODO: promote to function argument?
-	const isServerSideRendering = typeof initialState === "undefined";
+	const isServerSideRendering = initialState === undefined;
 
 	const store = configureStore({
 		devTools: process.env.TALKIE_ENV === "development",
-		middleware: (getDefaultMiddleware) => {
+		middleware(getDefaultMiddleware) {
 			const defaultMiddlewareOptions = {
 				thunk: {
 					extraArgument: api,

@@ -26,8 +26,7 @@ import {
 export default class TextHelper {
 	static splitTextToParagraphs = (text: string): string[] =>
 		// NOTE: in effect discarding empty paragraphs.
-		text.split(/[\n\r\u2028\u2029]+/)
-	;
+		text.split(/[\n\r\u2028\u2029]+/);
 
 	static splitTextToSentencesOfMaxLength = (text: string, maxPartLength: number): string[] => {
 		// TODO: avoid helpers or use library.
@@ -50,7 +49,10 @@ export default class TextHelper {
 			(splitTextParts: Readonly<string[]>, spacedTextPart: Readonly<string>) => {
 				if (naturalPauseRx.test(spacedTextPart)) {
 					// NOTE: this text is/has a natural pause so append text to the current part, then end the part by starting a new (empty) part.
-					return appendToText(splitTextParts, spacedTextPart).concat("");
+					return [
+						...appendToText(splitTextParts, spacedTextPart),
+						"",
+					];
 				}
 
 				if ((lastOrThrow(splitTextParts).length + 1 + spacedTextPart.length) < maxPartLength) {

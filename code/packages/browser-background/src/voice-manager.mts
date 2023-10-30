@@ -19,12 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	IVoiceNameAndLanguage,
+	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
-import VoiceLanguageManager from "./voice-language-manager.mjs";
-import VoicePitchManager from "./voice-pitch-manager.mjs";
-import VoiceRateManager from "./voice-rate-manager.mjs";
+import type VoiceLanguageManager from "./voice-language-manager.mjs";
+import type VoicePitchManager from "./voice-pitch-manager.mjs";
+import type VoiceRateManager from "./voice-rate-manager.mjs";
 
 export default class VoiceManager {
 	// NOTE: there is also an utterance volume property.

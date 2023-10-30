@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 
 export default class NodeEnvironmentInternalUrlProvider implements IInternalUrlProvider {
 	getSync(url: string): string {

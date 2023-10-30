@@ -23,7 +23,7 @@ import type {
 	Reducer,
 } from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 // NOTE: this type must match the "locals" variables used in the ejs html templates.

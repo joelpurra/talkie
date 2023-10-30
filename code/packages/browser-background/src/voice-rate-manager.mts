@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	rateRange,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	ReadonlyDeep,

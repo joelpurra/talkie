@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ContentLogger from "./content-logger.mjs";
-import Execute from "./execute.mjs";
+import type ContentLogger from "./content-logger.mjs";
+import type Execute from "./execute.mjs";
 
 export default class Plug {
 	constructor(private readonly contentLogger: ContentLogger, private readonly execute: Execute) {}
@@ -56,10 +56,9 @@ export default class Plug {
 		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript
 		// https://developer.chrome.com/docs/extensions/reference/tabs/#method-executeScript
 		// https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/tabs.json
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 		const talkieWasPluggedValue = Array.isArray(talkieWasPlugged) ? talkieWasPlugged[0] : talkieWasPlugged;
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 		if (talkieWasPluggedValue && talkieWasPluggedValue.toString() !== "true") {
 			await this.executePlug();
 			await this.executeSetTalkieWasPlugged();

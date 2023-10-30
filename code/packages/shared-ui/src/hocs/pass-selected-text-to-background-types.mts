@@ -24,15 +24,15 @@ import type {
 
 export interface FramesSelectionTextAndLanguageCode extends JsonObject {
 	htmlTagLanguage: string | null;
-	parentElementsLanguages: readonly (string | null)[];
+	parentElementsLanguages: ReadonlyArray<string | null>;
 	text: string | null;
 }
 
 export interface PerhapsSelectedTextWithFocusTimestamp extends JsonObject {
 	mostRecentUse: number;
 	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode | null;
-};
+}
 
 export interface SelectedTextWithFocusTimestamp extends PerhapsSelectedTextWithFocusTimestamp {
 	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode;
-};
+}

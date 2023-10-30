@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageTextDirection,
-	TalkieLocale,
+	type LanguageTextDirection,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
+import type ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 
 import languages, {
-	LanguageDataKey,
+	type LanguageDataKey,
 } from "./data/languages/languages.mjs";
 
 export default class TalkieLocaleHelper implements ITalkieLocaleHelper {

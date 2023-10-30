@@ -24,7 +24,7 @@ import {
 	getLanguageGroupsFromLanguages,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import type {
@@ -44,7 +44,9 @@ export const getSortedNavigatorLanguages = createDraftSafeSelector(
 	[
 		getNavigatorLanguages,
 	],
-	(navigatorLanguages) => navigatorLanguages.slice().sort((a, b) => a.localeCompare(b)),
+	(navigatorLanguages) => [
+		...navigatorLanguages,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getNavigatorLanguageGroups = createDraftSafeSelector(
@@ -58,5 +60,7 @@ export const getSortedTranslatedLanguages = createDraftSafeSelector(
 	[
 		getTranslatedLanguages,
 	],
-	(translatedLanguages) => translatedLanguages.slice().sort((a, b) => a.localeCompare(b)),
+	(translatedLanguages) => [
+		...translatedLanguages,
+	].sort((a, b) => a.localeCompare(b)),
 );

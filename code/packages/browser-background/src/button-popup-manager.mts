@@ -19,9 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
 	Action,
 } from "webextension-polyfill";

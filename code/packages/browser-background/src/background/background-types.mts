@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ITalkieServices,
+	type ITalkieServices,
 } from "@talkie/split-environment-webextension/browser-specific/italkie-services.mjs";
 
 declare global{

@@ -22,22 +22,22 @@ import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
-	knownEventNames,
+	type knownEventNames,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
-	ListeningActionHandler,
+	type ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type JsonValue,
+} from "type-fest";
 
 import {
 	getTalkieServices,
 } from "./browser-specific/tabs.mjs";
-import {
-	JsonValue,
-} from "type-fest";
 
 export default class WebExtensionEnvironmentBroadcasterProvider implements IBroadcasterProvider {
 	async broadcastEvent<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {

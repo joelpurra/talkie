@@ -23,9 +23,9 @@ import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import type {
-	Writable,
 	Promisable,
 	ReadonlyDeep,
+	Writable,
 } from "type-fest";
 import type {
 	Manifest,

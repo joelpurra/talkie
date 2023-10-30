@@ -31,11 +31,11 @@ import {
 	getVoicesByLanguagesByLanguageGroupFromVoices,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
-	SafeVoiceObjects,
-} from "@talkie/shared-interfaces/ivoices.mjs";
-import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+import {
+	type SafeVoiceObjects,
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 import type {
 	SharedRootState,
@@ -73,14 +73,18 @@ export const getSortedVoiceNames = createDraftSafeSelector(
 	[
 		getVoiceNames,
 	],
-	(voiceNames) => voiceNames.slice().sort((a, b) => a.localeCompare(b)),
+	(voiceNames) => [
+		...voiceNames,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getSortedByNameVoices = createDraftSafeSelector(
 	[
 		getVoices,
 	],
-	(voices) => voices.slice().sort((a, b) => a.name.localeCompare(b.name)),
+	(voices) => [
+		...voices,
+	].sort((a, b) => a.name.localeCompare(b.name)),
 );
 
 export const getHaveVoices = createDraftSafeSelector(
@@ -101,7 +105,9 @@ export const getSortedLanguages = createDraftSafeSelector(
 	[
 		getLanguages,
 	],
-	(languages) => languages.slice().sort((a, b) => a.localeCompare(b)),
+	(languages) => [
+		...languages,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getLanguagesCount = createDraftSafeSelector(
@@ -129,7 +135,9 @@ export const getSortedLanguageGroups = createDraftSafeSelector(
 	[
 		getLanguageGroups,
 	],
-	(languageGroups) => languageGroups.slice().sort((a, b) => a.localeCompare(b)),
+	(languageGroups) => [
+		...languageGroups,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getVoicesByLanguage = createDraftSafeSelector(
@@ -226,7 +234,9 @@ export const getSortedBrowserLanguageGroupsWithNavigatorLanguages = createDraftS
 	[
 		getBrowserLanguageGroupsWithNavigatorLanguages,
 	],
-	(browserLanguageGroupsWithNavigatorLanguages) => browserLanguageGroupsWithNavigatorLanguages.slice().sort((a, b) => a.languageGroup.localeCompare(b.languageGroup)),
+	(browserLanguageGroupsWithNavigatorLanguages) => [
+		...browserLanguageGroupsWithNavigatorLanguages,
+	].sort((a, b) => a.languageGroup.localeCompare(b.languageGroup)),
 );
 
 export const getCanSpeakInTranslatedLocale = createDraftSafeSelector(

@@ -120,7 +120,9 @@ export const getSortedLanguagesForSelectedLanguageGroup = createDraftSafeSelecto
 		getLanguagesForSelectedLanguageGroup,
 	],
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	(languagesForSelectedLanguageGroup) => languagesForSelectedLanguageGroup.slice().sort((a, b) => a.localeCompare(b)),
+	(languagesForSelectedLanguageGroup) => [
+		...languagesForSelectedLanguageGroup,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getLanguageCountForSelectedLanguageGroup = createDraftSafeSelector(

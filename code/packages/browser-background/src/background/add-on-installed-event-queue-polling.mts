@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import OnInstalledManager from "../on-installed-manager.mjs";
+import type OnInstalledManager from "../on-installed-manager.mjs";
 
 const addOnInstalledEventQueuePolling = async (onInstalledManager: Readonly<OnInstalledManager>): Promise<void> => {
 	// NOTE: run the function once first, to allow for a very long interval.

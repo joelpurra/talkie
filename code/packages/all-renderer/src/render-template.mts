@@ -18,22 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type {
-	Action,
-} from "@reduxjs/toolkit";
-import render from "@talkie/renderer/render.mjs";
-import {
-	IRenderReactHtmlToFile,
-} from "@talkie/renderer/render-types.mjs";
-import {
-	TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	writeFile as writeFileCallback,
 } from "node:fs";
 import {
 	promisify,
 } from "node:util";
+
+import type {
+	Action,
+} from "@reduxjs/toolkit";
+import render from "@talkie/renderer/render.mjs";
+import {
+	type IRenderReactHtmlToFile,
+} from "@talkie/renderer/render-types.mjs";
+import {
+	type TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import ensureAndGetOutputPath from "./ensure-and-get-output-path.mjs";
 

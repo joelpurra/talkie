@@ -24,22 +24,22 @@ import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
-	knownEventNames,
+	type knownEventNames,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
-	ListeningActionHandler,
+	type ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type JsonValue,
+} from "type-fest";
 
 import {
 	isDeadWrapper,
 } from "./utils/is-dead-wrapper.mjs";
-import {
-	JsonValue,
-} from "type-fest";
 
 export default class Broadcaster implements IBroadcasterProvider {
 	// TODO: the broadcaster is working with several types of listeners, so the types can't be generic on the class level.

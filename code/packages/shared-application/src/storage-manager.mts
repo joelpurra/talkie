@@ -23,7 +23,7 @@ import {
 	logError,
 	logTrace,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
+import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
@@ -309,7 +309,7 @@ export default class StorageManager {
 		);
 
 		const initializedUpgradePaths = possiblyInitializedUpgradePaths
-			.filter((possiblyInitializedUpgradePath) => Boolean(possiblyInitializedUpgradePath));
+			.filter(Boolean);
 
 		if (initializedUpgradePaths.length === 0) {
 			return null;

@@ -63,7 +63,7 @@ export default class SuspensionConnectorManager {
 		this.talkiePreventSuspensionPort.onMessage.addListener(_onMessageHandler);
 
 		// TODO: set message target.
-		// eslint-disable-next-line unicorn/require-post-message-target-origin
+
 		this.talkiePreventSuspensionPort.postMessage("Hello from the SuspensionConnectorManager.");
 
 		void logDebug("Done", "_connectToStayAlive");
@@ -81,7 +81,7 @@ export default class SuspensionConnectorManager {
 		}
 
 		// TODO: set message target.
-		// eslint-disable-next-line unicorn/require-post-message-target-origin
+
 		this.talkiePreventSuspensionPort.postMessage("Goodbye from the SuspensionConnectorManager.");
 
 		// https://developer.chrome.com/extensions/runtime#type-Port

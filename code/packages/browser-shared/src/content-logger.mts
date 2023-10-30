@@ -26,7 +26,7 @@ import type {
 	JsonValue,
 } from "type-fest";
 
-import Execute from "./execute.mjs";
+import type Execute from "./execute.mjs";
 
 export default class ContentLogger {
 	constructor(private readonly execute: Execute) {}

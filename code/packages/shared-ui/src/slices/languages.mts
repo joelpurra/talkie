@@ -21,11 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {
@@ -35,12 +35,12 @@ const {
 	createSlice,
 } = toolkit;
 
-export type LanguagesState = {
+export interface LanguagesState {
 	navigatorLanguage: string | null;
 	navigatorLanguages: Readonly<string[]>;
 	translatedLanguages: TalkieLocale[];
 	translationLocale: TalkieLocale;
-};
+}
 
 const initialState: LanguagesState = {
 	navigatorLanguage: null,
@@ -84,7 +84,7 @@ export const loadTranslationLocale = createAsyncThunk<TalkieLocale, void, IApiAs
 );
 
 export const languagesSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(loadNavigatorLanguage.fulfilled, (state, action) => {
 				state.navigatorLanguage = action.payload;

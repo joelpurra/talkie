@@ -21,8 +21,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 	logError,
-	LoggerFunction,
-	LoggerFunctionName,
+	type LoggerFunction,
+	type LoggerFunctionName,
 	logInfo,
 	logTrace,
 	logWarn,

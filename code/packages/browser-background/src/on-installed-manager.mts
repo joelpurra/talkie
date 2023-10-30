@@ -18,24 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
+import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	Runtime,
 } from "webextension-polyfill";
 
-import ContextMenuManager from "./context-menu-manager.mjs";
+import type ContextMenuManager from "./context-menu-manager.mjs";
 import {
-	OnInstallEvent,
+	type OnInstallEvent,
 } from "./on-installed-manager-types.mjs";
-import WelcomeManager from "./welcome-manager.mjs";
+import type WelcomeManager from "./welcome-manager.mjs";
 
 // NOTE: https://developer.chrome.com/extensions/runtime#type-OnInstalledReason
 const REASON_INSTALL = "install";

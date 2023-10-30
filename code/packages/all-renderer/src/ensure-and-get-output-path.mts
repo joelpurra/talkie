@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import path from "node:path";
+
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	mkdirp,
 } from "mkdirp";
-import path from "node:path";
 
 const ensureAndGetOutputPath = async (baseDirectory: string, templateName: string, talkieLocale: TalkieLocale): Promise<string> => {
 	const outfile = `${templateName}.${talkieLocale}.html`;

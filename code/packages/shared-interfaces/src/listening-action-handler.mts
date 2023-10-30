@@ -24,7 +24,7 @@ import type {
 } from "type-fest";
 
 import {
-	knownEventNames,
+	type knownEventNames,
 } from "./known-events.mjs";
 
 export type ListeningActionHandler<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void> = (name: TEvent, data: Readonly<TData>) => Promisable<TReturn>;

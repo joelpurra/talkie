@@ -23,7 +23,7 @@ import type {
 } from "type-fest";
 
 import {
-	SystemType,
+	type SystemType,
 } from "./imetadata-manager.mjs";
 
 export default interface IConfiguration {

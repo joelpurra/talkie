@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
+import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
 
 export default class NodeEnvironmentStorageProvider implements IStorageProvider {
 	// NOTE: storing stringified JSON to match browser storage.
-	private readonly _inMemoryStorage: Map<string, string> = new Map();
+	private readonly _inMemoryStorage = new Map<string, string>();
 
 	async get<T extends JsonValue>(key: string): Promise<T | null> {
 		if (!this._inMemoryStorage.has(key)) {
@@ -34,7 +34,7 @@ export default class NodeEnvironmentStorageProvider implements IStorageProvider 
 
 		const valueJson = this._inMemoryStorage.get(key);
 
-		if (typeof valueJson === "undefined") {
+		if (valueJson === undefined) {
 			return null;
 		}
 

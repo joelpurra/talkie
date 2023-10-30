@@ -22,37 +22,37 @@ import {
 	debounce,
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
-	EditionType,
-	IMetadataManager,
-	OsType,
-	SystemType,
+	type EditionType,
+	type IMetadataManager,
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
-	LanguageTextDirection,
-	TalkieLocale,
+	type LanguageTextDirection,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
+import type ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
-	IVoiceNameAndRateAndPitch,
-	SafeVoiceObjects,
+	type IVoiceNameAndRateAndPitch,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
-	knownEventNames,
+	type knownEventNames,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
-	ListeningActionHandler,
+	type ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
 import {
-	SpeakingHistoryEntry,
+	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
-import IApi from "@talkie/split-environment-interfaces/iapi.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
 	JsonValue,
 	ReadonlyDeep,

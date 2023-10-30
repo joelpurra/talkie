@@ -18,16 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import path from "node:path";
+
 import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import jsonfile from "jsonfile";
-import path from "node:path";
 import type {
 	JsonObject,
 	ReadonlyDeep,
@@ -35,14 +36,14 @@ import type {
 
 // NOTE: some types are duplicated to avoid sharing with the main Talkie code.
 // TODO: break out types? Create shared project?
-export type LocaleMessage = {
+export interface LocaleMessage {
 	description?: string;
 	message: string;
 	placeholders?: Record<string, {
 		content: string;
 		example?: string;
 	}>;
-};
+}
 
 export type LocaleMessages = Record<string, LocaleMessage>;
 
@@ -204,7 +205,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 
 			const extraVariable = /\$(\w+)\$/g;
 
-			translated = translated.replace(extraVariable, replacer);
+			translated = translated.replaceAll(extraVariable, replacer);
 		}
 
 		if (translated.includes("$")) {

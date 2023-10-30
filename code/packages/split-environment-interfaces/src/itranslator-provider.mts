@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ILocaleProvider from "./ilocale-provider.mjs";
+import type ILocaleProvider from "./ilocale-provider.mjs";
 
 export type ITranslatorProviderConstructor = new(localeProvider: ILocaleProvider) => ITranslatorProvider;
 

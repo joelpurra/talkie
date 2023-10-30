@@ -27,30 +27,30 @@ import type {
 } from "type-fest";
 
 import {
-	IBrowserCommandMap,
+	type IBrowserCommandMap,
 } from "../command-handler-types.mjs";
-import ReadClipboardManager from "../read-clipboard-manager.mjs";
-import TalkieBackground from "../talkie-background.mjs";
+import type ReadClipboardManager from "../read-clipboard-manager.mjs";
+import type TalkieBackground from "../talkie-background.mjs";
 
 const getCommandMap = (
 	talkieBackground: ReadonlyDeep<TalkieBackground>,
 	readClipboardManager: ReadonlyDeep<ReadClipboardManager>,
 ): IBrowserCommandMap => ({
-	"open-website-main": async () => {
+	async "open-website-main"() {
 		await openExternalUrlFromConfigurationInNewTab("main");
 	},
-	"open-website-upgrade": async () => {
+	async "open-website-upgrade"() {
 		await openInternalUrlFromConfigurationInNewTab("options-features");
 	},
-	"read-clipboard": async () => {
+	async "read-clipboard"() {
 		// NOTE: keeping the root chain separate from the speech chain.
 		void readClipboardManager.startSpeaking();
 	},
-	"start-stop": async () => {
+	async "start-stop"() {
 		// NOTE: keeping the root chain separate from the speech chain.
 		void talkieBackground.startStopSpeakSelectionOnPage();
 	},
-	"start-text": async (text: unknown) => {
+	async "start-text"(text: unknown) {
 		if (typeof text !== "string") {
 			throw new TypeError(`Unknown text in command "start-text": ${typeof text} ${JSON.stringify(text)}`);
 		}

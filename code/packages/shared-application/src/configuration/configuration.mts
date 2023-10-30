@@ -21,10 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
-	IMetadataManager,
-	SystemType,
+	type IMetadataManager,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	JsonArray,
@@ -34,7 +34,7 @@ import type {
 } from "type-fest";
 
 import {
-	ConfigurationObject,
+	type ConfigurationObject,
 } from "../data/configuration/configuration.mjs";
 
 export default class Configuration implements IConfiguration {
@@ -59,16 +59,15 @@ export default class Configuration implements IConfiguration {
 		const parts = path.split(".");
 		const part = parts.shift();
 
-		if (typeof part === "undefined") {
+		if (part === undefined) {
 			return null;
 		}
 
 		if (part in object) {
 			const value = object[part];
 
-			if (typeof value !== "undefined" && (Object.prototype).hasOwnProperty.call(object, part)) {
+			if (value !== undefined && (Object.prototype).hasOwnProperty.call(object, part)) {
 				if (parts.length === 0) {
-					// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 					return value as JsonValue;
 				}
 

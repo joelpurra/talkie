@@ -35,7 +35,7 @@ export const getSpeakingHistoryEntryTextHash = (text: string): number => {
 	// NOTE: probably doesn't help much, but would like to avoid very similar-looking duplicate history entries.
 	// NOTE: leading/trailing/consecutive whitespaces are ignored by the speech synthesizer anyhow.
 	const normalizedText = text
-		.replace(/\s+/g, " ")
+		.replaceAll(/\s+/g, " ")
 		.trim();
 
 	return hashCode(normalizedText);

@@ -25,13 +25,12 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import TalkieBackground from "../talkie-background.mjs";
+import type TalkieBackground from "../talkie-background.mjs";
 
 const createAndStartSuspensionListener = async (talkieBackground: ReadonlyDeep<TalkieBackground>): Promise<void> => {
 	// NOTE: enabled but non-functional in Firefox v100, supported in Firefox v106+.
 	// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/onSuspend#Browser_compatibility
 	if ("onSuspend" in browser.runtime) {
-		/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
 		browser.runtime.onSuspend.addListener(
 			loggedPromiseCallback(
 				async () => talkieBackground.onExtensionSuspendHandler(),

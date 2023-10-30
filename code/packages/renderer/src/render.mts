@@ -23,7 +23,7 @@ import type {
 	Reducer,
 } from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import getRoot from "@talkie/shared-ui/renderers/get-root.js";
 import {

@@ -19,17 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import assert from "node:assert";
+
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service.mjs";
+import type GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service.mjs";
 import {
-	BaseLocaleMessages,
-	BaseMessages,
-	LocaleMessage,
-	LocaleMessages,
-	Messages,
+	type BaseLocaleMessages,
+	type BaseMessages,
+	type LocaleMessage,
+	type LocaleMessages,
+	type Messages,
 } from "./messages-translator-types.mjs";
 
 export default class MessagesTranslator {
@@ -48,11 +49,10 @@ export default class MessagesTranslator {
 		assert(typeof object === "object");
 
 		// TODO: use something like pick() from a library.
-		// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+		// eslint-disable-next-line unicorn/no-array-reduce
 		return keys.reduce<LocaleMessages>(
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(newObject, key) => {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 				newObject[key] = object[key] as LocaleMessage;
 
 				return newObject;
@@ -65,7 +65,7 @@ export default class MessagesTranslator {
 		const baseKeys = Object.keys(this._base.messages);
 		const localeMessages = await this._keepOnlyKeys(baseKeys, this._locale.messages);
 
-		// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+		// eslint-disable-next-line unicorn/no-array-reduce
 		const alreadyTranslatedLocale = baseKeys.reduce<LocaleMessages>(
 			// TODO: use some function like filterKeys.
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -90,7 +90,7 @@ export default class MessagesTranslator {
 		);
 
 		// TODO: use some function like filterKeys.
-		// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+		// eslint-disable-next-line unicorn/no-array-reduce
 		const untranslatedLocale = baseKeys.reduce<BaseLocaleMessages>(
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(untranslated, baseKey) => {
@@ -126,7 +126,10 @@ export default class MessagesTranslator {
 			assert(typeof automaticallyTranslatedValue.message === "string");
 		}
 
-		const translated = Object.assign({}, alreadyTranslatedLocale, automaticallyTranslated);
+		const translated = {
+			...alreadyTranslatedLocale,
+			...automaticallyTranslated,
+		};
 
 		return translated;
 	}

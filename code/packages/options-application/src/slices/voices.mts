@@ -29,11 +29,11 @@ import {
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
 	DefaultLanguageDirection,
-	LanguageTextDirection,
-	TalkieLocale,
+	type LanguageTextDirection,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
@@ -108,7 +108,6 @@ export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IA
 			getState,
 		},
 	) => {
-		// eslint-disable-next-line no-lone-blocks
 		{
 			// TODO: separate slices to avoid having to repeatedly check/verify/validate state.
 			// TODO: re-architecture to avoid getState() in action -- in particular when also directly/indirectly updating the state in the same call tree.

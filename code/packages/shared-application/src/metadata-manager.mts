@@ -19,18 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	EditionType,
-	IMetadataManager,
-	SystemType,
+	type EditionType,
+	type IMetadataManager,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
+import type IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
+import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
 import type {
 	Manifest,
 	Runtime,
 } from "webextension-polyfill";
 
-import SettingsManager from "./settings-manager.mjs";
+import type SettingsManager from "./settings-manager.mjs";
 
 export default class MetadataManager implements IMetadataManager {
 	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider, private readonly settingsManager: SettingsManager) {}

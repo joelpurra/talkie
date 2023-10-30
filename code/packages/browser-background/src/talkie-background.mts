@@ -18,25 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Execute from "@talkie/browser-shared/execute.mjs";
-import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
+import type Execute from "@talkie/browser-shared/execute.mjs";
+import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	IVoiceName,
-	IVoiceNameAndRateAndPitch,
+	type IVoiceName,
+	type IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
-	FramesSelectionTextAndLanguageCode,
-	SelectedTextWithFocusTimestamp,
+	type FramesSelectionTextAndLanguageCode,
+	type SelectedTextWithFocusTimestamp,
 } from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
-import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	canTalkieRunInTab,
 	isCurrentPageInternalToTalkie,
@@ -45,11 +45,11 @@ import type {
 	Tabs,
 } from "webextension-polyfill";
 
-import LanguageHelper from "./language-helper.mjs";
-import NonBreakingChain from "./non-breaking-chain.mjs";
-import SpeakingStatus from "./speaking-status.mjs";
-import TalkieSpeaker from "./talkie-speaker.mjs";
-import VoiceManager from "./voice-manager.mjs";
+import type LanguageHelper from "./language-helper.mjs";
+import type NonBreakingChain from "./non-breaking-chain.mjs";
+import type SpeakingStatus from "./speaking-status.mjs";
+import type TalkieSpeaker from "./talkie-speaker.mjs";
+import type VoiceManager from "./voice-manager.mjs";
 
 export default class TalkieBackground {
 	notAbleToSpeakTextFromThisSpecialTab: {
@@ -93,8 +93,8 @@ export default class TalkieBackground {
 					return null;
 				}
 			}());`
-			.replace(/\n/g, "")
-			.replace(/\s{2,}/g, " ");
+			.replaceAll("\n", "")
+			.replaceAll(/\s{2,}/g, " ");
 	}
 
 	async speakSelectionOnPage(): Promise<void> {
@@ -120,7 +120,7 @@ export default class TalkieBackground {
 				void logDebug("speakSelectionOnPage", "Received text selections from internal pages.", selectedTextsFromFrontend);
 
 				const filteredSelectedTextsFromFrontend = selectedTextsFromFrontend
-					.filter((t): t is Readonly<NonNullable<SelectedTextWithFocusTimestamp>> => Boolean(t));
+					.filter(Boolean);
 
 				const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
 					// eslint-disable-next-line unicorn/no-array-reduce
@@ -159,7 +159,9 @@ export default class TalkieBackground {
 
 			void logDebug("speakSelectionOnPage", "Skipping speaking selection.");
 
-			const text = this.notAbleToSpeakTextFromThisSpecialTab.text;
+			const {
+				text,
+			} = this.notAbleToSpeakTextFromThisSpecialTab;
 			const lang = this.notAbleToSpeakTextFromThisSpecialTab.effectiveLanguage;
 
 			return this.startSpeakingTextInLanguageWithOverridesAction(text, lang);
@@ -290,7 +292,7 @@ export default class TalkieBackground {
 		}
 
 		const nonEmptyFramesSelectionTextAndLanguage = framesSelectionTextAndLanguage
-			.filter((t): t is NonNullable<FramesSelectionTextAndLanguageCode> => Boolean(t));
+			.filter(Boolean);
 
 		return nonEmptyFramesSelectionTextAndLanguage;
 	}

@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
+import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
 import type {
 	Manifest,
 } from "webextension-polyfill";

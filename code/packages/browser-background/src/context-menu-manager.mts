@@ -22,18 +22,18 @@ import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
-	Writable,
 	ReadonlyDeep,
+	Writable,
 } from "type-fest";
 import {
-	Menus,
+	type Menus,
 } from "webextension-polyfill";
 
-import CommandHandler from "./command-handler.mjs";
+import type CommandHandler from "./command-handler.mjs";
 
 export interface ContextMenuOptions {
 	chrome: boolean;

@@ -18,16 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
+import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 
-export type TalkieProgressData = {
+export interface TalkieProgressData {
 	current: number;
 	max: number;
 	min: number;
-};
+}
 
 export default class TalkieProgress {
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.

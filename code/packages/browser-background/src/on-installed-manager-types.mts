@@ -24,7 +24,7 @@ import type {
 
 export type OnInstallEventSource = "event" | "fallback";
 
-export type OnInstallEvent = {
+export interface OnInstallEvent {
 	event: Runtime.OnInstalledDetailsType | null;
 	source: OnInstallEventSource;
-};
+}

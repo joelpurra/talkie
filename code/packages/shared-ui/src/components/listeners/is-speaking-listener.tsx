@@ -103,6 +103,7 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 		this.props.setMostRecentRate(actionData.rate);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	updateSpeakingEventData(actionData: Readonly<SpeakingEventData>): void {
 		this.updateIsSpeaking(true);
 
@@ -143,6 +144,7 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 				knownEvents.beforeSpeaking,
 				(
 					_actionName,
+					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 					actionData: Readonly<SpeakingEventData>,
 				) => {
 					this.updateSpeakingEventData(actionData);

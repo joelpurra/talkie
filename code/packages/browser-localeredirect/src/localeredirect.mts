@@ -54,12 +54,12 @@ const getGlobalExtension = (global: unknown): Browser => {
 	}
 
 	if ("browser" in global) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		return (global as any).browser as Browser;
 	}
 
 	if ("chrome" in global) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		return (global as any).chrome as Browser;
 	}
 

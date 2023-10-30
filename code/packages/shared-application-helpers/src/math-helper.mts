@@ -32,7 +32,7 @@ export default class MathHelper {
    */
 	static decimalAdjust(type: "round" | "floor" | "ceil", value: number, exp: number): number {
 		// If the exp is undefined or zero...
-		if (typeof exp === "undefined" || Number(exp) === 0) {
+		if (exp === undefined || Number(exp) === 0) {
 			return Math[type](value);
 		}
 
@@ -48,7 +48,6 @@ export default class MathHelper {
 			return -MathHelper.decimalAdjust(type, -value, exp);
 		}
 
-		/* eslint-disable @typescript-eslint/restrict-template-expressions */
 		// Shift
 		let parts = value.toString().split("e");
 		value = Math[type](Number(`${parts[0]}e${parts[1] ? (Number(parts[1]) - exp) : -exp}`));

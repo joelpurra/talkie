@@ -23,7 +23,7 @@ import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 
-import CommandHandler from "./command-handler.mjs";
+import type CommandHandler from "./command-handler.mjs";
 
 export default class ShortcutKeyManager {
 	constructor(private readonly commandHandler: CommandHandler) {}

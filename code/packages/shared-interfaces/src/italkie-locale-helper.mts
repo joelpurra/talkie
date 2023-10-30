@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageTextDirection,
-	TalkieLocale,
+	type LanguageTextDirection,
+	type TalkieLocale,
 } from "./italkie-locale.mjs";
 
 export default interface ITalkieLocaleHelper {

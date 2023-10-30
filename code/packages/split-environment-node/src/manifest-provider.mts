@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
-import jsonfile from "jsonfile";
 import assert from "node:assert";
 import path from "node:path";
 import process from "node:process";
+
+import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
+import jsonfile from "jsonfile";
 import type {
 	JsonObject,
 } from "type-fest";

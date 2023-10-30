@@ -22,7 +22,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import toolkit from "@reduxjs/toolkit";
 
 import {
-	RejectedAction,
+	type RejectedAction,
 } from "../slices/errors.mjs";
 import type {
 	SharedRootState,

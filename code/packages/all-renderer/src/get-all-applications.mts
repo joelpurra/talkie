@@ -24,7 +24,7 @@ import type {
 import options from "@talkie/options-renderer/options-html.mjs";
 import popup from "@talkie/popup-renderer/popup-html.mjs";
 import {
-	IRenderReactHtmlToFile,
+	type IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
 
 const getAllApps = async <S, A extends Action, P>(): Promise<Array<IRenderReactHtmlToFile<S, A, P>>> => {

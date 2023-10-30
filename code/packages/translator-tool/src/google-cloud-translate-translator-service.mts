@@ -18,6 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import assert from "node:assert";
+
 import {
 	v2,
 } from "@google-cloud/translate";
@@ -27,16 +29,15 @@ import {
 	decode as htmlEntityDecode,
 	encode as htmlEntityEncode,
 } from "ent";
-import assert from "node:assert";
 import striptags from "striptags";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import {
-	BaseLocaleMessages,
-	LocaleMessage,
-	LocaleMessages,
+	type BaseLocaleMessages,
+	type LocaleMessage,
+	type LocaleMessages,
 } from "./messages-translator-types.mjs";
 
 const {
@@ -95,10 +96,10 @@ export default class GoogleCloudTranslateTranslator {
 			.map((message) => htmlEntityEncode(message))
 			.map((encodedMessage) => {
 				const preparedMessage = encodedMessage
-					.replace(/Talkie Premium/g, `<span class="notranslate">${this.__TEMP_TALKIE_PREMIUM__}</span>`)
-					.replace(/Talkie/g, `<span class="notranslate">${this.__TEMP_TALKIE__}</span>`)
-					.replace(/Premium/g, `<span class="notranslate">${this.__TEMP_PREMIUM__}</span>`)
-					.replace(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
+					.replaceAll("Talkie Premium", `<span class="notranslate">${this.__TEMP_TALKIE_PREMIUM__}</span>`)
+					.replaceAll("Talkie", `<span class="notranslate">${this.__TEMP_TALKIE__}</span>`)
+					.replaceAll("Premium", `<span class="notranslate">${this.__TEMP_PREMIUM__}</span>`)
+					.replaceAll(/\$(\w+)\$/g, "<span class=\"notranslate\">$$$1$$</span>");
 
 				const htmlMessage = `<div lang="en">${preparedMessage}</div>`;
 
@@ -138,7 +139,7 @@ export default class GoogleCloudTranslateTranslator {
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(t, v) => [
 				t[0].concat(v[0]),
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 				t[1].concat(v[1]),
 			],
 			[
@@ -157,15 +158,15 @@ export default class GoogleCloudTranslateTranslator {
 			.map((translationResponse) => htmlEntityDecode(translationResponse))
 			.map((translationResponse) => {
 				const translateDirtyMessage = translationResponse
-					.replace(new RegExp(this.__TEMP_TALKIE_PREMIUM__, "g"), "Talkie Premium")
-					.replace(new RegExp(this.__TEMP_TALKIE__, "g"), "Talkie")
-					.replace(new RegExp(this.__TEMP_PREMIUM__, "g"), "Premium")
-					.replace(/^\s+/g, "")
-					.replace(/\s+$/g, "")
-					.replace(/ +\/ +/g, "/")
-					.replace(/ +-+ +/g, " — ")
-					.replace(/ +([.:;!?]) +/g, "$1 ")
-					.replace(/ {2,}/g, " ")
+					.replaceAll(new RegExp(this.__TEMP_TALKIE_PREMIUM__, "g"), "Talkie Premium")
+					.replaceAll(new RegExp(this.__TEMP_TALKIE__, "g"), "Talkie")
+					.replaceAll(new RegExp(this.__TEMP_PREMIUM__, "g"), "Premium")
+					.replaceAll(/^\s+/g, "")
+					.replaceAll(/\s+$/g, "")
+					.replaceAll(/ +\/ +/g, "/")
+					.replaceAll(/ +-+ +/g, " — ")
+					.replaceAll(/ +([.:;!?]) +/g, "$1 ")
+					.replaceAll(/ {2,}/g, " ")
 					.trim();
 
 				return translateDirtyMessage;

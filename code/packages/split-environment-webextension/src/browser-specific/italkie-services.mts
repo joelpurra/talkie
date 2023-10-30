@@ -19,24 +19,24 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LoggingLevel,
+	type LoggingLevel,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	EditionType,
-	OsType,
-	SystemType,
+	type EditionType,
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
-	IVoiceNameAndLanguage,
-	IVoiceNameAndRateAndPitch,
-	SafeVoiceObjects,
+	type IVoiceNameAndLanguage,
+	type IVoiceNameAndRateAndPitch,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
-	SpeakingHistoryEntry,
+	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
-	JsonValue,
+	type JsonValue,
 } from "type-fest";
 
 export interface ITalkieServices {

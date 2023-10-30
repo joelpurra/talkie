@@ -18,21 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	getMappedVoice,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
-	IVoiceNameAndLanguage,
+	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import TalkieSpeaker from "./talkie-speaker.mjs";
+import type TalkieSpeaker from "./talkie-speaker.mjs";
 
 export type LanguageVoiceOverride = Record<string, string>;
 

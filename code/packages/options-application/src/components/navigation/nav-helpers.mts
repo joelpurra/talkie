@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LocationHash,
-	TabId,
+	type LocationHash,
+	type TabId,
 } from "./nav-container-types.mjs";
 
 export const isTabId = (tabId: string | null): tabId is TabId => typeof tabId === "string"

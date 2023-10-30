@@ -23,7 +23,7 @@ import configurationObject from "@talkie/shared-application/data/configuration/c
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import BroadcasterProvider from "@talkie/split-environment-node/broadcaster-provider.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-node/dynamic-environment.mjs";
@@ -34,14 +34,14 @@ import StorageProvider from "@talkie/split-environment-node/storage-provider.mjs
 import StyletronProvider from "@talkie/split-environment-node/styletron-provider.mjs";
 import TranslatorProvider from "@talkie/split-environment-node/translator-provider.mjs";
 
-export type ServerSideDependencies = {
+export interface ServerSideDependencies {
 	api: Api;
 	broadcasterProvider: BroadcasterProvider;
 	configuration: IConfiguration;
 	localeProvider: LocaleProvider;
 	styletronProvider: StyletronProvider;
 	translatorProvider: TranslatorProvider;
-};
+}
 
 const getDependencies = async (): Promise<ServerSideDependencies> => {
 	const storageProvider = new StorageProvider();

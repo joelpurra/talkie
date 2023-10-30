@@ -51,7 +51,7 @@ const prefix = "errors";
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const errorsSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addMatcher(
 				(action: Action<string>): action is RejectedAction => action.type.endsWith("/rejected"),

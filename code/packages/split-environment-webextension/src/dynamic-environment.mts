@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
+import type IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
 import type {
 	Runtime,
 } from "webextension-polyfill";

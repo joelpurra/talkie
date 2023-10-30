@@ -25,17 +25,17 @@ import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
-	knownEventNames,
+	type knownEventNames,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import {
-	ListeningActionHandler,
+	type ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import {
-	JsonValue,
+	type JsonValue,
 } from "type-fest";
 
 export default class NodeEnvironmentBroadcasterProvider implements IBroadcasterProvider {

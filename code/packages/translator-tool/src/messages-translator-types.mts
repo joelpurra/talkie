@@ -20,14 +20,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // NOTE: some types are duplicated to avoid sharing with the main Talkie code.
 // TODO: break out types? Create shared project?
-export type BaseLocaleMessage = {
+export interface BaseLocaleMessage {
 	description?: string;
 	message: string;
 	placeholders?: Record<string, {
 		content: string;
 		example?: string;
 	}>;
-};
+}
 export type LocaleMessage = BaseLocaleMessages & {
 	original: string;
 };
@@ -35,11 +35,11 @@ export type LocaleMessage = BaseLocaleMessages & {
 export type BaseLocaleMessages = Record<string, BaseLocaleMessage>;
 export type LocaleMessages = Record<string, LocaleMessage>;
 
-export type BaseMessages = {
+export interface BaseMessages {
 	language: string;
 	messages: Record<string, BaseLocaleMessage>;
-};
-export type Messages = {
+}
+export interface Messages {
 	language: string;
 	messages: Record<string, LocaleMessage>;
-};
+}

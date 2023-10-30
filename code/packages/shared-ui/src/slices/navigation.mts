@@ -21,11 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	ReadonlyDeep,
+	type ReadonlyDeep,
 } from "type-fest";
 
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {

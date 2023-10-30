@@ -23,9 +23,9 @@ import {
 	getLanguageGroupFromLanguage,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
-	IVoiceLanguage,
-	IVoiceName,
-	SafeVoiceObject,
+	type IVoiceLanguage,
+	type IVoiceName,
+	type SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
 export const createSafeVoiceObjectFromSpeechSynthesisVoice = (speechSynthesisVoice: SpeechSynthesisVoice): SafeVoiceObject => ({
@@ -90,10 +90,8 @@ export const resolveVoiceFromName = async (voices: Readonly<SpeechSynthesisVoice
 	);
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const isIVoiceName = (input: unknown): input is IVoiceName => typeof input === "object" && input !== null && "name" in input && typeof (input as IVoiceName).name === "string";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const isIVoiceLanguage = (input: unknown): input is IVoiceLanguage => typeof input === "object" && input !== null && "lang" in input && typeof (input as IVoiceLanguage).lang === "string";
 
 export const resolveVoice = async <T extends IVoiceName | IVoiceLanguage>(voices: Readonly<SpeechSynthesisVoice[]>, mappedVoice: T): Promise<SpeechSynthesisVoice | null> => {

@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import type {
 	I18n,
@@ -30,7 +30,9 @@ export default class NodeEnvironmentLocaleProvider {
 	private translationLocale: TalkieLocale | null = null;
 
 	getUILocale(): I18n.LanguageCode {
-		const uiLocale = this.uiLocale;
+		const {
+			uiLocale,
+		} = this;
 
 		if (!uiLocale) {
 			throw new Error("UI locale is not set.");
@@ -44,7 +46,9 @@ export default class NodeEnvironmentLocaleProvider {
 	}
 
 	getTranslationLocale(): TalkieLocale {
-		const translationLocale = this.translationLocale;
+		const {
+			translationLocale,
+		} = this;
 
 		if (!translationLocale) {
 			throw new Error("Translation locale is not set.");

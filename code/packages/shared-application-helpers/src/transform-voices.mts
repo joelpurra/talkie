@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	IVoiceLanguage,
-	IVoiceNameAndLanguage,
+	type IVoiceLanguage,
+	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
 // TODO: create type alias for generic language strings?
@@ -131,7 +131,7 @@ export const getLanguagesFromVoicesByLanguage = <T extends IVoiceLanguage>(voice
 };
 
 export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const voicesByLanguage = voices.reduce<VoicesByLanguage<T>>(
 		(object, voice) => ({
 			...object,
@@ -144,7 +144,7 @@ export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: 
 };
 
 export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const voicesByLanguageGroup = voices.reduce<VoicesByLanguageGroup<T>>(
 		(object, voice) => {
 			const group = getLanguageGroupFromLanguage(voice.lang);
@@ -163,7 +163,7 @@ export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voi
 export const getVoicesByLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguagesByLanguageGroup<T> => {
 	const voicesByLanguage = getVoicesByLanguageFromVoices(voices);
 
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const languagesByLanguageGroup = voices.reduce<VoicesByLanguagesByLanguageGroup<T>>(
 		(object, voice) => {
 			const group = getLanguageGroupFromLanguage(voice.lang);
@@ -192,7 +192,7 @@ export const getLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(
 
 	const languageGroups = Object.keys(voicesByLanguagesByLanguageGroup);
 
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const languagesByLanguageGroup = languageGroups.reduce<LanguagesByLanguageGroup>(
 		(object, group) => {
 			const voicesForLanguage = voicesByLanguagesByLanguageGroup[group];

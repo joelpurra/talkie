@@ -24,7 +24,7 @@ import {
 } from "@talkie/shared-application-helpers/log.mjs";
 
 import {
-	IBrowserCommandMap,
+	type IBrowserCommandMap,
 } from "./command-handler-types.mjs";
 
 export default class CommandHandler {

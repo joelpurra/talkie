@@ -37,7 +37,7 @@ import createTalkieServices from "./background/create-talkie-services.mjs";
 import getDependencies from "./background/get-dependencies.mjs";
 import setupBroadcasterListenersAndKillswitches from "./background/setup-broadcaster-listeners-and-killswitches.mjs";
 import {
-	OnInstallEvent,
+	type OnInstallEvent,
 } from "./on-installed-manager-types.mjs";
 
 // NOTE: synchronous handling of the onInstall event through a separate, polled queue handled by the OnInstalledManager.

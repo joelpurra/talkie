@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
@@ -30,7 +30,7 @@ import type {
 } from "webextension-polyfill";
 
 import {
-	ITalkieServices,
+	type ITalkieServices,
 } from "./italkie-services.mjs";
 
 // NOTE: whitelisting schemes.
@@ -55,7 +55,7 @@ export const getTalkieServices = async (): Promise<ITalkieServices> => {
 
 	// https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
 	if (backgroundPage) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const talkieServices = (backgroundPage as any).talkieServices as ITalkieServices;
 
 		return talkieServices;
@@ -105,7 +105,9 @@ export const isCurrentPageInternalToTalkie = async (internalUrlProvider: Readonl
 	const tab = await getCurrentActiveTab();
 
 	if (tab) {
-		const url = tab.url;
+		const {
+			url,
+		} = tab;
 
 		if (
 			typeof url === "string"
@@ -151,7 +153,9 @@ export const canTalkieRunInTab = async (): Promise<boolean> => {
 	const tab = await getCurrentActiveNormalLoadedTab();
 
 	if (tab) {
-		const url = tab.url;
+		const {
+			url,
+		} = tab;
 
 		if (typeof url === "string") {
 			const canRunInUrl

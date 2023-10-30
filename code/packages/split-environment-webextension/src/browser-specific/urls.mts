@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ReadonlyDeep,
+	type ReadonlyDeep,
 } from "type-fest";
 import type {
 	Tabs,

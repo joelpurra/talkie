@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	loggedPromiseCallback,
-	PromiseFunction,
+	type PromiseFunction,
 } from "@talkie/shared-application/promise-logging.mjs";
 import type {
 	ReadonlyDeep,
@@ -29,7 +29,7 @@ import type {
 	Tabs,
 } from "webextension-polyfill";
 
-import TalkieBackground from "../talkie-background.mjs";
+import type TalkieBackground from "../talkie-background.mjs";
 
 export interface TabChangeListeners {
 	onTabRemovedListener: PromiseFunction<void>;

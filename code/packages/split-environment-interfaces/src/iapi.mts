@@ -51,7 +51,7 @@ import type {
 	Tabs,
 } from "webextension-polyfill";
 
-type IApi = {
+interface IApi {
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
 	debouncedSpeakTextInVoiceWithOverrides: (text: string, voiceName: string) => void;
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
@@ -104,5 +104,5 @@ type IApi = {
 	getTranslationLocale(): Promise<TalkieLocale>;
 	getNavigatorLanguage(): Promise<Readonly<string | null>>;
 	getNavigatorLanguages(): Promise<Readonly<string[]>>;
-};
+}
 export default IApi;

@@ -27,9 +27,9 @@ import configurationObject from "@talkie/shared-application/data/configuration/c
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-webextension/dynamic-environment.mjs";
@@ -43,7 +43,7 @@ import ButtonPopupManager from "../button-popup-manager.mjs";
 import ClipboardManager from "../clipboard-manager.mjs";
 import CommandHandler from "../command-handler.mjs";
 import {
-	IBrowserCommandMap,
+	type IBrowserCommandMap,
 } from "../command-handler-types.mjs";
 import ContextMenuManager from "../context-menu-manager.mjs";
 import HistoryManager from "../history-manager.mjs";
@@ -52,7 +52,7 @@ import LanguageHelper from "../language-helper.mjs";
 import NonBreakingChain from "../non-breaking-chain.mjs";
 import OnInstalledManager from "../on-installed-manager.mjs";
 import {
-	OnInstallEvent,
+	type OnInstallEvent,
 } from "../on-installed-manager-types.mjs";
 import OnlyLastCaller from "../only-last-caller.mjs";
 import PermissionsManager from "../permissions-manager.mjs";
@@ -70,7 +70,7 @@ import VoiceRateManager from "../voice-rate-manager.mjs";
 import WelcomeManager from "../welcome-manager.mjs";
 import getCommandMap from "./get-command-map.mjs";
 
-export interface BackgroundDependencies{
+export interface BackgroundDependencies {
 	broadcaster: Broadcaster;
 	buttonPopupManager: ButtonPopupManager;
 	configuration: IConfiguration;

@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
+import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import {
-	SpeakingHistoryEntry,
+	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 import {
-	ReadonlyDeep,
+	type ReadonlyDeep,
 } from "type-fest";
 
 export default class HistoryManager {

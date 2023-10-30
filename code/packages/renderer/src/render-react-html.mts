@@ -22,10 +22,10 @@ import type {
 	Action,
 	Store,
 } from "@reduxjs/toolkit";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
 import {
-	ReactElement,
+	type ReactElement,
 } from "react";
 import ReactDOMServer from "react-dom/server.js";
 import type {
@@ -36,7 +36,7 @@ import type {
 } from "type-fest";
 
 import {
-	ReactHtmlTemplateLocalsVariables,
+	type ReactHtmlTemplateLocalsVariables,
 } from "./render-types.mjs";
 
 const renderReactHtml = async <S, A extends Action>(
@@ -63,7 +63,7 @@ const renderReactHtml = async <S, A extends Action>(
 
 	// WARNING: See the following for security issues around embedding JSON in HTML:
 	// https://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-	const prerenderedStateJson = JSON.stringify(prerenderedState).replace(/</g, "\\u003c");
+	const prerenderedStateJson = JSON.stringify(prerenderedState).replaceAll("<", "\\u003c");
 
 	const data = {
 		locale: translationLocale,

@@ -46,7 +46,7 @@ export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
 
 	const lastValue = indexable[lastIndex];
 
-	if (typeof lastValue === "undefined") {
+	if (lastValue === undefined) {
 		throw new RangeError("Last indexable value is undefined.");
 	}
 
@@ -55,12 +55,12 @@ export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
 
 // TODO: use library.
 // eslint-disable-next-line @typescript-eslint/comma-dangle
-export const last = <T,>(indexable: Readonly<T[]>): T | undefined => indexable[indexable.length - 1];
+export const last = <T,>(indexable: Readonly<T[]>): T | undefined => indexable.at(-1);
 
 // TODO: use library.
 // eslint-disable-next-line @typescript-eslint/comma-dangle
 export const flatten = <T,>(deepArray: undefined | T | T[] | T[][] | T[][][] | T[][][][] | T[][][][][]): T[] => {
-	if (typeof deepArray === "undefined") {
+	if (deepArray === undefined) {
 		// NOTE: mostly a typing workaround to avoid issues with the possibly undefined type of array element accessors.
 		return [];
 	}
@@ -86,12 +86,12 @@ export const isUndefinedOrNullOrEmptyOrWhitespace = (value: unknown): value is s
 
 // TODO: use library.
 export const getRandomInt = (min?: number, max?: number): number => {
-	if (typeof min === "undefined") {
+	if (min === undefined) {
 		min = Number.MIN_VALUE;
 		max = Number.MAX_VALUE;
 	}
 
-	if (typeof max === "undefined") {
+	if (max === undefined) {
 		max = min;
 		min = 0;
 	}

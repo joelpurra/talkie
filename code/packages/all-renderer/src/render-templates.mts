@@ -22,10 +22,10 @@ import type {
 	Action,
 } from "@reduxjs/toolkit";
 import {
-	IRenderReactHtmlToFile,
+	type IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 

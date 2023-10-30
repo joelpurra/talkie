@@ -22,8 +22,8 @@ import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	EditionType,
-	IMetadataManager,
+	type EditionType,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 
 export type IconTypeName = "play" | "stop";

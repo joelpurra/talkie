@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	SpeakingHistoryEntry,
+	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 
 import type {

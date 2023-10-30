@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	IVoiceNameAndLanguage,
+	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
 export const getMappedVoice = <T extends IVoiceNameAndLanguage>(voice: T): IVoiceNameAndLanguage => ({

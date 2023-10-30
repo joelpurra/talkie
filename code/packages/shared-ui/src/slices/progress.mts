@@ -50,13 +50,13 @@ export const progressSlice = createSlice({
 	initialState,
 	name: prefix,
 	reducers: {
-		setCurrent: (state: Draft<ProgressState>, action: PayloadAction<number>) => {
+		setCurrent(state: Draft<ProgressState>, action: PayloadAction<number>) {
 			state.current = action.payload;
 		},
-		setMax: (state: Draft<ProgressState>, action: PayloadAction<number>) => {
+		setMax(state: Draft<ProgressState>, action: PayloadAction<number>) {
 			state.max = action.payload;
 		},
-		setMin: (state: Draft<ProgressState>, action: PayloadAction<number>) => {
+		setMin(state: Draft<ProgressState>, action: PayloadAction<number>) {
 			state.min = action.payload;
 		},
 	},

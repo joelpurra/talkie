@@ -19,16 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClientFunction,
-	compile,
-	Options,
-} from "ejs";
-import {
 	readFile,
 } from "node:fs/promises";
 
 import {
-	ReactHtmlTemplateLocalsVariables,
+	type ClientFunction,
+	compile,
+	type Options,
+} from "ejs";
+
+import {
+	type ReactHtmlTemplateLocalsVariables,
 } from "./render-types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

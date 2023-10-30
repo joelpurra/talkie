@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	StyleObject,
+	type StyleObject,
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";

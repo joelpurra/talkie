@@ -27,7 +27,7 @@ import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
 } from "@talkie/shared-ui/utils/store-helpers.mjs";
-import React from "react";
+import type React from "react";
 import ReactDOM from "react-dom";
 
 import {

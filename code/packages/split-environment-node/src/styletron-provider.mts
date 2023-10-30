@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
 import {
 	Server as StyletronServer,
 } from "styletron-engine-atomic";

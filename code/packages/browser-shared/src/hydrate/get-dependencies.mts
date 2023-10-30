@@ -23,7 +23,7 @@ import configurationObject from "@talkie/shared-application/data/configuration/c
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import StorageManager from "@talkie/shared-application/storage-manager.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import BroadcasterProvider from "@talkie/split-environment-webextension/broadcaster-provider.mjs";
 import Api from "@talkie/split-environment-webextension/browser-specific/api.mjs";
@@ -34,13 +34,13 @@ import StorageProvider from "@talkie/split-environment-webextension/storage-prov
 import StyletronProvider from "@talkie/split-environment-webextension/styletron-provider.mjs";
 import TranslatorProvider from "@talkie/split-environment-webextension/translator-provider.mjs";
 
-export type BrowserDependencies = {
+export interface BrowserDependencies {
 	api: Api;
 	broadcasterProvider: BroadcasterProvider;
 	configuration: IConfiguration;
 	styletronProvider: StyletronProvider;
 	translatorProvider: TranslatorProvider;
-};
+}
 
 function getDependencies(): BrowserDependencies {
 	const storageProvider = new StorageProvider();

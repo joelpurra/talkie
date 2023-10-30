@@ -24,14 +24,14 @@ import type {
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	IVoiceNameAndRateAndPitch,
+	type IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
-	SpeakingHistoryEntry,
+	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {
@@ -222,7 +222,7 @@ export const storeMostRecentSpeakingEntry = createAsyncThunk<void, SpeakingHisto
 );
 
 export const speakingSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(loadSpeakingHistory.fulfilled, (state, action) => {
 				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
@@ -235,22 +235,22 @@ export const speakingSlice = createSlice({
 		setIsSpeaking(state, action: PayloadAction<boolean>) {
 			state.isSpeaking = action.payload;
 		},
-		setMostRecentHash: (state, action: PayloadAction<number | null>) => {
+		setMostRecentHash(state, action: PayloadAction<number | null>) {
 			state.mostRecentHash = action.payload;
 		},
-		setMostRecentLanguage: (state, action: PayloadAction<string | null>) => {
+		setMostRecentLanguage(state, action: PayloadAction<string | null>) {
 			state.mostRecentLanguage = action.payload;
 		},
-		setMostRecentPitch: (state, action: PayloadAction<number>) => {
+		setMostRecentPitch(state, action: PayloadAction<number>) {
 			state.mostRecentPitch = action.payload;
 		},
-		setMostRecentRate: (state, action: PayloadAction<number>) => {
+		setMostRecentRate(state, action: PayloadAction<number>) {
 			state.mostRecentRate = action.payload;
 		},
-		setMostRecentText: (state, action: PayloadAction<string | null>) => {
+		setMostRecentText(state, action: PayloadAction<string | null>) {
 			state.mostRecentText = action.payload;
 		},
-		setMostRecentVoiceName: (state, action: PayloadAction<string | null>) => {
+		setMostRecentVoiceName(state, action: PayloadAction<string | null>) {
 			state.mostRecentVoiceName = action.payload;
 		},
 	},

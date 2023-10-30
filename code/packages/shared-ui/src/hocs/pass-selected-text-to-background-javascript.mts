@@ -23,7 +23,7 @@ import type {
 } from "type-fest";
 
 import {
-	FramesSelectionTextAndLanguageCode,
+	type FramesSelectionTextAndLanguageCode,
 } from "./pass-selected-text-to-background-types.mjs";
 
 /* eslint-disable no-inner-declarations, complexity, no-console */

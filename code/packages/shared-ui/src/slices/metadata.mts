@@ -21,12 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	OsType,
-	SystemType,
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {

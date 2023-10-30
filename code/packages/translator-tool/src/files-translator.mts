@@ -18,26 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import assert from "node:assert";
+
 import Bluebird from "bluebird";
 import clone from "clone";
 import jsonfile from "jsonfile";
-import assert from "node:assert";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import MessagesTranslatorFactory from "./messages-translator-factory.mjs";
+import type MessagesTranslatorFactory from "./messages-translator-factory.mjs";
 import {
-	BaseLocaleMessages,
-	BaseMessages,
-	LocaleMessages,
-	Messages,
+	type BaseLocaleMessages,
+	type BaseMessages,
+	type LocaleMessages,
+	type Messages,
 } from "./messages-translator-types.mjs";
 
-export type FileTranslation = {
+export interface FileTranslation {
 	filePath: string;
 	language: string;
-};
+}
 
 export default class FilesTranslator {
 	constructor(private readonly _messagesTranslatorFactory: MessagesTranslatorFactory, private readonly _base: ReadonlyDeep<FileTranslation>, private readonly _locales: ReadonlyDeep<FileTranslation[]>) {

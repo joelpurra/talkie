@@ -21,11 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
-	TabId,
+	type TabId,
 } from "../components/navigation/nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
@@ -43,7 +43,7 @@ const {
 
 export interface TabsState {
 	// TODO: list known tabs.
-	// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+
 	activeTabId: TabId | "fallback-tab";
 }
 
@@ -76,7 +76,6 @@ export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAs
 	},
 );
 
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export const setActiveTabId = createAsyncThunk<string | "fallback-tab", TabId | null, IApiAsyncThunkConfig>(
 	`${prefix}/setActiveTabId`,
 	async (

@@ -22,13 +22,13 @@ import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 
-import ClipboardManager from "./clipboard-manager.mjs";
-import PermissionsManager from "./permissions-manager.mjs";
-import TalkieBackground from "./talkie-background.mjs";
+import type ClipboardManager from "./clipboard-manager.mjs";
+import type PermissionsManager from "./permissions-manager.mjs";
+import type TalkieBackground from "./talkie-background.mjs";
 
 export default class ReadClipboardManager {
 	// eslint-disable-next-line max-params

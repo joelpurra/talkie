@@ -32,9 +32,9 @@ import type {
 	Tabs,
 } from "webextension-polyfill";
 
-import ContextMenuManager from "../context-menu-manager.mjs";
-import ShortcutKeyManager from "../shortcut-key-manager.mjs";
-import TalkieBackground from "../talkie-background.mjs";
+import type ContextMenuManager from "../context-menu-manager.mjs";
+import type ShortcutKeyManager from "../shortcut-key-manager.mjs";
+import type TalkieBackground from "../talkie-background.mjs";
 
 const createAndStartCommandListeners = async (
 	talkieBackground: ReadonlyDeep<TalkieBackground>,
@@ -51,7 +51,7 @@ const createAndStartCommandListeners = async (
 	);
 
 	browser.contextMenus.onClicked.addListener(
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-redundant-type-constituents
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		loggedPromiseCallback<ReadonlyDeep<Menus.OnClickData> | any>(
 			async (info: ReadonlyDeep<Menus.OnClickData>) => contextMenuManager.contextMenuClickAction(info),
 			"onClicked",
@@ -63,7 +63,7 @@ const createAndStartCommandListeners = async (
 	// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
 	try {
 		browser.commands.onCommand.addListener(
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-redundant-type-constituents
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			loggedPromiseCallback<string | Tabs.Tab | any>(
 				async (command: string) => shortcutKeyManager.handler(command),
 				"onCommand",

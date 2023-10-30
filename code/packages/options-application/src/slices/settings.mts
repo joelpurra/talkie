@@ -25,7 +25,7 @@ import type {
 // eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 import {
 	loadSpeakingHistory,
@@ -153,7 +153,7 @@ export const settingsSlice = createSlice({
 		setSpeakLongTexts(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.speakLongTexts = action.payload;
 		},
-		setSpeakingHistoryLimit: (state: Draft<SettingsState>, action: PayloadAction<number>) => {
+		setSpeakingHistoryLimit(state: Draft<SettingsState>, action: PayloadAction<number>) {
 			state.speakingHistoryLimit = action.payload;
 		},
 	},

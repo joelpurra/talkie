@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 /// <ref types="dom" />
 
-import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
 import {
 	Client as StyletronClient,
 } from "styletron-engine-atomic";

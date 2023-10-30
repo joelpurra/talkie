@@ -24,4 +24,3 @@ declare global {
 	const browser: Browser.Browser;
 }
 
-export {};

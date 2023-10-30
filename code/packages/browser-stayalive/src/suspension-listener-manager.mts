@@ -29,12 +29,12 @@ import type {
 	Runtime,
 } from "webextension-polyfill";
 
-type SuspendConnectionPort = {
+interface SuspendConnectionPort {
 	_onDisconnectHandler: () => void;
 	currentConnectionId: number;
 	port: Runtime.Port;
 	preventSuspensionIntervalId: NodeJS.Timeout;
-};
+}
 
 export default class SuspensionListenerManager {
 	private connectionCounter = 0;
@@ -113,7 +113,7 @@ export default class SuspensionListenerManager {
 
 		void logDebug("Matching port", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, port);
 
-		const _onMessageHandler = (message: unknown) => {
+		const _onMessageHandler = async (message: unknown) => {
 			void logDebug("_onMessageHandler", "_onConnectHandler", currentConnectionId, this.activeSuspendConnections, message);
 
 			return this._preventSuspendPromise;
@@ -135,7 +135,7 @@ export default class SuspensionListenerManager {
 			}
 
 			// TODO: set message target.
-			// eslint-disable-next-line unicorn/require-post-message-target-origin
+
 			suspendConnectionPort.port.postMessage(`Ah, ha, ha, ha, stayin' alive, stayin' alive: ${currentConnectionId}, ${this.activeSuspendConnections}`);
 		};
 

@@ -18,41 +18,41 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Broadcaster from "@talkie/shared-application/broadcaster.mjs";
-import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
+import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
+import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
 import {
 	logDebug,
 	logError,
-	LoggingLevel,
+	type LoggingLevel,
 	logInfo,
 	logTrace,
 	logWarn,
 	setLevel,
 	setStringOnlyOutput,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
-	IMetadataManager,
+	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
-	IVoiceNameAndRateAndPitch,
+	type IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
-	SpeakingHistoryEntry,
+	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 import {
-	ITalkieServices,
+	type ITalkieServices,
 } from "@talkie/split-environment-webextension/browser-specific/italkie-services.mjs";
 import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
 
-import HistoryManager from "../history-manager.mjs";
-import TalkieBackground from "../talkie-background.mjs";
-import TalkieSpeaker from "../talkie-speaker.mjs";
-import VoiceManager from "../voice-manager.mjs";
+import type HistoryManager from "../history-manager.mjs";
+import type TalkieBackground from "../talkie-background.mjs";
+import type TalkieSpeaker from "../talkie-speaker.mjs";
+import type VoiceManager from "../voice-manager.mjs";
 
 const createTalkieServices = async (
 	broadcaster: ReadonlyDeep<Broadcaster>,
@@ -68,111 +68,103 @@ const createTalkieServices = async (
 ): Promise<ITalkieServices> => {
 	// TODO: group methods.
 	/* eslint-disable sort-keys */
-	const talkieServices: ITalkieServices = Object.assign(
-		{
-			broadcaster: () => broadcaster,
+	const talkieServices: ITalkieServices = {
+		broadcaster: () => broadcaster,
+		logTrace(...args: Readonly<unknown[]>) {
+			void logTrace(...args);
 		},
-		{
-			logTrace: (...args: Readonly<unknown[]>) => {
-				void logTrace(...args);
-			},
 
-			logDebug: (...args: Readonly<unknown[]>) => {
-				void logDebug(...args);
-			},
-
-			logInfo: (...args: Readonly<unknown[]>) => {
-				void logInfo(...args);
-			},
-
-			logWarn: (...args: Readonly<unknown[]>) => {
-				void logWarn(...args);
-			},
-
-			logError: (...args: Readonly<unknown[]>) => {
-				void logError(...args);
-			},
-
-			setLoggingLevel: (nextLevel: LoggingLevel) => {
-				setLevel(nextLevel);
-			},
-
-			setLoggingStringOnlyOutput: (stringOnly: boolean) => {
-				setStringOnlyOutput(stringOnly);
-			},
+		logDebug(...args: Readonly<unknown[]>) {
+			void logDebug(...args);
 		},
-		{
-			getAllVoicesSafeObjects: async () => talkieSpeaker.getAllVoicesSafeObjects(),
-			iconClick: async () => {
-				// NOTE: keeping the root chain separate from the speech chain.
-				void talkieBackground.startStopSpeakSelectionOnPage();
-			},
 
-			stopSpeakFromFrontend: async () => talkieBackground.stopSpeakingAction(),
-			startSpeakFromFrontend: async (text: string, voice: Readonly<IVoiceNameAndRateAndPitch>) => {
-				// NOTE: keeping the root chain separate from the speech chain.
-				void talkieBackground.startSpeakingTextInVoiceAction(text, voice);
-			},
-
-			startSpeakInVoiceWithOverridesFromFrontend: async (frontendText: string, frontendVoiceName: string) => {
-				// NOTE: not sure if copying these variables have any effect.
-				// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
-				const text = String(frontendText);
-				const voiceName = String(frontendVoiceName);
-
-				// NOTE: keeping the root chain separate from the speech chain.
-				void talkieBackground.startSpeakingTextInVoiceWithOverridesAction(text, voiceName);
-			},
-
-			startSpeakInLanguageWithOverridesFromFrontend: async (frontendText: string, frontendLanguageCode: string) => {
-				// NOTE: not sure if copying these variables have any effect.
-				// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
-				const text = String(frontendText);
-				const languageCode = String(frontendLanguageCode);
-
-				// NOTE: keeping the root chain separate from the speech chain.
-				void talkieBackground.startSpeakingTextInLanguageWithOverridesAction(text, languageCode);
-			},
+		logInfo(...args: Readonly<unknown[]>) {
+			void logInfo(...args);
 		},
-		{
-			getVersionNumber: async () => metadataManager.getVersionNumber(),
-			getVersionName: async () => metadataManager.getVersionName(),
-			getEditionType: async () => metadataManager.getEditionType(),
-			isPremiumEdition: async () => metadataManager.isPremiumEdition(),
-			getSystemType: async () => metadataManager.getSystemType(),
-			getOperatingSystemType: async () => metadataManager.getOperatingSystemType(),
 
-			getIsPremiumEdition: async () => settingsManager.getIsPremiumEdition(),
-			setIsPremiumEdition: async (isPremiumEdition: boolean) => settingsManager.setIsPremiumEdition(isPremiumEdition),
-			getSpeakLongTexts: async () => settingsManager.getSpeakLongTexts(),
-			setSpeakLongTexts: async (speakLongTexts: boolean) => settingsManager.setSpeakLongTexts(speakLongTexts),
-			getShowAdditionalDetails: async () => settingsManager.getShowAdditionalDetails(),
-			setShowAdditionalDetails: async (showAdditionalDetails: boolean) => settingsManager.setShowAdditionalDetails(showAdditionalDetails),
-			getSpeakingHistoryLimit: async () => settingsManager.getSpeakingHistoryLimit(),
-			setSpeakingHistoryLimit: async (speakingHistoryLimit: number) => settingsManager.setSpeakingHistoryLimit(speakingHistoryLimit),
-
-			getMostRecentSpeakingEntry: async () => historyManager.getMostRecentSpeakingEntry(),
-			getSpeakingHistory: async () => historyManager.getSpeakingHistory(),
-			clearSpeakingHistory: async () => historyManager.clearSpeakingHistory(),
-			pruneSpeakingHistory: async () => historyManager.pruneSpeakingHistory(),
-			removeSpeakingHistoryEntry: async (hash: number) => historyManager.removeSpeakingHistoryEntry(hash),
-			storeMostRecentSpeakingEntry: async (speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>) => historyManager.storeMostRecentSpeakingEntry(speakingHistoryEntry),
-
-			getEffectiveVoiceForLanguage: async (languageName: string) => voiceManager.getEffectiveVoiceForLanguage(languageName),
-			isLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName),
-			toggleLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName),
-			getVoiceRateDefault: async (voiceName: string) => voiceManager.getVoiceRateDefault(voiceName),
-			setVoiceRateOverride: async (voiceName: string, rate: number) => voiceManager.setVoiceRateOverride(voiceName, rate),
-			getEffectiveRateForVoice: async (voiceName: string) => voiceManager.getEffectiveRateForVoice(voiceName),
-			getVoicePitchDefault: async (voiceName: string) => voiceManager.getVoicePitchDefault(voiceName),
-			setVoicePitchOverride: async (voiceName: string, pitch: number) => voiceManager.setVoicePitchOverride(voiceName, pitch),
-			getEffectivePitchForVoice: async (voiceName: string) => voiceManager.getEffectivePitchForVoice(voiceName),
-
-			getStoredValue: async <T extends JsonValue>(key: string) => storageManager.getStoredValue<T>(key),
-			setStoredValue: async (key: string, value: JsonValue) => storageManager.setStoredValue(key, value),
-			getConfigurationValue: async <T extends JsonValue>(path: string) => configuration.get<T>(path),
+		logWarn(...args: Readonly<unknown[]>) {
+			void logWarn(...args);
 		},
-	);
+
+		logError(...args: Readonly<unknown[]>) {
+			void logError(...args);
+		},
+
+		setLoggingLevel(nextLevel: LoggingLevel) {
+			setLevel(nextLevel);
+		},
+
+		setLoggingStringOnlyOutput(stringOnly: boolean) {
+			setStringOnlyOutput(stringOnly);
+		},
+		getAllVoicesSafeObjects: async () => talkieSpeaker.getAllVoicesSafeObjects(),
+		async iconClick() {
+			// NOTE: keeping the root chain separate from the speech chain.
+			void talkieBackground.startStopSpeakSelectionOnPage();
+		},
+
+		stopSpeakFromFrontend: async () => talkieBackground.stopSpeakingAction(),
+		async startSpeakFromFrontend(text: string, voice: Readonly<IVoiceNameAndRateAndPitch>) {
+			// NOTE: keeping the root chain separate from the speech chain.
+			void talkieBackground.startSpeakingTextInVoiceAction(text, voice);
+		},
+
+		async startSpeakInVoiceWithOverridesFromFrontend(frontendText: string, frontendVoiceName: string) {
+			// NOTE: not sure if copying these variables have any effect.
+			// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+			const text = String(frontendText);
+			const voiceName = String(frontendVoiceName);
+
+			// NOTE: keeping the root chain separate from the speech chain.
+			void talkieBackground.startSpeakingTextInVoiceWithOverridesAction(text, voiceName);
+		},
+
+		async startSpeakInLanguageWithOverridesFromFrontend(frontendText: string, frontendLanguageCode: string) {
+			// NOTE: not sure if copying these variables have any effect.
+			// NOTE: Hope it helps avoid some vague "TypeError: can't access dead object" in Firefox.
+			const text = String(frontendText);
+			const languageCode = String(frontendLanguageCode);
+
+			// NOTE: keeping the root chain separate from the speech chain.
+			void talkieBackground.startSpeakingTextInLanguageWithOverridesAction(text, languageCode);
+		},
+		getVersionNumber: async () => metadataManager.getVersionNumber(),
+		getVersionName: async () => metadataManager.getVersionName(),
+		getEditionType: async () => metadataManager.getEditionType(),
+		isPremiumEdition: async () => metadataManager.isPremiumEdition(),
+		getSystemType: async () => metadataManager.getSystemType(),
+		getOperatingSystemType: async () => metadataManager.getOperatingSystemType(),
+
+		getIsPremiumEdition: async () => settingsManager.getIsPremiumEdition(),
+		setIsPremiumEdition: async (isPremiumEdition: boolean) => settingsManager.setIsPremiumEdition(isPremiumEdition),
+		getSpeakLongTexts: async () => settingsManager.getSpeakLongTexts(),
+		setSpeakLongTexts: async (speakLongTexts: boolean) => settingsManager.setSpeakLongTexts(speakLongTexts),
+		getShowAdditionalDetails: async () => settingsManager.getShowAdditionalDetails(),
+		setShowAdditionalDetails: async (showAdditionalDetails: boolean) => settingsManager.setShowAdditionalDetails(showAdditionalDetails),
+		getSpeakingHistoryLimit: async () => settingsManager.getSpeakingHistoryLimit(),
+		setSpeakingHistoryLimit: async (speakingHistoryLimit: number) => settingsManager.setSpeakingHistoryLimit(speakingHistoryLimit),
+
+		getMostRecentSpeakingEntry: async () => historyManager.getMostRecentSpeakingEntry(),
+		getSpeakingHistory: async () => historyManager.getSpeakingHistory(),
+		clearSpeakingHistory: async () => historyManager.clearSpeakingHistory(),
+		pruneSpeakingHistory: async () => historyManager.pruneSpeakingHistory(),
+		removeSpeakingHistoryEntry: async (hash: number) => historyManager.removeSpeakingHistoryEntry(hash),
+		storeMostRecentSpeakingEntry: async (speakingHistoryEntry: ReadonlyDeep<SpeakingHistoryEntry>) => historyManager.storeMostRecentSpeakingEntry(speakingHistoryEntry),
+
+		getEffectiveVoiceForLanguage: async (languageName: string) => voiceManager.getEffectiveVoiceForLanguage(languageName),
+		isLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.isLanguageVoiceOverrideName(languageName, voiceName),
+		toggleLanguageVoiceOverrideName: async (languageName: string, voiceName: string) => voiceManager.toggleLanguageVoiceOverrideName(languageName, voiceName),
+		getVoiceRateDefault: async (voiceName: string) => voiceManager.getVoiceRateDefault(voiceName),
+		setVoiceRateOverride: async (voiceName: string, rate: number) => voiceManager.setVoiceRateOverride(voiceName, rate),
+		getEffectiveRateForVoice: async (voiceName: string) => voiceManager.getEffectiveRateForVoice(voiceName),
+		getVoicePitchDefault: async (voiceName: string) => voiceManager.getVoicePitchDefault(voiceName),
+		setVoicePitchOverride: async (voiceName: string, pitch: number) => voiceManager.setVoicePitchOverride(voiceName, pitch),
+		getEffectivePitchForVoice: async (voiceName: string) => voiceManager.getEffectivePitchForVoice(voiceName),
+
+		getStoredValue: async <T extends JsonValue>(key: string) => storageManager.getStoredValue<T>(key),
+		setStoredValue: async (key: string, value: JsonValue) => storageManager.setStoredValue(key, value),
+		getConfigurationValue: async <T extends JsonValue>(path: string) => configuration.get<T>(path),
+	};
 	/* eslint-enable sort-keys */
 
 	return talkieServices;

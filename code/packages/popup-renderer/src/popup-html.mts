@@ -18,20 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import path from "node:path";
+
 import type {
 	Action,
 } from "@reduxjs/toolkit";
 import App from "@talkie/popup-application/containers/app.js";
 import rootReducer from "@talkie/popup-application/slices/index.mjs";
 import {
-	PopupRootState,
+	type PopupRootState,
 } from "@talkie/popup-application/store/index.mjs";
 import {
-	IRenderReactHtmlToFile,
+	type IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
-import path from "node:path";
 import {
-	ComponentProps,
+	type ComponentProps,
 } from "react";
 
 // NOTE: relative to the compiled file being executed.

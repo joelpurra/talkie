@@ -26,7 +26,7 @@ import {
 	promiseDelay,
 } from "@talkie/shared-application-helpers/promise.mjs";
 
-import SuspensionConnectorManager from "./suspension-connector-manager.mjs";
+import type SuspensionConnectorManager from "./suspension-connector-manager.mjs";
 
 export default class SuspensionManager {
 	constructor(private readonly suspensionConnectorManager: SuspensionConnectorManager) {
