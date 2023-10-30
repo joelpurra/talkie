@@ -19,14 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SafeVoiceObject,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import React from "react";
 
 interface DialectVoicesProps {
-	voices: Readonly<SafeVoiceObject[]>;
+	voices: SafeVoiceObjects;
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	onSelectVoiceNameClick: (voiceName: string | null, event: React.MouseEvent) => false;
 }

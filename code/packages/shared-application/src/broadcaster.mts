@@ -37,6 +37,9 @@ import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcas
 import {
 	isDeadWrapper,
 } from "./utils/is-dead-wrapper.mjs";
+import {
+	JsonValue,
+} from "type-fest";
 
 export default class Broadcaster implements IBroadcasterProvider {
 	// TODO: the broadcaster is working with several types of listeners, so the types can't be generic on the class level.
@@ -79,8 +82,7 @@ export default class Broadcaster implements IBroadcasterProvider {
 		this.actionListeningMap[actionName] = filteredActions;
 	}
 
-	// TODO: use TData extends JsonValue when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite.
-	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
+	async registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
 		this.actionListeningMap[actionName] = this.actionListeningMap[actionName].concat(listeningActionHandler);
 
 		const killSwitch = async () =>
@@ -89,8 +91,7 @@ export default class Broadcaster implements IBroadcasterProvider {
 		return killSwitch;
 	}
 
-	// TODO: use TData extends JsonValue when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite.
-	async broadcastEvent<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {
+	async broadcastEvent<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, actionData: Readonly<TData>): Promise<Array<TReturn | null>> {
 		void logTrace("Start", "Sending message", actionName, actionData);
 
 		const listeningActions = this.actionListeningMap[actionName];
@@ -104,7 +105,7 @@ export default class Broadcaster implements IBroadcasterProvider {
 		try {
 			const responses = await Promise.all(
 				listeningActions.map(
-					async (action): Promise<TReturn | null> => {
+					async (action) => {
 						try {
 							// NOTE: check for dead objects from cross-page (background, popup, options, ...) memory leaks.
 							// NOTE: this is just in case the killSwitch hasn't been called.

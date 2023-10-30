@@ -19,37 +19,35 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	OsType,
-	SystemType,
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import passSelectedTextToBackground from "@talkie/shared-ui/hocs/pass-selected-text-to-background.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
-	ClassNameProp,
+	type ClassNameProp,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import React from "react";
 import type {
 	StyleObject,
-	StyletronComponent,
 } from "styletron-react";
 import {
 	styled,
 	withStyleDeep,
 } from "styletron-react";
 import {
-	ReadonlyDeep,
+	type ReadonlyDeep,
 } from "type-fest";
 
 import Loading from "../components/loading.js";
 import NavContainer from "../components/navigation/nav-container.js";
 import {
-	NavLink,
+	type NavLink,
 } from "../components/navigation/nav-container-types.mjs";
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
@@ -58,10 +56,10 @@ import TextContainer from "../containers/settings-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
 import {
-	actions,
+	type actions,
 } from "../slices/index.mjs";
 import Footer, {
-	FooterStateProps,
+	type FooterStateProps,
 } from "./footer.js";
 import Header from "./header.js";
 import Support from "./sections/support.js";
@@ -102,9 +100,9 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	private readonly links: NavLink[];
 
 	private readonly styled: {
-		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
-		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
-		navHeader: StyletronComponent<ComponentProps<"div">>;
+		footerHr: TalkieStyletronComponent<typeof layoutBase.hr>;
+		main: TalkieStyletronComponent<typeof layoutBase.main>;
+		navHeader: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {

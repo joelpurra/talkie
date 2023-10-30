@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "../../hocs/translate.js";
 import * as textBase from "../../styled/text/text-base.js";
 

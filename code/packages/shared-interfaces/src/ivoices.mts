@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	JsonObject,
+} from "type-fest";
+
 export type IVoiceName = {
 	name: string;
 };
@@ -30,8 +34,7 @@ export type IVoiceNameAndRateAndPitch = IVoiceName & {
 	pitch: number;
 };
 
-// TODO: add `extends JsonObject` when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite?
-export interface MutableSafeVoiceObject {
+export interface MutableSafeVoiceObject extends JsonObject {
 	isSafeVoiceObject: true;
 	default: boolean;
 	lang: string;
@@ -41,3 +44,5 @@ export interface MutableSafeVoiceObject {
 }
 
 export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
+
+export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}

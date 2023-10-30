@@ -21,17 +21,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import React from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
 import {
 	withStyleDeep,
 } from "styletron-react";
 
 import {
-	NavLink,
+	type NavLink,
 } from "./nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
@@ -47,10 +47,10 @@ export interface NavProps {
 
 export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
-		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
-		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
-		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
+		nav: TalkieStyletronComponent<typeof layoutBase.nav>;
+		navTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		navTableTd: TalkieStyletronComponent<typeof tableBase.td>;
+		selectedLink: TalkieStyletronComponent<typeof textBase.a>;
 	};
 
 	constructor(props: P) {
@@ -133,7 +133,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		const linkCells = links.map((link) => {
 			let resolvedUrl: string | null = null;
 
-			if (typeof link.tabId === "string" && link.url instanceof URL) {
+			if (typeof link.tabId === "string" && (link.url as unknown) instanceof URL) {
 				throw new TypeError(`Has both a link and a tab id: ${JSON.stringify(link)}`);
 			} else if (typeof link.tabId === "string") {
 				resolvedUrl = getLocationHashFromTabId(link.tabId);

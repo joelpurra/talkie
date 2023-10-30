@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageGroupWithNavigatorLanguage,
+	type LanguageGroupWithNavigatorLanguage,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import LanguageGroups from "../../app/sections/voices/language-groups.js";

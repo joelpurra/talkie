@@ -38,6 +38,8 @@ export default function configureAttribute<P extends ConfigureProps = ConfigureP
 	return function configureHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ConfigurationHoc extends React.PureComponent<P> {
 			static override contextType = ConfigurationContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof ConfigurationContext>;
 
 			override render(): React.ReactNode {

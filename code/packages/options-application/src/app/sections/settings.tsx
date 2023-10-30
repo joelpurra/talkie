@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import {
-	actions,
+	type actions,
 } from "../../slices/index.mjs";
 import ShowAdditionalDetails from "./settings/show-additional-details.js";
 import SpeakLongTexts from "./settings/speak-long-texts.js";

@@ -19,18 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	type ClassNameProp,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import React from "react";
 import {
 	styled,
-	StyletronComponent,
 } from "styletron-react";
 
 export type InformationType =
@@ -43,9 +41,9 @@ export interface InformationSectionProps extends ChildrenRequiredProps, ClassNam
 
 class InformationSection<P extends InformationSectionProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		childBox: StyletronComponent<ComponentProps<"div">>;
-		glyphIcon: StyletronComponent<ComponentProps<"div">>;
-		informationBox: StyletronComponent<ComponentProps<"div">>;
+		childBox: TalkieStyletronComponent<"div">;
+		glyphIcon: TalkieStyletronComponent<"div">;
+		informationBox: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {
@@ -103,14 +101,19 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 		let informationTypeGlyph = null;
 
 		switch (informationType) {
-			case "information":
+			case "information": {
 				informationTypeGlyph = "\u2139";
 				break;
-			case "warning":
+			}
+
+			case "warning": {
 				informationTypeGlyph = "\u26A0";
 				break;
-			default:
+			}
+
+			default: {
 				throw new TypeError("informationType");
+			}
 		}
 
 		return (

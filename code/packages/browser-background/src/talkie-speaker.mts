@@ -40,11 +40,13 @@ import {
 	IVoiceName,
 	IVoiceNameAndRateAndPitch,
 	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	knownEvents,
 } from "@talkie/shared-interfaces/known-events.mjs";
 import type {
+	JsonObject,
 	ReadonlyDeep,
 } from "type-fest";
 
@@ -64,15 +66,15 @@ declare global{
 }
 
 // TODO: merge SpeakingEventData and SpeakingEventPartData?
-export type SpeakingEventData = {
+export interface SpeakingEventData extends JsonObject {
 	language: string | null;
 	text: string;
 	voice: string | null;
 };
 
-export type SpeakingEventPartData = {
+export interface SpeakingEventPartData extends JsonObject {
 	textPart: string;
-	actualVoice: SpeechSynthesisVoice;
+	actualVoice: Readonly<SpeechSynthesisVoice>;
 	rate: number;
 	pitch: number;
 };
@@ -137,7 +139,7 @@ export default class TalkieSpeaker {
 		return synthesizer;
 	}
 
-	async getAllVoicesSafeObjects(): Promise<SafeVoiceObject[]> {
+	async getAllVoicesSafeObjects(): Promise<SafeVoiceObjects> {
 		// NOTE: in the TalkieSpeaker class so it (plus the helper functions) is the only one to handle SpeechSynthesisVoice.
 		const voices = await this._getAllVoices();
 
@@ -254,7 +256,7 @@ export default class TalkieSpeaker {
 		);
 	}
 
-	private async splitAndSpeak(text: string, resolvedVoice: SpeechSynthesisVoice, rate: number, pitch: number): Promise<void> {
+	private async splitAndSpeak(text: string, resolvedVoice: Readonly<SpeechSynthesisVoice>, rate: number, pitch: number): Promise<void> {
 		void logDebug("Start", "splitAndSpeak", `Speak text (length ${text.length}): "${text}"`);
 
 		const speakingEventData: SpeakingEventData = {

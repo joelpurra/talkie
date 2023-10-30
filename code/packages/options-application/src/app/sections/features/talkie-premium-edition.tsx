@@ -19,10 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";

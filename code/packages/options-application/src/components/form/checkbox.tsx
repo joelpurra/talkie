@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import React, {
-	ChangeEvent,
+	type ChangeEvent,
 } from "react";
 import {
 	styled,

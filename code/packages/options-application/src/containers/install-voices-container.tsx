@@ -21,12 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import InstallVoices, {
-	InstallVoicesProps,
+	type InstallVoicesProps,
 } from "../app/sections/support/install-voices.js";
 import selectors from "../selectors/index.mjs";
 import type {

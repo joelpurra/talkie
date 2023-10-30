@@ -20,13 +20,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import {
-	LanguageTextDirection,
+	type LanguageTextDirection,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import LanguageGroup from "../../app/sections/voices/language-group.js";
@@ -62,7 +62,7 @@ interface DispatchProps {
 interface InternalProps extends LanguageGroupContainerProps, StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
+const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	assertedSelectedLanguageGroup: selectors.voices.getAssertedSelectedLanguageGroup(state),
 	effectiveVoiceNameForSelectedLanguage: state.voices.effectiveVoiceNameForSelectedLanguageCode,
 	effectiveVoiceNameForSelectedLanguageGroup: state.voices.effectiveVoiceNameForSelectedLanguageGroup,

@@ -36,7 +36,7 @@ import {
 import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	KillSwitch,
@@ -88,7 +88,7 @@ export default class Api implements IApi {
 		return this.configuration.getSync<T>(systemType, path);
 	}
 
-	async getConfigurationValue<T>(configurationPath: string): Promise<T> {
+	async getConfigurationValue<T extends JsonValue>(configurationPath: string): Promise<T> {
 		// TODO: separate "background API" from other functionality.
 		return this.configuration.get<T>(configurationPath);
 	}
@@ -125,7 +125,7 @@ export default class Api implements IApi {
 		await talkieServices.startSpeakInLanguageWithOverridesFromFrontend(text, languageCode);
 	}
 
-	async getVoices(): Promise<SafeVoiceObject[]> {
+	async getVoices(): Promise<SafeVoiceObjects> {
 		const talkieServices = await getTalkieServices();
 
 		return talkieServices.getAllVoicesSafeObjects();
@@ -254,7 +254,7 @@ export default class Api implements IApi {
 		return sharedOpenOptionsPage();
 	}
 
-	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
+	async registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
 		return this.broadcastProvider.registerListeningAction(actionName, listeningActionHandler);
 	}
 

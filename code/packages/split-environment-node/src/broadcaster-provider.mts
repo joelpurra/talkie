@@ -34,16 +34,19 @@ import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
 import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	JsonValue,
+} from "type-fest";
 
 export default class NodeEnvironmentBroadcasterProvider implements IBroadcasterProvider {
-	async broadcastEvent<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {
+	async broadcastEvent<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {
 		void logWarn("NodeEnvironmentBroadcasterProvider", "broadcastEvent", "ignored", actionName, actionData);
 
 		// NOTE: empty array since no events listeners were called.
 		return [];
 	}
 
-	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, _listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
+	async registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, _listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
 		void logWarn("NodeEnvironmentBroadcasterProvider", "registerListeningAction", "ignored", actionName);
 
 		// NOTE: returning a dummy killswitch.

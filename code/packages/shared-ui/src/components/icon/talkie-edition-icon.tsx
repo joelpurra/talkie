@@ -21,10 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "../../styled/types.js";
 import Icon, {
-	IconProps,
+	type IconProps,
 } from "./icon.js";
 
 export interface TalkieEditionIconProps {

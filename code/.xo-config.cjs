@@ -27,9 +27,9 @@ module.exports = {
 		{
 			"files": "./packages/*/**/*.tsx",
 			"rules": {
-				"jsx-quotes": [
+				"@typescript-eslint/consistent-type-definitions": [
 					"error",
-					"prefer-double",
+					"interface",
 				],
 				"@typescript-eslint/naming-convention": [
 					"error",
@@ -41,6 +41,10 @@ module.exports = {
 							"strictCamelCase",
 						]
 					}
+				],
+				"jsx-quotes": [
+					"error",
+					"prefer-double",
 				]
 			}
 		}

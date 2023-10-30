@@ -21,10 +21,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import {
-	IsSpeakingProps,
+	type IsSpeakingProps,
 } from "../hocs/is-speaking-types.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "../types.mjs";
 
 export interface StyleRootProps {

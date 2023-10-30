@@ -19,14 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 

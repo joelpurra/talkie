@@ -20,10 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import IsSpeakingUpdater, {
-	IsSpeakingUpdaterDispatchProps,
+	type IsSpeakingUpdaterDispatchProps,
 } from "@talkie/shared-ui/hocs/is-speaking-updater.js";
 import ProgressUpdater, {
-	ProgressUpdaterDispatchProps,
+	type ProgressUpdaterDispatchProps,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
 import type {
@@ -35,8 +35,8 @@ import {
 } from "react-redux";
 
 import Main, {
-	MainDispatchProps,
-	MainStateProps,
+	type MainDispatchProps,
+	type MainStateProps,
 } from "../app/main.js";
 import selectors from "../selectors/index.mjs";
 import {

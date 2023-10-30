@@ -23,7 +23,7 @@ import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import type {
-	Mutable,
+	Writable,
 	Promisable,
 	ReadonlyDeep,
 } from "type-fest";
@@ -53,7 +53,7 @@ export default class PermissionsManager {
 		return this._pms.contains({
 			origins,
 			permissions: permissionNames,
-		} as Mutable<{
+		} as Writable<{
 			origins: Manifest.MatchPattern[];
 			permissions: Manifest.Permission[];
 		}>);
@@ -63,7 +63,7 @@ export default class PermissionsManager {
 		return this._pms.request({
 			origins,
 			permissions: permissionNames,
-		} as Mutable<{
+		} as Writable<{
 			origins: Manifest.MatchPattern[];
 			permissions: Manifest.OptionalPermission[];
 		}>);
@@ -73,7 +73,7 @@ export default class PermissionsManager {
 		return this._pms.remove({
 			origins,
 			permissions: permissionNames,
-		} as Mutable<{
+		} as Writable<{
 			origins: Manifest.MatchPattern[];
 			permissions: Manifest.OptionalPermission[];
 		}>);

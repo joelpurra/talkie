@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
@@ -31,7 +31,7 @@ import {
 } from "../containers/providers.js";
 import executeGetFramesSelectionTextAndLanguageCode from "./pass-selected-text-to-background-javascript.mjs";
 import {
-	PerhapsSelectedTextWithFocusTimestamp,
+	type PerhapsSelectedTextWithFocusTimestamp,
 } from "./pass-selected-text-to-background-types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -40,6 +40,8 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {
 		class PassSelectedTextToBackgroundHoc extends React.PureComponent<P, S, SS> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			killSwitches: KillSwitch[];
@@ -147,10 +149,10 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 				}
 			}
 
-			async registerBroadcastListeners(): Promise<void> {
+			async registerBroadcastListeners() {
 				const killSwitch = await this.context.broadcaster.registerListeningAction(
 					knownEvents.passSelectedTextToBackground,
-					async (_actionName: string, _actionData: unknown) => this.getSelectedTextWithFocusTimestamp(),
+					async () => this.getSelectedTextWithFocusTimestamp(),
 				);
 
 				this.killSwitches.push(killSwitch);

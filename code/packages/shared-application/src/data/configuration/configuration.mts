@@ -25,7 +25,6 @@ import {
 	ReadonlyDeep,
 } from "type-fest";
 
-// @ts-expect-error: File is not a module.ts(2306)
 import configurationJson from "./configuration.cjs";
 
 // TODO: skip JSON file, just put data here?

@@ -27,10 +27,14 @@ import {
 import {
 	ListeningActionHandler,
 } from "@talkie/shared-interfaces/listening-action-handler.mjs";
+import {
+	JsonValue,
+} from "type-fest";
 
 export type IBroadcasterProviderConstructor = new() => IBroadcasterProvider;
 
 export default interface IBroadcasterProvider {
-	broadcastEvent<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>>;
-	registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch>;
+	broadcastEvent<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>>;
+
+	registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch>;
 }

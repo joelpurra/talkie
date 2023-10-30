@@ -21,22 +21,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import StyleRoot from "../components/style-root.js";
 import {
-	IsSpeakingProps,
+	type IsSpeakingProps,
 } from "../hocs/is-speaking-types.mjs";
 import type {
 	SharedRootState,
 } from "../store/index.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "../types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -50,7 +47,8 @@ interface StateProps extends IsSpeakingProps {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootState> = (state: ReadonlyDeep<SharedRootState>) => ({
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, StateRootProps, SharedRootState> = (state: Readonly<SharedRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	isSpeaking: state.shared.speaking.isSpeaking,
 	versionName: state.shared.metadata.versionName,

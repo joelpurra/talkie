@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
 import React from "react";
 import type {
 	Except,
@@ -37,6 +37,8 @@ export default function broadcasterAttribute<P extends BroadcasterProps = Broadc
 	return function broadcasterHoc(ComponentToWrap: React.ComponentType<P>) {
 		class BroadcasterHoc extends React.PureComponent<P> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			override render(): React.ReactNode {

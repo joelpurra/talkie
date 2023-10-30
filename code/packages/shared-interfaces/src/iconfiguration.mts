@@ -27,7 +27,7 @@ import {
 } from "./imetadata-manager.mjs";
 
 export default interface IConfiguration {
-	get<T>(path: string): Promise<T>;
+	get<T extends JsonValue>(path: string): Promise<T>;
 
 	getSync<T extends JsonValue>(systemType: SystemType, path: string): T;
 }

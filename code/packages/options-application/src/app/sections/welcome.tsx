@@ -19,19 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -39,7 +37,7 @@ import {
 import HeroSection from "../../components/hero-section/hero-section.js";
 import InstallVoicesContainer from "../../containers/install-voices-container.js";
 import {
-	actions,
+	type actions,
 } from "../../slices/index.mjs";
 
 export interface WelcomeProps {
@@ -71,8 +69,8 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 
 	private readonly welcomeSampleTextElementRef: React.RefObject<HTMLSpanElement>;
 	private readonly styled: {
-		sampleHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
-		welcomeHeroP: StyletronComponent<ComponentProps<typeof textBase.p>>;
+		sampleHeroP: TalkieStyletronComponent<typeof textBase.p>;
+		welcomeHeroP: TalkieStyletronComponent<typeof textBase.p>;
 	};
 
 	constructor(props: P) {
@@ -159,7 +157,9 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 	}
 
 	getWelcomeSample(): WelcomeSample {
-		const sampleText = this.props.sampleText;
+		const {
+			sampleText,
+		} = this.props;
 		const sampleTextLanguageCode = this.props.sampleTextLanguage;
 
 		const welcomeSample: WelcomeSample = typeof sampleText === "string"

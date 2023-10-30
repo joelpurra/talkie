@@ -19,17 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SafeVoiceObject,
+	type SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
@@ -67,7 +67,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 			voice,
 		} = this.props as DialectVoiceProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
 		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
@@ -75,6 +75,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 				<textBase.p>
 					<buttonBase.transparentButton
 						type="button"
+						// eslint-disable-next-line react/no-this-in-sfc
 						onClick={this.handleSpeakVoiceNameClick}
 					>
 						<Icon

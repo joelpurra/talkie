@@ -81,7 +81,7 @@ export default class Configuration implements IConfiguration {
 		return null;
 	}
 
-	async get<T>(path: string): Promise<T> {
+	async get<T extends JsonValue>(path: string): Promise<T> {
 		const systemType = await this.metadataManager.getSystemType();
 
 		// eslint-disable-next-line no-sync

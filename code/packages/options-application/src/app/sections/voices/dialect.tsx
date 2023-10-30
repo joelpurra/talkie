@@ -20,12 +20,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
@@ -66,13 +66,14 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			translateSync,
 		} = this.props as DialectProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
 		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (
 				<buttonBase.transparentButton
 					type="button"
+					// eslint-disable-next-line react/no-this-in-sfc
 					onClick={this.handleSpeakLanguageClick}
 				>
 					<Icon

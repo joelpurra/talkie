@@ -31,8 +31,11 @@ import {
 	getVoicesByLanguagesByLanguageGroupFromVoices,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
+import {
+	TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import type {
 	SharedRootState,
@@ -50,7 +53,7 @@ const {
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const getVoices = <S extends SharedRootState>(state: S): Readonly<SafeVoiceObject[]> => state.shared.voices.voices;
+export const getVoices = <S extends SharedRootState>(state: S): SafeVoiceObjects => state.shared.voices.voices;
 
 export const getVoicesCount = createDraftSafeSelector(
 	[
@@ -232,7 +235,7 @@ export const getCanSpeakInTranslatedLocale = createDraftSafeSelector(
 		getLanguages,
 		getTranslationLocale,
 	],
-	(languageGroups, languages, translationLocale) => languages.includes(translationLocale) || languageGroups.includes(translationLocale),
+	(languageGroups, languages, translationLocale: Readonly<TalkieLocale>) => languages.includes(translationLocale) || languageGroups.includes(translationLocale),
 );
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */

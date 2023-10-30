@@ -20,20 +20,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import {
-	SystemType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Features, {
-	FeaturesDispatchProps,
+	type FeaturesDispatchProps,
 } from "../app/sections/features.js";
 import {
 	actions,
@@ -59,7 +56,8 @@ interface DispatchProps extends FeaturesDispatchProps {
 
 export interface InternalFeaturesContainerProps extends StateProps, DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	systemType: state.shared.metadata.systemType,
 });

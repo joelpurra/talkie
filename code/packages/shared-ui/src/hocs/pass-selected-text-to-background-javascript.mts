@@ -38,9 +38,9 @@ const executeGetFramesSelectionTextAndLanguageCode: () => FramesSelectionTextAnd
 		}
 
 		const talkieSelectionData = {
-			htmlTagLanguage: ((document || null) && document && (document.getElementsByTagName || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0]!.getAttribute("lang") || null)) || null,
-			parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && document && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection()!.rangeCount > 0 || null) && (document.getSelection()!.getRangeAt || null) && (document.getSelection()!.getRangeAt(0) || null) && (document.getSelection()!.getRangeAt(0).startContainer || null))) || null,
-			text: ((document || null) && document && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection()!.toString()) || null,
+			htmlTagLanguage: ((document || null) && document && (typeof document.getElementsByTagName === "function" || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0]!.getAttribute("lang") || null)) || null,
+			parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && document && (typeof document.getSelection === "function" || null) && (document.getSelection() || null) && (document.getSelection()!.rangeCount > 0 || null) && (document.getSelection()!.getRangeAt || null) && (document.getSelection()!.getRangeAt(0) || null) && (document.getSelection()!.getRangeAt(0).startContainer || null))) || null,
+			text: ((document || null) && document && (typeof document.getSelection === "function" || null) && (document.getSelection() || null) && document.getSelection()!.toString()) || null,
 		};
 
 		return talkieSelectionData;

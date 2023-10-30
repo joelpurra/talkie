@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import {
 	handleBubbledLinkClick,
@@ -37,10 +37,10 @@ import type {
 } from "type-fest";
 
 import {
-	actions,
+	type actions,
 } from "../slices/index.mjs";
 import Footer, {
-	FooterStateProps,
+	type FooterStateProps,
 } from "./sections/footer.js";
 import Header from "./sections/header.js";
 import Menu from "./sections/menu.js";

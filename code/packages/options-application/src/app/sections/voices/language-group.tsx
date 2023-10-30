@@ -19,23 +19,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageTextDirection,
+	type LanguageTextDirection,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	ChildrenRequiredProps,
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -59,7 +57,7 @@ interface LanguageGroupProps extends LanguageGroupStateProps, LanguageGroupDispa
 
 class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		sampleTextBlockQuote: StyletronComponent<ComponentProps<typeof textBase.blockquote>>;
+		sampleTextBlockQuote: TalkieStyletronComponent<typeof textBase.blockquote>;
 	};
 
 	constructor(props: P) {
@@ -116,13 +114,14 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 			)
 			: null;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
 		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (
 				<buttonBase.transparentButton
 					type="button"
+					// eslint-disable-next-line react/no-this-in-sfc
 					onClick={this.handleSpeakLanguageGroupClick}
 				>
 					<Icon

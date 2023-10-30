@@ -26,7 +26,7 @@ import {
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
-	Mutable,
+	Writable,
 	ReadonlyDeep,
 } from "type-fest";
 import {
@@ -168,7 +168,7 @@ export default class ContextMenuManager {
 		// NOTE: Can't directly use a promise chain here, as the id is returned instead.
 		// https://github.com/mozilla/webextension-polyfill/pull/26
 		const contextMenuId = browser.contextMenus.create(
-			contextMenu as Mutable<Menus.CreateCreatePropertiesType>,
+			contextMenu as Writable<Menus.CreateCreatePropertiesType>,
 			() => {
 				if (browser.runtime.lastError) {
 					// eslint-disable-next-line @typescript-eslint/no-throw-literal

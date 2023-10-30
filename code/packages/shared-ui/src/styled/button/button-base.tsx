@@ -23,7 +23,10 @@ import {
 } from "styletron-react";
 
 import * as buttonBase from "../../styles/button/button-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
-export const button = styled("button", buttonBase.button);
-export const transparentButton = styled("button", buttonBase.transparentButton);
-export const a = styled("a", buttonBase.a);
+export const button: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.button);
+export const transparentButton: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.transparentButton);
+export const a: TalkieStyletronComponent<React.ElementType<"a">> = styled("a", buttonBase.a);

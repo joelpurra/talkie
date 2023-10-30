@@ -22,11 +22,11 @@ import {
 	debounce,
 } from "@talkie/shared-application-helpers/basic.mjs";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import {
-	TranslateSync,
+	type TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import type {
@@ -34,7 +34,7 @@ import type {
 } from "type-fest";
 
 import {
-	ScaleRangeProps,
+	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";
 
 export interface RangeWithHeadingProps {

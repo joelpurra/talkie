@@ -19,17 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieProgressData,
+	type TalkieProgressData,
 } from "@talkie/shared-ui/talkie-progress.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Progress from "../app/sections/progress.js";
 import type {
@@ -44,7 +41,8 @@ interface StateProps extends TalkieProgressData {}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, PopupRootState> = (state: ReadonlyDeep<PopupRootState>) => ({
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, ProgressContainerProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
 	current: state.shared.progress.current,
 	max: state.shared.progress.max,
 	min: state.shared.progress.min,

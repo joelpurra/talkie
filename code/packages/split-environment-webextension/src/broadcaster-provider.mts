@@ -35,15 +35,18 @@ import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcas
 import {
 	getTalkieServices,
 } from "./browser-specific/tabs.mjs";
+import {
+	JsonValue,
+} from "type-fest";
 
 export default class WebExtensionEnvironmentBroadcasterProvider implements IBroadcasterProvider {
-	async broadcastEvent<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {
+	async broadcastEvent<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, actionData: TData): Promise<Array<TReturn | null>> {
 		void logWarn("NodeEnvironmentBroadcasterProvider", "broadcastEvent", "ignored", actionName, actionData);
 
 		return [];
 	}
 
-	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
+	async registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
 		const talkieServices = await getTalkieServices();
 
 		return talkieServices.broadcaster().registerListeningAction(actionName, listeningActionHandler);

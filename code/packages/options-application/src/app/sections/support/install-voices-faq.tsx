@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	OsType,
+	type OsType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";

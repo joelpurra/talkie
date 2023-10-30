@@ -22,12 +22,9 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	actions,
@@ -37,7 +34,7 @@ import type {
 } from "../../store/index.mjs";
 import Nav from "./nav.js";
 import {
-	NavContainerProps,
+	type NavContainerProps,
 } from "./nav-container-types.mjs";
 
 const {
@@ -53,7 +50,8 @@ interface DispatchProps {
 	setActiveTabId: typeof actions.tabs.setActiveTabId;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	activeTabId: state.tabs.activeTabId,
 });
 

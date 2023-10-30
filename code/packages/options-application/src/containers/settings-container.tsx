@@ -22,12 +22,9 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Settings from "../app/sections/settings.js";
 import {
@@ -56,7 +53,8 @@ interface DispatchProps {
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,
 });

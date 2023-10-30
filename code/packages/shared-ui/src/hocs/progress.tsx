@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
@@ -34,7 +34,7 @@ import {
 	BroadcasterContext,
 } from "../containers/providers.js";
 import {
-	TalkieProgressData,
+	type TalkieProgressData,
 } from "../talkie-progress.mjs";
 
 export interface ProgressProps extends TalkieProgressData {}
@@ -46,6 +46,8 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			isListeningToBroadcasts = false;

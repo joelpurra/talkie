@@ -15,12 +15,12 @@
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {
-    "@types/jsonfile": "^6.0.1",
+    "@types/jsonfile": "^6.1.1",
     "@types/styletron-engine-atomic": "^1.1.1",
     "jsonfile": "^6.1.0",
-    "styletron-engine-atomic": "^1.4.8",
-    "styletron-standard": "^3.0.5",
-    "webextension-polyfill": "^0.8.0"
+    "styletron-engine-atomic": "^1.5.0",
+    "styletron-standard": "^3.1.0",
+    "webextension-polyfill": "^0.10.0"
   },
   "exports": {
     "./*": {

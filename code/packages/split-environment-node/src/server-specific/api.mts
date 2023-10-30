@@ -34,7 +34,7 @@ import {
 import ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 import {
 	IVoiceNameAndRateAndPitch,
-	SafeVoiceObject,
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	KillSwitch,
@@ -62,7 +62,7 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getConfigurationValue<T>(configurationPath: string): Promise<T> {
+	async getConfigurationValue<T extends JsonValue>(configurationPath: string): Promise<T> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -94,7 +94,7 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async getVoices(): Promise<SafeVoiceObject[]> {
+	async getVoices(): Promise<SafeVoiceObjects> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
@@ -191,7 +191,7 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
-	async registerListeningAction<TEvent extends knownEventNames, TData, TReturn>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
+	async registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 

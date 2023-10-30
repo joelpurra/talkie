@@ -19,32 +19,30 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	OsType,
-	SystemType,
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import TalkiePremiumIcon from "@talkie/shared-ui/components/icon/talkie-premium-icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	OnOpenShortcutKeysClickProp,
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
+	type OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -64,8 +62,8 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 	};
 
 	private readonly styled: {
-		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
+		shortcutKeysTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		shortcutKeysTd: TalkieStyletronComponent<typeof tableBase.td>;
 	};
 
 	constructor(props: P) {

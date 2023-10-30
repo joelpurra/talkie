@@ -19,24 +19,22 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SystemType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import TalkieFreeIcon from "@talkie/shared-ui/components/icon/talkie-free-icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import {
 	styled,
 } from "styletron-react";
@@ -44,7 +42,7 @@ import {
 import FreeSection from "../../components/section/free-section.js";
 import PremiumSection from "../../components/section/premium-section.js";
 import {
-	actions,
+	type actions,
 } from "../../slices/index.mjs";
 import TalkiePremiumEdition from "./features/talkie-premium-edition.js";
 
@@ -61,8 +59,8 @@ interface FeaturesProps extends FeaturesStateProps, FeaturesDispatchProps {}
 
 class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		storeLink: StyletronComponent<ComponentProps<"div">>;
-		storeLinks: StyletronComponent<ComponentProps<"div">>;
+		storeLink: TalkieStyletronComponent<"div">;
+		storeLinks: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {

@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 import ReactMarkdown from "react-markdown";

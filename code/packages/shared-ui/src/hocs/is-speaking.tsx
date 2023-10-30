@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
+	type KillSwitch,
 } from "@talkie/shared-interfaces/killswitch.mjs";
 import {
 	knownEvents,
@@ -34,8 +34,8 @@ import {
 	BroadcasterContext,
 } from "../containers/providers.js";
 import {
-	IsSpeakingHocState,
-	IsSpeakingProps,
+	type IsSpeakingHocState,
+	type IsSpeakingProps,
 } from "./is-speaking-types.mjs";
 
 export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeakingProps, U = Except<P, keyof IsSpeakingProps>>() {
@@ -43,6 +43,8 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 	return function isSpeakingHoc(ComponentToWrap: React.ComponentType<P>) {
 		class IsSpeakingHoc extends React.Component<P, IsSpeakingHocState> {
 			static override contextType = BroadcasterContext;
+
+			// eslint-disable-next-line react/static-property-placement
 			declare context: React.ContextType<typeof BroadcasterContext>;
 
 			override state = {
@@ -145,17 +147,17 @@ export default function isSpeakingAttribute<P extends IsSpeakingProps = IsSpeaki
 				const killSwitches = await Promise.all([
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeaking,
-						(_actionName: string, _actionData: unknown) => {
+						() => {
 							this.updateIsSpeaking(true);
 						}),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.beforeSpeakingPart,
-						(_actionName: string, _actionData: unknown) => {
+						() => {
 							this.updateIsSpeaking(true);
 						}),
 					this.context.broadcaster.registerListeningAction(
 						knownEvents.afterSpeaking,
-						(_actionName: string, _actionData: unknown) => {
+						() => {
 							this.updateIsSpeaking(false);
 						}),
 				]);

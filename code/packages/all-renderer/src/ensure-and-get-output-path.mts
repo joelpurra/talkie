@@ -21,7 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import mkdirp from "mkdirp";
+import {
+	mkdirp,
+} from "mkdirp";
 import path from "node:path";
 
 const ensureAndGetOutputPath = async (baseDirectory: string, templateName: string, talkieLocale: TalkieLocale): Promise<string> => {

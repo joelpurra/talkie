@@ -23,24 +23,27 @@ import {
 } from "styletron-react";
 
 import * as textBase from "../../styles/text/text-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
-export const p = styled("p", textBase.text);
-export const span = styled("span", textBase.text);
-export const a = styled("a", textBase.a);
+export const p: TalkieStyletronComponent<React.ElementType<"p">> = styled("p", textBase.text);
+export const span: TalkieStyletronComponent<React.ElementType<"span">> = styled("span", textBase.text);
+export const a: TalkieStyletronComponent<React.ElementType<"a">> = styled("a", textBase.a);
 
-export const h1 = styled("h1", textBase.h1);
-export const h2 = styled("h2", textBase.h2);
-export const h3 = styled("h3", textBase.h3);
-export const h4 = styled("h4", textBase.h4);
-export const h5 = styled("h5", textBase.h5);
+export const h1: TalkieStyletronComponent<React.ElementType<"h1">> = styled("h1", textBase.h1);
+export const h2: TalkieStyletronComponent<React.ElementType<"h2">> = styled("h2", textBase.h2);
+export const h3: TalkieStyletronComponent<React.ElementType<"h3">> = styled("h3", textBase.h3);
+export const h4: TalkieStyletronComponent<React.ElementType<"h4">> = styled("h4", textBase.h4);
+export const h5: TalkieStyletronComponent<React.ElementType<"h5">> = styled("h5", textBase.h5);
 
-export const kbd = styled("kbd", textBase.kbd);
-export const blockquote = styled("blockquote", textBase.blockquote);
+export const kbd: TalkieStyletronComponent<React.ElementType<"kbd">> = styled("kbd", textBase.kbd);
+export const blockquote: TalkieStyletronComponent<React.ElementType<"blockquote">> = styled("blockquote", textBase.blockquote);
 
-export const summaryHeading1 = styled("h1", textBase.summaryHeading1);
-export const summaryHeading2 = styled("h2", textBase.summaryHeading2);
-export const summaryHeading3 = styled("h3", textBase.summaryHeading3);
-export const summaryHeading4 = styled("h4", textBase.summaryHeading4);
-export const summaryHeading5 = styled("h5", textBase.summaryHeading5);
+export const summaryHeading1: TalkieStyletronComponent<React.ElementType<"h1">> = styled("h1", textBase.summaryHeading1);
+export const summaryHeading2: TalkieStyletronComponent<React.ElementType<"h2">> = styled("h2", textBase.summaryHeading2);
+export const summaryHeading3: TalkieStyletronComponent<React.ElementType<"h3">> = styled("h3", textBase.summaryHeading3);
+export const summaryHeading4: TalkieStyletronComponent<React.ElementType<"h4">> = styled("h4", textBase.summaryHeading4);
+export const summaryHeading5: TalkieStyletronComponent<React.ElementType<"h5">> = styled("h5", textBase.summaryHeading5);
 
-export const headingActionSpan = styled("span", textBase.headingActionSpan);
+export const headingActionSpan: TalkieStyletronComponent<React.ElementType<"span">> = styled("span", textBase.headingActionSpan);

@@ -22,12 +22,12 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import Voices, {
-	VoicesStateProps,
+	type VoicesStateProps,
 } from "../../app/sections/voices.js";
 import selectors from "../../selectors/index.mjs";
 import {

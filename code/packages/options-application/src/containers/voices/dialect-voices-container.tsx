@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SafeVoiceObject,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import DialectVoices from "../../app/sections/voices/dialect-voices.js";
@@ -40,7 +40,7 @@ interface DialectVoicesContainerProps {
 }
 
 interface StateProps {
-	voicesForSelectedLanguageCode: Readonly<SafeVoiceObject[]>;
+	voicesForSelectedLanguageCode: SafeVoiceObjects;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -49,7 +49,7 @@ interface DispatchProps {}
 interface InternalProps extends DialectVoicesContainerProps, StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
+const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	voicesForSelectedLanguageCode: selectors.voices.getVoicesForSelectedLanguageCode(state),
 });
 

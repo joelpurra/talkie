@@ -31,11 +31,11 @@ const fileName = `${inputName}${fileExtension}`;
 
 const alwaysCopyTargets = {
 	// NOTE: licenses of externalized (manually included) dependencies are not automatically detected by rollup-plugin-license.
-	"./dist/umd/browser-polyfill.license.txt": "./node_modules/webextension-polyfill/LICENSE",
+	"./dist/umd/browser-polyfill.license.txt": "../../node_modules/webextension-polyfill/LICENSE",
 	"./dist/umd/react.license.txt": "../../node_modules/react/LICENSE",
 	"./dist/umd/react-dom.license.txt": "../../node_modules/react-dom/LICENSE",
 	"./dist/umd/react-redux.license.txt": "../../node_modules/react-redux/LICENSE.md",
-	"./dist/umd/redux-toolkit.license.txt": "./node_modules/@reduxjs/toolkit/LICENSE",
+	"./dist/umd/redux-toolkit.license.txt": "../../node_modules/@reduxjs/toolkit/LICENSE",
 };
 
 // TODO: use this flag to switch <script> urls instead of replacing file contents by reusing the same location?
@@ -55,21 +55,21 @@ let environmentTargets;
 switch(TALKIE_ENV) {
 	case TALKIE_ENV_PRODUCTION:
 		environmentTargets = {
-			"./dist/umd/browser-polyfill.js": "./node_modules/webextension-polyfill/dist/browser-polyfill.min.js",
+			"./dist/umd/browser-polyfill.js": "../../node_modules/webextension-polyfill/dist/browser-polyfill.min.js",
 			"./dist/umd/react.js": "../../node_modules/react/umd/react.production.min.js",
 			"./dist/umd/react-dom.js": "../../node_modules/react-dom/umd/react-dom.production.min.js",
 			"./dist/umd/react-redux.js": "../../node_modules/react-redux/dist/react-redux.min.js",
-			"./dist/umd/redux-toolkit.js": "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.min.js",
+			"./dist/umd/redux-toolkit.js": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.min.js",
 		};
 	break;
 
 	case TALKIE_ENV_DEVELOPMENT:
 		environmentTargets = {
-			"./dist/umd/browser-polyfill.js": "./node_modules/webextension-polyfill/dist/browser-polyfill.js",
+			"./dist/umd/browser-polyfill.js": "../../node_modules/webextension-polyfill/dist/browser-polyfill.js",
 			"./dist/umd/react.js": "../../node_modules/react/umd/react.development.js",
 			"./dist/umd/react-dom.js": "../../node_modules/react-dom/umd/react-dom.development.js",
 			"./dist/umd/react-redux.js": "../../node_modules/react-redux/dist/react-redux.js",
-			"./dist/umd/redux-toolkit.js": "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.js",
+			"./dist/umd/redux-toolkit.js": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.js",
 		};
 	break;
 }

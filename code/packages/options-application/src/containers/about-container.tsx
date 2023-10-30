@@ -20,17 +20,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import {
-	SafeVoiceObject,
+	type SafeVoiceObject,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import About, {
-	AboutStateProps,
+	type AboutStateProps,
 } from "../app/sections/about.js";
 import selectors from "../selectors/index.mjs";
 import {
@@ -48,7 +49,7 @@ const {
 interface AboutContainerProps {}
 
 interface StateProps extends AboutStateProps {
-	sortedByNameVoices: readonly SafeVoiceObject[];
+	sortedByNameVoices: SafeVoiceObjects;
 	voiceNames: string[];
 }
 
@@ -125,7 +126,8 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			versionName,
 		} = this.props;
 
-		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice: Readonly<SafeVoiceObject>) => `${voice.name} (${voice.lang})`);
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice: SafeVoiceObject) => `${voice.name} (${voice.lang})`);
 
 		return (
 			<About

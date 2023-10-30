@@ -23,12 +23,15 @@ import {
 } from "styletron-react";
 
 import * as tableBase from "../../styles/table/table-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
-export const compactTable = styled("table", tableBase.commpactTable);
-export const wideTable = styled("table", tableBase.wideTable);
-export const thead = styled("thead", tableBase.thead);
-export const tfoot = styled("tfoot", tableBase.tfoot);
-export const tbody = styled("tbody", tableBase.tbody);
-export const tr = styled("tr", tableBase.tr);
-export const th = styled("th", tableBase.th);
-export const td = styled("td", tableBase.td);
+export const compactTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.commpactTable);
+export const wideTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.wideTable);
+export const thead: TalkieStyletronComponent<React.ElementType<"thead">> = styled("thead", tableBase.thead);
+export const tfoot: TalkieStyletronComponent<React.ElementType<"tfoot">> = styled("tfoot", tableBase.tfoot);
+export const tbody: TalkieStyletronComponent<React.ElementType<"tbody">> = styled("tbody", tableBase.tbody);
+export const tr: TalkieStyletronComponent<React.ElementType<"tr">> = styled("tr", tableBase.tr);
+export const th: TalkieStyletronComponent<React.ElementType<"th">> = styled("th", tableBase.th);
+export const td: TalkieStyletronComponent<React.ElementType<"td">> = styled("td", tableBase.td);

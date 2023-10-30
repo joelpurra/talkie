@@ -59,7 +59,7 @@ export default class TalkieProgress {
 	async broadcastEvent<TEvent extends knownEvents>(eventName: TEvent): Promise<void> {
 		const eventData = this.getEventData();
 
-		await this.broadcaster.broadcastEvent<TEvent, TalkieProgressData, unknown>(eventName, eventData);
+		await this.broadcaster.broadcastEvent<TEvent, TalkieProgressData, null>(eventName, eventData);
 	}
 
 	getPercent(): number {

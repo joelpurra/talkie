@@ -22,20 +22,18 @@ import Discretional from "@talkie/shared-ui/components/discretional.js";
 import ExtensionShortName from "@talkie/shared-ui/components/editions/extension-short-name.js";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 import {
 	withStyleDeep,
 } from "styletron-react";
@@ -46,8 +44,8 @@ export interface HeaderProps {
 
 class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		button: StyletronComponent<ComponentProps<typeof buttonBase.a>>;
-		extensionName: StyletronComponent<ComponentProps<typeof textBase.a>>;
+		button: TalkieStyletronComponent<typeof buttonBase.a>;
+		extensionName: TalkieStyletronComponent<typeof textBase.a>;
 	};
 
 	constructor(props: P) {
