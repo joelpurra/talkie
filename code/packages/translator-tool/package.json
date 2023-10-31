@@ -13,7 +13,7 @@
     "type-fest"
   ],
   "dependencies": {
-    "@google-cloud/translate": "^6.3.1",
+    "@google-cloud/translate": "^8.0.2",
     "bluebird": "^3.7.2",
     "clone": "^2.1.2",
     "configvention": "^3.0.1",

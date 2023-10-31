@@ -15,13 +15,13 @@
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
-    "@sindresorhus/tsconfig": "^3.0.1",
+    "@sindresorhus/tsconfig": "^5.0.0",
     "@types/react": "^17.0.69",
     "@types/react-dom": "^17.0.22",
     "@types/react-redux": "^7.1.28",
     "@types/redux-logger": "^3.0.11",
     "@types/webextension-polyfill": "^0.10.5",
-    "eslint-config-joelpurra": "github:joelpurra/eslint-config-joelpurra#semver:^v14.0.0",
+    "eslint-config-joelpurra": "github:joelpurra/eslint-config-joelpurra#semver:^v15.0.0",
     "husky": "^4.3.8",
     "json": "^11.0.0",
     "lerna": "^7.4.2",
@@ -43,12 +43,12 @@
     "styletron-engine-atomic": "^1.6.2",
     "styletron-react": "^6.1.1",
     "styletron-standard": "^3.1.0",
-    "syncpack": "^10.9.3",
+    "syncpack": "^11.2.1",
     "tslib": "^2.6.2",
     "type-fest": "^4.6.0",
     "typescript": "^5.2.2",
     "web-ext": "^7.8.0",
-    "xo": "^0.55.1"
+    "xo": "^0.56.0"
   },
   "engines": {
     "node": "^20.0.0"
