@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	PayloadAction,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
 	type IVoiceNameAndRateAndPitch,

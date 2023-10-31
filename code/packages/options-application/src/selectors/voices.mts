@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/no-unassigned-import
 import "reselect";
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
 	getVoiceForVoiceNameFromVoices,

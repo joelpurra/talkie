@@ -26,7 +26,6 @@ import type {
 	Reducer,
 	Store,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import logger from "redux-logger";
