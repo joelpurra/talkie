@@ -22,7 +22,6 @@ import type {
 	Reducer,
 	ReducersMapObject,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 
 const {

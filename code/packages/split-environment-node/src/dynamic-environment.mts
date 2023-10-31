@@ -37,6 +37,7 @@ export default class NodeEnvironmentDynamicEnvironment implements IDynamicEnviro
 	}
 
 	async getOperatingSystemType(): Promise<Runtime.PlatformOs> {
+		// eslint-disable-next-line prefer-rest-params
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 }

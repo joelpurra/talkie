@@ -23,7 +23,7 @@
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^1.9.7",
     "react-markdown": "^7.1.2",
     "reselect": "^4.1.8"
   },

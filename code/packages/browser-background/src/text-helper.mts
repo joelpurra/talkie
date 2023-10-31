@@ -34,10 +34,16 @@ export default class TextHelper {
 			const last = lastOrThrow(texts);
 
 			if (last === "") {
-				return texts.slice(0, -1).concat(text);
+				return [
+					...texts.slice(0, -1),
+					text,
+				];
 			}
 
-			return texts.slice(0, -1).concat(`${last} ${text}`);
+			return [
+				...texts.slice(0, -1),
+				`${last} ${text}`,
+			];
 		};
 
 		// NOTE: in effect merging multiple whitespaces in row to a single separator/space.
@@ -61,7 +67,10 @@ export default class TextHelper {
 				}
 
 				// NOTE: there was no more "room" in the part, start a new part with the text.
-				return splitTextParts.concat(spacedTextPart);
+				return [
+					...splitTextParts,
+					spacedTextPart,
+				];
 			},
 			[
 				"",

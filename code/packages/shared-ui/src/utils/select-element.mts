@@ -25,9 +25,11 @@ import type {
 export interface ScrollIntoViewIfNeededHTMLOptionElement extends HTMLOptionElement {
 	// NOTE: typings exist on Element for non-standard scrollIntoViewIfNeeded?
 	// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoViewIfNeeded
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	scrollIntoViewIfNeeded: (arg?: boolean | ScrollIntoViewOptions) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export const scrollIntoViewIfNeeded = (selectElement: ReadonlyDeep<HTMLSelectElement>): void => {
 	if (selectElement.options.selectedIndex >= 0) {
 		const selectedOption = selectElement.options[selectElement.options.selectedIndex];

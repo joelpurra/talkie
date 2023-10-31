@@ -38,12 +38,6 @@ import {
 } from "../data/configuration/configuration.mjs";
 
 export default class Configuration implements IConfiguration {
-	configurationObject: ReadonlyDeep<ConfigurationObject>;
-
-	constructor(private readonly metadataManager: IMetadataManager, baseConfigurationObject: ReadonlyDeep<ConfigurationObject>) {
-		this.configurationObject = jsonClone(baseConfigurationObject);
-	}
-
 	private static _resolvePath<T extends JsonValue, D extends JsonObject>(object: Readonly<D>, path: string): Readonly<T> | Readonly<JsonObject> | Readonly<JsonArray> | string | number | boolean | null {
 		// TODO: use a library, like lodash.get().
 		// NOTE: doesn't handle arrays nor properties of "any" non-object objects.
@@ -72,12 +66,18 @@ export default class Configuration implements IConfiguration {
 				}
 
 				// NOTE: cast to any to let the recursive call handle type errors.
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
 				return this._resolvePath(value as any, parts.join("."));
 			}
 		}
 
 		return null;
+	}
+
+	configurationObject: ReadonlyDeep<ConfigurationObject>;
+
+	constructor(private readonly metadataManager: IMetadataManager, baseConfigurationObject: ReadonlyDeep<ConfigurationObject>) {
+		this.configurationObject = jsonClone(baseConfigurationObject);
 	}
 
 	async get<T extends JsonValue>(path: string): Promise<T> {

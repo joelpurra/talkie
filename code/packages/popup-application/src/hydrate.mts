@@ -31,6 +31,6 @@ const prerenderActionsToDispatch: Action[] = [];
 const postrenderActionsToDispatch: Action[] = [];
 
 export default async function hydrate(): Promise<void> {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
 	await hydrateHtml(rootReducer, prerenderActionsToDispatch as any, postrenderActionsToDispatch as any, App);
 }

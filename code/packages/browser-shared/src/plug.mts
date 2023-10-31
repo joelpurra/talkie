@@ -59,7 +59,7 @@ export default class Plug {
 
 		const talkieWasPluggedValue = Array.isArray(talkieWasPlugged) ? talkieWasPlugged[0] : talkieWasPlugged;
 
-		if (talkieWasPluggedValue && talkieWasPluggedValue.toString() !== "true") {
+		if (talkieWasPluggedValue?.toString() !== "true") {
 			await this.executePlug();
 			await this.executeSetTalkieWasPlugged();
 		}

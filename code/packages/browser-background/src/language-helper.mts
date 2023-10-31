@@ -54,6 +54,7 @@ export interface TextAndEffectiveLanguage {
 }
 
 export default class LanguageHelper {
+	/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 	private readonly noTextSelectedMessage: TextAndEffectiveLanguage;
 	private readonly noVoiceForLanguageDetectedMessage: TextAndEffectiveLanguage;
 	private readonly iso639Dash1Aliases1988To2002: Record<string, string> = {
@@ -336,4 +337,5 @@ export default class LanguageHelper {
 
 		return this.useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage);
 	}
+	/* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 }

@@ -112,7 +112,9 @@ export default class GoogleCloudTranslateTranslator {
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(chunked, preparedMessage, preparedMessagesIndex) => {
 				const chunkedIndex = Math.floor(preparedMessagesIndex / this.maxChunkSize);
-				chunked[chunkedIndex] = (chunked[chunkedIndex] ?? new Array<string>()).concat(preparedMessage);
+				chunked[chunkedIndex] = chunked[chunkedIndex] ?? [
+					preparedMessage,
+				];
 
 				return chunked;
 			},
@@ -138,8 +140,9 @@ export default class GoogleCloudTranslateTranslator {
 		const translationResponses = translationResponseChunks.reduce(
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(t, v) => [
+				// eslint-disable-next-line unicorn/prefer-spread
 				t[0].concat(v[0]),
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call, unicorn/prefer-spread
 				t[1].concat(v[1]),
 			],
 			[

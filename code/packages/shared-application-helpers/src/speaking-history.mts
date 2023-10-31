@@ -28,7 +28,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
  * @param s Any string.
  * @returns Hash of the given string.
  */
-const hashCode = (s: string): number => s.split("").reduce((a, b) => (((a << 5) - a) + b.charCodeAt(0)) | 0, 0);
+const hashCode = (s: string): number => [
+	...s,
+].reduce((a, b) => (((a << 5) - a) + b.charCodeAt(0)) | 0, 0);
 /* eslint-enable no-bitwise, unicorn/prefer-math-trunc, unicorn/prefer-code-point */
 
 export const getSpeakingHistoryEntryTextHash = (text: string): number => {

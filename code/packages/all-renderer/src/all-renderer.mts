@@ -37,18 +37,11 @@ async function main(): Promise<void> {
 	}
 }
 
-try {
-	process.on("unhandledRejection", (error) => {
-		// eslint-disable-next-line no-console
-		console.error("unhandledRejection", error);
-
-		process.exitCode = 2;
-	});
-
-	void main();
-} catch (error: unknown) {
+process.on("unhandledRejection", (error) => {
 	// eslint-disable-next-line no-console
-	console.error(error);
+	console.error("unhandledRejection", error);
 
-	process.exitCode = 1;
-}
+	process.exitCode = 2;
+});
+
+await main();

@@ -41,7 +41,7 @@ export default class Chain {
 
 				return undefined;
 			})
-			.catch((error) => {
+			.catch((error: unknown) => {
 				void logError("Chain", currentLength, error);
 
 				throw error;

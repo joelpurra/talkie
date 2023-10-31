@@ -54,7 +54,6 @@ export default class MathHelper {
 		// Shift back
 		parts = value.toString().split("e");
 		return Number(`${parts[0]}e${parts[1] ? (Number(parts[1]) + exp) : exp}`);
-		/* eslint-enable @typescript-eslint/restrict-template-expressions */
 	}
 
 	static round10 = function (value: number, exp: number): number {

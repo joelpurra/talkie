@@ -24,10 +24,12 @@ import {
 
 export enum LoggingLevelFunctionMap {
 	"TRAC" = "log",
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
 	"DEBG" = "log",
 	"INFO" = "info",
 	"WARN" = "warn",
 	"ERRO" = "error",
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
 	"ALWA" = "log",
 }
 

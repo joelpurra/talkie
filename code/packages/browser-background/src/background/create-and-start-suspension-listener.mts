@@ -37,7 +37,6 @@ const createAndStartSuspensionListener = async (talkieBackground: ReadonlyDeep<T
 				"onSuspend",
 			),
 		);
-		/* eslint-enable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
 
 		// browser.runtime.onSuspend.addListener(loggedPromise(
 		// "onSuspend",
