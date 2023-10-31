@@ -68,7 +68,8 @@ export default class TalkieBackground {
 			text: this.translator.translateSync("notAbleToSpeakTextFromThisSpecialTab"),
 		};
 
-		// NOTE: duplicated elsewhere in the codebase.
+		// NOTE: executeGetFramesSelectionTextAndLanguageCode is duplicated elsewhere in the codebase.
+		// TODO: rewrite with modern typescript, compile to javascript in a separate file, import and reuse in both places.
 		this.executeGetFramesSelectionTextAndLanguageCode = `
 			(function() {
 				try {
@@ -76,16 +77,16 @@ export default class TalkieBackground {
 						return []
 							.concat((element || null) && element && element.getAttribute && element.getAttribute("lang"))
 							.concat((element || null) && element && element.parentElement && talkieGetParentElementLanguages(element.parentElement));
-					};
+					}
 
-					var talkieSelectionData = {
-						text: ((document || null) && document && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()) || null,
+					const talkieSelectionData = {
 						htmlTagLanguage: ((document || null) && document && (document.getElementsByTagName || null) && (document.getElementsByTagName("html") || null) && (document.getElementsByTagName("html").length > 0 || null) && (document.getElementsByTagName("html")[0].getAttribute("lang") || null)) || null,
 						parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && document && (document.getSelection || null) && (document.getSelection() || null) && (document.getSelection().rangeCount > 0 || null) && (document.getSelection().getRangeAt || null) && (document.getSelection().getRangeAt(0) || null) && (document.getSelection().getRangeAt(0).startContainer || null))) || null,
+						text: ((document || null) && document && (document.getSelection || null) && (document.getSelection() || null) && document.getSelection().toString()) || null,
 					};
 
 					return talkieSelectionData;
-				} catch(error) {
+				} catch (error) {
 					try {
 						console.warn("Error while getting the selected text from page, swallowing error.", error);
 					} catch {}

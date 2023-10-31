@@ -63,8 +63,12 @@ const getStore = <S, A extends Action>(
 				extraMiddlewares.push(logger);
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			return getDefaultMiddleware(defaultMiddlewareOptions).concat(extraMiddlewares as any);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+			return [
+				...getDefaultMiddleware(defaultMiddlewareOptions),
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+				...(extraMiddlewares as any[]),
+			];
 		},
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
 		preloadedState: initialState as any,
@@ -79,8 +83,9 @@ const getStore = <S, A extends Action>(
  *
  * @param rootReducer A reducer for an application.
  * @returns A store which is to be used only to deduce types.
+ * @deprecated The store is unusable, except for typing; fix types instead.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
 export const getUnusableStoreForGeneratedTypes = <S, A extends Action>(rootReducer: Reducer<S, A>): Store<S, A> => getStore(undefined, rootReducer, null as any);
 
 export default getStore;

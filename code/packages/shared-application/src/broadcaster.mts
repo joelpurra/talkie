@@ -83,7 +83,10 @@ export default class Broadcaster implements IBroadcasterProvider {
 	}
 
 	async registerListeningAction<TEvent extends knownEventNames, TData extends JsonValue, TReturn extends JsonValue | void>(actionName: TEvent, listeningActionHandler: ListeningActionHandler<TEvent, TData, TReturn>): Promise<KillSwitch> {
-		this.actionListeningMap[actionName] = this.actionListeningMap[actionName].concat(listeningActionHandler);
+		this.actionListeningMap[actionName] = [
+			...this.actionListeningMap[actionName],
+			listeningActionHandler,
+		];
 
 		const killSwitch = async () =>
 			// NOTE: the promise chain probably won't be completed (by the caller, outside of this function), as the kill switch might be executed during the "onunload" event.
@@ -161,6 +164,7 @@ export default class Broadcaster implements IBroadcasterProvider {
 
 			void logTrace("Done", "Sending message", actionName, actionData, responses);
 
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 			return responses;
 		} catch (error: unknown) {
 			// NOTE: logging stringified error as dead wrapped errors would otherwise not contain any useful information.

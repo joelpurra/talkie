@@ -26,11 +26,11 @@ import {
 	type FramesSelectionTextAndLanguageCode,
 } from "./pass-selected-text-to-background-types.mjs";
 
-/* eslint-disable no-inner-declarations, complexity, no-console */
-// NOTE: duplicated elsewhere in the codebase.
+/* eslint-disable no-inner-declarations, complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
+// NOTE: executeGetFramesSelectionTextAndLanguageCode is duplicated elsewhere in the codebase.
+// TODO: rewrite with modern typescript, compile to javascript in a separate file, import and reuse in both places.
 const executeGetFramesSelectionTextAndLanguageCode: () => FramesSelectionTextAndLanguageCode | null = () => {
 	try {
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		function talkieGetParentElementLanguages(element: HTMLElement | Node | null): Array<ReadonlyDeep<string | null>> {
 			return (new Array<ReadonlyDeep<string | null>>())
 				.concat((element || null) && element && (element as HTMLElement).getAttribute && (element as HTMLElement).getAttribute("lang"))
@@ -52,6 +52,6 @@ const executeGetFramesSelectionTextAndLanguageCode: () => FramesSelectionTextAnd
 		return null;
 	}
 };
-/* eslint-enable no-inner-declarations, complexity, no-console */
+/* eslint-enable no-inner-declarations, complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
 
 export default executeGetFramesSelectionTextAndLanguageCode;

@@ -39,6 +39,7 @@ export default class ContentLogger {
 		return "(function(){ try { console.log(%a); } catch (error) { console.error('Talkie', 'logToPageWithColor', error); } }());";
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	async logToPage(...args: Readonly<JsonValue[]>): Promise<void> {
 		const now = new Date().toISOString();
 
@@ -48,6 +49,7 @@ export default class ContentLogger {
 			"Talkie",
 			...args,
 		]
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			.map((arg) => JSON.stringify(arg))
 			.join(", ");
 
@@ -68,6 +70,7 @@ export default class ContentLogger {
 		}
 	}
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	async logToPageWithColor(...args: Readonly<JsonValue[]>): Promise<void> {
 		const now = new Date().toISOString();
 

@@ -137,6 +137,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 		const messageTemplate = localeMessages[key];
 
 		if (!messageTemplate) {
+			// eslint-disable-next-line prefer-rest-params
 			void logError("_getTranslation", "Missing translation", arguments, messageTemplate);
 
 			throw new Error(`Missing translation: ${key}`);
@@ -210,6 +211,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 
 		if (translated.includes("$")) {
 			// TODO: replace extras in string.
+			// eslint-disable-next-line prefer-rest-params
 			void logError("_getTranslation", "Unhandled translation extras", arguments, messageTemplate);
 
 			throw new Error(`Unhandled translation extras: ${key} ${JSON.stringify(extras)}`);

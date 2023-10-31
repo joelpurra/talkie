@@ -20,7 +20,8 @@
     "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.7"
+    "@reduxjs/toolkit": "^1.9.7",
+    "webextension-polyfill": "^0.10.0"
   },
   "exports": {
     "./*": {

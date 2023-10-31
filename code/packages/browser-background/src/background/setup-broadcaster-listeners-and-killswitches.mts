@@ -175,6 +175,7 @@ const registerProgressListeners = (
 		knownEvents.beforeSpeaking,
 		async (
 			_actionName,
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			actionData,
 		) => progress.resetProgress(0, actionData.text.length, 0),
 	),
@@ -206,7 +207,7 @@ const registerHistoryListeners = (
 		knownEvents.beforeSpeaking,
 		async (
 			_actionName,
-
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			actionData,
 		) => {
 			const speakingHistoryEntry: SpeakingHistoryEntry = {
