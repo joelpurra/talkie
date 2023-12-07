@@ -19,7 +19,7 @@
     "message": "Ne beszélj",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Olvassa el hangosan a kijelölést",
     "original": "Read text selection out loud"
   },

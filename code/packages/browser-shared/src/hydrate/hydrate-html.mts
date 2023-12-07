@@ -27,6 +27,9 @@ import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
 } from "@talkie/shared-ui/utils/store-helpers.mjs";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type React from "react";
 import ReactDOM from "react-dom";
 
@@ -43,15 +46,22 @@ const hydrateReactDom = async (root: Readonly<JSX.Element>) => {
 	ReactDOM.hydrate(root, rootElement);
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const hydrateHtml = async <S, A extends Action, P>(rootReducer: Reducer<S, A>, customPrerenderedActionsToDispatch: Readonly<A[]>, customPostrenderActionsToDispatch: Readonly<A[]>, ChildComponent: React.ComponentType<P>): Promise<void> => {
+const hydrateHtml = async <S, A extends Action, P>(
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: IMessageBusProviderGetter,
+	rootReducer: Reducer<S, A>,
+	customPrerenderedActionsToDispatch: Readonly<A[]>,
+	customPostrenderActionsToDispatch: Readonly<A[]>,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	ChildComponent: React.ComponentType<P>,
+// eslint-disable-next-line max-params
+): Promise<void> => {
 	const {
 		api,
-		broadcasterProvider,
 		configuration,
 		styletronProvider,
 		translatorProvider,
-	} = getDependencies();
+	} = getDependencies(messageBusProviderGetter);
 	const prerenderedState = getPrerenderedState<S>();
 	const store = getStore(prerenderedState, rootReducer, api);
 	const prerenderedActionsToDispatch = getPrerenderActionsToDispatch(customPrerenderedActionsToDispatch);
@@ -59,7 +69,7 @@ const hydrateHtml = async <S, A extends Action, P>(rootReducer: Reducer<S, A>, c
 
 	await dispatchAll(store, prerenderedActionsToDispatch);
 
-	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, broadcasterProvider, ChildComponent);
+	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, messageBusProviderGetter, ChildComponent);
 	await hydrateReactDom(root);
 
 	// NOTE: don't await post-render actions, since they will be rendered when they're ready anyways.

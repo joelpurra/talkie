@@ -19,7 +19,7 @@
     "message": "Nu mai vorbi",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Citiți cu voce tare selecția textului",
     "original": "Read text selection out loud"
   },

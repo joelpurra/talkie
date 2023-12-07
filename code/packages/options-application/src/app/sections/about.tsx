@@ -102,12 +102,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 
 		// TODO: generate list during build, load as data?
 		const licenseLinkNames = [
-			"browser-polyfill",
-			"options-dependencies",
-			"popup-dependencies",
-			"react",
+			"@talkie/options-application",
+			"@talkie/popup-application",
 			"react-dom",
 			"react-redux",
+			"react",
 			"redux-toolkit",
 		].sort((a, b) => a.localeCompare(b));
 

@@ -79,9 +79,9 @@ const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
 	talkieLocale: TalkieLocale, ChildComponent: React.ComponentType<P>): Promise<string> => {
 	const {
 		api,
-		broadcasterProvider,
 		configuration,
 		localeProvider,
+		messageBusProviderGetter,
 		styletronProvider,
 		translatorProvider,
 	} = await getDependencies();
@@ -95,7 +95,7 @@ const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
 	await dispatchAll(store, prerenderedActionsToDispatch);
 
 	const reactHtmlTemplate = await compileHtmlTemplate(reactHtmlTemplatePath);
-	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, broadcasterProvider, ChildComponent);
+	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, messageBusProviderGetter, ChildComponent);
 	const html = await renderReactHtml<S, A>(store, reactHtmlTemplate, localeProvider, styletronProvider, root);
 
 	// NOTE: the side effects of post-render actions will not affect the rendered html.

@@ -18,10 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
 import {
-	knownEvents,
-} from "@talkie/shared-interfaces/known-events.mjs";
+	bullhorn,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
+import {
+	repeatAtMost,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
+	logError,
+	logWarn,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 export interface TalkieProgressData extends Record<string, number> {
 	current: number;
@@ -30,132 +39,162 @@ export interface TalkieProgressData extends Record<string, number> {
 }
 
 export default class TalkieProgress {
-	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	interval: any | null = null;
-	intervalDelay = 100;
-	minSpeed = 0.015;
-	current = 0;
-	max = 0;
-	min = 0;
-	resetTime = 0;
-	segmentSum = 0;
-	previousInterval = 0;
+	// eslint-disable-next-line @typescript-eslint/class-literal-property-style
+	private readonly intervalDelay = 100;
+	// eslint-disable-next-line @typescript-eslint/class-literal-property-style
+	private readonly minSpeed = 0.015;
 
-	constructor(private readonly broadcaster: Broadcaster, min = 0, max = 0, current = 0) {
+	private cancelIntervalTimer: (() => void) | null = null;
+	private resetTime = 0;
+	private currentSegmentStartTime = 0;
+
+	/**
+	 * Speed is measured in characters per milliseconds.
+	 */
+	private estimatedSpeed = this.minSpeed;
+
+	private max = 0;
+	private min = 0;
+	private current = 0;
+
+	private currentSegmentStartPosition = 0;
+	private currentSegmentEndPosition = 0;
+
+	constructor(private readonly messageBusProviderGetter: IMessageBusProviderGetter, min = 0, max = 0, current = 0) {
 		void this.resetProgress(min, max, current);
 	}
 
-	getEventData(): TalkieProgressData {
+	async resetProgress(min = 0, max = 0, current = 0): Promise<void> {
+		this._cancelInterval();
+
+		// NOTE: progress range, from start (zero characters) to end (text length in characters) with an (optional) current/starting position (zero characters).
+		this.min = min;
+		this.max = max;
+		this.current = current;
+
+		// NOTE: the progress range is divided into an unknown number of (text) segments (may be paragraphs, sentences, a sequence of characters) of variable (character) length; only the "current" segment (and its characters length) is of concern.
+		this.currentSegmentStartPosition = this.current;
+		this.currentSegmentEndPosition = this.current;
+
+		// NOTE: estimating speed based on the start (reset) time and the start of the current segment.
+		const now = Date.now();
+		this.resetTime = now;
+		this.currentSegmentStartTime = now;
+		this.estimatedSpeed = this.minSpeed;
+
+		await this._updateProgress();
+	}
+
+	async startSegment(segmentLength: number): Promise<void> {
+		// TODO: ensure that a segment isn't already in progress?
+		if (typeof this.cancelIntervalTimer === "function") {
+			// TODO: throw error?
+			void logError("A segment is currently in progress, but already attempting to start another segment. Ignoring the attempt, and letting the current segment end.", segmentLength, this.currentSegmentStartPosition, this.max);
+
+			return;
+		}
+
+		if (this.currentSegmentStartPosition >= this.max) {
+			void logWarn("Already at the end, but attempting to start another segment.", this.currentSegmentStartPosition, this.max);
+
+			return;
+		}
+
+		if (segmentLength < 0) {
+			void logError("Attempting to start a segment of negative length.", segmentLength);
+
+			return;
+		}
+
+		if (segmentLength === 0) {
+			void logError("Attempting to start a segment of length zero.", segmentLength);
+
+			return;
+		}
+
+		this.currentSegmentEndPosition = this.currentSegmentStartPosition + segmentLength;
+
+		if (this.currentSegmentEndPosition > this.max) {
+			void logWarn("Attempting to start a segment with an end after the maximum.", segmentLength, this.currentSegmentStartPosition, this.currentSegmentEndPosition, this.max);
+
+			// NOTE: keeping the value within the range (insted of throwing) because the event-driven progress uses the message bus, which cannot be fully relied upon.
+			this.currentSegmentEndPosition = this.max;
+		}
+
+		const now = Date.now();
+		this.currentSegmentStartTime = now;
+		this._updateEstimatedSpeed();
+
+		// NOTE: in case the segment "never ends", estimating an upper bound limit to how many times this segment can have progress updated.
+		// - "disappearing" browser extension contexts (here background/offscreen); might lead to lost progress messages.
+		// - externally failed speech synthesis; not all speech state changes seem to propagate to the browser and in turn to talkie. (TTS crash? Lost internet connection for online voice?)
+		const estimatedMaxIntervalIncrements = Math.ceil((segmentLength / this.estimatedSpeed) / this.intervalDelay);
+
+		this.cancelIntervalTimer = repeatAtMost(
+			this._intervalIncrement.bind(this),
+			this.intervalDelay,
+			estimatedMaxIntervalIncrements,
+		);
+	}
+
+	async endSegment(): Promise<void> {
+		this._cancelInterval();
+
+		this.current = this.currentSegmentEndPosition;
+		this.currentSegmentStartPosition = this.currentSegmentEndPosition;
+
+		await this._updateProgress();
+	}
+
+	async finishProgress(): Promise<void> {
+		this._cancelInterval();
+
+		this.current = this.max;
+		this.currentSegmentStartPosition = this.max;
+		this.currentSegmentEndPosition = this.max;
+
+		await this._updateProgress();
+	}
+
+	private _cancelInterval() {
+		if (typeof this.cancelIntervalTimer === "function") {
+			this.cancelIntervalTimer();
+		}
+
+		this.cancelIntervalTimer = null;
+	}
+
+	private async _updateProgress(): Promise<void> {
+		// NOTE: singular "update" progress event type could be (and was previously) more specific: reset/start/increment/finish progress.
 		const eventData: TalkieProgressData = {
 			current: this.current,
 			max: this.max,
 			min: this.min,
 		};
 
-		return eventData;
+		await bullhorn(this.messageBusProviderGetter, "broadcaster:progress:update", eventData);
 	}
 
-	async broadcastEvent<TEvent extends knownEvents>(eventName: TEvent): Promise<void> {
-		const eventData = this.getEventData();
+	private _updateEstimatedSpeed(): void {
+		const timeElapsedUntilSegmentStart = this.currentSegmentStartTime - this.resetTime;
+		const speed = timeElapsedUntilSegmentStart === 0
+			? 0
+			: this.currentSegmentStartPosition / timeElapsedUntilSegmentStart;
 
-		await this.broadcaster.broadcastEvent<TEvent, TalkieProgressData, null>(eventName, eventData);
+		this.estimatedSpeed = Math.max(speed, this.minSpeed);
 	}
 
-	getPercent(): number {
-		if (this.max === 0) {
-			return 0;
-		}
-
-		const pct = (this.current / this.max) * 100;
-
-		return pct;
-	}
-
-	async updateProgress(): Promise<void> {
-		await this.broadcastEvent(knownEvents.updateProgress);
-	}
-
-	async resetProgress(min = 0, max = 0, current = 0): Promise<void> {
+	private async _intervalIncrement(): Promise<void> {
+		// NOTE: there is no information of the detailed progress within the segment; estimate the increment based on calculated speed.
 		const now = Date.now();
+		const intervalDiff = now - this.currentSegmentStartTime;
+		const estimatedIncrement = intervalDiff * this.estimatedSpeed;
 
-		this.resetTime = now;
-		this.min = min;
-		this.max = max;
-		this.current = current;
-		this.segmentSum = this.min;
-		// this.segments = [];
+		// NOTE: as intra-segment increments are mere estimates, keep increments within the segment.
+		const currentPositionWithinSegment = Math.min(this.currentSegmentEndPosition, this.currentSegmentStartPosition + estimatedIncrement);
 
-		await this.broadcastEvent(knownEvents.resetProgress);
+		this.current = currentPositionWithinSegment;
 
-		await this.updateProgress();
-	}
-
-	async addProgress(n: number): Promise<void> {
-		const segmentLimited = Math.min(this.segmentSum, this.current + n);
-
-		this.current = segmentLimited;
-
-		await this.broadcastEvent(knownEvents.addProgress);
-
-		await this.updateProgress();
-	}
-
-	getSpeed(): number {
-		const now = Date.now();
-
-		const timeDiff = now - this.resetTime;
-
-		if (timeDiff === 0) {
-			return this.minSpeed;
-		}
-
-		const speed = this.current / timeDiff;
-
-		const adjustedSpeed = Math.max(speed, this.minSpeed);
-
-		return adjustedSpeed;
-	}
-
-	async intervalIncrement(): Promise<void> {
-		const now = Date.now();
-		const intervalDiff = now - this.previousInterval;
-		const speed = this.getSpeed();
-		const increment = intervalDiff * speed;
-
-		this.previousInterval = now;
-
-		await this.addProgress(increment);
-	}
-
-	async startSegment(n: number): Promise<void> {
-		const now = Date.now();
-
-		this.previousInterval = now;
-
-		this.segmentSum += n;
-
-		this.interval = setInterval(async () => {
-			await this.intervalIncrement();
-		}, this.intervalDelay);
-	}
-
-	async endSegment(): Promise<void> {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-		clearInterval(this.interval);
-
-		this.interval = null;
-
-		this.current = this.segmentSum;
-
-		await this.updateProgress();
-	}
-
-	async finishProgress(): Promise<void> {
-		this.current = this.max;
-
-		await this.broadcastEvent(knownEvents.finishProgress);
-
-		await this.updateProgress();
+		await this._updateProgress();
 	}
 }

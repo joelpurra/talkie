@@ -23,24 +23,13 @@ import rollupConfig from "./rollup.config.browser.mjs";
 
 const rollupConfiguration = (name) =>
 	mergeOptions(rollupConfig(name), {
-		external: [
-			"@reduxjs/toolkit",
-			"react-dom",
-			"react-redux",
-			"react",
-
-			// NOTE: external to non-react code as well, but placed here to simplify options merging.
-			"webextension-polyfill",
-		],
+		external: ["@reduxjs/toolkit", "react-dom", "react-redux", "react"],
 		output: {
 			globals: {
 				"@reduxjs/toolkit": "RTK",
 				react: "React",
 				"react-dom": "ReactDOM",
 				"react-redux": "ReactRedux",
-
-				// NOTE: external to non-react code as well, but placed here to simplify options merging.
-				"webextension-polyfill": "browser",
 			},
 		},
 	});

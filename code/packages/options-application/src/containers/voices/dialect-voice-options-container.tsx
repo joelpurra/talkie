@@ -57,6 +57,7 @@ interface DispatchProps {
 	storeEffectiveVoiceNameForLanguage: typeof actions.voices.storeEffectiveVoiceNameForLanguage;
 	storeVoicePitchOverride: typeof actions.voices.storeVoicePitchOverride;
 	storeVoiceRateOverride: typeof actions.voices.storeVoiceRateOverride;
+	speakInSelectedVoiceNameState: typeof actions.voices.speakInSelectedVoiceNameState;
 }
 
 interface InternalProps extends StateProps, DispatchProps {}
@@ -78,6 +79,7 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
+	speakInSelectedVoiceNameState: bindActionCreators(actions.voices.speakInSelectedVoiceNameState, dispatch),
 	storeEffectiveVoiceNameForLanguage: bindActionCreators(actions.voices.storeEffectiveVoiceNameForLanguage, dispatch),
 	storeVoicePitchOverride: bindActionCreators(actions.voices.storeVoicePitchOverride, dispatch),
 	storeVoiceRateOverride: bindActionCreators(actions.voices.storeVoiceRateOverride, dispatch),
@@ -101,10 +103,12 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 
 	handleRateChange(value: number): void {
 		this.props.storeVoiceRateOverride(value);
+		this.props.speakInSelectedVoiceNameState();
 	}
 
 	handlePitchChange(value: number): void {
 		this.props.storeVoicePitchOverride(value);
+		this.props.speakInSelectedVoiceNameState();
 	}
 
 	override render(): React.ReactNode {

@@ -22,6 +22,10 @@ import toolkit from "@reduxjs/toolkit";
 import {
 	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
+import {
+	getLocationHash,
+	setLocationHash,
+} from "@talkie/shared-ui/utils/navigator-location.mjs";
 
 import {
 	type NavigationTabId,
@@ -52,26 +56,19 @@ const initialState: TabsState = {
 
 const prefix = "tabs";
 
-export const loadActiveTabFromLocationHash = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+export const loadActiveTabFromLocationHash = createAsyncThunk<NavigationTabId | "fallback-tab", void, IApiAsyncThunkConfig>(
 	`${prefix}/loadLocationHashAsActiveTab`,
-	async (
-		_,
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		{
-			dispatch,
-			extra,
-		},
-	) => {
-		const locationHash = await extra.getLocationHash();
+	async () => {
+		const locationHash = await getLocationHash();
 
 		if (isLocationHash(locationHash)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
 			const activeTabId = getTabIdFromLocationHash(locationHash);
 
-			await dispatch(setActiveTabId(activeTabId));
-		} else {
-			await dispatch(setActiveTabId(null));
+			return activeTabId;
 		}
+
+		return "fallback-tab";
 	},
 );
 
@@ -79,16 +76,12 @@ export const setActiveTabId = createAsyncThunk<string | "fallback-tab", Navigati
 	`${prefix}/setActiveTabId`,
 	async (
 		activeTabId,
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		{
-			extra,
-		},
 	) => {
 		if (isTabId(activeTabId)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
 			const locationHash = getLocationHashFromTabId(activeTabId);
 
-			await extra.setLocationHash(locationHash);
+			await setLocationHash(locationHash);
 
 			return activeTabId;
 		}
@@ -103,6 +96,9 @@ export const setActiveTabId = createAsyncThunk<string | "fallback-tab", Navigati
 export const tabsSlice = createSlice({
 	extraReducers(builder) {
 		builder
+			.addCase(loadActiveTabFromLocationHash.fulfilled, (state, action) => {
+				state.activeTabId = action.payload;
+			})
 			.addCase(setActiveTabId.fulfilled, (state, action) => {
 				state.activeTabId = action.payload;
 			});

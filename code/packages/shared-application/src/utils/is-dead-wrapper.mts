@@ -30,3 +30,30 @@ export const isDeadWrapper = (domElementReference: unknown): boolean => {
 		return true;
 	}
 };
+
+const _knownDeadErrorMessages = [
+	"access dead object",
+	"<unavailable>",
+];
+
+export const _includesKnownDeadErrorMessage = (string_: string): boolean =>
+	_knownDeadErrorMessages.some((knownDeadErrorMessage) => string_.includes(knownDeadErrorMessage));
+
+export const isDeadObjectError = (error: unknown): boolean => {
+	// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
+	const wasDead = Boolean(error)
+		&& (
+			(
+				typeof error === "string"
+				&& _includesKnownDeadErrorMessage(error)
+			)
+			|| _includesKnownDeadErrorMessage(String(error))
+			|| (
+				typeof error === "object"
+				&& typeof (error as Error).message === "string"
+				&& _includesKnownDeadErrorMessage((error as Error).message)
+			)
+		);
+
+	return wasDead;
+};

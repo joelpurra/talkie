@@ -21,11 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
 	I18n,
 } from "webextension-polyfill";
 
-export default class NodeEnvironmentLocaleProvider {
+export default class NodeEnvironmentLocaleProvider implements ILocaleProvider {
 	private uiLocale: string | null = null;
 	private translationLocale: TalkieLocale | null = null;
 

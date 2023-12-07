@@ -206,7 +206,7 @@ function main() {
 				find . -mindepth 1 -maxdepth 1 -type d \
 				| sed 's_./__' \
 				| sort \
-				| xargs -I'{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" \
+				| xargs -I'{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching '(import|from) \"@talkie/[^/\"]+' ./{}/ | sed -E 's_^(import|from) \"(@talkie/[^/\"]*)\$_\2_'| sort | uniq; }" \
 				| jq --raw-input --slurp "$JQ_GET_TALKIE_PACKAGE_NAMES" \
 				> "${DIST_GRAPH_FOLDER}/talkie.packages.import.json"
 

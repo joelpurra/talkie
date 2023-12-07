@@ -18,10 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type EditionType,
-	type IMetadataManager,
-	type SystemType,
+import type {
+	IMetadataManager,
+	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
 import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
@@ -30,18 +29,8 @@ import type {
 	Runtime,
 } from "webextension-polyfill";
 
-import type SettingsManager from "./settings-manager.mjs";
-
 export default class MetadataManager implements IMetadataManager {
-	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider, private readonly settingsManager: SettingsManager) {}
-
-	private get _editionTypePremium() {
-		return "premium" as EditionType;
-	}
-
-	private get _editionTypeFree() {
-		return "free" as EditionType;
-	}
+	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider) {}
 
 	private get _systemTypeChrome() {
 		return "chrome" as SystemType;
@@ -59,10 +48,6 @@ export default class MetadataManager implements IMetadataManager {
 	// NOTE: string matches manifest.json value set during build in package.json.
 	private get webextensionVersionNameSubstring() {
 		return " WebExtension ";
-	}
-
-	async isPremiumEdition(): Promise<boolean> {
-		return this.settingsManager.getIsPremiumEdition();
 	}
 
 	async getManifest(): Promise<Manifest.ManifestBase> {
@@ -84,16 +69,6 @@ export default class MetadataManager implements IMetadataManager {
 		}
 
 		return versionName;
-	}
-
-	async getEditionType(): Promise<EditionType> {
-		const isPremiumEdition = await this.isPremiumEdition();
-
-		if (isPremiumEdition) {
-			return this._editionTypePremium;
-		}
-
-		return this._editionTypeFree;
 	}
 
 	async isChromeVersion(): Promise<boolean> {

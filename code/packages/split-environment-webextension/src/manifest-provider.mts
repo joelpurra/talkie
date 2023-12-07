@@ -27,7 +27,7 @@ export default class WebExtensionEnvironmentManifestProvider implements IManifes
 	async get(): Promise<Manifest.ManifestBase> {
 		// NOTE: synchronous call.
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
-		const manifest = browser.runtime.getManifest();
+		const manifest = chrome.runtime.getManifest();
 
 		return manifest;
 	}

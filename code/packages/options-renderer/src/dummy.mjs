@@ -22,7 +22,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // TODO: remove file when possible.
 
 // HACK: trick dependency automation scripts to ensure the correct build order, by "fake importing" from the dependencies.
-// from "@talkie/browser-localeredirect/does-not-exist.mjs";
+// import "@talkie/browser-localeredirect/does-not-exist.mjs";
 
 const dummy = null;
 export default dummy;

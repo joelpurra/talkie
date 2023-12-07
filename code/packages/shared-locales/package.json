@@ -10,6 +10,9 @@
     "@talkie/shared-interfaces": "*",
     "@talkie/translator-tool": "*"
   },
+  "deveDependencies": {
+    "mkdirp": "^3.0.1"
+  },
   "exports": {
     "./*": {
       "types": "./dist/esm/*",

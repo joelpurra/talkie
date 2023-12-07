@@ -18,60 +18,57 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import path from "path";
-import copy from "rollup-plugin-copy";
+import assert from "assert";
 import { readFileSync, statSync } from "fs";
+import path from "path";
 
-const extensionFiles = "code.txt";
-const licensesFiles = "licenses.txt";
-const localesFiles = "locales.txt";
-const rootFiles = "root.txt";
+import copy from "rollup-plugin-copy";
 
-const getLines = (buffer) => {
+const getLines = (buffer) =>
 	// TODO: readline for await of
 	// https://nodejs.org/api/readline.html#readline_example_read_file_stream_line_by_line
-	return (
-		buffer
-			.toString()
-			.split("\n")
-			// NOTE: skip empty lines.
-			.filter((line) => !!line.trim())
-	);
-};
+	buffer
+		.toString()
+		.split("\n")
+		// NOTE: skip empty lines.
+		.filter((line) => !!line.trim());
+
+const normalizePath = (...segments) => path.normalize(path.join(...segments));
 
 const getCopyTargets = (
-	fileListFile,
-	repositoryRoot,
-	sourceBase,
-	source,
-	destinationBase,
-	destination,
+	fileListFilePath,
+	packageRootDirectory,
+	codeRootRelativeDirectory,
+	destinationBaseDirectory,
+	outputRelativeDirectory,
 ) => {
-	const resolvedSource = path.join(sourceBase, source);
-	const resolvedDestination = path.join(destinationBase, destination);
-	const fileListFilePath = path.join(
-		repositoryRoot,
-		"code",
-		"packages",
-		"output-webext",
-		"src",
-		"package-files",
-		fileListFile,
-	);
 	const file = readFileSync(fileListFilePath);
 	const lines = getLines(file);
 
+	const resolvedSource = normalizePath(
+		packageRootDirectory,
+		codeRootRelativeDirectory,
+	);
+	const resolvedDestination = normalizePath(
+		destinationBaseDirectory,
+		outputRelativeDirectory,
+	);
+
 	const targets = lines.map((file) => {
-		const src = path.join(resolvedSource, file);
-		const dest = path.join(
+		const src = normalizePath(resolvedSource, file);
+
+		// NOTE: check if the source file exists.
+		// https://github.com/vladshcherbin/rollup-plugin-copy/issues/57
+		statSync(src, {
+			throwIfNoEntry: true,
+		});
+
+		const dest = normalizePath(
 			resolvedDestination,
 
 			// NOTE: make sure destination is the containing directory, otherwise a directory with the same name as the file will be created.
 			path.dirname(file),
 		);
-
-		// NOTE: check if the source file exists.
-		statSync(src);
 
 		return {
 			src,
@@ -82,42 +79,62 @@ const getCopyTargets = (
 	return targets;
 };
 
-const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
-	copy({
+const rollupConfiguration = (
+	repositoryRootDirectory,
+	packageRootDirectory,
+	outputBaseDirectory,
+) => {
+	const fileListFileBasePath = normalizePath(
+		repositoryRootDirectory,
+		"code",
+		"packages",
+		"output-webext",
+		"src",
+		"package-files",
+	);
+
+	return copy({
 		targets: [
+			...[
+				normalizePath(fileListFileBasePath, fileLists.code),
+				normalizePath(fileListFileBasePath, fileLists.resources),
+				normalizePath(fileListFileBasePath, fileLists.licenses),
+
+				// NOTE: per-repository file list.
+				normalizePath(packageRootDirectory, "webext.files.txt"),
+			].flatMap((filesPath) =>
+				getCopyTargets(
+					filesPath,
+					packageRootDirectory,
+					"../..",
+					outputBaseDirectory,
+					".",
+				),
+			),
 			...getCopyTargets(
-				rootFiles,
-				repositoryRoot,
-				sourceBase,
+				normalizePath(fileListFileBasePath, fileLists.root),
+				packageRootDirectory,
 				"../../..",
-				destinationBase,
+				outputBaseDirectory,
 				".",
 			),
 			...getCopyTargets(
-				extensionFiles,
-				repositoryRoot,
-				sourceBase,
-				"../..",
-				destinationBase,
-				".",
-			),
-			...getCopyTargets(
-				licensesFiles,
-				repositoryRoot,
-				sourceBase,
-				"../..",
-				destinationBase,
-				".",
-			),
-			...getCopyTargets(
-				localesFiles,
-				repositoryRoot,
-				sourceBase,
+				normalizePath(fileListFileBasePath, fileLists.locales),
+				packageRootDirectory,
 				"../shared-locales/dist/data",
-				destinationBase,
+				outputBaseDirectory,
 				".",
 			),
 		],
 	});
+};
+
+const fileLists = {
+	code: "code.txt",
+	licenses: "licenses.txt",
+	locales: "locales.txt",
+	resources: "resources.txt",
+	root: "root.txt",
+};
 
 export default rollupConfiguration;

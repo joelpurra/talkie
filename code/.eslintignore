@@ -1,6 +1,8 @@
+artifacts/
+build/*-build-mode.mjs
 dist/
 node_modules/
-build/*-build-mode.mjs
 rollup.config.*.mjs
 rollup.config.mjs
+runtime/
 syncpack.config.cjs

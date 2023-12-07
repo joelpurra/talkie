@@ -19,7 +19,7 @@
     "message": "Prestaň rozprávať",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Prečítajte si výber textu nahlas",
     "original": "Read text selection out loud"
   },

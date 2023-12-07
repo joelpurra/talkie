@@ -24,7 +24,8 @@ export default class WebExtensionEnvironmentInternalUrlProvider implements IInte
 	getSync(url: string): string {
 		// NOTE: synchronous call.
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL
-		const internalUrl = browser.runtime.getURL(url);
+		// TODO: MV3 *may* have changed internal path resolution.
+		const internalUrl = chrome.runtime.getURL(url);
 
 		return internalUrl;
 	}

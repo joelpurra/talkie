@@ -37,7 +37,7 @@ export default class WebExtensionEnvironmentDynamicEnvironment implements IDynam
 	}
 
 	async getOperatingSystemType(): Promise<Runtime.PlatformOs> {
-		const platformInfo = await browser.runtime.getPlatformInfo();
+		const platformInfo = await chrome.runtime.getPlatformInfo();
 
 		// https://developer.chrome.com/extensions/runtime#type-PlatformOs
 		return platformInfo.os;

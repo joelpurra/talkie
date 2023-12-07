@@ -23,6 +23,8 @@ import {
 } from "../store/combine-reducers.mjs";
 import errors,
 * as errorsActions from "./errors.mjs";
+import history,
+* as historyActions from "./history.mjs";
 import languages,
 * as languagesActions from "./languages.mjs";
 import metadata,
@@ -38,6 +40,7 @@ import voices,
 
 export const actions = {
 	errors: errorsActions,
+	history: historyActions,
 	languages: languagesActions,
 	metadata: metadataActions,
 	navigation: navigationActions,
@@ -48,6 +51,7 @@ export const actions = {
 
 const reducers = combineReducers({
 	errors,
+	history,
 	languages,
 	metadata,
 	navigation,

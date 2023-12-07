@@ -19,7 +19,7 @@
     "message": "Sluta prata",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Läs textval högt",
     "original": "Read text selection out loud"
   },

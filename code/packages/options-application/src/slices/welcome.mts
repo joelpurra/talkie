@@ -74,7 +74,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 
 		for await (const languageCode of availableBrowserLanguageWithInstalledVoice) {
 			// TODO: isTalkieLocale assertion.
-			const isTalkieLocale = await extra.isTalkieLocale(languageCode);
+			const isTalkieLocale = await extra.coating!.talkieLocale!.isTalkieLocale(languageCode);
 
 			if (isTalkieLocale) {
 				sampleTextLanguage = languageCode as TalkieLocale;
@@ -83,7 +83,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 		}
 
 		const sampleText = typeof sampleTextLanguage === "string"
-			? await extra.getSampleText(sampleTextLanguage)
+			? await extra.coating!.talkieLocale!.getSampleText(sampleTextLanguage)
 			: null;
 
 		return {

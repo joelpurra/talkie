@@ -26,9 +26,6 @@ import toolkit from "@reduxjs/toolkit";
 import {
 	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
-import {
-	loadSpeakingHistory,
-} from "@talkie/shared-ui/slices/speaking.mjs";
 
 const {
 	// eslint-disable-next-line import/no-named-as-default-member
@@ -64,20 +61,20 @@ export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsy
 		{
 			extra,
 		},
-	) => extra.getShowAdditionalDetails(),
+	) => extra.groundwork!.configuration.getShowAdditionalDetails(),
 );
 
-export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeShowAdditionalDetails = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeShowAdditionalDetails`,
 	async (
 		showAdditionalDetails,
 		{
-			dispatch,
 			extra,
 		},
 	) => {
-		await extra.setShowAdditionalDetails(showAdditionalDetails);
-		dispatch(setShowAdditionalDetails(showAdditionalDetails));
+		await extra.groundwork!.configuration.setShowAdditionalDetails(showAdditionalDetails);
+
+		return showAdditionalDetails;
 	},
 );
 
@@ -88,20 +85,20 @@ export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunk
 		{
 			extra,
 		},
-	) => extra.getSpeakLongTexts(),
+	) => extra.groundwork!.configuration.getSpeakLongTexts(),
 );
 
-export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeSpeakLongTexts = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakLongTexts`,
 	async (
 		speakLongTexts,
 		{
-			dispatch,
 			extra,
 		},
 	) => {
-		await extra.setSpeakLongTexts(speakLongTexts);
-		dispatch(setSpeakLongTexts(speakLongTexts));
+		await extra.groundwork!.configuration.setSpeakLongTexts(speakLongTexts);
+
+		return speakLongTexts;
 	},
 );
 
@@ -112,22 +109,20 @@ export const loadSpeakingHistoryLimit = createAsyncThunk<number, void, IApiAsync
 		{
 			extra,
 		},
-	) => extra.getSpeakingHistoryLimit(),
+	) => extra.groundwork!.configuration.getSpeakingHistoryLimit(),
 );
 
-export const storeSpeakingHistoryLimit = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
+export const storeSpeakingHistoryLimit = createAsyncThunk<number, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakingHistoryLimit`,
 	async (
 		speakingHistoryLimit,
 		{
-			dispatch,
 			extra,
 		},
 	) => {
-		await extra.setSpeakingHistoryLimit(speakingHistoryLimit);
-		await extra.pruneSpeakingHistory();
-		await dispatch(loadSpeakingHistory());
-		dispatch(setSpeakingHistoryLimit(speakingHistoryLimit));
+		await extra.groundwork!.configuration.setSpeakingHistoryLimit(speakingHistoryLimit);
+
+		return speakingHistoryLimit;
 	},
 );
 
@@ -138,20 +133,20 @@ export const loadContinueOnTabRemoved = createAsyncThunk<boolean, void, IApiAsyn
 		{
 			extra,
 		},
-	) => extra.getContinueOnTabRemoved(),
+	) => extra.groundwork!.configuration.getContinueOnTabRemoved(),
 );
 
-export const storeContinueOnTabRemoved = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeContinueOnTabRemoved = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeContinueOnTabRemoved`,
 	async (
 		continueOnTabRemoved,
 		{
-			dispatch,
 			extra,
 		},
 	) => {
-		await extra.setContinueOnTabRemoved(continueOnTabRemoved);
-		dispatch(setContinueOnTabRemoved(continueOnTabRemoved));
+		await extra.groundwork!.configuration.setContinueOnTabRemoved(continueOnTabRemoved);
+
+		return continueOnTabRemoved;
 	},
 );
 
@@ -162,44 +157,55 @@ export const loadContinueOnTabUpdatedUrl = createAsyncThunk<boolean, void, IApiA
 		{
 			extra,
 		},
-	) => extra.getContinueOnTabUpdatedUrl(),
+	) => extra.groundwork!.configuration.getContinueOnTabUpdatedUrl(),
 );
 
-export const storeContinueOnTabUpdatedUrl = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeContinueOnTabUpdatedUrl = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeContinueOnTabUpdatedUrl`,
 	async (
 		continueOnTabUpdatedUrl,
 		{
-			dispatch,
 			extra,
 		},
 	) => {
-		await extra.setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl);
-		dispatch(setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl));
+		await extra.groundwork!.configuration.setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl);
+
+		return continueOnTabUpdatedUrl;
 	},
 );
 
 export const settingsSlice = createSlice({
 	extraReducers(builder) {
+		// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 		builder
 			.addCase(loadShowAdditionalDetails.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.showAdditionalDetails = action.payload;
 			})
 			.addCase(loadSpeakLongTexts.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.speakLongTexts = action.payload;
 			})
 			.addCase(loadSpeakingHistoryLimit.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.speakingHistoryLimit = action.payload;
 			})
 			.addCase(loadContinueOnTabRemoved.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.continueOnTabRemoved = action.payload;
 			})
 			.addCase(loadContinueOnTabUpdatedUrl.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
+				state.continueOnTabUpdatedUrl = action.payload;
+			})
+			.addCase(storeShowAdditionalDetails.fulfilled, (state, action) => {
+				state.showAdditionalDetails = action.payload;
+			})
+			.addCase(storeSpeakLongTexts.fulfilled, (state, action) => {
+				state.speakLongTexts = action.payload;
+			})
+			.addCase(storeSpeakingHistoryLimit.fulfilled, (state, action) => {
+				state.speakingHistoryLimit = action.payload;
+			})
+			.addCase(storeContinueOnTabRemoved.fulfilled, (state, action) => {
+				state.continueOnTabRemoved = action.payload;
+			})
+			.addCase(storeContinueOnTabUpdatedUrl.fulfilled, (state, action) => {
 				state.continueOnTabUpdatedUrl = action.payload;
 			});
 	},

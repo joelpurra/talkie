@@ -53,7 +53,7 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 		// const locale = this.localeProvider.getTranslationLocale();
 
 		// TODO: use same translation system in frontend and backend?
-		const translated = browser.i18n.getMessage(key, extras as string[]);
+		const translated = chrome.i18n.getMessage(key, extras as string[]);
 
 		return translated;
 	}

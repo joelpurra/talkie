@@ -19,12 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import {
-	type ReadonlyDeep,
+import type {
+	ReadonlyDeep,
 } from "type-fest";
 
-import {
-	type IApiAsyncThunkConfig,
+import type {
+	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {
@@ -51,7 +51,7 @@ export const openExternalUrlInNewTab = createAsyncThunk<void, ReadonlyDeep<URL>,
 			extra,
 		},
 	) => {
-		await extra.openExternalUrlInNewTab(url);
+		await extra.coating!.browser!.openExternalUrlInNewTab(url);
 	},
 );
 
@@ -63,7 +63,7 @@ export const openShortKeysConfiguration = createAsyncThunk<void, void, IApiAsync
 			extra,
 		},
 	) => {
-		await extra.openShortKeysConfiguration();
+		await extra.coating!.browser!.openShortKeysConfiguration();
 	},
 );
 
@@ -75,7 +75,7 @@ export const openOptionsPage = createAsyncThunk<void, void, IApiAsyncThunkConfig
 			extra,
 		},
 	) => {
-		await extra.openOptionsPage();
+		await extra.coating!.browser!.openOptionsPage();
 	},
 );
 

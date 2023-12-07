@@ -1,0 +1,3 @@
+packages/browser-serviceworker/dist/rollup/serviceworker.dependencies.txt
+packages/browser-serviceworker/dist/rollup/serviceworker.js
+packages/browser-serviceworker/dist/rollup/serviceworker.js.map

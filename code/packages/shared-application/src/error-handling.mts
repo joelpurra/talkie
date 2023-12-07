@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	logError,
 	logInfo,
-	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 const handleUnhandledRejection = (event: ReadonlyDeep<PromiseRejectionEvent>) => {
-	void logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
+	void logError("Unhandled rejection", "Error", event.reason, event.promise, event);
 	void logInfo("Starting debugger, if attached.");
 
 	// eslint-disable-next-line no-debugger
@@ -40,5 +40,5 @@ export const registerUnhandledRejectionHandler = (): void => {
 	// "error"
 	// "messageerror"
 	// "securitypolicyviolation"
-	window.addEventListener("unhandledrejection", handleUnhandledRejection);
+	globalThis.addEventListener("unhandledrejection", handleUnhandledRejection);
 };

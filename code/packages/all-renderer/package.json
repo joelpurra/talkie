@@ -14,11 +14,11 @@
     "@talkie/popup-renderer": "*",
     "@talkie/renderer": "*",
     "@talkie/shared-interfaces": "*",
-    "@talkie/shared-locales": "*"
+    "@talkie/shared-locales": "*",
+    "mkdirp": "^3.0.1"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.7",
-    "mkdirp": "^3.0.1"
+    "@reduxjs/toolkit": "^1.9.7"
   },
   "exports": {
     "./*": {

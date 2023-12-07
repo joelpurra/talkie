@@ -18,10 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import DualLogger from "@talkie/browser-shared/dual-log.mjs";
+import getFrontendMessageBus from "@talkie/browser-shared/hydrate/get-frontend-message-bus.mjs";
 import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
-	eventToPromise,
+	eventToPromiseSingle,
 	startReactFrontend,
 	stopReactFrontend,
 } from "@talkie/browser-shared/shared-frontend.mjs";
@@ -29,38 +29,46 @@ import {
 	registerUnhandledRejectionHandler,
 } from "@talkie/shared-application/error-handling.mjs";
 import {
-	getTalkieServices,
-} from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
+	betoken,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import hydrate from "./hydrate.mjs";
 
 // NOTE: earliest possible voice load trigger.
 void redundantlyTriggerLoadingVoices();
 
-const dualLogger = new DualLogger("popup.js");
-
-const passClickToBackground = async () => {
-	void dualLogger.dualLogDebug("Start", "passClickToBackground");
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const passClickToBackground = async (messageBusProviderGetter: IMessageBusProviderGetter) => {
+	void logDebug("Start", "passClickToBackground");
 
 	try {
-		const talkieServices = await getTalkieServices();
+		await betoken(messageBusProviderGetter, "extension:icon-click");
 
-		await talkieServices.iconClick();
-
-		void dualLogger.dualLogDebug("Done", "passClickToBackground");
+		void logDebug("Done", "passClickToBackground");
 	} catch (error: unknown) {
-		void dualLogger.dualLogError("passClickToBackground", error);
+		void logError("passClickToBackground", error);
 
 		throw error;
 	}
 };
 
-const passClickToBackgroundOnLoad = async () => passClickToBackground();
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const passClickToBackgroundOnLoad = async (messageBusProviderGetter: IMessageBusProviderGetter) => passClickToBackground(messageBusProviderGetter);
 
 const start = async () => {
 	await startReactFrontend();
-	await passClickToBackgroundOnLoad();
-	await hydrate();
+
+	const messageBusProviderGetter = await getFrontendMessageBus();
+
+	await passClickToBackgroundOnLoad(messageBusProviderGetter);
+	await hydrate(messageBusProviderGetter);
 };
 
 const stop = async () => {
@@ -70,5 +78,5 @@ const stop = async () => {
 
 registerUnhandledRejectionHandler();
 
-document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
-window.addEventListener("beforeunload", eventToPromise.bind(null, stop));
+document.addEventListener("DOMContentLoaded", eventToPromiseSingle.bind(null, start));
+window.addEventListener("beforeunload", eventToPromiseSingle.bind(null, stop));

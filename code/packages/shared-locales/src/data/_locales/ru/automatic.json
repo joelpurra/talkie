@@ -19,7 +19,7 @@
     "message": "хватит говорить",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Прочитать выделенный текст вслух",
     "original": "Read text selection out loud"
   },

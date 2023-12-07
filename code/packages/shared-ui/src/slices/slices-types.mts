@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
+import type IApi from "@talkie/split-environment-interfaces/iapi/iapi.mjs";
 
 // TODO: access the unexposed AsyncThunkConfig from @reduxjs/toolkit.
 export interface IApiAsyncThunkConfig {

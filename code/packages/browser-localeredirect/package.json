@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "webextension-polyfill": "^0.10.0"
+    "webextension-polyfill": "^0.12.0"
   },
   "exports": {
     "./*": {

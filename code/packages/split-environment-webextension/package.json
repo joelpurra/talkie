@@ -10,6 +10,7 @@
     "type-fest"
   ],
   "dependencies": {
+    "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
     "@talkie/shared-interfaces": "*",
     "@talkie/split-environment-interfaces": "*"
@@ -18,7 +19,7 @@
     "@types/styletron-engine-atomic": "^1.1.3",
     "styletron-engine-atomic": "^1.6.2",
     "styletron-standard": "^3.1.0",
-    "webextension-polyfill": "^0.10.0"
+    "webextension-polyfill": "^0.12.0"
   },
   "exports": {
     "./*": {

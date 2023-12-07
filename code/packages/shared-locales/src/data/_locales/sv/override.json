@@ -16,7 +16,7 @@
     "original": "Stop talking",
     "translated-from": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Sluta läsa upp",
     "original": "Read text selection out loud",
     "translated-from": "Read text selection out loud"

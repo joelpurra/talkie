@@ -23,10 +23,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // HACK: trick dependency automation scripts to ensure the correct build order, by "fake importing" from the dependencies.
 // TODO: actually make direct use of these dependencies by consolidating packaging steps.
-// from "@talkie/all-renderer/does-not-exist.mjs";
-// from "@talkie/browser-background/does-not-exist.mjs";
-// from "@talkie/browser-runtime-dependencies/does-not-exist.mjs";
-// from "@talkie/shared-resources/does-not-exist.mjs";
+// import "@talkie/all-renderer/does-not-exist.mjs";
+// import "@talkie/browser-runtime-dependencies/does-not-exist.mjs";
+// import "@talkie/shared-resources/does-not-exist.mjs";
 
 const dummy = null;
 export default dummy;

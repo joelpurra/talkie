@@ -22,17 +22,17 @@ import type {
 	JsonObject,
 } from "type-fest";
 
-export interface FramesSelectionTextAndLanguageCode extends JsonObject {
+export interface SelectedTextAndLanguageCodes extends JsonObject {
 	htmlTagLanguage: string | null;
 	parentElementsLanguages: ReadonlyArray<string | null>;
-	text: string | null;
+	text: string;
 }
 
 export interface PerhapsSelectedTextWithFocusTimestamp extends JsonObject {
 	mostRecentUse: number;
-	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode | null;
+	selectionTextAndLanguageCode: SelectedTextAndLanguageCodes;
 }
 
 export interface SelectedTextWithFocusTimestamp extends PerhapsSelectedTextWithFocusTimestamp {
-	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode;
+	selectionTextAndLanguageCode: SelectedTextAndLanguageCodes;
 }

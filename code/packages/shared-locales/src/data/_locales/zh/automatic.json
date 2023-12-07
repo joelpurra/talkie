@@ -19,7 +19,7 @@
     "message": "别说话了",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "大声朗读所选文本",
     "original": "Read text selection out loud"
   },

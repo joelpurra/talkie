@@ -55,10 +55,8 @@ export default class GoogleCloudTranslateTranslator {
 				keyFilename: this._googleCloudTranslateApiKeyFilePath,
 			} as v2.TranslateConfig,
 			{
-				// NOTE: the promise property is documented in the v2.Translate typing source code, but not added to the types.
-				// file://./../../../node_modules/@google-cloud/translate/build/src/v2/index.d.ts
 				promise: Bluebird,
-			} as unknown,
+			},
 		);
 		this._googleTranslate = new Translate(this._googleTranslateOptions);
 

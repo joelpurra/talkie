@@ -19,7 +19,7 @@
     "message": "Σταμάτα να μιλάς",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Διαβάστε δυνατά την επιλογή κειμένου",
     "original": "Read text selection out loud"
   },

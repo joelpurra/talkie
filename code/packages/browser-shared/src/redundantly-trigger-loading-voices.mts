@@ -33,7 +33,7 @@ const redundantlyTriggerLoadingVoices: () => Promise<SpeechSynthesisVoice[]> = a
 	} catch (error) {
 		// NOTE: log but ignore errors; this is a "hidden" execution with the sole purpose of triggering side-effects.
 
-		void logError("redundantlyTriggerLoadingVoices", "Ignoring error.", error);
+		void logError("redundantlyTriggerLoadingVoices", "swallowing error", error);
 	}
 
 	return [];

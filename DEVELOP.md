@@ -305,9 +305,7 @@ cd -
 
 # Ensure all files are included -- or excluded -- in the assembled extension output.
 # This includes new code files/translations/resources added/removed since the last release.
-cat ./packages/output-webext/src/package-files/code.txt
-cat ./packages/output-webext/src/package-files/locales.txt
-cat ./packages/output-webext/src/package-files/root.txt
+cat ./packages/output-webext/src/package-files/*.txt
 
 # Fix any warnings and errors before committing.
 TALKIE_ENV='production' npm run --silent preoutput

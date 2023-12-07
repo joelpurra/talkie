@@ -19,59 +19,27 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	knownEvents,
-} from "@talkie/shared-interfaces/known-events.mjs";
-import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
-import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
 	JsonArray,
 	JsonObject,
 	JsonValue,
-	ReadonlyDeep,
-	ValueOf,
 } from "type-fest";
 
+import {
+	bullhorn,
+} from "./message-bus/message-bus-listener-helpers.mjs";
+import {
+	KnownSettingDefaults,
+	KnownSettingRanges,
+	KnownSettingStorageKeys,
+	type KnownSettingValues,
+} from "./settings.mjs";
 import type StorageManager from "./storage-manager.mjs";
-
-// TODO: merge parallel objects.
-export enum KnownSettingStorageKeys {
-	IsPremiumEdition = "is-premium-edition",
-	ShowAdditionalDetails = "show-additional-details",
-	SpeakingHistory = "speaking-history",
-	SpeakingHistoryLimit = "speaking-history-limit",
-	SpeakLongTexts = "speak-long-texts",
-	ContinueOnTabRemoved = "stop-on-tab-removed",
-	ContinueOnTabUpdatedUrl = "stop-on-tab-updated-url",
-}
-export type KnownSettingNames = keyof typeof KnownSettingStorageKeys;
-export type KnownSettingValues = ValueOf<KnownSettingStorageKeys>;
-
-export const KnownSettingDefaults = {
-	ContinueOnTabRemoved: false,
-	ContinueOnTabUpdatedUrl: false,
-	IsPremiumEdition: false,
-	ShowAdditionalDetails: false,
-	SpeakLongTexts: false,
-	SpeakingHistory: [],
-	SpeakingHistoryLimit: 10,
-};
-export type KnownSettingDefaultNames = keyof typeof KnownSettingDefaults;
-export type KnownSettingDefaultValues = ValueOf<typeof KnownSettingDefaults>;
-
-export interface SettingRange {
-	max: number;
-	min: number;
-}
-export const KnownSettingRanges = {
-	SpeakingHistoryLimit: {
-		max: 100,
-		min: 0,
-	},
-};
-export type KnownSettingRangeNames = keyof typeof KnownSettingRanges;
-export type KnownSettingRangeValues = ValueOf<typeof KnownSettingRanges>;
 
 export type SettingChangedEventData<T extends JsonValue> = {
 	key: KnownSettingValues;
@@ -80,7 +48,7 @@ export type SettingChangedEventData<T extends JsonValue> = {
 } & JsonObject;
 
 export default class SettingsManager {
-	constructor(private readonly storageManager: StorageManager, private readonly broadcaster: IBroadcasterProvider) {
+	constructor(private readonly storageManager: StorageManager, private readonly messageBusProviderGetter: IMessageBusProviderGetter) {
 		// TODO: shared place for default/fallback values for booleans etcetera.
 	}
 
@@ -114,23 +82,21 @@ export default class SettingsManager {
 		return showAdditionalDetails ?? KnownSettingDefaults.ShowAdditionalDetails;
 	}
 
-	async setSpeakingHistory(speakingHistory: ReadonlyDeep<SpeakingHistoryEntry[]>): Promise<void> {
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	async setSpeakingHistory(speakingHistory: Readonly<SpeakingHistoryEntry[]>): Promise<void> {
 		// NOTE: extraenous validation, should already be taken care of.
 		if (speakingHistory.length > KnownSettingRanges.SpeakingHistoryLimit.max) {
 			throw new RangeError(`Cannot set a speaking history with length greater than ${KnownSettingRanges.SpeakingHistoryLimit.max}: ${JSON.stringify(speakingHistory)}`);
 		}
 
-		// TODO: function/assert type cast.
-		const speakingHistoryJson: JsonArray = speakingHistory as unknown as JsonArray;
-
-		return this._setStoredValue(KnownSettingStorageKeys.SpeakingHistory, speakingHistoryJson);
+		return this._setStoredValue(KnownSettingStorageKeys.SpeakingHistory, speakingHistory);
 	}
 
-	async getSpeakingHistory(): Promise<SpeakingHistoryEntry[]> {
-		const speakingHistoryJson = await this.storageManager.getStoredValue<JsonArray>(KnownSettingStorageKeys.SpeakingHistory);
+	async getSpeakingHistory(): Promise<Readonly<SpeakingHistoryEntry[]>> {
+		const speakingHistory = await this.storageManager.getStoredValue<JsonArray>(KnownSettingStorageKeys.SpeakingHistory);
 
-		// TODO: assert function for SpeakingHistoryEntry[].
-		const speakingHistoryOrDefault: SpeakingHistoryEntry[] = (speakingHistoryJson as unknown as SpeakingHistoryEntry[]) ?? KnownSettingDefaults.SpeakingHistory;
+		// TODO: assert function for Readonly<SpeakingHistoryEntry[]>.
+		const speakingHistoryOrDefault: Readonly<SpeakingHistoryEntry[]> = (speakingHistory as Readonly<SpeakingHistoryEntry[]>) ?? KnownSettingDefaults.SpeakingHistory;
 
 		const limitedSpeakingHistory = speakingHistoryOrDefault.slice(0, KnownSettingRanges.SpeakingHistoryLimit.max);
 
@@ -193,7 +159,7 @@ export default class SettingsManager {
 				value,
 			};
 
-			await this.broadcaster.broadcastEvent(knownEvents.settingChanged, settingChangedEventData);
+			await bullhorn(this.messageBusProviderGetter, "broadcaster:setting:changed", settingChangedEventData);
 		}
 	}
 }

@@ -19,7 +19,7 @@
     "message": "Acha kuzungumza",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Soma uteuzi wa maandishi kwa sauti",
     "original": "Read text selection out loud"
   },

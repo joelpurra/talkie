@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	Promisable,
 	ReadonlyDeep,
 } from "type-fest";
-
-import DualLogger from "./dual-log.mjs";
-
-const dualLogger = new DualLogger("shared-frontend.js");
 
 const reflow = async () => {
 	document.body.style.marginBottom = "0";
@@ -33,14 +33,15 @@ const reflow = async () => {
 
 export type EventHandler<T extends Event> = (event: ReadonlyDeep<T>) => Promisable<void>;
 
-export const eventToPromise = async <T extends Event>(eventHandler: EventHandler<T>, event: ReadonlyDeep<T>): Promise<void> => {
+export const eventToPromiseSingle = async <T extends Event>(eventHandler: EventHandler<T>, event: ReadonlyDeep<T>): Promise<void> => {
 	try {
-		void dualLogger.dualLogDebug("Start", "eventToPromise", event.type, event);
+		void logDebug("Start", "eventToPromiseSingle", event.type, event);
 
 		await eventHandler(event);
-		void dualLogger.dualLogDebug("Done", "eventToPromise", event.type, event);
+
+		void logDebug("Done", "eventToPromiseSingle", event.type, event);
 	} catch (error: unknown) {
-		void dualLogger.dualLogError("eventToPromise", event.type, event, error);
+		void logError("eventToPromiseSingle", "swallowing error", event.type, event, error);
 	}
 };
 

@@ -19,7 +19,7 @@
     "message": "बात — चीत बंद करें",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "टेक्स्ट चयन ज़ोर से पढ़ें",
     "original": "Read text selection out loud"
   },

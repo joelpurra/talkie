@@ -41,15 +41,15 @@ export interface SettingsStateProps {
 	speakLongTexts: boolean;
 	speakingHistoryCount: number;
 	speakingHistoryLimit: number;
-	speakingHistory: SpeakingHistoryEntry[];
+	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
 	systemType: SystemType | null;
 	continueOnTabRemoved: boolean;
 	continueOnTabUpdatedUrl: boolean;
 }
 
 export interface SettingsDispatchProps {
-	clearSpeakingHistory: typeof actions.shared.speaking.clearSpeakingHistory;
-	removeSpeakingHistoryEntry: typeof actions.shared.speaking.removeSpeakingHistoryEntry;
+	clearSpeakingHistory: typeof actions.shared.history.clearSpeakingHistory;
+	removeSpeakingHistoryEntry: typeof actions.shared.history.removeSpeakingHistoryEntry;
 	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
 	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 	storeSpeakingHistoryLimit: typeof actions.settings.storeSpeakingHistoryLimit;

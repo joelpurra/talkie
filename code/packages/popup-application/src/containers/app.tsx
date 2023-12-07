@@ -97,7 +97,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpda
 				<IsSpeakingListenerContainer/>
 
 				<ProgressUpdaterTypehack
-					setCurrent={setCurrent as unknown}
+					setCurrent={setCurrent}
 					setMax={setMax}
 					setMin={setMin}
 				/>

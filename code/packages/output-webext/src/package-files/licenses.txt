@@ -1,10 +1,6 @@
-/packages/browser-background/dist/rollup/background.dependencies.txt
-/packages/browser-localeredirect/dist/rollup/localeredirect.dependencies.txt
-/packages/browser-runtime-dependencies/dist/umd/browser-polyfill.license.txt
 /packages/browser-runtime-dependencies/dist/umd/react-dom.license.txt
 /packages/browser-runtime-dependencies/dist/umd/react-redux.license.txt
 /packages/browser-runtime-dependencies/dist/umd/react.license.txt
 /packages/browser-runtime-dependencies/dist/umd/redux-toolkit.license.txt
-/packages/browser-stayalive/dist/rollup/stayalive.dependencies.txt
 /packages/options-application/dist/rollup/options.dependencies.txt
 /packages/popup-application/dist/rollup/popup.dependencies.txt

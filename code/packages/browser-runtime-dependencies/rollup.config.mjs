@@ -34,8 +34,6 @@ const fileName = `${inputName}${fileExtension}`;
 
 const alwaysCopyTargets = {
 	// NOTE: licenses of externalized (manually included) dependencies are not automatically detected by rollup-plugin-license.
-	"./dist/umd/browser-polyfill.license.txt":
-		"../../node_modules/webextension-polyfill/LICENSE",
 	"./dist/umd/react.license.txt": "../../node_modules/react/LICENSE",
 	"./dist/umd/react-dom.license.txt": "../../node_modules/react-dom/LICENSE",
 	"./dist/umd/react-redux.license.txt":
@@ -54,8 +52,6 @@ let environmentTargets;
 // TODO: use this flag to switch <script> urls instead of replacing file contents by reusing the same location?
 if (isTalkieDevelopmentMode()) {
 	environmentTargets = {
-		"./dist/umd/browser-polyfill.js":
-			"../../node_modules/webextension-polyfill/dist/browser-polyfill.min.js",
 		"./dist/umd/react.js":
 			"../../node_modules/react/umd/react.production.min.js",
 		"./dist/umd/react-dom.js":
@@ -67,8 +63,6 @@ if (isTalkieDevelopmentMode()) {
 	};
 } else if (isTalkieProductionMode()) {
 	environmentTargets = {
-		"./dist/umd/browser-polyfill.js":
-			"../../node_modules/webextension-polyfill/dist/browser-polyfill.js",
 		"./dist/umd/react.js": "../../node_modules/react/umd/react.development.js",
 		"./dist/umd/react-dom.js":
 			"../../node_modules/react-dom/umd/react-dom.development.js",

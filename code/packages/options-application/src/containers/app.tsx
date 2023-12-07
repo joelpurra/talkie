@@ -21,6 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import toolkit from "@reduxjs/toolkit";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import VoicesLoader from "@talkie/shared-ui/components/loaders/voices-loader.js";
+import HistoryListenerContainer from "@talkie/shared-ui/containers/history-listener-container.js";
 import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
 import {
 	type ProgressUpdaterDispatchProps,
@@ -120,6 +121,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 				<VoicesLoader/>
 
 				<IsSpeakingListenerContainer/>
+				<HistoryListenerContainer/>
 
 				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}

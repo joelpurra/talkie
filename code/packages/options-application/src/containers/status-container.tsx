@@ -48,8 +48,8 @@ export interface StatusContainerProps {}
 interface StateProps extends StatusStateProps {}
 
 interface DispatchProps extends StatusDispatchProps {
-	loadMostRecentSpeakingEntry: typeof actions.shared.speaking.loadMostRecentSpeakingEntry;
-	loadSpeakingHistory: typeof actions.shared.speaking.loadSpeakingHistory;
+	loadMostRecentSpeakingEntry: typeof actions.shared.history.loadMostRecentSpeakingEntry;
+	loadSpeakingHistory: typeof actions.shared.history.loadSpeakingHistory;
 	loadSpeakingHistoryLimit: typeof actions.settings.loadSpeakingHistoryLimit;
 }
 
@@ -57,20 +57,15 @@ interface DispatchProps extends StatusDispatchProps {
 const mapStateToProps: MapStateToProps<StateProps, StatusContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isSpeaking: state.shared.speaking.isSpeaking,
 	isSpeakingHistoryEnabled: selectors.settings.getIsSpeakingHistoryEnabled(state),
-	mostRecentLanguage: state.shared.speaking.mostRecentLanguage,
-	mostRecentPitch: state.shared.speaking.mostRecentPitch,
-	mostRecentRate: state.shared.speaking.mostRecentRate,
-	mostRecentText: state.shared.speaking.mostRecentText,
-	mostRecentVoiceName: state.shared.speaking.mostRecentVoiceName,
-	speakingHistory: state.shared.speaking.history,
-	speakingHistoryCount: selectors.shared.speaking.getSpeakingHistoryCount(state),
+	mostRecent: state.shared.history.mostRecent,
+	speakingHistory: state.shared.history.speakingHistory,
+	speakingHistoryCount: selectors.shared.history.getSpeakingHistoryCount(state),
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, StatusContainerProps> = (dispatch) => ({
-	loadMostRecentSpeakingEntry: bindActionCreators(actions.shared.speaking.loadMostRecentSpeakingEntry, dispatch),
-	loadSpeakingHistory: bindActionCreators(actions.shared.speaking.loadSpeakingHistory, dispatch),
+	loadMostRecentSpeakingEntry: bindActionCreators(actions.shared.history.loadMostRecentSpeakingEntry, dispatch),
+	loadSpeakingHistory: bindActionCreators(actions.shared.history.loadSpeakingHistory, dispatch),
 	loadSpeakingHistoryLimit: bindActionCreators(actions.settings.loadSpeakingHistoryLimit, dispatch),
-	speakInCustomVoice: bindActionCreators(actions.shared.speaking.speakInCustomVoice, dispatch),
 	speakTextInVoiceWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInVoiceWithOverrides, dispatch),
 	stopSpeaking: bindActionCreators(actions.shared.speaking.stopSpeaking, dispatch),
 });
@@ -91,12 +86,7 @@ class StatusContainer<P extends StatusContainerProps & StateProps & DispatchProp
 		const {
 			isSpeaking,
 			isSpeakingHistoryEnabled,
-			mostRecentLanguage,
-			mostRecentPitch,
-			mostRecentRate,
-			mostRecentText,
-			mostRecentVoiceName,
-			speakInCustomVoice,
+			mostRecent,
 			speakingHistory,
 			speakingHistoryCount,
 			speakTextInVoiceWithOverrides,
@@ -107,12 +97,7 @@ class StatusContainer<P extends StatusContainerProps & StateProps & DispatchProp
 			<Status
 				isSpeaking={isSpeaking}
 				isSpeakingHistoryEnabled={isSpeakingHistoryEnabled}
-				mostRecentLanguage={mostRecentLanguage}
-				mostRecentPitch={mostRecentPitch}
-				mostRecentRate={mostRecentRate}
-				mostRecentText={mostRecentText}
-				mostRecentVoiceName={mostRecentVoiceName}
-				speakInCustomVoice={speakInCustomVoice}
+				mostRecent={mostRecent}
 				speakTextInVoiceWithOverrides={speakTextInVoiceWithOverrides}
 				speakingHistory={speakingHistory}
 				speakingHistoryCount={speakingHistoryCount}

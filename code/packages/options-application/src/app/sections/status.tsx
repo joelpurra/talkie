@@ -63,18 +63,13 @@ import {
 export interface StatusStateProps {
 	isSpeaking: boolean;
 	isSpeakingHistoryEnabled: boolean;
-	mostRecentLanguage: string | null;
-	mostRecentPitch: number;
-	mostRecentRate: number;
-	mostRecentText: string | null;
-	mostRecentVoiceName: string | null;
-	speakingHistory: SpeakingHistoryEntry[];
+	mostRecent: SpeakingHistoryEntry | null;
+	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
 	speakingHistoryCount: number;
 }
 
 export interface StatusDispatchProps {
 	speakTextInVoiceWithOverrides: typeof actions.shared.speaking.speakTextInVoiceWithOverrides;
-	speakInCustomVoice: typeof actions.shared.speaking.speakInCustomVoice;
 	stopSpeaking: typeof actions.shared.speaking.stopSpeaking;
 }
 
@@ -82,9 +77,8 @@ interface InternalProps extends StatusDispatchProps, StatusStateProps, Configure
 
 class Status<P extends InternalProps> extends React.PureComponent<P> {
 	static defaultProps = {
-		mostRecentLanguage: null,
-		mostRecentText: null,
-		mostRecentVoiceName: null,
+		mostRecent: null,
+		speakingHistory: [],
 	};
 
 	private readonly styled: {
@@ -132,31 +126,38 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		event.stopPropagation();
 
 		const {
-			speakInCustomVoice,
-			mostRecentText,
-			mostRecentVoiceName,
-			mostRecentPitch,
-			mostRecentRate,
+			speakTextInVoiceWithOverrides,
+			mostRecent,
 		} = this.props;
 
-		if (typeof mostRecentText !== "string") {
+		if (!mostRecent) {
 			throw new TypeError("mostRecentText");
 		}
 
-		if (typeof mostRecentVoiceName !== "string") {
-			throw new TypeError("mostRecentVoiceName");
+		if (typeof mostRecent.text !== "string") {
+			throw new TypeError("mostRecent.text");
 		}
 
-		// NOTE: using the frontend values instead of a backend lookup.
-		// TODO: use single source of truth, meaning use backend values?
-		speakInCustomVoice({
-			text: mostRecentText,
-			voice: {
-				name: mostRecentVoiceName,
-				pitch: mostRecentPitch,
-				rate: mostRecentRate,
-			},
+		if (typeof mostRecent.voiceName !== "string") {
+			throw new TypeError("mostRecent.voiceName");
+		}
+
+		// NOTE: using the frontend values instead of a backend lookup; backend my not have the most recent entry if history is disabled.
+		// TODO: create speakTextInMostRecentVoice() in slice?
+		speakTextInVoiceWithOverrides({
+			text: mostRecent.text,
+			voiceName: mostRecent.voiceName,
 		});
+
+		// TODO: should pitch/rate be part of mostRecent and/or SpeakingHistoryEntry?
+		//speakTextInCustomVoice({
+		//text: mostRecent.text,
+		//voice: {
+		//name: mostRecent.voiceName,
+		//pitch: mostRecent.pitch,
+		//rate: mostRecent.rate,
+		//},
+		//});
 
 		return false;
 	}
@@ -200,38 +201,37 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		return false;
 	}
 
+	// eslint-disable-next-line complexity
 	override render(): React.ReactNode {
 		const {
 			isSpeaking,
 			isSpeakingHistoryEnabled,
-			mostRecentLanguage,
-			// TODO: enable pitch/rate.
-			// mostRecentPitch,
-			// mostRecentRate,
-			mostRecentText,
-			mostRecentVoiceName,
+			mostRecent,
 			speakingHistory,
 			translatePlaceholderSync,
 		} = this.props as InternalProps;
 
 		// TODO: move to state/selector.
-		const hasMostRecentText = typeof mostRecentText === "string"
-			&& mostRecentText.length > 0
-			&& mostRecentText.trim().length > 0;
+		const hasMostRecentText = mostRecent !== null
+			&& typeof mostRecent.text === "string"
+			&& mostRecent.text.length > 0
+			&& mostRecent.text.trim().length > 0;
 
 		// TODO: move to state/selector.
-		const hasMostRecentLanguage = typeof mostRecentLanguage === "string"
-				&& mostRecentLanguage.length > 0
-				&& mostRecentLanguage.trim().length > 0;
+		const hasMostRecentLanguage = mostRecent !== null
+				&& typeof mostRecent.language === "string"
+				&& mostRecent.language.length > 0
+				&& mostRecent.language.trim().length > 0;
 
-		const mostRecentLanguageGroup = hasMostRecentLanguage
-			? getLanguageGroupFromLanguage(mostRecentLanguage)
+		const mostRecentLanguageGroup = mostRecent !== null
+			&& hasMostRecentLanguage
+			? getLanguageGroupFromLanguage(mostRecent.language!)
 			: null;
 
 		// TODO: move to state/selector.
 		const hasMostRecentLanguageGroup = typeof mostRecentLanguageGroup === "string"
-						&& mostRecentLanguageGroup.length > 0
-						&& mostRecentLanguageGroup.trim().length > 0;
+			&& mostRecentLanguageGroup.length > 0
+			&& mostRecentLanguageGroup.trim().length > 0;
 
 		// TODO: don't create instance here.
 		const talkieLocaleHelper = new TalkieLocaleHelper();
@@ -359,12 +359,12 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 						<tableBase.tr>
 							<this.styled.centerTd>
 								<EmptyTextUseFallbackDash
-									text={mostRecentLanguage}
+									text={mostRecent?.language ?? null}
 								/>
 							</this.styled.centerTd>
 							<this.styled.centerTd>
 								<EmptyTextUseFallbackDash
-									text={mostRecentVoiceName}
+									text={mostRecent?.voiceName ?? null}
 								/>
 							</this.styled.centerTd>
 							{/*
@@ -450,7 +450,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 					>
 						<MarkdownParagraph>
 							{/* TODO: fix string type narrowing/detection based on hasMostRecentText? */}
-							{(typeof mostRecentText === "string" && mostRecentText.trim().length > 0 && mostRecentText) || "NOTE: empty or no markdown string was provided."}
+							{(mostRecent !== null && typeof mostRecent.text === "string" && mostRecent.text.trim().length > 0 && mostRecent.text) || "NOTE: empty or no markdown string was provided."}
 						</MarkdownParagraph>
 					</textBase.blockquote>
 				</Discretional>
@@ -459,7 +459,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 					enabled={!hasMostRecentText}
 				>
 					<textBase.p>
-						{translatePlaceholderSync("No text has been spoken so far.")}
+						{translatePlaceholderSync("There are no history entries.")}
 					</textBase.p>
 				</Discretional>
 			</section>

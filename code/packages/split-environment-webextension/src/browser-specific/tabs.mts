@@ -29,10 +29,6 @@ import type {
 	Tabs,
 } from "webextension-polyfill";
 
-import {
-	type ITalkieServices,
-} from "./italkie-services.mjs";
-
 // NOTE: whitelisting schemes.
 // TODO: can the list be extended?
 const whitelistedUrlShemes = [
@@ -50,20 +46,6 @@ const blacklistedBaseUrls = [
 	"https://addons.mozilla.org/",
 ];
 
-export const getTalkieServices = async (): Promise<ITalkieServices> => {
-	const backgroundPage = await browser.runtime.getBackgroundPage();
-
-	// https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
-	if (backgroundPage) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const talkieServices = (backgroundPage as any).talkieServices as ITalkieServices;
-
-		return talkieServices;
-	}
-
-	throw new Error("Could not retrieve the background page.");
-};
-
 export const getCurrentActiveTab = async (): Promise<Tabs.Tab | null> => {
 	const queryOptions = {
 		active: true,
@@ -71,7 +53,7 @@ export const getCurrentActiveTab = async (): Promise<Tabs.Tab | null> => {
 	};
 
 	// https://developer.chrome.com/extensions/tabs#method-query
-	const tabs = await browser.tabs.query(queryOptions);
+	const tabs = await chrome.tabs.query(queryOptions);
 
 	if (!tabs) {
 		return null;
@@ -134,7 +116,7 @@ const getCurrentActiveNormalLoadedTab = async (): Promise<Tabs.Tab | null> => {
 	};
 
 	// https://developer.chrome.com/extensions/tabs#method-query
-	const tabs = await browser.tabs.query(queryOptions);
+	const tabs = await chrome.tabs.query(queryOptions);
 
 	const singleTabResult = tabs.length === 1;
 

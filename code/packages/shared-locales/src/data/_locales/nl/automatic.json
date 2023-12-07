@@ -19,7 +19,7 @@
     "message": "Stop met praten",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Tekstselectie hardop voorlezen",
     "original": "Read text selection out loud"
   },

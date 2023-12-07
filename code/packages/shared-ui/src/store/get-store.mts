@@ -28,7 +28,7 @@ import toolkit from "@reduxjs/toolkit";
 import {
 	isTalkieDevelopmentMode,
 } from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
-import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
+import type IApi from "@talkie/split-environment-interfaces/iapi/iapi.mjs";
 import logger from "redux-logger";
 import type {
 	ReadonlyDeep,

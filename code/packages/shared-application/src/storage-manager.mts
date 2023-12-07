@@ -165,6 +165,7 @@ export default class StorageManager {
 			throw new Error(`Unknown storage key (${storageFormatVersion}): ${key}`);
 		}
 
+		// TODO: use full objects/object paths with MV3 chrome.storage.local.
 		return `${storageFormatVersion}_${key}`;
 	}
 

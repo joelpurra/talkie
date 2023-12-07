@@ -19,17 +19,23 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	type KillSwitch,
-} from "@talkie/shared-interfaces/killswitch.mjs";
+	startResponder,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import {
-	knownEvents,
-} from "@talkie/shared-interfaces/known-events.mjs";
+	promiseDelay,
+} from "@talkie/shared-application-helpers/promise.mjs";
+import {
+	executeUninitializers,
+} from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
+import {
+	type UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
 import React from "react";
 
 import {
-	BroadcasterContext,
+	MessageBusContext,
 } from "../containers/providers.js";
-import executeGetFramesSelectionTextAndLanguageCode from "./pass-selected-text-to-background-javascript.mjs";
+import getSelectedTextAndLanguageCodes from "../utils/get-selected-text-and-languages.mjs";
 import {
 	type PerhapsSelectedTextWithFocusTimestamp,
 } from "./pass-selected-text-to-background-types.mjs";
@@ -39,14 +45,14 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {
 		class PassSelectedTextToBackgroundHoc extends React.PureComponent<P, S, SS> {
-			static override contextType = BroadcasterContext;
+			static override contextType = MessageBusContext;
 
 			// eslint-disable-next-line react/static-property-placement
-			declare context: React.ContextType<typeof BroadcasterContext>;
+			declare context: React.ContextType<typeof MessageBusContext>;
 
-			killSwitches: KillSwitch[];
-			isListeningToBroadcasts: boolean;
-			mostRecentUse: number;
+			private readonly _uninitializers: UninitializerCallback[] = [];
+			private _isListeningToMessageBus = false;
+			private _mostRecentUse = 0;
 
 			constructor(props: P) {
 				super(props);
@@ -56,10 +62,6 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 				this.enable = this.enable.bind(this);
 				this.disable = this.disable.bind(this);
 				this.getSelectedTextWithFocusTimestamp = this.getSelectedTextWithFocusTimestamp.bind(this);
-
-				this.isListeningToBroadcasts = false;
-				this.killSwitches = [];
-				this.mostRecentUse = 0;
 			}
 
 			override componentDidMount(): void {
@@ -87,27 +89,29 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 			}
 
 			gotFocus() {
-				this.mostRecentUse = Date.now();
+				this._mostRecentUse = Date.now();
 			}
 
 			enable() {
 				// TODO: properly avoid race conditions when enabling/disabling.
-				if (this.isListeningToBroadcasts) {
+				if (this._isListeningToMessageBus) {
 					return;
 				}
 
-				void this.registerBroadcastListeners();
-				this.isListeningToBroadcasts = true;
+				void this.registerMessageBusListeners();
+				this._isListeningToMessageBus = true;
 			}
 
 			disable() {
 				// TODO: properly avoid race conditions when enabling/disabling.
-				if (!this.isListeningToBroadcasts) {
+				if (!this._isListeningToMessageBus) {
 					return;
 				}
 
-				this.isListeningToBroadcasts = false;
-				this.executeKillSwitches();
+				this._isListeningToMessageBus = false;
+
+				// TODO: await uninitializers?
+				void executeUninitializers(this._uninitializers);
 			}
 
 			override render(): React.ReactNode {
@@ -119,44 +123,38 @@ export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS
 			}
 
 			async getSelectedTextWithFocusTimestamp(): Promise<PerhapsSelectedTextWithFocusTimestamp | null> {
-				if (!this.isListeningToBroadcasts) {
+				if (!this._isListeningToMessageBus) {
 					return null;
 				}
 
-				const selectedTextWithFocusTimestamp = {
-					mostRecentUse: this.mostRecentUse,
-					selectionTextAndLanguageCode: executeGetFramesSelectionTextAndLanguageCode(),
+				const selectionTextAndLanguageCode = getSelectedTextAndLanguageCodes();
+
+				if (!selectionTextAndLanguageCode) {
+					return null;
+				}
+
+				const selectedTextWithFocusTimestamp: PerhapsSelectedTextWithFocusTimestamp = {
+					mostRecentUse: this._mostRecentUse,
+					selectionTextAndLanguageCode,
 				};
+
+				// HACK: chrome only uses the first reply (like Promise.race()); delay messages to increase chances that the most recently used tab reacts first.
+				// NOTE: example values:
+				// - 1 second ago => 1,000 milliseconds => log2() => ~10 => *10 => delay 100 milliseconds.
+				// - 30 seconds ago =>  30,000 ms => ~15 => delay 150 ms.
+				// - 1 hour ago =>  3,600,000 ms => ~22 => delay 210 ms.
+				// NOTE: this workaround doesn't work for the current webextension implementation, which allows multiple response (like Promise.all()) values but instead filters "usable" values to pick a single response.
+				const timeSinceUse = Date.now() - this._mostRecentUse;
+				const delay = Math.log2(Math.abs(timeSinceUse)) * 10;
+				await promiseDelay(delay);
 
 				return selectedTextWithFocusTimestamp;
 			}
 
-			executeKillSwitches() {
-				// TODO: base component class for other components with broadcast listeners and kill switches.
-				// NOTE: expected to have only synchronous methods for the relevant parts.
-				const killSwitchesToExecute = this.killSwitches;
-				this.killSwitches = [];
+			async registerMessageBusListeners() {
+				const uninitializers = await startResponder(this.context.messageBusProviderGetter, "dom:internal:passSelectedTextToBackground", async () => this.getSelectedTextWithFocusTimestamp());
 
-				for (const killSwitch of killSwitchesToExecute) {
-					try {
-						killSwitch();
-					} catch {
-						try {
-							// dualLogger.dualLogError("executeKillSwitches", error);
-						} catch {
-							// NOTE: ignoring error logging errors.
-						}
-					}
-				}
-			}
-
-			async registerBroadcastListeners() {
-				const killSwitch = await this.context.broadcaster.registerListeningAction(
-					knownEvents.passSelectedTextToBackground,
-					async () => this.getSelectedTextWithFocusTimestamp(),
-				);
-
-				this.killSwitches.push(killSwitch);
+				this._uninitializers.unshift(...uninitializers);
 			}
 		}
 

@@ -19,7 +19,7 @@
     "message": "ਗਲ ਕਰਨੀ ਬੰਦ ਕਰੋ",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "ਟੈਕਸਟ ਚੋਣ ਨੂੰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ",
     "original": "Read text selection out loud"
   },

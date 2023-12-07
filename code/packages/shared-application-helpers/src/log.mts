@@ -63,7 +63,25 @@ const loggingLevels: LoggingLevelName[] = [
 	"NONE",
 ];
 
-const parseLevelName = (nextLevelName: LoggingLevelName | Lowercase<LoggingLevelName>) => {
+export const isLevelName = (input: unknown): input is LoggingLevelName => {
+	if (typeof input !== "string") {
+		return false;
+	}
+
+	const normalizedLevelName: LoggingLevelName = input.toUpperCase() as Uppercase<LoggingLevelName>;
+
+	const levelIndex = loggingLevels.indexOf(normalizedLevelName);
+
+	return (typeof levelIndex === "number" && Math.floor(levelIndex) === Math.ceil(levelIndex) && levelIndex >= 0 && levelIndex < loggingLevels.length);
+};
+
+export const assertLevelName = (input: unknown): asserts input is LoggingLevelName => {
+	if (!isLevelName(input)) {
+		throw new TypeError("input");
+	}
+};
+
+const parseLevelName = (nextLevelName: LoggingLevelName | Lowercase<LoggingLevelName>): number => {
 	if (typeof nextLevelName !== "string") {
 		throw new TypeError("nextLevelName");
 	}
@@ -79,7 +97,25 @@ const parseLevelName = (nextLevelName: LoggingLevelName | Lowercase<LoggingLevel
 	throw new TypeError(`nextLevelName ${typeof nextLevelName} ${JSON.stringify(nextLevelName)}`);
 };
 
-const parseLevel = (nextLevel: LoggingLevel) => {
+export function isLevel(input: unknown): input is LoggingLevel {
+	if (typeof input === "number") {
+		return (Math.floor(input) === Math.ceil(input) && input >= 0 && input < loggingLevels.length);
+	}
+
+	if (typeof input === "string") {
+		return isLevelName(input);
+	}
+
+	return false;
+}
+
+export function assertLevel(input: unknown): asserts input is LoggingLevel {
+	if (!isLevel(input)) {
+		throw new TypeError("input");
+	}
+}
+
+const parseLevel = (nextLevel: LoggingLevel): number => {
 	if (typeof nextLevel === "number") {
 		if (Math.floor(nextLevel) === Math.ceil(nextLevel) && nextLevel >= 0 && nextLevel < loggingLevels.length) {
 			return nextLevel;

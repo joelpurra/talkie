@@ -22,6 +22,9 @@ import type {
 	Action,
 } from "@reduxjs/toolkit";
 import hydrateHtml from "@talkie/browser-shared/hydrate/hydrate-html.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import App from "./containers/app.js";
 import rootReducer, {
@@ -39,6 +42,7 @@ const postrenderActionsToDispatch: Action[] = [
 	actions.tabs.loadActiveTabFromLocationHash() as unknown as Action,
 ];
 
-export default async function hydrate(): Promise<void> {
-	await hydrateHtml(rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, App);
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+export default async function hydrate(messageBusProviderGetter: IMessageBusProviderGetter): Promise<void> {
+	await hydrateHtml(messageBusProviderGetter, rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, App);
 }

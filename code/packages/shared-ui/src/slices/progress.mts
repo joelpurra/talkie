@@ -69,4 +69,3 @@ export const {
 	setMin,
 } = progressSlice.actions;
 export default progressSlice.reducer;
-

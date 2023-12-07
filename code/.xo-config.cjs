@@ -19,6 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 module.exports = {
+	"envs": [
+		"browser",
+		"webextensions"
+	],
 	"extends": [
 		"eslint-config-joelpurra/react",
 		"eslint-config-joelpurra/typescript",

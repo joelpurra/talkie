@@ -19,7 +19,7 @@
     "message": "حرف نزن",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "انتخاب متن را با صدای بلند بخوانید",
     "original": "Read text selection out loud"
   },

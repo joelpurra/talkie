@@ -27,12 +27,15 @@
         "popup": "/packages/popup-renderer/src/popup.html"
       },
       "license": {
-        "browser-polyfill": "/packages/browser-runtime-dependencies/dist/umd/browser-polyfill.license.txt",
-        "options-dependencies": "/packages/options-application/dist/rollup/options.dependencies.txt",
-        "popup-dependencies": "/packages/popup-application/dist/rollup/popup.dependencies.txt",
-        "react": "/packages/browser-runtime-dependencies/dist/umd/react.license.txt",
+        "@talkie/browser-background": "/packages/browser-background/dist/rollup/background.dependencies.txt",
+        "@talkie/browser-localeredirect": "/packages/browser-localeredirect/dist/rollup/localeredirect.dependencies.txt",
+        "@talkie/browser-offscreen": "/packages/browser-offscreen/dist/rollup/offscreen.dependencies.txt",
+        "@talkie/browser-serviceworker": "/packages/browser-serviceworker/dist/rollup/serviceworker.dependencies.txt",
+        "@talkie/options-application": "/packages/options-application/dist/rollup/options.dependencies.txt",
+        "@talkie/popup-application": "/packages/popup-application/dist/rollup/popup.dependencies.txt",
         "react-dom": "/packages/browser-runtime-dependencies/dist/umd/react-dom.license.txt",
         "react-redux": "/packages/browser-runtime-dependencies/dist/umd/react-redux.license.txt",
+        "react": "/packages/browser-runtime-dependencies/dist/umd/react.license.txt",
         "redux-toolkit": "/packages/browser-runtime-dependencies/dist/umd/redux-toolkit.license.txt"
       }
     }

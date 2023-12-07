@@ -23,22 +23,17 @@ import type {
 	Runtime,
 } from "webextension-polyfill";
 
-export type EditionType = "free" | "premium";
 export type SystemType = "chrome" | "webextension";
 
 // TODO: replace external alias type with internal type?
 export type OsType = Runtime.PlatformOs;
 
 export interface IMetadataManager {
-	isPremiumEdition(): Promise<boolean>;
-
 	getManifest(): Promise<Manifest.ManifestBase>;
 
 	getVersionNumber(): Promise<string>;
 
 	getVersionName(): Promise<string>;
-
-	getEditionType(): Promise<EditionType>;
 
 	isChromeVersion(): Promise<boolean>;
 

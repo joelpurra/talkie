@@ -19,7 +19,7 @@
     "message": "Hör auf zu reden",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Textauswahl laut vorlesen",
     "original": "Read text selection out loud"
   },

@@ -23,7 +23,9 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
@@ -35,7 +37,8 @@ const getRoot = async <S, A extends Action, P>(
 	translatorProvider: Readonly<ITranslatorProvider>,
 	configuration: Readonly<IConfiguration>,
 	styletronProvider: Readonly<IStyletronProvider>,
-	broadcasterProvider: Readonly<IBroadcasterProvider>,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: Readonly<IMessageBusProviderGetter>,
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	ChildComponent: React.ComponentType<P>,
 	// eslint-disable-next-line max-params
@@ -48,8 +51,8 @@ const getRoot = async <S, A extends Action, P>(
 	const CastChildComponent = ChildComponent as React.ComponentType<unknown>;
 	const root = (
 		<Root
-			broadcaster={broadcasterProvider}
 			configuration={configuration}
+			messageBusProviderGetter={messageBusProviderGetter}
 			store={store as unknown as Store<unknown>}
 			styletron={styletron}
 			translator={translatorProvider}

@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type {
-	Browser,
-} from "webextension-polyfill";
-
 const getPageName = (): string => {
 	const pathParts = document.location.pathname.split("/");
 
@@ -48,29 +44,9 @@ const getPageName = (): string => {
 	throw new Error(`Could not get page name: ${typeof document} ${JSON.stringify(document?.location)}`);
 };
 
-const getGlobalExtension = (global: unknown): Browser => {
-	if (typeof global !== "object" || global === null) {
-		throw new TypeError("Global is not an object.");
-	}
-
-	if ("browser" in global) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return (global as any).browser as Browser;
-	}
-
-	if ("chrome" in global) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return (global as any).chrome as Browser;
-	}
-
-	throw new TypeError("Could not find browser object.");
-};
-
-const globalExtension = getGlobalExtension(window);
-
 // NOTE: use this hacky solution for speed, or use ILocaleProvider for DRY?
 // NOTE: might be able to use @@ui_locale, but would miss out on locale directory fallback detection logic in the browser.
-const locale = globalExtension.i18n.getMessage("extensionLocale");
+const locale = chrome.i18n.getMessage("extensionLocale");
 const pageName: string = getPageName();
 
 // NOTE: relative to the html page where this script is included, rooted in the browser extension package root.

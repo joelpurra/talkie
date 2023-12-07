@@ -19,7 +19,7 @@
     "message": "توقف عن الكلام",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "قراءة تحديد النص بصوت عالٍ",
     "original": "Read text selection out loud"
   },

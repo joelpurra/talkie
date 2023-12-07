@@ -19,7 +19,7 @@
     "message": "Ngừng nói",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Đọc to lựa chọn văn bản",
     "original": "Read text selection out loud"
   },

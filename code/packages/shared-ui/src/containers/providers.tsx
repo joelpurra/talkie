@@ -22,7 +22,9 @@ import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
@@ -31,7 +33,7 @@ import {
 	type MapStateToProps,
 } from "react-redux";
 import {
-	Provider,
+	Provider as StyletronProvider,
 } from "styletron-react";
 import type {
 	StandardEngine,
@@ -56,20 +58,20 @@ export interface ConfigurationProviderContext {
 
 export interface TranslationProviderContext extends ITranslatorProvider {}
 
-export interface BroadcasterProviderContext {
-	broadcaster: IBroadcasterProvider;
+export interface MessageBusProviderContext {
+	messageBusProviderGetter: IMessageBusProviderGetter;
 }
 
 export interface ProvidersState {
-	broadcasterContextValue: BroadcasterProviderContext;
 	configurationContextValue: ConfigurationProviderContext;
+	messageBusContextValue: MessageBusProviderContext;
 	systemType: SystemType;
 	translateContextValue: TranslationProviderContext;
 }
 
 export interface ProvidersProps {
-	broadcaster: IBroadcasterProvider;
 	configuration: IConfiguration;
+	messageBusProviderGetter: IMessageBusProviderGetter;
 	styletron: StandardEngine;
 	translator: ITranslatorProvider;
 }
@@ -92,7 +94,7 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, ProvidersPro
 // NOTE: these default values are not statically available at runtime, since the instances need to be initialized. Instead, they are passed as provider values.
 export const ConfigurationContext = React.createContext<ConfigurationProviderContext>(undefined as unknown as ConfigurationProviderContext);
 export const TranslateContext = React.createContext<TranslationProviderContext>(undefined as unknown as TranslationProviderContext);
-export const BroadcasterContext = React.createContext<BroadcasterProviderContext>(undefined as unknown as BroadcasterProviderContext);
+export const MessageBusContext = React.createContext<MessageBusProviderContext>(undefined as unknown as MessageBusProviderContext);
 
 class Providers<P extends ProvidersProps & StateProps & DispatchProps & ChildrenRequiredProps, S extends ProvidersState = ProvidersState> extends React.PureComponent<P, S> {
 	static getConfigure(configuration: Readonly<IConfiguration>, systemType: SystemType | null): ConfigureContextProperty {
@@ -121,11 +123,11 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 
 	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 	override state = {
-		broadcasterContextValue: {
-			broadcaster: this.props.broadcaster,
-		},
 		configurationContextValue: {
 			configure: Providers.getConfigure(this.props.configuration, this.props.systemType),
+		},
+		messageBusContextValue: {
+			messageBusProviderGetter: this.props.messageBusProviderGetter,
 		},
 		systemType: this.props.systemType,
 		translateContextValue: {
@@ -150,18 +152,18 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 
 		const {
 			configurationContextValue,
+			messageBusContextValue,
 			translateContextValue,
-			broadcasterContextValue,
 		} = this.state;
 
 		return (
 			<ConfigurationContext.Provider value={configurationContextValue}>
 				<TranslateContext.Provider value={translateContextValue}>
-					<BroadcasterContext.Provider value={broadcasterContextValue}>
-						<Provider value={styletron}>
+					<MessageBusContext.Provider value={messageBusContextValue}>
+						<StyletronProvider value={styletron}>
 							{React.Children.only(this.props.children)}
-						</Provider>
-					</BroadcasterContext.Provider>
+						</StyletronProvider>
+					</MessageBusContext.Provider>
 				</TranslateContext.Provider>
 			</ConfigurationContext.Provider>
 		);

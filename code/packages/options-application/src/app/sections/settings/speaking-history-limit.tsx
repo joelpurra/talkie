@@ -20,7 +20,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	KnownSettingDefaults,
-} from "@talkie/shared-application/settings-manager.mjs";
+	KnownSettingRanges,
+} from "@talkie/shared-application/settings.mjs";
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
@@ -45,16 +46,28 @@ import {
 } from "../../../slices/index.mjs";
 
 export interface SpeakingHistoryLimitProps {
-	clearSpeakingHistory: typeof actions.shared.speaking.clearSpeakingHistory;
+	clearSpeakingHistory: typeof actions.shared.history.clearSpeakingHistory;
 	disabled: boolean;
 	onChange: (speakingHistoryLimit: number) => void;
-	removeSpeakingHistoryEntry: typeof actions.shared.speaking.removeSpeakingHistoryEntry;
-	speakingHistory: SpeakingHistoryEntry[];
+	removeSpeakingHistoryEntry: typeof actions.shared.history.removeSpeakingHistoryEntry;
+	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
 	speakingHistoryCount: number;
 	speakingHistoryLimit: number;
 }
 
 class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps> extends React.PureComponent<P> {
+	private static get _speakingHistoryLimitMin() {
+		return KnownSettingRanges.SpeakingHistoryLimit.min;
+	}
+
+	private static get _speakingHistoryLimitMax() {
+		return KnownSettingRanges.SpeakingHistoryLimit.max;
+	}
+
+	private static get _speakingHistoryLimitStep() {
+		return KnownSettingRanges.SpeakingHistoryLimit.step;
+	}
+
 	private readonly styled: {
 		transparentButtonEllipsis: TalkieStyletronComponent<typeof buttonBase.transparentButton>;
 	};
@@ -95,13 +108,11 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 			throw new TypeError(`speakingHistoryLimit: ${JSON.stringify(speakingHistoryLimit)}`);
 		}
 
-		// TODO: share range limit values with files.
-		if (speakingHistoryLimit < 0) {
+		if (speakingHistoryLimit < SpeakingHistoryLimit._speakingHistoryLimitMin) {
 			throw new RangeError(`speakingHistoryLimit: ${JSON.stringify(speakingHistoryLimit)}`);
 		}
 
-		// TODO: share range limit values with files.
-		if (speakingHistoryLimit > 100) {
+		if (speakingHistoryLimit > SpeakingHistoryLimit._speakingHistoryLimitMax) {
 			throw new RangeError(`speakingHistoryLimit: ${JSON.stringify(speakingHistoryLimit)}`);
 		}
 
@@ -155,10 +166,11 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 				<p>
 					<InputWithLabel
 						disabled={disabled}
-						max={100}
-						min={0}
-						step={10}
+						max={SpeakingHistoryLimit._speakingHistoryLimitMax}
+						min={SpeakingHistoryLimit._speakingHistoryLimitMin}
+						step={SpeakingHistoryLimit._speakingHistoryLimitStep}
 						style={{
+							// TODO: remove inline styles because `style-src: 'unsafe-inline';` isn't supported in MV3.
 							// TODO: pass extra CSS className property styling to the inner element.
 							width: "5em",
 						}}

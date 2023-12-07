@@ -10,17 +10,16 @@
     "type-fest"
   ],
   "dependencies": {
-    "@talkie/browser-shared": "*",
-    "@talkie/browser-stayalive": "*",
+    "@talkie/browser-bricks": "*",
+    "@talkie/browser-groundwork": "*",
+    "@talkie/browser-mason": "*",
     "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
-    "@talkie/shared-interfaces": "*",
-    "@talkie/shared-ui": "*",
     "@talkie/split-environment-interfaces": "*",
     "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {
-    "webextension-polyfill": "^0.10.0"
+    "webextension-polyfill": "^0.12.0"
   },
   "exports": {
     "./*": {

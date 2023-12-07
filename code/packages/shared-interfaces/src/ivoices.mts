@@ -49,3 +49,28 @@ export interface MutableSafeVoiceObject extends JsonObject {
 export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
 
 export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
+
+export interface MutableSafeUtteranceObject extends JsonObject {
+	lang: string;
+	pitch: number;
+	rate: number;
+	text: string;
+	voice: SafeVoiceObject | null;
+	volume: number;
+}
+
+export interface SafeUtteranceObject extends Readonly<MutableSafeUtteranceObject> {}
+
+export interface SafeUtteranceObjects extends Readonly<SafeUtteranceObject[]> {}
+
+export interface MutableSpeechSynthesisEventObject extends JsonObject {
+	charIndex: number;
+	charLength: number;
+	elapsedTime: number;
+	name: string;
+	utterance: SafeUtteranceObject;
+}
+
+export interface SafeSpeechSynthesisEventObject extends Readonly<MutableSpeechSynthesisEventObject> {}
+
+export interface SafeSpeechSynthesisEventObjects extends Readonly<SafeSpeechSynthesisEventObject[]> {}

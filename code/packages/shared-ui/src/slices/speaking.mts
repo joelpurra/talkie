@@ -22,15 +22,12 @@ import type {
 	PayloadAction,
 } from "@reduxjs/toolkit";
 import toolkit from "@reduxjs/toolkit";
-import {
-	type IVoiceNameAndRateAndPitch,
+import type {
+	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
-import {
-	type SpeakingHistoryEntry,
-} from "@talkie/shared-interfaces/speaking-history.mjs";
 
-import {
-	type IApiAsyncThunkConfig,
+import type {
+	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {
@@ -40,7 +37,7 @@ const {
 	createSlice,
 } = toolkit;
 
-export interface SpeakInCustomVoiceArguments {
+export interface SpeakTextInCustomVoiceArguments {
 	text: string;
 	voice: IVoiceNameAndRateAndPitch;
 }
@@ -56,26 +53,11 @@ export interface SpeakTextInLanguageWithOverridesArguments {
 }
 
 export interface SpeakingState {
-	// TODO: split slice.
-	history: SpeakingHistoryEntry[];
 	isSpeaking: boolean;
-	mostRecentHash: number | null;
-	mostRecentLanguage: string | null;
-	mostRecentPitch: number;
-	mostRecentRate: number;
-	mostRecentText: string | null;
-	mostRecentVoiceName: string | null;
 }
 
 const initialState: SpeakingState = {
-	history: [],
 	isSpeaking: false,
-	mostRecentHash: null,
-	mostRecentLanguage: null,
-	mostRecentPitch: 1,
-	mostRecentRate: 1,
-	mostRecentText: null,
-	mostRecentVoiceName: null,
 };
 
 const prefix = "speaking";
@@ -88,7 +70,7 @@ export const iconClick = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 		extra,
 	}) => {
 		// TODO: does not actually work the same as clicking the Talkie icon; replace with a toggle method for restarting the most recent text or stopping.
-		await extra.iconClick();
+		await extra.groundwork!.ui.iconClick();
 	},
 );
 
@@ -97,21 +79,19 @@ export const stopSpeaking = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	async (_, {
 		extra,
 	}) => {
-		await extra.stopSpeaking();
+		await extra.groundwork!.speaking.stopSpeaking();
 	},
 );
 
-export const speakInCustomVoice = createAsyncThunk<void, SpeakInCustomVoiceArguments, IApiAsyncThunkConfig>(
-	`${prefix}/speakInCustomVoice`,
+export const speakTextInCustomVoice = createAsyncThunk<void, SpeakTextInCustomVoiceArguments, IApiAsyncThunkConfig>(
+	`${prefix}/speakTextInCustomVoice`,
 	({
 		voice,
 		text,
 	}, {
 		extra,
 	}) => {
-		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
-		// TODO: rework debounced versions in api?
-		extra.debouncedSpeakTextInCustomVoice(text, voice);
+		void extra.groundwork!.speaking.speakTextInCustomVoice(text, voice);
 	},
 );
 
@@ -123,9 +103,7 @@ export const speakTextInVoiceWithOverrides = createAsyncThunk<void, SpeakTextInV
 	}, {
 		extra,
 	}) => {
-		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
-		// TODO: rework debounced versions in api?
-		extra.debouncedSpeakTextInVoiceWithOverrides(text, voiceName);
+		void extra.groundwork!.speaking.speakTextInVoiceWithOverrides(text, voiceName);
 	},
 );
 
@@ -137,120 +115,16 @@ export const speakTextInLanguageWithOverrides = createAsyncThunk<void, SpeakText
 	}, {
 		extra,
 	}) => {
-		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
-		// TODO: rework debounced versions in api?
-		extra.debouncedSpeakTextInLanguageWithOverrides(text, languageCode);
-	},
-);
-
-export const loadSpeakingHistory = createAsyncThunk<SpeakingHistoryEntry[], void, IApiAsyncThunkConfig>(
-	`${prefix}/loadSpeakingHistory`,
-	async (
-		_,
-		{
-			extra,
-		},
-	) => extra.getSpeakingHistory(),
-);
-
-export const removeSpeakingHistoryEntry = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
-	`${prefix}/removeSpeakingHistoryEntry`,
-	async (
-		hash,
-		{
-			dispatch,
-			extra,
-		},
-	) => {
-		await extra.removeSpeakingHistoryEntry(hash);
-		await dispatch(loadSpeakingHistory());
-	},
-);
-
-export const clearSpeakingHistory = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
-	`${prefix}/clearSpeakingHistory`,
-	async (
-		_,
-		{
-			dispatch,
-			extra,
-		},
-	) => {
-		await extra.clearSpeakingHistory();
-		await dispatch(loadSpeakingHistory());
-	},
-);
-
-export const loadMostRecentSpeakingEntry = createAsyncThunk<SpeakingHistoryEntry | null, void, IApiAsyncThunkConfig>(
-	`${prefix}/loadMostRecentSpeakingEntry`,
-	async (
-		_,
-		{
-			dispatch,
-			extra,
-		},
-	) => {
-		const speakingHistoryEntry = await extra.getMostRecentSpeakingEntry();
-
-		// TODO: systematic action thunk side-effects.
-		dispatch(setMostRecentHash(speakingHistoryEntry?.hash ?? null));
-		dispatch(setMostRecentText(speakingHistoryEntry?.text ?? null));
-		dispatch(setMostRecentLanguage(speakingHistoryEntry?.language ?? null));
-		dispatch(setMostRecentVoiceName(speakingHistoryEntry?.voiceName ?? null));
-
-		return speakingHistoryEntry;
-	},
-);
-
-export const storeMostRecentSpeakingEntry = createAsyncThunk<void, SpeakingHistoryEntry, IApiAsyncThunkConfig>(
-	`${prefix}/storeMostRecentSpeakingEntry`,
-	async (
-		speakingHistoryEntry,
-		{
-			dispatch,
-			extra,
-		},
-	) => {
-		await extra.storeMostRecentSpeakingEntry(speakingHistoryEntry);
-
-		// TODO: systematic action thunk side-effects.
-		dispatch(setMostRecentText(speakingHistoryEntry.text));
-		dispatch(setMostRecentLanguage(speakingHistoryEntry.language));
-		dispatch(setMostRecentVoiceName(speakingHistoryEntry.voiceName));
+		void extra.groundwork!.speaking.speakTextInLanguageWithOverrides(text, languageCode);
 	},
 );
 
 export const speakingSlice = createSlice({
-	extraReducers(builder) {
-		builder
-			.addCase(loadSpeakingHistory.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
-				state.history = action.payload;
-			});
-	},
 	initialState,
 	name: prefix,
 	reducers: {
 		setIsSpeaking(state, action: PayloadAction<boolean>) {
 			state.isSpeaking = action.payload;
-		},
-		setMostRecentHash(state, action: PayloadAction<number | null>) {
-			state.mostRecentHash = action.payload;
-		},
-		setMostRecentLanguage(state, action: PayloadAction<string | null>) {
-			state.mostRecentLanguage = action.payload;
-		},
-		setMostRecentPitch(state, action: PayloadAction<number>) {
-			state.mostRecentPitch = action.payload;
-		},
-		setMostRecentRate(state, action: PayloadAction<number>) {
-			state.mostRecentRate = action.payload;
-		},
-		setMostRecentText(state, action: PayloadAction<string | null>) {
-			state.mostRecentText = action.payload;
-		},
-		setMostRecentVoiceName(state, action: PayloadAction<string | null>) {
-			state.mostRecentVoiceName = action.payload;
 		},
 	},
 });
@@ -259,12 +133,6 @@ export const speakingSlice = createSlice({
 
 export const {
 	setIsSpeaking,
-	setMostRecentHash,
-	setMostRecentLanguage,
-	setMostRecentPitch,
-	setMostRecentRate,
-	setMostRecentText,
-	setMostRecentVoiceName,
 } = speakingSlice.actions;
 
 export default speakingSlice.reducer;

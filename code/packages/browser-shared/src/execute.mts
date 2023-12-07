@@ -19,96 +19,79 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	jsonClone,
+	singleDefinedValue,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
 	logDebug,
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	isPromiseTimeout,
 	promiseTimeout,
 } from "@talkie/shared-application-helpers/promise.mjs";
+import type {
+	Scripting,
+} from "webextension-polyfill";
+
+export interface FrameResult<T> {
+	error?: unknown;
+	frameId: number;
+	result?: T;
+}
 
 export default class Execute {
-	async scriptInTopFrame<T>(code: string): Promise<T[]> {
-		try {
-			void logDebug("Start", "scriptInTopFrame", code.length, code);
+	async scriptInTopFrame<T>(tabId: number, fn: () => T): Promise<FrameResult<T>> {
+		const result = await this._executeScript(false, tabId, fn);
 
-			const result: T[] = await browser.tabs.executeScript(
+		return singleDefinedValue(result);
+	}
+
+	async scriptInAllFrames<T>(tabId: number, fn: () => T): Promise<Array<FrameResult<T>>> {
+		return this._executeScript(true, tabId, fn);
+	}
+
+	async scriptInTopFrameWithTimeout<T>(tabId: number, fn: () => T, timeout: number): Promise<FrameResult<T>> {
+		const result = await promiseTimeout(this._executeScript(false, tabId, fn), timeout);
+
+		return singleDefinedValue(result);
+	}
+
+	async scriptInAllFramesWithTimeout<T>(tabId: number, fn: () => T, timeout: number): Promise<Array<FrameResult<T>>> {
+		return promiseTimeout(this._executeScript(true, tabId, fn), timeout);
+	}
+
+	private async _executeScript<T>(allFrames: boolean, tabId: number, fn: () => T): Promise<Array<FrameResult<T>>> {
+		// TODO: merge shared executeScript functionality to an internal function.
+		try {
+			void logDebug("Start", "_executeScript", allFrames, fn.name, fn);
+
+			const injectionResults: Scripting.InjectionResult[] = await chrome.scripting.executeScript(
 				{
-					allFrames: false,
-					code,
+					func: fn,
+					target: {
+						allFrames,
+						tabId,
+					},
 				},
-			) as T[];
+			);
 
-			void logDebug("Done", "scriptInTopFrame", code.length);
+			void logDebug("Done", "_executeScript", allFrames, fn.name, injectionResults.length);
 
-			return result;
+			// NOTE: the results may include either per-frame result or error.
+			const results: Array<FrameResult<T>> = injectionResults.map((rawInjectionResult: Readonly<Scripting.InjectionResult>): FrameResult<T> => {
+				const clonedInjectionResult = jsonClone(rawInjectionResult);
+
+				return {
+					error: clonedInjectionResult.error,
+					frameId: clonedInjectionResult.frameId,
+					result: clonedInjectionResult.result === undefined ? undefined : clonedInjectionResult.result as T,
+				};
+			});
+
+			return results;
 		} catch (error: unknown) {
 			// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
-			void logInfo("scriptInTopFrame", code.length, "Error", typeof error, JSON.stringify(error), error);
-
-			throw error;
-		}
-	}
-
-	async scriptInAllFrames<T>(code: string): Promise<T[]> {
-		try {
-			void logDebug("Start", "scriptInAllFrames", code.length, code);
-
-			const result: T[] = await browser.tabs.executeScript(
-				{
-					allFrames: true,
-					code,
-				},
-			) as T[];
-
-			void logDebug("Done", "scriptInAllFrames", code.length);
-
-			return result;
-		} catch (error: unknown) {
-			// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
-			void logInfo("scriptInAllFrames", code.length, "Error", typeof error, JSON.stringify(error), error);
-
-			throw error;
-		}
-	}
-
-	async scriptInTopFrameWithTimeout<T>(code: string, timeout: number): Promise<T[]> {
-		try {
-			void logDebug("Start", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
-
-			const result = await promiseTimeout(this.scriptInTopFrame<T>(code), timeout);
-
-			void logDebug("Done", "scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds");
-
-			return result;
-		} catch (error: unknown) {
-			// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
-			void logInfo("scriptInTopFrameWithTimeout", code.length, "code.length", timeout, "milliseconds", "Error", typeof error, JSON.stringify(error), error);
-
-			if (isPromiseTimeout(error)) {
-				// NOTE: ignore timeout errors, they are only logged.
-			}
-
-			throw error;
-		}
-	}
-
-	async scriptInAllFramesWithTimeout<T>(code: string, timeout: number): Promise<T[]> {
-		try {
-			void logDebug("Start", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
-
-			const result = await promiseTimeout(this.scriptInAllFrames<T>(code), timeout);
-
-			void logDebug("Done", "scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds");
-
-			return result;
-		} catch (error: unknown) {
-			// NOTE: the error object is not (always?) instanceof Error, possibly because of serialization.
-			void logInfo("scriptInAllFramesWithTimeout", code.length, "code.length", timeout, "milliseconds", "Error", typeof error, JSON.stringify(error), error);
-
-			if (isPromiseTimeout(error)) {
-				// NOTE: ignore timeout errors, they are only logged.
-			}
+			void logInfo("_executeScript", allFrames, fn.name, "Error", typeof error, JSON.stringify(error), error);
 
 			throw error;
 		}

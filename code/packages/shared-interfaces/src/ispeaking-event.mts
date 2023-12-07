@@ -30,6 +30,7 @@ import {
 export interface SpeakingEventData extends JsonObject {
 	language: string | null;
 	text: string;
+	textParts: string[];
 	voiceName: string | null;
 }
 
@@ -38,5 +39,5 @@ export interface SpeakingEventPartData extends JsonObject {
 	pitch: number;
 	rate: number;
 	textPart: string;
-	textPartOffset: number;
+	textPartIndex: number;
 }

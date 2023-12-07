@@ -3,14 +3,20 @@
     "paths": {
       "@talkie/all-renderer/*": ["./packages/all-renderer/src/*"],
       "@talkie/browser-background/*": ["./packages/browser-background/src/*"],
+      "@talkie/browser-bricks/*": ["./packages/browser-bricks/src/*"],
+      "@talkie/browser-groundwork/*": ["./packages/browser-groundwork/src/*"],
       "@talkie/browser-localeredirect/*": [
         "./packages/browser-localeredirect/src/*"
       ],
+      "@talkie/browser-mason/*": ["./packages/browser-mason/src/*"],
+      "@talkie/browser-offscreen/*": ["./packages/browser-offscreen/src/*"],
       "@talkie/browser-runtime-dependencies/*": [
         "./packages/browser-runtime-dependencies/src/*"
       ],
+      "@talkie/browser-serviceworker/*": [
+        "./packages/browser-serviceworker/src/*"
+      ],
       "@talkie/browser-shared/*": ["./packages/browser-shared/src/*"],
-      "@talkie/browser-stayalive/*": ["./packages/browser-stayalive/src/*"],
       "@talkie/options-application/*": ["./packages/options-application/src/*"],
       "@talkie/options-renderer/*": ["./packages/options-renderer/src/*"],
       "@talkie/output-webext-chrome/*": [

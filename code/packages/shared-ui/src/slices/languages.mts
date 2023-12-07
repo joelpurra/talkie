@@ -19,12 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import {
-	type TalkieLocale,
+import type {
+	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import {
-	type IApiAsyncThunkConfig,
+	getNavigatorLanguage,
+	getNavigatorLanguages,
+} from "../utils/navigator-languages.mjs";
+import type {
+	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {
@@ -55,31 +59,27 @@ const prefix = "languages";
 export const loadNavigatorLanguage = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadNavigatorLanguage`,
 	// TODO: convert to synchronous action?
-	async (_, {
-		extra,
-	}) => extra.getNavigatorLanguage(),
+	async () => getNavigatorLanguage(),
 );
 
 export const loadNavigatorLanguages = createAsyncThunk<Readonly<string[]>, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadNavigatorLanguages`,
 	// TODO: convert to synchronous action?
-	async (_, {
-		extra,
-	}) => extra.getNavigatorLanguages(),
+	async () => getNavigatorLanguages(),
 );
 
 export const loadTranslatedLanguages = createAsyncThunk<TalkieLocale[], void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTranslatedLanguages`,
 	async (_, {
 		extra,
-	}) => extra.getTranslatedLanguages(),
+	}) => extra.coating!.talkieLocale!.getTranslatedLanguages(),
 );
 
 export const loadTranslationLocale = createAsyncThunk<TalkieLocale, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTranslationLocale`,
 	async (_, {
 		extra,
-	}) => extra.getTranslationLocale(),
+	}) => extra.coating!.locale!.getTranslationLocale(),
 );
 
 export const languagesSlice = createSlice({

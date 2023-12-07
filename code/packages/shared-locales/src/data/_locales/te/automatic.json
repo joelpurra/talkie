@@ -19,7 +19,7 @@
     "message": "మాట్లాడటం ఆపండి",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "వచన ఎంపికను బిగ్గరగా చదవండి",
     "original": "Read text selection out loud"
   },

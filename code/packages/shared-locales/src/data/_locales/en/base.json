@@ -16,7 +16,7 @@
   "buttonStopTitle": {
     "message": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Read text selection out loud"
   },
   "commandOpenWebsiteMainDescription": {

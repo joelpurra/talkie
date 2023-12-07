@@ -30,7 +30,8 @@ These files are only generated locally during the build process, and not checked
 
 - [`browser-background`](./browser-background/dist/metadata/stats.html)
 - [`browser-localeredirect`](./browser-localeredirect/dist/metadata/stats.html)
-- [`browser-stayalive`](./browser-stayalive/dist/metadata/stats.html)
+- [`browser-offscreen`](./browser-offscreen/dist/metadata/stats.html)
+- [`browser-serviceworker`](./browser-serviceworker/dist/metadata/stats.html)
 - [`options-application`](./options-application/dist/metadata/stats.html)
 - [`popup-application`](./popup-application/dist/metadata/stats.html)
 

@@ -18,13 +18,13 @@
     "@talkie/shared-locales": "*",
     "@talkie/shared-ui": "*",
     "@talkie/split-environment-interfaces": "*",
-    "@talkie/split-environment-node": "*"
+    "@talkie/split-environment-node": "*",
+    "@talkie/split-environment-webextension": "*"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.4",
     "@types/styletron-engine-atomic": "^1.1.3",
     "ejs": "^3.1.9",
-    "mkdirp": "^3.0.1",
     "styletron-engine-atomic": "^1.6.2"
   },
   "exports": {

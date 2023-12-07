@@ -25,21 +25,25 @@ import type {
 
 export default class WebExtensionEnvironmentStorageProvider implements IStorageProvider {
 	async get<T extends JsonValue>(key: string): Promise<T | null> {
-		const valueJson = window.localStorage.getItem(key);
+		// NOTE: chrome.storage.local internally uses (automatically stringified) JSON storage.
+		const record = await chrome.storage.local.get(key);
+		const value: unknown = record[key];
 
-		if (valueJson === null) {
+		// NOTE: talkie conflates "no such key" and "value is null" (for various meanings of null).
+		if (value === undefined) {
 			return null;
 		}
 
-		const value = JSON.parse(valueJson) as JsonValue;
-
 		// TODO: validate and assert, or warn, remove generic type, or something.
-		return value as unknown as T;
+		return value as T;
 	}
 
 	async set<T extends JsonValue>(key: string, value: T): Promise<void> {
-		const valueJson = JSON.stringify(value);
+		// NOTE: chrome.storage.local internally uses (automatically stringified) JSON storage.
+		const record = {
+			[key]: value,
+		};
 
-		window.localStorage.setItem(key, valueJson);
+		await chrome.storage.local.set(record);
 	}
 }

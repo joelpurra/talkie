@@ -1,6 +1,7 @@
 .nx/cache
 *.log
 *~
+artifacts/
 dist/
 node_modules/
 runtime/

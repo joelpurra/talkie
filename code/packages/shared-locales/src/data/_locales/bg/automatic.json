@@ -19,7 +19,7 @@
     "message": "Спри да говориш",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Прочетете на глас избрания текст",
     "original": "Read text selection out loud"
   },

@@ -19,12 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import {
-	type SafeVoiceObjects,
+import type {
+	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
-import {
-	type IApiAsyncThunkConfig,
+import type {
+	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
 const {
@@ -50,7 +50,7 @@ export const loadVoices = createAsyncThunk<SafeVoiceObjects, void, IApiAsyncThun
 	`${prefix}/loadVoices`,
 	async (_, {
 		extra,
-	}) => extra.getVoices(),
+	}) => extra.groundwork!.voices.getVoices(),
 );
 
 export const voicesSlice = createSlice({

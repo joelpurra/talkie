@@ -19,7 +19,7 @@
     "message": "그만 말해",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "텍스트 선택을 소리내어 읽기",
     "original": "Read text selection out loud"
   },

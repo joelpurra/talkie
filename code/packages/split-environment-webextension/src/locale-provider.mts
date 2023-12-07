@@ -28,7 +28,7 @@ import type {
 
 export default class WebExtensionEnvironmentLocaleProvider implements ILocaleProvider {
 	getUILocale(): I18n.LanguageCode {
-		const locale = browser.i18n.getMessage("@@ui_locale");
+		const locale = chrome.i18n.getMessage("@@ui_locale");
 
 		return locale;
 	}
@@ -38,7 +38,7 @@ export default class WebExtensionEnvironmentLocaleProvider implements ILocalePro
 	}
 
 	getTranslationLocale(): TalkieLocale {
-		const locale: TalkieLocale = browser.i18n.getMessage("extensionLocale") as TalkieLocale;
+		const locale: TalkieLocale = chrome.i18n.getMessage("extensionLocale") as TalkieLocale;
 
 		return locale;
 	}

@@ -19,7 +19,7 @@
     "message": "بولنا بند کرو",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "متن کے انتخاب کو بلند آواز سے پڑھیں",
     "original": "Read text selection out loud"
   },

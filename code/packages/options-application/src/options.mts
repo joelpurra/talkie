@@ -18,9 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import getFrontendMessageBus from "@talkie/browser-shared/hydrate/get-frontend-message-bus.mjs";
 import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
-	eventToPromise,
+	eventToPromiseSingle,
 	startReactFrontend,
 	stopReactFrontend,
 } from "@talkie/browser-shared/shared-frontend.mjs";
@@ -35,7 +36,10 @@ void redundantlyTriggerLoadingVoices();
 
 const start = async () => {
 	await startReactFrontend();
-	await hydrate();
+
+	const messageBusProviderGetter = await getFrontendMessageBus();
+
+	await hydrate(messageBusProviderGetter);
 };
 
 const stop = async () => {
@@ -45,5 +49,5 @@ const stop = async () => {
 
 registerUnhandledRejectionHandler();
 
-document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
-window.addEventListener("beforeunload", eventToPromise.bind(null, stop));
+document.addEventListener("DOMContentLoaded", eventToPromiseSingle.bind(null, start));
+window.addEventListener("beforeunload", eventToPromiseSingle.bind(null, stop));

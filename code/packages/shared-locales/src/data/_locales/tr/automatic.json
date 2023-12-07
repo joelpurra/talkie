@@ -19,7 +19,7 @@
     "message": "Konuşmayı kes",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Metin seçimini yüksek sesle oku",
     "original": "Read text selection out loud"
   },

@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import rollupConfig from "../../build/rollup.config.browser.react.mjs";
+import rollupConfig from "../../build/rollup.config.browser.mjs";
 import mergeOptions from "../../build/rollup.config.merge.mjs";
 
 const inputName = "localeredirect";

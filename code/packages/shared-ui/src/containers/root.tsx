@@ -23,7 +23,9 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import type IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
@@ -40,8 +42,8 @@ import {
 import Providers from "./providers.js";
 
 export interface RootProps<S, A extends Action> {
-	broadcaster: IBroadcasterProvider;
 	configuration: IConfiguration;
+	messageBusProviderGetter: IMessageBusProviderGetter;
 
 	// NOTE: store is more strictly typed than ProviderProps<A> from react-redux.
 	store: Store<S, A>;
@@ -52,8 +54,8 @@ export interface RootProps<S, A extends Action> {
 export default class Root<S, A extends Action, P extends RootProps<S, A> & ChildrenRequiredProps> extends React.PureComponent<P, S> {
 	override render(): React.ReactNode {
 		const {
-			broadcaster,
 			configuration,
+			messageBusProviderGetter,
 			store,
 			styletron,
 			translator,
@@ -63,7 +65,12 @@ export default class Root<S, A extends Action, P extends RootProps<S, A> & Child
 			<React.StrictMode>
 				<ErrorBoundary>
 					<StoreProvider store={store}>
-						<Providers broadcaster={broadcaster} configuration={configuration} styletron={styletron} translator={translator}>
+						<Providers
+							configuration={configuration}
+							messageBusProviderGetter={messageBusProviderGetter}
+							styletron={styletron}
+							translator={translator}
+						>
 							{React.Children.only(this.props.children)}
 						</Providers>
 					</StoreProvider>

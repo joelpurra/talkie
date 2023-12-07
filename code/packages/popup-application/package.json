@@ -16,8 +16,9 @@
   "dependencies": {
     "@talkie/browser-shared": "*",
     "@talkie/shared-application": "*",
+    "@talkie/shared-application-helpers": "*",
     "@talkie/shared-ui": "*",
-    "@talkie/split-environment-webextension": "*"
+    "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7"

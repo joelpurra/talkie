@@ -22,6 +22,12 @@ import type {
 	Promisable,
 } from "type-fest";
 
+import {
+	atMostDefinedValues,
+	isErrorInstanceWithName,
+	singleDefinedValue,
+} from "./basic.mjs";
+
 // eslint-disable-next-line @typescript-eslint/comma-dangle
 export const promiseFunctionSeries = async <T,>(promiseFunctions: Readonly<Array<(state?: T) => Promisable<T>>>, state?: T): Promise<T> => {
 	if (promiseFunctions.length === 0) {
@@ -54,11 +60,11 @@ export class PromiseTimeout extends Error {
 }
 
 export function isPromiseTimeout(error: unknown): error is PromiseTimeout {
-	return Boolean(error) && typeof error === "object" && error instanceof Error && error.name === "PromiseTimeout";
+	return isErrorInstanceWithName(error, "PromiseTimeout");
 }
 
 // eslint-disable-next-line @typescript-eslint/comma-dangle
-export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, limit: number): Promise<T> => {
+export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, milliseconds: number): Promise<T> => {
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
 	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
@@ -71,11 +77,11 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, limit: n
 			() => {
 				resolve();
 			},
-			limit,
+			milliseconds,
 		);
 	})
 		.then(() => {
-			const timeoutError = new PromiseTimeout(limit);
+			const timeoutError = new PromiseTimeout(milliseconds);
 
 			throw timeoutError;
 		});
@@ -91,14 +97,14 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, limit: n
 	}
 };
 
-export const promiseDelay = async (sleep: number): Promise<void> =>
+export const promiseDelay = async (milliseconds: number): Promise<void> =>
 	new Promise<void>((resolve) => {
 		// NOTE: the timeout id is automatically cleared when it ends.
-		setTimeout(resolve, sleep);
+		setTimeout(resolve, milliseconds);
 	});
 
 // eslint-disable-next-line @typescript-eslint/comma-dangle
-export const promiseSleep = async <T,>(fn: () => Promisable<T>, sleep: number): Promise<T> =>
+export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: number): Promise<T> =>
 	new Promise<T>((resolve, reject) => {
 		// NOTE: the timeout id is automatically cleared when it ends.
 		setTimeout(
@@ -109,7 +115,22 @@ export const promiseSleep = async <T,>(fn: () => Promisable<T>, sleep: number): 
 					reject(error);
 				}
 			},
-			sleep,
+			milliseconds,
 		);
 	});
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+export const promiseAtMostDefinedValues = async <T,>(atMost: number, promises: Array<Promise<T | void>>): Promise<Array<T | void>> => {
+	// TODO: async repeated Promise.race() until Promise<T | void> the first defined response, then (silently?) fail if there is a second (or more, but fail early) non-undefined responses?
+	const elements = await Promise.all(promises);
+
+	return atMostDefinedValues(atMost, elements);
+};
+
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+export const promiseSingleDefinedValue = async <T,>(promises: Array<Promise<T | void>>): Promise<T | void> => {
+	// TODO: async repeated Promise.race() until Promise<T | void> the first defined response, then (silently?) fail if there is a second (or more, but fail early) non-undefined responses?
+	const elements = await Promise.all(promises);
+
+	return singleDefinedValue(elements);
+};

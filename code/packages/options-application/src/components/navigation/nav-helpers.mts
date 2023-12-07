@@ -23,14 +23,16 @@ import {
 	type NavigationTabId,
 } from "./nav-container-types.mjs";
 
-export const isTabId = (tabId: string | null): tabId is NavigationTabId => typeof tabId === "string"
-		&& tabId.length > 0
-		&& tabId.split("#").length === 1;
+export const isTabId = (tabId: string | null): tabId is NavigationTabId =>
+	typeof tabId === "string"
+	&& tabId.length > 0
+	&& tabId.split("#").length === 1;
 
-export const isLocationHash = (locationHash: string | null): locationHash is NavigationLocationHash => typeof locationHash === "string"
-		&& locationHash.length > 1
-		&& locationHash.startsWith("#")
-		&& locationHash.split("#").length === 2;
+export const isLocationHash = (locationHash: string | null): locationHash is NavigationLocationHash =>
+	typeof locationHash === "string"
+	&& locationHash.length > 1
+	&& locationHash.startsWith("#")
+	&& locationHash.split("#").length === 2;
 
 export const getTabIdFromLocationHash = (locationHash: NavigationLocationHash): NavigationTabId => {
 	if (!isLocationHash(locationHash)) {

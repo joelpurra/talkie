@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "@talkie/all-renderer": "*",
-    "@talkie/browser-background": "*",
     "@talkie/browser-runtime-dependencies": "*",
     "@talkie/shared-resources": "*"
+  },
+  "devDependencies": {
+    "mkdirp": "^3.0.1"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",

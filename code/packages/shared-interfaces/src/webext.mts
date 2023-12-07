@@ -18,5 +18,5 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// NOTE: replace some instances of the full (webextension-polyfill) browser.Tab.Tab object with the unique tab identifier (if available), enabling lookups if needed.
+// NOTE: replace some instances of the full chrome.Tab.Tab object with the unique tab identifier (if available), enabling lookups if needed.
 export type BrowserTabId = number | undefined;

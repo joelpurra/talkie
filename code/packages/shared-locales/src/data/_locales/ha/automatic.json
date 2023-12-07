@@ -19,7 +19,7 @@
     "message": "Tsaya magana",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Karanta zaɓin rubutu da ƙarfi",
     "original": "Read text selection out loud"
   },

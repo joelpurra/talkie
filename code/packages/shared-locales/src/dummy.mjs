@@ -22,7 +22,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // TODO: remove file when possible.
 
 // HACK: trick update-project-references.sh to include the runtime dependencies packages, to ensure the correct build order.
-// from "@talkie/translator-tool/does-not-exist.mjs";
+// import "@talkie/translator-tool/does-not-exist.mjs";
 
 const dummy = null;
 export default dummy;

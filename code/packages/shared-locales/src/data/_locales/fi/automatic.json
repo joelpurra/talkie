@@ -19,7 +19,7 @@
     "message": "Lopeta puhuminen",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Lue tekstivalinta ääneen",
     "original": "Read text selection out loud"
   },
