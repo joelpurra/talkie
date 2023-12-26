@@ -41,7 +41,7 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 		footer: typeof layoutBase.footer;
 		footerFirstLink: typeof lighter.a;
 		footerSecondLink: typeof lighter.a;
-		footerErrorLink: typeof errors.span;
+		footerErrorCount: typeof errors.span;
 	};
 
 	constructor(props: P) {
@@ -57,10 +57,11 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 				},
 			),
 
-			footerErrorLink: withStyleDeep(
+			footerErrorCount: withStyleDeep(
 				errors.span,
 				{
 					// TODO: padding on one side, depending on the user interface language ltr/rtl.
+					// TODO: replace padding with before/after pseudo-element with a single space as contents?
 					paddingLeft: "0.5em",
 					paddingRight: "0.5em",
 					verticalAlign: "middle",
@@ -92,11 +93,11 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 		const ErrorCount = errorCount === 0
 			? null
 			: (
-				<errors.span>
+				<this.styled.footerErrorCount>
 					errors(
 					{errorCount}
 					)
-				</errors.span>
+				</this.styled.footerErrorCount>
 			);
 
 		return (

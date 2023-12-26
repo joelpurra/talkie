@@ -53,7 +53,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		footer: TalkieStyletronComponent<typeof layoutBase.footer>;
 		footerFirstLink: TalkieStyletronComponent<typeof lighter.a>;
 		footerSecondLink: TalkieStyletronComponent<typeof lighter.a>;
-		footerErrorLink: TalkieStyletronComponent<typeof errors.span>;
+		footerErrorCount: TalkieStyletronComponent<typeof errors.span>;
 	};
 
 	constructor(props: P) {
@@ -68,10 +68,11 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 				},
 			),
 
-			footerErrorLink: withStyleDeep(
+			footerErrorCount: withStyleDeep(
 				errors.span,
 				{
 					// TODO: padding on one side, depending on the user interface language ltr/rtl.
+					// TODO: replace padding with before/after pseudo-element with a single space as contents?
 					paddingLeft: "0.5em",
 					paddingRight: "0.5em",
 					verticalAlign: "middle",
@@ -108,11 +109,11 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		const ErrorCount = errorCount === 0
 			? null
 			: (
-				<errors.span>
+				<this.styled.footerErrorCount>
 					errors(
 					{errorCount}
 					)
-				</errors.span>
+				</this.styled.footerErrorCount>
 			);
 
 		return (

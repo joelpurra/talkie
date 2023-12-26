@@ -25,6 +25,10 @@ import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
+import {
+	layoutWithNoMargin,
+	layoutWithNoPadding,
+} from "@talkie/shared-ui/styles/shared-base.mjs";
 import React from "react";
 import {
 	withStyleDeep,
@@ -78,14 +82,8 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 			navTableTd: withStyleDeep(
 				tableBase.td,
 				{
-					marginBottom: 0,
-					marginLeft: 0,
-					marginRight: 0,
-					marginTop: 0,
-					paddingBottom: 0,
-					paddingLeft: 0,
-					paddingRight: 0,
-					paddingTop: 0,
+					...layoutWithNoMargin,
+					...layoutWithNoPadding,
 				},
 			),
 

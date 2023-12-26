@@ -18,36 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
-
 import {
-	type RejectedAction,
-} from "../slices/errors.mjs";
-import type {
-	SharedRootState,
-} from "../store/index.mjs";
+	type StyleObject,
+} from "styletron-react";
 
-const {
-	// eslint-disable-next-line import/no-named-as-default-member
-	createDraftSafeSelector,
-} = toolkit;
+import * as colorBase from "../color/color-base.mjs";
+import {
+	areaWithBackgroundColor,
+} from "../shared-base.mjs";
 
-/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
-
-export const getErrors = <S extends SharedRootState>(state: S): Readonly<RejectedAction[]> => state.shared.errors.collected;
-
-export const getErrorsCount = createDraftSafeSelector(
-	[
-		getErrors,
-	],
-	(voices) => voices.length,
-);
-
-export const hasError = createDraftSafeSelector(
-	[
-		getErrorsCount,
-	],
-	(errors) => errors > 0,
-);
-
-/* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
+export const section: StyleObject = {
+	...areaWithBackgroundColor(1),
+	backgroundColor: colorBase.errorBackgroundColor,
+};

@@ -27,7 +27,9 @@ import {
 	type ClassNameProp,
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
+import {
+	rounded,
+} from "@talkie/shared-ui/styles/shared-base.mjs";
 import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
@@ -75,7 +77,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			wrapperBase: styled<"div", any>(
 				"div",
 				{
-					...layoutBase.rounded("0.5em"),
+					...rounded("0.5em"),
 					marginLeft: "-0.5em",
 					marginRight: "-0.5em",
 					marginTop: "2em",

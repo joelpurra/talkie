@@ -44,6 +44,7 @@ export const buttonDarkColor = "#087eff";
 export const buttonLightColor = "#6bb3fa";
 export const buttonTextColor = "#ffffff";
 
+export const errorBackgroundColor = "rgba(255,0,0,0.05)";
 export const errorTextColor = "#c09b9b";
 
 export const navigationBackgroundColor = buttonLightColor;

@@ -30,7 +30,9 @@ import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import * as layoutBaseStyles from "@talkie/shared-ui/styles/layout/layout-base.mjs";
+import {
+	rounded,
+} from "@talkie/shared-ui/styles/shared-base.mjs";
 import React from "react";
 import {
 	styled,
@@ -51,7 +53,7 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 			a: withStyleDeep(
 				textBase.a,
 				{
-					...layoutBaseStyles.rounded("0.3em"),
+					...rounded("0.3em"),
 					display: "block",
 					height: "2em",
 					lineHeight: "2em",

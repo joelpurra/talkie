@@ -1,5 +1,5 @@
 /*
-This file is part of Talkie -- text-to-speech browser extension button.
+This file is part of Talkie -- button-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
 Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
@@ -19,11 +19,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	withStyleDeep,
+	styled,
 } from "styletron-react";
 
-import * as errors from "../../styles/text/errors.mjs";
-import * as textBase from "./text-base.js";
+import * as errorBase from "../../styles/layout/error-base.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "../types.js";
 
-export const h2 = withStyleDeep(textBase.h2, errors.text);
-export const span = withStyleDeep(textBase.span, errors.text);
+export const section: TalkieStyletronComponent<React.ElementType<"section">> = styled("section", errorBase.section);

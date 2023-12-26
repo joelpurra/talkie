@@ -22,6 +22,10 @@ import type {
 	StyleObject,
 } from "styletron-react";
 
+import {
+	layoutWithNoMargin,
+} from "../shared-base.mjs";
+
 export const form: StyleObject = {};
 
 export const button: StyleObject = {
@@ -40,11 +44,8 @@ export const range: StyleObject = {
 };
 
 export const textarea: StyleObject = {
+	...layoutWithNoMargin,
 	height: "100%",
-	marginBottom: 0,
-	marginLeft: 0,
-	marginRight: 0,
-	marginTop: 0,
 	width: "100%",
 };
 
@@ -53,10 +54,7 @@ export const select: StyleObject = {};
 export const option: StyleObject = {};
 
 export const multilineSelect: StyleObject = {
+	...layoutWithNoMargin,
 	height: "8.8em",
-	marginBottom: 0,
-	marginLeft: 0,
-	marginRight: 0,
-	marginTop: 0,
 	width: "100%",
 };

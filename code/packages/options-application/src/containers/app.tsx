@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
+import Discretional from "@talkie/shared-ui/components/discretional.js";
 import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
 import {
 	type ProgressUpdaterDispatchProps,
@@ -37,6 +38,9 @@ import Main, {
 	type MainDispatchProps,
 	type MainStateProps,
 } from "../app/main.js";
+import CollectedErrorList, {
+	type CollectedErrorListStateProps,
+} from "../components/collected-error-list.js";
 import selectors from "../selectors/index.mjs";
 import {
 	actions,
@@ -49,7 +53,9 @@ const {
 	bindActionCreators,
 } = toolkit;
 
-interface StateProps extends MainStateProps {}
+interface StateProps extends MainStateProps, CollectedErrorListStateProps {
+	hasError: boolean;
+}
 
 interface DispatchProps extends MainDispatchProps {}
 
@@ -61,6 +67,8 @@ interface InternalProps extends StateProps, DispatchProps, ProgressUpdaterDispat
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	activeTabId: state.tabs.activeTabId,
 	errorCount: selectors.shared.errors.getErrorsCount(state),
+	errorList: selectors.shared.errors.getErrors(state),
+	hasError: selectors.shared.errors.hasError(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	osType: state.shared.metadata.osType,
 	showAdditionalDetails: state.settings.showAdditionalDetails,
@@ -91,6 +99,8 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 		const {
 			activeTabId,
 			errorCount,
+			errorList,
+			hasError,
 			isPremiumEdition,
 			openExternalUrlInNewTab,
 			openOptionsPage,
@@ -126,6 +136,13 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 					systemType={systemType}
 					versionNumber={versionNumber}
 				/>
+
+				<Discretional enabled={hasError}>
+					<CollectedErrorList
+						errorCount={errorCount}
+						errorList={errorList}
+					/>
+				</Discretional>
 			</>
 		);
 	}

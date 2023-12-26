@@ -24,22 +24,20 @@ import {
 
 import * as colorBase from "../color/color-base.mjs";
 import * as listBase from "../list/list-base.mjs";
+import {
+	areaWithBackgroundColor,
+	layoutWithEmMargin,
+	rounded,
+} from "../shared-base.mjs";
 
-const layoutWithMargins: StyleObject = {
-	marginBottom: "0.5em",
-	marginLeft: "1em",
-	marginRight: "1em",
-	marginTop: "0.5em",
-};
-
-export const header: StyleObject = layoutWithMargins;
-export const main: StyleObject = layoutWithMargins;
-export const section: StyleObject = layoutWithMargins;
-export const nav: StyleObject = layoutWithMargins;
-export const footer: StyleObject = layoutWithMargins;
+export const header: StyleObject = layoutWithEmMargin(1);
+export const main: StyleObject = layoutWithEmMargin(1);
+export const section: StyleObject = layoutWithEmMargin(1);
+export const nav: StyleObject = layoutWithEmMargin(1);
+export const footer: StyleObject = layoutWithEmMargin(1);
 
 export const hr: StyleObject = {
-	...layoutWithMargins,
+	...layoutWithEmMargin,
 	borderBottomWidth: 0,
 	borderLeftWidth: 0,
 	borderRightWidth: 0,
@@ -53,25 +51,10 @@ export const summary: StyleObject = {
 	cursor: "pointer",
 };
 
-export const rounded: (radius: string) => StyleObject = (radius) => ({
-	borderBottomLeftRadius: radius,
-	borderBottomRightRadius: radius,
-	borderTopLeftRadius: radius,
-	borderTopRightRadius: radius,
-});
-
 export const hero: StyleObject = {
-	...rounded("0.5em"),
+	...areaWithBackgroundColor(1),
 	backgroundColor: colorBase.premiumSectionBackgroundColor,
 	fontSize: "1.5em",
-	marginBottom: "2em",
-	marginLeft: "2em",
-	marginRight: "2em",
-	marginTop: "2em",
-	paddingBottom: "1em",
-	paddingLeft: "1em",
-	paddingRight: "1em",
-	paddingTop: "1em",
 };
 
 export const roundedWithBorder: (radius: string) => StyleObject = (radius) => ({
