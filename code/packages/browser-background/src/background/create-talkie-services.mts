@@ -147,6 +147,10 @@ const createTalkieServices = async (
 		setShowAdditionalDetails: async (showAdditionalDetails: boolean) => settingsManager.setShowAdditionalDetails(showAdditionalDetails),
 		getSpeakingHistoryLimit: async () => settingsManager.getSpeakingHistoryLimit(),
 		setSpeakingHistoryLimit: async (speakingHistoryLimit: number) => settingsManager.setSpeakingHistoryLimit(speakingHistoryLimit),
+		getContinueOnTabRemoved: async () => settingsManager.getContinueOnTabRemoved(),
+		setContinueOnTabRemoved: async (continueOnTabRemoved: boolean) => settingsManager.setContinueOnTabRemoved(continueOnTabRemoved),
+		getContinueOnTabUpdatedUrl: async () => settingsManager.getContinueOnTabUpdatedUrl(),
+		setContinueOnTabUpdatedUrl: async (continueOnTabUpdatedUrl: boolean) => settingsManager.setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl),
 
 		getMostRecentSpeakingEntry: async () => historyManager.getMostRecentSpeakingEntry(),
 		getSpeakingHistory: async () => historyManager.getSpeakingHistory(),

@@ -189,6 +189,22 @@ export default class Api implements IApi {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 
+	async getContinueOnTabRemoved(): Promise<boolean> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async setContinueOnTabRemoved(continueOnTabRemoved: boolean): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async getContinueOnTabUpdatedUrl(): Promise<boolean> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
+	async setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl: boolean): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
 	async getTranslatedLanguages(): Promise<TalkieLocale[]> {
 		// TODO: separate "background API" from other functionality.
 		return this.talkieLocaleHelper.getTranslatedLanguages();

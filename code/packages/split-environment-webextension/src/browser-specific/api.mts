@@ -269,6 +269,30 @@ export default class Api implements IApi {
 		return talkieServices.toggleLanguageVoiceOverrideName(languageCode, voiceName);
 	}
 
+	async getContinueOnTabRemoved(): Promise<boolean> {
+		const talkieServices = await getTalkieServices();
+
+		return talkieServices.getContinueOnTabRemoved();
+	}
+
+	async setContinueOnTabRemoved(continueOnTabRemoved: boolean): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.setContinueOnTabRemoved(continueOnTabRemoved);
+	}
+
+	async getContinueOnTabUpdatedUrl(): Promise<boolean> {
+		const talkieServices = await getTalkieServices();
+
+		return talkieServices.getContinueOnTabUpdatedUrl();
+	}
+
+	async setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl: boolean): Promise<void> {
+		const talkieServices = await getTalkieServices();
+
+		await talkieServices.setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl);
+	}
+
 	async getTranslatedLanguages(): Promise<TalkieLocale[]> {
 		// TODO: separate "background API" from other functionality.
 		return jsonClone(await this.talkieLocaleHelper.getTranslatedLanguages());

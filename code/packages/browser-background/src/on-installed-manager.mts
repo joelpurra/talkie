@@ -54,17 +54,27 @@ export default class OnInstalledManager {
 	}
 
 	async _setSettingsManagerDefaults(): Promise<void> {
-		// TODO: move this function elsewhere?
+		// NOTE: only setting non-default values here, otherwise keeping the implicit default value.
+		// TODO: break out this functionality, completely separately or perhaps to the to settings manager?
+		// TODO: also reflect these per-system defaults in the user interface?
+		// TODO: allow users to click-to-restore default per-system default settings?
 		void logDebug("Start", "_setSettingsManagerDefaults");
 
 		try {
 			const isWebExtensionVersion = await this.metadataManager.isWebExtensionVersion();
 
-			// NOTE: enabling speaking long texts by default on in WebExtensions (Firefox).
-			const speakLongTexts = isWebExtensionVersion;
+			if (isWebExtensionVersion) {
+				// NOTE: enabling speaking long texts by default in WebExtensions (Mozilla Firefox) to reflect (current) default behavior/capabilities.
+				// NOTE: this is because Firefox handles long texts better than Google Chrome.
+				await this.settingsManager.setSpeakLongTexts(true);
+			}
 
-			// TODO: move setting the default settings to the SettingsManager?
-			await this.settingsManager.setSpeakLongTexts(speakLongTexts);
+			if (isWebExtensionVersion) {
+				// NOTE: enabling "continuing" speech (not auto-stopping) when the tab URL changes by default in WebExtensions (Mozilla Firefox) to reflect (current) default behavior/capabilities.
+				// NOTE: this is because Firefox preserves privacy by not always reporting URL changes for the tab.onUpdated event, even with the activeTab permission.
+				// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#activetab_permission
+				await this.settingsManager.setContinueOnTabUpdatedUrl(true);
+			}
 
 			void logDebug("Done", "_setSettingsManagerDefaults");
 		} catch (error: unknown) {

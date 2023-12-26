@@ -37,10 +37,11 @@ export type StorageFormatVersion =
 | "v1.3.0"
 | "v1.4.0"
 | "v1.5.0"
-| "v1.6.0";
+| "v1.6.0"
+| "v1.7.0";
 
 export default class StorageManager {
-	currentStorageFormatVersion: StorageFormatVersion = "v1.6.0";
+	currentStorageFormatVersion: StorageFormatVersion = "v1.7.0";
 	storageMetadataId = "_storage-metadata";
 	allKnownStorageKeys: Record<StorageFormatVersion, Record<string, string>> = {
 		"v1.0.0": {
@@ -85,6 +86,18 @@ export default class StorageManager {
 			"speak-long-texts": "speak-long-texts",
 			"speaking-history": "speaking-history",
 			"speaking-history-limit": "speaking-history-limit",
+			"voice-pitch-overrides": "voice-pitch-overrides",
+			"voice-rate-overrides": "voice-rate-overrides",
+		},
+		"v1.7.0": {
+			"is-premium-edition": "is-premium-edition",
+			"language-voice-overrides": "language-voice-overrides",
+			"show-additional-details": "show-additional-details",
+			"speak-long-texts": "speak-long-texts",
+			"speaking-history": "speaking-history",
+			"speaking-history-limit": "speaking-history-limit",
+			"stop-on-tab-removed": "stop-on-tab-removed",
+			"stop-on-tab-updated-url": "stop-on-tab-updated-url",
 			"voice-pitch-overrides": "voice-pitch-overrides",
 			"voice-rate-overrides": "voice-rate-overrides",
 		},

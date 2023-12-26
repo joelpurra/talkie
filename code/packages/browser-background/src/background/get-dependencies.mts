@@ -131,6 +131,7 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[]): Backgro
 		execute,
 		translatorProvider,
 		internalUrlProvider,
+		settingsManager,
 	);
 	const permissionsManager = new PermissionsManager();
 	const clipboardManager = new ClipboardManager(permissionsManager);

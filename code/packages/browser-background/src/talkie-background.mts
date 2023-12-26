@@ -20,6 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import type Execute from "@talkie/browser-shared/execute.mjs";
 import type Broadcaster from "@talkie/shared-application/broadcaster.mjs";
+import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import {
 	logDebug,
 	logError,
@@ -60,7 +61,7 @@ export default class TalkieBackground {
 	executeGetFramesSelectionTextAndLanguageCode: string;
 
 	// eslint-disable-next-line max-params
-	constructor(private readonly speechChain: NonBreakingChain, private readonly broadcaster: Broadcaster, private readonly talkieSpeaker: TalkieSpeaker, private readonly speakingStatus: SpeakingStatus, private readonly voiceManager: VoiceManager, private readonly languageHelper: LanguageHelper, private readonly execute: Execute, private readonly translator: ITranslatorProvider, private readonly internalUrlProvider: IInternalUrlProvider) {
+	constructor(private readonly speechChain: NonBreakingChain, private readonly broadcaster: Broadcaster, private readonly talkieSpeaker: TalkieSpeaker, private readonly speakingStatus: SpeakingStatus, private readonly voiceManager: VoiceManager, private readonly languageHelper: LanguageHelper, private readonly execute: Execute, private readonly translator: ITranslatorProvider, private readonly internalUrlProvider: IInternalUrlProvider, private readonly settingsManager: SettingsManager) {
 		this.notAbleToSpeakTextFromThisSpecialTab = {
 			// eslint-disable-next-line no-sync
 			effectiveLanguage: this.translator.translateSync("extensionLocale"),
@@ -127,6 +128,7 @@ export default class TalkieBackground {
 				const selectedTextFromFrontend = filteredSelectedTextsFromFrontend
 					// eslint-disable-next-line unicorn/no-array-reduce
 					.reduce<Readonly<SelectedTextWithFocusTimestamp> | null>(
+
 					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 					(previous, selectedTextWithFocusTimestamp) => {
 						// TODO: assertions.
@@ -260,21 +262,51 @@ export default class TalkieBackground {
 	async onTabRemovedHandler(browserTabId: number, _removeInfo: Readonly<Tabs.OnRemovedRemoveInfoType>): Promise<void> {
 		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(browserTabId);
 
+		void logDebug("Start", "onTabRemovedHandler", browserTabId, isTabSpeaking);
+
 		if (isTabSpeaking) {
-			// TODO: user preference whether or not to stop speaking when a tab is removed/closed/updated.
-			await this.talkieSpeaker.stopSpeaking();
+			const continueOnTabRemoved = await this.settingsManager.getContinueOnTabRemoved();
+
+			void logDebug("Start", "onTabRemovedHandler", isTabSpeaking, continueOnTabRemoved);
+
+			if (!continueOnTabRemoved) {
+				await this.talkieSpeaker.stopSpeaking();
+			}
 		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	async onTabUpdatedHandler(browserTabId: number, changeInfo: Readonly<Tabs.OnUpdatedChangeInfoType>): Promise<void> {
+		// NOTE: changeInfo only has properties which have changed.
+		// NOTE: changeInfo is not completely reliable, because privacy-sensitive properties (`url`, `title`, etcetera) are sometimes witheld and may be absent even if they changed.
+		// TODO: when browser support is better, use the tabs.onUpdated event listener property filter to only handle url changes here.
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/onUpdated
+		//
+		// NOTE: it seems the activeTab permission is not enough to get the "updated" URL, because the permission is cleared *when* the URL changes.
+		// NOTE: may be able to work around this with a hack:
+		// 1. When first starting to speak:
+		//    - Record `changeInfo` properties (`url` and `status`?) for the active tab, and store either uniquely or per tab id.
+		//    - May even require injecting page scripts to extract the url?
+		// 2. Here, during tab.onUpdated:
+		//    - Manually compare recorded properties with any changes.
+		//    - Attempt to detect page navigation (`status` changes from `completed` to `loading`?).
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#activetab_permission
+		if (typeof changeInfo.url !== "string") {
+			return;
+		}
+
 		const isTabSpeaking = await this.speakingStatus.isSpeakingTabId(browserTabId);
 
-		// NOTE: changeInfo only has properties which have changed.
-		// https://developer.chrome.com/extensions/tabs#event-onUpdated
-		if (isTabSpeaking && changeInfo.url) {
-			// TODO: user preference whether or not to stop speaking when a tab is removed/closed/updated.
-			await this.talkieSpeaker.stopSpeaking();
+		void logDebug("Start", "onTabUpdatedHandler", "URL has changed.", browserTabId, isTabSpeaking);
+
+		if (isTabSpeaking) {
+			const continueOnTabUpdatedUrl = await this.settingsManager.getContinueOnTabUpdatedUrl();
+
+			void logDebug("Start", "onTabUpdatedHandler", isTabSpeaking, continueOnTabUpdatedUrl);
+
+			if (!continueOnTabUpdatedUrl) {
+				await this.talkieSpeaker.stopSpeaking();
+			}
 		}
 	}
 

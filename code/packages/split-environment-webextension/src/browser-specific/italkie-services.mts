@@ -84,6 +84,10 @@ export interface ITalkieServices {
 	getVoicePitchDefault: (voiceName: string) => Promise<number>;
 	setVoicePitchOverride: (voiceName: string, pitch: number) => Promise<void>;
 	getEffectivePitchForVoice: (voiceName: string) => Promise<number>;
+	getContinueOnTabRemoved: () => Promise<boolean>;
+	setContinueOnTabRemoved: (continueOnTabRemoved: boolean) => Promise<void>;
+	getContinueOnTabUpdatedUrl: () => Promise<boolean>;
+	setContinueOnTabUpdatedUrl: (continueOnTabUpdatedUrl: boolean) => Promise<void>;
 	getStoredValue: <T extends JsonValue>(key: string) => Promise<T | null>;
 	setStoredValue: <T extends JsonValue>(key: string, value: T) => Promise<void>;
 	getConfigurationValue: <T extends JsonValue>(path: string) => Promise<T>;

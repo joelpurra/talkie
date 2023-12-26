@@ -53,24 +53,33 @@ interface DispatchProps extends SettingsDispatchProps {
 	loadSpeakLongTexts: typeof actions.settings.loadSpeakLongTexts;
 	loadSpeakingHistory: typeof actions.shared.speaking.loadSpeakingHistory;
 	loadSpeakingHistoryLimit: typeof actions.settings.loadSpeakingHistoryLimit;
+	loadContinueOnTabRemoved: typeof actions.settings.loadContinueOnTabRemoved;
+	loadContinueOnTabUpdatedUrl: typeof actions.settings.loadContinueOnTabUpdatedUrl;
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
+	continueOnTabRemoved: state.settings.continueOnTabRemoved,
+	continueOnTabUpdatedUrl: state.settings.continueOnTabUpdatedUrl,
 	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,
 	speakingHistory: state.shared.speaking.history,
 	speakingHistoryCount: selectors.shared.speaking.getSpeakingHistoryCount(state),
 	speakingHistoryLimit: state.settings.speakingHistoryLimit,
+	systemType: state.shared.metadata.systemType,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, SettingsContainerProps> = (dispatch) => ({
 	clearSpeakingHistory: bindActionCreators(actions.shared.speaking.clearSpeakingHistory, dispatch),
+	loadContinueOnTabRemoved: bindActionCreators(actions.settings.loadContinueOnTabRemoved, dispatch),
+	loadContinueOnTabUpdatedUrl: bindActionCreators(actions.settings.loadContinueOnTabUpdatedUrl, dispatch),
 	loadShowAdditionalDetails: bindActionCreators(actions.settings.loadShowAdditionalDetails, dispatch),
 	loadSpeakLongTexts: bindActionCreators(actions.settings.loadSpeakLongTexts, dispatch),
 	loadSpeakingHistory: bindActionCreators(actions.shared.speaking.loadSpeakingHistory, dispatch),
 	loadSpeakingHistoryLimit: bindActionCreators(actions.settings.loadSpeakingHistoryLimit, dispatch),
 	removeSpeakingHistoryEntry: bindActionCreators(actions.shared.speaking.removeSpeakingHistoryEntry, dispatch),
+	storeContinueOnTabRemoved: bindActionCreators(actions.settings.storeContinueOnTabRemoved, dispatch),
+	storeContinueOnTabUpdatedUrl: bindActionCreators(actions.settings.storeContinueOnTabUpdatedUrl, dispatch),
 	storeShowAdditionalDetails: bindActionCreators(actions.settings.storeShowAdditionalDetails, dispatch),
 	storeSpeakLongTexts: bindActionCreators(actions.settings.storeSpeakLongTexts, dispatch),
 	storeSpeakingHistoryLimit: bindActionCreators(actions.settings.storeSpeakingHistoryLimit, dispatch),
@@ -89,6 +98,8 @@ class SettingsContainer<P extends InternalProps> extends React.PureComponent<P> 
 		this.props.loadSpeakLongTexts();
 		this.props.loadSpeakingHistoryLimit();
 		this.props.loadSpeakingHistory();
+		this.props.loadContinueOnTabRemoved();
+		this.props.loadContinueOnTabUpdatedUrl();
 	}
 
 	override render(): React.ReactNode {
@@ -100,23 +111,33 @@ class SettingsContainer<P extends InternalProps> extends React.PureComponent<P> 
 			speakingHistory,
 			speakingHistoryCount,
 			speakingHistoryLimit,
+			continueOnTabRemoved,
+			continueOnTabUpdatedUrl,
 			storeShowAdditionalDetails,
 			storeSpeakLongTexts,
 			storeSpeakingHistoryLimit,
+			storeContinueOnTabRemoved,
+			storeContinueOnTabUpdatedUrl,
+			systemType,
 		} = this.props as InternalProps;
 
 		return (
 			<Settings
 				clearSpeakingHistory={clearSpeakingHistory}
+				continueOnTabRemoved={continueOnTabRemoved}
+				continueOnTabUpdatedUrl={continueOnTabUpdatedUrl}
 				removeSpeakingHistoryEntry={removeSpeakingHistoryEntry}
 				showAdditionalDetails={showAdditionalDetails}
 				speakLongTexts={speakLongTexts}
 				speakingHistory={speakingHistory}
 				speakingHistoryCount={speakingHistoryCount}
 				speakingHistoryLimit={speakingHistoryLimit}
+				storeContinueOnTabRemoved={storeContinueOnTabRemoved}
+				storeContinueOnTabUpdatedUrl={storeContinueOnTabUpdatedUrl}
 				storeShowAdditionalDetails={storeShowAdditionalDetails}
 				storeSpeakLongTexts={storeSpeakLongTexts}
 				storeSpeakingHistoryLimit={storeSpeakingHistoryLimit}
+				systemType={systemType}
 			/>
 		);
 	}

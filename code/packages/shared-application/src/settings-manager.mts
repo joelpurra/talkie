@@ -42,11 +42,15 @@ export enum KnownSettingStorageKeys {
 	SpeakingHistory = "speaking-history",
 	SpeakingHistoryLimit = "speaking-history-limit",
 	SpeakLongTexts = "speak-long-texts",
+	ContinueOnTabRemoved = "stop-on-tab-removed",
+	ContinueOnTabUpdatedUrl = "stop-on-tab-updated-url",
 }
 export type KnownSettingNames = keyof typeof KnownSettingStorageKeys;
 export type KnownSettingValues = ValueOf<KnownSettingStorageKeys>;
 
 export const KnownSettingDefaults = {
+	ContinueOnTabRemoved: false,
+	ContinueOnTabUpdatedUrl: false,
 	IsPremiumEdition: false,
 	ShowAdditionalDetails: false,
 	SpeakLongTexts: false,
@@ -150,6 +154,26 @@ export default class SettingsManager {
 		const speakingHistoryLimit = await this.storageManager.getStoredValue<number>(KnownSettingStorageKeys.SpeakingHistoryLimit);
 
 		return speakingHistoryLimit ?? KnownSettingDefaults.SpeakingHistoryLimit;
+	}
+
+	async setContinueOnTabRemoved(continueOnTabRemoved: boolean): Promise<void> {
+		return this._setStoredValue(KnownSettingStorageKeys.ContinueOnTabRemoved, continueOnTabRemoved);
+	}
+
+	async getContinueOnTabRemoved(): Promise<boolean> {
+		const continueOnTabRemoved = await this._getStoredValue<boolean>(KnownSettingStorageKeys.ContinueOnTabRemoved);
+
+		return continueOnTabRemoved ?? KnownSettingDefaults.ContinueOnTabRemoved;
+	}
+
+	async setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl: boolean): Promise<void> {
+		return this._setStoredValue(KnownSettingStorageKeys.ContinueOnTabUpdatedUrl, continueOnTabUpdatedUrl);
+	}
+
+	async getContinueOnTabUpdatedUrl(): Promise<boolean> {
+		const continueOnTabUpdatedUrl = await this._getStoredValue<boolean>(KnownSettingStorageKeys.ContinueOnTabUpdatedUrl);
+
+		return continueOnTabUpdatedUrl ?? KnownSettingDefaults.ContinueOnTabUpdatedUrl;
 	}
 
 	private async _getStoredValue<T extends JsonValue>(key: string): Promise<T | null> {

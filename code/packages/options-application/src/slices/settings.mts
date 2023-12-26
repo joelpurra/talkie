@@ -41,9 +41,13 @@ export interface SettingsState {
 	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
 	speakingHistoryLimit: number;
+	continueOnTabRemoved: boolean;
+	continueOnTabUpdatedUrl: boolean;
 }
 
 const initialState: SettingsState = {
+	continueOnTabRemoved: false,
+	continueOnTabUpdatedUrl: false,
 	showAdditionalDetails: false,
 	speakLongTexts: false,
 	speakingHistoryLimit: 0,
@@ -127,6 +131,54 @@ export const storeSpeakingHistoryLimit = createAsyncThunk<void, number, IApiAsyn
 	},
 );
 
+export const loadContinueOnTabRemoved = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadContinueOnTabRemoved`,
+	async (
+		_,
+		{
+			extra,
+		},
+	) => extra.getContinueOnTabRemoved(),
+);
+
+export const storeContinueOnTabRemoved = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+	`${prefix}/storeContinueOnTabRemoved`,
+	async (
+		continueOnTabRemoved,
+		{
+			dispatch,
+			extra,
+		},
+	) => {
+		await extra.setContinueOnTabRemoved(continueOnTabRemoved);
+		dispatch(setContinueOnTabRemoved(continueOnTabRemoved));
+	},
+);
+
+export const loadContinueOnTabUpdatedUrl = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadContinueOnTabUpdatedUrl`,
+	async (
+		_,
+		{
+			extra,
+		},
+	) => extra.getContinueOnTabUpdatedUrl(),
+);
+
+export const storeContinueOnTabUpdatedUrl = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+	`${prefix}/storeContinueOnTabUpdatedUrl`,
+	async (
+		continueOnTabUpdatedUrl,
+		{
+			dispatch,
+			extra,
+		},
+	) => {
+		await extra.setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl);
+		dispatch(setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl));
+	},
+);
+
 export const settingsSlice = createSlice({
 	extraReducers(builder) {
 		builder
@@ -141,11 +193,25 @@ export const settingsSlice = createSlice({
 			.addCase(loadSpeakingHistoryLimit.fulfilled, (state, action) => {
 				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.speakingHistoryLimit = action.payload;
+			})
+			.addCase(loadContinueOnTabRemoved.fulfilled, (state, action) => {
+				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
+				state.continueOnTabRemoved = action.payload;
+			})
+			.addCase(loadContinueOnTabUpdatedUrl.fulfilled, (state, action) => {
+				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
+				state.continueOnTabUpdatedUrl = action.payload;
 			});
 	},
 	initialState,
 	name: prefix,
 	reducers: {
+		setContinueOnTabRemoved(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
+			state.continueOnTabRemoved = action.payload;
+		},
+		setContinueOnTabUpdatedUrl(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
+			state.continueOnTabUpdatedUrl = action.payload;
+		},
 		setShowAdditionalDetails(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.showAdditionalDetails = action.payload;
 		},
@@ -161,6 +227,8 @@ export const settingsSlice = createSlice({
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const {
+	setContinueOnTabRemoved,
+	setContinueOnTabUpdatedUrl,
 	setShowAdditionalDetails,
 	setSpeakLongTexts,
 	setSpeakingHistoryLimit,

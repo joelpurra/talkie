@@ -55,14 +55,18 @@ interface IApi {
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
 	debouncedSpeakTextInVoiceWithOverrides: (text: string, voiceName: string) => void;
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
+
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T;
 	getConfigurationValue<T extends JsonValue>(configurationPath: string): Promise<T>;
+
 	iconClick(): Promise<void>;
 	stopSpeaking(): Promise<void>;
 	speakInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void>;
 	speakTextInVoiceWithOverrides(text: string, voiceName: string): Promise<void>;
 	speakTextInLanguageWithOverrides(text: string, languageCode: string): Promise<void>;
+
 	getVoices(): Promise<SafeVoiceObjects>;
+
 	getIsPremiumEdition(): Promise<boolean>;
 	setIsPremiumEdition(isPremiumEdition: boolean): Promise<void>;
 	getSpeakLongTexts(): Promise<boolean>;
@@ -83,6 +87,11 @@ interface IApi {
 	getEffectivePitchForVoice(voiceName: string): Promise<number>;
 	setVoicePitchOverride(voiceName: string, pitch: number): Promise<void>;
 	toggleLanguageVoiceOverrideName(languageCode: string, voiceName: string): Promise<boolean>;
+	getContinueOnTabRemoved(): Promise<boolean>;
+	setContinueOnTabRemoved(continueOnTabRemoved: boolean): Promise<void>;
+	getContinueOnTabUpdatedUrl(): Promise<boolean>;
+	setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl: boolean): Promise<void>;
+
 	getTranslatedLanguages(): Promise<TalkieLocale[]>;
 	isPremiumEdition(): Promise<boolean>;
 	getVersionName(): Promise<string | null>;
@@ -90,6 +99,7 @@ interface IApi {
 	getEditionType(): Promise<EditionType>;
 	getSystemType(): Promise<SystemType>;
 	getOperatingSystemType(): Promise<OsType>;
+
 	openExternalUrlInNewTab(url: ReadonlyDeep<URL>): Promise<BrowserTabId>;
 	openShortKeysConfiguration(): Promise<BrowserTabId>;
 	openOptionsPage(): Promise<void>;
