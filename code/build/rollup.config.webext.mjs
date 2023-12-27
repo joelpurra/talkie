@@ -20,10 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import path from "path";
 import copy from "rollup-plugin-copy";
-import {
-	readFileSync,
-	statSync,
-} from "fs";
+import { readFileSync, statSync } from "fs";
 
 const extensionFiles = "code.txt";
 const licensesFiles = "licenses.txt";
@@ -48,7 +45,7 @@ const getCopyTargets = (
 	sourceBase,
 	source,
 	destinationBase,
-	destination
+	destination,
 ) => {
 	const resolvedSource = path.join(sourceBase, source);
 	const resolvedDestination = path.join(destinationBase, destination);
@@ -59,7 +56,7 @@ const getCopyTargets = (
 		"output-webext",
 		"src",
 		"package-files",
-		fileListFile
+		fileListFile,
 	);
 	const file = readFileSync(fileListFilePath);
 	const lines = getLines(file);
@@ -70,16 +67,16 @@ const getCopyTargets = (
 			resolvedDestination,
 
 			// NOTE: make sure destination is the containing directory, otherwise a directory with the same name as the file will be created.
-			path.dirname(file)
+			path.dirname(file),
 		);
 
 		// NOTE: check if the source file exists.
 		statSync(src);
 
-		return ({
+		return {
 			src,
 			dest,
-		});
+		};
 	});
 
 	return targets;
@@ -94,7 +91,7 @@ const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
 				sourceBase,
 				"../../..",
 				destinationBase,
-				"."
+				".",
 			),
 			...getCopyTargets(
 				extensionFiles,
@@ -102,7 +99,7 @@ const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
 				sourceBase,
 				"../..",
 				destinationBase,
-				"."
+				".",
 			),
 			...getCopyTargets(
 				licensesFiles,
@@ -110,7 +107,7 @@ const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
 				sourceBase,
 				"../..",
 				destinationBase,
-				"."
+				".",
 			),
 			...getCopyTargets(
 				localesFiles,
@@ -118,7 +115,7 @@ const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
 				sourceBase,
 				"../shared-locales/src/data",
 				destinationBase,
-				"."
+				".",
 			),
 		],
 	});

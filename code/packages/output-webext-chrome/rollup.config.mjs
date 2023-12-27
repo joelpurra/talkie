@@ -30,9 +30,7 @@ const rollupConfiguration = {
 		file: `./dist/rollup/${fileName}.js`,
 		name: fileName,
 	},
-	plugins: [
-		webext("../../..", ".", "./dist/webext/"),
-	]
+	plugins: [webext("../../..", ".", "./dist/webext/")],
 };
 
 export default rollupConfiguration;

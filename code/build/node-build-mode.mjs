@@ -28,10 +28,7 @@ export const NODE_ENV_DEVELOPMENT = "development";
 export const NODE_ENV_DEFAULT = NODE_ENV_PRODUCTION;
 
 function isNodeEnv(input) {
-	return [
-		NODE_ENV_DEVELOPMENT,
-		NODE_ENV_PRODUCTION,
-	].includes(String(input));
+	return [NODE_ENV_DEVELOPMENT, NODE_ENV_PRODUCTION].includes(String(input));
 }
 
 function assertNodeEnv(input) {
@@ -52,5 +49,5 @@ export const NODE_ENV = isNodeEnv(process_env_NODE_ENV)
 	? process_env_NODE_ENV
 	: NODE_ENV_DEFAULT;
 
-export const isNodeDevelopmentMode = () => (NODE_ENV === NODE_ENV_DEVELOPMENT);
-export const isNodeProductionMode = () => (NODE_ENV === NODE_ENV_PRODUCTION);
+export const isNodeDevelopmentMode = () => NODE_ENV === NODE_ENV_DEVELOPMENT;
+export const isNodeProductionMode = () => NODE_ENV === NODE_ENV_PRODUCTION;

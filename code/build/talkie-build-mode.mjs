@@ -28,10 +28,9 @@ export const TALKIE_ENV_DEVELOPMENT = "development";
 export const TALKIE_ENV_DEFAULT = TALKIE_ENV_DEVELOPMENT;
 
 function isTalkieEnv(input) {
-	return [
-		TALKIE_ENV_DEVELOPMENT,
-		TALKIE_ENV_PRODUCTION,
-	].includes(String(input));
+	return [TALKIE_ENV_DEVELOPMENT, TALKIE_ENV_PRODUCTION].includes(
+		String(input),
+	);
 }
 
 function assertTalkieEnv(input) {
@@ -52,5 +51,7 @@ export const TALKIE_ENV = isTalkieEnv(process_env_TALKIE_ENV)
 	? process_env_TALKIE_ENV
 	: TALKIE_ENV_DEFAULT;
 
-export const isTalkieDevelopmentMode = () => (TALKIE_ENV === TALKIE_ENV_DEVELOPMENT);
-export const isTalkieProductionMode = () => (TALKIE_ENV === TALKIE_ENV_PRODUCTION);
+export const isTalkieDevelopmentMode = () =>
+	TALKIE_ENV === TALKIE_ENV_DEVELOPMENT;
+export const isTalkieProductionMode = () =>
+	TALKIE_ENV === TALKIE_ENV_PRODUCTION;

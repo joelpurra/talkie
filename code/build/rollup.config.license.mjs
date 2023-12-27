@@ -28,8 +28,8 @@ const rollupConfiguration = (name) =>
 				file: path.join("..", "..", "build", "LICENSE-BANNER"),
 			},
 			data: () => ({
-				rollupName: name
-			})
+				rollupName: name,
+			}),
 		},
 		sourcemap: true,
 		thirdParty: {
@@ -37,16 +37,17 @@ const rollupConfiguration = (name) =>
 				file: path.join("dist", "rollup", `${name}.dependencies.txt`),
 				template: (dependencies) => {
 					const thirdPartyDependencies = dependencies
-						.filter((dependency) => !dependency.name.startsWith('@talkie/'))
+						.filter((dependency) => !dependency.name.startsWith("@talkie/"))
 						.slice()
 						.sort((a, b) => a.name.localeCompare(b.name));
 
 					return [
 						`Talkie's third-party dependencies\n\nhttps://joelpurra.com/projects/talkie/\n\nDetected ${thirdPartyDependencies.length} third-party dependencies in "${name}".`,
-						...thirdPartyDependencies
-							.map((dependency, index) => `Dependency #${index + 1}:\n${dependency.text()}`)
-					]
-							.join("\n\n---\n\n");
+						...thirdPartyDependencies.map(
+							(dependency, index) =>
+								`Dependency #${index + 1}:\n${dependency.text()}`,
+						),
+					].join("\n\n---\n\n");
 				},
 			},
 		},

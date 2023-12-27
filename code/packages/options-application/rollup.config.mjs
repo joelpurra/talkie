@@ -25,15 +25,12 @@ const inputName = "options";
 const fileExtension = "";
 const fileName = `${inputName}${fileExtension}`;
 
-const rollupConfiguration = mergeOptions(
-	rollupConfig(fileName),
-	{
-		input: `./dist/esm/${fileName}.mjs`,
-		output: {
-			file: `./dist/rollup/${fileName}.js`,
-			name: fileName,
-		},
+const rollupConfiguration = mergeOptions(rollupConfig(fileName), {
+	input: `./dist/esm/${fileName}.mjs`,
+	output: {
+		file: `./dist/rollup/${fileName}.js`,
+		name: fileName,
 	},
-);
+});
 
 export default rollupConfiguration;

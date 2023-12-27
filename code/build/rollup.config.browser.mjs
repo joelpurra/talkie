@@ -58,7 +58,7 @@ const rollupConfiguration = (name) =>
 				}),
 				filesize(),
 			],
-		}
+		},
 	);
 
 export default rollupConfiguration;
