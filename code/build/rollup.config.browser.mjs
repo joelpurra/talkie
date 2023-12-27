@@ -25,14 +25,8 @@ import replace from "@rollup/plugin-replace";
 import filesize from "./rollup.config.filesize.mjs";
 import rollupConfig from "./rollup.config.base.mjs";
 
-const NODE_ENV =
-	typeof process.env.NODE_ENV === "string"
-		? process.env.NODE_ENV
-		: "production";
-const TALKIE_ENV =
-	typeof process.env.TALKIE_ENV === "string"
-		? process.env.TALKIE_ENV
-		: "production";
+import { NODE_ENV } from "./node-build-mode.mjs";
+import { TALKIE_ENV } from "./talkie-build-mode.mjs";
 
 const rollupConfiguration = (name) =>
 	mergeOptions.call(

@@ -1,5 +1,6 @@
 dist/
 node_modules/
+build/*-build-mode.mjs
 rollup.config.*.mjs
 rollup.config.mjs
 syncpack.config.cjs

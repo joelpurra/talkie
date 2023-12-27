@@ -108,15 +108,20 @@ WEB_EXT_FIREFOX="${HOME}/Applications/Firefox.app/Contents/MacOS/firefox-bin" np
 
 ## Build modes
 
-It is possible to switch the build mode between `production` (the default) and `development`. Do this by setting the `TALKIE_ENV` environment variable at build time.
+It is possible to switch the build mode between `production` and `development` (default). Do this by setting the `TALKIE_ENV` environment variable at build time.
 
-Production mode:
+**Production mode**
 
-- The publicly published version.
+- The publicly published version, distributed to Chrome Web Store (CWS) and addons.mozilla.org (AMO).
 - Reduced default logging detail level to the developer console (see [Debugging](#debugging)).
 - Uses minimized script files of dependencies, for reduced extension file size.
 
-Development mode:
+```shell
+# Production build, for distribution.
+TALKIE_ENV='production' npm run --silent rebuild
+```
+
+**Development mode** (default)
 
 - Increased default logging detail level to the developer console.
   - Enables Redux action/state change logging.
@@ -124,8 +129,8 @@ Development mode:
 - Enables [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) to track down potential problems.
 
 ```shell
-# Enable some additional debugging features.
-TALKIE_ENV='development' npm run --silent rebuild
+# Default development build, including debugging features.
+npm run --silent rebuild
 ```
 
 ## Debugging
@@ -269,7 +274,7 @@ cat ./packages/output-webext/src/package-files/locales.txt
 cat ./packages/output-webext/src/package-files/root.txt
 
 # Fix any warnings and errors before committing.
-npm run --silent preoutput
+TALKIE_ENV='production' npm run --silent preoutput
 
 # The "<release-version>" needs to follow semantic versioning, such as "v1.0.0".
 # https://semver.org/
@@ -285,7 +290,7 @@ git flow release finish -s <release-version>
 git checkout <release-version>
 
 # Create zip files with the assembled extension outputs.
-npm run --silent output
+TALKIE_ENV='production' npm run --silent output
 
 # Upload and publish the output where it can be automated.
 # Release to other distribution channels manually.

@@ -18,8 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import process from "node:process";
-
 import type {
 	Action,
 	PreloadedState,
@@ -27,6 +25,9 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 import toolkit from "@reduxjs/toolkit";
+import {
+	isTalkieDevelopmentMode,
+} from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
 import type IApi from "@talkie/split-environment-interfaces/iapi.mjs";
 import logger from "redux-logger";
 import type {
@@ -48,7 +49,7 @@ const getStore = <S, A extends Action>(
 	const isServerSideRendering = initialState === undefined;
 
 	const store = configureStore({
-		devTools: process.env.TALKIE_ENV === "development",
+		devTools: isTalkieDevelopmentMode(),
 		middleware(getDefaultMiddleware) {
 			const defaultMiddlewareOptions = {
 				thunk: {
@@ -57,7 +58,7 @@ const getStore = <S, A extends Action>(
 			};
 			const extraMiddlewares = [];
 
-			if (!isServerSideRendering && process.env.TALKIE_ENV === "development") {
+			if (!isServerSideRendering && isTalkieDevelopmentMode()) {
 				// NOTE: hide logging during server side rendering, since all the output from languages times all applications/pages is too much.
 				// NOTE: temporarily enable to debug server-side rendering actions/states.
 				extraMiddlewares.push(logger);

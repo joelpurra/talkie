@@ -24,6 +24,8 @@ import {
 	statSync,
 } from "fs";
 
+import { isTalkieDevelopmentMode, isTalkieProductionMode } from "../../build/talkie-build-mode.mjs";
+
 // TODO: avoid using rollup when only using non-rollup-specific functionality.
 const inputName = "dummy";
 const fileExtension = "";
@@ -38,13 +40,6 @@ const alwaysCopyTargets = {
 	"./dist/umd/redux-toolkit.license.txt": "../../node_modules/@reduxjs/toolkit/LICENSE",
 };
 
-// TODO: use this flag to switch <script> urls instead of replacing file contents by reusing the same location?
-const TALKIE_ENV = typeof process.env.TALKIE_ENV === "string"
-	? process.env.TALKIE_ENV
-	: "production";
-const TALKIE_ENV_PRODUCTION = "production";
-const TALKIE_ENV_DEVELOPMENT = "development";
-
 // NOTE: there's also react.profiling.min.js and react-dom.profiling.min.js, but they seem less documented.
 // const TALKIE_ENV_PROFILING = "profiling";
 
@@ -52,18 +47,17 @@ const TALKIE_ENV_DEVELOPMENT = "development";
 // The packages have been hoisted because only one copy of some libraries (react, react-dom) is allowed during compilation and/or server-side rendering.
 let environmentTargets;
 
-switch(TALKIE_ENV) {
-	case TALKIE_ENV_PRODUCTION:
-		environmentTargets = {
+// TODO: use this flag to switch <script> urls instead of replacing file contents by reusing the same location?
+if(isTalkieDevelopmentMode()){
+environmentTargets = {
 			"./dist/umd/browser-polyfill.js": "../../node_modules/webextension-polyfill/dist/browser-polyfill.min.js",
 			"./dist/umd/react.js": "../../node_modules/react/umd/react.production.min.js",
 			"./dist/umd/react-dom.js": "../../node_modules/react-dom/umd/react-dom.production.min.js",
 			"./dist/umd/react-redux.js": "../../node_modules/react-redux/dist/react-redux.min.js",
 			"./dist/umd/redux-toolkit.js": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.min.js",
 		};
-	break;
 
-	case TALKIE_ENV_DEVELOPMENT:
+	}else if(isTalkieProductionMode()){
 		environmentTargets = {
 			"./dist/umd/browser-polyfill.js": "../../node_modules/webextension-polyfill/dist/browser-polyfill.js",
 			"./dist/umd/react.js": "../../node_modules/react/umd/react.development.js",
@@ -71,7 +65,8 @@ switch(TALKIE_ENV) {
 			"./dist/umd/react-redux.js": "../../node_modules/react-redux/dist/react-redux.js",
 			"./dist/umd/redux-toolkit.js": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.js",
 		};
-	break;
+}else {
+	throw new TypeError();
 }
 
 const targets = {

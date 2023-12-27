@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	isDevelopmentMode,
-} from "./build-mode.mjs";
+	isTalkieDevelopmentMode,
+} from "./talkie-build-mode.mjs";
 
 export enum LoggingLevelFunctionMap {
 	"TRAC" = "log",
@@ -94,7 +94,7 @@ const parseLevel = (nextLevel: LoggingLevel) => {
 };
 
 // NOTE: default logging level differs for developers in development mode, and public/published usage.
-let currentLevelIndex = isDevelopmentMode()
+let currentLevelIndex = isTalkieDevelopmentMode()
 	? parseLevel("DEBG")
 	: parseLevel("WARN");
 
