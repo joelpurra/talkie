@@ -36,7 +36,6 @@
     "build:rollup": "rollup --config rollup.config.mjs",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module",

@@ -43,7 +43,6 @@
     "build:bin:local": "mkdir -p ./node_modules/.bin/ && cd ./node_modules/.bin/ && ln -v -f -s ../../dist/esm/translator.mjs webext-translator",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module",

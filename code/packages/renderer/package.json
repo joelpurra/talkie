@@ -40,7 +40,6 @@
     "build": "npm run --silent build:typescript",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module",

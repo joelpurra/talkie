@@ -33,8 +33,8 @@
     "messages:refresh": "npm run --silent messages:sort && ./src/translation-merge.sh && npm run --silent messages:sort && npm run --silent messages:override:refresh && npm run --silent messages:override:outdated",
     "messages:sort": "( cd ./src/data/_locales/ && for MESSAGES in $(find . -name '*.json'); do jq --sort-keys '.' \"$MESSAGES\" > \"${MESSAGES}~\"; mv \"${MESSAGES}~\" \"$MESSAGES\"; done ; )",
     "messages:translate": "npm run --silent messages:download && npm run --silent messages:refresh && npm run --silent messages:count",
-    "rebuild": "npm run --silent clean && npm run --silent rebuild:messages && npm run --silent build",
-    "rebuild:messages": "npm run --silent messages:refresh && npm run --silent messages:prune",
+    "reconstruct": "npm run --silent reconstruct:messages",
+    "reconstruct:messages": "npm run --silent messages:refresh && npm run --silent messages:prune",
     "watch": "npm run --silent build:typescript -- --watch"
   },
   "type": "module",

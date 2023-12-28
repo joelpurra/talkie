@@ -23,7 +23,6 @@
     "build": "npm run --silent build:rollup",
     "build:rollup": "rollup --config rollup.config.mjs",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module"

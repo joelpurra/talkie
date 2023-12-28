@@ -54,7 +54,7 @@ The build process assumes that current stable versions of the following are avai
 - [`git`](https://git-scm.com/)
 - [`hub`](https://hub.github.com/)
 - [`jq`](https://stedolan.github.io/jq/)
-- [`node`](https://nodejs.org/) with `npm`
+- [`node`](https://nodejs.org/), including [`npm`](https://docs.npmjs.com/cli/) and [`npx`](https://docs.npmjs.com/cli/commands/npx)
 
 ## Manual installation
 
@@ -74,8 +74,14 @@ The build process assumes that current stable versions of the following are avai
 cd talkie
 cd code
 
-# Install package dependencies and local development tools.
-npm install
+# Make sure to start fresh.
+git clean --interactive -x -d :/
+
+# Install (exact) package dependencies and local development tools.
+npm clean‐install
+
+# Optionally reset local nx cache.
+npx nx reset
 
 # Do a clean build.
 npm run --silent rebuild
@@ -135,6 +141,8 @@ npm run --silent rebuild
 
 ## Debugging
 
+### In-browser
+
 - Prefer using the [development build](#build-modes).
 - From the browser extensions settings page:
   - Enable developer mode.
@@ -149,6 +157,15 @@ npm run --silent rebuild
     - `window.talkieServices.setLoggingLevel("NONE");` (no logging)
 - You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
+
+### Build tooling
+
+To speed up iterative development, package builds are parallelized and the input/output is cached. The build log output is hidden by by default, but may be helpful to review during build debugging.
+
+```shell
+# Output build log for debugging.
+NX_VERBOSE_LOGGING='true' npm run --silent rebuild
+```
 
 ## Translations
 

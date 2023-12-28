@@ -29,7 +29,6 @@
     "publish": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run publish:update && npm run publish:publish",
     "publish:publish": "chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk",
     "publish:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome.zip\"",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "run:chrome": "mkdirp ./dist/profiles/chrome/ && google-chrome --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/dist/profiles/chrome/\" --load-extension=\"${PWD}/dist/webext\"",
     "run:chromium": "mkdirp ./dist/profiles/chromium/ && chromium --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/dist/profiles/chromium/\" --load-extension=\"${PWD}/dist/webext\"",
     "run:vivaldi": "web-ext --source-dir=./dist/webext/ run --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'"

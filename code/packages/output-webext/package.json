@@ -16,9 +16,9 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "build": "echo",
-    "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build"
+    "build": "npm run --silent build:dummy",
+    "build:dummy": "echo 'Create dummy ./dist' && mkdirp ./dist",
+    "clean": "rimraf ./dist"
   },
   "type": "module"
 }
