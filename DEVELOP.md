@@ -42,7 +42,7 @@ Talkie can be built and tested locally, using freely available open source tools
   - Additional common development tools are required.
 - Use the `develop` branch as the base for your pull request.
   - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/), preferably using the `git-flow` tooling.
-  - It is recommended to use `hub` for forking and creating pull requests on github.
+  - It is recommended to use `gh` for forking and creating pull requests on github.
 
 ## Software requirements
 
@@ -52,7 +52,7 @@ The build process assumes that current stable versions of the following are avai
 - [`dot`](https://www.graphviz.org/doc/info/command.html) from [Graphviz](https://www.graphviz.org/).
 - [`git-flow`](https://github.com/petervanderdoes/gitflow-avh) (AVH Edition)
 - [`git`](https://git-scm.com/)
-- [`hub`](https://hub.github.com/)
+- [`gh`](https://cli.github.com/)
 - [`jq`](https://stedolan.github.io/jq/)
 - [`node`](https://nodejs.org/), including [`npm`](https://docs.npmjs.com/cli/) and [`npx`](https://docs.npmjs.com/cli/commands/npx)
 
@@ -229,12 +229,12 @@ Translation files are merged in this order. The last value for a specific key/na
 
 ## Pull request procedure
 
-- These steps assume you are using the `hub` and `git-flow` tools.
+- These steps assume you are using the `gh` and `git-flow` tools.
 - Expect to have your contribution scrutinized, so make sure your code is well-written. You may be asked to fix some stuff before your pull request is accepted.
 
 ```shell
 # Fork the repository to your user on github.
-hub fork
+gh repo fork
 
 # Switch to develop.
 git checkout develop
@@ -273,7 +273,7 @@ git flow feature finish <feature-name>
 git flow feature publish <feature-name>
 
 # Go to the repository page to create a pull request against the develop branch.
-hub browse
+gh browse
 ```
 
 ## Maintaining package dependencies
