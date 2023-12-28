@@ -26,7 +26,7 @@ Talkie can be built and tested locally, using freely available open source tools
 
 - The source code itself is in the [`./code/`](./code/) directory.
   - This is a monorepo, split up to several [`packages/`](./code/packages/) in the internal (non-published) `@talkie/` scope/namespace.
-  - [Dependency graphs](./code/packages/README.md) are generated at build time, to give an overview of internal package dependencies.
+  - [Dependency graphs](./code/packages/README.md) are generated in [`./dist/graph`](./dist/graph) at build time, to give an overview of internal package dependencies.
 - The main language is [Typescript](https://www.typescriptlang.org/), with some supporting shell scripts and tooling.
 - Adhere to the [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). All project contributors need to agree to the the [Contributor License Agreement (CLA)](./CLA.md).
 

@@ -71,7 +71,7 @@
   "scripts": {
     "build": "npm run --silent build:lerna",
     "build:lerna": "lerna run build",
-    "clean": "npm run --silent clean:typescript && npm run --silent clean:lerna",
+    "clean": "rimraf ./dist && npm run --silent clean:typescript && npm run --silent clean:lerna",
     "clean:lerna": "lerna run clean",
     "clean:typescript": "rimraf tsconfig.tsbuildinfo",
     "dependencies:check": "npm run --silent dependencies:check:syncpack && npm run --silent dependencies:check:ncu && npm run --silent dependencies:upgrade:lerna",
@@ -99,7 +99,7 @@
     "output:list": "lerna run output:list && ls -l *.zip",
     "output:source": "git archive --format zip -9 --output ./talkie-joelpurra.com-$(npm run --silent version:get:head)-source.zip HEAD :/",
     "preoutput": "npm run --silent mode:force:production && npm run --silent rebuild && npm run --silent test && npm run --silent lint && ( cd packages/shared-locales && npm run --silent messages:count ; )",
-    "rebuild": "npm run --silent clean && npm run --silent rebuild:project-references && npm run --silent rebuild:lerna",
+    "rebuild": "npm run --silent clean && npm run --silent rebuild:project-references && npm run --silent rebuild:project-references:nx:graph && npm run --silent rebuild:lerna",
     "rebuild:lerna": "lerna run rebuild",
     "rebuild:project-references": "./build/update-project-references.sh && npm run --silent lint:syncpack:fix",
     "test": "npm run --silent lint:fast",

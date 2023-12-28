@@ -42,11 +42,11 @@ These graphs are not checked in, thus the below images are missing until the `re
 
 ### Package dependency graph, as `import`ed in Typescript code
 
-[![Package dependency graph, as imported in code](./talkie.packages.import.svg)](./talkie.packages.import.svg)
+[![Package dependency graph, as imported in code](../dist/graph/talkie.packages.import.svg)](../dist/graph/talkie.packages.import.svg)
 
 ### Package dependency graph, as referenced in `package.json` files
 
-[![Package dependency graph, as referenced in package.json](./talkie.packages.svg)](./talkie.packages.svg)
+[![Package dependency graph, as referenced in package.json](../dist/graph/talkie.packages.svg)](../dist/graph/talkie.packages.svg)
 
 ---
 

@@ -171,107 +171,107 @@ function updateTsconfigReferences() {
 	local -r filename="$1"
 	shift
 
-	jq --raw-output 'keys | .[]' 'talkie.packages.import.json' \
+	jq --raw-output 'keys | .[]' "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" \
 	| (
-		while read p;
+		while read PACKAGE_NAME;
 		do
-			if [[ ! -f "./${p}/tsconfig.json" ]];
+			if [[ ! -f "./${PACKAGE_NAME}/tsconfig.json" ]];
 			then
 				continue;
 			fi
 
-			(
-				pushd "$p" > /dev/null
+			jq --arg PACKAGE_NAME "$PACKAGE_NAME" '.[$PACKAGE_NAME]' "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" \
+			| jq --slurpfile tsconfig "${PACKAGE_NAME}/tsconfig.json" "$JQ_TSCONFIG_SET_REFERENCE_PATHS" > "${PACKAGE_NAME}/tsconfig.json~"
 
-				jq --arg p "$p" '.[$p]' '../talkie.packages.import.json' \
-				| jq --slurpfile tsconfig 'tsconfig.json' "$JQ_TSCONFIG_SET_REFERENCE_PATHS" > 'tsconfig.json~'
-
-				mv 'tsconfig.json~' 'tsconfig.json'
-
-				popd > /dev/null
-			)
+			mv "${PACKAGE_NAME}/tsconfig.json~" "${PACKAGE_NAME}/tsconfig.json"
 		done
 	)
 }
 
-(
-	declare -r SCRIPT_FOLDER="${BASH_SOURCE%/*}"
-	declare -r ROOT_FOLDER="${SCRIPT_FOLDER}/.."
+function resolvePath() {
+	realpath --logical --physical --canonicalize-existing "$@"
+}
 
-	pushd "$ROOT_FOLDER" > /dev/null
-
+function main() {
 	(
-		pushd 'packages' > /dev/null
+		pushd "$ROOT_FOLDER" > /dev/null
+
+		mkdir -p "$DIST_GRAPH_FOLDER"
 
 		(
-			find . -mindepth 1 -maxdepth 1 -type d \
-			| sed 's_./__' \
-			| sort \
-			| xargs -I'{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" \
-			| jq --raw-input --slurp "$JQ_GET_TALKIE_PACKAGE_NAMES" \
-			> 'talkie.packages.import.json'
+			pushd 'packages' > /dev/null
 
-			jq --raw-output "$JQ_JSON_TO_DOT" 'talkie.packages.import.json' > 'talkie.packages.import.dot'
+			(
+				find . -mindepth 1 -maxdepth 1 -type d \
+				| sed 's_./__' \
+				| sort \
+				| xargs -I'{}' sh -c "echo; echo '{}'; { ag --nofilename --only-matching 'from \"@talkie/[^/\"]+' ./{}/ | sed 's_from \"\(@talkie/[^/\"]*\).*_\1_'| sort | uniq; }" \
+				| jq --raw-input --slurp "$JQ_GET_TALKIE_PACKAGE_NAMES" \
+				> "${DIST_GRAPH_FOLDER}/talkie.packages.import.json"
 
-			dot -Tsvg 'talkie.packages.import.dot' > 'talkie.packages.import.svg'
+				jq --raw-output "$JQ_JSON_TO_DOT" "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" > "${DIST_GRAPH_FOLDER}/talkie.packages.import.dot"
 
-			jq --raw-output 'keys | .[]' 'talkie.packages.import.json' \
-			| (
-				while read p;
-				do
-					(
-						pushd "$p" > /dev/null
+				dot -Tsvg "${DIST_GRAPH_FOLDER}/talkie.packages.import.dot" > "${DIST_GRAPH_FOLDER}/talkie.packages.import.svg"
 
-						jq --arg p "$p" '.[$p]' '../talkie.packages.import.json' \
-						| jq --slurpfile package 'package.json' "$JQ_UPDATE_TALKIE_DEPENDENCIES" \
-						> 'package.json~'
+				jq --raw-output 'keys | .[]' "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" \
+				| (
+					while read PACKAGE_NAME;
+					do
+						jq --arg PACKAGE_NAME "$PACKAGE_NAME" '.[$PACKAGE_NAME]' "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" \
+						| jq --slurpfile package "${PACKAGE_NAME}/package.json" "$JQ_UPDATE_TALKIE_DEPENDENCIES" \
+						> "${PACKAGE_NAME}/package.json~"
 
-						mv 'package.json~' 'package.json'
+						mv "${PACKAGE_NAME}/package.json~" "${PACKAGE_NAME}/package.json"
+					done
+				)
 
-						popd > /dev/null
-					)
-				done
+				updateTsconfigReferences 'tsconfig.json'
+
+				find . -mindepth 2 -maxdepth 2 -name 'package.json' \
+				| sort \
+				| xargs cat \
+				| jq --slurp "$JQ_GET_TALKIE_DEPENDENCY_TREE" \
+				> "${DIST_GRAPH_FOLDER}/talkie.packages.dot.json"
+
+				jq --raw-output "$JQ_JSON_TO_DOT" "${DIST_GRAPH_FOLDER}/talkie.packages.dot.json" > "${DIST_GRAPH_FOLDER}/talkie.packages.dot"
+
+				dot -Tsvg "${DIST_GRAPH_FOLDER}/talkie.packages.dot" > "${DIST_GRAPH_FOLDER}/talkie.packages.svg"
 			)
 
-			updateTsconfigReferences 'tsconfig.json'
-
-			find . -mindepth 2 -maxdepth 2 -name 'package.json' \
-			| sort \
-			| xargs cat \
-			| jq --slurp "$JQ_GET_TALKIE_DEPENDENCY_TREE" \
-			> 'talkie.packages.dot.json'
-
-			jq --raw-output "$JQ_JSON_TO_DOT" 'talkie.packages.dot.json' > 'talkie.packages.dot'
-
-			dot -Tsvg 'talkie.packages.dot' > 'talkie.packages.svg'
+			popd > /dev/null
 		)
 
 		popd > /dev/null
 	)
 
-	popd > /dev/null
-)
+	{
+		jq '.' "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" \
+		| jq --slurpfile package 'package.json' "$JQ_PACKAGEJSON_SET_TALKIE_WORKSPACE_PATHS" \
+		> 'package.json~'
 
-{
-	jq '.' './packages/talkie.packages.import.json' \
-	| jq --slurpfile package 'package.json' "$JQ_PACKAGEJSON_SET_TALKIE_WORKSPACE_PATHS" \
-	> 'package.json~'
+		mv 'package.json~' 'package.json'
+	}
 
-	mv 'package.json~' 'package.json'
+	{
+		jq '.' "${DIST_GRAPH_FOLDER}/talkie.packages.import.json" \
+		| jq --slurpfile tsconfig 'tsconfig.json' "$JQ_TSCONFIG_SET_TALKIE_PACKAGE_PATHS" \
+		> 'tsconfig.json~'
+
+		mv 'tsconfig.json~' 'tsconfig.json'
+	}
+
+	# NOTE: jq and prettier do not agree on JSON formatting, so preemptively format checked in files potentially affected by this script. This should reduce linting warnings.
+	{
+		find . -mindepth 1 -maxdepth 1 \( -iname 'tsconfig*.json' -or -iname 'package.json' \)
+		find ./packages -mindepth 2 -maxdepth 2 \( -iname 'tsconfig*.json' -or -iname 'package.json' \)
+	} \
+	| sort \
+	| xargs ./node_modules/.bin/prettier --log-level 'warn' --write
 }
 
-{
-	jq '.' './packages/talkie.packages.import.json' \
-	| jq --slurpfile tsconfig 'tsconfig.json' "$JQ_TSCONFIG_SET_TALKIE_PACKAGE_PATHS" \
-	> 'tsconfig.json~'
+# TOOD: scope script-global variables, pass values.
+declare -r SCRIPT_FOLDER="${BASH_SOURCE%/*}"
+declare -r ROOT_FOLDER="$(resolvePath "${SCRIPT_FOLDER}/..")"
+declare -r DIST_GRAPH_FOLDER="${ROOT_FOLDER}/dist/graph"
 
-	mv 'tsconfig.json~' 'tsconfig.json'
-}
-
-# NOTE: jq and prettier do not agree on JSON formatting, so preemptively format checked in files potentially affected by this script. This should reduce linting warnings.
-{
-	find . -mindepth 1 -maxdepth 1 \( -iname 'tsconfig*.json' -or -iname 'package.json' \)
-	find ./packages -mindepth 2 -maxdepth 2 \( -iname 'tsconfig*.json' -or -iname 'package.json' \)
-} \
-| sort \
-| xargs ./node_modules/.bin/prettier --log-level 'warn' --write
+main "$@"
