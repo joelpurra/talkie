@@ -102,6 +102,7 @@
     "rebuild": "npm run --silent clean && npm run --silent rebuild:project-references && npm run --silent rebuild:project-references:nx:graph && npm run --silent rebuild:lerna",
     "rebuild:lerna": "lerna run rebuild",
     "rebuild:project-references": "./build/update-project-references.sh && npm run --silent lint:syncpack:fix",
+    "rebuild:project-references:nx:graph": "mkdirp ./dist/graph && nx graph --file ./dist/graph/nx.graph.json && nx graph --file ./dist/graph/nx.graph.html",
     "test": "npm run --silent lint:fast",
     "version:get:head": "git describe --always --dirty --long --match 'v*'",
     "version:get:release": "git rev-parse --abbrev-ref HEAD | sed -n -e '/release/ s_release/v_v_ p'",

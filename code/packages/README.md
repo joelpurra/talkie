@@ -38,7 +38,9 @@ These files are only generated locally during the build process, and not checked
 
 During the build process, dependency graphs of internal `@talkie/` packages are automatically generated. They may provide useful if there are issues regarding, for example, accidental package references or circular dependencies.
 
-These graphs are not checked in, thus the below images are missing until the `rebuild` command/script has been executed locally.
+These graphs are not checked in, thus the below link and images are missing until the `rebuild` command/script has been executed locally.
+
+- [`nx graph`](../dist/graph/nx.graph.html)
 
 ### Package dependency graph, as `import`ed in Typescript code
 
