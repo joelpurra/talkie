@@ -19,8 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 // NOTE: generated json data file might yield compilation error ts(2307) if missing.
+// NOTE: using a dynamic package root-based path requires additional build configuration.
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, unicorn/prefer-module
-const languagesJsonFile = require("./languages.json");
+const languagesJsonFile = require("../../../../dist/data/languages/languages.json");
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, unicorn/prefer-module
 module.exports = languagesJsonFile;

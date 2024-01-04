@@ -113,7 +113,7 @@ const rollupConfiguration = (repositoryRoot, sourceBase, destinationBase) =>
 				localesFiles,
 				repositoryRoot,
 				sourceBase,
-				"../shared-locales/src/data",
+				"../shared-locales/dist/data",
 				destinationBase,
 				".",
 			),

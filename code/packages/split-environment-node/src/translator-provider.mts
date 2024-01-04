@@ -90,23 +90,28 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 	}
 
 	private _getMessagesFilepath(locale: TalkieLocale) {
+		// NOTE: relative to repository code root.
+		const dataRoot = [
+			"..",
+			"..",
+			"..",
+			"shared-locales",
+			"dist",
+			"data",
+		];
+
 		// NOTE: relative to extension root.
-		const messagesPath = path.join(
+		const localeMessagesPath = [
 			"_locales",
 			locale,
 			"messages.json",
-		);
+		];
 
 		// NOTE: could use path relative to PWD (possibly equal to the extension root), but using full path from current file.
 		return new URL(
 			path.join(
-				"..",
-				"..",
-				"..",
-				"shared-locales",
-				"src",
-				"data",
-				messagesPath,
+				...dataRoot,
+				...localeMessagesPath,
 			),
 			import.meta.url,
 		);

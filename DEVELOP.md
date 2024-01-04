@@ -193,9 +193,15 @@ npm run --silent lint:fix
 
 In order to offer Talkie in as many languages as possible, translations are automated. It is still possible &mdash; and preferred &mdash; to add overrides with human translations.
 
-- The `_locales` directory usually present in the root of webextensions is located in `./packages/shared-locales/src/data/_locales`. This is the base directory referenced below.
-- The translation files are assembled before being copied to the webextension output packages.
-- During development, there translation placeholder methods may be used. They help keep track of which strings have not yet been translated.
+- The `_locales` directory, usually present in the root of webextensions, is located inside a package.
+  - This is the base directory referenced below.
+  - The translation files are assembled before being copied to the webextension output packages.
+- During development, there translation placeholder methods may be used.
+  - Helps keeping track of which strings have not yet been translated.
+  - Inspect the debug output for warnings, both during build and in-browser.
+- Paths:
+  - Input: `./packages/shared-locales/src/data/_locales`
+  - Output: `./packages/shared-locales/dist/data/_locales`
 
 ### Human translations
 

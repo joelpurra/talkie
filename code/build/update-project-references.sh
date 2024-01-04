@@ -189,6 +189,7 @@ function updateTsconfigReferences() {
 }
 
 function resolvePath() {
+	# TODO: reuse shared functions.
 	realpath --logical --physical --canonicalize-existing "$@"
 }
 
