@@ -338,8 +338,11 @@
   "frontend_featuresPremium_List05": {
     "message": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
+  "frontend_installVoicesHeading": {
+    "message": "Available text-to-speech voices"
+  },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "No text-to-speech voices found"

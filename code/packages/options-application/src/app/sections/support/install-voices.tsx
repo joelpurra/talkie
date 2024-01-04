@@ -74,7 +74,7 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 					hasWaitedLongEnoughForVoicesToLoad: true,
 				});
 			},
-			5000,
+			15_000,
 		);
 	}
 
@@ -95,7 +95,7 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			osType,
 			translateSync,
 			voicesCount,
-		} = this.props;
+		} = this.props as P;
 
 		// NOTE: don't show additional details on the welcome page.
 		const showAdditionalDetails = false;
@@ -106,34 +106,36 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			`**${languagesCount.toString(10)}**`,
 		]);
 
+		const finishedLoading = haveVoices || this.state.hasWaitedLongEnoughForVoicesToLoad;
+
 		return (
 			<section>
-				<Discretional
-					enabled={haveVoices || !this.state.hasWaitedLongEnoughForVoicesToLoad}
-				>
-					<Loading
-						isBlockElement
-						enabled={haveVoices}
-					>
-						<textBase.p>
-							<MarkdownStrong>
-								{moreVoicesCountsMarkdown}
-							</MarkdownStrong>
-						</textBase.p>
-					</Loading>
-				</Discretional>
+				<textBase.h3>
+					{translateSync("frontend_installVoicesHeading")}
+				</textBase.h3>
 
-				<Discretional
-					enabled={!haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad}
+				<Loading
+					isBlockElement
+					enabled={finishedLoading}
 				>
-					<textBase.h3>
-						{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
-					</textBase.h3>
-
 					<textBase.p>
-						{translateSync("frontend_installVoicesNoVoiceFound")}
+						<MarkdownStrong>
+							{moreVoicesCountsMarkdown}
+						</MarkdownStrong>
 					</textBase.p>
-				</Discretional>
+
+					<Discretional
+						enabled={!haveVoices}
+					>
+						<textBase.h3>
+							{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
+						</textBase.h3>
+
+						<textBase.p>
+							{translateSync("frontend_installVoicesNoVoiceFound")}
+						</textBase.p>
+					</Discretional>
+				</Loading>
 
 				<InstallVoicesFaq
 					osType={osType}
