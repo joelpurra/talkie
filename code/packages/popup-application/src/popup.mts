@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import DualLogger from "@talkie/browser-shared/dual-log.mjs";
+import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
 	eventToPromise,
 	startReactFrontend,
@@ -32,6 +33,9 @@ import {
 } from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
 
 import hydrate from "./hydrate.mjs";
+
+// NOTE: earliest possible voice load trigger.
+void redundantlyTriggerLoadingVoices();
 
 const dualLogger = new DualLogger("popup.js");
 

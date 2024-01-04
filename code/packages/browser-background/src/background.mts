@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
 	registerUnhandledRejectionHandler,
 } from "@talkie/shared-application/error-handling.mjs";
@@ -39,6 +40,9 @@ import setupBroadcasterListenersAndKillswitches from "./background/setup-broadca
 import {
 	type OnInstallEvent,
 } from "./on-installed-manager-types.mjs";
+
+// NOTE: earliest possible voice load trigger.
+void redundantlyTriggerLoadingVoices();
 
 // NOTE: synchronous handling of the onInstall event through a separate, polled queue handled by the OnInstalledManager.
 const onInstallListenerEventQueue: OnInstallEvent[] = [];

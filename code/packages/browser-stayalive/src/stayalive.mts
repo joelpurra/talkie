@@ -19,11 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import DualLogger from "@talkie/browser-shared/dual-log.mjs";
+import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
 	eventToPromise,
 } from "@talkie/browser-shared/shared-frontend.mjs";
 
 import SuspensionListenerManager from "./suspension-listener-manager.mjs";
+
+// NOTE: earliest possible voice load trigger.
+void redundantlyTriggerLoadingVoices();
 
 const dualLogger = new DualLogger("stayalive.js");
 
@@ -40,13 +44,7 @@ const stopStayAliveListener = async () => {
 	}
 };
 
-export const redundantlyTriggerLoadingVoices = async (): Promise<SpeechSynthesisVoice[]> =>
-	// HACK: trigger loading the voices from somewhere other than the background script, since the
-	// background context in Chrome (on Linux) does not seem to load any voices (ever?) in some
-	// cases (in particular noticeable during testing using a temporary browser profile).
-	window.speechSynthesis.getVoices();
 const start = async () => {
-	void redundantlyTriggerLoadingVoices();
 	await startStayAliveListener();
 };
 

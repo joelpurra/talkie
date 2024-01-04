@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
 	eventToPromise,
 	startReactFrontend,
@@ -28,6 +29,9 @@ import {
 } from "@talkie/shared-application/error-handling.mjs";
 
 import hydrate from "./hydrate.mjs";
+
+// NOTE: earliest possible voice load trigger.
+void redundantlyTriggerLoadingVoices();
 
 const start = async () => {
 	await startReactFrontend();
