@@ -52,6 +52,9 @@ import type {
 } from "type-fest";
 
 interface IApi {
+	// TODO: systematic cleanup of classes and their side-effects.
+	cleanup: () => Promise<void>;
+
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
 	debouncedSpeakTextInVoiceWithOverrides: (text: string, voiceName: string) => void;
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;

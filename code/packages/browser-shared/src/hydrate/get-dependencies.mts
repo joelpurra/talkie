@@ -43,6 +43,7 @@ export interface BrowserDependencies {
 }
 
 function getDependencies(): BrowserDependencies {
+	// TODO: systematic cleanup of classes and their side-effects.
 	const storageProvider = new StorageProvider();
 	const storageManager = new StorageManager(storageProvider);
 	const broadcasterProvider = new BroadcasterProvider();

@@ -96,7 +96,10 @@ const main = async () => {
 		voiceManager,
 	} = getDependencies(onInstallListenerEventQueue);
 
-	await addOnInstalledEventQueuePolling(onInstalledManager);
+	// TODO: systematic cleanup of classes and their side-effects.
+	const addOnInstalledEventQueuePollingCleanup: () => Promise<void> = await addOnInstalledEventQueuePolling(onInstalledManager);
+	// HACK: "use" the cleanup variable.
+	void addOnInstalledEventQueuePollingCleanup;
 
 	// TODO: put initialization promise on the root chain?
 	await suspensionManager.initialize();

@@ -65,6 +65,10 @@ export default class Api implements IApi {
 	constructor(private readonly metadataManager: IMetadataManager, private readonly talkieLocaleHelper: ITalkieLocaleHelper, private readonly localeProvider: ILocaleProvider) {}
 
 	/* eslint-disable prefer-rest-params */
+	async cleanup(): Promise<void> {
+		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
+	}
+
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}

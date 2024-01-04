@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import type OnInstalledManager from "../on-installed-manager.mjs";
 
-const addOnInstalledEventQueuePolling = async (onInstalledManager: Readonly<OnInstalledManager>): Promise<void> => {
+const addOnInstalledEventQueuePolling = async (onInstalledManager: Readonly<OnInstalledManager>): Promise<() => Promise<void>> => {
 	// NOTE: run the function once first, to allow for a very long interval.
 	const ONE_SECOND_IN_MILLISECONDS = 1 * 1000;
 	const ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_TIMEOUT = ONE_SECOND_IN_MILLISECONDS;
@@ -39,13 +39,21 @@ const addOnInstalledEventQueuePolling = async (onInstalledManager: Readonly<OnIn
 		ON_INSTALL_LISTENER_EVENT_QUEUE_HANDLER_INTERVAL,
 	);
 
-	// TODO: clearTimeout/clearInterval at some point?
-	const unusedIds = {
+	const ids = [
 		onInstallListenerEventQueueHandlerIntervalId,
 		onInstallListenerEventQueueHandlerTimeoutId,
+	];
+
+	const cleanup: () => Promise<void> = async () => {
+		for (const id of ids) {
+			// NOTE: no separation of timeout/interval ids; clearTimeout/clearInterval may be used interchangeably.
+			// https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout
+			clearTimeout(id);
+		}
 	};
 
-	void unusedIds;
+	// NOTE: delegate clearing the ids to the caller.
+	return cleanup;
 };
 
 export default addOnInstalledEventQueuePolling;

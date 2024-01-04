@@ -106,6 +106,12 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		navHeader: TalkieStyletronComponent<"div">;
 	};
 
+	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
+	// https://nodejs.org/api/timers.html#timers_class_timeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private _scrollTimeoutId: any | null;
+
 	constructor(props: P) {
 		super(props);
 
@@ -195,9 +201,18 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		}
 	}
 
+	override componentWillUnmount(): void {
+		this.componentCleanup();
+	}
+
+	componentCleanup() {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(this._scrollTimeoutId);
+	}
+
 	scrollToTop(): void {
 		// NOTE: execute outside the synchronous rendering.
-		setTimeout(() => {
+		this._scrollTimeoutId = setTimeout(() => {
 			// NOTE: feels like this might be the wrong place to put this? Is there a better place?
 			// NOTE: due to shuffling around elements, there's some confusion regarding which element to apply scrolling to.
 			document.body.scrollTop = 0;

@@ -72,8 +72,11 @@ import {
 
 export default class Api implements IApi {
 	debouncedSpeakTextInCustomVoice: (text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>) => void;
+	debouncedSpeakTextInCustomVoiceCleanup: () => void;
 	debouncedSpeakTextInVoiceWithOverrides: (text: string, voiceName: string) => void;
+	debouncedSpeakTextInVoiceWithOverridesCleanup: () => void;
 	debouncedSpeakTextInLanguageWithOverrides: (text: string, languageCode: string) => void;
+	debouncedSpeakTextInLanguageWithOverridesCleanup: () => void;
 
 	// eslint-disable-next-line max-params
 	constructor(
@@ -85,12 +88,27 @@ export default class Api implements IApi {
 	) {
 		// HACK: re-serialize/deserialize non-primitives _received from_ the background page using jsonClone(), to avoid references dying ("can't access dead object").
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedSpeakTextInCustomVoice = debounce(this.speakInCustomVoice.bind(this) as any, 200);
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedSpeakTextInVoiceWithOverrides = debounce(this.speakTextInVoiceWithOverrides.bind(this) as any, 200);
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedSpeakTextInLanguageWithOverrides = debounce(this.speakTextInLanguageWithOverrides.bind(this) as any, 200);
+		[
+			this.debouncedSpeakTextInCustomVoice,
+			this.debouncedSpeakTextInCustomVoiceCleanup,
+		] = debounce(this.speakInCustomVoice.bind(this), 200);
+
+		[
+			this.debouncedSpeakTextInVoiceWithOverrides,
+			this.debouncedSpeakTextInVoiceWithOverridesCleanup,
+		] = debounce(this.speakTextInVoiceWithOverrides.bind(this), 200);
+
+		[
+			this.debouncedSpeakTextInLanguageWithOverrides,
+			this.debouncedSpeakTextInLanguageWithOverridesCleanup,
+		] = debounce(this.speakTextInLanguageWithOverrides.bind(this), 200);
+	}
+
+	async cleanup(): Promise<void> {
+		// TODO: systematic cleanup of classes and their side-effects.
+		this.debouncedSpeakTextInCustomVoiceCleanup();
+		this.debouncedSpeakTextInVoiceWithOverridesCleanup();
+		this.debouncedSpeakTextInLanguageWithOverridesCleanup();
 	}
 
 	getConfigurationValueSync<T extends JsonValue>(systemType: SystemType, path: string): T {

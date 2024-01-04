@@ -88,9 +88,18 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		} as S
 	);
 
-	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
+	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
+	// https://nodejs.org/api/timers.html#timers_class_timeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private _sampleTextLoadTimeoutId: any | null;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private _voiceLoadTimeoutId: any | null;
+
 	constructor(props: P) {
 		super(props);
+
+		this.componentDidMount = this.componentCleanup.bind(this);
 	}
 
 	override componentDidUpdate(_previousProps: P, previousState: S): void {
@@ -108,7 +117,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 			const loadVoicesRetryDelay = 500 * (2 ** this.state.loadVoicesRetryCount);
 
 			// NOTE: execute outside the synchronous rendering.
-			setTimeout(
+			this._voiceLoadTimeoutId = setTimeout(
 				() => {
 					this.setState(
 						(state) => ({
@@ -125,7 +134,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		} else if (!this.state.attemptedLoadingSampleText) {
 			const loadSampleTextDelay = 50;
 
-			setTimeout(
+			this._sampleTextLoadTimeoutId = setTimeout(
 				() => {
 					this.setState(
 						(_state) => ({
@@ -140,6 +149,17 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 				loadSampleTextDelay,
 			);
 		}
+	}
+
+	override componentWillUnmount(): void {
+		this.componentCleanup();
+	}
+
+	componentCleanup() {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(this._sampleTextLoadTimeoutId);
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(this._voiceLoadTimeoutId);
 	}
 
 	override render(): React.ReactNode {

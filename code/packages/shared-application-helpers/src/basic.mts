@@ -116,21 +116,23 @@ export const getRandomInt = (min?: number, max?: number): number => {
 
 // TODO: use library and/or timers promise api.
 // https://nodejs.org/api/timers.html#timers_timers_promises_api
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const debounce = <T extends (...args: V[]) => Promisable<U>, U, V = unknown>(fn: T, limit: number): (...limiterArgs: Parameters<T>) => void => {
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/no-explicit-any
+export const debounce = <T extends (...args: V[]) => Promisable<U>, U, V = any>(fn: T, limit: number): [(...limiterArgs: Parameters<T>) => void, () => void] => {
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
 	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let timeout: any | null = null;
+	let timeoutId: any | null = null;
 
 	const limiter = (...limiterArgs: Parameters<T>): void => {
+		// NOTE: clear the "previous" timeout id.
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-		clearTimeout(timeout);
+		clearTimeout(timeoutId);
 
-		timeout = setTimeout(
+		// NOTE: the timeout id is automatically cleared when it ends.
+		timeoutId = setTimeout(
 			async () => {
-				timeout = null;
+				timeoutId = null;
 
 				await fn(...limiterArgs);
 			},
@@ -138,7 +140,16 @@ export const debounce = <T extends (...args: V[]) => Promisable<U>, U, V = unkno
 		);
 	};
 
-	return limiter;
+	// NOTE: delegate final cleanup to the caller.
+	const cleanup: () => void = () => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(timeoutId);
+	};
+
+	return [
+		limiter,
+		cleanup,
+	];
 };
 
 // eslint-disable-next-line @typescript-eslint/comma-dangle

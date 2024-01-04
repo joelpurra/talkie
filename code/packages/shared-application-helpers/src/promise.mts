@@ -59,9 +59,15 @@ export function isPromiseTimeout(error: unknown): error is PromiseTimeout {
 
 // eslint-disable-next-line @typescript-eslint/comma-dangle
 export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, limit: number): Promise<T> => {
+	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
+	// https://nodejs.org/api/timers.html#timers_class_timeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	let timeoutId: any | null;
+
 	// NOTE: using promise objects for the race.
 	const timeoutPromise = new Promise<void>((resolve) => {
-		setTimeout(
+		timeoutId = setTimeout(
 			() => {
 				resolve();
 			},
@@ -74,20 +80,27 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, limit: n
 			throw timeoutError;
 		});
 
-	return Promise.race([
-		promise,
-		timeoutPromise,
-	]);
+	try {
+		return await Promise.race([
+			promise,
+			timeoutPromise,
+		]);
+	} finally {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(timeoutId);
+	}
 };
 
 export const promiseDelay = async (sleep: number): Promise<void> =>
 	new Promise<void>((resolve) => {
+		// NOTE: the timeout id is automatically cleared when it ends.
 		setTimeout(resolve, sleep);
 	});
 
 // eslint-disable-next-line @typescript-eslint/comma-dangle
 export const promiseSleep = async <T,>(fn: () => Promisable<T>, sleep: number): Promise<T> =>
 	new Promise<T>((resolve, reject) => {
+		// NOTE: the timeout id is automatically cleared when it ends.
 		setTimeout(
 			() => {
 				try {

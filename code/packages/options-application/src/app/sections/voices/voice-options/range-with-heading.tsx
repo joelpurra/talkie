@@ -71,6 +71,7 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 	};
 
 	debouncedOnChange: (value: number) => void;
+	debouncedOnChangeCleanup: () => void;
 
 	constructor(props: P) {
 		super(props);
@@ -80,8 +81,14 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 
 		this.onChange = this.onChange.bind(this);
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedOnChange = debounce(this.onChange as any, 200);
+		[
+			this.debouncedOnChange,
+			this.debouncedOnChangeCleanup,
+		] = debounce(this.onChange, 200);
+	}
+
+	override componentWillUnmount(): void {
+		this.debouncedOnChangeCleanup();
 	}
 
 	onChange(value: number): void {

@@ -94,6 +94,7 @@ export interface BackgroundDependencies {
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[]): BackgroundDependencies => {
+	// TODO: systematic cleanup of classes and their side-effects.
 	const storageProvider = new StorageProvider();
 	const storageManager = new StorageManager(storageProvider);
 	const broadcaster = new Broadcaster();
