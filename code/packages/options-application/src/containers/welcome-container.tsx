@@ -46,20 +46,17 @@ const {
 interface WelcomeContainerProps {}
 
 interface WelcomeContainerState {
-	loadVoicesRetryCount: number;
 	attemptedLoadingSampleText: boolean;
 }
 
 interface StateProps {
 	canSpeakInTranslatedLocale: boolean;
-	haveVoices: boolean;
 	sampleText: string | null;
 	sampleTextLanguage: TalkieLocale | null;
 }
 
 interface DispatchProps {
 	loadSampleTextForAvailableBrowserLanguageWithInstalledVoice: typeof actions.welcome.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice;
-	loadVoices: typeof actions.shared.voices.loadVoices;
 	speakTextInLanguageWithOverrides: typeof actions.shared.speaking.speakTextInLanguageWithOverrides;
 }
 
@@ -75,7 +72,6 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
 	loadSampleTextForAvailableBrowserLanguageWithInstalledVoice: bindActionCreators(actions.welcome.loadSampleTextForAvailableBrowserLanguageWithInstalledVoice, dispatch),
-	loadVoices: bindActionCreators(actions.shared.voices.loadVoices, dispatch),
 	speakTextInLanguageWithOverrides: bindActionCreators(actions.shared.speaking.speakTextInLanguageWithOverrides, dispatch),
 });
 
@@ -84,7 +80,6 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 		{
 			attemptedLoadingSampleText: false,
-			loadVoicesRetryCount: 0,
 		} as S
 	);
 
@@ -93,8 +88,6 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _sampleTextLoadTimeoutId: any | null;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	private _voiceLoadTimeoutId: any | null;
 
 	constructor(props: P) {
 		super(props);
@@ -102,36 +95,10 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 		this.componentDidMount = this.componentCleanup.bind(this);
 	}
 
-	override componentDidUpdate(_previousProps: P, previousState: S): void {
-		// TODO: move retrying/loading voices to an outer container, to separate and clean up logic.
-		const shouldRetryLoadingVoices = !this.props.haveVoices
-			&& (
-				this.state.loadVoicesRetryCount === 0
-				|| previousState.loadVoicesRetryCount !== this.state.loadVoicesRetryCount
-			);
-
-		if (shouldRetryLoadingVoices) {
-			// NOTE: since this welcome page is the first thing users see when installing Talkie, it's important that the voice list loads.
-			// NOTE: sometimes the browser has not actually loaded the voices (cold cache), and will instead synchronously return an empty array.
-			// NOTE: wait a bit between retries, both to allow any voices to load, and to not bog down the system with a loop if there actually are no voices.
-			const loadVoicesRetryDelay = 500 * (2 ** this.state.loadVoicesRetryCount);
-
-			// NOTE: execute outside the synchronous rendering.
-			this._voiceLoadTimeoutId = setTimeout(
-				() => {
-					this.setState(
-						(state) => ({
-							loadVoicesRetryCount: state.loadVoicesRetryCount + 1,
-						}),
-						() => {
-							// TODO: is this the best place to load data?
-							this.props.loadVoices();
-						},
-					);
-				},
-				loadVoicesRetryDelay,
-			);
-		} else if (!this.state.attemptedLoadingSampleText) {
+	override componentDidUpdate(_previousProps: P): void {
+		// NOTE: voices may not be loaded on the first attempt, so delaying loading the matching sample text.
+		// TODO: could the sample text be a selector, automatically triggered by any voice list changes?
+		if (!this.state.attemptedLoadingSampleText) {
 			const loadSampleTextDelay = 50;
 
 			this._sampleTextLoadTimeoutId = setTimeout(
@@ -158,8 +125,6 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 	componentCleanup() {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		clearTimeout(this._sampleTextLoadTimeoutId);
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-		clearTimeout(this._voiceLoadTimeoutId);
 	}
 
 	override render(): React.ReactNode {

@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
+import VoicesLoader from "@talkie/shared-ui/components/loaders/voices-loader.js";
 import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
 import {
 	type ProgressUpdaterDispatchProps,
@@ -91,6 +92,8 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpda
 
 		return (
 			<>
+				<VoicesLoader/>
+
 				<IsSpeakingListenerContainer/>
 
 				<ProgressUpdaterTypehack
