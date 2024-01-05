@@ -111,7 +111,11 @@
     "version:update": "export TALKIE_RELEASE_VERSION=$(npm run --silent version:get:release | sed -e 's/^v//') && git diff-index --quiet HEAD -- && npm run --silent version:update:file -- manifest.json && npm run --silent version:update-name:file -- manifest.json && npm run --silent version:update:file -- package.json && npm run --silent version:update:file -- package-lock.json && npm run --silent version:update-root-package:file -- package-lock.json && npm run --silent lint:fix && git add manifest.json package.json package-lock.json && git commit -m \"v${TALKIE_RELEASE_VERSION}\"",
     "version:update-name:file": "json -Ie \"this.version_name='v' + this.version + ' MANIFEST_VERSION_NAME_TYPE (' + new Date().toISOString().substring(0,10) + ')'\" -f",
     "version:update-root-package:file": "json -Ie \"this.packages[\\\"\\\"].version=this.version\" -f",
-    "version:update:file": "json -Ie \"this.version='${TALKIE_RELEASE_VERSION}'\" -f"
+    "version:update:file": "json -Ie \"this.version='${TALKIE_RELEASE_VERSION}'\" -f",
+    "watch": "echo 'TODO: build watching for the entire project has been disabled until output file filtering works better.' >&2 && exit 1",
+    "watch:lerna": "lerna watch --concurrency '1' --ignore '@talkie/output-webext-*' --",
+    "watch:lerna:build": "npm run --silent watch:lerna -- lerna run --scope '$LERNA_PACKAGE_NAME' --include-dependents build",
+    "watch:lerna:debug": "npm run --silent watch:lerna -- echo '${LERNA_PACKAGE_NAME} ${LERNA_FILE_CHANGES}\\\\n' | sed --unbuffered 's/ /\\n/g' | sed --regexp-extended '/^(@|$)/ ! s/^/\\t/'"
   },
   "type": "module",
   "workspaces": [

@@ -158,13 +158,23 @@ npm run --silent rebuild
 - You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
 
-### Build tooling
+## Build tooling
+
+### Per-package build cache
 
 To speed up iterative development, package builds are parallelized and the input/output is cached. The build log output is hidden by by default, but may be helpful to review during build debugging.
 
 ```shell
 # Output build log for debugging.
 NX_VERBOSE_LOGGING='true' npm run --silent rebuild
+```
+
+### Watch source files
+
+Watch the source files for changes, and run the build when they do. Run in each package separately. Primarily used to detect build errors early.
+
+```shell
+npm run --silent watch
 ```
 
 ## Translations
@@ -213,9 +223,6 @@ git checkout develop
 
 # Start a new feature. Us a descriptive "<feature-name>", such as "automatic-language-detection".
 git flow feature start <feature-name>
-
-# Watch the source files for changes. You can also run each command separately; see package.json.
-npm run --silent watch
 
 # Code your feature and add the files.
 # Manually reload and test the code in the browser.
