@@ -25,6 +25,9 @@ import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
+	isTalkieDevelopmentMode,
+} from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
+import {
 	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
@@ -74,6 +77,11 @@ export default class OnInstalledManager {
 				// NOTE: this is because Firefox preserves privacy by not always reporting URL changes for the tab.onUpdated event, even with the activeTab permission.
 				// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#activetab_permission
 				await this.settingsManager.setContinueOnTabUpdatedUrl(true);
+			}
+
+			if (isTalkieDevelopmentMode()) {
+				// NOTE: show additional details by default for developers.
+				await this.settingsManager.setShowAdditionalDetails(true);
 			}
 
 			void logDebug("Done", "_setSettingsManagerDefaults");
