@@ -139,6 +139,37 @@ TALKIE_ENV='production' npm run --silent rebuild
 npm run --silent rebuild
 ```
 
+## Tooling
+
+### Per-package build cache
+
+To speed up iterative development, package builds are parallelized and the input/output is cached. The build log output is hidden by by default, but may be helpful to review during build debugging.
+
+```shell
+# Output build log for debugging.
+NX_VERBOSE_LOGGING='true' npm run --silent rebuild
+```
+
+### Watch source files
+
+Watch the source files for changes, and run the build when they do. Run in each package separately. Primarily used to detect build errors early.
+
+```shell
+npm run --silent watch
+```
+
+### Linting
+
+Primarily using [XO](https://github.com/sindresorhus/xo) for Typescript code linting, with some modified style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vscode-linter-xo](https://github.com/xojs/vscode-linter-xo).
+
+```shell
+# Fix linting issues before committing.
+npm run --silent lint
+
+# Some lint can be fixed automatically.
+npm run --silent lint:fix
+```
+
 ## Debugging
 
 ### In-browser
@@ -157,25 +188,6 @@ npm run --silent rebuild
     - `window.talkieServices.setLoggingLevel("NONE");` (no logging)
 - You can also inspect the popup and options pages separately, to find problems specific to those parts. Most of the logging is duplicated to the background page console for an overview.
 - Optionally add breakpoints in the source code.
-
-## Build tooling
-
-### Per-package build cache
-
-To speed up iterative development, package builds are parallelized and the input/output is cached. The build log output is hidden by by default, but may be helpful to review during build debugging.
-
-```shell
-# Output build log for debugging.
-NX_VERBOSE_LOGGING='true' npm run --silent rebuild
-```
-
-### Watch source files
-
-Watch the source files for changes, and run the build when they do. Run in each package separately. Primarily used to detect build errors early.
-
-```shell
-npm run --silent watch
-```
 
 ## Translations
 
@@ -242,14 +254,8 @@ git flow feature start <feature-name>
 # Make sure the code builds.
 npm run --silent rebuild
 
-# Fix any warnings and errors before committing.
+# Fix any warnings and errors before committing. See also linting.
 npm run --silent test
-
-# Fix linting issues before committing.
-npm run --silent lint
-
-# Some lint can be fixed automatically.
-npm run --silent lint:fix
 
 # Commit your changes. Use a descriptive commit message, preferably with more than one line of text.
 git commit
