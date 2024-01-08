@@ -20,7 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import {
 	type OsType,
-	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
@@ -42,7 +41,6 @@ export interface InstallVoicesProps {
 	languageGroupsCount: number;
 	languagesCount: number;
 	osType?: OsType | null;
-	systemType: SystemType | null;
 	voicesCount: number;
 }
 
@@ -95,7 +93,6 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			languageGroupsCount,
 			languagesCount,
 			osType,
-			systemType,
 			translateSync,
 			voicesCount,
 		} = this.props;
@@ -107,12 +104,6 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			`**${voicesCount.toString(10)}**`,
 			`**${languageGroupsCount.toString(10)}**`,
 			`**${languagesCount.toString(10)}**`,
-
-			// TODO: translated fallback.
-			systemType ?? "(ERROR: unknown system type)",
-
-			// TODO: translated fallback.
-			osType ?? "(ERROR: unknown operating system)",
 		]);
 
 		return (

@@ -638,7 +638,7 @@
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed.",
     "placeholders": {
       "language_groups_count": {
         "content": "$2",
@@ -647,14 +647,6 @@
       "languages_count": {
         "content": "$3",
         "example": "47"
-      },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
-      },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
       },
       "voices_count": {
         "content": "$1",
