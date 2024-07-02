@@ -25,6 +25,7 @@ import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
@@ -129,6 +130,16 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 					>
 						<textBase.h3>
 							{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
+							{/* TODO: better location for a button, with a translated label? */}
+							{" "}
+							<buttonBase.button
+								type="button"
+								onClick={() => {
+									location.reload();
+								}}
+							>
+								🗘
+							</buttonBase.button>
 						</textBase.h3>
 
 						<textBase.p>
