@@ -24,9 +24,6 @@
     "project-directory-output": [
       {
         "fileset": "{projectRoot}/dist/**/*"
-      },
-      {
-        "fileset": "!{projectRoot}/dist/profiles/**/*"
       }
     ],
     "environment-check": [
@@ -43,6 +40,9 @@
       },
       {
         "runtime": "npm --version"
+      },
+      {
+        "runtime": "nx --version"
       }
     ]
   },
