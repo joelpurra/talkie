@@ -31,9 +31,9 @@
     "publish": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run publish:update && npm run publish:publish",
     "publish:publish": "chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk",
     "publish:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome.zip\"",
-    "run:chrome": "mkdirp ./runtime/profiles/chrome/ && google-chrome --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/runtime/profiles/chrome/\" --load-extension=\"${PWD}/artifacts/webext\"",
-    "run:chromium": "mkdirp ./runtime/profiles/chromium/ && chromium --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/runtime/profiles/chromium/\" --load-extension=\"${PWD}/artifacts/webext\"",
-    "run:vivaldi": "web-ext --source-dir=./artifacts/webext/ run --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'"
+    "run:chrome": "mkdirp ./runtime/profiles/chrome/ && google-chrome --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/runtime/profiles/chrome/\" --load-extension=\"${PWD}/artifacts/webext\" 'https://www.wikipedia.org/'",
+    "run:chromium": "mkdirp ./runtime/profiles/chromium/ && chromium --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/runtime/profiles/chromium/\" --load-extension=\"${PWD}/artifacts/webext\" 'https://www.wikipedia.org/'",
+    "run:vivaldi": "web-ext --source-dir=./artifacts/webext/ run --verbose --devtools --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'"
   },
   "type": "module"
 }
