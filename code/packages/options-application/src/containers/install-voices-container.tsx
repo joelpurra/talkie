@@ -71,7 +71,7 @@ class InstallVoicesContainer<P extends InternalProps> extends React.PureComponen
 			languagesCount,
 			osType,
 			voicesCount,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<InstallVoices

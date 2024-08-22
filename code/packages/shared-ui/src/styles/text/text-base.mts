@@ -27,42 +27,18 @@ import {
 	rounded,
 } from "../shared-base.mjs";
 
-export const text: StyleObject = {
-	color: colorBase.textColor,
-};
-
 export const lighterText: StyleObject = {
-	...text,
-
-	// TODO: disambiguate lighter (text color) and lighter (font weight).
-	// TODO: move to (or merge with) the "lighter" file?
 	fontWeight: "lighter",
 };
 
 export const smallerText: StyleObject = {
-	...text,
 	fontSize: "smaller",
-};
-
-export const highlight: StyleObject = {
-	color: colorBase.linkHighlightColor,
-};
-
-export const a: StyleObject = {
-	":active": highlight,
-	":focus": highlight,
-	":hover": highlight,
-	color: colorBase.textColor,
 };
 
 export const heading: StyleObject = {
 	marginTop: "2em",
 };
-
-export const h1: StyleObject = {
-	...heading,
-	marginTop: "1em",
-};
+export const h1: StyleObject = heading;
 export const h2: StyleObject = heading;
 export const h3: StyleObject = heading;
 export const h4: StyleObject = heading;
@@ -70,7 +46,6 @@ export const h5: StyleObject = heading;
 
 export const kbd: StyleObject = {
 	...rounded("0.3em"),
-	backgroundColor: colorBase.borderedBackgroundColor,
 	borderBottomColor: colorBase.borderDarkColor,
 	borderBottomWidth: "1px",
 	borderLeftColor: colorBase.borderColor,
@@ -81,7 +56,6 @@ export const kbd: StyleObject = {
 	borderTopColor: colorBase.borderColor,
 	borderTopWidth: "1px",
 	boxShadow: `inset 0 -1px 0 ${colorBase.borderDarkColor}`,
-	color: colorBase.borderedTextColor,
 	display: "inline-block",
 	fontFamily: "monospace, sans-serif",
 	paddingBottom: "0.1em",

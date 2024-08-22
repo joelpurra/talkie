@@ -20,19 +20,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
 	layoutWithNoMargin,
 	layoutWithNoPadding,
 } from "@talkie/shared-ui/styles/shared-base.mjs";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 import {
 	type NavLink,
@@ -54,7 +53,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		nav: TalkieStyletronComponent<typeof layoutBase.nav>;
 		navTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
 		navTableTd: TalkieStyletronComponent<typeof tableBase.td>;
-		selectedLink: TalkieStyletronComponent<typeof textBase.a>;
+		selectedLink: TalkieStyletronComponent<"a">;
 	};
 
 	constructor(props: P) {
@@ -63,7 +62,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		this.handleClick = this.handleClick.bind(this);
 
 		this.styled = {
-			nav: withStyleDeep(
+			nav: withTalkieStyleDeep(
 				layoutBase.nav,
 				{
 					lineHeight: "1.5em",
@@ -71,7 +70,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				},
 			),
 
-			navTable: withStyleDeep(
+			navTable: withTalkieStyleDeep(
 				tableBase.wideTable,
 				{
 					lineHeight: "1.5em",
@@ -79,7 +78,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				},
 			),
 
-			navTableTd: withStyleDeep(
+			navTableTd: withTalkieStyleDeep(
 				tableBase.td,
 				{
 					...layoutWithNoMargin,
@@ -87,10 +86,9 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				},
 			),
 
-			selectedLink: withStyleDeep(
-				textBase.a,
+			selectedLink: talkieStyled(
+				"a",
 				{
-					color: colorBase.linkFocusColor,
 					fontWeight: "bold",
 				},
 			),
@@ -143,7 +141,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 
 			const SelectedLinkType = initialActiveTabId === link.tabId
 				? this.styled.selectedLink
-				: textBase.a;
+				: talkieStyled("a");
 
 			return (
 				<this.styled.navTableTd

@@ -31,7 +31,7 @@ export default class ScaleRangeDatalistOption<P extends ScaleRangeDatalistOption
 		const {
 			disabled,
 			value,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<option

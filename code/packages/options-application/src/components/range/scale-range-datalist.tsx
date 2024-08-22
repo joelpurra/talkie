@@ -34,9 +34,9 @@ export default class ScaleRangeDatalist<P extends ScaleRangeDatalistProps> exten
 			steps,
 			disabled,
 			listName,
-		} = this.props;
+		} = this.props as P;
 
-		const listOptions = (steps as number[]).map(
+		const listOptions = (steps).map(
 			(step) => (
 				<ScaleRangeDatalistOption
 					key={step.toString()}

@@ -119,11 +119,11 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 					isBlockElement
 					enabled={finishedLoading}
 				>
-					<textBase.p>
+					<p>
 						<MarkdownStrong>
 							{moreVoicesCountsMarkdown}
 						</MarkdownStrong>
-					</textBase.p>
+					</p>
 
 					<Discretional
 						enabled={!haveVoices}
@@ -142,9 +142,9 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 							</buttonBase.button>
 						</textBase.h3>
 
-						<textBase.p>
+						<p>
 							{translateSync("frontend_installVoicesNoVoiceFound")}
-						</textBase.p>
+						</p>
 					</Discretional>
 				</Loading>
 

@@ -29,14 +29,14 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 export interface HeaderProps {
 	isPremiumEdition: boolean;
@@ -46,7 +46,7 @@ export interface HeaderProps {
 class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
 		button: TalkieStyletronComponent<typeof buttonBase.a>;
-		extensionName: TalkieStyletronComponent<typeof textBase.a>;
+		extensionName: TalkieStyletronComponent<"a">;
 	};
 
 	constructor(props: P) {
@@ -55,7 +55,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
 		this.styled = {
-			button: withStyleDeep(
+			button: withTalkieStyleDeep(
 				buttonBase.a,
 				{
 					":focus": {
@@ -65,14 +65,13 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 				},
 			),
 
-			extensionName: withStyleDeep(
-				textBase.a,
+			extensionName: talkieStyled(
+				"a",
 				{
 					":focus": {
 						outline: 0,
 					},
 					fontWeight: "bold",
-					textDecoration: "none",
 				},
 			),
 		};
@@ -93,7 +92,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 			isPremiumEdition,
 			configure,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<layoutBase.header>

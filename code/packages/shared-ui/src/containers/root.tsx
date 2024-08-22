@@ -59,7 +59,7 @@ export default class Root<S, A extends Action, P extends RootProps<S, A> & Child
 			store,
 			styletron,
 			translator,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<React.StrictMode>

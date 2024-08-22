@@ -88,7 +88,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpda
 			setMax,
 			setMin,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

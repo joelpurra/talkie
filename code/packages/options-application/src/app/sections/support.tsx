@@ -23,6 +23,7 @@ import {
 	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
+import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import configureAttribute, {
 	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
@@ -71,216 +72,234 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 			showAdditionalDetails,
 			systemType,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
-			<section>
-				<textBase.h2>
-					{translateSync("frontend_faqHeading")}
-				</textBase.h2>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_supportLinkText")}
+				</textBase.h1>
 
-				<textBase.p>
-					{translateSync("frontend_supportDescription", [
-						translateSync("extensionShortName"),
-					])}
-				</textBase.p>
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_faqHeading")}
+					</textBase.h2>
 
-				<textBase.h3>
-					{translateSync("frontend_faqVoicesHeading")}
-				</textBase.h3>
+					<p>
+						{translateSync("frontend_supportDescription", [
+							translateSync("extensionShortName"),
+						])}
+					</p>
 
-				<SupportEntry id={1}/>
-				<SupportEntry id={9}/>
+					<textBase.h3>
+						{translateSync("frontend_faqVoicesHeading")}
+					</textBase.h3>
 
-				<InstallVoicesFaq
-					osType={osType}
-					showAdditionalDetails={showAdditionalDetails}
-				/>
+					<SupportEntry id={1}/>
+					<SupportEntry id={9}/>
 
-				<SupportEntry id={6}/>
-				<SupportEntry id={7}/>
-				<SupportEntry id={8}/>
+					<InstallVoicesFaq
+						osType={osType}
+						showAdditionalDetails={showAdditionalDetails}
+					/>
 
-				<Discretional
-					enabled={showAdditionalDetails || osType === "win"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<textBase.summaryHeading4>
-								{translateSync("frontend_faq034Q")}
-							</textBase.summaryHeading4>
-						</layoutBase.summary>
-						<textBase.p>
-							{translateSync("frontend_faq034A")}
-						</textBase.p>
+					<SupportEntry id={6}/>
+					<SupportEntry id={7}/>
+					<SupportEntry id={8}/>
 
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://en.wikipedia.org/wiki/Microsoft_Speech_API"
-									lang="en"
-								>
-									Speech Application Programming Interface (SAPI)
-								</textBase.a>
-							</listBase.li>
-							<listBase.li>
-								<textBase.a
-									href="https://en.wikipedia.org/wiki/Microsoft_text-to-speech_voices"
-									lang="en"
-								>
-									Microsoft text-to-speech voices
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
+					<Discretional
+						enabled={showAdditionalDetails || osType === "win"}
+					>
+						<layoutBase.details>
+							<layoutBase.summary>
+								<textBase.summaryHeading4>
+									{translateSync("frontend_faq034Q")}
+								</textBase.summaryHeading4>
+							</layoutBase.summary>
+							<p>
+								{translateSync("frontend_faq034A")}
+							</p>
 
-					<layoutBase.details>
-						<layoutBase.summary>
-							<textBase.summaryHeading4>
-								{translateSync("frontend_faq035Q")}
-							</textBase.summaryHeading4>
-						</layoutBase.summary>
-						<textBase.p>
-							{translateSync("frontend_faq035A")}
-						</textBase.p>
+							<listBase.ul>
+								<listBase.li>
+									<Icon
+										className="icon-wikipedia-w"
+										mode="inline"
+									/>
+									{" "}
+									<a
+										href="https://en.wikipedia.org/wiki/Microsoft_Speech_API"
+										lang="en"
+									>
+										Speech Application Programming Interface (SAPI)
+									</a>
+								</listBase.li>
+								<listBase.li>
+									<Icon
+										className="icon-wikipedia-w"
+										mode="inline"
+									/>
+									{" "}
+									<a
+										href="https://en.wikipedia.org/wiki/Microsoft_text-to-speech_voices"
+										lang="en"
+									>
+										Microsoft text-to-speech voices
+									</a>
+								</listBase.li>
+							</listBase.ul>
+						</layoutBase.details>
 
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href="https://stackoverflow.com/questions/40406719/windows-10-tts-voices-not-showing-up"
-									lang="en"
-								>
-									StackOverflow: Windows 10 TTS voices not showing up?
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
+						<layoutBase.details>
+							<layoutBase.summary>
+								<textBase.summaryHeading4>
+									{translateSync("frontend_faq035Q")}
+								</textBase.summaryHeading4>
+							</layoutBase.summary>
+							<p>
+								{translateSync("frontend_faq035A")}
+							</p>
 
-				<SupportEntry id={36}/>
+							<listBase.ul>
+								<listBase.li>
+									<a
+										href="https://stackoverflow.com/questions/40406719/windows-10-tts-voices-not-showing-up"
+										lang="en"
+									>
+										StackOverflow: Windows 10 TTS voices not showing up?
+									</a>
+								</listBase.li>
+							</listBase.ul>
+						</layoutBase.details>
+					</Discretional>
 
-				<textBase.h3>
-					{translateSync("frontend_faqGeneralHeading")}
-				</textBase.h3>
+					<SupportEntry id={36}/>
 
-				<SupportEntry id={14}/>
-				<SupportEntry id={15}/>
-				<SupportEntry id={16}/>
+					<textBase.h3>
+						{translateSync("frontend_faqGeneralHeading")}
+					</textBase.h3>
 
-				<Discretional
-					enabled={showAdditionalDetails || systemType === "chrome"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<textBase.summaryHeading4>
-								{translateSync("frontend_faq017Q")}
-							</textBase.summaryHeading4>
-						</layoutBase.summary>
-						<textBase.p>
-							{translateSync("frontend_faq017A")}
-						</textBase.p>
+					<SupportEntry id={14}/>
+					<SupportEntry id={15}/>
+					<SupportEntry id={16}/>
 
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href={configure("shared.urls.external.shortcut-keys")}
-									// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
-									onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
-								>
-									{translateSync("frontend_usageShortcutKeyAlternative05")}
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
+					<Discretional
+						enabled={showAdditionalDetails || systemType === "chrome"}
+					>
+						<layoutBase.details>
+							<layoutBase.summary>
+								<textBase.summaryHeading4>
+									{translateSync("frontend_faq017Q")}
+								</textBase.summaryHeading4>
+							</layoutBase.summary>
+							<p>
+								{translateSync("frontend_faq017A")}
+							</p>
 
-				<Discretional
-					enabled={showAdditionalDetails || systemType === "webextension"}
-				>
-					<layoutBase.details>
-						<layoutBase.summary>
-							<textBase.summaryHeading4>
-								{translateSync("frontend_faq018Q")}
-							</textBase.summaryHeading4>
-						</layoutBase.summary>
-						<textBase.p>
-							{translateSync("frontend_faq018A")}
-						</textBase.p>
+							<listBase.ul>
+								<listBase.li>
+									<a
+										href={configure("shared.urls.external.shortcut-keys")}
+										// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
+										onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
+									>
+										{translateSync("frontend_usageShortcutKeyAlternative05")}
+									</a>
+								</listBase.li>
+							</listBase.ul>
+						</layoutBase.details>
+					</Discretional>
 
-						<listBase.ul>
-							<listBase.li>
-								<textBase.a
-									href={configure("webextension.urls.external.shortcut-keys")}
-								>
-									{translateSync("frontend_usageShortcutKeyAlternative05")}
-								</textBase.a>
-							</listBase.li>
-						</listBase.ul>
-					</layoutBase.details>
-				</Discretional>
+					<Discretional
+						enabled={showAdditionalDetails || systemType === "webextension"}
+					>
+						<layoutBase.details>
+							<layoutBase.summary>
+								<textBase.summaryHeading4>
+									{translateSync("frontend_faq018Q")}
+								</textBase.summaryHeading4>
+							</layoutBase.summary>
+							<p>
+								{translateSync("frontend_faq018A")}
+							</p>
 
-				<SupportEntry id={19}/>
-				<SupportEntry id={20}/>
-				<SupportEntry id={25}/>
+							<listBase.ul>
+								<listBase.li>
+									<a
+										href={configure("webextension.urls.external.shortcut-keys")}
+									>
+										{translateSync("frontend_usageShortcutKeyAlternative05")}
+									</a>
+								</listBase.li>
+							</listBase.ul>
+						</layoutBase.details>
+					</Discretional>
 
-				<textBase.h3>
-					{translateSync("frontend_faqTalkiePremiumHeading")}
-				</textBase.h3>
+					<SupportEntry id={19}/>
+					<SupportEntry id={20}/>
+					<SupportEntry id={25}/>
 
-				<SupportEntry id={21}/>
-				<SupportEntry id={33}/>
-				<SupportEntry id={24}/>
-				<SupportEntry id={22}/>
-				<SupportEntry id={23}/>
-				<SupportEntry id={26}/>
-				<SupportEntry id={27}/>
-				<SupportEntry id={28}/>
-				<SupportEntry id={29}/>
-				<SupportEntry id={30}/>
-				<SupportEntry id={31}/>
-				<SupportEntry id={32}/>
+					<textBase.h3>
+						{translateSync("frontend_faqTalkiePremiumHeading")}
+					</textBase.h3>
 
-				<textBase.h3>
-					{translateSync("frontend_faqBugsHeading")}
-				</textBase.h3>
+					<SupportEntry id={21}/>
+					<SupportEntry id={33}/>
+					<SupportEntry id={24}/>
+					<SupportEntry id={22}/>
+					<SupportEntry id={23}/>
+					<SupportEntry id={26}/>
+					<SupportEntry id={27}/>
+					<SupportEntry id={28}/>
+					<SupportEntry id={29}/>
+					<SupportEntry id={30}/>
+					<SupportEntry id={31}/>
+					<SupportEntry id={32}/>
 
-				<SupportEntry id={10}/>
-				<SupportEntry id={11}/>
-				<SupportEntry id={12}/>
-				<SupportEntry id={13}/>
+					<textBase.h3>
+						{translateSync("frontend_faqBugsHeading")}
+					</textBase.h3>
 
-				<textBase.h2>
-					{translateSync("frontend_supportLinksHeading")}
-				</textBase.h2>
+					<SupportEntry id={10}/>
+					<SupportEntry id={11}/>
+					<SupportEntry id={12}/>
+					<SupportEntry id={13}/>
+				</section>
 
-				<listBase.ul>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.project")}>
-							{translateSync("frontend_aboutProjectPageLinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.github")}>
-							{translateSync("frontend_aboutCodeOnGithubLinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.github-issues")}>
-							{translateSync("frontend_aboutIssuesOnGithubLinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.support-feedback")}>
-							{translateSync("frontend_supportAndFeedback")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.rate")}>
-							{translateSync("frontend_rateIt")}
-						</textBase.a>
-					</listBase.li>
-				</listBase.ul>
-			</section>
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_supportLinksHeading")}
+					</textBase.h2>
+
+					<listBase.ul>
+						<listBase.li>
+							<a href={configure("urls.external.project")}>
+								{translateSync("frontend_aboutProjectPageLinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a href={configure("urls.external.github")}>
+								{translateSync("frontend_aboutCodeOnGithubLinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a href={configure("urls.external.github-issues")}>
+								{translateSync("frontend_aboutIssuesOnGithubLinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a href={configure("urls.external.support-feedback")}>
+								{translateSync("frontend_supportAndFeedback")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a href={configure("urls.external.rate")}>
+								{translateSync("frontend_rateIt")}
+							</a>
+						</listBase.li>
+					</listBase.ul>
+				</section>
+			</>
 		);
 	}
 }

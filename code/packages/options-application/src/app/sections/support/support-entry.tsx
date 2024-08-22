@@ -39,7 +39,7 @@ class SupportEntry<P extends SupportEntryProps & TranslateProps> extends React.P
 		const {
 			id,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		const paddedId = id.toString(10).padStart(3, "0");
 
@@ -50,9 +50,9 @@ class SupportEntry<P extends SupportEntryProps & TranslateProps> extends React.P
 						{translateSync(`frontend_faq${paddedId}Q`)}
 					</textBase.summaryHeading4>
 				</layoutBase.summary>
-				<textBase.p>
+				<p>
 					{translateSync(`frontend_faq${paddedId}A`)}
-				</textBase.p>
+				</p>
 			</layoutBase.details>
 		);
 	}

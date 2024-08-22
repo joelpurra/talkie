@@ -45,7 +45,7 @@ export default class PremiumSection<P extends PremiumSectionProps & ChildrenRequ
 			className,
 			headingLink,
 			mode,
-		} = this.props;
+		} = this.props as P;
 
 		const isPremiumEdition = true;
 

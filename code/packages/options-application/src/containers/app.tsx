@@ -114,7 +114,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 			showAdditionalDetails,
 			systemType,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

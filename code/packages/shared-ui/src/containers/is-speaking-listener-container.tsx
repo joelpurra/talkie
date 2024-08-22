@@ -66,7 +66,7 @@ class IsSpeakingListenerContainer<P extends InternalProps> extends React.PureCom
 	override render(): React.ReactNode {
 		const {
 			setIsSpeaking,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<IsSpeakingListener

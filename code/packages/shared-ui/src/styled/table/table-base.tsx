@@ -19,20 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	styled,
-} from "styletron-react";
-
+	talkieStyled,
+} from "../../styled/talkie-styled.mjs";
 import * as tableBase from "../../styles/table/table-base.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "../types.js";
 
-export const compactTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.commpactTable);
-export const wideTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.wideTable);
-export const wideFixedTable: TalkieStyletronComponent<React.ElementType<"table">> = styled("table", tableBase.wideFixedTable);
-export const thead: TalkieStyletronComponent<React.ElementType<"thead">> = styled("thead", tableBase.thead);
-export const tfoot: TalkieStyletronComponent<React.ElementType<"tfoot">> = styled("tfoot", tableBase.tfoot);
-export const tbody: TalkieStyletronComponent<React.ElementType<"tbody">> = styled("tbody", tableBase.tbody);
-export const tr: TalkieStyletronComponent<React.ElementType<"tr">> = styled("tr", tableBase.tr);
-export const th: TalkieStyletronComponent<React.ElementType<"th">> = styled("th", tableBase.th);
-export const td: TalkieStyletronComponent<React.ElementType<"td">> = styled("td", tableBase.td);
+export const compactTable: TalkieStyletronComponent<React.ElementType<"table">> = talkieStyled("table", tableBase.commpactTable);
+export const wideTable: TalkieStyletronComponent<React.ElementType<"table">> = talkieStyled("table", tableBase.wideTable);
+export const wideFixedTable: TalkieStyletronComponent<React.ElementType<"table">> = talkieStyled("table", tableBase.wideFixedTable);
+export const thead: TalkieStyletronComponent<React.ElementType<"thead">> = talkieStyled("thead", tableBase.thead);
+export const tfoot: TalkieStyletronComponent<React.ElementType<"tfoot">> = talkieStyled("tfoot", tableBase.tfoot);
+export const tbody: TalkieStyletronComponent<React.ElementType<"tbody">> = talkieStyled("tbody", tableBase.tbody);
+export const tr: TalkieStyletronComponent<React.ElementType<"tr">> = talkieStyled("tr", tableBase.tr);
+export const th: TalkieStyletronComponent<React.ElementType<"th">> = talkieStyled("th", tableBase.th);
+export const td: TalkieStyletronComponent<React.ElementType<"td">> = talkieStyled("td", tableBase.td);

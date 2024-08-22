@@ -23,35 +23,10 @@ import type {
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
+import * as layoutBase from "../layout/layout-base.mjs";
 import {
-	rounded,
+	paddings,
 } from "../shared-base.mjs";
-
-export const hover: StyleObject = {
-	border: "none",
-	color: colorBase.buttonTextColor,
-};
-
-export const focus: StyleObject = {
-	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonDarkColor}, ${colorBase.buttonDarkColor})`,
-	border: "none",
-	color: colorBase.buttonTextColor,
-};
-
-export const button: StyleObject = {
-	...rounded("0.3em"),
-	":focus": focus,
-	":hover": hover,
-	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonLightColor}, ${colorBase.buttonDarkColor})`,
-	border: "none",
-	color: colorBase.buttonTextColor,
-	paddingBottom: "0.3em",
-	paddingLeft: "0.75em",
-	paddingRight: "0.75em",
-	paddingTop: "0.3em",
-	textAlign: "center",
-	textDecoration: "none",
-};
 
 export const transparentButton: StyleObject = {
 	":focus": {
@@ -60,7 +35,15 @@ export const transparentButton: StyleObject = {
 	":hover": {
 		cursor: "pointer",
 	},
-	all: "unset",
+	// NOTE: class="a b c" order matters and with styletron's default class order (compile-time rendering order-dependent) the `all: "unset"` "bomb" may affect *all* "previous" (class) settings; need to be more specific to not override other classes.
+	//all: "unset",
+	...paddings("unset"),
+	backgroundColor: "unset",
+	border: "unset",
+	color: "unset",
+	cursor: "default",
+	fontSize: "unset",
+	textAlign: "left",
 };
 
 export const transparentButtonDisabled: StyleObject = {
@@ -70,4 +53,12 @@ export const transparentButtonDisabled: StyleObject = {
 	},
 };
 
-export const a: StyleObject = button;
+export const a: StyleObject = {
+	...layoutBase.roundedWithBorder("0.3em"),
+	backgroundColor: colorBase.legibleBackgroundColor,
+	display: "inline-block",
+	paddingBottom: "0.3em",
+	paddingLeft: "0.5em",
+	paddingRight: "0.5em",
+	paddingTop: "0.3em",
+};

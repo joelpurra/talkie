@@ -61,7 +61,7 @@ class ProgressContainer<P extends ProgressContainerProps & StateProps & Dispatch
 			min,
 			current,
 			max,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Progress

@@ -33,7 +33,7 @@ export default class Discretional<P extends DiscretionalProps> extends React.Pur
 		const {
 			children,
 			enabled,
-		} = this.props;
+		} = this.props as P;
 
 		if (enabled) {
 			return children;

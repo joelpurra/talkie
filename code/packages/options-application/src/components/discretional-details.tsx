@@ -63,7 +63,7 @@ export default class DiscretionalDetails<P extends DiscretionalDetailsProps> ext
 		if (current === event.target) {
 			const {
 				onToggle,
-			} = this.props;
+			} = this.props as P;
 
 			if (typeof onToggle === "function") {
 				// NOTE: the toggle event happens _after_ the details element has been toggled.

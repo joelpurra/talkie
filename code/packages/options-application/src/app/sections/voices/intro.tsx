@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
 import InstallVoicesContainer from "../../../containers/install-voices-container.js";
@@ -42,9 +41,9 @@ class Intro<P extends IntroProps> extends React.PureComponent<P> {
 		return (
 			<>
 				<section>
-					<textBase.p>
+					<p>
 						{translateSync("frontend_voicesDescription")}
-					</textBase.p>
+					</p>
 				</section>
 
 				<InstallVoicesContainer/>

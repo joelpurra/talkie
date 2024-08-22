@@ -19,12 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	styled,
-} from "styletron-react";
-
+	talkieStyled,
+} from "../../styled/talkie-styled.mjs";
 import * as errorBase from "../../styles/layout/error-base.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "../types.js";
 
-export const section: TalkieStyletronComponent<React.ElementType<"section">> = styled("section", errorBase.section);
+export const section: TalkieStyletronComponent<React.ElementType<"section">> = talkieStyled("section", errorBase.section);

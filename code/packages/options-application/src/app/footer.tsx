@@ -19,12 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
-import * as errors from "@talkie/shared-ui/styled/text/errors.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
-import React from "react";
 import {
-	withStyleDeep,
-} from "styletron-react";
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import * as errors from "@talkie/shared-ui/styled/text/errors.js";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 
 export interface FooterStateProps {
 	errorCount: number;
@@ -39,8 +42,7 @@ interface FooterProps extends FooterStateProps, FooterDispatchProps {}
 export default class Footer<P extends FooterProps> extends React.PureComponent<P> {
 	private readonly styled: {
 		footer: typeof layoutBase.footer;
-		footerFirstLink: typeof lighter.a;
-		footerSecondLink: typeof lighter.a;
+		footerLink: TalkieStyletronComponent<"a">;
 		footerErrorCount: typeof errors.span;
 	};
 
@@ -48,7 +50,7 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 		super(props);
 
 		this.styled = {
-			footer: withStyleDeep(
+			footer: withTalkieStyleDeep(
 				layoutBase.footer,
 				{
 					lineHeight: "2em",
@@ -57,7 +59,7 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 				},
 			),
 
-			footerErrorCount: withStyleDeep(
+			footerErrorCount: withTalkieStyleDeep(
 				errors.span,
 				{
 					// TODO: padding on one side, depending on the user interface language ltr/rtl.
@@ -68,15 +70,8 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 				},
 			),
 
-			footerFirstLink: withStyleDeep(
-				lighter.a,
-				{
-					verticalAlign: "middle",
-				},
-			),
-
-			footerSecondLink: withStyleDeep(
-				lighter.a,
+			footerLink: talkieStyled(
+				"a",
 				{
 					verticalAlign: "middle",
 				},
@@ -88,7 +83,7 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 		const {
 			errorCount,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		const ErrorCount = errorCount === 0
 			? null
@@ -102,21 +97,21 @@ export default class Footer<P extends FooterProps> extends React.PureComponent<P
 
 		return (
 			<this.styled.footer>
-				<this.styled.footerFirstLink
+				<this.styled.footerLink
 					href="https://joelpurra.com/"
 					lang="sv"
 					rel="noopener noreferrer"
 					target="_blank"
 				>
 					joelpurra.com
-				</this.styled.footerFirstLink>
+				</this.styled.footerLink>
 
 				{ErrorCount}
 
-				<this.styled.footerSecondLink href="#about" id="footer-about-link">
+				<this.styled.footerLink href="#about" id="footer-about-link">
 					v
 					{versionNumber}
-				</this.styled.footerSecondLink>
+				</this.styled.footerLink>
 			</this.styled.footer>
 		);
 	}

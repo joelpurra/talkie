@@ -23,7 +23,6 @@ import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
@@ -92,7 +91,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			);
 
 		return (
-			<textBase.p>
+			<p>
 				<SpeakSampleButton>
 					<Loading
 						enabled={typeof effectiveVoiceNameForSelectedLanguage === "string"}
@@ -108,7 +107,7 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 						</MarkdownStrong>
 					</Loading>
 				</SpeakSampleButton>
-			</textBase.p>
+			</p>
 		);
 	}
 }

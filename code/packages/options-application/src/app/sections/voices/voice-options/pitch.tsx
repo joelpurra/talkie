@@ -74,7 +74,7 @@ class Pitch<P extends PitchProps & TranslateProps> extends React.PureComponent<P
 			onChange,
 			step,
 			voiceName,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<RangeWithHeading

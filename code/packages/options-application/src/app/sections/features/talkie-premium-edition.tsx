@@ -52,7 +52,7 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 			disabled,
 			translateSync,
 			configure,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

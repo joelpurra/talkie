@@ -55,7 +55,7 @@ export default class LogarithmicScaleRange<P extends ScaleRangeProps> extends Re
 			initialValue,
 			max,
 			disabled,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<ScaleRange

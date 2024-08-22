@@ -22,21 +22,25 @@ import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	type ClassNameProp,
-	type TalkieStyletronComponent,
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import type {
+	ClassNameProp,
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
+import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
 	rounded,
 } from "@talkie/shared-ui/styles/shared-base.mjs";
-import {
-	type ChildrenRequiredProps,
+import type {
+	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	styled,
-	withStyleDeep,
+import type {
+	StyleObject,
 } from "styletron-react";
 
 export type EditionSectionMode =
@@ -67,14 +71,13 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 		super(props);
 
 		const partialStyled = {
-			h2ModeHeading: withStyleDeep<typeof this.styled.h2ModeHeading, unknown>(
+			h2ModeHeading: withTalkieStyleDeep(
 				textBase.h2,
 				{
 					marginTop: "1em",
 				},
 			),
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			wrapperBase: styled<"div", any>(
+			wrapperBase: talkieStyled(
 				"div",
 				{
 					...rounded("0.5em"),
@@ -90,13 +93,13 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 
 		this.styled = {
 			...partialStyled,
-			h2ModeWrapper: withStyleDeep(
+			h2ModeWrapper: withTalkieStyleDeep(
 				partialStyled.wrapperBase,
 				{
 					paddingBottom: "2em",
 				},
 			),
-			pModeWrapper: withStyleDeep(
+			pModeWrapper: withTalkieStyleDeep(
 				partialStyled.wrapperBase,
 				{
 					paddingBottom: "0.5em",
@@ -120,6 +123,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			? translateSync("extensionShortName_Premium")
 			: translateSync("extensionShortName_Free");
 
+		// HACK: relying on both css and css-in-js for some .premium-edition styling.
 		const versionClassName = isPremiumEdition
 			? "premium-section"
 			: "free-section";
@@ -131,19 +135,31 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			.join(" ")
 			.trim();
 
+		const backgroundColor: StyleObject = {
+			backgroundColor: isPremiumEdition
+				? colorBase.premiumSectionBackgroundColor
+				: undefined,
+		};
+
+		// eslint-disable-next-line @typescript-eslint/comma-dangle, @typescript-eslint/prefer-readonly-parameter-types
+		const addBackgroundColor = <T extends React.ElementType,>(element: TalkieStyletronComponent<T>): TalkieStyletronComponent<T> => withTalkieStyleDeep(
+			element,
+			backgroundColor,
+		);
+
 		let Wrapper = null;
 		let Heading = null;
 
 		switch (mode) {
-			// TODO: create separate components instead of a flag.
+			// TODO: create separate components instead of using a flag.
 			case "p": {
-				Wrapper = this.styled.pModeWrapper;
-				Heading = textBase.p;
+				Wrapper = addBackgroundColor(this.styled.pModeWrapper);
+				Heading = talkieStyled("p");
 				break;
 			}
 
 			case "h2": {
-				Wrapper = this.styled.h2ModeWrapper;
+				Wrapper = addBackgroundColor(this.styled.h2ModeWrapper);
 				Heading = this.styled.h2ModeHeading;
 				break;
 			}
@@ -158,12 +174,12 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			children,
 		}) => headingLink
 			? (
-				<textBase.a
+				<a
 					href="#features"
 					lang="en"
 				>
 					{children}
-				</textBase.a>
+				</a>
 			)
 			: (
 				// eslint-disable-next-line react/jsx-no-useless-fragment

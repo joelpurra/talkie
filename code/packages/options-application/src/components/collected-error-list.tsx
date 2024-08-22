@@ -23,14 +23,14 @@ import {
 } from "@talkie/shared-ui/slices/errors.mjs";
 import * as errorBase from "@talkie/shared-ui/styled/layout/error-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
+import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 export interface CollectedErrorListStateProps {
 	errorCount: number;
@@ -52,14 +52,14 @@ export default class CollectedErrorList<P extends CollectedErrorListProps> exten
 		super(props);
 
 		this.styled = {
-			firstChildH2: withStyleDeep(
+			firstChildH2: withTalkieStyleDeep(
 				textBase.h2,
 				{
 					marginTop: 0,
 				},
 			),
 
-			lastChildOL: withStyleDeep(
+			lastChildOL: withTalkieStyleDeep(
 				listBase.ol,
 				{
 					marginBottom: 0,
@@ -72,7 +72,7 @@ export default class CollectedErrorList<P extends CollectedErrorListProps> exten
 		const {
 			errorCount,
 			errorList,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<errorBase.section>

@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
@@ -27,9 +30,6 @@ import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	styled,
-} from "styletron-react";
 
 export type InformationType =
 	| "information"
@@ -50,13 +50,13 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 		super(props);
 
 		this.styled = {
-			childBox: styled(
+			childBox: talkieStyled(
 				"div",
 				{
 					paddingTop: "0.5em",
 				},
 			),
-			glyphIcon: styled(
+			glyphIcon: talkieStyled(
 				"div",
 				{
 					display: "inline-block",
@@ -68,7 +68,7 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 					marginTop: "0.5em",
 				},
 			),
-			informationBox: styled(
+			informationBox: talkieStyled(
 				"div",
 				{
 					...layoutBase.roundedWithBorder("0.5em"),

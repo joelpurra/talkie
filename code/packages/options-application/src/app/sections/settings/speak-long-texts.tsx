@@ -48,7 +48,7 @@ class SpeakLongTexts<P extends SpeakLongTextsProps & TranslateProps> extends Rea
 			speakLongTexts,
 			disabled,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

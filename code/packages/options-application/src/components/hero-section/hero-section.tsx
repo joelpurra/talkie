@@ -36,7 +36,7 @@ export default class HeroSection<P extends ChildrenRequiredProps & ClassNameProp
 	override render(): React.ReactNode {
 		const {
 			className,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<layoutBase.hero className={className}>

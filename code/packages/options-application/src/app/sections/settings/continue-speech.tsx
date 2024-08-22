@@ -22,12 +22,15 @@ import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	type ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ContinueSpeechProps {}
 
-class ContinueSpeech<P extends ContinueSpeechProps & TranslateProps> extends React.PureComponent<P> {
+class ContinueSpeech<P extends ContinueSpeechProps & ChildrenRequiredProps & TranslateProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -37,7 +40,7 @@ class ContinueSpeech<P extends ContinueSpeechProps & TranslateProps> extends Rea
 		const {
 			children,
 			translatePlaceholderSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>
@@ -54,6 +57,6 @@ class ContinueSpeech<P extends ContinueSpeechProps & TranslateProps> extends Rea
 	}
 }
 
-export default translateAttribute<ContinueSpeechProps & TranslateProps>()(
+export default translateAttribute<ContinueSpeechProps & ChildrenRequiredProps & TranslateProps>()(
 	ContinueSpeech,
 );

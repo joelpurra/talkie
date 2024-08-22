@@ -25,14 +25,14 @@ import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 import HeroSection from "../../components/hero-section/hero-section.js";
 import InstallVoicesContainer from "../../containers/install-voices-container.js";
@@ -69,8 +69,8 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 
 	private readonly welcomeSampleTextElementRef: React.RefObject<HTMLSpanElement>;
 	private readonly styled: {
-		sampleHeroP: TalkieStyletronComponent<typeof textBase.p>;
-		welcomeHeroP: TalkieStyletronComponent<typeof textBase.p>;
+		sampleHeroP: TalkieStyletronComponent<"p">;
+		welcomeHeroP: TalkieStyletronComponent<"p">;
 	};
 
 	constructor(props: P) {
@@ -82,15 +82,15 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 		this.selectTextInElement = this.selectTextInElement.bind(this);
 
 		this.styled = {
-			sampleHeroP: withStyleDeep(
-				textBase.p,
+			sampleHeroP: talkieStyled(
+				"p",
 				{
 					marginTop: 0,
 				},
 			),
 
-			welcomeHeroP: withStyleDeep(
-				textBase.p,
+			welcomeHeroP: talkieStyled(
+				"p",
 				{
 					marginBottom: 0,
 					marginTop: 0,
@@ -159,7 +159,7 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 	getWelcomeSample(): WelcomeSample {
 		const {
 			sampleText,
-		} = this.props;
+		} = this.props as P;
 		const sampleTextLanguageCode = this.props.sampleTextLanguage;
 
 		const welcomeSample: WelcomeSample = typeof sampleText === "string"
@@ -183,42 +183,48 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 		const {
 			canSpeakInTranslatedLocale,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		const welcomeSample = this.getWelcomeSample();
 
 		return (
-			<section>
-				<HeroSection>
-					<Discretional
-						enabled={welcomeSample.hasSampleText}
-					>
-						<this.styled.sampleHeroP>
-							<span
-								ref={this.welcomeSampleTextElementRef}
-								lang={welcomeSample.languageCode}
-							>
-								{welcomeSample.text}
-							</span>
-						</this.styled.sampleHeroP>
-					</Discretional>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_welcomeLinkText")}
+				</textBase.h1>
 
-					<this.styled.welcomeHeroP>
-						{translateSync("frontend_welcomeHero01", [
-							translateSync("extensionShortName"),
-						])}
-
+				<section>
+					<HeroSection>
 						<Discretional
-							enabled={canSpeakInTranslatedLocale}
+							enabled={welcomeSample.hasSampleText}
 						>
-							{" "}
-							{translateSync("frontend_welcomeHero02")}
+							<this.styled.sampleHeroP>
+								<span
+									ref={this.welcomeSampleTextElementRef}
+									lang={welcomeSample.languageCode}
+								>
+									{welcomeSample.text}
+								</span>
+							</this.styled.sampleHeroP>
 						</Discretional>
-					</this.styled.welcomeHeroP>
-				</HeroSection>
 
-				<InstallVoicesContainer/>
-			</section>
+						<this.styled.welcomeHeroP>
+							{translateSync("frontend_welcomeHero01", [
+								translateSync("extensionShortName"),
+							])}
+
+							<Discretional
+								enabled={canSpeakInTranslatedLocale}
+							>
+								{" "}
+								{translateSync("frontend_welcomeHero02")}
+							</Discretional>
+						</this.styled.welcomeHeroP>
+					</HeroSection>
+
+					<InstallVoicesContainer/>
+				</section>
+			</>
 		);
 	}
 }

@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import React, {
 	type ChangeEvent,
 } from "react";
-import {
-	styled,
-} from "styletron-react";
 
 export interface CheckboxProps {
 	id?: string;
@@ -54,7 +54,7 @@ class Checkbox<P extends CheckboxProps & ClassNameProp> extends React.PureCompon
 			className,
 			disabled,
 			id,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<input
@@ -69,4 +69,4 @@ class Checkbox<P extends CheckboxProps & ClassNameProp> extends React.PureCompon
 	}
 }
 
-export default styled(Checkbox, formBase.checkbox);
+export default talkieStyled(Checkbox, formBase.checkbox);

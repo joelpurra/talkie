@@ -25,8 +25,8 @@ import {
 	DefaultLanguageDirection,
 	type LanguageTextDirection,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import {
-	type SpeakingHistoryEntry,
+import type {
+	SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
@@ -41,23 +41,24 @@ import translateAttribute, {
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
+import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
-	type TalkieStyletronComponent,
+import type {
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import {
-	type ChildrenRequiredProps,
+import type {
+	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	type StyleObject,
-	withStyleDeep,
+import type {
+	StyleObject,
 } from "styletron-react";
 
 import MarkdownParagraph from "../../components/markdown/paragraph.js";
-import {
-	type actions,
+import type {
+	actions,
 } from "../../slices/index.mjs";
 
 export interface StatusStateProps {
@@ -103,17 +104,17 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		};
 
 		this.styled = {
-			centerTd: withStyleDeep(
+			centerTd: withTalkieStyleDeep(
 				tableBase.td,
 				{
 					textAlign: "center",
 				},
 			),
-			transparentButtonEllipsis: withStyleDeep(
+			transparentButtonEllipsis: withTalkieStyleDeep(
 				buttonBase.transparentButton,
 				ellipsisWrapper,
 			),
-			transparentButtonEllipsisDisabled: withStyleDeep(
+			transparentButtonEllipsisDisabled: withTalkieStyleDeep(
 				buttonBase.transparentButtonDisabled,
 				ellipsisWrapper,
 			),
@@ -128,7 +129,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		const {
 			speakTextInVoiceWithOverrides,
 			mostRecent,
-		} = this.props;
+		} = this.props as P;
 
 		if (!mostRecent) {
 			throw new TypeError("mostRecentText");
@@ -295,26 +296,26 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 			</ReplayButtonState>
 		);
 
-		// eslint-disable-next-line react/function-component-definition
-		const FallbackDash: React.FC = () => (
-			<lighter.span>
+		const fallbackDash: React.ReactNode = (
+			<>
 				&mdash;
-			</lighter.span>
+			</>
 		);
 
 		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
 		const UseFallbackDash: React.FunctionComponent<ChildrenRequiredProps & {enabled: boolean}> = ({
 			children,
 			enabled,
-		}) =>
-			enabled
-				? (
-					// eslint-disable-next-line react/jsx-no-useless-fragment
-					<>
-						{children}
-					</>
-				)
-				: <FallbackDash/>;
+		}) => (
+			// eslint-disable-next-line react/jsx-no-useless-fragment
+			<>
+				{
+					enabled
+						? children
+						: fallbackDash
+				}
+			</>
+		);
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
 		const EmptyTextUseFallbackDash: React.FC<{text: string | null}> = ({
@@ -329,23 +330,28 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 			);
 
 		return (
-			<section>
-				<tableBase.wideTable>
-					<colgroup>
-						{/* TODO: enable pitch/rate. */}
-						{/* <col span={4} width="25%"/> */}
-						<col span={2} width="50%"/>
-					</colgroup>
-					<tableBase.thead>
-						<tableBase.tr>
-							<tableBase.th>
-								{translatePlaceholderSync("Language")}
-							</tableBase.th>
-							<tableBase.th>
-								{translatePlaceholderSync("Voice")}
-							</tableBase.th>
+			<>
+				<textBase.h1>
+					{translatePlaceholderSync("Status" /* "frontend_statusLinkText" */)}
+				</textBase.h1>
+
+				<section>
+					<tableBase.wideTable>
+						<colgroup>
 							{/* TODO: enable pitch/rate. */}
-							{/*
+							{/* <col span={4} width="25%"/> */}
+							<col span={2} width="50%"/>
+						</colgroup>
+						<tableBase.thead>
+							<tableBase.tr>
+								<tableBase.th>
+									{translatePlaceholderSync("Language")}
+								</tableBase.th>
+								<tableBase.th>
+									{translatePlaceholderSync("Voice")}
+								</tableBase.th>
+								{/* TODO: enable pitch/rate. */}
+								{/*
 							<tableBase.th>
 								{translatePlaceholderSync("Pitch")}
 							</tableBase.th>
@@ -353,21 +359,21 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 								{translatePlaceholderSync("Speed")}
 							</tableBase.th>
 							*/}
-						</tableBase.tr>
-					</tableBase.thead>
-					<tableBase.tbody>
-						<tableBase.tr>
-							<this.styled.centerTd>
-								<EmptyTextUseFallbackDash
-									text={mostRecent?.language ?? null}
-								/>
-							</this.styled.centerTd>
-							<this.styled.centerTd>
-								<EmptyTextUseFallbackDash
-									text={mostRecent?.voiceName ?? null}
-								/>
-							</this.styled.centerTd>
-							{/*
+							</tableBase.tr>
+						</tableBase.thead>
+						<tableBase.tbody>
+							<tableBase.tr>
+								<this.styled.centerTd>
+									<EmptyTextUseFallbackDash
+										text={mostRecent?.language ?? null}
+									/>
+								</this.styled.centerTd>
+								<this.styled.centerTd>
+									<EmptyTextUseFallbackDash
+										text={mostRecent?.voiceName ?? null}
+									/>
+								</this.styled.centerTd>
+								{/*
 							<this.styled.centerTd>
 								<UseFallbackDash
 									enabled={hasMostRecentText}
@@ -383,86 +389,87 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 								</UseFallbackDash>
 							</this.styled.centerTd>
 							*/}
-						</tableBase.tr>
-					</tableBase.tbody>
-				</tableBase.wideTable>
+							</tableBase.tr>
+						</tableBase.tbody>
+					</tableBase.wideTable>
 
-				<textBase.p>
-					<ProgressContainer/>
-				</textBase.p>
+					<p>
+						<ProgressContainer/>
+					</p>
 
-				<textBase.p>
-					<ReplayButton/>
-					<StopButton/>
-				</textBase.p>
+					<p>
+						<ReplayButton/>
+						<StopButton/>
+					</p>
 
-				<Discretional
-					enabled={isSpeakingHistoryEnabled}
-				>
-					<details>
-						<summary>
-							{translatePlaceholderSync("History")}
-							{" "}
-							(
-							{speakingHistory.length}
-							)
-						</summary>
-
-						<listBase.ol>
-							{
-								speakingHistory
-									.map(
-										(speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) => {
-											const {
-												hash,
-												text,
-												voiceName,
-											} = speakingHistoryEntry;
-
-											const hasTextAndVoice = typeof text === "string" && typeof voiceName === "string";
-											const SpeakHistoryButtonState = hasTextAndVoice
-												? this.styled.transparentButtonEllipsis
-												: this.styled.transparentButtonEllipsisDisabled;
-
-											return (
-												<listBase.li
-													key={hash}
-													// eslint-disable-next-line react/jsx-no-bind
-													onClick={hasTextAndVoice ? this.handleSpeakHistoryEntryClick.bind(null, speakingHistoryEntry) : undefined}
-												>
-													<SpeakHistoryButtonState>
-														{text}
-													</SpeakHistoryButtonState>
-												</listBase.li>
-											);
-										},
-									)
-							}
-						</listBase.ol>
-					</details>
-				</Discretional>
-
-				<Discretional
-					enabled={hasMostRecentText}
-				>
-					<textBase.blockquote
-						className={textDirectionClassNameForLanguageGroup}
+					<Discretional
+						enabled={isSpeakingHistoryEnabled}
 					>
-						<MarkdownParagraph>
-							{/* TODO: fix string type narrowing/detection based on hasMostRecentText? */}
-							{(mostRecent !== null && typeof mostRecent.text === "string" && mostRecent.text.trim().length > 0 && mostRecent.text) || "NOTE: empty or no markdown string was provided."}
-						</MarkdownParagraph>
-					</textBase.blockquote>
-				</Discretional>
+						<details>
+							<summary>
+								{translatePlaceholderSync("History")}
+								{" "}
+								(
+								{speakingHistory.length}
+								)
+							</summary>
 
-				<Discretional
-					enabled={!hasMostRecentText}
-				>
-					<textBase.p>
-						{translatePlaceholderSync("There are no history entries.")}
-					</textBase.p>
-				</Discretional>
-			</section>
+							<listBase.ol>
+								{
+									speakingHistory
+										.map(
+											(speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) => {
+												const {
+													hash,
+													text,
+													voiceName,
+												} = speakingHistoryEntry;
+
+												const hasTextAndVoice = typeof text === "string" && typeof voiceName === "string";
+												const SpeakHistoryButtonState = hasTextAndVoice
+													? this.styled.transparentButtonEllipsis
+													: this.styled.transparentButtonEllipsisDisabled;
+
+												return (
+													<listBase.li
+														key={hash}
+														// eslint-disable-next-line react/jsx-no-bind
+														onClick={hasTextAndVoice ? this.handleSpeakHistoryEntryClick.bind(null, speakingHistoryEntry) : undefined}
+													>
+														<SpeakHistoryButtonState>
+															{text}
+														</SpeakHistoryButtonState>
+													</listBase.li>
+												);
+											},
+										)
+								}
+							</listBase.ol>
+						</details>
+					</Discretional>
+
+					<Discretional
+						enabled={hasMostRecentText}
+					>
+						<textBase.blockquote
+							className={textDirectionClassNameForLanguageGroup}
+						>
+							<MarkdownParagraph>
+								{/* TODO: fix string type narrowing/detection based on hasMostRecentText? */}
+								{(mostRecent !== null && typeof mostRecent.text === "string" && mostRecent.text.trim().length > 0 && mostRecent.text) || "NOTE: empty or no markdown string was provided."}
+							</MarkdownParagraph>
+						</textBase.blockquote>
+					</Discretional>
+
+					<Discretional
+						enabled={!hasMostRecentText}
+					>
+						<p>
+							{translatePlaceholderSync("There are no history entries.")}
+						</p>
+					</Discretional>
+				</section>
+			</>
 		);
 	}
 }

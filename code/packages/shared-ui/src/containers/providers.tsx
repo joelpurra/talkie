@@ -148,7 +148,7 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 	override render(): React.ReactNode {
 		const {
 			styletron,
-		} = this.props;
+		} = this.props as P;
 
 		const {
 			configurationContextValue,

@@ -111,226 +111,236 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		].sort((a, b) => a.localeCompare(b));
 
 		return (
-			<section>
-				<textBase.h2>
-					{translateSync("frontend_storyHeading")}
-				</textBase.h2>
-				<textBase.p>
-					{translateSync("frontend_storyDescription")}
-				</textBase.p>
-				<textBase.p>
-					{translateSync("frontend_storyThankYou")}
-				</textBase.p>
-				<textBase.p>
-					—
-					<textBase.a
-						href="https://joelpurra.com/"
-						lang="sv"
-					>
-						Joel Purra
-					</textBase.a>
-				</textBase.p>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_aboutLinkText")}
+				</textBase.h1>
 
-				<textBase.h2>
-					{translateSync("frontend_systemHeading")}
-				</textBase.h2>
-
-				<listBase.dl>
-					<listBase.dt>
-						{translateSync("frontend_systemCurrentEditionHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						<TalkieEditionIcon
-							isPremiumEdition={isPremiumEdition}
-							mode="inline"
-						/>
-						{extensionShortName}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledVersionHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{translateSync("extensionShortName")}
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_storyHeading")}
+					</textBase.h2>
+					<p>
+						{translateSync("frontend_storyDescription")}
+					</p>
+					<p>
+						{translateSync("frontend_storyThankYou")}
+					</p>
+					<p>
+						—
 						{" "}
-						{versionName}
-					</listBase.dd>
+						<a
+							href="https://joelpurra.com/"
+							lang="sv"
+						>
+							Joel Purra
+						</a>
+					</p>
+				</section>
 
-					<listBase.dt>
-						{translateSync("frontend_systemBrowserTypeHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{systemType}
-					</listBase.dd>
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_systemHeading")}
+					</textBase.h2>
 
-					<listBase.dt>
-						{translateSync("frontend_systemOSHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{osType}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemBrowserLanguageHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{navigatorLanguage}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemBrowserLanguagesHeading")}
-						{" "}
-						(
-						{sortedNavigatorLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedNavigatorLanguages.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledLanguagesHeading")}
-						{" "}
-						(
-						{sortedLanguageGroups.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedLanguageGroups.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledDialectsHeading")}
-						{" "}
-						(
-						{sortedLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedLanguages.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledVoicesHeading")}
-						{" "}
-						(
-						{voiceNamesAndLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd>
-						{voiceNamesAndLanguages.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemTalkieUILanguageHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{translateSync("extensionLocale")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemTalkieUILanguagesHeading")}
-						{" "}
-						(
-						{sortedTranslatedLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedTranslatedLanguages.join(", ")}
-					</listBase.dd>
-				</listBase.dl>
-
-				<textBase.h2>
-					{translateSync("frontend_licenseHeading")}
-				</textBase.h2>
-				<p
-					lang="en"
-					onClick={this.handleLegaleseClick}
-				>
-					<buttonBase.transparentButton
-						type="button"
-					>
-						{translateSync("frontend_licenseGPLDescription")}
-					</buttonBase.transparentButton>
-				</p>
-				<p>
-					{translateSync("frontend_licenseCLADescription")}
-				</p>
-
-				<listBase.ul>
-					<listBase.li>
-						<textBase.a
-							href={configure("urls.external.gpl")}
+					<listBase.dl>
+						<listBase.dt>
+							{translateSync("frontend_systemCurrentEditionHeading")}
+						</listBase.dt>
+						<listBase.dd
 							lang="en"
 						>
-							{translateSync("frontend_licenseGPLLinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a
-							href={configure("urls.external.cla")}
+							<TalkieEditionIcon
+								isPremiumEdition={isPremiumEdition}
+								mode="inline"
+							/>
+							{extensionShortName}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledVersionHeading")}
+						</listBase.dt>
+						<listBase.dd
 							lang="en"
 						>
-							{translateSync("frontend_licenseCLALinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a
-							href={configure("urls.external.github")}
-						>
-							{translateSync("frontend_aboutCodeOnGithubLinkText")}
-						</textBase.a>
-					</listBase.li>
-				</listBase.ul>
+							{translateSync("extensionShortName")}
+							{" "}
+							{versionName}
+						</listBase.dd>
 
-				<layoutBase.details>
-					<summary>
-						<textBase.summaryHeading3>
-							{translateSync("frontend_licenseThirdPartyHeading")}
-						</textBase.summaryHeading3>
-					</summary>
+						<listBase.dt>
+							{translateSync("frontend_systemBrowserTypeHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{systemType}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemOSHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{osType}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemBrowserLanguageHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{navigatorLanguage}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemBrowserLanguagesHeading")}
+							{" "}
+							(
+							{sortedNavigatorLanguages.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{sortedNavigatorLanguages.join(", ")}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledLanguagesHeading")}
+							{" "}
+							(
+							{sortedLanguageGroups.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{sortedLanguageGroups.join(", ")}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledDialectsHeading")}
+							{" "}
+							(
+							{sortedLanguages.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{sortedLanguages.join(", ")}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledVoicesHeading")}
+							{" "}
+							(
+							{voiceNamesAndLanguages.length}
+							)
+						</listBase.dt>
+						<listBase.dd>
+							{voiceNamesAndLanguages.join(", ")}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemTalkieUILanguageHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{translateSync("extensionLocale")}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemTalkieUILanguagesHeading")}
+							{" "}
+							(
+							{sortedTranslatedLanguages.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{sortedTranslatedLanguages.join(", ")}
+						</listBase.dd>
+					</listBase.dl>
+				</section>
+
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_licenseHeading")}
+					</textBase.h2>
+					<p
+						lang="en"
+						onClick={this.handleLegaleseClick}
+					>
+						<buttonBase.transparentButton
+							type="button"
+						>
+							{translateSync("frontend_licenseGPLDescription")}
+						</buttonBase.transparentButton>
+					</p>
+					<p>
+						{translateSync("frontend_licenseCLADescription")}
+					</p>
 
 					<listBase.ul>
-						{licenseLinkNames.map((licenseLinkName) => (
-							<listBase.li
-								key={licenseLinkName}
+						<listBase.li>
+							<a
+								href={configure("urls.external.gpl")}
+								lang="en"
 							>
-								<textBase.a
-									href={configure(`urls.license.${licenseLinkName}`)}
-									lang="en"
-									rel="noopener noreferrer"
-									target="_blank"
-								>
-									<code>
-										{licenseLinkName}
-									</code>
-								</textBase.a>
-							</listBase.li>
-						))}
+								{translateSync("frontend_licenseGPLLinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a
+								href={configure("urls.external.cla")}
+								lang="en"
+							>
+								{translateSync("frontend_licenseCLALinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a
+								href={configure("urls.external.github")}
+							>
+								{translateSync("frontend_aboutCodeOnGithubLinkText")}
+							</a>
+						</listBase.li>
 					</listBase.ul>
-				</layoutBase.details>
 
-			</section>
+					<layoutBase.details>
+						<summary>
+							<textBase.summaryHeading3>
+								{translateSync("frontend_licenseThirdPartyHeading")}
+							</textBase.summaryHeading3>
+						</summary>
+
+						<listBase.ul>
+							{licenseLinkNames.map((licenseLinkName) => (
+								<listBase.li
+									key={licenseLinkName}
+								>
+									<a
+										href={configure(`urls.license.${licenseLinkName}`)}
+										lang="en"
+										rel="noopener noreferrer"
+										target="_blank"
+									>
+										<code>
+											{licenseLinkName}
+										</code>
+									</a>
+								</listBase.li>
+							))}
+						</listBase.ul>
+					</layoutBase.details>
+				</section>
+			</>
 		);
 	}
 }

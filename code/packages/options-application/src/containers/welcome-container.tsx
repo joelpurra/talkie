@@ -133,7 +133,7 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 			sampleText,
 			sampleTextLanguage,
 			speakTextInLanguageWithOverrides,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Welcome

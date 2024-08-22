@@ -89,6 +89,10 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 
 		return (
 			<>
+				<textBase.h1>
+					{translateSync("frontend_voicesLinkText")}
+				</textBase.h1>
+
 				<section>
 					<Intro/>
 				</section>

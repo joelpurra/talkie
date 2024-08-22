@@ -18,7 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import {
 	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
@@ -28,9 +30,6 @@ import {
 import React from "react";
 import type {
 	StyleObject,
-} from "styletron-react";
-import {
-	styled,
 } from "styletron-react";
 import type {
 	ReadonlyDeep,
@@ -58,8 +57,9 @@ export interface MainDispatchProps {
 }
 
 const styles: StyleObject = {
-	maxWidth: "400px",
-	minWidth: "400px",
+	marginTop: "1em",
+	maxWidth: "350px",
+	minWidth: "350px",
 };
 
 class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends React.PureComponent<P> {
@@ -99,7 +99,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 			isPremiumEdition,
 			isSpeaking,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<div
@@ -116,11 +116,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 					playPauseClick={iconClick}
 				/>
 
-				<layoutBase.hr/>
-
 				<Menu/>
-
-				<layoutBase.hr/>
 
 				<Footer
 					errorCount={errorCount}
@@ -132,7 +128,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 	}
 }
 
-export default styled(
+export default talkieStyled(
 	Main,
 	styles,
 );

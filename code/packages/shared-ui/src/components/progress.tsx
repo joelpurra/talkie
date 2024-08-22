@@ -19,10 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from "react";
-import {
-	styled,
-} from "styletron-react";
 
+import {
+	talkieStyled,
+} from "../styled/talkie-styled.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "../styled/types.js";
@@ -41,7 +41,7 @@ export default class Progress<P extends ProgressProps> extends React.PureCompone
 		super(props);
 
 		this.styled = {
-			progress: styled(
+			progress: talkieStyled(
 				"progress",
 				{
 					height: "0.5em",

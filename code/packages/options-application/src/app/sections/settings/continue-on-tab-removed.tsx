@@ -48,7 +48,7 @@ class ContinueOnTabRemoved<P extends ContinueOnTabRemovedProps & TranslateProps>
 			continueOnTabRemoved,
 			disabled,
 			translatePlaceholderSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

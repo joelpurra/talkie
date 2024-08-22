@@ -22,22 +22,24 @@ import {
 	KnownSettingDefaults,
 	KnownSettingRanges,
 } from "@talkie/shared-application/settings.mjs";
-import {
-	type SpeakingHistoryEntry,
+import type {
+	SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
-	type TalkieStyletronComponent,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import type {
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	type StyleObject,
-	withStyleDeep,
+import type {
+	StyleObject,
 } from "styletron-react";
 
 import InputWithLabel from "../../../components/form/input-with-label.js";
@@ -84,11 +86,12 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 			maxWidth: "100%",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
+			verticalAlign: "text-top",
 			whiteSpace: "nowrap",
 		};
 
 		this.styled = {
-			transparentButtonEllipsis: withStyleDeep(
+			transparentButtonEllipsis: withTalkieStyleDeep(
 				buttonBase.transparentButton,
 				ellipsisWrapper,
 			),
@@ -150,7 +153,7 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 			speakingHistoryLimit,
 			disabled,
 			translatePlaceholderSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

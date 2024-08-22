@@ -26,6 +26,9 @@ import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
+import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type TalkieStyletronComponent,
@@ -34,9 +37,6 @@ import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 import MarkdownStrong from "../../../components/markdown/strong.js";
 
@@ -66,7 +66,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 		this.handleSpeakLanguageGroupClick = this.handleSpeakLanguageGroupClick.bind(this);
 
 		this.styled = {
-			sampleTextBlockQuote: withStyleDeep(
+			sampleTextBlockQuote: withTalkieStyleDeep(
 				textBase.blockquote,
 				{
 					fontSize: "1.5em",
@@ -141,20 +141,21 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 
 		return (
 			<>
-				<textBase.p>
-					<textBase.a href={`https://${languageGroup}.wikipedia.org/`}>
-						<Icon
-							className="icon-wikipedia-w"
-							mode="inline"
-						/>
+				<p>
+					<Icon
+						className="icon-wikipedia-w"
+						mode="inline"
+					/>
+					{" "}
+					<a href={`https://${languageGroup}.wikipedia.org/`}>
 						{languageGroup}
 						.wikipedia.org
-					</textBase.a>
-				</textBase.p>
+					</a>
+				</p>
 
 				{sampleTextBlockQuote}
 
-				<textBase.p>
+				<p>
 					<SpeakSampleButton>
 						<MarkdownStrong>
 							{translateSync(
@@ -166,7 +167,7 @@ class LanguageGroup<P extends LanguageGroupProps> extends React.PureComponent<P>
 							)}
 						</MarkdownStrong>
 					</SpeakSampleButton>
-				</textBase.p>
+				</p>
 			</>
 		);
 	}

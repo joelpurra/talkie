@@ -33,13 +33,14 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
+import type LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
+import type ScaleRange from "../../../../components/range/scale-range.js";
 import {
 	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";
 
 export interface RangeWithHeadingProps {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	ScaleRangeElementClass: any;
+	ScaleRangeElementClass: typeof ScaleRange<ScaleRangeProps> | typeof LogarithmicScaleRange<ScaleRangeProps>;
 	getHeading: (voiceName: string | null | undefined, translateSync: TranslateSync) => string;
 	initialValue: number;
 	transformValueBeforeChange: (value: number) => number;
@@ -55,6 +56,7 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 		voiceName: null,
 	};
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	static getDerivedStateFromProps(props: ReadonlyDeep<RangeWithHeadingProps>, state: ReadonlyDeep<RangeWithHeadingState>) {
 		if (props.initialValue !== state.value) {
 			return {
@@ -118,14 +120,13 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 			getHeading,
 			voiceName,
 			translateSync,
-
 			ScaleRangeElementClass,
 			min,
 			defaultValue,
 			max,
 			step,
 			disabled,
-		} = this.props;
+		} = this.props as P;
 
 		const heading = getHeading(voiceName, translateSync);
 

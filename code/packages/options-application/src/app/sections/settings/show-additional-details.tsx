@@ -48,7 +48,7 @@ class ShowAdditionalDetails<P extends ShowAdditionalDetailsProps & TranslateProp
 			showAdditionalDetails,
 			disabled,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>

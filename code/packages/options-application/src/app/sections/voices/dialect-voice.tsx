@@ -27,7 +27,6 @@ import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
@@ -72,7 +71,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (
-				<textBase.p>
+				<p>
 					<buttonBase.transparentButton
 						type="button"
 						// eslint-disable-next-line react/no-this-in-sfc
@@ -85,7 +84,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 
 						{children}
 					</buttonBase.transparentButton>
-				</textBase.p>
+				</p>
 			)
 			: null;
 
@@ -97,11 +96,11 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 					<InformationSection
 						informationType="information"
 					>
-						<textBase.p>
+						<p>
 							<MarkdownStrong>
 								{`**${voice.name}** is an online voice. Usage may require an active internet connection to access third-party services.`}
 							</MarkdownStrong>
-						</textBase.p>
+						</p>
 					</InformationSection>
 				</Discretional>
 

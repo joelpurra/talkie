@@ -29,14 +29,14 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 export interface HeaderProps {
 	isPremiumEdition: boolean;
@@ -45,14 +45,15 @@ export interface HeaderProps {
 class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
 		button: TalkieStyletronComponent<typeof buttonBase.a>;
-		extensionName: TalkieStyletronComponent<typeof textBase.a>;
+		extensionName: TalkieStyletronComponent<"a">;
+		pageHeading: TalkieStyletronComponent<"p">;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		this.styled = {
-			button: withStyleDeep(
+			button: withTalkieStyleDeep(
 				buttonBase.a,
 				{
 					":focus": {
@@ -62,14 +63,20 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 				},
 			),
 
-			extensionName: withStyleDeep(
-				textBase.a,
+			extensionName: talkieStyled(
+				"a",
 				{
 					":focus": {
 						outline: 0,
 					},
 					fontWeight: "bold",
-					textDecoration: "none",
+				},
+			),
+
+			pageHeading: talkieStyled(
+				"p",
+				{
+					fontSize: "2em",
 				},
 			),
 		};
@@ -80,7 +87,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 			isPremiumEdition,
 			translateSync,
 			configure,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<layoutBase.header>
@@ -96,7 +103,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 					</this.styled.button>
 				</Discretional>
 
-				<textBase.h1>
+				<this.styled.pageHeading>
 					<TalkieEditionIcon
 						isPremiumEdition={isPremiumEdition}
 						mode="inline"
@@ -112,7 +119,7 @@ class Header<P extends HeaderProps & ConfigureProps & TranslateProps> extends Re
 							isPremiumEdition={isPremiumEdition}
 						/>
 					</this.styled.extensionName>
-				</textBase.h1>
+				</this.styled.pageHeading>
 			</layoutBase.header>
 		);
 	}

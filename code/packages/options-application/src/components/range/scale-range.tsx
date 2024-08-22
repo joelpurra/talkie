@@ -68,7 +68,7 @@ export default class ScaleRange<P extends ScaleRangeProps> extends React.PureCom
 			step,
 			listName,
 			disabled,
-		} = this.props;
+		} = this.props as P;
 
 		const steps = [
 			min,

@@ -30,14 +30,14 @@ import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
+import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	styled,
-} from "styletron-react";
 
 import FreeSection from "../../components/section/free-section.js";
 import PremiumSection from "../../components/section/premium-section.js";
@@ -67,7 +67,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 		super(props);
 
 		this.styled = {
-			storeLink: styled(
+			storeLink: talkieStyled(
 				"div",
 				{
 					marginBottom: "2em",
@@ -78,7 +78,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 				},
 			),
 
-			storeLinks: styled(
+			storeLinks: talkieStyled(
 				"div",
 				{
 					"@media (min-width: 500px)": {
@@ -98,124 +98,130 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 			systemType,
 			translateSync,
 			configure,
-		} = this.props;
+		} = this.props as P;
 
 		const cwsAltText = "Talkie is available for installation from the Chrome Web Store";
 		const amoAltText = "Talkie is available for installation from Mozilla Addons";
 
 		return (
-			<section>
-				<p>
-					{translateSync("frontend_featuresEditions")}
-				</p>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_featuresLinkText")}
+				</textBase.h1>
 
-				<Discretional
-					enabled={!isPremiumEdition}
-				>
+				<section>
 					<p>
-						{translateSync("frontend_featuresEdition_Free")}
+						{translateSync("frontend_featuresEditions")}
 					</p>
-				</Discretional>
 
-				<Discretional
-					enabled={isPremiumEdition}
-				>
-					<p>
-						{translateSync("frontend_featuresEdition_Premium")}
-					</p>
-				</Discretional>
+					<Discretional
+						enabled={!isPremiumEdition}
+					>
+						<p>
+							{translateSync("frontend_featuresEdition_Free")}
+						</p>
+					</Discretional>
 
-				<FreeSection
-					headingLink={false}
-					mode="h2"
-				>
-					<listBase.ul>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List01")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List02")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List03")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List04")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List05")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresFree_List06")}
-						</listBase.li>
-					</listBase.ul>
+					<Discretional
+						enabled={isPremiumEdition}
+					>
+						<p>
+							{translateSync("frontend_featuresEdition_Premium")}
+						</p>
+					</Discretional>
 
-					<this.styled.storeLinks>
-						<this.styled.storeLink>
-							<textBase.a
-								href={configure("urls.external.chromewebstore")}
-								lang="en"
-							>
-								<img alt={cwsAltText} height="75" src="../../../shared-resources/src/resources/chrome-web-store/HRs9MPufa1J1h5glNhut.png" width="248"/>
-								<br/>
-								<TalkieFreeIcon
-									mode="inline"
-								/>
-								{translateSync("extensionShortName_Free")}
-							</textBase.a>
-						</this.styled.storeLink>
-						<this.styled.storeLink>
-							<textBase.a
-								href={configure("urls.external.firefox-amo")}
-								lang="en"
-							>
-								<img alt={amoAltText} height="60" src="../../../shared-resources/src/resources/firefox-amo/get-the-addon-fx-apr-2020.min.svg" width="172"/>
-								<br/>
-								<TalkieFreeIcon
-									mode="inline"
-								/>
-								{translateSync("extensionShortName_Free")}
-							</textBase.a>
-						</this.styled.storeLink>
-					</this.styled.storeLinks>
-				</FreeSection>
-
-				<PremiumSection
-					headingLink={false}
-					mode="h2"
-				>
-					<listBase.ul>
-						<listBase.li>
-							{translateSync("frontend_featuresPremium_List01")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresPremium_List02")}
-						</listBase.li>
-
-						{/* NOTE: read from clipboard feature not available in Firefox */}
-						<Discretional
-							enabled={systemType === "chrome"}
-						>
+					<FreeSection
+						headingLink={false}
+						mode="h2"
+					>
+						<listBase.ul>
 							<listBase.li>
-								{translateSync("frontend_featuresPremium_List05")}
+								{translateSync("frontend_featuresFree_List01")}
 							</listBase.li>
-						</Discretional>
+							<listBase.li>
+								{translateSync("frontend_featuresFree_List02")}
+							</listBase.li>
+							<listBase.li>
+								{translateSync("frontend_featuresFree_List03")}
+							</listBase.li>
+							<listBase.li>
+								{translateSync("frontend_featuresFree_List04")}
+							</listBase.li>
+							<listBase.li>
+								{translateSync("frontend_featuresFree_List05")}
+							</listBase.li>
+							<listBase.li>
+								{translateSync("frontend_featuresFree_List06")}
+							</listBase.li>
+						</listBase.ul>
 
-						<listBase.li>
-							{translateSync("frontend_featuresPremium_List03")}
-						</listBase.li>
-						<listBase.li>
-							{translateSync("frontend_featuresPremium_List04")}
-						</listBase.li>
-					</listBase.ul>
-				</PremiumSection>
+						<this.styled.storeLinks>
+							<this.styled.storeLink>
+								<a
+									href={configure("urls.external.chromewebstore")}
+									lang="en"
+								>
+									<img alt={cwsAltText} height="75" src="../../../shared-resources/src/resources/chrome-web-store/HRs9MPufa1J1h5glNhut.png" width="248"/>
+									<br/>
+									<TalkieFreeIcon
+										mode="inline"
+									/>
+									{translateSync("extensionShortName_Free")}
+								</a>
+							</this.styled.storeLink>
+							<this.styled.storeLink>
+								<a
+									href={configure("urls.external.firefox-amo")}
+									lang="en"
+								>
+									<img alt={amoAltText} height="60" src="../../../shared-resources/src/resources/firefox-amo/get-the-addon-fx-apr-2020.min.svg" width="172"/>
+									<br/>
+									<TalkieFreeIcon
+										mode="inline"
+									/>
+									{translateSync("extensionShortName_Free")}
+								</a>
+							</this.styled.storeLink>
+						</this.styled.storeLinks>
+					</FreeSection>
 
-				<TalkiePremiumEdition
-					disabled={false}
-					isPremiumEdition={isPremiumEdition}
-					onChange={storeIsPremiumEdition}
-				/>
-			</section>
+					<PremiumSection
+						headingLink={false}
+						mode="h2"
+					>
+						<listBase.ul>
+							<listBase.li>
+								{translateSync("frontend_featuresPremium_List01")}
+							</listBase.li>
+							<listBase.li>
+								{translateSync("frontend_featuresPremium_List02")}
+							</listBase.li>
+
+							{/* NOTE: read from clipboard feature not available in Firefox */}
+							<Discretional
+								enabled={systemType === "chrome"}
+							>
+								<listBase.li>
+									{translateSync("frontend_featuresPremium_List05")}
+								</listBase.li>
+							</Discretional>
+
+							<listBase.li>
+								{translateSync("frontend_featuresPremium_List03")}
+							</listBase.li>
+							<listBase.li>
+								{translateSync("frontend_featuresPremium_List04")}
+							</listBase.li>
+						</listBase.ul>
+					</PremiumSection>
+
+					<TalkiePremiumEdition
+						disabled={false}
+						isPremiumEdition={isPremiumEdition}
+						onChange={storeIsPremiumEdition}
+					/>
+				</section>
+			</>
 		);
 	}
 }

@@ -21,7 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
+import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import {
 	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
@@ -61,8 +63,8 @@ class Loading<P extends InternalProps> extends React.PureComponent<P> {
 		}
 
 		const LoadingWrapper = isBlockElement
-			? lighter.p
-			: lighter.span;
+			? talkieStyled("p")
+			: talkieStyled("span");
 
 		return (
 			<LoadingWrapper

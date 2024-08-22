@@ -36,7 +36,7 @@ export default class TalkiePremiumIcon<P extends IconProps & ClassNameProp> exte
 			marginLeft,
 			marginRight,
 			className,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<TalkieEditionIcon

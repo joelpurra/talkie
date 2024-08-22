@@ -95,7 +95,7 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 		const {
 			activeTabId,
 			links,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Nav

@@ -22,6 +22,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 /* NOTE: border-box for all elements. */
 /* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 
+
+/* NOTE: automatic light/dark mode. */
+:root {
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+    /* NOTE: use default values. */
+}
+
+@media (prefers-color-scheme: dark) {
+    /* NOTE: use default values. */
+}
+
 html {
     box-sizing: border-box;
 }
@@ -32,7 +46,7 @@ html {
     box-sizing: inherit;
 }
 
-details > * {
+details>* {
     /* NOTE: the details element seems to reset to content-box, without any obvious reason why. Tested using the inspector in chrome 94. */
     box-sizing: border-box;
 }
@@ -41,13 +55,11 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
 }
 
 body {
     font-family: system-ui, sans-serif;
     font-size: 100%;
-    color: #000000;
 }
 
 #react-root {
@@ -55,16 +67,16 @@ body {
 }
 
 .text-direction-rtl {
-  direction: rtl;
+    direction: rtl;
 }
 
 .text-direction-ltr {
-  direction: ltr;
+    direction: ltr;
 }
 
 .premium-section {
-	/* TODO: remove all free/premium references from css, move to css-in-js. */
-    background-color: #eceff5;
+    /* TODO: remove all free/premium references from css, move to css-in-js. */
+    background-color: rgba(127, 127, 127, 0.35);
 }
 
 tr.free-section,
@@ -72,6 +84,7 @@ tr.premium-section {
     margin-left: -0.5em;
     margin-right: -0.5em;
 }
+
 tr.premium-section:first-of-type td:first-of-type,
 tr:not(.premium-section)+tr.premium-section td:first-of-type {
     border-top-left-radius: 0.5em;

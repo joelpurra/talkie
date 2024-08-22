@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
@@ -31,9 +34,6 @@ import {
 import React, {
 	type ChangeEvent,
 } from "react";
-import {
-	styled,
-} from "styletron-react";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
@@ -82,7 +82,7 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp & ChildrenR
 			value,
 			disabled,
 			className,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<select
@@ -99,4 +99,4 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp & ChildrenR
 	}
 }
 
-export default styled(MultilineSelect, formBase.multilineSelect);
+export default talkieStyled(MultilineSelect, formBase.multilineSelect);

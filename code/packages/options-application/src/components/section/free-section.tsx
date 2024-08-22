@@ -45,7 +45,7 @@ export default class FreeSection<P extends FreeSectionProps & ChildrenRequiredPr
 			className,
 			headingLink,
 			mode,
-		} = this.props;
+		} = this.props as P;
 
 		const isPremiumEdition = false;
 

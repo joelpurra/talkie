@@ -68,7 +68,7 @@ class HistoryListenerContainer<P extends InternalProps> extends React.PureCompon
 		const {
 			setMostRecent,
 			setSpeakingHistory,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<HistoryListener

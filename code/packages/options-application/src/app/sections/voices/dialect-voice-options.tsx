@@ -72,7 +72,7 @@ class DialectVoiceOptions<P extends InternalProps> extends React.PureComponent<P
 			selectedLanguageGroup,
 			selectedVoiceName,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<PremiumSection

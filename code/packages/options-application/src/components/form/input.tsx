@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import React, {
 	type ChangeEvent,
 } from "react";
-import {
-	styled,
-} from "styletron-react";
 
 export interface InputProps {
 	// NOTE: <input> tags are complex; allowing custom properties/attributes.
@@ -70,7 +70,7 @@ class Input<P extends InputProps & ClassNameProp> extends React.PureComponent<P>
 			type,
 			value,
 			...other
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<input
@@ -87,4 +87,4 @@ class Input<P extends InputProps & ClassNameProp> extends React.PureComponent<P>
 	}
 }
 
-export default styled(Input, formBase.checkbox);
+export default talkieStyled(Input, formBase.checkbox);

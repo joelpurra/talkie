@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type StyleObject,
+import type {
+	StyleObject,
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
@@ -27,6 +27,9 @@ import * as listBase from "../list/list-base.mjs";
 import {
 	areaWithBackgroundColor,
 	layoutWithEmMargin,
+	layoutWithNoPadding,
+	margins,
+	paddings,
 	rounded,
 } from "../shared-base.mjs";
 
@@ -38,12 +41,6 @@ export const footer: StyleObject = layoutWithEmMargin(1);
 
 export const hr: StyleObject = {
 	...layoutWithEmMargin,
-	borderBottomWidth: 0,
-	borderLeftWidth: 0,
-	borderRightWidth: 0,
-	borderStyle: "solid",
-	borderTopWidth: "1px",
-	color: colorBase.dividerColor,
 };
 
 export const details: StyleObject = {};
@@ -53,7 +50,7 @@ export const summary: StyleObject = {
 
 export const hero: StyleObject = {
 	...areaWithBackgroundColor(1),
-	backgroundColor: colorBase.premiumSectionBackgroundColor,
+	backgroundColor: colorBase.legibleBackgroundColor,
 	fontSize: "1.5em",
 };
 
@@ -64,10 +61,24 @@ export const roundedWithBorder: (radius: string) => StyleObject = (radius) => ({
 	borderWidth: "1px",
 });
 
+export const horizontalUl: StyleObject = {
+	...listBase.ul,
+	listStyleType: "none",
+	...layoutWithNoPadding,
+};
+
+export const horizontalLi: StyleObject = {
+	...listBase.li,
+	...margins("0.25em"),
+	...paddings("0.25em"),
+	display: "inline-block",
+	lineHeight: "1em",
+	whiteSpace: "nowrap",
+};
+
 export const columnsUl: (columnCount: number) => StyleObject = (columnCount) => ({
 	...listBase.ul,
 	columnCount,
-	columnRuleColor: colorBase.dividerColor,
 	columnRuleStyle: "solid",
 	columnRuleWidth: "thin",
 	fontWeight: "bold",
@@ -90,6 +101,6 @@ export const columnsLi: StyleObject = {
 export const columnsLiMarked: StyleObject = {
 	...columnsLi,
 	"::marker": {
-		color: colorBase.textColor,
+		color: "unset",
 	},
 };

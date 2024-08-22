@@ -159,7 +159,7 @@ class VoicesContainer<P extends InternalProps> extends React.PureComponent<P> {
 			selectedLanguageCode,
 			selectedVoiceName,
 			voiceCountForSelectedLanguageCode,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Voices

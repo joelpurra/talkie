@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
@@ -28,9 +31,6 @@ import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	styled,
-} from "styletron-react";
 
 import Checkbox from "./checkbox.js";
 
@@ -50,7 +50,7 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 		super(props);
 
 		this.styled = {
-			labelForCheckbox: styled(
+			labelForCheckbox: talkieStyled(
 				"label",
 				{
 					...layoutBase.roundedWithBorder("0.5em"),
@@ -72,7 +72,7 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 			id,
 			children,
 			onChange,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<this.styled.labelForCheckbox>
@@ -91,4 +91,4 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 	}
 }
 
-export default styled(CheckboxWithLabel, formBase.checkbox);
+export default talkieStyled(CheckboxWithLabel, formBase.checkbox);

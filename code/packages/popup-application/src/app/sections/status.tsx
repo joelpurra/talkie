@@ -29,15 +29,13 @@ import translateAttribute, {
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 export interface StatusProps {
 	isSpeaking: boolean;
@@ -59,28 +57,28 @@ class Status<P extends StatusProps & ConfigureProps & TranslateProps> extends Re
 		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
 		this.styled = {
-			statusIconWrapper: withStyleDeep(
+			statusIconWrapper: withTalkieStyleDeep(
 				buttonBase.transparentButton,
 				{
 					paddingRight: "1em",
 				},
 			),
 
-			table: withStyleDeep(
+			table: withTalkieStyleDeep(
 				tableBase.wideTable,
 				{
 					borderSpacing: 0,
 				},
 			),
 
-			tbody: withStyleDeep(
+			tbody: withTalkieStyleDeep(
 				tableBase.tbody,
 				{
 					borderSpacing: 0,
 				},
 			),
 
-			td: withStyleDeep(
+			td: withTalkieStyleDeep(
 				tableBase.td,
 				{
 					borderSpacing: 0,
@@ -91,7 +89,7 @@ class Status<P extends StatusProps & ConfigureProps & TranslateProps> extends Re
 				},
 			),
 
-			tr: withStyleDeep(
+			tr: withTalkieStyleDeep(
 				tableBase.tr,
 				{
 					borderSpacing: 0,
@@ -115,15 +113,15 @@ class Status<P extends StatusProps & ConfigureProps & TranslateProps> extends Re
 			configure,
 			isSpeaking,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		const statusIconClassName = `icon-small-${isSpeaking ? "stop" : "play"}`;
 
 		return (
 			<layoutBase.main>
-				<lighter.p>
+				<p>
 					{translateSync("frontend_PopupUsageShort")}
-				</lighter.p>
+				</p>
 
 				<this.styled.table>
 					<colgroup>
@@ -144,13 +142,13 @@ class Status<P extends StatusProps & ConfigureProps & TranslateProps> extends Re
 								</this.styled.statusIconWrapper>
 							</this.styled.td>
 							<this.styled.td>
-								<textBase.a
+								<a
 									href={configure("urls.internal.options-status")}
 									rel="noopener noreferrer"
 									target="_blank"
 								>
 									<ProgressContainer/>
-								</textBase.a>
+								</a>
 							</this.styled.td>
 						</this.styled.tr>
 					</this.styled.tbody>

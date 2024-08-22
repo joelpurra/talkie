@@ -77,7 +77,7 @@ class FeaturesContainer<P extends InternalFeaturesContainerProps> extends React.
 			isPremiumEdition,
 			storeIsPremiumEdition,
 			systemType,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Features

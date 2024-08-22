@@ -24,6 +24,10 @@ import {
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
+import translateAttribute, {
+	type TranslateProps,
+} from "@talkie/shared-ui/hocs/translate.js";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
 import {
@@ -57,9 +61,9 @@ export interface SettingsDispatchProps {
 	storeContinueOnTabUpdatedUrl: typeof actions.settings.storeContinueOnTabUpdatedUrl;
 }
 
-interface SettingsProps extends SettingsStateProps, SettingsDispatchProps {}
+interface SettingsProps extends SettingsStateProps, SettingsDispatchProps, TranslateProps {}
 
-export default class Settings<P extends SettingsProps> extends React.PureComponent<P> {
+class Settings<P extends SettingsProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -82,45 +86,56 @@ export default class Settings<P extends SettingsProps> extends React.PureCompone
 			storeContinueOnTabRemoved,
 			storeContinueOnTabUpdatedUrl,
 			systemType,
+			translateSync,
 		} = this.props as P;
 		return (
-			<section>
-				<SpeakingHistoryLimit
-					clearSpeakingHistory={clearSpeakingHistory}
-					disabled={false}
-					removeSpeakingHistoryEntry={removeSpeakingHistoryEntry}
-					speakingHistory={speakingHistory}
-					speakingHistoryCount={speakingHistoryCount}
-					speakingHistoryLimit={speakingHistoryLimit}
-					onChange={storeSpeakingHistoryLimit}
-				/>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_settingsLinkText")}
+				</textBase.h1>
 
-				<ContinueSpeech>
-					<ContinueOnTabRemoved
-						continueOnTabRemoved={continueOnTabRemoved}
+				<section>
+					<SpeakingHistoryLimit
+						clearSpeakingHistory={clearSpeakingHistory}
 						disabled={false}
-						onChange={storeContinueOnTabRemoved}
+						removeSpeakingHistoryEntry={removeSpeakingHistoryEntry}
+						speakingHistory={speakingHistory}
+						speakingHistoryCount={speakingHistoryCount}
+						speakingHistoryLimit={speakingHistoryLimit}
+						onChange={storeSpeakingHistoryLimit}
 					/>
-					<ContinueOnTabUpdatedUrl
-						continueOnTabUpdatedUrl={continueOnTabUpdatedUrl}
+
+					<ContinueSpeech>
+						<ContinueOnTabRemoved
+							continueOnTabRemoved={continueOnTabRemoved}
+							disabled={false}
+							onChange={storeContinueOnTabRemoved}
+						/>
+						<ContinueOnTabUpdatedUrl
+							continueOnTabUpdatedUrl={continueOnTabUpdatedUrl}
+							disabled={false}
+							systemType={systemType}
+							onChange={storeContinueOnTabUpdatedUrl}
+						/>
+					</ContinueSpeech>
+
+					<SpeakLongTexts
 						disabled={false}
-						systemType={systemType}
-						onChange={storeContinueOnTabUpdatedUrl}
+						speakLongTexts={speakLongTexts}
+						onChange={storeSpeakLongTexts}
 					/>
-				</ContinueSpeech>
 
-				<SpeakLongTexts
-					disabled={false}
-					speakLongTexts={speakLongTexts}
-					onChange={storeSpeakLongTexts}
-				/>
-
-				<ShowAdditionalDetails
-					disabled={false}
-					showAdditionalDetails={showAdditionalDetails}
-					onChange={storeShowAdditionalDetails}
-				/>
-			</section>
+					<ShowAdditionalDetails
+						disabled={false}
+						showAdditionalDetails={showAdditionalDetails}
+						onChange={storeShowAdditionalDetails}
+					/>
+				</section>
+			</>
 		);
 	}
 }
+
+export default translateAttribute<SettingsProps & TranslateProps>()(
+	Settings,
+);

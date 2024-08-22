@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
@@ -28,9 +31,6 @@ import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	styled,
-} from "styletron-react";
 
 import Input from "./input.js";
 
@@ -54,7 +54,7 @@ class InputWithLabel<P extends InputWithLabelProps & ClassNameProp & ChildrenReq
 		super(props);
 
 		this.styled = {
-			labelForInput: styled(
+			labelForInput: talkieStyled(
 				"label",
 				{
 					...layoutBase.roundedWithBorder("0.5em"),
@@ -78,7 +78,7 @@ class InputWithLabel<P extends InputWithLabelProps & ClassNameProp & ChildrenReq
 			type,
 			value,
 			...other
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<this.styled.labelForInput>
@@ -100,4 +100,4 @@ class InputWithLabel<P extends InputWithLabelProps & ClassNameProp & ChildrenReq
 	}
 }
 
-export default styled(InputWithLabel, formBase.input);
+export default talkieStyled(InputWithLabel, formBase.input);

@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type OsType,
-	type SystemType,
+import type {
+	OsType,
+	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import passSelectedTextToBackground from "@talkie/shared-ui/hocs/pass-selected-text-to-background.js";
 import translateAttribute, {
@@ -28,20 +28,19 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
 	type ClassNameProp,
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import React from "react";
 import type {
 	StyleObject,
 } from "styletron-react";
-import {
-	styled,
-	withStyleDeep,
-} from "styletron-react";
-import {
-	type ReadonlyDeep,
+import type {
+	ReadonlyDeep,
 } from "type-fest";
 
 import Loading from "../components/loading.js";
@@ -102,7 +101,6 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 	private readonly styled: {
 		footerHr: TalkieStyletronComponent<typeof layoutBase.hr>;
-		main: TalkieStyletronComponent<typeof layoutBase.main>;
 		navHeader: TalkieStyletronComponent<"div">;
 	};
 
@@ -163,29 +161,17 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		];
 
 		this.styled = {
-			footerHr: withStyleDeep(
+			footerHr: withTalkieStyleDeep(
 				layoutBase.hr,
 				{
 					marginTop: "3em",
 				},
 			),
 
-			main: withStyleDeep(
-				layoutBase.main,
-				{
-					marginTop: "10em",
-				},
-			),
-
-			navHeader: styled(
+			navHeader: talkieStyled(
 				"div",
 				{
 					...widthStyles,
-					backgroundColor: colorBase.bodyBackgroundColor,
-					left: 0,
-					position: "fixed",
-					right: 0,
-					top: 0,
 				},
 			),
 		};
@@ -254,7 +240,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			showAdditionalDetails,
 			systemType,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		const linksToShow = this.links;
 
@@ -268,13 +254,11 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					<NavContainer
 						links={linksToShow}
 					/>
-
-					<layoutBase.hr/>
 				</this.styled.navHeader>
 
 				<layoutBase.hr/>
 
-				<this.styled.main>
+				<layoutBase.main>
 					<TabContents
 						// NOTE: used when prerendering the static per-language template.
 						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
@@ -288,6 +272,8 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 							enabled={false}
 						>
 							{/* NOTE: empty/loading placeholder for the "fallback-tab" default active tab id. */}
+							{/* TODO: remove/replace dummy element? */}
+							<span/>
 						</Loading>
 					</TabContents>
 
@@ -364,7 +350,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					>
 						<AboutContainer/>
 					</TabContents>
-				</this.styled.main>
+				</layoutBase.main>
 
 				<this.styled.footerHr/>
 
@@ -377,7 +363,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	}
 }
 
-export default styled(
+export default talkieStyled(
 	translateAttribute<MainProps>()(
 		passSelectedTextToBackground<MainProps>()(
 			Main,

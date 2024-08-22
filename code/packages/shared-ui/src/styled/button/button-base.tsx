@@ -19,15 +19,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	styled,
-} from "styletron-react";
-
+	talkieStyled,
+} from "../../styled/talkie-styled.mjs";
 import * as buttonBase from "../../styles/button/button-base.mjs";
 import {
 	type TalkieStyletronComponent,
 } from "../types.js";
 
-export const button: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.button);
-export const transparentButton: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.transparentButton);
-export const transparentButtonDisabled: TalkieStyletronComponent<React.ElementType<"button">> = styled("button", buttonBase.transparentButtonDisabled);
-export const a: TalkieStyletronComponent<React.ElementType<"a">> = styled("a", buttonBase.a);
+export const button: TalkieStyletronComponent<React.ElementType<"button">> = talkieStyled("button");
+export const transparentButton: TalkieStyletronComponent<React.ElementType<"button">> = talkieStyled("button", buttonBase.transparentButton);
+export const transparentButtonDisabled: TalkieStyletronComponent<React.ElementType<"button">> = talkieStyled("button", buttonBase.transparentButtonDisabled);
+export const a: TalkieStyletronComponent<React.ElementType<"a">> = talkieStyled("a", buttonBase.a);

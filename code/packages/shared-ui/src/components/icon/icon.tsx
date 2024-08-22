@@ -22,10 +22,10 @@ import React from "react";
 import type {
 	StyleObject,
 } from "styletron-react";
-import {
-	styled,
-} from "styletron-react";
 
+import {
+	talkieStyled,
+} from "../../styled/talkie-styled.mjs";
 import {
 	type ClassNameProp,
 } from "../../styled/types.js";
@@ -56,7 +56,7 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 			marginLeft,
 			marginRight,
 			className,
-		} = this.props;
+		} = this.props as P;
 
 		const iconStyle: StyleObject = {
 			":before": {
@@ -76,7 +76,7 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 			(iconStyle[":before"] as StyleObject).verticalAlign = "sub";
 		}
 
-		const StyledIcon = styled("span", iconStyle);
+		const StyledIcon = talkieStyled("span", iconStyle);
 
 		// TODO: fully replace with css-in-js?
 		// TODO: use a separate component per mode?

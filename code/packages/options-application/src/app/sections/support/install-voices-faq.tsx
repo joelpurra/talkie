@@ -50,7 +50,7 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 			osType,
 			showAdditionalDetails,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		// TODO: translate system settings paths.
 
@@ -65,44 +65,48 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 								{translateSync("frontend_faq002Q")}
 							</textBase.summaryHeading4>
 						</layoutBase.summary>
-						<textBase.p>
+						<p>
 							{translateSync("frontend_faq002A")}
-						</textBase.p>
+						</p>
 
 						<listBase.ul>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://support.microsoft.com/en-us/windows/appendix-a-supported-languages-and-voices-4486e345-7730-53da-fcfe-55cc64300f01"
 									lang="en"
 								>
 									Windows 11
-								</textBase.a>
-								: Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language&nbsp;&amp;&nbsp;Region &rarr;&nbsp;Add a language
+								</a>
+								:
+								{" "}
+								Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language&nbsp;&amp;&nbsp;Region &rarr;&nbsp;Add a language
 							</listBase.li>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3"
 									lang="en"
 								>
 									Windows 10
-								</textBase.a>
-								: Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language &rarr;&nbsp;Add a language
+								</a>
+								:
+								{" "}
+								Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language &rarr;&nbsp;Add a language
 							</listBase.li>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130"
 									lang="en"
 								>
 									Windows 8
-								</textBase.a>
+								</a>
 							</listBase.li>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://www.microsoft.com/en-us/download/details.aspx?id=27224"
 									lang="en"
 								>
 									Windows 7
-								</textBase.a>
+								</a>
 							</listBase.li>
 						</listBase.ul>
 					</layoutBase.details>
@@ -117,27 +121,29 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 								{translateSync("frontend_faq003Q")}
 							</textBase.summaryHeading4>
 						</layoutBase.summary>
-						<textBase.p>
+						<p>
 							{translateSync("frontend_faq003A")}
-						</textBase.p>
+						</p>
 
 						<listBase.ul>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://support.google.com/chromebook/answer/9032490"
 									lang="en"
 								>
 									ChromeOS
-								</textBase.a>
-								: Settings &rarr;&nbsp;Manage&nbsp;accessibility&nbsp;features &rarr;&nbsp;Text-to-Speech&nbsp;voice&nbsp;settings &rarr;&nbsp;Speech&nbsp;Engines
+								</a>
+								:
+								{" "}
+								Settings &rarr;&nbsp;Manage&nbsp;accessibility&nbsp;features &rarr;&nbsp;Text-to-Speech&nbsp;voice&nbsp;settings &rarr;&nbsp;Speech&nbsp;Engines
 							</listBase.li>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://chrome.google.com/webstore/detail/us-english-female-text-to/pkidpnnapnfgjhfhkpmjpbckkbaodldb"
 									lang="en"
 								>
 									US English Female Text-to-speech (by Google)
-								</textBase.a>
+								</a>
 							</listBase.li>
 						</listBase.ul>
 					</layoutBase.details>
@@ -152,19 +158,21 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 								{translateSync("frontend_faq004Q")}
 							</textBase.summaryHeading4>
 						</layoutBase.summary>
-						<textBase.p>
+						<p>
 							{translateSync("frontend_faq004A")}
-						</textBase.p>
+						</p>
 
 						<listBase.ul>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://support.apple.com/kb/index?page=search&amp;q=VoiceOver+language&amp;product=PF6&amp;doctype=PRODUCT_HELP,HOWTO_ARTICLES&amp;locale=en_US"
 									lang="en"
 								>
 									macOS
-								</textBase.a>
-								: System&nbsp;Preferences &rarr;&nbsp;Accessibility &rarr;&nbsp;Speech &rarr;&nbsp;System&nbsp;voice &rarr;&nbsp;Customize...
+								</a>
+								:
+								{" "}
+								System&nbsp;Preferences &rarr;&nbsp;Accessibility &rarr;&nbsp;Speech &rarr;&nbsp;System&nbsp;voice &rarr;&nbsp;Customize...
 							</listBase.li>
 						</listBase.ul>
 					</layoutBase.details>
@@ -179,18 +187,18 @@ class InstallVoicesFaq<P extends InstallVoicesFaqProps & TranslateProps> extends
 								{translateSync("frontend_faq005Q")}
 							</textBase.summaryHeading4>
 						</layoutBase.summary>
-						<textBase.p>
+						<p>
 							{translateSync("frontend_faq005A")}
-						</textBase.p>
+						</p>
 
 						<listBase.ul>
 							<listBase.li>
-								<textBase.a
+								<a
 									href="https://askubuntu.com/questions/953509/how-can-i-change-the-voice-used-by-firefox-reader-view-narrator-in-ubuntu"
 									lang="en"
 								>
 									Ask Ubuntu: How can I change the voice used by Firefox in Ubuntu?
-								</textBase.a>
+								</a>
 							</listBase.li>
 						</listBase.ul>
 					</layoutBase.details>

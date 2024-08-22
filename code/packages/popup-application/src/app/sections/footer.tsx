@@ -23,8 +23,11 @@ import configureAttribute, {
 	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as errors from "@talkie/shared-ui/styled/text/errors.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import {
 	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
@@ -32,9 +35,6 @@ import {
 	type OnOpenOptionsPageClickProp,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import {
-	withStyleDeep,
-} from "styletron-react";
 
 export interface FooterStateProps {
 	errorCount: number;
@@ -51,8 +51,8 @@ export interface FooterProps extends FooterStateProps, FooterDispatchProps {
 class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent<P> {
 	styled: {
 		footer: TalkieStyletronComponent<typeof layoutBase.footer>;
-		footerFirstLink: TalkieStyletronComponent<typeof lighter.a>;
-		footerSecondLink: TalkieStyletronComponent<typeof lighter.a>;
+		footerFirstLink: TalkieStyletronComponent<"a">;
+		footerSecondLink: TalkieStyletronComponent<"a">;
 		footerErrorCount: TalkieStyletronComponent<typeof errors.span>;
 	};
 
@@ -60,7 +60,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 		super(props);
 
 		this.styled = {
-			footer: withStyleDeep(
+			footer: withTalkieStyleDeep(
 				layoutBase.footer,
 				{
 					lineHeight: "2em",
@@ -68,7 +68,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 				},
 			),
 
-			footerErrorCount: withStyleDeep(
+			footerErrorCount: withTalkieStyleDeep(
 				errors.span,
 				{
 					// TODO: padding on one side, depending on the user interface language ltr/rtl.
@@ -79,16 +79,16 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 				},
 			),
 
-			footerFirstLink: withStyleDeep(
-				lighter.a,
+			footerFirstLink: talkieStyled(
+				"a",
 				{
 					fontSize: "1.75em",
 					verticalAlign: "middle",
 				},
 			),
 
-			footerSecondLink: withStyleDeep(
-				lighter.a,
+			footerSecondLink: talkieStyled(
+				"a",
 				{
 					verticalAlign: "middle",
 				},
@@ -102,7 +102,7 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 			errorCount,
 			optionsPageClick,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		// TODO: create a component class.
 

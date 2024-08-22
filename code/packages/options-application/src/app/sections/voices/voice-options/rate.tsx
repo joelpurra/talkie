@@ -79,7 +79,7 @@ class Rate<P extends RateProps & TranslateProps> extends React.PureComponent<P> 
 			onChange,
 			step,
 			voiceName,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<RangeWithHeading

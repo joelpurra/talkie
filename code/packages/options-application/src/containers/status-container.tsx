@@ -91,7 +91,7 @@ class StatusContainer<P extends StatusContainerProps & StateProps & DispatchProp
 			speakingHistoryCount,
 			speakTextInVoiceWithOverrides,
 			stopSpeaking,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Status

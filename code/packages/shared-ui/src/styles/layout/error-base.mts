@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type StyleObject,
+import type {
+	StyleObject,
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
