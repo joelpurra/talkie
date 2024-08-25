@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type PermissionsManager from "@talkie/browser-shared/permissions-manager.mjs";
+import type ReadClipboardPermissionManager from "@talkie/browser-shared/read-clipboard-permission-manager.mjs";
 import {
 	bespeak,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
@@ -35,38 +35,60 @@ import type ITranslatorProvider from "@talkie/split-environment-interfaces/itran
 
 import type SpeakerPageManager from "./speaker-page-manager.mjs";
 
-export default class ReadClipboardManager {
+export default class SpeakClipboardManager {
 	// eslint-disable-next-line max-params
 	constructor(
 		private readonly messageBusProviderGetter: IMessageBusProviderGetter,
 		private readonly speakerPageManager: SpeakerPageManager,
-		private readonly permissionsManager: PermissionsManager,
+		private readonly readClipboardPermissionsManager: ReadClipboardPermissionManager,
 		private readonly premiumManager: IPremiumManager,
 		private readonly translator: ITranslatorProvider,
 	) {}
 
-	async startSpeaking(): Promise<void> {
-		void logDebug("Start", "startSpeaking");
+	async checkPermissionAndSpeak(): Promise<void> {
+		void logDebug("Start", "checkPermissionAndSpeak");
 
 		let text = null;
 
-		const isPremiumEdition = await this.premiumManager.isPremiumEdition();
+		const [
+			isPremiumEdition,
+			hasPermission,
+		] = await Promise.all([
+			this.premiumManager.isPremiumEdition(),
+			this.readClipboardPermissionsManager.hasPermission(),
+		]);
 
 		if (isPremiumEdition) {
-			const hasPermissionsFeature = await this.permissionsManager.browserHasPermissionsFeature();
+			switch (hasPermission) {
+				case true: {
+					const clipboardText = await bespeak(this.messageBusProviderGetter, "offscreen:clipboard:read");
 
-			if (hasPermissionsFeature) {
-				const clipboardText = await bespeak(this.messageBusProviderGetter, "offscreen:clipboard:read");
+					if (typeof clipboardText !== "string") {
+						text = await this.translator.translate("readClipboardNeedsPermission");
+					} else if (clipboardText.length === 0 || clipboardText.trim().length === 0) {
+						text = await this.translator.translate("readClipboardNoSuitableText");
+					} else {
+						text = clipboardText;
+					}
 
-				if (typeof clipboardText !== "string") {
-					text = await this.translator.translate("readClipboardNeedsPermission");
-				} else if (clipboardText.length === 0 || clipboardText.trim().length === 0) {
-					text = await this.translator.translate("readClipboardNoSuitableText");
-				} else {
-					text = clipboardText;
+					break;
 				}
-			} else {
-				text = await this.translator.translate("readClipboardNeedsBrowserSupport");
+
+				case false: {
+					text = await this.translator.translate("readClipboardNeedsPermission");
+
+					break;
+				}
+
+				case null: {
+					text = await this.translator.translate("readClipboardNeedsBrowserSupport");
+
+					break;
+				}
+
+				default: {
+					throw new Error("What even is that?");
+				}
 			}
 		} else {
 			text = await this.translator.translate("readClipboardIsAPremiumFeature");
@@ -74,6 +96,6 @@ export default class ReadClipboardManager {
 
 		await this.speakerPageManager.startSpeakingCustomTextDetectLanguage(text);
 
-		void logDebug("Done", "startSpeaking");
+		void logDebug("Done", "checkPermissionAndSpeak");
 	}
 }

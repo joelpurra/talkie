@@ -21,6 +21,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	combineReducers,
 } from "../store/combine-reducers.mjs";
+import clipboard,
+* as clipboardActions from "./clipboard.mjs";
 import errors,
 * as errorsActions from "./errors.mjs";
 import history,
@@ -39,6 +41,7 @@ import voices,
 * as voicesActions from "./voices.mjs";
 
 export const actions = {
+	clipboard: clipboardActions,
 	errors: errorsActions,
 	history: historyActions,
 	languages: languagesActions,
@@ -50,6 +53,7 @@ export const actions = {
 };
 
 const reducers = combineReducers({
+	clipboard,
 	errors,
 	history,
 	languages,

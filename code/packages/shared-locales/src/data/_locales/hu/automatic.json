@@ -31,10 +31,6 @@
     "message": "Frissítés Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Olvassa el a vágólapról",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Az olvasás indítása/leállítása",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Használat",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Olvassa el a vágólapra másolt szöveget – használja egy gyorsbillentyűvel, hogy a böngészőn kívül bárhonnan meghallgathassa a szöveget. Jobb gombbal kattintson a Talkie Premium gombra vagy a webhely egy üres területén, és válassza az olvasást a vágólapról.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Kiválaszthatja a szöveget is, majd kattintson rá jobb gombbal, és válassza a Talkie lehetőséget a menüben. Ez a módszer a PDF-fájlokban és a böngésző bizonyos speciális oldalain is működik.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Egy kényelmes lehetőség a Talkie gyorsbillentyűk használata:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Szöveg olvasása a vágólapról bármilyen programban",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Indítás/leállítás",

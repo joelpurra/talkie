@@ -74,7 +74,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 
 		for await (const languageCode of availableBrowserLanguageWithInstalledVoice) {
 			// TODO: isTalkieLocale assertion.
-			const isTalkieLocale = await extra.coating!.talkieLocale!.isTalkieLocale(languageCode);
+			const isTalkieLocale = await extra.coating!.talkieLocale.isTalkieLocale(languageCode);
 
 			if (isTalkieLocale) {
 				sampleTextLanguage = languageCode as TalkieLocale;
@@ -83,7 +83,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 		}
 
 		const sampleText = typeof sampleTextLanguage === "string"
-			? await extra.coating!.talkieLocale!.getSampleText(sampleTextLanguage)
+			? await extra.coating!.talkieLocale.getSampleText(sampleTextLanguage)
 			: null;
 
 		return {
@@ -93,7 +93,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 	},
 );
 
-export const voicesSlice = createSlice({
+export const welcomeSlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(loadSampleTextForAvailableBrowserLanguageWithInstalledVoice.fulfilled, (state, action) => {
@@ -108,5 +108,5 @@ export const voicesSlice = createSlice({
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 
-// export const {} = voicesSlice.actions;
-export default voicesSlice.reducer;
+// export const {} = welcomeSlice.actions;
+export default welcomeSlice.reducer;

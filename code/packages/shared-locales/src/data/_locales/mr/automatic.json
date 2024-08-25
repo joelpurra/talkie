@@ -31,10 +31,6 @@
     "message": "Talkie Premium श्रेणीसुधारित करा",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "क्लिपबोर्डवरून वाचा",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "निवड वाचन सुरू/थांबवा",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "वापर",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "तुमच्या क्लिपबोर्डवर कॉपी केलेला कोणताही मजकूर वाचा — ब्राउझरच्या बाहेर कुठूनही मजकूर ऐकण्यासाठी शॉर्टकट की वापरा. Talkie Premium बटणावर किंवा वेबसाइटच्या रिकाम्या भागात उजवे-क्लिक देखील करू शकता आणि क्लिपबोर्डवरून वाचा निवडा.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "तुम्ही मजकूर देखील निवडू शकता, नंतर त्यावर उजवे क्लिक करा आणि मेनूमध्ये Talkie हा मार्ग पीडीएफ फाइल्स आणि ब्राउझरमधील काही विशिष्ट प्रकारच्या पृष्ठांमध्ये देखील कार्य करतो.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Talkie शॉर्टकट की वापरणे हा एक सोयीस्कर पर्याय आहे:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "कोणत्याही प्रोग्राममधील क्लिपबोर्डवरील मजकूर वाचा",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "प्रारंभ/थांबा",

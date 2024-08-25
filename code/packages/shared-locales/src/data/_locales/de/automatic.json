@@ -31,10 +31,6 @@
     "message": "Upgrade auf Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Aus der Zwischenablage lesen",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Leseauswahl starten/stoppen",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Verwendung",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Lesen Sie jeden Text, der in Ihre Zwischenablage kopiert wurde – verwenden Sie ihn mit einer Tastenkombination, um Text von überall außerhalb des Browsers anzuhören. Sie können auch mit der rechten Talkie Premium oder in einen leeren Bereich einer Website klicken und Aus Zwischenablage lesen auswählen.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Sie können auch den Text auswählen, dann mit der rechten Talkie klicken und Talkie im Menü auswählen. Dieser Weg funktioniert auch in PDF-Dateien und einigen speziellen Seitentypen im Browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Eine bequeme Möglichkeit besteht darin, die Tastenkombinationen Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Text aus der Zwischenablage in einem beliebigen Programm lesen",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start stop",

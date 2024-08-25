@@ -25,8 +25,8 @@
   "commandOpenWebsiteUpgradeDescription": {
     "message": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Start/stop reading selection"
@@ -129,7 +129,7 @@
     "message": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Does Talkie work in Google Docs?"
@@ -336,7 +336,7 @@
     "message": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Speak text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
   },
   "frontend_installVoicesHeading": {
     "message": "Available text-to-speech voices"
@@ -455,9 +455,6 @@
   "frontend_usageLinkText": {
     "message": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
@@ -476,14 +473,17 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start/stop"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithoutMenu": {
     "message": "Start/stop"
+  },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
   },
   "frontend_usageStep01": {
     "message": "Select desired text on any web page."
@@ -668,13 +668,13 @@
     "message": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Could not find suitable text in the clipboard. Can you try copying something else?"

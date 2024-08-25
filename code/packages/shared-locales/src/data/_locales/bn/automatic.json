@@ -31,10 +31,6 @@
     "message": "Talkie Premium আপগ্রেড করুন",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "ক্লিপবোর্ড থেকে পড়ুন",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "নির্বাচন পড়া শুরু/বন্ধ করুন",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "ব্যবহার",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "আপনার ক্লিপবোর্ডে অনুলিপি করা যেকোনো পাঠ্য পড়ুন — ব্রাউজারের বাইরে যেকোনো স্থান থেকে পাঠ্য শুনতে একটি শর্টকাট কী দিয়ে এটি ব্যবহার করুন। Talkie Premium বোতামে ডান-ক্লিক করতে পারেন, অথবা কোনো ওয়েবসাইটের খালি জায়গায়, এবং ক্লিপবোর্ড থেকে পঠন নির্বাচন করতে পারেন।",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "আপনি পাঠ্যটি নির্বাচন করতে পারেন, তারপরে এটিতে ডান ক্লিক করুন এবং মেনুতে Talkie এইভাবে পিডিএফ-ফাইল এবং ব্রাউজারে কিছু বিশেষ ধরনের পেজেও কাজ করে।",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "একটি সুবিধাজনক বিকল্প হল Talkie শর্টকাট কী ব্যবহার করা:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "যেকোনো প্রোগ্রামে ক্লিপবোর্ড থেকে পাঠ্য পড়ুন",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "আপনি সব",

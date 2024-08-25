@@ -31,10 +31,6 @@
     "message": "Talkie Premium 업그레이드",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "클립보드에서 읽기",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "읽기 시작/중지 선택",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "용법",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "클립보드에 복사된 모든 텍스트를 읽습니다. 바로 가기 키와 함께 사용하여 브라우저 외부에서 텍스트를 들을 수 있습니다. Talkie Premium 버튼이나 웹사이트의 빈 공간을 마우스 오른쪽 버튼으로 클릭하고 클립보드에서 읽기를 선택할 수도 있습니다.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "텍스트를 선택한 다음 마우스 오른쪽 버튼으로 클릭하고 메뉴에서 Talkie 이 방법은 PDF 파일 및 브라우저의 일부 특수 유형 페이지에서도 작동합니다.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "편리한 옵션은 Talkie 바로 가기 키 Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "모든 프로그램의 클립보드에서 텍스트 읽기",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "시작 멈춤",

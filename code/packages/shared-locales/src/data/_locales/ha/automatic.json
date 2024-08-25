@@ -31,10 +31,6 @@
     "message": "Haɓaka zuwa Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Karanta daga allo",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Fara/dakatar da zaɓin karatu",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Amfani",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Karanta duk wani rubutu da aka kwafe zuwa allon allo — yi amfani da shi tare da maɓallin gajeriyar hanya don sauraron rubutu daga ko'ina a wajen mai lilo. Hakanan zaka iya danna dama akan Talkie Premium , ko a cikin wani yanki mara komai na gidan yanar gizo, sannan zaɓi karantawa daga allo.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Hakanan zaka iya zaɓar rubutun, sannan danna kan shi dama, sannan zaɓi Talkie a cikin menu. Wannan hanyar kuma tana aiki a cikin fayilolin PDF da wasu nau'ikan shafuka na musamman a cikin mai binciken.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Zaɓin da ya dace shine amfani da Talkie gajeriyar hanya Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Karanta rubutu daga allo a kowane shiri",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Fara/tsayawa",

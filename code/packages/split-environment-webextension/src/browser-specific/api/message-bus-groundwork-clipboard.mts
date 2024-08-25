@@ -1,3 +1,4 @@
+
 /*
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
@@ -18,20 +19,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type IApiCoatingBrowser from "./iapi-coating-browser.mjs";
-import type IApiCoatingClipboard from "./iapi-coating-clipboard.mjs";
-import type IApiCoatingLocale from "./iapi-coating-locale.mjs";
-import type IApiCoatingMetadata from "./iapi-coating-metadata.mjs";
-import type IApiCoatingPremium from "./iapi-coating-premium.mjs";
-import type IApiCoatingTalkieLocale from "./iapi-coating-talkie-locale.mjs";
+import type IApiGroundworkClipboard from "@talkie/split-environment-interfaces/iapi/iapi-groundwork-clipboard.mjs";
 
-interface IApiCoating {
-	browser: IApiCoatingBrowser | null;
-	clipboard: IApiCoatingClipboard | null;
-	locale: IApiCoatingLocale;
-	metadata: IApiCoatingMetadata;
-	premium: IApiCoatingPremium;
-	talkieLocale: IApiCoatingTalkieLocale;
+import MessageBusGroundworkBase from "./message-bus-groundwork-base.mjs";
+
+export default class MessageBusGroundworkConfiguration extends MessageBusGroundworkBase implements IApiGroundworkClipboard {
+	// TODO: assert response types.
+	async readFromClipboard(): Promise<string | null> {
+		return this.bespeak("offscreen:clipboard:read");
+	}
+
+	async speakFromClipboard(): Promise<void> {
+		await this.betoken("service:speaking:speakFromClipboard");
+	}
 }
-
-export default IApiCoating;

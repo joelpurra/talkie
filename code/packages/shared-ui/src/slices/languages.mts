@@ -72,14 +72,14 @@ export const loadTranslatedLanguages = createAsyncThunk<TalkieLocale[], void, IA
 	`${prefix}/loadTranslatedLanguages`,
 	async (_, {
 		extra,
-	}) => extra.coating!.talkieLocale!.getTranslatedLanguages(),
+	}) => extra.coating!.talkieLocale.getTranslatedLanguages(),
 );
 
 export const loadTranslationLocale = createAsyncThunk<TalkieLocale, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTranslationLocale`,
 	async (_, {
 		extra,
-	}) => extra.coating!.locale!.getTranslationLocale(),
+	}) => extra.coating!.locale.getTranslationLocale(),
 );
 
 export const languagesSlice = createSlice({

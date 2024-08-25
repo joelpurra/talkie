@@ -102,4 +102,8 @@ export default class MessageBusGroundworkSpeaking extends MessageBusGroundworkBa
 			},
 		);
 	}
+
+	async speakFromClipboard(): Promise<void> {
+		await this.betoken("service:speaking:speakFromClipboard");
+	}
 }

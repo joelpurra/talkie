@@ -202,7 +202,6 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		return false;
 	}
 
-	// eslint-disable-next-line complexity
 	override render(): React.ReactNode {
 		const {
 			isSpeaking,
@@ -212,21 +211,28 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 			translatePlaceholderSync,
 		} = this.props as InternalProps;
 
+		const mostRecentText = mostRecent?.text;
+
 		// TODO: move to state/selector.
 		const hasMostRecentText = mostRecent !== null
-			&& typeof mostRecent.text === "string"
-			&& mostRecent.text.length > 0
-			&& mostRecent.text.trim().length > 0;
+			&& typeof mostRecentText === "string"
+			&& mostRecentText.length > 0
+			&& mostRecentText.trim().length > 0;
+
+		const mostRecentTextParagraph = hasMostRecentText
+			? mostRecentText
+			: "NOTE: empty or no markdown string was provided.";
+
+		const mostRecentLanguage = mostRecent?.language;
 
 		// TODO: move to state/selector.
 		const hasMostRecentLanguage = mostRecent !== null
-				&& typeof mostRecent.language === "string"
-				&& mostRecent.language.length > 0
-				&& mostRecent.language.trim().length > 0;
+				&& typeof mostRecentLanguage === "string"
+				&& mostRecentLanguage.length > 0
+				&& mostRecentLanguage.trim().length > 0;
 
-		const mostRecentLanguageGroup = mostRecent !== null
-			&& hasMostRecentLanguage
-			? getLanguageGroupFromLanguage(mostRecent.language!)
+		const mostRecentLanguageGroup = hasMostRecentLanguage
+			? getLanguageGroupFromLanguage(mostRecentLanguage)
 			: null;
 
 		// TODO: move to state/selector.
@@ -455,8 +461,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 							className={textDirectionClassNameForLanguageGroup}
 						>
 							<MarkdownParagraph>
-								{/* TODO: fix string type narrowing/detection based on hasMostRecentText? */}
-								{(mostRecent !== null && typeof mostRecent.text === "string" && mostRecent.text.trim().length > 0 && mostRecent.text) || "NOTE: empty or no markdown string was provided."}
+								{mostRecentTextParagraph}
 							</MarkdownParagraph>
 						</textBase.blockquote>
 					</Discretional>

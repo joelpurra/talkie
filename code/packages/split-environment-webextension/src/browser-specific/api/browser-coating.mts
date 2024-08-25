@@ -20,6 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import type IApiCoating from "@talkie/split-environment-interfaces/iapi/iapi-coating.mjs";
 import type IApiCoatingBrowser from "@talkie/split-environment-interfaces/iapi/iapi-coating-browser.mjs";
+import type IApiCoatingClipboard from "@talkie/split-environment-interfaces/iapi/iapi-coating-clipboard.mjs";
 import type IApiCoatingLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-locale.mjs";
 import type IApiCoatingMetadata from "@talkie/split-environment-interfaces/iapi/iapi-coating-metadata.mjs";
 import type IApiCoatingPremium from "@talkie/split-environment-interfaces/iapi/iapi-coating-premium.mjs";
@@ -29,6 +30,7 @@ export default class BrowserCoating implements IApiCoating {
 	// eslint-disable-next-line max-params
 	constructor(
 		public readonly browser: IApiCoatingBrowser,
+		public readonly clipboard: IApiCoatingClipboard,
 		public readonly locale: IApiCoatingLocale,
 		public readonly metadata: IApiCoatingMetadata,
 		public readonly premium: IApiCoatingPremium,

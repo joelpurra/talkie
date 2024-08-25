@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	IBrowserCommandMap,
 } from "@talkie/browser-bricks/command-handler-types.mjs";
-import type ReadClipboardManager from "@talkie/browser-bricks/read-clipboard-manager.mjs";
+import type SpeakClipboardManager from "@talkie/browser-bricks/speak-clipboard-manager.mjs";
 import type SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
 import type UiManager from "@talkie/browser-bricks/ui-manager.mjs";
 import type {
@@ -29,7 +29,7 @@ import type {
 } from "type-fest";
 
 const getCommandMap = (
-	readClipboardManager: ReadonlyDeep<ReadClipboardManager>,
+	readClipboardManager: ReadonlyDeep<SpeakClipboardManager>,
 	uiManager: ReadonlyDeep<UiManager>,
 	speakerPageManager: ReadonlyDeep<SpeakerPageManager>,
 ): IBrowserCommandMap => ({
@@ -39,9 +39,8 @@ const getCommandMap = (
 	async "open-website-upgrade"() {
 		await uiManager.openInternalUrlFromConfigurationInNewTab("options-features");
 	},
-	async "read-clipboard"() {
-		// NOTE: keeping the root chain separate from the speech chain.
-		void readClipboardManager.startSpeaking();
+	async "speak-clipboard"() {
+		await readClipboardManager.checkPermissionAndSpeak();
 	},
 	async "start-stop"() {
 		// NOTE: keeping the root chain separate from the speech chain.

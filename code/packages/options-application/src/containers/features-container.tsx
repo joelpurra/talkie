@@ -19,9 +19,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import {
-	type SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React from "react";
 import {
 	connect,
@@ -48,7 +45,6 @@ export interface FeaturesContainerProps {}
 
 interface StateProps {
 	isPremiumEdition: boolean;
-	systemType: SystemType | null;
 }
 
 interface DispatchProps extends FeaturesDispatchProps {
@@ -59,7 +55,6 @@ export interface InternalFeaturesContainerProps extends StateProps, DispatchProp
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
-	systemType: state.shared.metadata.systemType,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, FeaturesContainerProps> = (dispatch) => ({
@@ -76,14 +71,12 @@ class FeaturesContainer<P extends InternalFeaturesContainerProps> extends React.
 		const {
 			isPremiumEdition,
 			storeIsPremiumEdition,
-			systemType,
 		} = this.props as P;
 
 		return (
 			<Features
 				isPremiumEdition={isPremiumEdition}
 				storeIsPremiumEdition={storeIsPremiumEdition}
-				systemType={systemType}
 			/>
 		);
 	}

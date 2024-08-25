@@ -32,11 +32,13 @@ import type {
 import BrowserApi from "@talkie/split-environment-webextension/browser-specific/api/browser-api.mjs";
 import BrowserCoating from "@talkie/split-environment-webextension/browser-specific/api/browser-coating.mjs";
 import BrowserCoatingBrowser from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-browser.mjs";
+import BrowserCoatingClipboard from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-clipboard.mjs";
 import BrowserCoatingLocale from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-locale.mjs";
 import BrowserCoatingMetadata from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-metadata.mjs";
 import BrowserCoatingPremium from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-premium.mjs";
 import BrowserCoatingTalkieLocale from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-talkie-locale.mjs";
 import MessageBusGroundwork from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork.mjs";
+import MessageBusGroundworkClipboard from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-clipboard.mjs";
 import MessageBusGroundworkConfiguration from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-configuration.mjs";
 import MessageBusGroundworkHistory from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-history.mjs";
 import MessageBusGroundworkSpeaking from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-speaking.mjs";
@@ -49,6 +51,9 @@ import PremiumProvider from "@talkie/split-environment-webextension/premium-prov
 import StorageProvider from "@talkie/split-environment-webextension/storage-provider.mjs";
 import StyletronProvider from "@talkie/split-environment-webextension/styletron-provider.mjs";
 import TranslatorProvider from "@talkie/split-environment-webextension/translator-provider.mjs";
+
+import PermissionsProvider from "../permissions-provider.mjs";
+import ReadClipboardPermissionManager from "../read-clipboard-permission-manager.mjs";
 
 export interface BrowserDependencies {
 	api: BrowserApi;
@@ -73,20 +78,24 @@ function getDependencies(messageBusProviderGetter: IMessageBusProviderGetter): B
 	const translatorProvider = new TranslatorProvider(localeProvider);
 	const talkieLocaleHelper = new TalkieLocaleHelper();
 	const styletronProvider = new StyletronProvider();
+	const permissionsManager = new PermissionsProvider();
+	const readClipboardPermissionManager = new ReadClipboardPermissionManager(permissionsManager);
 
 	const browserCoatingBrowser = new BrowserCoatingBrowser();
+	const browserCoatingClipboard = new BrowserCoatingClipboard(readClipboardPermissionManager);
 	const browserCoatingLocale = new BrowserCoatingLocale(localeProvider);
 	const browserCoatingMetadata = new BrowserCoatingMetadata(metadataManager);
 	const browserCoatingPremium = new BrowserCoatingPremium(premiumManager);
 	const browserCoatingTalkieLocale = new BrowserCoatingTalkieLocale(talkieLocaleHelper);
-	const browserCoating = new BrowserCoating(browserCoatingBrowser, browserCoatingLocale, browserCoatingMetadata, browserCoatingPremium, browserCoatingTalkieLocale);
+	const browserCoating = new BrowserCoating(browserCoatingBrowser, browserCoatingClipboard, browserCoatingLocale, browserCoatingMetadata, browserCoatingPremium, browserCoatingTalkieLocale);
 
+	const apiGroundworkClipboard = new MessageBusGroundworkClipboard(messageBusProviderGetter);
 	const apiGroundworkConfiguration = new MessageBusGroundworkConfiguration(messageBusProviderGetter);
 	const apiGroundworkHistory = new MessageBusGroundworkHistory(messageBusProviderGetter);
 	const apiGroundworkSpeaking = new MessageBusGroundworkSpeaking(messageBusProviderGetter);
-	const apiGroundworkVoices = new MessageBusGroundworkVoices(messageBusProviderGetter);
 	const apiGroundworkUi = new MessageBusGroundworkUi(messageBusProviderGetter);
-	const apiGroundwork = new MessageBusGroundwork(apiGroundworkConfiguration, apiGroundworkHistory, apiGroundworkSpeaking, apiGroundworkUi, apiGroundworkVoices);
+	const apiGroundworkVoices = new MessageBusGroundworkVoices(messageBusProviderGetter);
+	const apiGroundwork = new MessageBusGroundwork(apiGroundworkClipboard, apiGroundworkConfiguration, apiGroundworkHistory, apiGroundworkSpeaking, apiGroundworkUi, apiGroundworkVoices);
 
 	const browserApi = new BrowserApi(browserCoating, apiGroundwork);
 

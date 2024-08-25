@@ -94,13 +94,12 @@ export default class ContextMenuManager {
 						"action",
 						"page",
 					],
-					id: "read-clipboard",
+					id: "speak-clipboard",
 					// eslint-disable-next-line no-sync
-					title: this.translator.translateSync("commandReadClipboardDescription"),
+					title: this.translator.translateSync("commandSpeakClipboardDescription"),
 				},
 				premium: true,
-				// TODO: enable after Firefox 55 has landed?
-				webextension: false,
+				webextension: true,
 			},
 			{
 				chrome: true,

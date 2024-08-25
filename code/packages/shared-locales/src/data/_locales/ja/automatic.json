@@ -31,10 +31,6 @@
     "message": "Talkie Premiumアップグレードします",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "クリップボードから読み取る",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "読み取り選択の開始/停止",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "使用法",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "クリップボードにコピーされたテキストを読みます—ショートカットキーと一緒に使用して、ブラウザの外部からテキストを聞きます。 Talkie Premiumボタンを右クリックするか、Webサイトの何もない領域で右クリックして、[クリップボードから読み取る]を選択することもできます。",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "テキストを選択して右クリックし、メニューでTalkieこの方法は、PDFファイルやブラウザの一部の特殊なタイプのページでも機能します。",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "便利なオプションは、 Talkieショートカットキーを使用することです。",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "任意のプログラムでクリップボードからテキストを読む",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "起動停止",

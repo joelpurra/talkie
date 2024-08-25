@@ -34,8 +34,8 @@ import type {
 } from "@talkie/browser-bricks/on-installed-manager-types.mjs";
 import OnTabEventHandlers from "@talkie/browser-bricks/on-tab-event-handlers.mjs";
 import OnlyLastCaller from "@talkie/browser-bricks/only-last-caller.mjs";
-import ReadClipboardManager from "@talkie/browser-bricks/read-clipboard-manager.mjs";
 import ShortcutKeyManager from "@talkie/browser-bricks/shortcut-key-manager.mjs";
+import SpeakClipboardManager from "@talkie/browser-bricks/speak-clipboard-manager.mjs";
 import Speaker from "@talkie/browser-bricks/speaker.mjs";
 import SpeakerManager from "@talkie/browser-bricks/speaker-manager.mjs";
 import SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
@@ -47,7 +47,8 @@ import VoicePitchManager from "@talkie/browser-bricks/voice-pitch-manager.mjs";
 import VoiceRateManager from "@talkie/browser-bricks/voice-rate-manager.mjs";
 import WelcomeManager from "@talkie/browser-bricks/welcome-manager.mjs";
 import Execute from "@talkie/browser-shared/execute.mjs";
-import PermissionsManager from "@talkie/browser-shared/permissions-manager.mjs";
+import PermissionsProvider from "@talkie/browser-shared/permissions-provider.mjs";
+import ReadClipboardPermissionManager from "@talkie/browser-shared/read-clipboard-permission-manager.mjs";
 import SelectedTextManager from "@talkie/browser-shared/selected-text-manager.mjs";
 import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
 import configurationObject from "@talkie/shared-application/data/configuration/configuration.mjs";
@@ -84,6 +85,7 @@ export interface BackgroundDependencies {
 	onTabEventHandlers: OnTabEventHandlers;
 	premiumManager: IPremiumManager;
 	progress: TalkieProgress;
+	readClipboardManager: SpeakClipboardManager;
 	settingsManager: SettingsManager;
 	shortcutKeyManager: ShortcutKeyManager;
 	speaker: Speaker;
@@ -141,11 +143,12 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 		selectedTextManager,
 		speakingStatus,
 	);
-	const permissionsManager = new PermissionsManager();
-	const readClipboardManager = new ReadClipboardManager(
+	const permissionsManager = new PermissionsProvider();
+	const readClipboardPermissionManager = new ReadClipboardPermissionManager(permissionsManager);
+	const readClipboardManager = new SpeakClipboardManager(
 		messageBusProviderGetter,
 		speakerPageManager,
-		permissionsManager,
+		readClipboardPermissionManager,
 		premiumManager,
 		translatorProvider,
 	);
@@ -184,6 +187,7 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 		onlyLastCaller,
 		premiumManager,
 		progress,
+		readClipboardManager,
 		settingsManager,
 		shortcutKeyManager,
 		speaker,

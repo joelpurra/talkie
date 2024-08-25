@@ -31,10 +31,6 @@
     "message": "Faceți upgrade la Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Citiți din clipboard",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Porniți/opriți selecția citirii",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Utilizare",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Citiți orice text copiat în clipboard — utilizați-l cu o tastă de comandă rapidă pentru a asculta text de oriunde în afara browserului. De asemenea, puteți să faceți clic dreapta pe Talkie Premium sau într-o zonă goală a unui site web și să selectați citire din clipboard.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "De asemenea, puteți selecta textul, apoi faceți clic dreapta pe el și alegeți Talkie în meniu. Acest mod funcționează și în fișierele PDF și în unele tipuri speciale de pagini din browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "O opțiune convenabilă este să utilizați tastele de comandă rapidă Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Citiți text din clipboard în orice program",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start Stop",

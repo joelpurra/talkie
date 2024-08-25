@@ -286,21 +286,6 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience.",
     "translated-from": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
-  "readClipboardIsAPremiumFeature": {
-    "message": "Jag är ledsen, men läsning av text från Urklipp är en funktion i Talkie Premium. Har du övervägt att uppgradera?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?",
-    "translated-from": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
-  },
-  "readClipboardNeedsBrowserSupport": {
-    "message": "Jag är ledsen, men den här webbläsaren stöder inte läsning från Urklipp. Inte än, åtminstone. Försök igen om en månad eller så!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!",
-    "translated-from": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
-  },
-  "readClipboardNeedsPermission": {
-    "message": "Talkie har inte behörighet att komma åt ur Urklipp. Det är okej, men då kommer funktionen läsa text från Urklipp inte att fungera.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work.",
-    "translated-from": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
-  },
   "readClipboardNoSuitableText": {
     "message": "Det gick inte att hitta lämplig text i Urklippet. Kan du försöka kopiera något annat?",
     "original": "Could not find suitable text in the clipboard. Can you try copying something else?",

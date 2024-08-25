@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import TalkieFreeIcon from "@talkie/shared-ui/components/icon/talkie-free-icon.js";
 import configureAttribute, {
@@ -48,7 +45,6 @@ import TalkiePremiumEdition from "./features/talkie-premium-edition.js";
 
 export interface FeaturesStateProps {
 	isPremiumEdition: boolean;
-	systemType: SystemType | null;
 }
 
 export interface FeaturesDispatchProps {
@@ -95,7 +91,6 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 		const {
 			isPremiumEdition,
 			storeIsPremiumEdition,
-			systemType,
 			translateSync,
 			configure,
 		} = this.props as P;
@@ -197,14 +192,9 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 								{translateSync("frontend_featuresPremium_List02")}
 							</listBase.li>
 
-							{/* NOTE: read from clipboard feature not available in Firefox */}
-							<Discretional
-								enabled={systemType === "chrome"}
-							>
-								<listBase.li>
-									{translateSync("frontend_featuresPremium_List05")}
-								</listBase.li>
-							</Discretional>
+							<listBase.li>
+								{translateSync("frontend_featuresPremium_List05")}
+							</listBase.li>
 
 							<listBase.li>
 								{translateSync("frontend_featuresPremium_List03")}

@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type OsType,
-	type SystemType,
+import type {
+	OsType,
+	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
@@ -38,11 +38,11 @@ import {
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
-	type TalkieStyletronComponent,
+import type {
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import {
-	type OnOpenShortcutKeysClickProp,
+import type {
+	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
@@ -124,18 +124,13 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 						{translateSync("frontend_usageSelectionContextMenuDescription")}
 					</p>
 
-					{/* NOTE: read from clipboard feature not available in Firefox */}
-					<Discretional
-						enabled={systemType === "chrome"}
+					<PremiumSection
+						mode="p"
 					>
-						<PremiumSection
-							mode="p"
-						>
-							<p>
-								{translateSync("frontend_usageReadclipboard")}
-							</p>
-						</PremiumSection>
-					</Discretional>
+						<p>
+							{translateSync("frontend_usageSpeakFromClipboard")}
+						</p>
+					</PremiumSection>
 
 					<textBase.h2>
 						{translateSync("frontend_usageShortcutHeading")}
@@ -164,22 +159,9 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 									{translateSync("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
 								</tableBase.td>
 								<this.styled.shortcutKeysTd>
-									<Discretional
-										enabled={osType === "mac"}
-									>
-										<textBase.kbd>
-											⌥
-										</textBase.kbd>
-									</Discretional>
-
-									<Discretional
-										enabled={osType !== "mac"}
-									>
-										<textBase.kbd>
-											Alt
-										</textBase.kbd>
-									</Discretional>
-
+									<textBase.kbd>
+										{osType === "mac" ? "⌥" : "Alt"}
+									</textBase.kbd>
 									+
 									<textBase.kbd>
 										Shift
@@ -208,22 +190,10 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 										{translateSync("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
 									</tableBase.td>
 									<this.styled.shortcutKeysTd>
-										<Discretional
-											enabled={osType === "mac"}
-										>
-											<textBase.kbd>
-												⌘
-											</textBase.kbd>
-										</Discretional>
+										<textBase.kbd>
+											{osType === "mac" ? "⌘" : "Ctrl"}
 
-										<Discretional
-											enabled={osType !== "mac"}
-										>
-											<textBase.kbd>
-												Ctrl
-											</textBase.kbd>
-										</Discretional>
-
+										</textBase.kbd>
 										+
 										<textBase.kbd>
 											Shift
@@ -236,61 +206,38 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 								</tableBase.tr>
 							</Discretional>
 
-							{/* NOTE: read from clipboard feature not available in Firefox */}
-							<Discretional
-								enabled={systemType === "chrome"}
-							>
-								<tableBase.tr className="premium-section">
-									<tableBase.td colSpan={2}>
-										<a
-											href="#features"
-											lang="en"
-										>
-											<TalkiePremiumIcon
-												mode="inline"
-											/>
-											{translateSync("extensionShortName_Premium")}
-										</a>
-									</tableBase.td>
-								</tableBase.tr>
-							</Discretional>
+							<tableBase.tr className="premium-section">
+								<tableBase.td colSpan={2}>
+									<a
+										href="#features"
+										lang="en"
+									>
+										<TalkiePremiumIcon
+											mode="inline"
+										/>
+										{translateSync("extensionShortName_Premium")}
+									</a>
+								</tableBase.td>
+							</tableBase.tr>
 
-							{/* NOTE: read from clipboard feature not available in Firefox */}
-							<Discretional
-								enabled={systemType === "chrome"}
-							>
-								<tableBase.tr className="premium-section">
-									<tableBase.td>
-										{translateSync("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
-									</tableBase.td>
-									<this.styled.shortcutKeysTd>
-										<Discretional
-											enabled={osType === "mac"}
-										>
-											<textBase.kbd>
-												⌘
-											</textBase.kbd>
-										</Discretional>
-
-										<Discretional
-											enabled={osType !== "mac"}
-										>
-											<textBase.kbd>
-												Ctrl
-											</textBase.kbd>
-										</Discretional>
-
-										+
-										<textBase.kbd>
-											Shift
-										</textBase.kbd>
-										+
-										<textBase.kbd>
-											1
-										</textBase.kbd>
-									</this.styled.shortcutKeysTd>
-								</tableBase.tr>
-							</Discretional>
+							<tableBase.tr className="premium-section">
+								<tableBase.td>
+									{translateSync("frontend_usageShortcutKeyDescriptionSpeakFromClipboard")}
+								</tableBase.td>
+								<this.styled.shortcutKeysTd>
+									<textBase.kbd>
+										{osType === "mac" ? "⌘" : "Ctrl"}
+									</textBase.kbd>
+									+
+									<textBase.kbd>
+										Shift
+									</textBase.kbd>
+									+
+									<textBase.kbd>
+										1
+									</textBase.kbd>
+								</this.styled.shortcutKeysTd>
+							</tableBase.tr>
 						</tableBase.tbody>
 					</this.styled.shortcutKeysTable>
 

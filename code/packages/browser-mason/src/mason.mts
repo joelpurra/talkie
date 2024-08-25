@@ -18,8 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 import SynthesizerHelper from "@talkie/browser-bricks/synthesizer-helper.mjs";
-import ClipboardManager from "@talkie/browser-shared/clipboard-manager.mjs";
-import PermissionsManager from "@talkie/browser-shared/permissions-manager.mjs";
+import getClipboardText from "@talkie/browser-shared/get-clipboard-text.mjs";
 import MessageBusInspector from "@talkie/shared-application/message-bus/message-bus-inspector.mjs";
 import createMessageBusListenerHelpers from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import {
@@ -143,19 +142,9 @@ export const mason = async (uninitializers: UninitializerCallback[], messageBusP
 
 			startResponder("offscreen:clipboard:read", async (action): Promise<string | null> => {
 				try {
-					// NOTE: include all clipboard/permission handling in the event handler, in case it needs a user interaction trigger.
-					const permissionsManager = new PermissionsManager();
+					const text = await getClipboardText();
 
-					if (await permissionsManager.browserHasPermissionsFeature()) {
-						const clipboardManager = new ClipboardManager(permissionsManager);
-						await clipboardManager.initialize();
-						const clipboardValue = await clipboardManager.getClipboardText();
-						await clipboardManager.uninitialize();
-
-						return clipboardValue;
-					}
-
-					void logWarn(`messageBus["${action}"]`, "Could not access the browser permissions system to check/request clipboard permissions.");
+					return text;
 				} catch (error: unknown) {
 					void logError(`messageBus["${action}"]`, "swallowing error", error);
 				}

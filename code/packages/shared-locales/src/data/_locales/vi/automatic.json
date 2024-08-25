@@ -31,10 +31,6 @@
     "message": "Nâng cấp lên Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Đọc từ khay nhớ tạm",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Bắt đầu/dừng lựa chọn đọc",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Cách sử dụng",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Đọc bất kỳ văn bản nào được sao chép vào khay nhớ tạm của bạn — sử dụng văn bản đó với phím tắt để nghe văn bản từ bất kỳ đâu bên ngoài trình duyệt. Bạn cũng có thể nhấp chuột phải vào Talkie Premium hoặc trong vùng trống của trang web và chọn đọc từ khay nhớ tạm.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Bạn cũng có thể chọn văn bản, sau đó nhấp chuột phải vào văn bản và chọn Talkie trong menu. Cách này cũng hoạt động trong các tệp PDF và một số loại trang đặc biệt trong trình duyệt.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Một tùy chọn thuận tiện là sử dụng các phím tắt Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Đọc văn bản từ khay nhớ tạm trong bất kỳ chương trình nào",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Băt đâu dưng",

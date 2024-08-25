@@ -31,10 +31,6 @@
     "message": "Atualize para Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Leia da área de transferência",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Iniciar/parar a seleção de leitura",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Uso",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Leia qualquer texto copiado para a área de transferência — use-o com uma tecla de atalho para ouvir o texto de qualquer lugar fora do navegador. Você também pode clicar com o Talkie Premium ou em uma área vazia de um site e selecionar ler da área de transferência.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Você também pode selecionar o texto, clicar com o botão direito nele e escolher Talkie no menu. Esta forma também funciona em arquivos PDF e alguns tipos especiais de páginas no navegador.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Uma opção conveniente é usar as teclas de atalho Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Leia o texto da área de transferência em qualquer programa",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Iniciar/parar",

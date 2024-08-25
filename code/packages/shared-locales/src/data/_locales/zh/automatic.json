@@ -31,10 +31,6 @@
     "message": "升级到Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "从剪贴板读取",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "开始/停止阅读选择",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "用法",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "阅读复制到剪贴板的任何文本 — 将其与快捷键一起使用，从浏览器之外的任何地方收听文本。您也可以右键单击Talkie Premium按钮，或在网站的空白区域，然后选择从剪贴板读取。",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "您也可以选择文本，然后右键单击它，然后在菜单中Talkie这种方式也适用于 PDF 文件和浏览器中的一些特殊类型的页面。",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "一个方便的选择是使用Talkie快捷键：",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "在任何程序中从剪贴板读取文本",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "开始/停止",

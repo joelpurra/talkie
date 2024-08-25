@@ -42,6 +42,7 @@ import type {
 
 import addOnInstalledEventQueuePolling from "./add-on-installed-event-queue-polling.mjs";
 import createAndStartCommandListeners from "./create-and-start-command-listener.mjs";
+import createAndStartPermissionListeners from "./create-and-start-permission-listeners.mjs";
 import createAndStartTabListeners from "./create-and-start-tab-listeners.mjs";
 import createMessageBusListeners from "./create-message-bus-listeners.mjs";
 import getDependencies from "./get-dependencies.mjs";
@@ -80,6 +81,8 @@ export const groundwork = async (
 
 				return null;
 			});
+
+		await createAndStartPermissionListeners();
 	}
 
 	// NOTE: performing storage backend migration early, before the storage provider is initialized.
@@ -95,6 +98,7 @@ export const groundwork = async (
 		onTabEventHandlers,
 		premiumManager,
 		progress,
+		readClipboardManager,
 		settingsManager,
 		shortcutKeyManager,
 		speaker,
@@ -131,6 +135,7 @@ export const groundwork = async (
 		speaker,
 		speakerManager,
 		speakerPageManager,
+		readClipboardManager,
 	));
 
 	await buttonPopupManager.enablePopup();

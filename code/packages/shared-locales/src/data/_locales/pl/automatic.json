@@ -31,10 +31,6 @@
     "message": "Uaktualnij do Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Czytaj ze schowka",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Rozpocznij/zatrzymaj wybór czytania",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Stosowanie",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Czytaj dowolny tekst skopiowany do schowka — używaj go z klawiszem skrótu, aby słuchać tekstu z dowolnego miejsca poza przeglądarką. Możesz także kliknąć Talkie Premium przyciskiem myszy przycisk Talkie Premium lub w pustym obszarze witryny i wybrać czytanie ze schowka.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Możesz także zaznaczyć tekst, a następnie kliknąć go prawym przyciskiem myszy i wybrać z menu Talkie W ten sposób działa również w plikach PDF i niektórych specjalnych typach stron w przeglądarce.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Wygodną opcją jest użycie klawiszy skrótu Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Czytaj tekst ze schowka w dowolnym programie",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Zacząć zakończyć",

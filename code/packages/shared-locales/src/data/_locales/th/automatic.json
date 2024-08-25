@@ -31,10 +31,6 @@
     "message": "อัปเกรดเป็น Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "อ่านจากคลิปบอร์ด",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "เริ่ม/หยุดการเลือกอ่าน",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "การใช้งาน",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "อ่านข้อความที่คัดลอกไปยังคลิปบอร์ดของคุณ โดยใช้ปุ่มลัดเพื่อฟังข้อความจากที่ใดก็ได้นอกเบราว์เซอร์ คุณยังสามารถคลิกขวาที่ Talkie Premium หรือในพื้นที่ว่างของเว็บไซต์ แล้วเลือกอ่านจากคลิปบอร์ด",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "คุณยังสามารถเลือกข้อความ จากนั้นคลิกขวาที่ข้อความ แล้วเลือก Talkie ในเมนู วิธีนี้ใช้ได้กับไฟล์ PDF และหน้าพิเศษบางประเภทในเบราว์เซอร์",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "ตัวเลือกที่สะดวกคือการใช้ปุ่มลัด Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "อ่านข้อความจากคลิปบอร์ดในทุกโปรแกรม",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "เริ่มหยุด",

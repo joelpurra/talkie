@@ -31,10 +31,6 @@
     "message": "Mise à niveau vers Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Lire à partir du presse-papiers",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Démarrer/arrêter la sélection de lecture",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Usage",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Lisez n'importe quel texte copié dans votre presse-papiers — utilisez-le avec une touche de raccourci pour écouter du texte de n'importe où en dehors du navigateur. Vous pouvez également cliquer avec le Talkie Premium , ou dans une zone vide d'un site Web, et sélectionner lire à partir du presse-papiers.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Vous pouvez également sélectionner le texte, puis cliquer dessus avec le bouton droit et choisir Talkie dans le menu. Cette méthode fonctionne également dans les fichiers PDF et certains types de pages spéciaux dans le navigateur.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Une option pratique consiste à utiliser les Talkie raccourci Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Lire le texte du presse-papiers dans n'importe quel programme",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Commencer arrêter",

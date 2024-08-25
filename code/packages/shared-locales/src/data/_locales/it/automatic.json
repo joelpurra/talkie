@@ -31,10 +31,6 @@
     "message": "Talkie Premium a Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Leggi dagli appunti",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Selezione avvio/arresto lettura",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "utilizzo",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Leggi qualsiasi testo copiato negli appunti: usalo con un tasto di scelta rapida per ascoltare il testo da qualsiasi punto al di fuori del browser. Puoi anche fare clic con il Talkie Premium o in un'area vuota di un sito Web e selezionare Leggi dagli appunti.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Puoi anche selezionare il testo, quindi fare clic con il tasto destro su di esso e scegliere Talkie nel menu. In questo modo funziona anche nei file PDF e in alcuni tipi speciali di pagine nel browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Un'opzione conveniente è usare i tasti di scelta rapida Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Leggi il testo dagli appunti in qualsiasi programma",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Avvio/arresto",

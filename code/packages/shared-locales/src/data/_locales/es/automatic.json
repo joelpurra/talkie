@@ -31,10 +31,6 @@
     "message": "Actualice a Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Leer del portapapeles",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Iniciar/detener la selección de lectura",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Uso",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Lea cualquier texto copiado en su portapapeles; utilícelo con una tecla de método abreviado para escuchar el texto desde cualquier lugar fuera del navegador. También puede hacer clic con el Talkie Premium , o en un área vacía de un sitio web, y seleccionar leer del portapapeles.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "También puede seleccionar el texto, luego hacer clic derecho sobre él y elegir Talkie en el menú. De esta manera también funciona en archivos PDF y algunos tipos especiales de páginas en el navegador.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Una opción conveniente es utilizar las Talkie método abreviado Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Leer texto del portapapeles en cualquier programa",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Iniciar/detener",

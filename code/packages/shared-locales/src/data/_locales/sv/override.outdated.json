@@ -3,5 +3,20 @@
     "message": "Det är vanligt med konflikter för kortkommandon för olika tillägg och program. Om kortkommandot inte fungerar, kontrollera att det inte redan används av något annat.",
     "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else.",
     "translated-from": "If the shortcut key does not work, please check that it is not already in use by another extension or program."
+  },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Jag är ledsen, men läsning av text från Urklipp är en funktion i Talkie Premium. Har du övervägt att uppgradera?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?",
+    "translated-from": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Jag är ledsen, men den här webbläsaren stöder inte läsning från Urklipp. Inte än, åtminstone. Försök igen om en månad eller så!",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard.",
+    "translated-from": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie har inte behörighet att komma åt ur Urklipp. Det är okej, men då kommer funktionen läsa text från Urklipp inte att fungera.",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page.",
+    "translated-from": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
   }
 }

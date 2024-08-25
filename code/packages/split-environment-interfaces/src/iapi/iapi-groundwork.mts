@@ -14,6 +14,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IApiGroundworkClipboard from "./iapi-groundwork-clipboard.mjs";
 import type IApiGroundworkConfiguration from "./iapi-groundwork-configuration.mjs";
 import type IApiGroundworkHistory from "./iapi-groundwork-history.mjs";
 import type IApiGroundworkSpeaking from "./iapi-groundwork-speaking.mjs";
@@ -21,6 +22,7 @@ import type IApiGroundworkUi from "./iapi-groundwork-ui.mjs";
 import type IApiGroundworkVoices from "./iapi-groundwork-voices.mjs";
 
 export default interface IApiGroundwork {
+	clipboard: IApiGroundworkClipboard;
 	configuration: IApiGroundworkConfiguration;
 	history: IApiGroundworkHistory;
 	speaking: IApiGroundworkSpeaking;

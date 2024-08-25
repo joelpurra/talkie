@@ -31,10 +31,6 @@
     "message": "Надстройте до Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Прочетете от клипборда",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Стартиране/спиране на избора на четене",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Използване",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Прочетете всеки текст, копиран в клипборда – използвайте го с клавиш за бърз достъп, за да слушате текст от всяко място извън браузъра. Можете също да щракнете с десния бутон върху бутона Talkie Premium или в празна област на уебсайт и да изберете четене от клипборда.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Можете също да изберете текста, след което да щракнете с десния бутон върху него и да изберете Talkie в менюто. Този начин работи и в PDF-файлове и някои специални типове страници в браузъра.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Удобна опция е да използвате Talkie бърз достъп Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Четете текст от клипборда във всяка програма",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Старт/стоп",

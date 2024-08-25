@@ -31,10 +31,6 @@
     "message": "ارتقا به Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "از کلیپ بورد بخوانید",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "شروع/توقف خواندن انتخاب",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "استفاده",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "هر متنی را که در کلیپ بورد خود کپی شده است بخوانید — از آن با یک کلید میانبر برای گوش دادن به متن از هر نقطه خارج از مرورگر استفاده کنید. همچنین می‌توانید روی Talkie Premium یا در قسمت خالی یک وب‌سایت کلیک راست کرده و خواندن از کلیپ‌بورد را انتخاب کنید.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "همچنین می توانید متن را انتخاب کنید، سپس روی آن کلیک راست کرده و Talkie در منو انتخاب کنید. این روش در فایل های PDF و برخی از انواع صفحات خاص در مرورگر نیز کار می کند.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "یک گزینه مناسب استفاده از کلیدهای میانبر Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "خواندن متن از کلیپ بورد در هر برنامه",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "شروع پایان",

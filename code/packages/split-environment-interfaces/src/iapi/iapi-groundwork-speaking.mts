@@ -26,4 +26,5 @@ export default interface IApiGroundworkSpeaking {
 	speakTextInCustomVoice(text: string, voice: ReadonlyDeep<IVoiceNameAndRateAndPitch>): Promise<void>;
 	speakTextInVoiceWithOverrides(text: string, voiceName: string): Promise<void>;
 	speakTextInLanguageWithOverrides(text: string, languageCode: string): Promise<void>;
+	speakFromClipboard(): Promise<void>;
 }

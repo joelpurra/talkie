@@ -18,20 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type IApiCoatingBrowser from "./iapi-coating-browser.mjs";
-import type IApiCoatingClipboard from "./iapi-coating-clipboard.mjs";
-import type IApiCoatingLocale from "./iapi-coating-locale.mjs";
-import type IApiCoatingMetadata from "./iapi-coating-metadata.mjs";
-import type IApiCoatingPremium from "./iapi-coating-premium.mjs";
-import type IApiCoatingTalkieLocale from "./iapi-coating-talkie-locale.mjs";
+import type {
+	Manifest,
+} from "webextension-polyfill";
 
-interface IApiCoating {
-	browser: IApiCoatingBrowser | null;
-	clipboard: IApiCoatingClipboard | null;
-	locale: IApiCoatingLocale;
-	metadata: IApiCoatingMetadata;
-	premium: IApiCoatingPremium;
-	talkieLocale: IApiCoatingTalkieLocale;
+import PermissionManager from "./permission-manager.mjs";
+import type PermissionsProvider from "./permissions-provider.mjs";
+
+export default class ReadClipboardPermissionManager extends PermissionManager {
+	private static readonly clipboardReadPermission: Manifest.OptionalPermission[] = [
+		"clipboardRead",
+	];
+
+	private static readonly clipboardReadContext: Manifest.MatchPattern[] = [];
+
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	constructor(permissionsManager: PermissionsProvider) {
+		super(permissionsManager, ReadClipboardPermissionManager.clipboardReadPermission, ReadClipboardPermissionManager.clipboardReadContext);
+	}
 }
-
-export default IApiCoating;

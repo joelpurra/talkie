@@ -20,7 +20,7 @@
   "scripts": {
     "build": "npm run --silent build:rollup && npm run --silent build:webextension",
     "build:patch": "( cd ./artifacts/webext/ && talkie-all-renderer ; )",
-    "build:patch:manifest": "json -Ie \"delete this.background.service_worker; this.permissions=this.permissions.filter((value) => !['offscreen'].includes(value)); this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' WebExtension '); delete this.commands['read-clipboard'];\" -f ./artifacts/webext/manifest.json",
+    "build:patch:manifest": "json -Ie \"delete this.background.service_worker; this.permissions=this.permissions.filter((value) => !['offscreen'].includes(value)); this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' WebExtension ');\" -f ./artifacts/webext/manifest.json",
     "build:rollup": "rollup --config rollup.config.mjs",
     "build:webextension": "npm run --silent build:patch:manifest && npm run --silent build:patch",
     "clean": "rimraf ./dist ./runtime",

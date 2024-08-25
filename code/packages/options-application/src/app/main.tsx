@@ -327,7 +327,9 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 						id="settings"
 						onLinkClick={this.handleLinkClick}
 					>
-						<SettingsContainer/>
+						<SettingsContainer
+							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+						/>
 					</TabContents>
 
 					<TabContents

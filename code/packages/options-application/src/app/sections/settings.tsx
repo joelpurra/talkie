@@ -18,50 +18,65 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type SystemType,
+import type {
+	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import {
-	type SpeakingHistoryEntry,
+import type {
+	SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import type {
+	OnOpenShortcutKeysClickProp,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
-import {
-	type actions,
+import type {
+	actions,
 } from "../../slices/index.mjs";
 import ContinueOnTabRemoved from "./settings/continue-on-tab-removed.js";
 import ContinueOnTabUpdatedUrl from "./settings/continue-on-tab-updated-url.js";
 import ContinueSpeech from "./settings/continue-speech.js";
+import ReadClipboardPermission from "./settings/read-clipboard-permission.js";
 import ShowAdditionalDetails from "./settings/show-additional-details.js";
 import SpeakLongTexts from "./settings/speak-long-texts.js";
 import SpeakingHistoryLimit from "./settings/speaking-history-limit.js";
 
 export interface SettingsStateProps {
-	showAdditionalDetails: boolean;
-	speakLongTexts: boolean;
-	speakingHistoryCount: number;
-	speakingHistoryLimit: number;
-	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
-	systemType: SystemType | null;
 	continueOnTabRemoved: boolean;
 	continueOnTabUpdatedUrl: boolean;
+	hasClipboardReadPermission: boolean | null;
+	isPremiumEdition: boolean;
+	clipboardText: string | null | undefined;
+	showAdditionalDetails: boolean;
+	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
+	speakingHistoryCount: number;
+	speakingHistoryLimit: number;
+	speakLongTexts: boolean;
+	systemType: SystemType | null;
 }
 
 export interface SettingsDispatchProps {
+	askClipboardReadPermission: typeof actions.shared.clipboard.askClipboardReadPermission;
 	clearSpeakingHistory: typeof actions.shared.history.clearSpeakingHistory;
+	denyClipboardReadPermission: typeof actions.shared.clipboard.denyClipboardReadPermission;
+	loadHasClipboardReadPermission: typeof actions.shared.clipboard.loadHasClipboardReadPermission;
+	readFromClipboard: typeof actions.shared.clipboard.readFromClipboard;
 	removeSpeakingHistoryEntry: typeof actions.shared.history.removeSpeakingHistoryEntry;
-	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
-	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
-	storeSpeakingHistoryLimit: typeof actions.settings.storeSpeakingHistoryLimit;
+	speakFromClipboard: typeof actions.shared.clipboard.speakFromClipboard;
 	storeContinueOnTabRemoved: typeof actions.settings.storeContinueOnTabRemoved;
 	storeContinueOnTabUpdatedUrl: typeof actions.settings.storeContinueOnTabUpdatedUrl;
+	storeShowAdditionalDetails: typeof actions.settings.storeShowAdditionalDetails;
+	storeSpeakingHistoryLimit: typeof actions.settings.storeSpeakingHistoryLimit;
+	storeSpeakLongTexts: typeof actions.settings.storeSpeakLongTexts;
 }
 
-interface SettingsProps extends SettingsStateProps, SettingsDispatchProps, TranslateProps {}
+interface SettingsProps extends SettingsStateProps, SettingsDispatchProps, TranslateProps {
+	// TODO: move to separate interface.
+	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
+}
 
 class Settings<P extends SettingsProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -71,20 +86,28 @@ class Settings<P extends SettingsProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
+			askClipboardReadPermission,
 			clearSpeakingHistory,
+			clipboardText,
+			continueOnTabRemoved,
+			continueOnTabUpdatedUrl,
+			denyClipboardReadPermission,
+			hasClipboardReadPermission,
+			isPremiumEdition,
+			onOpenShortKeysConfigurationClick,
+			readFromClipboard,
 			removeSpeakingHistoryEntry,
 			showAdditionalDetails,
+			speakFromClipboard,
 			speakingHistory,
 			speakingHistoryCount,
 			speakingHistoryLimit,
 			speakLongTexts,
-			continueOnTabRemoved,
-			continueOnTabUpdatedUrl,
+			storeContinueOnTabRemoved,
+			storeContinueOnTabUpdatedUrl,
 			storeShowAdditionalDetails,
 			storeSpeakingHistoryLimit,
 			storeSpeakLongTexts,
-			storeContinueOnTabRemoved,
-			storeContinueOnTabUpdatedUrl,
 			systemType,
 			translateSync,
 		} = this.props as P;
@@ -95,6 +118,20 @@ class Settings<P extends SettingsProps> extends React.PureComponent<P> {
 				</textBase.h1>
 
 				<section>
+					<ReadClipboardPermission
+						askClipboardReadPermission={askClipboardReadPermission}
+						clipboardText={clipboardText}
+						denyClipboardReadPermission={denyClipboardReadPermission}
+						disabled={false}
+						hasClipboardReadPermission={hasClipboardReadPermission}
+						isPremiumEdition={isPremiumEdition}
+						readFromClipboard={readFromClipboard}
+						showAdditionalDetails={showAdditionalDetails}
+						speakFromClipboard={speakFromClipboard}
+						systemType={systemType}
+						onOpenShortKeysConfigurationClick={onOpenShortKeysConfigurationClick}
+					/>
+
 					<SpeakingHistoryLimit
 						clearSpeakingHistory={clearSpeakingHistory}
 						disabled={false}

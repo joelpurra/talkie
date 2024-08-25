@@ -58,6 +58,7 @@ export type MessageBusAction =
 
 	| "dom:internal:passSelectedTextToBackground"
 
+	| "service:speaking:speakFromClipboard"
 	| "service:speaking:speakInCustomVoice"
 	| "service:speaking:speakInLanguageWithOverrides"
 	| "service:speaking:speakInVoiceWithOverrides"

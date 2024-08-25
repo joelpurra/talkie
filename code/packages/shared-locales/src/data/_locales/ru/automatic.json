@@ -31,10 +31,6 @@
     "message": "Talkie Premium на Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Читать из буфера обмена",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Выбор запуска/остановки чтения",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "использование",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Прочтите любой текст, скопированный в буфер обмена — используйте его с помощью сочетания клавиш для прослушивания текста из любого места за пределами браузера. Вы также можете щелкнуть правой кнопкой Talkie Premium кнопку Talkie Premium или в пустой области веб-сайта и выбрать чтение из буфера обмена.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Вы также можете выделить текст, затем щелкнуть по нему правой кнопкой мыши и выбрать в меню Talkie Этот способ также работает с PDF-файлами и некоторыми специальными типами страниц в браузере.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Удобный вариант — использовать горячие клавиши Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Читать текст из буфера обмена в любой программе",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Старт/стоп",

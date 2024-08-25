@@ -31,10 +31,6 @@
     "message": "Inovovať na Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Prečítajte si zo schránky",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Výber spustenia/zastavenia čítania",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Použitie",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Prečítajte si akýkoľvek text skopírovaný do schránky – použite ho s klávesovou skratkou na počúvanie textu odkiaľkoľvek mimo prehliadača. Môžete tiež kliknúť pravým tlačidlom myši na Talkie Premium alebo do prázdnej oblasti webovej stránky a vybrať možnosť čítať zo schránky.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Môžete tiež vybrať text, potom naň kliknúť pravým tlačidlom a v ponuke Talkie Tento spôsob funguje aj v súboroch PDF a niektorých špeciálnych typoch stránok v prehliadači.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Talkie možnosťou je použiť klávesové skratky Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Čítajte text zo schránky v akomkoľvek programe",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Štart stop",

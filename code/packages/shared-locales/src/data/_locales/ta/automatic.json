@@ -31,10 +31,6 @@
     "message": "Talkie Premium க்கு மேம்படுத்து",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "கிளிப்போர்டில் இருந்து படிக்கவும்",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "படிப்பைத் தொடங்க/நிறுத்தும் தேர்வை",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "பயன்பாடு",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "உங்கள் கிளிப்போர்டுக்கு நகலெடுக்கப்பட்ட எந்த உரையையும் படிக்கவும் — உலாவிக்கு வெளியே எங்கிருந்தும் உரையைக் கேட்க குறுக்குவழி விசையுடன் அதைப் பயன்படுத்தவும். Talkie Premium பட்டனில் வலது கிளிக் செய்யவும் அல்லது இணையதளத்தின் வெற்றுப் பகுதியில் கிளிக் செய்து, கிளிப்போர்டில் இருந்து படிக்கவும் என்பதைத் தேர்ந்தெடுக்கவும்.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "நீங்கள் உரையைத் தேர்ந்தெடுத்து, அதன் மீது வலது கிளிக் செய்து, மெனுவில் Talkie இந்த வழி PDF கோப்புகள் மற்றும் உலாவியில் சில சிறப்பு வகை பக்கங்களிலும் வேலை செய்கிறது.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Talkie குறுக்குவழி விசைகளைப் பயன்படுத்துவது ஒரு வசதியான விருப்பமாகும்:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "எந்தவொரு நிரலிலும் கிளிப்போர்டிலிருந்து உரையைப் படிக்கவும்",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "தொடங்கு/நிறுத்து",

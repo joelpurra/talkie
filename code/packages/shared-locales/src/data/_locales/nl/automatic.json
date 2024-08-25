@@ -31,10 +31,6 @@
     "message": "Upgrade naar Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Voorlezen vanaf het klembord",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Selectie starten/stoppen met lezen",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Gebruik",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Lees alle tekst die naar uw klembord is gekopieerd — gebruik het met een sneltoets om naar tekst te luisteren van overal buiten de browser. U kunt ook met de rechtermuisknop op de Talkie Premium knop klikken, of in een leeg gedeelte van een website, en lezen van klembord selecteren.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "U kunt ook de tekst selecteren, er met de rechtermuisknop op klikken en Talkie in het menu kiezen. Deze manier werkt ook in PDF-bestanden en sommige speciale soorten pagina's in de browser.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Een handige optie is om de sneltoetsen Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Lees tekst van het klembord in elk programma",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start Stop",

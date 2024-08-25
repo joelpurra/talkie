@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type HistoryManager from "@talkie/browser-bricks/history-manager.mjs";
+import type SpeakClipboardManager from "@talkie/browser-bricks/speak-clipboard-manager.mjs";
 import type Speaker from "@talkie/browser-bricks/speaker.mjs";
 import type SpeakerManager from "@talkie/browser-bricks/speaker-manager.mjs";
 import type SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
@@ -51,6 +52,7 @@ const createMessageBusListeners = async (
 	speaker: ReadonlyDeep<Speaker>,
 	speakerManager: ReadonlyDeep<SpeakerManager>,
 	speakerPageManager: ReadonlyDeep<SpeakerPageManager>,
+	readClipboardManager: ReadonlyDeep<SpeakClipboardManager>,
 	// eslint-disable-next-line max-params
 ): Promise<UninitializerCallback[]> => {
 	const {
@@ -233,6 +235,12 @@ const createMessageBusListeners = async (
 
 		startReactor("service:history:removeSpeakingHistoryEntry", async (_action, hash: number) => {
 			await historyManager.removeSpeakingHistoryEntry(hash);
+
+			return TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE;
+		}),
+
+		startReactor("service:speaking:speakFromClipboard", async () => {
+			await readClipboardManager.checkPermissionAndSpeak();
 
 			return TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE;
 		}),

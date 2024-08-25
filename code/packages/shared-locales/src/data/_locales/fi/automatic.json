@@ -31,10 +31,6 @@
     "message": "Päivitä Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Lue leikepöydältä",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Lukemisen aloitus/lopetusvalinta",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Käyttö",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Lue leikepöydälle kopioitu teksti – käytä sitä pikanäppäimellä kuunnellaksesi tekstiä mistä tahansa selaimen ulkopuolelta. Voit myös napsauttaa hiiren oikealla painikkeella Talkie Premium painiketta tai verkkosivuston tyhjää aluetta ja valita lue leikepöydältä.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Voit myös valita tekstin, napsauttaa sitä hiiren kakkospainikkeella ja valita valikosta Talkie Tämä tapa toimii myös PDF-tiedostoissa ja tietyillä selaimen erikoissivuilla.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Kätevä vaihtoehto on käyttää pikanäppäimiä Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Lue tekstiä leikepöydältä missä tahansa ohjelmassa",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Käynnistä/pysäytys",

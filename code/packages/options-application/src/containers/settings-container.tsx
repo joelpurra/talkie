@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
+import type {
+	OnOpenShortcutKeysClickProp,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 import {
 	connect,
@@ -43,24 +46,33 @@ const {
 	bindActionCreators,
 } = toolkit;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface SettingsContainerProps {}
+interface SettingsContainerProps {
+	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
+}
 
 interface StateProps extends SettingsStateProps {}
 
 interface DispatchProps extends SettingsDispatchProps {
-	loadShowAdditionalDetails: typeof actions.settings.loadShowAdditionalDetails;
-	loadSpeakLongTexts: typeof actions.settings.loadSpeakLongTexts;
-	loadSpeakingHistory: typeof actions.shared.history.loadSpeakingHistory;
-	loadSpeakingHistoryLimit: typeof actions.settings.loadSpeakingHistoryLimit;
+	askClipboardReadPermission: typeof actions.shared.clipboard.askClipboardReadPermission;
+	denyClipboardReadPermission: typeof actions.shared.clipboard.denyClipboardReadPermission;
 	loadContinueOnTabRemoved: typeof actions.settings.loadContinueOnTabRemoved;
 	loadContinueOnTabUpdatedUrl: typeof actions.settings.loadContinueOnTabUpdatedUrl;
+	loadHasClipboardReadPermission: typeof actions.shared.clipboard.loadHasClipboardReadPermission;
+	loadShowAdditionalDetails: typeof actions.settings.loadShowAdditionalDetails;
+	loadSpeakingHistory: typeof actions.shared.history.loadSpeakingHistory;
+	loadSpeakingHistoryLimit: typeof actions.settings.loadSpeakingHistoryLimit;
+	loadSpeakLongTexts: typeof actions.settings.loadSpeakLongTexts;
+	readFromClipboard: typeof actions.shared.clipboard.readFromClipboard;
+	speakFromClipboard: typeof actions.shared.clipboard.speakFromClipboard;
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
+	clipboardText: state.shared.clipboard.clipboardText,
 	continueOnTabRemoved: state.settings.continueOnTabRemoved,
 	continueOnTabUpdatedUrl: state.settings.continueOnTabUpdatedUrl,
+	hasClipboardReadPermission: state.shared.clipboard.hasClipboardReadPermission,
+	isPremiumEdition: state.shared.metadata.isPremiumEdition,
 	showAdditionalDetails: state.settings.showAdditionalDetails,
 	speakLongTexts: state.settings.speakLongTexts,
 	speakingHistory: state.shared.history.speakingHistory,
@@ -70,14 +82,19 @@ const mapStateToProps: MapStateToProps<StateProps, SettingsContainerProps, Optio
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, SettingsContainerProps> = (dispatch) => ({
+	askClipboardReadPermission: bindActionCreators(actions.shared.clipboard.askClipboardReadPermission, dispatch),
 	clearSpeakingHistory: bindActionCreators(actions.shared.history.clearSpeakingHistory, dispatch),
+	denyClipboardReadPermission: bindActionCreators(actions.shared.clipboard.denyClipboardReadPermission, dispatch),
 	loadContinueOnTabRemoved: bindActionCreators(actions.settings.loadContinueOnTabRemoved, dispatch),
 	loadContinueOnTabUpdatedUrl: bindActionCreators(actions.settings.loadContinueOnTabUpdatedUrl, dispatch),
+	loadHasClipboardReadPermission: bindActionCreators(actions.shared.clipboard.loadHasClipboardReadPermission, dispatch),
 	loadShowAdditionalDetails: bindActionCreators(actions.settings.loadShowAdditionalDetails, dispatch),
 	loadSpeakLongTexts: bindActionCreators(actions.settings.loadSpeakLongTexts, dispatch),
 	loadSpeakingHistory: bindActionCreators(actions.shared.history.loadSpeakingHistory, dispatch),
 	loadSpeakingHistoryLimit: bindActionCreators(actions.settings.loadSpeakingHistoryLimit, dispatch),
+	readFromClipboard: bindActionCreators(actions.shared.clipboard.readFromClipboard, dispatch),
 	removeSpeakingHistoryEntry: bindActionCreators(actions.shared.history.removeSpeakingHistoryEntry, dispatch),
+	speakFromClipboard: bindActionCreators(actions.shared.clipboard.speakFromClipboard, dispatch),
 	storeContinueOnTabRemoved: bindActionCreators(actions.settings.storeContinueOnTabRemoved, dispatch),
 	storeContinueOnTabUpdatedUrl: bindActionCreators(actions.settings.storeContinueOnTabUpdatedUrl, dispatch),
 	storeShowAdditionalDetails: bindActionCreators(actions.settings.storeShowAdditionalDetails, dispatch),
@@ -96,6 +113,7 @@ class SettingsContainer<P extends InternalProps> extends React.PureComponent<P> 
 	override componentDidMount(): void {
 		this.props.loadContinueOnTabRemoved();
 		this.props.loadContinueOnTabUpdatedUrl();
+		this.props.loadHasClipboardReadPermission();
 		this.props.loadShowAdditionalDetails();
 		this.props.loadSpeakingHistory();
 		this.props.loadSpeakingHistoryLimit();
@@ -104,30 +122,47 @@ class SettingsContainer<P extends InternalProps> extends React.PureComponent<P> 
 
 	override render(): React.ReactNode {
 		const {
+			askClipboardReadPermission,
 			clearSpeakingHistory,
+			clipboardText,
+			continueOnTabRemoved,
+			continueOnTabUpdatedUrl,
+			denyClipboardReadPermission,
+			hasClipboardReadPermission,
+			isPremiumEdition,
+			loadHasClipboardReadPermission,
+			onOpenShortKeysConfigurationClick,
+			readFromClipboard,
 			removeSpeakingHistoryEntry,
 			showAdditionalDetails,
-			speakLongTexts,
+			speakFromClipboard,
 			speakingHistory,
 			speakingHistoryCount,
 			speakingHistoryLimit,
-			continueOnTabRemoved,
-			continueOnTabUpdatedUrl,
-			storeShowAdditionalDetails,
-			storeSpeakLongTexts,
-			storeSpeakingHistoryLimit,
+			speakLongTexts,
 			storeContinueOnTabRemoved,
 			storeContinueOnTabUpdatedUrl,
+			storeShowAdditionalDetails,
+			storeSpeakingHistoryLimit,
+			storeSpeakLongTexts,
 			systemType,
 		} = this.props as InternalProps;
 
 		return (
 			<Settings
+				askClipboardReadPermission={askClipboardReadPermission}
 				clearSpeakingHistory={clearSpeakingHistory}
+				clipboardText={clipboardText}
 				continueOnTabRemoved={continueOnTabRemoved}
 				continueOnTabUpdatedUrl={continueOnTabUpdatedUrl}
+				denyClipboardReadPermission={denyClipboardReadPermission}
+				hasClipboardReadPermission={hasClipboardReadPermission}
+				isPremiumEdition={isPremiumEdition}
+				loadHasClipboardReadPermission={loadHasClipboardReadPermission}
+				readFromClipboard={readFromClipboard}
 				removeSpeakingHistoryEntry={removeSpeakingHistoryEntry}
 				showAdditionalDetails={showAdditionalDetails}
+				speakFromClipboard={speakFromClipboard}
 				speakLongTexts={speakLongTexts}
 				speakingHistory={speakingHistory}
 				speakingHistoryCount={speakingHistoryCount}
@@ -138,6 +173,7 @@ class SettingsContainer<P extends InternalProps> extends React.PureComponent<P> 
 				storeSpeakLongTexts={storeSpeakLongTexts}
 				storeSpeakingHistoryLimit={storeSpeakingHistoryLimit}
 				systemType={systemType}
+				onOpenShortKeysConfigurationClick={onOpenShortKeysConfigurationClick}
 			/>
 		);
 	}

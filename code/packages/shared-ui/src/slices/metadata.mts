@@ -86,28 +86,28 @@ export const loadVersionName = createAsyncThunk<string | null, void, IApiAsyncTh
 	`${prefix}/loadVersionName`,
 	async (_, {
 		extra,
-	}) => extra.coating!.metadata!.getVersionName(),
+	}) => extra.coating!.metadata.getVersionName(),
 );
 
 export const loadVersionNumber = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadVersionNumber`,
 	async (_, {
 		extra,
-	}) => extra.coating!.metadata!.getVersionNumber(),
+	}) => extra.coating!.metadata.getVersionNumber(),
 );
 
 export const loadSystemType = createAsyncThunk<SystemType | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSystemType`,
 	async (_, {
 		extra,
-	}) => extra.coating!.metadata!.getSystemType(),
+	}) => extra.coating!.metadata.getSystemType(),
 );
 
 export const loadOsType = createAsyncThunk<OsType | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadOsType`,
 	async (_, {
 		extra,
-	}) => extra.coating!.metadata!.getOperatingSystemType(),
+	}) => extra.coating!.metadata.getOperatingSystemType(),
 );
 
 export const metadataSlice = createSlice({

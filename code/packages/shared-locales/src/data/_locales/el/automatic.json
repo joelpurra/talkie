@@ -31,10 +31,6 @@
     "message": "Αναβάθμιση σε Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Διαβάστε από το πρόχειρο",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Έναρξη/διακοπή επιλογής ανάγνωσης",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Χρήση",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Διαβάστε οποιοδήποτε κείμενο έχει αντιγραφεί στο πρόχειρό σας — χρησιμοποιήστε το με ένα πλήκτρο συντόμευσης για να ακούσετε κείμενο από οπουδήποτε εκτός του προγράμματος περιήγησης. Μπορείτε επίσης να κάνετε δεξί κλικ στο Talkie Premium ή σε μια κενή περιοχή ενός ιστότοπου και να επιλέξετε ανάγνωση από το πρόχειρο.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Μπορείτε επίσης να επιλέξετε το κείμενο, να κάνετε δεξί κλικ πάνω του και να επιλέξετε Talkie στο μενού. Αυτός ο τρόπος λειτουργεί επίσης σε αρχεία PDF και σε ορισμένους ειδικούς τύπους σελίδων στο πρόγραμμα περιήγησης.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Μια βολική επιλογή είναι να χρησιμοποιήσετε τα Talkie συντόμευσης Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Διαβάστε κείμενο από το πρόχειρο σε οποιοδήποτε πρόγραμμα",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Ξεκίνα σταμάτα",

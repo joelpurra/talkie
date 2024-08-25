@@ -37,6 +37,9 @@ export const summary: TalkieStyletronComponent<React.ElementType<"summary">> = t
 
 export const hero: TalkieStyletronComponent<React.ElementType<"div">> = talkieStyled("div", layoutBase.hero);
 
+export const horizontalUl: TalkieStyletronComponent<React.ElementType<"ul">> = talkieStyled("ul", layoutBase.horizontalUl);
+export const horizontalLi: TalkieStyletronComponent<React.ElementType<"li">> = talkieStyled("li", layoutBase.horizontalLi);
+
 // TODO: convert constant "variables" to component properties?
 export const columnsUl3: TalkieStyletronComponent<React.ElementType<"ul">> = talkieStyled("ul", layoutBase.columnsUl(3));
 export const columnsUl6: TalkieStyletronComponent<React.ElementType<"ul">> = talkieStyled("ul", layoutBase.columnsUl(6));

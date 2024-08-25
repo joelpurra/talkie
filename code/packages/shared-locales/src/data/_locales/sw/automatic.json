@@ -31,10 +31,6 @@
     "message": "Pata toleo jipya la Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Soma kutoka kwenye ubao wa kunakili",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Anza/acha uteuzi wa kusoma",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Matumizi",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Soma maandishi yoyote yaliyonakiliwa kwenye ubao wako wa kunakili — itumie na ufunguo wa njia ya mkato ili kusikiliza maandishi kutoka mahali popote nje ya kivinjari. Unaweza pia kubofya kulia kwenye Talkie Premium , au katika eneo tupu la tovuti, na uchague soma kutoka kwenye ubao wa kunakili.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Unaweza pia kuchagua maandishi, kisha ubofye kulia juu yake, na uchague Talkie kwenye menyu. Njia hii pia inafanya kazi katika faili za PDF na aina maalum za kurasa kwenye kivinjari.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Chaguo rahisi ni kutumia Talkie vitufe vya njia ya mkato:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Soma maandishi kutoka kwa ubao wa kunakili katika programu yoyote",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Anza/acha",

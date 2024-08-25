@@ -31,10 +31,6 @@
     "message": "ترقية إلى Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "اقرأ من الحافظة",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "بدء/إيقاف اختيار القراءة",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "إستعمال",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "اقرأ أي نص تم نسخه إلى الحافظة — استخدمه مع مفتاح الاختصار للاستماع إلى نص من أي مكان خارج المتصفح. يمكنك أيضًا النقر بزر الماوس الأيمن فوق Talkie Premium ، أو في منطقة فارغة من موقع الويب ، وتحديد القراءة من الحافظة.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "يمكنك أيضًا تحديد النص ، ثم النقر بزر الماوس الأيمن فوقه واختيار Talkie في القائمة. تعمل هذه الطريقة أيضًا في ملفات PDF وبعض الأنواع الخاصة من الصفحات في المتصفح.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "خيار مناسب هو استخدام Talkie مفاتيح الاختصار:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "اقرأ النص من الحافظة في أي برنامج",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "بدء توقف",

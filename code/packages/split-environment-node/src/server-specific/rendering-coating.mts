@@ -26,9 +26,9 @@ import type IApiCoatingTalkieLocale from "@talkie/split-environment-interfaces/i
 
 export default class RenderingCoating implements IApiCoating {
 	// eslint-disable-next-line @typescript-eslint/class-literal-property-style
-	readonly broadcast = null;
-	// eslint-disable-next-line @typescript-eslint/class-literal-property-style
 	readonly browser = null;
+	// eslint-disable-next-line @typescript-eslint/class-literal-property-style
+	readonly clipboard = null;
 
 	constructor(
 		readonly locale: IApiCoatingLocale,

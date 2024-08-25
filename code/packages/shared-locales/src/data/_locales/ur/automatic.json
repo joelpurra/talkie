@@ -31,10 +31,6 @@
     "message": "Talkie Premium اپ گریڈ کریں",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "کلپ بورڈ سے پڑھیں",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "انتخاب پڑھنا شروع/ بند کریں۔",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "استعمال",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "اپنے کلپ بورڈ پر کاپی کیا گیا کوئی بھی متن پڑھیں — براؤزر کے باہر کہیں سے بھی متن سننے کے لیے اسے شارٹ کٹ کلید کے ساتھ استعمال کریں۔ Talkie Premium بٹن پر، یا کسی ویب سائٹ کے خالی جگہ پر بھی دائیں کلک کر سکتے ہیں، اور کلپ بورڈ سے پڑھیں کو منتخب کر سکتے ہیں۔",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "آپ متن کو بھی منتخب کر سکتے ہیں، پھر اس پر دائیں کلک کریں، اور مینو میں Talkie یہ طریقہ پی ڈی ایف فائلوں اور براؤزر میں کچھ خاص قسم کے صفحات میں بھی کام کرتا ہے۔",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "ایک آسان آپشن Talkie شارٹ کٹ کیز استعمال کرنا ہے:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "کسی بھی پروگرام میں کلپ بورڈ سے متن پڑھیں",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "شروع/روکیں۔",

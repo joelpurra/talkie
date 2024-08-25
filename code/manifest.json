@@ -44,12 +44,12 @@
       },
       "description": "__MSG_commandStartStopDescription__"
     },
-    "read-clipboard": {
+    "speak-clipboard": {
       "suggested_key": {
         "default": "Ctrl+Shift+1",
         "mac": "Command+Shift+1"
       },
-      "description": "__MSG_commandReadClipboardDescription__",
+      "description": "__MSG_commandSpeakClipboardDescription__",
       "global": true
     }
   },

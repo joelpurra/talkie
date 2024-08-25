@@ -31,10 +31,6 @@
     "message": "Uppgradera till Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Läs från klippbordet",
-    "original": "Read from the clipboard"
-  },
   "commandStartStopDescription": {
     "message": "Starta/stoppa läsningsval",
     "original": "Start/stop reading selection"
@@ -586,10 +582,6 @@
     "message": "Användande",
     "original": "Usage"
   },
-  "frontend_usageReadclipboard": {
-    "message": "Läs vilken text som helst som kopierats till ditt urklipp – använd den med en kortkommando för att lyssna på text var som helst utanför webbläsaren. Du kan också högerklicka på Talkie Premium eller i ett tomt område på en webbplats och välja läs från urklipp.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
-  },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Du kan också markera texten, sedan högerklicka på den och välja Talkie i menyn. Detta sätt fungerar även i PDF-filer och vissa speciella typer av sidor i webbläsaren.",
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
@@ -613,10 +605,6 @@
   "frontend_usageShortcutKeyDescription": {
     "message": "Ett bekvämt alternativ är att använda Talkie :",
     "original": "A convenient option is to use the Talkie shortcut keys:"
-  },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Läs text från urklipp i vilket program som helst",
-    "original": "Read text from clipboard in any program"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Starta/stoppa",

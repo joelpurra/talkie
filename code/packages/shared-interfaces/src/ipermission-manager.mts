@@ -18,20 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type IApiCoatingBrowser from "./iapi-coating-browser.mjs";
-import type IApiCoatingClipboard from "./iapi-coating-clipboard.mjs";
-import type IApiCoatingLocale from "./iapi-coating-locale.mjs";
-import type IApiCoatingMetadata from "./iapi-coating-metadata.mjs";
-import type IApiCoatingPremium from "./iapi-coating-premium.mjs";
-import type IApiCoatingTalkieLocale from "./iapi-coating-talkie-locale.mjs";
+import {
+	type Promisable,
+} from "type-fest";
 
-interface IApiCoating {
-	browser: IApiCoatingBrowser | null;
-	clipboard: IApiCoatingClipboard | null;
-	locale: IApiCoatingLocale;
-	metadata: IApiCoatingMetadata;
-	premium: IApiCoatingPremium;
-	talkieLocale: IApiCoatingTalkieLocale;
+export type UsePermissionsCallback<T> = (isGranted: boolean) => Promisable<T>;
+
+export type IPermissionManagerConstructor = new() => IPermissionManager;
+
+export default interface IPermissionManager {
+	askPermission(): Promise<boolean | null>;
+	hasPermission(): Promise<boolean | null> ;
+	denyPermission(): Promise<boolean | null>;
+	/**
+	 * @deprecated Prefer asking once (or rarely) for permissions, then keeping them.
+	 */
+	askUseDenyPermissions<T>(fn: UsePermissionsCallback<T>): Promise<T | null>;
 }
-
-export default IApiCoating;
