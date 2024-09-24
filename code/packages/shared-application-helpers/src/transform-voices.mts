@@ -52,11 +52,14 @@ export const getVoicesForLanguageExact = <T extends IVoiceLanguage>(voices: Read
 	return voicesForLanguage;
 };
 
-export const isLanguageGroup = (language: Readonly<string>): Readonly<boolean> =>
+export const isLanguageDialect = (language: Readonly<string>): Readonly<boolean> =>
 	// TODO: use parser which checks codes, regions, etcetera against BCP47.
 	// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
 	// https://en.wikipedia.org/wiki/IETF_language_tag
-	!language.includes("-");
+	language.includes("-");
+
+export const isLanguageGroup = (language: Readonly<string>): Readonly<boolean> =>
+	!isLanguageDialect(language);
 
 export const getLanguageGroupFromLanguage = (language: Readonly<string>): Readonly<string> => {
 	// TODO: use parser which checks codes, regions, etcetera against BCP47.
@@ -92,6 +95,16 @@ export const getLanguageFromBcp47 = (bcp47: Readonly<string>): Readonly<string> 
 	}
 
 	return languageGroup;
+};
+
+export const getLanguageDialectsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {
+	const languageDialects = [
+		...new Set(
+			languages.filter((language) => isLanguageDialect(language)),
+		),
+	];
+
+	return languageDialects;
 };
 
 export const getLanguageGroupsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {

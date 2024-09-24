@@ -66,8 +66,8 @@ const mapStateToProps: MapStateToProps<StateProps, InternalAboutContainerProps, 
 	navigatorLanguage: state.shared.languages.navigatorLanguage,
 	osType: state.shared.metadata.osType,
 	sortedByNameVoices: selectors.shared.voices.getSortedByNameVoices(state),
+	sortedLanguageDialects: selectors.shared.voices.getSortedLanguageDialects(state),
 	sortedLanguageGroups: selectors.shared.voices.getSortedLanguageGroups(state),
-	sortedLanguages: selectors.shared.voices.getSortedLanguages(state),
 	sortedNavigatorLanguages: selectors.shared.languages.getSortedNavigatorLanguages(state),
 	sortedTranslatedLanguages: selectors.shared.languages.getSortedTranslatedLanguages(state),
 	systemType: state.shared.metadata.systemType,
@@ -118,8 +118,8 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			navigatorLanguage,
 			osType,
 			sortedByNameVoices,
+			sortedLanguageDialects,
 			sortedLanguageGroups,
-			sortedLanguages,
 			sortedNavigatorLanguages,
 			sortedTranslatedLanguages,
 			systemType,
@@ -134,8 +134,8 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 				isPremiumEdition={isPremiumEdition}
 				navigatorLanguage={navigatorLanguage}
 				osType={osType}
+				sortedLanguageDialects={sortedLanguageDialects}
 				sortedLanguageGroups={sortedLanguageGroups}
-				sortedLanguages={sortedLanguages}
 				sortedNavigatorLanguages={sortedNavigatorLanguages}
 				sortedTranslatedLanguages={sortedTranslatedLanguages}
 				systemType={systemType}

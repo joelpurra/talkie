@@ -49,8 +49,8 @@ import React from "react";
 
 export interface AboutStateProps {
 	isPremiumEdition: boolean;
+	sortedLanguageDialects: readonly string[];
 	sortedLanguageGroups: readonly string[];
-	sortedLanguages: readonly string[];
 	navigatorLanguage?: string | null;
 	sortedNavigatorLanguages: readonly string[];
 	osType?: OsType | null;
@@ -134,8 +134,8 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		const {
 			configure,
 			isPremiumEdition,
+			sortedLanguageDialects,
 			sortedLanguageGroups,
-			sortedLanguages,
 			navigatorLanguage,
 			sortedNavigatorLanguages,
 			osType,
@@ -281,13 +281,13 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 							{translateSync("frontend_systemInstalledDialectsHeading")}
 							{" "}
 							(
-							{sortedLanguages.length}
+							{sortedLanguageDialects.length}
 							)
 						</listBase.dt>
 						<listBase.dd
 							lang="en"
 						>
-							{sortedLanguages.join(", ")}
+							{sortedLanguageDialects.join(", ")}
 						</listBase.dd>
 
 						<listBase.dt>

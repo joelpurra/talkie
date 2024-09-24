@@ -22,6 +22,7 @@ import toolkit from "@reduxjs/toolkit";
 import {
 	getAvailableBrowserLanguageGroupsWithNavigatorLanguages,
 	getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups,
+	getLanguageDialectsFromLanguages,
 	getLanguageGroupsFromLanguages,
 	getLanguagesByLanguageGroupFromVoices,
 	getLanguagesFromVoices,
@@ -137,6 +138,29 @@ export const getSortedLanguageGroups = createDraftSafeSelector(
 	(languageGroups) => [
 		...languageGroups,
 	].sort((a, b) => a.localeCompare(b)),
+);
+
+export const getLanguageDialects = createDraftSafeSelector(
+	[
+		getLanguages,
+	],
+	(languages) => getLanguageDialectsFromLanguages(languages),
+);
+
+export const getSortedLanguageDialects = createDraftSafeSelector(
+	[
+		getLanguageDialects,
+	],
+	(dialects) => [
+		...dialects,
+	].sort((a, b) => a.localeCompare(b)),
+);
+
+export const getLanguageDialectsCount = createDraftSafeSelector(
+	[
+		getLanguageDialects,
+	],
+	(dialects: Readonly<string[]>) => dialects.length,
 );
 
 export const getVoicesByLanguage = createDraftSafeSelector(
