@@ -19,6 +19,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	isLanguageGroup,
+} from "@talkie/shared-application-helpers/transform-voices.mjs";
+import {
 	type OsType,
 	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
@@ -97,6 +100,34 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		}
 
 		this.props.onLicenseClick(legaleseText);
+	}
+
+	linkLanguageGroupToWikipedia(languageGroup: TalkieLocale | string): React.ReactNode {
+		const linkToWikipedia = (
+			<a
+				href={`https://${languageGroup}.wikipedia.org/`}
+			>
+				{languageGroup}
+			</a>
+		);
+
+		// NOTE: some language lists mix groups and dialects; allow dialects but do not link them.
+		const textOrLink = isLanguageGroup(languageGroup)
+			? linkToWikipedia
+			: languageGroup;
+
+		return textOrLink;
+	}
+
+	linkLanguageGroupsToWikipedia(languageGroups: ReadonlyArray<TalkieLocale | string>): React.ReactNode {
+		return languageGroups.map((languageGroup, index, array) => (
+			<React.Fragment
+				key={languageGroup}
+			>
+				{this.linkLanguageGroupToWikipedia(languageGroup)}
+				{index < array.length - 1 ? ", " : null}
+			</React.Fragment>
+		));
 	}
 
 	override render(): React.ReactNode {
@@ -217,7 +248,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						<listBase.dd
 							lang="en"
 						>
-							{navigatorLanguage}
+							{navigatorLanguage ? this.linkLanguageGroupToWikipedia(navigatorLanguage) : null}
 						</listBase.dd>
 
 						<listBase.dt>
@@ -230,7 +261,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						<listBase.dd
 							lang="en"
 						>
-							{sortedNavigatorLanguages.join(", ")}
+							{this.linkLanguageGroupsToWikipedia(sortedNavigatorLanguages)}
 						</listBase.dd>
 
 						<listBase.dt>
@@ -243,7 +274,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						<listBase.dd
 							lang="en"
 						>
-							{sortedLanguageGroups.join(", ")}
+							{this.linkLanguageGroupsToWikipedia(sortedLanguageGroups)}
 						</listBase.dd>
 
 						<listBase.dt>
@@ -276,7 +307,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						<listBase.dd
 							lang="en"
 						>
-							{translateSync("extensionLocale")}
+							{this.linkLanguageGroupToWikipedia(translateSync("extensionLocale"))}
 						</listBase.dd>
 
 						<listBase.dt>
@@ -289,7 +320,7 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 						<listBase.dd
 							lang="en"
 						>
-							{sortedTranslatedLanguages.join(", ")}
+							{this.linkLanguageGroupsToWikipedia(sortedTranslatedLanguages)}
 						</listBase.dd>
 					</listBase.dl>
 				</section>
