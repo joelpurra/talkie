@@ -73,6 +73,7 @@ export default class HistoryManager {
 	}
 
 	async storeMostRecentSpeakingEntry(newEntry: ReadonlyDeep<SpeakingHistoryEntry>): Promise<void> {
+		// TODO: when extracting text from a tab, also check whether it is in incognito mode; avoid storing those history entries.
 		const speakingHistory = await this.settingsManager.getSpeakingHistory();
 
 		// HACK: ordered set of unique entries by hash, but without any optimizations.

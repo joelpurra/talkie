@@ -42,6 +42,7 @@ const getSelectedTextAndLanguageCodes: () => SelectedTextAndLanguageCodes | null
 			return null;
 		}
 
+		// TODO: when extracting text from a tab, also check whether it is in incognito mode; avoid storing those history entries.
 		const talkieSelectionData = {
 			htmlTagLanguage: ((document || null) && document && (typeof document.getElementsByTagName === "function" || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0]!.getAttribute("lang") || null)) || null,
 			parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && document && (typeof document.getSelection === "function" || null) && (document.getSelection() || null) && (document.getSelection()!.rangeCount > 0 || null) && (document.getSelection()!.getRangeAt || null) && (document.getSelection()!.getRangeAt(0) || null) && (document.getSelection()!.getRangeAt(0).startContainer || null))) || null,

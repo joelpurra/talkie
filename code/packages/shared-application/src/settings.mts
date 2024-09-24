@@ -45,7 +45,7 @@ export const KnownSettingDefaults = {
 	ShowAdditionalDetails: false,
 	SpeakLongTexts: false,
 	SpeakingHistory: [] as Readonly<SpeakingHistoryEntry[]>,
-	SpeakingHistoryLimit: 10,
+	SpeakingHistoryLimit: 0,
 };
 export type KnownSettingDefaultNames = keyof typeof KnownSettingDefaults;
 export type KnownSettingDefaultValues = ValueOf<typeof KnownSettingDefaults>;
