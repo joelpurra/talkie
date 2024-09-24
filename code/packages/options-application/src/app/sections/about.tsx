@@ -35,7 +35,13 @@ import translateAttribute, {
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
+import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 
 export interface AboutStateProps {
@@ -61,10 +67,24 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		osType: null,
 	};
 
+	private readonly styled: {
+		scrollableDd: TalkieStyletronComponent<typeof listBase.dd>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
+
+		this.styled = {
+			scrollableDd: withTalkieStyleDeep(
+				listBase.dd,
+				{
+					maxHeight: "10em",
+					overflowY: "scroll",
+				},
+			),
+		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -109,6 +129,11 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 			"react",
 			"redux-toolkit",
 		].sort((a, b) => a.localeCompare(b));
+
+		// TODO: list and limit as arguments.
+		const ScrollableLongList = voiceNamesAndLanguages.length >= 100
+			? this.styled.scrollableDd
+			: listBase.dd;
 
 		return (
 			<>
@@ -241,9 +266,9 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 							{voiceNamesAndLanguages.length}
 							)
 						</listBase.dt>
-						<listBase.dd>
+						<ScrollableLongList>
 							{voiceNamesAndLanguages.join(", ")}
-						</listBase.dd>
+						</ScrollableLongList>
 
 						<listBase.dt>
 							{translateSync("frontend_systemTalkieUILanguageHeading")}
