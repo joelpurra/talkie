@@ -5,7 +5,7 @@
   <a href="https://joelpurra.com/projects/talkie/">Talkie</a>
 </h1>
 <p align="center">
-  Text-to-speech browser extension button
+  Text-to-speech (TTS) browser extension button
 </p>
 
 <table>
@@ -41,18 +41,39 @@ How much does Talkie Premium cost? You _choose_ how much you want to pay, depend
 
 ## Install additional voices
 
-New voices, languages, dialects can be downloaded **for free** for your operating system from for example Microsoft and Apple. Once installed correctly just restart your computer, and Talkie will auto-detect the voices.
+New TTS voices, languages, dialects can be downloaded **for free** from for example Microsoft, Google, Apple. Restart your computer after adding voices; afterwards Talkie should auto-detect and list them in the voice options.
+
+You can [test installed TTS voices in the live demo](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/) by Mozilla Developer Network (MDN).
 
 <!-- TODO: translate system settings paths. -->
 
-| Operating&nbsp;system                                                                                                                                    | Where to look                                                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Windows&nbsp;11](https://support.microsoft.com/en-us/windows/appendix-a-supported-languages-and-voices-4486e345-7730-53da-fcfe-55cc64300f01)            | Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language&nbsp;&amp;&nbsp;Region &rarr;&nbsp;Add a language                        |
-| [Windows&nbsp;10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3) | Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language &rarr;&nbsp;Add a language                                               |
-| [Windows&nbsp;8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130)     | Control&nbsp;Panel &rarr;&nbsp;Language &rarr;&nbsp;Add&nbsp;a&nbsp;Language                                                                     |
-| [Windows&nbsp;7](https://www.microsoft.com/en-us/download/details.aspx?id=27224)                                                                         |                                                                                                                                                  |
-| [ChromeOS](https://support.google.com/chromebook/answer/9032490)                                                                                         | Settings &rarr;&nbsp;Manage&nbsp;accessibility&nbsp;features &rarr;&nbsp;Text-to-Speech&nbsp;voice&nbsp;settings &rarr;&nbsp;Speech&nbsp;Engines |
-| [macOS](https://support.apple.com/kb/index?page=search&q=VoiceOver+language&product=PF6&doctype=PRODUCT_HELP,HOWTO_ARTICLES&locale=en_US)                | System&nbsp;Preferences &rarr;&nbsp;Accessibility &rarr;&nbsp;Speech &rarr;&nbsp;System&nbsp;voice &rarr;&nbsp;Customize...                      |
+| Operating&nbsp;system                                                                                                                                    | Where to look                                                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [Windows&nbsp;11](https://support.microsoft.com/en-us/windows/appendix-a-supported-languages-and-voices-4486e345-7730-53da-fcfe-55cc64300f01)            | Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language&nbsp;&amp;&nbsp;Region &rarr;&nbsp;Add&nbsp;a&nbsp;language |
+| [Windows&nbsp;10](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-10-d5a6b612-b3ae-423f-afa5-4f6caf1ec5d3) | Settings &rarr;&nbsp;Time&nbsp;&amp;&nbsp;Language &rarr;&nbsp;Language &rarr;&nbsp;Add&nbsp;a&nbsp;language                        |
+| [Windows&nbsp;8](https://support.office.com/en-us/article/How-to-download-Text-to-Speech-languages-for-Windows-4c83a8d8-7486-42f7-8e46-2b0fdf753130)     | Control&nbsp;Panel &rarr;&nbsp;Language &rarr;&nbsp;Add&nbsp;a&nbsp;Language                                                        |
+| [Windows&nbsp;7](https://www.microsoft.com/en-us/download/details.aspx?id=27224)                                                                         |                                                                                                                                     |
+| [ChromeOS](https://support.google.com/accessibility/answer/11221616)                                                                                     | Settings &rarr;&nbsp;Accessibility &rarr;&nbsp;Text-to-Speech &rarr;&nbsp;Speech&nbsp;Engines                                       |
+| [macOS](https://support.apple.com/kb/index?page=search&q=voiceover&includeArchived=true&locale=en_US)                                                    | System&nbsp;Settings &rarr;&nbsp;Accessibility &rarr;&nbsp;Spoken&nbsp;Content &rarr;&nbsp;System&nbsp;voice                        |
+| Linux                                                                                                                                                    | Varies per distribution, packaging system, and browser.                                                                             |
+
+Note that not all voices work with all browsers; you may try installing Talkie in another browser. In Microsoft Windows the TTS voice support is generally the best in Microsoft Edge.
+
+<details>
+<summary>Voice installation in Linux</summary>
+
+TTS voices on Linux have varying quality; from recently developed "natural" voices to ancient "robotic" voices. Not all distributions nor browsers include TTS software, and may have no (zero) TTS voices available by default.
+
+There are many open source alternatives for TTS software on Linux, although their integration with the operating system and browser varies. Addtitionally, the browser may be sandboxed (Flatpak, Snap, etcetera) and require separate TTS integration.
+
+The topic is too broad to give specific voice installation instructions; please consult your systems documentation, or other sources of information.
+
+- Stack Exchange: [Questions tagged \[text-to-speech\]](https://unix.stackexchange.com/questions/tagged/text-to-speech) at Unix &amp; Linux.
+- Stack Exchange: [Questions tagged \[text-to-speech\]](https://askubuntu.com/questions/tagged/text-to-speech) at Ask Ubuntu.
+- Stack Exchange: [Questions tagged \[speech-synthesis\]](https://softwarerecs.stackexchange.com/questions/tagged/speech-synthesis) at Software Recommendations.
+- Stack Exchange: [How can I change the voice used by Firefox in Ubuntu?](https://askubuntu.com/questions/953509/how-can-i-change-the-voice-used-by-firefox-reader-view-narrator-in-ubuntu) at Ask Ubuntu.
+
+</details>
 
 ## Usage
 
@@ -138,11 +159,18 @@ See also the official documentation on [how to manage extension shortcuts in Fir
 <details>
 <summary>Web Speech API</summary>
 
-Uses your browser's built-in [Web Speech API for text-to-speech (TTS)](https://www.w3.org/community/speech-api/) known as [Speech Synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html#tts-section).
+Talkie uses your browser's built-in Web Speech API for text-to-speech (TTS), also known as Speech Synthesis.
 
-- As the Web Speech API is implemented by your browser, your browser selection and settings may affect Talkie.
+- As the Web Speech API is implemented by your browser, your choice of browser and browser settings may affect Talkie.
 - All text and speech is processed internally by your browser. While ultimately depending on your specific browser, processing is expected to be done on your own machine and not use a server.
 - Sound is only produced, never recorded.
+
+_See also:_
+
+- [Web Speech API](https://wicg.github.io/speech-api/) at Web Incubator Community Group (WICG).
+- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) at Mozilla Developer Network (MDN).
+- [Speech Synthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis) at Mozilla Developer Network (MDN).
+- [Speech synthesizer live demo](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/) by Mozilla Developer Network (MDN).
 
 </details>
 
@@ -170,6 +198,10 @@ The voices for each language are provided by your browser. For this reason the l
 To see the list of languages/voices available in your specific browser, as well as speak out sample text, check the Talkie options page after installation. This is a good start in figuring out why a certain language might not be read out loud as expected.
 
 You can install additional voices to support new languages and dialects; see separate installation instructions for your operating system.
+
+_See also:_
+
+- [Speech synthesiser live demo](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/) by Mozilla Developer Network (MDN).
 
 </details>
 

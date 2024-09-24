@@ -95,7 +95,28 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						{translateSync("frontend_faqVoicesHeading")}
 					</textBase.h3>
 
-					<SupportEntry id={1}/>
+					<layoutBase.details>
+						<layoutBase.summary>
+							<textBase.summaryHeading4>
+								{translateSync("frontend_faq001Q")}
+							</textBase.summaryHeading4>
+						</layoutBase.summary>
+						<p>
+							{translateSync("frontend_faq001A")}
+						</p>
+
+						<listBase.ul>
+							<listBase.li>
+								<a
+									href="https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/"
+									lang="en"
+								>
+									Speech synthesizer live demo by Mozilla Developer Network (MDN)
+								</a>
+							</listBase.li>
+						</listBase.ul>
+					</layoutBase.details>
+
 					<SupportEntry id={9}/>
 
 					<InstallVoicesFaq
@@ -162,12 +183,16 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 
 							<listBase.ul>
 								<listBase.li>
+									Stack Exchange:
+									{" "}
 									<a
 										href="https://stackoverflow.com/questions/40406719/windows-10-tts-voices-not-showing-up"
 										lang="en"
 									>
-										StackOverflow: Windows 10 TTS voices not showing up?
+										Windows 10 TTS voices not showing up?
 									</a>
+									{" "}
+									at Stack Overflow.
 								</listBase.li>
 							</listBase.ul>
 						</layoutBase.details>

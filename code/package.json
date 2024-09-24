@@ -65,9 +65,9 @@
   "keywords": [
     "browser",
     "extension",
-    "webext",
     "text-to-speech",
-    "tts"
+    "tts",
+    "webext"
   ],
   "license": "GPL-3.0",
   "private": true,

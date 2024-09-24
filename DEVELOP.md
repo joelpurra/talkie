@@ -5,7 +5,7 @@
   <a href="https://joelpurra.com/projects/talkie/">Talkie</a>
 </h1>
 <p align="center">
-  Text-to-speech browser extension button
+  Text-to-speech (TTS) browser extension button
 </p>
 <table>
   <tr>
