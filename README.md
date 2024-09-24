@@ -33,11 +33,14 @@ Developer option: [use the source code](./DEVELOP.md) directly.
 ## Talkie Premium
 
 - <img src="./code/packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> **Talkie:** free to use as much as you like
-- <img src="./code/packages/shared-resources/src/resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> **Talkie Premium:** [pay what you want](https://www.paypal.me/joelpurrade) for [more options and features](#features)
+- <img src="./code/packages/shared-resources/src/resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> **Talkie Premium:** donate _what you want_ for [more options and features](#features)
 
-How much does Talkie Premium cost? You _choose_ how much you want to pay, depending on how much the additional features are worth to you. You can even choose to pay nothing. Afterwards, enable Talkie Premium in the Upgrade tab in Talkie's options.
+You _choose_ how much you want to donate for Talkie Premium, depending on how much the additional features are worth to you. You can even choose to donate nothing.
 
-[Send your payment through PayPal](https://www.paypal.me/joelpurrade) or see [more payment methods](https://joelpurra.com/donate/) on the donations page. Payments are labeled as donations for open source software development.
+1. Install Talkie in your browser.
+1. Enable Talkie Premium on the features tab in Talkie's options.
+1. _Before_ you donate, make sure you are happy with all that Talkie Premium can offer.
+1. Donate from the features tab in Talkie's options.
 
 ## Install additional voices
 

@@ -230,6 +230,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						</SupportEntry>
 					</Discretional>
 
+					<SupportEntry id={41}/>
+					<SupportEntry id={42}/>
+					<SupportEntry id={43}/>
 					<SupportEntry id={19}/>
 					<SupportEntry id={20}/>
 					<SupportEntry id={25}/>
@@ -241,13 +244,16 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					<SupportEntry id={21}/>
 					<SupportEntry id={33}/>
 					<SupportEntry id={24}/>
-					<SupportEntry id={22}/>
-					<SupportEntry id={23}/>
+					<SupportEntry id={37}/>
+					<SupportEntry id={29}/>
 					<SupportEntry id={26}/>
 					<SupportEntry id={27}/>
 					<SupportEntry id={28}/>
-					<SupportEntry id={29}/>
-					<SupportEntry id={30}/>
+					<SupportEntry id={40}/>
+					<SupportEntry id={39}/>
+					<SupportEntry id={38}/>
+					<SupportEntry id={22}/>
+					<SupportEntry id={23}/>
 					<SupportEntry id={31}/>
 					<SupportEntry id={32}/>
 

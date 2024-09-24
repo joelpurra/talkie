@@ -65,12 +65,12 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 				</p>
 				<ul>
 					<li>
-						<a href={configure("urls.external.primary-payment")}>
+						<a href={configure("urls.external.donation:primary")}>
 							{translateSync("frontend_upgradePaymentPrimaryLinkText")}
 						</a>
 					</li>
 					<li>
-						<a href={configure("urls.external.alternative-payment")}>
+						<a href={configure("urls.external.donation:secondary")}>
 							{translateSync("frontend_upgradePaymentAlternativesLinkText")}
 						</a>
 					</li>
