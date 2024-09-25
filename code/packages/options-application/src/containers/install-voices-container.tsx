@@ -49,6 +49,7 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 	languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
 	languagesCount: selectors.shared.voices.getLanguagesCount(state),
 	osType: state.shared.metadata.osType,
+	showAdditionalDetails: state.settings.showAdditionalDetails,
 	voicesCount: selectors.shared.voices.getVoicesCount(state),
 });
 
@@ -70,6 +71,7 @@ class InstallVoicesContainer<P extends InternalProps> extends React.PureComponen
 			languageGroupsCount,
 			languagesCount,
 			osType,
+			showAdditionalDetails,
 			voicesCount,
 		} = this.props as P;
 
@@ -79,6 +81,7 @@ class InstallVoicesContainer<P extends InternalProps> extends React.PureComponen
 				languageGroupsCount={languageGroupsCount}
 				languagesCount={languagesCount}
 				osType={osType}
+				showAdditionalDetails={showAdditionalDetails}
 				voicesCount={voicesCount}
 			/>
 		);

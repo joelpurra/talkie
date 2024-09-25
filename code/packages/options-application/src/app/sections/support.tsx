@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type OsType,
-	type SystemType,
+import type {
+	OsType,
+	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
@@ -30,16 +30,16 @@ import configureAttribute, {
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
-import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
-	type OnOpenShortcutKeysClickProp,
+import type {
+	ChildrenOptionalProps,
+	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import InstallVoicesFaq from "./support/install-voices-faq.js";
-import SupportEntry from "./support/support-entry.js";
+import SupportEntryWithOptionalId from "./support/support-entry.js";
 
 export interface SupportProps {
 	onOpenShortKeysConfigurationClick: OnOpenShortcutKeysClickProp;
@@ -74,6 +74,21 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 			translateSync,
 		} = this.props as P;
 
+		// NOTE: aliased the SupportEntry element to minimize the diff.
+		// TODO: unalias element to match original name SupportEntry.
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
+		const SupportEntry: React.FC<{id: number} & ChildrenOptionalProps> = ({
+			id,
+			children = null,
+		}) => (
+			<SupportEntryWithOptionalId
+				id={id}
+				showAdditionalDetails={showAdditionalDetails}
+			>
+				{children}
+			</SupportEntryWithOptionalId>
+		);
+
 		return (
 			<>
 				<textBase.h1>
@@ -95,16 +110,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 						{translateSync("frontend_faqVoicesHeading")}
 					</textBase.h3>
 
-					<layoutBase.details>
-						<layoutBase.summary>
-							<textBase.summaryHeading4>
-								{translateSync("frontend_faq001Q")}
-							</textBase.summaryHeading4>
-						</layoutBase.summary>
-						<p>
-							{translateSync("frontend_faq001A")}
-						</p>
-
+					<SupportEntry id={1}>
 						<listBase.ul>
 							<listBase.li>
 								<a
@@ -115,7 +121,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 								</a>
 							</listBase.li>
 						</listBase.ul>
-					</layoutBase.details>
+					</SupportEntry>
 
 					<SupportEntry id={9}/>
 
@@ -131,16 +137,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					<Discretional
 						enabled={showAdditionalDetails || osType === "win"}
 					>
-						<layoutBase.details>
-							<layoutBase.summary>
-								<textBase.summaryHeading4>
-									{translateSync("frontend_faq034Q")}
-								</textBase.summaryHeading4>
-							</layoutBase.summary>
-							<p>
-								{translateSync("frontend_faq034A")}
-							</p>
-
+						<SupportEntry id={34}>
 							<listBase.ul>
 								<listBase.li>
 									<Icon
@@ -169,18 +166,9 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 									</a>
 								</listBase.li>
 							</listBase.ul>
-						</layoutBase.details>
+						</SupportEntry>
 
-						<layoutBase.details>
-							<layoutBase.summary>
-								<textBase.summaryHeading4>
-									{translateSync("frontend_faq035Q")}
-								</textBase.summaryHeading4>
-							</layoutBase.summary>
-							<p>
-								{translateSync("frontend_faq035A")}
-							</p>
-
+						<SupportEntry id={35}>
 							<listBase.ul>
 								<listBase.li>
 									Stack Exchange:
@@ -195,7 +183,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 									at Stack Overflow.
 								</listBase.li>
 							</listBase.ul>
-						</layoutBase.details>
+						</SupportEntry>
 					</Discretional>
 
 					<SupportEntry id={36}/>
@@ -211,16 +199,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					<Discretional
 						enabled={showAdditionalDetails || systemType === "chrome"}
 					>
-						<layoutBase.details>
-							<layoutBase.summary>
-								<textBase.summaryHeading4>
-									{translateSync("frontend_faq017Q")}
-								</textBase.summaryHeading4>
-							</layoutBase.summary>
-							<p>
-								{translateSync("frontend_faq017A")}
-							</p>
-
+						<SupportEntry id={17}>
 							<listBase.ul>
 								<listBase.li>
 									<a
@@ -232,22 +211,13 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 									</a>
 								</listBase.li>
 							</listBase.ul>
-						</layoutBase.details>
+						</SupportEntry>
 					</Discretional>
 
 					<Discretional
 						enabled={showAdditionalDetails || systemType === "webextension"}
 					>
-						<layoutBase.details>
-							<layoutBase.summary>
-								<textBase.summaryHeading4>
-									{translateSync("frontend_faq018Q")}
-								</textBase.summaryHeading4>
-							</layoutBase.summary>
-							<p>
-								{translateSync("frontend_faq018A")}
-							</p>
-
+						<SupportEntry id={18}>
 							<listBase.ul>
 								<listBase.li>
 									<a
@@ -257,7 +227,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 									</a>
 								</listBase.li>
 							</listBase.ul>
-						</layoutBase.details>
+						</SupportEntry>
 					</Discretional>
 
 					<SupportEntry id={19}/>

@@ -24,6 +24,10 @@ export type OnOpenOptionsPageClickProp = (event: React.MouseEvent) => false;
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export type OnOpenShortcutKeysClickProp = (event: React.MouseEvent) => false;
 
+export interface ChildrenOptionalProps {
+	children?: React.ReactNode | null;
+}
+
 export interface ChildrenRequiredProps {
 	children: React.ReactNode;
 }

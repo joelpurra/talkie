@@ -42,6 +42,7 @@ export interface InstallVoicesProps {
 	languageGroupsCount: number;
 	languagesCount: number;
 	osType?: OsType | null;
+	showAdditionalDetails: boolean;
 	voicesCount: number;
 }
 
@@ -94,12 +95,10 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			languageGroupsCount,
 			languagesCount,
 			osType,
+			showAdditionalDetails,
 			translateSync,
 			voicesCount,
 		} = this.props as P;
-
-		// NOTE: don't show additional details on the welcome page.
-		const showAdditionalDetails = false;
 
 		const moreVoicesCountsMarkdown = translateSync("frontend_welcomeInstallMoreVoicesDescription", [
 			`**${voicesCount.toString(10)}**`,
