@@ -46,7 +46,7 @@ const blacklistedBaseUrls = [
 	"https://addons.mozilla.org/",
 ];
 
-export const getCurrentActiveTab = async (): Promise<Tabs.Tab | null> => {
+export const getCurrentActiveBrowserTab = async (): Promise<Tabs.Tab | null> => {
 	const queryOptions = {
 		active: true,
 		currentWindow: true,
@@ -72,36 +72,35 @@ export const getCurrentActiveTab = async (): Promise<Tabs.Tab | null> => {
 	return null;
 };
 
-export const getCurrentActiveTabId = async (): Promise<number | null> => {
-	const activeTab = await getCurrentActiveTab();
+export const getCurrentActiveBrowserTabId = async (): Promise<number | null> => {
+	const activeBrowserTab = await getCurrentActiveBrowserTab();
 
-	if (activeTab?.id) {
-		return activeTab.id;
+	if (typeof activeBrowserTab?.id === "number") {
+		return activeBrowserTab.id;
 	}
 
 	// NOTE: some tabs can't be retrieved.
 	return null;
 };
 
-export const isCurrentPageInternalToTalkie = async (internalUrlProvider: ReadonlyDeep<IInternalUrlProvider>): Promise<boolean> => {
-	const tab = await getCurrentActiveTab();
+export const isUrlInternalToTalkie = async (internalUrlProvider: ReadonlyDeep<IInternalUrlProvider>, url: string): Promise<boolean> => {
+	const internalPackagesUrl = await internalUrlProvider.get("/packages/");
+	const isInternal = url.startsWith(internalPackagesUrl);
 
-	if (tab) {
+	return isInternal;
+};
+
+export const isCurrentPageInternalToTalkie = async (internalUrlProvider: ReadonlyDeep<IInternalUrlProvider>): Promise<boolean> => {
+	const activeBrowserTab = await getCurrentActiveBrowserTab();
+
+	if (activeBrowserTab) {
 		const {
 			url,
-		} = tab;
+		} = activeBrowserTab;
 
-		if (
-			typeof url === "string"
-					&& (
-						// eslint-disable-next-line no-sync
-						url.startsWith(internalUrlProvider.getSync("/packages/"))
-					)
-		) {
-			return true;
+		if (typeof url === "string") {
+			return isUrlInternalToTalkie(internalUrlProvider, url);
 		}
-
-		return false;
 	}
 
 	return false;

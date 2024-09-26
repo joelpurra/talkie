@@ -62,11 +62,12 @@ import {
 	type IPremiumManager,
 } from "@talkie/shared-interfaces/ipremium-manager.mjs";
 import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type {
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-webextension/dynamic-environment.mjs";
-import InternalUrlProvider from "@talkie/split-environment-webextension/internal-url-provider.mjs";
+import WebExtensionEnvironmentInternalUrlProvider from "@talkie/split-environment-webextension/internal-url-provider.mjs";
 import LocaleProvider from "@talkie/split-environment-webextension/locale-provider.mjs";
 import ManifestProvider from "@talkie/split-environment-webextension/manifest-provider.mjs";
 import PremiumProvider from "@talkie/split-environment-webextension/premium-provider.mjs";
@@ -100,6 +101,7 @@ export interface BackgroundDependencies {
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageBusProviderGetter: IMessageBusProviderGetter): BackgroundDependencies => {
 	// TODO: systematic cleanup of classes and their side-effects.
+	// TODO: reference split implementations by assigning to their respective split interfaces.
 	const storageProvider = new StorageProvider();
 	const storageManager = new StorageManager(storageProvider);
 	const settingsManager = new SettingsManager(storageManager, messageBusProviderGetter);
@@ -108,7 +110,7 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 	const manifestProvider = new ManifestProvider();
 	const dynamicEnvironmentProvider = new DynamicEnvironmentProvider();
 	const metadataManager = new MetadataManager(manifestProvider, dynamicEnvironmentProvider);
-	const internalUrlProvider = new InternalUrlProvider();
+	const internalUrlProvider: IInternalUrlProvider = new WebExtensionEnvironmentInternalUrlProvider();
 	const configuration = new Configuration(metadataManager, configurationObject);
 
 	const onlyLastCaller = new OnlyLastCaller();

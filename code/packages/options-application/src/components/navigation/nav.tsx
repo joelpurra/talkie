@@ -43,7 +43,7 @@ import {
 } from "./nav-helpers.mjs";
 
 export interface NavProps {
-	initialActiveTabId: string | null;
+	activeNavigationTabId: string | null;
 	links: NavLink[];
 	onTabChange: (tabId: string) => void;
 }
@@ -122,7 +122,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
 			links,
-			initialActiveTabId,
+			activeNavigationTabId,
 		} = this.props as NavProps;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -139,7 +139,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				throw new TypeError(`Need either a link or a tab id: ${JSON.stringify(link)}`);
 			}
 
-			const SelectedLinkType = initialActiveTabId === link.tabId
+			const SelectedLinkType = activeNavigationTabId === link.tabId
 				? this.styled.selectedLink
 				: talkieStyled("a");
 

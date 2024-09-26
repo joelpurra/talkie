@@ -21,5 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 export type IInternalUrlProviderConstructor = new() => IInternalUrlProvider;
 
 export default interface IInternalUrlProvider {
+	get(url: string): Promise<string>;
 	getSync(url: string): string;
 }

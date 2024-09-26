@@ -40,7 +40,7 @@ import {
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	canTalkieRunInTab,
-	getCurrentActiveTabId,
+	getCurrentActiveBrowserTabId,
 	isCurrentPageInternalToTalkie,
 } from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
 
@@ -102,7 +102,7 @@ export default class SpeakerPageManager {
 	}
 
 	public async speakUserSelectionOnCurrentExternalPage(): Promise<void> {
-		const tabId = await getCurrentActiveTabId();
+		const tabId = await getCurrentActiveBrowserTabId();
 
 		if (tabId !== null) {
 			return this.speakUserSelectionOnExternalPage(tabId);

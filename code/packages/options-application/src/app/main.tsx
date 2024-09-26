@@ -66,7 +66,7 @@ import Support from "./sections/support.js";
 import Usage from "./sections/usage.js";
 
 export interface MainStateProps extends FooterStateProps {
-	activeTabId: string | null;
+	activeNavigationTabId: string | null;
 	isPremiumEdition: boolean;
 	osType: OsType | null;
 	showAdditionalDetails: boolean;
@@ -182,7 +182,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	}
 
 	override componentDidUpdate(previousProps: P): void {
-		if (previousProps.activeTabId !== this.props.activeTabId) {
+		if (previousProps.activeNavigationTabId !== this.props.activeNavigationTabId) {
 			this.scrollToTop();
 		}
 	}
@@ -232,7 +232,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
-			activeTabId,
+			activeNavigationTabId,
 			className,
 			errorCount,
 			isPremiumEdition,
@@ -262,7 +262,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					<TabContents
 						// NOTE: used when prerendering the static per-language template.
 						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="fallback-tab"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -278,7 +278,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="welcome"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -286,7 +286,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="status"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -294,7 +294,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="voices"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -302,7 +302,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="usage"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -315,7 +315,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="features"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -323,7 +323,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="settings"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -333,7 +333,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="support"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -346,7 +346,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="about"
 						onLinkClick={this.handleLinkClick}
 					>

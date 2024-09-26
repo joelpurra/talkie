@@ -67,7 +67,7 @@ interface InternalProps extends StateProps, DispatchProps, ProgressUpdaterDispat
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
-	activeTabId: state.tabs.activeTabId,
+	activeNavigationTabId: state.tabs.activeNavigationTabId,
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	errorList: selectors.shared.errors.getErrors(state),
 	hasError: selectors.shared.errors.hasError(state),
@@ -99,7 +99,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
-			activeTabId,
+			activeNavigationTabId,
 			errorCount,
 			errorList,
 			hasError,
@@ -130,7 +130,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 				/>
 
 				<Main
-					activeTabId={activeTabId}
+					activeNavigationTabId={activeNavigationTabId}
 					errorCount={errorCount}
 					isPremiumEdition={isPremiumEdition}
 					openExternalUrlInNewTab={openExternalUrlInNewTab}

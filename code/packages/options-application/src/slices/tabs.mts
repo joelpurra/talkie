@@ -46,44 +46,43 @@ const {
 
 export interface TabsState {
 	// TODO: list known tabs.
-
-	activeTabId: NavigationTabId | "fallback-tab";
+	activeNavigationTabId: NavigationTabId | "fallback-tab";
 }
 
 const initialState: TabsState = {
-	activeTabId: "fallback-tab",
+	activeNavigationTabId: "fallback-tab",
 };
 
 const prefix = "tabs";
 
-export const loadActiveTabFromLocationHash = createAsyncThunk<NavigationTabId | "fallback-tab", void, IApiAsyncThunkConfig>(
+export const loadActiveNavigationTabIdFromLocationHash = createAsyncThunk<NavigationTabId | "fallback-tab", void, IApiAsyncThunkConfig>(
 	`${prefix}/loadLocationHashAsActiveTab`,
 	async () => {
 		const locationHash = await getLocationHash();
 
 		if (isLocationHash(locationHash)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
-			const activeTabId = getTabIdFromLocationHash(locationHash);
+			const activeNavigationTabId = getTabIdFromLocationHash(locationHash);
 
-			return activeTabId;
+			return activeNavigationTabId;
 		}
 
 		return "fallback-tab";
 	},
 );
 
-export const setActiveTabId = createAsyncThunk<string | "fallback-tab", NavigationTabId | null, IApiAsyncThunkConfig>(
-	`${prefix}/setActiveTabId`,
+export const setActiveNavigationTabId = createAsyncThunk<string | "fallback-tab", NavigationTabId | null, IApiAsyncThunkConfig>(
+	`${prefix}/setActiveNavigationTabId`,
 	async (
-		activeTabId,
+		activeNavigationTabId,
 	) => {
-		if (isTabId(activeTabId)) {
+		if (isTabId(activeNavigationTabId)) {
 			// NOTE: all available tab ids and location hashes must match, except for the leading "#".
-			const locationHash = getLocationHashFromTabId(activeTabId);
+			const locationHash = getLocationHashFromTabId(activeNavigationTabId);
 
 			await setLocationHash(locationHash);
 
-			return activeTabId;
+			return activeNavigationTabId;
 		}
 
 		// TODO: assertion/throw error?
@@ -96,11 +95,11 @@ export const setActiveTabId = createAsyncThunk<string | "fallback-tab", Navigati
 export const tabsSlice = createSlice({
 	extraReducers(builder) {
 		builder
-			.addCase(loadActiveTabFromLocationHash.fulfilled, (state, action) => {
-				state.activeTabId = action.payload;
+			.addCase(loadActiveNavigationTabIdFromLocationHash.fulfilled, (state, action) => {
+				state.activeNavigationTabId = action.payload;
 			})
-			.addCase(setActiveTabId.fulfilled, (state, action) => {
-				state.activeTabId = action.payload;
+			.addCase(setActiveNavigationTabId.fulfilled, (state, action) => {
+				state.activeNavigationTabId = action.payload;
 			});
 	},
 	initialState,

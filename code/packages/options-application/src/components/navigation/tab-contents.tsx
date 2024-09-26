@@ -31,7 +31,7 @@ import type {
 } from "type-fest";
 
 export interface TabContentsProps {
-	activeTabId: string | null;
+	activeNavigationTabId: string | null;
 	id: string;
 	onLinkClick: BubbledLinkClickHandler;
 }
@@ -50,7 +50,7 @@ export default class TabContents<P extends TabContentsProps & ChildrenRequiredPr
 	}
 
 	override render(): React.ReactNode {
-		if (this.props.id !== this.props.activeTabId) {
+		if (this.props.id !== this.props.activeNavigationTabId) {
 			return null;
 		}
 

@@ -37,10 +37,12 @@ import {
 import {
 	registerUninitializerHandlerSynchronously,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type {
 	IMessageBusProvider,
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import WebExtensionEnvironmentInternalUrlProvider from "@talkie/split-environment-webextension/internal-url-provider.mjs";
 import ChromeBrowserRuntimeMessageBusEventProvider from "@talkie/split-environment-webextension/message-bus/browser-runtime-chrome/chrome-browser-runtime-message-bus-event-provider.mjs";
 import BrowserRuntimeMessageBusProvider from "@talkie/split-environment-webextension/message-bus/browser-runtime-chrome/chrome-browser-runtime-message-bus-provider.mjs";
 import MessageBusProviderGetter from "@talkie/split-environment-webextension/message-bus/getter/message-bus-provider-getter.mjs";
@@ -57,7 +59,8 @@ const main = async (onInstallListenerEventQueue: OnInstallEvent[]) => {
 	const otherContextsMessageBusProviderGetter: IMessageBusProviderGetter = new PredefinedMessageBusProviderGetter(otherContextsMessageBusProvider);
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
-	const offscreenDocumentProvider = new OffscreenDocumentProvider(OffscreenDocumentManager.internalHtmlPath);
+	const internalUrlProvider: IInternalUrlProvider = new WebExtensionEnvironmentInternalUrlProvider();
+	const offscreenDocumentProvider = new OffscreenDocumentProvider(internalUrlProvider, OffscreenDocumentManager.internalHtmlPath);
 	const offscreenDocumentManager = new OffscreenDocumentManager(offscreenDocumentProvider);
 
 	await offscreenDocumentManager.ensureOpen();

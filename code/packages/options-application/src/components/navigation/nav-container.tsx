@@ -42,22 +42,22 @@ const {
 } = toolkit;
 
 interface StateProps {
-	activeTabId: string | null;
+	activeNavigationTabId: string | null;
 }
 
 interface DispatchProps {
-	loadActiveTabFromLocationHash: typeof actions.tabs.loadActiveTabFromLocationHash;
-	setActiveTabId: typeof actions.tabs.setActiveTabId;
+	loadActiveNavigationTabIdFromLocationHash: typeof actions.tabs.loadActiveNavigationTabIdFromLocationHash;
+	setActiveNavigationTabId: typeof actions.tabs.setActiveNavigationTabId;
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
-	activeTabId: state.tabs.activeTabId,
+	activeNavigationTabId: state.tabs.activeNavigationTabId,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, NavContainerProps> = (dispatch) => ({
-	loadActiveTabFromLocationHash: bindActionCreators(actions.tabs.loadActiveTabFromLocationHash, dispatch),
-	setActiveTabId: bindActionCreators(actions.tabs.setActiveTabId, dispatch),
+	loadActiveNavigationTabIdFromLocationHash: bindActionCreators(actions.tabs.loadActiveNavigationTabIdFromLocationHash, dispatch),
+	setActiveNavigationTabId: bindActionCreators(actions.tabs.setActiveNavigationTabId, dispatch),
 });
 
 class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> extends React.PureComponent<P> {
@@ -84,22 +84,22 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 	}
 
 	handleHashChange(): void {
-		this.props.loadActiveTabFromLocationHash();
+		this.props.loadActiveNavigationTabIdFromLocationHash();
 	}
 
-	handleTabChange(activeTabId: string): void {
-		this.props.setActiveTabId(activeTabId);
+	handleTabChange(activeNavigationTabId: string): void {
+		this.props.setActiveNavigationTabId(activeNavigationTabId);
 	}
 
 	override render(): React.ReactNode {
 		const {
-			activeTabId,
+			activeNavigationTabId,
 			links,
 		} = this.props as P;
 
 		return (
 			<Nav
-				initialActiveTabId={activeTabId}
+				activeNavigationTabId={activeNavigationTabId}
 				links={links}
 				onTabChange={this.handleTabChange}
 			/>

@@ -21,6 +21,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 
 export default class WebExtensionEnvironmentInternalUrlProvider implements IInternalUrlProvider {
+	async get(url: string): Promise<string> {
+		// eslint-disable-next-line no-sync
+		return this.getSync(url);
+	}
+
 	getSync(url: string): string {
 		// NOTE: synchronous call.
 		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL

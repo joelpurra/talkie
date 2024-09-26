@@ -24,6 +24,7 @@ import type {
 import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type IOffscreenDocumentProvider from "@talkie/split-environment-interfaces/ioffscreen-document-provider.mjs";
 import {
 	type Runtime,
@@ -31,8 +32,8 @@ import {
 
 export default class ChromeOffscreenDocumentProvider implements IOffscreenDocumentProvider {
 	private get _internalExtensionUrl(): string {
-		// TODO: use IInternalUrlProvider?
-		return chrome.runtime.getURL(this.offscreenInternalHtmlPath);
+		// eslint-disable-next-line no-sync
+		return this.internalUrlProvider.getSync(this.offscreenInternalHtmlPath);
 	}
 
 	// NOTE: hardcoded offscreen setup details due to the singleton nature of the offscreen document.
@@ -54,7 +55,10 @@ export default class ChromeOffscreenDocumentProvider implements IOffscreenDocume
 	// TODO: a closing promise?
 	private _isOpeningPromise: Promise<void> | null = null;
 
-	constructor(private readonly offscreenInternalHtmlPath: string) {
+	constructor(
+		private readonly internalUrlProvider: IInternalUrlProvider,
+		private readonly offscreenInternalHtmlPath: string,
+	) {
 		if (!this.offscreenInternalHtmlPath.startsWith("/")) {
 			throw new Error("Must provide an absolute, internal URL.");
 		}

@@ -23,7 +23,7 @@ import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	getCurrentActiveTabId,
+	getCurrentActiveBrowserTabId,
 } from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
 
 export default class SpeakingStatus {
@@ -64,35 +64,35 @@ export default class SpeakingStatus {
 	}
 
 	async setActiveTabIsDoneSpeaking(): Promise<void> {
-		const activeTabId = await getCurrentActiveTabId();
+		const activeBrowserTabId = await getCurrentActiveBrowserTabId();
 
 		// NOTE: some tabs can't be retrieved.
 		await (
-			activeTabId === null
+			activeBrowserTabId === null
 				? this.setDoneSpeaking()
-				: this.setTabIsDoneSpeaking(activeTabId)
+				: this.setTabIsDoneSpeaking(activeBrowserTabId)
 		);
 	}
 
 	async setActiveTabAsSpeaking(): Promise<void> {
-		const activeTabId = await getCurrentActiveTabId();
+		const activeBrowserTabId = await getCurrentActiveBrowserTabId();
 
 		// NOTE: some tabs can't be retrieved.
-		if (!activeTabId) {
+		if (!activeBrowserTabId) {
 			return;
 		}
 
-		await this.setSpeakingTabId(activeTabId);
+		await this.setSpeakingTabId(activeBrowserTabId);
 	}
 
 	async isActiveTabSpeaking(): Promise<boolean> {
-		const activeTabId = await getCurrentActiveTabId();
+		const activeBrowserTabId = await getCurrentActiveBrowserTabId();
 
 		// NOTE: some tabs can't be retrieved.
-		if (!activeTabId) {
+		if (!activeBrowserTabId) {
 			return false;
 		}
 
-		return this.isSpeakingTabId(activeTabId);
+		return this.isSpeakingTabId(activeBrowserTabId);
 	}
 }

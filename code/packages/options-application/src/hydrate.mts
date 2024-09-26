@@ -39,7 +39,7 @@ const postrenderActionsToDispatch: Action[] = [
 	actions.shared.languages.loadNavigatorLanguage() as unknown as Action,
 	actions.shared.languages.loadNavigatorLanguages() as unknown as Action,
 	actions.shared.voices.loadVoices() as unknown as Action,
-	actions.tabs.loadActiveTabFromLocationHash() as unknown as Action,
+	actions.tabs.loadActiveNavigationTabIdFromLocationHash() as unknown as Action,
 ];
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
