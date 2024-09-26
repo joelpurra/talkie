@@ -87,6 +87,13 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 			voiceCountForSelectedLanguageCode,
 		} = this.props as VoicesProps;
 
+		const backArrow = (
+			// TODO: apply arrow ltr/rtl direction.
+			<>
+				&larr;
+			</>
+		);
+
 		return (
 			<>
 				<textBase.h1>
@@ -106,9 +113,20 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={onSelectLanguageGroupClick.bind(null, null)}
 						>
+							<Discretional
+								enabled={hasSelectedLanguageGroup && languageGroupsCount > 1}
+							>
+								{backArrow}
+								&nbsp;
+							</Discretional>
+
 							Installed languages
+
 							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? " (Error: no selected language group.)"}`}
-							{hasSelectedLanguageGroup && languageGroupsCount > 1 && (
+
+							<Discretional
+								enabled={hasSelectedLanguageGroup && languageGroupsCount > 1}
+							>
 								<textBase.headingActionSpan>
 									{" "}
 									(
@@ -119,7 +137,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 									</buttonBase.transparentButton>
 									)
 								</textBase.headingActionSpan>
-							)}
+							</Discretional>
 						</textBase.h2>
 
 						<Discretional
@@ -149,9 +167,20 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={onSelectLanguageCodeClick.bind(null, null)}
 						>
+							<Discretional
+								enabled={hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1}
+							>
+								{backArrow}
+								&nbsp;
+							</Discretional>
+
 							Installed dialects
+
 							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? " (Error: no selected language code.)"}`}
-							{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && (
+
+							<Discretional
+								enabled={hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1}
+							>
 								<textBase.headingActionSpan>
 									{" "}
 									(
@@ -162,7 +191,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 									</buttonBase.transparentButton>
 									)
 								</textBase.headingActionSpan>
-							)}
+							</Discretional>
 						</textBase.h3>
 
 						<Discretional
@@ -202,9 +231,20 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={onSelectVoiceNameClick.bind(null, null)}
 						>
+							<Discretional
+								enabled={hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1}
+							>
+								{backArrow}
+								&nbsp;
+							</Discretional>
+
 							Installed voices
+
 							{hasSelectedVoiceName && `: ${selectedVoiceName ?? " (Error: no selected voice name.)"}`}
-							{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && (
+
+							<Discretional
+								enabled={hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1}
+							>
 								<textBase.headingActionSpan>
 									{" "}
 									(
@@ -215,7 +255,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 									</buttonBase.transparentButton>
 									)
 								</textBase.headingActionSpan>
-							)}
+							</Discretional>
 						</textBase.h4>
 
 						<Discretional
