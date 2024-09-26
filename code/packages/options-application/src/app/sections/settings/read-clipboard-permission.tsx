@@ -119,7 +119,6 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 			isPremiumEdition,
 			showAdditionalDetails,
 			systemType,
-			translatePlaceholderSync,
 			translateSync,
 		} = this.props as P;
 
@@ -129,7 +128,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 		switch (hasClipboardReadPermission) {
 			case true: {
 				hasClipboardReadPermissionEmoji = "✅";
-				hasClipboardReadPermissionText = translatePlaceholderSync("Clipboard access granted." /* "frontend_settingsReadClipboardPermissionGranted" */);
+				hasClipboardReadPermissionText = translateSync("frontend_settingsReadClipboardPermissionGranted");
 
 				break;
 			}
@@ -137,7 +136,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 			case false: {
 				hasClipboardReadPermissionEmoji = null;
 				hasClipboardReadPermissionText = isPremiumEdition
-					? translatePlaceholderSync("Clipboard access not granted." /* "frontend_settingsReadClipboardPermissionDenied" */)
+					? translateSync("frontend_settingsReadClipboardPermissionDenied")
 					: null;
 
 				break;
@@ -145,7 +144,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 
 			case null: {
 				hasClipboardReadPermissionEmoji = "⁉️";
-				hasClipboardReadPermissionText = translatePlaceholderSync("Clipboard access unknown or failing." /* "frontend_settingsReadClipboardPermissionDenied" */);
+				hasClipboardReadPermissionText = translateSync("frontend_settingsReadClipboardPermissionUnknown");
 
 				break;
 			}
@@ -159,19 +158,19 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 
 		switch (clipboardText) {
 			case undefined: {
-				clipboardTextOrStatus = translatePlaceholderSync("Clipboard text has not been read." /* frontend_settingsReadClipboardTextNotYetRead */);
+				clipboardTextOrStatus = translateSync("frontend_settingsReadClipboardTextNotYetRead");
 
 				break;
 			}
 
 			case null: {
-				clipboardTextOrStatus = translatePlaceholderSync("Clipboard text could not be read." /* frontend_settingsReadClipboardTextCouldNotRead */);
+				clipboardTextOrStatus = translateSync("frontend_settingsReadClipboardTextCouldNotRead");
 
 				break;
 			}
 
 			default: {
-				clipboardTextOrStatus = translatePlaceholderSync("Clipboard text could be read." /* "frontend_settingsReadClipboardTextCouldRead" */);
+				clipboardTextOrStatus = translateSync("frontend_settingsReadClipboardTextCouldRead");
 
 				break;
 			}
@@ -194,11 +193,11 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 		return (
 			<>
 				<textBase.h2>
-					{translatePlaceholderSync("Permission to access the clipboard" /* "frontend_settingsReadClipboardPermissionHeading" */)}
+					{translateSync("frontend_settingsReadClipboardPermissionHeading")}
 				</textBase.h2>
 
 				<p>
-					{translatePlaceholderSync("To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature." /* "frontend_settingsReadClipboardPermissionExplanation01" */)}
+					{translateSync("frontend_settingsReadClipboardPermissionExplanation01")}
 				</p>
 
 				<p>
@@ -216,7 +215,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 					mode="p"
 				>
 					<p>
-						{translatePlaceholderSync("Grant or deny your permission any time. Your browser may or may not ask you to confirm." /* "frontend_settingsReadClipboardPermissionExplanation02" */)}
+						{translateSync("frontend_settingsReadClipboardPermissionExplanation02")}
 					</p>
 
 					<p>
@@ -232,7 +231,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 								type="button"
 								onClick={this.askClipboardReadPermissionClick}
 							>
-								{translatePlaceholderSync("Grant clipboard permission" /* "frontend_settingsReadClipboardPermissionGrant" */)}
+								{translateSync("frontend_settingsReadClipboardPermissionGrant")}
 							</button>
 						</layoutBase.horizontalLi>
 						<layoutBase.horizontalLi>
@@ -241,7 +240,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 								type="button"
 								onClick={this.denyClipboardReadPermissionClick}
 							>
-								{translatePlaceholderSync("Deny clipboard permission" /* "frontend_settingsReadClipboardPermissionDeny" */)}
+								{translateSync("frontend_settingsReadClipboardPermissionDeny")}
 							</button>
 						</layoutBase.horizontalLi>
 						<layoutBase.horizontalLi>
@@ -250,7 +249,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 								type="button"
 								onClick={this.speakFromClipboardClick}
 							>
-								{translatePlaceholderSync("Speak clipboard text" /* "frontend_settingsReadClipboardPermissionDeny" */)}
+								{translateSync("frontend_settingsReadClipboardSpeakClipboard")}
 							</button>
 						</layoutBase.horizontalLi>
 
@@ -263,7 +262,7 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 									type="button"
 									onClick={this.readFromClipboardClick}
 								>
-									{translatePlaceholderSync("Display clipboard text" /* "frontend_settingsReadClipboardPermissionGrant" */)}
+									{translateSync("frontend_settingsReadClipboardDisplayClipboard")}
 								</button>
 							</layoutBase.horizontalLi>
 						</Discretional>

@@ -47,16 +47,16 @@ class ContinueOnTabRemoved<P extends ContinueOnTabRemovedProps & TranslateProps>
 		const {
 			continueOnTabRemoved,
 			disabled,
-			translatePlaceholderSync,
+			translateSync,
 		} = this.props as P;
 
 		return (
 			<>
 				<textBase.h3>
-					{translatePlaceholderSync("When the page is closed" /* "frontend_voicesContinueOnTabRemovedHeading" */)}
+					{translateSync("frontend_voicesContinueOnTabRemovedHeading")}
 				</textBase.h3>
 				<p>
-					{translatePlaceholderSync("When the tab or window is closed, Talkie can either continue speaking or automatically stop." /* "frontend_voicesContinueOnTabRemovedExplanation01" */)}
+					{translateSync("frontend_voicesContinueOnTabRemovedExplanation01")}
 				</p>
 				<p>
 					{/* TODO: consider two radio buttons for continue or stop. */}
@@ -65,7 +65,7 @@ class ContinueOnTabRemoved<P extends ContinueOnTabRemovedProps & TranslateProps>
 						disabled={disabled}
 						onChange={this.handleChange}
 					>
-						{translatePlaceholderSync("Continue speaking when the tab is closed" /* "frontend_voicesContinueOnTabRemovedLabel" */)}
+						{translateSync("frontend_voicesContinueOnTabRemovedLabel")}
 					</CheckboxWithLabel>
 				</p>
 			</>

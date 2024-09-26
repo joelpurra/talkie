@@ -54,20 +54,20 @@ class ContinueOnTabUpdatedUrl<P extends ContinueOnTabUpdatedUrlProps & Translate
 			continueOnTabUpdatedUrl,
 			disabled,
 			systemType,
-			translatePlaceholderSync,
+			translateSync,
 		} = this.props as P;
 
 		return (
 			<>
 				<textBase.h3>
-					{translatePlaceholderSync("When the page address changes" /* "frontend_voicesContinueOnTabUpdatedUrlHeading" */)}
+					{translateSync("frontend_voicesContinueOnTabUpdatedUrlHeading")}
 				</textBase.h3>
 				<p>
-					{translatePlaceholderSync("Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information." /* "frontend_voicesContinueOnTabUpdatedUrlExplanation01" */)}
+					{translateSync("frontend_voicesContinueOnTabUpdatedUrlExplanation01")}
 				</p>
 
 				<p>
-					{translatePlaceholderSync("When the page address changes, Talkie can either continue speaking or automatically stop. " /* "frontend_voicesContinueOnTabUpdatedUrlExplanation02" */)}
+					{translateSync("frontend_voicesContinueOnTabUpdatedUrlExplanation02")}
 				</p>
 
 				{/* NOTE: Firefox does not report updated tab URLs, even with activeTab permission, because the permission is seemingly cleared upon navigation. */}
@@ -79,7 +79,7 @@ class ContinueOnTabUpdatedUrl<P extends ContinueOnTabUpdatedUrlProps & Translate
 						informationType="information"
 					>
 						<p>
-							{translatePlaceholderSync("For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect." /* "frontend_voicesContinueOnTabUpdatedUrlExplanation02" */)}
+							{translateSync("frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01")}
 						</p>
 					</InformationSection>
 				</Discretional>
@@ -91,7 +91,7 @@ class ContinueOnTabUpdatedUrl<P extends ContinueOnTabUpdatedUrlProps & Translate
 						disabled={disabled}
 						onChange={this.handleChange}
 					>
-						{translatePlaceholderSync("Continue speaking when the address changes" /* "frontend_voicesContinueOnTabUpdatedUrlLabel" */)}
+						{translateSync("frontend_voicesContinueOnTabUpdatedUrlLabel")}
 					</CheckboxWithLabel>
 				</p>
 			</>

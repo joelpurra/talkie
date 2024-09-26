@@ -36,7 +36,6 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 	override render(): React.ReactNode {
 		const {
 			configure,
-			translatePlaceholderSync,
 			translateSync,
 		} = this.props as P;
 
@@ -45,8 +44,7 @@ class Menu<P extends ConfigureProps & TranslateProps> extends React.PureComponen
 				<ul>
 					<li>
 						<a href={configure("urls.internal.options-status")} rel="noopener noreferrer" target="_blank">
-							{/* TODO: use status/history icon. */}
-							{translatePlaceholderSync("Status and history" /* "frontend_PopupMenu_Status" */)}
+							{translateSync("frontend_PopupMenu_Status")}
 						</a>
 					</li>
 					<li>

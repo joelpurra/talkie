@@ -101,9 +101,7 @@ class Support<P extends SupportProps & ConfigureProps & TranslateProps> extends 
 					</textBase.h2>
 
 					<p>
-						{translateSync("frontend_supportDescription", [
-							translateSync("extensionShortName"),
-						])}
+						{translateSync("frontend_supportDescription")}
 					</p>
 
 					<textBase.h3>

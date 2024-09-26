@@ -208,7 +208,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 			isSpeakingHistoryEnabled,
 			mostRecent,
 			speakingHistory,
-			translatePlaceholderSync,
+			translateSync,
 		} = this.props as InternalProps;
 
 		const mostRecentText = mostRecent?.text;
@@ -338,7 +338,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		return (
 			<>
 				<textBase.h1>
-					{translatePlaceholderSync("Status" /* "frontend_statusLinkText" */)}
+					{translateSync("frontend_statusLinkText")}
 				</textBase.h1>
 
 				<section>
@@ -351,10 +351,10 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 						<tableBase.thead>
 							<tableBase.tr>
 								<tableBase.th>
-									{translatePlaceholderSync("Language")}
+									{translateSync("frontend_statusLanguageHeading")}
 								</tableBase.th>
 								<tableBase.th>
-									{translatePlaceholderSync("Voice")}
+									{translateSync("frontend_statusVoiceHeading")}
 								</tableBase.th>
 								{/* TODO: enable pitch/rate. */}
 								{/*
@@ -413,7 +413,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 					>
 						<details>
 							<summary>
-								{translatePlaceholderSync("History")}
+								{translateSync("frontend_statusHistoryHeading")}
 								{" "}
 								(
 								{speakingHistory.length}
@@ -470,7 +470,7 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 						enabled={!hasMostRecentText}
 					>
 						<p>
-							{translatePlaceholderSync("There are no history entries.")}
+							{translateSync("frontend_statusHistoryEmpty")}
 						</p>
 					</Discretional>
 				</section>

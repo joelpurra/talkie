@@ -152,19 +152,21 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 			speakingHistoryCount,
 			speakingHistoryLimit,
 			disabled,
-			translatePlaceholderSync,
+			translateSync,
 		} = this.props as P;
 
 		return (
 			<>
 				<textBase.h2>
-					{translatePlaceholderSync("History" /* "frontend_voicesSpeakingHistoryLimitHeading" */)}
+					{translateSync("frontend_voicesSpeakingHistoryLimitHeading")}
 				</textBase.h2>
 				<p>
-					{translatePlaceholderSync("Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered." /* "frontend_voicesSpeakingHistoryLimitExplanation01" */)}
+					{translateSync("frontend_voicesSpeakingHistoryLimitExplanation01")}
 				</p>
 				<p>
-					{translatePlaceholderSync(`The default limit is ${KnownSettingDefaults.SpeakingHistoryLimit}. Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history.` /* "frontend_voicesSpeakingHistoryLimitExplanation02" */)}
+					{translateSync("frontend_voicesSpeakingHistoryLimitExplanation02", [
+						KnownSettingDefaults.SpeakingHistoryLimit.toString(10),
+					])}
 				</p>
 				<p>
 					<InputWithLabel
@@ -181,24 +183,28 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 						value={speakingHistoryLimit.toString(10)}
 						onChange={this.handleChange}
 					>
-						{translatePlaceholderSync("History entry limit" /* "frontend_voicesSpeakingHistoryLimitLabel" */)}
+						{translateSync("frontend_voicesSpeakingHistoryLimitLabel")}
 					</InputWithLabel>
 				</p>
 				<p>
-					{translatePlaceholderSync(`There are currently ${speakingHistoryCount} history entries remembered. You can forget all at once, or forget individual entries.` /* "frontend_voicesSpeakingHistoryLimitExplanation04" */)}
+					{translateSync("frontend_voicesSpeakingHistoryLimitExplanation03", [
+						speakingHistoryCount.toString(10),
+					])}
 				</p>
 				<p>
 					<buttonBase.button
 						disabled={speakingHistoryCount === 0}
 						onClick={this.handleClearSpeakingHistory}
 					>
-						{translatePlaceholderSync(`Forget all ${speakingHistoryCount} history entries` /* "frontend_voicesSpeakingHistoryLimitLabel" */)}
+						{translateSync("frontend_voicesSpeakingHistoryForgetLabel", [
+							speakingHistoryCount.toString(10),
+						])}
 					</buttonBase.button>
 				</p>
 				<p>
 					<details>
 						<summary>
-							{translatePlaceholderSync("Forget individual history entries")}
+							{translateSync("frontend_voicesSpeakingHistoryForgetAllHeading")}
 						</summary>
 
 						<listBase.ol>

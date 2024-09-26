@@ -120,9 +120,8 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 								&nbsp;
 							</Discretional>
 
-							Installed languages
-
-							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? " (Error: no selected language group.)"}`}
+							{translateSync("frontend_systemInstalledLanguagesHeading")}
+							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup}`}
 
 							<Discretional
 								enabled={hasSelectedLanguageGroup && languageGroupsCount > 1}
@@ -174,9 +173,8 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 								&nbsp;
 							</Discretional>
 
-							Installed dialects
-
-							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? " (Error: no selected language code.)"}`}
+							{translateSync("frontend_systemInstalledDialectsHeading")}
+							{hasSelectedLanguageCode && `: ${selectedLanguageCode}`}
 
 							<Discretional
 								enabled={hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1}
@@ -238,9 +236,8 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 								&nbsp;
 							</Discretional>
 
-							Installed voices
-
-							{hasSelectedVoiceName && `: ${selectedVoiceName ?? " (Error: no selected voice name.)"}`}
+							{translateSync("frontend_systemInstalledVoicesHeading")}
+							{hasSelectedVoiceName && `: ${selectedVoiceName}`}
 
 							<Discretional
 								enabled={hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1}
@@ -262,7 +259,15 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							enabled={!hasSelectedVoiceName}
 						>
 							<p>
-								{`Found ${voiceCountForSelectedLanguageCode} voices for ${selectedLanguageCode ?? "(Error: no selected language code.)"}.`}
+								{
+									translateSync(
+										"frontend_voicesFoundVoicesForLanguage",
+										[
+											voiceCountForSelectedLanguageCode.toString(10),
+											selectedLanguageCode ?? "(Error: no selected language code.)",
+										],
+									)
+								}
 							</p>
 
 							<DialectVoicesContainer

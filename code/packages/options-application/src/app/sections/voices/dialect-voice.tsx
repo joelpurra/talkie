@@ -98,7 +98,12 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 					>
 						<p>
 							<MarkdownStrong>
-								{`**${voice.name}** is an online voice. Usage may require an active internet connection to access third-party services.`}
+								{translateSync(
+									"frontend_voicesVoiceIsOnline",
+									[
+										`**${voice.name}**`,
+									],
+								)}
 							</MarkdownStrong>
 						</p>
 					</InformationSection>

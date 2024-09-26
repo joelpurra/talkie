@@ -34,8 +34,8 @@
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
     "message": "Sélectionnez le texte sur n'importe quelle page Web et faites le lire à haute voix.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS.",
-    "translated-from": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code.",
+    "translated-from": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_aboutCodeOnGithubLinkText": {
     "message": "Code source sur Github",

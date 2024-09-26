@@ -98,8 +98,14 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 			systemType,
 			osType,
 			configure,
+			translatePlaceholderSync,
 			translateSync,
 		} = this.props as P;
+
+		// TODO: can these key abbreviations be translated reliably?
+		const translatedKeyAlt = translatePlaceholderSync("Alt");
+		const translatedKeyCtrl = translatePlaceholderSync("Ctrl");
+		const translatedKeyShift = translatePlaceholderSync("Shift");
 
 		return (
 			<>
@@ -160,11 +166,11 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 								</tableBase.td>
 								<this.styled.shortcutKeysTd>
 									<textBase.kbd>
-										{osType === "mac" ? "⌥" : "Alt"}
+										{osType === "mac" ? "⌥" : translatedKeyAlt}
 									</textBase.kbd>
 									+
 									<textBase.kbd>
-										Shift
+										{translatedKeyShift}
 									</textBase.kbd>
 									+
 									<textBase.kbd>
@@ -191,12 +197,12 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 									</tableBase.td>
 									<this.styled.shortcutKeysTd>
 										<textBase.kbd>
-											{osType === "mac" ? "⌘" : "Ctrl"}
+											{osType === "mac" ? "⌘" : translatedKeyCtrl}
 
 										</textBase.kbd>
 										+
 										<textBase.kbd>
-											Shift
+											{translatedKeyShift}
 										</textBase.kbd>
 										+
 										<textBase.kbd>
@@ -226,11 +232,11 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 								</tableBase.td>
 								<this.styled.shortcutKeysTd>
 									<textBase.kbd>
-										{osType === "mac" ? "⌘" : "Ctrl"}
+										{osType === "mac" ? "⌘" : translatedKeyCtrl}
 									</textBase.kbd>
 									+
 									<textBase.kbd>
-										Shift
+										{translatedKeyShift}
 									</textBase.kbd>
 									+
 									<textBase.kbd>

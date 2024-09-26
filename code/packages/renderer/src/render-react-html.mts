@@ -57,6 +57,7 @@ const renderReactHtml = async <S, A extends Action>(
 	}
 
 	const reactRootHtml = ReactDOMServer.renderToString(rootElement);
+	// TODO: also render language text direction, in particular dir="rtl".
 	const translationLocale = localeProvider.getTranslationLocale();
 	const stylesForHead = styletron.getStylesheetsHtml();
 	const prerenderedState = store.getState();

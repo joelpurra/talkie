@@ -120,6 +120,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 		this.setActiveNavigationTabTitle = this.setActiveNavigationTabTitle.bind(this);
 
+		// TODO: move links/translation out of class props.
 		this.links = [
 			{
 				tabId: "welcome",
@@ -129,7 +130,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			{
 				tabId: "status",
 				// eslint-disable-next-line no-sync
-				text: this.props.translatePlaceholderSync("Status" /* "frontend_statusLinkText" */),
+				text: this.props.translateSync("frontend_statusLinkText"),
 			},
 			{
 				tabId: "voices",

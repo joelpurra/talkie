@@ -39,16 +39,16 @@ class ContinueSpeech<P extends ContinueSpeechProps & ChildrenRequiredProps & Tra
 	override render(): React.ReactNode {
 		const {
 			children,
-			translatePlaceholderSync,
+			translateSync,
 		} = this.props as P;
 
 		return (
 			<>
 				<textBase.h2>
-					{translatePlaceholderSync("Continue speaking or automatically stop" /* "frontend_voicesContinueOnTabHeading" */)}
+					{translateSync("frontend_voicesContinueOnTabHeading")}
 				</textBase.h2>
 				<p>
-					{translatePlaceholderSync("Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop." /* "frontend_voicesContinueOnTabExplanation01" */)}
+					{translateSync("frontend_voicesContinueOnTabExplanation01")}
 				</p>
 
 				{children}
