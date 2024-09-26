@@ -4,7 +4,7 @@
     "message": "Textauswahl laut vorlesen mit $NAME$",
     "original": "Read text selection out loud with $NAME$",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }

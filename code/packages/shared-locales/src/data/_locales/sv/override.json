@@ -4,7 +4,7 @@
     "message": "Läs upp markerad text med $NAME$",
     "original": "Read text selection out loud with $NAME$",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
@@ -53,14 +53,14 @@
     "translated-from": "About"
   },
   "frontend_featuresEdition_Free": {
-    "message": "För närvarande används den konstnadsfria utgåvan av Talkie och tillgänglig funktionalitet är begränsad. Kanske skulle Talkie Premium vara ett bättre val för dig?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?",
-    "translated-from": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "Du använder för närvarande den konstnadsfria utgåvan av Talkie och tillgänglig funktionalitet är begränsad. Har du övervägt att uppgradera till Talkie Premium?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?",
+    "translated-from": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "För närvarande används premiumutgåvan av Talkie och all funktionalitet är tillgänglig. Tack så mycket, det värmer mitt hjärta!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!",
-    "translated-from": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "För närvarande använder du premiumutgåvan av Talkie och all funktionalitet är tillgänglig. Tack så mycket, det värmer mitt hjärta!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!",
+    "translated-from": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie finns i två utgåvor: Talkie och Talkie Premium. Den konstnadsfria utgåvan fungerar bra för de flesta användningsfall, men premiumutgåvan har fler inställningar och funktioner.",
@@ -88,14 +88,14 @@
     "translated-from": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Öppen källkod som finns tillgänglig kostnadsfritt för alla användare.",
-    "original": "Code is open source and available for free to all users.",
-    "translated-from": "Code is open source and available for free to all users."
+    "message": "Öppen källkod fullt tillgänglig kostnadsfritt för alla användare.",
+    "original": "Code is open source and fully available to all users.",
+    "translated-from": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Kostnadsfri!",
-    "original": "Free!",
-    "translated-from": "Free!"
+    "message": "Använd så mycket du vill utan kostnad.",
+    "original": "Use as much as you want at no cost.",
+    "translated-from": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Funktionalitet",
@@ -103,14 +103,14 @@
     "translated-from": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Välj egen standardröst för varje språk. Bra om du tröttnat på systemrösten!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!",
-    "translated-from": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Välj egen standardröst för varje språk.",
+    "original": "Choose your own preferred voice for each language.",
+    "translated-from": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Välj läshastigheten och tonhöjd per röst. Justera röster för att passa dig!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!",
-    "translated-from": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Justera läshastighet och tonhöjd per röst.",
+    "original": "Adjust reading speed and pitch per voice.",
+    "translated-from": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Det varma, sprudlande känslan man får när genom att stödja öppen källkod skriven av oberoende utvecklare.",
@@ -167,6 +167,11 @@
     "original": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser.",
     "translated-from": "You can also select the text, then right click on it, and choose Talkie in the menu. This way also works in PDF-files and some special types of pages in the browser."
   },
+  "frontend_usageShortcutKeyAlternative04": {
+    "message": "Det är vanligt med konflikter mellan kortkommandon för olika tillägg och program. Om ett kortkommando inte fungerar, vänligen kontrollera att det inte redan används till något annat.",
+    "original": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else.",
+    "translated-from": "It is common that there are conflicts between the keyboard shortcuts of different extensions and programs. If a shortcut key does not work, please make sure that it is not already configured for something else."
+  },
   "frontend_usageShortcutKeyAlternative05": {
     "message": "Kontrollera eller ändra Talkies kortkommandon.",
     "original": "Check or change the Talkie shortcut keys.",
@@ -208,7 +213,7 @@
     "message": "Tonhöjd för $VOICE$",
     "original": "Pitch for $VOICE$",
     "placeholders": {
-      "voice": {
+      "VOICE": {
         "content": "$1",
         "example": "Alva"
       }
@@ -226,7 +231,7 @@
     "message": "Hastighet för $VOICE$",
     "original": "Speed for $VOICE$",
     "placeholders": {
-      "voice": {
+      "VOICE": {
         "content": "$1",
         "example": "Google italiano"
       }
@@ -244,11 +249,11 @@
     "message": "Använd $VOICE$ som standardröst för text på $LANGUAGE$",
     "original": "Use $VOICE$ as default voice for text in $LANGUAGE$",
     "placeholders": {
-      "language": {
+      "LANGUAGE": {
         "content": "$1",
         "example": "sv-SE"
       },
-      "voice": {
+      "VOICE": {
         "content": "$2",
         "example": "Alva"
       }
@@ -286,8 +291,23 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience.",
     "translated-from": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
+  "readClipboardIsAPremiumFeature": {
+    "message": "Jag är ledsen, men uppläsning av text från Urklipp är en Talkie Premium-funktion. Har du övervägt att uppgradera?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?",
+    "translated-from": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+  },
+  "readClipboardNeedsBrowserSupport": {
+    "message": "Jag är ledsen, men den här webbläsaren verkar inte stödja läsning från Urklipp.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard.",
+    "translated-from": "I'm sorry, but this browser does not seem to support accessing the clipboard."
+  },
+  "readClipboardNeedsPermission": {
+    "message": "Talkie har inte behörighet att läsa Urklipp. Du kan ge din tillåtelse i Talkies inställningar.",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page.",
+    "translated-from": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
+  },
   "readClipboardNoSuitableText": {
-    "message": "Det gick inte att hitta lämplig text i Urklippet. Kan du försöka kopiera något annat?",
+    "message": "Det gick inte att hitta lämplig text i Urklipp. Kan du försöka kopiera något annat?",
     "original": "Could not find suitable text in the clipboard. Can you try copying something else?",
     "translated-from": "Could not find suitable text in the clipboard. Can you try copying something else?"
   }

@@ -31,18 +31,26 @@
     "message": "升级到Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
+  "commandSpeakClipboardDescription": {
+    "message": "朗读剪贴板中的文本",
+    "original": "Speak text from the clipboard"
+  },
   "commandStartStopDescription": {
     "message": "开始/停止阅读选择",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "40 多种语言的快速、简单、高质量的文本到语音转换。从网站、PDF、电子邮件中大声朗读。使用 TTS 朗读文本。",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "快速简便的文本转语音。大声朗读网站、PDF 和电子邮件中的内容。隐私保护、开源代码。",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "功能和升级",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "现状和历史",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "用法和快捷方式",
@@ -105,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "这取决于您使用的 Linux 发行版、浏览器和软件包分发系统。请参阅单独的安装说明以了解您的软件组合。最简单的方法可能是尝试其他浏览器，看看它是否预装了合适的语音。例如，Ubuntu 21.10 上的 Firefox v95 可以使用 Aptitude 或 Snap 安装；前者包含 8611 个 eSpeak 语音，支持 7358 种方言中的 95 种语言，但后者包含 0 个语音。另一个例子是 Ubuntu 21.10 上的 Google Chrome v96，它默认包含 19 种语音，支持 18 种方言中的 14 种语言。请让我知道你的经历！",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "这取决于您使用的 Linux 发行版、浏览器和软件包分发系统。请参阅针对您的软件组合的单独安装说明。最简单的方法可能是尝试另一个浏览器，看看它是否预装了合适的语音。例如，使用 Snap 安装在 Ubuntu 24.04 上的 Firefox v130 包含 13000 多种 eSpeak 语音，支持 100 多种方言中的 100 多种语言 — 但所有这些语音的质量都很低。相比之下，使用 Apt 安装在 Ubuntu 24.04 上的 Google Chrome v129 包含 19 种语音，支持 18 种方言中的 14 种语言 — 全部质量很高。",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "如何在 Linux 上的Talkie安装更多声音？",
@@ -161,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "不幸的是，并不完全。对于Talkie Premium用户，可以复制文本并从剪贴板中读取。事实证明，Google Docs（以及 Google 电子表格、Google Drive 等）不是网站，而是 Google 创建的特殊“浏览器中的应用程序”。 Talkie无法访问所选文本，也无法添加上下文菜单项，因此Talkie按钮不起作用。",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "不幸的是，还不是全部。对于Talkie Premium用户，可以复制文本并从剪贴板中朗读。事实证明，Google Docs（以及 Google Spreadsheet、Google Drive 等）不是一个网站，而是一个由 Google 创建的特殊“浏览器中的应用程序”。__ Talkie无法访问选定的文本，也无法添加上下文菜单项，因此Talkie按钮不起作用。",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Talkie在 Google 文档中是否有效？",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "是的，请！最好在 Github 上创建一个问题报告，以便其他人也可以提供帮助。请包含尽可能多的信息，例如您使用的浏览器和版本、操作系统和版本以及语言/语音。还包括有关您看到错误的特定网站的信息，最好带有链接。",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "是的，请。最好在 Github 上创建问题报告，这样其他人也可以提供帮助。请包含尽可能多的信息，例如您使用的浏览器和版本、操作系统和版本以及语言/语音。还包括您发现错误的具体网站的信息，最好带有链接。",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "我应该报告错误吗？",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "通常！如果您可以选择 PDF 中的文本，请右键单击它并在菜单中Talkie如果无法选择文本，如果它是图像的一部分，那么它将不起作用。",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "是的，大多数情况下都是这样。如果您可以在 PDF 中选择文本，请右键单击它并在菜单中选择Talkie Talkie Premium用户还可以复制文本，然后从剪贴板中读取。如果无法选择文本（例如，如果它是图像的一部分），则它将不起作用。",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Talkie可以阅读 PDF 文件吗？",
@@ -193,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "当然！只需通过支持或项目页面与我联系。",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "是的。在 Github 上的新问题中描述您想要的功能。",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "我可以申请新功能吗？",
@@ -217,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "当然！获得翻译Talkie帮助、 Talkie 、调查错误和添加新功能会很棒。有关说明，请参阅项目页面。",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "是的，我们非常感激您的帮助。请参阅项目页面了解说明。",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "我可以帮助开发Talkie吗？",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "是的 — 请告诉你的朋友关于Talkie ！或许可以发送一个指向您最喜欢的互联网名人、在线群组或时事通讯的链接。你甚至可以让你的老板在工作的所有电脑上安装它，或者让你的老师在学校安装它。非常感谢传播有关Talkie",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "是的 — 请告诉你的朋友关于Talkie信息。或许可以向你最喜欢的网络名人、在线群组或新闻通讯发送链接。你甚至可以要求你的老板在公司的所有电脑上安装它，或者要求你的老师在学校安装它。传播关于Talkie信息将不胜感激。",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "我可以以任何其他方式Talkie",
@@ -241,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "是的，有多种付款方式可供选择。",
-    "original": "Yes, there are multiple payment options available."
+    "message": "是的，有多种捐赠方式可供选择。",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "我可以使用 PayPal、银行转账等方式付款吗？",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "我可以使用 PayPal、银行转账等方式捐款吗？",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "是的，如果您使用 PayPal 或 Stripe 付款，它们提供简单的退款管理。由于需要额外的工作量，以及资金被退回到错误账户的风险，其他付款方式通常无法退款。",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "是的，如果您使用 PayPal 捐款，它提供简单的退款管理。其他捐款方式通常不提供退款，因为它需要大量额外工作，此外还有退款到错误账户等风险。用户最好先花时间试用Talkie Premium ，以确保一切令人满意，然后再捐款。",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "我可以获得退款吗？",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "当然！只需启用Talkie Premium升级即可试用。",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "当然没问题。只需启用Talkie Premium升级即可试用。",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "我可以免费Talkie Premium",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Talkie没有广告、数据收集或用户跟踪。 Talkie Premium付费的快乐用户是唯一的货币化方式。",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Talkie中没有广告、数据收集或用户跟踪。快乐的用户为Talkie Premium捐款是唯一的盈利方式。",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Talkie扩展是否包含广告、收集数据或跟踪用户？",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "荣誉制度是指个人被信任为诚实，并在没有严格执行检查的情况下遵守准则。对于Talkie Premium相信升级的人已经为此付出了代价。",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "荣誉制度是指个人相互信任，遵守商定的准则，而无需严格执行检查。对于Talkie Premium来说，这意味着相信升级的人也进行了捐赠。",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "什么是荣誉系统？",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "因为世界各地的人使用不同的货币，有不同程度的可支配收入，对Talkie Premium的功能有不同程度的升值。没有一个单一的、固定的价格适合世界上的每个人。最重要的是货币波动、经济周期趋势、区域/国家内部差异等。总而言之，全球销售的产品的设置价格是复杂的。让每个人都设定自己的价格，并确保产品足够好以保证付款会更容易。",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "因为世界各地的人们使用不同的货币，拥有不同的可支配收入水平，对Talkie Premium功能的欣赏程度也不同。世界上没有一个固定的价格适合所有人。除此之外，还有货币波动、经济周期趋势、地区/国家内部差异等等。总而言之，为全球销售的产品定价很复杂。让每个人都自己定价，并确保产品足够好，值得捐赠，这样更容易。",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "为什么我可以自己设定价格？",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "因为我不知道你能在文本转语音软件上花多少钱，我更愿意你支付你认为Talkie Premium对你来说值得的东西——不多也不少。如果您正在寻找参考框架，当 Google 处理Talkie Premium的付款时，美国每年的订阅费用为 25 美元（美元）。请注意，谷歌调整了世界各国和货币的价格以适应当地情况，因此可能或多或少。同时，凡是有礼貌询问的人也可以免费Talkie Premium",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "由于我不知道您能够并愿意在文本转语音软件上花多少钱，因此我希望您捐赠您认为Talkie Premium对您来说值得的金额 — 不多也不少。如果您正在寻找参考框架，当 Google Chrome Web Store 处理Talkie Premium的付款时（2017-2021 年），美国的年度订阅费用为 $$25（美元）。不过，全球价格各不相同，因为 Google 会自动调整其他国家和货币的价格。",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "你建议我付多少钱？",
-    "original": "How much do you recommend I pay?"
+    "message": "您建议我捐多少钱？",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "因为实施支付和验证系统需要花费大量的时间和精力，并且假设实施严格支付验证的成本高于个人欺骗系统的损失。支付验证还需要从用户系统收集一定程度的数据，技术熟练的用户通常可以解决验证问题。因此，从技术和业务的角度来看，即使没有任何保证，也更容易简单地相信用户遵守荣誉制度。",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "因为实施支付和验证系统需要花费大量的时间和精力。据估计，实施严格的支付验证的成本高于个人欺骗系统造成的损失。支付验证还需要从用户系统中收集一定程度的数据，而技术熟练的用户通常可以绕过验证。因此，从技术和商业角度来看，尽管没有任何保证，但更容易相信用户遵守诚信制度。",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "为什么没有付款验证？",
-    "original": "Why is there no payment verification?"
+    "message": "为什么没有捐款或付款验证？",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "决定不实施支付验证意味着无法验证支付的金额。此外，“制造” Talkie Premium的数字副本的成本为零，因此白白赠送并不意味着开发商会遭受经济损失。也有希望，如果你喜欢Talkie Premium ，你会告诉你的朋友。赠送Talkie Premium也可以看作是一种营销努力。",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "我意识到“什么都不捐”有点令人困惑。简而言之，金钱不是万能的。长话短说，则有更多方面。不实施付款验证的决定意味着支付金额无关紧要。此外，“制造” Talkie Premium数字副本的成本为零，因此免费赠送并不意味着开发者会蒙受经济损失。如果你喜欢Talkie Premium你也会希望将之告诉你的朋友，也许他们中的一些人最终会以某种方式捐款。因此，赠送Talkie Premium可以看作是一种营销努力。",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "为什么我可以选择不付钱？",
-    "original": "Why can I choose to pay nothing?"
+    "message": "为什么我可以选择捐款或不付款？",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "是的，通过使用 Stripe。查看其他付款方式。",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "是的，但没有自动定期捐款系统。最直接的方式是你稍后再捐款。",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "我可以按月或按年定期付款吗？",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "我可以每月或每年定期捐款吗？",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "是的，如果您通过电子邮件请求。请包括您的姓名、地址和可选的增值税 (VAT) 标识符（或等效标识符）。",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "这是一个罕见的请求，需要手动处理。请在捐赠前联系我们。",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "我可以获得付款收据吗？",
-    "original": "Can I get a receipt for my payment?"
+    "message": "我可以获得捐款收据吗？",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "因为您喜欢Talkie Premium提供的附加功能，以及独立开发人员为开源软件开发做出贡献的快乐感觉。由于开发和维护的人员成本相对较高，但“制造”数字副本的成本为零，对Talkie Premium支付也可以看作是对未来开发和维护的支持，而不是支付时产品的价值.",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "因为你喜欢Talkie Premium提供的附加功能，也喜欢独立开发者为开源软件开发做贡献的快乐感。由于开发和维护的时间成本相对较高，但“制造”数字副本的成本为零，因此对Talkie Premium的捐赠也可以看作是对未来开发和维护的支持和鼓励，而不是捐赠时产品的价值。",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "为什么要付费升级？",
-    "original": "Why should I pay to upgrade?"
+    "message": "为什么我应该捐款来升级？",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "简短的回答是：可能不是。事实证明，在 Microsoft Windows 上有现代声音和旧声音。当我上次测试时，Microsoft Edge 中可以使用荷兰语语音“Microsoft Frank”，但在 Google Chrome 和 Mozilla Firefox 中不可用。原因之一是，有些语音是为较新的 WinRT 语音系统构建的，有些是为较旧的语音应用程序编程接口 (SAPI) 构建的。浏览器可能不支持旧的和新的语音系统，这意味着实际上安装的语音可能仍然无法在您喜欢的浏览器中使用。随着时间的推移，大多数浏览器可能会支持较新的 WinRT 系统。如果您的语言中缺少语音，建议之一是尝试在 Microsoft Edge 中Talkie",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "是的，但这取决于您使用的浏览器。Microsoft Windows 中既有现代语音也有旧语音。我上次测试时，荷兰语语音“Microsoft Frank”在 Microsoft Edge 中可用，但在 Google Chrome 和 Mozilla Firefox 中不可用。原因之一是有些语音是为较新的 WinRT 语音系统构建的，有些是为较旧的语音应用程序编程接口 (SAPI) 构建的。您最喜欢的浏览器可能不支持旧语音系统和新语音系统，这意味着实际安装的语音可能无法使用。随着时间的推移，大多数浏览器可能会支持较新的 WinRT 系统。如果您的语言中缺少语音，建议尝试在 Microsoft Edge 中使用Talkie 。",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
-    "message": "适用于 Microsoft Windows 的所有声音都适用于Talkie吗？",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "message": "Microsoft Windows 的所有语音都可以与Talkie配合使用吗？",
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "也许，付出了很多努力。还有一些非官方的解决方法可以让新的 WinRT 语音与旧的支持 SAPI 的浏览器一起使用，但这是一项技术性很强的工作，不建议非技术用户使用。",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "也许，需要付出很多努力。还有一些非官方的解决方法可以让新的 WinRT 语音与支持 SAPI 的旧浏览器兼容，但这是一项技术含量很高的工作，不建议非技术用户使用。",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "WinRT 语音能否在 Microsoft Windows 上启用 SAPI 的浏览器中工作？",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "是的，有些人会。按照系统和浏览器的安装说明进行操作。在浏览器中安装语音后， Talkie应自动检测它们。请分享您的任何提示！",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "是的，有些确实如此。请按照系统和浏览器的安装说明进行操作。将声音安装到浏览器中后， Talkie应该会自动检测它们。",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "开源声音是否适用于Talkie ？",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "捐赠意味着自愿为有益的事情花钱。可以把它想象成小费。付款意味着强制性的金钱交易。",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "为什么是捐赠而不是付款？",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "用金钱代替正能量。支持人道主义组织。在当地慈善机构做志愿者。帮助陌生人。拥抱家人。微笑。事实上，所有这些都比为Talkie Premium捐款更重要。不过，我确实很感激收到明信片。",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "我选择不捐赠任何物品。我还能做些什么吗？",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "是的，无论如何您都可以使用Talkie Premium 。",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "如果我选择不捐赠，这还算数吗？",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "最初的计划是通过收取Talkie Premium的年度订阅费来将Talkie货币化。几年来（2017-2021 年），Google Chrome 网上应用店处理了Talkie Premium的付款和订阅，但他们不再提供该服务。当外部支付系统停止工作时，我选择将Talkie Premium功能分开，以表明在Talkie上投入了大量精力。捐赠是人们使用和欣赏Talkie的代理指标，这也是激励我花费数百小时开发它的原因。",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "如果捐赠是可选的，为什么Talkie Premium功能是分开的？",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie和我的其他开源代码一样，是一个业余项目。通常每隔几周就会有一些小事要处理，比如回复电子邮件中的问题。__ Talkie上的编程通常集中在几天内——通常是在假期和休假期间。不幸的是，外部政策变化占用了越来越多的功能开发时间。例如，从技术上讲，将Talkie升级到清单版本 3 (MV3) 需要数周的工作（2023-2024 年），但Talkie的实用性并没有明显改善。",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "您在Talkie上花了多少时间？",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "目前我还不确定。我开发了Talkie (2016) 供其他人使用，我自己实际上并没有使用它。添加新功能和学习新东西很有趣。收到积极的反馈并看到用户数量增加是件好事。不过，这目前不是我最喜欢的爱好，因为过去几年（2020-2024 年）外部因素对发展产生了负面影响。特别是，发布 Web 扩展需要及时了解 Google Chrome Web Store (CWS) 和 Firefox 的 Mozilla Add-Ons (AMO) 不断变化的政策。",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "您将继续致力于Talkie多久？",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "这个问题的答案无法可靠地保持最新状态。请访问Talkie网站了解当前项目状态。",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "您还在积极致力于Talkie吗？",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "错误",
@@ -381,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "目前使用的是Talkie的免费版，并且提供了一组有限的功能。也许Talkie Premium对你来说是更好的选择？",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "您目前正在使用Talkie的免费版本，可使用的功能有限。您是否考虑过升级到Talkie Premium ？",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "当前使用Talkie Premium ，所有功能都可用。非常感谢，温暖了我的心！",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "您现在正在使用Talkie Premium ，所有功能均可用。非常感谢，这让我感到很温暖！",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie有两个版本： Talkie和Talkie Premium 。免费版非常适合大多数用例，但高级版提供额外的选项和功能。",
@@ -409,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "代码是开源的，所有用户都可以免费使用。",
-    "original": "Code is open source and available for free to all users."
+    "message": "代码是开源的，可供所有用户使用。",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "自由！",
-    "original": "Free!"
+    "message": "您可以免费使用任意数量的内容。",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "特征",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "为每种语言选择您自己的默认语音。如果您厌倦了系统语音，那就太好了！",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "为每种语言选择您自己喜欢的声音。",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "选择每个声音的阅读速度和音高。根据自己的喜好调整声音！",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "调整每个声音的阅读速度和音调。",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "当独立开发人员支持开源软件时，您会感受到那种温暖、模糊的感觉。",
@@ -437,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "从剪贴板读取文本！只需从任何程序的任何地方复制文本，然后使用Talkie Premium来阅读它！",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "朗读剪贴板中的文本。从任何程序中的任何位置复制任何文本，然后使用Talkie Premium读取它。",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "可用的文本转语音",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "请在您的系统上安装一些声音，否则Talkie将无法工作。对不起！",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "找不到任何文本转语音的声音。没有声音， Talkie就无法正常运行。有时重新加载此页面会有所帮助，至少在浏览器速度慢或声音太多时会有所帮助。",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "未找到文字转语音",
@@ -456,6 +524,10 @@
     "message": "执照",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "第三方许可",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "正在加载...",
     "original": "Loading..."
@@ -467,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "设置",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "显示剪贴板文本",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "未授予剪贴板访问权限。",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "拒绝剪贴板权限",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "要从任何程序中朗读文本，您可以将文本复制到剪贴板并使用可配置的键盘快捷键。要让Talkie访问剪贴板，您需要先授予权限。这是Talkie Premium功能。",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "随时授予或拒绝您的许可。您的浏览器可能会或可能不会要求您确认。",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "授予剪贴板权限",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "已授予剪贴板访问权限。",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "访问剪贴板的权限",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "剪贴板访问未知或失败。",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "朗读剪贴板文本",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "无法读取剪贴板文本。",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "剪贴板中的文本可以被读取。",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "剪贴板文本尚未读取。",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "没有历史记录条目。",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "历史",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "语言",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "地位",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "嗓音",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie是在 2016/2017 新年前几天在朋友的挑战下开发的。挑战始于这样一个问题：上班通勤时，是否可以只听一篇文章而不是阅读它？很简单，我说，并着手证明这一点——或者至少让我的浏览器使用愚蠢的计算机语音说出文本。基本版没有任何用户界面，创建起来很简单。添加用户界面需要更长的时间。添加适当的语言检测更多的代码。克服浏览器中的错误需要更多的工作。改进和功能的列表还在继续——在几千行代码之后，您正在查看最终结果。",
@@ -485,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "有一个问题？需要帮助吗？有关常见问题的快速解答，请参阅下面的常见问题。如果这没有给您答案，请将您可能有的任何问题发送给我。 $NAME$体验顺畅愉快，我会很高兴！",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "为了获得快速简便的支持，请查看这些常见问题和答案。如果您的问题仍未得到解答，请联系我。",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "支持",
@@ -551,32 +689,32 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie Premium的价格不是固定的。相反，您支付所需的费用，具体取决于您认为高级功能对您的价值。您甚至可以决定不支付任何费用。",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Talkie Premium的价格并不固定。您可以根据自己认为高级功能的价值捐赠自己想要的金额。您甚至可以决定不捐赠任何金额。",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "发送付款后，无需输入升级代码，无需注册用户帐户，也无需进行任何其他付款验证。相反Talkie Premium使用荣誉系统。",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "捐赠后无需输入升级代码，无需注册用户账户，也无需进行任何其他捐赠验证。相反， Talkie Premium使用荣誉系统。",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "请注意， Talkie没有任何广告、用户跟踪或数据收集作为货币化的替代方式。付款被标记为对开源软件开发的捐赠。",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie不以广告、用户跟踪或数据收集作为替代盈利手段。捐赠被视为对开源软件开发的无偿资助。",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "升级到Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "我已经支付了Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "升级至Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "通过捐赠页面获得更多付款方式",
-    "original": "More payment methods via the donations page"
+    "message": "其他捐赠方式",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "使用贝宝支付",
-    "original": "Pay using PayPal"
+    "message": "使用 PayPal 捐款",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "用法",
@@ -606,6 +744,10 @@
     "message": "一个方便的选择是使用Talkie快捷键：",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "直接从剪贴板朗读文本",
+    "original": "Speak text directly from the clipboard"
+  },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "开始/停止",
     "original": "Start/stop"
@@ -614,6 +756,10 @@
     "message": "开始/停止",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "使用您配置的声音朗读复制到剪贴板的任何文本。最简单的方法是使用可配置的快捷键。您也可以右键单击Talkie Premium按钮，或在网站的空白区域单击，然后选择从剪贴板朗读。",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "在任何网页上选择所需的文本。",
     "original": "Select desired text on any web page."
@@ -621,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "单击浏览器工具栏中Talkie",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie可用于朗读页面上选定的文本。当页面关闭或页面地址发生变化时， Talkie可以继续朗读或自动停止。",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "继续讲话或自动停止",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "当标签或窗口关闭时， Talkie可以继续讲话或自动停止。",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "当页面关闭时",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "关闭标签页后继续讲话",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "地址更改主要发生在点击链接转到另一个页面时，或者手动在地址栏中输入时。某些网站还可能在其他情况下更改地址，例如在加载其他信息时。",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "当页面地址改变时， Talkie可以继续朗读，也可以自动停止。",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "出于隐私原因，Mozilla Firefox 并不总是报告页面地址何时更改。禁用此设置可能不会产生任何效果。",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "当页面地址改变时",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "地址改变时继续讲话",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "$LANGUAGE_CODE$的默认语音是$VOICE$ 。",
@@ -667,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "找到$VOICES_COUNT$针对$LANGUAGE_CODE$的声音。",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "已安装语音方言",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "已安装的语音语言",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "已安装的声音",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "声音",
@@ -771,9 +983,65 @@
     "message": "无停顿地阅读较长的文本（实验性）",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "忘记个别历史记录",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "忘记所有$HISTORY_COUNT$历史记录",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie可以记住之前说过的文字，以便稍后重播。此设置限制了可以记住的历史记录数量。",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "降低限制可立即减少历史记录条目数。限制为 0 表示禁用记住历史记录。默认限制为$DEFAULT_LIMIT$ 。",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "目前已记住$HISTORY_COUNT$历史记录。您可以一次性全部忘记，也可以忘记个别条目。",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "历史",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "历史记录条目限制",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "使用Talkie Premium您可以更改每种语言的默认语音，以及每种语音的语音和音调。",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$是一种在线语音。使用时可能需要有效的互联网连接才能访问第三方服务。",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "欢迎来到$NAME$ ！您现在正在使用世界上最好的文本转语音浏览器扩展程序之一。",
@@ -786,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "继续并选择此文本，然后单击浏览器工具栏中$NAME$享受！",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "选择此文本，然后单击浏览器工具栏中的$NAME$按钮。",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie目前可以找到$VOICES_COUNT$声音使$LANGUAGE_GROUPS_COUNT$在语言$LANGUAGES_COUNT$安装在你的方言$SYSTEM_TYPE_PRETTY_NAME$一个上运行的浏览器$OSTYPE_PRETTY_NAME$操作系统。",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie目前可以找到已安装的$VOICES_COUNT$个声音，从而能够启用 $ $LANGUAGES_COUNT$个方言中的$LANGUAGE_GROUPS_COUNT$种语言。",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -835,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "抱歉，从剪贴板读取文本是Talkie Premium功能。有没有考虑升级？",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "抱歉，但朗读剪贴板中的文本是一项Talkie Premium功能。您考虑过升级吗？",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "抱歉，此浏览器不支持从剪贴板读取。至少还没有。请在一个月左右后重试！",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "抱歉，但该浏览器似乎不支持访问剪贴板。",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie无权从剪贴板访问。没关系，但是随后无法读取剪贴板文本。",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie无权访问剪贴板。您可以在Talkie选项页面上授予权限。",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "在剪贴板中找不到合适的文本。你可以尝试复制其他东西吗？",

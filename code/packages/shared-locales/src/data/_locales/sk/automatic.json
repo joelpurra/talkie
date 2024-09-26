@@ -31,18 +31,26 @@
     "message": "Inovovať na Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
+  "commandSpeakClipboardDescription": {
+    "message": "Vyslovte text zo schránky",
+    "original": "Speak text from the clipboard"
+  },
   "commandStartStopDescription": {
     "message": "Výber spustenia/zastavenia čítania",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Rýchly, jednoduchý a vysokokvalitný prevod textu na reč vo viac ako 40 jazykoch. Čítajte nahlas z webových stránok, PDF, e-mailu. Hovorte text pomocou TTS.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Rýchly a jednoduchý prevod textu na reč. Čítajte nahlas z webových stránok, PDF, e-mailu. Otvorený zdrojový kód s ohľadom na súkromie.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Funkcie a upgrade",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Stav a história",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Použitie a skratky",
@@ -105,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Závisí to od distribúcie Linuxu, prehliadača a distribučného systému balíkov, ktorý používate. Pozrite si samostatné pokyny na inštaláciu pre vašu kombináciu softvéru. Najjednoduchšie môže byť vyskúšať iný prehliadač a zistiť, či má predinštalovaný vhodný hlas. Napríklad Firefox v95 na Ubuntu 21.10 je možné nainštalovať pomocou Aptitude alebo Snap; prvý obsahuje 8611 hlasov eSpeak umožňujúcich 95 jazykov v 7358 dialektoch, ale druhý obsahuje 0 hlasov. Ďalším príkladom je Google Chrome v96 na Ubuntu 21.10, ktorý štandardne obsahuje 19 hlasov umožňujúcich 14 jazykov v 18 dialektoch. Dajte mi prosím vedieť, aké máte skúsenosti!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Závisí to od distribúcie Linuxu, prehliadača a distribučného systému balíkov, ktorý používate. Pozrite si samostatné pokyny na inštaláciu pre vašu kombináciu softvéru. Najjednoduchšie môže byť vyskúšať iný prehliadač a zistiť, či má predinštalovaný vhodný hlas. Napríklad Firefox v130 na Ubuntu 24.04 nainštalovaný pomocou Snap obsahuje 13 000+ hlasov eSpeak umožňujúcich viac ako 100 jazykov vo viac ako 100 dialektoch – ale všetky tieto hlasy majú nízku kvalitu. Na porovnanie, Google Chrome v129 na Ubuntu 24.04 nainštalovaný pomocou Apt obsahuje 19 hlasov umožňujúcich 14 jazykov v 18 dialektoch – všetko vo vysokej kvalite.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Ako môžem nainštalovať viac hlasov v Talkie v systéme Linux?",
@@ -161,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Žiaľ, nie naplno. Pre Talkie Premium je možné skopírovať text a prečítať ho zo schránky. Ukazuje sa, že Google Docs (rovnako ako Google Spreadsheet, Google Drive a podobne) nie je webová stránka, ale špeciálna „aplikácia v prehliadači“, ktorú vytvoril Google. Talkie nemôže pristupovať k vybratému textu ani pridávať položky kontextového menu, takže Talkie nefunguje.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Žiaľ, nie naplno. Pre používateľov Talkie Premium je možné skopírovať text a vysloviť ho zo schránky. Ukazuje sa, že Google Docs (rovnako ako Google Spreadsheet, Google Drive a podobne) nie je webová stránka, ale špeciálna „aplikácia v prehliadači“, ktorú vytvoril Google. Talkie nemôže pristupovať k vybratému textu ani pridávať položky kontextového menu, takže tlačidlo Talkie nefunguje.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Funguje Talkie v Dokumentoch Google?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Áno prosím! Prednostne vytvorte správu o probléme na Github, aby vám mohli pomôcť aj ostatní. Uveďte čo najviac informácií, ako napríklad prehliadač a verziu, operačný systém a verziu a jazyk/hlas, ktorý používate. Zahrňte aj informácie týkajúce sa konkrétnych webových stránok, na ktorých vidíte chybu, najlepšie s odkazom.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Áno, prosím. Prednostne vytvorte správu o probléme na Github, aby vám mohli pomôcť aj ostatní. Uveďte čo najviac informácií, ako napríklad prehliadač a verziu, operačný systém a verziu a jazyk/hlas, ktorý používate. Zahrňte aj informácie týkajúce sa konkrétnych webových stránok, na ktorých vidíte chybu, najlepšie s odkazom.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Mám nahlásiť chyby?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Zvyčajne! Ak môžete vybrať text v PDF, kliknite naň pravým tlačidlom a v ponuke Talkie Ak sa text nedá vybrať, ak je súčasťou obrázka, tak to nebude fungovať.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Áno, väčšinou. Ak môžete vybrať text v PDF, kliknite naň pravým tlačidlom a v ponuke vyberte Talkie. Používatelia Talkie Premium môžu tiež skopírovať text a potom ho prečítať zo schránky. Ak text nemožno vybrať, napríklad ak je súčasťou obrázka, nebude fungovať.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Dokáže Talkie čítať súbory PDF?",
@@ -193,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Určite! Stačí ma kontaktovať cez stránky podpory alebo projektu.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "áno. Popíšte požadovanú funkciu v novom čísle na Github.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Môžem požiadať o nové funkcie?",
@@ -217,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Určite! Bolo by skvelé získať pomoc s prekladom Talkie , testovať Talkie na nových systémoch, skúmať chyby a pridávať nové funkcie. Pokyny nájdete na stránke projektu.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Áno, pomoc sa vždy cení. Pokyny nájdete na stránke projektu.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Môžem pomôcť s vývojom Talkie ?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Áno – povedzte o Talkie svojim priateľom! Možno pošlite odkaz na vašu obľúbenú internetovú celebritu, online skupinu alebo newsletter. Môžete dokonca požiadať svojho šéfa, aby ho nainštaloval na všetky počítače v práci, alebo svojho učiteľa, aby ho nainštaloval v škole. Veľmi si vážime šírenie informácií o Talkie",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Áno – povedzte o Talkie svojim priateľom. Možno pošlite odkaz na vašu obľúbenú internetovú celebritu, online skupinu alebo newsletter. Môžete dokonca požiadať svojho šéfa, aby ho nainštaloval na všetky počítače v práci, alebo svojho učiteľa, aby ho nainštaloval v škole. Veľmi si vážime šírenie informácií o Talkie .",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Môžem pomôcť Talkie iným spôsobom?",
@@ -241,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Áno, k dispozícii je viacero možností platby.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Áno, k dispozícii je viacero možností darovania.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "Môžem platiť pomocou PayPal, bankovým prevodom atď.?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "Môžem darovať pomocou PayPal, bankovým prevodom atď.?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Áno, ak ste platili pomocou PayPal alebo Stripe, ktoré ponúkajú jednoduchú správu vrátenia peňazí. Náhrady vo všeobecnosti nie sú dostupné pri iných spôsoboch platieb kvôli množstvu práce navyše, ktorú si to vyžaduje, plus riziku, že peniaze budú vrátené na nesprávny účet.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Áno, ak ste darovali pomocou služby PayPal, ktorá ponúka jednoduchú správu vrátenia peňazí. Náhrady vo všeobecnosti nie sú k dispozícii pre iné spôsoby darovania z dôvodu množstva práce navyše, ktorú si to vyžaduje, okrem rizík, ako je napríklad vrátenie peňazí na nesprávny účet. Je lepšie, aby používatelia najskôr vyskúšali Talkie Premium , aby sa pred darovaním ubezpečili, že je všetko uspokojivé.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Môžem dostať náhradu?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Samozrejme! Stačí povoliť Talkie Premium a vyskúšať si to.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Jasné, žiadny problém. Ak chcete vyskúšať, stačí povoliť inováciu Talkie Premium .",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Môžem si vyskúšať Talkie Premium zadarmo?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Talkie nie je žiadna reklama, zhromažďovanie údajov ani sledovanie používateľov. Spokojní používatelia platiaci za Talkie Premium je jediné speňaženie.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "V Talkie nie je žiadna reklama, zhromažďovanie údajov ani sledovanie používateľov. Jediným speňažením je darovanie šťastných používateľov pre Talkie Premium .",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Talkie rozšírenia Talkie reklamu, zhromažďujú údaje alebo sledujú používateľov?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Systém cti je, keď sa jednotlivcom dôveruje, že sú čestní a dodržiavajú pokyny bez prísne vynútených kontrol. Za Talkie Premium dôveru, že tí, ktorí inovujú, za to zaplatili.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "Systém cti je, keď si jednotlivci navzájom dôverujú, že budú dodržiavať dohodnuté pokyny bez prísne vynútených kontrol. Pre Talkie Premium to znamená dôverovať, že tí, ktorí inovujú, tiež prispeli.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Čo je to systém cti?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Pretože ľudia na celom svete používajú rôzne meny, majú rôzne úrovne disponibilného príjmu a majú rôzne úrovne zhodnotenia Talkie Premium. Neexistuje jediná pevná cena, ktorá by fungovala dobre pre každého na svete. Okrem toho prichádzajú fluktuácie mien, trendy ekonomického cyklu, regionálne/vnútroštátne variácie atď. Celkovo vzaté, nastavenie cien pre produkt predávaný na celom svete je komplikované. Je jednoduchšie nechať každého, aby si stanovil svoju vlastnú cenu, a zabezpečiť, aby bol produkt dostatočne dobrý na to, aby zaručil platbu.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Pretože ľudia na celom svete používajú rôzne meny, majú rôzne úrovne disponibilného príjmu a majú rôzne úrovne zhodnotenia funkcií Talkie Premium. Neexistuje jediná pevná cena, ktorá by fungovala dobre pre každého na svete. Okrem toho prichádza kolísanie mien, trendy ekonomického cyklu, regionálne/vnútroštátne variácie atď. Celkovo je nastavenie cien pre produkt predávaný na celom svete komplikované. Je jednoduchšie nechať každého, aby si stanovil svoju vlastnú cenu, a zabezpečiť, aby bol produkt dostatočne dobrý na to, aby zaručil dar.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Prečo si môžem stanoviť vlastnú cenu?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Talkie Premium textu na reč, uprednostňujem, aby ste zaplatili to, čo si myslíte, že Talkie Premium má pre vás hodnotu – nič viac, nič menej. V prípade, že hľadáte referenčný rámec, keď spoločnosť Google spracovávala platby za Talkie Premium predplatné v Spojených štátoch amerických 25 USD (americký dolár) ročne. Upozorňujeme, že Google upravil ceny pre krajiny a meny sveta tak, aby zodpovedali miestnym podmienkam, takže to môže byť viac alebo menej. Zároveň každý, kto slušne požiadal, mohol tiež získať Talkie Premium zadarmo.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Keďže neviem, koľko peňazí ste schopní a ochotní minúť za softvér na prevod textu na reč, uprednostňujem, aby ste darovali to, čo si myslíte, že Talkie Premium má pre vás hodnotu – nič viac, nič menej. V prípade, že hľadáte referenčný rámec, keď Internetový obchod Google Chrome spracovával platby za Talkie Premium (2017 – 2021), cena ročného predplatného bola v Spojených štátoch amerických 25 USD (americký dolár). Celosvetové ceny sa však líšili, pretože Google automaticky upravoval ceny pre iné krajiny a meny.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Koľko mi odporúčate zaplatiť?",
-    "original": "How much do you recommend I pay?"
+    "message": "Koľko mi odporúčate darovať?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Pretože implementácia systému platieb a overovania si vyžaduje veľa času a úsilia a predpokladá sa, že náklady na implementáciu prísneho overovania platieb sú vyššie ako straty od jednotlivcov, ktorí systém podvádzajú. Overenie platieb tiež vyžaduje určitú úroveň zhromažďovania údajov zo systémov používateľov a technicky zdatní používatelia môžu overenie aj tak často obísť. Takže z technického a obchodného hľadiska, aj keď neexistujú žiadne záruky, je jednoduchšie jednoducho dôverovať, že používatelia dodržiavajú systém cti.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Pretože implementácia systému platieb a overovania si vyžaduje veľa času a úsilia. Predpokladá sa, že náklady na zavedenie prísneho overovania platieb sú vyššie ako straty od jednotlivcov, ktorí podvádzajú systém. Overenie platieb tiež vyžaduje určitú úroveň zhromažďovania údajov zo systémov používateľov a technicky zdatní používatelia môžu overenie aj tak často obísť. Takže z technického a obchodného hľadiska, aj keď neexistujú žiadne záruky, je jednoduchšie jednoducho dôverovať, že používatelia dodržiavajú systém cti.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Prečo neexistuje overenie platby?",
-    "original": "Why is there no payment verification?"
+    "message": "Prečo neexistuje žiadny dar alebo overenie platby?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Rozhodnutie nevykonať overenie platby znamená, že zaplatenú sumu nemožno overiť. Navyše náklady na „výrobu“ digitálnej kópie Talkie Premium sú nulové, takže darovanie za nič neznamená pre vývojára finančnú stratu. Existuje tiež nádej, že ak sa vám páči Talkie Premium , poviete o tom svojim priateľom. Rozdávanie Talkie Premium možno považovať aj za marketingové úsilie.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "Uvedomujem si, že darovať „nič“ je trochu mätúce. Krátka odpoveď je, že peniaze nie sú všetko. Dlhá odpoveď má viac aspektov. Rozhodnutie nevykonať overenie platby znamená, že zaplatená suma je irelevantná. Navyše náklady na „výrobu“ digitálnej kópie Talkie Premium sú nulové, takže darovanie za nič neznamená pre vývojára finančnú stratu. Existuje tiež nádej, že ak sa vám páči Talkie Premium poviete o tom svojim priateľom a možno niektorí z nich tak či onak skončia darovaním. Rozdávanie Talkie Premium možno preto považovať za marketingové úsilie.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Prečo sa môžem rozhodnúť neplatiť nič?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Prečo sa môžem rozhodnúť darovať alebo nezaplatiť nič?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Áno, pomocou Stripe. Pozrite si ďalšie možnosti platby.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Áno, ale neexistuje žiadny automatický systém na opakované dary. Najjednoduchší spôsob je, že jednoducho prispejete neskôr.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Môžem vykonať opakovanú mesačnú alebo ročnú platbu?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Môžem poskytnúť pravidelný mesačný alebo ročný dar?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Áno, ak o to požiadate e-mailom. Uveďte svoje meno, adresu a voliteľne aj váš identifikátor dane z pridanej hodnoty (DPH) (alebo ekvivalent).",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Toto je zriedkavá požiadavka a bolo by potrebné ju spracovať manuálne. Pred darovaním nás prosím kontaktujte.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Môžem dostať potvrdenie o platbe?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Môžem dostať potvrdenie o svojom dare?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Pretože sa vám páčia ďalšie funkcie, Talkie Premium poskytuje Talkie Premium, a šťastný pocit z toho, že prispievate k vývoju softvéru s otvoreným zdrojovým kódom nezávislými vývojármi. Vzhľadom na relatívne vysoké osobné náklady na vývoj a údržbu, ale nulové náklady na „výrobu“ digitálnych kópií, platby za Talkie Premium možno považovať aj za poskytovanie podpory pre budúci vývoj a údržbu, na rozdiel od hodnoty produktu v čase platby. .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Pretože sa vám páčia ďalšie funkcie, ktoré poskytuje Talkie Premium , a šťastný pocit z toho, že prispievate k vývoju softvéru s otvoreným zdrojovým kódom nezávislými vývojármi. Vzhľadom na relatívne vysoké časové náklady na vývoj a údržbu, ale nulové náklady na „výrobu“ digitálnych kópií možno dary pre Talkie Premium považovať aj za poskytovanie podpory a povzbudenia pre budúci vývoj a údržbu, na rozdiel od hodnoty produktu v danom čase. darcovstva.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Prečo by som mal platiť za upgrade?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Prečo by som mal prispieť na inováciu?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "Krátka odpoveď je: pravdepodobne nie. Ukázalo sa, že v systéme Microsoft Windows existujú moderné a staré hlasy. Keď som naposledy testoval, holandský hlas „Microsoft Frank“ bol dostupný v Microsoft Edge, ale nie v Google Chrome ani Mozilla Firefox. Jedným z dôvodov je, že niektoré hlasy sú vytvorené pre novší rečový systém WinRT a niektoré pre staršie rozhranie pre programovanie reči (SAPI). Prehliadače nemusia podporovať staré aj nové systémy reči, čo znamená, že hlas, ktorý je v skutočnosti nainštalovaný, stále nemusí byť dostupný vo vašom obľúbenom prehliadači. Postupom času bude väčšina prehliadačov pravdepodobne podporovať novší systém WinRT. Ak vám chýbajú hlasy vo vašom jazyku, jedným z návrhov je skúsiť použiť Talkie v Microsoft Edge.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Áno, ale záleží na tom, aký prehliadač používate. V systéme Microsoft Windows sú k dispozícii moderné aj staré hlasy. Keď som naposledy testoval, holandský hlas „Microsoft Frank“ bol dostupný v Microsoft Edge, ale nie v Google Chrome ani Mozilla Firefox. Jedným z dôvodov je, že niektoré hlasy sú vytvorené pre novší rečový systém WinRT a niektoré pre staršie rozhranie pre programovanie reči (SAPI). Váš obľúbený prehliadač nemusí podporovať starý aj nový rečový systém, čo znamená, že hlas, ktorý je v skutočnosti nainštalovaný, nemusí byť použiteľný. Postupom času bude pravdepodobne väčšina prehliadačov podporovať novší systém WinRT. Ak vám chýbajú hlasy vo vašom jazyku, jedným z návrhov je skúsiť použiť Talkie v Microsoft Edge.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
-    "message": "Talkie všetky hlasy pre Microsoft Windows s Talkie?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "message": "Fungujú všetky hlasy pre Microsoft Windows s Talkie ?",
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "Možno s veľkým úsilím. Existuje aj niekoľko neoficiálnych riešení, ako dosiahnuť, aby nové hlasy WinRT fungovali so staršími prehliadačmi s podporou SAPI, ale ide o vysoko technické úsilie a neodporúčame ho pre netechnických používateľov.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "Možno s veľkým úsilím. Existuje aj niekoľko neoficiálnych riešení, ako získať nové hlasy WinRT, aby fungovali so staršími prehliadačmi s podporou SAPI, ale ide o vysoko technické úsilie, ktoré sa neodporúča pre netechnických používateľov.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "Môžu hlasy WinRT fungovať v prehliadačoch s povoleným SAPI v systéme Microsoft Windows?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Áno, niektorí áno. Postupujte podľa inštalačných pokynov pre váš systém a prehliadač. Keď sú hlasy nainštalované vo vašom prehliadači, Talkie by ich mal automaticky rozpoznať. Prosím, podeľte sa o svoje tipy!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Áno, niektorí áno. Postupujte podľa inštalačných pokynov pre váš systém a prehliadač. Keď sú hlasy nainštalované vo vašom prehliadači, Talkie by ich mal automaticky rozpoznať.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Talkie open source hlasy s Talkie?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Dary znamenajú dobrovoľné výdavky na niečo pozitívne. Myslite na to ako na sprepitné. Platby znamenajú povinnú peňažnú transakciu.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Prečo dary namiesto platieb?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "Namiesto peňazí šírte pozitivitu. Podporte humanitárnu organizáciu. Staňte sa dobrovoľníkom v miestnej charite. Pomôž cudziemu človeku. Objať člena rodiny. Usmievajte sa. V skutočnosti sú tieto všetky dôležitejšie ako peňažné dary pre Talkie Premium. Oceňujem však, že dostávam pohľadnice.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Rozhodla som sa nedarovať nič. Môžem ešte niečo urobiť?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Áno, aj tak môžete použiť Talkie Premium .",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Ak sa rozhodnem nič nedarovať, počíta sa to?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Pôvodný plán bol speňažiť Talkie účtovaním ročného predplatného za Talkie Premium. Niekoľko rokov (2017 – 2021) Internetový obchod Google Chrome spracovával platby a predplatné za Talkie Premium , ale túto službu už neponúka. Keď externý platobný systém prestal fungovať, rozhodol som sa ponechať funkcie Talkie Premium oddelené, aby som naznačil, že do Talkie bolo vynaložené veľa úsilia. Dary sú zástupným znakom toho, že ľudia používajú a oceňujú Talkie , čo ma inšpirovalo k tomu, aby som na ňom strávil stovky hodín.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Ak sú dary nepovinné, prečo sú funkcie Talkie Premium oddelené?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie , rovnako ako môj ďalší otvorený zdrojový kód, je hobby projekt. Každých pár týždňov je zvyčajne potrebné postarať sa o niečo menšie, napríklad odpovedanie na otázky zaslané e-mailom. Programovanie na Talkie je zvyčajne sústredené na niekoľko dní tu a tam – často počas prázdnin a prázdnin. Bohužiaľ, zmeny vonkajšej politiky vyžadujú od vývoja funkcií čoraz viac času. Napríklad technická inovácia Talkie na verziu Manifest 3 (MV3) trvala niekoľko týždňov práce (2023 – 2024) bez zjavného zlepšenia užitočnosti Talkie .",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Koľko času trávite prácou na Talkie ?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "V tejto chvíli si nie som istý. Vyvinul som Talkie (2016) pre ostatných, aby si ho užívali, a ja ho v skutočnosti nepoužívam. Pridávanie nových funkcií a učenie sa nových vecí je zábava. Dostať pozitívnu spätnú väzbu a vidieť, že počet používateľov stúpa, je pekné. Momentálne to však nie je moja obľúbená záľuba, pretože na vývoj v posledných rokoch (2020-2024) negatívne vplývali vonkajšie faktory. Predovšetkým zverejnenie webového rozšírenia si vyžaduje neustále sa vyvíjajúce zásady internetového obchodu Google Chrome (CWS) a doplnkov Mozilla (AMO) pre Firefox.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Ako dlho budete pracovať na Talkie ?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Odpoveď na túto otázku nie je možné spoľahlivo aktualizovať. Aktuálny stav projektu nájdete na webovej stránke Talkie .",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Stále aktívne pracujete na Talkie ?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Chyby",
@@ -381,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "V súčasnosti sa používa bezplatná edícia Talkie a k dispozícii je obmedzená sada funkcií. Možno by pre vás bolo lepšou voľbou Talkie Premium",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "Momentálne používate bezplatnú edíciu Talkie a k dispozícii je obmedzená sada funkcií. Uvažovali ste o inovácii na Talkie Premium ?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "V súčasnosti sa používa Talkie Premium a všetky funkcie sú k dispozícii. Ďakujem veľmi pekne, hreje pri srdci!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "Momentálne používate Talkie Premium a všetky funkcie sú k dispozícii. Ďakujem veľmi pekne, hreje pri srdci!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie prichádza v dvoch vydaniach: Talkie a Talkie Premium. Bezplatná edícia je skvelá pre väčšinu prípadov použitia, ale prémiová edícia ponúka ďalšie možnosti a funkcie.",
@@ -409,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Kód je open source a je k dispozícii zadarmo pre všetkých používateľov.",
-    "original": "Code is open source and available for free to all users."
+    "message": "Kód je open source a je plne dostupný pre všetkých používateľov.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Zadarmo!",
-    "original": "Free!"
+    "message": "Použite toľko, koľko chcete, bez nákladov.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Vlastnosti",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Vyberte si svoj vlastný predvolený hlas pre každý jazyk. Skvelé, ak vás omrzí systémový hlas!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Vyberte si svoj vlastný preferovaný hlas pre každý jazyk.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Vyberte rýchlosť čítania a výšku hlasu. Upravte hlasy podľa svojich predstáv!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Upravte rýchlosť čítania a výšku hlasu.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Ten teplý, neostrý pocit, ktorý máte, keď podporujete open source softvér od nezávislých vývojárov.",
@@ -437,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Prečítajte si text zo schránky! Stačí skopírovať text odkiaľkoľvek v ľubovoľnom programe a pomocou Talkie Premium ho prečítať!",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Vyslovte text zo schránky. Skopírujte akýkoľvek text odkiaľkoľvek v ľubovoľnom programe a na jeho čítanie použite Talkie Premium .",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Dostupné hlasy prevodu textu na reč",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Nainštalujte si do systému nejaké hlasy, inak Talkie nebude fungovať. Prepáč!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Nepodarilo sa nájsť žiadne hlasy prevodu textu na reč. Bez hlasov Talkie nemôže správne fungovať. Niekedy pomôže znova načítať túto stránku, aspoň ak je prehliadač pomalý alebo je tam veľa hlasov.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Nenašli sa žiadne hlasy prevodu textu na reč",
@@ -456,6 +524,10 @@
     "message": "Licencia",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Licencie tretích strán",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Načítava...",
     "original": "Loading..."
@@ -467,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "nastavenie",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Zobraziť text schránky",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "Prístup do schránky nebol udelený.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "Odmietnuť povolenie schránky",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "Ak chcete vysloviť text z ľubovoľného programu, môžete skopírovať text do schránky a použiť konfigurovateľnú klávesovú skratku. Aby mal Talkie prístup do schránky, musíte najprv udeliť povolenie. Toto je funkcia Talkie Premium .",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "Udeľte alebo odmietnite svoje povolenie kedykoľvek. Váš prehliadač vás môže alebo nemusí požiadať o potvrdenie.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Udeliť povolenie schránky",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Prístup do schránky povolený.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Povolenie na prístup do schránky",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "Prístup do schránky je neznámy alebo zlyháva.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "Vysloviť text zo schránky",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "Text schránky sa nepodarilo prečítať.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "Text zo schránky sa dal prečítať.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "Text schránky nebol prečítaný.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Neexistujú žiadne záznamy histórie.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "História",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "Jazyk",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Stav",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "Hlas",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie bol vyvinutý pár dní pred Novým rokom 2016/2017 na výzvu priateľa. Výzva začala otázkou: je možné počas dochádzania do práce počúvať článok namiesto čítania? Jednoduché, povedal som a rozhodol som sa to dokázať – alebo aspoň prinútiť môj prehliadač vysloviť text pomocou hlúpeho počítačového hlasu. Základné vydanie bez akéhokoľvek používateľského rozhrania sa ukázalo ako triviálne. Pridanie používateľského rozhrania trvalo trochu dlhšie. Pridanie správnej detekcie jazyka a oveľa viac kódu. Prekonávanie chýb v prehliadači ešte viac práce. Zoznam vylepšení a funkcií pokračuje – a o niekoľko tisíc riadkov kódu neskôr sa pozeráte na konečný výsledok.",
@@ -485,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Mať otázku? Potrebujete s niečím pomôcť? Rýchle odpovede na bežné otázky nájdete v často kladených otázkach nižšie. Ak vám to neposkytne odpoveď, pošlite mi akékoľvek otázky, ktoré by ste mohli mať. Bol by som rád, keby bola vaša skúsenosť s používaním $NAME$ plynulá a príjemná!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Ak potrebujete rýchlu a jednoduchú podporu, prečítajte si tieto bežné otázky a odpovede. Ak vaša otázka stále nie je zodpovedaná, kontaktujte ma.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "podpora",
@@ -551,32 +689,32 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Cena za Talkie Premium nie je pevná. Namiesto toho platíte, čo chcete, v závislosti od toho, koľko si myslíte, že prémiové funkcie pre vás stoja. Môžete sa dokonca rozhodnúť, že nebudete platiť nič.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Cena za Talkie Premium nie je pevná. Namiesto toho darujete, čo chcete, v závislosti od toho, koľko si myslíte, že prémiové funkcie pre vás stoja. Môžete sa dokonca rozhodnúť nič nedarovať.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Po odoslaní platby nie sú zadané žiadne inovačné kódy, žiadne používateľské účty na registráciu ani žiadne iné overenie platby. Namiesto toho Talkie Premium používa systém cti.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "Po darovaní nie sú potrebné žiadne inovačné kódy, žiadne používateľské účty na registráciu ani žiadne iné overenie daru. Namiesto toho Talkie Premium používa systém cti.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Upozorňujeme, že Talkie nemá žiadnu reklamu, sledovanie používateľov ani zhromažďovanie údajov ako alternatívne prostriedky na speňaženie. Platby sú označené ako dary na vývoj softvéru s otvoreným zdrojovým kódom.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie nemá žiadnu reklamu, sledovanie používateľov ani zhromažďovanie údajov ako alternatívne prostriedky na speňaženie. Dary sú označené ako odmena za vývoj open source softvéru.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Inovovať na Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Zaplatil som za Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "Inovovať na Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Ďalšie spôsoby platby na stránke darov",
-    "original": "More payment methods via the donations page"
+    "message": "Ďalšie spôsoby darovania",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "Plaťte pomocou služby PayPal",
-    "original": "Pay using PayPal"
+    "message": "Darujte pomocou služby PayPal",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Použitie",
@@ -606,6 +744,10 @@
     "message": "Talkie možnosťou je použiť klávesové skratky Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Hovorte text priamo zo schránky",
+    "original": "Speak text directly from the clipboard"
+  },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Štart stop",
     "original": "Start/stop"
@@ -614,6 +756,10 @@
     "message": "Štart stop",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Vyslovte akýkoľvek text skopírovaný do schránky pomocou nakonfigurovaných hlasov. Najjednoduchším spôsobom je použiť konfigurovateľnú klávesovú skratku. Môžete tiež kliknúť pravým tlačidlom myši na tlačidlo Talkie Premium alebo na prázdnu oblasť webovej stránky a vybrať možnosť hovoriť zo schránky.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Vyberte požadovaný text na ľubovoľnej webovej stránke.",
     "original": "Select desired text on any web page."
@@ -621,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Kliknite na Talkie na paneli s nástrojmi prehliadača",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie možno použiť na čítanie vybratého textu na stránke. Keď sa stránka zatvorí alebo sa zmení adresa stránky, Talkie môže pokračovať v rozprávaní alebo sa automaticky zastaviť.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Pokračujte v hovorení alebo automaticky zastavte",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Keď je karta alebo okno zatvorené, Talkie môže pokračovať v hovorení alebo sa automaticky zastaviť.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Keď je stránka zatvorená",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Po zatvorení karty pokračujte v hovorení",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "K zmenám adresy dochádza predovšetkým pri kliknutí na odkaz na prechod na inú stránku alebo pri ručnom zadávaní textu do panela s adresou. Niektoré webové stránky môžu zmeniť adresu aj v iných prípadoch, napríklad pri načítavaní dodatočných informácií.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Keď sa adresa stránky zmení, Talkie môže pokračovať v hovorení alebo sa automaticky zastaviť.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "Z dôvodu ochrany osobných údajov prehliadač Mozilla Firefox nehlási vždy zmenu adresy stránky. Vypnutie tohto nastavenia nemusí mať žiadny účinok.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Keď sa zmení adresa stránky",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Pokračujte v hovorení, keď sa adresa zmení",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "Predvolený hlas pre dialekt $LANGUAGE_CODE$ je $VOICE$ .",
@@ -667,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "Našlo sa $VOICES_COUNT$ hlasov pre jazyk $LANGUAGE_CODE$ .",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Nainštalované hlasové dialekty",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Nainštalované jazyky hlasu",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Nainštalované hlasy",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "Hlasy",
@@ -771,9 +983,65 @@
     "message": "Čítajte dlhšie texty bez prestávok (experimentálne)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Zabudnite na jednotlivé záznamy histórie",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Zabudnite na všetky položky histórie $HISTORY_COUNT$",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie si pamätá predtým hovorený text, takže ho možno neskôr prehrať. Toto nastavenie obmedzuje počet zapamätaných záznamov histórie.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Znížte limit, aby ste okamžite znížili počet záznamov histórie. Limit 0 deaktivuje zapamätanie histórie. Predvolený limit je $DEFAULT_LIMIT$ .",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "Momentálne je zapamätaných $HISTORY_COUNT$ záznamov histórie. Môžete zabudnúť na všetko naraz alebo zabudnúť na jednotlivé položky.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "História",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Limit vstupu do histórie",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Pomocou Talkie Premium môžete zmeniť predvolený hlas pre každý jazyk, ako aj hlas a výšku každého hlasu.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ je online hlas. Používanie môže vyžadovať aktívne internetové pripojenie na prístup k službám tretích strán.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "Vitajte v $NAME$! Teraz používate jedno z najlepších rozšírení prehliadača na prevod textu na reč na svete.",
@@ -786,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Pokračujte výberom tohto textu a potom kliknite na tlačidlo $NAME$ na paneli s nástrojmi prehliadača. Užite si to!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Vyberte tento text a potom kliknite na tlačidlo $NAME$ na paneli s nástrojmi prehliadača.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie možno v súčasnosti nájsť $VOICES_COUNT$ hlasy umožňujúci $LANGUAGE_GROUPS_COUNT$ jazykov v $LANGUAGES_COUNT$ dialekty nainštalovaných v $SYSTEM_TYPE_PRETTY_NAME$ prehliadači bežiacom na $OSTYPE_PRETTY_NAME$ operačného systému.",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie môže momentálne nájsť nainštalované hlasy $VOICES_COUNT$ , čím umožňuje jazyky v $LANGUAGE_GROUPS_COUNT$ v $LANGUAGES_COUNT$ dialektoch.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -835,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Prepáčte, ale čítanie textu zo schránky je funkcia Talkie Premium Zvažovali ste upgrade?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "Prepáčte, ale vyslovovanie textu zo schránky je funkcia Talkie Premium. Zvažovali ste upgrade?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Je nám ľúto, ale tento prehliadač nepodporuje čítanie zo schránky. Aspoň zatiaľ nie. Skúste to znova o mesiac alebo neskôr!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Je nám ľúto, ale zdá sa, že tento prehliadač nepodporuje prístup do schránky.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie nemá povolenie na prístup zo schránky. To je v poriadku, ale čítanie textu schránky nebude fungovať.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie nemá povolenie na prístup do schránky. Povolenie môžete udeliť na stránke možností Talkie .",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "V schránke sa nepodarilo nájsť vhodný text. Môžete skúsiť skopírovať niečo iné?",

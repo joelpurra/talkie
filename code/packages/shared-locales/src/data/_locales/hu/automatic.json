@@ -31,18 +31,26 @@
     "message": "Frissítés Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
+  "commandSpeakClipboardDescription": {
+    "message": "Beszéljen szöveget a vágólapról",
+    "original": "Speak text from the clipboard"
+  },
   "commandStartStopDescription": {
     "message": "Az olvasás indítása/leállítása",
     "original": "Start/stop reading selection"
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Gyors, egyszerű, kiváló minőségű szövegfelolvasás több mint 40 nyelven. Olvasson hangosan webhelyekről, PDF-ből, e-mailekből. Beszéljen szöveget a TTS segítségével.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Gyors és egyszerű szövegfelolvasó. Felolvasás webhelyekről, PDF-ből, e-mailekből. Adatvédelem-tudatos, nyílt forráskód.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Jellemzők és frissítés",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Állapot és előzmények",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Használat és parancsikonok",
@@ -105,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Ez attól függ, hogy melyik Linux disztribúciót, böngészőt és csomagterjesztési rendszert használja. Lásd a szoftverkombinációhoz tartozó külön telepítési utasításokat. A legegyszerűbb lehet, ha megpróbál egy másik böngészőt, és megnézi, hogy van-e előre telepítve megfelelő hang. Például az Ubuntu 21.10 rendszeren futó Firefox v95 telepíthető az Aptitude vagy a Snap használatával; az előbbi 8611 eSpeak hangot tartalmaz, amelyek 95 nyelvet tesznek lehetővé 7358 dialektusban, az utóbbi azonban 0 hangot tartalmaz. Egy másik példa a Google Chrome v96 az Ubuntu 21.10-ben, amely alapértelmezés szerint 19 hangot tartalmaz, amelyek 14 nyelvet tesznek lehetővé 18 dialektusban. Kérlek oszd meg velem mik a tapasztalataid!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Ez attól függ, hogy melyik Linux disztribúciót, böngészőt és csomagterjesztési rendszert használja. Lásd a szoftverkombinációhoz tartozó külön telepítési utasításokat. A legegyszerűbb lehet, ha megpróbál egy másik böngészőt, és megnézi, hogy van-e előre telepítve megfelelő hang. Például a Snap segítségével telepített Ubuntu 24.04-es Firefox v130 13000+ eSpeak hangot tartalmaz, amelyek több mint 100 nyelvet tesznek lehetővé 100+ dialektusban – de ezek a hangok mindegyike gyenge minőségű. Összehasonlításképpen, az Apt használatával telepített Ubuntu 24.04-es Google Chrome v129 19 hangot tartalmaz, amelyek 14 nyelvet tesznek lehetővé 18 dialektusban – mindezt kiváló minőségben.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Hogyan telepíthetek több hangot a Talkie Linuxon?",
@@ -161,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Sajnos nem teljesen. A Talkie Premium felhasználók számára lehetőség van szöveg másolására és a vágólapról történő olvasására. Kiderült, hogy a Google Docs (valamint a Google Spreadsheet, a Google Drive és hasonlók) nem egy weboldal, hanem egy speciális \"alkalmazás a böngészőben\", amit a Google készített. Talkie nem fér hozzá a kijelölt szöveghez, és nem tud hozzáadni helyi menüelemeket, ezért a Talkie gomb nem működik.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Sajnos nem teljesen. Talkie Premium felhasználók számára lehetőség van szöveg másolására és kimondására a vágólapról. Kiderült, hogy a Google Docs (valamint a Google Spreadsheet, a Google Drive és hasonlók) nem egy weboldal, hanem egy speciális \"alkalmazás a böngészőben\", amit a Google készített. Talkie nem fér hozzá a kijelölt szöveghez, és nem tud hozzáadni helyi menüelemeket, ezért a Talkie gomb nem működik.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Működik a Talkie a Google Dokumentumokban?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Igen, kérem! Lehetőleg hozzon létre egy hibajelentést a Githubon, hogy mások is segíthessenek. Kérjük, adja meg a lehető legtöbb információt, például, hogy melyik böngészőt és verziót, operációs rendszert és verziót, valamint nyelvet/hangot használ. Adjon meg információkat azokról a webhelyekről is, ahol a hibát látja, lehetőleg hivatkozással.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Igen, kérem. Lehetőleg hozzon létre egy hibajelentést a Githubon, hogy mások is segíthessenek. Kérjük, a lehető legtöbb információt adjon meg, például, hogy melyik böngészőt és verziót, operációs rendszert és verziót, valamint nyelvet/hangot használ. Adjon meg információkat azokról a webhelyekről is, ahol a hibát látja, lehetőleg hivatkozással.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Jelentsem a hibákat?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Általában! Ha ki tudja jelölni a szöveget a PDF-ben, kattintson rá jobb gombbal, és válassza a menü Talkie Ha a szöveg nem jelölhető ki, ha egy kép része, akkor nem fog működni.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Igen, legtöbbször. Ha ki tudja jelölni a szöveget a PDF-ben, kattintson rá jobb gombbal, és válassza a menü Talkie menüpontját. Talkie Premium felhasználók másolhatják a szöveget, majd elolvashatják a vágólapról. Ha a szöveg nem jelölhető ki, például egy kép része, akkor nem fog működni.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Talkie tud PDF fájlokat olvasni?",
@@ -193,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Biztosan! Csak vegye fel velem a kapcsolatot a támogatási vagy projektoldalakon keresztül.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "Igen. Ismertesse a kívánt funkciót a Github új számában.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Kérhetek új funkciókat?",
@@ -217,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Biztosan! Nagyszerű lenne segítséget kérni a Talkie fordításához, új rendszereken tesztelni a Talkie , kivizsgálni a hibákat és új funkciókat hozzáadni. Kérjük, tekintse meg a projekt oldalát az utasításokért.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Igen, a segítséget mindig nagyra értékelik. Kérjük, tekintse meg a projekt oldalát az utasításokért.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Segíthetek a Talkie fejlesztésében?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Igen – kérem, meséljen ismerőseinek a Talkie! Esetleg küldjön egy linket kedvenc internetes hírességére, online csoportjára vagy hírlevelére. Megkérheti a főnökét is, hogy telepítse az összes munkahelyi számítógépére, vagy a tanárát, hogy telepítse az iskolában. Nagyon nagyra értékeljük a Talkie",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Igen – kérem, meséljen ismerőseinek Talkie ról. Esetleg küldjön egy linket kedvenc internetes hírességére, online csoportjára vagy hírlevelére. Megkérheti a főnökét is, hogy telepítse az összes munkahelyi számítógépre, vagy a tanárát, hogy telepítse az iskolában. Nagyon nagyra értékeljük a Talkie hírének terjesztését.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Segíthetek Talkie más módon?",
@@ -241,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Igen, több fizetési mód is elérhető.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Igen, többféle adományozási lehetőség is van.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "Fizethetek PayPal-lal, banki átutalással stb.?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "Adományozhatok PayPal-lal, banki átutalással stb.?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Igen, ha a PayPal vagy a Stripe használatával fizetett, amelyek egyszerű visszatérítéskezelést kínálnak. Más fizetési módok esetén általában nem áll rendelkezésre visszatérítés, mivel többletmunkát igényel, valamint fennáll annak a veszélye, hogy a pénzt rossz számlára utalják vissza.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Igen, ha a PayPal használatával adományozott, amely egyszerű visszatérítési kezelést kínál. A visszatérítés általában nem áll rendelkezésre más adományozási módok esetén, mivel az többletmunkát igényel, az olyan kockázatok mellett, mint például a rossz számlára történő visszatérítés. Javasoljuk, hogy a felhasználók először Talkie Premium kipróbálásával töltsenek időt, hogy az adományozás előtt megbizonyosodjanak arról, hogy minden kielégítő.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Kaphatok visszatérítést?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Biztos! Csak engedélyezze a Talkie Premium frissítést a kipróbáláshoz.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Persze, semmi gond. Csak engedélyezze a Talkie Premium frissítést a kipróbáláshoz.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Ingyenesen kipróbálhatom a Talkie Premium szolgáltatást?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Talkie nincs hirdetés, adatgyűjtés vagy felhasználókövetés. A boldog felhasználók, akik a Talkie Premium ért fizetnek, az egyetlen bevételszerzés.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Talkie ban nincs hirdetés, adatgyűjtés vagy felhasználókövetés. A boldog felhasználók, akik Talkie Premium ért adományoznak, az egyetlen bevételszerzés.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "A Talkie bővítmények tartalmaznak hirdetéseket, adatokat gyűjtenek vagy követik a felhasználókat?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "A becsületrendszer az, amikor az egyénekben megbíznak abban, hogy őszinték, és szigorúan betartandó ellenőrzések nélkül betartják az irányelveket. Mert Talkie Premium bízik abban, hogy akik frissítenek, fizettek érte.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "A becsületrendszer az, amikor az egyének bíznak egymásban az egyeztetett irányelvek betartásában, szigorúan betartatott ellenőrzések nélkül. Talkie Premium esetében ez azt jelenti, hogy bízunk abban, hogy a frissítők is adományoztak.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Mi az a tiszteletrendszer?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Mert az emberek szerte a világon más-más pénznemet használnak, eltérő szintű rendelkezésre álló jövedelemmel rendelkeznek, és eltérő mértékben értékelik a Talkie Premium szolgáltatásait. Nincs olyan egységes, rögzített ár, amely mindenki számára jól működne a világon. Ezen felül jönnek a valuták ingadozásai, a gazdasági ciklus trendjei, a regionális/országon belüli ingadozások stb. Összességében egy világszerte értékesített termék árának beállítása bonyolult. Könnyebb hagyni, hogy mindenki maga határozza meg az árat, és gondoskodjon arról, hogy a termék elég jó legyen a fizetéshez.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Mert az emberek szerte a világon különböző pénznemet használnak, különböző szintű rendelkezésre álló jövedelmük van, és eltérő mértékben értékelik Talkie Premium szolgáltatásait. Nincs olyan egységes, rögzített ár, amely mindenki számára jól működne a világon. Ezen felül jönnek a valuták ingadozásai, a gazdasági ciklus trendjei, a regionális/országon belüli ingadozások stb. Összességében egy világszerte értékesített termék árának beállítása bonyolult. Könnyebb hagyni, hogy mindenki maga határozza meg az árat, és gondoskodjon arról, hogy a termék elég jó legyen az adományozáshoz.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Miért állíthatom be saját áramat?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Mivel nem tudom, mennyi pénzt költhetsz szövegfelolvasó szoftverre, jobban szeretem, ha annyit fizetsz, amennyit úgy gondolsz, hogy a Talkie Premium megér neked – se többet, se kevesebbet. Abban az esetben, ha referenciakeretet keres, amikor a Google kezelte a Talkie Premium kifizetéseit, az előfizetés évi 25 dollárba (USD) került az Amerikai Egyesült Államokban. Vegye figyelembe, hogy a Google a világ országaihoz és pénznemeihez igazította az árakat, hogy azok megfeleljenek a helyi feltételeknek, tehát több vagy kevesebb is lehet. Ugyanakkor aki udvariasan Talkie Premium az ingyen Talkie Premium-t is kaphatott.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Mivel nem tudom, mennyi pénzt tud és hajlandó költeni szövegfelolvasó szoftverre, jobban szeretem, ha annyit adományoz, amennyit úgy gondol, Talkie Premium megér Önnek – se többet, se kevesebbet. Abban az esetben, ha referenciakeretet keres, amikor a Google Chrome Internetes áruház kezelte Talkie Premium (2017-2021) kifizetéseit, az éves előfizetési költség 25 USD (USD) volt az Amerikai Egyesült Államokban. A világméretű árak azonban változtak, mivel a Google automatikusan módosította az árakat más országokhoz és pénznemekhez.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Mennyit javasolsz, hogy fizessek?",
-    "original": "How much do you recommend I pay?"
+    "message": "Mennyit ajánlotok adakoznom?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Mivel a fizetési és ellenőrzési rendszer bevezetése sok időt és erőfeszítést igényel, és feltételezhető, hogy a szigorú fizetés-ellenőrzés megvalósításának költsége magasabb, mint a rendszert megtévesztők által okozott veszteségek. A fizetés ellenőrzése bizonyos szintű adatgyűjtést is igényel a felhasználók rendszereiből, és a technikailag képzett felhasználók gyakran így is megkerülhetik az ellenőrzést. Tehát műszaki és üzleti szempontból, bár nincs garancia, könnyebb egyszerűen bízni abban, hogy a felhasználók betartják a tiszteletrendszert.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Mivel a fizetési és ellenőrzési rendszer bevezetése sok időt és erőfeszítést igényel. Feltételezhető, hogy a szigorú fizetés-ellenőrzés megvalósításának költsége magasabb, mint a rendszert csaló egyének által okozott veszteségek. A fizetés ellenőrzése bizonyos szintű adatgyűjtést is igényel a felhasználók rendszereiből, és a technikailag képzett felhasználók gyakran így is megkerülhetik az ellenőrzést. Tehát műszaki és üzleti szempontból, bár nincsenek garanciák, könnyebb egyszerűen bízni abban, hogy a felhasználók betartják a becsületrendszert.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Miért nincs fizetési ellenőrzés?",
-    "original": "Why is there no payment verification?"
+    "message": "Miért nincs adományozás vagy fizetés ellenőrzése?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Az a döntés, hogy nem hajtják végre a fizetési ellenőrzést, azt jelenti, hogy a kifizetett összeg nem ellenőrizhető. Talkie Premium digitális másolatának „előállításának” a költsége nulla, így a semmiért való átadás nem jár anyagi veszteséggel a fejlesztő számára. Arra is van remény, hogy ha tetszik a Talkie Premium , akkor szólni fog róla barátainak. A Talkie Premium adományozása marketing erőfeszítésnek is tekinthető.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "Tisztában vagyok vele, hogy a „semmi” adományozása kissé zavaró. A rövid válasz az, hogy a pénz nem minden. A hosszú válasznak több aspektusa van. Az a döntés, hogy nem hajtják végre a fizetés ellenőrzését, azt jelenti, hogy a kifizetett összeg irreleváns. Ráadásul a Talkie Premium digitális másolatának „előállításának” a költsége nulla, így annak semmire való odaadása nem jár anyagi veszteséggel a fejlesztő számára. Arra is van remény, hogy ha tetszik Talkie Premium akkor szólni fog róla barátainak, és talán néhányan adakoznak így vagy úgy. Talkie Premium odaadása ezért marketing erőfeszítésnek tekinthető.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Miért dönthetek úgy, hogy nem fizetek semmit?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Miért választhatok úgy, hogy adományozok, vagy nem fizetek semmit?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Igen, a Stripe használatával. Tekintse meg a további fizetési lehetőségeket.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Igen ám, de nincs automatizált rendszer az ismétlődő adományozásra. A legegyszerűbb módja az, hogy egy későbbi időpontban egyszerűen újra adományoz.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Fizethetek ismétlődő havi vagy éves fizetést?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Adhatok-e ismétlődő havi vagy éves adományt?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Igen, ha e-mailben kéri. Kérjük, adja meg nevét, címét és opcionálisan általános forgalmi adó (áfa) azonosítóját (vagy ennek megfelelőjét).",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Ez ritka kérés, és manuálisan kell kezelni. Kérjük, adományozás előtt vedd fel velünk a kapcsolatot.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Kaphatok nyugtát a fizetésemről?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Kaphatok bizonylatot az adományomról?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Mert szereted a Talkie Premium biztosított további szolgáltatásokat, és azt a boldog érzést, hogy hozzájárulsz a független fejlesztők nyílt forráskódú szoftverfejlesztéséhez. A fejlesztés és karbantartás viszonylag magas személyi költsége, de a digitális másolatok \"előállításának\" nulla költsége miatt a Talkie Premium kifizetése a jövőbeni fejlesztés és karbantartás támogatásának is tekinthető, szemben a termék fizetéskori értékével. .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Mert szereted a Talkie Premium által biztosított további szolgáltatásokat, és azt a boldog érzést, hogy hozzájárulsz a független fejlesztők nyílt forráskódú szoftverfejlesztéséhez. A viszonylag magas fejlesztési és karbantartási időköltség miatt, de a digitális másolatok „előállításának” költsége nulla, Talkie Premium számára nyújtott adományok támogatást és bátorítást is jelentenek a jövőbeni fejlesztéshez és karbantartáshoz, szemben a termék akkori értékével. az adományozásról.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Miért kell fizetnem a frissítésért?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Miért érdemes adakoznom a frissítésért?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "A rövid válasz: valószínűleg nem. Kiderült, hogy vannak modern hangok és régi hangok a Microsoft Windows rendszeren. Amikor legutóbb teszteltem, a holland \"Microsoft Frank\" hang elérhető volt a Microsoft Edge-ben, de nem a Google Chrome-ban vagy a Mozilla Firefoxban. Ennek egyik oka az, hogy egyes hangok az újabb WinRT beszédrendszerhez, mások pedig a régebbi Speech Application Programming Interface (SAPI) számára készültek. Előfordulhat, hogy a böngészők nem támogatják a régi és az új beszédrendszereket, ami azt jelenti, hogy a ténylegesen telepített hang továbbra sem érhető el kedvenc böngészőjében. Idővel a legtöbb böngésző valószínűleg támogatni fogja az újabb WinRT rendszert. Ha hiányoznak a hangok az Ön nyelvén, javasoljuk, hogy próbálja meg a Talkie használatát a Microsoft Edge-ben.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Igen, de ez attól függ, hogy melyik böngészőt használja. A Microsoft Windows rendszerben modern és régi hangok egyaránt elérhetők. Amikor legutóbb teszteltem, a „Microsoft Frank” holland hang elérhető volt a Microsoft Edge-ben, de nem a Google Chrome-ban vagy a Mozilla Firefoxban. Ennek egyik oka az, hogy egyes hangok az újabb WinRT beszédrendszerhez, mások pedig a régebbi Speech Application Programming Interface (SAPI) számára készültek. Előfordulhat, hogy kedvenc böngészője nem támogatja a régi és az új beszédrendszert, ami azt jelenti, hogy a ténylegesen telepített hang nem használható. Idővel a legtöbb böngésző valószínűleg támogatni fogja az újabb WinRT rendszert. Ha hiányoznak a hangok az Ön nyelvén, javasoljuk, hogy próbálja meg Talkie használatát a Microsoft Edge-ben.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
     "message": "A Microsoft Windows összes hangja működik a következővel: Talkie ?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
     "message": "Talán sok erőfeszítéssel. Van néhány nem hivatalos megoldás is annak érdekében, hogy az új WinRT hangok működjenek a régebbi SAPI-kompatibilis böngészőkkel, de ez erősen technikai jellegű, és nem ajánlott a nem műszaki felhasználók számára.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "Működhetnek a WinRT hangok a SAPI-kompatibilis böngészőkben Microsoft Windows rendszeren?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Igen, egyesek igen. Kövesse a rendszer és a böngésző telepítési utasításait. Miután a hangok telepítve vannak a böngészőben, a Talkie automatikusan észleli őket. Kérjük, ossza meg tippjeit!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Igen, néhányan igen. Kövesse a rendszer és a böngésző telepítési utasításait. Miután a hangok telepítve vannak a böngészőben, Talkie automatikusan észleli őket.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Talkie nyílt forráskódú hangok a következővel: Talkie?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Az adományozás önkéntes költést jelent valami pozitív dologra. Gondolj rá úgy, mint a hálapénzre. A kifizetések kötelező pénzforgalmi tranzakciót jelentenek.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Miért adományok a kifizetések helyett?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "Pénz helyett terjesszen pozitivitást. Támogass egy humanitárius szervezetet. Önkéntes egy helyi jótékonysági szervezetnél. Segíts egy idegennek. Ölelj meg egy családtagot. Mosoly. Valójában ezek mind fontosabbak, mint Talkie Premium pénzbeli adományai. Bár nagyra értékelem a képeslapokat.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Úgy döntöttem, hogy nem adományozok semmit. Van még valami, amit tehetek?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Igen, mindenesetre használhatja Talkie Premium .",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Ha úgy döntök, hogy nem adományozok semmit, akkor is számít?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Az eredeti terv az volt, hogy Talkie bevételt szerezzenek a Talkie Premium éves előfizetési díj felszámításával. Néhány évig (2017-2021) a Google Chrome Internetes áruház kezelte a Talkie Premium fizetéseit és előfizetéseit, de ezt a szolgáltatást már nem kínálják. Amikor a külső fizetési rendszer leállt, úgy döntöttem, hogy külön tartom Talkie Premium funkciókat, jelezve, hogy a Talkie sok erőfeszítést igényel. Az adományok azt jelzik, hogy az emberek használják és értékelik Talkie , ami inspirált arra, hogy több száz órát dolgozzam rajta.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Ha az adományozás nem kötelező, miért vannak külön Talkie Premium funkciók?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie a másik nyílt forráskódomhoz hasonlóan egy hobbiprojekt. Általában néhány hetente van valami apróság, amit el kell intézni, például válaszolni az e-mailben elküldött kérdésekre. Talkie programozása általában néhány napra koncentrálódik itt-ott – gyakran ünnepek és szabadságok idején. Sajnos a külpolitikai változások egyre több időt vesznek igénybe a funkciók fejlesztésétől. Például Talkie technikai frissítése a Manifest Version 3-ra (MV3) több hétig tartott (2023-2024), anélkül, hogy Talkie hasznossága nyilvánvalóan javult volna.",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Mennyi időt tölt Talkie vel?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "Jelenleg nem vagyok benne biztos. Talkie (2016) azért fejlesztettem ki, hogy mások is élvezhessék, és valójában nem magam használom. Új funkciók hozzáadása és új dolgok tanulása szórakoztató. Jó érzés pozitív visszajelzéseket kapni, és látni, hogy a felhasználók száma emelkedik. Bár jelenleg nem ez a kedvenc hobbim, mert az elmúlt években (2020-2024) külső tényezők negatívan befolyásolták a fejlődést. Egy webbővítmény közzétételéhez mindenekelőtt naprakésznek kell lennie a Google Chrome Internetes áruház (CWS) és a Mozilla Add-Ons (AMO) Firefoxhoz folyamatosan fejlődő szabályzataival.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Meddig fog dolgozni Talkie on?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Erre a kérdésre a választ nem lehet megbízhatóan naprakészen tartani. A projekt aktuális állapotáról a Talkie webhelyen tájékozódhat.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Még mindig aktívan dolgozol Talkie on?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Hibák",
@@ -381,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "Jelenleg a Talkie ingyenes kiadását használja, és a funkciók korlátozott készlete érhető el. Talán a Talkie Premium jobb választás lenne az Ön számára?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "Jelenleg a Talkie ingyenes kiadását használja, és a funkciók korlátozott készlete áll rendelkezésre. Gondolt már arra, hogy Talkie Premium ra frissít?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "Jelenleg a Talkie Premium szolgáltatást használja, és minden funkció elérhető. Köszönöm szépen, megmelengeti a szívemet!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "Jelenleg Talkie Premium használja, és minden funkció elérhető. Köszönöm szépen, megmelengeti a szívemet!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie két kiadásban érhető el: Talkie és Talkie Premium. Az ingyenes kiadás a legtöbb használati esetre kiváló, de a prémium kiadás további lehetőségeket és funkciókat kínál.",
@@ -409,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "A kód nyílt forráskódú, és minden felhasználó számára ingyenesen elérhető.",
-    "original": "Code is open source and available for free to all users."
+    "message": "A kód nyílt forráskódú, és minden felhasználó számára teljes mértékben elérhető.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Ingyenes!",
-    "original": "Free!"
+    "message": "Használjon annyit, amennyit csak akar, költség nélkül.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Jellemzők",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Válassza ki a saját alapértelmezett hangját minden nyelvhez. Nagyszerű, ha eleged van a rendszerhangból!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Válassza ki a kívánt hangot minden nyelvhez.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Válassza ki az olvasási sebességet és hangmagasságot hangonként. Állítsa be a hangokat ízlése szerint!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Állítsa be az olvasási sebességet és hangmagasságot hangonként.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Ez a meleg, homályos érzés, amelyet akkor kap, amikor független fejlesztők nyílt forráskódú szoftvereit támogatják.",
@@ -437,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Olvasson szöveget a vágólapról! Csak másoljon szöveget bárhonnan bármilyen programból, és olvassa el a Talkie Premium",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Beszéljen szöveget a vágólapról. Másoljon bármilyen szöveget bárhonnan bármilyen programból, és olvassa el Talkie Premium segítségével.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Elérhető szövegfelolvasó hangok",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Kérjük, telepítsen néhány hangot a rendszerére, különben a Talkie nem fog működni. Sajnálom!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Nem található szövegfelolvasó hang. Hangok nélkül Talkie nem tud megfelelően működni. Néha segít az oldal újratöltése, legalábbis ha lassú a böngésző, vagy sok a hang.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Nem található szövegfelolvasó hang",
@@ -456,6 +524,10 @@
     "message": "Engedély",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Harmadik féltől származó licencek",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Betöltés...",
     "original": "Loading..."
@@ -467,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "Beállítások",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Vágólap szövegének megjelenítése",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "A vágólaphoz való hozzáférés nem biztosított.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "A vágólap engedélyének megtagadása",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "Ha bármilyen programból szeretne szöveget mondani, másolhat szöveget a vágólapra, és használhatja a konfigurálható billentyűparancsot. Ahhoz, hogy Talkie hozzáférjen a vágólaphoz, először engedélyt kell adnia. Ez egy Talkie Premium funkció.",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "Bármikor adja meg vagy tagadja meg az engedélyt. A böngésző kérheti a megerősítést, vagy nem.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Adjon engedélyt a vágólapra",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Vágólap-hozzáférés engedélyezve.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Engedély a vágólap eléréséhez",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "A vágólap elérése ismeretlen vagy nem működik.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "A vágólap szövegének kimondása",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "A vágólap szövege nem olvasható.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "A vágólap szövege olvasható volt.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "A vágólap szövege nem lett elolvasva.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Nincsenek előzménybejegyzések.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "Történelem",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "Nyelv",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Állapot",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "Hang",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie néhány nappal a 2016/2017-es újév előtt készült, egy barát kihívására. A kihívás azzal a kérdéssel indult, hogy munkába járás közben meg lehet-e hallgatni egy cikket olvasás helyett? Könnyen mondtam, és nekivágtam, hogy bebizonyítsam – vagy legalábbis, hogy a böngészőm buta számítógépes hangon mondja ki a szöveget. A felhasználói felület nélküli alapkiadást triviálisnak bizonyult elkészíteni. A felhasználói felület hozzáadása kicsit tovább tartott. A megfelelő nyelvérzékelés hozzáadásával még egy csomó kódot. A böngésző hibáinak leküzdése még több munka. A fejlesztések és funkciók listája tovább folytatódik – és néhány ezer sornyi kóddal később már a végeredményt látja.",
@@ -485,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Kérdése van? Segítségre van szüksége valamiben? A gyakori kérdésekre adott gyors válaszokért tekintse meg az alábbi gyakran ismételt kérdéseket. Ha ez nem ad választ, kérem, küldje el nekem az esetleges kérdéseit. Örülnék, ha a $NAME$ használatával kapcsolatos tapasztalata gördülékeny és élvezetes lenne!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "A gyors és egyszerű támogatás érdekében kérjük, tekintse át ezeket a gyakori kérdéseket és válaszokat. Ha kérdésére továbbra sem kapott választ, forduljon hozzám.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "Támogatás",
@@ -551,32 +689,32 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "A Talkie Premium ára nem rögzített. Ehelyett azt fizet, amit akar, attól függően, hogy Ön szerint mennyit érnek a prémium szolgáltatások. Akár úgy is dönthet, hogy nem fizet semmit.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "A Talkie Premium ára nem rögzített. Ehelyett azt adományoz, amit akar, attól függően, hogy Ön szerint mennyit érnek a prémium szolgáltatások. Akár úgy is dönthet, hogy nem adományoz semmit.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "A fizetés elküldése után nincs szükség frissítési kódok megadására, nem kell felhasználói fiókokat regisztrálni, és nincs más fizetési ellenőrzés sem. Ehelyett a Talkie Premium a honor rendszert használja.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "Az adományozást követően nincs beírandó frissítési kód, nincs regisztrálandó felhasználói fiók, és nincs más adományellenőrzés sem. Ehelyett Talkie Premium a honor rendszert használja.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Felhívjuk figyelmét, hogy a Talkie nem kínál hirdetést, felhasználókövetést vagy adatgyűjtést a bevételszerzés alternatív eszközeként. A kifizetéseket nyílt forráskódú szoftverfejlesztésre szánt adományként jelölik.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie nem kínál hirdetést, felhasználókövetést vagy adatgyűjtést a bevételszerzés alternatív eszközeként. Az adományokat nyílt forráskódú szoftverfejlesztésre szánt hálapénznek nevezik.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Frissítés Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Fizettem a Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "Frissítés Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "További fizetési módok az adományok oldalon",
-    "original": "More payment methods via the donations page"
+    "message": "További adományozási módszerek",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "Fizessen PayPal használatával",
-    "original": "Pay using PayPal"
+    "message": "Adományozz a PayPal használatával",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Használat",
@@ -606,6 +744,10 @@
     "message": "Egy kényelmes lehetőség a Talkie gyorsbillentyűk használata:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Beszéljen szöveget közvetlenül a vágólapról",
+    "original": "Speak text directly from the clipboard"
+  },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Indítás/leállítás",
     "original": "Start/stop"
@@ -614,6 +756,10 @@
     "message": "Indítás/leállítás",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "A vágólapra másolt szöveget a konfigurált hangok segítségével mondja fel. A legegyszerűbb módja egy konfigurálható gyorsbillentyű használata. Jobb gombbal kattintson a Talkie Premium gombra, vagy a webhely egy üres területén, és válassza ki a vágólapról való felszólalást.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Válassza ki a kívánt szöveget bármely weboldalon.",
     "original": "Select desired text on any web page."
@@ -621,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Kattintson a Talkie gombra a böngésző eszköztárában",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie segítségével a kiválasztott szöveg olvasható az oldalon. Az oldal bezárásakor vagy az oldal címének megváltozásakor Talkie folytathatja a beszédet, vagy automatikusan leállíthatja.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Folytassa a beszédet, vagy állítsa le automatikusan",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Ha a lap vagy az ablak be van zárva, Talkie folytathatja a beszédet, vagy automatikusan leállíthatja.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Amikor az oldal be van zárva",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Ha a lap be van zárva, folytassa a beszédet",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "A címmódosítások elsősorban akkor történnek, ha egy hivatkozásra kattint, hogy egy másik oldalra ugorjon, vagy ha manuálisan gépel be a címsorba. Egyes webhelyek más esetekben is módosíthatják a címet, például további információk betöltésekor.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Amikor az oldal címe megváltozik, Talkie folytathatja a beszédet, vagy automatikusan leállíthatja.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "Adatvédelmi okokból a Mozilla Firefox nem mindig jelenti az oldal címének változását. Lehetséges, hogy ennek a beállításnak a letiltása nincs hatással.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Amikor az oldal címe megváltozik",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Folytassa a beszédet, ha a cím megváltozik",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "$LANGUAGE_CODE$ dialektus alapértelmezett hangja a $VOICE$ .",
@@ -667,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "$VOICES_COUNT$ hangot találtunk $LANGUAGE_CODE$ nyelven.",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Telepített hangdialektusok",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Telepített hangnyelvek",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Telepített hangok",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "Hangok",
@@ -771,9 +983,65 @@
     "message": "Hosszabb szövegek olvasása szünetek nélkül (kísérleti)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Felejtsd el az egyéni történelembejegyzéseket",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Felejtsd el az összes $HISTORY_COUNT$ előzménybejegyzést",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie képes megjegyezni a korábban kimondott szöveget, így később újra lejátszható. Ez a beállítás korlátozza, hogy hány előzménybejegyzést jegyezzen meg a rendszer.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Csökkentse a korlátot, hogy azonnal csökkentse az előzménybejegyzések számát. A 0-s korlát letiltja az előzmények emlékezését. Az alapértelmezett korlát: $DEFAULT_LIMIT$ .",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "Jelenleg $HISTORY_COUNT$ előzménybejegyzés van megjegyezve. Elfelejtheti az egészet egyszerre, vagy elfelejtheti az egyes bejegyzéseket.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "Történelem",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Az előzmények belépési korlátja",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "A Talkie Premium segítségével módosíthatja az egyes nyelvek alapértelmezett hangját, valamint az egyes hangok hangját és hangmagasságát.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ egy online hang. A használathoz aktív internetkapcsolatra lehet szükség a harmadik féltől származó szolgáltatások eléréséhez.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "Üdvözli a $NAME$! Ön jelenleg a világ egyik legjobb szövegfelolvasó böngészőbővítményét használja.",
@@ -786,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Válassza ki ezt a szöveget, majd kattintson a $NAME$ gombra a böngésző eszköztárában. Élvezd!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Jelölje ki ezt a szöveget, majd kattintson a $NAME$ gombra a böngésző eszköztárában.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie jelenleg $VOICES_COUNT$ hangot talál, amely lehetővé teszi $LANGUAGE_GROUPS_COUNT$ nyelv használatát $LANGUAGES_COUNT$ dialektusban, amely telepítve van a $OSTYPE_PRETTY_NAME$ operációs rendszert futtató $SYSTEM_TYPE_PRETTY_NAME$",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie jelenleg $VOICES_COUNT$ telepített hangot talál, ami $LANGUAGE_GROUPS_COUNT$ nyelvet tesz lehetővé $LANGUAGES_COUNT$ dialektusban.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -835,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Sajnálom, de a szöveg vágólapról történő olvasása egy Talkie Premium funkció. Gondoltál már a frissítésre?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "Sajnálom, de a vágólapról történő szöveg kimondása egy Talkie Premium funkció. Gondoltál már a frissítésre?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Sajnálom, de ez a böngésző nem támogatja a vágólapról történő olvasást. Legalábbis még nem. Kérjük, próbálja újra egy hónap múlva!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Sajnálom, de úgy tűnik, hogy ez a böngésző nem támogatja a vágólap elérését.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie nem rendelkezik hozzáférési engedéllyel a vágólapról. Ez rendben van, de akkor a vágólap szövegének olvasása nem működik.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie nem jogosult a vágólap elérésére. Engedélyt a Talkie beállítások oldalon adhat meg.",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Nem található megfelelő szöveg a vágólapon. Megpróbálnál mást másolni?",
