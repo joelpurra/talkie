@@ -33,8 +33,8 @@ import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
 import Nav from "./nav.js";
-import {
-	type NavContainerProps,
+import type {
+	NavContainerProps,
 } from "./nav-container-types.mjs";
 
 const {

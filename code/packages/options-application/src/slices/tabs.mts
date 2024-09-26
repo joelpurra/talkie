@@ -18,17 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
-import {
-	type IApiAsyncThunkConfig,
+import toolkit, {
+	type PayloadAction,
+} from "@reduxjs/toolkit";
+import type {
+	IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 import {
 	getLocationHash,
 	setLocationHash,
 } from "@talkie/shared-ui/utils/navigator-location.mjs";
 
-import {
-	type NavigationTabId,
+import type {
+	NavigationTabId,
 } from "../components/navigation/nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
@@ -47,10 +49,12 @@ const {
 export interface TabsState {
 	// TODO: list known tabs.
 	activeNavigationTabId: NavigationTabId | "fallback-tab";
+	activeNavigationTabTitle: string | null;
 }
 
 const initialState: TabsState = {
 	activeNavigationTabId: "fallback-tab",
+	activeNavigationTabTitle: null,
 };
 
 const prefix = "tabs";
@@ -104,10 +108,17 @@ export const tabsSlice = createSlice({
 	},
 	initialState,
 	name: prefix,
-	reducers: {},
+	reducers: {
+		setActiveNavigationTabTitle(state, action: PayloadAction<string | null>) {
+			state.activeNavigationTabTitle = action.payload;
+		},
+	},
 });
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 
-// export const {} = tabsSlice.actions;
+export const {
+	setActiveNavigationTabTitle,
+} = tabsSlice.actions;
+
 export default tabsSlice.reducer;

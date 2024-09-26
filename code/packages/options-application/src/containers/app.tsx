@@ -50,6 +50,7 @@ import {
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
+import PageTitleContainer from "./page-title-container.js";
 
 const {
 	bindActionCreators,
@@ -68,6 +69,7 @@ interface InternalProps extends StateProps, DispatchProps, ProgressUpdaterDispat
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	activeNavigationTabId: state.tabs.activeNavigationTabId,
+	activeNavigationTabTitle: state.tabs.activeNavigationTabTitle,
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	errorList: selectors.shared.errors.getErrors(state),
 	hasError: selectors.shared.errors.hasError(state),
@@ -82,6 +84,7 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProp
 	openExternalUrlInNewTab: bindActionCreators(actions.shared.navigation.openExternalUrlInNewTab, dispatch),
 	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
 	openShortKeysConfiguration: bindActionCreators(actions.shared.navigation.openShortKeysConfiguration, dispatch),
+	setActiveNavigationTabTitle: bindActionCreators(actions.tabs.setActiveNavigationTabTitle, dispatch),
 	setCurrent: bindActionCreators(actions.shared.progress.setCurrent, dispatch),
 	setMax: bindActionCreators(actions.shared.progress.setMax, dispatch),
 	setMin: bindActionCreators(actions.shared.progress.setMin, dispatch),
@@ -100,6 +103,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
 			activeNavigationTabId,
+			activeNavigationTabTitle,
 			errorCount,
 			errorList,
 			hasError,
@@ -108,6 +112,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 			openOptionsPage,
 			openShortKeysConfiguration,
 			osType,
+			setActiveNavigationTabTitle,
 			setCurrent,
 			setMax,
 			setMin,
@@ -123,6 +128,11 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 				<IsSpeakingListenerContainer/>
 				<HistoryListenerContainer/>
 
+				<PageTitleContainer
+					activeNavigationTabTitle={activeNavigationTabTitle}
+					isPremiumEdition={isPremiumEdition}
+				/>
+
 				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}
 					setMax={setMax}
@@ -137,6 +147,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 					openOptionsPage={openOptionsPage}
 					openShortKeysConfiguration={openShortKeysConfiguration}
 					osType={osType ?? null}
+					setActiveNavigationTabTitle={setActiveNavigationTabTitle}
 					showAdditionalDetails={showAdditionalDetails}
 					systemType={systemType}
 					versionNumber={versionNumber}

@@ -65,3 +65,13 @@ export const getLocationHashFromTabId = (tabId: NavigationTabId): NavigationLoca
 
 	return locationHash;
 };
+
+export const getPageTitle = (): string | null => {
+	const pageTitle = document.title ?? null;
+
+	return pageTitle;
+};
+
+export const setPageTitle = (pageTitle: string): void => {
+	document.title = pageTitle;
+};

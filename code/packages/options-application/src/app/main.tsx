@@ -31,9 +31,9 @@ import {
 	talkieStyled,
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
-import {
-	type ClassNameProp,
-	type TalkieStyletronComponent,
+import type {
+	ClassNameProp,
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 import type {
@@ -45,8 +45,8 @@ import type {
 
 import Loading from "../components/loading.js";
 import NavContainer from "../components/navigation/nav-container.js";
-import {
-	type NavLink,
+import type {
+	NavLink,
 } from "../components/navigation/nav-container-types.mjs";
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
@@ -55,8 +55,8 @@ import SettingsContainer from "../containers/settings-container.js";
 import StatusContainer from "../containers/status-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
-import {
-	type actions,
+import type {
+	actions,
 } from "../slices/index.mjs";
 import Footer, {
 	type FooterStateProps,
@@ -67,6 +67,7 @@ import Usage from "./sections/usage.js";
 
 export interface MainStateProps extends FooterStateProps {
 	activeNavigationTabId: string | null;
+	activeNavigationTabTitle: string | null;
 	isPremiumEdition: boolean;
 	osType: OsType | null;
 	showAdditionalDetails: boolean;
@@ -77,6 +78,7 @@ export interface MainDispatchProps {
 	openShortKeysConfiguration: typeof actions.shared.navigation.openShortKeysConfiguration;
 	openExternalUrlInNewTab: typeof actions.shared.navigation.openExternalUrlInNewTab;
 	openOptionsPage: typeof actions.shared.navigation.openOptionsPage;
+	setActiveNavigationTabTitle: typeof actions.tabs.setActiveNavigationTabTitle;
 }
 
 export interface MainProps extends MainStateProps, MainDispatchProps, TranslateProps, ClassNameProp {}
@@ -116,6 +118,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		this.handleLinkClick = this.handleLinkClick.bind(this);
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
+		this.setActiveNavigationTabTitle = this.setActiveNavigationTabTitle.bind(this);
 
 		this.links = [
 			{
@@ -179,11 +182,13 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 	override componentDidMount(): void {
 		this.scrollToTop();
+		this.setActiveNavigationTabTitle(this.props.activeNavigationTabId);
 	}
 
 	override componentDidUpdate(previousProps: P): void {
 		if (previousProps.activeNavigationTabId !== this.props.activeNavigationTabId) {
 			this.scrollToTop();
+			this.setActiveNavigationTabTitle(this.props.activeNavigationTabId);
 		}
 	}
 
@@ -204,6 +209,17 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			document.body.scrollTop = 0;
 			window.scroll(0, 0);
 		}, 100);
+	}
+
+	setActiveNavigationTabTitle(activeNavigationTabId: string | null): void {
+		// HACK: this should probably happen elsewhere, but trying to keep translations out of the slices.
+		const title: string | null = this.links
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+			.find((link) => link.tabId === activeNavigationTabId)?.text
+			?? null;
+
+		// NOTE: taking the detour over application state when setting the page title.
+		this.props.setActiveNavigationTabTitle(title);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
