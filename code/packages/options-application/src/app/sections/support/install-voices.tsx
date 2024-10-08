@@ -63,10 +63,9 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _voiceLoadTimeoutId: any | null;
 
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		this.componentDidMount = this.componentCleanup.bind(this);
 	}
 
 	override componentDidMount() {
@@ -76,7 +75,7 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 					hasWaitedLongEnoughForVoicesToLoad: true,
 				});
 			},
-			15_000,
+			5000,
 		);
 	}
 
@@ -106,7 +105,8 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 			`**${languagesCount.toString(10)}**`,
 		]);
 
-		const finishedLoading = haveVoices || this.state.hasWaitedLongEnoughForVoicesToLoad;
+		const doneWithLoading = haveVoices || this.state.hasWaitedLongEnoughForVoicesToLoad;
+		const zeroVoicesLoaded = !haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad;
 
 		return (
 			<section>
@@ -116,36 +116,36 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 
 				<Loading
 					isBlockElement
-					enabled={finishedLoading}
+					enabled={doneWithLoading}
 				>
 					<p>
 						<MarkdownStrong>
 							{moreVoicesCountsMarkdown}
 						</MarkdownStrong>
 					</p>
-
-					<Discretional
-						enabled={!haveVoices}
-					>
-						<textBase.h3>
-							{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
-							{/* TODO: better location for a button, with a translated label? */}
-							{" "}
-							<buttonBase.button
-								type="button"
-								onClick={() => {
-									location.reload();
-								}}
-							>
-								🗘
-							</buttonBase.button>
-						</textBase.h3>
-
-						<p>
-							{translateSync("frontend_installVoicesNoVoiceFound")}
-						</p>
-					</Discretional>
 				</Loading>
+
+				<Discretional
+					enabled={zeroVoicesLoaded}
+				>
+					<textBase.h3>
+						{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
+						{/* TODO: better location for a button, with a translated label? */}
+						{" "}
+						<buttonBase.button
+							type="button"
+							onClick={() => {
+								location.reload();
+							}}
+						>
+							🗘
+						</buttonBase.button>
+					</textBase.h3>
+
+					<p>
+						{translateSync("frontend_installVoicesNoVoiceFound")}
+					</p>
+				</Discretional>
 
 				<InstallVoicesFaq
 					osType={osType}

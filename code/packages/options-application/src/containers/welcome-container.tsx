@@ -89,10 +89,9 @@ class WelcomeContainer<P extends InternalProps, S extends WelcomeContainerState>
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _sampleTextLoadTimeoutId: any | null;
 
+	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
-
-		this.componentDidMount = this.componentCleanup.bind(this);
 	}
 
 	override componentDidUpdate(_previousProps: P): void {
