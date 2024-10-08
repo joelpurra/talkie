@@ -80,12 +80,12 @@ export default class GoogleCloudTranslateTranslator {
 	}
 
 	async translate(fromLanguage: string, toLanguage: string, original: ReadonlyDeep<BaseLocaleMessages>): Promise<ReadonlyDeep<LocaleMessages>> {
-		assert(typeof fromLanguage === "string");
-		assert(typeof toLanguage === "string");
-		assert(typeof original === "object");
+		assert.strictEqual(typeof fromLanguage, "string");
+		assert.strictEqual(typeof toLanguage, "string");
+		assert.strictEqual(typeof original, "object");
 
 		for (const value of Object.values(original)) {
-			assert(typeof value.message === "string");
+			assert.strictEqual(typeof value.message, "string");
 		}
 
 		const messages = clone(original);
@@ -110,7 +110,8 @@ export default class GoogleCloudTranslateTranslator {
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(chunked, preparedMessage, preparedMessagesIndex) => {
 				const chunkedIndex = Math.floor(preparedMessagesIndex / this.maxChunkSize);
-				chunked[chunkedIndex] = chunked[chunkedIndex] ?? [
+				chunked[chunkedIndex] = [
+					...(chunked[chunkedIndex] ?? []),
 					preparedMessage,
 				];
 
@@ -119,46 +120,111 @@ export default class GoogleCloudTranslateTranslator {
 			[],
 		);
 
+		assert(preparedMessagesChunks.length <= preparedMessages.length);
+		assert.strictEqual((preparedMessagesChunks.length * this.maxChunkSize), Math.ceil(preparedMessages.length / this.maxChunkSize) * this.maxChunkSize);
+
 		const translationOptions = {
 			format: "html",
 			from: fromLanguage,
 			to: toLanguage,
 		};
 
-		// NOTE: translating one chunk at a time.
-		const translationResponseChunks = await Bluebird.mapSeries(
+		// TODO: instead of casting to a type, upgrade google translate typings.
+		type GoogleTranslateResponseChunks = Array<[string[], {data: {translations: [{translatedText: string}]}}]>;
+
+		// NOTE: translating one chunk at a time due to (potentially hitting) api limitations.
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+		const translationResponseChunks: GoogleTranslateResponseChunks = await Bluebird.mapSeries(
 			preparedMessagesChunks,
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			async (preparedMessagesChunk) => this._googleTranslate.translate(preparedMessagesChunk, translationOptions),
 		);
 
-		// NOTE: returning the chunks to the same array format as before, except the apiResponse is an array of apiResponses (one per chunk).
-		// TODO: use a prettier array flattening function?
+		type GoogleTranslateResponses = [string[], string[]];
+
+		assert(Array.isArray(translationResponseChunks));
+		assert.strictEqual(preparedMessagesChunks.length, translationResponseChunks.length);
+
+		// NOTE: unchunk (reduce) array of translation array chunks, pick prepared text and translation from response, return array of two parallel translation pair arrays.
 		// eslint-disable-next-line unicorn/no-array-reduce
-		const translationResponses = translationResponseChunks.reduce(
+		const translationResponses: GoogleTranslateResponses = translationResponseChunks.reduce<GoogleTranslateResponses>(
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-			(t, v) => [
-				// eslint-disable-next-line unicorn/prefer-spread
-				t[0].concat(v[0]),
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-call, unicorn/prefer-spread
-				t[1].concat(v[1]),
-			],
+			(reduced, translationResponseChunk) => {
+				assert(Array.isArray(reduced));
+				assert(Array.isArray(reduced[0]));
+				assert(Array.isArray(reduced[1]));
+				assert.strictEqual(reduced[0].length, reduced[1].length);
+
+				assert(Array.isArray(translationResponseChunk));
+
+				const prepared = translationResponseChunk[0];
+				assert(Array.isArray(prepared));
+
+				const translationResponse = translationResponseChunk[1];
+				assert(typeof translationResponse === "object" && translationResponse !== null && !Array.isArray(translationResponse));
+				assert(typeof translationResponse.data === "object" && translationResponse.data !== null && !Array.isArray(translationResponse.data));
+				assert(Array.isArray(translationResponse.data.translations));
+
+				assert(prepared.length === translationResponse.data.translations.length);
+
+				// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+				const translatedText = translationResponse.data.translations.map((translation) => {
+					assert(typeof translation === "object" && translation !== null && !Array.isArray(translation));
+					assert(typeof translation.translatedText === "string");
+					assert(translation.translatedText.length > 0);
+
+					return translation.translatedText;
+				});
+
+				return [
+					[
+						...reduced[0],
+						...prepared,
+					],
+					[
+						...reduced[1],
+						...translatedText,
+					],
+				];
+			},
 			[
 				[],
 				[],
 			],
 		);
 
-		const translations = translationResponses[0];
+		assert.strictEqual(preparedMessages.length, translationResponses[0].length);
+		assert.strictEqual(translationResponses[0].length, translationResponses[1].length);
+		// TODO DEBUG ENABLE
+
+		interface TranslationResponsePair {
+			prepared: string;
+			translated: string;
+		}
+
+		const translationResponsePairs: Array<Readonly<TranslationResponsePair>> = translationResponses[0].map((prepared, index) => {
+			const translated = translationResponses[1][index];
+
+			// TODO: update typescript's nodejs typings and/or fix assert typing so that strictEqual has the same type effect as ===?
+			assert.strictEqual(typeof prepared, "string");
+			assert.strictEqual(typeof translated, "string");
+			assert(typeof translated === "string");
+
+			return {
+				prepared,
+				translated,
+			};
+		});
 
 		// NOTE: this is now an array of apiResponses (one per chunk), not a single as in the original translate api.
 		// const apiResponse = translationResponses[1];
 
-		const translateDirtyMessages = translations
-			.map((translationResponse) => striptags(translationResponse))
-			.map((translationResponse) => htmlEntityDecode(translationResponse))
-			.map((translationResponse) => {
-				const translateDirtyMessage = translationResponse
+		const translateDirtyMessages = translationResponsePairs
+			.map((translationPair) => translationPair.translated)
+			.map((translated) => striptags(translated))
+			.map((translated) => htmlEntityDecode(translated))
+			.map((translated) => {
+				const translateDirtyMessage = translated
 					.replaceAll(new RegExp(this.__TEMP_TALKIE_PREMIUM__, "g"), "Talkie Premium")
 					.replaceAll(new RegExp(this.__TEMP_TALKIE__, "g"), "Talkie")
 					.replaceAll(new RegExp(this.__TEMP_PREMIUM__, "g"), "Premium")
