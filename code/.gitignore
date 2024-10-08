@@ -1,8 +1,10 @@
 .nx/cache
 *.log
+*.zip
 *~
 artifacts/
 dist/
 node_modules/
 runtime/
 tsconfig.tsbuildinfo
+web-ext-artifacts/

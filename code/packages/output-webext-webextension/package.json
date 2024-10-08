@@ -25,9 +25,9 @@
     "build:webextension": "npm run --silent build:patch:manifest && npm run --silent build:patch",
     "clean": "rimraf ./dist ./runtime",
     "lint": "web-ext --source-dir=./artifacts/webext/ lint --ignore-files ./resources/style/bidi.css",
-    "output": "rimraf ./dist/web-ext-artifacts/ && web-ext --source-dir=./artifacts/webext/ build && mkdirp ./dist/publish && mv -n ./dist/web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.zip\"",
+    "output": "rimraf ./web-ext-artifacts/ && web-ext --source-dir=./artifacts/webext/ build && mkdirp ./dist/publish && mv -n ./web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.zip\"",
     "output:list": "ls -l ./dist/publish/",
-    "publish": "web-ext --source-dir=./artifacts/webext/ sign --channel listed && mv -n ./dist/web-ext-artifacts/talkie*.xpi \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.xpi\" && echo 'NOTE: Manually upload source code and check upload status on https://addons.mozilla.org/en-US/developers/addons'",
+    "publish": "web-ext --source-dir=./artifacts/webext/ sign --channel listed && mv -n ./web-ext-artifacts/talkie*.xpi \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-webextension.xpi\" && echo 'NOTE: Manually upload source code and check upload status on https://addons.mozilla.org/en-US/developers/addons'",
     "run:firefox": "mkdirp ./runtime/profiles/firefox/ && web-ext --source-dir=./artifacts/webext/ run --verbose --devtools --target firefox-desktop ---firefox-profile \"${PWD}/runtime/profiles/firefox/\" --keep-profile-changes --browser-console --start-url 'https://www.wikipedia.org/'"
   },
   "type": "module"
