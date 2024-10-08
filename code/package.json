@@ -71,6 +71,7 @@
   "repository": "joelpurra/talkie.git",
   "scripts": {
     "build": "npm run --silent build:lerna",
+    "build:debug": "npm run --silent build:lerna --  --verbose",
     "build:lerna": "lerna run build",
     "clean": "rimraf ./dist && npm run --silent clean:typescript && npm run --silent clean:lerna",
     "clean:lerna": "lerna run clean",
