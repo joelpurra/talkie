@@ -50,7 +50,7 @@
     "tslib": "^2.7.0",
     "type-fest": "^4.26.1",
     "typescript": "^5.6.3",
-    "web-ext": "^7.12.0",
+    "web-ext": "^8.3.0",
     "xo": "^0.56.0"
   },
   "engines": {
