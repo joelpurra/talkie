@@ -31,16 +31,12 @@ export interface MarkdownProps extends ClassNameProp {
 interface InternalProps extends MarkdownProps {}
 
 class MarkdownParagraph<P extends InternalProps> extends React.PureComponent<P> {
-	linkTarget: (...args: Readonly<unknown[]>) => never;
-	transformImageUri: (...args: Readonly<unknown[]>) => never;
-	transformLinkUri: (...args: Readonly<unknown[]>) => never;
+	urlTransform: (...args: Readonly<unknown[]>) => never;
 
 	constructor(props: P) {
 		super(props);
 
-		this.linkTarget = this.alwaysThrow.bind(null, "linkTarget");
-		this.transformImageUri = this.alwaysThrow.bind(null, "transformImageUri");
-		this.transformLinkUri = this.alwaysThrow.bind(null, "transformLinkUri");
+		this.urlTransform = this.alwaysThrow.bind(null, "urlTransform");
 	}
 
 	alwaysThrow(_callType: string, ...args: Readonly<unknown[]>): never {
@@ -64,9 +60,7 @@ class MarkdownParagraph<P extends InternalProps> extends React.PureComponent<P> 
 					"p",
 				]}
 				className={className}
-				linkTarget={this.linkTarget}
-				transformImageUri={this.transformImageUri}
-				transformLinkUri={this.transformLinkUri}
+				urlTransform={this.urlTransform}
 			>
 				{children}
 			</ReactMarkdown>

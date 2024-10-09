@@ -31,7 +31,10 @@ import type {
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type React from "react";
-import ReactDOM from "react-dom";
+import {
+	hydrateRoot,
+	type Root,
+} from "react-dom/client";
 
 import {
 	getPostrenderActionsToDispatch,
@@ -40,10 +43,15 @@ import {
 import getDependencies from "./get-dependencies.mjs";
 import getPrerenderedState from "./get-prerendered-state.mjs";
 
-const hydrateReactDom = async (root: Readonly<JSX.Element>) => {
+const hydrateReactDom = async (jsxRoot: Readonly<JSX.Element>): Promise<Root> => {
 	const rootElement = document.querySelector("#react-root");
 
-	ReactDOM.hydrate(root, rootElement);
+	// TODO: reduce ambiguity regarding jsx and react roots.
+	// https://github.com/reactwg/react-18/discussions/5
+	// https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis
+	const reactRoot = hydrateRoot(rootElement!, jsxRoot);
+
+	return reactRoot;
 };
 
 const hydrateHtml = async <S, A extends Action, P>(
@@ -69,8 +77,8 @@ const hydrateHtml = async <S, A extends Action, P>(
 
 	await dispatchAll(store, prerenderedActionsToDispatch);
 
-	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, messageBusProviderGetter, ChildComponent);
-	await hydrateReactDom(root);
+	const jsxRoot = await getRoot(store, translatorProvider, configuration, styletronProvider, messageBusProviderGetter, ChildComponent);
+	await hydrateReactDom(jsxRoot);
 
 	// NOTE: don't await post-render actions, since they will be rendered when they're ready anyways.
 	void dispatchAll(store, postrenderActionsToDispatch);

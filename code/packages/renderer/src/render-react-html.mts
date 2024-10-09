@@ -27,7 +27,7 @@ import type IStyletronProvider from "@talkie/split-environment-interfaces/istyle
 import {
 	type ReactElement,
 } from "react";
-import ReactDOMServer from "react-dom/server.js";
+import ReactDOMServer from "react-dom/server";
 import type {
 	Server as StyletronServer,
 } from "styletron-engine-atomic";
