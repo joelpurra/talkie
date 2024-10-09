@@ -18,7 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import process from "node:process";
+// NOTE: this is shared code; do not import from "node:*" to avoid rollup (browser-related) warnings (and bloat?) even after constant process.env values have been replaced..
+//import process from "node:process";
 
 // TODO: reuse TALKIE_ENV code across both rollup and code files?
 export const TALKIE_ENV_PRODUCTION = "production";
@@ -43,6 +44,7 @@ function assertTalkieEnv(input: string | undefined): asserts input is KnownTalki
 	}
 }
 
+// eslint-disable-next-line n/prefer-global/process
 const process_env_TALKIE_ENV = process.env.TALKIE_ENV;
 
 if (typeof process_env_TALKIE_ENV === "string") {
