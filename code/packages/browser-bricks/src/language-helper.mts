@@ -59,7 +59,7 @@ export default class LanguageHelper {
 		// https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
 		// https://en.wikipedia.org/wiki/ISO_639-1
 		// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-		// http://xml.coverpages.org/iso639a.html
+		// https://xml.coverpages.org/iso639a.html
 		// NOTE: discovered because Twitter seems to still use "iw".
 		"in": "id",
 		iw: "he",

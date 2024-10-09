@@ -212,7 +212,7 @@ _See also:_
 <summary>Acknowledgements</summary>
 
 - Thanks to [Liron Tocker](https://liron.de/) for coming up with the name Talkie, the fancy icons, and promotional graphics (2016-12-31, 2017-04-09): <img src="./code/packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie's icon" width="16" height="16" border="0" /> <img src="./code/packages/shared-resources/src/resources/icon/premium/icon-play/icon-32x32.png" alt="Talkie Premium's icon" width="16" height="16" border="0" /> <img src="./code/packages/shared-resources/src/resources/icon/free/icon-stop/icon-32x32.png" alt="Talkie stop button" width="16" height="16" border="0" />
-- Thanks to [Miroslava Jovičić](http://www.miroslavajovicic.net/) for the fancy user interface redesign (2017-05-29), and promotional graphics (2017-07-30, 2017-08-01).
+- Thanks to [Miroslava Jovičić](https://www.miroslavajovicic.com/) for the fancy user interface redesign (2017-05-29), and promotional graphics (2017-07-30, 2017-08-01).
 
 </details>
 
