@@ -112,13 +112,6 @@ const rollupConfiguration = (
 				),
 			),
 			...getCopyTargets(
-				normalizePath(fileListFileBasePath, fileLists.root),
-				packageRootDirectory,
-				"../../..",
-				outputBaseDirectory,
-				".",
-			),
-			...getCopyTargets(
 				normalizePath(fileListFileBasePath, fileLists.locales),
 				packageRootDirectory,
 				"../shared-locales/dist/data",
@@ -134,7 +127,6 @@ const fileLists = {
 	licenses: "licenses.txt",
 	locales: "locales.txt",
 	resources: "resources.txt",
-	root: "root.txt",
 };
 
 export default rollupConfiguration;

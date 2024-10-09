@@ -40,3 +40,4 @@
 /packages/shared-resources/src/resources/style/options.css
 /packages/shared-resources/src/resources/style/popup.css
 /packages/shared-resources/src/resources/style/shared.css
+/README.md

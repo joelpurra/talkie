@@ -3,7 +3,7 @@
     "urls": {
       "external": {
         "chromewebstore": "https://chrome.google.com/webstore/detail/enfbcfmmdpdminapkflljhbfeejjhjjk",
-        "cla": "https://joelpurra.com/projects/talkie/CLA.md",
+        "cla": "https://joelpurra.com/projects/talkie/code/CLA.md",
         "donation:primary": "https://joelpurra.com/donate/paypal/",
         "donation:secondary": "https://joelpurra.com/donate/",
         "firefox-amo": "https://addons.mozilla.org/en-US/firefox/addon/talkie/",

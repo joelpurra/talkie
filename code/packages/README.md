@@ -20,7 +20,7 @@
 
 # Packages
 
-The Talkie monorepo consists of several packages in the `@talkie/` scope/namespace. See [DEVELOP.md](../../DEVELOP.md) for build steps.
+The Talkie monorepo consists of several packages in the `@talkie/` scope/namespace.
 
 ## Code rollup statistics
 
