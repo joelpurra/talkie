@@ -46,7 +46,7 @@
     "styletron-engine-atomic": "^1.6.2",
     "styletron-react": "^6.1.1",
     "styletron-standard": "^3.1.0",
-    "syncpack": "^11.2.1",
+    "syncpack": "^13.0.0",
     "tslib": "^2.7.0",
     "type-fest": "^4.26.1",
     "typescript": "^5.6.3",
