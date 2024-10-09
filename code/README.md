@@ -24,24 +24,27 @@ Talkie can be built and tested locally, using freely available open source tools
 
 ## About the source code
 
-- The source code itself is in the [`./code/`](./code/) directory.
-  - This is a monorepo, split up to several [`packages/`](./code/packages/) in the internal (non-published) `@talkie/` scope/namespace.
-  - [Dependency graphs](./code/packages/README.md) are generated in [`./dist/graph`](./dist/graph) at build time, to give an overview of internal package dependencies.
+- Find the source code in the [Talkie repository on Github](https://github.com/joelpurra/talkie).
+  - The root directory mainly contains documentation; am trying to reduce technical files to keep it clean.
+  - Source code plus related technical files are in the `./code/` directory.
 - The main language is [Typescript](https://www.typescriptlang.org/), with some supporting shell scripts and tooling.
-- Adhere to the [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html). All project contributors need to agree to the the [Contributor License Agreement (CLA)](./CLA.md).
+  - This is a monorepo, split up to several packages in the internal (non-published) `@talkie/` scope/namespace. See [`./packages/`](./packages/).
+  - [Dependency graphs](./packages/) are generated in [`./dist/graph`](./dist/graph) at build time, to give an overview of internal package dependencies.
+- Talkie is [free/libre open source software (FLOSS)](https://en.wikipedia.org/wiki/Free_and_open-source_software).
+  - The [license](./LICENSE) is [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html); see also [GPL on Wikipedia](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+  - All project contributors need to agree to the the [Contributor License Agreement (CLA)](./CLA.md).
 
 ## Prerequisites
 
-- Find the source code in the [Talkie repository on Github](https://github.com/joelpurra/talkie).
-  - Source code is primarily distributed using `git`, so preferably clone the repository.
+- A clone of the [Talkie repository on Github](https://github.com/joelpurra/talkie).
   - Many script commands rely on the repository and will not work for `.zip` release files with source code.
-- Development should be performed on modern [Linux](https://en.wikipedia.org/wiki/Linux) or [Apple macOS](https://en.wikipedia.org/wiki/MacOS).
+- Development should be performed on modern [Linux](https://en.wikipedia.org/wiki/Linux).
+  - Development on [Apple macOS](https://en.wikipedia.org/wiki/MacOS) is not officially supported.
+    - In particular, Talkie may use GNU-style `--long-hand` arguments incompatible with standard macOS shell commands.
   - Development on [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows) is not supported.
-- Script commands are executed as `npm` scripts, mostly using `node`.
-  - Some script commands assume that `bash` (or a compatible shell) is used, or at least available.
-  - Additional common development tools are required.
+    - Using [Windows Subsystem for Linux (WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux) is not officially supported.
 - Use the `develop` branch as the base for your pull request.
-  - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/), preferably using the `git-flow` tooling.
+  - Follow the [git-flow development procedure](https://danielkummer.github.io/git-flow-cheatsheet/) using `git-flow`.
   - It is recommended to use `gh` for forking and creating pull requests on github.
 
 ## Software requirements
@@ -53,7 +56,7 @@ The build process assumes that current stable versions of the following are avai
 - [`git-flow`](https://github.com/petervanderdoes/gitflow-avh) (AVH Edition)
 - [`git`](https://git-scm.com/)
 - [`gh`](https://cli.github.com/)
-- [`jq`](https://stedolan.github.io/jq/)
+- [`jq`](https://jqlang.github.io/jq/)
 - [`node`](https://nodejs.org/), including [`npm`](https://docs.npmjs.com/cli/) and [`npx`](https://docs.npmjs.com/cli/commands/npx)
 
 ## Manual installation
@@ -213,7 +216,7 @@ In order to offer Talkie in as many languages as possible, translations are auto
 
 - The `messages.json` for each language is assembled by `npm run --silent messages:refresh`. It is fast enough for development change-test-change cycles.
 - All English base strings in `./_locales/en/base.json` are automatically translated to all other languages by `npm run --silent messages:download`. It takes 1-3 minutes to translate all languages, and is too slow to use repeatedly during development. English is the easiest language to use during development.
-- Translation scripts require a [Google Cloud Translation API key](https://cloud.google.com/translate/), [`jq`](https://stedolan.github.io/jq/manual/), and some shell magic.
+- Translation scripts require a [Google Cloud Translation API key](https://cloud.google.com/translate/), `jq`, and some shell magic.
 - Automated file mangling is done by maintainers using `npm run --silent messages:translate` before each release where the have been text changes.
 
 ### Translation file order
