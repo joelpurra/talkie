@@ -59,7 +59,7 @@ const createAndStartCommandListeners = async (
 
 	// NOTE: might throw an unexpected error in Firefox due to command configuration in manifest.json.
 	// Does not seem to happen in Chrome.
-	// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/commands/onCommand
+	// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/commands/onCommand
 	try {
 		chrome.commands.onCommand.addListener(
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any

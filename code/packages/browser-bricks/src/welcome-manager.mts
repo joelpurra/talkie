@@ -28,8 +28,8 @@ export default class WelcomeManager {
 	constructor(private readonly uiManager: UiManager) {}
 	async openWelcomePage(): Promise<BrowserTabId> {
 		// TODO: focus the tab's window to ensure that the welcome text selection works?
-		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/Tab
-		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows/update
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/Tab
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/update
 		return this.uiManager.openInternalUrlFromConfigurationInNewTab("options-welcome");
 	}
 }

@@ -19,7 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 // NOTE: used to check if a DOM element cross-page (background, popup, options, ...) reference was used after it was supposed to be unreachable (memory leak).
-// https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Errors/Dead_object
+// https://blog.mozilla.org/addons/2012/09/12/what-does-cant-access-dead-object-mean/
 // TODO: move to browser-specific package.
 export const isDeadWrapper = (domElementReference: unknown): boolean => {
 	try {

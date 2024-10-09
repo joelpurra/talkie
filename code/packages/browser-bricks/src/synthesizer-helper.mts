@@ -113,9 +113,9 @@ export default class SynthesizerHelper {
 	}
 
 	private static async _getSynthesizer(): Promise<SpeechSynthesis> {
-		// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
-		// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
-		// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
+		// https://wicg.github.io/speech-api/#tts-section
+		// https://wicg.github.io/speech-api/#examples-synthesis
+		// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#speech_synthesis
 		const synthesizer = await SynthesizerHelper._getSynthesizerFromBrowser();
 
 		return synthesizer;
@@ -171,8 +171,8 @@ export default class SynthesizerHelper {
 					synthesizer.speak(utterance);
 
 					// NOTE: pause/resume suggested (for longer texts) in Chrome bug reports, trying it for shorter texts as well.
-					// https://bugs.chromium.org/p/chromium/issues/detail?id=335907
-					// https://bugs.chromium.org/p/chromium/issues/detail?id=369472
+					// https://issues.chromium.org/issues/41084789
+					// https://issues.chromium.org/issues/41105085 (https://bugs.chromium.org/p/chromium/issues/detail?id=369472)
 					// NOTE: speak/pause/resume (chrome v127) causes fairly generic warnings for using pause() media (<video />, <audio />) just after play().
 					// > AbortError: The play() request was interrupted by a call to pause(). https://goo.gl/LdLk22
 					// https://developer.chrome.com/blog/play-request-was-interrupted

@@ -40,7 +40,7 @@ import {
 } from "./on-installed-manager-types.mjs";
 import type WelcomeManager from "./welcome-manager.mjs";
 
-// NOTE: https://developer.chrome.com/extensions/runtime#type-OnInstalledReason
+// NOTE: https://developer.chrome.com/docs/extensions/reference/api/runtime#type-OnInstalledReason
 const REASON_INSTALL = "install";
 
 export default class OnInstalledManager {

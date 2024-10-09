@@ -79,7 +79,7 @@ class VoicesLoader<P extends InternalProps, S extends VoicesLoaderState> extends
 
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
-	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _voiceLoadTimeoutId: any | null;
 

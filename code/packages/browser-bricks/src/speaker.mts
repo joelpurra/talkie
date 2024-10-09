@@ -59,9 +59,9 @@ export default class Speaker {
 		return 100;
 	}
 
-	// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section
-	// https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#examples-synthesis
-	// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#Speech_synthesis
+	// https://wicg.github.io/speech-api/#tts-section
+	// https://wicg.github.io/speech-api/#examples-synthesis
+	// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#speech_synthesis
 	constructor(
 		private readonly messageBusProviderGetter: IMessageBusProviderGetter,
 		private readonly shouldContinueSpeakingProvider: OnlyLastCaller,

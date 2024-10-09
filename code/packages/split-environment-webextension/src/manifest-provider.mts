@@ -26,7 +26,7 @@ import type {
 export default class WebExtensionEnvironmentManifestProvider implements IManifestProvider {
 	async get(): Promise<Manifest.ManifestBase> {
 		// NOTE: synchronous call.
-		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest
 		const manifest = chrome.runtime.getManifest();
 
 		return manifest;

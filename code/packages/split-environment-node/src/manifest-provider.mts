@@ -55,7 +55,7 @@ export default class NodeEnvironmentManifestProvider implements IManifestProvide
 			const manifestJson = await jsonfile.readFile(manifestPath) as JsonObject;
 
 			// NOTE: should work, based on the documentation.
-			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
+			// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest
 			// > Get the complete manifest.json file, deserialized from JSON to an object.
 			// TODO: verify the JSON instead of casting.
 			this._cachedManifest = manifestJson as unknown as Manifest.ManifestBase;

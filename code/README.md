@@ -135,7 +135,7 @@ TALKIE_ENV='production' npm run --silent rebuild
 - Increased default logging detail level to the developer console.
   - Enables Redux action/state change logging.
 - Uses non-minimized development versions of script files of dependencies.
-- Enables [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) to track down potential problems.
+- Enables [`<React.StrictMode>`](https://react.dev/reference/react/StrictMode) to track down potential problems.
 
 ```shell
 # Default development build, including debugging features.
@@ -163,7 +163,7 @@ npm run --silent watch
 
 ### Linting
 
-Primarily using [XO](https://github.com/sindresorhus/xo) for Typescript code linting, with some modified style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vscode-linter-xo](https://github.com/xojs/vscode-linter-xo).
+Primarily using [XO](https://github.com/xojs/xo) for Typescript code linting, with some modified style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vscode-linter-xo](https://github.com/xojs/vscode-linter-xo).
 
 ```shell
 # Fix linting issues before committing.

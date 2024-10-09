@@ -47,7 +47,7 @@ const addOnInstalledEventQueuePolling = async (onInstalledManager: Readonly<OnIn
 	const cleanup: () => Promise<void> = async () => {
 		for (const id of ids) {
 			// NOTE: no separation of timeout/interval ids; clearTimeout/clearInterval may be used interchangeably.
-			// https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout
+			// https://developer.mozilla.org/en-US/docs/Web/API/Window/clearTimeout
 			clearTimeout(id);
 		}
 	};

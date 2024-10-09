@@ -67,7 +67,7 @@ export function isPromiseTimeout(error: unknown): error is PromiseTimeout {
 export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, milliseconds: number): Promise<T> => {
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
-	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let timeoutId: any | null;
 

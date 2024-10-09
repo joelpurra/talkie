@@ -108,7 +108,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
-	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _scrollTimeoutId: any | null;
 

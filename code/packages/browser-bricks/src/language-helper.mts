@@ -58,7 +58,7 @@ export default class LanguageHelper {
 	private readonly iso639Dash1Aliases1988To2002: Record<string, string> = {
 		// https://www.iso.org/obp/ui/#iso:std:iso:639:-1:ed-1:v1:en
 		// https://en.wikipedia.org/wiki/ISO_639-1
-		// https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+		// https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 		// https://xml.coverpages.org/iso639a.html
 		// NOTE: discovered because Twitter seems to still use "iw".
 		"in": "id",
@@ -90,7 +90,7 @@ export default class LanguageHelper {
 
 	async detectPageLanguage(): Promise<string | null> {
 		try {
-			// https://developer.chrome.com/extensions/tabs#method-detectLanguage
+			// https://developer.chrome.com/docs/extensions/reference/api/tabs#method-detectLanguage
 			const language = await chrome.tabs.detectLanguage();
 
 			void logDebug("detectPageLanguage", "Browser detected primary page language", language);
@@ -118,7 +118,7 @@ export default class LanguageHelper {
 			return null;
 		}
 
-		// https://developer.chrome.com/extensions/i18n#method-detectLanguage
+		// https://developer.chrome.com/docs/extensions/reference/api/i18n#method-detectLanguage
 		const result = await chrome.i18n.detectLanguage(text);
 
 		const MINIMUM_RELIABILITY_PERCENTAGE = 50;

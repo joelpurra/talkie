@@ -31,7 +31,7 @@ import type {
 import chromeSelectiveSendResponseMessageHandler from "./chrome-selective-send-response-message-bus-handler-wrapper.mjs";
 
 // NOTE: cannot be an async function due to a chrome bug (2024-07-07); the bug has been replicated in firefox (2024-07-07).
-// https://crbug.com/1185241
+// https://issues.chromium.org/issues/40753031
 // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
 // NOTE: handling the workaround in the "bound" handler.
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

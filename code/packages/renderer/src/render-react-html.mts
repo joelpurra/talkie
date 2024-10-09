@@ -63,7 +63,7 @@ const renderReactHtml = async <S, A extends Action>(
 	const prerenderedState = store.getState();
 
 	// WARNING: See the following for security issues around embedding JSON in HTML:
-	// https://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+	// https://redux.js.org/usage/server-rendering#security-considerations
 	const prerenderedStateJson = JSON.stringify(prerenderedState).replaceAll("<", "\\u003c");
 
 	const data = {

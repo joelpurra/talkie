@@ -22,7 +22,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 * NOTE: webext automatic text direction in a separate file to reduce webext linter warnings
 * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#locale-dependent_css
 * https://github.com/mozilla/addons-linter/issues/1299
-* https://developer.chrome.com/extensions/i18n#overview-predefined
+* https://developer.chrome.com/docs/extensions/reference/api/i18n#overview-predefined
 */
 
 body {

@@ -52,7 +52,7 @@ export const getCurrentActiveBrowserTab = async (): Promise<Tabs.Tab | null> => 
 		currentWindow: true,
 	};
 
-	// https://developer.chrome.com/extensions/tabs#method-query
+	// https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
 	const tabs = await chrome.tabs.query(queryOptions);
 
 	if (!tabs) {
@@ -114,7 +114,7 @@ const getCurrentActiveNormalLoadedTab = async (): Promise<Tabs.Tab | null> => {
 		windowType: "normal",
 	};
 
-	// https://developer.chrome.com/extensions/tabs#method-query
+	// https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
 	const tabs = await chrome.tabs.query(queryOptions);
 
 	const singleTabResult = tabs.length === 1;

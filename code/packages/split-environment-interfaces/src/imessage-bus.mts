@@ -121,9 +121,9 @@ export type MessageBusDirectionPairing =
 	| "direction:bullhorn:outbound:shout"
 	| "direction:bullhorn:inbound:silence";
 
-// https://xkcd.com/221/
 // chosen by fair dice roll.
 // guaranteed to be random.
+// https://xkcd.com/221/
 // https://datatracker.ietf.org/doc/html/rfc1149
 export const TALKIE_MESSAGE_BUS_IDENTIFIER = 4;
 
