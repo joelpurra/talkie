@@ -35,7 +35,7 @@ import chromeSelectiveSendResponseMessageHandler from "./chrome-selective-send-r
 // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
 // NOTE: handling the workaround in the "bound" handler.
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export default function chromeAsyncSelectiveSendResponseMessageHandlerWrapper(this: MessageBusCallback, rawMessage: JsonValue, _sender: Runtime.MessageSender, sendResponse: (response: unknown) => void): true {
+export default function chromeAsyncSelectiveSendResponseMessageHandlerWrapper(this: MessageBusCallback, rawMessage: unknown, _sender: Runtime.MessageSender, sendResponse: (response: unknown) => void): true {
 	// HACK: passing the original callback as the context, to avoid having to define the callback/wrapper types.
 	// eslint-disable-next-line unicorn/no-this-assignment, @typescript-eslint/no-this-alias
 	const callback: MessageBusCallback = this;
@@ -45,7 +45,7 @@ export default function chromeAsyncSelectiveSendResponseMessageHandlerWrapper(th
 	}
 
 	// NOTE: not awaiting the handler; responses will be sent async via sendResponse().
-	void chromeSelectiveSendResponseMessageHandler(callback, rawMessage, sendResponse);
+	void chromeSelectiveSendResponseMessageHandler(callback, rawMessage as JsonValue, sendResponse);
 
 	// NOTE: in order to consistently "await sendMessage()" in this non-promisified callback handler, tell chrome to always expect an async callback and then (try to) make sure one comes -- whether a response was expected or not.
 	// https://developer.chrome.com/docs/extensions/develop/concepts/messaging#simple

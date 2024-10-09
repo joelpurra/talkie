@@ -30,6 +30,9 @@ import {
 	promiseTimeout,
 } from "@talkie/shared-application-helpers/promise.mjs";
 import type {
+	JsonValue,
+} from "type-fest";
+import type {
 	Scripting,
 } from "webextension-polyfill";
 
@@ -79,7 +82,7 @@ export default class Execute {
 
 			// NOTE: the results may include either per-frame result or error.
 			const results: Array<FrameResult<T>> = injectionResults.map((rawInjectionResult: Readonly<Scripting.InjectionResult>): FrameResult<T> => {
-				const clonedInjectionResult = jsonClone(rawInjectionResult);
+				const clonedInjectionResult: Readonly<Scripting.InjectionResult> = jsonClone(rawInjectionResult as JsonValue) as Readonly<Scripting.InjectionResult>;
 
 				return {
 					error: clonedInjectionResult.error,

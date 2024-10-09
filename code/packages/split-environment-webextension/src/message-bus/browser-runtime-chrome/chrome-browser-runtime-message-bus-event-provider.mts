@@ -57,6 +57,12 @@ export default class ChromeBrowserRuntimeMessageBusEventProvider implements IMes
 	}
 
 	public _hasListeners(): boolean {
-		return chrome.runtime.onMessage.hasListeners();
+		// NOTE: firefox does not seem to support chrome.runtime.onMessage.hasListeners(), despite seemingly using standardized typing for browser events and references to being implemented in chrome?
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
+		// https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onMessage
+		// https://developer.chrome.com/docs/extensions/reference/api/events#method-Event-hasListeners
+		// NOTE: keeping current implementations, but with an underscore prefix.
+		//return chrome.runtime.onMessage.hasListener();
+		throw new Error("chrome.runtime.onMessage.hasListener() has not been consistently implemented by browsers.");
 	}
 }

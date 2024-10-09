@@ -46,11 +46,9 @@ export default class ChromeBrowserRuntimeMessageBusProvider implements IMessageB
 			const messageClone = jsonClone(rawMessage);
 
 			// NOTE: chrome.runtime.sendMessage() is expected to internally disallow more than one response; other implementations need to adhere to this limitation.
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-			const rawResponse = await chrome.runtime.sendMessage(messageClone);
+			const rawResponse = await chrome.runtime.sendMessage<JsonValue, JsonValue>(messageClone);
 
 			// HACK: on the lowest transport level, explicitly serialize/deserialize data (in particular non-primitives) sent to/from (possibly) external contexts, to avoid references dying ("can't access dead object").
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			const responseClone = rawResponse === undefined ? undefined : jsonClone(rawResponse);
 
 			if (responseClone === null) {
@@ -58,7 +56,6 @@ export default class ChromeBrowserRuntimeMessageBusProvider implements IMessageB
 				return undefined;
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 			return responseClone;
 		} catch (error: unknown) {
 			if (isNoListenersError(error)) {

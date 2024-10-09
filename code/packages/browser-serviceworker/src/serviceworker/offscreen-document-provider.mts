@@ -67,7 +67,9 @@ export default class ChromeOffscreenDocumentProvider implements IOffscreenDocume
 	public async isOpen(): Promise<boolean> {
 		const matchingContexts: Runtime.ExtensionContext[] = await chrome.runtime.getContexts({
 			contextTypes: [
-				"OFFSCREEN_DOCUMENT",
+				// HACK: mozilla firefox maintains the scheme files used to generate @types/webextension-polyfill typings and doesn't "know" about google chrome's offscreen documents.
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				"OFFSCREEN_DOCUMENT" as any,
 			],
 			documentUrls: [
 				this._internalExtensionUrl,
