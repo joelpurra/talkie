@@ -40,6 +40,7 @@ import Speaker from "@talkie/browser-bricks/speaker.mjs";
 import SpeakerManager from "@talkie/browser-bricks/speaker-manager.mjs";
 import SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
 import SpeakingStatus from "@talkie/browser-bricks/speaking-status.mjs";
+import StayAliveManager from "@talkie/browser-bricks/stay-alive-manager.mjs";
 import UiManager from "@talkie/browser-bricks/ui-manager.mjs";
 import VoiceLanguageManager from "@talkie/browser-bricks/voice-language-manager.mjs";
 import VoiceManager from "@talkie/browser-bricks/voice-manager.mjs";
@@ -92,6 +93,7 @@ export interface BackgroundDependencies {
 	speakerManager: SpeakerManager;
 	speakerPageManager: SpeakerPageManager;
 	speakingStatus: SpeakingStatus;
+	stayAliveManager: StayAliveManager;
 	voiceManager: VoiceManager;
 }
 
@@ -118,6 +120,7 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 	const speechChain = new NonBreakingChain();
 	const speaker = new Speaker(messageBusProviderGetter, shouldContinueSpeakingProvider, speechChain);
 	const speakingStatus = new SpeakingStatus();
+	const stayAliveManager = new StayAliveManager();
 
 	const voiceLanguageManager = new VoiceLanguageManager(messageBusProviderGetter, storageManager, premiumManager);
 	const voiceRateManager = new VoiceRateManager(storageManager, premiumManager);
@@ -194,6 +197,7 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 		speakerManager,
 		speakerPageManager,
 		speakingStatus,
+		stayAliveManager,
 		voiceManager,
 	};
 };

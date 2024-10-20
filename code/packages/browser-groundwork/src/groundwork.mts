@@ -105,6 +105,7 @@ export const groundwork = async (
 		speakerManager,
 		speakerPageManager,
 		speakingStatus,
+		stayAliveManager,
 		voiceManager,
 	} = getDependencies(onInstallListenerEventQueue, messageBusProviderGetter);
 
@@ -117,6 +118,7 @@ export const groundwork = async (
 		messageBusProviderGetter,
 		onlyLastCaller,
 		speakingStatus,
+		stayAliveManager,
 		iconManager,
 		buttonPopupManager,
 		tabChangeListeners.onTabRemovedListener,

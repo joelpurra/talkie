@@ -23,6 +23,7 @@ import type HistoryManager from "@talkie/browser-bricks/history-manager.mjs";
 import type IconManager from "@talkie/browser-bricks/icon-manager.mjs";
 import type OnlyLastCaller from "@talkie/browser-bricks/only-last-caller.mjs";
 import type SpeakingStatus from "@talkie/browser-bricks/speaking-status.mjs";
+import type StayAliveManager from "@talkie/browser-bricks/stay-alive-manager.mjs";
 import createMessageBusListenerHelpers, {
 	type FakeMessageBusActionHandlerCrowdee,
 	type IMessageBusListenerHelpers,
@@ -86,6 +87,19 @@ const registerSpeakingStatusListeners = (
 		"broadcaster:speaking:entire:after",
 		"broadcaster:synthesizer:reset",
 	], async () => speakingStatus.setDoneSpeaking()),
+];
+
+const registerStayAliveManagerListeners = (
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	startCrowdee: <T extends JsonValue = JsonValue>(actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerCrowdee<T>) => Promise<UninitializerCallback[]>,
+	stayAliveManager: ReadonlyDeep<StayAliveManager>,
+) => [
+	startCrowdee("broadcaster:speaking:entire:before", async () => stayAliveManager.stayAlive()),
+
+	startCrowdee([
+		"broadcaster:speaking:entire:after",
+		"broadcaster:synthesizer:reset",
+	], async () => stayAliveManager.justLetGo()),
 ];
 
 const registerIconListeners = (
@@ -238,6 +252,7 @@ const setupBroadcasterListeners = async (
 	messageBusProviderGetter: ReadonlyDeep<IMessageBusProviderGetter>,
 	onlyLastCaller: ReadonlyDeep<OnlyLastCaller>,
 	speakingStatus: ReadonlyDeep<SpeakingStatus>,
+	stayAliveManager: ReadonlyDeep<StayAliveManager>,
 	iconManager: ReadonlyDeep<IconManager>,
 	buttonPopupManager: ReadonlyDeep<ButtonPopupManager>,
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -256,6 +271,7 @@ const setupBroadcasterListeners = async (
 	const t = [
 		registerLastCallerListeners(startCrowdee, onlyLastCaller),
 		registerSpeakingStatusListeners(startCrowdee, speakingStatus),
+		registerStayAliveManagerListeners(startCrowdee, stayAliveManager),
 		registerIconListeners(startCrowdee, iconManager),
 		registerPopupListeners(startCrowdee, buttonPopupManager),
 		registerTabChangeListeners(startCrowdee, onTabRemovedListener, onTabUpdatedListener),
