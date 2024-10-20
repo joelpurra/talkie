@@ -201,42 +201,41 @@ class SpeakingHistoryLimit<P extends SpeakingHistoryLimitProps & TranslateProps>
 						])}
 					</buttonBase.button>
 				</p>
-				<p>
-					<details>
-						<summary>
-							{translateSync("frontend_voicesSpeakingHistoryForgetAllHeading")}
-						</summary>
 
-						<listBase.ol>
-							{
-								speakingHistory
-									.map(
-										(speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) => {
-											const {
-												hash,
-												text,
-											} = speakingHistoryEntry;
+				<details>
+					<summary>
+						{translateSync("frontend_voicesSpeakingHistoryForgetAllHeading")}
+					</summary>
 
-											return (
-												<listBase.li
-													key={hash}
+					<listBase.ol>
+						{
+							speakingHistory
+								.map(
+									(speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) => {
+										const {
+											hash,
+											text,
+										} = speakingHistoryEntry;
+
+										return (
+											<listBase.li
+												key={hash}
+											>
+												<this.styled.transparentButtonEllipsis
+													// eslint-disable-next-line react/jsx-no-bind
+													onClick={this.handleRemoveHistoryEntryClick.bind(null, speakingHistoryEntry)}
 												>
-													<this.styled.transparentButtonEllipsis
-														// eslint-disable-next-line react/jsx-no-bind
-														onClick={this.handleRemoveHistoryEntryClick.bind(null, speakingHistoryEntry)}
-													>
-														❌
-														{" "}
-														{text}
-													</this.styled.transparentButtonEllipsis>
-												</listBase.li>
-											);
-										},
-									)
-							}
-						</listBase.ol>
-					</details>
-				</p>
+													❌
+													{" "}
+													{text}
+												</this.styled.transparentButtonEllipsis>
+											</listBase.li>
+										);
+									},
+								)
+						}
+					</listBase.ol>
+				</details>
 			</>
 		);
 	}

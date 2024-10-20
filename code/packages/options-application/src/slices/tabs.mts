@@ -21,6 +21,9 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import toolkit, {
 	type PayloadAction,
 } from "@reduxjs/toolkit";
+import {
+	promiseDelay,
+} from "@talkie/shared-application-helpers/promise.mjs";
 import type {
 	IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
@@ -59,8 +62,26 @@ const initialState: TabsState = {
 
 const prefix = "tabs";
 
+export const delayedLoadActiveNavigationTabIdFromLocationHash = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+	`${prefix}/delayedLoadActiveNavigationTabIdFromLocationHash`,
+	async (
+		_,
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		{
+			dispatch,
+		},
+	) => {
+		// HACK: tiny delay before loading (and updating) the tabid/hash on first client-side page load, so that hydration of the pre-rendered page can finish.
+		// TODO: loadActiveNavigationTabIdFromLocationHash() already used post-hydration client-side loading -- what's the underlying cause?
+		// TODO: dynamic delay, based on client-side hydration/rendering?
+		await promiseDelay(10);
+
+		await dispatch(loadActiveNavigationTabIdFromLocationHash());
+	},
+);
+
 export const loadActiveNavigationTabIdFromLocationHash = createAsyncThunk<NavigationTabId | "fallback-tab", void, IApiAsyncThunkConfig>(
-	`${prefix}/loadLocationHashAsActiveTab`,
+	`${prefix}/loadActiveNavigationTabIdFromLocationHash`,
 	async () => {
 		const locationHash = await getLocationHash();
 
