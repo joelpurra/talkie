@@ -24,6 +24,8 @@ import path from "path";
 
 import copy from "rollup-plugin-copy";
 
+import { isTalkieDevelopmentMode } from "./talkie-build-mode.mjs";
+
 const getLines = (buffer) =>
 	// TODO: readline for await of
 	// https://nodejs.org/api/readline.html#readline_example_read_file_stream_line_by_line
@@ -118,7 +120,11 @@ const rollupConfiguration = (
 				outputBaseDirectory,
 				".",
 			),
-		],
+		].filter(
+			// NOTE: for production/development file list consistency: first adding, then filtering out, *.map files.
+			// NOTE: have to check the filename of the source path; see destination directory notes.
+			({ src }) => isTalkieDevelopmentMode() || !src.endsWith(".map"),
+		),
 	});
 };
 
