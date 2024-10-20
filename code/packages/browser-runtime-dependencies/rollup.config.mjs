@@ -52,6 +52,18 @@ let environmentTargets;
 // TODO: use this flag to switch <script> urls instead of replacing file contents by reusing the same location?
 if (isTalkieDevelopmentMode()) {
 	environmentTargets = {
+		"./dist/umd/react.js": "../../node_modules/react/umd/react.development.js",
+		"./dist/umd/react-dom.js":
+			"../../node_modules/react-dom/umd/react-dom.development.js",
+		"./dist/umd/react-redux.js":
+			"../../node_modules/react-redux/dist/react-redux.js",
+		"./dist/umd/redux-toolkit.js":
+			"../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.js",
+		"./dist/umd/redux-toolkit.js.map":
+			"../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.js.map",
+	};
+} else if (isTalkieProductionMode()) {
+	environmentTargets = {
 		"./dist/umd/react.js":
 			"../../node_modules/react/umd/react.production.min.js",
 		"./dist/umd/react-dom.js":
@@ -60,16 +72,8 @@ if (isTalkieDevelopmentMode()) {
 			"../../node_modules/react-redux/dist/react-redux.min.js",
 		"./dist/umd/redux-toolkit.js":
 			"../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.min.js",
-	};
-} else if (isTalkieProductionMode()) {
-	environmentTargets = {
-		"./dist/umd/react.js": "../../node_modules/react/umd/react.development.js",
-		"./dist/umd/react-dom.js":
-			"../../node_modules/react-dom/umd/react-dom.development.js",
-		"./dist/umd/react-redux.js":
-			"../../node_modules/react-redux/dist/react-redux.js",
-		"./dist/umd/redux-toolkit.js":
-			"../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.js",
+		"./dist/umd/redux-toolkit.js.map":
+			"../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.umd.min.js.map",
 	};
 } else {
 	throw new TypeError();
