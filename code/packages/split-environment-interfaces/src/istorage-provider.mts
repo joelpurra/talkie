@@ -19,12 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type {
+	JsonObject,
 	JsonValue,
 } from "type-fest";
 
 export type IStorageProviderConstructor = new() => IStorageProvider;
 
 export default interface IStorageProvider {
+	clear(): Promise<void>;
+	count(): Promise<number>;
 	get<T extends JsonValue>(key: string): Promise<T | null>;
+	getAll<T extends JsonObject>(): Promise<T>;
+	has(key: string): Promise<boolean>;
+	isEmpty(): Promise<boolean>;
+	remove(key: string): Promise<void>;
 	set<T extends JsonValue>(key: string, value: T): Promise<void>;
+	setAll<T extends JsonObject>(object: T): Promise<void>;
 }

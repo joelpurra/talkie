@@ -21,7 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	bespeak,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
-import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import type StorageManager from "@talkie/shared-application/storage/storage-manager.mjs";
 import {
 	getMappedVoice,
 } from "@talkie/shared-application-helpers/voices.mjs";

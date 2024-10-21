@@ -18,8 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	betoken,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import type StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import type StorageUpgrader from "@talkie/shared-application/storage/storage-upgrader.mjs";
 import {
 	logDebug,
 	logError,
@@ -30,6 +33,9 @@ import {
 import {
 	type IMetadataManager,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
 	Runtime,
 } from "webextension-polyfill";
@@ -37,16 +43,18 @@ import type {
 import type ContextMenuManager from "./context-menu-manager.mjs";
 import {
 	type OnInstallEvent,
+	REASON_INSTALL,
 } from "./on-installed-manager-types.mjs";
+import migrateStorageBackend from "./storage/migrate-storage-backend.mjs";
+import type StorageBackendMigrator from "./storage/storage-backend-migrator.mjs";
 import type WelcomeManager from "./welcome-manager.mjs";
-
-// NOTE: https://developer.chrome.com/docs/extensions/reference/api/runtime#type-OnInstalledReason
-const REASON_INSTALL = "install";
 
 export default class OnInstalledManager {
 	// eslint-disable-next-line max-params
 	constructor(
-		private readonly storageManager: StorageManager,
+		private readonly messageBusProviderGetter: IMessageBusProviderGetter,
+		private readonly storageBackendMigrator: StorageBackendMigrator,
+		private readonly storageUpgrader: StorageUpgrader,
 		private readonly settingsManager: SettingsManager,
 		private readonly metadataManager: IMetadataManager,
 		private readonly contextMenuManager: ContextMenuManager,
@@ -58,10 +66,12 @@ export default class OnInstalledManager {
 
 	async _setSettingsManagerDefaults(): Promise<void> {
 		// NOTE: only setting non-default values here, otherwise keeping the implicit default value.
+		// TODO: consider "dynamically" changing default values instead, to reduce hardcoded setting values and allow defaults (per-browser, etcetera) to change (just like browsers do) in the future?
+		// TODO: implement settings' default values as a tree, like chrome/webext configuration, such that chrome/webext/production/development can have well-defined overrides?
 		// TODO: break out this functionality, completely separately or perhaps to the to settings manager?
 		// TODO: also reflect these per-system defaults in the user interface?
 		// TODO: allow users to click-to-restore default per-system default settings?
-		void logDebug("Start", "_setSettingsManagerDefaults");
+		void logDebug(this.constructor.name, "Start", "_setSettingsManagerDefaults");
 
 		try {
 			const isWebExtensionVersion = await this.metadataManager.isWebExtensionVersion();
@@ -87,9 +97,9 @@ export default class OnInstalledManager {
 				await this.settingsManager.setShowAdditionalDetails(true);
 			}
 
-			void logDebug("Done", "_setSettingsManagerDefaults");
+			void logDebug(this.constructor.name, "Done", "_setSettingsManagerDefaults");
 		} catch (error: unknown) {
-			void logError("_setSettingsManagerDefaults", error);
+			void logError(this.constructor.name, "_setSettingsManagerDefaults", error);
 
 			throw error;
 		}
@@ -97,18 +107,33 @@ export default class OnInstalledManager {
 
 	async onExtensionInstalledHandler(event: Readonly<Runtime.OnInstalledDetailsType>): Promise<void> {
 		try {
-			await this.storageManager.upgradeIfNecessary();
+			if (isTalkieDevelopmentMode()) {
+				// HACK: mixing test code/data and regular code.
+				await betoken(this.messageBusProviderGetter, "offscreen:storage:window:localStorage:injectTestData");
+			}
 
+			await migrateStorageBackend(this.storageBackendMigrator);
+
+			await this.storageUpgrader.upgradeIfNecessary();
+		} catch (error: unknown) {
+			void logError(this.constructor.name, "onExtensionInstalledHandler", "swallowing error", error);
+		}
+
+		try {
 			// NOTE: removing all context menus in case the menus have changed since the last install/update.
 			await this.contextMenuManager.removeAll();
 			await this.contextMenuManager.createContextMenus();
+		} catch (error: unknown) {
+			void logError(this.constructor.name, "onExtensionInstalledHandler", "swallowing error", error);
+		}
 
+		try {
 			if (event.reason === REASON_INSTALL) {
 				await this._setSettingsManagerDefaults();
 				await this.welcomeManager.openWelcomePage();
 			}
 		} catch (error: unknown) {
-			void logError("onExtensionInstalledHandler", "swallowing error", error);
+			void logError(this.constructor.name, "onExtensionInstalledHandler", "swallowing error", error);
 		}
 	}
 
@@ -125,11 +150,11 @@ export default class OnInstalledManager {
 				throw new Error(`Malformed event in queue: ${typeof onInstallListenerEvent} ${JSON.stringify(onInstallListenerEvent)}`);
 			}
 
-			void logDebug("onInstallListenerEventQueueHandler", "Start", onInstallListenerEvent);
+			void logDebug(this.constructor.name, "onInstallListenerEventQueueHandler", "Start", onInstallListenerEvent);
 
 			await this.onExtensionInstalledHandler(onInstallListenerEvent.event);
 
-			void logDebug("onInstallListenerEventQueueHandler", "Done", onInstallListenerEvent);
+			void logDebug(this.constructor.name, "onInstallListenerEventQueueHandler", "Done", onInstallListenerEvent);
 		}
 	}
 }

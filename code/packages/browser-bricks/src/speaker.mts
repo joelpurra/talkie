@@ -83,6 +83,7 @@ export default class Speaker {
 		const safeVoice = await bespeak(this.messageBusProviderGetter, "offscreen:synthesizer:resolveSafeVoiceObjectByName", voice.name) as SafeVoiceObject | null;
 
 		if (safeVoice === null) {
+			// TODO: recover to some fallback (voice, language, diplayed message, spoken message) instead?
 			throw new TypeError(`No voice found for name: ${voice.name}`);
 		}
 

@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import WindowLocalStorageProvider from "@talkie/browser-bricks/storage/window-local-storage-provider.mjs";
 import {
 	mason,
 } from "@talkie/browser-mason/mason.mjs";
@@ -46,7 +47,9 @@ const start = async () => {
 	const otherContextsMessageBusProviderGetter: IMessageBusProviderGetter = new PredefinedMessageBusProviderGetter(otherContextsMessageBusProvider);
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
-	await mason(uninitializers, messageBusProviderGetter);
+	const windowLocalStorageProvider = new WindowLocalStorageProvider();
+
+	await mason(uninitializers, messageBusProviderGetter, windowLocalStorageProvider);
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function

@@ -10,6 +10,7 @@
     "type-fest"
   ],
   "dependencies": {
+    "@talkie/browser-bricks": "*",
     "@talkie/browser-mason": "*",
     "@talkie/browser-shared": "*",
     "@talkie/shared-application": "*",

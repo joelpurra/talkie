@@ -23,7 +23,8 @@ import configurationObject from "@talkie/shared-application/data/configuration/c
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import PremiumManager from "@talkie/shared-application/premium-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import DefaultStorageManager from "@talkie/shared-application/storage/default-storage-manager.mjs";
+import StorageHelper from "@talkie/shared-application/storage/storage-helper.mjs";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import type {
@@ -66,7 +67,8 @@ export interface BrowserDependencies {
 function getDependencies(messageBusProviderGetter: IMessageBusProviderGetter): BrowserDependencies {
 	// TODO: systematic cleanup of classes and their side-effects.
 	const storageProvider = new StorageProvider();
-	const storageManager = new StorageManager(storageProvider);
+	const storageHelper = new StorageHelper(storageProvider);
+	const storageManager = new DefaultStorageManager(storageHelper);
 	const settingsManager = new SettingsManager(storageManager, messageBusProviderGetter);
 	const premiumProvider = new PremiumProvider(settingsManager);
 	const premiumManager = new PremiumManager(premiumProvider);

@@ -46,7 +46,6 @@ import createAndStartPermissionListeners from "./create-and-start-permission-lis
 import createAndStartTabListeners from "./create-and-start-tab-listeners.mjs";
 import createMessageBusListeners from "./create-message-bus-listeners.mjs";
 import getDependencies from "./get-dependencies.mjs";
-import migrateStorageBackend from "./migrate-storage-backend.mjs";
 import setupBroadcasterListeners from "./setup-broadcaster-listeners.mjs";
 
 export const groundwork = async (
@@ -84,9 +83,6 @@ export const groundwork = async (
 
 		await createAndStartPermissionListeners();
 	}
-
-	// NOTE: performing storage backend migration early, before the storage provider is initialized.
-	await migrateStorageBackend();
 
 	const {
 		buttonPopupManager,

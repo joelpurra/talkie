@@ -20,10 +20,23 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
+	JsonObject,
 	JsonValue,
 } from "type-fest";
 
 export default class WebExtensionEnvironmentStorageProvider implements IStorageProvider {
+	async clear(): Promise<void> {
+		await chrome.storage.local.clear();
+	}
+
+	async count(): Promise<number> {
+		const all = await this.getAll();
+		const keys = Object.keys(all);
+		const count = keys.length;
+
+		return count;
+	}
+
 	async get<T extends JsonValue>(key: string): Promise<T | null> {
 		// NOTE: chrome.storage.local internally uses (automatically stringified) JSON storage.
 		const record = await chrome.storage.local.get(key);
@@ -38,12 +51,41 @@ export default class WebExtensionEnvironmentStorageProvider implements IStorageP
 		return value as T;
 	}
 
+	async getAll<T extends JsonObject>(): Promise<T> {
+		const object = await chrome.storage.local.get() as JsonObject;
+
+		return object as T;
+	}
+
+	async has(key: string): Promise<boolean> {
+		const item = await this.get(key);
+
+		// NOTE: talkie conflates "no such key" and "value is null" (for various meanings of null).
+		return item !== null;
+	}
+
+	async isEmpty(): Promise<boolean> {
+		const count = await this.count();
+
+		return count === 0;
+	}
+
+	async remove(key: string): Promise<void> {
+		await chrome.storage.local.remove(key);
+	}
+
 	async set<T extends JsonValue>(key: string, value: T): Promise<void> {
 		// NOTE: chrome.storage.local internally uses (automatically stringified) JSON storage.
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local
 		const record = {
 			[key]: value,
 		};
 
 		await chrome.storage.local.set(record);
+	}
+
+	async setAll<T extends JsonObject>(object: T): Promise<void> {
+		await chrome.storage.local.set(object);
 	}
 }

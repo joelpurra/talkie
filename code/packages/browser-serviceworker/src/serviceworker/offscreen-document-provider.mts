@@ -18,16 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type {
-	OffscreenReasons,
-} from "@talkie/shared-application/offscreen.mjs";
 import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type IOffscreenDocumentProvider from "@talkie/split-environment-interfaces/ioffscreen-document-provider.mjs";
-import {
-	type Runtime,
+import type {
+	Offscreen,
+	Runtime,
 } from "webextension-polyfill";
 
 export default class ChromeOffscreenDocumentProvider implements IOffscreenDocumentProvider {
@@ -41,13 +39,14 @@ export default class ChromeOffscreenDocumentProvider implements IOffscreenDocume
 	// > Though an extension package can contain multiple offscreen documents, an installed extension can only have one open at a time.
 	// > If the extension is running in split mode with an active incognito profile, the normal and incognito profiles can each have one offscreen document.
 	private static get _justification(): string {
-		return "Use the text-to-speech synthesizer, read text from clipboard.";
+		return "Use the text-to-speech synthesizer, read text from clipboard, migrate localStorage.";
 	}
 
-	private static get _reasons(): OffscreenReasons[] {
+	private static get _reasons(): Offscreen.Reasons[] {
 		return [
 			"AUDIO_PLAYBACK",
 			"CLIPBOARD",
+			"LOCAL_STORAGE",
 		];
 	}
 

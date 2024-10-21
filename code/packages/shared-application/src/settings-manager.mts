@@ -39,7 +39,7 @@ import {
 	KnownSettingStorageKeys,
 	type KnownSettingValues,
 } from "./settings.mjs";
-import type StorageManager from "./storage-manager.mjs";
+import type StorageManager from "./storage/storage-manager.mjs";
 
 export type SettingChangedEventData<T extends JsonValue> = {
 	key: KnownSettingValues;

@@ -21,6 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	OnInstallEvent,
 } from "@talkie/browser-bricks/on-installed-manager-types.mjs";
+import WindowLocalStorageProvider from "@talkie/browser-bricks/storage/window-local-storage-provider.mjs";
 import {
 	groundwork,
 } from "@talkie/browser-groundwork/groundwork.mjs";
@@ -68,6 +69,8 @@ const main = async (onInstallListenerEventQueue: OnInstallEvent[]) => {
 	setGlobalTalkieContextIdentifier("background");
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
+	const windowLocalStorageProvider = new WindowLocalStorageProvider();
+
 	// TODO DEBUG REMOVE
 	//const offscreenIframeManager = new IframeManager(OffscreenDocumentManager.internalHtmlPath, OffscreenDocumentManager.identifier);
 	//const offscreenDocumentProvider = new OffscreenDocumentProvider(offscreenIframeManager);
@@ -80,7 +83,7 @@ const main = async (onInstallListenerEventQueue: OnInstallEvent[]) => {
 
 	//await startSuspensionManager(broadcaster);
 
-	await mason(uninitializers, messageBusProviderGetter);
+	await mason(uninitializers, messageBusProviderGetter, windowLocalStorageProvider);
 
 	void logDebug("Done", "Main background function");
 };

@@ -28,3 +28,6 @@ export interface OnInstallEvent {
 	event: Runtime.OnInstalledDetailsType | null;
 	source: OnInstallEventSource;
 }
+
+// NOTE: https://developer.chrome.com/docs/extensions/reference/api/runtime#type-OnInstalledReason
+export const REASON_INSTALL: Runtime.OnInstalledReason = "install";

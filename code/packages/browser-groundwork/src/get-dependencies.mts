@@ -41,6 +41,8 @@ import SpeakerManager from "@talkie/browser-bricks/speaker-manager.mjs";
 import SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
 import SpeakingStatus from "@talkie/browser-bricks/speaking-status.mjs";
 import StayAliveManager from "@talkie/browser-bricks/stay-alive-manager.mjs";
+import MessageBusWindowLocalStorageProvider from "@talkie/browser-bricks/storage/message-bus-window-local-storage-provider.mjs";
+import StorageBackendMigrator from "@talkie/browser-bricks/storage/storage-backend-migrator.mjs";
 import UiManager from "@talkie/browser-bricks/ui-manager.mjs";
 import VoiceLanguageManager from "@talkie/browser-bricks/voice-language-manager.mjs";
 import VoiceManager from "@talkie/browser-bricks/voice-manager.mjs";
@@ -56,7 +58,9 @@ import configurationObject from "@talkie/shared-application/data/configuration/c
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import PremiumManager from "@talkie/shared-application/premium-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import StorageManager from "@talkie/shared-application/storage-manager.mjs";
+import DefaultStorageManager from "@talkie/shared-application/storage/default-storage-manager.mjs";
+import StorageHelper from "@talkie/shared-application/storage/storage-helper.mjs";
+import StorageUpgrader from "@talkie/shared-application/storage/storage-upgrader.mjs";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	type IPremiumManager,
@@ -103,7 +107,10 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 	// TODO: systematic cleanup of classes and their side-effects.
 	// TODO: reference split implementations by assigning to their respective split interfaces.
 	const storageProvider = new StorageProvider();
-	const storageManager = new StorageManager(storageProvider);
+	const storageHelper = new StorageHelper(storageProvider);
+	const storageUpgrader = new StorageUpgrader(storageHelper);
+	const storageManager = new DefaultStorageManager(storageHelper);
+
 	const settingsManager = new SettingsManager(storageManager, messageBusProviderGetter);
 	const premiumProvider = new PremiumProvider(settingsManager);
 	const premiumManager = new PremiumManager(premiumProvider);
@@ -171,9 +178,14 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 
 	const progress = new TalkieProgress(messageBusProviderGetter);
 
+	const messageBusWindowLocalStorageProvider = new MessageBusWindowLocalStorageProvider(messageBusProviderGetter);
+	const webExtensionEnvironmentStorageProvider = new StorageProvider();
+	const storageBackendMigrator = new StorageBackendMigrator(messageBusWindowLocalStorageProvider, webExtensionEnvironmentStorageProvider);
 	const welcomeManager = new WelcomeManager(uiManager);
 	const onInstalledManager = new OnInstalledManager(
-		storageManager,
+		messageBusProviderGetter,
+		storageBackendMigrator,
+		storageUpgrader,
 		settingsManager,
 		metadataManager,
 		contextMenuManager,

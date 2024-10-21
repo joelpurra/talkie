@@ -17,10 +17,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
+import type WindowLocalStorageProvider from "@talkie/browser-bricks/storage/window-local-storage-provider.mjs";
 import SynthesizerHelper from "@talkie/browser-bricks/synthesizer-helper.mjs";
 import getClipboardText from "@talkie/browser-shared/get-clipboard-text.mjs";
 import MessageBusInspector from "@talkie/shared-application/message-bus/message-bus-inspector.mjs";
 import createMessageBusListenerHelpers from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
+import {
+	getStorageKey,
+	type IStorageMetadata,
+	type StorageFormatVersion,
+	storageMetadataId,
+} from "@talkie/shared-application/storage/storage-keys.mjs";
 import {
 	logDebug,
 	logError,
@@ -43,15 +50,22 @@ import {
 	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
+	JsonObject,
 	ReadonlyDeep,
 } from "type-fest";
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const mason = async (uninitializers: UninitializerCallback[], messageBusProviderGetter: IMessageBusProviderGetter): Promise<void> => {
+export const mason = async (
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	uninitializers: UninitializerCallback[],
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: IMessageBusProviderGetter,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	windowLocalStorageProvider: WindowLocalStorageProvider,
+): Promise<void> => {
 	void logDebug("Start", "Main mason function");
 
 	if (isTalkieDevelopmentMode()) {
-	// NOTE: no cleanup; listen to the bitter end.
+		// NOTE: no cleanup; listen to the bitter end.
 		const messageBusInspector = new MessageBusInspector(messageBusProviderGetter, logDebug.bind(undefined, "mason"));
 		await messageBusInspector.start();
 	}
@@ -139,6 +153,69 @@ export const mason = async (uninitializers: UninitializerCallback[], messageBusP
 			startResponder("offscreen:synthesizer:resolveSafeVoiceObjectByName", async (_action, voiceName: string) => SynthesizerHelper.resolveSafeVoiceObjectByName(voiceName)),
 
 			startResponder("offscreen:synthesizer:resolveDefaultSafeVoiceObjectForLanguage", async (_action, language: string) => SynthesizerHelper.resolveDefaultSafeVoiceObjectForLanguage(language)),
+
+			startResponder("offscreen:storage:window:localStorage:count", async (action): Promise<number | null> => {
+				try {
+					const count = await windowLocalStorageProvider.count();
+
+					return count;
+				} catch (error: unknown) {
+					void logError(`messageBus["${action}"]`, "swallowing error", error);
+				}
+
+				return null;
+			}),
+
+			startResponder("offscreen:storage:window:localStorage:getAll", async (action): Promise<JsonObject | null> => {
+				try {
+					const object = await windowLocalStorageProvider.getAll();
+
+					return object;
+				} catch (error: unknown) {
+					void logError(`messageBus["${action}"]`, "swallowing error", error);
+				}
+
+				return null;
+			}),
+
+			startReactor("offscreen:storage:window:localStorage:injectTestData", async (action) => {
+				try {
+					// HACK: mixing test code/data and regular code.
+					// NOTE: write low-level data, including version metadata; here fake persisted settings.
+					// NOTE: chrome mv3 cannot access window.localStorage directly, and has to go through the offscreen message bus; using it also in firefox to normalize.
+					const temporarySettingVersion: StorageFormatVersion = "v1.1.0";
+					const metaSettingKey = await getStorageKey(temporarySettingVersion, storageMetadataId);
+					const metaSettingValue: IStorageMetadata = {
+						"upgraded-at": Date.now(),
+						"upgraded-from-version": null,
+						version: temporarySettingVersion,
+					};
+					await windowLocalStorageProvider.set(metaSettingKey, metaSettingValue);
+
+					// NOTE: random hardcoded setting to be migrated and/or upgraded.
+					const randomSettingKey = await getStorageKey(temporarySettingVersion, "language-voice-overrides");
+					const randomSettingValue = {
+						en: "Some Voice Name",
+					};
+					await windowLocalStorageProvider.set(randomSettingKey, randomSettingValue);
+				} catch (error: unknown) {
+					void logError(`messageBus["${action}"]`, "swallowing error", error);
+				}
+
+				return TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE;
+			}),
+
+			startResponder("offscreen:storage:window:localStorage:isEmpty", async (action): Promise<boolean | null> => {
+				try {
+					const isEmpty = await windowLocalStorageProvider.isEmpty();
+
+					return isEmpty;
+				} catch (error: unknown) {
+					void logError(`messageBus["${action}"]`, "swallowing error", error);
+				}
+
+				return null;
+			}),
 
 			startResponder("offscreen:clipboard:read", async (action): Promise<string | null> => {
 				try {

@@ -50,6 +50,10 @@ export type MessageBusAction =
 	| "extension:icon-click"
 
 	| "offscreen:clipboard:read"
+	| "offscreen:storage:window:localStorage:count"
+	| "offscreen:storage:window:localStorage:getAll"
+	| "offscreen:storage:window:localStorage:injectTestData"
+	| "offscreen:storage:window:localStorage:isEmpty"
 	| "offscreen:synthesizer:getAllSafeVoiceObjects"
 	| "offscreen:synthesizer:resetSynthesizer"
 	| "offscreen:synthesizer:resolveDefaultSafeVoiceObjectForLanguage"

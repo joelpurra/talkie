@@ -18,7 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// TODO: extend from webextension-polyfill Offscreen.Reason type.
-export type OffscreenReasons =
-	| "AUDIO_PLAYBACK"
-	| "CLIPBOARD";
+import type StorageBackendMigrator from "./storage-backend-migrator.mjs";
+
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const migrateStorageBackend = async (storageBackendMigrator: StorageBackendMigrator): Promise<void> => {
+	try {
+		await storageBackendMigrator.migrateIfNecessary();
+	} finally {
+		// NOTE: ignore migration errors; if there is data loss, users can change settings again.
+	}
+};
+
+export default migrateStorageBackend;

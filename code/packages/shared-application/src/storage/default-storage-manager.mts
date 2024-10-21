@@ -18,15 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import StorageBackendMigrator from "@talkie/split-environment-webextension/browser-specific/storage-backend-migrator.mjs";
+import type StorageHelper from "./storage-helper.mjs";
+import {
+	currentStorageFormatVersion,
+} from "./storage-keys.mjs";
+import StorageManager from "./storage-manager.mjs";
 
-const migrateStorageBackend = async (): Promise<void> => {
-	let storageBackendMigrator: StorageBackendMigrator | null = new StorageBackendMigrator();
-
-	await storageBackendMigrator.migrateIfNecessary();
-
-	// NOTE: single-purpose, single-use (...) class; internally release instance reference.
-	storageBackendMigrator = null;
-};
-
-export default migrateStorageBackend;
+export default class DefaultStorageManager extends StorageManager {
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	constructor(storageHelper: StorageHelper) {
+		super(storageHelper, currentStorageFormatVersion);
+	}
+}

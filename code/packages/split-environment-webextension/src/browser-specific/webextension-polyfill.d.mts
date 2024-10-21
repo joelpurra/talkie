@@ -50,7 +50,7 @@ module "webextension-polyfill" {
 	export namespace Offscreen {
 		interface CreateParameters {
 			url: readonly string;
-			reasons: ReadonlyArray<keyof Reason>;
+			reasons: readonly Reasons[];
 			justification: readonly string;
 		}
 
@@ -58,7 +58,10 @@ module "webextension-polyfill" {
 		interface Reason {
 			AUDIO_PLAYBACK: readonly "AUDIO_PLAYBACK";
 			CLIPBOARD: readonly "CLIPBOARD";
+			LOCAL_STORAGE: readonly "LOCAL_STORAGE";
 		}
+
+		type Reasons = keyof Reason;
 
 		interface Static {
 			closeDocument: () => Promise<void>;
