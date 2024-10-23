@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,20 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
 	getAvailableBrowserLanguageWithInstalledVoice,
 } from "@talkie/shared-ui/selectors/voices.mjs";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
-	OptionsRootState,
+	type OptionsRootState,
 } from "../store/index.mjs";
 
 const {
@@ -75,7 +74,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 
 		for await (const languageCode of availableBrowserLanguageWithInstalledVoice) {
 			// TODO: isTalkieLocale assertion.
-			const isTalkieLocale = await extra.isTalkieLocale(languageCode);
+			const isTalkieLocale = await extra.coating!.talkieLocale.isTalkieLocale(languageCode);
 
 			if (isTalkieLocale) {
 				sampleTextLanguage = languageCode as TalkieLocale;
@@ -84,7 +83,7 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 		}
 
 		const sampleText = typeof sampleTextLanguage === "string"
-			? await extra.getSampleText(sampleTextLanguage)
+			? await extra.coating!.talkieLocale.getSampleText(sampleTextLanguage)
 			: null;
 
 		return {
@@ -94,8 +93,8 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 	},
 );
 
-export const voicesSlice = createSlice({
-	extraReducers: (builder) => {
+export const welcomeSlice = createSlice({
+	extraReducers(builder) {
 		builder
 			.addCase(loadSampleTextForAvailableBrowserLanguageWithInstalledVoice.fulfilled, (state, action) => {
 				state.sampleText = action.payload.sampleText;
@@ -109,5 +108,5 @@ export const voicesSlice = createSlice({
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 
-// export const {} = voicesSlice.actions;
-export default voicesSlice.reducer;
+// export const {} = welcomeSlice.actions;
+export default welcomeSlice.reducer;

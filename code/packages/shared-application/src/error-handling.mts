@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
+	logError,
 	logInfo,
-	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 const handleUnhandledRejection = (event: ReadonlyDeep<PromiseRejectionEvent>) => {
-	void logWarn("Unhandled rejection", "Error", event.reason, event.promise, event);
+	void logError("Unhandled rejection", "Error", event.reason, event.promise, event);
 	void logInfo("Starting debugger, if attached.");
 
 	// eslint-disable-next-line no-debugger
@@ -40,5 +40,5 @@ export const registerUnhandledRejectionHandler = (): void => {
 	// "error"
 	// "messageerror"
 	// "securitypolicyviolation"
-	window.addEventListener("unhandledrejection", handleUnhandledRejection);
+	globalThis.addEventListener("unhandledrejection", handleUnhandledRejection);
 };

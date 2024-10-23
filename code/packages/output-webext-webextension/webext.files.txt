@@ -1,0 +1,3 @@
+packages/browser-background/dist/rollup/background.dependencies.txt
+packages/browser-background/dist/rollup/background.js
+packages/browser-background/dist/rollup/background.js.map

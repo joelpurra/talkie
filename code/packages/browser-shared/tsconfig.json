@@ -22,6 +22,9 @@
       "path": "../shared-ui/tsconfig.json"
     },
     {
+      "path": "../split-environment-interfaces/tsconfig.json"
+    },
+    {
       "path": "../split-environment-webextension/tsconfig.json"
     }
   ]

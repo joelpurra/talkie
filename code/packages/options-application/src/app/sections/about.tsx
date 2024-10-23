@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,28 +19,38 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	OsType,
-	SystemType,
+	isLanguageGroup,
+} from "@talkie/shared-application-helpers/transform-voices.mjs";
+import {
+	type OsType,
+	type SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
+import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
+import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 
 export interface AboutStateProps {
 	isPremiumEdition: boolean;
+	sortedLanguageDialects: readonly string[];
 	sortedLanguageGroups: readonly string[];
-	sortedLanguages: readonly string[];
 	navigatorLanguage?: string | null;
 	sortedNavigatorLanguages: readonly string[];
 	osType?: OsType | null;
@@ -60,10 +70,24 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		osType: null,
 	};
 
+	private readonly styled: {
+		scrollableDd: TalkieStyletronComponent<typeof listBase.dd>;
+	};
+
 	constructor(props: P) {
 		super(props);
 
 		this.handleLegaleseClick = this.handleLegaleseClick.bind(this);
+
+		this.styled = {
+			scrollableDd: withTalkieStyleDeep(
+				listBase.dd,
+				{
+					maxHeight: "10em",
+					overflowY: "scroll",
+				},
+			),
+		};
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -78,12 +102,40 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 		this.props.onLicenseClick(legaleseText);
 	}
 
+	linkLanguageGroupToWikipedia(languageGroup: TalkieLocale | string): React.ReactNode {
+		const linkToWikipedia = (
+			<a
+				href={`https://${languageGroup}.wikipedia.org/`}
+			>
+				{languageGroup}
+			</a>
+		);
+
+		// NOTE: some language lists mix groups and dialects; allow dialects but do not link them.
+		const textOrLink = isLanguageGroup(languageGroup)
+			? linkToWikipedia
+			: languageGroup;
+
+		return textOrLink;
+	}
+
+	linkLanguageGroupsToWikipedia(languageGroups: ReadonlyArray<TalkieLocale | string>): React.ReactNode {
+		return languageGroups.map((languageGroup, index, array) => (
+			<React.Fragment
+				key={languageGroup}
+			>
+				{this.linkLanguageGroupToWikipedia(languageGroup)}
+				{index < array.length - 1 ? ", " : null}
+			</React.Fragment>
+		));
+	}
+
 	override render(): React.ReactNode {
 		const {
 			configure,
 			isPremiumEdition,
+			sortedLanguageDialects,
 			sortedLanguageGroups,
-			sortedLanguages,
 			navigatorLanguage,
 			sortedNavigatorLanguages,
 			osType,
@@ -99,196 +151,252 @@ class About<P extends AboutProps & ConfigureProps & TranslateProps> extends Reac
 			? translateSync("extensionShortName_Premium")
 			: translateSync("extensionShortName_Free");
 
+		// TODO: generate list during build, load as data?
+		const licenseLinkNames = [
+			"@talkie/options-application",
+			"@talkie/popup-application",
+			"react-dom",
+			"react-redux",
+			"react",
+			"redux-toolkit",
+		].sort((a, b) => a.localeCompare(b));
+
+		// TODO: list and limit as arguments.
+		const ScrollableLongList = voiceNamesAndLanguages.length >= 100
+			? this.styled.scrollableDd
+			: listBase.dd;
+
 		return (
-			<section>
-				<textBase.h2>
-					{translateSync("frontend_storyHeading")}
-				</textBase.h2>
-				<textBase.p>
-					{translateSync("frontend_storyDescription")}
-				</textBase.p>
-				<textBase.p>
-					{translateSync("frontend_storyThankYou")}
-				</textBase.p>
-				<textBase.p>
-					—
-					<textBase.a
-						href="https://joelpurra.com/"
-						lang="sv"
-					>
-						Joel Purra
-					</textBase.a>
-				</textBase.p>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_aboutLinkText")}
+				</textBase.h1>
 
-				<textBase.h2>
-					{translateSync("frontend_systemHeading")}
-				</textBase.h2>
-
-				<listBase.dl>
-					<listBase.dt>
-						{translateSync("frontend_systemCurrentEditionHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						<TalkieEditionIcon
-							isPremiumEdition={isPremiumEdition}
-							mode="inline"
-						/>
-						{extensionShortName}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledVersionHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{translateSync("extensionShortName")}
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_storyHeading")}
+					</textBase.h2>
+					<p>
+						{translateSync("frontend_storyDescription")}
+					</p>
+					<p>
+						{translateSync("frontend_storyThankYou")}
+					</p>
+					<p>
+						—
 						{" "}
-						{versionName}
-					</listBase.dd>
+						<a
+							href="https://joelpurra.com/"
+							lang="sv"
+						>
+							Joel Purra
+						</a>
+					</p>
+				</section>
 
-					<listBase.dt>
-						{translateSync("frontend_systemBrowserTypeHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{systemType}
-					</listBase.dd>
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_systemHeading")}
+					</textBase.h2>
 
-					<listBase.dt>
-						{translateSync("frontend_systemOSHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{osType}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemBrowserLanguageHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{navigatorLanguage}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemBrowserLanguagesHeading")}
-						{" "}
-						(
-						{sortedNavigatorLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedNavigatorLanguages.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledLanguagesHeading")}
-						{" "}
-						(
-						{sortedLanguageGroups.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedLanguageGroups.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledDialectsHeading")}
-						{" "}
-						(
-						{sortedLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedLanguages.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemInstalledVoicesHeading")}
-						{" "}
-						(
-						{voiceNamesAndLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd>
-						{voiceNamesAndLanguages.join(", ")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemTalkieUILanguageHeading")}
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{translateSync("extensionLocale")}
-					</listBase.dd>
-
-					<listBase.dt>
-						{translateSync("frontend_systemTalkieUILanguagesHeading")}
-						{" "}
-						(
-						{sortedTranslatedLanguages.length}
-						)
-					</listBase.dt>
-					<listBase.dd
-						lang="en"
-					>
-						{sortedTranslatedLanguages.join(", ")}
-					</listBase.dd>
-				</listBase.dl>
-
-				<textBase.h2>
-					{translateSync("frontend_licenseHeading")}
-				</textBase.h2>
-				<p
-					lang="en"
-					onClick={this.handleLegaleseClick}
-				>
-					<buttonBase.transparentButton
-						type="button"
-					>
-						{translateSync("frontend_licenseGPLDescription")}
-					</buttonBase.transparentButton>
-				</p>
-				<p>
-					{translateSync("frontend_licenseCLADescription")}
-				</p>
-				<listBase.ul>
-					<listBase.li>
-						<textBase.a
-							href={configure("urls.external.gpl")}
+					<listBase.dl>
+						<listBase.dt>
+							{translateSync("frontend_systemCurrentEditionHeading")}
+						</listBase.dt>
+						<listBase.dd
 							lang="en"
 						>
-							{translateSync("frontend_licenseGPLLinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a
-							href={configure("urls.external.cla")}
+							<TalkieEditionIcon
+								isPremiumEdition={isPremiumEdition}
+								mode="inline"
+							/>
+							{extensionShortName}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledVersionHeading")}
+						</listBase.dt>
+						<listBase.dd
 							lang="en"
 						>
-							{translateSync("frontend_licenseCLALinkText")}
-						</textBase.a>
-					</listBase.li>
-					<listBase.li>
-						<textBase.a href={configure("urls.external.github")}>
-							{translateSync("frontend_aboutCodeOnGithubLinkText")}
-						</textBase.a>
-					</listBase.li>
-				</listBase.ul>
-			</section>
+							{translateSync("extensionShortName")}
+							{" "}
+							{versionName}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemBrowserTypeHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{systemType}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemOSHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{osType}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemBrowserLanguageHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{navigatorLanguage ? this.linkLanguageGroupToWikipedia(navigatorLanguage) : null}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemBrowserLanguagesHeading")}
+							{" "}
+							(
+							{sortedNavigatorLanguages.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{this.linkLanguageGroupsToWikipedia(sortedNavigatorLanguages)}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledLanguagesHeading")}
+							{" "}
+							(
+							{sortedLanguageGroups.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{this.linkLanguageGroupsToWikipedia(sortedLanguageGroups)}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledDialectsHeading")}
+							{" "}
+							(
+							{sortedLanguageDialects.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{sortedLanguageDialects.join(", ")}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemInstalledVoicesHeading")}
+							{" "}
+							(
+							{voiceNamesAndLanguages.length}
+							)
+						</listBase.dt>
+						<ScrollableLongList>
+							{voiceNamesAndLanguages.join(", ")}
+						</ScrollableLongList>
+
+						<listBase.dt>
+							{translateSync("frontend_systemTalkieUILanguageHeading")}
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{this.linkLanguageGroupToWikipedia(translateSync("extensionLocale"))}
+						</listBase.dd>
+
+						<listBase.dt>
+							{translateSync("frontend_systemTalkieUILanguagesHeading")}
+							{" "}
+							(
+							{sortedTranslatedLanguages.length}
+							)
+						</listBase.dt>
+						<listBase.dd
+							lang="en"
+						>
+							{this.linkLanguageGroupsToWikipedia(sortedTranslatedLanguages)}
+						</listBase.dd>
+					</listBase.dl>
+				</section>
+
+				<section>
+					<textBase.h2>
+						{translateSync("frontend_licenseHeading")}
+					</textBase.h2>
+					<p
+						lang="en"
+						onClick={this.handleLegaleseClick}
+					>
+						<buttonBase.transparentButton
+							type="button"
+						>
+							{translateSync("frontend_licenseGPLDescription")}
+						</buttonBase.transparentButton>
+					</p>
+					<p>
+						{translateSync("frontend_licenseCLADescription")}
+					</p>
+
+					<listBase.ul>
+						<listBase.li>
+							<a
+								href={configure("urls.external.gpl")}
+								lang="en"
+							>
+								{translateSync("frontend_licenseGPLLinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a
+								href={configure("urls.external.cla")}
+								lang="en"
+							>
+								{translateSync("frontend_licenseCLALinkText")}
+							</a>
+						</listBase.li>
+						<listBase.li>
+							<a
+								href={configure("urls.external.github")}
+							>
+								{translateSync("frontend_aboutCodeOnGithubLinkText")}
+							</a>
+						</listBase.li>
+					</listBase.ul>
+
+					<layoutBase.details>
+						<summary>
+							<textBase.summaryHeading3>
+								{translateSync("frontend_licenseThirdPartyHeading")}
+							</textBase.summaryHeading3>
+						</summary>
+
+						<listBase.ul>
+							{licenseLinkNames.map((licenseLinkName) => (
+								<listBase.li
+									key={licenseLinkName}
+								>
+									<a
+										href={configure(`urls.license.${licenseLinkName}`)}
+										lang="en"
+										rel="noopener noreferrer"
+										target="_blank"
+									>
+										<code>
+											{licenseLinkName}
+										</code>
+									</a>
+								</listBase.li>
+							))}
+						</listBase.ul>
+					</layoutBase.details>
+				</section>
+			</>
 		);
 	}
 }

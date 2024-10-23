@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,11 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	KillSwitch,
-} from "@talkie/shared-interfaces/killswitch.mjs";
+	startCrowdee,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import {
-	knownEvents,
-} from "@talkie/shared-interfaces/known-events.mjs";
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	executeUninitializers,
+} from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
+import type {
+	UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
 import React from "react";
 import type {
 	Except,
@@ -31,31 +37,33 @@ import type {
 } from "type-fest";
 
 import {
-	BroadcasterContext,
+	MessageBusContext,
 } from "../containers/providers.js";
-import {
+import type {
 	TalkieProgressData,
 } from "../talkie-progress.mjs";
 
 export interface ProgressProps extends TalkieProgressData {}
 
-type ProgressHocState = TalkieProgressData;
+interface ProgressHocState extends TalkieProgressData {}
 
 export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {
-	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types
+	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function progressHoc(ComponentToWrap: React.ComponentType<P>) {
 		class ProgressHoc extends React.Component<P, ProgressHocState> {
-			static override contextType = BroadcasterContext;
-			declare context: React.ContextType<typeof BroadcasterContext>;
+			static override contextType = MessageBusContext;
 
-			isListeningToBroadcasts = false;
-			killSwitches: KillSwitch[] = [];
+			// eslint-disable-next-line react/static-property-placement
+			declare context: React.ContextType<typeof MessageBusContext>;
 
 			override state = {
 				current: 0,
 				max: 0,
 				min: 0,
 			};
+
+			private _isListeningToBroadcasts = false;
+			private readonly _uninitializers: UninitializerCallback[] = [];
 
 			constructor(props: P) {
 				super(props);
@@ -67,7 +75,7 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 				window.addEventListener("beforeunload", this.componentCleanup);
 
 				void this.registerBroadcastListeners();
-				this.isListeningToBroadcasts = true;
+				this._isListeningToBroadcasts = true;
 			}
 
 			override componentWillUnmount(): void {
@@ -76,8 +84,9 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 
 			componentCleanup(): void {
 				window.removeEventListener("beforeunload", this.componentCleanup);
-				this.isListeningToBroadcasts = false;
-				this.executeKillSwitches();
+				this._isListeningToBroadcasts = false;
+
+				void executeUninitializers(this._uninitializers);
 			}
 
 			override shouldComponentUpdate(
@@ -86,7 +95,7 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 			): boolean {
 				// NOTE: always update.
 				// TODO: optimize by comparing old and new props/state.
-				return this.isListeningToBroadcasts;
+				return this._isListeningToBroadcasts;
 			}
 
 			override render(): React.ReactNode {
@@ -107,13 +116,13 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 			}
 
 			updateProgress(data: ReadonlyDeep<ProgressHocState>): void {
-				if (!this.isListeningToBroadcasts) {
+				if (!this._isListeningToBroadcasts) {
 					return;
 				}
 
 				// NOTE: there seems to be some issues with react trying to re-render the page after the page has (will) unload.
 				// NOTE: trigger by hitting the Talkie button in quick succession.
-				// NOTE: This seems to be due to events from the background page having enough state to for the broadcaster to trigger events inside of the page, before (without) killSwitches being executed.
+				// NOTE: This seems to be due to events from the background page having enough state to for the broadcaster to trigger events inside of the page, before (without) uninitializers being executed.
 				// NOTE: The code inside of react is tricky -- especially in dev mode -- and this try-catch might not do anything.
 				// https://github.com/facebook/react/pull/10270
 				// https://github.com/facebook/react/blob/37e4329bc81def4695211d6e3795a654ef4d84f5/packages/react-reconciler/src/ReactFiberScheduler.js#L770
@@ -124,40 +133,21 @@ export default function progressAttribute<P extends ProgressProps = ProgressProp
 						max: data.max,
 						min: data.min,
 					});
-				} catch {
-					// dualLogger.dualLogError("setState", error);
-
-					// NOTE: ignoring and swallowing error.
-				}
-			}
-
-			executeKillSwitches(): void {
-			// NOTE: expected to have only synchronous methods for the relevant parts.
-				const killSwitchesToExecute = this.killSwitches;
-				this.killSwitches = [];
-
-				for (const killSwitch of killSwitchesToExecute) {
-					try {
-						killSwitch();
-					} catch {
-						try {
-						// dualLogger.dualLogError("executeKillSwitches", error);
-						} catch {
-						// NOTE: ignoring error logging errors.
-						}
-					}
+				} catch (error: unknown) {
+					void logError("setState", "swallowing error", error);
 				}
 			}
 
 			async registerBroadcastListeners(): Promise<void> {
-				const killSwitch = await this.context.broadcaster.registerListeningAction(
-					knownEvents.updateProgress,
+				const uninitializers = await startCrowdee(
+					this.context.messageBusProviderGetter,
+					"broadcaster:progress:update",
 					(_actionName: string, actionData: ReadonlyDeep<ProgressHocState>) => {
 						this.updateProgress(actionData);
 					},
 				);
 
-				this.killSwitches.push(killSwitch);
+				this._uninitializers.unshift(...uninitializers);
 			}
 		}
 

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,13 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
-import {
+import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
@@ -44,30 +43,39 @@ const prefix = "navigation";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const openUrlInNewTab = createAsyncThunk<void, ReadonlyDeep<URL>, IApiAsyncThunkConfig>(
-	`${prefix}/openUrlInNewTab`,
-	async (url, {
-		extra,
-	}) => {
-		await extra.openUrlInNewTab(url);
+export const openExternalUrlInNewTab = createAsyncThunk<void, ReadonlyDeep<URL>, IApiAsyncThunkConfig>(
+	`${prefix}/openExternalUrlInNewTab`,
+	async (
+		url,
+		{
+			extra,
+		},
+	) => {
+		await extra.coating!.browser!.openExternalUrlInNewTab(url);
 	},
 );
 
 export const openShortKeysConfiguration = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/openShortKeysConfiguration`,
-	async (_, {
-		extra,
-	}) => {
-		await extra.openShortKeysConfiguration();
+	async (
+		_,
+		{
+			extra,
+		},
+	) => {
+		await extra.coating!.browser!.openShortKeysConfiguration();
 	},
 );
 
 export const openOptionsPage = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/openOptionsPage`,
-	async (_, {
-		extra,
-	}) => {
-		await extra.openOptionsPage();
+	async (
+		_,
+		{
+			extra,
+		},
+	) => {
+		await extra.coating!.browser!.openOptionsPage();
 	},
 );
 

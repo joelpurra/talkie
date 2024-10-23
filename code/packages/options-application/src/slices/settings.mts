@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,10 +22,9 @@ import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 const {
@@ -38,11 +37,17 @@ const {
 export interface SettingsState {
 	showAdditionalDetails: boolean;
 	speakLongTexts: boolean;
+	speakingHistoryLimit: number;
+	continueOnTabRemoved: boolean;
+	continueOnTabUpdatedUrl: boolean;
 }
 
 const initialState: SettingsState = {
+	continueOnTabRemoved: false,
+	continueOnTabUpdatedUrl: false,
 	showAdditionalDetails: false,
 	speakLongTexts: false,
+	speakingHistoryLimit: 0,
 };
 
 const prefix = "settings";
@@ -52,67 +57,175 @@ const prefix = "settings";
 export const loadShowAdditionalDetails = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadShowAdditionalDetails`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 		},
-	) => extra.getShowAdditionalDetailsOption(),
+	) => extra.groundwork!.configuration.getShowAdditionalDetails(),
 );
 
-export const storeShowAdditionalDetails = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeShowAdditionalDetails = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeShowAdditionalDetails`,
 	async (
-		showAdditionalDetails, {
-			dispatch,
+		showAdditionalDetails,
+		{
 			extra,
 		},
 	) => {
-		await extra.setShowAdditionalDetailsOption(showAdditionalDetails);
-		dispatch(setShowAdditionalDetails(showAdditionalDetails));
+		await extra.groundwork!.configuration.setShowAdditionalDetails(showAdditionalDetails);
+
+		return showAdditionalDetails;
 	},
 );
 
 export const loadSpeakLongTexts = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakLongTexts`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 		},
-	) => extra.getSpeakLongTextsOption(),
+	) => extra.groundwork!.configuration.getSpeakLongTexts(),
 );
 
-export const storeSpeakLongTexts = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeSpeakLongTexts = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeSpeakLongTexts`,
 	async (
-		speakLongTexts, {
-			dispatch,
+		speakLongTexts,
+		{
 			extra,
 		},
 	) => {
-		await extra.setSpeakLongTextsOption(speakLongTexts);
-		dispatch(setSpeakLongTexts(speakLongTexts));
+		await extra.groundwork!.configuration.setSpeakLongTexts(speakLongTexts);
+
+		return speakLongTexts;
+	},
+);
+
+export const loadSpeakingHistoryLimit = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadSpeakingHistoryLimit`,
+	async (
+		_,
+		{
+			extra,
+		},
+	) => extra.groundwork!.configuration.getSpeakingHistoryLimit(),
+);
+
+export const storeSpeakingHistoryLimit = createAsyncThunk<number, number, IApiAsyncThunkConfig>(
+	`${prefix}/storeSpeakingHistoryLimit`,
+	async (
+		speakingHistoryLimit,
+		{
+			extra,
+		},
+	) => {
+		await extra.groundwork!.configuration.setSpeakingHistoryLimit(speakingHistoryLimit);
+
+		return speakingHistoryLimit;
+	},
+);
+
+export const loadContinueOnTabRemoved = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadContinueOnTabRemoved`,
+	async (
+		_,
+		{
+			extra,
+		},
+	) => extra.groundwork!.configuration.getContinueOnTabRemoved(),
+);
+
+export const storeContinueOnTabRemoved = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
+	`${prefix}/storeContinueOnTabRemoved`,
+	async (
+		continueOnTabRemoved,
+		{
+			extra,
+		},
+	) => {
+		await extra.groundwork!.configuration.setContinueOnTabRemoved(continueOnTabRemoved);
+
+		return continueOnTabRemoved;
+	},
+);
+
+export const loadContinueOnTabUpdatedUrl = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
+	`${prefix}/loadContinueOnTabUpdatedUrl`,
+	async (
+		_,
+		{
+			extra,
+		},
+	) => extra.groundwork!.configuration.getContinueOnTabUpdatedUrl(),
+);
+
+export const storeContinueOnTabUpdatedUrl = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
+	`${prefix}/storeContinueOnTabUpdatedUrl`,
+	async (
+		continueOnTabUpdatedUrl,
+		{
+			extra,
+		},
+	) => {
+		await extra.groundwork!.configuration.setContinueOnTabUpdatedUrl(continueOnTabUpdatedUrl);
+
+		return continueOnTabUpdatedUrl;
 	},
 );
 
 export const settingsSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
+		// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 		builder
 			.addCase(loadShowAdditionalDetails.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.showAdditionalDetails = action.payload;
 			})
 			.addCase(loadSpeakLongTexts.fulfilled, (state, action) => {
-				// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 				state.speakLongTexts = action.payload;
+			})
+			.addCase(loadSpeakingHistoryLimit.fulfilled, (state, action) => {
+				state.speakingHistoryLimit = action.payload;
+			})
+			.addCase(loadContinueOnTabRemoved.fulfilled, (state, action) => {
+				state.continueOnTabRemoved = action.payload;
+			})
+			.addCase(loadContinueOnTabUpdatedUrl.fulfilled, (state, action) => {
+				state.continueOnTabUpdatedUrl = action.payload;
+			})
+			.addCase(storeShowAdditionalDetails.fulfilled, (state, action) => {
+				state.showAdditionalDetails = action.payload;
+			})
+			.addCase(storeSpeakLongTexts.fulfilled, (state, action) => {
+				state.speakLongTexts = action.payload;
+			})
+			.addCase(storeSpeakingHistoryLimit.fulfilled, (state, action) => {
+				state.speakingHistoryLimit = action.payload;
+			})
+			.addCase(storeContinueOnTabRemoved.fulfilled, (state, action) => {
+				state.continueOnTabRemoved = action.payload;
+			})
+			.addCase(storeContinueOnTabUpdatedUrl.fulfilled, (state, action) => {
+				state.continueOnTabUpdatedUrl = action.payload;
 			});
 	},
 	initialState,
 	name: prefix,
 	reducers: {
-		setShowAdditionalDetails: (state: Draft<SettingsState>, action: PayloadAction<boolean>) => {
+		setContinueOnTabRemoved(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
+			state.continueOnTabRemoved = action.payload;
+		},
+		setContinueOnTabUpdatedUrl(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
+			state.continueOnTabUpdatedUrl = action.payload;
+		},
+		setShowAdditionalDetails(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.showAdditionalDetails = action.payload;
 		},
-		setSpeakLongTexts: (state: Draft<SettingsState>, action: PayloadAction<boolean>) => {
+		setSpeakLongTexts(state: Draft<SettingsState>, action: PayloadAction<boolean>) {
 			state.speakLongTexts = action.payload;
+		},
+		setSpeakingHistoryLimit(state: Draft<SettingsState>, action: PayloadAction<number>) {
+			state.speakingHistoryLimit = action.payload;
 		},
 	},
 });
@@ -120,8 +233,11 @@ export const settingsSlice = createSlice({
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const {
+	setContinueOnTabRemoved,
+	setContinueOnTabUpdatedUrl,
 	setShowAdditionalDetails,
 	setSpeakLongTexts,
+	setSpeakingHistoryLimit,
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

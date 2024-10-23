@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,10 +22,12 @@ import type {
 	Action,
 	Store,
 } from "@reduxjs/toolkit";
-import IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import IBroadcasterProvider from "@talkie/split-environment-interfaces/ibroadcaster-provider.mjs";
-import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
 import Root from "../containers/root.js";
@@ -35,7 +37,9 @@ const getRoot = async <S, A extends Action, P>(
 	translatorProvider: Readonly<ITranslatorProvider>,
 	configuration: Readonly<IConfiguration>,
 	styletronProvider: Readonly<IStyletronProvider>,
-	broadcasterProvider: Readonly<IBroadcasterProvider>,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: Readonly<IMessageBusProviderGetter>,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	ChildComponent: React.ComponentType<P>,
 	// eslint-disable-next-line max-params
 ): Promise<React.ReactElement> => {
@@ -47,8 +51,8 @@ const getRoot = async <S, A extends Action, P>(
 	const CastChildComponent = ChildComponent as React.ComponentType<unknown>;
 	const root = (
 		<Root
-			broadcaster={broadcasterProvider}
 			configuration={configuration}
+			messageBusProviderGetter={messageBusProviderGetter}
 			store={store as unknown as Store<unknown>}
 			styletron={styletron}
 			translator={translatorProvider}

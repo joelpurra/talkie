@@ -13,8 +13,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.7.1",
-    "webextension-polyfill": "^0.8.0"
+    "@reduxjs/toolkit": "^1.9.7"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
@@ -23,7 +22,6 @@
     "build": "npm run --silent build:rollup",
     "build:rollup": "rollup --config rollup.config.mjs",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module"

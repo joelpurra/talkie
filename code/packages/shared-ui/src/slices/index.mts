@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,8 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	combineReducers,
 } from "../store/combine-reducers.mjs";
+import clipboard,
+* as clipboardActions from "./clipboard.mjs";
 import errors,
 * as errorsActions from "./errors.mjs";
+import history,
+* as historyActions from "./history.mjs";
 import languages,
 * as languagesActions from "./languages.mjs";
 import metadata,
@@ -37,7 +41,9 @@ import voices,
 * as voicesActions from "./voices.mjs";
 
 export const actions = {
+	clipboard: clipboardActions,
 	errors: errorsActions,
+	history: historyActions,
 	languages: languagesActions,
 	metadata: metadataActions,
 	navigation: navigationActions,
@@ -47,7 +53,9 @@ export const actions = {
 };
 
 const reducers = combineReducers({
+	clipboard,
 	errors,
+	history,
 	languages,
 	metadata,
 	navigation,

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import React from "react";
 
 import Checkbox from "../../../../components/form/checkbox.js";
-import Markdown from "../../../../components/markdown.js";
+import MarkdownStrong from "../../../../components/markdown/strong.js";
 
 export interface ToggleDefaultProps {
 	disabled: boolean;
@@ -79,9 +79,9 @@ class ToggleDefault<P extends InternalProps> extends React.PureComponent<P> {
 						<label
 							htmlFor={checkboxId}
 						>
-							<Markdown>
+							<MarkdownStrong>
 								{buttonTextMarkdown}
-							</Markdown>
+							</MarkdownStrong>
 						</label>
 					</tableBase.td>
 				</tableBase.tr>

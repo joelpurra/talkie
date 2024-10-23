@@ -1,0 +1,71 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "extends": "nx/presets/npm.json",
+  "namedInputs": {
+    "standard-project": [
+      {
+        "input": "project-directory-input"
+      },
+      {
+        "input": "environment-check"
+      },
+      {
+        "input": "system-check"
+      }
+    ],
+    "project-directory-input": [
+      {
+        "fileset": "{projectRoot}/**/*"
+      },
+      {
+        "fileset": "!{projectRoot}/dist/**/*"
+      }
+    ],
+    "project-directory-output": [
+      {
+        "fileset": "{projectRoot}/dist/**/*"
+      }
+    ],
+    "environment-check": [
+      {
+        "env": "NODE_ENV"
+      },
+      {
+        "env": "TALKIE_ENV"
+      }
+    ],
+    "system-check": [
+      {
+        "runtime": "node --version"
+      },
+      {
+        "runtime": "npm --version"
+      },
+      {
+        "runtime": "nx --version"
+      }
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["reconstruct", "^build"],
+      "inputs": [
+        "^project-directory-input",
+        {
+          "input": "standard-project"
+        }
+      ],
+      "outputs": ["{projectRoot}/dist/"]
+    },
+    "reconstruct": {
+      "cache": true,
+      "dependsOn": ["^reconstruct"],
+      "inputs": [
+        {
+          "input": "standard-project"
+        }
+      ]
+    }
+  }
+}

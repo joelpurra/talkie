@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@ import type {
 	Action,
 	AsyncThunk,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 
 const {
@@ -51,7 +50,7 @@ const prefix = "errors";
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
 export const errorsSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addMatcher(
 				(action: Action<string>): action is RejectedAction => action.type.endsWith("/rejected"),

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,12 +22,9 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	actions,
@@ -36,7 +33,7 @@ import type {
 	OptionsRootState,
 } from "../../store/index.mjs";
 import Nav from "./nav.js";
-import {
+import type {
 	NavContainerProps,
 } from "./nav-container-types.mjs";
 
@@ -45,21 +42,22 @@ const {
 } = toolkit;
 
 interface StateProps {
-	activeTabId: string | null;
+	activeNavigationTabId: string | null;
 }
 
 interface DispatchProps {
-	loadActiveTabFromLocationHash: typeof actions.tabs.loadActiveTabFromLocationHash;
-	setActiveTabId: typeof actions.tabs.setActiveTabId;
+	loadActiveNavigationTabIdFromLocationHash: typeof actions.tabs.loadActiveNavigationTabIdFromLocationHash;
+	setActiveNavigationTabId: typeof actions.tabs.setActiveNavigationTabId;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
-	activeTabId: state.tabs.activeTabId,
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, NavContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
+	activeNavigationTabId: state.tabs.activeNavigationTabId,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, NavContainerProps> = (dispatch) => ({
-	loadActiveTabFromLocationHash: bindActionCreators(actions.tabs.loadActiveTabFromLocationHash, dispatch),
-	setActiveTabId: bindActionCreators(actions.tabs.setActiveTabId, dispatch),
+	loadActiveNavigationTabIdFromLocationHash: bindActionCreators(actions.tabs.loadActiveNavigationTabIdFromLocationHash, dispatch),
+	setActiveNavigationTabId: bindActionCreators(actions.tabs.setActiveNavigationTabId, dispatch),
 });
 
 class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> extends React.PureComponent<P> {
@@ -86,22 +84,22 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 	}
 
 	handleHashChange(): void {
-		this.props.loadActiveTabFromLocationHash();
+		this.props.loadActiveNavigationTabIdFromLocationHash();
 	}
 
-	handleTabChange(activeTabId: string): void {
-		this.props.setActiveTabId(activeTabId);
+	handleTabChange(activeNavigationTabId: string): void {
+		this.props.setActiveNavigationTabId(activeNavigationTabId);
 	}
 
 	override render(): React.ReactNode {
 		const {
-			activeTabId,
+			activeNavigationTabId,
 			links,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Nav
-				initialActiveTabId={activeTabId}
+				activeNavigationTabId={activeNavigationTabId}
 				links={links}
 				onTabChange={this.handleTabChange}
 			/>

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,15 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import React, {
-	ChangeEvent,
+	type ChangeEvent,
 } from "react";
-import {
-	styled,
-} from "styletron-react";
 
 export interface CheckboxProps {
 	id?: string;
@@ -54,7 +54,7 @@ class Checkbox<P extends CheckboxProps & ClassNameProp> extends React.PureCompon
 			className,
 			disabled,
 			id,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<input
@@ -69,4 +69,4 @@ class Checkbox<P extends CheckboxProps & ClassNameProp> extends React.PureCompon
 	}
 }
 
-export default styled(Checkbox, formBase.checkbox);
+export default talkieStyled(Checkbox, formBase.checkbox);

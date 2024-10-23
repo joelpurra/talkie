@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
 	getAvailableBrowserLanguageGroupsWithNavigatorLanguages,
 	getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups,
+	getLanguageDialectsFromLanguages,
 	getLanguageGroupsFromLanguages,
 	getLanguagesByLanguageGroupFromVoices,
 	getLanguagesFromVoices,
@@ -31,7 +31,10 @@ import {
 	getVoicesByLanguagesByLanguageGroupFromVoices,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
-	SafeVoiceObject,
+	type TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
+import {
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
 import type {
@@ -50,7 +53,7 @@ const {
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const getVoices = <S extends SharedRootState>(state: S): Readonly<SafeVoiceObject[]> => state.shared.voices.voices;
+export const getVoices = <S extends SharedRootState>(state: S): SafeVoiceObjects => state.shared.voices.voices;
 
 export const getVoicesCount = createDraftSafeSelector(
 	[
@@ -70,14 +73,18 @@ export const getSortedVoiceNames = createDraftSafeSelector(
 	[
 		getVoiceNames,
 	],
-	(voiceNames) => voiceNames.slice().sort((a, b) => a.localeCompare(b)),
+	(voiceNames) => [
+		...voiceNames,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getSortedByNameVoices = createDraftSafeSelector(
 	[
 		getVoices,
 	],
-	(voices) => voices.slice().sort((a, b) => a.name.localeCompare(b.name)),
+	(voices) => [
+		...voices,
+	].sort((a, b) => a.name.localeCompare(b.name)),
 );
 
 export const getHaveVoices = createDraftSafeSelector(
@@ -98,7 +105,9 @@ export const getSortedLanguages = createDraftSafeSelector(
 	[
 		getLanguages,
 	],
-	(languages) => languages.slice().sort((a, b) => a.localeCompare(b)),
+	(languages) => [
+		...languages,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getLanguagesCount = createDraftSafeSelector(
@@ -126,7 +135,32 @@ export const getSortedLanguageGroups = createDraftSafeSelector(
 	[
 		getLanguageGroups,
 	],
-	(languageGroups) => languageGroups.slice().sort((a, b) => a.localeCompare(b)),
+	(languageGroups) => [
+		...languageGroups,
+	].sort((a, b) => a.localeCompare(b)),
+);
+
+export const getLanguageDialects = createDraftSafeSelector(
+	[
+		getLanguages,
+	],
+	(languages) => getLanguageDialectsFromLanguages(languages),
+);
+
+export const getSortedLanguageDialects = createDraftSafeSelector(
+	[
+		getLanguageDialects,
+	],
+	(dialects) => [
+		...dialects,
+	].sort((a, b) => a.localeCompare(b)),
+);
+
+export const getLanguageDialectsCount = createDraftSafeSelector(
+	[
+		getLanguageDialects,
+	],
+	(dialects: Readonly<string[]>) => dialects.length,
 );
 
 export const getVoicesByLanguage = createDraftSafeSelector(
@@ -223,7 +257,9 @@ export const getSortedBrowserLanguageGroupsWithNavigatorLanguages = createDraftS
 	[
 		getBrowserLanguageGroupsWithNavigatorLanguages,
 	],
-	(browserLanguageGroupsWithNavigatorLanguages) => browserLanguageGroupsWithNavigatorLanguages.slice().sort((a, b) => a.languageGroup.localeCompare(b.languageGroup)),
+	(browserLanguageGroupsWithNavigatorLanguages) => [
+		...browserLanguageGroupsWithNavigatorLanguages,
+	].sort((a, b) => a.languageGroup.localeCompare(b.languageGroup)),
 );
 
 export const getCanSpeakInTranslatedLocale = createDraftSafeSelector(
@@ -232,7 +268,7 @@ export const getCanSpeakInTranslatedLocale = createDraftSafeSelector(
 		getLanguages,
 		getTranslationLocale,
 	],
-	(languageGroups, languages, translationLocale) => languages.includes(translationLocale) || languageGroups.includes(translationLocale),
+	(languageGroups, languages, translationLocale: Readonly<TalkieLocale>) => languages.includes(translationLocale) || languageGroups.includes(translationLocale),
 );
 
 /* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */

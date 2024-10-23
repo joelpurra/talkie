@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,10 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
@@ -52,7 +52,7 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 			disabled,
 			translateSync,
 			configure,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>
@@ -65,12 +65,12 @@ class TalkiePremiumEdition<P extends TalkiePremiumEditionProps & ConfigureProps 
 				</p>
 				<ul>
 					<li>
-						<a href={configure("urls.external.primary-payment")}>
+						<a href={configure("urls.external.donation:primary")}>
 							{translateSync("frontend_upgradePaymentPrimaryLinkText")}
 						</a>
 					</li>
 					<li>
-						<a href={configure("urls.external.alternative-payment")}>
+						<a href={configure("urls.external.donation:secondary")}>
 							{translateSync("frontend_upgradePaymentAlternativesLinkText")}
 						</a>
 					</li>

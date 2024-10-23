@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,18 +19,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
+import {
+	type ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import {
 	scrollIntoViewIfNeeded,
 } from "@talkie/shared-ui/utils/select-element.mjs";
 import React, {
-	ChangeEvent,
+	type ChangeEvent,
 } from "react";
-import {
-	styled,
-} from "styletron-react";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
@@ -42,12 +45,13 @@ export interface MultilineSelectProps {
 	value?: string | null;
 }
 
-class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends React.PureComponent<P, unknown> {
+class MultilineSelect<P extends MultilineSelectProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P, unknown> {
 	static defaultProps = {
 		value: null,
 	};
 
 	selectRef: React.RefObject<HTMLSelectElement>;
+
 	constructor(props: P) {
 		super(props);
 
@@ -78,7 +82,7 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends Re
 			value,
 			disabled,
 			className,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<select
@@ -95,4 +99,4 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp> extends Re
 	}
 }
 
-export default styled(MultilineSelect, formBase.multilineSelect);
+export default talkieStyled(MultilineSelect, formBase.multilineSelect);

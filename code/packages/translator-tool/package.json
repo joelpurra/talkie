@@ -13,19 +13,19 @@
     "type-fest"
   ],
   "dependencies": {
-    "@google-cloud/translate": "^6.3.1",
+    "@google-cloud/translate": "^8.5.0",
     "bluebird": "^3.7.2",
     "clone": "^2.1.2",
-    "configvention": "^2.0.0",
-    "ent": "^2.2.0",
+    "configvention": "^3.0.1",
+    "ent": "^2.2.1",
     "jsonfile": "^6.1.0",
     "striptags": "^3.2.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.36",
-    "@types/clone": "^2.1.1",
-    "@types/ent": "^2.2.5",
-    "@types/jsonfile": "^6.0.1"
+    "@types/bluebird": "^3.5.42",
+    "@types/clone": "^2.1.4",
+    "@types/ent": "^2.2.8",
+    "@types/jsonfile": "^6.1.4"
   },
   "exports": {
     "./*": {
@@ -37,10 +37,12 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "build": "npm run --silent build:typescript",
+    "build": "npm run --silent build:typescript && npm run --silent build:bin",
+    "build:bin": "echo 'HACK: fix bin symlinking in npm workspaces.' && chmod -v +x ./dist/esm/translator.mjs && npm run --silent build:bin:local && npm run --silent build:bin:global",
+    "build:bin:global": "mkdir -p ../../node_modules/.bin/ && cd ../../node_modules/.bin/ && ln -v -f -s ../../packages/translator-tool/dist/esm/translator.mjs webext-translator",
+    "build:bin:local": "mkdir -p ./node_modules/.bin/ && cd ./node_modules/.bin/ && ln -v -f -s ../../dist/esm/translator.mjs webext-translator",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module",

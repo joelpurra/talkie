@@ -10,6 +10,9 @@
       "path": "../shared-application-helpers/tsconfig.json"
     },
     {
+      "path": "../shared-application/tsconfig.json"
+    },
+    {
       "path": "../shared-interfaces/tsconfig.json"
     },
     {

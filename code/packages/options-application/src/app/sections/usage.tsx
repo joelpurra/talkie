@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
@@ -27,27 +27,24 @@ import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import TalkiePremiumIcon from "@talkie/shared-ui/components/icon/talkie-premium-icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import {
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import type {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import type {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import React from "react";
 
 import PremiumSection from "../../components/section/premium-section.js";
 
@@ -64,8 +61,8 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 	};
 
 	private readonly styled: {
-		shortcutKeysTable: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		shortcutKeysTd: StyletronComponent<ComponentProps<typeof tableBase.td>>;
+		shortcutKeysTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		shortcutKeysTd: TalkieStyletronComponent<typeof tableBase.td>;
 	};
 
 	constructor(props: P) {
@@ -74,14 +71,14 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 
 		this.styled = {
-			shortcutKeysTable: withStyleDeep(
+			shortcutKeysTable: withTalkieStyleDeep(
 				tableBase.wideTable,
 				{
 					borderSpacing: 0,
 				},
 			),
 
-			shortcutKeysTd: withStyleDeep(
+			shortcutKeysTd: withTalkieStyleDeep(
 				tableBase.td,
 				{
 					whiteSpace: "nowrap",
@@ -101,134 +98,79 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 			systemType,
 			osType,
 			configure,
+			translatePlaceholderSync,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
+
+		// TODO: can these key abbreviations be translated reliably?
+		const translatedKeyAlt = translatePlaceholderSync("Alt");
+		const translatedKeyCtrl = translatePlaceholderSync("Ctrl");
+		const translatedKeyShift = translatePlaceholderSync("Shift");
 
 		return (
-			<section>
-				<listBase.ul>
-					<listBase.li>
-						{translateSync("frontend_usageStep01")}
-					</listBase.li>
-					<listBase.li>
-						{translateSync("frontend_usageStep02")}
-						<TalkieEditionIcon
-							isPremiumEdition={isPremiumEdition}
-							mode="inline"
-						/>
-					</listBase.li>
-				</listBase.ul>
-				<p>
-					{translateSync("frontend_usageSelectionContextMenuDescription")}
-				</p>
+			<>
+				<textBase.h1>
+					{translateSync("frontend_usageLinkText")}
+				</textBase.h1>
 
-				{/* NOTE: read from clipboard feature not available in Firefox */}
-				<Discretional
-					enabled={systemType === "chrome"}
-				>
+				<section>
+					<listBase.ul>
+						<listBase.li>
+							{translateSync("frontend_usageStep01")}
+						</listBase.li>
+						<listBase.li>
+							{translateSync("frontend_usageStep02")}
+							<TalkieEditionIcon
+								isPremiumEdition={isPremiumEdition}
+								mode="inline"
+							/>
+						</listBase.li>
+					</listBase.ul>
+					<p>
+						{translateSync("frontend_usageSelectionContextMenuDescription")}
+					</p>
+
 					<PremiumSection
 						mode="p"
 					>
 						<p>
-							{translateSync("frontend_usageReadclipboard")}
+							{translateSync("frontend_usageSpeakFromClipboard")}
 						</p>
 					</PremiumSection>
-				</Discretional>
 
-				<textBase.h2>
-					{translateSync("frontend_usageShortcutHeading")}
-				</textBase.h2>
+					<textBase.h2>
+						{translateSync("frontend_usageShortcutHeading")}
+					</textBase.h2>
 
-				<p>
-					{translateSync("frontend_usageShortcutKeyDescription")}
-				</p>
+					<p>
+						{translateSync("frontend_usageShortcutKeyDescription")}
+					</p>
 
-				<this.styled.shortcutKeysTable>
-					<colgroup>
-						<col width="100%"/>
-						<col width="0*"/>
-					</colgroup>
-					<tableBase.tbody>
-						<tableBase.tr>
-							<tableBase.td>
-								<Icon
-									className="icon-small-play"
-									mode="inline"/>
-								<lighter.span>
-									/
-								</lighter.span>
-								<Icon
-									className="icon-small-stop"
-									mode="inline"/>
-
-								{translateSync("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
-							</tableBase.td>
-							<this.styled.shortcutKeysTd>
-								<Discretional
-									enabled={osType === "mac"}
-								>
-									<textBase.kbd>
-										⌥
-									</textBase.kbd>
-								</Discretional>
-
-								<Discretional
-									enabled={osType !== "mac"}
-								>
-									<textBase.kbd>
-										Alt
-									</textBase.kbd>
-								</Discretional>
-
-								+
-								<textBase.kbd>
-									Shift
-								</textBase.kbd>
-								+
-								<textBase.kbd>
-									A
-								</textBase.kbd>
-							</this.styled.shortcutKeysTd>
-						</tableBase.tr>
-
-						{/* NOTE: Shortcut key already in use in Firefox */}
-						<Discretional
-							enabled={systemType === "chrome"}
-						>
+					<this.styled.shortcutKeysTable>
+						<colgroup>
+							<col width="100%"/>
+							<col width="0*"/>
+						</colgroup>
+						<tableBase.tbody>
 							<tableBase.tr>
 								<tableBase.td>
 									<Icon
 										className="icon-small-play"
 										mode="inline"/>
-									<lighter.span>
-										/
-									</lighter.span>
+									/
 									<Icon
 										className="icon-small-stop"
 										mode="inline"/>
 
-									{translateSync("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
+									{translateSync("frontend_usageShortcutKeyDescriptionStartStopWithMenu")}
 								</tableBase.td>
 								<this.styled.shortcutKeysTd>
-									<Discretional
-										enabled={osType === "mac"}
-									>
-										<textBase.kbd>
-											⌘
-										</textBase.kbd>
-									</Discretional>
-
-									<Discretional
-										enabled={osType !== "mac"}
-									>
-										<textBase.kbd>
-											Ctrl
-										</textBase.kbd>
-									</Discretional>
-
+									<textBase.kbd>
+										{osType === "mac" ? "⌥" : translatedKeyAlt}
+									</textBase.kbd>
 									+
 									<textBase.kbd>
-										Shift
+										{translatedKeyShift}
 									</textBase.kbd>
 									+
 									<textBase.kbd>
@@ -236,15 +178,43 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 									</textBase.kbd>
 								</this.styled.shortcutKeysTd>
 							</tableBase.tr>
-						</Discretional>
 
-						{/* NOTE: read from clipboard feature not available in Firefox */}
-						<Discretional
-							enabled={systemType === "chrome"}
-						>
+							{/* NOTE: Shortcut key already in use in Firefox */}
+							<Discretional
+								enabled={systemType === "chrome"}
+							>
+								<tableBase.tr>
+									<tableBase.td>
+										<Icon
+											className="icon-small-play"
+											mode="inline"/>
+										/
+										<Icon
+											className="icon-small-stop"
+											mode="inline"/>
+
+										{translateSync("frontend_usageShortcutKeyDescriptionStartStopWithoutMenu")}
+									</tableBase.td>
+									<this.styled.shortcutKeysTd>
+										<textBase.kbd>
+											{osType === "mac" ? "⌘" : translatedKeyCtrl}
+
+										</textBase.kbd>
+										+
+										<textBase.kbd>
+											{translatedKeyShift}
+										</textBase.kbd>
+										+
+										<textBase.kbd>
+											A
+										</textBase.kbd>
+									</this.styled.shortcutKeysTd>
+								</tableBase.tr>
+							</Discretional>
+
 							<tableBase.tr className="premium-section">
 								<tableBase.td colSpan={2}>
-									<textBase.a
+									<a
 										href="#features"
 										lang="en"
 									>
@@ -252,39 +222,21 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 											mode="inline"
 										/>
 										{translateSync("extensionShortName_Premium")}
-									</textBase.a>
+									</a>
 								</tableBase.td>
 							</tableBase.tr>
-						</Discretional>
 
-						{/* NOTE: read from clipboard feature not available in Firefox */}
-						<Discretional
-							enabled={systemType === "chrome"}
-						>
 							<tableBase.tr className="premium-section">
 								<tableBase.td>
-									{translateSync("frontend_usageShortcutKeyDescriptionReadFromClipboard")}
+									{translateSync("frontend_usageShortcutKeyDescriptionSpeakFromClipboard")}
 								</tableBase.td>
 								<this.styled.shortcutKeysTd>
-									<Discretional
-										enabled={osType === "mac"}
-									>
-										<textBase.kbd>
-											⌘
-										</textBase.kbd>
-									</Discretional>
-
-									<Discretional
-										enabled={osType !== "mac"}
-									>
-										<textBase.kbd>
-											Ctrl
-										</textBase.kbd>
-									</Discretional>
-
+									<textBase.kbd>
+										{osType === "mac" ? "⌘" : translatedKeyCtrl}
+									</textBase.kbd>
 									+
 									<textBase.kbd>
-										Shift
+										{translatedKeyShift}
 									</textBase.kbd>
 									+
 									<textBase.kbd>
@@ -292,28 +244,28 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 									</textBase.kbd>
 								</this.styled.shortcutKeysTd>
 							</tableBase.tr>
-						</Discretional>
-					</tableBase.tbody>
-				</this.styled.shortcutKeysTable>
+						</tableBase.tbody>
+					</this.styled.shortcutKeysTable>
 
-				<textBase.p>
-					{translateSync("frontend_usageShortcutKeyAlternative03")}
-				</textBase.p>
+					<p>
+						{translateSync("frontend_usageShortcutKeyAlternative03")}
+					</p>
 
-				<textBase.p>
-					{translateSync("frontend_usageShortcutKeyAlternative04")}
-				</textBase.p>
+					<p>
+						{translateSync("frontend_usageShortcutKeyAlternative04")}
+					</p>
 
-				<p>
-					<textBase.a
-						href={configure("urls.external.shortcut-keys")}
-						// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
-						onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
-					>
-						{translateSync("frontend_usageShortcutKeyAlternative05")}
-					</textBase.a>
-				</p>
-			</section>
+					<p>
+						<a
+							href={configure("urls.external.shortcut-keys")}
+							// NOTE: only handle the click in Chrome, as the feature can't be used in Firefox.
+							onClick={systemType === "chrome" ? this.handleOpenShortKeysConfigurationClick : undefined}
+						>
+							{translateSync("frontend_usageShortcutKeyAlternative05")}
+						</a>
+					</p>
+				</section>
+			</>
 		);
 	}
 }

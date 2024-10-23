@@ -10,15 +10,16 @@
     "type-fest"
   ],
   "dependencies": {
+    "@talkie/shared-application": "*",
     "@talkie/shared-application-helpers": "*",
     "@talkie/shared-interfaces": "*",
     "@talkie/split-environment-interfaces": "*"
   },
   "devDependencies": {
-    "@types/styletron-engine-atomic": "^1.1.1",
-    "styletron-engine-atomic": "^1.4.8",
-    "styletron-standard": "^3.0.5",
-    "webextension-polyfill": "^0.8.0"
+    "@types/styletron-engine-atomic": "^1.1.4",
+    "styletron-engine-atomic": "^1.6.2",
+    "styletron-standard": "^3.1.0",
+    "webextension-polyfill": "^0.12.0"
   },
   "exports": {
     "./*": {
@@ -33,7 +34,6 @@
     "build": "npm run --silent build:typescript",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module",

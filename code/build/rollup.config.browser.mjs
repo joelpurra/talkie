@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,14 +25,8 @@ import replace from "@rollup/plugin-replace";
 import filesize from "./rollup.config.filesize.mjs";
 import rollupConfig from "./rollup.config.base.mjs";
 
-const NODE_ENV =
-	typeof process.env.NODE_ENV === "string"
-		? process.env.NODE_ENV
-		: "production";
-const TALKIE_ENV =
-	typeof process.env.TALKIE_ENV === "string"
-		? process.env.TALKIE_ENV
-		: "production";
+import { NODE_ENV } from "./node-build-mode.mjs";
+import { TALKIE_ENV } from "./talkie-build-mode.mjs";
 
 const rollupConfiguration = (name) =>
 	mergeOptions.call(
@@ -64,7 +58,7 @@ const rollupConfiguration = (name) =>
 				}),
 				filesize(),
 			],
-		}
+		},
 	);
 
 export default rollupConfiguration;

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	IVoiceLanguage,
-	IVoiceNameAndLanguage,
+	type IVoiceLanguage,
+	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
 // TODO: create type alias for generic language strings?
@@ -52,11 +52,14 @@ export const getVoicesForLanguageExact = <T extends IVoiceLanguage>(voices: Read
 	return voicesForLanguage;
 };
 
-export const isLanguageGroup = (language: Readonly<string>): Readonly<boolean> =>
+export const isLanguageDialect = (language: Readonly<string>): Readonly<boolean> =>
 	// TODO: use parser which checks codes, regions, etcetera against BCP47.
 	// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
 	// https://en.wikipedia.org/wiki/IETF_language_tag
-	!language.includes("-");
+	language.includes("-");
+
+export const isLanguageGroup = (language: Readonly<string>): Readonly<boolean> =>
+	!isLanguageDialect(language);
 
 export const getLanguageGroupFromLanguage = (language: Readonly<string>): Readonly<string> => {
 	// TODO: use parser which checks codes, regions, etcetera against BCP47.
@@ -94,6 +97,16 @@ export const getLanguageFromBcp47 = (bcp47: Readonly<string>): Readonly<string> 
 	return languageGroup;
 };
 
+export const getLanguageDialectsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {
+	const languageDialects = [
+		...new Set(
+			languages.filter((language) => isLanguageDialect(language)),
+		),
+	];
+
+	return languageDialects;
+};
+
 export const getLanguageGroupsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {
 	const languageGroups = [
 		...new Set(
@@ -124,6 +137,7 @@ export const getLanguageGroupsFromVoices = <T extends IVoiceLanguage>(voices: Re
 	return languageGroups;
 };
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export const getLanguagesFromVoicesByLanguage = <T extends IVoiceLanguage>(voicesByLanguage: Readonly<VoicesByLanguage<T>>): Readonly<string[]> => {
 	const languages = Object.keys(voicesByLanguage);
 
@@ -131,11 +145,14 @@ export const getLanguagesFromVoicesByLanguage = <T extends IVoiceLanguage>(voice
 };
 
 export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const voicesByLanguage = voices.reduce<VoicesByLanguage<T>>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		(object, voice) => ({
 			...object,
-			[voice.lang]: (object[voice.lang] ?? new Array<Readonly<T>>()).concat(voice),
+			[voice.lang]: object[voice.lang] ?? [
+				voice,
+			],
 		}),
 		{},
 	);
@@ -144,14 +161,17 @@ export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: 
 };
 
 export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const voicesByLanguageGroup = voices.reduce<VoicesByLanguageGroup<T>>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		(object, voice) => {
 			const group = getLanguageGroupFromLanguage(voice.lang);
 
 			return ({
 				...object,
-				[group]: (object[group] ?? new Array<Readonly<T>>()).concat(voice),
+				[group]: object[group] ?? [
+					voice,
+				],
 			});
 		},
 		{},
@@ -163,8 +183,9 @@ export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voi
 export const getVoicesByLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguagesByLanguageGroup<T> => {
 	const voicesByLanguage = getVoicesByLanguageFromVoices(voices);
 
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const languagesByLanguageGroup = voices.reduce<VoicesByLanguagesByLanguageGroup<T>>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		(object, voice) => {
 			const group = getLanguageGroupFromLanguage(voice.lang);
 			const voicesForLanguage = voicesByLanguage[voice.lang];
@@ -192,8 +213,9 @@ export const getLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(
 
 	const languageGroups = Object.keys(voicesByLanguagesByLanguageGroup);
 
-	// eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries
+	// eslint-disable-next-line unicorn/no-array-reduce
 	const languagesByLanguageGroup = languageGroups.reduce<LanguagesByLanguageGroup>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		(object, group) => {
 			const voicesForLanguage = voicesByLanguagesByLanguageGroup[group];
 
@@ -230,10 +252,11 @@ export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(
 	return firstVoice;
 };
 
-export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups = (navigatorLanguages: Readonly<string[]>, languages: Readonly<string[]>, languageGroups: Readonly<string[]>): string[] => new Array<string>()
+export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups = (navigatorLanguages: Readonly<string[]>, languages: Readonly<string[]>, languageGroups: Readonly<string[]>): string[] => [
 	// NOTE: preferring language groups over languages/dialects.
-	.concat(navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)))
-	.concat(navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)));
+	...navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)),
+	...navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)),
+];
 
 export const getAvailableBrowserLanguageGroupsWithNavigatorLanguages = (navigatorLanguageGroups: Readonly<string[]>, languageGroups: Readonly<string[]>): LanguageGroupWithNavigatorLanguage[] =>
 	languageGroups

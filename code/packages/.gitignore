@@ -7,7 +7,3 @@
 
 *.d.ts.map
 *.js.map
-
-talkie.packages.*
-
-dist/

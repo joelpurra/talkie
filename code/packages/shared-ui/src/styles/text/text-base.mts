@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,49 +23,29 @@ import type {
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
-import * as layoutBase from "../layout/layout-base.mjs";
-
-export const text: StyleObject = {
-	color: colorBase.textColor,
-};
+import {
+	rounded,
+} from "../shared-base.mjs";
 
 export const lighterText: StyleObject = {
-	...text,
 	fontWeight: "lighter",
 };
 
 export const smallerText: StyleObject = {
-	...text,
 	fontSize: "smaller",
-};
-
-export const highlight: StyleObject = {
-	color: colorBase.linkHighlightColor,
-};
-
-export const a: StyleObject = {
-	":active": highlight,
-	":focus": highlight,
-	":hover": highlight,
-	color: colorBase.textColor,
 };
 
 export const heading: StyleObject = {
 	marginTop: "2em",
 };
-
-export const h1: StyleObject = {
-	...heading,
-	marginTop: "1em",
-};
+export const h1: StyleObject = heading;
 export const h2: StyleObject = heading;
 export const h3: StyleObject = heading;
 export const h4: StyleObject = heading;
 export const h5: StyleObject = heading;
 
 export const kbd: StyleObject = {
-	...layoutBase.rounded("0.3em"),
-	backgroundColor: colorBase.borderedBackgroundColor,
+	...rounded("0.3em"),
 	borderBottomColor: colorBase.borderDarkColor,
 	borderBottomWidth: "1px",
 	borderLeftColor: colorBase.borderColor,
@@ -76,7 +56,6 @@ export const kbd: StyleObject = {
 	borderTopColor: colorBase.borderColor,
 	borderTopWidth: "1px",
 	boxShadow: `inset 0 -1px 0 ${colorBase.borderDarkColor}`,
-	color: colorBase.borderedTextColor,
 	display: "inline-block",
 	fontFamily: "monospace, sans-serif",
 	paddingBottom: "0.1em",

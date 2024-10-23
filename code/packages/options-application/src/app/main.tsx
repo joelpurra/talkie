@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,57 +18,56 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import passSelectedTextToBackground from "@talkie/shared-ui/hocs/pass-selected-text-to-background.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import type {
 	ClassNameProp,
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React, {
-	ComponentProps,
-} from "react";
+import React from "react";
 import type {
 	StyleObject,
-	StyletronComponent,
 } from "styletron-react";
-import {
-	styled,
-	withStyleDeep,
-} from "styletron-react";
-import {
+import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import Loading from "../components/loading.js";
 import NavContainer from "../components/navigation/nav-container.js";
-import {
+import type {
 	NavLink,
 } from "../components/navigation/nav-container-types.mjs";
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
 import FeaturesContainer from "../containers/features-container.js";
-import TextContainer from "../containers/settings-container.js";
+import SettingsContainer from "../containers/settings-container.js";
+import StatusContainer from "../containers/status-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
-import {
+import type {
 	actions,
 } from "../slices/index.mjs";
 import Footer, {
-	FooterStateProps,
+	type FooterStateProps,
 } from "./footer.js";
 import Header from "./header.js";
 import Support from "./sections/support.js";
 import Usage from "./sections/usage.js";
 
 export interface MainStateProps extends FooterStateProps {
-	activeTabId: string | null;
+	activeNavigationTabId: string | null;
+	activeNavigationTabTitle: string | null;
 	isPremiumEdition: boolean;
 	osType: OsType | null;
 	showAdditionalDetails: boolean;
@@ -77,8 +76,9 @@ export interface MainStateProps extends FooterStateProps {
 
 export interface MainDispatchProps {
 	openShortKeysConfiguration: typeof actions.shared.navigation.openShortKeysConfiguration;
-	openUrlInNewTab: typeof actions.shared.navigation.openUrlInNewTab;
+	openExternalUrlInNewTab: typeof actions.shared.navigation.openExternalUrlInNewTab;
 	openOptionsPage: typeof actions.shared.navigation.openOptionsPage;
+	setActiveNavigationTabTitle: typeof actions.tabs.setActiveNavigationTabTitle;
 }
 
 export interface MainProps extends MainStateProps, MainDispatchProps, TranslateProps, ClassNameProp {}
@@ -102,10 +102,15 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	private readonly links: NavLink[];
 
 	private readonly styled: {
-		footerHr: StyletronComponent<ComponentProps<typeof layoutBase.hr>>;
-		main: StyletronComponent<ComponentProps<typeof layoutBase.main>>;
-		navHeader: StyletronComponent<ComponentProps<"div">>;
+		footerHr: TalkieStyletronComponent<typeof layoutBase.hr>;
+		navHeader: TalkieStyletronComponent<"div">;
 	};
+
+	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
+	// https://nodejs.org/api/timers.html#timers_class_timeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private _scrollTimeoutId: any | null;
 
 	constructor(props: P) {
 		super(props);
@@ -113,12 +118,19 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		this.handleLinkClick = this.handleLinkClick.bind(this);
 		this.handleOpenShortKeysConfigurationClick = this.handleOpenShortKeysConfigurationClick.bind(this);
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
+		this.setActiveNavigationTabTitle = this.setActiveNavigationTabTitle.bind(this);
 
+		// TODO: move links/translation out of class props.
 		this.links = [
 			{
 				tabId: "welcome",
 				// eslint-disable-next-line no-sync
 				text: this.props.translateSync("frontend_welcomeLinkText"),
+			},
+			{
+				tabId: "status",
+				// eslint-disable-next-line no-sync
+				text: this.props.translateSync("frontend_statusLinkText"),
 			},
 			{
 				tabId: "voices",
@@ -153,29 +165,17 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 		];
 
 		this.styled = {
-			footerHr: withStyleDeep(
+			footerHr: withTalkieStyleDeep(
 				layoutBase.hr,
 				{
 					marginTop: "3em",
 				},
 			),
 
-			main: withStyleDeep(
-				layoutBase.main,
-				{
-					marginTop: "10em",
-				},
-			),
-
-			navHeader: styled(
+			navHeader: talkieStyled(
 				"div",
 				{
 					...widthStyles,
-					backgroundColor: colorBase.bodyBackgroundColor,
-					left: 0,
-					position: "fixed",
-					right: 0,
-					top: 0,
 				},
 			),
 		};
@@ -183,22 +183,44 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 	override componentDidMount(): void {
 		this.scrollToTop();
+		this.setActiveNavigationTabTitle(this.props.activeNavigationTabId);
 	}
 
 	override componentDidUpdate(previousProps: P): void {
-		if (previousProps.activeTabId !== this.props.activeTabId) {
+		if (previousProps.activeNavigationTabId !== this.props.activeNavigationTabId) {
 			this.scrollToTop();
+			this.setActiveNavigationTabTitle(this.props.activeNavigationTabId);
 		}
+	}
+
+	override componentWillUnmount(): void {
+		this.componentCleanup();
+	}
+
+	componentCleanup() {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(this._scrollTimeoutId);
 	}
 
 	scrollToTop(): void {
 		// NOTE: execute outside the synchronous rendering.
-		setTimeout(() => {
+		this._scrollTimeoutId = setTimeout(() => {
 			// NOTE: feels like this might be the wrong place to put this? Is there a better place?
 			// NOTE: due to shuffling around elements, there's some confusion regarding which element to apply scrolling to.
 			document.body.scrollTop = 0;
 			window.scroll(0, 0);
 		}, 100);
+	}
+
+	setActiveNavigationTabTitle(activeNavigationTabId: string | null): void {
+		// HACK: this should probably happen elsewhere, but trying to keep translations out of the slices.
+		const title: string | null = this.links
+			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+			.find((link) => link.tabId === activeNavigationTabId)?.text
+			?? null;
+
+		// NOTE: taking the detour over application state when setting the page title.
+		this.props.setActiveNavigationTabTitle(title);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -212,7 +234,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	}
 
 	handleLinkClick(url: ReadonlyDeep<URL>): void {
-		this.props.openUrlInNewTab(url);
+		this.props.openExternalUrlInNewTab(url);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -227,7 +249,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 
 	override render(): React.ReactNode {
 		const {
-			activeTabId,
+			activeNavigationTabId,
 			className,
 			errorCount,
 			isPremiumEdition,
@@ -235,7 +257,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 			showAdditionalDetails,
 			systemType,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		const linksToShow = this.links;
 
@@ -249,17 +271,15 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					<NavContainer
 						links={linksToShow}
 					/>
-
-					<layoutBase.hr/>
 				</this.styled.navHeader>
 
 				<layoutBase.hr/>
 
-				<this.styled.main>
+				<layoutBase.main>
 					<TabContents
 						// NOTE: used when prerendering the static per-language template.
 						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="fallback-tab"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -269,11 +289,13 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 							enabled={false}
 						>
 							{/* NOTE: empty/loading placeholder for the "fallback-tab" default active tab id. */}
+							{/* TODO: remove/replace dummy element? */}
+							<span/>
 						</Loading>
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="welcome"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -281,7 +303,15 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
+						id="status"
+						onLinkClick={this.handleLinkClick}
+					>
+						<StatusContainer/>
+					</TabContents>
+
+					<TabContents
+						activeNavigationTabId={activeNavigationTabId}
 						id="voices"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -289,7 +319,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="usage"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -302,7 +332,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="features"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -310,15 +340,17 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="settings"
 						onLinkClick={this.handleLinkClick}
 					>
-						<TextContainer/>
+						<SettingsContainer
+							onOpenShortKeysConfigurationClick={this.handleOpenShortKeysConfigurationClick}
+						/>
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="support"
 						onLinkClick={this.handleLinkClick}
 					>
@@ -331,13 +363,13 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 					</TabContents>
 
 					<TabContents
-						activeTabId={activeTabId}
+						activeNavigationTabId={activeNavigationTabId}
 						id="about"
 						onLinkClick={this.handleLinkClick}
 					>
 						<AboutContainer/>
 					</TabContents>
-				</this.styled.main>
+				</layoutBase.main>
 
 				<this.styled.footerHr/>
 
@@ -350,7 +382,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 	}
 }
 
-export default styled(
+export default talkieStyled(
 	translateAttribute<MainProps>()(
 		passSelectedTextToBackground<MainProps>()(
 			Main,

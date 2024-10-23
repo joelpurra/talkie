@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,36 +19,36 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
+import ProgressContainer from "@talkie/shared-ui/containers/progress-container.js";
+import configureAttribute, {
+	type ConfigureProps,
+} from "@talkie/shared-ui/hocs/configure.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
 import {
-	withStyleDeep,
-} from "styletron-react";
-
-import ProgressContainer from "../../containers/progress-container.js";
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import React from "react";
 
 export interface StatusProps {
+	isSpeaking: boolean;
 	playPauseClick: () => void;
 }
 
-class Status<P extends StatusProps & TranslateProps> extends React.PureComponent<P> {
+class Status<P extends StatusProps & ConfigureProps & TranslateProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		statusIconWrapper: StyletronComponent<ComponentProps<typeof buttonBase.transparentButton>>;
-		table: StyletronComponent<ComponentProps<typeof tableBase.wideTable>>;
-		tbody: StyletronComponent<ComponentProps<typeof tableBase.tbody>>;
-		td: StyletronComponent<ComponentProps<typeof tableBase.td>>;
-		tr: StyletronComponent<ComponentProps<typeof tableBase.tr>>;
+		statusIconWrapper: TalkieStyletronComponent<typeof buttonBase.transparentButton>;
+		table: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		tbody: TalkieStyletronComponent<typeof tableBase.tbody>;
+		td: TalkieStyletronComponent<typeof tableBase.td>;
+		tr: TalkieStyletronComponent<typeof tableBase.tr>;
 	};
 
 	constructor(props: P) {
@@ -57,28 +57,28 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 
 		this.styled = {
-			statusIconWrapper: withStyleDeep(
+			statusIconWrapper: withTalkieStyleDeep(
 				buttonBase.transparentButton,
 				{
 					paddingRight: "1em",
 				},
 			),
 
-			table: withStyleDeep(
+			table: withTalkieStyleDeep(
 				tableBase.wideTable,
 				{
 					borderSpacing: 0,
 				},
 			),
 
-			tbody: withStyleDeep(
+			tbody: withTalkieStyleDeep(
 				tableBase.tbody,
 				{
 					borderSpacing: 0,
 				},
 			),
 
-			td: withStyleDeep(
+			td: withTalkieStyleDeep(
 				tableBase.td,
 				{
 					borderSpacing: 0,
@@ -89,7 +89,7 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 				},
 			),
 
-			tr: withStyleDeep(
+			tr: withTalkieStyleDeep(
 				tableBase.tr,
 				{
 					borderSpacing: 0,
@@ -110,14 +110,18 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 
 	override render(): React.ReactNode {
 		const {
+			configure,
+			isSpeaking,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
+
+		const statusIconClassName = `icon-small-${isSpeaking ? "stop" : "play"}`;
 
 		return (
 			<layoutBase.main>
-				<lighter.p>
+				<p>
 					{translateSync("frontend_PopupUsageShort")}
-				</lighter.p>
+				</p>
 
 				<this.styled.table>
 					<colgroup>
@@ -132,13 +136,19 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 									onClick={this.handlePlayPauseClick}
 								>
 									<Icon
-										className="icon-talkie-status"
+										className={statusIconClassName}
 										mode="standalone"
 									/>
 								</this.styled.statusIconWrapper>
 							</this.styled.td>
 							<this.styled.td>
-								<ProgressContainer/>
+								<a
+									href={configure("urls.internal.options-status")}
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									<ProgressContainer/>
+								</a>
 							</this.styled.td>
 						</this.styled.tr>
 					</this.styled.tbody>
@@ -148,6 +158,8 @@ class Status<P extends StatusProps & TranslateProps> extends React.PureComponent
 	}
 }
 
-export default translateAttribute<StatusProps & TranslateProps>()(
-	Status,
+export default configureAttribute<StatusProps & ConfigureProps>()(
+	translateAttribute<StatusProps & ConfigureProps & TranslateProps>()(
+		Status,
+	),
 );

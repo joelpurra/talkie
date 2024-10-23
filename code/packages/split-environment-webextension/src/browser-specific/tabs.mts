@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,17 +21,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import {
 	logDebug,
 } from "@talkie/shared-application-helpers/log.mjs";
-import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {
 	Tabs,
 } from "webextension-polyfill";
-
-import {
-	ITalkieServices,
-} from "./italkie-services.mjs";
 
 // NOTE: whitelisting schemes.
 // TODO: can the list be extended?
@@ -50,28 +46,14 @@ const blacklistedBaseUrls = [
 	"https://addons.mozilla.org/",
 ];
 
-export const getTalkieServices = async (): Promise<ITalkieServices> => {
-	const backgroundPage = await browser.runtime.getBackgroundPage();
-
-	// https://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage
-	if (backgroundPage) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-		const talkieServices = (backgroundPage as any).talkieServices as ITalkieServices;
-
-		return talkieServices;
-	}
-
-	throw new Error("Could not retrieve the background page.");
-};
-
-export const getCurrentActiveTab = async (): Promise<Tabs.Tab | null> => {
+export const getCurrentActiveBrowserTab = async (): Promise<Tabs.Tab | null> => {
 	const queryOptions = {
 		active: true,
 		currentWindow: true,
 	};
 
-	// https://developer.chrome.com/extensions/tabs#method-query
-	const tabs = await browser.tabs.query(queryOptions);
+	// https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
+	const tabs = await chrome.tabs.query(queryOptions);
 
 	if (!tabs) {
 		return null;
@@ -90,34 +72,35 @@ export const getCurrentActiveTab = async (): Promise<Tabs.Tab | null> => {
 	return null;
 };
 
-export const getCurrentActiveTabId = async (): Promise<number | null> => {
-	const activeTab = await getCurrentActiveTab();
+export const getCurrentActiveBrowserTabId = async (): Promise<number | null> => {
+	const activeBrowserTab = await getCurrentActiveBrowserTab();
 
-	if (activeTab?.id) {
-		return activeTab.id;
+	if (typeof activeBrowserTab?.id === "number") {
+		return activeBrowserTab.id;
 	}
 
 	// NOTE: some tabs can't be retrieved.
 	return null;
 };
 
+export const isUrlInternalToTalkie = async (internalUrlProvider: ReadonlyDeep<IInternalUrlProvider>, url: string): Promise<boolean> => {
+	const internalPackagesUrl = await internalUrlProvider.get("/packages/");
+	const isInternal = url.startsWith(internalPackagesUrl);
+
+	return isInternal;
+};
+
 export const isCurrentPageInternalToTalkie = async (internalUrlProvider: ReadonlyDeep<IInternalUrlProvider>): Promise<boolean> => {
-	const tab = await getCurrentActiveTab();
+	const activeBrowserTab = await getCurrentActiveBrowserTab();
 
-	if (tab) {
-		const url = tab.url;
+	if (activeBrowserTab) {
+		const {
+			url,
+		} = activeBrowserTab;
 
-		if (
-			typeof url === "string"
-					&& (
-						// eslint-disable-next-line no-sync
-						url.startsWith(internalUrlProvider.getSync("/packages/"))
-					)
-		) {
-			return true;
+		if (typeof url === "string") {
+			return isUrlInternalToTalkie(internalUrlProvider, url);
 		}
-
-		return false;
 	}
 
 	return false;
@@ -131,8 +114,8 @@ const getCurrentActiveNormalLoadedTab = async (): Promise<Tabs.Tab | null> => {
 		windowType: "normal",
 	};
 
-	// https://developer.chrome.com/extensions/tabs#method-query
-	const tabs = await browser.tabs.query(queryOptions);
+	// https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
+	const tabs = await chrome.tabs.query(queryOptions);
 
 	const singleTabResult = tabs.length === 1;
 
@@ -151,7 +134,9 @@ export const canTalkieRunInTab = async (): Promise<boolean> => {
 	const tab = await getCurrentActiveNormalLoadedTab();
 
 	if (tab) {
-		const url = tab.url;
+		const {
+			url,
+		} = tab;
 
 		if (typeof url === "string") {
 			const canRunInUrl

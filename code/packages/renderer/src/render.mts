@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ import type {
 	Reducer,
 } from "@reduxjs/toolkit";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import getRoot from "@talkie/shared-ui/renderers/get-root.js";
 import {
@@ -75,13 +75,13 @@ const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
 	customPostrenderActionsToDispatch: Readonly<A[]>,
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	reactHtmlTemplatePath: Readonly<URL>,
-	// eslint-disable-next-line max-params
+	// eslint-disable-next-line max-params, @typescript-eslint/prefer-readonly-parameter-types
 	talkieLocale: TalkieLocale, ChildComponent: React.ComponentType<P>): Promise<string> => {
 	const {
 		api,
-		broadcasterProvider,
 		configuration,
 		localeProvider,
+		messageBusProviderGetter,
 		styletronProvider,
 		translatorProvider,
 	} = await getDependencies();
@@ -95,7 +95,7 @@ const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
 	await dispatchAll(store, prerenderedActionsToDispatch);
 
 	const reactHtmlTemplate = await compileHtmlTemplate(reactHtmlTemplatePath);
-	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, broadcasterProvider, ChildComponent);
+	const root = await getRoot(store, translatorProvider, configuration, styletronProvider, messageBusProviderGetter, ChildComponent);
 	const html = await renderReactHtml<S, A>(store, reactHtmlTemplate, localeProvider, styletronProvider, root);
 
 	// NOTE: the side effects of post-render actions will not affect the rendered html.

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,18 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import type {
+	ChildrenOptionalProps,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 interface SupportEntryProps {
 	id: number;
+	showAdditionalDetails: boolean;
 }
 
-class SupportEntry<P extends SupportEntryProps & TranslateProps> extends React.PureComponent<P> {
+class SupportEntry<P extends SupportEntryProps & ChildrenOptionalProps & TranslateProps> extends React.PureComponent<P> {
+	static defaultProps = {
+		showAdditionalDetails: false,
+	};
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -37,9 +46,11 @@ class SupportEntry<P extends SupportEntryProps & TranslateProps> extends React.P
 
 	override render(): React.ReactNode {
 		const {
+			children,
 			id,
+			showAdditionalDetails,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		const paddedId = id.toString(10).padStart(3, "0");
 
@@ -47,18 +58,36 @@ class SupportEntry<P extends SupportEntryProps & TranslateProps> extends React.P
 			<layoutBase.details>
 				<layoutBase.summary>
 					<textBase.summaryHeading4>
-						{translateSync(`frontend_faq${paddedId}Q`)}
+						<Discretional
+							enabled={showAdditionalDetails}
+						>
+							<span
+								dir="ltr"
+								lang="en"
+							>
+								FAQ&nbsp;
+								{id}
+							</span>
+							:
+							{" "}
+						</Discretional>
+
+						<span>
+							{translateSync(`frontend_faq${paddedId}Q`)}
+						</span>
 					</textBase.summaryHeading4>
 				</layoutBase.summary>
-				<textBase.p>
+				<p>
 					{translateSync(`frontend_faq${paddedId}A`)}
-				</textBase.p>
+				</p>
+
+				{children}
 			</layoutBase.details>
 		);
 	}
 }
 
-export default translateAttribute<SupportEntryProps & TranslateProps>()(
+export default translateAttribute<SupportEntryProps & ChildrenOptionalProps & TranslateProps>()(
 	SupportEntry,
 );
 

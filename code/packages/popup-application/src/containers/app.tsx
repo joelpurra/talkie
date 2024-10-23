@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,11 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import IsSpeakingUpdater, {
-	IsSpeakingUpdaterDispatchProps,
-} from "@talkie/shared-ui/hocs/is-speaking-updater.js";
-import ProgressUpdater, {
-	ProgressUpdaterDispatchProps,
+import VoicesLoader from "@talkie/shared-ui/components/loaders/voices-loader.js";
+import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
+import {
+	type ProgressUpdaterDispatchProps,
+	ProgressUpdaterTypehack,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
 import type {
@@ -35,8 +35,8 @@ import {
 } from "react-redux";
 
 import Main, {
-	MainDispatchProps,
-	MainStateProps,
+	type MainDispatchProps,
+	type MainStateProps,
 } from "../app/main.js";
 import selectors from "../selectors/index.mjs";
 import {
@@ -57,20 +57,20 @@ export interface AppProps {}
 const mapStateToProps: MapStateToProps<MainStateProps, AppProps, PopupRootState> = (state: Readonly<PopupRootState>) => ({
 	errorCount: selectors.shared.errors.getErrorsCount(state),
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
+	isSpeaking: state.shared.speaking.isSpeaking,
 	versionNumber: state.shared.metadata.versionNumber,
 });
 
-const mapDispatchToProps: MapDispatchToPropsFunction<MainDispatchProps & IsSpeakingUpdaterDispatchProps & ProgressUpdaterDispatchProps, AppProps> = (dispatch) => ({
+const mapDispatchToProps: MapDispatchToPropsFunction<MainDispatchProps & ProgressUpdaterDispatchProps, AppProps> = (dispatch) => ({
 	iconClick: bindActionCreators(actions.shared.speaking.iconClick, dispatch),
+	openExternalUrlInNewTab: bindActionCreators(actions.shared.navigation.openExternalUrlInNewTab, dispatch),
 	openOptionsPage: bindActionCreators(actions.shared.navigation.openOptionsPage, dispatch),
-	openUrlInNewTab: bindActionCreators(actions.shared.navigation.openUrlInNewTab, dispatch),
 	setCurrent: bindActionCreators(actions.shared.progress.setCurrent, dispatch),
-	setIsSpeaking: bindActionCreators(actions.shared.speaking.setIsSpeaking, dispatch),
 	setMax: bindActionCreators(actions.shared.progress.setMax, dispatch),
 	setMin: bindActionCreators(actions.shared.progress.setMin, dispatch),
 });
 
-class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUpdaterDispatchProps & ProgressUpdaterDispatchProps> extends React.PureComponent<P> {
+class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpdaterDispatchProps> extends React.PureComponent<P> {
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
@@ -81,22 +81,22 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 			errorCount,
 			iconClick,
 			isPremiumEdition,
+			isSpeaking,
+			openExternalUrlInNewTab,
 			openOptionsPage,
-			openUrlInNewTab,
 			setCurrent,
-			setIsSpeaking,
 			setMax,
 			setMin,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<>
-				<IsSpeakingUpdater
-					setIsSpeaking={setIsSpeaking}
-				/>
+				<VoicesLoader/>
 
-				<ProgressUpdater
+				<IsSpeakingListenerContainer/>
+
+				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}
 					setMax={setMax}
 					setMin={setMin}
@@ -106,8 +106,9 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & IsSpeakingUp
 					errorCount={errorCount}
 					iconClick={iconClick}
 					isPremiumEdition={isPremiumEdition}
+					isSpeaking={isSpeaking}
+					openExternalUrlInNewTab={openExternalUrlInNewTab}
 					openOptionsPage={openOptionsPage}
-					openUrlInNewTab={openUrlInNewTab}
 					versionNumber={versionNumber}
 				/>
 			</>

@@ -19,7 +19,7 @@
     "message": "Ngừng nói",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Đọc to lựa chọn văn bản",
     "original": "Read text selection out loud"
   },
@@ -31,9 +31,9 @@
     "message": "Nâng cấp lên Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Đọc từ khay nhớ tạm",
-    "original": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "Đọc văn bản từ clipboard",
+    "original": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Bắt đầu/dừng lựa chọn đọc",
@@ -41,12 +41,16 @@
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Chuyển văn bản thành giọng nói nhanh chóng, dễ dàng, chất lượng cao bằng hơn 40 ngôn ngữ. Đọc to từ các trang web, PDF, email. Nói văn bản với TTS.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Chuyển văn bản thành giọng nói nhanh chóng và dễ dàng. Đọc to từ các trang web, PDF, email. Mã nguồn mở, chú trọng đến quyền riêng tư.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Tính năng và nâng cấp",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Tình trạng và lịch sử",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Cách sử dụng và các phím tắt",
@@ -109,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Nó phụ thuộc vào hệ thống phân phối, trình duyệt và gói Linux mà bạn sử dụng. Xem hướng dẫn cài đặt riêng cho sự kết hợp phần mềm của bạn. Cách đơn giản nhất có thể là thử một trình duyệt khác và xem nó có được cài đặt sẵn giọng nói phù hợp hay không. Ví dụ: Firefox v95 trên Ubuntu 21.10 có thể được cài đặt bằng Aptitude hoặc Snap; cái trước bao gồm 8611 giọng nói eSpeak cho phép 95 ngôn ngữ trong 7358 phương ngữ, nhưng cái sau bao gồm 0 giọng nói. Một ví dụ khác là Google Chrome v96 trên Ubuntu 21.10, theo mặc định bao gồm 19 giọng nói cho phép 14 ngôn ngữ trong 18 phương ngữ. Vui lòng cho tôi biết kinh nghiệm của bạn là gì!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Tùy thuộc vào bản phân phối Linux, trình duyệt và hệ thống phân phối gói mà bạn sử dụng. Xem hướng dẫn cài đặt riêng cho phần mềm kết hợp của bạn. Cách dễ nhất có thể là thử một trình duyệt khác và xem liệu nó có cài đặt sẵn giọng nói phù hợp hay không. Ví dụ, Firefox v130 trên Ubuntu 24.04 được cài đặt bằng Snap bao gồm hơn 13000 giọng nói eSpeak cho phép hơn 100 ngôn ngữ ở hơn 100 phương ngữ — nhưng tất cả những giọng nói này đều có chất lượng thấp. Để so sánh, Google Chrome v129 trên Ubuntu 24.04 được cài đặt bằng Apt bao gồm 19 giọng nói cho phép 14 ngôn ngữ ở 18 phương ngữ — tất cả đều có chất lượng cao.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Làm cách nào để cài đặt thêm giọng nói trong Talkie trên Linux?",
@@ -165,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Thật không may, không đầy đủ. Đối với Talkie Premium , có thể sao chép và đọc văn bản từ khay nhớ tạm. Hóa ra Google Docs (cũng như Google Spreadsheet, Google Drive, v.v.) không phải là một trang web, mà là một \"ứng dụng trong trình duyệt\" đặc biệt do Google tạo ra. Talkie không thể truy cập văn bản đã chọn, cũng như thêm các mục menu ngữ cảnh, vì vậy Talkie không hoạt động.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Thật không may, không đầy đủ. Đối với người dùng Talkie Premium , có thể sao chép văn bản và đọc nó từ bảng tạm. Hóa ra Google Docs (cũng như Google Spreadsheet, Google Drive và các ứng dụng tương tự) không phải là một trang web mà là một \"ứng dụng trong trình duyệt\" đặc biệt do Google tạo ra. Talkie không thể truy cập vào văn bản đã chọn hoặc thêm các mục menu ngữ cảnh, do đó nút Talkie không hoạt động.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Talkie hoạt động trong Google Documents không?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Vâng, làm ơn! Tốt hơn là tạo báo cáo sự cố trên Github để những người khác cũng có thể trợ giúp. Vui lòng bao gồm càng nhiều thông tin càng tốt, chẳng hạn như trình duyệt và phiên bản, hệ điều hành và phiên bản cũng như ngôn ngữ/giọng nói bạn đang sử dụng. Cũng bao gồm thông tin liên quan đến các trang web cụ thể nơi bạn thấy lỗi, tốt nhất là kèm theo một liên kết.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Vâng, vui lòng. Tốt nhất là tạo báo cáo sự cố trên Github để những người khác cũng có thể giúp đỡ. Vui lòng cung cấp càng nhiều thông tin càng tốt, chẳng hạn như trình duyệt và phiên bản, hệ điều hành và phiên bản, ngôn ngữ/giọng nói bạn đang sử dụng. Ngoài ra, hãy cung cấp thông tin liên quan đến các trang web cụ thể mà bạn thấy lỗi, tốt nhất là có liên kết.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Tôi có nên báo cáo lỗi không?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Thường xuyên! Nếu bạn có thể chọn văn bản trong PDF, hãy nhấp chuột phải vào văn bản đó và chọn Talkie trong menu. Nếu văn bản không được chọn, nếu nó là một phần của hình ảnh, thì nó sẽ không hoạt động.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Có, hầu hết thời gian. Nếu bạn có thể chọn văn bản trong PDF, hãy nhấp chuột phải vào văn bản đó và chọn Talkie trong menu. Người dùng Talkie Premium cũng có thể sao chép văn bản, sau đó đọc từ bảng tạm. Nếu không thể chọn văn bản, chẳng hạn như nếu văn bản đó là một phần của hình ảnh, thì văn bản đó sẽ không hoạt động.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Talkie có thể đọc tệp PDF không?",
@@ -197,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Chắc chắn! Chỉ cần liên hệ với tôi thông qua các trang hỗ trợ hoặc dự án.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "Có. Hãy mô tả tính năng bạn mong muốn trong một bản phát hành mới trên Github.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Tôi có thể yêu cầu các tính năng mới không?",
@@ -221,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Chắc chắn! Sẽ thật tuyệt nếu được trợ giúp dịch Talkie , kiểm tra Talkie trên các hệ thống mới, điều tra lỗi và thêm các tính năng mới. Vui lòng xem trang dự án để được hướng dẫn.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Vâng, chúng tôi luôn trân trọng sự giúp đỡ. Vui lòng xem trang dự án để biết hướng dẫn.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Tôi có thể giúp phát triển Talkie không?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Có — hãy nói với bạn bè của bạn về Talkie! Có thể gửi một liên kết đến người nổi tiếng trên internet, nhóm trực tuyến hoặc bản tin yêu thích của bạn. Bạn thậm chí có thể yêu cầu sếp của bạn cài đặt nó trên tất cả các máy tính ở cơ quan hoặc giáo viên của bạn cài đặt nó ở trường. Truyền bá thông tin về Talkie được đánh giá rất cao!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Có — hãy cho bạn bè của bạn biết về Talkie. Có thể gửi liên kết đến người nổi tiếng trên internet, nhóm trực tuyến hoặc bản tin yêu thích của bạn. Bạn thậm chí có thể yêu cầu sếp của mình cài đặt nó trên tất cả các máy tính tại nơi làm việc hoặc giáo viên của bạn cài đặt nó ở trường. Việc truyền bá thông tin về Talkie được đánh giá rất cao.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Tôi có thể giúp Talkie theo cách nào khác không?",
@@ -245,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Có, có nhiều tùy chọn thanh toán có sẵn.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Có, có nhiều lựa chọn quyên góp khác nhau.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "Tôi có thể thanh toán bằng PayPal, chuyển khoản ngân hàng, v.v. không?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "Tôi có thể quyên góp bằng PayPal, chuyển khoản ngân hàng, v.v. không?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Có, nếu bạn đã thanh toán bằng PayPal hoặc Stripe, cung cấp khả năng quản lý tiền hoàn lại đơn giản. Các phương thức thanh toán khác thường không thể hoàn lại tiền do khối lượng công việc đòi hỏi nhiều hơn, cộng với rủi ro số tiền được hoàn lại vào sai tài khoản.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Có, nếu bạn quyên góp bằng PayPal, dịch vụ này cung cấp quản lý hoàn tiền đơn giản. Hoàn tiền thường không khả dụng đối với các phương thức quyên góp khác do lượng công việc bổ sung cần thiết, ngoài ra còn có các rủi ro như hoàn tiền vào tài khoản sai. Tốt nhất là người dùng nên dành thời gian dùng thử Talkie Premium trước, để đảm bảo mọi thứ đều ổn trước khi quyên góp.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Tôi có thể nhận tiền hoàn lại không?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Đảm bảo! Chỉ cần bật Talkie Premium để dùng thử.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Chắc chắn rồi, không vấn đề gì. Chỉ cần bật bản nâng cấp Talkie Premium để dùng thử.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Tôi có thể dùng thử Talkie Premium miễn phí không?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Không có quảng cáo, thu thập dữ liệu hoặc theo dõi người dùng trong Talkie. Người dùng hài lòng khi thanh toán cho Talkie Premium là cách kiếm tiền duy nhất.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Không có quảng cáo, thu thập dữ liệu hoặc theo dõi người dùng trong Talkie. Người dùng vui vẻ quyên góp cho Talkie Premium là cách kiếm tiền duy nhất.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Talkie mở rộng Talkie có chứa quảng cáo, thu thập dữ liệu hoặc theo dõi người dùng không?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Hệ thống danh dự là khi các cá nhân được tin tưởng là trung thực và tuân thủ các nguyên tắc mà không cần kiểm tra nghiêm ngặt. Đối với Talkie Premium tin tưởng rằng những người nâng cấp đã trả tiền cho nó.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "Hệ thống danh dự là khi các cá nhân tin tưởng lẫn nhau để tuân thủ các hướng dẫn đã thỏa thuận, mà không có sự kiểm tra nghiêm ngặt. Đối với Talkie Premium điều này có nghĩa là tin tưởng rằng những người nâng cấp cũng đã quyên góp.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Hệ thống danh dự là gì?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Bởi vì mọi người trên khắp thế giới sử dụng các loại tiền tệ khác nhau, có mức thu nhập khả dụng khác nhau và có mức độ đánh giá cao khác nhau đối với các tính năng của Talkie Premium Không có một mức giá cố định duy nhất nào phù hợp với tất cả mọi người trên thế giới. Trên hết là sự biến động về tiền tệ, xu hướng chu kỳ kinh tế, sự khác biệt giữa các khu vực/trong nước, v.v. Nói chung, cài đặt giá cho một sản phẩm được bán trên toàn thế giới rất phức tạp. Sẽ dễ dàng hơn nếu để mọi người tự định giá và đảm bảo rằng sản phẩm đủ tốt để đảm bảo thanh toán.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Bởi vì mọi người trên thế giới sử dụng các loại tiền tệ khác nhau, có mức thu nhập khả dụng khác nhau và có mức độ đánh giá khác nhau đối với các tính năng của Talkie Premium. Không có mức giá cố định duy nhất nào phù hợp với tất cả mọi người trên thế giới. Thêm vào đó là sự biến động của tiền tệ, xu hướng chu kỳ kinh tế, sự thay đổi theo khu vực/trong nước, v.v. Nhìn chung, việc thiết lập giá cho một sản phẩm được bán trên toàn thế giới là phức tạp. Sẽ dễ dàng hơn nếu để mọi người tự thiết lập giá của riêng họ và đảm bảo rằng sản phẩm đủ tốt để được quyên góp.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Tại sao tôi có thể đặt giá của riêng mình?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Vì tôi không biết bạn có thể chi bao nhiêu tiền cho phần mềm chuyển văn bản thành giọng nói, nên tôi muốn bạn trả những gì bạn nghĩ Talkie Premium xứng đáng với bạn — không hơn, không kém. Trong trường hợp bạn đang tìm kiếm hệ quy chiếu, khi Google xử lý các khoản thanh toán cho Talkie Premium chi phí đăng ký $$ 25 (Đô la Mỹ) mỗi năm ở Hoa Kỳ. Lưu ý rằng Google đã điều chỉnh giá xung quanh cho các quốc gia và đơn vị tiền tệ trên thế giới để phù hợp với điều kiện địa phương, vì vậy nó có thể cao hơn hoặc thấp hơn. Đồng thời, bất kỳ ai yêu cầu lịch sự cũng có thể nhận được Talkie Premium miễn phí.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Vì tôi không biết bạn có thể và sẵn sàng chi bao nhiêu tiền cho phần mềm chuyển văn bản thành giọng nói, tôi muốn bạn quyên góp số tiền mà bạn nghĩ Talkie Premium đáng giá với bạn — không nhiều hơn, không ít hơn. Trong trường hợp bạn đang tìm kiếm một khung tham chiếu, khi Cửa hàng web Google Chrome xử lý các khoản thanh toán cho Talkie Premium (2017-2021), chi phí đăng ký hàng năm là 25 đô la (Đô la Mỹ) tại Hoa Kỳ. Tuy nhiên, giá trên toàn thế giới thay đổi vì Google tự động điều chỉnh giá cho các quốc gia và loại tiền tệ khác.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Bạn đề nghị tôi trả bao nhiêu?",
-    "original": "How much do you recommend I pay?"
+    "message": "Bạn khuyên tôi nên quyên góp bao nhiêu?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Bởi vì việc triển khai một hệ thống thanh toán và xác minh tốn rất nhiều thời gian và công sức, và người ta cho rằng chi phí thực hiện xác minh thanh toán chặt chẽ sẽ cao hơn so với tổn thất do các cá nhân gian lận hệ thống. Xác minh thanh toán cũng yêu cầu một số cấp độ thu thập dữ liệu từ hệ thống của người dùng và những người dùng có kỹ thuật thường có thể làm việc xung quanh việc xác minh bằng mọi cách. Vì vậy, từ góc độ kỹ thuật và kinh doanh, mặc dù không có sự đảm bảo nào, nhưng sẽ dễ dàng hơn nếu chỉ đơn giản là tin tưởng rằng người dùng tuân thủ hệ thống danh dự.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Bởi vì việc triển khai hệ thống thanh toán và xác minh tốn rất nhiều thời gian và công sức. Người ta cho rằng chi phí triển khai xác minh thanh toán nghiêm ngặt cao hơn tổn thất từ những cá nhân gian lận hệ thống. Xác minh thanh toán cũng đòi hỏi một số mức độ thu thập dữ liệu từ hệ thống của người dùng và người dùng có kỹ năng kỹ thuật thường có thể giải quyết vấn đề xác minh này. Vì vậy, xét về mặt kỹ thuật và kinh doanh, mặc dù không có sự đảm bảo nào, nhưng việc tin tưởng rằng người dùng tuân thủ hệ thống danh dự vẫn dễ dàng hơn.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Tại sao không có xác minh thanh toán?",
-    "original": "Why is there no payment verification?"
+    "message": "Tại sao không có xác minh quyên góp hoặc thanh toán?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Quyết định không thực hiện xác minh thanh toán có nghĩa là số tiền đã thanh toán không thể được xác minh. Ngoài ra, chi phí \"sản xuất\" bản sao kỹ thuật số của Talkie Premium bằng 0, do đó, việc cho đi không có gì không đồng nghĩa với việc nhà phát triển bị thiệt hại về tài chính. Ngoài ra còn có hy vọng rằng nếu bạn thích Talkie Premium , bạn sẽ nói với bạn bè của mình về nó. Cho đi Talkie Premium cũng có thể được coi là một nỗ lực tiếp thị.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "Tôi nhận ra rằng việc tặng \"không gì cả\" có vẻ hơi khó hiểu. Câu trả lời ngắn gọn là tiền không phải là tất cả. Câu trả lời dài có nhiều khía cạnh hơn. Quyết định không triển khai xác minh thanh toán có nghĩa là số tiền đã trả không liên quan. Ngoài ra, chi phí \"sản xuất\" bản sao kỹ thuật số của Talkie Premium là bằng không, vì vậy việc tặng miễn phí không có nghĩa là nhà phát triển bị mất tiền. Ngoài ra còn có hy vọng rằng nếu bạn thích Talkie Premium bạn sẽ nói với bạn bè của mình về nó và có lẽ một số người trong số họ sẽ quyên góp theo cách này hay cách khác. Do đó, việc tặng Talkie Premium có thể được coi là một nỗ lực tiếp thị.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Tại sao tôi có thể chọn không trả tiền?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Tại sao tôi có thể chọn quyên góp hoặc không trả gì?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Có, bằng cách sử dụng Stripe. Xem các tùy chọn thanh toán bổ sung.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Có, nhưng không có hệ thống tự động nào cho các khoản quyên góp định kỳ. Cách đơn giản nhất là bạn chỉ cần quyên góp lại vào thời điểm sau.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Tôi có thể thanh toán định kỳ hàng tháng hoặc hàng năm không?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Tôi có thể quyên góp định kỳ hàng tháng hoặc hàng năm không?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Có, nếu bạn yêu cầu nó qua email. Vui lòng bao gồm tên, địa chỉ của bạn và tùy chọn số nhận dạng thuế giá trị gia tăng (VAT) của bạn (hoặc số tiền tương đương).",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Đây là một yêu cầu hiếm gặp và cần phải được xử lý thủ công. Vui lòng liên hệ trước khi quyên góp.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Tôi có thể nhận được biên lai cho khoản thanh toán của mình không?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Tôi có thể nhận được biên lai cho khoản quyên góp của mình không?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Bởi vì bạn thích các tính năng bổ sung mà Talkie Premium cung cấp và cảm giác hạnh phúc khi được đóng góp vào sự phát triển phần mềm nguồn mở của các nhà phát triển độc lập. Do chi phí phát triển và bảo trì tương đối cao, nhưng chi phí \"sản xuất\" bản sao kỹ thuật số bằng không, các khoản thanh toán cho Talkie Premium cũng có thể được coi là hỗ trợ cho việc phát triển và bảo trì trong tương lai, trái ngược với giá trị của sản phẩm tại thời điểm thanh toán .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Bởi vì bạn thích các tính năng bổ sung mà Talkie Premium cung cấp và cảm giác vui vẻ khi đóng góp vào quá trình phát triển phần mềm nguồn mở của các nhà phát triển độc lập. Do chi phí thời gian phát triển và bảo trì tương đối cao, nhưng không mất chi phí \"sản xuất\" bản sao kỹ thuật số, nên việc quyên góp cho Talkie Premium cũng có thể được coi là cung cấp hỗ trợ và khuyến khích cho quá trình phát triển và bảo trì trong tương lai, trái ngược với giá trị của sản phẩm tại thời điểm quyên góp.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Tại sao tôi phải trả tiền để nâng cấp?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Tại sao tôi nên quyên góp để nâng cấp?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "Câu trả lời ngắn gọn là: có lẽ là không. Hóa ra có những giọng nói hiện đại và những giọng nói cũ trên Microsoft Windows. Khi tôi kiểm tra lần cuối, giọng nói tiếng Hà Lan \"Microsoft Frank\" đã có trong Microsoft Edge, nhưng không có trong Google Chrome hay Mozilla Firefox. Một lý do là một số giọng nói được xây dựng cho hệ thống giọng nói WinRT mới hơn và một số giọng nói cho Giao diện lập trình ứng dụng giọng nói (SAPI) cũ hơn. Các trình duyệt có thể không hỗ trợ cả hệ thống giọng nói cũ và mới, có nghĩa là một giọng nói trên thực tế đã được cài đặt, vẫn có thể không khả dụng trong trình duyệt yêu thích của bạn. Theo thời gian, hầu hết người duyệt web có thể sẽ hỗ trợ hệ thống WinRT mới hơn. Nếu bạn thiếu giọng nói trong ngôn ngữ của mình, một gợi ý là hãy thử sử dụng Talkie trong Microsoft Edge.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Có, nhưng tùy thuộc vào trình duyệt bạn sử dụng. Có cả giọng nói hiện đại và giọng nói cũ trong Microsoft Windows. Lần cuối tôi thử nghiệm, giọng nói tiếng Hà Lan \"Microsoft Frank\" có trong Microsoft Edge, nhưng không có trong Google Chrome hay Mozilla Firefox. Một lý do là một số giọng nói được xây dựng cho hệ thống giọng nói WinRT mới hơn và một số giọng nói khác cho Giao diện lập trình ứng dụng giọng nói (SAPI) cũ hơn. Trình duyệt yêu thích của bạn có thể không hỗ trợ cả hệ thống giọng nói cũ và mới, nghĩa là giọng nói thực tế đã được cài đặt có thể không sử dụng được. Theo thời gian, hầu hết các trình duyệt có thể sẽ hỗ trợ hệ thống WinRT mới hơn. Nếu bạn không có giọng nói trong ngôn ngữ của mình, một gợi ý là hãy thử sử dụng Talkie trong Microsoft Edge.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
-    "message": "Tất cả các giọng nói cho Microsoft Windows có hoạt động với Talkie không?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "message": "Có phải tất cả giọng nói dành cho Microsoft Windows đều hoạt động với Talkie không?",
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "Có lẽ, với rất nhiều nỗ lực. Ngoài ra còn có một số cách giải quyết không chính thức để có được các giọng nói WinRT mới hoạt động với các trình duyệt hỗ trợ SAPI cũ hơn, nhưng đây là một nỗ lực kỹ thuật cao và không được khuyến nghị cho người dùng không phải là kỹ thuật.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "Có lẽ, với rất nhiều nỗ lực. Cũng có một số giải pháp không chính thức để có được giọng nói WinRT mới hoạt động với các trình duyệt hỗ trợ SAPI cũ hơn, nhưng đây là một nỗ lực mang tính kỹ thuật cao và không được khuyến khích cho người dùng không chuyên.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "Giọng nói WinRT có thể hoạt động trong các trình duyệt hỗ trợ SAPI trên Microsoft Windows không?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Có, một số làm. Làm theo hướng dẫn cài đặt cho hệ thống và trình duyệt của bạn. Sau khi cài đặt giọng nói trong trình duyệt của bạn, Talkie sẽ tự động phát hiện chúng. Hãy chia sẻ bất kỳ mẹo nào bạn có!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Có, một số thì có. Thực hiện theo hướng dẫn cài đặt cho hệ thống và trình duyệt của bạn. Sau khi các giọng nói được cài đặt trong trình duyệt của bạn, Talkie sẽ tự động phát hiện chúng.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Giọng nói nguồn mở có hoạt động với Talkie không?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Quyên góp ngụ ý chi tiêu tự nguyện cho một điều gì đó tích cực. Hãy nghĩ về nó như tiền boa. Thanh toán ngụ ý một giao dịch tiền bắt buộc.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Tại sao lại là quyên góp thay vì thanh toán?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "Thay vì tiền, hãy lan tỏa sự tích cực. Ủng hộ một tổ chức nhân đạo. Làm tình nguyện tại một tổ chức từ thiện địa phương. Giúp đỡ người lạ. Ôm một thành viên gia đình. Mỉm cười. Trên thực tế, tất cả những điều này quan trọng hơn cả việc quyên góp tiền cho Talkie Premium. Tuy nhiên, tôi rất trân trọng khi nhận được bưu thiếp.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Tôi đã chọn không quyên góp gì cả. Tôi có thể làm gì khác không?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Vâng, dù sao thì bạn vẫn có thể sử dụng Talkie Premium .",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Nếu tôi chọn không quyên góp gì thì liệu nó có còn được tính không?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Kế hoạch ban đầu là kiếm tiền từ Talkie bằng cách tính phí đăng ký hàng năm cho Talkie Premium. Trong vài năm (2017-2021), Cửa hàng trực tuyến Google Chrome đã xử lý thanh toán và đăng ký cho Talkie Premium , nhưng họ không còn cung cấp dịch vụ đó nữa. Khi hệ thống thanh toán bên ngoài ngừng hoạt động, tôi đã chọn giữ các tính năng Talkie Premium riêng biệt, để chỉ ra rằng đã có rất nhiều nỗ lực được dành cho Talkie. Các khoản quyên góp là dấu hiệu đại diện cho thấy mọi người sử dụng và đánh giá cao Talkie , đó là lý do truyền cảm hứng cho tôi dành hàng trăm giờ làm việc cho nó.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Nếu việc quyên góp là tùy chọn, tại sao các tính năng Talkie Premium lại riêng biệt?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie , giống như mã nguồn mở khác của tôi, là một dự án sở thích. Thường thì có một số việc nhỏ cần phải xử lý sau mỗi vài tuần, chẳng hạn như trả lời các câu hỏi qua email. Việc lập trình trên Talkie thường tập trung vào một vài ngày ở đây và ở đó — thường là trong các ngày lễ và kỳ nghỉ. Thật không may, các thay đổi chính sách bên ngoài ngày càng chiếm nhiều thời gian hơn cho việc phát triển tính năng. Ví dụ, về mặt kỹ thuật, việc nâng cấp Talkie lên Manifest Phiên bản 3 (MV3) mất vài tuần làm việc (2023-2024) mà không cải thiện rõ ràng tính hữu ích của Talkie .",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Bạn dành bao nhiêu thời gian để làm việc trên Talkie ?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "Hiện tại tôi không chắc chắn. Tôi đã phát triển Talkie (2016) để những người khác thưởng thức, và thực sự không tự mình sử dụng nó. Việc thêm các tính năng mới và học những điều mới rất thú vị. Nhận được phản hồi tích cực và thấy số lượng người dùng tăng lên là điều tuyệt vời. Tuy nhiên, hiện tại đó không phải là sở thích yêu thích của tôi, vì các yếu tố bên ngoài đã tác động tiêu cực đến quá trình phát triển trong những năm qua (2020-2024). Đặc biệt, việc xuất bản tiện ích mở rộng web đòi hỏi phải cập nhật các chính sách liên tục thay đổi của Google Chrome Web Store (CWS) và Mozilla Add-Ons (AMO) cho Firefox.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Bạn sẽ tiếp tục làm việc trên Talkie trong bao lâu?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Câu trả lời cho câu hỏi này không thể được cập nhật một cách đáng tin cậy. Truy cập trang web Talkie để biết trạng thái hiện tại của dự án.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Bạn vẫn đang tích cực làm việc trên Talkie chứ?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Lỗi",
@@ -385,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "Hiện đang sử dụng phiên bản miễn phí của Talkie và có sẵn một số tính năng giới hạn. Có lẽ Talkie Premium sẽ là lựa chọn tốt hơn cho bạn?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "Hiện tại bạn đang sử dụng phiên bản miễn phí của Talkie và một số tính năng giới hạn có sẵn. Bạn đã cân nhắc nâng cấp lên Talkie Premium chưa?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "Hiện đang sử dụng Talkie Premium và tất cả các tính năng đều có sẵn. Cảm ơn bạn rất nhiều, nó sưởi ấm trái tim tôi!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "Hiện tại bạn đang sử dụng Talkie Premium và tất cả các tính năng đều khả dụng. Cảm ơn bạn rất nhiều, điều đó làm tôi ấm lòng!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie có hai phiên bản: Talkie và Talkie Premium. Phiên bản miễn phí là tuyệt vời cho hầu hết các trường hợp sử dụng, nhưng phiên bản cao cấp cung cấp các tùy chọn và tính năng bổ sung.",
@@ -413,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Mã là mã nguồn mở và có sẵn miễn phí cho tất cả người dùng.",
-    "original": "Code is open source and available for free to all users."
+    "message": "Mã nguồn mở và hoàn toàn có sẵn cho tất cả người dùng.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Rảnh rỗi!",
-    "original": "Free!"
+    "message": "Sử dụng thoải mái mà không mất phí.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Đặc trưng",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Chọn giọng nói mặc định của riêng bạn cho mỗi ngôn ngữ. Tuyệt vời nếu bạn cảm thấy mệt mỏi với giọng nói của hệ thống!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Chọn giọng nói ưa thích của bạn cho mỗi ngôn ngữ.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Chọn tốc độ đọc và cao độ cho mỗi giọng nói. Điều chỉnh giọng nói theo ý thích của bạn!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Điều chỉnh tốc độ đọc và cao độ cho từng giọng nói.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Cảm giác ấm áp, mờ ảo mà bạn có được khi hỗ trợ phần mềm nguồn mở của các nhà phát triển độc lập.",
@@ -441,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Đọc văn bản từ khay nhớ tạm! Chỉ cần sao chép văn bản từ bất kỳ đâu trong bất kỳ chương trình nào và sử dụng Talkie Premium để đọc văn bản đó!",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Đọc văn bản từ bảng tạm. Sao chép bất kỳ văn bản nào từ bất kỳ đâu trong bất kỳ chương trình nào và sử dụng Talkie Premium để đọc văn bản đó.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Có sẵn giọng nói chuyển văn bản thành giọng nói",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Vui lòng cài đặt một số giọng nói trên hệ thống của bạn, nếu không Talkie sẽ không hoạt động. Xin lỗi!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Không tìm thấy bất kỳ giọng nói chuyển văn bản thành giọng nói nào. Không có giọng nói, Talkie không thể hoạt động bình thường. Đôi khi, tải lại trang này sẽ hữu ích, ít nhất là nếu trình duyệt chậm hoặc có nhiều giọng nói.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Không tìm thấy giọng nói chuyển văn bản thành giọng nói",
@@ -460,6 +524,10 @@
     "message": "Giấy phép",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Giấy phép của bên thứ ba",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Đang tải...",
     "original": "Loading..."
@@ -471,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "Cài đặt",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Hiển thị văn bản clipboard",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "Không được cấp quyền truy cập vào bảng tạm.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "Từ chối quyền truy cập clipboard",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "Để đọc văn bản từ bất kỳ chương trình nào, bạn có thể sao chép văn bản vào bảng tạm và sử dụng phím tắt có thể định cấu hình. Để Talkie truy cập bảng tạm, trước tiên bạn cần cấp quyền. Đây là tính năng Talkie Premium .",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "Cấp hoặc từ chối quyền của bạn bất kỳ lúc nào. Trình duyệt của bạn có thể yêu cầu bạn xác nhận hoặc không.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Cấp quyền cho clipboard",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Đã cấp quyền truy cập vào bảng tạm.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Quyền truy cập vào clipboard",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "Không xác định được quyền truy cập vào bảng tạm hoặc bị lỗi.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "Nói văn bản clipboard",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "Không thể đọc được văn bản trong bảng tạm.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "Có thể đọc được văn bản trong bảng tạm.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "Văn bản trong bảng tạm chưa được đọc.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Không có mục nhập lịch sử nào.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "Lịch sử",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "Ngôn ngữ",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Trạng thái",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "Tiếng nói",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie được phát triển vài ngày trước Năm mới 2016/2017, theo lời thách thức từ một người bạn. Thử thách bắt đầu với câu hỏi: trong khi đi làm, liệu có thể nghe một bài báo thay vì đọc nó không? Thật dễ dàng, tôi nói, và bắt đầu chứng minh điều đó — hoặc ít nhất là làm cho trình duyệt của tôi nói ra văn bản bằng giọng nói ngớ ngẩn của máy tính. Phiên bản cơ bản, không có bất kỳ giao diện người dùng nào, hóa ra rất tầm thường để tạo. Thêm giao diện người dùng, mất nhiều thời gian hơn. Thêm tính năng phát hiện ngôn ngữ thích hợp, thêm nhiều mã. Khắc phục lỗi trong trình duyệt thậm chí còn hiệu quả hơn. Danh sách các cải tiến và tính năng tiếp tục — và vài nghìn dòng mã sau đó, bạn đang xem kết quả cuối cùng.",
@@ -489,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Có một câu hỏi? Cần giúp đỡ với một cái gì đó? Để có câu trả lời nhanh cho các câu hỏi phổ biến, hãy xem các câu hỏi thường gặp bên dưới. Nếu điều đó không cung cấp cho bạn câu trả lời, vui lòng gửi cho tôi bất kỳ câu hỏi nào bạn có thể có. Tôi rất vui nếu trải nghiệm sử dụng $NAME$ suôn sẻ và thú vị!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Để được hỗ trợ nhanh chóng và dễ dàng, vui lòng xem qua các câu hỏi và câu trả lời phổ biến này. Nếu câu hỏi của bạn vẫn chưa được trả lời, vui lòng liên hệ với tôi.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "Hỗ trợ",
@@ -555,40 +689,36 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Giá cho Talkie Premium không cố định. Thay vào đó, bạn phải trả những gì bạn muốn, tùy thuộc vào số tiền bạn nghĩ rằng các tính năng cao cấp có giá trị với bạn. Bạn thậm chí có thể quyết định không trả tiền.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Giá cho Talkie Premium không cố định. Thay vào đó, bạn sẽ quyên góp những gì bạn muốn, tùy thuộc vào mức giá mà bạn nghĩ các tính năng cao cấp có giá trị với bạn. Bạn thậm chí có thể quyết định không quyên góp gì cả.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Sau khi gửi thanh toán, không có mã nâng cấp nào để nhập, không có tài khoản người dùng để đăng ký hoặc bất kỳ xác minh thanh toán nào khác tại chỗ. Thay vào đó Talkie Premium sử dụng hệ thống danh dự.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "Sau khi quyên góp, không có mã nâng cấp nào để nhập, không có tài khoản người dùng nào để đăng ký hoặc bất kỳ xác minh quyên góp nào khác. Thay vào đó, Talkie Premium sử dụng hệ thống danh dự.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Xin lưu ý rằng Talkie không có bất kỳ quảng cáo, theo dõi người dùng hoặc thu thập dữ liệu nào làm phương tiện kiếm tiền thay thế. Các khoản thanh toán được gắn nhãn là quyên góp cho phát triển phần mềm nguồn mở.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie không có bất kỳ quảng cáo, theo dõi người dùng hoặc thu thập dữ liệu nào làm phương tiện kiếm tiền thay thế. Các khoản quyên góp được dán nhãn là tiền boa cho việc phát triển phần mềm nguồn mở.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Nâng cấp lên Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Tôi đã thanh toán cho Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "Nâng cấp lên Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Các phương thức thanh toán khác qua trang quyên góp",
-    "original": "More payment methods via the donations page"
+    "message": "Phương pháp quyên góp bổ sung",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "Thanh toán bằng PayPal",
-    "original": "Pay using PayPal"
+    "message": "Quyên góp bằng PayPal",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Cách sử dụng",
     "original": "Usage"
-  },
-  "frontend_usageReadclipboard": {
-    "message": "Đọc bất kỳ văn bản nào được sao chép vào khay nhớ tạm của bạn — sử dụng văn bản đó với phím tắt để nghe văn bản từ bất kỳ đâu bên ngoài trình duyệt. Bạn cũng có thể nhấp chuột phải vào Talkie Premium hoặc trong vùng trống của trang web và chọn đọc từ khay nhớ tạm.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Bạn cũng có thể chọn văn bản, sau đó nhấp chuột phải vào văn bản và chọn Talkie trong menu. Cách này cũng hoạt động trong các tệp PDF và một số loại trang đặc biệt trong trình duyệt.",
@@ -614,9 +744,9 @@
     "message": "Một tùy chọn thuận tiện là sử dụng các phím tắt Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Đọc văn bản từ khay nhớ tạm trong bất kỳ chương trình nào",
-    "original": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Nói văn bản trực tiếp từ clipboard",
+    "original": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Băt đâu dưng",
@@ -626,6 +756,10 @@
     "message": "Băt đâu dưng",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Nói bất kỳ văn bản nào được sao chép vào bảng tạm của bạn, bằng giọng nói đã cấu hình của bạn. Cách dễ nhất là sử dụng phím tắt có thể cấu hình. Bạn cũng có thể nhấp chuột phải vào nút Talkie Premium hoặc trong vùng trống của trang web và chọn nói từ bảng tạm.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Chọn văn bản mong muốn trên bất kỳ trang web nào.",
     "original": "Select desired text on any web page."
@@ -633,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Nhấp vào Talkie trên thanh công cụ của trình duyệt của bạn",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie có thể được sử dụng để đọc văn bản đã chọn trên một trang. Khi trang bị đóng hoặc địa chỉ trang thay đổi, Talkie có thể tiếp tục nói hoặc tự động dừng.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Tiếp tục nói hoặc tự động dừng lại",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Khi tab hoặc cửa sổ bị đóng, Talkie có thể tiếp tục nói hoặc tự động dừng lại.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Khi trang được đóng lại",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Tiếp tục nói khi tab đã đóng",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "Địa chỉ thay đổi chủ yếu xảy ra khi nhấp vào liên kết để chuyển đến trang khác hoặc khi nhập thủ công vào thanh địa chỉ. Một số trang web cũng có thể thay đổi địa chỉ trong các trường hợp khác, ví dụ như khi tải thêm thông tin.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Khi địa chỉ trang thay đổi, Talkie có thể tiếp tục nói hoặc tự động dừng lại.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "Vì lý do riêng tư, Mozilla Firefox không phải lúc nào cũng báo cáo khi địa chỉ trang thay đổi. Việc tắt cài đặt này có thể không có tác dụng gì.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Khi địa chỉ trang thay đổi",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Tiếp tục nói khi địa chỉ thay đổi",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "Giọng nói mặc định cho phương ngữ $LANGUAGE_CODE$ là $VOICE$ .",
@@ -679,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "Đã tìm thấy $VOICES_COUNT$ giọng nói cho $LANGUAGE_CODE$ .",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Cài đặt phương ngữ giọng nói",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Ngôn ngữ giọng nói đã cài đặt",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Giọng nói đã cài đặt",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "Giọng nói",
@@ -783,9 +983,65 @@
     "message": "Đọc văn bản dài hơn mà không bị tạm dừng (thử nghiệm)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Quên các mục lịch sử cá nhân",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Quên tất cả $HISTORY_COUNT$ mục nhập lịch sử",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie có thể nhớ văn bản đã nói trước đó, do đó có thể phát lại sau. Thiết lập này giới hạn số lượng mục lịch sử được ghi nhớ.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Giảm giới hạn để giảm ngay lập tức số lượng mục nhập lịch sử. Giới hạn 0 sẽ vô hiệu hóa việc ghi nhớ lịch sử. Giới hạn mặc định là $DEFAULT_LIMIT$ .",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "Hiện tại có $HISTORY_COUNT$ mục lịch sử được ghi nhớ. Bạn có thể quên tất cả cùng một lúc hoặc quên từng mục riêng lẻ.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "Lịch sử",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Giới hạn nhập lịch sử",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Với Talkie Premium bạn có thể thay đổi giọng nói mặc định cho từng ngôn ngữ, cũng như giọng nói và cao độ cho từng giọng nói.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ là giọng nói trực tuyến. Việc sử dụng có thể yêu cầu kết nối internet đang hoạt động để truy cập các dịch vụ của bên thứ ba.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "Chào mừng bạn đến với $NAME$! Bạn hiện đang sử dụng một trong những tiện ích mở rộng trình duyệt chuyển văn bản thành giọng nói tốt nhất trên thế giới.",
@@ -798,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Hãy tiếp tục và chọn văn bản này, sau đó nhấp vào nút $NAME$ trong thanh công cụ của trình duyệt. Vui thích!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Chọn văn bản này, sau đó nhấp vào nút $NAME$ trên thanh công cụ của trình duyệt.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie hiện có thể tìm thấy $VOICES_COUNT$ giọng nói cho phép $LANGUAGE_GROUPS_COUNT$ ngôn ngữ bằng $LANGUAGES_COUNT$ phương ngữ được cài đặt trong $SYSTEM_TYPE_PRETTY_NAME$ của bạn đang chạy trên hệ điều hành $OSTYPE_PRETTY_NAME$",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie hiện có thể tìm thấy $VOICES_COUNT$ giọng nói được cài đặt, cho phép $LANGUAGE_GROUPS_COUNT$ ngôn ngữ trong $LANGUAGES_COUNT$ phương ngữ.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -847,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Tôi xin lỗi, nhưng đọc văn bản từ khay nhớ tạm là một tính năng Talkie Premium Bạn đã xem xét nâng cấp?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "Xin lỗi, nhưng việc đọc văn bản từ bảng tạm là một tính năng Talkie Premium. Bạn đã cân nhắc nâng cấp chưa?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Tôi xin lỗi, nhưng trình duyệt này không hỗ trợ đọc từ khay nhớ tạm. Ít nhất là chưa. Vui lòng thử lại sau một tháng hoặc lâu hơn!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Rất tiếc, nhưng có vẻ như trình duyệt này không hỗ trợ truy cập vào clipboard.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie không có quyền truy cập từ khay nhớ tạm. Điều đó không sao, nhưng sau đó đọc văn bản khay nhớ tạm sẽ không hoạt động.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie không có quyền truy cập vào clipboard. Bạn có thể cấp quyền trên trang tùy chọn Talkie .",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Không thể tìm thấy văn bản phù hợp trong khay nhớ tạm. Bạn có thể thử sao chép một cái gì đó khác không?",

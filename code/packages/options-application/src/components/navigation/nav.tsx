@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,18 +20,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
-import React from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
 import {
-	withStyleDeep,
-} from "styletron-react";
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
+	layoutWithNoMargin,
+	layoutWithNoPadding,
+} from "@talkie/shared-ui/styles/shared-base.mjs";
+import React from "react";
 
 import {
-	NavLink,
+	type NavLink,
 } from "./nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
@@ -40,17 +43,17 @@ import {
 } from "./nav-helpers.mjs";
 
 export interface NavProps {
-	initialActiveTabId: string | null;
+	activeNavigationTabId: string | null;
 	links: NavLink[];
 	onTabChange: (tabId: string) => void;
 }
 
 export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		nav: StyletronComponent<React.ComponentProps<typeof layoutBase.nav>>;
-		navTable: StyletronComponent<React.ComponentProps<typeof tableBase.wideTable>>;
-		navTableTd: StyletronComponent<React.ComponentProps<typeof tableBase.td>>;
-		selectedLink: StyletronComponent<React.ComponentProps<typeof textBase.a>>;
+		nav: TalkieStyletronComponent<typeof layoutBase.nav>;
+		navTable: TalkieStyletronComponent<typeof tableBase.wideTable>;
+		navTableTd: TalkieStyletronComponent<typeof tableBase.td>;
+		selectedLink: TalkieStyletronComponent<"a">;
 	};
 
 	constructor(props: P) {
@@ -59,7 +62,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 		this.handleClick = this.handleClick.bind(this);
 
 		this.styled = {
-			nav: withStyleDeep(
+			nav: withTalkieStyleDeep(
 				layoutBase.nav,
 				{
 					lineHeight: "1.5em",
@@ -67,7 +70,7 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				},
 			),
 
-			navTable: withStyleDeep(
+			navTable: withTalkieStyleDeep(
 				tableBase.wideTable,
 				{
 					lineHeight: "1.5em",
@@ -75,24 +78,17 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				},
 			),
 
-			navTableTd: withStyleDeep(
+			navTableTd: withTalkieStyleDeep(
 				tableBase.td,
 				{
-					marginBottom: 0,
-					marginLeft: 0,
-					marginRight: 0,
-					marginTop: 0,
-					paddingBottom: 0,
-					paddingLeft: 0,
-					paddingRight: 0,
-					paddingTop: 0,
+					...layoutWithNoMargin,
+					...layoutWithNoPadding,
 				},
 			),
 
-			selectedLink: withStyleDeep(
-				textBase.a,
+			selectedLink: talkieStyled(
+				"a",
 				{
-					color: colorBase.linkFocusColor,
 					fontWeight: "bold",
 				},
 			),
@@ -126,13 +122,14 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 	override render(): React.ReactNode {
 		const {
 			links,
-			initialActiveTabId,
+			activeNavigationTabId,
 		} = this.props as NavProps;
 
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const linkCells = links.map((link) => {
 			let resolvedUrl: string | null = null;
 
-			if (typeof link.tabId === "string" && link.url instanceof URL) {
+			if (typeof link.tabId === "string" && (link.url as unknown) instanceof URL) {
 				throw new TypeError(`Has both a link and a tab id: ${JSON.stringify(link)}`);
 			} else if (typeof link.tabId === "string") {
 				resolvedUrl = getLocationHashFromTabId(link.tabId);
@@ -142,9 +139,9 @@ export default class Nav<P extends NavProps> extends React.PureComponent<P> {
 				throw new TypeError(`Need either a link or a tab id: ${JSON.stringify(link)}`);
 			}
 
-			const SelectedLinkType = initialActiveTabId === link.tabId
+			const SelectedLinkType = activeNavigationTabId === link.tabId
 				? this.styled.selectedLink
-				: textBase.a;
+				: talkieStyled("a");
 
 			return (
 				<this.styled.navTableTd

@@ -19,7 +19,7 @@
     "message": "વાતો કરવાનું બંધ કરો",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "ટેક્સ્ટ પસંદગીને મોટેથી વાંચો",
     "original": "Read text selection out loud"
   },
@@ -31,9 +31,9 @@
     "message": "Talkie Premium અપગ્રેડ કરો",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "ક્લિપબોર્ડ પરથી વાંચો",
-    "original": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "ક્લિપબોર્ડ પરથી ટેક્સ્ટ બોલો",
+    "original": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "પસંદગી વાંચવાનું શરૂ/બંધ કરો",
@@ -41,12 +41,16 @@
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "40 થી વધુ ભાષાઓમાં ભાષણ માટે ઝડપી, સરળ, ઉચ્ચ ગુણવત્તાની ટેક્સ્ટ. વેબસાઇટ્સ, પીડીએફ, ઇમેઇલથી મોટેથી વાંચો. TTS સાથે ટેક્સ્ટ બોલો.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "ઝડપી અને સરળ ટેક્સ્ટ-ટુ-સ્પીચ. વેબસાઇટ્સ, પીડીએફ, ઇમેઇલથી મોટેથી વાંચો. ગોપનીયતાથી વાકેફ, ઓપન સોર્સ કોડ.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "સુવિધાઓ અને અપગ્રેડ",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "સ્થિતિ અને ઇતિહાસ",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "ઉપયોગ અને શોર્ટકટ્સ",
@@ -109,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "તમે કઈ Linux વિતરણ, બ્રાઉઝર અને પેકેજ વિતરણ સિસ્ટમનો ઉપયોગ કરો છો તેના પર તે આધાર રાખે છે. તમારા સૉફ્ટવેરના સંયોજન માટે અલગ ઇન્સ્ટોલેશન સૂચનાઓ જુઓ. બીજા બ્રાઉઝરને અજમાવવાનું અને તેમાં યોગ્ય વૉઇસ પ્રીઇન્સ્ટોલ કરેલ છે કે કેમ તે જોવાનું સૌથી સરળ છે. ઉદાહરણ તરીકે, ઉબુન્ટુ 21.10 પર ફાયરફોક્સ v95 એપ્ટિટ્યુડ અથવા સ્નેપનો ઉપયોગ કરીને ઇન્સ્ટોલ કરી શકાય છે; પહેલાનામાં 8611 eSpeak અવાજોનો સમાવેશ થાય છે જે 7358 બોલીઓમાં 95 ભાષાઓને સક્ષમ કરે છે, પરંતુ બાદમાં 0 અવાજોનો સમાવેશ થાય છે. બીજું ઉદાહરણ ઉબુન્ટુ 21.10 પર ગૂગલ ક્રોમ v96 છે, જેમાં મૂળભૂત રીતે 18 બોલીઓમાં 14 ભાષાઓને સક્ષમ કરતા 19 અવાજોનો સમાવેશ થાય છે. કૃપા કરીને મને જણાવો કે તમારા અનુભવો શું છે!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "તે તમે કઈ Linux વિતરણ, બ્રાઉઝર અને પેકેજ વિતરણ સિસ્ટમનો ઉપયોગ કરો છો તેના પર આધાર રાખે છે. તમારા સૉફ્ટવેરના સંયોજન માટે અલગ ઇન્સ્ટોલેશન સૂચનાઓ જુઓ. બીજા બ્રાઉઝરને અજમાવવાનું અને તેમાં યોગ્ય વૉઇસ પ્રી-ઇન્સ્ટોલ કરેલ છે કે કેમ તે જોવાનું સૌથી સરળ છે. ઉદાહરણ તરીકે, ઉબુન્ટુ 24.04 પર ફાયરફોક્સ v130 સ્નેપનો ઉપયોગ કરીને ઇન્સ્ટોલ કરેલું છે જેમાં 13000+ eSpeak વૉઇસનો સમાવેશ થાય છે જે 100+ બોલીઓમાં 100+ ભાષાઓને સક્ષમ કરે છે — પરંતુ આ બધા અવાજો હલકી ગુણવત્તાના છે. તેની સરખામણીમાં, Apt નો ઉપયોગ કરીને ઇન્સ્ટોલ કરેલ Ubuntu 24.04 પર Google Chrome v129 માં 18 બોલીઓમાં 14 ભાષાઓને સક્ષમ કરતા 19 અવાજોનો સમાવેશ થાય છે — બધી ઉચ્ચ ગુણવત્તા સાથે.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "હું Linux પર Talkie માં વધુ વૉઇસ કેવી રીતે ઇન્સ્ટોલ કરી શકું?",
@@ -165,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "કમનસીબે, સંપૂર્ણ નથી. Talkie Premium વપરાશકર્તાઓ માટે ટેક્સ્ટની નકલ કરવી અને તેને ક્લિપબોર્ડ પરથી વાંચવું શક્ય છે. તે તારણ આપે છે કે Google ડૉક્સ (તેમજ Google સ્પ્રેડશીટ, Google ડ્રાઇવ અને સમાન) એ કોઈ વેબસાઇટ નથી, પરંતુ Google દ્વારા બનાવેલ એક વિશિષ્ટ \"બ્રાઉઝરમાં એપ્લિકેશન\" છે. Talkie પસંદ કરેલ ટેક્સ્ટને ઍક્સેસ કરી શકતું નથી, કે સંદર્ભ મેનૂ આઇટમ્સ ઉમેરી Talkie બટન કામ કરતું નથી.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "કમનસીબે, સંપૂર્ણ નથી. Talkie Premium વપરાશકર્તાઓ માટે ટેક્સ્ટની નકલ કરવી અને તેને ક્લિપબોર્ડથી બોલવું શક્ય છે. તે તારણ આપે છે કે Google ડૉક્સ (તેમજ Google સ્પ્રેડશીટ, Google ડ્રાઇવ અને સમાન) એ કોઈ વેબસાઇટ નથી, પરંતુ Google દ્વારા બનાવેલ એક વિશિષ્ટ \"બ્રાઉઝરમાં એપ્લિકેશન\" છે. Talkie પસંદ કરેલ ટેક્સ્ટને ઍક્સેસ કરી શકતું નથી, કે સંદર્ભ મેનૂ આઇટમ્સ ઉમેરી શકતું નથી, તેથી Talkie બટન કામ કરતું નથી.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Talkie Google ડૉક્સમાં કામ કરે છે?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "હા, કૃપા કરીને! પ્રાધાન્ય ગીથબ પર સમસ્યાનો અહેવાલ બનાવો, જેથી અન્ય લોકો પણ મદદ કરી શકે. કૃપા કરીને શક્ય તેટલી વધુ માહિતી શામેલ કરો, જેમ કે કયું બ્રાઉઝર અને સંસ્કરણ, ઑપરેટિંગ સિસ્ટમ અને સંસ્કરણ, અને તમે ઉપયોગ કરી રહ્યાં છો તે ભાષા/અવાજ. તમે જ્યાં બગ જુઓ છો તે ચોક્કસ વેબસાઇટ્સ સંબંધિત માહિતી પણ શામેલ કરો, પ્રાધાન્યમાં લિંક સાથે.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "હા, કૃપા કરીને. પ્રાધાન્યમાં ગીથબ પર સમસ્યાનો અહેવાલ બનાવો, જેથી અન્ય લોકો પણ મદદ કરી શકે. કૃપા કરીને શક્ય તેટલી વધુ માહિતી શામેલ કરો, જેમ કે કયું બ્રાઉઝર અને સંસ્કરણ, ઑપરેટિંગ સિસ્ટમ અને સંસ્કરણ, અને તમે ઉપયોગ કરી રહ્યાં છો તે ભાષા/અવાજ. તમે જ્યાં બગ જુઓ છો તે ચોક્કસ વેબસાઇટ્સ સંબંધિત માહિતી પણ શામેલ કરો, પ્રાધાન્યમાં લિંક સાથે.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "શું મારે બગ્સની જાણ કરવી જોઈએ?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "સામાન્ય રીતે! જો તમે PDF માં ટેક્સ્ટ પસંદ કરી શકો છો, તો તેના પર જમણું ક્લિક કરો અને Talkie પસંદ કરો. જો ટેક્સ્ટ પસંદ કરી શકાતો નથી, જો તે છબીનો ભાગ છે, તો તે કામ કરશે નહીં.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "હા, મોટાભાગે. જો તમે PDF માં ટેક્સ્ટ પસંદ કરી શકો છો, તો તેના પર જમણું ક્લિક કરો અને મેનુમાં Talkie પસંદ કરો. Talkie Premium વપરાશકર્તાઓ ટેક્સ્ટની નકલ પણ કરી શકે છે, પછી તેને ક્લિપબોર્ડ પરથી વાંચી શકે છે. જો ટેક્સ્ટ પસંદ કરી શકાતો નથી, જેમ કે જો તે છબીનો ભાગ છે, તો તે કામ કરશે નહીં.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Talkie PDF ફાઇલો વાંચી શકે છે?",
@@ -197,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "ચોક્કસ! ફક્ત સપોર્ટ અથવા પ્રોજેક્ટ પૃષ્ઠો દ્વારા મારો સંપર્ક કરો.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "હા. Github પર નવા અંકમાં તમારી ઇચ્છિત સુવિધાનું વર્ણન કરો.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "શું હું નવી સુવિધાઓની વિનંતી કરી શકું?",
@@ -221,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "ચોક્કસ! Talkie ભાષાંતર કરવામાં, Talkie પરીક્ષણ કરવા, ભૂલોની તપાસ કરવા અને નવી સુવિધાઓ ઉમેરવા માટે મદદ મેળવવી ખૂબ સરસ રહેશે. સૂચનાઓ માટે કૃપા કરીને પ્રોજેક્ટ પૃષ્ઠ જુઓ.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "હા, મદદ હંમેશા પ્રશંસા કરવામાં આવે છે. સૂચનાઓ માટે કૃપા કરીને પ્રોજેક્ટ પૃષ્ઠ જુઓ.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Talkie વિકસાવવામાં મદદ કરી શકું?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "હા — કૃપા કરીને તમારા મિત્રોને Talkie વિશે જણાવો! કદાચ તમારા મનપસંદ ઈન્ટરનેટ સેલિબ્રિટી, ઓનલાઈન ગ્રૂપ અથવા ન્યૂઝલેટરને લિંક મોકલો. તમે તમારા બોસને કામ પરના તમામ કમ્પ્યુટર્સ પર અથવા તમારા શિક્ષકને તેને શાળામાં ઇન્સ્ટોલ કરવા માટે કહી શકો છો. Talkie વિશે શબ્દ ફેલાવો એ ખૂબ પ્રશંસાપાત્ર છે!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "હા — કૃપા કરીને તમારા મિત્રોને Talkie વિશે જણાવો. કદાચ તમારી મનપસંદ ઈન્ટરનેટ સેલિબ્રિટી, ઓનલાઈન ગ્રૂપ અથવા ન્યૂઝલેટરને લિંક મોકલો. તમે તમારા બોસને કામ પરના તમામ કમ્પ્યુટર્સ પર અથવા તમારા શિક્ષકને તેને શાળામાં ઇન્સ્ટોલ કરવા માટે કહી શકો છો. Talkie વિશે શબ્દ ફેલાવો એ ખૂબ પ્રશંસાપાત્ર છે.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Talkie ને અન્ય કોઈ રીતે મદદ કરી શકું?",
@@ -245,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "હા, ત્યાં બહુવિધ ચુકવણી વિકલ્પો ઉપલબ્ધ છે.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "હા, દાનના બહુવિધ વિકલ્પો ઉપલબ્ધ છે.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "શું હું પેપાલ, બેંક ટ્રાન્સફર વગેરેનો ઉપયોગ કરીને ચૂકવણી કરી શકું?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "શું હું પેપાલ, બેંક ટ્રાન્સફર, વગેરેનો ઉપયોગ કરીને દાન કરી શકું?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "હા, જો તમે PayPal અથવા Stripe નો ઉપયોગ કરીને ચૂકવણી કરો છો, જે સરળ રિફંડ મેનેજમેન્ટ ઓફર કરે છે. રિફંડ સામાન્ય રીતે ચૂકવણીની અન્ય પદ્ધતિઓ માટે ઉપલબ્ધ નથી કારણ કે તેના માટે જરૂરી વધારાના કામની રકમ, ઉપરાંત ખોટા ખાતામાં નાણાં રિફંડ થવાના જોખમને કારણે.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "હા, જો તમે PayPal નો ઉપયોગ કરીને દાન કર્યું હોય જે સરળ રિફંડ મેનેજમેન્ટ ઓફર કરે છે. ખોટા ખાતામાં રિફંડ કરવા જેવા જોખમો ઉપરાંત, તેના માટે જરૂરી વધારાના કામને કારણે દાનની અન્ય પદ્ધતિઓ માટે રિફંડ સામાન્ય રીતે ઉપલબ્ધ હોતું નથી. દાન કરતા પહેલા બધું સંતોષકારક છે તેની ખાતરી કરવા માટે વપરાશકર્તાઓ પહેલા Talkie Premium અજમાવવામાં સમય પસાર કરે તે વધુ સારું છે.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "શું હું રિફંડ મેળવી શકું?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "ચોક્કસ! તેને અજમાવવા માટે Talkie Premium અપગ્રેડને સક્ષમ કરો.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "ચોક્કસ, કોઈ સમસ્યા નથી. તેને અજમાવવા માટે ફક્ત Talkie Premium અપગ્રેડને સક્ષમ કરો.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "શું હું Talkie Premium ને મફતમાં અજમાવી શકું?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Talkie માં કોઈ જાહેરાત, ડેટા સંગ્રહ અથવા વપરાશકર્તા ટ્રેકિંગ નથી. Talkie Premium માટે ચૂકવણી કરનારા ખુશ વપરાશકર્તાઓ એ એકમાત્ર મુદ્રીકરણ છે.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Talkie માં કોઈ જાહેરાત, ડેટા સંગ્રહ અથવા વપરાશકર્તા ટ્રેકિંગ નથી. Talkie Premium માટે દાન કરતા ખુશ વપરાશકર્તાઓ એ એકમાત્ર મુદ્રીકરણ છે.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "શું Talkie એક્સ્ટેંશનમાં જાહેરાત હોય છે, ડેટા એકત્રિત કરે છે અથવા વપરાશકર્તાઓને ટ્રેક કરે છે?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "સન્માન પ્રણાલી એ છે જ્યારે વ્યક્તિઓ પ્રમાણિક હોવાનો વિશ્વાસ કરવામાં આવે છે, અને કડક રીતે લાગુ કરાયેલી તપાસ વિના માર્ગદર્શિકાઓનું પાલન કરે છે. Talkie Premium વિશ્વાસ છે કે જેઓ અપગ્રેડ કરે છે તેઓએ તેના માટે ચૂકવણી કરી છે.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "સન્માન પ્રણાલી એ છે જ્યારે વ્યક્તિઓ એકબીજા પર વિશ્વાસ કરે છે કે તેઓ કડક રીતે લાગુ કરાયેલી તપાસ વિના, માર્ગદર્શિકા પર સંમત થાય છે. Talkie Premium માટે આનો અર્થ એ છે કે જેઓ અપગ્રેડ કરે છે તેઓએ પણ દાન કર્યું છે.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "સન્માન પ્રણાલી શું છે?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "કારણ કે વિશ્વભરના લોકો વિવિધ ચલણનો ઉપયોગ કરે છે, નિકાલજોગ આવકના વિવિધ સ્તરો ધરાવે છે અને Talkie Premium ની વિશેષતાઓ માટે વિવિધ સ્તરોની પ્રશંસા કરે છે. વિશ્વમાં દરેક માટે સારી રીતે કામ કરે તેવી કોઈ એકલ, નિશ્ચિત કિંમત નથી. તેના ઉપર ચલણમાં વધઘટ, આર્થિક ચક્ર વલણો, પ્રાદેશિક/આંતર-દેશની વિવિધતાઓ વગેરે આવે છે. એકંદરે, વિશ્વભરમાં વેચાતી પ્રોડક્ટ માટે કિંમત સેટિંગ જટિલ છે. દરેકને તેમની પોતાની કિંમત નક્કી કરવા દેવાનું અને ખાતરી કરવી સરળ છે કે ઉત્પાદન ચૂકવણીની ખાતરી આપવા માટે પૂરતું સારું છે.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "કારણ કે વિશ્વભરના લોકો વિવિધ ચલણનો ઉપયોગ કરે છે, નિકાલજોગ આવકના વિવિધ સ્તરો ધરાવે છે અને Talkie Premium ની વિશેષતાઓ માટે વિવિધ સ્તરોની પ્રશંસા કરે છે. વિશ્વમાં દરેક માટે સારી રીતે કામ કરે તેવી કોઈ એકલ, નિશ્ચિત કિંમત નથી. તેના ઉપર ચલણમાં વધઘટ, આર્થિક ચક્રના વલણો, પ્રાદેશિક/આંતર-દેશની વિવિધતાઓ વગેરે આવે છે. એકંદરે, વિશ્વભરમાં વેચાતી પ્રોડક્ટ માટે કિંમત સેટિંગ જટિલ છે. દરેકને પોતાની કિંમત નક્કી કરવા દેવાનું અને ખાતરી કરવી સરળ છે કે ઉત્પાદન દાનની ખાતરી આપવા માટે પૂરતું સારું છે.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "શા માટે હું મારી પોતાની કિંમત નક્કી કરી શકું?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "તમે ટેક્સ્ટ-ટુ-સ્પીચ સૉફ્ટવેર પર કેટલા પૈસા ખર્ચવા સક્ષમ છો તે હું જાણતો નથી, તેથી હું પસંદ કરું છું કે તમે Talkie Premium માટે મૂલ્યવાન લાગે તે ચૂકવો — વધુ નહીં, ઓછું નહીં. જો તમે સંદર્ભની ફ્રેમ શોધી રહ્યા હોવ, જ્યારે Google Talkie Premium માટે ચૂકવણીનું સંચાલન કરે છે ત્યારે યુનાઇટેડ સ્ટેટ્સ ઑફ અમેરિકામાં દર વર્ષે સબ્સ્ક્રિપ્શનની કિંમત $$25 (યુએસ ડૉલર) થાય છે. નોંધ કરો કે Google સ્થાનિક પરિસ્થિતિઓ સાથે મેળ ખાય તે માટે વિશ્વના દેશો અને ચલણો માટે કિંમતોને સમાયોજિત કરે છે, તેથી તે વધુ કે ઓછા હોઈ શકે છે. તે જ સમયે, કોઈપણ જેણે નમ્રતાપૂર્વક પૂછ્યું તે પણ Talkie Premium પ્રાપ્ત કરી શકે છે.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "તમે ટેક્સ્ટ-ટુ-સ્પીચ સૉફ્ટવેર પર કેટલા પૈસા ખર્ચવા સક્ષમ અને તૈયાર છો તે હું જાણતો નથી, તેથી હું પસંદ કરું છું કે તમે Talkie Premium તમારા માટે મૂલ્યવાન લાગે તે દાન કરો — વધુ નહીં, ઓછું નહીં. જો તમે સંદર્ભની ફ્રેમ શોધી રહ્યાં હોવ, જ્યારે Google Chrome વેબ સ્ટોરે Talkie Premium (2017-2021) માટે ચૂકવણીઓનું સંચાલન કર્યું ત્યારે યુનાઇટેડ સ્ટેટ્સ ઑફ અમેરિકામાં વાર્ષિક સબ્સ્ક્રિપ્શન કિંમત $$25 (US ડૉલર) હતી. જોકે, વિશ્વવ્યાપી કિંમતો બદલાતી રહે છે, કારણ કે Google અન્ય દેશો અને ચલણો માટે આપમેળે કિંમતોને સમાયોજિત કરે છે.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "તમે મને કેટલી ચૂકવણી કરવાની ભલામણ કરો છો?",
-    "original": "How much do you recommend I pay?"
+    "message": "તમે મને કેટલું દાન આપવાની ભલામણ કરશો?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "કારણ કે ચુકવણીઓ અને ચકાસણી માટેની સિસ્ટમનો અમલ કરવામાં ઘણો સમય અને પ્રયત્ન લાગે છે, અને એવું માનવામાં આવે છે કે કડક ચુકવણી ચકાસણી અમલમાં મૂકવાની કિંમત સિસ્ટમ સાથે છેતરપિંડી કરનાર વ્યક્તિઓથી થતા નુકસાન કરતાં વધારે છે. ચુકવણીની ચકાસણી માટે વપરાશકર્તાઓની સિસ્ટમમાંથી અમુક સ્તરના ડેટા સંગ્રહની પણ જરૂર પડે છે, અને તકનીકી રીતે કુશળ વપરાશકર્તાઓ ઘણીવાર કોઈપણ રીતે ચકાસણીની આસપાસ કામ કરી શકે છે. તેથી તકનીકી અને વ્યવસાયિક દ્રષ્ટિકોણથી, કોઈ ગેરેંટી ન હોવા છતાં, વપરાશકર્તાઓ સન્માન પ્રણાલીનું પાલન કરે છે તેના પર વિશ્વાસ કરવો સરળ છે.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "કારણ કે ચૂકવણી અને ચકાસણી માટેની સિસ્ટમ લાગુ કરવામાં ઘણો સમય અને પ્રયત્ન લાગે છે. એવું માનવામાં આવે છે કે કડક ચુકવણી વેરિફિકેશનનો અમલ કરવાનો ખર્ચ સિસ્ટમ સાથે છેતરપિંડી કરનાર વ્યક્તિઓથી થતા નુકસાન કરતાં વધારે છે. પેમેન્ટ વેરિફિકેશન માટે યુઝર્સની સિસ્ટમ્સમાંથી અમુક સ્તરના ડેટા એકત્રીકરણની પણ જરૂર પડે છે અને ટેકનિકલી કુશળ યુઝર્સ ઘણીવાર વેરિફિકેશનની આસપાસ કામ કરી શકે છે. તેથી તકનીકી અને વ્યવસાયિક દ્રષ્ટિકોણથી, કોઈ ગેરેંટી ન હોવા છતાં, વપરાશકર્તાઓ સન્માન પ્રણાલીનું પાલન કરે છે તેના પર વિશ્વાસ કરવો સરળ છે.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "શા માટે કોઈ ચુકવણી ચકાસણી નથી?",
-    "original": "Why is there no payment verification?"
+    "message": "શા માટે કોઈ દાન અથવા ચુકવણીની ચકાસણી નથી?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "પેમેન્ટ વેરિફિકેશનનો અમલ ન કરવાના નિર્ણયનો અર્થ એ છે કે ચૂકવેલ રકમની ચકાસણી કરી શકાતી નથી. Talkie Premium ની ડિજિટલ કોપીના \"ઉત્પાદન\" ની કિંમત શૂન્ય છે, તેથી તેને વિનામૂલ્યે આપવી એ વિકાસકર્તા માટે નાણાકીય નુકસાન સૂચિત કરતું નથી. એવી આશા પણ છે કે જો તમને Talkie Premium ગમશે, તો તમે તમારા મિત્રોને તેના વિશે જણાવશો. Talkie Premium માર્કેટિંગ પ્રયાસ તરીકે પણ જોઈ શકાય છે.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "મને ખ્યાલ છે કે \"કંઈ નથી\" દાન કરવું એ થોડી મૂંઝવણભર્યું છે. ટૂંકો જવાબ એ છે કે પૈસા જ બધું નથી. લાંબા જવાબમાં વધુ પાસાઓ છે. ચુકવણીની ચકાસણીનો અમલ ન કરવાના નિર્ણયનો અર્થ એ છે કે ચૂકવવામાં આવેલી રકમ અપ્રસ્તુત છે. વધુમાં, Talkie Premium ની ડિજિટલ કોપીના \"ઉત્પાદન\" માટેનો ખર્ચ શૂન્ય છે, તેથી તેને વિનામૂલ્યે આપવાથી વિકાસકર્તાને નાણાકીય નુકસાન થતું નથી. એવી આશા પણ છે કે જો તમને Talkie Premium ગમશે તો તમે તમારા મિત્રોને તેના વિશે જણાવશો, અને કદાચ તેમાંથી કેટલાક એક યા બીજી રીતે દાન આપી દે છે. તેથી Talkie Premium આપવી એ માર્કેટિંગ પ્રયાસ તરીકે જોઈ શકાય છે.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "શા માટે હું કંઈ ચૂકવવાનું પસંદ કરી શકું?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "હું શા માટે દાન આપવાનું અથવા કંઈ ચૂકવવાનું પસંદ કરી શકું?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "હા, સ્ટ્રાઇપનો ઉપયોગ કરીને. વધારાના ચુકવણી વિકલ્પો જુઓ.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "હા, પરંતુ પુનરાવર્તિત દાન માટે કોઈ સ્વયંસંચાલિત સિસ્ટમ નથી. સૌથી સરળ રસ્તો એ છે કે તમે પછીના સમયે ફરીથી દાન કરો.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "શું હું પુનરાવર્તિત માસિક અથવા વાર્ષિક ચુકવણી કરી શકું?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "શું હું પુનરાવર્તિત માસિક અથવા વાર્ષિક દાન કરી શકું?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "હા, જો તમે ઈમેલ દ્વારા વિનંતી કરો છો. કૃપા કરીને તમારું નામ, સરનામું અને વૈકલ્પિક રીતે તમારા મૂલ્ય-વર્ધિત કર (VAT) ઓળખકર્તા (અથવા સમકક્ષ) શામેલ કરો.",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "આ એક દુર્લભ વિનંતી છે અને તેને મેન્યુઅલી હેન્ડલ કરવાની જરૂર પડશે. દાન કરતા પહેલા કૃપા કરીને સંપર્ક કરો.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "શું હું મારી ચુકવણી માટે રસીદ મેળવી શકું?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "શું હું મારા દાનની રસીદ મેળવી શકું?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "કારણ કે તમને Talkie Premium પ્રદાન કરવામાં આવતી વધારાની સુવિધાઓ અને સ્વતંત્ર વિકાસકર્તાઓ દ્વારા ઓપન સોર્સ સોફ્ટવેર ડેવલપમેન્ટમાં યોગદાન આપવાની ખુશીની લાગણી ગમે છે. વિકાસ અને જાળવણીના પ્રમાણમાં ઊંચા વ્યક્તિગત ખર્ચને કારણે, પરંતુ \"ઉત્પાદન\" ડિજિટલ નકલોની શૂન્ય કિંમતને કારણે, Talkie Premium માટે ચૂકવણીને ભવિષ્યના વિકાસ અને જાળવણી માટે સહાયતા તરીકે પણ જોઈ શકાય છે, જે ચુકવણી સમયે ઉત્પાદનના મૂલ્યની વિરુદ્ધ છે. .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "કારણ કે તમને Talkie Premium દ્વારા પ્રદાન કરવામાં આવતી વધારાની સુવિધાઓ અને સ્વતંત્ર વિકાસકર્તાઓ દ્વારા ઓપન સોર્સ સોફ્ટવેર ડેવલપમેન્ટમાં યોગદાન આપવાની ખુશીની લાગણી ગમે છે. વિકાસ અને જાળવણીના પ્રમાણમાં ઊંચા સમયના ખર્ચને કારણે, પરંતુ \"ઉત્પાદન\" ડિજિટલ નકલોની શૂન્ય કિંમતને કારણે, Talkie Premium માટેના દાનને ભવિષ્યના વિકાસ અને જાળવણી માટે સમર્થન અને પ્રોત્સાહન પૂરું પાડવા તરીકે પણ જોઈ શકાય છે, તે સમયે ઉત્પાદનના મૂલ્યની વિરુદ્ધ. દાનનું.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "શા માટે મારે અપગ્રેડ કરવા માટે ચૂકવણી કરવી જોઈએ?",
-    "original": "Why should I pay to upgrade?"
+    "message": "શા માટે મારે અપગ્રેડ કરવા માટે દાન આપવું જોઈએ?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "ટૂંકો જવાબ છે: કદાચ નહીં. તે તારણ આપે છે કે માઇક્રોસોફ્ટ વિન્ડોઝ પર આધુનિક અવાજો અને જૂના અવાજો છે. જ્યારે મેં છેલ્લે પરીક્ષણ કર્યું, ત્યારે ડચ વૉઇસ \"Microsoft Frank\" Microsoft Edgeમાં ઉપલબ્ધ હતો, પરંતુ Google Chrome કે Mozilla Firefoxમાં નહીં. એક કારણ એ છે કે કેટલાક અવાજો નવી WinRT સ્પીચ સિસ્ટમ માટે અને કેટલાક જૂના સ્પીચ એપ્લિકેશન પ્રોગ્રામિંગ ઈન્ટરફેસ (SAPI) માટે બનાવવામાં આવ્યા છે. બ્રાઉઝર્સ જૂની અને નવી બંને સ્પીચ સિસ્ટમ્સને સપોર્ટ ન કરી શકે, એટલે કે વૉઇસ જે વાસ્તવમાં ઇન્સ્ટોલ કરેલ છે, તે તમારા મનપસંદ બ્રાઉઝરમાં ઉપલબ્ધ ન પણ હોઈ શકે. સમય જતાં, મોટા ભાગના બ્રાઉર્સ કદાચ નવી WinRT સિસ્ટમને સપોર્ટ કરશે. જો તમારી ભાષામાં અવાજો ખૂટે છે, તો એક સૂચન એ છે કે Microsoft Edge માં Talkie",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "હા, પરંતુ તે તમે કયા બ્રાઉઝરનો ઉપયોગ કરો છો તેના પર આધાર રાખે છે. માઈક્રોસોફ્ટ વિન્ડોઝમાં આધુનિક અવાજો અને જૂના અવાજો બંને ઉપલબ્ધ છે. જ્યારે મેં છેલ્લે પરીક્ષણ કર્યું, ત્યારે ડચ વૉઇસ \"Microsoft Frank\" Microsoft Edgeમાં ઉપલબ્ધ હતો, પરંતુ Google Chrome કે Mozilla Firefoxમાં નહીં. એક કારણ એ છે કે કેટલાક અવાજો નવી WinRT સ્પીચ સિસ્ટમ માટે અને કેટલાક જૂના સ્પીચ એપ્લિકેશન પ્રોગ્રામિંગ ઈન્ટરફેસ (SAPI) માટે બનાવવામાં આવ્યા છે. તમારું મનપસંદ બ્રાઉઝર જૂની અને નવી બંને સ્પીચ સિસ્ટમ્સને સપોર્ટ કરતું નથી, એટલે કે જે વૉઇસ વાસ્તવમાં ઇન્સ્ટોલ કરેલો છે તે ઉપયોગ કરી શકાતો નથી. સમય જતાં, મોટાભાગના બ્રાઉઝર્સ કદાચ નવી WinRT સિસ્ટમને સપોર્ટ કરશે. જો તમારી ભાષામાં અવાજો ખૂટે છે, તો એક સૂચન એ છે કે Microsoft Edge માં Talkie ઉપયોગ કરવાનો પ્રયાસ કરો.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
-    "message": "શું Microsoft Windows માટેના તમામ અવાજો Talkie સાથે કામ કરે છે?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "message": "શું માઈક્રોસોફ્ટ વિન્ડોઝ માટે તમામ અવાજો Talkie સાથે કામ કરે છે?",
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "કદાચ, ઘણા પ્રયત્નો સાથે. જૂના SAPI-સક્ષમ બ્રાઉઝર્સ સાથે કામ કરવા માટે નવા WinRT વૉઇસ મેળવવા માટે કેટલાક બિનસત્તાવાર ઉપાયો પણ છે, પરંતુ આ એક ઉચ્ચ તકનીકી પ્રયાસ છે અને બિન-તકનીકી વપરાશકર્તાઓ માટે ભલામણ કરવામાં આવતી નથી.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "કદાચ, ઘણા પ્રયત્નો સાથે. જૂના SAPI-સક્ષમ બ્રાઉઝર્સ સાથે કામ કરવા માટે નવા WinRT વૉઇસ મેળવવા માટે કેટલાક બિનસત્તાવાર ઉપાયો પણ છે, પરંતુ આ એક ઉચ્ચ તકનીકી પ્રયાસ છે અને બિન-તકનીકી વપરાશકર્તાઓ માટે આગ્રહણીય નથી.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "શું Microsoft Windows પર SAPI- સક્ષમ બ્રાઉઝર્સમાં WinRT વૉઇસ કામ કરી શકે છે?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "હા, કેટલાક કરે છે. તમારી સિસ્ટમ અને બ્રાઉઝર માટે ઇન્સ્ટોલેશન સૂચનાઓને અનુસરો. એકવાર તમારા બ્રાઉઝરમાં અવાજો ઇન્સ્ટોલ થઈ જાય, Talkie તેને આપમેળે શોધી કાઢવો જોઈએ. કૃપા કરીને તમારી પાસે કોઈપણ ટીપ્સ શેર કરો!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "હા, કેટલાક કરે છે. તમારી સિસ્ટમ અને બ્રાઉઝર માટે ઇન્સ્ટોલેશન સૂચનાઓને અનુસરો. એકવાર તમારા બ્રાઉઝરમાં વૉઇસ ઇન્સ્ટૉલ થઈ જાય, Talkie એ તેને આપમેળે શોધી કાઢવો જોઈએ.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Talkie સાથે કામ કરે છે?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "દાન સકારાત્મક કંઈક પર સ્વૈચ્છિક ખર્ચ સૂચવે છે. ગ્રેચ્યુઈટી જેવા વિચારો. ચુકવણીઓ પૈસાની ફરજિયાત વ્યવહાર સૂચવે છે.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "ચૂકવણીને બદલે દાન શા માટે?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "પૈસાના બદલામાં સકારાત્મકતા ફેલાવો. માનવતાવાદી સંસ્થાને ટેકો આપો. સ્થાનિક ચેરિટીમાં સ્વયંસેવક. કોઈ અજાણી વ્યક્તિને મદદ કરો. પરિવારના સભ્યને આલિંગન આપો. સ્મિત. હકીકતમાં, આ બધા Talkie Premium માટે નાણાંકીય દાન કરતાં વધુ મહત્વપૂર્ણ છે. જોકે હું પોસ્ટકાર્ડ મેળવવાની પ્રશંસા કરું છું.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "મેં કશું દાન કરવાનું પસંદ કર્યું નથી. શું હું બીજું કંઈક કરી શકું?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "હા, તમે કોઈપણ રીતે Talkie Premium ઉપયોગ કરી શકો છો.",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "જો મેં કંઈ દાન કરવાનું પસંદ કર્યું, તો શું તે હજુ પણ ગણાશે?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "મૂળ યોજના Talkie Premium માટે વાર્ષિક સબ્સ્ક્રિપ્શન ફી વસૂલ કરીને Talkie મુદ્રીકરણ કરવાની હતી. થોડા વર્ષો સુધી (2017-2021) Google Chrome વેબ સ્ટોરે Talkie Premium માટે ચૂકવણીઓ અને સબ્સ્ક્રિપ્શન્સનું સંચાલન કર્યું, પરંતુ તેઓ હવે તે સેવા ઓફર કરતા નથી. જ્યારે બાહ્ય ચુકવણી પ્રણાલીએ કામ કરવાનું બંધ કરી દીધું ત્યારે મેં Talkie Premium સુવિધાઓને અલગ રાખવાનું પસંદ કર્યું, તે દર્શાવવા માટે કે Talkie માં ઘણો પ્રયાસ કરવામાં આવ્યો છે. દાન એ પ્રોક્સી-સંકેત છે જે લોકો Talkie ઉપયોગ કરે છે અને તેની પ્રશંસા કરે છે, જેણે મને તેના પર કામ કરવા માટે સેંકડો કલાકો ગાળવા માટે પ્રેરણા આપી છે.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "જો દાન વૈકલ્પિક હોય, તો શા માટે Talkie Premium સુવિધાઓ અલગ છે?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie , મારા અન્ય ઓપન સોર્સ કોડની જેમ, એક હોબી પ્રોજેક્ટ છે. સામાન્ય રીતે દર થોડા અઠવાડિયે કાળજી લેવા માટે કંઈક નાનું હોય છે, જેમ કે ઈમેલ કરેલા પ્રશ્નોના જવાબ આપવા. Talkie પર પ્રોગ્રામિંગ સામાન્ય રીતે અહીં અને ત્યાં થોડા દિવસો સુધી કેન્દ્રિત હોય છે — ઘણીવાર રજાઓ અને વેકેશન દરમિયાન. કમનસીબે, બાહ્ય નીતિના ફેરફારોમાં વિશેષતાના વિકાસમાં વધુ અને વધુ સમય લાગે છે. ઉદાહરણ તરીકે, તકનીકી રીતે Talkie મેનિફેસ્ટ સંસ્કરણ 3 (MV3) માં અપગ્રેડ કરવામાં Talkie ની ઉપયોગીતામાં દેખીતી સુધારણા વિના કામના ઘણા અઠવાડિયા (2023-2024) લાગ્યા.",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "તમે Talkie પર કામ કરવામાં કેટલો સમય પસાર કરો છો?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "આ ક્ષણે મને ખાતરી નથી. મેં અન્ય લોકો માટે Talkie (2016) વિકસાવ્યું છે, અને વાસ્તવમાં તેનો જાતે ઉપયોગ કરતો નથી. નવી સુવિધાઓ ઉમેરવી અને નવી સામગ્રી શીખવી એ આનંદદાયક છે. સકારાત્મક પ્રતિસાદ પ્રાપ્ત કરવો અને વપરાશકર્તાઓની સંખ્યા વધી રહી છે તે જોવું સરસ છે. જોકે હાલમાં તે મારો પ્રિય શોખ નથી, કારણ કે પાછલા વર્ષો (2020-2024) દરમિયાન વિકાસ પર બાહ્ય પરિબળોની નકારાત્મક અસર પડી છે. ખાસ કરીને, વેબ એક્સ્ટેંશન પ્રકાશિત કરવા માટે ફાયરફોક્સ માટે ગૂગલ ક્રોમ વેબ સ્ટોર (CWS) અને મોઝિલા એડ-ઓન્સ (AMO) ની સતત વિકસતી નીતિઓ સાથે અદ્યતન રહેવાની જરૂર છે.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "તમે ક્યાં સુધી Talkie પર કામ કરવાનું ચાલુ રાખશો?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "આ પ્રશ્નનો જવાબ વિશ્વસનીય રીતે અદ્યતન રાખી શકાતો નથી. વર્તમાન પ્રોજેક્ટ સ્થિતિ માટે Talkie વેબસાઇટની મુલાકાત લો.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "શું તમે હજુ પણ Talkie પર સક્રિય રીતે કામ કરી રહ્યા છો?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "બગ્સ",
@@ -385,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "હાલમાં Talkie ની મફત આવૃત્તિનો ઉપયોગ કરી Talkie , અને સુવિધાઓનો મર્યાદિત સેટ ઉપલબ્ધ છે. કદાચ Talkie Premium તમારા માટે વધુ સારી પસંદગી હશે?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "તમે હાલમાં Talkie ની મફત આવૃત્તિનો ઉપયોગ કરી રહ્યાં છો, અને સુવિધાઓનો મર્યાદિત સેટ ઉપલબ્ધ છે. શું તમે Talkie Premium માં અપગ્રેડ કરવાનું વિચાર્યું છે?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "Talkie Premium નો ઉપયોગ કરી રહ્યા છીએ, અને તમામ સુવિધાઓ ઉપલબ્ધ છે. તમારો ખૂબ ખૂબ આભાર, તે મારા હૃદયને ગરમ કરે છે!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "તમે હાલમાં Talkie Premium ઉપયોગ કરી રહ્યાં છો, અને બધી સુવિધાઓ ઉપલબ્ધ છે. તમારો ખૂબ ખૂબ આભાર, તે મારા હૃદયને ગરમ કરે છે!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie બે આવૃત્તિઓમાં આવે છે: Talkie અને Talkie Premium. ફ્રી એડિશન મોટાભાગના ઉપયોગના કિસ્સાઓ માટે સરસ છે, પરંતુ પ્રીમિયમ એડિશન વધારાના વિકલ્પો અને સુવિધાઓ પ્રદાન કરે છે.",
@@ -413,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "કોડ ઓપન સોર્સ છે અને તમામ વપરાશકર્તાઓ માટે મફતમાં ઉપલબ્ધ છે.",
-    "original": "Code is open source and available for free to all users."
+    "message": "કોડ ઓપન સોર્સ છે અને તમામ વપરાશકર્તાઓ માટે સંપૂર્ણપણે ઉપલબ્ધ છે.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "મફત!",
-    "original": "Free!"
+    "message": "તમે ગમે તેટલા ખર્ચ વિના ઉપયોગ કરો.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "વિશેષતા",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "દરેક ભાષા માટે તમારો પોતાનો ડિફૉલ્ટ વૉઇસ પસંદ કરો. જો તમે સિસ્ટમના અવાજથી કંટાળી જાઓ તો સરસ!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "દરેક ભાષા માટે તમારો પોતાનો મનપસંદ અવાજ પસંદ કરો.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "અવાજ દીઠ વાંચવાની ઝડપ અને પિચ પસંદ કરો. તમારી રુચિ અનુસાર અવાજોને સમાયોજિત કરો!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "વૉઇસ દીઠ વાંચવાની ઝડપ અને પિચને સમાયોજિત કરો.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "સ્વતંત્ર વિકાસકર્તાઓ દ્વારા ઓપન સોર્સ સૉફ્ટવેરને સપોર્ટ કરતી વખતે તમને તે ગરમ, અસ્પષ્ટ લાગણી મળે છે.",
@@ -441,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "ક્લિપબોર્ડમાંથી ટેક્સ્ટ વાંચો! કોઈપણ પ્રોગ્રામમાં ગમે ત્યાંથી ટેક્સ્ટ કૉપિ કરો અને તેને વાંચવા માટે Talkie Premium",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "ક્લિપબોર્ડ પરથી ટેક્સ્ટ બોલો. કોઈપણ પ્રોગ્રામમાં ગમે ત્યાંથી કોઈપણ ટેક્સ્ટની નકલ કરો અને તેને વાંચવા માટે Talkie Premium ઉપયોગ કરો.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "ઉપલબ્ધ ટેક્સ્ટ-ટુ-સ્પીચ અવાજો",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "કૃપા કરીને તમારી સિસ્ટમ પર કેટલાક અવાજો ઇન્સ્ટોલ કરો, અન્યથા Talkie કામ કરશે નહીં. માફ કરશો!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "કોઈપણ ટેક્સ્ટ-ટુ-સ્પીચ અવાજો શોધી શક્યા નથી. અવાજો વિના Talkie યોગ્ય રીતે કાર્ય કરી શકતું નથી. કેટલીકવાર તે આ પૃષ્ઠને ફરીથી લોડ કરવામાં મદદ કરે છે, ઓછામાં ઓછું જો બ્રાઉઝર ધીમું હોય અથવા ત્યાં ઘણા અવાજો હોય.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "કોઈ ટેક્સ્ટ-ટુ-સ્પીચ અવાજો મળ્યાં નથી",
@@ -460,6 +524,10 @@
     "message": "લાઇસન્સ",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "તૃતીય-પક્ષ લાઇસન્સ",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "લોડ કરી રહ્યું છે...",
     "original": "Loading..."
@@ -471,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "સેટિંગ્સ",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "ક્લિપબોર્ડ ટેક્સ્ટ દર્શાવો",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "ક્લિપબોર્ડ ઍક્સેસ મંજૂર નથી.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "ક્લિપબોર્ડ પરવાનગી નકારો",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "કોઈપણ પ્રોગ્રામમાંથી ટેક્સ્ટ બોલવા માટે, તમે ક્લિપબોર્ડ પર ટેક્સ્ટની નકલ કરી શકો છો અને રૂપરેખાંકિત કીબોર્ડ શોર્ટકટનો ઉપયોગ કરી શકો છો. ક્લિપબોર્ડને ઍક્સેસ કરવા માટે Talkie માટે તમારે પહેલા પરવાનગી આપવી પડશે. આ એક Talkie Premium સુવિધા છે.",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "કોઈપણ સમયે તમારી પરવાનગી આપો અથવા નકારો. તમારું બ્રાઉઝર તમને પુષ્ટિ કરવા માટે કહી શકે છે અથવા ન પણ કહી શકે છે.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "ક્લિપબોર્ડની પરવાનગી આપો",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "ક્લિપબોર્ડ ઍક્સેસ મંજૂર.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "ક્લિપબોર્ડને ઍક્સેસ કરવાની પરવાનગી",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "ક્લિપબોર્ડ ઍક્સેસ અજ્ઞાત અથવા નિષ્ફળ.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "ક્લિપબોર્ડ ટેક્સ્ટ બોલો",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "ક્લિપબોર્ડ ટેક્સ્ટ વાંચી શકાયું નથી.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "ક્લિપબોર્ડ ટેક્સ્ટ વાંચી શકાય છે.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "ક્લિપબોર્ડ ટેક્સ્ટ વાંચવામાં આવ્યું નથી.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "ત્યાં કોઈ ઇતિહાસ પ્રવેશો નથી.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "ઈતિહાસ",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "ભાષા",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "સ્થિતિ",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "અવાજ",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie ને નવા વર્ષ 2016/2017 ના થોડા દિવસો પહેલા, મિત્ર તરફથી એક પડકાર પર વિકસાવવામાં આવ્યું હતું. પડકાર પ્રશ્ન સાથે શરૂ થયો: કામ પર મુસાફરી કરતી વખતે, શું લેખ વાંચવાને બદલે સાંભળવું શક્ય છે? સરળ, મેં કહ્યું, અને તેને સાબિત કરવા માટે — અથવા ઓછામાં ઓછું મારા બ્રાઉઝરને અવિવેકી કોમ્પ્યુટર અવાજનો ઉપયોગ કરીને ટેક્સ્ટ બોલવા માટે તૈયાર કરો. મૂળભૂત આવૃત્તિ, કોઈપણ વપરાશકર્તા ઈન્ટરફેસ વિના, બનાવવા માટે તુચ્છ હોવાનું બહાર આવ્યું છે. વપરાશકર્તા ઈન્ટરફેસ ઉમેરવામાં થોડો વધુ સમય લાગ્યો. યોગ્ય ભાષા શોધ ઉમેરવાથી વધુ કોડ. બ્રાઉઝરમાં બગ્સને દૂર કરવું વધુ કામ કરે છે. સુધારાઓ અને સુવિધાઓની સૂચિ ચાલુ રહે છે — અને કોડની થોડી હજાર લાઇન પછી, તમે અંતિમ પરિણામ જોઈ રહ્યાં છો.",
@@ -489,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "એક પ્રશ્ન છે? કંઈક માટે મદદની જરૂર છે? સામાન્ય પ્રશ્નોના ઝડપી જવાબો માટે, નીચે વારંવાર પૂછાતા પ્રશ્નો જુઓ. જો તે તમને જવાબ આપતું નથી, તો કૃપા કરીને મને તમારા કોઈપણ પ્રશ્નો મોકલો. $NAME$ નો ઉપયોગ કરવાનો તમારો અનુભવ સરળ અને આનંદપ્રદ હોય તો મને આનંદ થશે!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "ઝડપી અને સરળ સમર્થન માટે, કૃપા કરીને આ સામાન્ય પ્રશ્નો અને જવાબો જુઓ. જો તમારા પ્રશ્નનો હજુ પણ જવાબ મળ્યો નથી, તો કૃપા કરીને મારો સંપર્ક કરો.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "આધાર",
@@ -555,40 +689,36 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie Premium માટેની કિંમત નિશ્ચિત નથી. તેના બદલે તમે પ્રીમિયમ સુવિધાઓ તમારા માટે કેટલી યોગ્ય છે તેના આધારે તમે જે ઇચ્છો તે ચૂકવો. તમે કંઈ ચૂકવવાનું નક્કી પણ કરી શકો છો.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Talkie Premium માટેની કિંમત નિશ્ચિત નથી. તેના બદલે તમે પ્રીમિયમ સુવિધાઓ તમારા માટે કેટલી યોગ્ય છે તેના આધારે તમે જે જોઈએ તે દાન કરો. તમે કંઈપણ દાન કરવાનો નિર્ણય પણ લઈ શકો છો.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "પેમેન્ટ મોકલ્યા પછી એન્ટર કરવા માટે કોઈ અપગ્રેડ કોડ નથી, રજીસ્ટર કરવા માટે કોઈ યુઝર એકાઉન્ટ નથી, અથવા અન્ય કોઈ પેમેન્ટ વેરિફિકેશન નથી. તેના બદલે Talkie Premium સન્માન સિસ્ટમનો ઉપયોગ કરે છે.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "દાન કર્યા પછી દાખલ કરવા માટે કોઈ અપગ્રેડ કોડ્સ નથી, નોંધણી કરવા માટે કોઈ વપરાશકર્તા ખાતા નથી, અથવા અન્ય કોઈ દાન ચકાસણી સ્થાને નથી. તેના બદલે Talkie Premium સન્માન સિસ્ટમનો ઉપયોગ કરે છે.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "મહેરબાની કરીને નોંધ કરો કે Talkie પાસે મુદ્રીકરણના વૈકલ્પિક માધ્યમ તરીકે કોઈપણ જાહેરાત, વપરાશકર્તા ટ્રેકિંગ અથવા ડેટા સંગ્રહ નથી. ચુકવણીઓને ઓપન સોર્સ સોફ્ટવેર ડેવલપમેન્ટ માટે દાન તરીકે લેબલ કરવામાં આવે છે.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie પાસે મુદ્રીકરણના વૈકલ્પિક માધ્યમ તરીકે કોઈપણ જાહેરાત, વપરાશકર્તા ટ્રેકિંગ અથવા ડેટા સંગ્રહ નથી. ઓપન સોર્સ સોફ્ટવેર ડેવલપમેન્ટ માટે દાનને ગ્રેચ્યુટી તરીકે લેબલ કરવામાં આવે છે.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Talkie Premium અપગ્રેડ કરો",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Talkie Premium માટે ચૂકવણી કરી છે",
-    "original": "I have paid for Talkie Premium"
+    "message": "Talkie Premium પર અપગ્રેડ કરો",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "દાન પૃષ્ઠ દ્વારા વધુ ચુકવણી પદ્ધતિઓ",
-    "original": "More payment methods via the donations page"
+    "message": "વધારાની દાન પદ્ધતિઓ",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "PayPal નો ઉપયોગ કરીને ચૂકવણી કરો",
-    "original": "Pay using PayPal"
+    "message": "PayPal નો ઉપયોગ કરીને દાન કરો",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "ઉપયોગ",
     "original": "Usage"
-  },
-  "frontend_usageReadclipboard": {
-    "message": "તમારા ક્લિપબોર્ડ પર કૉપિ કરેલ કોઈપણ ટેક્સ્ટ વાંચો — બ્રાઉઝરની બહાર ગમે ત્યાંથી ટેક્સ્ટ સાંભળવા માટે શૉર્ટકટ કી વડે તેનો ઉપયોગ કરો. Talkie Premium બટન પર અથવા વેબસાઇટના ખાલી વિસ્તારમાં રાઇટ-ક્લિક પણ કરી શકો છો અને ક્લિપબોર્ડમાંથી વાંચો પસંદ કરી શકો છો.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "તમે ટેક્સ્ટ પણ પસંદ કરી શકો છો, પછી તેના પર જમણું ક્લિક કરો અને Talkie પસંદ કરો. આ રીતે પીડીએફ-ફાઈલ્સ અને બ્રાઉઝરમાં કેટલાક ખાસ પ્રકારના પેજમાં પણ કામ કરે છે.",
@@ -614,9 +744,9 @@
     "message": "Talkie શોર્ટકટ કીનો ઉપયોગ કરવાનો અનુકૂળ વિકલ્પ છે:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "કોઈપણ પ્રોગ્રામમાં ક્લિપબોર્ડમાંથી ટેક્સ્ટ વાંચો",
-    "original": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "ક્લિપબોર્ડ પરથી સીધા જ ટેક્સ્ટ બોલો",
+    "original": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "પ્રારંભ/રોકો",
@@ -626,6 +756,10 @@
     "message": "પ્રારંભ/રોકો",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "તમારા રૂપરેખાંકિત અવાજોનો ઉપયોગ કરીને તમારા ક્લિપબોર્ડ પર કૉપિ કરેલ કોઈપણ ટેક્સ્ટ બોલો. રૂપરેખાંકિત શૉર્ટકટ કીનો ઉપયોગ કરવાનો સૌથી સહેલો રસ્તો છે. તમે Talkie Premium બટન પર જમણું-ક્લિક કરી શકો છો, અથવા વેબસાઇટના ખાલી વિસ્તારમાં, અને ક્લિપબોર્ડમાંથી બોલો પસંદ કરી શકો છો.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "કોઈપણ વેબ પૃષ્ઠ પર ઇચ્છિત ટેક્સ્ટ પસંદ કરો.",
     "original": "Select desired text on any web page."
@@ -633,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "તમારા બ્રાઉઝર ટૂલબારમાં Talkie બટનને ક્લિક કરો",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie ઉપયોગ પૃષ્ઠ પર પસંદ કરેલ ટેક્સ્ટ વાંચવા માટે કરી શકાય છે. જ્યારે પૃષ્ઠ બંધ થાય છે અથવા પૃષ્ઠનું સરનામું બદલાય છે, ત્યારે Talkie કાં તો બોલવાનું ચાલુ રાખી શકે છે અથવા આપમેળે બંધ થઈ શકે છે.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "બોલવાનું ચાલુ રાખો અથવા આપમેળે બંધ કરો",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "જ્યારે ટેબ અથવા વિન્ડો બંધ હોય, ત્યારે Talkie બોલવાનું ચાલુ રાખી શકે છે અથવા આપમેળે બંધ થઈ શકે છે.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "જ્યારે પૃષ્ઠ બંધ છે",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "જ્યારે ટેબ બંધ હોય ત્યારે બોલવાનું ચાલુ રાખો",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "સરનામાંમાં ફેરફાર મુખ્યત્વે ત્યારે થાય છે જ્યારે બીજા પૃષ્ઠ પર જવા માટે લિંક પર ક્લિક કરો અથવા જ્યારે સરનામાં બારમાં મેન્યુઅલી ટાઇપ કરો. અમુક વેબસાઇટ્સ અન્ય કિસ્સાઓમાં સરનામું પણ બદલી શકે છે, ઉદાહરણ તરીકે વધારાની માહિતી લોડ કરતી વખતે.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "જ્યારે પૃષ્ઠ સરનામું બદલાય છે, ત્યારે Talkie કાં તો બોલવાનું ચાલુ રાખી શકે છે અથવા આપમેળે બંધ થઈ શકે છે.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "ગોપનીયતા કારણોસર, જ્યારે પૃષ્ઠ સરનામું બદલાય છે ત્યારે Mozilla Firefox હંમેશા જાણ કરતું નથી. આ સેટિંગને અક્ષમ કરવાથી કોઈ અસર નહીં થાય.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "જ્યારે પૃષ્ઠ સરનામું બદલાય છે",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "સરનામું બદલાય ત્યારે બોલવાનું ચાલુ રાખો",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "$LANGUAGE_CODE$ માટે ડિફૉલ્ટ વૉઇસ $VOICE$ .",
@@ -679,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "$LANGUAGE_CODE$ માટે $VOICES_COUNT$ અવાજો મળ્યા.",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "ઇન્સ્ટોલ કરેલ વૉઇસ બોલીઓ",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "ઇન્સ્ટોલ કરેલી વૉઇસ ભાષાઓ",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "ઇન્સ્ટોલ કરેલ અવાજો",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "અવાજો",
@@ -783,9 +983,65 @@
     "message": "વિરામ વિના લાંબા પાઠો વાંચો (પ્રાયોગિક)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "વ્યક્તિગત ઇતિહાસ પ્રવેશો ભૂલી જાઓ",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "તમામ $HISTORY_COUNT$ ઇતિહાસ એન્ટ્રીઓ ભૂલી જાઓ",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie અગાઉ બોલાયેલ ટેક્સ્ટને યાદ રાખી શકે છે, તેથી તેને પછીથી ફરી ચલાવી શકાય છે. આ સેટિંગ મર્યાદા કરે છે કે કેટલી ઇતિહાસ એન્ટ્રીઓ યાદ રાખવામાં આવે છે.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "ઈતિહાસની એન્ટ્રીઓની સંખ્યાને તાત્કાલિક ઘટાડવા માટે મર્યાદા ઓછી કરો. 0 ની મર્યાદા ઇતિહાસને યાદ રાખવામાં અક્ષમ કરે છે. ડિફૉલ્ટ મર્યાદા $DEFAULT_LIMIT$ છે.",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "હાલમાં $HISTORY_COUNT$ ઇતિહાસ એન્ટ્રીઓ યાદ રાખવામાં આવી છે. તમે એક જ સમયે બધું ભૂલી શકો છો અથવા વ્યક્તિગત એન્ટ્રી ભૂલી શકો છો.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "ઈતિહાસ",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "ઇતિહાસ પ્રવેશ મર્યાદા",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Talkie Premium સાથે તમે દરેક ભાષા માટે ડિફૉલ્ટ વૉઇસ તેમજ દરેક વૉઇસ માટે વૉઇસ અને પિચ બદલી શકો છો.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ એ ઑનલાઇન વૉઇસ છે. ઉપયોગને તૃતીય-પક્ષ સેવાઓને ઍક્સેસ કરવા માટે સક્રિય ઇન્ટરનેટ કનેક્શનની જરૂર પડી શકે છે.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "$NAME$ આપનું સ્વાગત છે! તમે હવે વિશ્વના શ્રેષ્ઠ ટેક્સ્ટ-ટુ-સ્પીચ બ્રાઉઝર એક્સ્ટેંશનનો ઉપયોગ કરી રહ્યાં છો.",
@@ -798,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "આગળ વધો અને આ ટેક્સ્ટ પસંદ કરો, પછી બ્રાઉઝર ટૂલબારમાં $NAME$ આનંદ માણો!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "આ ટેક્સ્ટ પસંદ કરો, પછી બ્રાઉઝર ટૂલબારમાં $NAME$ બટનને ક્લિક કરો.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie $OSTYPE_PRETTY_NAME$ ઓપરેટિંગ સિસ્ટમ પર ચાલતા $SYSTEM_TYPE_PRETTY_NAME$ બ્રાઉઝરમાં ઇન્સ્ટોલ કરેલ $LANGUAGES_COUNT$ $LANGUAGE_GROUPS_COUNT$ ભાષાઓને સક્ષમ કરતા $VOICES_COUNT$ શોધી શકે છે.",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie હાલમાં $ $LANGUAGES_COUNT$ બોલીઓમાં $LANGUAGE_GROUPS_COUNT$ ભાષાઓને સક્ષમ કરીને, ઇન્સ્ટોલ કરેલ $VOICES_COUNT$ વૉઇસ શોધી શકે છે.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -847,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "માફ કરશો, પરંતુ ક્લિપબોર્ડ પરથી ટેક્સ્ટ વાંચવું એ Talkie Premium સુવિધા છે. શું તમે અપગ્રેડ કરવાનું વિચાર્યું છે?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "માફ કરશો, પરંતુ ક્લિપબોર્ડ પરથી ટેક્સ્ટ બોલવું એ Talkie Premium સુવિધા છે. શું તમે અપગ્રેડ કરવાનું વિચાર્યું છે?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "માફ કરશો, પરંતુ આ બ્રાઉઝર ક્લિપબોર્ડ પરથી વાંચવાનું સમર્થન કરતું નથી. હજુ સુધી નહીં, ઓછામાં ઓછું. કૃપા કરીને એક કે તેથી વધુ મહિનામાં ફરી પ્રયાસ કરો!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "માફ કરશો, પરંતુ આ બ્રાઉઝર ક્લિપબોર્ડને ઍક્સેસ કરવાનું સમર્થન કરતું હોય તેવું લાગતું નથી.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie ને ક્લિપબોર્ડથી ઍક્સેસ કરવાની પરવાનગી નથી. તે ઠીક છે, પરંતુ પછી ક્લિપબોર્ડ ટેક્સ્ટ વાંચવાનું કામ કરશે નહીં.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie ક્લિપબોર્ડ ઍક્સેસ કરવાની પરવાનગી નથી. તમે Talkie વિકલ્પો પૃષ્ઠ પર પરવાનગી આપી શકો છો.",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "ક્લિપબોર્ડમાં યોગ્ય ટેક્સ્ટ શોધી શકાયું નથી. શું તમે કંઈક બીજું કૉપિ કરવાનો પ્રયાસ કરી શકો છો?",

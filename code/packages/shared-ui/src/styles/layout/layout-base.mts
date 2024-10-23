@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,34 +18,29 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
+import type {
 	StyleObject,
 } from "styletron-react";
 
 import * as colorBase from "../color/color-base.mjs";
 import * as listBase from "../list/list-base.mjs";
+import {
+	areaWithBackgroundColor,
+	layoutWithEmMargin,
+	layoutWithNoPadding,
+	margins,
+	paddings,
+	rounded,
+} from "../shared-base.mjs";
 
-const layoutWithMargins: StyleObject = {
-	marginBottom: "0.5em",
-	marginLeft: "1em",
-	marginRight: "1em",
-	marginTop: "0.5em",
-};
-
-export const header: StyleObject = layoutWithMargins;
-export const main: StyleObject = layoutWithMargins;
-export const section: StyleObject = layoutWithMargins;
-export const nav: StyleObject = layoutWithMargins;
-export const footer: StyleObject = layoutWithMargins;
+export const header: StyleObject = layoutWithEmMargin(1);
+export const main: StyleObject = layoutWithEmMargin(1);
+export const section: StyleObject = layoutWithEmMargin(1);
+export const nav: StyleObject = layoutWithEmMargin(1);
+export const footer: StyleObject = layoutWithEmMargin(1);
 
 export const hr: StyleObject = {
-	...layoutWithMargins,
-	borderBottomWidth: 0,
-	borderLeftWidth: 0,
-	borderRightWidth: 0,
-	borderStyle: "solid",
-	borderTopWidth: "1px",
-	color: colorBase.dividerColor,
+	...layoutWithEmMargin,
 };
 
 export const details: StyleObject = {};
@@ -53,25 +48,10 @@ export const summary: StyleObject = {
 	cursor: "pointer",
 };
 
-export const rounded: (radius: string) => StyleObject = (radius) => ({
-	borderBottomLeftRadius: radius,
-	borderBottomRightRadius: radius,
-	borderTopLeftRadius: radius,
-	borderTopRightRadius: radius,
-});
-
 export const hero: StyleObject = {
-	...rounded("0.5em"),
-	backgroundColor: colorBase.premiumSectionBackgroundColor,
+	...areaWithBackgroundColor(1),
+	backgroundColor: colorBase.legibleBackgroundColor,
 	fontSize: "1.5em",
-	marginBottom: "2em",
-	marginLeft: "2em",
-	marginRight: "2em",
-	marginTop: "2em",
-	paddingBottom: "1em",
-	paddingLeft: "1em",
-	paddingRight: "1em",
-	paddingTop: "1em",
 };
 
 export const roundedWithBorder: (radius: string) => StyleObject = (radius) => ({
@@ -81,10 +61,24 @@ export const roundedWithBorder: (radius: string) => StyleObject = (radius) => ({
 	borderWidth: "1px",
 });
 
+export const horizontalUl: StyleObject = {
+	...listBase.ul,
+	listStyleType: "none",
+	...layoutWithNoPadding,
+};
+
+export const horizontalLi: StyleObject = {
+	...listBase.li,
+	...margins("0.25em"),
+	...paddings("0.25em"),
+	display: "inline-block",
+	lineHeight: "1em",
+	whiteSpace: "nowrap",
+};
+
 export const columnsUl: (columnCount: number) => StyleObject = (columnCount) => ({
 	...listBase.ul,
 	columnCount,
-	columnRuleColor: colorBase.dividerColor,
 	columnRuleStyle: "solid",
 	columnRuleWidth: "thin",
 	fontWeight: "bold",
@@ -107,6 +101,6 @@ export const columnsLi: StyleObject = {
 export const columnsLiMarked: StyleObject = {
 	...columnsLi,
 	"::marker": {
-		color: colorBase.textColor,
+		color: "unset",
 	},
 };

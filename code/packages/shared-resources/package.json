@@ -8,15 +8,19 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "svgo": "^2.8.0"
+    "mkdirp": "^3.0.1",
+    "svgo": "^3.3.2"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
+    "build": "npm run --silent build:dummy",
+    "build:dummy": "echo 'Create dummy ./dist' && mkdirp ./dist",
+    "clean": "rimraf ./dist",
     "minify": "npm run --silent minify:svg",
     "minify:svg": "find ./src/resources -type f -iname '*.svg' -not -iname '*.min.svg' | while read P; do svgo --quiet --multipass --input \"$P\" --output \"${P%.svg}.min.svg\"; done",
-    "rebuild": "npm run --silent minify"
+    "reconstruct": "npm run --silent build:dummy && npm run --silent minify"
   },
   "type": "module"
 }

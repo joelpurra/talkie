@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,13 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
 	getLanguageGroupsFromLanguages,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 import type {
@@ -44,7 +43,9 @@ export const getSortedNavigatorLanguages = createDraftSafeSelector(
 	[
 		getNavigatorLanguages,
 	],
-	(navigatorLanguages) => navigatorLanguages.slice().sort((a, b) => a.localeCompare(b)),
+	(navigatorLanguages) => [
+		...navigatorLanguages,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getNavigatorLanguageGroups = createDraftSafeSelector(
@@ -58,5 +59,7 @@ export const getSortedTranslatedLanguages = createDraftSafeSelector(
 	[
 		getTranslatedLanguages,
 	],
-	(translatedLanguages) => translatedLanguages.slice().sort((a, b) => a.localeCompare(b)),
+	(translatedLanguages) => [
+		...translatedLanguages,
+	].sort((a, b) => a.localeCompare(b)),
 );

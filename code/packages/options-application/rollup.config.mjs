@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,15 +25,12 @@ const inputName = "options";
 const fileExtension = "";
 const fileName = `${inputName}${fileExtension}`;
 
-const rollupConfiguration = mergeOptions(
-	rollupConfig(fileName),
-	{
-		input: `./dist/esm/${fileName}.mjs`,
-		output: {
-			file: `./dist/rollup/${fileName}.js`,
-			name: fileName,
-		},
+const rollupConfiguration = mergeOptions(rollupConfig(fileName), {
+	input: `./dist/esm/${fileName}.mjs`,
+	output: {
+		file: `./dist/rollup/${fileName}.js`,
+		name: fileName,
 	},
-);
+});
 
 export default rollupConfiguration;

@@ -19,7 +19,7 @@
     "message": "Stop met praten",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Tekstselectie hardop voorlezen",
     "original": "Read text selection out loud"
   },
@@ -31,9 +31,9 @@
     "message": "Upgrade naar Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Voorlezen vanaf het klembord",
-    "original": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "Tekst uit het klembord voorlezen",
+    "original": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Selectie starten/stoppen met lezen",
@@ -41,12 +41,16 @@
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Snelle, gemakkelijke tekst-naar-spraak van hoge kwaliteit in meer dan 40 talen. Hardop voorlezen van websites, pdf, e-mail. Spreek tekst met TTS.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Snelle en eenvoudige tekst-naar-spraak. Voorlezen van websites, PDF, e-mail. Privacybewuste, open source code.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Functies en upgrade",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Status en geschiedenis",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Gebruik en sneltoetsen",
@@ -109,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Het hangt af van welke Linux-distributie, browser en pakketdistributiesysteem je gebruikt. Zie aparte installatie-instructies voor uw combinatie van software. Het gemakkelijkst is misschien om een andere browser te proberen en te kijken of er een geschikte stem voorgeïnstalleerd is. Firefox v95 op Ubuntu 21.10 kan bijvoorbeeld worden geïnstalleerd met Aptitude of Snap; de eerste bevat 8611 eSpeak-stemmen die 95 talen in 7358 dialecten mogelijk maken, maar de laatste bevat 0 stemmen. Een ander voorbeeld is Google Chrome v96 op Ubuntu 21.10, dat standaard 19 stemmen bevat die 14 talen in 18 dialecten mogelijk maken. Laat me gerust weten wat je ervaringen zijn!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Het hangt af van welke Linux-distributie, browser en pakketdistributiesysteem u gebruikt. Zie aparte installatie-instructies voor uw combinatie van software. Het makkelijkst is misschien om een andere browser te proberen en te kijken of deze een geschikte stem vooraf heeft geïnstalleerd. Bijvoorbeeld, Firefox v130 op Ubuntu 24.04 geïnstalleerd met Snap bevat 13000+ eSpeak-stemmen die 100+ talen in 100+ dialecten mogelijk maken — maar al deze stemmen zijn van lage kwaliteit. Ter vergelijking, Google Chrome v129 op Ubuntu 24.04 geïnstalleerd met Apt bevat 19 stemmen die 14 talen in 18 dialecten mogelijk maken — allemaal met hoge kwaliteit.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Hoe kan ik meer stemmen in Talkie op Linux installeren?",
@@ -165,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Helaas niet volledig. Voor Talkie Premium gebruikers is het mogelijk om tekst te kopiëren, en te lezen vanaf het klembord. Het blijkt dat Google Docs (evenals Google Spreadsheet, Google Drive en dergelijke) geen website is, maar een speciale \"applicatie in de browser\" gemaakt door Google. Talkie heeft geen toegang tot de geselecteerde tekst en kan geen contextmenu-items toevoegen, dus de Talkie knop werkt niet.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Helaas niet volledig. Voor Talkie Premium gebruikers is het mogelijk om tekst te kopiëren en uit te spreken vanaf het klembord. Het blijkt dat Google Docs (en ook Google Spreadsheet, Google Drive en dergelijke) geen website is, maar een speciale \"applicatie in de browser\" die door Google is gemaakt. Talkie kan de geselecteerde tekst niet benaderen en ook geen contextmenu-items toevoegen, dus de Talkie knop werkt niet.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Werkt Talkie in Google Documenten?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Ja graag! Maak bij voorkeur een probleemrapport op Github, zodat anderen ook kunnen helpen. Geef zoveel mogelijk informatie op, zoals welke browser en versie, besturingssysteem en versie, en taal/stem die u gebruikt. Voeg ook informatie toe over specifieke websites waar je de bug ziet, bij voorkeur met een link.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Ja, graag. Maak bij voorkeur een probleemrapport op Github, zodat anderen ook kunnen helpen. Geef zoveel mogelijk informatie, zoals welke browser en versie, besturingssysteem en versie, en taal/stem u gebruikt. Geef ook informatie over specifieke websites waar u de bug ziet, bij voorkeur met een link.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Moet ik bugs melden?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Gebruikelijk! Als u de tekst in de PDF kunt selecteren, klikt u Talkie met de rechtermuisknop op en kiest u Talkie in het menu. Als de tekst niet kan worden geselecteerd, als deze deel uitmaakt van een afbeelding, werkt deze niet.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Ja, meestal. Als u de tekst in de PDF kunt selecteren, klikt u er met de rechtermuisknop op en kiest u Talkie in het menu. Talkie Premium gebruikers kunnen de tekst ook kopiëren en deze vervolgens vanaf het klembord lezen. Als de tekst niet kan worden geselecteerd, bijvoorbeeld als het onderdeel is van een afbeelding, dan werkt het niet.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Kan Talkie PDF-bestanden lezen?",
@@ -197,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Zeker! Neem gewoon contact met mij op via de support- of projectpagina's.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "Ja. Beschrijf de gewenste feature in een nieuw issue op Github.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Kan ik nieuwe functies aanvragen?",
@@ -221,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Zeker! Het zou geweldig zijn om hulp te krijgen bij het vertalen van Talkie , om Talkie op nieuwe systemen te testen, om bugs te onderzoeken en om nieuwe functies toe te voegen. Zie de projectpagina voor instructies.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Ja, hulp wordt altijd gewaardeerd. Zie de projectpagina voor instructies.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Kan ik helpen om Talkie te ontwikkelen?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Ja — vertel uw vrienden over Talkie! Stuur misschien een link naar uw favoriete internetberoemdheid, onlinegroep of nieuwsbrief. Je kunt zelfs je baas vragen om het op alle computers op het werk te installeren, of je leraar om het op school te installeren. Het verspreiden van het woord over Talkie wordt zeer op prijs gesteld!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Ja — vertel je vrienden over Talkie. Stuur misschien een link naar je favoriete internetberoemdheid, online groep of nieuwsbrief. Je kunt zelfs je baas vragen om het op alle computers op het werk te installeren, of je leraar om het op school te installeren. Het verspreiden van het woord over Talkie wordt zeer gewaardeerd.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Kan ik Talkie op een andere manier helpen?",
@@ -245,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Ja, er zijn meerdere betaalmogelijkheden.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Ja, er zijn meerdere donatiemogelijkheden beschikbaar.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "Kan ik betalen met PayPal, bankoverschrijving, etcetera?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "Kan ik doneren via PayPal, bankoverschrijving, etc.?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Ja, als je hebt betaald met PayPal of Stripe, die eenvoudig restitutiebeheer bieden. Restituties zijn over het algemeen niet beschikbaar voor andere betaalmethoden vanwege de hoeveelheid extra werk die het vereist, plus het risico dat het geld wordt teruggestort op de verkeerde rekening.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Ja, als u hebt gedoneerd via PayPal, dat eenvoudig restitutiebeheer biedt. Restituties zijn over het algemeen niet beschikbaar voor andere methoden van donaties vanwege de hoeveelheid extra werk die het vereist, naast risico's zoals restitutie naar de verkeerde rekening. Het is beter dat gebruikers eerst tijd besteden aan het uitproberen van Talkie Premium , om ervoor te zorgen dat alles naar wens is voordat ze doneren.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Kan ik mijn geld terugkrijgen?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Zeker wel! Schakel gewoon de Talkie Premium upgrade in om het uit te proberen.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Tuurlijk, geen probleem. Schakel gewoon de Talkie Premium upgrade in om het uit te proberen.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Kan ik Talkie Premium gratis uitproberen?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Er is geen reclame, gegevensverzameling of gebruikerstracking in Talkie. Gelukkige gebruikers die betalen voor Talkie Premium is de enige manier om inkomsten te genereren.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Er is geen reclame, dataverzameling of gebruikerstracking in Talkie. Tevreden gebruikers die doneren voor Talkie Premium zijn de enige monetisatie.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Bevatten de Talkie extensies advertenties, verzamelen ze gegevens of volgen ze gebruikers?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Het honor-systeem is wanneer individuen worden vertrouwd om eerlijk te zijn en zich aan richtlijnen te houden zonder strikt afgedwongen controles. Voor Talkie Premium vertrouwend dat degenen die upgraden ervoor hebben betaald.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "Het eersysteem is wanneer individuen erop vertrouwen dat elkaar zich houden aan afgesproken richtlijnen, zonder strikt afgedwongen controles. Voor Talkie Premium betekent dit erop vertrouwen dat degenen die upgraden ook hebben gedoneerd.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Wat is het eresysteem?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Omdat mensen over de hele wereld verschillende valuta gebruiken, verschillende niveaus van besteedbaar inkomen hebben en verschillende niveaus van waardering hebben voor de kenmerken Talkie Premium Er is geen enkele, vaste prijs die voor iedereen in de wereld goed werkt. Daarbovenop komen valutaschommelingen, conjunctuurtrends, regionale/interlandelijke variaties, enzovoort. Al met al is het instellen van prijzen voor een wereldwijd verkocht product ingewikkeld. Het is gemakkelijker om iedereen zijn eigen prijs te laten bepalen en ervoor te zorgen dat het product goed genoeg is om een betaling te rechtvaardigen.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Omdat mensen over de hele wereld verschillende valuta's gebruiken, verschillende niveaus van besteedbaar inkomen hebben en verschillende niveaus van waardering voor de kenmerken van Talkie Premium hebben. Er is geen enkele vaste prijs die voor iedereen in de wereld goed werkt. Daarbovenop komen schommelingen in valuta's, economische cyclustrends, regionale/internationale variaties, enzovoort. Al met al is het instellen van prijzen voor een wereldwijd verkocht product ingewikkeld. Het is gemakkelijker om iedereen zijn eigen prijs te laten bepalen en ervoor te zorgen dat het product goed genoeg is om een donatie te rechtvaardigen.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Waarom kan ik mijn eigen prijs bepalen?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Aangezien ik niet weet hoeveel geld u kunt uitgeven aan tekst-naar-spraaksoftware, geef ik er de voorkeur aan dat u betaalt wat u denkt dat Talkie Premium u waard is — niet meer en niet minder. Als u op zoek bent naar een referentiekader, toen Google betalingen voor Talkie Premium afhandelde, kostte het abonnement $ $ 25 (US Dollar) per jaar in de Verenigde Staten van Amerika. Houd er rekening mee dat Google de prijzen voor landen en valuta's over de hele wereld heeft aangepast aan de lokale omstandigheden, dus het kan meer of minder zijn. Tegelijkertijd kon iedereen die het beleefd vroeg ook gratis Talkie Premium ontvangen.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Omdat ik niet weet hoeveel geld u kunt en wilt uitgeven aan tekst-naar-spraaksoftware, geef ik er de voorkeur aan dat u doneert wat u denkt dat Talkie Premium waard is voor u — niet meer en niet minder. Als u op zoek bent naar een referentiekader: toen Google Chrome Web Store betalingen voor Talkie Premium verwerkte (2017-2021), waren de jaarlijkse abonnementskosten $$25 (Amerikaanse dollar) in de Verenigde Staten van Amerika. Wereldwijd varieerden de prijzen echter, omdat Google de prijzen automatisch aanpaste voor andere landen en valuta's.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Hoeveel raden jullie aan om te betalen?",
-    "original": "How much do you recommend I pay?"
+    "message": "Hoeveel raadt u mij aan om te doneren?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Omdat het implementeren van een systeem voor betalingen en verificatie veel tijd en moeite kost, en wordt aangenomen dat de kosten van het implementeren van strikte betalingsverificatie hoger zijn dan de verliezen van individuen die het systeem bedriegen. Betalingsverificatie vereist ook een bepaald niveau van gegevensverzameling uit de systemen van gebruikers, en technisch bekwame gebruikers kunnen de verificatie vaak toch omzeilen. Dus vanuit technisch en zakelijk oogpunt is het, ook al zijn er geen garanties, gemakkelijker om erop te vertrouwen dat gebruikers zich aan het honor-systeem houden.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Omdat het implementeren van een systeem voor betalingen en verificatie veel tijd en moeite kost. Er wordt aangenomen dat de kosten van het implementeren van strikte betalingsverificatie hoger zijn dan de verliezen van individuen die het systeem bedriegen. Betalingsverificatie vereist ook een bepaald niveau van gegevensverzameling van de systemen van gebruikers, en technisch vaardige gebruikers kunnen de verificatie vaak toch omzeilen. Dus vanuit een technisch en zakelijk perspectief is het, ook al zijn er geen garanties, gemakkelijker om er gewoon op te vertrouwen dat gebruikers zich aan het eersysteem houden.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Waarom is er geen betalingsverificatie?",
-    "original": "Why is there no payment verification?"
+    "message": "Waarom is er geen verificatie van donatie of betaling?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Het besluit om betalingsverificatie niet uit te voeren, betekent dat het betaalde bedrag niet kan worden geverifieerd. Bovendien zijn de kosten van het \"vervaardigen\" van een digitale kopie van Talkie Premium nul, dus het voor niets weggeven betekent geen financieel verlies voor de ontwikkelaar. Er is ook de hoop dat als je van Talkie Premium , je je vrienden erover zult vertellen. Het weggeven van Talkie Premium kan ook worden gezien als een marketinginspanning.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "Ik besef dat het doneren van \"niets\" een beetje verwarrend is. Het korte antwoord is dat geld niet alles is. Het lange antwoord heeft meer aspecten. Het besluit om geen betalingsverificatie te implementeren betekent dat het betaalde bedrag irrelevant is. Bovendien zijn de kosten voor het \"fabriceren\" van een digitale kopie van Talkie Premium nul, dus het gratis weggeven ervan betekent geen financieel verlies voor de ontwikkelaar. Er is ook de hoop dat als je Talkie Premium leuk vindt, je het aan je vrienden vertelt, en misschien dat sommigen van hen op de een of andere manier gaan doneren. Het weggeven van Talkie Premium kan daarom worden gezien als een marketinginspanning.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Waarom kan ik ervoor kiezen om niets te betalen?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Waarom kan ik kiezen tussen doneren of niets betalen?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Ja, door Stripe te gebruiken. Zie extra betaalmogelijkheden.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Ja, maar er is geen geautomatiseerd systeem voor terugkerende donaties. De meest eenvoudige manier is dat u gewoon op een later tijdstip opnieuw doneert.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Kan ik een terugkerende maandelijkse of jaarlijkse betaling doen?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Kan ik een terugkerende maandelijkse of jaarlijkse donatie doen?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Ja, als u deze per e-mail aanvraagt. Vermeld a.u.b. uw naam, adres en eventueel uw btw-identificatienummer (of equivalent).",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Dit is een zeldzaam verzoek en het zou handmatig verwerkt moeten worden. Neem contact op voordat u doneert.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Kan ik een betalingsbewijs krijgen voor mijn betaling?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Kan ik een ontvangstbewijs voor mijn donatie krijgen?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Omdat je houdt van de extra functies die Talkie Premium biedt, en het gelukkige gevoel bij te dragen aan de ontwikkeling van open source software door onafhankelijke ontwikkelaars. Vanwege de relatief hoge personeelskosten voor ontwikkeling en onderhoud, maar geen kosten voor het \"vervaardigen\" van digitale kopieën, kunnen betalingen voor Talkie Premium ook worden gezien als ondersteuning voor toekomstige ontwikkeling en onderhoud, in tegenstelling tot de waarde van het product op het moment van betaling .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Omdat u de extra functies die Talkie Premium biedt waardeert, en het fijne gevoel van het bijdragen aan open source softwareontwikkeling door onafhankelijke ontwikkelaars. Vanwege de relatief hoge tijdskosten van ontwikkeling en onderhoud, maar nul kosten van het \"fabriceren\" van digitale kopieën, kunnen donaties voor Talkie Premium ook worden gezien als het bieden van ondersteuning en aanmoediging voor toekomstige ontwikkeling en onderhoud, in tegenstelling tot de waarde van het product op het moment van donatie.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Waarom moet ik betalen om te upgraden?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Waarom zou ik doneren om te upgraden?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "Het korte antwoord is: waarschijnlijk niet. Het blijkt dat er moderne stemmen en oude stemmen zijn op Microsoft Windows. Toen ik voor het laatst testte, was de Nederlandse stem \"Microsoft Frank\" beschikbaar in Microsoft Edge, maar niet in Google Chrome of Mozilla Firefox. Een reden is dat sommige stemmen zijn gebouwd voor het nieuwere WinRT-spraaksysteem en andere voor de oudere Speech Application Programming Interface (SAPI). Browsers ondersteunen mogelijk niet zowel het oude als het nieuwe spraaksysteem, wat betekent dat een stem die daadwerkelijk is geïnstalleerd, nog steeds niet beschikbaar is in uw favoriete browser. Na verloop van tijd zullen de meeste browsers waarschijnlijk het nieuwere WinRT-systeem ondersteunen. Als u stemmen in uw taal mist, is een suggestie om te proberen Talkie in Microsoft Edge te gebruiken.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Ja, maar het hangt ervan af welke browser je gebruikt. Er zijn zowel moderne als oude stemmen beschikbaar in Microsoft Windows. Toen ik het voor het laatst testte, was de Nederlandse stem \"Microsoft Frank\" beschikbaar in Microsoft Edge, maar niet in Google Chrome of Mozilla Firefox. Een reden hiervoor is dat sommige stemmen zijn gebouwd voor het nieuwere WinRT-spraaksysteem en sommige voor de oudere Speech Application Programming Interface (SAPI). Het kan zijn dat je favoriete browser niet zowel het oude als het nieuwe spraaksysteem ondersteunt, wat betekent dat een stem die wel is geïnstalleerd, mogelijk niet bruikbaar is. Na verloop van tijd zullen de meeste browsers waarschijnlijk het nieuwere WinRT-systeem ondersteunen. Als je stemmen in je taal mist, is een suggestie om te proberen Talkie te gebruiken in Microsoft Edge.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
     "message": "Werken alle stemmen voor Microsoft Windows met Talkie ?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "Misschien met veel moeite. Er zijn ook enkele onofficiële oplossingen om nieuwe WinRT-stemmen te laten werken met oudere SAPI-compatibele browsers, maar dit is een zeer technische onderneming en wordt niet aanbevolen voor niet-technische gebruikers.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "Misschien met veel moeite. Er zijn ook wat onofficiële workarounds om nieuwe WinRT-stemmen te laten werken met oudere SAPI-enabled browsers, maar dit is een zeer technische onderneming en niet aanbevolen voor niet-technische gebruikers.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "Kunnen WinRT-stemmen werken in SAPI-compatibele browsers op Microsoft Windows?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Ja, sommigen wel. Volg de installatie-instructies voor uw systeem en browser. Zodra de stemmen in uw browser zijn geïnstalleerd, zou Talkie ze automatisch moeten detecteren. Deel alle tips die je hebt!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Ja, sommige doen dat. Volg de installatie-instructies voor uw systeem en browser. Zodra de stemmen in uw browser zijn geïnstalleerd, zou Talkie ze automatisch moeten detecteren.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Werken open source stemmen met Talkie ?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Donaties impliceren vrijwillige uitgaven aan iets positiefs. Zie het als een fooi. Betalingen impliceren een verplichte transactie van geld.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Waarom donaties in plaats van betalingen?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "In plaats van geld, verspreid positiviteit. Steun een humanitaire organisatie. Doe vrijwilligerswerk bij een lokaal goed doel. Help een vreemde. Knuffel een familielid. Glimlach. Eigenlijk zijn al deze dingen belangrijker dan geldelijke donaties voor Talkie Premium. Ik waardeer het wel om ansichtkaarten te ontvangen.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Ik heb ervoor gekozen om niets te doneren. Kan ik nog iets anders doen?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Ja, u kunt Talkie Premium hoe dan ook gebruiken.",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Als ik ervoor kies om niets te doneren, telt het dan nog steeds?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Het oorspronkelijke plan was om Talkie te gelde te maken door een jaarlijks abonnementsgeld te vragen voor Talkie Premium. Een paar jaar lang (2017-2021) verwerkte Google Chrome Web Store betalingen en abonnementen voor Talkie Premium , maar ze bieden die service niet meer aan. Toen het externe betalingssysteem stopte met werken, koos ik ervoor om Talkie Premium functies gescheiden te houden, om aan te geven dat er veel moeite is gestoken in Talkie. Donaties zijn een proxy-indicatie dat mensen Talkie gebruiken en waarderen, wat mij heeft geïnspireerd om er honderden uren aan te werken.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Als donaties optioneel zijn, waarom zijn Talkie Premium functies dan apart?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie is, net als mijn andere open source code, een hobbyproject. Er is meestal iets kleins om elke paar weken te doen, zoals het beantwoorden van e-mailvragen. Programmeren op Talkie is meestal geconcentreerd op een paar dagen hier en daar — vaak tijdens feestdagen en vakanties. Helaas nemen externe beleidswijzigingen steeds meer tijd in beslag van de ontwikkeling van functies. Bijvoorbeeld, het technisch upgraden van Talkie naar Manifest Version 3 (MV3) kostte meerdere weken werk (2023-2024) zonder duidelijke verbetering van de bruikbaarheid van Talkie .",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Hoeveel tijd besteed je aan Talkie ?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "Op dit moment weet ik het niet zeker. Ik heb Talkie (2016) ontwikkeld zodat anderen ervan kunnen genieten, en ik gebruik het zelf niet. Het toevoegen van nieuwe functies en het leren van nieuwe dingen is leuk. Positieve feedback ontvangen en het aantal gebruikers zien stijgen is leuk. Het is momenteel niet mijn favoriete hobby, omdat externe factoren de afgelopen jaren (2020-2024) een negatieve impact hebben gehad op de ontwikkeling. Met name het publiceren van een webextensie vereist dat je op de hoogte blijft van de voortdurend veranderende beleidsregels van Google Chrome Web Store (CWS) en Mozilla Add-Ons (AMO) voor Firefox.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Hoe lang blijf je nog aan Talkie werken?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Het antwoord op deze vraag kan niet betrouwbaar up-to-date worden gehouden. Bezoek de Talkie website voor de actuele projectstatus.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Ben je nog steeds actief bezig met Talkie ?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Bugs",
@@ -385,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "Talkie momenteel de gratis versie van Talkie en er is een beperkte set functies beschikbaar. Misschien is Talkie Premium een betere keuze voor jou?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "U gebruikt momenteel de gratis editie van Talkie en er is een beperkte set functies beschikbaar. Heeft u overwogen om te upgraden naar Talkie Premium ?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "Talkie Premium momenteel Talkie Premium en alle functies zijn beschikbaar. Heel erg bedankt, het verwarmt mijn hart!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "U gebruikt momenteel Talkie Premium en alle functies zijn beschikbaar. Hartelijk dank, het verwarmt mijn hart!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie komt in twee versies: Talkie en Talkie Premium. De gratis editie is geweldig voor de meeste use-cases, maar de premium-editie biedt extra opties en functies.",
@@ -413,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Code is open source en gratis beschikbaar voor alle gebruikers.",
-    "original": "Code is open source and available for free to all users."
+    "message": "De code is open source en volledig toegankelijk voor alle gebruikers.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Vrij!",
-    "original": "Free!"
+    "message": "Gebruik zoveel u wilt, zonder kosten.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Functies",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Kies uw eigen standaardstem voor elke taal. Geweldig als je de systeemstem beu bent!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Kies uw eigen voorkeursstem voor elke taal.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Kies leessnelheid en toonhoogte per stem. Pas stemmen naar wens aan!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Pas de leessnelheid en toonhoogte per stem aan.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Dat warme, wazige gevoel dat je krijgt bij het ondersteunen van open source software door onafhankelijke ontwikkelaars.",
@@ -441,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Lees tekst van het klembord! Kopieer gewoon tekst van overal in een programma en gebruik Talkie Premium om het te lezen!",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Spreek tekst uit het klembord. Kopieer tekst van overal in elk programma en gebruik Talkie Premium om het te lezen.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Beschikbare tekst-naar-spraak-stemmen",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Installeer enkele stemmen op uw systeem, anders werkt Talkie niet. Sorry!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Kon geen tekst-naar-spraak stemmen vinden. Zonder stemmen kan Talkie niet correct functioneren. Soms helpt het om deze pagina opnieuw te laden, tenminste als de browser traag is of er veel stemmen zijn.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Geen tekst-naar-spraak-stemmen gevonden",
@@ -460,6 +524,10 @@
     "message": "Vergunning",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Licenties van derden",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Bezig met laden...",
     "original": "Loading..."
@@ -471,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "Instellingen",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Klembordtekst weergeven",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "Klembordtoegang niet verleend.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "Klembordmachtiging weigeren",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "Om tekst uit een programma te laten spreken, kunt u tekst naar het klembord kopiëren en de configureerbare sneltoets gebruiken. Om Talkie toegang te geven tot het klembord, moet u eerst toestemming verlenen. Dit is een Talkie Premium functie.",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "Geef of weiger uw toestemming op elk gewenst moment. Uw browser kan u wel of niet vragen om te bevestigen.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Toestemming voor klembord verlenen",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Toegang tot klembord verleend.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Toestemming om het klembord te openen",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "Toegang tot klembord onbekend of mislukt.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "Spreek klembordtekst uit",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "Klembordtekst kon niet worden gelezen.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "De tekst op het klembord kon worden gelezen.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "De tekst op het klembord is niet gelezen.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Er zijn geen historische vermeldingen.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "Geschiedenis",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "Taal",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Staat",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "Stem",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie is een paar dagen voor het nieuwe jaar 2016/2017 ontwikkeld op vraag van een vriend. De uitdaging begon met de vraag: is het mogelijk om tijdens het woon-werkverkeer naar een artikel te luisteren in plaats van het te lezen? Makkelijk, zei ik, en ging op pad om het te bewijzen — of in ieder geval om mijn browser tekst te laten uitspreken met een dwaze computerstem. De basiseditie, zonder enige gebruikersinterface, bleek triviaal om te maken. Het toevoegen van een gebruikersinterface duurde wat langer. Het toevoegen van de juiste taaldetectie een heleboel meer code. Het oplossen van bugs in de browser is nog meer werk. De lijst met verbeteringen en functies gaat maar door — en een paar duizend regels code later kijk je naar het eindresultaat.",
@@ -489,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Heb je een vraag? Hulp nodig met iets? Zie de veelgestelde vragen hieronder voor snelle antwoorden op veelgestelde vragen. Als je daar geen antwoord op hebt, stuur me dan alsjeblieft al je vragen. Ik zou het fijn vinden als je ervaring met het gebruik van $NAME$ soepel en plezierig is!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Voor snelle en gemakkelijke ondersteuning, bekijk deze veelgestelde vragen en antwoorden. Als uw vraag nog steeds niet is beantwoord, neem dan contact met mij op.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "Steun",
@@ -555,40 +689,36 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "De prijs voor Talkie Premium staat niet vast. In plaats daarvan betaalt u wat u wilt, afhankelijk van hoeveel u denkt dat de premiumfuncties u waard zijn. U kunt zelfs besluiten om niets te betalen.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "De prijs voor Talkie Premium is niet vast. In plaats daarvan doneert u wat u wilt, afhankelijk van hoeveel u denkt dat de premiumfuncties waard zijn voor u. U kunt er zelfs voor kiezen om niets te doneren.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Na het verzenden van de betaling zijn er geen upgradecodes om in te voeren, geen gebruikersaccounts om te registreren of enige andere betalingsverificatie. In plaats Talkie Premium gebruikt Talkie Premium het honor-systeem.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "Na het doneren zijn er geen upgradecodes om in te voeren, geen gebruikersaccounts om te registreren, of enige andere donatieverificatie. In plaats daarvan gebruikt Talkie Premium het eersysteem.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Houd er rekening mee dat Talkie geen advertenties, gebruikerstracking of gegevensverzameling heeft als alternatieve manier om inkomsten te genereren. Betalingen worden aangemerkt als donaties voor de ontwikkeling van open source software.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie heeft geen reclame, gebruikerstracking of dataverzameling als alternatieve middelen voor monetisering. Donaties worden gelabeld als fooi voor open source softwareontwikkeling.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Upgrade naar Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Ik heb betaald voor Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "Upgraden naar Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Meer betaalmethoden via de donatiepagina",
-    "original": "More payment methods via the donations page"
+    "message": "Extra donatiemethoden",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "Betalen met PayPal",
-    "original": "Pay using PayPal"
+    "message": "Doneer via PayPal",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Gebruik",
     "original": "Usage"
-  },
-  "frontend_usageReadclipboard": {
-    "message": "Lees alle tekst die naar uw klembord is gekopieerd — gebruik het met een sneltoets om naar tekst te luisteren van overal buiten de browser. U kunt ook met de rechtermuisknop op de Talkie Premium knop klikken, of in een leeg gedeelte van een website, en lezen van klembord selecteren.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "U kunt ook de tekst selecteren, er met de rechtermuisknop op klikken en Talkie in het menu kiezen. Deze manier werkt ook in PDF-bestanden en sommige speciale soorten pagina's in de browser.",
@@ -614,9 +744,9 @@
     "message": "Een handige optie is om de sneltoetsen Talkie",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Lees tekst van het klembord in elk programma",
-    "original": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Spreek tekst rechtstreeks uit het klembord",
+    "original": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Start Stop",
@@ -626,6 +756,10 @@
     "message": "Start Stop",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Spreek alle tekst die naar uw klembord is gekopieerd uit met uw geconfigureerde stemmen. De eenvoudigste manier is om een configureerbare sneltoets te gebruiken. U kunt ook met de rechtermuisknop op de knop Talkie Premium klikken, of in een leeg gebied van een website, en 'Spreek uit klembord' selecteren.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Selecteer de gewenste tekst op een webpagina.",
     "original": "Select desired text on any web page."
@@ -633,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Klik op de Talkie knop in uw browserwerkbalk",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie kan worden gebruikt om de geselecteerde tekst op een pagina te lezen. Wanneer de pagina wordt gesloten of het pagina-adres verandert, kan Talkie doorgaan met spreken of automatisch stoppen.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Blijf praten of stop automatisch",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Wanneer het tabblad of venster gesloten is, kan Talkie doorgaan met spreken of automatisch stoppen.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Wanneer de pagina gesloten is",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Blijf spreken als het tabblad gesloten is",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "Adreswijzigingen vinden voornamelijk plaats wanneer u op een link klikt om naar een andere pagina te gaan, of wanneer u handmatig in de adresbalk typt. Bepaalde websites kunnen het adres ook in andere gevallen wijzigen, bijvoorbeeld bij het laden van aanvullende informatie.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Wanneer het pagina-adres verandert, kan Talkie doorgaan met spreken of automatisch stoppen.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "Om privacyredenen meldt Mozilla Firefox niet altijd wanneer het pagina-adres verandert. Het uitschakelen van deze instelling heeft mogelijk geen effect.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Wanneer het pagina-adres verandert",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Blijf spreken als het adres verandert",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "De standaardstem voor het dialect $LANGUAGE_CODE$ is $VOICE$ .",
@@ -679,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "$VOICES_COUNT$ stemmen gevonden voor $LANGUAGE_CODE$ .",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Geïnstalleerde stemdialecten",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Geïnstalleerde gesproken talen",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Geïnstalleerde stemmen",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "stemmen",
@@ -783,9 +983,65 @@
     "message": "Langere teksten lezen zonder pauzes (experimenteel)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Vergeet individuele geschiedenisvermeldingen",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Vergeet alle $HISTORY_COUNT$ geschiedenisvermeldingen",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie kan eerder gesproken tekst onthouden, zodat deze later opnieuw kan worden afgespeeld. Deze instelling beperkt hoeveel geschiedenisitems worden onthouden.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Verlaag de limiet om het aantal geschiedenisitems direct te verminderen. Een limiet van 0 schakelt het onthouden van de geschiedenis uit. De standaardlimiet is $DEFAULT_LIMIT$ .",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "Er zijn momenteel $HISTORY_COUNT$ geschiedenisitems onthouden. U kunt alles in één keer vergeten, of individuele items vergeten.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "Geschiedenis",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Limiet voor invoer van geschiedenis",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Met Talkie Premium kunt u de standaardstem voor elke taal wijzigen, evenals de stem en toonhoogte voor elke stem.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ is een online stem. Voor gebruik is mogelijk een actieve internetverbinding vereist om toegang te krijgen tot services van derden.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "Welkom bij $NAME$! U gebruikt nu een van de beste tekst-naar-spraak-browserextensies ter wereld.",
@@ -798,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Ga je gang en selecteer deze tekst en klik vervolgens op de $NAME$ -knop in de browserwerkbalk. Genieten van!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Selecteer deze tekst en klik vervolgens op de knop $NAME$ in de browserwerkbalk.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie kan momenteel $VOICES_COUNT$ stemmen vinden die $LANGUAGE_GROUPS_COUNT$ talen $LANGUAGES_COUNT$ dialecten die zijn geïnstalleerd in uw $SYSTEM_TYPE_PRETTY_NAME$ browser die draait op een $OSTYPE_PRETTY_NAME$ besturingssysteem.",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie kan momenteel $VOICES_COUNT$ geïnstalleerde stemmen vinden, waardoor $LANGUAGE_GROUPS_COUNT$ talen in $LANGUAGES_COUNT$ dialecten worden ingeschakeld.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -847,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Het spijt me, maar het lezen van tekst van het klembord is een Talkie Premium functie. Heb je overwogen om te upgraden?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "Sorry, maar het uitspreken van tekst vanaf het klembord is een Talkie Premium functie. Heb je overwogen om te upgraden?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Het spijt me, maar deze browser ondersteunt het lezen van het klembord niet. Nog niet, tenminste. Probeer het over een maand of zo nog eens!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Helaas lijkt het erop dat deze browser geen toegang tot het klembord ondersteunt.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie heeft geen toegangsrechten vanaf het klembord. Dat is oké, maar dan werkt het lezen van de tekst op het klembord niet.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie heeft geen toestemming om het klembord te openen. U kunt toestemming verlenen op de Talkie optiepagina.",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Kon geen geschikte tekst vinden op het klembord. Kun je iets anders proberen te kopiëren?",

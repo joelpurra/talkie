@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,24 +22,25 @@ import {
 	debounce,
 } from "@talkie/shared-application-helpers/basic.mjs";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import {
-	TranslateSync,
+	type TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
+import type LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
+import type ScaleRange from "../../../../components/range/scale-range.js";
 import {
-	ScaleRangeProps,
+	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";
 
 export interface RangeWithHeadingProps {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	ScaleRangeElementClass: any;
+	ScaleRangeElementClass: typeof ScaleRange<ScaleRangeProps> | typeof LogarithmicScaleRange<ScaleRangeProps>;
 	getHeading: (voiceName: string | null | undefined, translateSync: TranslateSync) => string;
 	initialValue: number;
 	transformValueBeforeChange: (value: number) => number;
@@ -55,6 +56,7 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 		voiceName: null,
 	};
 
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	static getDerivedStateFromProps(props: ReadonlyDeep<RangeWithHeadingProps>, state: ReadonlyDeep<RangeWithHeadingState>) {
 		if (props.initialValue !== state.value) {
 			return {
@@ -71,6 +73,7 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 	};
 
 	debouncedOnChange: (value: number) => void;
+	debouncedOnChangeCleanup: () => void;
 
 	constructor(props: P) {
 		super(props);
@@ -80,8 +83,14 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 
 		this.onChange = this.onChange.bind(this);
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		this.debouncedOnChange = debounce(this.onChange as any, 200);
+		[
+			this.debouncedOnChange,
+			this.debouncedOnChangeCleanup,
+		] = debounce(this.onChange, 200);
+	}
+
+	override componentWillUnmount(): void {
+		this.debouncedOnChangeCleanup();
 	}
 
 	onChange(value: number): void {
@@ -111,14 +120,13 @@ class RangeWithHeading<P extends RangeWithHeadingProps & ScaleRangeProps & Trans
 			getHeading,
 			voiceName,
 			translateSync,
-
 			ScaleRangeElementClass,
 			min,
 			defaultValue,
 			max,
 			step,
 			disabled,
-		} = this.props;
+		} = this.props as P;
 
 		const heading = getHeading(voiceName, translateSync);
 

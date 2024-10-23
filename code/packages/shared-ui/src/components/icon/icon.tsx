@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,12 +22,12 @@ import React from "react";
 import type {
 	StyleObject,
 } from "styletron-react";
-import {
-	styled,
-} from "styletron-react";
 
 import {
-	ClassNameProp,
+	talkieStyled,
+} from "../../styled/talkie-styled.mjs";
+import {
+	type ClassNameProp,
 } from "../../styled/types.js";
 
 export declare type IconMode =
@@ -56,7 +56,7 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 			marginLeft,
 			marginRight,
 			className,
-		} = this.props;
+		} = this.props as P;
 
 		const iconStyle: StyleObject = {
 			":before": {
@@ -76,13 +76,12 @@ export default class Icon<P extends IconProps & ClassNameProp> extends React.Pur
 			(iconStyle[":before"] as StyleObject).verticalAlign = "sub";
 		}
 
-		const StyledIcon = styled("span", iconStyle);
+		const StyledIcon = talkieStyled("span", iconStyle);
 
 		// TODO: fully replace with css-in-js?
 		// TODO: use a separate component per mode?
 		return (
 			<StyledIcon
-				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 				className={`icon icon-${mode} icon-${size} ${className}`}
 			/>
 		);

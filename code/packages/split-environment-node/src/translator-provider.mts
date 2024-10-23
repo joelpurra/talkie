@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,16 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import path from "node:path";
+
 import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import jsonfile from "jsonfile";
-import path from "node:path";
 import type {
 	JsonObject,
 	ReadonlyDeep,
@@ -35,14 +36,14 @@ import type {
 
 // NOTE: some types are duplicated to avoid sharing with the main Talkie code.
 // TODO: break out types? Create shared project?
-export type LocaleMessage = {
+export interface LocaleMessage {
 	description?: string;
 	message: string;
 	placeholders?: Record<string, {
 		content: string;
 		example?: string;
 	}>;
-};
+}
 
 export type LocaleMessages = Record<string, LocaleMessage>;
 
@@ -54,6 +55,23 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 	private readonly translations: Partial<Locale> = {};
 
 	constructor(private readonly localeProvider: ILocaleProvider) {}
+
+	async translatePlaceholder(key: string, extras?: Readonly<string[]>): Promise<string> {
+		// eslint-disable-next-line no-sync
+		return this.translatePlaceholderSync(key, extras);
+	}
+
+	translatePlaceholderSync(key: string, extras?: Readonly<string[]>): string {
+		// TODO: inject logging provider?
+		// eslint-disable-next-line no-console
+		console.warn("Untranslated placeholder:", key, extras);
+
+		const placeholderExtras = extras
+			? ` ${JSON.stringify(extras)}`
+			: "";
+
+		return key + placeholderExtras;
+	}
 
 	async translate(key: string, extras?: Readonly<string[]>): Promise<string> {
 		// eslint-disable-next-line no-sync
@@ -72,23 +90,28 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 	}
 
 	private _getMessagesFilepath(locale: TalkieLocale) {
+		// NOTE: relative to repository code root.
+		const dataRoot = [
+			"..",
+			"..",
+			"..",
+			"shared-locales",
+			"dist",
+			"data",
+		];
+
 		// NOTE: relative to extension root.
-		const messagesPath = path.join(
+		const localeMessagesPath = [
 			"_locales",
 			locale,
 			"messages.json",
-		);
+		];
 
 		// NOTE: could use path relative to PWD (possibly equal to the extension root), but using full path from current file.
 		return new URL(
 			path.join(
-				"..",
-				"..",
-				"..",
-				"shared-locales",
-				"src",
-				"data",
-				messagesPath,
+				...dataRoot,
+				...localeMessagesPath,
 			),
 			import.meta.url,
 		);
@@ -119,6 +142,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 		const messageTemplate = localeMessages[key];
 
 		if (!messageTemplate) {
+			// eslint-disable-next-line prefer-rest-params
 			void logError("_getTranslation", "Missing translation", arguments, messageTemplate);
 
 			throw new Error(`Missing translation: ${key}`);
@@ -187,11 +211,12 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 
 			const extraVariable = /\$(\w+)\$/g;
 
-			translated = translated.replace(extraVariable, replacer);
+			translated = translated.replaceAll(extraVariable, replacer);
 		}
 
 		if (translated.includes("$")) {
 			// TODO: replace extras in string.
+			// eslint-disable-next-line prefer-rest-params
 			void logError("_getTranslation", "Unhandled translation extras", arguments, messageTemplate);
 
 			throw new Error(`Unhandled translation extras: ${key} ${JSON.stringify(extras)}`);

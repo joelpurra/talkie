@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,12 +22,12 @@ import type {
 	Action,
 	Store,
 } from "@reduxjs/toolkit";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
 import {
-	ReactElement,
+	type ReactElement,
 } from "react";
-import ReactDOMServer from "react-dom/server.js";
+import ReactDOMServer from "react-dom/server";
 import type {
 	Server as StyletronServer,
 } from "styletron-engine-atomic";
@@ -36,7 +36,7 @@ import type {
 } from "type-fest";
 
 import {
-	ReactHtmlTemplateLocalsVariables,
+	type ReactHtmlTemplateLocalsVariables,
 } from "./render-types.mjs";
 
 const renderReactHtml = async <S, A extends Action>(
@@ -57,13 +57,14 @@ const renderReactHtml = async <S, A extends Action>(
 	}
 
 	const reactRootHtml = ReactDOMServer.renderToString(rootElement);
+	// TODO: also render language text direction, in particular dir="rtl".
 	const translationLocale = localeProvider.getTranslationLocale();
 	const stylesForHead = styletron.getStylesheetsHtml();
 	const prerenderedState = store.getState();
 
 	// WARNING: See the following for security issues around embedding JSON in HTML:
-	// https://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-	const prerenderedStateJson = JSON.stringify(prerenderedState).replace(/</g, "\\u003c");
+	// https://redux.js.org/usage/server-rendering#security-considerations
+	const prerenderedStateJson = JSON.stringify(prerenderedState).replaceAll("<", "\\u003c");
 
 	const data = {
 		locale: translationLocale,

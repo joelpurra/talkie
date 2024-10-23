@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,18 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SafeVoiceObject,
+	type SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	type ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 import InformationSection from "../../../components/section/information-section.js";
 import DialectVoiceOptionsContainer from "../../../containers/voices/dialect-voice-options-container.js";
 
@@ -64,14 +66,15 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 			voice,
 		} = this.props as DialectVoiceProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const SpeakSampleButton: React.FC = ({
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
+		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (
-				<textBase.p>
+				<p>
 					<buttonBase.transparentButton
 						type="button"
+						// eslint-disable-next-line react/no-this-in-sfc
 						onClick={this.handleSpeakVoiceNameClick}
 					>
 						<Icon
@@ -81,7 +84,7 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 
 						{children}
 					</buttonBase.transparentButton>
-				</textBase.p>
+				</p>
 			)
 			: null;
 
@@ -93,23 +96,28 @@ class DialectVoice<P extends DialectVoiceProps> extends React.PureComponent<P> {
 					<InformationSection
 						informationType="information"
 					>
-						<textBase.p>
-							<Markdown>
-								{`**${voice.name}** is an online voice. Usage may require an active internet connection to access third-party services.`}
-							</Markdown>
-						</textBase.p>
+						<p>
+							<MarkdownStrong>
+								{translateSync(
+									"frontend_voicesVoiceIsOnline",
+									[
+										`**${voice.name}**`,
+									],
+								)}
+							</MarkdownStrong>
+						</p>
 					</InformationSection>
 				</Discretional>
 
 				<SpeakSampleButton>
-					<Markdown>
+					<MarkdownStrong>
 						{translateSync(
 							"frontend_voicesListenToVoiceSample",
 							[
 								`**${voice.name}**`,
 							],
 						)}
-					</Markdown>
+					</MarkdownStrong>
 				</SpeakSampleButton>
 
 				<DialectVoiceOptionsContainer/>

@@ -1,0 +1,8 @@
+/packages/browser-runtime-dependencies/dist/umd/react-dom.license.txt
+/packages/browser-runtime-dependencies/dist/umd/react-redux.license.txt
+/packages/browser-runtime-dependencies/dist/umd/react.license.txt
+/packages/browser-runtime-dependencies/dist/umd/redux-toolkit.license.txt
+/packages/options-application/dist/rollup/options.dependencies.txt
+/packages/popup-application/dist/rollup/popup.dependencies.txt
+/CLA.md
+/LICENSE

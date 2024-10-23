@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,9 +25,11 @@ import type {
 export interface ScrollIntoViewIfNeededHTMLOptionElement extends HTMLOptionElement {
 	// NOTE: typings exist on Element for non-standard scrollIntoViewIfNeeded?
 	// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoViewIfNeeded
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	scrollIntoViewIfNeeded: (arg?: boolean | ScrollIntoViewOptions) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export const scrollIntoViewIfNeeded = (selectElement: ReadonlyDeep<HTMLSelectElement>): void => {
 	if (selectElement.options.selectedIndex >= 0) {
 		const selectedOption = selectElement.options[selectElement.options.selectedIndex];

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,13 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	SafeVoiceObject,
+	type SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import DialectVoice from "../../app/sections/voices/dialect-voice.js";
@@ -40,7 +40,7 @@ interface DialectVoicesContainerProps {
 
 interface StateProps {
 	hasSampleTextForLanguageGroup: boolean;
-	voiceForSelectedVoiceName: Readonly<SafeVoiceObject> | null;
+	voiceForSelectedVoiceName: SafeVoiceObject | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -49,7 +49,7 @@ interface DispatchProps {}
 interface InternalProps extends DialectVoicesContainerProps, StateProps, DispatchProps {}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state) => ({
+const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	hasSampleTextForLanguageGroup: selectors.voices.getHasSampleTextForLanguageGroup(state),
 	voiceForSelectedVoiceName: selectors.voices.getVoiceForSelectedVoiceName(state),
 });

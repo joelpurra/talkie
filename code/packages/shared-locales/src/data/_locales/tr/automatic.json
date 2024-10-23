@@ -19,7 +19,7 @@
     "message": "Konuşmayı kes",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Metin seçimini yüksek sesle oku",
     "original": "Read text selection out loud"
   },
@@ -31,9 +31,9 @@
     "message": "Talkie Premium ye yükseltin",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Panodan oku",
-    "original": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "Panodaki metni konuş",
+    "original": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Okumayı başlat/durdur seçimi",
@@ -41,12 +41,16 @@
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "40'tan fazla dilde hızlı, kolay, yüksek kaliteli metinden konuşmaya. Web sitelerinden, PDF'den, e-postadan yüksek sesle okuyun. TTS ile metin söyleyin.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Hızlı ve kolay metinden sese. Web sitelerinden, PDF'lerden, e-postalardan yüksek sesle okuyun. Gizlilik bilincine sahip, açık kaynak kodu.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Özellikler ve yükseltme",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Durum ve tarih",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Kullanım ve kısayollar",
@@ -109,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Hangi Linux dağıtımı, tarayıcı ve paket dağıtım sistemini kullandığınıza bağlıdır. Yazılım kombinasyonunuz için ayrı kurulum talimatlarına bakın. En kolayı, başka bir tarayıcı denemek ve önceden yüklenmiş uygun bir ses olup olmadığına bakmak olabilir. Örneğin, Ubuntu 21.10 üzerindeki Firefox v95, Aptitude veya Snap kullanılarak yüklenebilir; ilki, 7358 lehçede 95 dili etkinleştiren 8611 eSpeak sesini içerir, ancak ikincisi 0 ses içerir. Başka bir örnek, varsayılan olarak 18 lehçede 14 dili etkinleştiren 19 ses içeren Ubuntu 21.10'daki Google Chrome v96'dır. Lütfen deneyimlerinizi bana bildirin!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Hangi Linux dağıtımını, tarayıcıyı ve paket dağıtım sistemini kullandığınıza bağlıdır. Yazılım kombinasyonunuz için ayrı kurulum talimatlarına bakın. En kolayı başka bir tarayıcıyı denemek ve önceden yüklenmiş uygun bir ses olup olmadığına bakmak olabilir. Örneğin, Snap kullanılarak yüklenen Ubuntu 24.04'teki Firefox v130, 100'den fazla lehçede 100'den fazla dili etkinleştiren 13000'den fazla eSpeak sesi içerir — ancak tüm bu sesler düşük kalitededir. Karşılaştırıldığında, Apt kullanılarak yüklenen Ubuntu 24.04'teki Google Chrome v129, 18 lehçede 14 dili etkinleştiren 19 ses içerir — hepsi yüksek kalitededir.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Talkie 'ye nasıl daha fazla ses yükleyebilirim?",
@@ -165,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Ne yazık ki, tam olarak değil. Talkie Premium kullanıcıları için metni kopyalamak ve panodan okumak mümkündür. Google Dokümanlar'ın (Google E-Tablo, Google Drive ve benzerlerinin yanı sıra) bir web sitesi değil, Google tarafından oluşturulan özel bir \"tarayıcıdaki uygulama\" olduğu ortaya çıktı. Talkie seçili metne erişemez veya bağlam menüsü öğeleri ekleyemez, bu nedenle Talkie düğmesi çalışmaz.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Ne yazık ki, tamamen değil. Talkie Premium kullanıcıları için metni kopyalamak ve panodan söylemek mümkündür. Google Docs'un (Google Spreadsheet, Google Drive ve benzerleri gibi) bir web sitesi olmadığı, Google tarafından oluşturulan özel bir \"tarayıcıdaki uygulama\" olduğu ortaya çıktı. Talkie seçili metne erişemez veya bağlam menüsü öğeleri ekleyemez, bu nedenle Talkie düğmesi çalışmaz.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Talkie Google Dokümanlar'da çalışır mı?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Evet lütfen! Tercihen Github'da bir sorun raporu oluşturun, böylece diğerleri de yardımcı olabilir. Lütfen hangi tarayıcı ve sürüm, işletim sistemi ve sürüm ve kullandığınız dil/ses gibi mümkün olduğunca fazla bilgi ekleyin. Ayrıca, tercihen bir bağlantıyla, hatayı gördüğünüz belirli web siteleriyle ilgili bilgileri de ekleyin.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Evet, lütfen. Github'da bir sorun raporu oluşturmanız tercih edilir, böylece başkaları da yardımcı olabilir. Lütfen mümkün olduğunca fazla bilgi ekleyin, örneğin hangi tarayıcı ve sürüm, işletim sistemi ve sürüm ve kullandığınız dil/ses. Ayrıca, hatayı gördüğünüz belirli web siteleriyle ilgili bilgileri, tercihen bir bağlantıyla birlikte ekleyin.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Hataları bildirmeli miyim?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Genellikle! PDF'deki metni seçebiliyorsanız, üzerine sağ tıklayın ve menüden Talkie 'yi seçin. Metin seçilemezse, bir görüntünün parçasıysa, çalışmayacaktır.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Evet, çoğu zaman. PDF'deki metni seçebiliyorsanız, üzerine sağ tıklayın ve menüden Talkie seçin. Talkie Premium kullanıcıları metni kopyalayıp panodan okuyabilir. Metin seçilemiyorsa, örneğin bir görüntünün parçasıysa, çalışmayacaktır.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Talkie PDF dosyalarını okuyabilir mi?",
@@ -197,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Kesinlikle! Destek veya proje sayfalarından bana ulaşmanız yeterli.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "Evet. Github'da yeni bir konuda istediğiniz özelliği açıklayın.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Yeni özellikler talep edebilir miyim?",
@@ -221,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Kesinlikle! Talkie , Talkie yeni sistemlerde test etmek, hataları araştırmak ve yeni özellikler eklemek için yardım almak harika olurdu. Talimatlar için lütfen proje sayfasına bakın.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Evet, yardım her zaman takdir edilir. Talimatlar için lütfen proje sayfasına bakın.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Talkie geliştirilmesine yardımcı olabilir miyim?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Evet — lütfen arkadaşlarınıza Talkie hakkında bilgi verin! Belki de en sevdiğiniz internet ünlüsüne, çevrimiçi gruba veya haber bültenine bir bağlantı gönderin. Hatta patronunuzdan işyerindeki tüm bilgisayarlara kurmasını veya öğretmeninizden okulda kurmasını isteyebilirsiniz. Talkie hakkında bilgi vermek çok değerli!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Evet — lütfen arkadaşlarınıza Talkie hakkında bilgi verin. Belki de en sevdiğiniz internet ünlüsüne, çevrimiçi gruba veya haber bültenine bir bağlantı gönderin. Hatta patronunuzdan işyerindeki tüm bilgisayarlara yüklemesini veya öğretmeninizden okulda yüklemesini isteyebilirsiniz. Talkie hakkında bilgi yaymak çok takdir edilir.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Talkie 'ye başka bir şekilde yardım edebilir miyim?",
@@ -245,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Evet, birden fazla ödeme seçeneği mevcuttur.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Evet, birden fazla bağış seçeneği mevcuttur.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "PayPal, banka havalesi vb. kullanarak ödeme yapabilir miyim?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "PayPal, banka havalesi vb. yöntemlerle bağış yapabilir miyim?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Evet, basit geri ödeme yönetimi sunan PayPal veya Stripe kullanarak ödeme yaptıysanız. Gerektirdiği fazladan iş miktarı ve ayrıca paranın yanlış hesaba iade edilmesi riski nedeniyle, diğer ödeme yöntemleri için genellikle geri ödeme yapılmaz.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Evet, basit geri ödeme yönetimi sunan PayPal kullanarak bağış yaptıysanız. Gerektirdiği ek iş miktarı ve yanlış hesaba geri ödeme gibi riskler nedeniyle diğer bağış yöntemleri için geri ödemeler genellikle mevcut değildir. Kullanıcıların bağış yapmadan önce her şeyin tatmin edici olduğundan emin olmak için önce Talkie Premium denemeleri tercih edilir.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Geri ödeme alabilir miyim?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Elbette! Talkie Premium için Talkie Premium yükseltmesini etkinleştirmeniz yeterlidir.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Elbette, sorun yok. Sadece denemek için Talkie Premium yükseltmesini etkinleştirin.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Talkie Premium ücretsiz deneyebilir miyim?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Talkie içinde reklam, veri toplama veya kullanıcı takibi yoktur. Talkie Premium için ödeme yapan mutlu kullanıcılar, para kazanmanın tek yoludur.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Talkie de reklam, veri toplama veya kullanıcı takibi yoktur. Mutlu kullanıcıların Talkie Premium için bağış yapması tek para kazanma yoludur.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Talkie uzantıları reklam içeriyor mu, veri topluyor mu veya kullanıcıları izliyor mu?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Onur sistemi, bireylerin dürüst olduklarına güvenildiği ve sıkı denetimler olmaksızın yönergelere bağlı kaldığı zamandır. Talkie Premium için yükseltme yapanların bunun için ödeme yaptığına güvenmek.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "Şeref sistemi, bireylerin sıkı bir şekilde uygulanan kontroller olmadan, üzerinde anlaşılan yönergelere uymaları için birbirlerine güvenmeleridir. Talkie Premium için bu, yükseltme yapanların aynı zamanda bağışta bulunduğuna güvenmek anlamına gelir.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Onur sistemi nedir?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Çünkü dünyanın her yerindeki insanlar farklı para birimleri kullanır, farklı harcanabilir gelir seviyelerine sahiptir ve Talkie Premium 'nin özellikleri için farklı takdir seviyelerine sahiptir. Dünyadaki herkes için iyi işleyen tek bir sabit fiyat yoktur. Bunun üzerine para birimlerindeki dalgalanmalar, ekonomik döngü eğilimleri, bölgesel/ülke içi değişimler vb. gelir. Sonuç olarak, dünya çapında satılan bir ürün için ayar fiyatları karmaşıktır. Herkesin kendi fiyatını belirlemesine izin vermek ve ürünün bir ödemeyi garanti edecek kadar iyi olmasını sağlamak daha kolaydır.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Çünkü dünyadaki insanlar farklı para birimleri kullanıyor, farklı harcanabilir gelir seviyelerine sahip ve Talkie Premium 'nin özelliklerine farklı takdir seviyelerine sahip. Dünyadaki herkes için iyi çalışan tek bir sabit fiyat yok. Bunların üstüne para birimlerindeki dalgalanmalar, ekonomik döngü eğilimleri, bölgesel/ülke içi değişiklikler vb. geliyor. Sonuç olarak, dünya çapında satılan bir ürün için fiyat belirlemek karmaşıktır. Herkesin kendi fiyatını belirlemesine izin vermek ve ürünün bağışı hak edecek kadar iyi olduğundan emin olmak daha kolaydır.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Neden kendi fiyatımı belirleyebilirim?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Metin-konuşma yazılımına ne kadar para harcayabileceğinizi Talkie Premium nin sizin için ne kadar değerli olduğunu düşündüğünüzü ödemenizi tercih ederim — ne eksik ne fazla. Bir referans çerçevesi arıyorsanız, Google Talkie Premium için ödemeleri ele aldığında, Amerika Birleşik Devletleri'nde abonelik ücreti yıllık 25 ABD Doları (ABD Doları) tutarındadır. Google'ın, ülke ve para birimleri için fiyatları yerel koşullara uyacak şekilde ayarladığını unutmayın, bu nedenle aşağı yukarı olabilir. Aynı zamanda, kibarca soran herkes ücretsiz olarak Talkie Premium",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Metinden konuşmaya yazılıma ne kadar para harcayabileceğinizi ve harcamaya istekli olduğunuzu bilmediğim için, Talkie Premium sizin için ne kadar değerli olduğunu düşünüyorsanız onu bağışlamanızı tercih ederim; ne daha fazla, ne daha az. Bir referans çerçevesi arıyorsanız, Google Chrome Web Mağazası Talkie Premium için ödemeleri ele aldığında (2017-2021) yıllık abonelik maliyeti Amerika Birleşik Devletleri'nde 25$ (ABD Doları) idi. Ancak dünya çapındaki fiyatlar, Google diğer ülkeler ve para birimleri için fiyatları otomatik olarak ayarladığından değişiklik gösteriyordu.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Ne kadar ödememi önerirsiniz?",
-    "original": "How much do you recommend I pay?"
+    "message": "Ne kadar bağış yapmamı önerirsiniz?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Çünkü, ödemeler ve doğrulama için bir sistemin uygulanması çok zaman ve çaba gerektirir ve katı ödeme doğrulaması uygulamanın maliyetinin, sistemi aldatan kişilerden kaynaklanan kayıplardan daha yüksek olduğu varsayılır. Ödeme doğrulaması ayrıca, kullanıcıların sistemlerinden bir miktar veri toplamayı gerektirir ve teknik açıdan yetenekli kullanıcılar, genellikle doğrulamanın etrafında çalışabilirler. Dolayısıyla teknik ve ticari açıdan, hiçbir garanti olmamasına rağmen, kullanıcıların onur sistemine bağlı olduklarına güvenmek daha kolaydır.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Çünkü ödemeler ve doğrulama için bir sistem uygulamak çok fazla zaman ve çaba gerektirir. Sıkı ödeme doğrulaması uygulamanın maliyetinin, sistemi aldatan bireylerin kayıplarından daha yüksek olduğu varsayılır. Ödeme doğrulaması ayrıca kullanıcıların sistemlerinden belirli düzeyde veri toplanmasını gerektirir ve teknik olarak yetenekli kullanıcılar genellikle doğrulamayı atlatabilirler. Bu nedenle teknik ve ticari açıdan, hiçbir garanti olmasa bile, kullanıcıların onur sistemine uyduğuna güvenmek daha kolaydır.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Neden ödeme doğrulaması yok?",
-    "original": "Why is there no payment verification?"
+    "message": "Neden bağış veya ödeme doğrulaması yok?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Ödeme doğrulamasını uygulamama kararı, ödenen tutarın doğrulanamayacağı anlamına gelir. Talkie Premium nin dijital bir kopyasını \"üretim\" maliyeti sıfırdır, bu nedenle onu bedavaya vermek geliştirici için mali bir kayıp anlamına gelmez. Talkie Premium , arkadaşlarınıza bundan bahsedeceğiniz umudu da var. Talkie Premium vermek de bir pazarlama çabası olarak görülebilir.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "\"Hiçbir şey\" bağışlamanın biraz kafa karıştırıcı olduğunun farkındayım. Kısa cevap, paranın her şey olmadığıdır. Uzun cevabın daha fazla yönü vardır. Ödeme doğrulamasını uygulamama kararı, ödenen miktarın önemsiz olduğu anlamına gelir. Ayrıca, Talkie Premium nin dijital bir kopyasını \"üretmenin\" maliyeti sıfırdır, bu nedenle onu hiçbir şey karşılığında vermek geliştirici için finansal bir kayıp anlamına gelmez. Ayrıca, Talkie Premium beğendiyseniz arkadaşlarınıza bundan bahsedeceğiniz ve belki de bazılarının bir şekilde bağışta bulunacağı umudu da vardır. Bu nedenle Talkie Premium vermek bir pazarlama çabası olarak görülebilir.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Neden hiçbir şey ödememeyi seçemiyorum?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Neden bağış yapmayı veya hiçbir şey ödememeyi seçebilirim?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Evet, Stripe kullanarak. Ek ödeme seçeneklerine bakın.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Evet, ancak tekrarlayan bağışlar için otomatik bir sistem yoktur. En basit yol, daha sonra tekrar bağış yapmanızdır.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Yinelenen aylık veya yıllık ödeme yapabilir miyim?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Tekrarlayan aylık veya yıllık bağış yapabilir miyim?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Evet, e-posta ile talep ederseniz. Lütfen adınızı, adresinizi ve isteğe bağlı olarak katma değer vergisi (KDV) tanımlayıcınızı (veya eşdeğerini) ekleyin.",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Bu nadir bir istektir ve manuel olarak ele alınması gerekir. Lütfen bağış yapmadan önce bize ulaşın.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Ödemem için bir makbuz alabilir miyim?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Bağışım için makbuz alabilir miyim?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Talkie Premium sağladığı ek özellikleri ve bağımsız geliştiriciler tarafından açık kaynaklı yazılım geliştirmeye katkıda bulunmanın verdiği mutluluk hissini seviyorsunuz. Nispeten yüksek personel geliştirme ve bakım maliyeti, ancak dijital kopyaların \"imalat\" maliyetinin sıfır olması nedeniyle, Talkie Premium için yapılan ödemeler, ürünün ödeme anındaki değerinin aksine gelecekteki geliştirme ve bakım için destek sağlıyor olarak da görülebilir. .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Talkie Premium sağladığı ek özellikleri ve bağımsız geliştiriciler tarafından açık kaynaklı yazılım geliştirmeye katkıda bulunmanın verdiği mutlu hissi sevdiğiniz için. Geliştirme ve bakımın nispeten yüksek zaman maliyeti, ancak dijital kopyaların \"üretiminin\" sıfır maliyeti nedeniyle, Talkie Premium için yapılan bağışlar, bağış anındaki ürünün değerinin aksine, gelecekteki geliştirme ve bakım için destek ve teşvik sağlamak olarak da görülebilir.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Neden yükseltmek için ödeme yapmalıyım?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Yükseltme için neden bağış yapmalıyım?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "Kısa cevap: muhtemelen hayır. Microsoft Windows'ta modern sesler ve eski sesler olduğu ortaya çıktı. En son test ettiğimde, Hollandaca \"Microsoft Frank\" sesi Microsoft Edge'de mevcuttu, ancak Google Chrome veya Mozilla Firefox'ta yoktu. Bunun bir nedeni, bazı seslerin daha yeni WinRT konuşma sistemi için, bazılarının ise daha eski Konuşma Uygulaması Programlama Arayüzü (SAPI) için oluşturulmuş olmasıdır. Tarayıcılar hem eski hem de yeni konuşma sistemlerini desteklemeyebilir, bu da aslında yüklü olan bir sesin hala favori tarayıcınızda bulunmayabileceği anlamına gelir. Zamanla, çoğu tarayıcı muhtemelen daha yeni WinRT sistemini destekleyecektir. Talkie eksik sesler varsa, Microsoft Edge'de Talkie kullanmayı denemek bir öneridir.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Evet, ancak kullandığınız tarayıcıya bağlıdır. Microsoft Windows'da hem modern sesler hem de eski sesler mevcuttur. En son test ettiğimde, Hollandaca \"Microsoft Frank\" sesi Microsoft Edge'de mevcuttu, ancak Google Chrome'da veya Mozilla Firefox'ta mevcut değildi. Bunun bir nedeni, bazı seslerin daha yeni WinRT konuşma sistemi için, bazılarının ise daha eski Konuşma Uygulama Programlama Arayüzü (SAPI) için oluşturulmuş olmasıdır. Favori tarayıcınız hem eski hem de yeni konuşma sistemlerini desteklemiyor olabilir, yani aslında yüklü olan bir ses kullanılamayabilir. Zamanla, çoğu tarayıcı muhtemelen daha yeni WinRT sistemini destekleyecektir. Dilinizde sesler eksikse, bir öneri Microsoft Edge'de Talkie kullanmayı denemektir.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
     "message": "Microsoft Windows için tüm sesler Talkie ile çalışır mı?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "Belki de çok çaba sarf ederek. Eski SAPI-etkin tarayıcılarla çalışmak için yeni WinRT seslerini almak için bazı resmi olmayan geçici çözümler de vardır, ancak bu oldukça teknik bir çabadır ve teknik olmayan kullanıcılar için önerilmez.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "Belki de çok çabayla. Yeni WinRT seslerinin eski SAPI etkin tarayıcılarla çalışmasını sağlamak için bazı resmi olmayan geçici çözümler de vardır, ancak bu oldukça teknik bir çabadır ve teknik olmayan kullanıcılar için önerilmez.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "WinRT sesleri, Microsoft Windows'ta SAPI etkin tarayıcılarda çalışabilir mi?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Evet, bazıları öyle. Sisteminiz ve tarayıcınız için kurulum talimatlarını izleyin. Sesler tarayıcınıza yüklendikten sonra, Talkie onları otomatik olarak algılamalıdır. Lütfen sahip olduğunuz ipuçlarını paylaşın!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Evet, bazıları yapar. Sisteminiz ve tarayıcınız için kurulum talimatlarını izleyin. Sesler tarayıcınıza yüklendikten sonra, Talkie bunları otomatik olarak algılamalıdır.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Açık kaynak sesler Talkie ile çalışır mı?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Bağışlar, olumlu bir şeye gönüllü harcama anlamına gelir. Bunu bahşiş gibi düşünün. Ödemeler, zorunlu bir para alışverişi anlamına gelir.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Ödemeler yerine neden bağış?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "Para yerine pozitifliği yay. Bir insani yardım kuruluşunu destekle. Yerel bir yardım kuruluşunda gönüllü ol. Bir yabancıya yardım et. Bir aile üyesine sarıl. Gülümse. Aslında, bunların hepsi Talkie Premium için parasal bağışlardan daha önemlidir. Yine de kartpostal almaktan hoşlanıyorum.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Hiçbir şey bağışlamamayı seçtim. Yapabileceğim başka bir şey var mı?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Evet, Talkie Premium her durumda kullanabilirsiniz.",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Hiçbir şey bağışlamamayı seçersem, yine de sayılır mı?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Orijinal plan, Talkie Premium için yıllık abonelik ücreti alarak Talkie paraya çevirmekti. Birkaç yıl boyunca (2017-2021) Google Chrome Web Mağazası Talkie Premium için ödemeleri ve abonelikleri yönetti, ancak artık bu hizmeti sunmuyorlar. Harici ödeme sistemi çalışmayı bıraktığında, Talkie için çok fazla çaba sarf edildiğini belirtmek için Talkie Premium özelliklerini ayrı tutmayı seçtim. Bağışlar, insanların Talkie kullandığını ve takdir ettiğini gösteren bir vekil göstergedir ve bu da beni üzerinde yüzlerce saat çalışmaya teşvik eden şeydir.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Bağışlar isteğe bağlıysa Talkie Premium özellikleri neden ayrı?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie , diğer açık kaynak kodlarım gibi, bir hobi projesidir. Genellikle birkaç haftada bir halledilmesi gereken küçük bir şey vardır, örneğin e-postayla gönderilen sorulara yanıt vermek gibi. Talkie üzerinde programlama genellikle burada ve orada birkaç güne yoğunlaşır — sıklıkla tatiller ve izinler sırasında. Ne yazık ki, harici politika değişiklikleri özellik geliştirmeden giderek daha fazla zaman alır. Örneğin, teknik olarak Talkie Manifest Sürüm 3'e (MV3) yükseltmek, Talkie 'nin kullanışlılığında belirgin bir iyileşme olmaksızın birkaç haftalık çalışma (2023-2024) aldı.",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Talkie üzerinde çalışmaya ne kadar zaman harcıyorsunuz?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "Şu anda emin değilim. Talkie (2016) başkalarının keyif alması için geliştirdim ve kendim kullanmıyorum. Yeni özellikler eklemek ve yeni şeyler öğrenmek eğlenceli. Olumlu geri bildirimler almak ve kullanıcı sayısının arttığını görmek güzel. Ancak şu anda en sevdiğim hobi değil çünkü dış etkenlerin son yıllarda (2020-2024) geliştirme üzerinde olumsuz etkisi oldu. Özellikle bir web uzantısı yayınlamak, Google Chrome Web Mağazası'nın (CWS) ve Firefox için Mozilla Eklentileri'nin (AMO) sürekli gelişen politikalarıyla güncel kalmayı gerektirir.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Talkie üzerinde ne kadar süre çalışmaya devam edeceksiniz?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Bu sorunun cevabı güvenilir bir şekilde güncel tutulamaz. Güncel proje durumu için Talkie web sitesini ziyaret edin.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Hala aktif olarak Talkie üzerinde mi çalışıyorsunuz?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Hatalar",
@@ -385,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "Talkie nin ücretsiz sürümünü kullanıyor ve sınırlı sayıda özellik mevcut. Belki Talkie Premium sizin için daha iyi bir seçim olur?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "Şu anda Talkie nin ücretsiz sürümünü kullanıyorsunuz ve sınırlı sayıda özellik mevcut. Talkie Premium ye yükseltmeyi düşündünüz mü?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "Şu anda Talkie Premium kullanılıyor ve tüm özellikler mevcut. Çok teşekkür ederim, kalbimi ısıtıyor!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "Şu anda Talkie Premium kullanıyorsunuz ve tüm özellikler mevcut. Çok teşekkür ederim, kalbimi ısıttı!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie iki sürüm Talkie ve Talkie Premium. Ücretsiz sürüm çoğu kullanım durumu için harikadır, ancak premium sürüm ek seçenekler ve özellikler sunar.",
@@ -413,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Kod açık kaynak kodludur ve tüm kullanıcılar için ücretsizdir.",
-    "original": "Code is open source and available for free to all users."
+    "message": "Kod açık kaynaklıdır ve tüm kullanıcılar tarafından tam olarak kullanılabilir.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Özgür!",
-    "original": "Free!"
+    "message": "Dilediğiniz kadar ücretsiz kullanın.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Özellikleri",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Her dil için kendi varsayılan sesinizi seçin. Sistem sesinden bıktıysanız harika!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Her dil için kendi tercih ettiğiniz sesi seçin.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Ses başına okuma hızını ve perdesini seçin. Sesleri beğeninize göre ayarlayın!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Sese göre okuma hızını ve perdeyi ayarlayın.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Bağımsız geliştiricilerin açık kaynaklı yazılımlarını desteklerken hissettiğiniz o sıcak, bulanık duygu.",
@@ -441,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Panodaki metni okuyun! Herhangi bir programdaki herhangi bir yerden metni kopyalayın ve okumak için Talkie Premium",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Panodan metni konuş. Herhangi bir programdaki herhangi bir yerden herhangi bir metni kopyala ve okumak için Talkie Premium kullan.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Mevcut metinden sese sesler",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Lütfen sisteminize bazı sesler kurun, aksi takdirde Talkie çalışmayacaktır. Üzgünüm!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Herhangi bir metinden sese ses bulunamadı. Sesler olmadan Talkie düzgün çalışamaz. Bazen bu sayfayı yeniden yüklemek yardımcı olur, en azından tarayıcı yavaşsa veya çok fazla ses varsa.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Metin-konuşma sesi bulunamadı",
@@ -460,6 +524,10 @@
     "message": "Lisans",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Üçüncü taraf lisansları",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Yükleniyor...",
     "original": "Loading..."
@@ -471,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "Ayarlar",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Panodaki metni görüntüle",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "Panoya erişim izni verilmedi.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "Panoya erişim iznini reddet",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "Herhangi bir programdan metin konuşmak için metni panoya kopyalayabilir ve yapılandırılabilir klavye kısayolunu kullanabilirsiniz. Talkie panoya erişebilmesi için önce izin vermeniz gerekir. Bu bir Talkie Premium özelliğidir.",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "İzninizi istediğiniz zaman verin veya reddedin. Tarayıcınız sizden onaylamanızı isteyebilir veya istemeyebilir.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Panoya izin ver",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Panoya erişim izni verildi.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Panoya erişim izni",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "Panoya erişim bilinmiyor veya başarısız.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "Panodaki metni konuş",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "Panodaki metin okunamadı.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "Panodaki yazı okunabiliyordu.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "Panodaki metin okunmadı.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Hiçbir geçmiş girişi yok.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "Tarih",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "Dil",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Durum",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "Ses",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie , 2016/2017 Yeni Yılından birkaç gün önce bir arkadaşın meydan okuması üzerine geliştirildi. Zorluk şu soruyla başladı: işe gidip gelirken bir makaleyi okumak yerine dinlemek mümkün müdür? Kolay, dedim ve bunu kanıtlamaya ya da en azından tarayıcımın aptal bir bilgisayar sesi kullanarak metni sesli olarak söylemesini sağlamaya koyuldum. Herhangi bir kullanıcı arayüzü olmayan temel sürümün oluşturulmasının önemsiz olduğu ortaya çıktı. Bir kullanıcı arayüzü eklemek biraz daha uzun sürdü. Uygun dil algılaması ekleme, bir sürü kod daha. Tarayıcıdaki hataların üstesinden gelmek daha da fazla iş. İyileştirmelerin ve özelliklerin listesi uzayıp gidiyor ve birkaç bin satır koddan sonra sonuca bakıyorsunuz.",
@@ -489,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Bir sorunuz mu var? Bir konuda yardıma mı ihtiyacınız var? Sık sorulan sorulara hızlı yanıtlar için aşağıdaki sık sorulan sorulara bakın. Bu size bir cevap vermezse, lütfen olabilecek tüm soruları bana gönderin. $NAME$ kullanma deneyiminiz sorunsuz ve keyifliyse çok sevinirim!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Hızlı ve kolay destek için lütfen bu genel sorulara ve cevaplara göz atın. Sorunuz hala cevaplanmadıysa lütfen benimle iletişime geçin.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "Destek",
@@ -555,40 +689,36 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Talkie Premium için fiyat sabit değildir. Bunun yerine, premium özelliklerin sizin için ne kadar değerli olduğunu düşündüğünüze bağlı olarak istediğinizi ödersiniz. Hiçbir şey ödememeye bile karar verebilirsiniz.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Talkie Premium için fiyat sabit değildir. Bunun yerine, premium özelliklerin sizin için ne kadar değerli olduğunu düşündüğünüze bağlı olarak istediğinizi bağışlarsınız. Hiçbir şey bağışlamamaya bile karar verebilirsiniz.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Ödemeyi gönderdikten sonra girilecek yükseltme kodu, kaydedilecek kullanıcı hesabı veya başka bir ödeme doğrulaması yapılmaz. Bunun yerine Talkie Premium , onur sistemini kullanır.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "Bağış yaptıktan sonra girilecek yükseltme kodları, kaydedilecek kullanıcı hesapları veya başka bir bağış doğrulaması yoktur. Bunun yerine Talkie Premium onur sistemini kullanır.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Lütfen Talkie alternatif para kazanma yolu olarak herhangi bir reklam, kullanıcı takibi veya veri toplamaya sahip olmadığını unutmayın. Ödemeler, açık kaynaklı yazılım geliştirme için bağış olarak etiketlenir.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie alternatif para kazanma araçları olarak herhangi bir reklam, kullanıcı izleme veya veri toplaması yoktur. Bağışlar açık kaynaklı yazılım geliştirme için bahşiş olarak etiketlenir.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Talkie Premium ye yükseltin",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Talkie Premium için ödeme yaptım",
-    "original": "I have paid for Talkie Premium"
+    "message": "Talkie Premium ye yükseltin",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Bağış sayfası aracılığıyla daha fazla ödeme yöntemi",
-    "original": "More payment methods via the donations page"
+    "message": "Ek bağış yöntemleri",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "PayPal kullanarak öde",
-    "original": "Pay using PayPal"
+    "message": "PayPal kullanarak bağış yapın",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "kullanım",
     "original": "Usage"
-  },
-  "frontend_usageReadclipboard": {
-    "message": "Panonuza kopyalanan herhangi bir metni okuyun — tarayıcının dışında herhangi bir yerden metin dinlemek için bir kısayol tuşuyla kullanın. Talkie Premium düğmesine veya bir web sitesinin boş bir alanına sağ tıklayıp panodan oku seçeneğini de seçebilirsiniz.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Ayrıca metni seçip üzerine sağ tıklayıp menüden Talkie seçebilirsiniz. Bu yöntem, tarayıcıdaki PDF dosyalarında ve bazı özel sayfa türlerinde de çalışır.",
@@ -614,9 +744,9 @@
     "message": "Uygun bir seçenek, Talkie kısayol tuşlarını kullanmaktır:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Herhangi bir programda panodan metin okuyun",
-    "original": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Metni doğrudan panodan konuş",
+    "original": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Başla dur",
@@ -626,6 +756,10 @@
     "message": "Başla dur",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Panonuza kopyalanan herhangi bir metni yapılandırılmış seslerinizi kullanarak konuşun. En kolay yol yapılandırılabilir bir kısayol tuşu kullanmaktır. Ayrıca Talkie Premium düğmesine veya bir web sitesinin boş bir alanına sağ tıklayabilir ve Panodan konuş seçeneğini seçebilirsiniz.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Herhangi bir web sayfasında istediğiniz metni seçin.",
     "original": "Select desired text on any web page."
@@ -633,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Tarayıcı araç çubuğunuzdaki Talkie düğmesini tıklayın",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie bir sayfadaki seçili metni okumak için kullanılabilir. Sayfa kapatıldığında veya sayfa adresi değiştiğinde, Talkie konuşmaya devam edebilir veya otomatik olarak durabilir.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Konuşmaya devam edin veya otomatik olarak durun",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Sekme veya pencere kapatıldığında Talkie konuşmaya devam edebilir veya otomatik olarak durabilir.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Sayfa kapatıldığında",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Sekme kapatıldığında konuşmaya devam et",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "Adres değişiklikleri öncelikle başka bir sayfaya gitmek için bir bağlantıya tıklandığında veya adres çubuğuna elle yazıldığında gerçekleşir. Bazı web siteleri, örneğin ek bilgi yüklenirken, adresi başka durumlarda da değiştirebilir.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Sayfa adresi değiştiğinde Talkie konuşmaya devam edebilir veya otomatik olarak durabilir.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "Gizlilik nedenleriyle, Mozilla Firefox sayfa adresi değiştiğinde her zaman bildirimde bulunmaz. Bu ayarı devre dışı bırakmanın herhangi bir etkisi olmayabilir.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Sayfa adresi değiştiğinde",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Adres değiştiğinde konuşmaya devam edin",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "$LANGUAGE_CODE$ lehçesinin varsayılan sesi $VOICE$ dır.",
@@ -679,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "$LANGUAGE_CODE$ için $VOICES_COUNT$ ses bulundu.",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Kurulu ses lehçeleri",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Yüklü ses dilleri",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Kurulu sesler",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "sesler",
@@ -783,9 +983,65 @@
     "message": "Duraklama olmadan daha uzun metinleri okuyun (deneysel)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Bireysel geçmiş girişlerini unutun",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Tüm $HISTORY_COUNT$ geçmiş girişini unut",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie daha önce konuşulan metni hatırlayabilir, böylece daha sonra tekrar oynatılabilir. Bu ayar, kaç tane geçmiş girişinin hatırlanacağını sınırlar.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Geçmiş girişlerinin sayısını anında azaltmak için sınırı düşürün. 0 sınırı, geçmişi hatırlamayı devre dışı bırakır. Varsayılan sınır $DEFAULT_LIMIT$ tir.",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "Şu anda hatırlanan $HISTORY_COUNT$ geçmiş girişi var. Hepsini bir kerede unutabilir veya tek tek girişleri unutabilirsiniz.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "Tarih",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Tarih giriş limiti",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Talkie Premium ile her dil için varsayılan sesi ve ayrıca her ses için sesi ve perdeyi değiştirebilirsiniz.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ çevrimiçi bir sestir. Üçüncü taraf hizmetlerine erişmek için kullanımı etkin bir internet bağlantısı gerektirebilir.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "$NAME$ hoş geldiniz! Artık dünyanın en iyi metin okuma tarayıcı uzantılarından birini kullanıyorsunuz.",
@@ -798,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Devam edin ve bu metni seçin, ardından tarayıcı araç çubuğundaki $NAME$ Zevk almak!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Bu metni seçin ve ardından tarayıcı araç çubuğundaki $NAME$ düğmesine tıklayın.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie şu anda $OSTYPE_PRETTY_NAME$ işletim sisteminde çalışan $SYSTEM_TYPE_PRETTY_NAME$ tarayıcınızda yüklü $LANGUAGES_COUNT$ $LANGUAGE_GROUPS_COUNT$ dili etkinleştiren $VOICES_COUNT$",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie şu anda yüklü $VOICES_COUNT$ sesi bulabiliyor ve bu da $ $LANGUAGES_COUNT$ lehçede $LANGUAGE_GROUPS_COUNT$ dili etkinleştiriyor.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -848,15 +1096,15 @@
   },
   "readClipboardIsAPremiumFeature": {
     "message": "Üzgünüm ama panodan metin okumak bir Talkie Premium özelliğidir. Yükseltmeyi düşündünüz mü?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Üzgünüm ama bu tarayıcı panodan okumayı desteklemiyor. Henüz değil, en azından. Lütfen bir ay kadar sonra tekrar deneyin!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Üzgünüm, ancak bu tarayıcı panoya erişimi desteklemiyor gibi görünüyor.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie panodan erişim iznine sahip değil. Sorun değil, ancak pano metnini okumak işe yaramaz.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie panoya erişim iznine sahip değil. Talkie seçenekler sayfasından izin verebilirsiniz.",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Panoda uygun metin bulunamadı. Başka bir şey kopyalamayı deneyebilir misin?",

@@ -1,0 +1,48 @@
+{
+  "name": "@talkie/browser-offscreen",
+  "version": "0.0.0",
+  "author": {
+    "email": "code+github@joelpurra.com",
+    "name": "Joel Purra",
+    "url": "https://joelpurra.com/"
+  },
+  "bundledDependencies": [
+    "type-fest"
+  ],
+  "dependencies": {
+    "@talkie/browser-bricks": "*",
+    "@talkie/browser-mason": "*",
+    "@talkie/browser-shared": "*",
+    "@talkie/shared-application": "*",
+    "@talkie/shared-application-helpers": "*",
+    "@talkie/split-environment-interfaces": "*",
+    "@talkie/split-environment-webextension": "*"
+  },
+  "devDependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "exports": {
+    "./*": {
+      "types": "./dist/esm/*",
+      "import": "./dist/esm/*"
+    }
+  },
+  "homepage": "https://joelpurra.com/projects/talkie/",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run --silent build:typescript && npm run --silent build:rollup",
+    "build:rollup": "rollup --config rollup.config.mjs",
+    "build:typescript": "tsc --build tsconfig.json",
+    "clean": "rimraf ./dist",
+    "watch": "npm run --silent build -- --watch"
+  },
+  "type": "module",
+  "typesVersions": {
+    "^4": {
+      "*": [
+        "src/*"
+      ]
+    }
+  }
+}

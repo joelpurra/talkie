@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 // eslint-disable-next-line import/no-unassigned-import
 import "reselect";
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
 	getVoiceForVoiceNameFromVoices,
@@ -79,6 +78,7 @@ export const getVoicesObjectByLanguageForSelectedLanguageGroup = createDraftSafe
 		getSelectedLanguageGroup,
 	],
 	// TODO: eliminate null case.
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(voicesByLanguagesByLanguageGroup, selectedLanguageGroup) => voicesByLanguagesByLanguageGroup[selectedLanguageGroup ?? "selectedLanguageGroup-does-not-exist"] ?? {},
 );
 
@@ -87,6 +87,7 @@ export const getVoicesByLanguageForSelectedLanguageGroup = createDraftSafeSelect
 		getVoicesObjectByLanguageForSelectedLanguageGroup,
 	],
 	// TODO: at some point in the hierarchy, switch to using an array insted of a nested object?
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(voicesObjectByLanguagesByLanguageGroup) => Object.values(voicesObjectByLanguagesByLanguageGroup),
 );
 
@@ -94,6 +95,7 @@ export const getSortedVoicesByLanguageForSelectedLanguageGroup = createDraftSafe
 	[
 		getVoicesObjectByLanguageForSelectedLanguageGroup,
 	],
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(voicesObjectByLanguagesByLanguageGroup) => {
 		// TODO: at some point in the hierarchy, switch to using an array insted of a nested object?
 		for (const voices of Object.values(voicesObjectByLanguagesByLanguageGroup)) {
@@ -112,6 +114,7 @@ export const getLanguagesForSelectedLanguageGroup = createDraftSafeSelector(
 		getSelectedLanguageGroup,
 	],
 	// TODO: eliminate null case.
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(languagesByLanguageGroupFromVoices, selectedLanguageGroup) => languagesByLanguageGroupFromVoices[selectedLanguageGroup ?? "selectedLanguageGroup-does-not-exist"] ?? [],
 );
 
@@ -120,7 +123,9 @@ export const getSortedLanguagesForSelectedLanguageGroup = createDraftSafeSelecto
 		getLanguagesForSelectedLanguageGroup,
 	],
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	(languagesForSelectedLanguageGroup) => languagesForSelectedLanguageGroup.slice().sort((a, b) => a.localeCompare(b)),
+	(languagesForSelectedLanguageGroup) => [
+		...languagesForSelectedLanguageGroup,
+	].sort((a, b) => a.localeCompare(b)),
 );
 
 export const getLanguageCountForSelectedLanguageGroup = createDraftSafeSelector(
@@ -166,6 +171,7 @@ export const getVoicesForSelectedLanguageCode = createDraftSafeSelector(
 		getSortedVoicesByLanguageForSelectedLanguageGroup,
 		getSelectedLanguageCode,
 	],
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	(sortedVoicesByLanguageForSelectedLanguageGroup, selectedLanguageCode) => sortedVoicesByLanguageForSelectedLanguageGroup[selectedLanguageCode ?? "selectedLanguageCode-does-not-exist"] ?? [],
 );
 

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,18 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	OsType,
-	SystemType,
+	type OsType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import React from "react";
 
 import Loading from "../../../components/loading.js";
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 import InstallVoicesFaq from "./install-voices-faq.js";
 
 interface InstallVoicesState {
@@ -42,7 +42,7 @@ export interface InstallVoicesProps {
 	languageGroupsCount: number;
 	languagesCount: number;
 	osType?: OsType | null;
-	systemType: SystemType | null;
+	showAdditionalDetails: boolean;
 	voicesCount: number;
 }
 
@@ -57,13 +57,19 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 		hasWaitedLongEnoughForVoicesToLoad: false,
 	};
 
+	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
+	// https://nodejs.org/api/timers.html#timers_class_timeout
+	// https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private _voiceLoadTimeoutId: any | null;
+
 	// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 	constructor(props: P) {
 		super(props);
 	}
 
 	override componentDidMount() {
-		setTimeout(
+		this._voiceLoadTimeoutId = setTimeout(
 			() => {
 				this.setState({
 					hasWaitedLongEnoughForVoicesToLoad: true,
@@ -73,59 +79,72 @@ class InstallVoices<P extends InstallVoicesProps & TranslateProps> extends React
 		);
 	}
 
+	override componentWillUnmount(): void {
+		this.componentCleanup();
+	}
+
+	componentCleanup() {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		clearTimeout(this._voiceLoadTimeoutId);
+	}
+
 	override render(): React.ReactNode {
 		const {
 			haveVoices,
 			languageGroupsCount,
 			languagesCount,
 			osType,
-			systemType,
+			showAdditionalDetails,
 			translateSync,
 			voicesCount,
-		} = this.props;
-
-		// NOTE: don't show additional details on the welcome page.
-		const showAdditionalDetails = false;
+		} = this.props as P;
 
 		const moreVoicesCountsMarkdown = translateSync("frontend_welcomeInstallMoreVoicesDescription", [
 			`**${voicesCount.toString(10)}**`,
 			`**${languageGroupsCount.toString(10)}**`,
 			`**${languagesCount.toString(10)}**`,
-
-			// TODO: translated fallback.
-			systemType ?? "(ERROR: unknown system type)",
-
-			// TODO: translated fallback.
-			osType ?? "(ERROR: unknown operating system)",
 		]);
+
+		const doneWithLoading = haveVoices || this.state.hasWaitedLongEnoughForVoicesToLoad;
+		const zeroVoicesLoaded = !haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad;
 
 		return (
 			<section>
-				<Discretional
-					enabled={haveVoices || !this.state.hasWaitedLongEnoughForVoicesToLoad}
+				<textBase.h3>
+					{translateSync("frontend_installVoicesHeading")}
+				</textBase.h3>
+
+				<Loading
+					isBlockElement
+					enabled={doneWithLoading}
 				>
-					<Loading
-						isBlockElement
-						enabled={haveVoices}
-					>
-						<textBase.p>
-							<Markdown>
-								{moreVoicesCountsMarkdown}
-							</Markdown>
-						</textBase.p>
-					</Loading>
-				</Discretional>
+					<p>
+						<MarkdownStrong>
+							{moreVoicesCountsMarkdown}
+						</MarkdownStrong>
+					</p>
+				</Loading>
 
 				<Discretional
-					enabled={!haveVoices && this.state.hasWaitedLongEnoughForVoicesToLoad}
+					enabled={zeroVoicesLoaded}
 				>
 					<textBase.h3>
 						{translateSync("frontend_installVoicesNoVoiceFoundHeading")}
+						{/* TODO: better location for a button, with a translated label? */}
+						{" "}
+						<buttonBase.button
+							type="button"
+							onClick={() => {
+								location.reload();
+							}}
+						>
+							🗘
+						</buttonBase.button>
 					</textBase.h3>
 
-					<textBase.p>
+					<p>
 						{translateSync("frontend_installVoicesNoVoiceFound")}
-					</textBase.p>
+					</p>
 				</Discretional>
 
 				<InstallVoicesFaq

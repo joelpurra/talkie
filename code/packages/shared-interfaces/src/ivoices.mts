@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,26 +18,59 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export type IVoiceName = {
+import {
+	type JsonObject,
+} from "type-fest";
+
+export interface IVoiceName {
 	name: string;
-};
-export type IVoiceLanguage = {
+}
+
+export interface IVoiceLanguage {
 	lang: string;
-};
-export type IVoiceNameAndLanguage = IVoiceName & IVoiceLanguage;
-export type IVoiceNameAndRateAndPitch = IVoiceName & {
+}
+
+export interface IVoiceNameAndLanguage extends IVoiceName, IVoiceLanguage {}
+
+export interface IVoiceNameAndRateAndPitch extends IVoiceName {
 	rate: number;
 	pitch: number;
-};
+}
 
-// TODO: add `extends JsonObject` when it does not trigger error TS2589: Type instantiation is excessively deep and possibly infinite?
-export interface MutableSafeVoiceObject {
+export interface MutableSafeVoiceObject extends JsonObject {
 	isSafeVoiceObject: true;
 	default: boolean;
 	lang: string;
 	localService: boolean;
 	name: string;
-	voiceURI: string;
+	voiceUri: string;
 }
 
 export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
+
+export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
+
+export interface MutableSafeUtteranceObject extends JsonObject {
+	lang: string;
+	pitch: number;
+	rate: number;
+	text: string;
+	voice: SafeVoiceObject | null;
+	volume: number;
+}
+
+export interface SafeUtteranceObject extends Readonly<MutableSafeUtteranceObject> {}
+
+export interface SafeUtteranceObjects extends Readonly<SafeUtteranceObject[]> {}
+
+export interface MutableSpeechSynthesisEventObject extends JsonObject {
+	charIndex: number;
+	charLength: number;
+	elapsedTime: number;
+	name: string;
+	utterance: SafeUtteranceObject;
+}
+
+export interface SafeSpeechSynthesisEventObject extends Readonly<MutableSpeechSynthesisEventObject> {}
+
+export interface SafeSpeechSynthesisEventObjects extends Readonly<SafeSpeechSynthesisEventObject[]> {}

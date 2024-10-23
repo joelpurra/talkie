@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,23 +19,22 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	LanguageTextDirection,
-	TalkieLocale,
+	type LanguageTextDirection,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
-// @ts-expect-error: File is not a module.ts(2306)
 import languagesJson from "./languages.cjs";
 
-export type LanguageData = {
+export interface LanguageData {
 	"direction": LanguageTextDirection;
 	"sample": string;
-};
+}
 
 export type LanguageDataKey = keyof LanguageData;
 
-export type LanguagesData = {
+export interface LanguagesData {
 	"base": LanguageData;
 	"languages": Record<TalkieLocale, LanguageData>;
-};
+}
 
 export default languagesJson as LanguagesData;

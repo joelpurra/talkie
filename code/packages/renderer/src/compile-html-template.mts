@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,16 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClientFunction,
-	compile,
-	Options,
-} from "ejs";
-import {
 	readFile,
 } from "node:fs/promises";
 
 import {
-	ReactHtmlTemplateLocalsVariables,
+	type ClientFunction,
+	compile,
+	type Options,
+} from "ejs";
+
+import {
+	type ReactHtmlTemplateLocalsVariables,
 } from "./render-types.mjs";
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

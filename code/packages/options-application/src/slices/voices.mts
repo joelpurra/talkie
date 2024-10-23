@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,18 +22,17 @@ import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
 import {
 	isLanguageGroup,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
 	DefaultLanguageDirection,
-	LanguageTextDirection,
-	TalkieLocale,
+	type LanguageTextDirection,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 import {
-	IApiAsyncThunkConfig,
+	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 import {
@@ -102,7 +101,8 @@ const prefix = "voices";
 export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageCode`,
 	async (
-		languageCode, {
+		languageCode,
+		{
 			dispatch,
 			getState,
 		},
@@ -124,7 +124,10 @@ export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IA
 			}
 		}
 
+		// TODO: return, instead of dispatch, the loaded value.
 		dispatch(setSelectedLanguageCode(languageCode));
+
+		// TODO: systematic action thunk side-effects.
 		await dispatch(loadEffectiveVoiceForLanguageCode());
 
 		// TODO: re-architecture to avoid getState() in action -- in particular when also directly/indirectly updating the state in the same call tree.
@@ -141,14 +144,17 @@ export const loadSelectedLanguageCode = createAsyncThunk<void, string | null, IA
 export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedLanguageGroup`,
 	async (
-		languageGroup, {
+		languageGroup,
+		{
 			dispatch,
 			getState,
 		},
 	) => {
+		// TODO: return, instead of dispatch, the loaded value.
 		dispatch(setSelectedLanguageGroup(languageGroup));
 
 		// NOTE: dependent properties load from the selected language group in the state, instead of an argument, to avoid discrepancies.
+		// TODO: systematic action thunk side-effects.
 		// TODO: merge the results into a single object, as the result of this action?
 		// TODO: create a slice for the selected language group, including all dependent properties?
 		await dispatch(loadEffectiveVoiceForLanguageGroup());
@@ -174,7 +180,8 @@ export const loadSelectedLanguageGroup = createAsyncThunk<void, string | null, I
 export const loadIsSelectedLanguageGroupTalkieLocale = createAsyncThunk<boolean, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadIsSelectedLanguageGroupTalkieLocale`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -185,14 +192,15 @@ export const loadIsSelectedLanguageGroupTalkieLocale = createAsyncThunk<boolean,
 			return false;
 		}
 
-		return extra.isTalkieLocale(selectedLanguageGroup);
+		return extra.coating!.talkieLocale.isTalkieLocale(selectedLanguageGroup);
 	},
 );
 
 export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<LanguageTextDirection, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadTextDirectionForSelectedLanguageGroup`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -203,10 +211,10 @@ export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<Langua
 			return DefaultLanguageDirection;
 		}
 
-		const isTalkieLocale = await extra.isTalkieLocale(selectedLanguageGroup);
+		const isTalkieLocale = await extra.coating!.talkieLocale.isTalkieLocale(selectedLanguageGroup);
 
 		if (isTalkieLocale) {
-			return extra.getBidiDirection(selectedLanguageGroup as TalkieLocale);
+			return extra.coating!.talkieLocale.getBidiDirection(selectedLanguageGroup as TalkieLocale);
 		}
 
 		return DefaultLanguageDirection;
@@ -216,25 +224,27 @@ export const loadTextDirectionForSelectedLanguageGroup = createAsyncThunk<Langua
 export const loadSelectedVoiceName = createAsyncThunk<void, string | null, IApiAsyncThunkConfig>(
 	`${prefix}/loadSelectedVoiceName`,
 	async (
-		voiceName, {
+		voiceName,
+		{
 			dispatch,
 		},
 	) => {
+		// TODO: return, instead of dispatch, the loaded value.
 		dispatch(setSelectedVoiceName(voiceName));
 
-		if (typeof voiceName === "string") {
-			await Promise.all([
-				dispatch(loadEffectiveRateForVoice()),
-				dispatch(loadEffectivePitchForVoice()),
-			]);
-		}
+		// TODO: systematic action thunk side-effects.
+		await Promise.all([
+			dispatch(loadEffectiveRateForVoice()),
+			dispatch(loadEffectivePitchForVoice()),
+		]);
 	},
 );
 
 export const loadEffectiveRateForVoice = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveRateForVoice`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -242,34 +252,35 @@ export const loadEffectiveRateForVoice = createAsyncThunk<number, void, IApiAsyn
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
 		if (typeof selectedVoiceName === "string") {
-			return extra.getEffectiveRateForVoice(selectedVoiceName);
+			return extra.groundwork!.voices.getEffectiveRateForVoice(selectedVoiceName);
 		}
 
 		return initialState.rateForSelectedVoice;
 	},
 );
 
-export const storeVoiceRateOverride = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
+export const storeVoiceRateOverride = createAsyncThunk<number, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeVoiceRateOverride`,
 	async (
-		rate, {
-			dispatch,
+		rate,
+		{
 			extra,
 			getState,
 		},
 	) => {
 		const assertedSelectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
 
-		await extra.setVoiceRateOverride(assertedSelectedVoiceName, rate);
-		dispatch(setRateForSelectedVoice(rate));
-		void dispatch(speakInSelectedVoiceNameState());
+		await extra.groundwork!.voices.setVoiceRateOverride(assertedSelectedVoiceName, rate);
+
+		return rate;
 	},
 );
 
 export const loadEffectivePitchForVoice = createAsyncThunk<number, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectivePitchForVoice`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -277,35 +288,35 @@ export const loadEffectivePitchForVoice = createAsyncThunk<number, void, IApiAsy
 		const selectedVoiceName = getSelectedVoiceName(getState() as OptionsRootState);
 
 		if (typeof selectedVoiceName === "string") {
-			return extra.getEffectivePitchForVoice(selectedVoiceName);
+			return extra.groundwork!.voices.getEffectivePitchForVoice(selectedVoiceName);
 		}
 
 		return initialState.pitchForSelectedVoice;
 	},
 );
 
-export const storeVoicePitchOverride = createAsyncThunk<void, number, IApiAsyncThunkConfig>(
+export const storeVoicePitchOverride = createAsyncThunk<number, number, IApiAsyncThunkConfig>(
 	`${prefix}/storeVoicePitchOverride`,
 	async (
-		pitch, {
-			dispatch,
+		pitch,
+		{
 			extra,
 			getState,
 		},
 	) => {
 		const assertedSelectedVoiceName = getAssertedSelectedVoiceName(getState() as OptionsRootState);
 
-		await extra.setVoicePitchOverride(assertedSelectedVoiceName, pitch);
-		dispatch(setPitchForSelectedVoice(pitch));
-		void dispatch(speakInSelectedVoiceNameState());
+		await extra.groundwork!.voices.setVoicePitchOverride(assertedSelectedVoiceName, pitch);
+
+		return pitch;
 	},
 );
 
-export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguageCode`,
 	async (
-		_, {
-			dispatch,
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -313,20 +324,20 @@ export const loadEffectiveVoiceForLanguageCode = createAsyncThunk<void, void, IA
 		const selectedLanguageCode = getSelectedLanguageCode(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageCode === "string") {
-			const effectiveVoiceForLanguage = await extra.getEffectiveVoiceForLanguage(selectedLanguageCode);
+			const effectiveVoiceForLanguage = await extra.groundwork!.voices.getEffectiveVoiceForLanguage(selectedLanguageCode);
 
-			dispatch(setEffectiveVoiceNameForSelectedLanguage(effectiveVoiceForLanguage));
-		} else {
-			dispatch(setEffectiveVoiceNameForSelectedLanguage(null));
+			return effectiveVoiceForLanguage;
 		}
+
+		return null;
 	},
 );
 
-export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadEffectiveVoiceForLanguageGroup`,
 	async (
-		_, {
-			dispatch,
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -334,12 +345,12 @@ export const loadEffectiveVoiceForLanguageGroup = createAsyncThunk<void, void, I
 		const selectedLanguageGroup = getSelectedLanguageGroup(getState() as OptionsRootState);
 
 		if (typeof selectedLanguageGroup === "string") {
-			const effectiveVoiceForLanguageGroup = await extra.getEffectiveVoiceForLanguage(selectedLanguageGroup);
+			const effectiveVoiceForLanguageGroup = await extra.groundwork!.voices.getEffectiveVoiceForLanguage(selectedLanguageGroup);
 
-			dispatch(setEffectiveVoiceNameForSelectedLanguageGroup(effectiveVoiceForLanguageGroup));
-		} else {
-			dispatch(setEffectiveVoiceNameForSelectedLanguageGroup(null));
+			return effectiveVoiceForLanguageGroup;
 		}
+
+		return null;
 	},
 );
 
@@ -354,7 +365,7 @@ export const storeEffectiveVoiceNameForLanguage = createAsyncThunk<void, StoreEf
 			extra,
 		},
 	) => {
-		await extra.toggleLanguageVoiceOverrideName(languageCodeOrGroup, voiceName);
+		await extra.groundwork!.voices.toggleLanguageVoiceOverrideName(languageCodeOrGroup, voiceName);
 
 		// HACK: duplicate function to set either language code or group?
 		const loader = isLanguageGroup(languageCodeOrGroup)
@@ -365,11 +376,11 @@ export const storeEffectiveVoiceNameForLanguage = createAsyncThunk<void, StoreEf
 	},
 );
 
-export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+export const loadSampleTextForLanguageGroup = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSampleTextForLanguageGroup`,
 	async (
-		_, {
-			dispatch,
+		_,
+		{
 			getState,
 			extra,
 		},
@@ -378,17 +389,18 @@ export const loadSampleTextForLanguageGroup = createAsyncThunk<void, void, IApiA
 		const isTalkieLocale = getIsSelectedLanguageGroupTalkieLocale(getState() as OptionsRootState);
 
 		const sampleTextForLanguageGroup = isTalkieLocale
-			? await extra.getSampleText(selectedLanguageGroup as TalkieLocale)
+			? await extra.coating!.talkieLocale.getSampleText(selectedLanguageGroup as TalkieLocale)
 			: null;
 
-		dispatch(setSampleTextForLanguageGroup(sampleTextForLanguageGroup));
+		return sampleTextForLanguageGroup;
 	},
 );
 
 export const speakInSelectedVoiceNameState = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	`${prefix}/speakInSelectedVoiceNameState`,
 	async (
-		_, {
+		_,
+		{
 			extra,
 			getState,
 		},
@@ -408,46 +420,68 @@ export const speakInSelectedVoiceNameState = createAsyncThunk<void, void, IApiAs
 				rate: rateForSelectedVoice,
 			};
 
-			extra.debouncedSpeakTextInCustomVoice(text, voice);
+			void extra.groundwork!.speaking.speakTextInCustomVoice(text, voice);
 		}
 	},
 );
 
 export const voicesSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
+		// TODO: deduplicate this extra async "side-effect reducer" and the exposed sync reducer?
 		builder
 			.addCase(loadIsSelectedLanguageGroupTalkieLocale.fulfilled, (state, action) => {
 				state.isSelectedLanguageGroupTalkieLocale = action.payload;
 			})
 			.addCase(loadTextDirectionForSelectedLanguageGroup.fulfilled, (state, action) => {
 				state.textDirectionForSelectedLanguageGroup = action.payload;
+			})
+			.addCase(loadEffectiveRateForVoice.fulfilled, (state, action) => {
+				state.rateForSelectedVoice = action.payload;
+			})
+			.addCase(loadEffectivePitchForVoice.fulfilled, (state, action) => {
+				state.pitchForSelectedVoice = action.payload;
+			})
+			.addCase(loadEffectiveVoiceForLanguageCode.fulfilled, (state, action) => {
+				state.effectiveVoiceNameForSelectedLanguageCode = action.payload;
+			})
+			.addCase(loadEffectiveVoiceForLanguageGroup.fulfilled, (state, action) => {
+				state.effectiveVoiceNameForSelectedLanguageGroup = action.payload;
+			})
+			.addCase(loadSampleTextForLanguageGroup.fulfilled, (state, action) => {
+				state.sampleTextForLanguageGroup = action.payload;
+			})
+			.addCase(storeVoiceRateOverride.fulfilled, (state, action) => {
+				state.rateForSelectedVoice = action.payload;
+			})
+			.addCase(storeVoicePitchOverride.fulfilled, (state, action) => {
+				state.pitchForSelectedVoice = action.payload;
 			});
 	},
 	initialState,
 	name: prefix,
 	reducers: {
-		setEffectiveVoiceNameForSelectedLanguage: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+		setEffectiveVoiceNameForSelectedLanguage(state: Draft<VoicesState>, action: PayloadAction<string | null>) {
 			state.effectiveVoiceNameForSelectedLanguageCode = action.payload;
 		},
-		setEffectiveVoiceNameForSelectedLanguageGroup: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+		setEffectiveVoiceNameForSelectedLanguageGroup(state: Draft<VoicesState>, action: PayloadAction<string | null>) {
 			state.effectiveVoiceNameForSelectedLanguageGroup = action.payload;
 		},
-		setPitchForSelectedVoice: (state: Draft<VoicesState>, action: PayloadAction<number>) => {
+		setPitchForSelectedVoice(state: Draft<VoicesState>, action: PayloadAction<number>) {
 			state.pitchForSelectedVoice = action.payload;
 		},
-		setRateForSelectedVoice: (state: Draft<VoicesState>, action: PayloadAction<number>) => {
+		setRateForSelectedVoice(state: Draft<VoicesState>, action: PayloadAction<number>) {
 			state.rateForSelectedVoice = action.payload;
 		},
-		setSampleTextForLanguageGroup: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+		setSampleTextForLanguageGroup(state: Draft<VoicesState>, action: PayloadAction<string | null>) {
 			state.sampleTextForLanguageGroup = action.payload;
 		},
-		setSelectedLanguageCode: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+		setSelectedLanguageCode(state: Draft<VoicesState>, action: PayloadAction<string | null>) {
 			state.selectedLanguageCode = action.payload;
 		},
-		setSelectedLanguageGroup: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+		setSelectedLanguageGroup(state: Draft<VoicesState>, action: PayloadAction<string | null>) {
 			state.selectedLanguageGroup = action.payload;
 		},
-		setSelectedVoiceName: (state: Draft<VoicesState>, action: PayloadAction<string | null>) => {
+		setSelectedVoiceName(state: Draft<VoicesState>, action: PayloadAction<string | null>) {
 			state.selectedVoiceName = action.payload;
 		},
 	},
@@ -465,4 +499,5 @@ export const {
 	setSelectedLanguageGroup,
 	setSelectedVoiceName,
 } = voicesSlice.actions;
+
 export default voicesSlice.reducer;

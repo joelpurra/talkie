@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	Promisable,
 	ReadonlyDeep,
 } from "type-fest";
-
-import DualLogger from "./dual-log.mjs";
-
-const dualLogger = new DualLogger("shared-frontend.js");
 
 const reflow = async () => {
 	document.body.style.marginBottom = "0";
@@ -33,14 +33,15 @@ const reflow = async () => {
 
 export type EventHandler<T extends Event> = (event: ReadonlyDeep<T>) => Promisable<void>;
 
-export const eventToPromise = async <T extends Event>(eventHandler: EventHandler<T>, event: ReadonlyDeep<T>): Promise<void> => {
+export const eventToPromiseSingle = async <T extends Event>(eventHandler: EventHandler<T>, event: ReadonlyDeep<T>): Promise<void> => {
 	try {
-		void dualLogger.dualLogDebug("Start", "eventToPromise", event.type, event);
+		void logDebug("Start", "eventToPromiseSingle", event.type, event);
 
 		await eventHandler(event);
-		void dualLogger.dualLogDebug("Done", "eventToPromise", event.type, event);
+
+		void logDebug("Done", "eventToPromiseSingle", event.type, event);
 	} catch (error: unknown) {
-		void dualLogger.dualLogError("eventToPromise", event.type, event, error);
+		void logError("eventToPromiseSingle", "swallowing error", event.type, event, error);
 	}
 };
 

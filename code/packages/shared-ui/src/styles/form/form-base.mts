@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,25 +22,30 @@ import type {
 	StyleObject,
 } from "styletron-react";
 
+import {
+	layoutWithNoMargin,
+} from "../shared-base.mjs";
+
 export const form: StyleObject = {};
 
 export const button: StyleObject = {
 	width: "100%",
 };
 
-export const checkbox: StyleObject = {
+export const input: StyleObject = {
 	verticalAlign: "middle",
 };
+export const checkbox: StyleObject = {
+	...input,
+};
 export const range: StyleObject = {
+	...input,
 	width: "100%",
 };
 
 export const textarea: StyleObject = {
+	...layoutWithNoMargin,
 	height: "100%",
-	marginBottom: 0,
-	marginLeft: 0,
-	marginRight: 0,
-	marginTop: 0,
 	width: "100%",
 };
 
@@ -49,10 +54,7 @@ export const select: StyleObject = {};
 export const option: StyleObject = {};
 
 export const multilineSelect: StyleObject = {
+	...layoutWithNoMargin,
 	height: "8.8em",
-	marginBottom: 0,
-	marginLeft: 0,
-	marginRight: 0,
-	marginTop: 0,
 	width: "100%",
 };

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ export default class MathHelper {
    */
 	static decimalAdjust(type: "round" | "floor" | "ceil", value: number, exp: number): number {
 		// If the exp is undefined or zero...
-		if (typeof exp === "undefined" || Number(exp) === 0) {
+		if (exp === undefined || Number(exp) === 0) {
 			return Math[type](value);
 		}
 
@@ -48,14 +48,12 @@ export default class MathHelper {
 			return -MathHelper.decimalAdjust(type, -value, exp);
 		}
 
-		/* eslint-disable @typescript-eslint/restrict-template-expressions */
 		// Shift
 		let parts = value.toString().split("e");
 		value = Math[type](Number(`${parts[0]}e${parts[1] ? (Number(parts[1]) - exp) : -exp}`));
 		// Shift back
 		parts = value.toString().split("e");
 		return Number(`${parts[0]}e${parts[1] ? (Number(parts[1]) + exp) : exp}`);
-		/* eslint-enable @typescript-eslint/restrict-template-expressions */
 	}
 
 	static round10 = function (value: number, exp: number): number {

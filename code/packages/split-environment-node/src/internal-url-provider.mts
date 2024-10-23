@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,10 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 
 export default class NodeEnvironmentInternalUrlProvider implements IInternalUrlProvider {
+	async get(url: string): Promise<string> {
+		// eslint-disable-next-line no-sync
+		return this.getSync(url);
+	}
+
 	getSync(url: string): string {
-		throw new Error(`NodeEnvironmentInternalUrlProvider not supported: ${url}`);
+		throw new Error(`${this.constructor.name} not supported: ${url}`);
 	}
 }

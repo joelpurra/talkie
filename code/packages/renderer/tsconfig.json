@@ -23,6 +23,9 @@
     },
     {
       "path": "../split-environment-node/tsconfig.json"
+    },
+    {
+      "path": "../split-environment-webextension/tsconfig.json"
     }
   ]
 }

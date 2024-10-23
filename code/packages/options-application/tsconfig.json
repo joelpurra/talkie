@@ -19,6 +19,9 @@
       "path": "../shared-interfaces/tsconfig.json"
     },
     {
+      "path": "../shared-locales/tsconfig.json"
+    },
+    {
       "path": "../shared-ui/tsconfig.json"
     },
     {

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,16 +29,16 @@ export const loggedPromiseCallback = <T = unknown, U = unknown>(fn: PromiseFunct
 	// NOTE: used as a regular callback function, the result is not used.
 	void Promise.resolve()
 		.then(() => {
-			void logDebug("Start", "loggedPromise", ...extraLogging, ...fnArgs);
+			void logDebug("Start", "loggedPromiseCallback", ...extraLogging, ...fnArgs);
 
 			fn(...fnArgs);
 
-			void logDebug("Done", "loggedPromise", ...extraLogging, ...fnArgs);
+			void logDebug("Done", "loggedPromiseCallback", ...extraLogging, ...fnArgs);
 
 			return undefined;
 		})
 		.catch((error: unknown) => {
-			void logError("loggedPromise", ...extraLogging, ...fnArgs, error);
+			void logError("loggedPromiseCallback", ...extraLogging, ...fnArgs, error);
 
 			throw error;
 		});

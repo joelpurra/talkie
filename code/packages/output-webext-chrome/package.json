@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "@talkie/all-renderer": "*",
+    "@talkie/browser-serviceworker": "*",
     "@talkie/output-webext": "*"
   },
   "devDependencies": {
-    "chrome-webstore-manager": "^0.5.0"
+    "chrome-webstore-manager": "^0.5.0",
+    "mkdirp": "^3.0.1"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "license": "GPL-3.0",
@@ -19,20 +21,19 @@
   "scripts": {
     "build": "npm run --silent build:rollup && npm run --silent build:chrome",
     "build:chrome": "npm run --silent build:patch:manifest && npm run --silent build:patch",
-    "build:patch": "( cd ./dist/webext/ && talkie-all-renderer ; )",
-    "build:patch:manifest": "json -Ie \"this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' Chrome Extension '); delete this.applications;\" -f ./dist/webext/manifest.json",
+    "build:patch": "( cd ./artifacts/webext/ && talkie-all-renderer ; )",
+    "build:patch:manifest": "json -Ie \"delete this.background.scripts; this.version_name=this.version_name.replace(/ MANIFEST_VERSION_NAME_TYPE /, ' Chrome Extension '); delete this.applications;\" -f ./artifacts/webext/manifest.json",
     "build:rollup": "rollup --config rollup.config.mjs",
-    "clean": "rimraf ./dist",
-    "lint": "echo web-ext linting ./dist/webext/ && web-ext --source-dir=./dist/webext/ lint --ignore-files ./resources/style/bidi.css",
-    "output": "rimraf ./web-ext-artifacts/ && web-ext --source-dir=./dist/webext/ build && mkdirp ./dist/publish && mv -n ./web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome.zip\"",
+    "clean": "rimraf ./dist ./runtime",
+    "lint": "echo web-ext linting ./artifacts/webext/ && web-ext --source-dir=./artifacts/webext/ lint --ignore-files ./resources/style/bidi.css || echo 'WARNING: ignoring web-ext lint errors for chrome.'",
+    "output": "rimraf ./web-ext-artifacts/ && web-ext --source-dir=./artifacts/webext/ build && mkdirp ./dist/publish && mv -n ./web-ext-artifacts/talkie*.zip \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome-${TALKIE_ENV}.zip\"",
     "output:list": "ls -l ./dist/publish/",
     "publish": "export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id \"$CHROME_CLIENT_ID\" --client_secret \"$CHROME_CLIENT_SECRET\" --refresh_token \"$CHROME_REFRESH_TOKEN\") && npm run publish:update && npm run publish:publish",
     "publish:publish": "chrome-webstore-manager publish enfbcfmmdpdminapkflljhbfeejjhjjk",
-    "publish:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome.zip\"",
-    "rebuild": "npm run --silent clean && npm run --silent build",
-    "run:chrome": "mkdirp ./dist/profiles/chrome/ && google-chrome --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/dist/profiles/chrome/\" --load-extension=\"${PWD}/dist/webext\"",
-    "run:chromium": "mkdirp ./dist/profiles/chromium/ && chromium --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/dist/profiles/chromium/\" --load-extension=\"${PWD}/dist/webext\"",
-    "run:vivaldi": "web-ext --source-dir=./dist/webext/ run --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'"
+    "publish:update": "chrome-webstore-manager update enfbcfmmdpdminapkflljhbfeejjhjjk \"./dist/publish/talkie-joelpurra.com-$(cd ../../ && npm run --silent version:get:head)-chrome-${TALKIE_ENV}.zip\"",
+    "run:chrome": "mkdirp ./runtime/profiles/chrome/ && google-chrome --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/runtime/profiles/chrome/\" --load-extension=\"${PWD}/artifacts/webext\" 'https://www.wikipedia.org/'",
+    "run:chromium": "mkdirp ./runtime/profiles/chromium/ && chromium --no-first-run --enable-logging=stderr --v=0 --enable-extension-activity-logging --error-console --user-data-dir=\"${PWD}/runtime/profiles/chromium/\" --load-extension=\"${PWD}/artifacts/webext\" 'https://www.wikipedia.org/'",
+    "run:vivaldi": "web-ext --source-dir=./artifacts/webext/ run --verbose --devtools --target chromium --chromium-binary vivaldi --browser-console --start-url 'https://www.wikipedia.org/'"
   },
   "type": "module"
 }

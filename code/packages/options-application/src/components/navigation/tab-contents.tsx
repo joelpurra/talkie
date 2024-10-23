@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,10 +19,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
 import {
-	BubbledLinkClickHandler,
+	type BubbledLinkClickHandler,
 	handleBubbledLinkClick,
 } from "@talkie/shared-ui/utils/ui.mjs";
 import React from "react";
@@ -31,7 +31,7 @@ import type {
 } from "type-fest";
 
 export interface TabContentsProps {
-	activeTabId: string | null;
+	activeNavigationTabId: string | null;
 	id: string;
 	onLinkClick: BubbledLinkClickHandler;
 }
@@ -50,7 +50,7 @@ export default class TabContents<P extends TabContentsProps & ChildrenRequiredPr
 	}
 
 	override render(): React.ReactNode {
-		if (this.props.id !== this.props.activeTabId) {
+		if (this.props.id !== this.props.activeNavigationTabId) {
 			return null;
 		}
 

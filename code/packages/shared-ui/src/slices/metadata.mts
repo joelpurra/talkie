@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,14 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-import {
+import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 
-import {
+import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
@@ -61,18 +60,25 @@ export const loadIsPremiumEdition = createAsyncThunk<boolean, void, IApiAsyncThu
 	`${prefix}/loadIsPremiumEdition`,
 	async (_, {
 		extra,
-	}) => extra.isPremiumEdition(),
+	}) =>
+		// TODO: avoid multi-level fallbacks.
+		extra.groundwork?.configuration.getIsPremiumEdition()
+			?? extra.coating?.premium?.isPremiumEdition()
+			?? false,
 );
 
-export const storeIsPremiumEdition = createAsyncThunk<void, boolean, IApiAsyncThunkConfig>(
+export const storeIsPremiumEdition = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(
 	`${prefix}/storeIsPremiumEdition`,
-	async (isPremiumEdition, {
-		dispatch, extra,
-	}) => {
-		await extra.setIsPremiumEditionOption(isPremiumEdition);
+	async (
+		isPremiumEdition,
+		{
+			extra,
+		},
+	) => {
+		await extra.groundwork!.configuration.setIsPremiumEdition(isPremiumEdition);
 
-		// TODO: reconsider post-store "sideffect" here?
-		await dispatch(loadIsPremiumEdition()).unwrap();
+		// TODO: reconsider post-store "side-effect" here?
+		return isPremiumEdition;
 	},
 );
 
@@ -80,34 +86,37 @@ export const loadVersionName = createAsyncThunk<string | null, void, IApiAsyncTh
 	`${prefix}/loadVersionName`,
 	async (_, {
 		extra,
-	}) => extra.getVersionName(),
+	}) => extra.coating!.metadata.getVersionName(),
 );
 
 export const loadVersionNumber = createAsyncThunk<string | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadVersionNumber`,
 	async (_, {
 		extra,
-	}) => extra.getVersionNumber(),
+	}) => extra.coating!.metadata.getVersionNumber(),
 );
 
 export const loadSystemType = createAsyncThunk<SystemType | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSystemType`,
 	async (_, {
 		extra,
-	}) => extra.getSystemType(),
+	}) => extra.coating!.metadata.getSystemType(),
 );
 
 export const loadOsType = createAsyncThunk<OsType | null, void, IApiAsyncThunkConfig>(
 	`${prefix}/loadOsType`,
 	async (_, {
 		extra,
-	}) => extra.getOperatingSystemType(),
+	}) => extra.coating!.metadata.getOperatingSystemType(),
 );
 
 export const metadataSlice = createSlice({
-	extraReducers: (builder) => {
+	extraReducers(builder) {
 		builder
 			.addCase(loadIsPremiumEdition.fulfilled, (state, action) => {
+				state.isPremiumEdition = action.payload;
+			})
+			.addCase(storeIsPremiumEdition.fulfilled, (state, action) => {
 				state.isPremiumEdition = action.payload;
 			})
 			.addCase(loadVersionName.fulfilled, (state, action) => {

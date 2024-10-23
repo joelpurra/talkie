@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,12 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import InstallVoices, {
-	InstallVoicesProps,
+	type InstallVoicesProps,
 } from "../app/sections/support/install-voices.js";
 import selectors from "../selectors/index.mjs";
 import type {
@@ -49,7 +49,7 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 	languageGroupsCount: selectors.shared.voices.getLanguageGroupsCount(state),
 	languagesCount: selectors.shared.voices.getLanguagesCount(state),
 	osType: state.shared.metadata.osType,
-	systemType: state.shared.metadata.systemType,
+	showAdditionalDetails: state.settings.showAdditionalDetails,
 	voicesCount: selectors.shared.voices.getVoicesCount(state),
 });
 
@@ -71,9 +71,9 @@ class InstallVoicesContainer<P extends InternalProps> extends React.PureComponen
 			languageGroupsCount,
 			languagesCount,
 			osType,
-			systemType,
+			showAdditionalDetails,
 			voicesCount,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<InstallVoices
@@ -81,7 +81,7 @@ class InstallVoicesContainer<P extends InternalProps> extends React.PureComponen
 				languageGroupsCount={languageGroupsCount}
 				languagesCount={languagesCount}
 				osType={osType}
-				systemType={systemType}
+				showAdditionalDetails={showAdditionalDetails}
 				voicesCount={voicesCount}
 			/>
 		);

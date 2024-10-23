@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
+import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
 import type {
 	Manifest,
 } from "webextension-polyfill";
@@ -26,8 +26,8 @@ import type {
 export default class WebExtensionEnvironmentManifestProvider implements IManifestProvider {
 	async get(): Promise<Manifest.ManifestBase> {
 		// NOTE: synchronous call.
-		// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
-		const manifest = browser.runtime.getManifest();
+		// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest
+		const manifest = chrome.runtime.getManifest();
 
 		return manifest;
 	}

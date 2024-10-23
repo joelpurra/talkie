@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,14 +20,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import {
+	type ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import Loading from "../../../components/loading.js";
-import Markdown from "../../../components/markdown.js";
+import MarkdownStrong from "../../../components/markdown/strong.js";
 
 interface DialectProps extends TranslateProps {
 	effectiveVoiceNameForSelectedLanguage: string | null;
@@ -63,13 +65,14 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			translateSync,
 		} = this.props as DialectProps;
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const SpeakSampleButton: React.FC = ({
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
+		const SpeakSampleButton: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => hasSampleTextForLanguageGroup
 			? (
 				<buttonBase.transparentButton
 					type="button"
+					// eslint-disable-next-line react/no-this-in-sfc
 					onClick={this.handleSpeakLanguageClick}
 				>
 					<Icon
@@ -88,12 +91,12 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 			);
 
 		return (
-			<textBase.p>
+			<p>
 				<SpeakSampleButton>
 					<Loading
 						enabled={typeof effectiveVoiceNameForSelectedLanguage === "string"}
 					>
-						<Markdown>
+						<MarkdownStrong>
 							{translateSync(
 								"frontend_voicesDefaultVoiceForDialect",
 								[
@@ -101,10 +104,10 @@ class Dialect<P extends DialectProps> extends React.PureComponent<P> {
 									`**${effectiveVoiceNameForSelectedLanguage ?? ".."}**`,
 								],
 							)}
-						</Markdown>
+						</MarkdownStrong>
 					</Loading>
 				</SpeakSampleButton>
-			</textBase.p>
+			</p>
 		);
 	}
 }

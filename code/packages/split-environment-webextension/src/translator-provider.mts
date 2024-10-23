@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,14 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 
 export default class WebExtensionEnvironmentTranslatorProvider implements ITranslatorProvider {
 	constructor(
 		// @ts-expect-error: unused variable. ts(6133)
 		private readonly localeProvider: ILocaleProvider,
 	) {}
+
+	async translatePlaceholder(key: string, extras?: Readonly<string[]>): Promise<string> {
+		// eslint-disable-next-line no-sync
+		return this.translatePlaceholderSync(key, extras);
+	}
+
+	translatePlaceholderSync(key: string, extras?: Readonly<string[]>): string {
+		// TODO: inject logging provider?
+		// eslint-disable-next-line no-console
+		console.warn("Untranslated placeholder:", key, extras);
+
+		const placeholderExtras = extras
+			? ` ${JSON.stringify(extras)}`
+			: "";
+
+		return key + placeholderExtras;
+	}
 
 	async translate(key: string, extras?: Readonly<string[]>): Promise<string> {
 		// eslint-disable-next-line no-sync
@@ -36,7 +53,7 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 		// const locale = this.localeProvider.getTranslationLocale();
 
 		// TODO: use same translation system in frontend and backend?
-		const translated = browser.i18n.getMessage(key, extras);
+		const translated = chrome.i18n.getMessage(key, extras as string[]);
 
 		return translated;
 	}

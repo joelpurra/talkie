@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,9 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import {
-	ClassNameProp,
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type ClassNameProp,
 } from "@talkie/shared-ui/styled/types.js";
 import {
 	handleBubbledLinkClick,
@@ -29,18 +31,15 @@ import React from "react";
 import type {
 	StyleObject,
 } from "styletron-react";
-import {
-	styled,
-} from "styletron-react";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import {
-	actions,
+	type actions,
 } from "../slices/index.mjs";
 import Footer, {
-	FooterStateProps,
+	type FooterStateProps,
 } from "./sections/footer.js";
 import Header from "./sections/header.js";
 import Menu from "./sections/menu.js";
@@ -48,35 +47,32 @@ import Status from "./sections/status.js";
 
 export interface MainStateProps extends FooterStateProps {
 	isPremiumEdition: boolean;
+	isSpeaking: boolean;
 }
 
 export interface MainDispatchProps {
 	iconClick: typeof actions.shared.speaking.iconClick;
+	openExternalUrlInNewTab: typeof actions.shared.navigation.openExternalUrlInNewTab;
 	openOptionsPage: typeof actions.shared.navigation.openOptionsPage;
-	openUrlInNewTab: typeof actions.shared.navigation.openUrlInNewTab;
 }
 
 const styles: StyleObject = {
-	maxWidth: "400px",
-	minWidth: "400px",
+	marginTop: "1em",
+	maxWidth: "350px",
+	minWidth: "350px",
 };
 
 class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends React.PureComponent<P> {
 	constructor(props: P) {
 		super(props);
 
-		this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
 		this.handleLinkClick = this.handleLinkClick.bind(this);
 		this.handleCheckLinkClick = this.handleCheckLinkClick.bind(this);
 		this.handleOptionsPageClick = this.handleOptionsPageClick.bind(this);
 	}
 
-	handlePlayPauseClick(): void {
-		this.props.iconClick();
-	}
-
 	handleLinkClick(url: ReadonlyDeep<URL>): void {
-		this.props.openUrlInNewTab(url);
+		this.props.openExternalUrlInNewTab(url);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -99,9 +95,11 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 		const {
 			className,
 			errorCount,
+			iconClick,
 			isPremiumEdition,
+			isSpeaking,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<div
@@ -110,18 +108,15 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 			>
 				<Header
 					isPremiumEdition={isPremiumEdition}
-					playPauseClick={this.handlePlayPauseClick}
+					playPauseClick={iconClick}
 				/>
 
 				<Status
-					playPauseClick={this.handlePlayPauseClick}
+					isSpeaking={isSpeaking}
+					playPauseClick={iconClick}
 				/>
 
-				<layoutBase.hr/>
-
 				<Menu/>
-
-				<layoutBase.hr/>
 
 				<Footer
 					errorCount={errorCount}
@@ -133,7 +128,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 	}
 }
 
-export default styled(
+export default talkieStyled(
 	Main,
 	styles,
 );

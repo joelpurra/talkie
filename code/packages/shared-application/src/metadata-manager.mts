@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,30 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	EditionType,
+import type {
 	IMetadataManager,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
+import type IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
+import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
 import type {
 	Manifest,
 	Runtime,
 } from "webextension-polyfill";
 
-import SettingsManager from "./settings-manager.mjs";
-
 export default class MetadataManager implements IMetadataManager {
-	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider, private readonly settingsManager: SettingsManager) {}
-
-	private get _editionTypePremium() {
-		return "premium" as EditionType;
-	}
-
-	private get _editionTypeFree() {
-		return "free" as EditionType;
-	}
+	constructor(private readonly manifestProvider: IManifestProvider, private readonly dynamicEnvironmentProvider: IDynamicEnvironmentProvider) {}
 
 	private get _systemTypeChrome() {
 		return "chrome" as SystemType;
@@ -59,10 +48,6 @@ export default class MetadataManager implements IMetadataManager {
 	// NOTE: string matches manifest.json value set during build in package.json.
 	private get webextensionVersionNameSubstring() {
 		return " WebExtension ";
-	}
-
-	async isPremiumEdition(): Promise<boolean> {
-		return this.settingsManager.getIsPremiumEdition();
 	}
 
 	async getManifest(): Promise<Manifest.ManifestBase> {
@@ -84,16 +69,6 @@ export default class MetadataManager implements IMetadataManager {
 		}
 
 		return versionName;
-	}
-
-	async getEditionType(): Promise<EditionType> {
-		const isPremiumEdition = await this.isPremiumEdition();
-
-		if (isPremiumEdition) {
-			return this._editionTypePremium;
-		}
-
-		return this._editionTypeFree;
 	}
 
 	async isChromeVersion(): Promise<boolean> {

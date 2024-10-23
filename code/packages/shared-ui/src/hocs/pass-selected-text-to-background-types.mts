@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,20 +19,20 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type {
-	Merge,
+	JsonObject,
 } from "type-fest";
 
-export interface FramesSelectionTextAndLanguageCode {
+export interface SelectedTextAndLanguageCodes extends JsonObject {
 	htmlTagLanguage: string | null;
-	parentElementsLanguages: Array<string | null>;
-	text: string | null;
+	parentElementsLanguages: ReadonlyArray<string | null>;
+	text: string;
 }
 
-export type PerhapsSelectedTextWithFocusTimestamp = {
+export interface PerhapsSelectedTextWithFocusTimestamp extends JsonObject {
 	mostRecentUse: number;
-	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode | null;
-};
+	selectionTextAndLanguageCode: SelectedTextAndLanguageCodes;
+}
 
-export type SelectedTextWithFocusTimestamp = Merge<PerhapsSelectedTextWithFocusTimestamp, {
-	selectionTextAndLanguageCode: FramesSelectionTextAndLanguageCode;
-}>;
+export interface SelectedTextWithFocusTimestamp extends PerhapsSelectedTextWithFocusTimestamp {
+	selectionTextAndLanguageCode: SelectedTextAndLanguageCodes;
+}

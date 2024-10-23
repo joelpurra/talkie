@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,12 +22,12 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import Voices, {
-	VoicesStateProps,
+	type VoicesStateProps,
 } from "../../app/sections/voices.js";
 import selectors from "../../selectors/index.mjs";
 import {
@@ -159,7 +159,7 @@ class VoicesContainer<P extends InternalProps> extends React.PureComponent<P> {
 			selectedLanguageCode,
 			selectedVoiceName,
 			voiceCountForSelectedLanguageCode,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Voices

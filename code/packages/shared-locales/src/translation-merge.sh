@@ -3,7 +3,7 @@
 # This file is part of Talkie -- text-to-speech browser extension button.
 # <https://joelpurra.com/projects/talkie/>
 #
-# Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+# Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 #
 # Talkie is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,15 +22,28 @@ set -e
 set -u
 set -o pipefail
 
-declare -r SCRIPT_FOLDER="${BASH_SOURCE%/*}"
-declare -r LOCALES_ROOT_FOLDER="${SCRIPT_FOLDER}/data/_locales"
+function resolvePath() {
+    # TODO: reuse shared functions.
+    realpath --logical --physical --canonicalize-existing "$@"
+}
 
-declare -a LOCS=(
-	"$(find "${LOCALES_ROOT_FOLDER}" -mindepth 1 -type d | sort)"
+declare -r SCRIPT_FOLDER="${BASH_SOURCE%/*}"
+
+declare -r PROJECT_ROOT_FOLDER="$(resolvePath "${SCRIPT_FOLDER}/..")"
+declare -r LOCALES_SOURCE_ROOT_FOLDER="${PROJECT_ROOT_FOLDER}/src/data/_locales"
+declare -r LOCALES_DESTINATION_ROOT_FOLDER="${PROJECT_ROOT_FOLDER}/dist/data/_locales"
+
+declare -a LOCNAMES=(
+    $(
+        pushd "$LOCALES_SOURCE_ROOT_FOLDER" >/dev/null
+        find . -mindepth 1 -maxdepth 1 -type d \
+        | sed 's_^\./__' \
+        | sort
+    )
 )
 
-declare -r EN_BASE="${LOCALES_ROOT_FOLDER}/en/base.json"
-declare UNTRANSLATED="${LOCALES_ROOT_FOLDER}/en/untranslated.json"
+declare -r EN_BASE="${LOCALES_SOURCE_ROOT_FOLDER}/en/base.json"
+declare UNTRANSLATED="${LOCALES_SOURCE_ROOT_FOLDER}/en/untranslated.json"
 
 function mergeMessages() {
     local -r INPUT="$1"
@@ -41,19 +54,19 @@ function mergeMessages() {
     jq --slurp --sort-keys 'map(with_entries( { key: .key, value: (.value | { message: .message } + if .description then { description: .description } else {} end + if .placeholders then { placeholders: .placeholders } else {} end ) } )) | add' "$INPUT"
 }
 
-for LOC in $LOCS;
-do
-    LOCNAME="${LOC##*/}"
+for LOCNAME in ${LOCNAMES[@]}; do
+    declare LOC_SOURCE_FOLDER="${LOCALES_SOURCE_ROOT_FOLDER}/${LOCNAME}"
+    declare LOC_DESTINATION_FOLDER="${LOCALES_DESTINATION_ROOT_FOLDER}/${LOCNAME}"
 
-    # NOTE: Display the current locale.
-    #echo "$LOC" "$LOCNAME"
+    declare BASE="${LOC_SOURCE_FOLDER}/base.json"
+    declare AUTOMATIC="${LOC_SOURCE_FOLDER}/automatic.json"
+    declare MANUAL="${LOC_SOURCE_FOLDER}/manual.json"
+    declare OVERRIDE="${LOC_SOURCE_FOLDER}/override.json"
 
-    declare BASE="${LOC}/base.json"
-    declare AUTOMATIC="${LOC}/automatic.json"
-    declare MANUAL="${LOC}/manual.json"
-    declare OVERRIDE="${LOC}/override.json"
-    declare MERGE="${LOC}/merge.json~"
-    declare MESSAGES="${LOC}/messages.json"
+    declare MERGE="${LOC_DESTINATION_FOLDER}/merge.json~"
+    declare MESSAGES="${LOC_DESTINATION_FOLDER}/messages.json"
+
+    mkdir --parents "$LOC_DESTINATION_FOLDER"
 
     rm -f "$MERGE"
     touch "$MERGE"
@@ -86,7 +99,7 @@ do
     # NOTE: standard version.
     mergeMessages "$MERGE" > "$MESSAGES"
 
-	rm "$MERGE"
+    rm "$MERGE"
 
     # NOTE: Display the output.
     #jq '.' "$MESSAGES"

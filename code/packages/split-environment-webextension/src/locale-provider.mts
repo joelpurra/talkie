@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,16 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
 	I18n,
 } from "webextension-polyfill";
 
 export default class WebExtensionEnvironmentLocaleProvider implements ILocaleProvider {
 	getUILocale(): I18n.LanguageCode {
-		const locale = browser.i18n.getMessage("@@ui_locale");
+		const locale = chrome.i18n.getMessage("@@ui_locale");
 
 		return locale;
 	}
@@ -38,7 +38,7 @@ export default class WebExtensionEnvironmentLocaleProvider implements ILocalePro
 	}
 
 	getTranslationLocale(): TalkieLocale {
-		const locale: TalkieLocale = browser.i18n.getMessage("extensionLocale") as TalkieLocale;
+		const locale: TalkieLocale = chrome.i18n.getMessage("extensionLocale") as TalkieLocale;
 
 		return locale;
 	}

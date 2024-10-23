@@ -19,7 +19,7 @@
     "message": "Acha kuzungumza",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Soma uteuzi wa maandishi kwa sauti",
     "original": "Read text selection out loud"
   },
@@ -31,9 +31,9 @@
     "message": "Pata toleo jipya la Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Soma kutoka kwenye ubao wa kunakili",
-    "original": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "Ongea maandishi kutoka kwenye ubao wa kunakili",
+    "original": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Anza/acha uteuzi wa kusoma",
@@ -41,12 +41,16 @@
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Maandishi ya haraka, rahisi na ya hali ya juu kwa usemi katika zaidi ya lugha 40. Soma kwa sauti kutoka kwa tovuti, PDF, barua pepe. Zungumza maandishi na TTS.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Haraka na rahisi kutuma maandishi kwa usemi. Soma kwa sauti kutoka kwa tovuti, PDF, barua pepe. Kufahamu faragha, msimbo wa chanzo huria.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Vipengele na uboreshaji",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Hali na historia",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Matumizi na njia za mkato",
@@ -109,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Inategemea ni usambazaji gani wa Linux, kivinjari, na mfumo wa usambazaji wa kifurushi unaotumia. Tazama maagizo tofauti ya usakinishaji kwa mchanganyiko wako wa programu. Rahisi zaidi inaweza kuwa kujaribu kivinjari kingine na kuona kama kina sauti inayofaa iliyosakinishwa awali. Kwa mfano, Firefox v95 kwenye Ubuntu 21.10 inaweza kusakinishwa kwa kutumia Aptitude au Snap; ya kwanza inajumuisha sauti 8611 za eSpeak zinazowezesha lugha 95 katika lahaja 7358, lakini za mwisho ni pamoja na sauti 0. Mfano mwingine ni Google Chrome v96 kwenye Ubuntu 21.10, ambayo kwa chaguomsingi inajumuisha sauti 19 zinazowezesha lugha 14 katika lahaja 18. Tafadhali nijulishe uzoefu wako ni nini!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Inategemea ni usambazaji gani wa Linux, kivinjari, na mfumo wa usambazaji wa kifurushi unaotumia. Tazama maagizo tofauti ya usakinishaji kwa mchanganyiko wako wa programu. Rahisi zaidi inaweza kuwa kujaribu kivinjari kingine na kuona ikiwa kina sauti inayofaa iliyosakinishwa mapema. Kwa mfano, Firefox v130 kwenye Ubuntu 24.04 iliyosakinishwa kwa kutumia Snap inajumuisha sauti 13000+ za eSpeak zinazowezesha lugha 100+ katika lahaja 100+ — lakini sauti hizi zote ni za ubora wa chini. Kwa kulinganisha, Google Chrome v129 kwenye Ubuntu 24.04 iliyosakinishwa kwa kutumia Apt inajumuisha sauti 19 zinazowezesha lugha 14 katika lahaja 18 — zote zikiwa na ubora wa juu.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Ninawezaje kusakinisha sauti zaidi katika Talkie kwenye Linux?",
@@ -165,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "Kwa bahati mbaya, sio kikamilifu. Kwa Talkie Premium inawezekana kunakili maandishi, na kuyasoma kutoka kwenye ubao wa kunakili. Inatokea kwamba Hati za Google (pamoja na Lahajedwali ya Google, Hifadhi ya Google, na sawa) sio tovuti, lakini \"maombi maalum katika kivinjari\" iliyoundwa na Google. Talkie haiwezi kufikia maandishi yaliyochaguliwa, wala kuongeza vipengee vya menyu ya muktadha, kwa hivyo Talkie hakifanyi kazi.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "Kwa bahati mbaya, sio kikamilifu. Kwa watumiaji Talkie Premium inawezekana kunakili maandishi, na kuyazungumza kutoka kwenye ubao wa kunakili. Inabadilika kuwa Hati za Google (pamoja na Lahajedwali ya Google, Hifadhi ya Google, na sawa) sio tovuti, lakini \"maombi maalum katika kivinjari\" iliyoundwa na Google. Talkie haiwezi kufikia maandishi yaliyochaguliwa, wala kuongeza vipengee vya menyu ya muktadha, kwa hivyo kitufe cha Talkie hakifanyi kazi.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Je, Talkie kazi katika Hati za Google?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Ndio tafadhali! Ikiwezekana kuunda ripoti ya suala kwenye Github, ili wengine waweze kusaidia pia. Tafadhali jumuisha maelezo mengi iwezekanavyo, kama vile kivinjari na toleo gani, mfumo wa uendeshaji na toleo, na lugha/sauti unayotumia. Pia jumuisha maelezo kuhusu tovuti maalum ambapo unaona hitilafu, ikiwezekana kwa kiungo.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "Ndiyo, tafadhali. Ikiwezekana kuunda ripoti ya suala kwenye Github, ili wengine waweze kusaidia pia. Tafadhali jumuisha maelezo mengi iwezekanavyo, kama vile kivinjari na toleo gani, mfumo wa uendeshaji na toleo, na lugha/sauti unayotumia. Pia jumuisha maelezo kuhusu tovuti maalum ambapo unaona hitilafu, ikiwezekana kwa kiungo.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Je, niripoti hitilafu?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Kwa kawaida! Ikiwa unaweza kuchagua maandishi katika PDF, bofya kulia juu yake na uchague Talkie kwenye menyu. Ikiwa maandishi hayawezi kuchaguliwa, ikiwa ni sehemu ya picha, basi haitafanya kazi.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Ndiyo, mara nyingi. Ikiwa unaweza kuchagua maandishi katika PDF, bofya kulia juu yake na uchague Talkie kwenye menyu. Watumiaji Talkie Premium wanaweza pia kunakili maandishi, kisha wayasome kutoka kwenye ubao wa kunakili. Ikiwa maandishi hayawezi kuchaguliwa, kama vile ni sehemu ya picha, basi haitafanya kazi.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Je, Talkie kusoma faili za PDF?",
@@ -197,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Hakika! Wasiliana nami tu kupitia usaidizi au kurasa za mradi.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "Ndiyo. Eleza kipengele unachotaka katika toleo jipya kwenye Github.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Je, ninaweza kuomba vipengele vipya?",
@@ -221,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Hakika! Itakuwa vyema kupata usaidizi wa kutafsiri Talkie , kujaribu Talkie kwenye mifumo mipya, kuchunguza hitilafu, na kuongeza vipengele vipya. Tafadhali tazama ukurasa wa mradi kwa maagizo.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Ndiyo, msaada daima unathaminiwa. Tafadhali tazama ukurasa wa mradi kwa maagizo.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Je, ninaweza kusaidia kutengeneza Talkie ?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Ndiyo — tafadhali waambie marafiki zako kuhusu Talkie! Labda tuma kiungo kwa mtu mashuhuri wako unayempenda, kikundi cha mtandaoni, au jarida. Unaweza hata kumwomba bosi wako aisakinishe kwenye kompyuta zote za kazini, au mwalimu wako aisakinishe shuleni. Kueneza habari kuhusu Talkie sana!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Ndiyo — tafadhali waambie marafiki zako kuhusu Talkie. Labda tuma kiungo kwa mtu mashuhuri unayempenda kwenye mtandao, kikundi cha mtandaoni, au jarida. Unaweza hata kumwomba bosi wako aisakinishe kwenye kompyuta zote za kazini, au mwalimu wako aisakinishe shuleni. Kueneza habari kuhusu Talkie kunathaminiwa sana.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Je, ninaweza kusaidia Talkie kwa njia nyingine yoyote?",
@@ -245,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Ndiyo, kuna chaguo nyingi za malipo zinazopatikana.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Ndiyo, kuna chaguo nyingi za michango zinazopatikana.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "Je, ninaweza kulipa kwa kutumia PayPal, uhamisho wa benki, nk?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "Je, ninaweza kuchangia kwa kutumia PayPal, uhamisho wa benki, nk?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Ndiyo, ikiwa ulilipa kwa kutumia PayPal au Stripe, ambayo hutoa usimamizi rahisi wa kurejesha pesa. Urejeshaji wa pesa kwa ujumla haupatikani kwa njia zingine za malipo kutokana na kiasi cha kazi ya ziada inayohitaji, pamoja na hatari ya kurejesha pesa kwenye akaunti isiyo sahihi.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Ndiyo, ikiwa ulichanga kwa kutumia PayPal ambayo hutoa usimamizi rahisi wa kurejesha pesa. Urejeshaji wa pesa kwa ujumla haupatikani kwa mbinu zingine za michango kutokana na kiasi cha kazi ya ziada inayohitaji, pamoja na hatari kama vile kurejesha pesa kwa akaunti isiyo sahihi. Inapendeza kwamba watumiaji kwanza watumie muda kujaribu Talkie Premium , ili kuhakikisha kuwa kila kitu ni cha kuridhisha kabla ya kuchangia.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Je, ninaweza kurejeshewa pesa?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Hakika! Washa tu Talkie Premium wa Talkie Premium ili ujaribu.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Hakika, hakuna tatizo. Washa tu uboreshaji Talkie Premium ili ujaribu.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Je, ninaweza kujaribu Talkie Premium malipo?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Hakuna tangazo, ukusanyaji wa data, au ufuatiliaji wa mtumiaji katika Talkie. Watumiaji wenye furaha wanaolipia Talkie Premium ndio uchumaji wa mapato pekee.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "Hakuna tangazo, ukusanyaji wa data, au ufuatiliaji wa mtumiaji katika Talkie. Watumiaji wenye furaha wanaochangia Talkie Premium ndio uchumaji wa mapato pekee.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Je, Talkie vina tangazo, kukusanya data au kufuatilia watumiaji?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Mfumo wa heshima ni wakati watu wanaaminika kuwa waaminifu, na kuzingatia miongozo bila ukaguzi uliotekelezwa. Kwa Talkie Premium kuamini kwamba wale walioboresha wamelipa.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "Mfumo wa heshima ni wakati watu wanaaminiana kufuata miongozo iliyokubaliwa, bila ukaguzi wa kutekelezwa. Kwa Talkie Premium hii inamaanisha kuamini kwamba wale wanaoboresha wamechangia pia.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Mfumo wa heshima ni nini?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Kwa sababu watu kote ulimwenguni hutumia sarafu tofauti, wana viwango tofauti vya mapato Talkie Premium. Hakuna bei moja, isiyobadilika ambayo inafanya kazi vizuri kwa kila mtu ulimwenguni. Zaidi ya hayo kunakuja mabadiliko ya sarafu, mitindo ya mzunguko wa uchumi, tofauti za kikanda/ndani ya nchi, nk. Yote kwa yote, mipangilio ya bei ya bidhaa inayouzwa ulimwenguni kote ni ngumu. Ni rahisi kuruhusu kila mtu kuweka bei yake mwenyewe, na kuhakikisha kwamba bidhaa ni nzuri ya kutosha kuthibitisha malipo.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Kwa sababu watu kote ulimwenguni hutumia sarafu tofauti, wana viwango tofauti vya mapato yanayoweza kutumika, na wana viwango tofauti vya kuthamini vipengele vya Talkie Premium. Hakuna bei moja, isiyobadilika ambayo inafanya kazi vizuri kwa kila mtu ulimwenguni. Zaidi ya hayo kunakuja mabadiliko ya sarafu, mitindo ya mzunguko wa uchumi, tofauti za kikanda/ndani ya nchi, nk. Yote kwa yote, mipangilio ya bei ya bidhaa inayouzwa ulimwenguni kote ni ngumu. Ni rahisi kuruhusu kila mtu kujiwekea bei, na kuhakikisha kuwa bidhaa hiyo ni nzuri vya kutosha kutoa mchango.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Kwa nini naweza kuweka bei yangu mwenyewe?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Kwa kuwa sijui ni kiasi gani cha pesa unachoweza kutumia kwenye programu ya Talkie Premium maandishi-hadi-hotuba, ninapendelea ulipe kile unachofikiri Talkie Premium ina thamani kwako — sio zaidi, sio chini. Iwapo unatafuta mfumo wa marejeleo, Google Talkie Premium malipo ya Talkie Premium usajili uligharimu $25 (Dola ya Marekani) kila mwaka nchini Marekani. Kumbuka kuwa Google ilirekebisha bei za nchi na sarafu duniani kote ili zilingane na hali ya ndani, kwa hivyo inaweza kuwa nyingi au chache. Wakati huo huo, yeyote aliyeuliza kwa upole pia angeweza kupokea Talkie Premium malipo.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Kwa kuwa sijui ni pesa ngapi unazoweza na uko tayari kutumia kwenye programu ya kutuma maandishi-hadi-hotuba, ninapendelea uchangie kile unachofikiri Talkie Premium kinakufaa — sio zaidi, hata kidogo. Iwapo unatafuta sura ya marejeleo, wakati Duka la Google Chrome kwenye Wavuti liliposhughulikia malipo ya Talkie Premium (2017-2021) gharama ya usajili ya kila mwaka ilikuwa $25 (Dola ya Marekani) nchini Marekani. Bei za dunia nzima zilitofautiana ingawa Google ilirekebisha kiotomatiki bei za nchi na sarafu nyingine.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Unapendekeza nilipe kiasi gani?",
-    "original": "How much do you recommend I pay?"
+    "message": "Je, unapendekeza nichangie kiasi gani?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Kwa sababu kutekeleza mfumo wa malipo na uthibitishaji huchukua muda na jitihada nyingi, na inachukuliwa kuwa gharama ya kutekeleza uthibitishaji mkali wa malipo ni ya juu kuliko hasara kutoka kwa watu binafsi wanaodanganya mfumo. Uthibitishaji wa malipo pia unahitaji kiwango fulani cha ukusanyaji wa data kutoka kwa mifumo ya watumiaji, na watumiaji wenye ujuzi wa kitaalamu wanaweza kufanyia kazi uthibitishaji hata hivyo. Kwa hivyo kutoka kwa mtazamo wa kiufundi na biashara, ingawa hakuna dhamana, ni rahisi kuamini tu kuwa watumiaji wanafuata mfumo wa heshima.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Kwa sababu kutekeleza mfumo wa malipo na uthibitishaji huchukua muda na juhudi nyingi. Inachukuliwa kuwa gharama ya kutekeleza uthibitishaji mkali wa malipo ni ya juu kuliko hasara kutoka kwa watu binafsi wanaodanganya mfumo. Uthibitishaji wa malipo pia unahitaji kiwango fulani cha ukusanyaji wa data kutoka kwa mifumo ya watumiaji, na watumiaji waliobobea kitaalamu wanaweza kufanyia kazi uthibitishaji hata hivyo. Kwa hivyo kutoka kwa mtazamo wa kiufundi na biashara, ingawa hakuna dhamana, ni rahisi kuamini tu kuwa watumiaji wanafuata mfumo wa heshima.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Kwa nini hakuna uthibitishaji wa malipo?",
-    "original": "Why is there no payment verification?"
+    "message": "Kwa nini hakuna mchango au uthibitishaji wa malipo?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Uamuzi wa kutotekeleza uthibitishaji wa malipo unamaanisha kuwa kiasi kilicholipwa hakiwezi kuthibitishwa. Kwa kuongeza, gharama ya \"kutengeneza\" nakala ya Talkie Premium ya Talkie Premium ni sifuri, kwa hivyo kuitoa bila malipo haimaanishi hasara ya kifedha kwa msanidi programu. Pia kuna matumaini kwamba Talkie Premium , utawaambia marafiki zako kuihusu. Kutoa Talkie Premium kunaweza pia kuonekana kama juhudi ya uuzaji.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "Ninagundua kuwa kuchangia \"hakuna chochote\" kunachanganya kidogo. Jibu fupi ni kwamba pesa sio kila kitu. Jibu refu lina vipengele zaidi. Uamuzi wa kutotekeleza uthibitishaji wa malipo unamaanisha kuwa kiasi kilicholipwa hakina umuhimu. Kwa kuongeza, gharama ya \"kutengeneza\" nakala ya dijiti ya Talkie Premium ni sifuri, kwa hivyo kuitoa bila malipo haimaanishi hasara ya kifedha kwa msanidi programu. Pia kuna matumaini kwamba ukipenda Talkie Premium utawaambia marafiki zako kuihusu, na pengine baadhi yao wakaishia kuchangia kwa njia moja au nyingine. Kutoa Talkie Premium kwa hivyo kunaweza kuonekana kama juhudi ya uuzaji.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Kwa nini siwezi kuchagua kulipa chochote?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Kwa nini naweza kuchagua kuchangia au kulipa chochote?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Ndio, kwa kutumia Stripe. Angalia chaguo za ziada za malipo.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Ndiyo, lakini hakuna mfumo otomatiki wa michango ya mara kwa mara. Njia iliyo wazi zaidi ni kwamba unachangia tena baadaye.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Je, ninaweza kufanya malipo ya kila mwezi au ya kila mwaka yanayojirudia?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Je, ninaweza kutoa mchango unaorudiwa wa kila mwezi au mwaka?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Ndiyo, ukiiomba kupitia barua pepe. Tafadhali jumuisha jina lako, anwani, na kwa hiari kitambulisho chako cha kodi ya ongezeko la thamani (VAT) (au sawa).",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Hili ni ombi adimu, na litahitaji kushughulikiwa kwa mikono. Tafadhali wasiliana kabla ya kuchangia.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Je, ninaweza kupata risiti ya malipo yangu?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Je, ninaweza kupata risiti ya mchango wangu?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Kwa sababu unapenda vipengele vya ziada Talkie Premium hutoa, na hisia ya furaha ya kuchangia Talkie Premium Kwa sababu ya gharama ya juu kiasi ya watu ya ukuzaji na matengenezo, lakini gharama sifuri ya nakala za kidijitali za \"kutengeneza\", malipo ya Talkie Premium yanaweza pia kuonekana kama kutoa usaidizi kwa maendeleo na matengenezo ya siku zijazo, kinyume na thamani ya bidhaa wakati wa malipo. .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Kwa sababu unapenda vipengele vya ziada Talkie Premium hutoa, na hisia ya furaha ya kuchangia uundaji wa programu huria na wasanidi huru. Kwa sababu ya gharama ya juu ya wakati wa ukuzaji na matengenezo, lakini sifuri ya gharama ya \"kutengeneza\" nakala za kidijitali, michango ya Talkie Premium inaweza pia kuonekana kama kutoa msaada na kutia moyo kwa maendeleo na matengenezo ya siku zijazo, kinyume na thamani ya bidhaa wakati huo. ya mchango.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Kwa nini nilipe ili kuboresha?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Kwa nini nichangie ili kuboresha?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "Jibu fupi ni: labda sivyo. Inatokea kwamba kuna sauti za kisasa na sauti za zamani kwenye Microsoft Windows. Nilipojaribu mara ya mwisho, sauti ya Kiholanzi \"Microsoft Frank\" ilipatikana katika Microsoft Edge, lakini si kwenye Google Chrome wala Mozilla Firefox. Sababu moja ni kwamba baadhi ya sauti zimeundwa kwa ajili ya mfumo mpya wa matamshi wa WinRT, na baadhi kwa Kiolesura cha zamani cha Utayarishaji wa Utumaji Hotuba (SAPI). Huenda vivinjari visitumie mifumo ya zamani na mpya ya matamshi, kumaanisha kuwa sauti ambayo kwa kweli imesakinishwa, inaweza bado isipatikane kwenye kivinjari chako unachokipenda. Baada ya muda, vivinjari vingi vitaunga mkono mfumo mpya wa WinRT. Ikiwa unakosa sauti katika lugha yako, pendekezo moja ni kujaribu kutumia Talkie katika Microsoft Edge.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Ndiyo, lakini inategemea kivinjari unachotumia. Kuna sauti za kisasa na sauti za zamani zinazopatikana katika Microsoft Windows. Nilipojaribu mara ya mwisho, sauti ya Kiholanzi \"Microsoft Frank\" ilipatikana katika Microsoft Edge, lakini si katika Google Chrome wala Mozilla Firefox. Sababu moja ni kwamba baadhi ya sauti zimeundwa kwa ajili ya mfumo mpya zaidi wa matamshi wa WinRT, na nyingine kwa Kiolesura cha zamani cha Utayarishaji wa Utumiaji wa Hotuba (SAPI). Kivinjari chako unachokipenda kinaweza kisiauni mifumo ya zamani na mpya ya matamshi, kumaanisha kuwa sauti ambayo kwa kweli imesakinishwa inaweza isiweze kutumika. Baada ya muda, vivinjari vingi vitaunga mkono mfumo mpya wa WinRT. Ikiwa unakosa sauti katika lugha yako, pendekezo moja ni kujaribu kutumia Talkie katika Microsoft Edge.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
     "message": "Je, sauti zote za Microsoft Windows hufanya kazi na Talkie ?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
     "message": "Pengine, kwa jitihada nyingi. Pia kuna baadhi ya njia zisizo rasmi za kupata sauti mpya za WinRT ili kufanya kazi na vivinjari vya zamani vilivyowezeshwa na SAPI, lakini hii ni jitihada ya kiufundi sana na haipendekezwi kwa watumiaji wasio wa kiufundi.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "Sauti za WinRT zinaweza kufanya kazi katika vivinjari vilivyowezeshwa na SAPI kwenye Microsoft Windows?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Ndiyo, wengine wanafanya hivyo. Fuata maagizo ya usakinishaji wa mfumo wako na kivinjari. Talkie kwenye kivinjari chako, Talkie inapaswa kuzitambua kiotomatiki. Tafadhali shiriki vidokezo vyovyote unavyo!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Ndiyo, wengine wanafanya hivyo. Fuata maagizo ya usakinishaji wa mfumo wako na kivinjari. Mara sauti zinaposakinishwa kwenye kivinjari chako, Talkie inapaswa kuzitambua kiotomatiki.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Je, sauti za programu Talkie hufanya kazi na Talkie ?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Michango inamaanisha matumizi ya hiari kwa kitu chanya. Fikiria kama takrima. Malipo yanamaanisha muamala wa lazima wa pesa.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Kwa nini michango badala ya malipo?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "Badala ya pesa, ueneze chanya. Kusaidia shirika la kibinadamu. Jitolee katika shirika la usaidizi la ndani. Msaidie mgeni. Mkumbatie mtu wa familia. Tabasamu. Kwa kweli, yote haya ni muhimu zaidi kuliko michango ya pesa kwa Talkie Premium. Ninashukuru kupokea postikadi ingawa.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Nilichagua kutoa chochote. Je, kuna kitu kingine ninachoweza kufanya?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Ndiyo, unaweza kutumia Talkie Premium hata hivyo.",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Ikiwa nilichagua kutochangia chochote, bado inahesabiwa?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Mpango asili ulikuwa kuchuma mapato Talkie kwa kutoza ada ya usajili ya kila mwaka kwa Talkie Premium. Kwa miaka michache (2017-2021) Duka la Google Chrome kwenye Wavuti lilishughulikia malipo na usajili wa Talkie Premium , lakini hawatoi huduma hiyo tena. Mfumo wa malipo wa nje ulipoacha kufanya kazi nilichagua kutenganisha vipengele Talkie Premium , ili kuashiria kuwa juhudi nyingi zimeingia Talkie. Michango ni kielelezo-ashirio kwamba watu hutumia na kuthamini Talkie , ambayo ndiyo imenitia moyo kutumia mamia ya saa kuishughulikia.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Ikiwa michango ni ya hiari, kwa nini vipengele Talkie Premium vimetenganishwa?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie , kama msimbo wangu mwingine wa chanzo huria, ni mradi wa hobby. Kwa kawaida kuna jambo dogo la kutunza kila baada ya wiki chache, kama vile kujibu maswali yaliyotumwa kwa barua pepe. Upangaji programu kwenye Talkie kwa kawaida huletwa kwa siku chache hapa na pale — mara nyingi wakati wa likizo na likizo. Kwa bahati mbaya, mabadiliko ya sera ya nje huchukua muda zaidi na zaidi kutoka kwa uundaji wa vipengele. Kwa mfano, uboreshaji wa kiufundi Talkie hadi Toleo la 3 la Dhihirisha (MV3) ulichukua wiki kadhaa za kazi (2023-2024) bila uboreshaji dhahiri wa manufaa ya Talkie .",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Je, unatumia muda gani kufanya kazi kwenye Talkie ?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "Kwa sasa sina uhakika. Nilitengeneza Talkie (2016) ili wengine wafurahie, na siitumii mimi mwenyewe. Kuongeza vipengele vipya na kujifunza mambo mapya ni jambo la kufurahisha. Kupokea maoni chanya na kuona idadi ya watumiaji ikiongezeka ni nzuri. Kwa sasa si hobby ninayopenda zaidi, kwa sababu mambo ya nje yamekuwa na athari mbaya kwa maendeleo katika miaka iliyopita (2020-2024). Hasa, uchapishaji wa kiendelezi cha wavuti unahitaji kusasishwa na sera zinazoendelea kubadilika za Google Chrome Web Store (CWS) na Mozilla Add-Ons (AMO) za Firefox.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Je, utaendelea kufanyia kazi Talkie hadi lini?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Jibu la swali hili haliwezi kusasishwa kwa uhakika. Tembelea Talkie tovuti kwa hali ya sasa ya mradi.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Je, bado unafanyia kazi Talkie ?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Wadudu",
@@ -385,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "Kwa sasa unatumia toleo Talkie la Talkie , na seti ndogo ya vipengele inapatikana. Labda Talkie Premium itakuwa chaguo bora kwako?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "Kwa sasa unatumia toleo lisilolipishwa la Talkie , na seti ndogo ya vipengele inapatikana. Je, umefikiria kupata toleo jipya la Talkie Premium ?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
     "message": "Kwa sasa unatumia Talkie Premium , na vipengele vyote vinapatikana. Asante sana, inafurahisha moyo wangu!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie huja katika matoleo mawili: Talkie na Talkie Premium. Toleo la bure ni nzuri kwa matukio mengi ya matumizi, lakini toleo la malipo hutoa chaguo na vipengele vya ziada.",
@@ -413,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Nambari ni chanzo wazi na inapatikana kwa watumiaji wote bila malipo.",
-    "original": "Code is open source and available for free to all users."
+    "message": "Nambari ni chanzo wazi na inapatikana kwa watumiaji wote.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Bure!",
-    "original": "Free!"
+    "message": "Tumia kadri unavyotaka bila gharama yoyote.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Vipengele",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Chagua sauti yako chaguomsingi kwa kila lugha. Nzuri ikiwa utachoka na sauti ya mfumo!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Chagua sauti yako mwenyewe unayopendelea kwa kila lugha.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Chagua kasi ya kusoma na sauti kwa kila sauti. Rekebisha sauti kwa kupenda kwako!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Rekebisha kasi ya kusoma na sauti kwa kila sauti.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Hisia hiyo ya joto na ya fuzzy unayopata unapounga mkono programu huria na wasanidi huru.",
@@ -441,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Soma maandishi kutoka kwenye ubao wa kunakili! Nakili tu maandishi kutoka popote katika programu yoyote, na utumie Talkie Premium kuisoma!",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Ongea maandishi kutoka kwenye ubao wa kunakili. Nakili maandishi yoyote kutoka popote katika programu yoyote, na utumie Talkie Premium kuisoma.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Sauti zinazopatikana za maandishi-hadi-hotuba",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Tafadhali sakinisha baadhi ya sauti kwenye mfumo wako, vinginevyo Talkie haitafanya kazi. Pole!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Haikuweza kupata sauti zozote za maandishi-hadi-hotuba. Bila sauti Talkie haiwezi kufanya kazi ipasavyo. Wakati mwingine husaidia kupakia upya ukurasa huu, angalau ikiwa kivinjari ni polepole au kuna sauti nyingi.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Hakuna sauti za maandishi-kwa-hotuba zilizopatikana",
@@ -460,6 +524,10 @@
     "message": "Leseni",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Leseni za watu wengine",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Inapakia...",
     "original": "Loading..."
@@ -471,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "Mipangilio",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Onyesha maandishi ya ubao wa kunakili",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "Ufikiaji wa Ubao wa kunakili haujatolewa.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "Kataa ruhusa ya ubao wa kunakili",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "Ili kuzungumza maandishi kutoka kwa programu yoyote, unaweza kunakili maandishi kwenye ubao wa kunakili na kutumia njia ya mkato ya kibodi inayoweza kusanidiwa. Ili Talkie kufikia ubao wa kunakili unahitaji kutoa kibali kwanza. Hiki ni kipengele cha Talkie Premium .",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "Toa au kataa ruhusa yako wakati wowote. Kivinjari chako kinaweza kukuuliza au kisikuulize kuthibitisha.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Ruhusu ubao wa kunakili",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Idhini ya Ubao wa kunakili imetolewa.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Ruhusa ya kufikia ubao wa kunakili",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "Ufikiaji wa ubao wa kunakili haujulikani au haufaulu.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "Ongea maandishi ya ubao wa kunakili",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "Maandishi ya Ubao wa kunakili hayakuweza kusomeka.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "Maandishi ya Ubao wa kunakili yanaweza kusomeka.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "Maandishi ya Ubao wa kunakili hayajasomwa.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Hakuna maingizo ya historia.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "Historia",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "Lugha",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Hali",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "Sauti",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie ilitengenezwa siku chache kabla ya Mwaka Mpya 2016/2017, kwa changamoto kutoka kwa rafiki. Changamoto ilianza na swali: wakati wa kusafiri kwenda kazini, je, inawezekana kusikiliza makala badala ya kuisoma? Rahisi, nilisema, na nimeamua kuthibitisha hilo — au angalau kufanya kivinjari changu kiongee maandishi kwa kutumia sauti ya kipuuzi ya kompyuta. Toleo la msingi, bila kiolesura chochote cha mtumiaji, liligeuka kuwa dogo kuunda. Kuongeza kiolesura cha mtumiaji, kulichukua muda mrefu zaidi. Kuongeza utambuzi sahihi wa lugha msimbo mwingi zaidi. Kushinda mende katika kivinjari kazi zaidi. Orodha ya maboresho na vipengele inaendelea — na mistari elfu chache ya msimbo baadaye, unatazama matokeo ya mwisho.",
@@ -489,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Una swali? Je, unahitaji usaidizi kuhusu jambo fulani? Kwa majibu ya haraka kwa maswali ya kawaida, angalia maswali yanayoulizwa mara kwa mara hapa chini. Ikiwa hilo halikupi jibu, tafadhali nitumie maswali yoyote ambayo unaweza kuwa nayo. Nitafurahi ikiwa matumizi yako ya $NAME$ ni laini na ya kufurahisha!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "Kwa usaidizi wa haraka na rahisi, tafadhali angalia maswali na majibu haya ya kawaida. Ikiwa swali lako bado halijajibiwa, tafadhali wasiliana nami.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "Msaada",
@@ -555,40 +689,36 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Bei ya Talkie Premium. Badala yake unalipa unachotaka, kulingana na ni kiasi gani unafikiri vipengele vya malipo vina thamani kwako. Unaweza hata kuamua kulipa chochote.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Bei ya Talkie Premium haijapangwa. Badala yake unachangia unachotaka, kulingana na ni kiasi gani unafikiri vipengele vya malipo vina thamani kwako. Unaweza hata kuamua kutoa chochote.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "Baada ya kutuma malipo hakuna nambari za kuthibitisha za kuingiza, hakuna akaunti za mtumiaji za kusajili, au uthibitishaji mwingine wowote wa malipo unaofanywa. Badala yake Talkie Premium hutumia mfumo wa heshima.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "Baada ya kuchangia hakuna misimbo ya uboreshaji ya kuingiza, hakuna akaunti za mtumiaji za kusajili, au uthibitishaji mwingine wowote wa mchango. Badala yake Talkie Premium hutumia mfumo wa heshima.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Tafadhali kumbuka kuwa Talkie haina utangazaji wowote, ufuatiliaji wa watumiaji au ukusanyaji wa data kama njia mbadala ya uchumaji wa mapato. Malipo yanatambulishwa kama michango ya uundaji wa programu huria.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie haina utangazaji wowote, ufuatiliaji wa watumiaji au ukusanyaji wa data kama njia mbadala ya uchumaji wa mapato. Michango imeainishwa kama takrima kwa uundaji wa programu huria.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Pata toleo jipya la Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "Pata toleo jipya la Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Mbinu zaidi za malipo kupitia ukurasa wa michango",
-    "original": "More payment methods via the donations page"
+    "message": "Mbinu za ziada za mchango",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "Lipa kwa kutumia PayPal",
-    "original": "Pay using PayPal"
+    "message": "Changia kwa kutumia PayPal",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Matumizi",
     "original": "Usage"
-  },
-  "frontend_usageReadclipboard": {
-    "message": "Soma maandishi yoyote yaliyonakiliwa kwenye ubao wako wa kunakili — itumie na ufunguo wa njia ya mkato ili kusikiliza maandishi kutoka mahali popote nje ya kivinjari. Unaweza pia kubofya kulia kwenye Talkie Premium , au katika eneo tupu la tovuti, na uchague soma kutoka kwenye ubao wa kunakili.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Unaweza pia kuchagua maandishi, kisha ubofye kulia juu yake, na uchague Talkie kwenye menyu. Njia hii pia inafanya kazi katika faili za PDF na aina maalum za kurasa kwenye kivinjari.",
@@ -614,9 +744,9 @@
     "message": "Chaguo rahisi ni kutumia Talkie vitufe vya njia ya mkato:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Soma maandishi kutoka kwa ubao wa kunakili katika programu yoyote",
-    "original": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Ongea maandishi moja kwa moja kutoka kwenye ubao wa kunakili",
+    "original": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Anza/acha",
@@ -626,6 +756,10 @@
     "message": "Anza/acha",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Zungumza maandishi yoyote yaliyonakiliwa kwenye ubao wako wa kunakili, kwa kutumia sauti ulizoweka. Njia rahisi ni kutumia ufunguo wa njia ya mkato unaoweza kusanidiwa. Unaweza pia kubofya kulia kwenye kitufe cha Talkie Premium , au katika eneo tupu la tovuti, na uchague kuzungumza kutoka kwenye ubao wa kunakili.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Chagua maandishi unayotaka kwenye ukurasa wowote wa wavuti.",
     "original": "Select desired text on any web page."
@@ -633,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Bofya Talkie katika upau wa vidhibiti wa kivinjari chako",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie inaweza kutumika kusoma maandishi yaliyochaguliwa kwenye ukurasa. Wakati ukurasa umefungwa au anwani ya ukurasa inabadilika, Talkie inaweza kuendelea kuzungumza au kuacha kiotomatiki.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Endelea kuongea au acha kiotomatiki",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Wakati kichupo au dirisha imefungwa, Talkie inaweza kuendelea kuzungumza au kuacha kiotomatiki.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Wakati ukurasa umefungwa",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Endelea kuongea wakati kichupo kimefungwa",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "Mabadiliko ya anwani hufanyika kimsingi wakati wa kubofya kiungo ili kwenda kwenye ukurasa mwingine, au unapoandika mwenyewe kwenye upau wa anwani. Tovuti fulani pia zinaweza kubadilisha anwani katika hali zingine, kwa mfano wakati wa kupakia maelezo ya ziada.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Wakati anwani ya ukurasa inabadilika, Talkie inaweza kuendelea kuzungumza au kuacha kiotomatiki.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "Kwa sababu za faragha, Firefox ya Mozilla hairipoti kila wakati anwani ya ukurasa inapobadilika. Kuzima mpangilio huu kunaweza kusiwe na athari yoyote.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Wakati anwani ya ukurasa inabadilika",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Endelea kuongea wakati anwani inabadilika",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "Sauti chaguomsingi ya lahaja $LANGUAGE_CODE$ ni $VOICE$ .",
@@ -679,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "Imepata sauti $VOICES_COUNT$ kwa $LANGUAGE_CODE$ .",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Lahaja za sauti zilizosakinishwa",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Lugha za sauti zilizosakinishwa",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Sauti zilizowekwa",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "Sauti",
@@ -783,9 +983,65 @@
     "message": "Soma maandishi marefu bila kusitisha (majaribio)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Kusahau maingizo ya historia ya mtu binafsi",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Sahau maingizo yote ya historia $HISTORY_COUNT$",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie inaweza kukumbuka maandishi yaliyotamkwa hapo awali, kwa hivyo inaweza kuchezwa tena baadaye. Mpangilio huu unaweka kikomo idadi ya maingizo ya historia yanakumbukwa.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Punguza kikomo ili kupunguza mara moja idadi ya maingizo ya historia. Kikomo cha 0 huzima kukumbuka historia. Kikomo chaguomsingi ni $DEFAULT_LIMIT$ .",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "Kwa sasa kuna maingizo $HISTORY_COUNT$ ya historia yanayokumbukwa. Unaweza kusahau yote mara moja, au kusahau maingizo ya mtu binafsi.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "Historia",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Kikomo cha kuingia kwenye historia",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "Ukiwa na Talkie Premium unaweza kubadilisha sauti chaguomsingi kwa kila lugha, pamoja na sauti na sauti kwa kila sauti.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ ni sauti ya mtandaoni. Huenda ikahitaji muunganisho wa intaneti unaotumika ili kufikia huduma za watu wengine.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "Karibu kwa $NAME$! Sasa unatumia mojawapo ya viendelezi bora vya kivinjari vya kubadilisha maandishi hadi usemi duniani.",
@@ -798,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Endelea na uchague maandishi haya, kisha ubofye kitufe cha $NAME$ kwenye upau wa vidhibiti wa kivinjari. Furahia!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Chagua maandishi haya, kisha ubofye kitufe cha $NAME$ katika upau wa vidhibiti wa kivinjari.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie sasa unaweza kupata $VOICES_COUNT$ sauti kuwezesha $LANGUAGE_GROUPS_COUNT$ lugha katika $LANGUAGES_COUNT$ lahaja imewekwa katika yako $SYSTEM_TYPE_PRETTY_NAME$ browser kukimbia kwenye $OSTYPE_PRETTY_NAME$ mfumo wa uendeshaji.",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie kwa sasa inaweza kupata sauti $VOICES_COUNT$ zilizosakinishwa, na kuwezesha lugha $LANGUAGE_GROUPS_COUNT$ katika lahaja $LANGUAGES_COUNT$ .",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -847,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Samahani, lakini kusoma maandishi kutoka kwenye ubao wa Talkie Premium kipengele cha Talkie Premium. Je, umefikiria kuboresha?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "Samahani, lakini kuongea maandishi kutoka kwenye ubao wa kunakili ni kipengele cha Talkie Premium. Je, umefikiria kuboresha?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Samahani, lakini kivinjari hiki hakitumii usomaji kutoka kwenye ubao wa kunakili. Bado, angalau. Tafadhali jaribu tena baada ya mwezi mmoja au zaidi!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Samahani, lakini kivinjari hiki hakionekani kuauni kufikia ubao wa kunakili.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie haina ruhusa ya kufikia kutoka kwenye ubao wa kunakili. Hiyo ni sawa, lakini kusoma maandishi ya ubao wa kunakili haitafanya kazi.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie haina ruhusa ya kufikia ubao wa kunakili. Unaweza kutoa ruhusa kwenye ukurasa wa chaguzi za Talkie .",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Haikuweza kupata maandishi yanayofaa kwenye ubao wa kunakili. Je, unaweza kujaribu kunakili kitu kingine?",

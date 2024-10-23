@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,20 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type ClassNameProp,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import * as formBase from "@talkie/shared-ui/styles/form/form-base.mjs";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import {
-	styled,
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 
 import Checkbox from "./checkbox.js";
 
@@ -45,14 +43,14 @@ export interface CheckboxWithLabelProps {
 
 class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & ChildrenRequiredProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		labelForCheckbox: StyletronComponent<ComponentProps<"label">>;
+		labelForCheckbox: TalkieStyletronComponent<"label">;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		this.styled = {
-			labelForCheckbox: styled(
+			labelForCheckbox: talkieStyled(
 				"label",
 				{
 					...layoutBase.roundedWithBorder("0.5em"),
@@ -74,7 +72,7 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 			id,
 			children,
 			onChange,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<this.styled.labelForCheckbox>
@@ -85,6 +83,7 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 					id={id}
 					onChange={onChange}
 				/>
+				{/* TODO: padding instead of a literal space. */}
 				{" "}
 				{children}
 			</this.styled.labelForCheckbox>
@@ -92,4 +91,4 @@ class CheckboxWithLabel<P extends CheckboxWithLabelProps & ClassNameProp & Child
 	}
 }
 
-export default styled(CheckboxWithLabel, formBase.checkbox);
+export default talkieStyled(CheckboxWithLabel, formBase.checkbox);

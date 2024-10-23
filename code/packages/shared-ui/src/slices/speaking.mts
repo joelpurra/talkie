@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,13 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	PayloadAction,
 } from "@reduxjs/toolkit";
-// eslint-disable-next-line import/default
 import toolkit from "@reduxjs/toolkit";
-import {
+import type {
 	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
-import {
+import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
@@ -38,7 +37,7 @@ const {
 	createSlice,
 } = toolkit;
 
-export interface SpeakInCustomVoiceArguments {
+export interface SpeakTextInCustomVoiceArguments {
 	text: string;
 	voice: IVoiceNameAndRateAndPitch;
 }
@@ -70,21 +69,29 @@ export const iconClick = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
 	async (_, {
 		extra,
 	}) => {
-		await extra.iconClick();
+		// TODO: does not actually work the same as clicking the Talkie icon; replace with a toggle method for restarting the most recent text or stopping.
+		await extra.groundwork!.ui.iconClick();
 	},
 );
 
-export const speakInCustomVoice = createAsyncThunk<void, SpeakInCustomVoiceArguments, IApiAsyncThunkConfig>(
-	`${prefix}/speakInCustomVoice`,
+export const stopSpeaking = createAsyncThunk<void, void, IApiAsyncThunkConfig>(
+	`${prefix}/stopSpeaking`,
+	async (_, {
+		extra,
+	}) => {
+		await extra.groundwork!.speaking.stopSpeaking();
+	},
+);
+
+export const speakTextInCustomVoice = createAsyncThunk<void, SpeakTextInCustomVoiceArguments, IApiAsyncThunkConfig>(
+	`${prefix}/speakTextInCustomVoice`,
 	({
 		voice,
 		text,
 	}, {
 		extra,
 	}) => {
-		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
-		// TODO: rework debounced versions in api?
-		extra.debouncedSpeakTextInCustomVoice(text, voice);
+		void extra.groundwork!.speaking.speakTextInCustomVoice(text, voice);
 	},
 );
 
@@ -96,9 +103,7 @@ export const speakTextInVoiceWithOverrides = createAsyncThunk<void, SpeakTextInV
 	}, {
 		extra,
 	}) => {
-		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
-		// TODO: rework debounced versions in api?
-		extra.debouncedSpeakTextInVoiceWithOverrides(text, voiceName);
+		void extra.groundwork!.speaking.speakTextInVoiceWithOverrides(text, voiceName);
 	},
 );
 
@@ -110,9 +115,7 @@ export const speakTextInLanguageWithOverrides = createAsyncThunk<void, SpeakText
 	}, {
 		extra,
 	}) => {
-		// NOTE: not currently returning a promise, although it probably should, so a thunk is not necessary.
-		// TODO: rework debounced versions in api?
-		extra.debouncedSpeakTextInLanguageWithOverrides(text, languageCode);
+		void extra.groundwork!.speaking.speakTextInLanguageWithOverrides(text, languageCode);
 	},
 );
 
@@ -120,7 +123,7 @@ export const speakingSlice = createSlice({
 	initialState,
 	name: prefix,
 	reducers: {
-		setIsSpeaking: (state, action: PayloadAction<boolean>) => {
+		setIsSpeaking(state, action: PayloadAction<boolean>) {
 			state.isSpeaking = action.payload;
 		},
 	},
@@ -131,4 +134,5 @@ export const speakingSlice = createSlice({
 export const {
 	setIsSpeaking,
 } = speakingSlice.actions;
+
 export default speakingSlice.reducer;

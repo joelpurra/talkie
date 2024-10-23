@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,9 @@ import type {
 	Action,
 } from "@reduxjs/toolkit";
 import hydrateHtml from "@talkie/browser-shared/hydrate/hydrate-html.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import App from "./containers/app.js";
 import rootReducer from "./slices/index.mjs";
@@ -30,7 +33,7 @@ import rootReducer from "./slices/index.mjs";
 const prerenderActionsToDispatch: Action[] = [];
 const postrenderActionsToDispatch: Action[] = [];
 
-export default async function hydrate(): Promise<void> {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	await hydrateHtml(rootReducer, prerenderActionsToDispatch as any, postrenderActionsToDispatch as any, App);
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+export default async function hydrate(messageBusProviderGetter: IMessageBusProviderGetter): Promise<void> {
+	await hydrateHtml(messageBusProviderGetter, rootReducer, prerenderActionsToDispatch, postrenderActionsToDispatch, App);
 }

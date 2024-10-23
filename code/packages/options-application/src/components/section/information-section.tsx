@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,19 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	ClassNameProp,
+	talkieStyled,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
+import {
+	type ClassNameProp,
+	type TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
 import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
 import {
-	ChildrenRequiredProps,
+	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import {
-	styled,
-	StyletronComponent,
-} from "styletron-react";
+import React from "react";
 
 export type InformationType =
 	| "information"
@@ -43,22 +41,22 @@ export interface InformationSectionProps extends ChildrenRequiredProps, ClassNam
 
 class InformationSection<P extends InformationSectionProps> extends React.PureComponent<P> {
 	private readonly styled: {
-		childBox: StyletronComponent<ComponentProps<"div">>;
-		glyphIcon: StyletronComponent<ComponentProps<"div">>;
-		informationBox: StyletronComponent<ComponentProps<"div">>;
+		childBox: TalkieStyletronComponent<"div">;
+		glyphIcon: TalkieStyletronComponent<"div">;
+		informationBox: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		this.styled = {
-			childBox: styled(
+			childBox: talkieStyled(
 				"div",
 				{
 					paddingTop: "0.5em",
 				},
 			),
-			glyphIcon: styled(
+			glyphIcon: talkieStyled(
 				"div",
 				{
 					display: "inline-block",
@@ -70,7 +68,7 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 					marginTop: "0.5em",
 				},
 			),
-			informationBox: styled(
+			informationBox: talkieStyled(
 				"div",
 				{
 					...layoutBase.roundedWithBorder("0.5em"),
@@ -103,14 +101,19 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 		let informationTypeGlyph = null;
 
 		switch (informationType) {
-			case "information":
+			case "information": {
 				informationTypeGlyph = "\u2139";
 				break;
-			case "warning":
+			}
+
+			case "warning": {
 				informationTypeGlyph = "\u26A0";
 				break;
-			default:
+			}
+
+			default: {
 				throw new TypeError("informationType");
+			}
 		}
 
 		return (

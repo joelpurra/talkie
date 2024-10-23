@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,21 +19,15 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import toolkit from "@reduxjs/toolkit";
-import {
-	SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Features, {
-	FeaturesDispatchProps,
+	type FeaturesDispatchProps,
 } from "../app/sections/features.js";
 import {
 	actions,
@@ -51,7 +45,6 @@ export interface FeaturesContainerProps {}
 
 interface StateProps {
 	isPremiumEdition: boolean;
-	systemType: SystemType | null;
 }
 
 interface DispatchProps extends FeaturesDispatchProps {
@@ -59,9 +52,9 @@ interface DispatchProps extends FeaturesDispatchProps {
 
 export interface InternalFeaturesContainerProps extends StateProps, DispatchProps {}
 
-const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: ReadonlyDeep<OptionsRootState>) => ({
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const mapStateToProps: MapStateToProps<StateProps, FeaturesContainerProps, OptionsRootState> = (state: Readonly<OptionsRootState>) => ({
 	isPremiumEdition: state.shared.metadata.isPremiumEdition,
-	systemType: state.shared.metadata.systemType,
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, FeaturesContainerProps> = (dispatch) => ({
@@ -78,14 +71,12 @@ class FeaturesContainer<P extends InternalFeaturesContainerProps> extends React.
 		const {
 			isPremiumEdition,
 			storeIsPremiumEdition,
-			systemType,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<Features
 				isPremiumEdition={isPremiumEdition}
 				storeIsPremiumEdition={storeIsPremiumEdition}
-				systemType={systemType}
 			/>
 		);
 	}

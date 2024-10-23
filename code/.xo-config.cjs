@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,14 +19,25 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 module.exports = {
+	"envs": [
+		"browser",
+		"webextensions"
+	],
 	"extends": [
 		"eslint-config-joelpurra/react",
 		"eslint-config-joelpurra/typescript",
 	],
 	"overrides": [
 		{
-			"files": "./packages/*/**/*.tsx",
+			"files": [
+				"./packages/*/**/*.mts",
+				"./packages/*/**/*.tsx",
+			],
 			"rules": {
+				"@typescript-eslint/consistent-type-definitions": [
+					"error",
+					"interface",
+				],
 				"@typescript-eslint/naming-convention": [
 					"error",
 					  {
@@ -37,6 +48,10 @@ module.exports = {
 							"strictCamelCase",
 						]
 					}
+				],
+				"jsx-quotes": [
+					"error",
+					"prefer-double",
 				]
 			}
 		}

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ import MathHelper from "@talkie/shared-application-helpers/math-helper.mjs";
 import React from "react";
 
 import ScaleRange, {
-	ScaleRangeProps,
+	type ScaleRangeProps,
 } from "./scale-range.js";
 
 export default class LogarithmicScaleRange<P extends ScaleRangeProps> extends React.PureComponent<P> {
@@ -55,7 +55,7 @@ export default class LogarithmicScaleRange<P extends ScaleRangeProps> extends Re
 			initialValue,
 			max,
 			disabled,
-		} = this.props;
+		} = this.props as P;
 
 		return (
 			<ScaleRange

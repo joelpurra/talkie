@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
-import jsonfile from "jsonfile";
 import assert from "node:assert";
 import path from "node:path";
 import process from "node:process";
+
+import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
+import jsonfile from "jsonfile";
 import type {
 	JsonObject,
 } from "type-fest";
@@ -54,7 +55,7 @@ export default class NodeEnvironmentManifestProvider implements IManifestProvide
 			const manifestJson = await jsonfile.readFile(manifestPath) as JsonObject;
 
 			// NOTE: should work, based on the documentation.
-			// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getManifest
+			// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest
 			// > Get the complete manifest.json file, deserialized from JSON to an object.
 			// TODO: verify the JSON instead of casting.
 			this._cachedManifest = manifestJson as unknown as Manifest.ManifestBase;

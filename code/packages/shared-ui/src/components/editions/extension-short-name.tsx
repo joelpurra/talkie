@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,9 +21,8 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import React from "react";
 
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "../../hocs/translate.js";
-import * as textBase from "../../styled/text/text-base.js";
 
 export interface ExtensionShortNameProps {
 	isPremiumEdition: boolean;
@@ -39,18 +38,14 @@ class ExtensionShortName<P extends ExtensionShortNameProps & TranslateProps> ext
 		const {
 			isPremiumEdition,
 			translateSync,
-		} = this.props;
+		} = this.props as P;
 
 		// TODO: move resolving the name to the state, like edition type?
 		const extensionShortName = isPremiumEdition
 			? translateSync("extensionShortName_Premium")
 			: translateSync("extensionShortName_Free");
 
-		return (
-			<textBase.span>
-				{extensionShortName}
-			</textBase.span>
-		);
+		return extensionShortName;
 	}
 }
 

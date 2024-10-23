@@ -12,8 +12,8 @@
     "@talkie/renderer": "*"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.7.1",
-    "react": "^17.0.2"
+    "@reduxjs/toolkit": "^1.9.7",
+    "react": "^18.3.1"
   },
   "exports": {
     "./*": {
@@ -28,7 +28,6 @@
     "build": "npm run --silent build:typescript",
     "build:typescript": "tsc --build tsconfig.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run --silent clean && npm run --silent build",
     "watch": "npm run --silent build -- --watch"
   },
   "type": "module",

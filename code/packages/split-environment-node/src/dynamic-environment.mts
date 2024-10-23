@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,25 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
+import type IDynamicEnvironmentProvider from "@talkie/split-environment-interfaces/idynamic-environment-provider.mjs";
 import type {
 	Runtime,
 } from "webextension-polyfill";
 
 export default class NodeEnvironmentDynamicEnvironment implements IDynamicEnvironmentProvider {
-	isRunningPreRendering(): boolean {
-		const isNode = true;
-
-		return isNode;
-	}
-
-	isRunningLive(): boolean {
-		const isWebExtension = false;
-
-		return isWebExtension;
-	}
-
 	async getOperatingSystemType(): Promise<Runtime.PlatformOs> {
+		// eslint-disable-next-line prefer-rest-params
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);
 	}
 }

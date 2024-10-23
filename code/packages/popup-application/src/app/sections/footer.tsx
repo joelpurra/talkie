@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,23 +20,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import configureAttribute, {
-	ConfigureProps,
+	type ConfigureProps,
 } from "@talkie/shared-ui/hocs/configure.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
+import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as errors from "@talkie/shared-ui/styled/text/errors.js";
-import * as lighter from "@talkie/shared-ui/styled/text/lighter.js";
 import {
-	OnOpenOptionsPageClickProp,
+	type TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import {
+	type OnOpenOptionsPageClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import type {
-	StyletronComponent,
-} from "styletron-react";
-import {
-	withStyleDeep,
-} from "styletron-react";
+import React from "react";
 
 export interface FooterStateProps {
 	errorCount: number;
@@ -52,17 +50,17 @@ export interface FooterProps extends FooterStateProps, FooterDispatchProps {
 
 class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent<P> {
 	styled: {
-		footer: StyletronComponent<ComponentProps<typeof layoutBase.footer>>;
-		footerFirstLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerSecondLink: StyletronComponent<ComponentProps<typeof lighter.a>>;
-		footerErrorLink: StyletronComponent<ComponentProps<typeof errors.span>>;
+		footer: TalkieStyletronComponent<typeof layoutBase.footer>;
+		footerFirstLink: TalkieStyletronComponent<"a">;
+		footerSecondLink: TalkieStyletronComponent<"a">;
+		footerErrorCount: TalkieStyletronComponent<typeof errors.span>;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		this.styled = {
-			footer: withStyleDeep(
+			footer: withTalkieStyleDeep(
 				layoutBase.footer,
 				{
 					lineHeight: "2em",
@@ -70,26 +68,27 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 				},
 			),
 
-			footerErrorLink: withStyleDeep(
+			footerErrorCount: withTalkieStyleDeep(
 				errors.span,
 				{
 					// TODO: padding on one side, depending on the user interface language ltr/rtl.
+					// TODO: replace padding with before/after pseudo-element with a single space as contents?
 					paddingLeft: "0.5em",
 					paddingRight: "0.5em",
 					verticalAlign: "middle",
 				},
 			),
 
-			footerFirstLink: withStyleDeep(
-				lighter.a,
+			footerFirstLink: talkieStyled(
+				"a",
 				{
 					fontSize: "1.75em",
 					verticalAlign: "middle",
 				},
 			),
 
-			footerSecondLink: withStyleDeep(
-				lighter.a,
+			footerSecondLink: talkieStyled(
+				"a",
 				{
 					verticalAlign: "middle",
 				},
@@ -103,18 +102,18 @@ class Footer<P extends FooterProps & ConfigureProps> extends React.PureComponent
 			errorCount,
 			optionsPageClick,
 			versionNumber,
-		} = this.props;
+		} = this.props as P;
 
 		// TODO: create a component class.
 
 		const ErrorCount = errorCount === 0
 			? null
 			: (
-				<errors.span>
+				<this.styled.footerErrorCount>
 					errors(
 					{errorCount}
 					)
-				</errors.span>
+				</this.styled.footerErrorCount>
 			);
 
 		return (

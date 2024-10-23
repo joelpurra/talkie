@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,8 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import getFrontendMessageBus from "@talkie/browser-shared/hydrate/get-frontend-message-bus.mjs";
+import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
-	eventToPromise,
+	eventToPromiseSingle,
 	startReactFrontend,
 	stopReactFrontend,
 } from "@talkie/browser-shared/shared-frontend.mjs";
@@ -29,9 +31,15 @@ import {
 
 import hydrate from "./hydrate.mjs";
 
+// NOTE: earliest possible voice load trigger.
+void redundantlyTriggerLoadingVoices();
+
 const start = async () => {
 	await startReactFrontend();
-	await hydrate();
+
+	const messageBusProviderGetter = await getFrontendMessageBus();
+
+	await hydrate(messageBusProviderGetter);
 };
 
 const stop = async () => {
@@ -41,5 +49,5 @@ const stop = async () => {
 
 registerUnhandledRejectionHandler();
 
-document.addEventListener("DOMContentLoaded", eventToPromise.bind(null, start));
-window.addEventListener("beforeunload", eventToPromise.bind(null, stop));
+document.addEventListener("DOMContentLoaded", eventToPromiseSingle.bind(null, start));
+window.addEventListener("beforeunload", eventToPromiseSingle.bind(null, stop));

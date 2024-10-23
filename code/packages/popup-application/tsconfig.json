@@ -10,13 +10,16 @@
       "path": "../browser-shared/tsconfig.json"
     },
     {
+      "path": "../shared-application-helpers/tsconfig.json"
+    },
+    {
       "path": "../shared-application/tsconfig.json"
     },
     {
       "path": "../shared-ui/tsconfig.json"
     },
     {
-      "path": "../split-environment-webextension/tsconfig.json"
+      "path": "../split-environment-interfaces/tsconfig.json"
     }
   ]
 }

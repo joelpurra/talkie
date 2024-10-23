@@ -19,7 +19,7 @@
     "message": "Спри да говориш",
     "original": "Stop talking"
   },
-  "commandBrowserActionDescription": {
+  "commandActionDescription": {
     "message": "Прочетете на глас избрания текст",
     "original": "Read text selection out loud"
   },
@@ -31,9 +31,9 @@
     "message": "Надстройте до Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
-  "commandReadClipboardDescription": {
-    "message": "Прочетете от клипборда",
-    "original": "Read from the clipboard"
+  "commandSpeakClipboardDescription": {
+    "message": "Изговаряне на текст от клипборда",
+    "original": "Speak text from the clipboard"
   },
   "commandStartStopDescription": {
     "message": "Стартиране/спиране на избора на четене",
@@ -41,12 +41,16 @@
   },
   "extensionDescription": {
     "description": "For the browsers/web stores. Maximum 132 characters.",
-    "message": "Бърз, лесен, висококачествен текст в реч на над 40 езика. Четете на глас от уебсайтове, PDF, имейл. Говорете текст с TTS.",
-    "original": "Fast, easy, high-quality text to speech in over 40 languages. Read out loud from websites, PDF, email. Speak text with TTS."
+    "message": "Бързо и лесно преобразуване на текст в говор. Четете на глас от уебсайтове, PDF, имейл. Код с отворен код, съобразен с поверителността.",
+    "original": "Fast & easy text-to-speech. Read aloud from websites, PDF, email. Privacy-aware, open source code."
   },
   "frontend_PopupMenu_Features": {
     "message": "Характеристики и надграждане",
     "original": "Features and upgrade"
+  },
+  "frontend_PopupMenu_Status": {
+    "message": "Състояние и история",
+    "original": "Status and history"
   },
   "frontend_PopupMenu_Usage": {
     "message": "Използване и преки пътища",
@@ -109,8 +113,8 @@
     "original": "How can I install more voices in Talkie on Apple macOS?"
   },
   "frontend_faq005A": {
-    "message": "Зависи коя Linux дистрибуция, браузър и система за разпространение на пакети използвате. Вижте отделни инструкции за инсталиране за вашата комбинация от софтуер. Най-лесно може да е да опитате друг браузър и да видите дали има предварително инсталиран подходящ глас. Например Firefox v95 на Ubuntu 21.10 може да бъде инсталиран с помощта на Aptitude или Snap; първият включва 8611 гласа eSpeak, позволяващ 95 езика в 7358 диалекта, но вторият включва 0 гласа. Друг пример е Google Chrome v96 на Ubuntu 21.10, който по подразбиране включва 19 гласа, позволяващи 14 езика в 18 диалекта. Моля, уведомете ме какви са вашите преживявания!",
-    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v95 on Ubuntu 21.10 can be installed using Aptitude or Snap; the former includes 8611 eSpeak voices enabling 95 languages in 7358 dialects, but the latter includes 0 voices. Another example is Google Chrome v96 on Ubuntu 21.10, which by default includes 19 voices enabling 14 languages in 18 dialects. Please let me know what your experiences are!"
+    "message": "Зависи коя Linux дистрибуция, браузър и система за разпространение на пакети използвате. Вижте отделни инструкции за инсталиране за вашата комбинация от софтуер. Най-лесно може да е да опитате друг браузър и да видите дали има предварително инсталиран подходящ глас. Например Firefox v130 на Ubuntu 24.04, инсталиран чрез Snap, включва 13000+ eSpeak гласа, позволяващи 100+ езика в 100+ диалекта — но всички тези гласове са с ниско качество. За сравнение, Google Chrome v129 на Ubuntu 24.04, инсталиран чрез Apt, включва 19 гласа, позволяващи 14 езика на 18 диалекта — всички с високо качество.",
+    "original": "It depends on which Linux distribution, browser, and package distribution system you use. See separate installation instructions for your combination of software. The easiest might be to try another browser and see if it has a suitable voice preinstalled. For example, Firefox v130 on Ubuntu 24.04 installed using Snap includes 13000+ eSpeak voices enabling 100+ languages in 100+ dialects — but all these voices are of low quality. In comparison, Google Chrome v129 on Ubuntu 24.04 installed using Apt includes 19 voices enabling 14 languages in 18 dialects — all with high quality."
   },
   "frontend_faq005Q": {
     "message": "Как мога да инсталирам повече гласове в Talkie на Linux?",
@@ -165,24 +169,24 @@
     "original": "Why does Talkie sometime have a long pause between sentences and words?"
   },
   "frontend_faq012A": {
-    "message": "За съжаление, не напълно. За Talkie Premium е възможно да копират текст и да го четат от клипборда. Оказва се, че Google Docs (както и Google Spreadsheet, Google Drive и други подобни) не е уебсайт, а специално „приложение в браузъра“, създадено от Google. Talkie не може да получи достъп до избрания текст, нито да добави елементи от контекстното меню, така че Talkie не работи.",
-    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and read it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
+    "message": "За съжаление, не напълно. За потребители Talkie Premium е възможно да копирате текст и да го изговаряте от клипборда. Оказва се, че Google Docs (както и Google Spreadsheet, Google Drive и подобни) не е уебсайт, а специално „приложение в браузъра“, създадено от Google. Talkie няма достъп до избрания текст, нито добавя елементи от контекстното меню, така че бутонът Talkie не работи.",
+    "original": "Unfortunately, not fully. For Talkie Premium users it is possible to copy text, and speak it from the clipboard. It turns out that Google Docs (as well as Google Spreadsheet, Google Drive, and similar) is not a website, but a special \"application in the browser\" created by Google. Talkie cannot access the selected text, nor add context menu items, so the Talkie button does not work."
   },
   "frontend_faq012Q": {
     "message": "Talkie работи ли в Google Документи?",
     "original": "Does Talkie work in Google Docs?"
   },
   "frontend_faq013A": {
-    "message": "Да моля! За предпочитане създайте доклад за проблем в Github, така че и други да могат да помогнат. Моля, включете възможно най-много информация, като например кой браузър и версия, операционна система и версия и език/глас, който използвате. Включете също информация относно конкретни уебсайтове, където виждате грешката, за предпочитане с връзка.",
-    "original": "Yes, please! Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
+    "message": "да моля За предпочитане е да създадете доклад за проблем в Github, така че и други да могат да помогнат. Моля, включете възможно най-много информация, като например кой браузър и версия, операционна система и версия и език/глас, който използвате. Включете също информация относно конкретни уебсайтове, където виждате грешката, за предпочитане с връзка.",
+    "original": "Yes, please. Preferably create an issue report on Github, so others can help out as well. Please include as much information as possible, such as which browser and version, operating system and version, and language/voice you are using. Also include information regarding specific websites where you see the bug, preferably with a link."
   },
   "frontend_faq013Q": {
     "message": "Трябва ли да докладвам грешки?",
     "original": "Should I report bugs?"
   },
   "frontend_faq014A": {
-    "message": "Обикновено! Ако можете да изберете текста в PDF, щракнете с десния бутон върху него и изберете Talkie в менюто. Ако текстът не може да бъде избран, ако е част от изображение, тогава няма да работи.",
-    "original": "Usually! If you can select the text in the PDF, right click on it and choose Talkie in the menu. If the text cannot be selected, if it is part of an image, then it will not work."
+    "message": "Да, през повечето време. Ако можете да изберете текста в PDF, щракнете с десния бутон върху него и изберете Talkie в менюто. Потребителите Talkie Premium също могат да копират текста, след което да го прочетат от клипборда. Ако текстът не може да бъде избран, като например ако е част от изображение, тогава няма да работи.",
+    "original": "Yes, most of the time. If you can select the text in the PDF, right click on it and choose Talkie in the menu. Talkie Premium users can also copy the text, then read it from the clipboard. If the text cannot be selected, such as if it is part of an image, then it will not work."
   },
   "frontend_faq014Q": {
     "message": "Може ли Talkie чете PDF файлове?",
@@ -197,8 +201,8 @@
     "original": "Does Talkie have a word limit?"
   },
   "frontend_faq016A": {
-    "message": "Разбира се! Просто се свържете с мен чрез страниците за поддръжка или проекти.",
-    "original": "Certainly! Just contact me through the support or project pages."
+    "message": "да Опишете желаната от вас функция в нов брой на Github.",
+    "original": "Yes. Describe your desired feature in a new issue on Github."
   },
   "frontend_faq016Q": {
     "message": "Мога ли да поискам нови функции?",
@@ -221,16 +225,16 @@
     "original": "How to change shortcut keys in Firefox?"
   },
   "frontend_faq019A": {
-    "message": "Разбира се! Би било чудесно да получите помощ при превода на Talkie , да тествате Talkie на нови системи, да разследвате грешки и да добавяте нови функции. Моля, вижте страницата на проекта за инструкции.",
-    "original": "Certainly! It would be great to get help translating Talkie, to test Talkie on new systems, to investigate bugs, and to add new features. Please see the project page for instructions."
+    "message": "Да, помощта винаги се оценява. Моля, вижте страницата на проекта за инструкции.",
+    "original": "Yes, help is always appreciated. Please see the project page for instructions."
   },
   "frontend_faq019Q": {
     "message": "Мога ли да помогна за развитието на Talkie ?",
     "original": "Can I help develop Talkie?"
   },
   "frontend_faq020A": {
-    "message": "Да — моля, кажете на приятелите си за Talkie! Може би изпратете връзка към любимата си интернет знаменитост, онлайн група или бюлетин. Можете дори да помолите шефа си да го инсталира на всички компютри на работа или учителя си да го инсталира в училище. Разпространението на информацията за Talkie е много оценено!",
-    "original": "Yes — please tell your friends about Talkie! Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated!"
+    "message": "Да — моля, кажете на приятелите си за Talkie. Може би изпратете връзка към любимата си интернет знаменитост, онлайн група или бюлетин. Можете дори да помолите шефа си да го инсталира на всички компютри на работа или учителя си да го инсталира в училище. Разпространяването на информация за Talkie е много ценено.",
+    "original": "Yes — please tell your friends about Talkie. Perhaps send a link to your favorite internet celebrity, online group, or newsletter. You can even ask your boss to install it on all the computers at work, or your teacher to install it at school. Spreading the word about Talkie is very much appreciated."
   },
   "frontend_faq020Q": {
     "message": "Мога ли да помогна на Talkie по друг начин?",
@@ -245,124 +249,180 @@
     "original": "Why are there two editions of Talkie?"
   },
   "frontend_faq022A": {
-    "message": "Да, има множество опции за плащане.",
-    "original": "Yes, there are multiple payment options available."
+    "message": "Да, налични са множество опции за дарение.",
+    "original": "Yes, there are multiple donation options available."
   },
   "frontend_faq022Q": {
-    "message": "Мога ли да платя с PayPal, банков превод и т.н.?",
-    "original": "Can I pay using PayPal, bank transfer, etcetera?"
+    "message": "Мога ли да даря чрез PayPal, банков превод и т.н.?",
+    "original": "Can I donate using PayPal, bank transfer, etcetera?"
   },
   "frontend_faq023A": {
-    "message": "Да, ако сте платили с PayPal или Stripe, които предлагат лесно управление на възстановяването. Възстановяванията обикновено не са налични за други методи на плащания поради количеството допълнителна работа, която изисква, плюс риска парите да бъдат възстановени в грешната сметка.",
-    "original": "Yes, if you paid using PayPal or Stripe, which offer simple refund management. Refunds are generally not available for other methods of payments due to the amount of extra work it requires, plus the risk that the money gets refunded to the wrong account."
+    "message": "Да, ако сте дарили чрез PayPal, който предлага лесно управление на възстановяването. Възстановяването на суми обикновено не е налично за други методи на дарения поради количеството допълнителна работа, която изисква, в допълнение към рискове като възстановяване на средства в грешна сметка. За предпочитане е потребителите първо да отделят време за изпробване на Talkie Premium , за да се уверят, че всичко е задоволително, преди да направят дарение.",
+    "original": "Yes, if you donated using PayPal which offers simple refund management. Refunds are generally not available for other methods of donations due to the amount of extra work it requires, in addition to risks such as refunding to the wrong account. It is preferable that users first spend time trying out Talkie Premium, to ensure everything is satisfactory before donating."
   },
   "frontend_faq023Q": {
     "message": "Мога ли да получа възстановяване?",
     "original": "Can I get a refund?"
   },
   "frontend_faq024A": {
-    "message": "Сигурен! Просто активирайте Talkie Premium за да я изпробвате.",
-    "original": "Sure! Just enable the Talkie Premium upgrade to try it out."
+    "message": "Разбира се, няма проблем. Просто активирайте надстройката Talkie Premium , за да я изпробвате.",
+    "original": "Sure, no problem. Just enable the Talkie Premium upgrade to try it out."
   },
   "frontend_faq024Q": {
     "message": "Мога ли да изпробвам Talkie Premium безплатно?",
     "original": "Can I try out Talkie Premium for free?"
   },
   "frontend_faq025A": {
-    "message": "Talkie няма реклама, събиране на данни или проследяване на потребители. Щастливите потребители, които плащат за Talkie Premium е единствената възможност за приходи.",
-    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users paying for Talkie Premium is the only monetization."
+    "message": "В Talkie няма реклами, събиране на данни или проследяване на потребители. Доволните потребители даряват за Talkie Premium е единственото осигуряване на приходи.",
+    "original": "There is no advertisement, data collection, or user tracking in Talkie. Happy users donating for Talkie Premium is the only monetization."
   },
   "frontend_faq025Q": {
     "message": "Talkie съдържат ли реклама, събират ли данни или проследяват ли потребителите?",
     "original": "Does the Talkie extensions contain advertisement, collect data, or track users?"
   },
   "frontend_faq026A": {
-    "message": "Системата на чест е, когато се вярва, че хората са честни и се придържат към насоките без стриктно наложени проверки. За Talkie Premium доверие, че тези, които надграждат, са платили за това.",
-    "original": "The honor system is when individuals are trusted to be honest, and adhere to guidelines without strictly enforced checks. For Talkie Premium trusting that those who upgrade have paid for it."
+    "message": "Системата на честта е, когато хората се доверяват един на друг, че се придържат към договорените насоки, без стриктно наложени проверки. За Talkie Premium това означава да се доверите, че тези, които надграждат, също са дарили.",
+    "original": "The honor system is when individuals trust each other to adhere to agreed upon guidelines, without strictly enforced checks. For Talkie Premium this means trusting that those who upgrade have also donated."
   },
   "frontend_faq026Q": {
     "message": "Каква е системата на честта?",
     "original": "What is the honor system?"
   },
   "frontend_faq027A": {
-    "message": "Тъй като хората по света използват различни валути, имат различни нива на разполагаем доход и имат различни нива на оценка за Talkie Premium на Talkie Premium. Няма единна, фиксирана цена, която да работи добре за всички по света. На всичкото отгоре идват колебанията във валутите, тенденциите в икономическия цикъл, регионалните/вътрешните вариации и т.н. Като цяло, настройките на цените за продукт, продаван по целия свят, са сложни. По-лесно е да оставите всеки да определи своя собствена цена и да гарантира, че продуктът е достатъчно добър, за да гарантира плащане.",
-    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a payment."
+    "message": "Защото хората по света използват различни валути, имат различни нива на разполагаем доход и имат различни нива на признателност за функциите на Talkie Premium. Няма единна, фиксирана цена, която да работи добре за всички по света. На всичкото отгоре идват колебания във валутите, тенденции на икономическия цикъл, регионални/вътрешни вариации и т.н. Като цяло настройката на цените за продукт, продаван в цял свят, е сложна. По-лесно е да оставите всеки да определя собствената си цена и да гарантирате, че продуктът е достатъчно добър, за да оправдае дарение.",
+    "original": "Because people around the world use different currencies, have different levels of disposable income, and have different levels of appreciation for Talkie Premium's features. There is no single, fixed price that works well for everyone in the world. On top of that comes fluctuations in currencies, economic cycle trends, regional/intra-country variations, etcetera. All in all, settings prices for a product sold worldwide is complicated. It is easier to let everyone set their own price, and ensure that the product is good enough to warrant a donation."
   },
   "frontend_faq027Q": {
     "message": "Защо мога да определя собствена цена?",
     "original": "Why can I set my own price?"
   },
   "frontend_faq028A": {
-    "message": "Talkie Premium на текст в говор, предпочитам да плащате това, което смятате, че Talkie Premium струва за вас — нито повече, нито по-малко. В случай, че търсите референтна рамка, когато Google обработва плащания за Talkie Premium абонаментът струва $25 (щатски долар) на година в Съединените американски щати. Имайте предвид, че Google коригира цените за страните и валутите по света, за да съответстват на местните условия, така че може да бъде повече или по-малко. В същото време всеки, който поиска учтиво, също може да получи Talkie Premium безплатно.",
-    "original": "Since I don't know how much money you are able to spend on text-to-speech software, I prefer that you pay what you think Talkie Premium is worth to you  — no more, no less. In case you are looking for a frame of reference, when Google handled payments for Talkie Premium the subscription cost $$25 (US Dollar) per year in the United States of America. Note that Google adjusted prices around for countries and currencies the world to match local conditions, so it could be more or less. At the same time, anyone who asked politely could also receive Talkie Premium for free."
+    "message": "Тъй като не знам колко пари сте в състояние и желаете да похарчите за софтуер за синтезиран говор, предпочитам да дарите това, което смятате, че Talkie Premium струва за вас — нито повече, нито по-малко. В случай, че търсите референтна рамка, когато уеб магазинът на Google Chrome обработваше плащания за Talkie Premium (2017-2021), цената на годишния абонамент беше $25 (щатски долар) в Съединените американски щати. Цените в световен мащаб обаче варираха, тъй като Google автоматично коригира цените за други държави и валути.",
+    "original": "Since I don't know how much money you are able and willing to spend on text-to-speech software, I prefer that you donate what you think Talkie Premium is worth to you — no more, no less. In case you are looking for a frame of reference, when Google Chrome Web Store handled payments for Talkie Premium (2017-2021) the yearly subscription cost was $$25 (US Dollar) in the United States of America. Worldwide prices varied though, as Google automatically adjusted prices for other countries and currencies."
   },
   "frontend_faq028Q": {
-    "message": "Колко препоръчвате да платя?",
-    "original": "How much do you recommend I pay?"
+    "message": "Колко препоръчвате да даря?",
+    "original": "How much do you recommend I donate?"
   },
   "frontend_faq029A": {
-    "message": "Тъй като внедряването на система за плащания и верификация отнема много време и усилия и се предполага, че разходите за внедряване на стриктна проверка на плащанията са по-високи от загубите от лица, измамващи системата. Проверката на плащането също изисква известно ниво на събиране на данни от системите на потребителите, а технически квалифицираните потребители често могат да заобиколят проверката така или иначе. Така че от техническа и бизнес гледна точка, въпреки че няма гаранции, е по-лесно просто да се доверите, че потребителите се придържат към системата на честта.",
-    "original": "Because implementing a system for payments and verification takes a lot of time and effort, and it is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
+    "message": "Защото внедряването на система за плащания и верификация отнема много време и усилия. Предполага се, че разходите за прилагане на стриктна проверка на плащанията са по-високи от загубите от физически лица, които мамят системата. Проверката на плащане също изисква известно ниво на събиране на данни от системите на потребителите, а технически опитните потребители често могат да заобиколят проверката така или иначе. Така че от техническа и бизнес гледна точка, въпреки че няма гаранции, е по-лесно просто да се доверите, че потребителите се придържат към системата за чест.",
+    "original": "Because implementing a system for payments and verification takes a lot of time and effort. It is assumed that the cost of implementing strict payment verification is higher than the losses from individuals cheating the system. Payment verification also requires some level of data collection from users' systems, and technically skilled users can often work around the verification anyways. So from a technical and business perspective, even though there are no guarantees, it is easier to simply trust that users adhere to the honor system."
   },
   "frontend_faq029Q": {
-    "message": "Защо няма проверка на плащането?",
-    "original": "Why is there no payment verification?"
+    "message": "Защо няма потвърждение за дарение или плащане?",
+    "original": "Why is there no donation or payment verification?"
   },
   "frontend_faq030A": {
-    "message": "Решението да не се извършва проверка на плащането означава, че платената сума не може да бъде проверена. В допълнение, цената на \"производството\" на цифрово копие на Talkie Premium е нула, така че раздаването му за нищо не означава финансова загуба за разработчика. Има и надежда, че ако харесвате Talkie Premium , ще кажете на приятелите си за него. Раздаването на Talkie Premium може да се разглежда и като маркетингово усилие.",
-    "original": "The decision to not implement payment verification means that the amount paid cannot be verified. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium, you will tell your friends about it. Giving away Talkie Premium can also be seen as a marketing effort."
+    "message": "Осъзнавам, че даряването на „нищо“ е малко объркващо. Краткият отговор е, че парите не са всичко. Дългият отговор има повече аспекти. Решението да не се прилага проверка на плащане означава, че платената сума е без значение. В допълнение, разходите за „производство“ на цифрово копие на Talkie Premium са нула, така че даването му на безценица не означава финансова загуба за разработчика. Има и надеждата, че ако харесвате Talkie Premium , ще кажете на приятелите си за него и може би някои от тях в крайна сметка ще дарят по един или друг начин. Следователно раздаването на Talkie Premium може да се разглежда като маркетингово усилие.",
+    "original": "I realize that donating \"nothing\" is a bit confusing. The short answer is that money isn't everything. The long answer has more aspects. The decision to not implement payment verification means that the amount paid is irrelevant. In addition, the cost of \"manufacturing\" a digital copy of Talkie Premium is zero, so giving it away for nothing does not imply a financial loss for the developer. There is also the hope that if you like Talkie Premium you will tell your friends about it, and perhaps some of them end up donating in one way or another. Giving away Talkie Premium can therefore be seen as a marketing effort."
   },
   "frontend_faq030Q": {
-    "message": "Защо мога да избера да не плащам нищо?",
-    "original": "Why can I choose to pay nothing?"
+    "message": "Защо мога да избера да даря или да не платя нищо?",
+    "original": "Why can I choose to donate or pay nothing?"
   },
   "frontend_faq031A": {
-    "message": "Да, с помощта на Stripe. Вижте допълнителни опции за плащане.",
-    "original": "Yes, by using Stripe. See additional payment options."
+    "message": "Да, но няма автоматизирана система за повтарящи се дарения. Най-простият начин е просто да дарите отново по-късно.",
+    "original": "Yes, but there is no automated system for recurring donations. The most straightforward way is that you simply donate again at a later time."
   },
   "frontend_faq031Q": {
-    "message": "Мога ли да правя периодично месечно или годишно плащане?",
-    "original": "Can I make a recurring monthly or yearly payment?"
+    "message": "Мога ли да направя повтарящо се месечно или годишно дарение?",
+    "original": "Can I make a recurring monthly or yearly donation?"
   },
   "frontend_faq032A": {
-    "message": "Да, ако го заявите по имейл. Моля, включете вашето име, адрес и по желание вашия идентификатор за данък върху добавената стойност (ДДС) (или еквивалент).",
-    "original": "Yes, if you request it via email. Please include your name, address, and optionally your value-added tax (VAT) identifier (or equivalent)."
+    "message": "Това е рядко искане и ще трябва да се обработва ръчно. Моля, свържете се, преди да дарите.",
+    "original": "This is a rare request, and it would need to be handled manually. Please reach out before donating."
   },
   "frontend_faq032Q": {
-    "message": "Мога ли да получа разписка за плащането си?",
-    "original": "Can I get a receipt for my payment?"
+    "message": "Мога ли да получа разписка за моето дарение?",
+    "original": "Can I get a receipt for my donation?"
   },
   "frontend_faq033A": {
-    "message": "Защото харесвате допълнителните функции, които Talkie Premium предоставя, и щастливото усещане да допринасяте за разработването на софтуер с отворен код от независими разработчици. Поради относително високите разходи за персонал за разработка и поддръжка, но нулевите разходи за \"производство\" на цифрови копия, плащанията за Talkie Premium могат също да се разглеждат като осигуряващи подкрепа за бъдещо развитие и поддръжка, за разлика от стойността на продукта към момента на плащане .",
-    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high personell cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, payments for Talkie Premium can also be seen as providing support for future development and maintenance, as opposed to the value of the product at the time of payment."
+    "message": "Защото харесвате допълнителните функции, които Talkie Premium предоставя, и щастливото усещане да допринасяте за разработването на софтуер с отворен код от независими разработчици. Поради сравнително високите времеви разходи за разработка и поддръжка, но нулевите разходи за „производство“ на цифрови копия, даренията за Talkie Premium могат също да се разглеждат като предоставяне на подкрепа и насърчение за бъдещо развитие и поддръжка, за разлика от стойността на продукта към момента на дарение.",
+    "original": "Because you like the additional features Talkie Premium provides, and the happy feeling of contributing to open source software development by independent developers. Due to relatively high time cost of development and maintenance, but zero cost of \"manufacturing\" digital copies, donations for Talkie Premium can also be seen as providing support and encouragement for future development and maintenance, as opposed to the value of the product at the time of donation."
   },
   "frontend_faq033Q": {
-    "message": "Защо трябва да плащам за надграждане?",
-    "original": "Why should I pay to upgrade?"
+    "message": "Защо трябва да даря за надграждане?",
+    "original": "Why should I donate to upgrade?"
   },
   "frontend_faq034A": {
-    "message": "Краткият отговор е: вероятно не. Оказва се, че има съвременни гласове и стари гласове в Microsoft Windows. Когато тествах последно, холандският глас \"Microsoft Frank\" беше наличен в Microsoft Edge, но не и в Google Chrome или Mozilla Firefox. Една от причините е, че някои гласове са създадени за по-новата речева система WinRT, а някои за по-стария интерфейс за програмиране на приложения за реч (SAPI). Браузърите може да не поддържат както старата, така и новата речева система, което означава, че гласът, който всъщност е инсталиран, все още може да не е наличен в любимия ви браузър. С течение на времето повечето браузъри вероятно ще поддържат по-новата система WinRT. Ако ви липсват гласове на вашия език, едно предложение е да опитате да използвате Talkie в Microsoft Edge.",
-    "original": "The short answer is: probably not. It turns out there are modern voices and old voices on Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Browsers may not support both the old and the new speech systems, meaning that a voice which is in fact installed, may still not be available in your favorite browser. Over time, most browers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
+    "message": "Да, но зависи кой браузър използвате. В Microsoft Windows има както модерни, така и стари гласове. Когато последно тествах, холандският глас „Microsoft Frank“ беше наличен в Microsoft Edge, но не и в Google Chrome, нито в Mozilla Firefox. Една от причините е, че някои гласове са създадени за по-новата речева система WinRT, а някои за по-стария интерфейс за програмиране на речеви приложения (SAPI). Вашият любим браузър може да не поддържа както старата, така и новата речова система, което означава, че гласът, който всъщност е инсталиран, може да не е използваем. С течение на времето повечето браузъри вероятно ще поддържат по-новата система WinRT. Ако ви липсват гласове на вашия език, едно предложение е да опитате да използвате Talkie в Microsoft Edge.",
+    "original": "Yes, but it depends on which browser you use. There are both modern voices and old voices available in Microsoft Windows. When I last tested, the Dutch voice \"Microsoft Frank\" was available in Microsoft Edge, but not in Google Chrome nor Mozilla Firefox. One reason is that some voices are built for the newer WinRT speech system, and some for the older Speech Application Programming Interface (SAPI). Your favorite browser may not support both the old and the new speech systems, meaning that a voice which is in fact installed may not be usable. Over time, most browsers will probably support the newer WinRT system. If you are missing voices in your language, one suggestion is to try using Talkie in Microsoft Edge."
   },
   "frontend_faq034Q": {
     "message": "Всички гласове за Microsoft Windows работят ли с Talkie ?",
-    "original": "Does all voices for Microsoft Windows work with Talkie?"
+    "original": "Do all voices for Microsoft Windows work with Talkie?"
   },
   "frontend_faq035A": {
-    "message": "Може би с много усилия. Има и някои неофициални решения, за да накарате новите гласове на WinRT да работят с по-стари браузъри, поддържащи SAPI, но това е силно техническо начинание и не се препоръчва за нетехнически потребители.",
-    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavour and not recommended for non-technical users."
+    "message": "Може би с много усилия. Има и някои неофициални заобикалящи решения, за да накарате новите гласове на WinRT да работят с по-стари браузъри с активиран SAPI, но това е силно техническо начинание и не се препоръчва за нетехнически потребители.",
+    "original": "Perhaps, with a lot of effort. There are also some unofficial workarounds to get new WinRT voices to work with older SAPI-enabled browsers, but this is a highly technical endeavor and not recommended for non-technical users."
   },
   "frontend_faq035Q": {
     "message": "Могат ли WinRT гласове да работят в браузъри с активиран SAPI на Microsoft Windows?",
     "original": "Can WinRT voices work in SAPI-enabled browsers on Microsoft Windows?"
   },
   "frontend_faq036A": {
-    "message": "Да, някои го правят. Следвайте инструкциите за инсталиране на вашата система и браузър. След като гласовете са инсталирани във вашия браузър, Talkie трябва да ги открие автоматично. Моля, споделете всички съвети, които имате!",
-    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically. Please share any tips you have!"
+    "message": "Да, някои го правят. Следвайте инструкциите за инсталиране за вашата система и браузър. След като гласовете са инсталирани във вашия браузър, Talkie трябва да ги открие автоматично.",
+    "original": "Yes, some do. Follow the installation instructions for your system and browser. Once the voices are installed in your browser, Talkie should detect them automatically."
   },
   "frontend_faq036Q": {
     "message": "Talkie ли гласовете с отворен код с Talkie?",
     "original": "Do open source voices work with Talkie?"
+  },
+  "frontend_faq037A": {
+    "message": "Даренията предполагат доброволно харчене за нещо положително. Мислете за това като за бакшиш. Плащанията предполагат задължителна транзакция на пари.",
+    "original": "Donations imply voluntary spending on something positive. Think of it like gratuity. Payments imply a mandatory transaction of money."
+  },
+  "frontend_faq037Q": {
+    "message": "Защо дарения вместо плащания?",
+    "original": "Why donations instead of payments?"
+  },
+  "frontend_faq038A": {
+    "message": "Вместо пари, разпространявайте позитивност. Подкрепете хуманитарна организация. Станете доброволец в местна благотворителна организация. Помогнете на непознат. Прегърнете член на семейството. усмихни се Всъщност всичко това е по-важно от паричните дарения за Talkie Premium. Все пак оценявам получаването на пощенски картички.",
+    "original": "In lieu of money, spread positivity. Support a humanitarian organization. Volunteer at a local charity. Help a stranger. Hug a family member. Smile. In fact, all of these are more important than monetary donations for Talkie Premium. I do appreciate receiving postcards though."
+  },
+  "frontend_faq038Q": {
+    "message": "Избрах да не дарявам нищо. Има ли нещо друго, което мога да направя?",
+    "original": "I chose to donate nothing. Is there something else I can do?"
+  },
+  "frontend_faq039A": {
+    "message": "Да, все пак можете да използвате Talkie Premium .",
+    "original": "Yes, you may use Talkie Premium anyways."
+  },
+  "frontend_faq039Q": {
+    "message": "Ако избера да не дарявам нищо, все още ли се брои?",
+    "original": "If I chose to donate nothing, does it still count?"
+  },
+  "frontend_faq040A": {
+    "message": "Първоначалният план беше да монетизирате Talkie чрез таксуване на годишна абонаментна такса за Talkie Premium. В продължение на няколко години (2017-2021) уеб магазинът на Google Chrome обработваше плащания и абонаменти за Talkie Premium , но вече не предлагат тази услуга. Когато външната платежна система спря да работи, избрах да запазя функциите Talkie Premium отделно, за да покажа, че са положени много усилия за Talkie. Даренията са прокси-индикация, че хората използват и оценяват Talkie , което ме вдъхнови да прекарам стотици часове в работа по него.",
+    "original": "The original plan was to monetize Talkie by charging a yearly subscription fee for Talkie Premium. For a few years (2017-2021) Google Chrome Web Store handled payments and subscriptions for Talkie Premium, but they no longer offer that service. When the external payment system stopped working I chose to keep Talkie Premium features separate, to indicate that a lot of effort has gone into Talkie. Donations are a proxy-indication that people use and appreciate Talkie, which is what has inspired me to spend hundreds of hours working on it."
+  },
+  "frontend_faq040Q": {
+    "message": "Ако даренията не са задължителни, защо функциите Talkie Premium са отделни?",
+    "original": "If donations are optional, why are Talkie Premium features separate?"
+  },
+  "frontend_faq041A": {
+    "message": "Talkie , подобно на другия ми код с отворен код, е хоби проект. Обикновено има нещо незначително, за което трябва да се погрижите на всеки няколко седмици, като например отговаряне на въпроси, изпратени по имейл. Програмирането на Talkie обикновено се концентрира върху няколко дни тук и там — често по време на празници и ваканции. За съжаление промените във външната политика отнемат все повече време от разработването на функциите. Например, техническото надграждане на Talkie до версия 3 на манифеста (MV3) отне няколко седмици работа (2023-2024 г.) без видимо подобрение на полезността на Talkie .",
+    "original": "Talkie, like my other open source code, is a hobby project. There is usually something minor to take care of every few weeks, such as replying to emailed questions. Programming on Talkie is usually concentrated to a few days here and there — often during holidays and vacations. Unfortunately, external policy changes take more and more time from feature development. For example, technically upgrading Talkie to Manifest Version 3 (MV3) took several weeks of work (2023-2024) without apparent improvement to Talkie's usefulness."
+  },
+  "frontend_faq041Q": {
+    "message": "Колко време прекарвате в работа по Talkie ?",
+    "original": "How much time do you spend working on Talkie?"
+  },
+  "frontend_faq042A": {
+    "message": "В момента не съм сигурен. Разработих Talkie (2016), за да могат другите да се наслаждават, и аз всъщност не го използвам. Добавянето на нови функции и изучаването на нови неща е забавно. Хубаво е да получавате положителни отзиви и да виждате как броят на потребителите нараства. В момента обаче не е любимото ми хоби, тъй като външните фактори оказаха негативно влияние върху развитието през последните години (2020-2024 г.). По-специално, публикуването на уеб разширение изисква да сте в крак с непрекъснато развиващите се политики на Google Chrome Web Store (CWS) и Mozilla Add-Ons (AMO) за Firefox.",
+    "original": "At the moment I am not sure. I developed Talkie (2016) for others to enjoy, and do not actually use it myself. Adding new features and learning new stuff is fun. Receiving positive feedback and seeing the number of users going up is nice. It is currently not my favorite hobby though, because external factors have had a negative impact on development during the past years (2020-2024). In particular, publishing a web extension requires staying up to date with the ever-evolving policies of Google Chrome Web Store (CWS) and Mozilla Add-Ons (AMO) for Firefox."
+  },
+  "frontend_faq042Q": {
+    "message": "Колко дълго ще работите по Talkie ?",
+    "original": "How long will you keep working on Talkie?"
+  },
+  "frontend_faq043A": {
+    "message": "Отговорът на този въпрос не може надеждно да се поддържа актуален. Посетете уебсайта Talkie за текущия статус на проекта.",
+    "original": "The answer to this question cannot reliably be kept up to date. Visit the Talkie website for the current project status."
+  },
+  "frontend_faq043Q": {
+    "message": "Все още ли работите активно върху Talkie ?",
+    "original": "Are still you actively working on Talkie?"
   },
   "frontend_faqBugsHeading": {
     "message": "Бъгове",
@@ -385,12 +445,12 @@
     "original": "Voices"
   },
   "frontend_featuresEdition_Free": {
-    "message": "В момента се използва безплатното издание на Talkie и е наличен ограничен набор от функции. Може би Talkie Premium би бил по-добър избор за вас?",
-    "original": "Currently using the free edition of Talkie, and a limited set of features is available. Perhaps Talkie Premium would be a better choice for you?"
+    "message": "В момента използвате безплатното издание на Talkie и е наличен ограничен набор от функции. Мислили ли сте да надстроите до Talkie Premium ?",
+    "original": "You are currently using the free edition of Talkie, and a limited set of features is available. Have you considered upgrading to Talkie Premium?"
   },
   "frontend_featuresEdition_Premium": {
-    "message": "В момента се използва Talkie Premium и всички функции са налични. Благодаря ви много, стопля ми сърцето!",
-    "original": "Currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
+    "message": "В момента използвате Talkie Premium и всички функции са налични. Благодаря много, стопли ми сърцето!",
+    "original": "You are currently using Talkie Premium, and all features are available. Thank you very much, it warms my heart!"
   },
   "frontend_featuresEditions": {
     "message": "Talkie предлага в две издания: Talkie и Talkie Premium. Безплатното издание е чудесно за повечето случаи на употреба, но премиум изданието предлага допълнителни опции и функции.",
@@ -413,24 +473,24 @@
     "original": "Reads long texts and articles out loud, even while the tab is in the background."
   },
   "frontend_featuresFree_List05": {
-    "message": "Кодът е с отворен код и е достъпен безплатно за всички потребители.",
-    "original": "Code is open source and available for free to all users."
+    "message": "Кодът е с отворен код и е напълно достъпен за всички потребители.",
+    "original": "Code is open source and fully available to all users."
   },
   "frontend_featuresFree_List06": {
-    "message": "Безплатно!",
-    "original": "Free!"
+    "message": "Използвайте колкото искате, без никакви разходи.",
+    "original": "Use as much as you want at no cost."
   },
   "frontend_featuresLinkText": {
     "message": "Характеристика",
     "original": "Features"
   },
   "frontend_featuresPremium_List01": {
-    "message": "Изберете своя собствен глас по подразбиране за всеки език. Страхотно, ако се уморите от гласа на системата!",
-    "original": "Choose your own default voice for each language. Great if you get tired of the system voice!"
+    "message": "Изберете вашия собствен предпочитан глас за всеки език.",
+    "original": "Choose your own preferred voice for each language."
   },
   "frontend_featuresPremium_List02": {
-    "message": "Изберете скорост на четене и височина на глас. Настройте гласовете по ваш вкус!",
-    "original": "Choose reading speed and pitch per voice. Adjust voices to your liking!"
+    "message": "Регулирайте скоростта на четене и височината на гласа.",
+    "original": "Adjust reading speed and pitch per voice."
   },
   "frontend_featuresPremium_List03": {
     "message": "Това топло, размито усещане, което получавате, когато поддържате софтуер с отворен код от независими разработчици.",
@@ -441,12 +501,16 @@
     "original": "Future Premium updates included without additional cost."
   },
   "frontend_featuresPremium_List05": {
-    "message": "Прочетете текст от клипборда! Просто копирайте текст от всяко място във всяка програма и използвайте Talkie Premium за да го прочетете!",
-    "original": "Read text from the clipboard! Just copy text from anywhere in any program, and use Talkie Premium to read it!"
+    "message": "Изговаряне на текст от клипборда. Копирайте всеки текст от всяко място във всяка програма и използвайте Talkie Premium , за да го прочетете.",
+    "original": "Speak text from the clipboard. Copy any text from anywhere in any program, and use Talkie Premium to read it."
+  },
+  "frontend_installVoicesHeading": {
+    "message": "Налични гласове от текст към говор",
+    "original": "Available text-to-speech voices"
   },
   "frontend_installVoicesNoVoiceFound": {
-    "message": "Моля, инсталирайте някои гласове на вашата система, в противен случай Talkie няма да работи. Съжалявам!",
-    "original": "Please install some voices on your system, otherwise Talkie will not work. Sorry!"
+    "message": "Не можах да намеря никакви гласове за синтезиран говор. Без гласове Talkie не може да функционира правилно. Понякога помага да презаредите тази страница, поне ако браузърът е бавен или има много гласове.",
+    "original": "Could not find any text-to-speech voices. Without voices Talkie can not function correctly. Sometimes it helps to reload this page, at least if the browser is slow or there are many voices."
   },
   "frontend_installVoicesNoVoiceFoundHeading": {
     "message": "Няма намерени гласове за преобразуване на текст в говор",
@@ -460,6 +524,10 @@
     "message": "Разрешително",
     "original": "License"
   },
+  "frontend_licenseThirdPartyHeading": {
+    "message": "Лицензи на трети страни",
+    "original": "Third-party licenses"
+  },
   "frontend_loading": {
     "message": "Зареждане...",
     "original": "Loading..."
@@ -471,6 +539,78 @@
   "frontend_settingsLinkText": {
     "message": "Настройки",
     "original": "Settings"
+  },
+  "frontend_settingsReadClipboardDisplayClipboard": {
+    "message": "Показване на текст в клипборда",
+    "original": "Display clipboard text"
+  },
+  "frontend_settingsReadClipboardPermissionDenied": {
+    "message": "Не е предоставен достъп до клипборда.",
+    "original": "Clipboard access not granted."
+  },
+  "frontend_settingsReadClipboardPermissionDeny": {
+    "message": "Отказ на разрешение за клипборда",
+    "original": "Deny clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionExplanation01": {
+    "message": "За да изговаряте текст от която и да е програма, можете да копирате текст в клипборда и да използвате конфигурируемата клавишна комбинация. За да има Talkie достъп до клипборда, първо трябва да дадете разрешение. Това е функция Talkie Premium .",
+    "original": "To speak text from any program, you can copy text to the clipboard and use the configurable keyboard shortcut. For Talkie to access the clipboard you need to grant permission first. This is a Talkie Premium feature."
+  },
+  "frontend_settingsReadClipboardPermissionExplanation02": {
+    "message": "Дайте или откажете вашето разрешение по всяко време. Вашият браузър може или не може да поиска от вас потвърждение.",
+    "original": "Grant or deny your permission any time. Your browser may or may not ask you to confirm."
+  },
+  "frontend_settingsReadClipboardPermissionGrant": {
+    "message": "Дайте разрешение за клипборда",
+    "original": "Grant clipboard permission"
+  },
+  "frontend_settingsReadClipboardPermissionGranted": {
+    "message": "Предоставен е достъп до клипборда.",
+    "original": "Clipboard access granted."
+  },
+  "frontend_settingsReadClipboardPermissionHeading": {
+    "message": "Разрешение за достъп до клипборда",
+    "original": "Permission to access the clipboard"
+  },
+  "frontend_settingsReadClipboardPermissionUnknown": {
+    "message": "Достъпът до клипборда е неизвестен или неуспешен.",
+    "original": "Clipboard access unknown or failing."
+  },
+  "frontend_settingsReadClipboardSpeakClipboard": {
+    "message": "Изговаряне на текст от клипборда",
+    "original": "Speak clipboard text"
+  },
+  "frontend_settingsReadClipboardTextCouldNotRead": {
+    "message": "Текстът в клипборда не можа да бъде прочетен.",
+    "original": "Clipboard text could not be read."
+  },
+  "frontend_settingsReadClipboardTextCouldRead": {
+    "message": "Текстът в клипборда може да бъде прочетен.",
+    "original": "Clipboard text could be read."
+  },
+  "frontend_settingsReadClipboardTextNotYetRead": {
+    "message": "Текстът на клипборда не е прочетен.",
+    "original": "Clipboard text has not been read."
+  },
+  "frontend_statusHistoryEmpty": {
+    "message": "Няма записи в историята.",
+    "original": "There are no history entries."
+  },
+  "frontend_statusHistoryHeading": {
+    "message": "История",
+    "original": "History"
+  },
+  "frontend_statusLanguageHeading": {
+    "message": "език",
+    "original": "Language"
+  },
+  "frontend_statusLinkText": {
+    "message": "Статус",
+    "original": "Status"
+  },
+  "frontend_statusVoiceHeading": {
+    "message": "глас",
+    "original": "Voice"
   },
   "frontend_storyDescription": {
     "message": "Talkie е разработен няколко дни преди Нова година 2016/2017, по предизвикателство от приятел. Предизвикателството започна с въпроса: докато пътувате до работа, възможно ли е да слушате статия, вместо да я четете? Лесно, казах аз и се заех да го докажа — или поне да накарам браузъра си да изговаря текст с глупав компютърен глас. Основното издание, без никакъв потребителски интерфейс, се оказа тривиално за създаване. Добавянето на потребителски интерфейс отне малко повече време. Добавяне на правилно разпознаване на език и още куп код. Преодоляването на грешки в браузъра е още повече работа. Списъкът с подобрения и функции продължава — и няколко хиляди реда код по-късно, вие гледате крайния резултат.",
@@ -489,14 +629,8 @@
     "original": "Support and feedback"
   },
   "frontend_supportDescription": {
-    "message": "Имам въпрос? Имате нужда от помощ с нещо? За бързи отговори на често задавани въпроси вижте често задаваните въпроси по-долу. Ако това не ви даде отговор, моля, изпратете ми всички въпроси, които може да имате. Ще се радвам, ако опитът ви с $NAME$ е гладък и приятен!",
-    "original": "Have a question? Need help with something? For fast answers to common questions, see the frequently asked questions below. If that does not give you an answer, please send me any questions you might have. I would be happy if your experience using $NAME$ is smooth and enjoyable!",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Talkie Premium"
-      }
-    }
+    "message": "За бърза и лесна поддръжка, моля, прегледайте тези често срещани въпроси и отговори. Ако въпросът ви все още не е отговорен, моля свържете се с мен.",
+    "original": "For quick and easy support, please look through these common questions and answers. If your question is still not answered, please contact me."
   },
   "frontend_supportLinkText": {
     "message": "поддържа",
@@ -555,40 +689,36 @@
     "original": "Talkie user interface languages"
   },
   "frontend_upgradeExplanation01": {
-    "message": "Цената за Talkie Premium не е фиксирана. Вместо това плащате каквото искате, в зависимост от това колко смятате, че първокласните функции струват за вас. Можете дори да решите да не плащате нищо.",
-    "original": "The price for Talkie Premium is not fixed. Instead you pay what you want, depending on how much you think the premium features are worth to you. You can even decide to pay nothing."
+    "message": "Цената за Talkie Premium не е фиксирана. Вместо това вие дарявате това, което искате, в зависимост от това колко смятате, че първокласните функции струват за вас. Можете дори да решите да не дарявате нищо.",
+    "original": "The price for Talkie Premium is not fixed. Instead you donate what you want, depending on how much you think the premium features are worth to you. You can even decide to donate nothing."
   },
   "frontend_upgradeExplanation02": {
-    "message": "След изпращане на плащането няма кодове за надграждане за въвеждане, няма потребителски акаунти за регистрация или друга проверка на плащането. Вместо това Talkie Premium използва системата на честта.",
-    "original": "After sending the payment there are no upgrade codes to enter, no user accounts to register, or any other payment verification in place. Instead Talkie Premium uses the honor system."
+    "message": "След дарение няма кодове за надграждане, които да въвеждате, няма потребителски акаунти, които да регистрирате, или каквато и да е друга проверка на дарението. Вместо това Talkie Premium използва системата за чест.",
+    "original": "After donating there are no upgrade codes to enter, no user accounts to register, or any other donation verification in place. Instead Talkie Premium uses the honor system."
   },
   "frontend_upgradeExplanation03": {
-    "message": "Моля, имайте предвид, че Talkie няма никаква реклама, проследяване на потребители или събиране на данни като алтернативни средства за осигуряване на приходи. Плащанията са обозначени като дарения за разработка на софтуер с отворен код.",
-    "original": "Please note that Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Payments are labeled as donations for open source software development."
+    "message": "Talkie няма никаква реклама, проследяване на потребители или събиране на данни като алтернативно средство за осигуряване на приходи. Даренията се означават като бакшиш за разработка на софтуер с отворен код.",
+    "original": "Talkie does not have any advertising, user tracking, or data collection as alternate means of monetization. Donations are labeled as gratuity for open source software development."
   },
   "frontend_upgradeHeading": {
     "message": "Надстройте до Talkie Premium",
     "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradeLabel": {
-    "message": "Платих за Talkie Premium",
-    "original": "I have paid for Talkie Premium"
+    "message": "Надстройте до Talkie Premium",
+    "original": "Upgrade to Talkie Premium"
   },
   "frontend_upgradePaymentAlternativesLinkText": {
-    "message": "Още начини на плащане чрез страницата за дарения",
-    "original": "More payment methods via the donations page"
+    "message": "Допълнителни методи за дарение",
+    "original": "Additional donation methods"
   },
   "frontend_upgradePaymentPrimaryLinkText": {
-    "message": "Платете с PayPal",
-    "original": "Pay using PayPal"
+    "message": "Дарете чрез PayPal",
+    "original": "Donate using PayPal"
   },
   "frontend_usageLinkText": {
     "message": "Използване",
     "original": "Usage"
-  },
-  "frontend_usageReadclipboard": {
-    "message": "Прочетете всеки текст, копиран в клипборда – използвайте го с клавиш за бърз достъп, за да слушате текст от всяко място извън браузъра. Можете също да щракнете с десния бутон върху бутона Talkie Premium или в празна област на уебсайт и да изберете четене от клипборда.",
-    "original": "Read any text copied to your clipboard — use it with a shortcut key to listen to text from anywhere outside of the browser. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select read from clipboard."
   },
   "frontend_usageSelectionContextMenuDescription": {
     "message": "Можете също да изберете текста, след което да щракнете с десния бутон върху него и да изберете Talkie в менюто. Този начин работи и в PDF-файлове и някои специални типове страници в браузъра.",
@@ -614,9 +744,9 @@
     "message": "Удобна опция е да използвате Talkie бърз достъп Talkie:",
     "original": "A convenient option is to use the Talkie shortcut keys:"
   },
-  "frontend_usageShortcutKeyDescriptionReadFromClipboard": {
-    "message": "Четете текст от клипборда във всяка програма",
-    "original": "Read text from clipboard in any program"
+  "frontend_usageShortcutKeyDescriptionSpeakFromClipboard": {
+    "message": "Изговорете текст директно от клипборда",
+    "original": "Speak text directly from the clipboard"
   },
   "frontend_usageShortcutKeyDescriptionStartStopWithMenu": {
     "message": "Старт/стоп",
@@ -626,6 +756,10 @@
     "message": "Старт/стоп",
     "original": "Start/stop"
   },
+  "frontend_usageSpeakFromClipboard": {
+    "message": "Изговорете всеки текст, копиран в клипборда ви, като използвате вашите конфигурирани гласове. Най-лесният начин е да използвате конфигурируем клавиш за бърз достъп. Можете също да щракнете с десния бутон върху бутона Talkie Premium или в празна област на уебсайт и да изберете говор от клипборда.",
+    "original": "Speak any text copied to your clipboard, using your configured voices. The easiest way is to use a configurable shortcut key. You can also right-click on the Talkie Premium button, or in an empty area of a website, and select speak from clipboard."
+  },
   "frontend_usageStep01": {
     "message": "Изберете желания текст на която и да е уеб страница.",
     "original": "Select desired text on any web page."
@@ -633,6 +767,46 @@
   "frontend_usageStep02": {
     "message": "Щракнете върху Talkie в лентата с инструменти на браузъра",
     "original": "Click the Talkie button in your browser toolbar"
+  },
+  "frontend_voicesContinueOnTabExplanation01": {
+    "message": "Talkie може да се използва за четене на избрания текст на страница. Когато страницата е затворена или адресът на страницата се промени, Talkie може или да продължи да говори, или автоматично да спре.",
+    "original": "Talkie can be used to read the selected text on a page. When the page is closed or the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabHeading": {
+    "message": "Продължете да говорите или спрете автоматично",
+    "original": "Continue speaking or automatically stop"
+  },
+  "frontend_voicesContinueOnTabRemovedExplanation01": {
+    "message": "Когато разделът или прозорецът са затворени, Talkie може или да продължи да говори, или автоматично да спре.",
+    "original": "When the tab or window is closed, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabRemovedHeading": {
+    "message": "Когато страницата е затворена",
+    "original": "When the page is closed"
+  },
+  "frontend_voicesContinueOnTabRemovedLabel": {
+    "message": "Продължете да говорите, когато разделът е затворен",
+    "original": "Continue speaking when the tab is closed"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation01": {
+    "message": "Промените на адреса се случват предимно при щракване върху връзка, за да отидете на друга страница, или при ръчно въвеждане в адресната лента. Някои уебсайтове могат да променят адреса и в други случаи, например при зареждане на допълнителна информация.",
+    "original": "Address changes happen primarily when clicking a link to go to another page, or when manually typing in the address bar. Certain websites may also change the address in other cases, for example when loading additional information."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlExplanation02": {
+    "message": "Когато адресът на страницата се промени, Talkie може или да продължи да говори, или автоматично да спре.",
+    "original": "When the page address changes, Talkie can either continue speaking or automatically stop."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlFirefoxExplanation01": {
+    "message": "От съображения за поверителност Mozilla Firefox не винаги отчита при промяна на адреса на страницата. Деактивирането на тази настройка може да няма ефект.",
+    "original": "For privacy reasons, Mozilla Firefox does not always report when the page address changes. Disabling this setting may not have any effect."
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlHeading": {
+    "message": "Когато адресът на страницата се промени",
+    "original": "When the page address changes"
+  },
+  "frontend_voicesContinueOnTabUpdatedUrlLabel": {
+    "message": "Продължете да говорите, когато адресът се промени",
+    "original": "Continue speaking when the address changes"
   },
   "frontend_voicesDefaultVoiceForDialect": {
     "message": "Гласът по подразбиране за диалекта $LANGUAGE_CODE$ е $VOICE$ .",
@@ -679,6 +853,32 @@
         "example": "ko"
       }
     }
+  },
+  "frontend_voicesFoundVoicesForLanguage": {
+    "message": "Намерени $VOICES_COUNT$ гласа за $LANGUAGE_CODE$ .",
+    "original": "Found $VOICES_COUNT$ voices for $LANGUAGE_CODE$.",
+    "placeholders": {
+      "LANGUAGE_CODE": {
+        "content": "$2",
+        "example": "fr"
+      },
+      "VOICES_COUNT": {
+        "content": "$1",
+        "example": "321"
+      }
+    }
+  },
+  "frontend_voicesInstalledDialectsHeading": {
+    "message": "Инсталирани гласови диалекти",
+    "original": "Installed voice dialects"
+  },
+  "frontend_voicesInstalledLanguagesHeading": {
+    "message": "Инсталирани гласови езици",
+    "original": "Installed voice languages"
+  },
+  "frontend_voicesInstalledVoicesHeading": {
+    "message": "Инсталирани гласове",
+    "original": "Installed voices"
   },
   "frontend_voicesLinkText": {
     "message": "Гласове",
@@ -783,9 +983,65 @@
     "message": "Четете по-дълги текстове без паузи (експериментално)",
     "original": "Read longer texts without pauses (experimental)"
   },
+  "frontend_voicesSpeakingHistoryForgetAllHeading": {
+    "message": "Забравете отделните записи в историята",
+    "original": "Forget individual history entries"
+  },
+  "frontend_voicesSpeakingHistoryForgetLabel": {
+    "message": "Забравете всички $HISTORY_COUNT$ записи в историята",
+    "original": "Forget all $HISTORY_COUNT$ history entries",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "22"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation01": {
+    "message": "Talkie може да помни предишен изречен текст, така че да може да бъде възпроизведен по-късно. Тази настройка ограничава колко записа в хронологията се запомнят.",
+    "original": "Talkie can remember previously spoken text, so it can be replayed later. This setting limits how many history entries are remembered."
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation02": {
+    "message": "Намалете лимита, за да намалите незабавно броя на записите в историята. Ограничение от 0 деактивира запомнянето на историята. Лимитът по подразбиране е $DEFAULT_LIMIT$ .",
+    "original": "Lower the limit to instantly reduce the number of history entries. A limit of 0 disables remembering the history. The default limit is $DEFAULT_LIMIT$.",
+    "placeholders": {
+      "DEFAULT_LIMIT": {
+        "content": "$1",
+        "example": "99"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitExplanation03": {
+    "message": "В момента има запомнени $HISTORY_COUNT$ записи в историята. Можете да забравите всички наведнъж или да забравите отделни записи.",
+    "original": "There are currently $HISTORY_COUNT$ history entries remembered. You can forget all at once, or forget individual entries.",
+    "placeholders": {
+      "HISTORY_COUNT": {
+        "content": "$1",
+        "example": "33"
+      }
+    }
+  },
+  "frontend_voicesSpeakingHistoryLimitHeading": {
+    "message": "История",
+    "original": "History"
+  },
+  "frontend_voicesSpeakingHistoryLimitLabel": {
+    "message": "Ограничение за влизане в историята",
+    "original": "History entry limit"
+  },
   "frontend_voicesTalkiePremiumPitch": {
     "message": "С Talkie Premium можете да промените гласа по подразбиране за всеки език, както и глас и височина за всеки глас.",
     "original": "With Talkie Premium you can change the default voice for each language, as well as voice and pitch for each voice."
+  },
+  "frontend_voicesVoiceIsOnline": {
+    "message": "$VOICE$ е онлайн глас. Използването може да изисква активна интернет връзка за достъп до услуги на трети страни.",
+    "original": "$VOICE$ is an online voice. Usage may require an active internet connection to access third-party services.",
+    "placeholders": {
+      "VOICE": {
+        "content": "$1",
+        "example": "Microsoft Frank"
+      }
+    }
   },
   "frontend_welcomeHero01": {
     "message": "Добре дошли в $NAME$! Сега използвате едно от най-добрите разширения на браузъра за преобразуване на текст в говор в света.",
@@ -798,36 +1054,28 @@
     }
   },
   "frontend_welcomeHero02": {
-    "message": "Продължете и изберете този текст, след което щракнете върху бутона $NAME$ в лентата с инструменти на браузъра. Наслади се!",
-    "original": "Go ahead and select this text, then click the $NAME$ button in the browser toolbar. Enjoy!",
+    "message": "Изберете този текст, след което щракнете върху бутона $NAME$ в лентата с инструменти на браузъра.",
+    "original": "Select this text, then click the $NAME$ button in the browser toolbar.",
     "placeholders": {
-      "name": {
+      "NAME": {
         "content": "$1",
         "example": "Talkie Premium"
       }
     }
   },
   "frontend_welcomeInstallMoreVoicesDescription": {
-    "message": "Talkie момента може да намери $VOICES_COUNT$ гласове, позволяващи $LANGUAGE_GROUPS_COUNT$ езици на $LANGUAGES_COUNT$ диалекти, инсталирани във вашия $SYSTEM_TYPE_PRETTY_NAME$ работещ на операционна система $OSTYPE_PRETTY_NAME$",
-    "original": "Talkie can currently find $VOICES_COUNT$ voices enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects installed in your $SYSTEM_TYPE_PRETTY_NAME$ browser running on a $OSTYPE_PRETTY_NAME$ operating system.",
+    "message": "Talkie в момента може да намери $VOICES_COUNT$ инсталирани гласа, позволявайки $LANGUAGE_GROUPS_COUNT$ езика в $LANGUAGES_COUNT$ диалекта.",
+    "original": "Talkie can currently find $VOICES_COUNT$ voices installed, enabling $LANGUAGE_GROUPS_COUNT$ languages in $LANGUAGES_COUNT$ dialects.",
     "placeholders": {
-      "language_groups_count": {
-        "content": "$2",
-        "example": "27"
-      },
-      "languages_count": {
+      "LANGUAGES_COUNT": {
         "content": "$3",
         "example": "47"
       },
-      "ostype_pretty_name": {
-        "content": "$5",
-        "example": "mac"
+      "LANGUAGE_GROUPS_COUNT": {
+        "content": "$2",
+        "example": "27"
       },
-      "system_type_pretty_name": {
-        "content": "$4",
-        "example": "chrome"
-      },
-      "voices_count": {
+      "VOICES_COUNT": {
         "content": "$1",
         "example": "66"
       }
@@ -847,16 +1095,16 @@
     "original": "Talkie cannot access the selected text from this type of page. It is a very special page, and there are security limitations put in by the browser. You can also try to select text, then right click on it, and choose Talkie in the menu. I'm sorry for the inconvenience."
   },
   "readClipboardIsAPremiumFeature": {
-    "message": "Съжалявам, но четенето на текст от клипборда е функция Talkie Premium Мислили ли сте за надграждане?",
-    "original": "I'm sorry, but reading text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
+    "message": "Съжалявам, но изговарянето на текст от клипборда е функция Talkie Premium. Обмисляли ли сте надграждане?",
+    "original": "I'm sorry, but speaking text from the clipboard is a Talkie Premium feature. Have you considered upgrading?"
   },
   "readClipboardNeedsBrowserSupport": {
-    "message": "Съжалявам, но този браузър не поддържа четене от клипборда. Поне още не. Моля, опитайте отново след около месец!",
-    "original": "I'm sorry, but this browser does not support reading from the clipboard. Not yet, at least. Please try again in one month or so!"
+    "message": "Съжалявам, но този браузър изглежда не поддържа достъп до клипборда.",
+    "original": "I'm sorry, but this browser does not seem to support accessing the clipboard."
   },
   "readClipboardNeedsPermission": {
-    "message": "Talkie няма разрешение за достъп от клипборда. Това е добре, но тогава четенето на текста в клипборда няма да работи.",
-    "original": "Talkie does not have permission to access from the clipboard. That's ok, but then reading the clipboard text won't work."
+    "message": "Talkie няма разрешение за достъп до клипборда. Можете да дадете разрешение на страницата с опции Talkie .",
+    "original": "Talkie does not have permission to access the clipboard. You may grant permission on the Talkie options page."
   },
   "readClipboardNoSuitableText": {
     "message": "Не можах да намеря подходящ текст в клипборда. Можете ли да опитате да копирате нещо друго?",

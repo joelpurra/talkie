@@ -4,7 +4,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -37,18 +37,11 @@ async function main(): Promise<void> {
 	}
 }
 
-try {
-	process.on("unhandledRejection", (error) => {
-		// eslint-disable-next-line no-console
-		console.error("unhandledRejection", error);
-
-		process.exitCode = 2;
-	});
-
-	void main();
-} catch (error: unknown) {
+process.on("unhandledRejection", (error) => {
 	// eslint-disable-next-line no-console
-	console.error(error);
+	console.error("unhandledRejection", error);
 
-	process.exitCode = 1;
-}
+	process.exitCode = 2;
+});
+
+await main();

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,12 +22,11 @@ import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
-import DialectVoiceOptions, {
-} from "../../app/sections/voices/dialect-voice-options.js";
+import DialectVoiceOptions from "../../app/sections/voices/dialect-voice-options.js";
 import selectors from "../../selectors/index.mjs";
 import {
 	actions,
@@ -58,6 +57,7 @@ interface DispatchProps {
 	storeEffectiveVoiceNameForLanguage: typeof actions.voices.storeEffectiveVoiceNameForLanguage;
 	storeVoicePitchOverride: typeof actions.voices.storeVoicePitchOverride;
 	storeVoiceRateOverride: typeof actions.voices.storeVoiceRateOverride;
+	speakInSelectedVoiceNameState: typeof actions.voices.speakInSelectedVoiceNameState;
 }
 
 interface InternalProps extends StateProps, DispatchProps {}
@@ -79,6 +79,7 @@ const mapStateToProps: MapStateToProps<StateProps, InternalProps, OptionsRootSta
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, InternalProps> = (dispatch) => ({
+	speakInSelectedVoiceNameState: bindActionCreators(actions.voices.speakInSelectedVoiceNameState, dispatch),
 	storeEffectiveVoiceNameForLanguage: bindActionCreators(actions.voices.storeEffectiveVoiceNameForLanguage, dispatch),
 	storeVoicePitchOverride: bindActionCreators(actions.voices.storeVoicePitchOverride, dispatch),
 	storeVoiceRateOverride: bindActionCreators(actions.voices.storeVoiceRateOverride, dispatch),
@@ -102,10 +103,12 @@ class DialectVoiceOptionsContainer<P extends InternalProps> extends React.PureCo
 
 	handleRateChange(value: number): void {
 		this.props.storeVoiceRateOverride(value);
+		this.props.speakInSelectedVoiceNameState();
 	}
 
 	handlePitchChange(value: number): void {
 		this.props.storeVoicePitchOverride(value);
+		this.props.speakInSelectedVoiceNameState();
 	}
 
 	override render(): React.ReactNode {

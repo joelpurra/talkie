@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,18 +19,21 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import {
-	TalkieLocale,
+	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type {
 	I18n,
 } from "webextension-polyfill";
 
-export default class NodeEnvironmentLocaleProvider {
+export default class NodeEnvironmentLocaleProvider implements ILocaleProvider {
 	private uiLocale: string | null = null;
 	private translationLocale: TalkieLocale | null = null;
 
 	getUILocale(): I18n.LanguageCode {
-		const uiLocale = this.uiLocale;
+		const {
+			uiLocale,
+		} = this;
 
 		if (!uiLocale) {
 			throw new Error("UI locale is not set.");
@@ -44,7 +47,9 @@ export default class NodeEnvironmentLocaleProvider {
 	}
 
 	getTranslationLocale(): TalkieLocale {
-		const translationLocale = this.translationLocale;
+		const {
+			translationLocale,
+		} = this;
 
 		if (!translationLocale) {
 			throw new Error("Translation locale is not set.");

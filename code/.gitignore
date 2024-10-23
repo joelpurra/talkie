@@ -1,3 +1,11 @@
+.nx/cache
+.nx/workspace-data
+*.log
+*.zip
 *~
+artifacts/
+dist/
 node_modules/
+runtime/
 tsconfig.tsbuildinfo
+web-ext-artifacts/

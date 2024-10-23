@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,23 +20,27 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
+import {
+	talkieStyled,
+	withTalkieStyleDeep,
+} from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import {
+import type {
 	ClassNameProp,
+	TalkieStyletronComponent,
 } from "@talkie/shared-ui/styled/types.js";
-import * as layoutBase from "@talkie/shared-ui/styles/layout/layout-base.mjs";
+import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
+	rounded,
+} from "@talkie/shared-ui/styles/shared-base.mjs";
+import type {
 	ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
-import React, {
-	ComponentProps,
-} from "react";
-import {
-	styled,
-	StyletronComponent,
-	withStyleDeep,
+import React from "react";
+import type {
+	StyleObject,
 } from "styletron-react";
 
 export type EditionSectionMode =
@@ -57,26 +61,26 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 	};
 
 	private readonly styled: {
-		h2ModeHeading: StyletronComponent<ComponentProps<"h2">>;
-		wrapperBase: StyletronComponent<ComponentProps<"div">>;
-		h2ModeWrapper: StyletronComponent<ComponentProps<"div">>;
-		pModeWrapper: StyletronComponent<ComponentProps<"div">>;
+		h2ModeHeading: TalkieStyletronComponent<"h2">;
+		wrapperBase: TalkieStyletronComponent<"div">;
+		h2ModeWrapper: TalkieStyletronComponent<"div">;
+		pModeWrapper: TalkieStyletronComponent<"div">;
 	};
 
 	constructor(props: P) {
 		super(props);
 
 		const partialStyled = {
-			h2ModeHeading: withStyleDeep(
+			h2ModeHeading: withTalkieStyleDeep(
 				textBase.h2,
 				{
 					marginTop: "1em",
 				},
 			),
-			wrapperBase: styled(
+			wrapperBase: talkieStyled(
 				"div",
 				{
-					...layoutBase.rounded("0.5em"),
+					...rounded("0.5em"),
 					marginLeft: "-0.5em",
 					marginRight: "-0.5em",
 					marginTop: "2em",
@@ -89,13 +93,13 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 
 		this.styled = {
 			...partialStyled,
-			h2ModeWrapper: withStyleDeep(
+			h2ModeWrapper: withTalkieStyleDeep(
 				partialStyled.wrapperBase,
 				{
 					paddingBottom: "2em",
 				},
 			),
-			pModeWrapper: withStyleDeep(
+			pModeWrapper: withTalkieStyleDeep(
 				partialStyled.wrapperBase,
 				{
 					paddingBottom: "0.5em",
@@ -119,6 +123,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			? translateSync("extensionShortName_Premium")
 			: translateSync("extensionShortName_Free");
 
+		// HACK: relying on both css and css-in-js for some .premium-edition styling.
 		const versionClassName = isPremiumEdition
 			? "premium-section"
 			: "free-section";
@@ -130,36 +135,51 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 			.join(" ")
 			.trim();
 
+		const backgroundColor: StyleObject = {
+			backgroundColor: isPremiumEdition
+				? colorBase.premiumSectionBackgroundColor
+				: undefined,
+		};
+
+		// eslint-disable-next-line @typescript-eslint/comma-dangle, @typescript-eslint/prefer-readonly-parameter-types
+		const addBackgroundColor = <T extends React.ElementType,>(element: TalkieStyletronComponent<T>): TalkieStyletronComponent<T> => withTalkieStyleDeep(
+			element,
+			backgroundColor,
+		);
+
 		let Wrapper = null;
 		let Heading = null;
 
 		switch (mode) {
-			// TODO: create separate components instead of a flag.
-			case "p":
-				Wrapper = this.styled.pModeWrapper;
-				Heading = textBase.p;
+			// TODO: create separate components instead of using a flag.
+			case "p": {
+				Wrapper = addBackgroundColor(this.styled.pModeWrapper);
+				Heading = talkieStyled("p");
 				break;
+			}
 
-			case "h2":
-				Wrapper = this.styled.h2ModeWrapper;
+			case "h2": {
+				Wrapper = addBackgroundColor(this.styled.h2ModeWrapper);
 				Heading = this.styled.h2ModeHeading;
 				break;
+			}
 
-			default:
+			default: {
 				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
+			}
 		}
 
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const LinkOrNot: React.FC = ({
+		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
+		const LinkOrNot: React.FunctionComponent<ChildrenRequiredProps> = ({
 			children,
 		}) => headingLink
 			? (
-				<textBase.a
+				<a
 					href="#features"
 					lang="en"
 				>
 					{children}
-				</textBase.a>
+				</a>
 			)
 			: (
 				// eslint-disable-next-line react/jsx-no-useless-fragment

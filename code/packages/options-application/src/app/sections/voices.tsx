@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
-	TranslateProps,
+	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as buttonBase from "@talkie/shared-ui/styled/button/button-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
@@ -87,8 +87,19 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 			voiceCountForSelectedLanguageCode,
 		} = this.props as VoicesProps;
 
+		const backArrow = (
+			// TODO: apply arrow ltr/rtl direction.
+			<>
+				&larr;
+			</>
+		);
+
 		return (
 			<>
+				<textBase.h1>
+					{translateSync("frontend_voicesLinkText")}
+				</textBase.h1>
+
 				<section>
 					<Intro/>
 				</section>
@@ -102,9 +113,19 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={onSelectLanguageGroupClick.bind(null, null)}
 						>
-							Installed languages
-							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup ?? " (Error: no selected language group.)"}`}
-							{hasSelectedLanguageGroup && languageGroupsCount > 1 && (
+							<Discretional
+								enabled={hasSelectedLanguageGroup && languageGroupsCount > 1}
+							>
+								{backArrow}
+								&nbsp;
+							</Discretional>
+
+							{translateSync("frontend_systemInstalledLanguagesHeading")}
+							{hasSelectedLanguageGroup && `: ${selectedLanguageGroup}`}
+
+							<Discretional
+								enabled={hasSelectedLanguageGroup && languageGroupsCount > 1}
+							>
 								<textBase.headingActionSpan>
 									{" "}
 									(
@@ -115,7 +136,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 									</buttonBase.transparentButton>
 									)
 								</textBase.headingActionSpan>
-							)}
+							</Discretional>
 						</textBase.h2>
 
 						<Discretional
@@ -145,9 +166,19 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={onSelectLanguageCodeClick.bind(null, null)}
 						>
-							Installed dialects
-							{hasSelectedLanguageCode && `: ${selectedLanguageCode ?? " (Error: no selected language code.)"}`}
-							{hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1 && (
+							<Discretional
+								enabled={hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1}
+							>
+								{backArrow}
+								&nbsp;
+							</Discretional>
+
+							{translateSync("frontend_systemInstalledDialectsHeading")}
+							{hasSelectedLanguageCode && `: ${selectedLanguageCode}`}
+
+							<Discretional
+								enabled={hasSelectedLanguageCode && languageCountForSelectedLanguageGroup > 1}
+							>
 								<textBase.headingActionSpan>
 									{" "}
 									(
@@ -158,7 +189,7 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 									</buttonBase.transparentButton>
 									)
 								</textBase.headingActionSpan>
-							)}
+							</Discretional>
 						</textBase.h3>
 
 						<Discretional
@@ -198,9 +229,19 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 							// eslint-disable-next-line react/jsx-no-bind
 							onClick={onSelectVoiceNameClick.bind(null, null)}
 						>
-							Installed voices
-							{hasSelectedVoiceName && `: ${selectedVoiceName ?? " (Error: no selected voice name.)"}`}
-							{hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1 && (
+							<Discretional
+								enabled={hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1}
+							>
+								{backArrow}
+								&nbsp;
+							</Discretional>
+
+							{translateSync("frontend_systemInstalledVoicesHeading")}
+							{hasSelectedVoiceName && `: ${selectedVoiceName}`}
+
+							<Discretional
+								enabled={hasSelectedVoiceName && voiceCountForSelectedLanguageCode > 1}
+							>
 								<textBase.headingActionSpan>
 									{" "}
 									(
@@ -211,14 +252,22 @@ class Voices<P extends VoicesProps> extends React.PureComponent<P> {
 									</buttonBase.transparentButton>
 									)
 								</textBase.headingActionSpan>
-							)}
+							</Discretional>
 						</textBase.h4>
 
 						<Discretional
 							enabled={!hasSelectedVoiceName}
 						>
 							<p>
-								{`Found ${voiceCountForSelectedLanguageCode} voices for ${selectedLanguageCode ?? "(Error: no selected language code.)"}.`}
+								{
+									translateSync(
+										"frontend_voicesFoundVoicesForLanguage",
+										[
+											voiceCountForSelectedLanguageCode.toString(10),
+											selectedLanguageCode ?? "(Error: no selected language code.)",
+										],
+									)
+								}
 							</p>
 
 							<DialectVoicesContainer

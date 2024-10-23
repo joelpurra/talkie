@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,29 +24,9 @@ import type {
 
 import * as colorBase from "../color/color-base.mjs";
 import * as layoutBase from "../layout/layout-base.mjs";
-
-export const hover: StyleObject = {
-	color: colorBase.buttonTextColor,
-};
-
-export const focus: StyleObject = {
-	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonDarkColor}, ${colorBase.buttonDarkColor})`,
-	color: colorBase.buttonTextColor,
-};
-
-export const button: StyleObject = {
-	...layoutBase.rounded("0.3em"),
-	":focus": focus,
-	":hover": hover,
-	backgroundImage: `linear-gradient(to bottom, ${colorBase.buttonLightColor}, ${colorBase.buttonDarkColor})`,
-	color: colorBase.buttonTextColor,
-	paddingBottom: "0.3em",
-	paddingLeft: "0.75em",
-	paddingRight: "0.75em",
-	paddingTop: "0.3em",
-	textAlign: "center",
-	textDecoration: "none",
-};
+import {
+	paddings,
+} from "../shared-base.mjs";
 
 export const transparentButton: StyleObject = {
 	":focus": {
@@ -55,7 +35,30 @@ export const transparentButton: StyleObject = {
 	":hover": {
 		cursor: "pointer",
 	},
-	all: "unset",
+	// NOTE: class="a b c" order matters and with styletron's default class order (compile-time rendering order-dependent) the `all: "unset"` "bomb" may affect *all* "previous" (class) settings; need to be more specific to not override other classes.
+	//all: "unset",
+	...paddings("unset"),
+	backgroundColor: "unset",
+	border: "unset",
+	color: "unset",
+	cursor: "default",
+	fontSize: "unset",
+	textAlign: "left",
 };
 
-export const a: StyleObject = button;
+export const transparentButtonDisabled: StyleObject = {
+	...transparentButton,
+	":hover": {
+		cursor: "not-allowed",
+	},
+};
+
+export const a: StyleObject = {
+	...layoutBase.roundedWithBorder("0.3em"),
+	backgroundColor: colorBase.legibleBackgroundColor,
+	display: "inline-block",
+	paddingBottom: "0.3em",
+	paddingLeft: "0.5em",
+	paddingRight: "0.5em",
+	paddingTop: "0.3em",
+};

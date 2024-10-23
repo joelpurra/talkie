@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,17 +20,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import toolkit from "@reduxjs/toolkit";
 import {
-	SafeVoiceObject,
+	type SafeVoiceObject,
+	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 import React from "react";
 import {
 	connect,
-	MapDispatchToPropsFunction,
-	MapStateToProps,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
 } from "react-redux";
 
 import About, {
-	AboutStateProps,
+	type AboutStateProps,
 } from "../app/sections/about.js";
 import selectors from "../selectors/index.mjs";
 import {
@@ -48,7 +49,7 @@ const {
 interface AboutContainerProps {}
 
 interface StateProps extends AboutStateProps {
-	sortedByNameVoices: readonly SafeVoiceObject[];
+	sortedByNameVoices: SafeVoiceObjects;
 	voiceNames: string[];
 }
 
@@ -65,8 +66,8 @@ const mapStateToProps: MapStateToProps<StateProps, InternalAboutContainerProps, 
 	navigatorLanguage: state.shared.languages.navigatorLanguage,
 	osType: state.shared.metadata.osType,
 	sortedByNameVoices: selectors.shared.voices.getSortedByNameVoices(state),
+	sortedLanguageDialects: selectors.shared.voices.getSortedLanguageDialects(state),
 	sortedLanguageGroups: selectors.shared.voices.getSortedLanguageGroups(state),
-	sortedLanguages: selectors.shared.voices.getSortedLanguages(state),
 	sortedNavigatorLanguages: selectors.shared.languages.getSortedNavigatorLanguages(state),
 	sortedTranslatedLanguages: selectors.shared.languages.getSortedTranslatedLanguages(state),
 	systemType: state.shared.metadata.systemType,
@@ -117,24 +118,24 @@ class AboutContainer<P extends InternalAboutContainerProps> extends React.PureCo
 			navigatorLanguage,
 			osType,
 			sortedByNameVoices,
+			sortedLanguageDialects,
 			sortedLanguageGroups,
-			sortedLanguages,
 			sortedNavigatorLanguages,
 			sortedTranslatedLanguages,
 			systemType,
 			versionName,
-		} = this.props;
+		} = this.props as P;
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice) => `${voice.name} (${voice.lang})`);
+		const sortedVoiceNamesAndLanguages = sortedByNameVoices.map((voice: SafeVoiceObject) => `${voice.name} (${voice.lang})`);
 
 		return (
 			<About
 				isPremiumEdition={isPremiumEdition}
 				navigatorLanguage={navigatorLanguage}
 				osType={osType}
+				sortedLanguageDialects={sortedLanguageDialects}
 				sortedLanguageGroups={sortedLanguageGroups}
-				sortedLanguages={sortedLanguages}
 				sortedNavigatorLanguages={sortedNavigatorLanguages}
 				sortedTranslatedLanguages={sortedTranslatedLanguages}
 				systemType={systemType}
