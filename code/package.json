@@ -1,7 +1,7 @@
 {
   "name": "talkie",
   "description": "Text-to-speech (TTS) browser extension button.",
-  "version": "7.0.1",
+  "version": "8.0.0",
   "author": {
     "email": "code+github@joelpurra.com",
     "name": "Joel Purra",
