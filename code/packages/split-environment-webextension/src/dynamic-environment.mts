@@ -24,18 +24,6 @@ import type {
 } from "webextension-polyfill";
 
 export default class WebExtensionEnvironmentDynamicEnvironment implements IDynamicEnvironmentProvider {
-	isRunningPreRendering(): boolean {
-		const isNode = false;
-
-		return isNode;
-	}
-
-	isRunningLive(): boolean {
-		const isWebExtension = true;
-
-		return isWebExtension;
-	}
-
 	async getOperatingSystemType(): Promise<Runtime.PlatformOs> {
 		const platformInfo = await chrome.runtime.getPlatformInfo();
 

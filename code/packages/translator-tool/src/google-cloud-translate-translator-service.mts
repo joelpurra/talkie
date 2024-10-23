@@ -195,7 +195,6 @@ export default class GoogleCloudTranslateTranslator {
 
 		assert.strictEqual(preparedMessages.length, translationResponses[0].length);
 		assert.strictEqual(translationResponses[0].length, translationResponses[1].length);
-		// TODO DEBUG ENABLE
 
 		interface TranslationResponsePair {
 			prepared: string;

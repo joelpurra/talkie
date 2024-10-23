@@ -71,18 +71,7 @@ const main = async (onInstallListenerEventQueue: OnInstallEvent[]) => {
 
 	const windowLocalStorageProvider = new WindowLocalStorageProvider();
 
-	// TODO DEBUG REMOVE
-	//const offscreenIframeManager = new IframeManager(OffscreenDocumentManager.internalHtmlPath, OffscreenDocumentManager.identifier);
-	//const offscreenDocumentProvider = new OffscreenDocumentProvider(offscreenIframeManager);
-	//const offscreenDocumentManager = new OffscreenDocumentManager(offscreenDocumentProvider);
-	//
-	//// TODO: systematic cleanup.
-	//await offscreenDocumentManager.ensureOpen();
-
 	await groundwork(uninitializers, onInstallListenerEventQueue, messageBusProviderGetter);
-
-	//await startSuspensionManager(broadcaster);
-
 	await mason(uninitializers, messageBusProviderGetter, windowLocalStorageProvider);
 
 	void logDebug("Done", "Main background function");

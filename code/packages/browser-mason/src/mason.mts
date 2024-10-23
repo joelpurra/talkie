@@ -78,23 +78,6 @@ export const mason = async (
 			startResponder,
 		} = createMessageBusListenerHelpers(messageBusProviderGetter);
 
-		if (isTalkieDevelopmentMode()) {
-			uninitializers.unshift(
-				// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-				...await startResponder("development:dummy:multiply-random", async (_action, i): Promise<string> => {
-					if (typeof i !== "number") {
-						throw new TypeError(`NaN ${JSON.stringify(i, null, 0)}`);
-					}
-
-					const random = Math.random();
-					const result = i * random;
-
-					return `Dummy response ${i}*${random}=${result}`;
-				}),
-
-			);
-		}
-
 		const _resetSynthesizerHelper = async () => {
 			// NOTE: need to funnel talkie's speech reset/abort/stop through this event helper.
 			await SynthesizerHelper.resetSynthesizer();

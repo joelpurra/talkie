@@ -24,18 +24,6 @@ import type {
 } from "webextension-polyfill";
 
 export default class NodeEnvironmentDynamicEnvironment implements IDynamicEnvironmentProvider {
-	isRunningPreRendering(): boolean {
-		const isNode = true;
-
-		return isNode;
-	}
-
-	isRunningLive(): boolean {
-		const isWebExtension = false;
-
-		return isWebExtension;
-	}
-
 	async getOperatingSystemType(): Promise<Runtime.PlatformOs> {
 		// eslint-disable-next-line prefer-rest-params
 		throw new Error(`Not implemented. ${JSON.stringify(arguments)}`);

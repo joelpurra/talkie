@@ -22,14 +22,9 @@ import {
 	type OnInstallEvent,
 } from "@talkie/browser-bricks/on-installed-manager-types.mjs";
 import MessageBusInspector from "@talkie/shared-application/message-bus/message-bus-inspector.mjs";
-import MessageBusRequester from "@talkie/shared-application/message-bus/message-bus-requester.mjs";
 import {
 	logDebug,
-	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
-import {
-	promiseDelay,
-} from "@talkie/shared-application-helpers/promise.mjs";
 import {
 	isTalkieDevelopmentMode,
 } from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
@@ -62,25 +57,9 @@ export const groundwork = async (
 		// NOTE: no cleanup; listen to the bitter end.
 		const messageBusInspector = new MessageBusInspector(messageBusProviderGetter, logDebug.bind(undefined, "groundwork"));
 		await messageBusInspector.start();
+	}
 
-		// TODO DEBUG REMOVE
-		void promiseDelay(1000)
-			.then(async () => {
-				const messageBusDummyMessageBusRequester = new MessageBusRequester("development:dummy:multiply-random", messageBusProviderGetter);
-
-				for await (const i of [
-					1,
-					2,
-					3,
-				]) {
-					await promiseDelay(10_000);
-
-					void logWarn("messageBusDummyMessageBusRequester", i, await messageBusDummyMessageBusRequester.bespeak(i));
-				}
-
-				return null;
-			});
-
+	if (isTalkieDevelopmentMode()) {
 		await createAndStartPermissionListeners();
 	}
 

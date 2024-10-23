@@ -103,9 +103,7 @@ export type MessageBusAction =
 	| "broadcaster:speaking:entire:before"
 	| "broadcaster:speaking:part:after"
 	| "broadcaster:speaking:part:before"
-	| "broadcaster:synthesizer:reset"
-
-	| "development:dummy:multiply-random";
+	| "broadcaster:synthesizer:reset";
 
 export enum MessageBusResponseModes {
 	"response:required" = "response:required",
