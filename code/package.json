@@ -53,7 +53,7 @@
     "xo": "^0.56.0"
   },
   "engines": {
-    "node": "^20.0.0"
+    "node": "^24.0.0"
   },
   "homepage": "https://joelpurra.com/projects/talkie/",
   "husky": {
