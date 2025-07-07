@@ -56,7 +56,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 	constructor(private readonly localeProvider: ILocaleProvider) {}
 
 	async translatePlaceholder(key: string, extras?: readonly string[]): Promise<string> {
-		// eslint-disable-next-line no-sync
+		// eslint-disable-next-line no-sync, @typescript-eslint/no-deprecated
 		return this.translatePlaceholderSync(key, extras);
 	}
 
@@ -165,7 +165,19 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 							const extrasIndex = Number.parseInt(placeholder.content.replace("$", ""), 10) - 1;
 
 							if (Number.isNaN(extrasIndex) || extrasIndex < 0 || extrasIndex >= extras.length) {
-								throw new RangeError(`Variable lookup extras index out of range (${extrasIndex}) for ${JSON.stringify(placeholderName)} in ${JSON.stringify(placeholder)} of ${JSON.stringify(messageTemplate)} with key ${JSON.stringify(key)}.`);
+								throw new RangeError(
+									`Variable lookup extras index out of range (${
+										extrasIndex
+									}) for ${
+										JSON.stringify(placeholderName)
+									} in ${
+										JSON.stringify(placeholder)
+									} of ${
+										JSON.stringify(messageTemplate)
+									} with key ${
+										JSON.stringify(key)
+									}.`,
+								);
 							}
 
 							const extra = extras[extrasIndex];

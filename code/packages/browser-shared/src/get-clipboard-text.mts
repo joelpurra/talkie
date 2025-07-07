@@ -36,6 +36,8 @@ export const getClipboardTextExecCommand = (): string | null => {
 
 		// NOTE: apart from permissions, getting the clipboard text may require a recent user interaction flag in the call context (which may break during async, callbacks, inter-context messaging).
 		// https://developer.mozilla.org/en-US/docs/Web/Security/User_activation#transient_activation
+		// TODO: use modern browser clipboard implementation.
+		// eslint-disable-next-line @typescript-eslint/no-deprecated
 		const success = document.execCommand("Paste");
 
 		text = success
@@ -91,9 +93,7 @@ const getClipboardText = async (): Promise<string | null> => {
 		text = await getClipboardTextNavigatorReadText();
 	}
 
-	if (text === null) {
-		text = getClipboardTextExecCommand();
-	}
+	text ??= getClipboardTextExecCommand();
 
 	void logDebug("getClipboardText", text);
 

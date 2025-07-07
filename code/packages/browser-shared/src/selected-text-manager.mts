@@ -37,7 +37,8 @@ export default class SelectedTextManager {
 
 	async getFramesSelectionTextAndLanguage(tabId: number): Promise<SelectedTextAndLanguageCodes[]> {
 		// TODO: filter and log injection results with errors instead of results.
-		const framesSelectionTextAndLanguageFrameResults: Array<FrameResult<SelectedTextAndLanguageCodes | null>> = await this.execute.scriptInAllFramesWithTimeout<SelectedTextAndLanguageCodes | null>(tabId, executeGetFramesSelectionTextAndLanguage, 1000);
+		const framesSelectionTextAndLanguageFrameResults: Array<FrameResult<SelectedTextAndLanguageCodes | null>>
+			= await this.execute.scriptInAllFramesWithTimeout<SelectedTextAndLanguageCodes | null>(tabId, executeGetFramesSelectionTextAndLanguage, 1000);
 		const framesSelectionTextAndLanguage: Array<SelectedTextAndLanguageCodes | null> = framesSelectionTextAndLanguageFrameResults
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			.map((t) => t.result as SelectedTextAndLanguageCodes | null);

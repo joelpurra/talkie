@@ -51,7 +51,12 @@ export default class ContextMenuManager {
 	actionMenuLimit: number;
 	contextMenuOptionsCollection: ReadonlyDeep<ContextMenuOptions[]>;
 
-	constructor(private readonly commandHandler: CommandHandler, private readonly metadataManager: IMetadataManager, private readonly premiumManager: IPremiumManager, private readonly translator: ITranslatorProvider) {
+	constructor(
+		private readonly commandHandler: CommandHandler,
+		private readonly metadataManager: IMetadataManager,
+		private readonly premiumManager: IPremiumManager,
+		private readonly translator: ITranslatorProvider,
+	) {
 		this.actionMenuLimit = !Number.isNaN(chrome.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT)
 			&& chrome.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0
 			? chrome.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT
@@ -174,7 +179,7 @@ export default class ContextMenuManager {
 			contextMenu as Writable<Menus.CreateCreatePropertiesType>,
 			() => {
 				if (chrome.runtime.lastError) {
-					// eslint-disable-next-line @typescript-eslint/no-throw-literal
+					// eslint-disable-next-line @typescript-eslint/only-throw-error
 					throw chrome.runtime.lastError;
 				}
 
@@ -236,11 +241,13 @@ export default class ContextMenuManager {
 			.filter((contextMenuOption) => contextMenuOption[editionType] && contextMenuOption[systemType]);
 
 		// // TODO: group by selected contexts before checking against limit.
-		// if (applicableContextMenuOptions > this.actionMenuLimit) {
+		// if (applicableContextMenuOptions.length > this.actionMenuLimit) {
 		// throw new Error("Maximum number of menu items reached.");
 		// }
 
-		for await (const applicableContextMenuOption of applicableContextMenuOptions) {
+		for (const applicableContextMenuOption of applicableContextMenuOptions) {
+			// NOTE: registering one-by-one to keep menu item order.
+			// eslint-disable-next-line no-await-in-loop
 			await this.createContextMenu(applicableContextMenuOption.item);
 		}
 	}

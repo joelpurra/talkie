@@ -28,7 +28,7 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 	) {}
 
 	async translatePlaceholder(key: string, extras?: readonly string[]): Promise<string> {
-		// eslint-disable-next-line no-sync
+		// eslint-disable-next-line no-sync, @typescript-eslint/no-deprecated
 		return this.translatePlaceholderSync(key, extras);
 	}
 

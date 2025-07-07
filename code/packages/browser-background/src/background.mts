@@ -70,6 +70,7 @@ const main = async (onInstallListenerEventQueue: OnInstallEvent[]) => {
 	setGlobalTalkieContextIdentifier("background");
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
+	// eslint-disable-next-line @typescript-eslint/no-deprecated
 	const windowLocalStorageProvider = new WindowLocalStorageProvider();
 
 	await groundwork(uninitializers, onInstallListenerEventQueue, messageBusProviderGetter);

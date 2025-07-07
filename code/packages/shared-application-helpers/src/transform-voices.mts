@@ -252,11 +252,12 @@ export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(
 	return firstVoice;
 };
 
-export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups = (navigatorLanguages: readonly string[], languages: readonly string[], languageGroups: readonly string[]): string[] => [
+export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups
+	= (navigatorLanguages: readonly string[], languages: readonly string[], languageGroups: readonly string[]): string[] => [
 	// NOTE: preferring language groups over languages/dialects.
-	...navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)),
-	...navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)),
-];
+		...navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)),
+		...navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)),
+	];
 
 export const getAvailableBrowserLanguageGroupsWithNavigatorLanguages = (navigatorLanguageGroups: readonly string[], languageGroups: readonly string[]): LanguageGroupWithNavigatorLanguage[] =>
 	languageGroups

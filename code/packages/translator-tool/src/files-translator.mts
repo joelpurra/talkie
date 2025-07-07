@@ -43,7 +43,11 @@ export interface FileTranslation {
 }
 
 export default class FilesTranslator {
-	constructor(private readonly _messagesTranslatorFactory: MessagesTranslatorFactory, private readonly _base: ReadonlyDeep<FileTranslation>, private readonly _locales: ReadonlyDeep<FileTranslation[]>) {
+	constructor(
+		private readonly _messagesTranslatorFactory: MessagesTranslatorFactory,
+		private readonly _base: ReadonlyDeep<FileTranslation>,
+		private readonly _locales: ReadonlyDeep<FileTranslation[]>,
+	) {
 		// NOTE: ensure the base language isn't translated onto itself.
 		assert.ok(this._locales.every((locale) => locale.language !== this._base.language));
 	}

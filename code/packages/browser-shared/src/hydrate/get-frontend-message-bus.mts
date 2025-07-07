@@ -18,8 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import-x/no-unassigned-import
+// eslint-disable-next-line import-x/no-unassigned-import, import-x/order
 import "@talkie/split-environment-webextension/browser-specific/global-window-talkie-shared-context.mjs";
+
 import {
 	getRandomTalkieContextIdentifierFromDocumentLocation,
 	setGlobalTalkieContextIdentifier,

@@ -145,7 +145,17 @@ export default class OnInstalledManager {
 			const onInstallListenerEvent = this.onInstallListenerEventQueue.shift();
 
 			if (!onInstallListenerEvent) {
-				throw new RangeError(`Malformed event in queue: ${this.onInstallListenerEventQueue.length} ${JSON.stringify(this.onInstallListenerEventQueue)} ${typeof onInstallListenerEvent} ${JSON.stringify(onInstallListenerEvent)}`);
+				throw new RangeError(
+					`Malformed event in queue: ${
+						this.onInstallListenerEventQueue.length
+					} ${
+						JSON.stringify(this.onInstallListenerEventQueue)
+					} ${
+						typeof onInstallListenerEvent
+					} ${
+						JSON.stringify(onInstallListenerEvent)
+					}`,
+				);
 			}
 
 			if (!onInstallListenerEvent.event) {

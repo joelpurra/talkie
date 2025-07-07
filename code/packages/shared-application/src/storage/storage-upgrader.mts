@@ -125,10 +125,6 @@ export default class StorageUpgrader {
 
 				break;
 			}
-
-			default: {
-				throw new Error("Unable to handle unknown upgrader type.");
-			}
 		}
 
 		return upgrader(key);
@@ -286,7 +282,7 @@ export default class StorageUpgrader {
 			if (firstInitializedUpgradePath && firstInitializedUpgradePath.length >= 2) {
 				let previous = firstInitializedUpgradePath[0] ?? null;
 
-				for await (const next of firstInitializedUpgradePath.slice(1)) {
+				for (const next of firstInitializedUpgradePath.slice(1)) {
 					if (!previous) {
 						throw new RangeError(`Unexpected empty element "previous": ${JSON.stringify(previous, null, 0)}.`);
 					}
@@ -295,6 +291,7 @@ export default class StorageUpgrader {
 						throw new RangeError(`Unexpected empty element "next": ${JSON.stringify(next, null, 0)}.`);
 					}
 
+					// eslint-disable-next-line no-await-in-loop
 					await this._upgrade(previous, next);
 
 					previous = next;

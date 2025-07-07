@@ -36,6 +36,7 @@ export default class NonBreakingChain extends Chain {
 		void logDebug("Start", "NonBreakingChain", currentLength);
 
 		// NOTE: using promise objects for the chain.
+		/* eslint-disable promise/prefer-await-to-then */
 		this.chainPromise = this.chainPromise
 			.finally(async () => {
 				try {
@@ -47,6 +48,7 @@ export default class NonBreakingChain extends Chain {
 					void logError("NonBreakingChain", "swallowing error", currentLength, error);
 				}
 			});
+		/* eslint-enable promise/prefer-await-to-then */
 
 		return this.chainPromise;
 	}

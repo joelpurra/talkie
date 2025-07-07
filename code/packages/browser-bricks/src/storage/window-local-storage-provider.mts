@@ -78,7 +78,16 @@ export default class WindowLocalStorageProvider implements IStorageProvider {
 					throw new Error(`The key ${JSON.stringify(key, null, 0)} was already initiated with value ${JSON.stringify(object[key], null, 0)}; new value ${JSON.stringify(value, null, 0)}.`);
 				}
 
-				void logWarn(this.constructor.name, `The key ${JSON.stringify(key, null, 0)} was already initiated with value ${JSON.stringify(object[key], null, 0)}; the new value ${JSON.stringify(value, null, 0)} is the same, so ignoring the issue.`);
+				void logWarn(
+					this.constructor.name,
+					`The key ${
+						JSON.stringify(key, null, 0)
+					} was already initiated with value ${
+						JSON.stringify(object[key], null, 0)
+					}; the new value ${
+						JSON.stringify(value, null, 0)
+					} is the same, so ignoring the issue.`,
+				);
 
 				continue;
 			}
@@ -115,10 +124,12 @@ export default class WindowLocalStorageProvider implements IStorageProvider {
 	}
 
 	async setAll<T extends JsonObject>(object: T): Promise<void> {
-		for await (const [
+		for (const [
 			key,
 			value,
 		] of Object.entries(object)) {
+			// TODO: use Promise.all(), or Bluebird.map()?
+			// eslint-disable-next-line no-await-in-loop
 			await this.set(key, value);
 		}
 	}

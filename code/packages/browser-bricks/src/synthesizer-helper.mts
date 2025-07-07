@@ -157,6 +157,7 @@ export default class SynthesizerHelper {
 
 					// NOTE: the error code may be useful for callers.
 					// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(event.error);
 				};
 
@@ -180,6 +181,7 @@ export default class SynthesizerHelper {
 					synthesizer.pause();
 					synthesizer.resume();
 				} catch (error: unknown) {
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(error);
 				}
 			},
@@ -241,6 +243,7 @@ export default class SynthesizerHelper {
 						// NOTE: ignored.
 					}
 
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(error);
 				}
 			},

@@ -136,6 +136,7 @@ class App<P extends InternalProps> extends React.PureComponent<P> {
 					isPremiumEdition={isPremiumEdition}
 				/>
 
+				{/* eslint-disable-next-line @typescript-eslint/no-deprecated */}
 				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}
 					setMax={setMax}

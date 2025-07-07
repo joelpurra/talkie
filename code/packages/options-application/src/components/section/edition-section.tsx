@@ -164,10 +164,6 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 				Heading = this.styled.h2ModeHeading;
 				break;
 			}
-
-			default: {
-				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
-			}
 		}
 
 		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types

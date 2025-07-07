@@ -41,7 +41,7 @@ import {
 	type PerhapsSelectedTextWithFocusTimestamp,
 } from "./pass-selected-text-to-background-types.mjs";
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS = unknown>() {
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {

@@ -39,7 +39,10 @@ import {
 } from "../data/configuration/configuration.mjs";
 
 export default class Configuration implements IConfiguration {
-	private static _resolvePath<T extends JsonValue, D extends JsonObject>(object: Readonly<D>, path: string): Readonly<T> | Readonly<JsonObject> | Readonly<JsonArray> | string | number | boolean | null {
+	private static _resolvePath<T extends JsonValue, D extends JsonObject>(
+		object: Readonly<D>,
+		path: string,
+	): Readonly<T> | Readonly<JsonObject> | Readonly<JsonArray> | string | number | boolean | null {
 		// TODO: use a library, like lodash.get().
 		// NOTE: doesn't handle arrays nor properties of "any" non-object objects.
 		if (!object || typeof object !== "object") {

@@ -114,6 +114,7 @@ export default abstract class PermissionManager implements IPermissionManager {
 		}
 
 		try {
+			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			const result = await this.permissionsManager.askUseDenyPermissions<T>(
 				this.permissions,
 				this.context,

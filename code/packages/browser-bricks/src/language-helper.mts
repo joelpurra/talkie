@@ -44,7 +44,8 @@ export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextL
 export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage {
 	parentElementsLanguages: readonly string[];
 }
-export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages {
+export interface FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage
+	extends FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages {
 	effectiveLanguage: string | null;
 }
 export interface TextAndEffectiveLanguage {
@@ -182,7 +183,9 @@ export default class LanguageHelper {
 		return selectionsWithValidText;
 	}
 
-	async detectAndAddLanguageForSelections(selectionsWithValidText: readonly FramesSelectionTextAndLanguageCodeWithValidText[]): Promise<readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]> {
+	async detectAndAddLanguageForSelections(
+		selectionsWithValidText: readonly FramesSelectionTextAndLanguageCodeWithValidText[],
+	): Promise<readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]> {
 		return Promise.all(
 			selectionsWithValidText.map(
 				async (selection): Promise<Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>> => ({
@@ -220,8 +223,12 @@ export default class LanguageHelper {
 		return copy;
 	}
 
-	async getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices: SafeVoiceObjects, detectedPageLanguage: string | null, selectionsWithValidTextAndDetectedLanguage: readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[]): Promise<readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]> {
-		const cleanupParentElementsLanguages = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>): Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages> => ({
+	async getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(
+		allVoices: SafeVoiceObjects, detectedPageLanguage: string | null, selectionsWithValidTextAndDetectedLanguage: readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage[],
+	): Promise<readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]> {
+		const cleanupParentElementsLanguages = (
+			selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguage>,
+		): Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages> => ({
 			...selection,
 			parentElementsLanguages: this.cleanupLanguagesArray(allVoices, selection.parentElementsLanguages),
 		});
@@ -235,7 +242,9 @@ export default class LanguageHelper {
 			return (_language: string) => true;
 		};
 
-		const setEffectiveLanguage = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages>): Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage> => {
+		const setEffectiveLanguage = (
+			selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguages>,
+		): Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage> => {
 			const detectedLanguages = [
 				selection.detectedTextLanguage,
 				selection.parentElementsLanguages[0] ?? null,
@@ -286,8 +295,12 @@ export default class LanguageHelper {
 		return selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage;
 	}
 
-	async useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage: readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[]): Promise<readonly TextAndEffectiveLanguage[]> {
-		const fallbackMessageForNoLanguageDetected = (selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage>): TextAndEffectiveLanguage => {
+	async useFallbackMessageIfNoLanguageDetected(
+		selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage: readonly FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage[],
+	): Promise<readonly TextAndEffectiveLanguage[]> {
+		const fallbackMessageForNoLanguageDetected = (
+			selection: Readonly<FramesSelectionTextAndLanguageCodeWithValidTextAndDetectedTextLanguageAndParentElementsLanguagesAndEffectiveLanguage>,
+		): TextAndEffectiveLanguage => {
 			if (selection.effectiveLanguage === null) {
 				return this.noVoiceForLanguageDetectedMessage;
 			}
@@ -316,7 +329,11 @@ export default class LanguageHelper {
 	async cleanupSelections(allVoices: SafeVoiceObjects, detectedPageLanguage: string | null, selections: readonly SelectedTextAndLanguageCodes[]): Promise<readonly TextAndEffectiveLanguage[]> {
 		const selectionsWithValidText = await this.getSelectionsWithValidText(selections);
 		const selectionsWithValidTextAndDetectedLanguage = await this.detectAndAddLanguageForSelections(selectionsWithValidText);
-		const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = await this.getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(allVoices, detectedPageLanguage, selectionsWithValidTextAndDetectedLanguage);
+		const selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage = await this.getSelectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage(
+			allVoices,
+			detectedPageLanguage,
+			selectionsWithValidTextAndDetectedLanguage,
+		);
 
 		return this.useFallbackMessageIfNoLanguageDetected(selectionsWithValidTextAndDetectedLanguageAndEffectiveLanguage);
 	}

@@ -109,8 +109,16 @@ const chromeSelectiveSendResponseMessageHandler = async (callback: MessageBusCal
 			break;
 		}
 
-		default: {
-			throw new TypeError(`Unhandled MessageBusResponseMode case "${messageBusResponseMode}". Message was ${JSON.stringify(messageClone, null, 0)}, received ${JSON.stringify(responseClone, null, 0)}.`);
+		case undefined: {
+			throw new TypeError(
+				`Unhandled MessageBusResponseMode case "${
+					messageBusResponseMode
+				}". Message was ${
+					JSON.stringify(messageClone, null, 0)
+				}, received ${
+					JSON.stringify(responseClone, null, 0)
+				}.`,
+			);
 		}
 	}
 

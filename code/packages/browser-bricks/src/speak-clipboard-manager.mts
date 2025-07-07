@@ -86,10 +86,6 @@ export default class SpeakClipboardManager {
 
 					break;
 				}
-
-				default: {
-					throw new Error("What even is that?");
-				}
 			}
 		} else {
 			text = await this.translator.translate("readClipboardIsAPremiumFeature");

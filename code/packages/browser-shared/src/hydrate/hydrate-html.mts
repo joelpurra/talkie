@@ -44,7 +44,7 @@ import {
 import getDependencies from "./get-dependencies.mjs";
 import getPrerenderedState from "./get-prerendered-state.mjs";
 
-const hydrateReactDom = async (jsxRoot: Readonly<JSX.Element>): Promise<Root> => {
+const hydrateReactDom = async (jsxRoot: Readonly<React.JSX.Element>): Promise<Root> => {
 	const rootElement = document.querySelector("#react-root");
 
 	// TODO: reduce ambiguity regarding jsx and react roots.

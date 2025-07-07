@@ -60,7 +60,7 @@ export const mason = async (
 	uninitializers: UninitializerCallback[],
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	messageBusProviderGetter: IMessageBusProviderGetter,
-	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/no-deprecated
 	windowLocalStorageProvider: WindowLocalStorageProvider,
 ): Promise<void> => {
 	void logDebug("Start", "Main mason function");

@@ -98,6 +98,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpda
 
 				<IsSpeakingListenerContainer/>
 
+				{/* eslint-disable-next-line @typescript-eslint/no-deprecated */}
 				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}
 					setMax={setMax}

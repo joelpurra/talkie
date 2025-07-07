@@ -93,8 +93,9 @@ export default class PermissionsProvider {
 		const activePermissionNames: Manifest.OptionalPermission[] = [];
 		const inactivePermissionNames: Manifest.OptionalPermission[] = [];
 
-		for await (const permissionName of permissionNames) {
+		for (const permissionName of permissionNames) {
 			// TODO: be more fine-grained per origin as well?
+			// eslint-disable-next-line no-await-in-loop
 			const hasPermission = await this.hasPermissions(
 				[
 					permissionName,

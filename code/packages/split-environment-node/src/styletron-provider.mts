@@ -31,9 +31,7 @@ export default class NodeEnvironmentStyletronProvider implements IStyletronProvi
 	private _instance: StyletronServer | null = null;
 
 	getInstanceSync(): StandardEngine {
-		if (this._instance === null) {
-			this._instance = new StyletronServer();
-		}
+		this._instance ??= new StyletronServer();
 
 		return this._instance;
 	}

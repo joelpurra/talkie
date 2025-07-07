@@ -47,6 +47,7 @@ import {
 
 export interface ProgressProps extends TalkieProgressData {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface ProgressHocState extends TalkieProgressData {}
 
 export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {

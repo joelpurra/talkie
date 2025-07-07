@@ -31,6 +31,7 @@ const rootReducer = combineReducers({
 	shared: sharedReducer,
 });
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const store = getUnusableStoreForGeneratedTypes(rootReducer);
 
 export type SharedRootState = ReturnType<typeof store.getState>;

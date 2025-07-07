@@ -18,13 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import-x/no-unassigned-import
-import "reselect";
-import toolkit from "@reduxjs/toolkit";
-
 import type {
 	OptionsRootState,
 } from "../store/index.mjs";
+
+import toolkit from "@reduxjs/toolkit";
+// eslint-disable-next-line import-x/no-unassigned-import
+import "reselect";
 
 const {
 

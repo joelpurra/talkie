@@ -71,6 +71,7 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	prettyPrintForEmailBody(value: JsonValue, limit: number): string {
+		// eslint-disable-next-line @typescript-eslint/no-base-to-string
 		const string = value ? String(value) : JSON.stringify(value);
 		let pretty = string
 			.trim()

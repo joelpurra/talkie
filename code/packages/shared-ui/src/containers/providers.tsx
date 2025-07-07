@@ -58,6 +58,7 @@ export interface ConfigurationProviderContext {
 	configure: ConfigureContextProperty;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface TranslationProviderContext extends ITranslatorProvider {}
 
 export interface MessageBusProviderContext {
@@ -134,7 +135,7 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 		systemType: this.props.systemType,
 		translateContextValue: {
 			translatePlaceholderSync: (key: string, extras?: readonly string[]) =>
-				// eslint-disable-next-line no-sync
+				// eslint-disable-next-line no-sync, @typescript-eslint/no-deprecated
 				this.props.translator.translatePlaceholderSync(key, extras),
 			translateSync: (key: string, extras?: readonly string[]) =>
 				// eslint-disable-next-line no-sync

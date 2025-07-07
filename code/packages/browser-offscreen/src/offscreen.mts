@@ -48,6 +48,7 @@ const start = async () => {
 	const otherContextsMessageBusProviderGetter: IMessageBusProviderGetter = new PredefinedMessageBusProviderGetter(otherContextsMessageBusProvider);
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
+	// eslint-disable-next-line @typescript-eslint/no-deprecated
 	const windowLocalStorageProvider = new WindowLocalStorageProvider();
 
 	await mason(uninitializers, messageBusProviderGetter, windowLocalStorageProvider);

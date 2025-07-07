@@ -181,7 +181,8 @@ export default class SpeakerPageManager {
 		// - chrome: attempts to delay the text selection response of each internal page, based on mostRecentUse. This increases the chance that the most recently used page sends the first response, which is what chrome will use, and thus "wins the race".
 		// - firefox/webextensions: all internal pages respond, and the message bus wrappers consistently picks the first "defined" (all selected text responses are "defined") and returns the response. This generic solution does not know about mostRecentUse. The first internal page which was opened, and thus registered the "oldest" selected text message handler, will always "win".
 		// TODO: once again attempt to handle an array of per-frame selected texts?
-		const selectedTextFromFrontend: SelectedTextWithFocusTimestamp | null = (await bespeak(this.messageBusProviderGetter, "dom:internal:passSelectedTextToBackground", eventData)) as SelectedTextWithFocusTimestamp | null;
+		const selectedTextFromFrontend: SelectedTextWithFocusTimestamp | null
+			= (await bespeak(this.messageBusProviderGetter, "dom:internal:passSelectedTextToBackground", eventData)) as SelectedTextWithFocusTimestamp | null;
 		void logDebug("speakSelectionOnPage", "Received a single text selection from internal pages.", selectedTextFromFrontend);
 
 		return selectedTextFromFrontend;

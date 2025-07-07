@@ -96,7 +96,13 @@ export default class StayAliveManager {
 			? 0
 			: now - mostRecentTimestamp;
 
-		void logDebug(this.constructor.name, "Ah, ha, ha, ha, stayin' alive, stayin' alive!", this._activeStayAliveCounter, this._totalStayAliveCounter, `${intervalDiff > 0 ? "+" : ""}${intervalDiff} milliseconds`);
+		void logDebug(
+			this.constructor.name,
+			"Ah, ha, ha, ha, stayin' alive, stayin' alive!",
+			this._activeStayAliveCounter,
+			this._totalStayAliveCounter,
+			`${intervalDiff > 0 ? "+" : ""}${intervalDiff} milliseconds`,
+		);
 
 		await chrome.storage.local.set({
 			[this._storagePropertyName]: now,

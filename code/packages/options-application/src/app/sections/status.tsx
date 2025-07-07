@@ -78,6 +78,42 @@ export interface StatusDispatchProps {
 
 interface InternalProps extends StatusDispatchProps, StatusStateProps, ConfigureProps, TranslateProps {}
 
+const fallbackDash: React.ReactNode = (
+	// TODO: break out reusable element component class.
+	<>
+		&mdash;
+	</>
+);
+
+// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
+const UseFallbackDash: React.FunctionComponent<ChildrenRequiredProps & {readonly enabled: boolean}> = ({
+	children,
+	enabled,
+}) => (
+	// TODO: break out reusable element component class.
+	// eslint-disable-next-line react/jsx-no-useless-fragment
+	<>
+		{
+			enabled
+				? children
+				: fallbackDash
+		}
+	</>
+);
+
+// eslint-disable-next-line react/function-component-definition
+const EmptyTextUseFallbackDash: React.FC<{readonly text: string | null}> = ({
+	text,
+}) =>
+	(
+		// TODO: break out reusable element component class.
+		<UseFallbackDash
+			enabled={typeof text === "string" && text.length > 0 && text.trim().length > 0}
+		>
+			{text}
+		</UseFallbackDash>
+	);
+
 class Status<P extends InternalProps> extends React.PureComponent<P> {
 	static defaultProps = {
 		mostRecent: null,
@@ -204,6 +240,32 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 		return false;
 	}
 
+	getSpeakingHistoryListItems(speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) {
+		const {
+			hash,
+			text,
+			voiceName,
+		} = speakingHistoryEntry;
+
+		const hasTextAndVoice = typeof text === "string" && typeof voiceName === "string";
+		const SpeakHistoryButtonState = hasTextAndVoice
+			? this.styled.transparentButtonEllipsis
+			: this.styled.transparentButtonEllipsisDisabled;
+
+		return (
+			<listBase.li
+				key={hash}
+				// eslint-disable-next-line react/jsx-no-bind
+				onClick={hasTextAndVoice ? this.handleSpeakHistoryEntryClick.bind(null, speakingHistoryEntry) : undefined}
+			>
+				<SpeakHistoryButtonState>
+					{text}
+				</SpeakHistoryButtonState>
+			</listBase.li>
+		);
+	}
+
+	// eslint-disable-next-line complexity
 	override render(): React.ReactNode {
 		const {
 			isSpeaking,
@@ -304,39 +366,6 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 			</ReplayButtonState>
 		);
 
-		const fallbackDash: React.ReactNode = (
-			<>
-				&mdash;
-			</>
-		);
-
-		// eslint-disable-next-line react/function-component-definition, @typescript-eslint/prefer-readonly-parameter-types
-		const UseFallbackDash: React.FunctionComponent<ChildrenRequiredProps & {enabled: boolean}> = ({
-			children,
-			enabled,
-		}) => (
-			// eslint-disable-next-line react/jsx-no-useless-fragment
-			<>
-				{
-					enabled
-						? children
-						: fallbackDash
-				}
-			</>
-		);
-
-		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, react/function-component-definition
-		const EmptyTextUseFallbackDash: React.FC<{text: string | null}> = ({
-			text,
-		}) =>
-			(
-				<UseFallbackDash
-					enabled={typeof text === "string" && text.length > 0 && text.trim().length > 0}
-				>
-					{text}
-				</UseFallbackDash>
-			);
-
 		return (
 			<>
 				<textBase.h1>
@@ -423,35 +452,10 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 							</summary>
 
 							<listBase.ol>
-								{
-									speakingHistory
-										.map(
-											(speakingHistoryEntry: Readonly<SpeakingHistoryEntry>) => {
-												const {
-													hash,
-													text,
-													voiceName,
-												} = speakingHistoryEntry;
-
-												const hasTextAndVoice = typeof text === "string" && typeof voiceName === "string";
-												const SpeakHistoryButtonState = hasTextAndVoice
-													? this.styled.transparentButtonEllipsis
-													: this.styled.transparentButtonEllipsisDisabled;
-
-												return (
-													<listBase.li
-														key={hash}
-														// eslint-disable-next-line react/jsx-no-bind
-														onClick={hasTextAndVoice ? this.handleSpeakHistoryEntryClick.bind(null, speakingHistoryEntry) : undefined}
-													>
-														<SpeakHistoryButtonState>
-															{text}
-														</SpeakHistoryButtonState>
-													</listBase.li>
-												);
-											},
-										)
-								}
+								{speakingHistory.map(
+									// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+									(speakingHistoryEntry) => this.getSpeakingHistoryListItems(speakingHistoryEntry),
+								)}
 							</listBase.ol>
 						</details>
 					</Discretional>

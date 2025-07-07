@@ -72,6 +72,7 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, millisec
 	let timeoutId: any | null;
 
 	// NOTE: using promise objects for the race.
+	/* eslint-disable promise/prefer-await-to-then */
 	const timeoutPromise = new Promise<void>((resolve) => {
 		timeoutId = setTimeout(
 			() => {
@@ -85,6 +86,7 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, millisec
 
 			throw timeoutError;
 		});
+	/* eslint-enable promise/prefer-await-to-then */
 
 	try {
 		return await Promise.race([
@@ -112,6 +114,7 @@ export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: nu
 				try {
 					resolve(fn());
 				} catch (error: unknown) {
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(error);
 				}
 			},

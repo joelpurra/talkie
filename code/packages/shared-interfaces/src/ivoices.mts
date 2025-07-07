@@ -46,8 +46,10 @@ export interface MutableSafeVoiceObject extends JsonObject {
 	voiceUri: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
 
 export interface MutableSafeUtteranceObject extends JsonObject {
@@ -59,8 +61,10 @@ export interface MutableSafeUtteranceObject extends JsonObject {
 	volume: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeUtteranceObject extends Readonly<MutableSafeUtteranceObject> {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeUtteranceObjects extends Readonly<SafeUtteranceObject[]> {}
 
 export interface MutableSpeechSynthesisEventObject extends JsonObject {
@@ -71,6 +75,8 @@ export interface MutableSpeechSynthesisEventObject extends JsonObject {
 	utterance: SafeUtteranceObject;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeSpeechSynthesisEventObject extends Readonly<MutableSpeechSynthesisEventObject> {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeSpeechSynthesisEventObjects extends Readonly<SafeSpeechSynthesisEventObject[]> {}

@@ -99,6 +99,7 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 			systemType,
 			osType,
 			configure,
+			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			translatePlaceholderSync,
 			translateSync,
 		} = this.props as P;

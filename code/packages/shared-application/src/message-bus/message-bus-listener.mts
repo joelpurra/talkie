@@ -146,11 +146,6 @@ export default abstract class MessageBusListener extends MessageBusBase implemen
 				// NOTE: no response; none expected.
 				return undefined;
 			}
-
-			default: {
-				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-				throw new TypeError(`Unhandled MessageBusResponseMode case "${this.responseMode}". Message data ${JSON.stringify(data, null, 0)}, response data ${JSON.stringify(responseDatum, null, 0)}.`);
-			}
 		}
 	}
 

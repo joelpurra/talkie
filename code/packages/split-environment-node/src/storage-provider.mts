@@ -87,10 +87,11 @@ export default class NodeEnvironmentStorageProvider implements IStorageProvider 
 	}
 
 	async setAll<T extends JsonObject>(object: T): Promise<void> {
-		for await (const [
+		for (const [
 			key,
 			value,
 		] of Object.entries(object)) {
+			// eslint-disable-next-line no-await-in-loop
 			await this.set(key, value);
 		}
 	}

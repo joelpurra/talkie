@@ -179,6 +179,7 @@ const getDependencies = (onInstallListenerEventQueue: OnInstallEvent[], messageB
 
 	const progress = new TalkieProgress(messageBusProviderGetter);
 
+	// eslint-disable-next-line @typescript-eslint/no-deprecated
 	const messageBusWindowLocalStorageProvider = new MessageBusWindowLocalStorageProvider(messageBusProviderGetter);
 	const webExtensionEnvironmentStorageProvider = new StorageProvider();
 	const storageBackendMigrator = new StorageBackendMigrator(messageBusWindowLocalStorageProvider, webExtensionEnvironmentStorageProvider);

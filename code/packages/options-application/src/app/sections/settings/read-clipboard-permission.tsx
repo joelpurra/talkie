@@ -150,10 +150,6 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 
 				break;
 			}
-
-			default: {
-				throw new Error("How did it come to this?");
-			}
 		}
 
 		let clipboardTextOrStatus: string;

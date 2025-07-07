@@ -27,5 +27,5 @@ export interface ClassNameProp {
 	className?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-empty-object-type, @typescript-eslint/no-deprecated
 export interface TalkieStyletronComponent<D extends React.ElementType, S extends StyleObject | React.ReactChild | React.ReactFragment | React.ReactPortal = any> extends StyletronComponent<D, S> {}

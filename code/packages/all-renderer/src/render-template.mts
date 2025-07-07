@@ -50,6 +50,7 @@ const renderTemplate = async <S, A extends Action, P>(
 	const html = await render(
 		app.rootReducer,
 		app.customPrerenderedActionsToDispatch,
+		// eslint-disable-next-line @typescript-eslint/no-deprecated
 		app.customPostrenderActionsToDispatch,
 		app.reactHtmlTemplatePath,
 		talkieLocale,
