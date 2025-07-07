@@ -18,6 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-type BrowserCommand = (...args: Readonly<unknown[]>) => Promise<void>;
+type BrowserCommand = (...args: readonly unknown[]) => Promise<void>;
 
 export type IBrowserCommandMap = Record<string, BrowserCommand>;

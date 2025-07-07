@@ -29,7 +29,7 @@ const redundantlyTriggerLoadingVoices: () => Promise<SpeechSynthesisVoice[]> = a
 // NOTE: the background context in Firefox on Linux does not load voices (or at least pass the loaded array) on the first (welcome) page load, at least if there are thousands of voices.
 // NOTE: the above occurs is particularly noticeable during testing with temporary browser profiles, and can thus be assumed to occur on first installs (or cold boots?) for at least some end-users.
 	try {
-		return window.speechSynthesis.getVoices();
+		return globalThis.speechSynthesis.getVoices();
 	} catch (error) {
 		// NOTE: log but ignore errors; this is a "hidden" execution with the sole purpose of triggering side-effects.
 

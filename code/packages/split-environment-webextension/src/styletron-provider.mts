@@ -21,12 +21,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 /// <ref types="dom" />
 
 import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
-import {
-	Client as StyletronClient,
-} from "styletron-engine-atomic";
 import type {
 	StandardEngine,
 } from "styletron-standard";
+
+import {
+	Client as StyletronClient,
+} from "styletron-engine-atomic";
 
 export default class WebExtensionEnvironmentStyletronProvider implements IStyletronProvider {
 	private _instance: StyletronClient | null = null;

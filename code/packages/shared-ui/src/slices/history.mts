@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	PayloadAction,
 } from "@reduxjs/toolkit";
-import toolkit from "@reduxjs/toolkit";
 import type {
 	SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
@@ -30,17 +29,19 @@ import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
+import toolkit from "@reduxjs/toolkit";
+
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 
 export interface HistoryState {
 	// TODO: should pitch/rate be part of mostRecent and/or SpeakingHistoryEntry?
 	mostRecent: Readonly<SpeakingHistoryEntry> | null;
-	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
+	speakingHistory: readonly SpeakingHistoryEntry[];
 }
 
 const initialState: HistoryState = {
@@ -52,7 +53,7 @@ const prefix = "history";
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const loadSpeakingHistory = createAsyncThunk<Readonly<SpeakingHistoryEntry[]>, void, IApiAsyncThunkConfig>(
+export const loadSpeakingHistory = createAsyncThunk<readonly SpeakingHistoryEntry[], void, IApiAsyncThunkConfig>(
 	`${prefix}/loadSpeakingHistory`,
 	async (
 		_,
@@ -118,7 +119,7 @@ export const historySlice = createSlice({
 		setMostRecent(state, action: PayloadAction<Readonly<SpeakingHistoryEntry> | null>) {
 			state.mostRecent = action.payload as SpeakingHistoryEntry | null;
 		},
-		setSpeakingHistory(state, action: PayloadAction<Readonly<SpeakingHistoryEntry[]>>) {
+		setSpeakingHistory(state, action: PayloadAction<readonly SpeakingHistoryEntry[]>) {
 			state.speakingHistory = action.payload as SpeakingHistoryEntry[];
 		},
 	},

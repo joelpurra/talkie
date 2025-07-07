@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
 import type {
 	OsType,
 	SystemType,
@@ -28,10 +27,12 @@ import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
+import toolkit from "@reduxjs/toolkit";
+
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 
@@ -63,8 +64,8 @@ export const loadIsPremiumEdition = createAsyncThunk<boolean, void, IApiAsyncThu
 	}) =>
 		// TODO: avoid multi-level fallbacks.
 		extra.groundwork?.configuration.getIsPremiumEdition()
-			?? extra.coating?.premium?.isPremiumEdition()
-			?? false,
+		?? extra.coating?.premium?.isPremiumEdition()
+		?? false,
 );
 
 export const storeIsPremiumEdition = createAsyncThunk<boolean, boolean, IApiAsyncThunkConfig>(

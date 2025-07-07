@@ -19,10 +19,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IApiGroundworkVoices from "@talkie/split-environment-interfaces/iapi/iapi-groundwork-voices.mjs";
+
 import {
 	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
-import type IApiGroundworkVoices from "@talkie/split-environment-interfaces/iapi/iapi-groundwork-voices.mjs";
 
 import MessageBusGroundworkBase from "./message-bus-groundwork-base.mjs";
 

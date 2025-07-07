@@ -19,22 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import {
-	type SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import {
-	type IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-import React from "react";
-import {
-	connect,
-	type MapDispatchToPropsFunction,
-	type MapStateToProps,
-} from "react-redux";
-import {
-	Provider as StyletronProvider,
-} from "styletron-react";
 import type {
 	StandardEngine,
 } from "styletron-standard";
@@ -46,6 +31,23 @@ import type {
 import type {
 	SharedRootState,
 } from "../store/index.mjs";
+
+import {
+	type SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	type IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import React from "react";
+import {
+	connect,
+	type MapDispatchToPropsFunction,
+	type MapStateToProps,
+} from "react-redux";
+import {
+	Provider as StyletronProvider,
+} from "styletron-react";
+
 import {
 	type ChildrenRequiredProps,
 } from "../types.mjs";
@@ -131,10 +133,10 @@ class Providers<P extends ProvidersProps & StateProps & DispatchProps & Children
 		},
 		systemType: this.props.systemType,
 		translateContextValue: {
-			translatePlaceholderSync: (key: string, extras?: Readonly<string[]>) =>
+			translatePlaceholderSync: (key: string, extras?: readonly string[]) =>
 				// eslint-disable-next-line no-sync
 				this.props.translator.translatePlaceholderSync(key, extras),
-			translateSync: (key: string, extras?: Readonly<string[]>) =>
+			translateSync: (key: string, extras?: readonly string[]) =>
 				// eslint-disable-next-line no-sync
 				this.props.translator.translateSync(key, extras),
 		},

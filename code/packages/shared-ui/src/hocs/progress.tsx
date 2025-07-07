@@ -18,6 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
+import type {
+	Except,
+	ReadonlyDeep,
+} from "type-fest";
+
+import type {
+	TalkieProgressData,
+} from "../talkie-progress.mjs";
+
 import {
 	startCrowdee,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
@@ -27,21 +39,11 @@ import {
 import {
 	executeUninitializers,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
-import type {
-	UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
 import React from "react";
-import type {
-	Except,
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	MessageBusContext,
 } from "../containers/providers.js";
-import type {
-	TalkieProgressData,
-} from "../talkie-progress.mjs";
 
 export interface ProgressProps extends TalkieProgressData {}
 

@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import assert from "node:assert";
-
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import type GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service.mjs";
+
+import assert from "node:assert";
+
 import {
 	type BaseLocaleMessages,
 	type BaseMessages,
@@ -36,17 +37,17 @@ import {
 export default class MessagesTranslator {
 	constructor(private readonly _translatorService: GoogleCloudTranslateTranslator, private readonly _base: BaseMessages, private readonly _locale: Messages) {
 		// NOTE: ensure the base language isn't translated onto itself.
-		assert(typeof this._locale.language !== this._base.language);
+		assert.ok(typeof this._locale.language !== this._base.language);
 	}
 
 	async _keepOnlyKeys(keys: ReadonlyDeep<string[]>, object: ReadonlyDeep<Record<string, LocaleMessage>>): Promise<LocaleMessages> {
-		assert(Array.isArray(keys));
+		assert.ok(Array.isArray(keys));
 
 		for (const key of keys) {
-			assert(typeof key === "string" || (typeof key === "number" && Math.floor(key) === Math.ceil(key)));
+			assert.ok(typeof key === "string" || (typeof key === "number" && Math.floor(key) === Math.ceil(key)));
 		}
 
-		assert(typeof object === "object");
+		assert.ok(typeof object === "object");
 
 		// TODO: use something like pick() from a library.
 		// eslint-disable-next-line unicorn/no-array-reduce
@@ -119,11 +120,11 @@ export default class MessagesTranslator {
 
 		const automaticallyTranslated = await this._translatorService.translate(this._base.language, this._locale.language, untranslatedLocale);
 
-		assert(typeof automaticallyTranslated === "object");
+		assert.ok(typeof automaticallyTranslated === "object");
 
 		for (const automaticallyTranslatedValue of Object.values(automaticallyTranslated)) {
-			assert(typeof automaticallyTranslatedValue.original === "string");
-			assert(typeof automaticallyTranslatedValue.message === "string");
+			assert.ok(typeof automaticallyTranslatedValue.original === "string");
+			assert.ok(typeof automaticallyTranslatedValue.message === "string");
 		}
 
 		const translated = {

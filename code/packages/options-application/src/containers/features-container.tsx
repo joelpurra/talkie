@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
@@ -32,9 +36,6 @@ import Features, {
 import {
 	actions,
 } from "../slices/index.mjs";
-import type {
-	OptionsRootState,
-} from "../store/index.mjs";
 
 const {
 	bindActionCreators,

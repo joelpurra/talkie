@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type IApi from "@talkie/split-environment-interfaces/iapi/iapi.mjs";
 import type IApiCoating from "@talkie/split-environment-interfaces/iapi/iapi-coating.mjs";
+import type IApi from "@talkie/split-environment-interfaces/iapi/iapi.mjs";
 
 export default class RenderingApi implements IApi {
 	// eslint-disable-next-line @typescript-eslint/class-literal-property-style

@@ -18,23 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IApiAsyncThunkConfig,
+} from "@talkie/shared-ui/slices/slices-types.mjs";
+
+import type {
+	NavigationTabId,
+} from "../components/navigation/nav-container-types.mjs";
+
 import toolkit, {
 	type PayloadAction,
 } from "@reduxjs/toolkit";
 import {
 	promiseDelay,
 } from "@talkie/shared-application-helpers/promise.mjs";
-import type {
-	IApiAsyncThunkConfig,
-} from "@talkie/shared-ui/slices/slices-types.mjs";
 import {
 	getLocationHash,
 	setLocationHash,
 } from "@talkie/shared-ui/utils/navigator-location.mjs";
 
-import type {
-	NavigationTabId,
-} from "../components/navigation/nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
 	getTabIdFromLocationHash,
@@ -43,9 +45,9 @@ import {
 } from "../components/navigation/nav-helpers.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

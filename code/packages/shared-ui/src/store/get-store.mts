@@ -24,18 +24,19 @@ import type {
 	Reducer,
 	Store,
 } from "@reduxjs/toolkit";
-import toolkit from "@reduxjs/toolkit";
-import {
-	isTalkieDevelopmentMode,
-} from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
 import type IApi from "@talkie/split-environment-interfaces/iapi/iapi.mjs";
-import logger from "redux-logger";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
+import toolkit from "@reduxjs/toolkit";
+import {
+	isTalkieDevelopmentMode,
+} from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
+import logger from "redux-logger";
+
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	configureStore,
 } = toolkit;
 

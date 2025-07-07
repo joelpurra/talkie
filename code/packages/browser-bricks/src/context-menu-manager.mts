@@ -18,15 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
-import {
-	type IMetadataManager,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import {
-	type IPremiumManager,
-} from "@talkie/shared-interfaces/ipremium-manager.mjs";
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
 	ReadonlyDeep,
@@ -37,6 +28,16 @@ import type {
 } from "webextension-polyfill";
 
 import type CommandHandler from "./command-handler.mjs";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	type IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	type IPremiumManager,
+} from "@talkie/shared-interfaces/ipremium-manager.mjs";
 
 export interface ContextMenuOptions {
 	chrome: boolean;

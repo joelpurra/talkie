@@ -23,6 +23,7 @@ import type {
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type IApiCoatingMetadata from "@talkie/split-environment-interfaces/iapi/iapi-coating-metadata.mjs";
+
 import {
 	type Runtime,
 } from "webextension-polyfill";

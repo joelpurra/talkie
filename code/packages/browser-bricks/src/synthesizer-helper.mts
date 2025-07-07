@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	isPromiseTimeout,
-	promiseTimeout,
-} from "@talkie/shared-application-helpers/promise.mjs";
 import type {
 	IVoiceNameAndRateAndPitch,
 	SafeSpeechSynthesisEventObject,
@@ -33,6 +29,11 @@ import type {
 } from "type-fest";
 
 import {
+	isPromiseTimeout,
+	promiseTimeout,
+} from "@talkie/shared-application-helpers/promise.mjs";
+
+import {
 	createSafeSpeechSynthesisEventObjectFromSpeechSynthesisEvent,
 	createSafeVoiceObjectFromSpeechSynthesisVoice,
 	resolveDefaultVoiceFromLanguage,
@@ -40,7 +41,7 @@ import {
 } from "./speaker-helpers.mjs";
 
 declare global {
-	// eslint-disable-next-line no-var
+
 	var talkieUtterance: SpeechSynthesisUtterance | undefined;
 }
 

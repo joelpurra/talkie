@@ -18,6 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	MapDispatchToPropsFunction,
+	MapStateToProps,
+} from "react-redux";
+
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import VoicesLoader from "@talkie/shared-ui/components/loaders/voices-loader.js";
@@ -28,10 +37,6 @@ import {
 	ProgressUpdaterTypehack,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
-import type {
-	MapDispatchToPropsFunction,
-	MapStateToProps,
-} from "react-redux";
 import {
 	connect,
 } from "react-redux";
@@ -47,9 +52,7 @@ import selectors from "../selectors/index.mjs";
 import {
 	actions,
 } from "../slices/index.mjs";
-import type {
-	OptionsRootState,
-} from "../store/index.mjs";
+
 import PageTitleContainer from "./page-title-container.js";
 
 const {

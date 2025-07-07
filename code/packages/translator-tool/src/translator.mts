@@ -33,8 +33,8 @@ import FilesTranslator, {
 	type FileTranslation,
 } from "./files-translator.mjs";
 import GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service.mjs";
-import MessagesTranslator from "./messages-translator.mjs";
 import MessagesTranslatorFactory from "./messages-translator-factory.mjs";
+import MessagesTranslator from "./messages-translator.mjs";
 
 const readDir = util.promisify(fs.readdir);
 const stat = util.promisify(fs.stat);
@@ -67,23 +67,23 @@ const main = async (): Promise<void> => {
 	const args = process.argv.slice(2);
 	const languageCodeRx = /[a-z]{2}(_[A-Z]{2})?/;
 
-	assert(args.length >= 4);
+	assert.ok(args.length >= 4);
 
 	// TODO: check resolved path?
-	assert(typeof args[0] === "string");
+	assert.ok(typeof args[0] === "string");
 
-	assert(typeof args[1] === "string");
-	assert(languageCodeRx.test(args[1]));
+	assert.ok(typeof args[1] === "string");
+	assert.ok(languageCodeRx.test(args[1]));
 
-	assert(typeof args[2] === "string");
-	assert(args[2].endsWith(".json"));
+	assert.ok(typeof args[2] === "string");
+	assert.ok(args[2].endsWith(".json"));
 
-	assert(typeof args[3] === "string");
-	assert(args[3].endsWith(".json"));
+	assert.ok(typeof args[3] === "string");
+	assert.ok(args[3].endsWith(".json"));
 
 	if (args.length > 4) {
 		for (const arg of args.slice(4)) {
-			assert(languageCodeRx.test(arg));
+			assert.ok(languageCodeRx.test(arg));
 		}
 	}
 
@@ -97,8 +97,8 @@ const main = async (): Promise<void> => {
 
 	const googleCloudTranslateApiKeyFilePath = configuration.get("GOOGLE_TRANSLATE_API_KEY_FILE_PATH");
 
-	assert(typeof googleCloudTranslateApiKeyFilePath === "string");
-	assert(googleCloudTranslateApiKeyFilePath.length > 0);
+	assert.ok(typeof googleCloudTranslateApiKeyFilePath === "string");
+	assert.ok(googleCloudTranslateApiKeyFilePath.length > 0);
 
 	const translatorService = new GoogleCloudTranslateTranslator(googleCloudTranslateApiKeyFilePath);
 	const messagesTranslatorFactory = new MessagesTranslatorFactory(translatorService, MessagesTranslator);

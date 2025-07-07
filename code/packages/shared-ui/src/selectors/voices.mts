@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SharedRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import {
 	getAvailableBrowserLanguageGroupsWithNavigatorLanguages,
@@ -37,9 +41,6 @@ import {
 	type SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
-import type {
-	SharedRootState,
-} from "../store/index.mjs";
 import {
 	getNavigatorLanguageGroups,
 	getNavigatorLanguages,
@@ -47,7 +48,7 @@ import {
 } from "./languages.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createDraftSafeSelector,
 } = toolkit;
 
@@ -114,21 +115,21 @@ export const getLanguagesCount = createDraftSafeSelector(
 	[
 		getLanguages,
 	],
-	(languages: Readonly<string[]>) => languages.length,
+	(languages: readonly string[]) => languages.length,
 );
 
 export const getLanguageGroups = createDraftSafeSelector(
 	[
 		getLanguages,
 	],
-	(languages: Readonly<string[]>) => getLanguageGroupsFromLanguages(languages),
+	(languages: readonly string[]) => getLanguageGroupsFromLanguages(languages),
 );
 
 export const getLanguageGroupsCount = createDraftSafeSelector(
 	[
 		getLanguageGroups,
 	],
-	(languageGroups: Readonly<string[]>) => languageGroups.length,
+	(languageGroups: readonly string[]) => languageGroups.length,
 );
 
 export const getSortedLanguageGroups = createDraftSafeSelector(
@@ -160,7 +161,7 @@ export const getLanguageDialectsCount = createDraftSafeSelector(
 	[
 		getLanguageDialects,
 	],
-	(dialects: Readonly<string[]>) => dialects.length,
+	(dialects: readonly string[]) => dialects.length,
 );
 
 export const getVoicesByLanguage = createDraftSafeSelector(

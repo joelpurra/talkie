@@ -20,11 +20,10 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 import type HistoryManager from "@talkie/browser-bricks/history-manager.mjs";
 import type SpeakClipboardManager from "@talkie/browser-bricks/speak-clipboard-manager.mjs";
-import type Speaker from "@talkie/browser-bricks/speaker.mjs";
 import type SpeakerManager from "@talkie/browser-bricks/speaker-manager.mjs";
 import type SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
+import type Speaker from "@talkie/browser-bricks/speaker.mjs";
 import type VoiceManager from "@talkie/browser-bricks/voice-manager.mjs";
-import createMessageBusListenerHelpers from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import type {
 	IPremiumManager,
@@ -32,6 +31,11 @@ import type {
 import type {
 	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
+import createMessageBusListenerHelpers from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import {
 	type UninitializerCallback,
 } from "@talkie/shared-interfaces/uninitializer.mjs";
@@ -39,9 +43,6 @@ import {
 	type IMessageBusProviderGetter,
 	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 const createMessageBusListeners = async (
 	messageBusProviderGetter: ReadonlyDeep<IMessageBusProviderGetter>,

@@ -18,20 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	jsonClone,
-} from "@talkie/shared-application-helpers/basic.mjs";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import {
-	type IMetadataManager,
-	type SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	JsonArray,
 	JsonObject,
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	jsonClone,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
+	type IMetadataManager,
+	type SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 
 import {
 	type ConfigurationObject,
@@ -60,7 +61,7 @@ export default class Configuration implements IConfiguration {
 		if (part in object) {
 			const value = object[part];
 
-			if (value !== undefined && (Object.prototype).hasOwnProperty.call(object, part)) {
+			if (value !== undefined && Object.hasOwn(object, part)) {
 				if (parts.length === 0) {
 					return value as JsonValue;
 				}
@@ -93,9 +94,9 @@ export default class Configuration implements IConfiguration {
 		const customValue = Configuration._resolvePath(this.configurationObject, path);
 
 		const value = systemValue
-						?? sharedValue
-						?? customValue
-						?? null;
+			?? sharedValue
+			?? customValue
+			?? null;
 
 		if (!value) {
 			throw new Error(`Invalid value for ${(JSON.stringify(systemType))} on ${JSON.stringify(path)}: ${JSON.stringify(value)}`);

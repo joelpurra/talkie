@@ -19,15 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	Tabs,
 } from "webextension-polyfill";
 
 import type Speaker from "./speaker.mjs";
 import type SpeakingStatus from "./speaking-status.mjs";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 export default class OnTabEventHandlers {
 	constructor(private readonly speaker: Speaker, private readonly speakingStatus: SpeakingStatus, private readonly settingsManager: SettingsManager) {}

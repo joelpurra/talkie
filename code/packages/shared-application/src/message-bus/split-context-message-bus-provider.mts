@@ -18,13 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	jsonClone,
-} from "@talkie/shared-application-helpers/basic.mjs";
-import {
-	logInfo,
-	logWarn,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	IMessageBusEvent,
 	IMessageBusProvider,
@@ -38,6 +31,14 @@ import type {
 	JsonObject,
 	JsonValue,
 } from "type-fest";
+
+import {
+	jsonClone,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
+	logInfo,
+	logWarn,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 import {
 	assertIsNotInMessageBusContext,

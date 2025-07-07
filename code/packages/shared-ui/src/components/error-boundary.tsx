@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React, {
-	type ErrorInfo,
-} from "react";
 import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
+
+import React, {
+	type ErrorInfo,
+} from "react";
 
 import {
 	type ChildrenRequiredProps,

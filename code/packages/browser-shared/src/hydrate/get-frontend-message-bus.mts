@@ -20,7 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // eslint-disable-next-line import-x/no-unassigned-import
 import "@talkie/split-environment-webextension/browser-specific/global-window-talkie-shared-context.mjs";
-
 import {
 	getRandomTalkieContextIdentifierFromDocumentLocation,
 	setGlobalTalkieContextIdentifier,

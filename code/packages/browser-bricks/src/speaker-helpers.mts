@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	getLanguageFromBcp47,
-	getLanguageGroupFromLanguage,
-} from "@talkie/shared-application-helpers/transform-voices.mjs";
 import type {
 	IVoiceLanguage,
 	IVoiceName,
@@ -29,6 +25,11 @@ import type {
 	SafeUtteranceObject,
 	SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
+
+import {
+	getLanguageFromBcp47,
+	getLanguageGroupFromLanguage,
+} from "@talkie/shared-application-helpers/transform-voices.mjs";
 import {
 	type ReadonlyDeep,
 } from "type-fest";
@@ -63,7 +64,7 @@ export const createSafeSpeechSynthesisEventObjectFromSpeechSynthesisEvent = (spe
 	utterance: createSafeUtteranceObjectFromSpeechSynthesisUtterance(speechSynthesisEvent.utterance),
 });
 
-const _pickFirstVoice = async <T extends IVoiceName | IVoiceLanguage>(resolvedVoices: Readonly<SpeechSynthesisVoice[]>, mappedVoiceForLogging: T): Promise<SpeechSynthesisVoice | null> => {
+const _pickFirstVoice = async <T extends IVoiceName | IVoiceLanguage>(resolvedVoices: readonly SpeechSynthesisVoice[], mappedVoiceForLogging: T): Promise<SpeechSynthesisVoice | null> => {
 	if (resolvedVoices.length === 0) {
 		return null;
 	}
@@ -83,7 +84,7 @@ const _pickFirstVoice = async <T extends IVoiceName | IVoiceLanguage>(resolvedVo
 	return resolvedVoice;
 };
 
-export const resolveDefaultVoiceFromLanguage = async (voices: Readonly<SpeechSynthesisVoice[]>, language: string): Promise<SpeechSynthesisVoice | null> => {
+export const resolveDefaultVoiceFromLanguage = async (voices: readonly SpeechSynthesisVoice[], language: string): Promise<SpeechSynthesisVoice | null> => {
 	const actualMatchingVoicesByLanguage = voices.filter((voice) => language && (getLanguageFromBcp47(voice.lang) === language));
 	const mappedVoiceLanguageGroup = typeof language === "string" ? getLanguageGroupFromLanguage(language) : "";
 	const actualMatchingVoicesByLanguageGroup = voices.filter((voice) => language && (voice.lang.startsWith(mappedVoiceLanguageGroup)));
@@ -101,7 +102,7 @@ export const resolveDefaultVoiceFromLanguage = async (voices: Readonly<SpeechSyn
 	);
 };
 
-export const resolveVoiceFromName = async (voices: Readonly<SpeechSynthesisVoice[]>, voiceName: string): Promise<SpeechSynthesisVoice | null> => {
+export const resolveVoiceFromName = async (voices: readonly SpeechSynthesisVoice[], voiceName: string): Promise<SpeechSynthesisVoice | null> => {
 	const actualMatchingVoicesByName = voices.filter((voice) => voiceName && (voice.name === voiceName));
 
 	return _pickFirstVoice(
@@ -117,7 +118,7 @@ export const isIVoiceName = (input: unknown): input is IVoiceName => typeof inpu
 
 export const isIVoiceLanguage = (input: unknown): input is IVoiceLanguage => typeof input === "object" && input !== null && "lang" in input && typeof (input as IVoiceLanguage).lang === "string";
 
-export const resolveVoice = async <T extends IVoiceName | IVoiceLanguage>(voices: Readonly<SpeechSynthesisVoice[]>, mappedVoice: T): Promise<SpeechSynthesisVoice | null> => {
+export const resolveVoice = async <T extends IVoiceName | IVoiceLanguage>(voices: readonly SpeechSynthesisVoice[], mappedVoice: T): Promise<SpeechSynthesisVoice | null> => {
 	if (isIVoiceName(mappedVoice)) {
 		return resolveVoiceFromName(voices, mappedVoice.name);
 	}

@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import path from "node:path";
-
 import type {
 	Action,
 } from "@reduxjs/toolkit";
+
+import path from "node:path";
+
 import App from "@talkie/options-application/containers/app.js";
 import rootReducer, {
 	actions,

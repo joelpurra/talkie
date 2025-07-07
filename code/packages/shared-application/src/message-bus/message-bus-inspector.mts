@@ -18,15 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
 	IStartStop,
 } from "@talkie/split-environment-interfaces/istart-stop.mjs";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
 import {
 	type JsonValue,
 } from "type-fest";

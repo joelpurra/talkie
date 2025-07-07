@@ -31,7 +31,7 @@ export interface MarkdownProps extends ClassNameProp {
 interface InternalProps extends MarkdownProps {}
 
 class MarkdownStrong<P extends InternalProps> extends React.PureComponent<P> {
-	urlTransform: (...args: Readonly<unknown[]>) => never;
+	urlTransform: (...args: readonly unknown[]) => never;
 
 	constructor(props: P) {
 		super(props);
@@ -39,7 +39,7 @@ class MarkdownStrong<P extends InternalProps> extends React.PureComponent<P> {
 		this.urlTransform = this.alwaysThrow.bind(null, "urlTransform");
 	}
 
-	alwaysThrow(_callType: string, ...args: Readonly<unknown[]>): never {
+	alwaysThrow(_callType: string, ...args: readonly unknown[]): never {
 		throw new Error(`Disallowed code in markdown: ${JSON.stringify([
 			...args,
 		])}`);

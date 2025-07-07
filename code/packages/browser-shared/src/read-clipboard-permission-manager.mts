@@ -22,8 +22,9 @@ import type {
 	Manifest,
 } from "webextension-polyfill";
 
-import PermissionManager from "./permission-manager.mjs";
 import type PermissionsProvider from "./permissions-provider.mjs";
+
+import PermissionManager from "./permission-manager.mjs";
 
 export default class ReadClipboardPermissionManager extends PermissionManager {
 	private static readonly clipboardReadPermission: Manifest.OptionalPermission[] = [

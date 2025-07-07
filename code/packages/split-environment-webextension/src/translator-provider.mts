@@ -27,12 +27,12 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 		private readonly localeProvider: ILocaleProvider,
 	) {}
 
-	async translatePlaceholder(key: string, extras?: Readonly<string[]>): Promise<string> {
+	async translatePlaceholder(key: string, extras?: readonly string[]): Promise<string> {
 		// eslint-disable-next-line no-sync
 		return this.translatePlaceholderSync(key, extras);
 	}
 
-	translatePlaceholderSync(key: string, extras?: Readonly<string[]>): string {
+	translatePlaceholderSync(key: string, extras?: readonly string[]): string {
 		// TODO: inject logging provider?
 		// eslint-disable-next-line no-console
 		console.warn("Untranslated placeholder:", key, extras);
@@ -44,12 +44,12 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 		return key + placeholderExtras;
 	}
 
-	async translate(key: string, extras?: Readonly<string[]>): Promise<string> {
+	async translate(key: string, extras?: readonly string[]): Promise<string> {
 		// eslint-disable-next-line no-sync
 		return this.translateSync(key, extras);
 	}
 
-	translateSync(key: string, extras?: Readonly<string[]>): string {
+	translateSync(key: string, extras?: readonly string[]): string {
 		// const locale = this.localeProvider.getTranslationLocale();
 
 		// TODO: use same translation system in frontend and backend?

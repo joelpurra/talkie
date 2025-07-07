@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type {
+	JsonObject,
+	ReadonlyDeep,
+} from "type-fest";
+
 import path from "node:path";
 
 import {
@@ -26,13 +33,7 @@ import {
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
-import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import jsonfile from "jsonfile";
-import type {
-	JsonObject,
-	ReadonlyDeep,
-} from "type-fest";
 
 // NOTE: some types are duplicated to avoid sharing with the main Talkie code.
 // TODO: break out types? Create shared project?
@@ -47,21 +48,19 @@ export interface LocaleMessage {
 
 export type LocaleMessages = Record<string, LocaleMessage>;
 
-export type Locale = {
-	[locale in TalkieLocale]: LocaleMessages;
-};
+export type Locale = Record<TalkieLocale, LocaleMessages>;
 
 export default class NodeEnvironmentTranslatorProvider implements ITranslatorProvider {
 	private readonly translations: Partial<Locale> = {};
 
 	constructor(private readonly localeProvider: ILocaleProvider) {}
 
-	async translatePlaceholder(key: string, extras?: Readonly<string[]>): Promise<string> {
+	async translatePlaceholder(key: string, extras?: readonly string[]): Promise<string> {
 		// eslint-disable-next-line no-sync
 		return this.translatePlaceholderSync(key, extras);
 	}
 
-	translatePlaceholderSync(key: string, extras?: Readonly<string[]>): string {
+	translatePlaceholderSync(key: string, extras?: readonly string[]): string {
 		// TODO: inject logging provider?
 		// eslint-disable-next-line no-console
 		console.warn("Untranslated placeholder:", key, extras);
@@ -73,12 +72,12 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 		return key + placeholderExtras;
 	}
 
-	async translate(key: string, extras?: Readonly<string[]>): Promise<string> {
+	async translate(key: string, extras?: readonly string[]): Promise<string> {
 		// eslint-disable-next-line no-sync
 		return this.translateSync(key, extras);
 	}
 
-	translateSync(key: string, extras?: Readonly<string[]>): string {
+	translateSync(key: string, extras?: readonly string[]): string {
 		const locale = this.localeProvider.getTranslationLocale();
 
 		// TODO: use same translation system in frontend and backend?
@@ -134,7 +133,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 		return messages;
 	}
 
-	private _getTranslationSync(locale: TalkieLocale, key: string, extras: Readonly<string[]> = []): string {
+	private _getTranslationSync(locale: TalkieLocale, key: string, extras: readonly string[] = []): string {
 		// TODO: use same translation system in frontend and backend?
 		// translated = [key].concat(extras).join("_").toUpperCase();
 		// eslint-disable-next-line no-sync
@@ -183,7 +182,7 @@ export default class NodeEnvironmentTranslatorProvider implements ITranslatorPro
 					),
 			);
 
-			const replacer: (substring: string, ...args: Readonly<string[]>) => string = (_match, variableName) => {
+			const replacer: (substring: string, ...args: readonly string[]) => string = (_match, variableName) => {
 				let result = null;
 
 				const variableNameAsNumber = Number.parseInt(variableName, 10);

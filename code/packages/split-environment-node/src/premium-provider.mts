@@ -18,10 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IPremiumProvider from "@talkie/split-environment-interfaces/ipremium-provider.mjs";
+
 import {
 	isTalkieDevelopmentMode,
 } from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
-import type IPremiumProvider from "@talkie/split-environment-interfaces/ipremium-provider.mjs";
 
 export default class NodeEnvironmentPremiumProvider implements IPremiumProvider {
 	async isPremium(): Promise<boolean> {

@@ -18,12 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type SpeakingHistoryEntry,
-} from "@talkie/shared-interfaces/speaking-history.mjs";
 import type {
 	ValueOf,
 } from "type-fest";
+
+import {
+	type SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
 
 // TODO: merge parallel objects.
 export enum KnownSettingStorageKeys {
@@ -44,7 +45,7 @@ export const KnownSettingDefaults = {
 	IsPremiumEdition: false,
 	ShowAdditionalDetails: false,
 	SpeakLongTexts: false,
-	SpeakingHistory: [] as Readonly<SpeakingHistoryEntry[]>,
+	SpeakingHistory: [] as readonly SpeakingHistoryEntry[],
 	SpeakingHistoryLimit: 0,
 };
 export type KnownSettingDefaultNames = keyof typeof KnownSettingDefaults;

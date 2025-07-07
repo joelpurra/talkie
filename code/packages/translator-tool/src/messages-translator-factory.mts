@@ -18,15 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import assert from "node:assert";
-
-import Bluebird from "bluebird";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import type GoogleCloudTranslateTranslator from "./google-cloud-translate-translator-service.mjs";
 import type MessagesTranslator from "./messages-translator.mjs";
+
+import assert from "node:assert";
+
+import Bluebird from "bluebird";
+
 import {
 	type BaseMessages,
 	type Messages,
@@ -37,7 +39,7 @@ export default class MessagesTranslatorFactory {
 
 	async create(base: ReadonlyDeep<BaseMessages>, locale: ReadonlyDeep<Messages>): Promise<MessagesTranslator> {
 		// NOTE: ensure the base language isn't translated onto itself.
-		assert(typeof locale.language !== base.language);
+		assert.ok(typeof locale.language !== base.language);
 
 		return Bluebird.try(() => {
 			const messagesTranslator = new this._MessagesTranslator(this._translatorService, base, locale);

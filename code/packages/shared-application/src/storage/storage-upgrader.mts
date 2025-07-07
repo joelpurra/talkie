@@ -18,15 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
 
 import type StorageHelper from "./storage-helper.mjs";
+
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+
 import {
 	allKnownStorageFormatVersions,
 	allKnownStorageKeys,

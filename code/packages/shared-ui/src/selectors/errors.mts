@@ -18,23 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SharedRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 
 import {
 	type RejectedAction,
 } from "../slices/errors.mjs";
-import type {
-	SharedRootState,
-} from "../store/index.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createDraftSafeSelector,
 } = toolkit;
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export const getErrors = <S extends SharedRootState>(state: S): Readonly<RejectedAction[]> => state.shared.errors.collected;
+export const getErrors = <S extends SharedRootState>(state: S): readonly RejectedAction[] => state.shared.errors.collected;
 
 export const getErrorsCount = createDraftSafeSelector(
 	[

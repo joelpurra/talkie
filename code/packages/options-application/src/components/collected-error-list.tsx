@@ -34,7 +34,7 @@ import React from "react";
 
 export interface CollectedErrorListStateProps {
 	errorCount: number;
-	errorList: Readonly<RejectedAction[]>;
+	errorList: readonly RejectedAction[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

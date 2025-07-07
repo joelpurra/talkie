@@ -19,6 +19,18 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type SelectedTextManager from "@talkie/browser-shared/selected-text-manager.mjs";
+import type {
+	SelectedTextAndLanguageCodes,
+	SelectedTextWithFocusTimestamp,
+} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+
+import type LanguageHelper from "./language-helper.mjs";
+import type SpeakerManager from "./speaker-manager.mjs";
+import type Speaker from "./speaker.mjs";
+import type SpeakingStatus from "./speaking-status.mjs";
+
 import {
 	bespeak,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
@@ -29,25 +41,14 @@ import {
 import {
 	type SafeVoiceObject,
 } from "@talkie/shared-interfaces/ivoices.mjs";
-import type {
-	SelectedTextAndLanguageCodes,
-	SelectedTextWithFocusTimestamp,
-} from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
-import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import {
 	canTalkieRunInTab,
 	getCurrentActiveBrowserTabId,
 	isCurrentPageInternalToTalkie,
 } from "@talkie/split-environment-webextension/browser-specific/tabs.mjs";
-
-import type LanguageHelper from "./language-helper.mjs";
-import type Speaker from "./speaker.mjs";
-import type SpeakerManager from "./speaker-manager.mjs";
-import type SpeakingStatus from "./speaking-status.mjs";
 
 export default class SpeakerPageManager {
 	notAbleToSpeakTextFromThisSpecialTab: {
@@ -75,7 +76,7 @@ export default class SpeakerPageManager {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	public async detectLanguagesAndSpeakAllSelections(selections: Readonly<SelectedTextAndLanguageCodes[]>, detectedPageLanguage: string | null): Promise<void> {
+	public async detectLanguagesAndSpeakAllSelections(selections: readonly SelectedTextAndLanguageCodes[], detectedPageLanguage: string | null): Promise<void> {
 		const allVoices = await bespeak(this.messageBusProviderGetter, "offscreen:synthesizer:getAllSafeVoiceObjects") as SafeVoiceObject[];
 		const cleanedupSelections = await this.languageHelper.cleanupSelections(allVoices, detectedPageLanguage, selections);
 

@@ -22,10 +22,11 @@ import type {
 	Action,
 	AsyncThunk,
 } from "@reduxjs/toolkit";
+
 import toolkit from "@reduxjs/toolkit";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

@@ -22,6 +22,7 @@ import type {
 	Action,
 	Reducer,
 } from "@reduxjs/toolkit";
+
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -36,11 +37,11 @@ export type ReactHtmlTemplateLocalsVariables = (data: Readonly<{
 
 export interface IRenderReactHtml<S, A extends Action, P> {
 	rootReducer: Reducer<S, A>;
-	customPrerenderedActionsToDispatch: Readonly<A[]>;
+	customPrerenderedActionsToDispatch: readonly A[];
 	/**
 	 * @deprecated Post-render actions have no effect when pre-rendering html on the server-side.
 	 */
-	customPostrenderActionsToDispatch: Readonly<A[]>;
+	customPostrenderActionsToDispatch: readonly A[];
 	reactHtmlTemplatePath: Readonly<URL>;
 	ChildComponent: React.ComponentType<P>;
 }

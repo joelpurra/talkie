@@ -23,5 +23,5 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 
-export const dispatchAll = async <S, A extends Action>(store: Readonly<Store<S, A>>, actionsToDispatch: Readonly<A[]>): Promise<A[]> =>
+export const dispatchAll = async <S, A extends Action>(store: Readonly<Store<S, A>>, actionsToDispatch: readonly A[]): Promise<A[]> =>
 	Promise.all(actionsToDispatch.map((action) => store.dispatch<A>(action)));

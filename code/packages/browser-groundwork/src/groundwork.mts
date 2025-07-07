@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import {
 	type OnInstallEvent,
 } from "@talkie/browser-bricks/on-installed-manager-types.mjs";
@@ -28,12 +35,6 @@ import {
 import {
 	isTalkieDevelopmentMode,
 } from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
-import type {
-	UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
-import type {
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import addOnInstalledEventQueuePolling from "./add-on-installed-event-queue-polling.mjs";
 import createAndStartCommandListeners from "./create-and-start-command-listener.mjs";

@@ -39,7 +39,7 @@ export interface IVoiceNameAndRateAndPitch extends IVoiceName {
 
 export interface MutableSafeVoiceObject extends JsonObject {
 	isSafeVoiceObject: true;
-	default: boolean;
+	"default": boolean;
 	lang: string;
 	localService: boolean;
 	name: string;

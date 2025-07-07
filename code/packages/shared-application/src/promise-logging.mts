@@ -23,9 +23,9 @@ import {
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
 
-export type PromiseFunction<T> = (...fnArgs: Readonly<T[]>) => void;
+export type PromiseFunction<T> = (...fnArgs: readonly T[]) => void;
 
-export const loggedPromiseCallback = <T = unknown, U = unknown>(fn: PromiseFunction<T>, ...extraLogging: Readonly<U[]>): PromiseFunction<T> => (...fnArgs: Readonly<T[]>) => {
+export const loggedPromiseCallback = <T = unknown, U = unknown>(fn: PromiseFunction<T>, ...extraLogging: readonly U[]): PromiseFunction<T> => (...fnArgs: readonly T[]) => {
 	// NOTE: used as a regular callback function, the result is not used.
 	void Promise.resolve()
 		.then(() => {

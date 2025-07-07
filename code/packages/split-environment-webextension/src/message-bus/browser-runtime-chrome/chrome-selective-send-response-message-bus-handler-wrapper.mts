@@ -18,6 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	MessageBusCallback,
+	MessageBusCallbackResponse,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type {
+	MessageBusResponseMode,
+} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
+import type {
+	JsonValue,
+} from "type-fest";
+
 import {
 	extractMessageBusResponseDatum,
 	extractMessageBusResponseMode,
@@ -25,19 +36,9 @@ import {
 import {
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
-import type {
-	MessageBusResponseMode,
-} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
-import type {
-	MessageBusCallback,
-	MessageBusCallbackResponse,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import {
 	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	JsonValue,
-} from "type-fest";
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const chromeSelectiveSendResponseMessageHandler = async (callback: MessageBusCallback, rawMessage: JsonValue, sendResponse: (response: unknown) => void): Promise<void> => {

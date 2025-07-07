@@ -19,12 +19,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	debounce,
-} from "@talkie/shared-application-helpers/basic.mjs";
-import {
-	type IVoiceNameAndRateAndPitch,
-} from "@talkie/shared-interfaces/ivoices.mjs";
 import type IApiGroundworkSpeaking from "@talkie/split-environment-interfaces/iapi/iapi-groundwork-speaking.mjs";
 import type {
 	IMessageBusProviderGetter,
@@ -32,6 +26,13 @@ import type {
 import type {
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	debounce,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
+	type IVoiceNameAndRateAndPitch,
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 import MessageBusGroundworkBase from "./message-bus-groundwork-base.mjs";
 

@@ -26,7 +26,7 @@ import type {
 	SelectedTextAndLanguageCodes,
 } from "../hocs/pass-selected-text-to-background-types.mjs";
 
-/* eslint-disable no-inner-declarations, complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-disable complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
 // TODO: reduce linting exceptions; break out functions; reduce duplicate checks; use modern javascript/typescript language features.
 const getSelectedTextAndLanguageCodes: () => SelectedTextAndLanguageCodes | null = () => {
 	try {
@@ -58,6 +58,6 @@ const getSelectedTextAndLanguageCodes: () => SelectedTextAndLanguageCodes | null
 		return null;
 	}
 };
-/* eslint-enable no-inner-declarations, complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-enable complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
 
 export default getSelectedTextAndLanguageCodes;

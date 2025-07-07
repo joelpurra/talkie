@@ -18,14 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	Promisable,
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 const reflow = async () => {
 	document.body.style.marginBottom = "0";

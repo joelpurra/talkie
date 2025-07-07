@@ -18,22 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
-import type {
-	MessageBusAction,
-	MessageBusActionHandler,
-} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
 import type {
 	IMessageBusProviderGetter,
 	MessageBusRequest,
 	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
+	MessageBusAction,
+	MessageBusActionHandler,
+} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
+import type {
 	JsonValue,
 	Promisable,
 } from "type-fest";
+
+import {
+	type UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
 
 import MessageBusBullhorn from "./message-bus-bullhorn.mjs";
 import MessageBusCrowdee from "./message-bus-crowdee.mjs";

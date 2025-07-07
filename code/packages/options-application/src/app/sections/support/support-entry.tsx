@@ -18,15 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ChildrenOptionalProps,
+} from "@talkie/shared-ui/types.mjs";
+
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	ChildrenOptionalProps,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 interface SupportEntryProps {

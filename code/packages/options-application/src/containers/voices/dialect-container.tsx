@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	OptionsRootState,
+} from "../../store/index.mjs";
+
 import React from "react";
 import {
 	connect,
@@ -28,9 +32,6 @@ import {
 import Dialect from "../../app/sections/voices/dialect.js";
 import Loading from "../../components/loading.js";
 import selectors from "../../selectors/index.mjs";
-import type {
-	OptionsRootState,
-} from "../../store/index.mjs";
 
 interface DialectContainerProps {
 	speakSampleTextForLanguage: (language: string) => void;

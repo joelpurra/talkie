@@ -23,6 +23,7 @@ import React from "react";
 import {
 	type actions,
 } from "../slices/index.mjs";
+
 import progressAttribute, {
 	type ProgressProps,
 } from "./progress.js";

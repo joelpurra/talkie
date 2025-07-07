@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SharedRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import {
 	getLanguageGroupsFromLanguages,
@@ -26,18 +30,14 @@ import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
 
-import type {
-	SharedRootState,
-} from "../store/index.mjs";
-
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createDraftSafeSelector,
 } = toolkit;
 
 export const getTranslationLocale = <S extends SharedRootState>(state: S): Readonly<TalkieLocale> => state.shared.languages.translationLocale;
-export const getNavigatorLanguages = <S extends SharedRootState>(state: S): Readonly<string[]> => state.shared.languages.navigatorLanguages;
-export const getTranslatedLanguages = <S extends SharedRootState>(state: S): Readonly<TalkieLocale[]> => state.shared.languages.translatedLanguages;
+export const getNavigatorLanguages = <S extends SharedRootState>(state: S): readonly string[] => state.shared.languages.navigatorLanguages;
+export const getTranslatedLanguages = <S extends SharedRootState>(state: S): readonly TalkieLocale[] => state.shared.languages.translatedLanguages;
 
 export const getSortedNavigatorLanguages = createDraftSafeSelector(
 	[

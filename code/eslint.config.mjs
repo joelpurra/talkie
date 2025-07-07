@@ -36,7 +36,7 @@ const eslintConfig = [
 			"**/rollup.config.mjs",
 			"**/runtime/",
 			"**/src/**/*.mjs",
-		]
+		],
 	},
 	{
 		files: [

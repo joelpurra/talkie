@@ -18,15 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logWarn,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type IOffscreenDocumentProvider from "@talkie/split-environment-interfaces/ioffscreen-document-provider.mjs";
 import type {
 	Offscreen,
 	Runtime,
 } from "webextension-polyfill";
+
+import {
+	logWarn,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 export default class ChromeOffscreenDocumentProvider implements IOffscreenDocumentProvider {
 	private get _internalExtensionUrl(): string {

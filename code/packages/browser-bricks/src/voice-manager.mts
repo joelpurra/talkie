@@ -18,13 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type IVoiceNameAndLanguage,
-} from "@talkie/shared-interfaces/ivoices.mjs";
-
 import type VoiceLanguageManager from "./voice-language-manager.mjs";
 import type VoicePitchManager from "./voice-pitch-manager.mjs";
 import type VoiceRateManager from "./voice-rate-manager.mjs";
+
+import {
+	type IVoiceNameAndLanguage,
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 export default class VoiceManager {
 	// NOTE: there is also an utterance volume property.

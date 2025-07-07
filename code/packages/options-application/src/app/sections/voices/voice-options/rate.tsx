@@ -31,6 +31,7 @@ import LogarithmicScaleRange from "../../../../components/range/logarithmic-scal
 import {
 	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";
+
 import RangeWithHeading, {
 	type RangeWithHeadingProps,
 } from "./range-with-heading.js";

@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import getFrontendMessageBus from "@talkie/browser-shared/hydrate/get-frontend-message-bus.mjs";
 import redundantlyTriggerLoadingVoices from "@talkie/browser-shared/redundantly-trigger-loading-voices.mjs";
 import {
@@ -35,9 +39,6 @@ import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-import type {
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import hydrate from "./hydrate.mjs";
 

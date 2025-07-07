@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
 import type {
 	SafeVoiceObjects,
 } from "@talkie/shared-interfaces/ivoices.mjs";
@@ -27,10 +26,12 @@ import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
+import toolkit from "@reduxjs/toolkit";
+
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

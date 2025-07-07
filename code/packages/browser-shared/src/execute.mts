@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	JsonValue,
+} from "type-fest";
+import type {
+	Scripting,
+} from "webextension-polyfill";
+
 import {
 	jsonClone,
 	singleDefinedValue,
@@ -29,12 +36,6 @@ import {
 import {
 	promiseTimeout,
 } from "@talkie/shared-application-helpers/promise.mjs";
-import type {
-	JsonValue,
-} from "type-fest";
-import type {
-	Scripting,
-} from "webextension-polyfill";
 
 export interface FrameResult<T> {
 	error?: unknown;

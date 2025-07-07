@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logInfo,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	IMessageBusEvent,
 	MessageBusCallback,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
+import {
+	logInfo,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 import {
 	isDeadWrapper,

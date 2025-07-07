@@ -22,15 +22,16 @@ import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
+
 import toolkit from "@reduxjs/toolkit";
 import {
 	type IApiAsyncThunkConfig,
 } from "@talkie/shared-ui/slices/slices-types.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

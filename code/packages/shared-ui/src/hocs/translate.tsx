@@ -19,10 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-import React from "react";
 import type {
 	Except,
 } from "type-fest";
+
+import React from "react";
 
 import {
 	TranslateContext,

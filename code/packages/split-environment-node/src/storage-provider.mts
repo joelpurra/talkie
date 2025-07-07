@@ -18,14 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	jsonClone,
-} from "@talkie/shared-application-helpers/basic.mjs";
 import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
 	JsonObject,
 	JsonValue,
 } from "type-fest";
+
+import {
+	jsonClone,
+} from "@talkie/shared-application-helpers/basic.mjs";
 
 export default class NodeEnvironmentStorageProvider implements IStorageProvider {
 	private readonly _inMemoryStorage = new Map<string, JsonValue>();
@@ -50,7 +51,7 @@ export default class NodeEnvironmentStorageProvider implements IStorageProvider 
 		}
 
 		// NOTE: storing/retrieving cloned values instead of references.
-		const value = jsonClone(valueJson) as JsonValue;
+		const value = jsonClone(valueJson);
 
 		// TODO: validate and assert, or warn, remove generic type, or something.
 		return value as unknown as T;

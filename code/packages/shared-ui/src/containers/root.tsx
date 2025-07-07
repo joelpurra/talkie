@@ -23,22 +23,24 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type {
+	StandardEngine,
+} from "styletron-standard";
+
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Provider as StoreProvider,
 } from "react-redux";
-import type {
-	StandardEngine,
-} from "styletron-standard";
 
 import ErrorBoundary from "../components/error-boundary.js";
 import {
 	type ChildrenRequiredProps,
 } from "../types.mjs";
+
 import Providers from "./providers.js";
 
 export interface RootProps<S, A extends Action> {

@@ -23,6 +23,7 @@ import React from "react";
 import {
 	type ClassNameProp,
 } from "../../styled/types.js";
+
 import {
 	type IconProps,
 } from "./icon.js";

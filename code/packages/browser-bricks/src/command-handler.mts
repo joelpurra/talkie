@@ -30,7 +30,7 @@ import {
 export default class CommandHandler {
 	constructor(private readonly commandMap: IBrowserCommandMap) {}
 
-	async handle(command: string, ...args: Readonly<unknown[]>): Promise<void> {
+	async handle(command: string, ...args: readonly unknown[]): Promise<void> {
 		void logDebug("Start", "commandHandler", command);
 
 		const commandAction = this.commandMap[command];
@@ -50,7 +50,7 @@ export default class CommandHandler {
 		}
 	}
 
-	async handleCommandEvent(command: string, ...args: Readonly<unknown[]>): Promise<void> {
+	async handleCommandEvent(command: string, ...args: readonly unknown[]): Promise<void> {
 		void logDebug("Start", "handleCommandEvent", command);
 
 		try {

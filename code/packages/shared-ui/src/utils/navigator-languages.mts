@@ -20,4 +20,4 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 export const getNavigatorLanguage = async (): Promise<Readonly<string | null>> => globalThis.navigator.language;
 
-export const getNavigatorLanguages = async (): Promise<Readonly<string[]>> => globalThis.navigator.languages;
+export const getNavigatorLanguages = async (): Promise<readonly string[]> => globalThis.navigator.languages;

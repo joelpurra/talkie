@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type {
 	ReadonlyDeep,
@@ -28,6 +25,10 @@ import type {
 import type {
 	Tabs,
 } from "webextension-polyfill";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 // NOTE: whitelisting schemes.
 // TODO: can the list be extended?
@@ -141,7 +142,7 @@ export const canTalkieRunInTab = async (): Promise<boolean> => {
 		if (typeof url === "string") {
 			const canRunInUrl
 				= whitelistedUrlShemes.some((scheme) => url.startsWith(scheme))
-				&& !blacklistedBaseUrls.some((baseUrl) => url.startsWith(baseUrl));
+					&& !blacklistedBaseUrls.some((baseUrl) => url.startsWith(baseUrl));
 
 			if (canRunInUrl) {
 				return true;

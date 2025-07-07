@@ -29,6 +29,7 @@ import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import React from "react";
 
 import PremiumSection from "../../../components/section/premium-section.js";
+
 import Pitch from "./voice-options/pitch.js";
 import Rate from "./voice-options/rate.js";
 import ToggleDefault from "./voice-options/toggle-default.js";

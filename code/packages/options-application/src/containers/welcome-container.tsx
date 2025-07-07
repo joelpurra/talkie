@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import {
 	type TalkieLocale,
@@ -34,9 +38,6 @@ import selectors from "../selectors/index.mjs";
 import {
 	actions,
 } from "../slices/index.mjs";
-import type {
-	OptionsRootState,
-} from "../store/index.mjs";
 
 const {
 	bindActionCreators,

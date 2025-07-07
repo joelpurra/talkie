@@ -22,15 +22,16 @@ import type {
 	Action,
 	Reducer,
 } from "@reduxjs/toolkit";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type React from "react";
+
 import getRoot from "@talkie/shared-ui/renderers/get-root.js";
 import getStore from "@talkie/shared-ui/store/get-store.mjs";
 import {
 	dispatchAll,
 } from "@talkie/shared-ui/utils/store-helpers.mjs";
-import type {
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type React from "react";
 import {
 	hydrateRoot,
 	type Root,
@@ -58,8 +59,8 @@ const hydrateHtml = async <S, A extends Action, P>(
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	messageBusProviderGetter: IMessageBusProviderGetter,
 	rootReducer: Reducer<S, A>,
-	customPrerenderedActionsToDispatch: Readonly<A[]>,
-	customPostrenderActionsToDispatch: Readonly<A[]>,
+	customPrerenderedActionsToDispatch: readonly A[],
+	customPostrenderActionsToDispatch: readonly A[],
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	ChildComponent: React.ComponentType<P>,
 // eslint-disable-next-line max-params

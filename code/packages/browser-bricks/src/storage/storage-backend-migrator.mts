@@ -17,12 +17,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
+import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
+
 import {
 	logDebug,
 	logError,
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
-import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 
 interface MigrationCounts {
 	chromeStorageLocal: {

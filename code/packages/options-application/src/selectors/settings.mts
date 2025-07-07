@@ -20,7 +20,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 
 // eslint-disable-next-line import-x/no-unassigned-import
 import "reselect";
-
 import toolkit from "@reduxjs/toolkit";
 
 import type {
@@ -28,7 +27,7 @@ import type {
 } from "../store/index.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createDraftSafeSelector,
 } = toolkit;
 

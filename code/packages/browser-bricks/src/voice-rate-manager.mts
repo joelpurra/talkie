@@ -19,15 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type StorageManager from "@talkie/shared-application/storage/storage-manager.mjs";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
 import {
 	rateRange,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import {
 	type IPremiumManager,
 } from "@talkie/shared-interfaces/ipremium-manager.mjs";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 export type VoiceRateOverrides = Record<string, number>;
 

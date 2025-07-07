@@ -19,12 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type {
+	MessageBusRequest,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type {
 	MessageBusDirectionPairing,
 	MessageBusResponseMode,
 } from "@talkie/split-environment-interfaces/imessage-bus.mjs";
-import type {
-	MessageBusRequest,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import {
 	type JsonValue,
 } from "type-fest";

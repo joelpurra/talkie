@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-	logTrace,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
@@ -31,6 +27,11 @@ import type {
 	StorageFormatVersion,
 	StorageKey,
 } from "./storage-keys.mjs";
+
+import {
+	logDebug,
+	logTrace,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 export default class StorageManager {
 	constructor(private readonly storageHelper: StorageHelper, public readonly storageFormatVersion: StorageFormatVersion) {}

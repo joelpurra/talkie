@@ -22,6 +22,11 @@ import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
+
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import {
 	isLanguageGroup,
@@ -51,14 +56,11 @@ import {
 	getSelectedVoiceName,
 	getVoiceCountForSelectedLanguageCode,
 } from "../selectors/voices.mjs";
-import type {
-	OptionsRootState,
-} from "../store/index.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

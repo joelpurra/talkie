@@ -28,7 +28,7 @@ export type IPermissionManagerConstructor = new() => IPermissionManager;
 
 export default interface IPermissionManager {
 	askPermission(): Promise<boolean | null>;
-	hasPermission(): Promise<boolean | null> ;
+	hasPermission(): Promise<boolean | null>;
 	denyPermission(): Promise<boolean | null>;
 	/**
 	 * @deprecated Prefer asking once (or rarely) for permissions, then keeping them.

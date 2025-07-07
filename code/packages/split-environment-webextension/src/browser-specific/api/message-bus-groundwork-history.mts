@@ -19,10 +19,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IApiGroundworkHistory from "@talkie/split-environment-interfaces/iapi/iapi-groundwork-history.mjs";
+
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
-import type IApiGroundworkHistory from "@talkie/split-environment-interfaces/iapi/iapi-groundwork-history.mjs";
 
 import MessageBusGroundworkBase from "./message-bus-groundwork-base.mjs";
 
@@ -40,7 +41,7 @@ export default class MessageBusGroundworkHistory extends MessageBusGroundworkBas
 		return this.bespeak("service:history:getMostRecentSpeakingEntry");
 	}
 
-	async getSpeakingHistory(): Promise<Readonly<SpeakingHistoryEntry[]>> {
+	async getSpeakingHistory(): Promise<readonly SpeakingHistoryEntry[]> {
 		return this.bespeak("service:history:getSpeakingHistory");
 	}
 

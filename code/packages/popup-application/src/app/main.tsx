@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	StyleObject,
+} from "styletron-react";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
 import {
 	talkieStyled,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
@@ -28,16 +35,11 @@ import {
 	handleBubbledLinkClick,
 } from "@talkie/shared-ui/utils/ui.mjs";
 import React from "react";
-import type {
-	StyleObject,
-} from "styletron-react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	type actions,
 } from "../slices/index.mjs";
+
 import Footer, {
 	type FooterStateProps,
 } from "./sections/footer.js";

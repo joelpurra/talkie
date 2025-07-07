@@ -18,13 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
-import {
-	type UsePermissionsCallback,
-} from "@talkie/shared-interfaces/ipermission-manager.mjs";
 import type {
 	ReadonlyDeep,
 	Writable,
@@ -32,6 +25,14 @@ import type {
 import type {
 	Manifest,
 } from "webextension-polyfill";
+
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	type UsePermissionsCallback,
+} from "@talkie/shared-interfaces/ipermission-manager.mjs";
 
 export default class PermissionsProvider {
 	// TODO: install permission listeners.

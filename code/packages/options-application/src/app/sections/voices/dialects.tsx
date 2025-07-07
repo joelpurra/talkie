@@ -23,7 +23,7 @@ import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import React from "react";
 
 interface DialectsProps {
-	languages: Readonly<string[]>;
+	languages: readonly string[];
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	onSelectLanguageCodeClick: (languageCode: string | null, event: React.MouseEvent) => false;
 }

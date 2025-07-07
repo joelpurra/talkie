@@ -19,7 +19,7 @@ import {
 
 export default interface IApiGroundworkHistory {
 	getMostRecentSpeakingEntry(): Promise<SpeakingHistoryEntry | null>;
-	getSpeakingHistory(): Promise<Readonly<SpeakingHistoryEntry[]>>;
+	getSpeakingHistory(): Promise<readonly SpeakingHistoryEntry[]>;
 	clearSpeakingHistory(): Promise<void>;
 	removeSpeakingHistoryEntry(hash: number): Promise<void>;
 }

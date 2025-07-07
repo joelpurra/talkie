@@ -18,18 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	SelectedTextAndLanguageCodes,
 } from "@talkie/shared-ui/hocs/pass-selected-text-to-background-types.mjs";
-import executeGetFramesSelectionTextAndLanguage from "@talkie/shared-ui/utils/get-selected-text-and-languages.mjs";
 
 import type Execute from "./execute.mjs";
 import type {
 	FrameResult,
 } from "./execute.mjs";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
+import executeGetFramesSelectionTextAndLanguage from "@talkie/shared-ui/utils/get-selected-text-and-languages.mjs";
 
 export default class SelectedTextManager {
 	constructor(private readonly execute: Execute) {}

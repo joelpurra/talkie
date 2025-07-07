@@ -18,27 +18,33 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ButtonPopupManager from "@talkie/browser-bricks/button-popup-manager.mjs";
-import CommandHandler from "@talkie/browser-bricks/command-handler.mjs";
 import type {
 	IBrowserCommandMap,
 } from "@talkie/browser-bricks/command-handler-types.mjs";
+import type {
+	OnInstallEvent,
+} from "@talkie/browser-bricks/on-installed-manager-types.mjs";
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
+import ButtonPopupManager from "@talkie/browser-bricks/button-popup-manager.mjs";
+import CommandHandler from "@talkie/browser-bricks/command-handler.mjs";
 import ContextMenuManager from "@talkie/browser-bricks/context-menu-manager.mjs";
 import HistoryManager from "@talkie/browser-bricks/history-manager.mjs";
 import IconManager from "@talkie/browser-bricks/icon-manager.mjs";
 import LanguageHelper from "@talkie/browser-bricks/language-helper.mjs";
 import NonBreakingChain from "@talkie/browser-bricks/non-breaking-chain.mjs";
 import OnInstalledManager from "@talkie/browser-bricks/on-installed-manager.mjs";
-import type {
-	OnInstallEvent,
-} from "@talkie/browser-bricks/on-installed-manager-types.mjs";
 import OnTabEventHandlers from "@talkie/browser-bricks/on-tab-event-handlers.mjs";
 import OnlyLastCaller from "@talkie/browser-bricks/only-last-caller.mjs";
 import ShortcutKeyManager from "@talkie/browser-bricks/shortcut-key-manager.mjs";
 import SpeakClipboardManager from "@talkie/browser-bricks/speak-clipboard-manager.mjs";
-import Speaker from "@talkie/browser-bricks/speaker.mjs";
 import SpeakerManager from "@talkie/browser-bricks/speaker-manager.mjs";
 import SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
+import Speaker from "@talkie/browser-bricks/speaker.mjs";
 import SpeakingStatus from "@talkie/browser-bricks/speaking-status.mjs";
 import StayAliveManager from "@talkie/browser-bricks/stay-alive-manager.mjs";
 import MessageBusWindowLocalStorageProvider from "@talkie/browser-bricks/storage/message-bus-window-local-storage-provider.mjs";
@@ -61,15 +67,10 @@ import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import DefaultStorageManager from "@talkie/shared-application/storage/default-storage-manager.mjs";
 import StorageHelper from "@talkie/shared-application/storage/storage-helper.mjs";
 import StorageUpgrader from "@talkie/shared-application/storage/storage-upgrader.mjs";
-import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import {
 	type IPremiumManager,
 } from "@talkie/shared-interfaces/ipremium-manager.mjs";
 import TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
-import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
-import type {
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-webextension/dynamic-environment.mjs";
 import WebExtensionEnvironmentInternalUrlProvider from "@talkie/split-environment-webextension/internal-url-provider.mjs";
 import LocaleProvider from "@talkie/split-environment-webextension/locale-provider.mjs";

@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type IApiCoating from "@talkie/split-environment-interfaces/iapi/iapi-coating.mjs";
 import type IApiCoatingLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-locale.mjs";
 import type IApiCoatingMetadata from "@talkie/split-environment-interfaces/iapi/iapi-coating-metadata.mjs";
 import type IApiCoatingPremium from "@talkie/split-environment-interfaces/iapi/iapi-coating-premium.mjs";
 import type IApiCoatingTalkieLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-talkie-locale.mjs";
+import type IApiCoating from "@talkie/split-environment-interfaces/iapi/iapi-coating.mjs";
 
 export default class RenderingCoating implements IApiCoating {
 	// eslint-disable-next-line @typescript-eslint/class-literal-property-style

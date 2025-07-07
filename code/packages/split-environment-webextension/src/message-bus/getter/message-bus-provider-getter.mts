@@ -24,6 +24,7 @@ import "../../browser-specific/global-window-talkie-shared-context.mjs";
 import InternalMessageBusProvider from "@talkie/shared-application/message-bus/internal-message-bus-provider.mjs";
 import SameContextMessageBusEventProvider from "@talkie/shared-application/message-bus/same-context-message-bus-event-provider.mjs";
 import SplitContextMessageBusProvider from "@talkie/shared-application/message-bus/split-context-message-bus-provider.mjs";
+
 import type {
 	IMessageBusEventProvider,
 	IMessageBusProvider,

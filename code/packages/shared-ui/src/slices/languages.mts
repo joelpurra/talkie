@@ -18,29 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
 import type {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+
+import type {
+	IApiAsyncThunkConfig,
+} from "./slices-types.mjs";
+
+import toolkit from "@reduxjs/toolkit";
 
 import {
 	getNavigatorLanguage,
 	getNavigatorLanguages,
 } from "../utils/navigator-languages.mjs";
-import type {
-	IApiAsyncThunkConfig,
-} from "./slices-types.mjs";
 
 const {
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import-x/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 
 export interface LanguagesState {
 	navigatorLanguage: string | null;
-	navigatorLanguages: Readonly<string[]>;
+	navigatorLanguages: readonly string[];
 	translatedLanguages: TalkieLocale[];
 	translationLocale: TalkieLocale;
 }
@@ -62,7 +64,7 @@ export const loadNavigatorLanguage = createAsyncThunk<string | null, void, IApiA
 	async () => getNavigatorLanguage(),
 );
 
-export const loadNavigatorLanguages = createAsyncThunk<Readonly<string[]>, void, IApiAsyncThunkConfig>(
+export const loadNavigatorLanguages = createAsyncThunk<readonly string[], void, IApiAsyncThunkConfig>(
 	`${prefix}/loadNavigatorLanguages`,
 	// TODO: convert to synchronous action?
 	async () => getNavigatorLanguages(),

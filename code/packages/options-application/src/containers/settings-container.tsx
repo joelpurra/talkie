@@ -18,10 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
 import type {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
+
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
+
+import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
 	connect,
@@ -38,9 +43,6 @@ import selectors from "../selectors/index.mjs";
 import {
 	actions,
 } from "../slices/index.mjs";
-import type {
-	OptionsRootState,
-} from "../store/index.mjs";
 
 const {
 	bindActionCreators,

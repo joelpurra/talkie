@@ -18,9 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	bullhorn,
-} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import type {
 	SpeakingHistoryEntry,
@@ -32,6 +29,10 @@ import type {
 	ReadonlyDeep,
 } from "type-fest";
 
+import {
+	bullhorn,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
+
 export default class HistoryManager {
 	constructor(private readonly settingsManager: SettingsManager, private readonly messageBusProviderGetter: IMessageBusProviderGetter) {}
 
@@ -41,12 +42,12 @@ export default class HistoryManager {
 		return speakingHistory[0] ?? null;
 	}
 
-	async getSpeakingHistory(): Promise<Readonly<SpeakingHistoryEntry[]>> {
+	async getSpeakingHistory(): Promise<readonly SpeakingHistoryEntry[]> {
 		const speakingHistory = await this.settingsManager.getSpeakingHistory();
 		const speakingHistoryLimit = await this.settingsManager.getSpeakingHistoryLimit();
 
 		// NOTE: "soft enforce" limit; use pruning or writing to "hard enforce" the limit.
-		const limitedSpeakingHistory: Readonly<SpeakingHistoryEntry[]> = speakingHistory.slice(0, speakingHistoryLimit);
+		const limitedSpeakingHistory: readonly SpeakingHistoryEntry[] = speakingHistory.slice(0, speakingHistoryLimit);
 
 		return limitedSpeakingHistory;
 	}
@@ -58,7 +59,7 @@ export default class HistoryManager {
 	async pruneSpeakingHistory(): Promise<void> {
 		const speakingHistory = await this.settingsManager.getSpeakingHistory();
 		const speakingHistoryLimit = await this.settingsManager.getSpeakingHistoryLimit();
-		const limitedSpeakingHistory: Readonly<SpeakingHistoryEntry[]> = speakingHistory.slice(0, speakingHistoryLimit);
+		const limitedSpeakingHistory: readonly SpeakingHistoryEntry[] = speakingHistory.slice(0, speakingHistoryLimit);
 
 		return this._setSpeakingHistory(limitedSpeakingHistory);
 	}
@@ -67,7 +68,7 @@ export default class HistoryManager {
 		const speakingHistory = await this.settingsManager.getSpeakingHistory();
 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-		const filteredSpeakingHistory: Readonly<SpeakingHistoryEntry[]> = speakingHistory.filter((entry) => entry.hash !== hash);
+		const filteredSpeakingHistory: readonly SpeakingHistoryEntry[] = speakingHistory.filter((entry) => entry.hash !== hash);
 
 		return this._setSpeakingHistory(filteredSpeakingHistory);
 	}
@@ -80,19 +81,19 @@ export default class HistoryManager {
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const speakingHistoryExceptNewEntry = speakingHistory.filter((oldEntry) => oldEntry.hash !== newEntry.hash);
 
-		const rewrittenSpeakingHistory: Readonly<SpeakingHistoryEntry[]> = [
+		const rewrittenSpeakingHistory: readonly SpeakingHistoryEntry[] = [
 			newEntry,
 			...speakingHistoryExceptNewEntry,
 		];
 
 		const speakingHistoryLimit = await this.settingsManager.getSpeakingHistoryLimit();
-		const limitedSpeakingHistory: Readonly<SpeakingHistoryEntry[]> = rewrittenSpeakingHistory.slice(0, speakingHistoryLimit);
+		const limitedSpeakingHistory: readonly SpeakingHistoryEntry[] = rewrittenSpeakingHistory.slice(0, speakingHistoryLimit);
 
 		return this._setSpeakingHistory(limitedSpeakingHistory);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	private async _setSpeakingHistory(speakingHistory: Readonly<SpeakingHistoryEntry[]>): Promise<void> {
+	private async _setSpeakingHistory(speakingHistory: readonly SpeakingHistoryEntry[]): Promise<void> {
 		await this.settingsManager.setSpeakingHistory(speakingHistory);
 
 		// TODO: only broadcast change event if the history entries actually changed?

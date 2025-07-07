@@ -18,6 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
+import type {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import type {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
+import type {
+	StyleObject,
+} from "styletron-react";
+
+import type {
+	actions,
+} from "../../slices/index.mjs";
+
 import {
 	getLanguageGroupFromLanguage,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
@@ -25,9 +42,6 @@ import {
 	DefaultLanguageDirection,
 	type LanguageTextDirection,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import type {
-	SpeakingHistoryEntry,
-} from "@talkie/shared-interfaces/speaking-history.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
@@ -45,27 +59,15 @@ import {
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
-import type {
-	ChildrenRequiredProps,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import type {
-	StyleObject,
-} from "styletron-react";
 
 import MarkdownParagraph from "../../components/markdown/paragraph.js";
-import type {
-	actions,
-} from "../../slices/index.mjs";
 
 export interface StatusStateProps {
 	isSpeaking: boolean;
 	isSpeakingHistoryEnabled: boolean;
 	mostRecent: SpeakingHistoryEntry | null;
-	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
+	speakingHistory: readonly SpeakingHistoryEntry[];
 	speakingHistoryCount: number;
 }
 
@@ -227,9 +229,9 @@ class Status<P extends InternalProps> extends React.PureComponent<P> {
 
 		// TODO: move to state/selector.
 		const hasMostRecentLanguage = mostRecent !== null
-				&& typeof mostRecentLanguage === "string"
-				&& mostRecentLanguage.length > 0
-				&& mostRecentLanguage.trim().length > 0;
+			&& typeof mostRecentLanguage === "string"
+			&& mostRecentLanguage.length > 0
+			&& mostRecentLanguage.trim().length > 0;
 
 		const mostRecentLanguageGroup = hasMostRecentLanguage
 			? getLanguageGroupFromLanguage(mostRecentLanguage)

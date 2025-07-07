@@ -18,6 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	OptionsRootState,
+} from "../../store/index.mjs";
+
+import type {
+	NavContainerProps,
+} from "./nav-container-types.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import React from "react";
 import {
@@ -29,13 +37,8 @@ import {
 import {
 	actions,
 } from "../../slices/index.mjs";
-import type {
-	OptionsRootState,
-} from "../../store/index.mjs";
+
 import Nav from "./nav.js";
-import type {
-	NavContainerProps,
-} from "./nav-container-types.mjs";
 
 const {
 	bindActionCreators,
@@ -71,7 +74,7 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 
 	override componentDidMount(): void {
 		window.addEventListener("beforeunload", this.componentCleanup);
-		window.addEventListener("hashchange", this.handleHashChange);
+		globalThis.addEventListener("hashchange", this.handleHashChange);
 	}
 
 	override componentWillUnmount(): void {
@@ -80,7 +83,7 @@ class NavContainer<P extends NavContainerProps & StateProps & DispatchProps> ext
 
 	componentCleanup() {
 		window.removeEventListener("beforeunload", this.componentCleanup);
-		window.removeEventListener("hashchange", this.handleHashChange);
+		globalThis.removeEventListener("hashchange", this.handleHashChange);
 	}
 
 	handleHashChange(): void {

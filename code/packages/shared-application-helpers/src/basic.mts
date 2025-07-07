@@ -33,7 +33,7 @@ export const jsonClone = <T extends Readonly<JsonValue>>(object: T): T => {
 
 // TODO: use library.
 // eslint-disable-next-line @stylistic/comma-dangle
-export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
+export const lastOrThrow = <T,>(indexable: readonly T[]): T => {
 	if (indexable.length === 0) {
 		throw new RangeError("Indexable length 0.");
 	}

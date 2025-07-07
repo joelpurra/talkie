@@ -24,18 +24,20 @@ import type {
 import type {
 	SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
-import translateAttribute, {
-	type TranslateProps,
-} from "@talkie/shared-ui/hocs/translate.js";
-import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
 import type {
 	OnOpenShortcutKeysClickProp,
 } from "@talkie/shared-ui/types.mjs";
-import React from "react";
 
 import type {
 	actions,
 } from "../../slices/index.mjs";
+
+import translateAttribute, {
+	type TranslateProps,
+} from "@talkie/shared-ui/hocs/translate.js";
+import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
+import React from "react";
+
 import ContinueOnTabRemoved from "./settings/continue-on-tab-removed.js";
 import ContinueOnTabUpdatedUrl from "./settings/continue-on-tab-updated-url.js";
 import ContinueSpeech from "./settings/continue-speech.js";
@@ -51,7 +53,7 @@ export interface SettingsStateProps {
 	isPremiumEdition: boolean;
 	clipboardText: string | null | undefined;
 	showAdditionalDetails: boolean;
-	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
+	speakingHistory: readonly SpeakingHistoryEntry[];
 	speakingHistoryCount: number;
 	speakingHistoryLimit: number;
 	speakLongTexts: boolean;
