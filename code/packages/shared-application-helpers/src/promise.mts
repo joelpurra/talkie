@@ -28,7 +28,7 @@ import {
 	singleDefinedValue,
 } from "./basic.mjs";
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const promiseFunctionSeries = async <T,>(promiseFunctions: Readonly<Array<(state?: T) => Promisable<T>>>, state?: T): Promise<T> => {
 	if (promiseFunctions.length === 0) {
 		throw new TypeError("Empty promiseFunctions.");
@@ -63,7 +63,7 @@ export function isPromiseTimeout(error: unknown): error is PromiseTimeout {
 	return isErrorInstanceWithName(error, "PromiseTimeout");
 }
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, milliseconds: number): Promise<T> => {
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
@@ -103,7 +103,7 @@ export const promiseDelay = async (milliseconds: number): Promise<void> =>
 		setTimeout(resolve, milliseconds);
 	});
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: number): Promise<T> =>
 	new Promise<T>((resolve, reject) => {
 		// NOTE: the timeout id is automatically cleared when it ends.
@@ -119,7 +119,7 @@ export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: nu
 		);
 	});
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @stylistic/comma-dangle
 export const promiseAtMostDefinedValues = async <T,>(atMost: number, promises: Array<Promise<T | void>>): Promise<Array<T | void>> => {
 	// TODO: async repeated Promise.race() until Promise<T | void> the first defined response, then (silently?) fail if there is a second (or more, but fail early) non-undefined responses?
 	const elements = await Promise.all(promises);
@@ -127,7 +127,7 @@ export const promiseAtMostDefinedValues = async <T,>(atMost: number, promises: A
 	return atMostDefinedValues(atMost, elements);
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @stylistic/comma-dangle
 export const promiseSingleDefinedValue = async <T,>(promises: Array<Promise<T | void>>): Promise<T | void> => {
 	// TODO: async repeated Promise.race() until Promise<T | void> the first defined response, then (silently?) fail if there is a second (or more, but fail early) non-undefined responses?
 	const elements = await Promise.all(promises);

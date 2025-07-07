@@ -47,7 +47,7 @@ import {
 } from "./languages.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+	// eslint-disable-next-line import-x/no-named-as-default-member
 	createDraftSafeSelector,
 } = toolkit;
 

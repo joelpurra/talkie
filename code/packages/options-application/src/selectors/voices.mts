@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/no-unassigned-import
+// eslint-disable-next-line import-x/no-unassigned-import
 import "reselect";
 
 import toolkit from "@reduxjs/toolkit";
@@ -36,7 +36,7 @@ import type {
 } from "../store/index.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+	// eslint-disable-next-line import-x/no-named-as-default-member
 	createDraftSafeSelector,
 } = toolkit;
 

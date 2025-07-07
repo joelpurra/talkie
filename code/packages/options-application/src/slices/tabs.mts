@@ -43,9 +43,9 @@ import {
 } from "../components/navigation/nav-helpers.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+	// eslint-disable-next-line import-x/no-named-as-default-member
 	createAsyncThunk,
-	// eslint-disable-next-line import/no-named-as-default-member
+	// eslint-disable-next-line import-x/no-named-as-default-member
 	createSlice,
 } = toolkit;
 

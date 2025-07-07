@@ -141,7 +141,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 				: undefined,
 		};
 
-		// eslint-disable-next-line @typescript-eslint/comma-dangle, @typescript-eslint/prefer-readonly-parameter-types
+		// eslint-disable-next-line @stylistic/comma-dangle, @typescript-eslint/prefer-readonly-parameter-types
 		const addBackgroundColor = <T extends React.ElementType,>(element: TalkieStyletronComponent<T>): TalkieStyletronComponent<T> => withTalkieStyleDeep(
 			element,
 			backgroundColor,
