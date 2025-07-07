@@ -81,7 +81,7 @@ cd code
 git clean --interactive -x -d :/
 
 # Install (exact) package dependencies and local development tools.
-npm clean‐install
+npm clean-install
 
 # Optionally reset local nx cache.
 npx nx reset
