@@ -1,8 +1,0 @@
-artifacts/
-build/*-build-mode.mjs
-dist/
-node_modules/
-rollup.config.*.mjs
-rollup.config.mjs
-runtime/
-syncpack.config.cjs
