@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
 import {
 	logError,
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 const handleUnhandledRejection = (event: ReadonlyDeep<PromiseRejectionEvent>) => {
 	void logError("Unhandled rejection", "Error", event.reason, event.promise, event);

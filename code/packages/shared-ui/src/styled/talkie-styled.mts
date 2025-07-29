@@ -29,12 +29,13 @@ import {
 	type TalkieStyletronComponent,
 } from "./types.js";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-empty-object-type
 export const talkieStyled = <D extends React.ElementType, S extends {} = any>
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-(component: D, style: StyleObject = {}): S extends StyleObject ? TalkieStyletronComponent<D, S> : TalkieStyletronComponent<D> => styled<D, S>(component, style) as S extends StyleObject ? TalkieStyletronComponent<D, S> : TalkieStyletronComponent<D>;
+(component: D, style: StyleObject = {}): S extends StyleObject ? TalkieStyletronComponent<D, S> : TalkieStyletronComponent<D> =>
+	styled<D, S>(component, style) as S extends StyleObject ? TalkieStyletronComponent<D, S> : TalkieStyletronComponent<D>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-empty-object-type
 export const withTalkieStyleDeep = <D extends React.ElementType, S extends {} = any>
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 (component: TalkieStyletronComponent<D, S>, style: StyleObject): TalkieStyletronComponent<D> => withStyleDeep<StyletronComponent<D, S>, S>(component, style);

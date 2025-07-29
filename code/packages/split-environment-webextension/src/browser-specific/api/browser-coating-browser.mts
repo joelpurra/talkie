@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type BrowserTabId,
-} from "@talkie/shared-interfaces/webext.mjs";
 import type IApiCoatingBrowser from "@talkie/split-environment-interfaces/iapi/iapi-coating-browser.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	type BrowserTabId,
+} from "@talkie/shared-interfaces/webext.mjs";
 
 import {
 	openExternalUrlInNewTab,

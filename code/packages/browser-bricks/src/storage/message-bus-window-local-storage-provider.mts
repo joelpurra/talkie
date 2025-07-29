@@ -18,17 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
+import type {
+	JsonObject,
+	JsonValue,
+} from "type-fest";
+
 import {
 	bespeak,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
-import type {
-	JsonObject,
-	JsonValue,
-} from "type-fest";
 
 /**
  * @deprecated Intended only for window.localStorage outward migration.

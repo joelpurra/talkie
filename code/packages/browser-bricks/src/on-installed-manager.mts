@@ -18,11 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
+import type StorageUpgrader from "@talkie/shared-application/storage/storage-upgrader.mjs";
+import type {
+	Runtime,
+} from "webextension-polyfill";
+
+import type ContextMenuManager from "./context-menu-manager.mjs";
+import type StorageBackendMigrator from "./storage/storage-backend-migrator.mjs";
+import type WelcomeManager from "./welcome-manager.mjs";
+
 import {
 	betoken,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
-import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import type StorageUpgrader from "@talkie/shared-application/storage/storage-upgrader.mjs";
 import {
 	logDebug,
 	logError,
@@ -36,18 +44,12 @@ import {
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	Runtime,
-} from "webextension-polyfill";
 
-import type ContextMenuManager from "./context-menu-manager.mjs";
 import {
 	type OnInstallEvent,
 	REASON_INSTALL,
 } from "./on-installed-manager-types.mjs";
 import migrateStorageBackend from "./storage/migrate-storage-backend.mjs";
-import type StorageBackendMigrator from "./storage/storage-backend-migrator.mjs";
-import type WelcomeManager from "./welcome-manager.mjs";
 
 export default class OnInstalledManager {
 	// eslint-disable-next-line max-params
@@ -143,7 +145,17 @@ export default class OnInstalledManager {
 			const onInstallListenerEvent = this.onInstallListenerEventQueue.shift();
 
 			if (!onInstallListenerEvent) {
-				throw new RangeError(`Malformed event in queue: ${this.onInstallListenerEventQueue.length} ${JSON.stringify(this.onInstallListenerEventQueue)} ${typeof onInstallListenerEvent} ${JSON.stringify(onInstallListenerEvent)}`);
+				throw new RangeError(
+					`Malformed event in queue: ${
+						this.onInstallListenerEventQueue.length
+					} ${
+						JSON.stringify(this.onInstallListenerEventQueue)
+					} ${
+						typeof onInstallListenerEvent
+					} ${
+						JSON.stringify(onInstallListenerEvent)
+					}`,
+				);
 			}
 
 			if (!onInstallListenerEvent.event) {

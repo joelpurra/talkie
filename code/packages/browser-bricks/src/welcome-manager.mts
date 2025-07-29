@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type UiManager from "./ui-manager.mjs";
+
 import {
 	type BrowserTabId,
 } from "@talkie/shared-interfaces/webext.mjs";
-
-import type UiManager from "./ui-manager.mjs";
 
 export default class WelcomeManager {
 	constructor(private readonly uiManager: UiManager) {}

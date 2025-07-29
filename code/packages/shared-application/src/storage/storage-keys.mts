@@ -24,14 +24,14 @@ import type {
 
 export type StorageKey = string;
 export type StorageFormatVersion =
-| "v1.0.0"
-| "v1.1.0"
-| "v1.2.0"
-| "v1.3.0"
-| "v1.4.0"
-| "v1.5.0"
-| "v1.6.0"
-| "v1.7.0";
+	| "v1.0.0"
+	| "v1.1.0"
+	| "v1.2.0"
+	| "v1.3.0"
+	| "v1.4.0"
+	| "v1.5.0"
+	| "v1.6.0"
+	| "v1.7.0";
 
 export interface IStorageMetadata extends JsonObject {
 	"upgraded-at": number;

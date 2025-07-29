@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
 import {
 	talkieStyled,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
@@ -34,9 +38,6 @@ import {
 import React, {
 	type ChangeEvent,
 } from "react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 export interface MultilineSelectProps {
 	disabled: boolean;

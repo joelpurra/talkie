@@ -163,7 +163,7 @@ npm run --silent watch
 
 ### Linting
 
-Primarily using [XO](https://github.com/xojs/xo) for Typescript code linting, with some modified style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vscode-linter-xo](https://github.com/xojs/vscode-linter-xo).
+Primarily using [ESLint](https://eslint.org/) for Typescript code linting, with modified [XO](https://github.com/xojs/xo) style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vs-code-prettier-eslint](https://github.com/idahogurl/vs-code-prettier-eslint).
 
 ```shell
 # Fix linting issues before committing.

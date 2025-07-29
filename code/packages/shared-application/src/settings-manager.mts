@@ -18,17 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	JsonArray,
+	JsonObject,
+	JsonValue,
+} from "type-fest";
+
+import type StorageManager from "./storage/storage-manager.mjs";
+
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	JsonArray,
-	JsonObject,
-	JsonValue,
-} from "type-fest";
 
 import {
 	bullhorn,
@@ -39,7 +42,6 @@ import {
 	KnownSettingStorageKeys,
 	type KnownSettingValues,
 } from "./settings.mjs";
-import type StorageManager from "./storage/storage-manager.mjs";
 
 export type SettingChangedEventData<T extends JsonValue> = {
 	key: KnownSettingValues;
@@ -83,7 +85,7 @@ export default class SettingsManager {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	async setSpeakingHistory(speakingHistory: Readonly<SpeakingHistoryEntry[]>): Promise<void> {
+	async setSpeakingHistory(speakingHistory: readonly SpeakingHistoryEntry[]): Promise<void> {
 		// NOTE: extraenous validation, should already be taken care of.
 		if (speakingHistory.length > KnownSettingRanges.SpeakingHistoryLimit.max) {
 			throw new RangeError(`Cannot set a speaking history with length greater than ${KnownSettingRanges.SpeakingHistoryLimit.max}: ${JSON.stringify(speakingHistory)}`);
@@ -92,11 +94,11 @@ export default class SettingsManager {
 		return this._setStoredValue(KnownSettingStorageKeys.SpeakingHistory, speakingHistory);
 	}
 
-	async getSpeakingHistory(): Promise<Readonly<SpeakingHistoryEntry[]>> {
+	async getSpeakingHistory(): Promise<readonly SpeakingHistoryEntry[]> {
 		const speakingHistory = await this.storageManager.getStoredValue<JsonArray>(KnownSettingStorageKeys.SpeakingHistory);
 
 		// TODO: assert function for Readonly<SpeakingHistoryEntry[]>.
-		const speakingHistoryOrDefault: Readonly<SpeakingHistoryEntry[]> = (speakingHistory as Readonly<SpeakingHistoryEntry[]>) ?? KnownSettingDefaults.SpeakingHistory;
+		const speakingHistoryOrDefault: readonly SpeakingHistoryEntry[] = (speakingHistory as readonly SpeakingHistoryEntry[]) ?? KnownSettingDefaults.SpeakingHistory;
 
 		const limitedSpeakingHistory = speakingHistoryOrDefault.slice(0, KnownSettingRanges.SpeakingHistoryLimit.max);
 

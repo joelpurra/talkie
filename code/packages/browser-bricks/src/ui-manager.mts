@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+
 import {
 	type BrowserTabId,
 } from "@talkie/shared-interfaces/webext.mjs";

@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type CommandHandler from "./command-handler.mjs";
+
 import {
 	logDebug,
 	logError,
 } from "@talkie/shared-application-helpers/log.mjs";
-
-import type CommandHandler from "./command-handler.mjs";
 
 export default class ShortcutKeyManager {
 	constructor(private readonly commandHandler: CommandHandler) {}

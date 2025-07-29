@@ -18,6 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	JsonObject,
+	ReadonlyDeep,
+} from "type-fest";
+
+import type NonBreakingChain from "./non-breaking-chain.mjs";
+import type OnlyLastCaller from "./only-last-caller.mjs";
+
 import {
 	bespeak,
 	betoken,
@@ -44,13 +52,7 @@ import {
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	JsonObject,
-	ReadonlyDeep,
-} from "type-fest";
 
-import type NonBreakingChain from "./non-breaking-chain.mjs";
-import type OnlyLastCaller from "./only-last-caller.mjs";
 import TextHelper from "./text-helper.mjs";
 
 export default class Speaker {

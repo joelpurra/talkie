@@ -22,7 +22,7 @@ import type {
 	PreloadedState,
 } from "@reduxjs/toolkit";
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 const getPrerenderedState = <S,>(): PreloadedState<S> => {
 	// NOTE: use preloaded state from the pre-rendered html.
 	const prerenderedStateSelector = "#__PRERENDERED_STATE__";

@@ -19,16 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type OnTabEventHandlers from "@talkie/browser-bricks/on-tab-event-handlers.mjs";
-import {
-	loggedPromiseCallback,
-	type PromiseFunction,
-} from "@talkie/shared-application/promise-logging.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {
 	Tabs,
 } from "webextension-polyfill";
+
+import {
+	loggedPromiseCallback,
+	type PromiseFunction,
+} from "@talkie/shared-application/promise-logging.mjs";
 
 export interface TabChangeListeners {
 	onTabRemovedListener: PromiseFunction<void>;

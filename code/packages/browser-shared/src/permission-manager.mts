@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logError,
-	logWarn,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type IPermissionManager from "@talkie/shared-interfaces/ipermission-manager.mjs";
 import type {
 	UsePermissionsCallback,
@@ -31,6 +27,11 @@ import type {
 } from "webextension-polyfill";
 
 import type PermissionsProvider from "./permissions-provider.mjs";
+
+import {
+	logError,
+	logWarn,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 export default abstract class PermissionManager implements IPermissionManager {
 	constructor(
@@ -113,6 +114,7 @@ export default abstract class PermissionManager implements IPermissionManager {
 		}
 
 		try {
+			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			const result = await this.permissionsManager.askUseDenyPermissions<T>(
 				this.permissions,
 				this.context,

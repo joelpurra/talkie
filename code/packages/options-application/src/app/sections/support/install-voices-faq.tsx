@@ -21,11 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	OsType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import Discretional from "@talkie/shared-ui/components/discretional.js";
-import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import type {
 	ChildrenOptionalProps,
 } from "@talkie/shared-ui/types.mjs";
+
+import Discretional from "@talkie/shared-ui/components/discretional.js";
+import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import React from "react";
 
 import SupportEntryWithOptionalId from "./support-entry.js";

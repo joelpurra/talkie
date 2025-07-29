@@ -23,11 +23,12 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
-import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 
 import Root from "../containers/root.js";

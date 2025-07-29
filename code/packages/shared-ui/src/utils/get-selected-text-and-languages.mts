@@ -26,7 +26,7 @@ import type {
 	SelectedTextAndLanguageCodes,
 } from "../hocs/pass-selected-text-to-background-types.mjs";
 
-/* eslint-disable no-inner-declarations, complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-disable complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
 // TODO: reduce linting exceptions; break out functions; reduce duplicate checks; use modern javascript/typescript language features.
 const getSelectedTextAndLanguageCodes: () => SelectedTextAndLanguageCodes | null = () => {
 	try {
@@ -44,8 +44,25 @@ const getSelectedTextAndLanguageCodes: () => SelectedTextAndLanguageCodes | null
 
 		// TODO: when extracting text from a tab, also check whether it is in incognito mode; avoid storing those history entries.
 		const talkieSelectionData = {
-			htmlTagLanguage: ((document || null) && document && (typeof document.getElementsByTagName === "function" || null) && (document.querySelectorAll("html") || null) && (document.querySelectorAll("html").length > 0 || null) && (document.querySelectorAll("html")[0]!.getAttribute("lang") || null)) || null,
-			parentElementsLanguages: (talkieGetParentElementLanguages((document || null) && document && (typeof document.getSelection === "function" || null) && (document.getSelection() || null) && (document.getSelection()!.rangeCount > 0 || null) && (document.getSelection()!.getRangeAt || null) && (document.getSelection()!.getRangeAt(0) || null) && (document.getSelection()!.getRangeAt(0).startContainer || null))) || null,
+			htmlTagLanguage: (
+				(document || null)
+				&& document
+				// eslint-disable-next-line @typescript-eslint/no-deprecated
+				&& (typeof document.getElementsByTagName === "function" || null)
+				&& (document.querySelectorAll("html") || null)
+				&& (document.querySelectorAll("html").length > 0 || null)
+				&& (document.querySelectorAll("html")[0]!.getAttribute("lang") || null)
+			) || null,
+			parentElementsLanguages: (
+				talkieGetParentElementLanguages((document || null)
+					&& document
+					&& (typeof document.getSelection === "function" || null)
+					&& (document.getSelection() || null)
+					&& (document.getSelection()!.rangeCount > 0 || null)
+					&& (document.getSelection()!.getRangeAt || null)
+					&& (document.getSelection()!.getRangeAt(0) || null)
+					&& (document.getSelection()!.getRangeAt(0).startContainer || null))
+			) || null,
 			text,
 		};
 
@@ -58,6 +75,6 @@ const getSelectedTextAndLanguageCodes: () => SelectedTextAndLanguageCodes | null
 		return null;
 	}
 };
-/* eslint-enable no-inner-declarations, complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-enable complexity, no-console, unicorn/prefer-spread, @typescript-eslint/prefer-nullish-coalescing, @typescript-eslint/prefer-optional-chain, @typescript-eslint/prefer-readonly-parameter-types */
 
 export default getSelectedTextAndLanguageCodes;

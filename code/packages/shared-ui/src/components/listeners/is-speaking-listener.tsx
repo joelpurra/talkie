@@ -18,23 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
+
+import type {
+	actions,
+} from "../../slices/index.mjs";
+
 import {
 	startCrowdee,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import {
 	executeUninitializers,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
-import type {
-	UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
 import React from "react";
 
 import {
 	MessageBusContext,
 } from "../../containers/providers.js";
-import type {
-	actions,
-} from "../../slices/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface IsSpeakingListenerStateProps {}
@@ -90,14 +92,16 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 				"broadcaster:speaking:entire:before",
 				() => {
 					this.updateIsSpeaking(true);
-				}),
+				},
+			),
 
 			startCrowdee(
 				this.context.messageBusProviderGetter,
 				"broadcaster:speaking:part:before",
 				() => {
 					this.updateIsSpeaking(true);
-				}),
+				},
+			),
 
 			startCrowdee(
 				this.context.messageBusProviderGetter,
@@ -107,7 +111,8 @@ export default class IsSpeakingListener<P extends IsSpeakingListenerStateProps &
 				],
 				() => {
 					this.updateIsSpeaking(false);
-				}),
+				},
+			),
 		];
 
 		const u = await Promise.all(t.flat());

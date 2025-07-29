@@ -18,24 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	MessageBusAction,
 	MessageBusActionHandler,
 } from "@talkie/split-environment-interfaces/imessage-bus.mjs";
-import {
-	type IMessageBusProviderGetter,
-	type MessageBusCallbackResponse,
-	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
 	IStartStop,
 } from "@talkie/split-environment-interfaces/istart-stop.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
+
+import {
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	type IMessageBusProviderGetter,
+	type MessageBusCallbackResponse,
+	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import MessageBusBase from "./message-bus-base.mjs";
 import {
@@ -144,11 +145,6 @@ export default abstract class MessageBusListener extends MessageBusBase implemen
 
 				// NOTE: no response; none expected.
 				return undefined;
-			}
-
-			default: {
-				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-				throw new TypeError(`Unhandled MessageBusResponseMode case "${this.responseMode}". Message data ${JSON.stringify(data, null, 0)}, response data ${JSON.stringify(responseDatum, null, 0)}.`);
 			}
 		}
 	}

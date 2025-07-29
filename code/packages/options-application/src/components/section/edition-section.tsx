@@ -18,6 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ClassNameProp,
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import type {
+	ChildrenRequiredProps,
+} from "@talkie/shared-ui/types.mjs";
+import type {
+	StyleObject,
+} from "styletron-react";
+
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
 import translateAttribute, {
 	type TranslateProps,
@@ -27,21 +38,11 @@ import {
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	ClassNameProp,
-	TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
 import * as colorBase from "@talkie/shared-ui/styles/color/color-base.mjs";
 import {
 	rounded,
 } from "@talkie/shared-ui/styles/shared-base.mjs";
-import type {
-	ChildrenRequiredProps,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
-import type {
-	StyleObject,
-} from "styletron-react";
 
 export type EditionSectionMode =
 	| "p"
@@ -141,7 +142,7 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 				: undefined,
 		};
 
-		// eslint-disable-next-line @typescript-eslint/comma-dangle, @typescript-eslint/prefer-readonly-parameter-types
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		const addBackgroundColor = <T extends React.ElementType,>(element: TalkieStyletronComponent<T>): TalkieStyletronComponent<T> => withTalkieStyleDeep(
 			element,
 			backgroundColor,
@@ -162,10 +163,6 @@ class EditionSection<P extends InternalProps> extends React.PureComponent<P> {
 				Wrapper = addBackgroundColor(this.styled.h2ModeWrapper);
 				Heading = this.styled.h2ModeHeading;
 				break;
-			}
-
-			default: {
-				throw new Error(`Unknown mode: ${typeof mode} ${JSON.stringify(mode)}`);
 			}
 		}
 

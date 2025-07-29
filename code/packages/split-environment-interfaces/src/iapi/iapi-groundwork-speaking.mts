@@ -13,12 +13,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
-import {
-	type IVoiceNameAndRateAndPitch,
-} from "@talkie/shared-interfaces/ivoices.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	type IVoiceNameAndRateAndPitch,
+} from "@talkie/shared-interfaces/ivoices.mjs";
 
 export default interface IApiGroundworkSpeaking {
 	cleanup(): Promise<void>;

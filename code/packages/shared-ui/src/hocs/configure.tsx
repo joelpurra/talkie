@@ -18,10 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from "react";
 import type {
 	Except,
 } from "type-fest";
+
+import React from "react";
 
 import {
 	ConfigurationContext,

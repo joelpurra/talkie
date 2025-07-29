@@ -18,6 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
+import type IApiCoatingTalkieLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-talkie-locale.mjs";
+
 import {
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -25,8 +28,6 @@ import {
 	type LanguageTextDirection,
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import type ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
-import type IApiCoatingTalkieLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-talkie-locale.mjs";
 
 export default class BrowserCoatingTalkieLocale implements IApiCoatingTalkieLocale {
 	constructor(

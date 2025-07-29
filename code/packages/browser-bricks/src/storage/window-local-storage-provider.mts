@@ -18,29 +18,30 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logWarn,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
 	JsonObject,
 	JsonValue,
 } from "type-fest";
 
+import {
+	logWarn,
+} from "@talkie/shared-application-helpers/log.mjs";
+
 /**
  * @deprecated Intended only for window.localStorage outward migration.
  */
 export default class WindowLocalStorageProvider implements IStorageProvider {
 	async clear(): Promise<void> {
-		window.localStorage.clear();
+		globalThis.localStorage.clear();
 	}
 
 	async count(): Promise<number> {
-		return window.localStorage.length;
+		return globalThis.localStorage.length;
 	}
 
 	async get<T extends JsonValue>(key: string): Promise<T | null> {
-		const valueJson = window.localStorage.getItem(key);
+		const valueJson = globalThis.localStorage.getItem(key);
 
 		if (valueJson === null) {
 			return null;
@@ -56,14 +57,14 @@ export default class WindowLocalStorageProvider implements IStorageProvider {
 	async getAll<T extends JsonObject>(): Promise<T> {
 		const object: JsonObject = {};
 
-		for (let index = 0; index < window.localStorage.length; index++) {
-			const key = window.localStorage.key(index);
+		for (let index = 0; index < globalThis.localStorage.length; index++) {
+			const key = globalThis.localStorage.key(index);
 
 			if (!key) {
 				throw new RangeError(`Index ${index} returned an empty key ${JSON.stringify(key, null, 0)}.`);
 			}
 
-			const valueJson = window.localStorage.getItem(key);
+			const valueJson = globalThis.localStorage.getItem(key);
 
 			if (valueJson === null) {
 				throw new Error(`The key ${JSON.stringify(key, null, 0)} is indicated to be empty ${JSON.stringify(valueJson, null, 0)}.`);
@@ -77,7 +78,16 @@ export default class WindowLocalStorageProvider implements IStorageProvider {
 					throw new Error(`The key ${JSON.stringify(key, null, 0)} was already initiated with value ${JSON.stringify(object[key], null, 0)}; new value ${JSON.stringify(value, null, 0)}.`);
 				}
 
-				void logWarn(this.constructor.name, `The key ${JSON.stringify(key, null, 0)} was already initiated with value ${JSON.stringify(object[key], null, 0)}; the new value ${JSON.stringify(value, null, 0)} is the same, so ignoring the issue.`);
+				void logWarn(
+					this.constructor.name,
+					`The key ${
+						JSON.stringify(key, null, 0)
+					} was already initiated with value ${
+						JSON.stringify(object[key], null, 0)
+					}; the new value ${
+						JSON.stringify(value, null, 0)
+					} is the same, so ignoring the issue.`,
+				);
 
 				continue;
 			}
@@ -101,7 +111,7 @@ export default class WindowLocalStorageProvider implements IStorageProvider {
 	}
 
 	async remove(key: string): Promise<void> {
-		window.localStorage.removeItem(key);
+		globalThis.localStorage.removeItem(key);
 	}
 
 	async set<T extends JsonValue>(key: string, value: T): Promise<void> {
@@ -110,14 +120,16 @@ export default class WindowLocalStorageProvider implements IStorageProvider {
 		// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 		const valueJson = JSON.stringify(value);
 
-		window.localStorage.setItem(key, valueJson);
+		globalThis.localStorage.setItem(key, valueJson);
 	}
 
 	async setAll<T extends JsonObject>(object: T): Promise<void> {
-		for await (const [
+		for (const [
 			key,
 			value,
 		] of Object.entries(object)) {
+			// TODO: use Promise.all(), or Bluebird.map()?
+			// eslint-disable-next-line no-await-in-loop
 			await this.set(key, value);
 		}
 	}

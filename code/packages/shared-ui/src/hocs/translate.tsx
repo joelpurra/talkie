@@ -19,10 +19,11 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-import React from "react";
 import type {
 	Except,
 } from "type-fest";
+
+import React from "react";
 
 import {
 	TranslateContext,
@@ -43,7 +44,7 @@ export default function translateAttribute<P extends TranslateProps = TranslateP
 				return (
 					<ComponentToWrap
 						{...this.props}
-						// eslint-disable-next-line no-sync
+						// eslint-disable-next-line no-sync, @typescript-eslint/no-deprecated
 						translatePlaceholderSync={this.context.translatePlaceholderSync}
 						// eslint-disable-next-line no-sync
 						translateSync={this.context.translateSync}/>

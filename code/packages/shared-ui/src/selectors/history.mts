@@ -18,21 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SharedRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import {
 	type SpeakingHistoryEntry,
 } from "@talkie/shared-interfaces/speaking-history.mjs";
 
-import type {
-	SharedRootState,
-} from "../store/index.mjs";
-
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createDraftSafeSelector,
 } = toolkit;
 
-export const getSpeakingHistory = <S extends SharedRootState>(state: S): Readonly<SpeakingHistoryEntry[]> => state.shared.history.speakingHistory;
+export const getSpeakingHistory = <S extends SharedRootState>(state: S): readonly SpeakingHistoryEntry[] => state.shared.history.speakingHistory;
 
 export const getSpeakingHistoryCount = createDraftSafeSelector(
 	[

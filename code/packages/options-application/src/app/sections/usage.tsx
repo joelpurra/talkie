@@ -22,6 +22,13 @@ import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import type {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import type {
+	OnOpenShortcutKeysClickProp,
+} from "@talkie/shared-ui/types.mjs";
+
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import TalkieEditionIcon from "@talkie/shared-ui/components/icon/talkie-edition-icon.js";
@@ -38,12 +45,6 @@ import {
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
-import type {
-	OnOpenShortcutKeysClickProp,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import PremiumSection from "../../components/section/premium-section.js";
@@ -98,6 +99,7 @@ class Usage<P extends UsageProps & ConfigureProps & TranslateProps> extends Reac
 			systemType,
 			osType,
 			configure,
+			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			translatePlaceholderSync,
 			translateSync,
 		} = this.props as P;

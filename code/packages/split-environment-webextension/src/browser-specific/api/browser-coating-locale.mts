@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IApiCoatingLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-locale.mjs";
+import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
+
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import type IApiCoatingLocale from "@talkie/split-environment-interfaces/iapi/iapi-coating-locale.mjs";
-import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 
 export default class BrowserCoatingLocale implements IApiCoatingLocale {
 	constructor(

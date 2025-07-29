@@ -89,7 +89,12 @@ export default class TalkieProgress {
 		// TODO: ensure that a segment isn't already in progress?
 		if (typeof this.cancelIntervalTimer === "function") {
 			// TODO: throw error?
-			void logError("A segment is currently in progress, but already attempting to start another segment. Ignoring the attempt, and letting the current segment end.", segmentLength, this.currentSegmentStartPosition, this.max);
+			void logError(
+				"A segment is currently in progress, but already attempting to start another segment. Ignoring the attempt, and letting the current segment end.",
+				segmentLength,
+				this.currentSegmentStartPosition,
+				this.max,
+			);
 
 			return;
 		}

@@ -18,15 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
-import {
-	type IMetadataManager,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
-import {
-	type IPremiumManager,
-} from "@talkie/shared-interfaces/ipremium-manager.mjs";
 import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import type {
 	ReadonlyDeep,
@@ -37,6 +28,16 @@ import type {
 } from "webextension-polyfill";
 
 import type CommandHandler from "./command-handler.mjs";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	type IMetadataManager,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import {
+	type IPremiumManager,
+} from "@talkie/shared-interfaces/ipremium-manager.mjs";
 
 export interface ContextMenuOptions {
 	chrome: boolean;
@@ -50,7 +51,12 @@ export default class ContextMenuManager {
 	actionMenuLimit: number;
 	contextMenuOptionsCollection: ReadonlyDeep<ContextMenuOptions[]>;
 
-	constructor(private readonly commandHandler: CommandHandler, private readonly metadataManager: IMetadataManager, private readonly premiumManager: IPremiumManager, private readonly translator: ITranslatorProvider) {
+	constructor(
+		private readonly commandHandler: CommandHandler,
+		private readonly metadataManager: IMetadataManager,
+		private readonly premiumManager: IPremiumManager,
+		private readonly translator: ITranslatorProvider,
+	) {
 		this.actionMenuLimit = !Number.isNaN(chrome.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT)
 			&& chrome.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT > 0
 			? chrome.contextMenus.ACTION_MENU_TOP_LEVEL_LIMIT
@@ -173,7 +179,7 @@ export default class ContextMenuManager {
 			contextMenu as Writable<Menus.CreateCreatePropertiesType>,
 			() => {
 				if (chrome.runtime.lastError) {
-					// eslint-disable-next-line @typescript-eslint/no-throw-literal
+					// eslint-disable-next-line @typescript-eslint/only-throw-error
 					throw chrome.runtime.lastError;
 				}
 
@@ -235,11 +241,13 @@ export default class ContextMenuManager {
 			.filter((contextMenuOption) => contextMenuOption[editionType] && contextMenuOption[systemType]);
 
 		// // TODO: group by selected contexts before checking against limit.
-		// if (applicableContextMenuOptions > this.actionMenuLimit) {
+		// if (applicableContextMenuOptions.length > this.actionMenuLimit) {
 		// throw new Error("Maximum number of menu items reached.");
 		// }
 
-		for await (const applicableContextMenuOption of applicableContextMenuOptions) {
+		for (const applicableContextMenuOption of applicableContextMenuOptions) {
+			// NOTE: registering one-by-one to keep menu item order.
+			// eslint-disable-next-line no-await-in-loop
 			await this.createContextMenu(applicableContextMenuOption.item);
 		}
 	}

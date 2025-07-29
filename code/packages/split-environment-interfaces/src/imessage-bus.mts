@@ -146,4 +146,7 @@ export type MessageBusMessage = MessageBusMessageBase | MessageBusMessageWithDat
 export type MessageBusMessageInContext = MessageBusMessage & MessageBusContextTag;
 
 // TODO: generic types?
-export type MessageBusActionHandler<MessageData extends Readonly<JsonValue> = Readonly<JsonValue>, Response extends Readonly<JsonValue> = Readonly<JsonValue>> = (action: MessageBusAction, data?: Readonly<MessageData>) => Promise<Response | typeof TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE | void>;
+export type MessageBusActionHandler<
+	MessageData extends Readonly<JsonValue> = Readonly<JsonValue>,
+	Response extends Readonly<JsonValue> = Readonly<JsonValue>,
+> = (action: MessageBusAction, data?: Readonly<MessageData>) => Promise<Response | typeof TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE | void>;

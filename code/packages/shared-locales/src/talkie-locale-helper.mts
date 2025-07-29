@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
+
 import {
 	type LanguageTextDirection,
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
-import type ITalkieLocaleHelper from "@talkie/shared-interfaces/italkie-locale-helper.mjs";
 
 import languages, {
 	type LanguageDataKey,

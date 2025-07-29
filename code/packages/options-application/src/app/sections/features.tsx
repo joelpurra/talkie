@@ -41,6 +41,7 @@ import PremiumSection from "../../components/section/premium-section.js";
 import {
 	type actions,
 } from "../../slices/index.mjs";
+
 import TalkiePremiumEdition from "./features/talkie-premium-edition.js";
 
 export interface FeaturesStateProps {

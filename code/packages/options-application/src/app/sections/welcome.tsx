@@ -170,7 +170,8 @@ class Welcome<P extends WelcomeProps & TranslateProps> extends React.PureCompone
 				hasSampleText: true,
 				languageCode: sampleTextLanguageCode,
 				text: sampleText,
-			} : {
+			}
+			: {
 				hasSampleText: false,
 				languageCode: undefined,
 				text: undefined,

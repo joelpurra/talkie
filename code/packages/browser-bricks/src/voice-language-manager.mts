@@ -18,26 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type StorageManager from "@talkie/shared-application/storage/storage-manager.mjs";
+import type {
+	IVoiceNameAndLanguage,
+	SafeVoiceObject,
+} from "@talkie/shared-interfaces/ivoices.mjs";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
 import {
 	bespeak,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
-import type StorageManager from "@talkie/shared-application/storage/storage-manager.mjs";
 import {
 	getMappedVoice,
 } from "@talkie/shared-application-helpers/voices.mjs";
 import {
 	type IPremiumManager,
 } from "@talkie/shared-interfaces/ipremium-manager.mjs";
-import type {
-	IVoiceNameAndLanguage,
-	SafeVoiceObject,
-} from "@talkie/shared-interfaces/ivoices.mjs";
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 export type LanguageVoiceOverride = Record<string, string>;
 
@@ -45,7 +46,8 @@ export default class VoiceLanguageManager {
 	constructor(
 		private readonly messageBusProviderGetter: IMessageBusProviderGetter,
 		private readonly storageManager: StorageManager,
-		private readonly premiumManager: IPremiumManager) {}
+		private readonly premiumManager: IPremiumManager,
+	) {}
 
 	private get languageVoiceOverrideNamesStorageKey() {
 		return "language-voice-overrides";

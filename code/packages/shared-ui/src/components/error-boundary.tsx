@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React, {
-	type ErrorInfo,
-} from "react";
 import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
+
+import React, {
+	type ErrorInfo,
+} from "react";
 
 import {
 	type ChildrenRequiredProps,
@@ -70,6 +71,7 @@ export default class ErrorBoundary<P extends ChildrenRequiredProps> extends Reac
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	prettyPrintForEmailBody(value: JsonValue, limit: number): string {
+		// eslint-disable-next-line @typescript-eslint/no-base-to-string
 		const string = value ? String(value) : JSON.stringify(value);
 		let pretty = string
 			.trim()

@@ -18,13 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logTrace,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
+
+import {
+	logTrace,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 import {
 	getStorageKey,

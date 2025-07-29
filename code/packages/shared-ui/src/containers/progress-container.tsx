@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SharedRootState,
+} from "../store/index.mjs";
+
 import React from "react";
 import {
 	connect,
@@ -26,9 +30,6 @@ import {
 } from "react-redux";
 
 import Progress from "../components/progress.js";
-import type {
-	SharedRootState,
-} from "../store/index.mjs";
 import {
 	type TalkieProgressData,
 } from "../talkie-progress.mjs";

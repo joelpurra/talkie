@@ -21,6 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	OnInstallEvent,
 } from "@talkie/browser-bricks/on-installed-manager-types.mjs";
+import type {
+	IMessageBusEventProvider,
+	IMessageBusProvider,
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import WindowLocalStorageProvider from "@talkie/browser-bricks/storage/window-local-storage-provider.mjs";
 import {
 	groundwork,
@@ -45,11 +51,6 @@ import {
 import {
 	registerUninitializerHandlerSynchronously,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
-import type {
-	IMessageBusEventProvider,
-	IMessageBusProvider,
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import MessageBusProviderGetter from "@talkie/split-environment-webextension/message-bus/getter/message-bus-provider-getter.mjs";
 import PredefinedMessageBusProviderGetter from "@talkie/split-environment-webextension/message-bus/getter/predefined-message-bus-provider-getter.mjs";
 
@@ -69,6 +70,7 @@ const main = async (onInstallListenerEventQueue: OnInstallEvent[]) => {
 	setGlobalTalkieContextIdentifier("background");
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
+	// eslint-disable-next-line @typescript-eslint/no-deprecated
 	const windowLocalStorageProvider = new WindowLocalStorageProvider();
 
 	await groundwork(uninitializers, onInstallListenerEventQueue, messageBusProviderGetter);

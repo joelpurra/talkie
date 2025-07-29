@@ -18,12 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type TalkieLocale,
-} from "@talkie/shared-interfaces/italkie-locale.mjs";
 import type {
 	I18n,
 } from "webextension-polyfill";
+
+import {
+	type TalkieLocale,
+} from "@talkie/shared-interfaces/italkie-locale.mjs";
 
 export type ILocaleProviderConstructor = new() => ILocaleProvider;
 

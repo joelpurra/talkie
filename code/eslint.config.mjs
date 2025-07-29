@@ -18,42 +18,42 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = {
-	"envs": [
-		"browser",
-		"webextensions"
-	],
-	"extends": [
-		"eslint-config-joelpurra/react",
-		"eslint-config-joelpurra/typescript",
-	],
-	"overrides": [
-		{
-			"files": [
-				"./packages/*/**/*.mts",
-				"./packages/*/**/*.tsx",
-			],
-			"rules": {
-				"@typescript-eslint/consistent-type-definitions": [
-					"error",
-					"interface",
-				],
-				"@typescript-eslint/naming-convention": [
-					"error",
-					  {
-						"selector": "function",
-						"format": [
-							// https://github.com/typescript-eslint/typescript-eslint/issues/2607
-							"PascalCase",
-							"strictCamelCase",
-						]
-					}
-				],
-				"jsx-quotes": [
-					"error",
-					"prefer-double",
-				]
-			}
-		}
-	]
-};
+import eslintConfigJoelpurraReact from "eslint-config-joelpurra/react";
+import eslintConfigJoelpurraTypescript from "eslint-config-joelpurra/typescript";
+import globals from "globals";
+
+const eslintConfig = [
+	{
+		ignores: [
+			"./.ncurc.js",
+			"./.nx/",
+			"./build/*-build-mode.mjs",
+			"./syncpack.config.cjs",
+			"**/artifacts/",
+			"**/dist/",
+			"**/node_modules/",
+			"**/rollup.config.*.mjs",
+			"**/rollup.config.mjs",
+			"**/runtime/",
+			"**/src/**/*.mjs",
+		],
+	},
+	{
+		files: [
+			"./packages/*/**/*.mts",
+			"./packages/*/**/*.tsx",
+		],
+		languageOptions: {
+			ecmaVersion: 2022,
+			globals: {
+				...globals.browser,
+				...globals.webextensions,
+			},
+			sourceType: "module",
+		},
+	},
+	...eslintConfigJoelpurraReact,
+	...eslintConfigJoelpurraTypescript,
+];
+
+export default eslintConfig;

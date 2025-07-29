@@ -92,7 +92,7 @@ export const columnsLi: StyleObject = {
 	},
 	cursor: "pointer",
 	listStylePosition: "inside",
-	listStyleType: "'\\2605\\0020'",
+	listStyleType: String.raw`'\2605\0020'`,
 	overflow: "hidden",
 	textOverflow: "clip",
 	whiteSpace: "nowrap",

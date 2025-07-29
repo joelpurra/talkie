@@ -18,6 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 import type WindowLocalStorageProvider from "@talkie/browser-bricks/storage/window-local-storage-provider.mjs";
+import type {
+	UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
+import type {
+	JsonObject,
+	ReadonlyDeep,
+} from "type-fest";
+
 import SynthesizerHelper from "@talkie/browser-bricks/synthesizer-helper.mjs";
 import getClipboardText from "@talkie/browser-shared/get-clipboard-text.mjs";
 import MessageBusInspector from "@talkie/shared-application/message-bus/message-bus-inspector.mjs";
@@ -42,24 +50,17 @@ import {
 import {
 	type IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
-import type {
-	UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
 import {
 	type IMessageBusProviderGetter,
 	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	JsonObject,
-	ReadonlyDeep,
-} from "type-fest";
 
 export const mason = async (
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	uninitializers: UninitializerCallback[],
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	messageBusProviderGetter: IMessageBusProviderGetter,
-	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/no-deprecated
 	windowLocalStorageProvider: WindowLocalStorageProvider,
 ): Promise<void> => {
 	void logDebug("Start", "Main mason function");

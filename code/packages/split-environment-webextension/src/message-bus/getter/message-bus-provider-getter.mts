@@ -18,17 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/no-unassigned-import
-import "../../browser-specific/global-window-talkie-shared-context.mjs";
-
-import InternalMessageBusProvider from "@talkie/shared-application/message-bus/internal-message-bus-provider.mjs";
-import SameContextMessageBusEventProvider from "@talkie/shared-application/message-bus/same-context-message-bus-event-provider.mjs";
-import SplitContextMessageBusProvider from "@talkie/shared-application/message-bus/split-context-message-bus-provider.mjs";
 import type {
 	IMessageBusEventProvider,
 	IMessageBusProvider,
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
+import InternalMessageBusProvider from "@talkie/shared-application/message-bus/internal-message-bus-provider.mjs";
+import SameContextMessageBusEventProvider from "@talkie/shared-application/message-bus/same-context-message-bus-event-provider.mjs";
+import SplitContextMessageBusProvider from "@talkie/shared-application/message-bus/split-context-message-bus-provider.mjs";
+
+// eslint-disable-next-line import-x/no-unassigned-import
+import "../../browser-specific/global-window-talkie-shared-context.mjs";
 
 export default class MessageBusProviderGetter implements IMessageBusProviderGetter {
 	private readonly _messageBusProviderPromise: Promise<IMessageBusProvider>;

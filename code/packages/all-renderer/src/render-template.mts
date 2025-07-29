@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
+
 import {
 	writeFile as writeFileCallback,
 } from "node:fs";
@@ -25,13 +29,10 @@ import {
 	promisify,
 } from "node:util";
 
-import type {
-	Action,
-} from "@reduxjs/toolkit";
-import render from "@talkie/renderer/render.mjs";
 import {
 	type IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
+import render from "@talkie/renderer/render.mjs";
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -49,6 +50,7 @@ const renderTemplate = async <S, A extends Action, P>(
 	const html = await render(
 		app.rootReducer,
 		app.customPrerenderedActionsToDispatch,
+		// eslint-disable-next-line @typescript-eslint/no-deprecated
 		app.customPostrenderActionsToDispatch,
 		app.reactHtmlTemplatePath,
 		talkieLocale,

@@ -19,6 +19,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type StorageHelper from "./storage-helper.mjs";
+
 import {
 	currentStorageFormatVersion,
 } from "./storage-keys.mjs";

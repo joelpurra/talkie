@@ -42,7 +42,11 @@ export type MessageBusCallback = (message: JsonValue) => Promise<MessageBusCallb
 
 export interface MessageBusCallbackInContext extends MessageBusCallback, MessageBusContextTag {}
 
-export interface IMessageBusEvent<Message extends JsonValue = JsonValue, Response extends MessageBusCallbackResponse = MessageBusCallbackResponse, Callback extends (message: Message) => Promise<Response> = (message: Message) => Promise<Response>> {
+export interface IMessageBusEvent<
+	Message extends JsonValue = JsonValue,
+	Response extends MessageBusCallbackResponse = MessageBusCallbackResponse,
+	Callback extends (message: Message) => Promise<Response> = (message: Message) => Promise<Response>,
+> {
 	// TODO: include message filtering?
 	addListener(callback: Callback): void;
 	removeListener(callback: Callback): void;
@@ -58,7 +62,11 @@ export interface IMessageBusEvent<Message extends JsonValue = JsonValue, Respons
 	_hasListeners(): boolean;
 }
 
-export interface IMessageBusEventProvider<Message extends JsonValue = JsonValue, Response extends MessageBusCallbackResponse = MessageBusCallbackResponse, Callback extends (message: Message) => Promise<Response> = (message: Message) => Promise<Response>> extends IMessageBusEvent<Message, Response, Callback> {
+export interface IMessageBusEventProvider<
+	Message extends JsonValue = JsonValue,
+	Response extends MessageBusCallbackResponse = MessageBusCallbackResponse,
+	Callback extends (message: Message) => Promise<Response> = (message: Message) => Promise<Response>,
+> extends IMessageBusEvent<Message, Response, Callback> {
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	dispatch(message: Readonly<JsonValue>): Array<ReturnType<MessageBusCallback>>;
 }

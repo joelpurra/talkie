@@ -34,9 +34,9 @@ import {
 } from "../store/index.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 
@@ -72,8 +72,9 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 
 		let sampleTextLanguage: TalkieLocale | null = null;
 
-		for await (const languageCode of availableBrowserLanguageWithInstalledVoice) {
+		for (const languageCode of availableBrowserLanguageWithInstalledVoice) {
 			// TODO: isTalkieLocale assertion.
+			// eslint-disable-next-line no-await-in-loop
 			const isTalkieLocale = await extra.coating!.talkieLocale.isTalkieLocale(languageCode);
 
 			if (isTalkieLocale) {

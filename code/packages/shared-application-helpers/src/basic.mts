@@ -32,8 +32,8 @@ export const jsonClone = <T extends Readonly<JsonValue>>(object: T): T => {
 };
 
 // TODO: use library.
-// eslint-disable-next-line @typescript-eslint/comma-dangle
-export const lastOrThrow = <T,>(indexable: Readonly<T[]>): T => {
+// eslint-disable-next-line @stylistic/comma-dangle
+export const lastOrThrow = <T,>(indexable: readonly T[]): T => {
 	if (indexable.length === 0) {
 		throw new RangeError("Indexable length 0.");
 	}
@@ -167,7 +167,7 @@ export const repeatAtMost = <T extends (...args: V[]) => Promisable<U>, U, V = a
 	return cancel;
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @stylistic/comma-dangle
 export const atMostDefinedValues = <T,>(atMost: number, elements: Array<T | void>): Array<T | void> => {
 	// TODO: allow array-like objects?
 	if (!Array.isArray(elements)) {
@@ -183,7 +183,7 @@ export const atMostDefinedValues = <T,>(atMost: number, elements: Array<T | void
 	return definedElements;
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @stylistic/comma-dangle
 export const singleDefinedValue = <T,>(elements: Array<T | void>): T => {
 	// TODO: allow array-like objects?
 	if (!Array.isArray(elements)) {

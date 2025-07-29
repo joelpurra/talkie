@@ -19,20 +19,19 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
-import {
-	Server as StyletronServer,
-} from "styletron-engine-atomic";
 import type {
 	StandardEngine,
 } from "styletron-standard";
+
+import {
+	Server as StyletronServer,
+} from "styletron-engine-atomic";
 
 export default class NodeEnvironmentStyletronProvider implements IStyletronProvider {
 	private _instance: StyletronServer | null = null;
 
 	getInstanceSync(): StandardEngine {
-		if (this._instance === null) {
-			this._instance = new StyletronServer();
-		}
+		this._instance ??= new StyletronServer();
 
 		return this._instance;
 	}

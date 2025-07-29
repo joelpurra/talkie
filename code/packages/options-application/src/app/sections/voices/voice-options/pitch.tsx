@@ -29,6 +29,7 @@ import React from "react";
 import ScaleRange, {
 	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";
+
 import RangeWithHeading, {
 	type RangeWithHeadingProps,
 } from "./range-with-heading.js";

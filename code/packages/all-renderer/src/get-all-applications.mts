@@ -21,6 +21,7 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	Action,
 } from "@reduxjs/toolkit";
+
 import options from "@talkie/options-renderer/options-html.mjs";
 import popup from "@talkie/popup-renderer/popup-html.mjs";
 import {

@@ -21,7 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	PayloadAction,
 } from "@reduxjs/toolkit";
-import toolkit from "@reduxjs/toolkit";
 import type {
 	IVoiceNameAndRateAndPitch,
 } from "@talkie/shared-interfaces/ivoices.mjs";
@@ -30,10 +29,12 @@ import type {
 	IApiAsyncThunkConfig,
 } from "./slices-types.mjs";
 
+import toolkit from "@reduxjs/toolkit";
+
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

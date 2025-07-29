@@ -22,10 +22,11 @@ import type {
 	Draft,
 	PayloadAction,
 } from "@reduxjs/toolkit";
+
 import toolkit from "@reduxjs/toolkit";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

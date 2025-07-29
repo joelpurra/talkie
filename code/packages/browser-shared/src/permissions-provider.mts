@@ -18,13 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
-import {
-	type UsePermissionsCallback,
-} from "@talkie/shared-interfaces/ipermission-manager.mjs";
 import type {
 	ReadonlyDeep,
 	Writable,
@@ -32,6 +25,14 @@ import type {
 import type {
 	Manifest,
 } from "webextension-polyfill";
+
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+import {
+	type UsePermissionsCallback,
+} from "@talkie/shared-interfaces/ipermission-manager.mjs";
 
 export default class PermissionsProvider {
 	// TODO: install permission listeners.
@@ -92,8 +93,9 @@ export default class PermissionsProvider {
 		const activePermissionNames: Manifest.OptionalPermission[] = [];
 		const inactivePermissionNames: Manifest.OptionalPermission[] = [];
 
-		for await (const permissionName of permissionNames) {
+		for (const permissionName of permissionNames) {
 			// TODO: be more fine-grained per origin as well?
+			// eslint-disable-next-line no-await-in-loop
 			const hasPermission = await this.hasPermissions(
 				[
 					permissionName,

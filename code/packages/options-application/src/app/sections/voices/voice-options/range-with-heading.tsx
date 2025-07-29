@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
+import type LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
+import type ScaleRange from "../../../../components/range/scale-range.js";
+
 import {
 	debounce,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -29,12 +36,7 @@ import {
 	type TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
-import type LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
-import type ScaleRange from "../../../../components/range/scale-range.js";
 import {
 	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";

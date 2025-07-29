@@ -21,12 +21,6 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type ContextMenuManager from "@talkie/browser-bricks/context-menu-manager.mjs";
 import type ShortcutKeyManager from "@talkie/browser-bricks/shortcut-key-manager.mjs";
 import type SpeakerPageManager from "@talkie/browser-bricks/speaker-page-manager.mjs";
-import {
-	loggedPromiseCallback,
-} from "@talkie/shared-application/promise-logging.mjs";
-import {
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
@@ -34,6 +28,13 @@ import type {
 	Menus,
 	Tabs,
 } from "webextension-polyfill";
+
+import {
+	loggedPromiseCallback,
+} from "@talkie/shared-application/promise-logging.mjs";
+import {
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 const createAndStartCommandListeners = async (
 	contextMenuManager: ReadonlyDeep<ContextMenuManager>,

@@ -18,6 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
 import configurationObject from "@talkie/shared-application/data/configuration/configuration.mjs";
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
@@ -25,26 +30,22 @@ import PremiumManager from "@talkie/shared-application/premium-manager.mjs";
 import SettingsManager from "@talkie/shared-application/settings-manager.mjs";
 import DefaultStorageManager from "@talkie/shared-application/storage/default-storage-manager.mjs";
 import StorageHelper from "@talkie/shared-application/storage/storage-helper.mjs";
-import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
-import type {
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import BrowserApi from "@talkie/split-environment-webextension/browser-specific/api/browser-api.mjs";
-import BrowserCoating from "@talkie/split-environment-webextension/browser-specific/api/browser-coating.mjs";
 import BrowserCoatingBrowser from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-browser.mjs";
 import BrowserCoatingClipboard from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-clipboard.mjs";
 import BrowserCoatingLocale from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-locale.mjs";
 import BrowserCoatingMetadata from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-metadata.mjs";
 import BrowserCoatingPremium from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-premium.mjs";
 import BrowserCoatingTalkieLocale from "@talkie/split-environment-webextension/browser-specific/api/browser-coating-talkie-locale.mjs";
-import MessageBusGroundwork from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork.mjs";
+import BrowserCoating from "@talkie/split-environment-webextension/browser-specific/api/browser-coating.mjs";
 import MessageBusGroundworkClipboard from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-clipboard.mjs";
 import MessageBusGroundworkConfiguration from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-configuration.mjs";
 import MessageBusGroundworkHistory from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-history.mjs";
 import MessageBusGroundworkSpeaking from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-speaking.mjs";
 import MessageBusGroundworkUi from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-ui.mjs";
 import MessageBusGroundworkVoices from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork-voices.mjs";
+import MessageBusGroundwork from "@talkie/split-environment-webextension/browser-specific/api/message-bus-groundwork.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-webextension/dynamic-environment.mjs";
 import LocaleProvider from "@talkie/split-environment-webextension/locale-provider.mjs";
 import ManifestProvider from "@talkie/split-environment-webextension/manifest-provider.mjs";

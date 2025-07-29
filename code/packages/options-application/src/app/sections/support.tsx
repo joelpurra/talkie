@@ -22,6 +22,11 @@ import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import type {
+	ChildrenOptionalProps,
+	OnOpenShortcutKeysClickProp,
+} from "@talkie/shared-ui/types.mjs";
+
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import configureAttribute, {
@@ -32,10 +37,6 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	ChildrenOptionalProps,
-	OnOpenShortcutKeysClickProp,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import InstallVoicesFaq from "./support/install-voices-faq.js";

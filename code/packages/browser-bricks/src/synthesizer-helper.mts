@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	isPromiseTimeout,
-	promiseTimeout,
-} from "@talkie/shared-application-helpers/promise.mjs";
 import type {
 	IVoiceNameAndRateAndPitch,
 	SafeSpeechSynthesisEventObject,
@@ -33,6 +29,11 @@ import type {
 } from "type-fest";
 
 import {
+	isPromiseTimeout,
+	promiseTimeout,
+} from "@talkie/shared-application-helpers/promise.mjs";
+
+import {
 	createSafeSpeechSynthesisEventObjectFromSpeechSynthesisEvent,
 	createSafeVoiceObjectFromSpeechSynthesisVoice,
 	resolveDefaultVoiceFromLanguage,
@@ -40,7 +41,7 @@ import {
 } from "./speaker-helpers.mjs";
 
 declare global {
-	// eslint-disable-next-line no-var
+
 	var talkieUtterance: SpeechSynthesisUtterance | undefined;
 }
 
@@ -156,6 +157,7 @@ export default class SynthesizerHelper {
 
 					// NOTE: the error code may be useful for callers.
 					// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(event.error);
 				};
 
@@ -179,6 +181,7 @@ export default class SynthesizerHelper {
 					synthesizer.pause();
 					synthesizer.resume();
 				} catch (error: unknown) {
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(error);
 				}
 			},
@@ -240,6 +243,7 @@ export default class SynthesizerHelper {
 						// NOTE: ignored.
 					}
 
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(error);
 				}
 			},

@@ -110,10 +110,6 @@ class InformationSection<P extends InformationSectionProps> extends React.PureCo
 				informationTypeGlyph = "\u26A0";
 				break;
 			}
-
-			default: {
-				throw new TypeError("informationType");
-			}
 		}
 
 		return (

@@ -55,7 +55,7 @@ export interface AboutStateProps {
 	sortedNavigatorLanguages: readonly string[];
 	osType?: OsType | null;
 	systemType: SystemType | null;
-	sortedTranslatedLanguages: Readonly<TalkieLocale[]>;
+	sortedTranslatedLanguages: readonly TalkieLocale[];
 	versionName: string | null;
 }
 

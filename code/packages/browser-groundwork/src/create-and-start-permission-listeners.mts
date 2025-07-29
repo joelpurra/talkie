@@ -35,8 +35,8 @@ const createAndStartPermissionListeners = async (): Promise<void> => {
 	void logDebug("permissions.getAll()", await chrome.permissions.getAll());
 
 	// TODO: clean up listeners.
-	chrome.permissions.onAdded.addListener(async (...args: Readonly<unknown[]>) => logDebug("permissions.onAdded", args, "permissions.getAll()", await chrome.permissions.getAll()));
-	chrome.permissions.onRemoved.addListener(async (...args: Readonly<unknown[]>) => logDebug("permissions.onRemoved", args, "permissions.getAll()", await chrome.permissions.getAll()));
+	chrome.permissions.onAdded.addListener(async (...args: readonly unknown[]) => logDebug("permissions.onAdded", args, "permissions.getAll()", await chrome.permissions.getAll()));
+	chrome.permissions.onRemoved.addListener(async (...args: readonly unknown[]) => logDebug("permissions.onRemoved", args, "permissions.getAll()", await chrome.permissions.getAll()));
 };
 
 export default createAndStartPermissionListeners;

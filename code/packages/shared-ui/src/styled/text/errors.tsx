@@ -23,6 +23,7 @@ import {
 	talkieStyled,
 	withTalkieStyleDeep,
 } from "../talkie-styled.mjs";
+
 import * as textBase from "./text-base.js";
 
 export const h2 = withTalkieStyleDeep(textBase.h2, errors.text);

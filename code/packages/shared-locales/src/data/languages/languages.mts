@@ -26,15 +26,15 @@ import {
 import languagesJson from "./languages.cjs";
 
 export interface LanguageData {
-	"direction": LanguageTextDirection;
-	"sample": string;
+	direction: LanguageTextDirection;
+	sample: string;
 }
 
 export type LanguageDataKey = keyof LanguageData;
 
 export interface LanguagesData {
-	"base": LanguageData;
-	"languages": Record<TalkieLocale, LanguageData>;
+	base: LanguageData;
+	languages: Record<TalkieLocale, LanguageData>;
 }
 
 export default languagesJson as LanguagesData;

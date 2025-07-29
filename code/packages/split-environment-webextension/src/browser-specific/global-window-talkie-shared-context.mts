@@ -29,9 +29,9 @@ import {
 declare global {
 	// TODO: be more selective about where this "global" augmentation is applied?
 	// NOTE: typing for both the globalThis context (used in/from the background) and Window interface (used when retrieving the background context).
-	// eslint-disable-next-line no-var
+
 	var talkieContextIdentifier: MessageBusContextIdentifier;
-	// eslint-disable-next-line no-var
+
 	var talkieSharedContext: ITalkieSharedContext;
 
 	interface Window {

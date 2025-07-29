@@ -18,6 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IMessageBusProvider,
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import WindowLocalStorageProvider from "@talkie/browser-bricks/storage/window-local-storage-provider.mjs";
 import {
 	mason,
@@ -32,10 +37,6 @@ import {
 import {
 	registerUninitializerHandlerSynchronously,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
-import type {
-	IMessageBusProvider,
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import ChromeBrowserRuntimeMessageBusEventProvider from "@talkie/split-environment-webextension/message-bus/browser-runtime-chrome/chrome-browser-runtime-message-bus-event-provider.mjs";
 import ChromeBrowserRuntimeMessageBusProvider from "@talkie/split-environment-webextension/message-bus/browser-runtime-chrome/chrome-browser-runtime-message-bus-provider.mjs";
 import MessageBusProviderGetter from "@talkie/split-environment-webextension/message-bus/getter/message-bus-provider-getter.mjs";
@@ -47,6 +48,7 @@ const start = async () => {
 	const otherContextsMessageBusProviderGetter: IMessageBusProviderGetter = new PredefinedMessageBusProviderGetter(otherContextsMessageBusProvider);
 	const messageBusProviderGetter: IMessageBusProviderGetter = new MessageBusProviderGetter(otherContextsMessageBusProviderGetter);
 
+	// eslint-disable-next-line @typescript-eslint/no-deprecated
 	const windowLocalStorageProvider = new WindowLocalStorageProvider();
 
 	await mason(uninitializers, messageBusProviderGetter, windowLocalStorageProvider);

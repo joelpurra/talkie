@@ -18,6 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IMessageBusEvent,
+	IMessageBusProvider,
+	MessageBusCallbackResponse,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type {
+	JsonValue,
+} from "type-fest";
+
 import {
 	isNoListenersError,
 } from "@talkie/shared-application/message-bus/message-bus-helper.mjs";
@@ -27,14 +36,6 @@ import {
 import {
 	logWarn,
 } from "@talkie/shared-application-helpers/log.mjs";
-import type {
-	IMessageBusEvent,
-	IMessageBusProvider,
-	MessageBusCallbackResponse,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type {
-	JsonValue,
-} from "type-fest";
 
 export default class ChromeBrowserRuntimeMessageBusProvider implements IMessageBusProvider {
 	constructor(public readonly onMessage: IMessageBusEvent) {}

@@ -22,8 +22,8 @@ import type ILocaleProvider from "./ilocale-provider.mjs";
 
 export type ITranslatorProviderConstructor = new(localeProvider: ILocaleProvider) => ITranslatorProvider;
 
-export type Translate = (key: string, extras?: Readonly<string[]>) => Promise<string>;
-export type TranslateSync = (key: string, extras?: Readonly<string[]>) => string;
+export type Translate = (key: string, extras?: readonly string[]) => Promise<string>;
+export type TranslateSync = (key: string, extras?: readonly string[]) => string;
 
 export default interface ITranslatorProvider {
 	translate: Translate;

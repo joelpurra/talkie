@@ -18,6 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IMessageBusProviderGetter,
+	MessageBusCallbackResponse,
+	MessageBusRequest,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import {
 	getRandomInt,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -28,11 +34,6 @@ import {
 	type MessageBusResponseMode,
 	TALKIE_MESSAGE_BUS_IDENTIFIER,
 } from "@talkie/split-environment-interfaces/imessage-bus.mjs";
-import type {
-	IMessageBusProviderGetter,
-	MessageBusCallbackResponse,
-	MessageBusRequest,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 
 import {
 	isValidMessageBusMessage,

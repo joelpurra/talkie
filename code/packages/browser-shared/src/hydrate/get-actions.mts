@@ -21,12 +21,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	Action,
 } from "@reduxjs/toolkit";
+
 import {
 	actions,
 } from "@talkie/shared-ui/slices/index.mjs";
 
-export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
-	const browserDefaults: Readonly<A[]> = [];
+export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: readonly A[]): readonly A[] => {
+	const browserDefaults: readonly A[] = [];
 
 	const allActionsToDispatch: A[] = [
 		...browserDefaults,
@@ -36,7 +37,7 @@ export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActio
 	return allActionsToDispatch;
 };
 
-export const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
+export const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDispatch: readonly A[]): readonly A[] => {
 	const browserDefaults: A[] = [
 		// NOTE: don't want to keep track of when to load these, preemptively loading.
 		actions.metadata.loadIsPremiumEdition() as unknown as A,

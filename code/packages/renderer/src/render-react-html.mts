@@ -24,16 +24,17 @@ import type {
 } from "@reduxjs/toolkit";
 import type ILocaleProvider from "@talkie/split-environment-interfaces/ilocale-provider.mjs";
 import type IStyletronProvider from "@talkie/split-environment-interfaces/istyletron-provider.mjs";
-import {
-	type ReactElement,
-} from "react";
-import ReactDOMServer from "react-dom/server";
 import type {
 	Server as StyletronServer,
 } from "styletron-engine-atomic";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
+
+import {
+	type ReactElement,
+} from "react";
+import ReactDOMServer from "react-dom/server";
 
 import {
 	type ReactHtmlTemplateLocalsVariables,
@@ -64,7 +65,7 @@ const renderReactHtml = async <S, A extends Action>(
 
 	// WARNING: See the following for security issues around embedding JSON in HTML:
 	// https://redux.js.org/usage/server-rendering#security-considerations
-	const prerenderedStateJson = JSON.stringify(prerenderedState).replaceAll("<", "\\u003c");
+	const prerenderedStateJson = JSON.stringify(prerenderedState).replaceAll("<", String.raw`\u003c`);
 
 	const data = {
 		locale: translationLocale,

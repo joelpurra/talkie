@@ -34,6 +34,7 @@ export default class Chain {
 		void logDebug("Start", "Chain", currentLength);
 
 		// NOTE: using promise objects for the chain.
+		/* eslint-disable promise/prefer-await-to-then */
 		this.chainPromise = this.chainPromise
 			.then(promiseFn)
 			.then(() => {
@@ -46,6 +47,7 @@ export default class Chain {
 
 				throw error;
 			});
+		/* eslint-enable promise/prefer-await-to-then */
 
 		return this.chainPromise;
 	}
