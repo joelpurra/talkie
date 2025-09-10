@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
+import type {
+	Except,
+	ReadonlyDeep,
+} from "type-fest";
+
+import type {
+	TalkieProgressData,
+} from "../talkie-progress.mjs";
+
 import {
 	startCrowdee,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
@@ -27,24 +39,15 @@ import {
 import {
 	executeUninitializers,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
-import type {
-	UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
 import React from "react";
-import type {
-	Except,
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	MessageBusContext,
 } from "../containers/providers.js";
-import type {
-	TalkieProgressData,
-} from "../talkie-progress.mjs";
 
 export interface ProgressProps extends TalkieProgressData {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface ProgressHocState extends TalkieProgressData {}
 
 export default function progressAttribute<P extends ProgressProps = ProgressProps, U = Except<P, keyof ProgressProps>>() {

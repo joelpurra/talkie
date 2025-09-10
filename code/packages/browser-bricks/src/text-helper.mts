@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ export default class TextHelper {
 
 	static splitTextToSentencesOfMaxLength = (text: string, maxPartLength: number): string[] => {
 		// TODO: avoid helpers or use library.
-		const appendToText = (texts: Readonly<string[]>, text: string): string[] => {
+		const appendToText = (texts: readonly string[], text: string): string[] => {
 			const last = lastOrThrow(texts);
 
 			if (last === "") {
@@ -51,8 +51,8 @@ export default class TextHelper {
 		const naturalPauseRx = /(^--?$|[.,!?:;]$)/;
 
 		// eslint-disable-next-line unicorn/no-array-reduce
-		const textParts: Readonly<string[]> = spacedTextParts.reduce(
-			(splitTextParts: Readonly<string[]>, spacedTextPart: Readonly<string>) => {
+		const textParts: readonly string[] = spacedTextParts.reduce(
+			(splitTextParts: readonly string[], spacedTextPart: Readonly<string>) => {
 				if (naturalPauseRx.test(spacedTextPart)) {
 					// NOTE: this text is/has a natural pause so append text to the current part, then end the part by starting a new (empty) part.
 					return [

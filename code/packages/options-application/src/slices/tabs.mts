@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,23 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IApiAsyncThunkConfig,
+} from "@talkie/shared-ui/slices/slices-types.mjs";
+
+import type {
+	NavigationTabId,
+} from "../components/navigation/nav-container-types.mjs";
+
 import toolkit, {
 	type PayloadAction,
 } from "@reduxjs/toolkit";
 import {
 	promiseDelay,
 } from "@talkie/shared-application-helpers/promise.mjs";
-import type {
-	IApiAsyncThunkConfig,
-} from "@talkie/shared-ui/slices/slices-types.mjs";
 import {
 	getLocationHash,
 	setLocationHash,
 } from "@talkie/shared-ui/utils/navigator-location.mjs";
 
-import type {
-	NavigationTabId,
-} from "../components/navigation/nav-container-types.mjs";
 import {
 	getLocationHashFromTabId,
 	getTabIdFromLocationHash,
@@ -43,9 +45,9 @@ import {
 } from "../components/navigation/nav-helpers.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 

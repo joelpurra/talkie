@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,11 +36,12 @@ import {
 	MessageBusContext,
 } from "../containers/providers.js";
 import getSelectedTextAndLanguageCodes from "../utils/get-selected-text-and-languages.mjs";
+
 import {
 	type PerhapsSelectedTextWithFocusTimestamp,
 } from "./pass-selected-text-to-background-types.mjs";
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export default function passSelectedTextToBackgroundAttribute<P = {}, S = {}, SS = unknown>() {
 	// eslint-disable-next-line func-names, @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/prefer-readonly-parameter-types
 	return function passSelectedTextToBackgroundHoc(ComponentToWrap: React.ComponentType<P>) {

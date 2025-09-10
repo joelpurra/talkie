@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,6 +23,10 @@ import {
 	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
+import {
+	logError,
+} from "./log.mjs";
+
 // TODO: create type alias for generic language strings?
 // TODO: use parser which checks codes, regions, etcetera against BCP47.
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
@@ -40,13 +44,13 @@ export interface LanguageGroupWithNavigatorLanguage {
 	languageGroup: string;
 }
 
-export const getVoicesForLanguage = <T extends IVoiceLanguage>(voices: Readonly<T[]>, languageCode: string): Readonly<T[]> => {
+export const getVoicesForLanguage = <T extends IVoiceLanguage>(voices: readonly T[], languageCode: string): readonly T[] => {
 	const voicesForLanguage = voices.filter((voice) => voice.lang.startsWith(languageCode));
 
 	return voicesForLanguage;
 };
 
-export const getVoicesForLanguageExact = <T extends IVoiceLanguage>(voices: Readonly<T[]>, languageCode: string): Readonly<T[]> => {
+export const getVoicesForLanguageExact = <T extends IVoiceLanguage>(voices: readonly T[], languageCode: string): readonly T[] => {
 	const voicesForLanguage = voices.filter((voice) => voice.lang === languageCode);
 
 	return voicesForLanguage;
@@ -97,7 +101,7 @@ export const getLanguageFromBcp47 = (bcp47: Readonly<string>): Readonly<string> 
 	return languageGroup;
 };
 
-export const getLanguageDialectsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {
+export const getLanguageDialectsFromLanguages = (languages: readonly string[]): readonly string[] => {
 	const languageDialects = [
 		...new Set(
 			languages.filter((language) => isLanguageDialect(language)),
@@ -107,7 +111,7 @@ export const getLanguageDialectsFromLanguages = (languages: Readonly<string[]>):
 	return languageDialects;
 };
 
-export const getLanguageGroupsFromLanguages = (languages: Readonly<string[]>): Readonly<string[]> => {
+export const getLanguageGroupsFromLanguages = (languages: readonly string[]): readonly string[] => {
 	const languageGroups = [
 		...new Set(
 			languages.map((language) => getLanguageGroupFromLanguage(language)),
@@ -117,7 +121,7 @@ export const getLanguageGroupsFromLanguages = (languages: Readonly<string[]>): R
 	return languageGroups;
 };
 
-export const getLanguagesFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): Readonly<string[]> => {
+export const getLanguagesFromVoices = <T extends IVoiceLanguage>(voices: readonly T[]): readonly string[] => {
 	const languages = [
 		...new Set(
 			voices.map((voice) => voice.lang),
@@ -127,7 +131,7 @@ export const getLanguagesFromVoices = <T extends IVoiceLanguage>(voices: Readonl
 	return languages;
 };
 
-export const getLanguageGroupsFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): Readonly<string[]> => {
+export const getLanguageGroupsFromVoices = <T extends IVoiceLanguage>(voices: readonly T[]): readonly string[] => {
 	const languageGroups = [
 		...new Set(
 			voices.map((voice) => getLanguageGroupFromLanguage(voice.lang)),
@@ -138,13 +142,13 @@ export const getLanguageGroupsFromVoices = <T extends IVoiceLanguage>(voices: Re
 };
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const getLanguagesFromVoicesByLanguage = <T extends IVoiceLanguage>(voicesByLanguage: Readonly<VoicesByLanguage<T>>): Readonly<string[]> => {
+export const getLanguagesFromVoicesByLanguage = <T extends IVoiceLanguage>(voicesByLanguage: Readonly<VoicesByLanguage<T>>): readonly string[] => {
 	const languages = Object.keys(voicesByLanguage);
 
 	return languages;
 };
 
-export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
+export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: readonly T[]): VoicesByLanguageGroup<T> => {
 	// eslint-disable-next-line unicorn/no-array-reduce
 	const voicesByLanguage = voices.reduce<VoicesByLanguage<T>>(
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -160,7 +164,7 @@ export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: 
 	return voicesByLanguage;
 };
 
-export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguageGroup<T> => {
+export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: readonly T[]): VoicesByLanguageGroup<T> => {
 	// eslint-disable-next-line unicorn/no-array-reduce
 	const voicesByLanguageGroup = voices.reduce<VoicesByLanguageGroup<T>>(
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -180,7 +184,7 @@ export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voi
 	return voicesByLanguageGroup;
 };
 
-export const getVoicesByLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): VoicesByLanguagesByLanguageGroup<T> => {
+export const getVoicesByLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: readonly T[]): VoicesByLanguagesByLanguageGroup<T> => {
 	const voicesByLanguage = getVoicesByLanguageFromVoices(voices);
 
 	// eslint-disable-next-line unicorn/no-array-reduce
@@ -208,7 +212,7 @@ export const getVoicesByLanguagesByLanguageGroupFromVoices = <T extends IVoiceLa
 	return languagesByLanguageGroup;
 };
 
-export const getLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: Readonly<T[]>): LanguagesByLanguageGroup => {
+export const getLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voices: readonly T[]): LanguagesByLanguageGroup => {
 	const voicesByLanguagesByLanguageGroup = getVoicesByLanguagesByLanguageGroupFromVoices(voices);
 
 	const languageGroups = Object.keys(voicesByLanguagesByLanguageGroup);
@@ -236,11 +240,35 @@ export const getLanguagesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(
 	return languagesByLanguageGroup;
 };
 
-export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(voices: Readonly<T[]>, voiceName: string): Readonly<T> => {
+export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(voices: readonly T[], voiceName: string): Readonly<T> => {
 	const matchingVoices = voices.filter((voice) => voice.name === voiceName);
 
 	if (matchingVoices.length !== 1) {
-		throw new Error(`Mismatching number of voices found: ${matchingVoices.length}`);
+		// NOTE: having multiple voices with the same name may be an issue; degrading error throwing to logging to avoid unhandled crashes.
+		// TODO: investigate detectable differences between voices, in particular on a macos systems.
+		// - Is the issue related to macos allowing easy, one-click voice quality upgrades from the system voice settings?
+		// - Are both low-/high-quality instances are kept and included in the voice list?
+		// - Is the voice list name duplication instantaneous at upgrade time?
+		// - Does the name collision persist after rebooting?
+		// TODO: differentiate between voices, even if they have the same name.
+		// - Add a unique identifier to the name, perhaps based on voiceURI?
+		//   https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/voiceURI
+		// - If differences are detectable, label applicable voices as low-/high-quality?
+		// - If differences are detectable, automatically select the high-quality voice if there is a collision?
+		// TODO: investigate if the voice array order is consistent.
+		// - If consistent, which index should be chosen by default?
+		// - If differences are detectable, can the list be sorted for consistency?
+		// TODO: either fix names for uniqueness, or propagate the name collision error/warning to the user interface.
+		void logError(
+			"getVoiceForVoiceNameFromVoices",
+			"Mismatching number of voices found for voice by name.",
+			matchingVoices.length,
+			voiceName,
+			matchingVoices.length > 0
+				? "Returning the first matching voice for consistency."
+				: "There were no voice matches by name.",
+			matchingVoices,
+		);
 	}
 
 	const firstVoice = matchingVoices[0];
@@ -252,13 +280,14 @@ export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(
 	return firstVoice;
 };
 
-export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups = (navigatorLanguages: Readonly<string[]>, languages: Readonly<string[]>, languageGroups: Readonly<string[]>): string[] => [
+export const getAvailableBrowserLanguageWithInstalledVoiceFromNavigatorLanguagesAndLanguagesAndLanguageGroups
+	= (navigatorLanguages: readonly string[], languages: readonly string[], languageGroups: readonly string[]): string[] => [
 	// NOTE: preferring language groups over languages/dialects.
-	...navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)),
-	...navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)),
-];
+		...navigatorLanguages.filter((navigatorLanguage) => languageGroups.includes(navigatorLanguage)),
+		...navigatorLanguages.filter((navigatorLanguage) => languages.includes(navigatorLanguage)),
+	];
 
-export const getAvailableBrowserLanguageGroupsWithNavigatorLanguages = (navigatorLanguageGroups: Readonly<string[]>, languageGroups: Readonly<string[]>): LanguageGroupWithNavigatorLanguage[] =>
+export const getAvailableBrowserLanguageGroupsWithNavigatorLanguages = (navigatorLanguageGroups: readonly string[], languageGroups: readonly string[]): LanguageGroupWithNavigatorLanguage[] =>
 	languageGroups
 		.map(
 			((languageGroup) => ({

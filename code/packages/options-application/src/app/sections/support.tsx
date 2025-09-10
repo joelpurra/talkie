@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,11 @@ import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import type {
+	ChildrenOptionalProps,
+	OnOpenShortcutKeysClickProp,
+} from "@talkie/shared-ui/types.mjs";
+
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import Icon from "@talkie/shared-ui/components/icon/icon.js";
 import configureAttribute, {
@@ -32,10 +37,6 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as listBase from "@talkie/shared-ui/styled/list/list-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	ChildrenOptionalProps,
-	OnOpenShortcutKeysClickProp,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import InstallVoicesFaq from "./support/install-voices-faq.js";

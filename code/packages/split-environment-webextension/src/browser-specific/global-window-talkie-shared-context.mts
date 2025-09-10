@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,9 +29,9 @@ import {
 declare global {
 	// TODO: be more selective about where this "global" augmentation is applied?
 	// NOTE: typing for both the globalThis context (used in/from the background) and Window interface (used when retrieving the background context).
-	// eslint-disable-next-line no-var
+
 	var talkieContextIdentifier: MessageBusContextIdentifier;
-	// eslint-disable-next-line no-var
+
 	var talkieSharedContext: ITalkieSharedContext;
 
 	interface Window {

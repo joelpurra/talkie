@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	MapDispatchToPropsFunction,
+	MapStateToProps,
+} from "react-redux";
+
+import type {
+	PopupRootState,
+} from "../store/index.mjs";
+
 import toolkit from "@reduxjs/toolkit";
 import VoicesLoader from "@talkie/shared-ui/components/loaders/voices-loader.js";
 import IsSpeakingListenerContainer from "@talkie/shared-ui/containers/is-speaking-listener-container.js";
@@ -26,10 +35,6 @@ import {
 	ProgressUpdaterTypehack,
 } from "@talkie/shared-ui/hocs/progress-updater.js";
 import React from "react";
-import type {
-	MapDispatchToPropsFunction,
-	MapStateToProps,
-} from "react-redux";
 import {
 	connect,
 } from "react-redux";
@@ -42,9 +47,6 @@ import selectors from "../selectors/index.mjs";
 import {
 	actions,
 } from "../slices/index.mjs";
-import type {
-	PopupRootState,
-} from "../store/index.mjs";
 
 const {
 	bindActionCreators,
@@ -96,6 +98,7 @@ class App<P extends AppProps & MainStateProps & MainDispatchProps & ProgressUpda
 
 				<IsSpeakingListenerContainer/>
 
+				{/* eslint-disable-next-line @typescript-eslint/no-deprecated */}
 				<ProgressUpdaterTypehack
 					setCurrent={setCurrent}
 					setMax={setMax}

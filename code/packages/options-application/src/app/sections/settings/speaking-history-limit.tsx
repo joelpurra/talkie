@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,13 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	SpeakingHistoryEntry,
+} from "@talkie/shared-interfaces/speaking-history.mjs";
+import type {
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import type {
+	StyleObject,
+} from "styletron-react";
+
 import {
 	KnownSettingDefaults,
 	KnownSettingRanges,
 } from "@talkie/shared-application/settings.mjs";
-import type {
-	SpeakingHistoryEntry,
-} from "@talkie/shared-interfaces/speaking-history.mjs";
 import translateAttribute, {
 	type TranslateProps,
 } from "@talkie/shared-ui/hocs/translate.js";
@@ -34,13 +41,7 @@ import {
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import type {
-	StyleObject,
-} from "styletron-react";
 
 import InputWithLabel from "../../../components/form/input-with-label.js";
 import {
@@ -52,7 +53,7 @@ export interface SpeakingHistoryLimitProps {
 	disabled: boolean;
 	onChange: (speakingHistoryLimit: number) => void;
 	removeSpeakingHistoryEntry: typeof actions.shared.history.removeSpeakingHistoryEntry;
-	speakingHistory: Readonly<SpeakingHistoryEntry[]>;
+	speakingHistory: readonly SpeakingHistoryEntry[];
 	speakingHistoryCount: number;
 	speakingHistoryLimit: number;
 }

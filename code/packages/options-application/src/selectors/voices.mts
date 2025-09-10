@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,8 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/no-unassigned-import
-import "reselect";
+import type {
+	OptionsRootState,
+} from "../store/index.mjs";
 
 import toolkit from "@reduxjs/toolkit";
 import {
@@ -30,13 +31,11 @@ import {
 	getVoices,
 	getVoicesByLanguagesByLanguageGroup,
 } from "@talkie/shared-ui/selectors/voices.mjs";
-
-import type {
-	OptionsRootState,
-} from "../store/index.mjs";
+// eslint-disable-next-line import-x/no-unassigned-import
+import "reselect";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createDraftSafeSelector,
 } = toolkit;
 

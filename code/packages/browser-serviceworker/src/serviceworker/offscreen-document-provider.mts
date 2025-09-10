@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,15 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logWarn,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
 import type IOffscreenDocumentProvider from "@talkie/split-environment-interfaces/ioffscreen-document-provider.mjs";
 import type {
 	Offscreen,
 	Runtime,
 } from "webextension-polyfill";
+
+import {
+	logWarn,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 export default class ChromeOffscreenDocumentProvider implements IOffscreenDocumentProvider {
 	private get _internalExtensionUrl(): string {

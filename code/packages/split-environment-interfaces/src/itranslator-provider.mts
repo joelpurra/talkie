@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@ import type ILocaleProvider from "./ilocale-provider.mjs";
 
 export type ITranslatorProviderConstructor = new(localeProvider: ILocaleProvider) => ITranslatorProvider;
 
-export type Translate = (key: string, extras?: Readonly<string[]>) => Promise<string>;
-export type TranslateSync = (key: string, extras?: Readonly<string[]>) => string;
+export type Translate = (key: string, extras?: readonly string[]) => Promise<string>;
+export type TranslateSync = (key: string, extras?: readonly string[]) => string;
 
 export default interface ITranslatorProvider {
 	translate: Translate;

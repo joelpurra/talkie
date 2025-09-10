@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -96,7 +96,13 @@ export default class StayAliveManager {
 			? 0
 			: now - mostRecentTimestamp;
 
-		void logDebug(this.constructor.name, "Ah, ha, ha, ha, stayin' alive, stayin' alive!", this._activeStayAliveCounter, this._totalStayAliveCounter, `${intervalDiff > 0 ? "+" : ""}${intervalDiff} milliseconds`);
+		void logDebug(
+			this.constructor.name,
+			"Ah, ha, ha, ha, stayin' alive, stayin' alive!",
+			this._activeStayAliveCounter,
+			this._totalStayAliveCounter,
+			`${intervalDiff > 0 ? "+" : ""}${intervalDiff} milliseconds`,
+		);
 
 		await chrome.storage.local.set({
 			[this._storagePropertyName]: now,

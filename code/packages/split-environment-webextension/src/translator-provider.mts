@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,12 +27,12 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 		private readonly localeProvider: ILocaleProvider,
 	) {}
 
-	async translatePlaceholder(key: string, extras?: Readonly<string[]>): Promise<string> {
-		// eslint-disable-next-line no-sync
+	async translatePlaceholder(key: string, extras?: readonly string[]): Promise<string> {
+		// eslint-disable-next-line no-sync, @typescript-eslint/no-deprecated
 		return this.translatePlaceholderSync(key, extras);
 	}
 
-	translatePlaceholderSync(key: string, extras?: Readonly<string[]>): string {
+	translatePlaceholderSync(key: string, extras?: readonly string[]): string {
 		// TODO: inject logging provider?
 		// eslint-disable-next-line no-console
 		console.warn("Untranslated placeholder:", key, extras);
@@ -44,12 +44,12 @@ export default class WebExtensionEnvironmentTranslatorProvider implements ITrans
 		return key + placeholderExtras;
 	}
 
-	async translate(key: string, extras?: Readonly<string[]>): Promise<string> {
+	async translate(key: string, extras?: readonly string[]): Promise<string> {
 		// eslint-disable-next-line no-sync
 		return this.translateSync(key, extras);
 	}
 
-	translateSync(key: string, extras?: Readonly<string[]>): string {
+	translateSync(key: string, extras?: readonly string[]): string {
 		// const locale = this.localeProvider.getTranslationLocale();
 
 		// TODO: use same translation system in frontend and backend?

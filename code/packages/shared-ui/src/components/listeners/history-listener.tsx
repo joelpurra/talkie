@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,12 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	startCrowdee,
-} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
-import {
-	executeUninitializers,
-} from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
 import type {
 	SpeakingEventPartData,
 } from "@talkie/shared-interfaces/ispeaking-event.mjs";
@@ -33,14 +27,22 @@ import type {
 import type {
 	UninitializerCallback,
 } from "@talkie/shared-interfaces/uninitializer.mjs";
+
+import type {
+	actions,
+} from "../../slices/index.mjs";
+
+import {
+	startCrowdee,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
+import {
+	executeUninitializers,
+} from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
 import React from "react";
 
 import {
 	MessageBusContext,
 } from "../../containers/providers.js";
-import type {
-	actions,
-} from "../../slices/index.mjs";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HistoryListenerStateProps {}
@@ -87,7 +89,7 @@ export default class HistoryListener<P extends HistoryListenerStateProps & Histo
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	setSpeakingHistory(speakingHistory: Readonly<SpeakingHistoryEntry[]>): void {
+	setSpeakingHistory(speakingHistory: readonly SpeakingHistoryEntry[]): void {
 		if (Array.isArray(speakingHistory)) {
 			this.props.setSpeakingHistory(speakingHistory);
 		} else {
@@ -120,10 +122,11 @@ export default class HistoryListener<P extends HistoryListenerStateProps & Histo
 				(
 					_actionName,
 					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-					actionData: Readonly<SpeakingHistoryEntry[]>,
+					actionData: readonly SpeakingHistoryEntry[],
 				) => {
 					this.setSpeakingHistory(actionData);
-				}),
+				},
+			),
 
 			startCrowdee(
 				this.context.messageBusProviderGetter,
@@ -133,7 +136,8 @@ export default class HistoryListener<P extends HistoryListenerStateProps & Histo
 					actionData: Readonly<SpeakingHistoryEntry>,
 				) => {
 					this.updateSpeakingEventData(actionData);
-				}),
+				},
+			),
 
 			startCrowdee(
 				this.context.messageBusProviderGetter,
@@ -144,7 +148,8 @@ export default class HistoryListener<P extends HistoryListenerStateProps & Histo
 					actionData: Readonly<SpeakingEventPartData>,
 				) => {
 					this.updateSpeakingEventPartData(actionData);
-				}),
+				},
+			),
 		];
 
 		const u = await Promise.all(t.flat());

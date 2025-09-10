@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,22 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type UninitializerCallback,
-} from "@talkie/shared-interfaces/uninitializer.mjs";
-import type {
-	MessageBusAction,
-	MessageBusActionHandler,
-} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
 import type {
 	IMessageBusProviderGetter,
 	MessageBusRequest,
 	TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import type {
+	MessageBusAction,
+	MessageBusActionHandler,
+} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
+import type {
 	JsonValue,
 	Promisable,
 } from "type-fest";
+
+import {
+	type UninitializerCallback,
+} from "@talkie/shared-interfaces/uninitializer.mjs";
 
 import MessageBusBullhorn from "./message-bus-bullhorn.mjs";
 import MessageBusCrowdee from "./message-bus-crowdee.mjs";
@@ -46,12 +47,18 @@ export interface IMessageBusListenerHelpers {
 	bullhorn: <T extends MessageBusRequest = MessageBusRequest>(action: MessageBusAction, message?: T) => Promisable<void>;
 	betoken: <T extends MessageBusRequest = MessageBusRequest>(action: MessageBusAction, message?: T) => Promisable<typeof TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE>;
 	bespeak: <T extends MessageBusRequest = MessageBusRequest>(action: MessageBusAction, message?: T) => Promisable<JsonValue>;
-	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	startReactor: <T extends MessageBusRequest = MessageBusRequest>(actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerReactor<T>) => Promise<UninitializerCallback[]>;
-	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	startResponder: <T extends MessageBusRequest = MessageBusRequest>(actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerResponder<T>) => Promise<UninitializerCallback[]>;
-	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-	startCrowdee: <T extends MessageBusRequest = MessageBusRequest>(actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerCrowdee<T>) => Promise<UninitializerCallback[]>;
+	startReactor: <T extends MessageBusRequest = MessageBusRequest>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerReactor<T>
+	) => Promise<UninitializerCallback[]>;
+	startResponder: <T extends MessageBusRequest = MessageBusRequest>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerResponder<T>
+	) => Promise<UninitializerCallback[]>;
+	startCrowdee: <T extends MessageBusRequest = MessageBusRequest>(
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerCrowdee<T>
+	) => Promise<UninitializerCallback[]>;
 }
 
 export type FakeMessageBusActionHandlerCrowdee<T extends MessageBusRequest = MessageBusRequest> = (action: MessageBusAction, message: T) => Promisable<void>;
@@ -72,15 +79,24 @@ export const bespeak = async <T extends MessageBusRequest = MessageBusRequest>(m
 	return messageBusRequester.bespeak(message);
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const betoken = async <T extends MessageBusRequest = MessageBusRequest>(messageBusProviderGetter: IMessageBusProviderGetter, action: MessageBusAction, message?: T): Promise<typeof TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE> => {
+export const betoken = async <T extends MessageBusRequest = MessageBusRequest>(
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: IMessageBusProviderGetter,
+	action: MessageBusAction,
+	message?: T,
+): Promise<typeof TALKIE_MESSAGE_BUS_HANDLER_DONE_RESPONSE> => {
 	const messageBusSimplexer = new MessageBusSimplexer(action, messageBusProviderGetter);
 
 	return messageBusSimplexer.betoken(message);
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const startReactor = async <T extends MessageBusRequest = MessageBusRequest>(messageBusProviderGetter: IMessageBusProviderGetter, actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerReactor<T>): Promise<UninitializerCallback[]> => {
+export const startReactor = async <T extends MessageBusRequest = MessageBusRequest>(
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: IMessageBusProviderGetter,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	actions: MessageBusAction[] | MessageBusAction,
+	messageHandler: FakeMessageBusActionHandlerReactor<T>,
+): Promise<UninitializerCallback[]> => {
 	const flattenedActions: MessageBusAction[] = [
 		actions,
 	].flat();
@@ -93,8 +109,13 @@ export const startReactor = async <T extends MessageBusRequest = MessageBusReque
 	})));
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const startResponder = async <T extends MessageBusRequest = MessageBusRequest>(messageBusProviderGetter: IMessageBusProviderGetter, actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerResponder<T>): Promise<UninitializerCallback[]> => {
+export const startResponder = async <T extends MessageBusRequest = MessageBusRequest>(
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: IMessageBusProviderGetter,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	actions: MessageBusAction[] | MessageBusAction,
+	messageHandler: FakeMessageBusActionHandlerResponder<T>,
+): Promise<UninitializerCallback[]> => {
 	const flattenedActions: MessageBusAction[] = [
 		actions,
 	].flat();
@@ -107,8 +128,13 @@ export const startResponder = async <T extends MessageBusRequest = MessageBusReq
 	})));
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const startCrowdee = async <T extends MessageBusRequest = MessageBusRequest>(messageBusProviderGetter: IMessageBusProviderGetter, actions: MessageBusAction[] | MessageBusAction, messageHandler: FakeMessageBusActionHandlerCrowdee<T>): Promise<UninitializerCallback[]> => {
+export const startCrowdee = async <T extends MessageBusRequest = MessageBusRequest>(
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	messageBusProviderGetter: IMessageBusProviderGetter,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	actions: MessageBusAction[] | MessageBusAction,
+	messageHandler: FakeMessageBusActionHandlerCrowdee<T>,
+): Promise<UninitializerCallback[]> => {
 	const flattenedActions: MessageBusAction[] = [
 		actions,
 	].flat();

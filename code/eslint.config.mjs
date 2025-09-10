@@ -18,25 +18,42 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	type IVoiceNameAndLanguage,
-} from "@talkie/shared-interfaces/ivoices.mjs";
+import eslintConfigJoelpurraReact from "eslint-config-joelpurra/react";
+import eslintConfigJoelpurraTypescript from "eslint-config-joelpurra/typescript";
+import globals from "globals";
 
-export const getMappedVoice = <T extends IVoiceNameAndLanguage>(voice: T): IVoiceNameAndLanguage => ({
-	lang: voice.lang,
-	name: voice.name,
-});
+const eslintConfig = [
+	{
+		ignores: [
+			"./.ncurc.js",
+			"./.nx/",
+			"./build/*-build-mode.mjs",
+			"./syncpack.config.cjs",
+			"**/artifacts/",
+			"**/dist/",
+			"**/node_modules/",
+			"**/rollup.config.*.mjs",
+			"**/rollup.config.mjs",
+			"**/runtime/",
+			"**/src/**/*.mjs",
+		],
+	},
+	{
+		files: [
+			"./packages/*/**/*.mts",
+			"./packages/*/**/*.tsx",
+		],
+		languageOptions: {
+			ecmaVersion: 2022,
+			globals: {
+				...globals.browser,
+				...globals.webextensions,
+			},
+			sourceType: "module",
+		},
+	},
+	...eslintConfigJoelpurraReact,
+	...eslintConfigJoelpurraTypescript,
+];
 
-export const rateRange = {
-	"default": 1,
-	max: 10,
-	min: 0.1,
-	step: 0.1,
-};
-
-export const pitchRange = {
-	"default": 1,
-	max: 2,
-	min: 0,
-	step: 0.1,
-};
+export default eslintConfig;

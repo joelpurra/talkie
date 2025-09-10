@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
+import type LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
+import type ScaleRange from "../../../../components/range/scale-range.js";
+
 import {
 	debounce,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -29,12 +36,7 @@ import {
 	type TranslateSync,
 } from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
-import type LogarithmicScaleRange from "../../../../components/range/logarithmic-scale-range.js";
-import type ScaleRange from "../../../../components/range/scale-range.js";
 import {
 	type ScaleRangeProps,
 } from "../../../../components/range/scale-range.js";

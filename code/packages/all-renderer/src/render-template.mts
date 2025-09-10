@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	Action,
+} from "@reduxjs/toolkit";
+
 import {
 	writeFile as writeFileCallback,
 } from "node:fs";
@@ -25,13 +29,10 @@ import {
 	promisify,
 } from "node:util";
 
-import type {
-	Action,
-} from "@reduxjs/toolkit";
-import render from "@talkie/renderer/render.mjs";
 import {
 	type IRenderReactHtmlToFile,
 } from "@talkie/renderer/render-types.mjs";
+import render from "@talkie/renderer/render.mjs";
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -49,6 +50,7 @@ const renderTemplate = async <S, A extends Action, P>(
 	const html = await render(
 		app.rootReducer,
 		app.customPrerenderedActionsToDispatch,
+		// eslint-disable-next-line @typescript-eslint/no-deprecated
 		app.customPostrenderActionsToDispatch,
 		app.reactHtmlTemplatePath,
 		talkieLocale,

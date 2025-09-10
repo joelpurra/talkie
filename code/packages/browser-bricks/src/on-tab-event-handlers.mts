@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,15 +19,16 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type SettingsManager from "@talkie/shared-application/settings-manager.mjs";
-import {
-	logDebug,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	Tabs,
 } from "webextension-polyfill";
 
 import type Speaker from "./speaker.mjs";
 import type SpeakingStatus from "./speaking-status.mjs";
+
+import {
+	logDebug,
+} from "@talkie/shared-application-helpers/log.mjs";
 
 export default class OnTabEventHandlers {
 	constructor(private readonly speaker: Speaker, private readonly speakingStatus: SpeakingStatus, private readonly settingsManager: SettingsManager) {}

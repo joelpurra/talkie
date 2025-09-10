@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import {
 export default class CommandHandler {
 	constructor(private readonly commandMap: IBrowserCommandMap) {}
 
-	async handle(command: string, ...args: Readonly<unknown[]>): Promise<void> {
+	async handle(command: string, ...args: readonly unknown[]): Promise<void> {
 		void logDebug("Start", "commandHandler", command);
 
 		const commandAction = this.commandMap[command];
@@ -50,7 +50,7 @@ export default class CommandHandler {
 		}
 	}
 
-	async handleCommandEvent(command: string, ...args: Readonly<unknown[]>): Promise<void> {
+	async handleCommandEvent(command: string, ...args: readonly unknown[]): Promise<void> {
 		void logDebug("Start", "handleCommandEvent", command);
 
 		try {

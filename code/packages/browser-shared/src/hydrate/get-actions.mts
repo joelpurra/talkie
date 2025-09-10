@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,12 +21,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	Action,
 } from "@reduxjs/toolkit";
+
 import {
 	actions,
 } from "@talkie/shared-ui/slices/index.mjs";
 
-export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
-	const browserDefaults: Readonly<A[]> = [];
+export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: readonly A[]): readonly A[] => {
+	const browserDefaults: readonly A[] = [];
 
 	const allActionsToDispatch: A[] = [
 		...browserDefaults,
@@ -36,7 +37,7 @@ export const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActio
 	return allActionsToDispatch;
 };
 
-export const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
+export const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDispatch: readonly A[]): readonly A[] => {
 	const browserDefaults: A[] = [
 		// NOTE: don't want to keep track of when to load these, preemptively loading.
 		actions.metadata.loadIsPremiumEdition() as unknown as A,

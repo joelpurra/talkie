@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,6 +20,14 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import type {
+	OnOpenShortcutKeysClickProp,
+} from "@talkie/shared-ui/types.mjs";
+
+import type {
+	actions,
+} from "../../../slices/index.mjs";
+
 import Discretional from "@talkie/shared-ui/components/discretional.js";
 import configureAttribute, {
 	type ConfigureProps,
@@ -29,16 +37,10 @@ import translateAttribute, {
 } from "@talkie/shared-ui/hocs/translate.js";
 import * as layoutBase from "@talkie/shared-ui/styled/layout/layout-base.js";
 import * as textBase from "@talkie/shared-ui/styled/text/text-base.js";
-import type {
-	OnOpenShortcutKeysClickProp,
-} from "@talkie/shared-ui/types.mjs";
 import React from "react";
 
 import MarkdownParagraph from "../../../components/markdown/paragraph.js";
 import EditionSection from "../../../components/section/edition-section.js";
-import type {
-	actions,
-} from "../../../slices/index.mjs";
 
 export interface ReadClipboardPermissionProps {
 	askClipboardReadPermission: typeof actions.shared.clipboard.askClipboardReadPermission;
@@ -147,10 +149,6 @@ class ReadClipboardPermission<P extends ReadClipboardPermissionProps & Configure
 				hasClipboardReadPermissionText = translateSync("frontend_settingsReadClipboardPermissionUnknown");
 
 				break;
-			}
-
-			default: {
-				throw new Error("How did it come to this?");
 			}
 		}
 

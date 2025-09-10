@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,22 +23,24 @@ import type {
 	Store,
 } from "@reduxjs/toolkit";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+import type {
+	StandardEngine,
+} from "styletron-standard";
+
 import {
 	type IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
 import React from "react";
 import {
 	Provider as StoreProvider,
 } from "react-redux";
-import type {
-	StandardEngine,
-} from "styletron-standard";
 
 import ErrorBoundary from "../components/error-boundary.js";
 import {
 	type ChildrenRequiredProps,
 } from "../types.mjs";
+
 import Providers from "./providers.js";
 
 export interface RootProps<S, A extends Action> {

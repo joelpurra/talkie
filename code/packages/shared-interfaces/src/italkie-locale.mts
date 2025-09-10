@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,34 +26,34 @@ export type LanguageTextDirection = "ltr" | "rtl";
 // NOTE: should match directory names in _locales/
 // TODO: enum-based type?
 export type TalkieLocale =
-| "ar"
-| "bg"
-| "cs"
-| "da"
-| "de"
-| "el"
-| "en"
-| "es"
-| "fi"
-| "fr"
-| "he"
-| "hi"
-| "hu"
-| "id"
-| "it"
-| "ja"
-| "ko"
-| "nb"
-| "nl"
-| "pl"
-| "pt"
-| "ro"
-| "ru"
-| "sk"
-| "sv"
-| "th"
-| "tr"
-| "zh";
+	| "ar"
+	| "bg"
+	| "cs"
+	| "da"
+	| "de"
+	| "el"
+	| "en"
+	| "es"
+	| "fi"
+	| "fr"
+	| "he"
+	| "hi"
+	| "hu"
+	| "id"
+	| "it"
+	| "ja"
+	| "ko"
+	| "nb"
+	| "nl"
+	| "pl"
+	| "pt"
+	| "ro"
+	| "ru"
+	| "sk"
+	| "sv"
+	| "th"
+	| "tr"
+	| "zh";
 
 // TODO: create a list for UI locale, possibly based on Chromium or Firefox sources.
 // https://src.chromium.org/viewvc/chrome/trunk/src/third_party/cld/languages/internal/languages.cc

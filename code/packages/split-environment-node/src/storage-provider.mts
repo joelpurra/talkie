@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,14 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	jsonClone,
-} from "@talkie/shared-application-helpers/basic.mjs";
 import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 import type {
 	JsonObject,
 	JsonValue,
 } from "type-fest";
+
+import {
+	jsonClone,
+} from "@talkie/shared-application-helpers/basic.mjs";
 
 export default class NodeEnvironmentStorageProvider implements IStorageProvider {
 	private readonly _inMemoryStorage = new Map<string, JsonValue>();
@@ -50,7 +51,7 @@ export default class NodeEnvironmentStorageProvider implements IStorageProvider 
 		}
 
 		// NOTE: storing/retrieving cloned values instead of references.
-		const value = jsonClone(valueJson) as JsonValue;
+		const value = jsonClone(valueJson);
 
 		// TODO: validate and assert, or warn, remove generic type, or something.
 		return value as unknown as T;
@@ -86,10 +87,11 @@ export default class NodeEnvironmentStorageProvider implements IStorageProvider 
 	}
 
 	async setAll<T extends JsonObject>(object: T): Promise<void> {
-		for await (const [
+		for (const [
 			key,
 			value,
 		] of Object.entries(object)) {
+			// eslint-disable-next-line no-await-in-loop
 			await this.set(key, value);
 		}
 	}

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,18 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import assert from "node:assert";
-import path from "node:path";
-import process from "node:process";
-
 import type IManifestProvider from "@talkie/split-environment-interfaces/imanifest-provider.mjs";
-import jsonfile from "jsonfile";
 import type {
 	JsonObject,
 } from "type-fest";
 import type {
 	Manifest,
 } from "webextension-polyfill";
+
+import assert from "node:assert";
+import path from "node:path";
+import process from "node:process";
+
+import jsonfile from "jsonfile";
 
 const MANIFEST_FILENAME = "manifest.json";
 
@@ -39,7 +40,7 @@ export default class NodeEnvironmentManifestProvider implements IManifestProvide
 	async get(): Promise<Manifest.ManifestBase> {
 		await this._ensureCacheIsLoaded();
 
-		assert(this._cachedManifest);
+		assert.ok(this._cachedManifest);
 
 		return this._cachedManifest;
 	}

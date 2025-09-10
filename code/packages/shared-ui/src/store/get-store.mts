@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,18 +24,19 @@ import type {
 	Reducer,
 	Store,
 } from "@reduxjs/toolkit";
-import toolkit from "@reduxjs/toolkit";
-import {
-	isTalkieDevelopmentMode,
-} from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
 import type IApi from "@talkie/split-environment-interfaces/iapi/iapi.mjs";
-import logger from "redux-logger";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
+import toolkit from "@reduxjs/toolkit";
+import {
+	isTalkieDevelopmentMode,
+} from "@talkie/shared-application-helpers/talkie-build-mode.mjs";
+import logger from "redux-logger";
+
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	configureStore,
 } = toolkit;
 

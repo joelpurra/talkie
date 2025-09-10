@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,28 +18,29 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
+import type {
+	IMessageBusProvider,
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import Configuration from "@talkie/shared-application/configuration/configuration.mjs";
 import configurationObject from "@talkie/shared-application/data/configuration/configuration.mjs";
 import InternalMessageBusProvider from "@talkie/shared-application/message-bus/internal-message-bus-provider.mjs";
 import SameContextMessageBusEventProvider from "@talkie/shared-application/message-bus/same-context-message-bus-event-provider.mjs";
 import MetadataManager from "@talkie/shared-application/metadata-manager.mjs";
 import PremiumManager from "@talkie/shared-application/premium-manager.mjs";
-import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
 import TalkieLocaleHelper from "@talkie/shared-locales/talkie-locale-helper.mjs";
-import type {
-	IMessageBusProvider,
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import DynamicEnvironmentProvider from "@talkie/split-environment-node/dynamic-environment.mjs";
 import LocaleProvider from "@talkie/split-environment-node/locale-provider.mjs";
 import ManifestProvider from "@talkie/split-environment-node/manifest-provider.mjs";
 import PremiumProvider from "@talkie/split-environment-node/premium-provider.mjs";
 import RenderingApi from "@talkie/split-environment-node/server-specific/rendering-api.mjs";
-import RenderingCoating from "@talkie/split-environment-node/server-specific/rendering-coating.mjs";
 import RenderingCoatingLocale from "@talkie/split-environment-node/server-specific/rendering-coating-locale.mjs";
 import RenderingCoatingMetadata from "@talkie/split-environment-node/server-specific/rendering-coating-metadata.mjs";
 import RenderingCoatingPremium from "@talkie/split-environment-node/server-specific/rendering-coating-premium.mjs";
 import RenderingCoatingTalkieLocale from "@talkie/split-environment-node/server-specific/rendering-coating-talkie-locale.mjs";
+import RenderingCoating from "@talkie/split-environment-node/server-specific/rendering-coating.mjs";
 import StyletronProvider from "@talkie/split-environment-node/styletron-provider.mjs";
 import TranslatorProvider from "@talkie/split-environment-node/translator-provider.mjs";
 import MessageBusProviderGetter from "@talkie/split-environment-webextension/message-bus/getter/message-bus-provider-getter.mjs";

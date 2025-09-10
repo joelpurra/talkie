@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ export interface MarkdownProps extends ClassNameProp {
 interface InternalProps extends MarkdownProps {}
 
 class MarkdownParagraph<P extends InternalProps> extends React.PureComponent<P> {
-	urlTransform: (...args: Readonly<unknown[]>) => never;
+	urlTransform: (...args: readonly unknown[]) => never;
 
 	constructor(props: P) {
 		super(props);
@@ -39,7 +39,7 @@ class MarkdownParagraph<P extends InternalProps> extends React.PureComponent<P> 
 		this.urlTransform = this.alwaysThrow.bind(null, "urlTransform");
 	}
 
-	alwaysThrow(_callType: string, ...args: Readonly<unknown[]>): never {
+	alwaysThrow(_callType: string, ...args: readonly unknown[]): never {
 		throw new Error(`Disallowed code in markdown: ${JSON.stringify([
 			...args,
 		])}`);

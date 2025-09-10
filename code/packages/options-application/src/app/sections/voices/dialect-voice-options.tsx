@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@ import * as tableBase from "@talkie/shared-ui/styled/table/table-base.js";
 import React from "react";
 
 import PremiumSection from "../../../components/section/premium-section.js";
+
 import Pitch from "./voice-options/pitch.js";
 import Rate from "./voice-options/rate.js";
 import ToggleDefault from "./voice-options/toggle-default.js";

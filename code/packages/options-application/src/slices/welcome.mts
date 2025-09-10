@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,9 +34,9 @@ import {
 } from "../store/index.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 
@@ -72,8 +72,9 @@ export const loadSampleTextForAvailableBrowserLanguageWithInstalledVoice = creat
 
 		let sampleTextLanguage: TalkieLocale | null = null;
 
-		for await (const languageCode of availableBrowserLanguageWithInstalledVoice) {
+		for (const languageCode of availableBrowserLanguageWithInstalledVoice) {
 			// TODO: isTalkieLocale assertion.
+			// eslint-disable-next-line no-await-in-loop
 			const isTalkieLocale = await extra.coating!.talkieLocale.isTalkieLocale(languageCode);
 
 			if (isTalkieLocale) {

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,11 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	IMessageBusEventProvider,
+	MessageBusCallback,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import {
 	jsonClone,
 } from "@talkie/shared-application-helpers/basic.mjs";
@@ -25,10 +30,6 @@ import {
 	logDebug,
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
-import type {
-	IMessageBusEventProvider,
-	MessageBusCallback,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import {
 	type JsonValue,
 } from "type-fest";
@@ -36,6 +37,7 @@ import {
 import {
 	isDeadObjectError,
 } from "../utils/is-dead-wrapper.mjs";
+
 import CrossContextMessageBusEvent from "./cross-context-message-bus-event.mjs";
 import {
 	isMessageBusCallbackInContext,

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,6 +21,12 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 import type {
 	OnInstallEvent,
 } from "@talkie/browser-bricks/on-installed-manager-types.mjs";
+import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
+import type {
+	IMessageBusProvider,
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
 import {
 	groundwork,
 } from "@talkie/browser-groundwork/groundwork.mjs";
@@ -37,11 +43,6 @@ import {
 import {
 	registerUninitializerHandlerSynchronously,
 } from "@talkie/shared-application-helpers/uninitializer-handler.mjs";
-import type IInternalUrlProvider from "@talkie/split-environment-interfaces/iinternal-url-provider.mjs";
-import type {
-	IMessageBusProvider,
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
 import WebExtensionEnvironmentInternalUrlProvider from "@talkie/split-environment-webextension/internal-url-provider.mjs";
 import ChromeBrowserRuntimeMessageBusEventProvider from "@talkie/split-environment-webextension/message-bus/browser-runtime-chrome/chrome-browser-runtime-message-bus-event-provider.mjs";
 import BrowserRuntimeMessageBusProvider from "@talkie/split-environment-webextension/message-bus/browser-runtime-chrome/chrome-browser-runtime-message-bus-provider.mjs";

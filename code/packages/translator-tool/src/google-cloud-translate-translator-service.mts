@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
 import assert from "node:assert";
 
 import {
@@ -30,9 +34,6 @@ import {
 	encode as htmlEntityEncode,
 } from "ent";
 import striptags from "striptags";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import {
 	type BaseLocaleMessages,
@@ -120,7 +121,7 @@ export default class GoogleCloudTranslateTranslator {
 			[],
 		);
 
-		assert(preparedMessagesChunks.length <= preparedMessages.length);
+		assert.ok(preparedMessagesChunks.length <= preparedMessages.length);
 		assert.strictEqual((preparedMessagesChunks.length * this.maxChunkSize), Math.ceil(preparedMessages.length / this.maxChunkSize) * this.maxChunkSize);
 
 		const translationOptions = {
@@ -142,7 +143,7 @@ export default class GoogleCloudTranslateTranslator {
 
 		type GoogleTranslateResponses = [string[], string[]];
 
-		assert(Array.isArray(translationResponseChunks));
+		assert.ok(Array.isArray(translationResponseChunks));
 		assert.strictEqual(preparedMessagesChunks.length, translationResponseChunks.length);
 
 		// NOTE: unchunk (reduce) array of translation array chunks, pick prepared text and translation from response, return array of two parallel translation pair arrays.
@@ -150,28 +151,28 @@ export default class GoogleCloudTranslateTranslator {
 		const translationResponses: GoogleTranslateResponses = translationResponseChunks.reduce<GoogleTranslateResponses>(
 			// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 			(reduced, translationResponseChunk) => {
-				assert(Array.isArray(reduced));
-				assert(Array.isArray(reduced[0]));
-				assert(Array.isArray(reduced[1]));
+				assert.ok(Array.isArray(reduced));
+				assert.ok(Array.isArray(reduced[0]));
+				assert.ok(Array.isArray(reduced[1]));
 				assert.strictEqual(reduced[0].length, reduced[1].length);
 
-				assert(Array.isArray(translationResponseChunk));
+				assert.ok(Array.isArray(translationResponseChunk));
 
 				const prepared = translationResponseChunk[0];
-				assert(Array.isArray(prepared));
+				assert.ok(Array.isArray(prepared));
 
 				const translationResponse = translationResponseChunk[1];
-				assert(typeof translationResponse === "object" && translationResponse !== null && !Array.isArray(translationResponse));
-				assert(typeof translationResponse.data === "object" && translationResponse.data !== null && !Array.isArray(translationResponse.data));
-				assert(Array.isArray(translationResponse.data.translations));
+				assert.ok(typeof translationResponse === "object" && translationResponse !== null && !Array.isArray(translationResponse));
+				assert.ok(typeof translationResponse.data === "object" && translationResponse.data !== null && !Array.isArray(translationResponse.data));
+				assert.ok(Array.isArray(translationResponse.data.translations));
 
-				assert(prepared.length === translationResponse.data.translations.length);
+				assert.ok(prepared.length === translationResponse.data.translations.length);
 
 				// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 				const translatedText = translationResponse.data.translations.map((translation) => {
-					assert(typeof translation === "object" && translation !== null && !Array.isArray(translation));
-					assert(typeof translation.translatedText === "string");
-					assert(translation.translatedText.length > 0);
+					assert.ok(typeof translation === "object" && translation !== null && !Array.isArray(translation));
+					assert.ok(typeof translation.translatedText === "string");
+					assert.ok(translation.translatedText.length > 0);
 
 					return translation.translatedText;
 				});
@@ -207,7 +208,7 @@ export default class GoogleCloudTranslateTranslator {
 			// TODO: update typescript's nodejs typings and/or fix assert typing so that strictEqual has the same type effect as ===?
 			assert.strictEqual(typeof prepared, "string");
 			assert.strictEqual(typeof translated, "string");
-			assert(typeof translated === "string");
+			assert.ok(typeof translated === "string");
 
 			return {
 				prepared,
@@ -241,24 +242,24 @@ export default class GoogleCloudTranslateTranslator {
 		const translatedMessages: LocaleMessages = Object.fromEntries(
 			Object.entries(messages)
 				.map<[string, LocaleMessage]>(
-				(
+					(
 					// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-					[
+						[
+							key,
+							value,
+						],
+						index,
+					) => [
 						key,
-						value,
-					],
-					index,
-				) => [
-					key,
-					{
+						{
 						// TODO: verify types.
-						description: value.description,
-						message: translateDirtyMessages[index],
-						original: value.message,
-						placeholders: value.placeholders,
-					} as unknown as LocaleMessage,
-				],
-			),
+							description: value.description,
+							message: translateDirtyMessages[index],
+							original: value.message,
+							placeholders: value.placeholders,
+						} as unknown as LocaleMessage,
+					],
+				),
 		);
 
 		return translatedMessages;

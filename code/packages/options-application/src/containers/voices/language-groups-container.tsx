@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import type {
+	OptionsRootState,
+} from "../../store/index.mjs";
+
 import {
 	type LanguageGroupWithNavigatorLanguage,
 } from "@talkie/shared-application-helpers/transform-voices.mjs";
@@ -30,9 +34,6 @@ import {
 
 import LanguageGroups from "../../app/sections/voices/language-groups.js";
 import selectors from "../../selectors/index.mjs";
-import type {
-	OptionsRootState,
-} from "../../store/index.mjs";
 
 interface LanguageGroupsContainerProps {
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -40,7 +41,7 @@ interface LanguageGroupsContainerProps {
 }
 
 interface StateProps {
-	sortedLanguageGroupsWithNavigatorLanguages: Readonly<LanguageGroupWithNavigatorLanguage[]>;
+	sortedLanguageGroupsWithNavigatorLanguages: readonly LanguageGroupWithNavigatorLanguage[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

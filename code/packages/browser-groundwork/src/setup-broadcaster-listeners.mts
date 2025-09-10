@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,22 +24,12 @@ import type IconManager from "@talkie/browser-bricks/icon-manager.mjs";
 import type OnlyLastCaller from "@talkie/browser-bricks/only-last-caller.mjs";
 import type SpeakingStatus from "@talkie/browser-bricks/speaking-status.mjs";
 import type StayAliveManager from "@talkie/browser-bricks/stay-alive-manager.mjs";
-import createMessageBusListenerHelpers, {
-	type FakeMessageBusActionHandlerCrowdee,
-	type IMessageBusListenerHelpers,
-} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
 import type {
 	PromiseFunction,
 } from "@talkie/shared-application/promise-logging.mjs";
-import {
-	KnownSettingStorageKeys,
-} from "@talkie/shared-application/settings.mjs";
 import type {
 	SettingChangedEventData,
 } from "@talkie/shared-application/settings-manager.mjs";
-import {
-	getSpeakingHistoryEntryTextHash,
-} from "@talkie/shared-application-helpers/speaking-history.mjs";
 import type {
 	SpeakingEventData,
 	SpeakingEventPartData,
@@ -52,15 +42,26 @@ import type {
 } from "@talkie/shared-interfaces/uninitializer.mjs";
 import type TalkieProgress from "@talkie/shared-ui/talkie-progress.mjs";
 import type {
-	MessageBusAction,
-} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
-import type {
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type {
+	MessageBusAction,
+} from "@talkie/split-environment-interfaces/imessage-bus.mjs";
 import type {
 	JsonValue,
 	ReadonlyDeep,
 } from "type-fest";
+
+import createMessageBusListenerHelpers, {
+	type FakeMessageBusActionHandlerCrowdee,
+	type IMessageBusListenerHelpers,
+} from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
+import {
+	KnownSettingStorageKeys,
+} from "@talkie/shared-application/settings.mjs";
+import {
+	getSpeakingHistoryEntryTextHash,
+} from "@talkie/shared-application-helpers/speaking-history.mjs";
 
 const registerLastCallerListeners = (
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

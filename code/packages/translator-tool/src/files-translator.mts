@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,16 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import assert from "node:assert";
-
-import Bluebird from "bluebird";
-import clone from "clone";
-import jsonfile from "jsonfile";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 
 import type MessagesTranslatorFactory from "./messages-translator-factory.mjs";
+
+import assert from "node:assert";
+
+import Bluebird from "bluebird";
+import clone from "clone";
+import jsonfile from "jsonfile";
+
 import {
 	type BaseLocaleMessages,
 	type BaseMessages,
@@ -41,9 +43,13 @@ export interface FileTranslation {
 }
 
 export default class FilesTranslator {
-	constructor(private readonly _messagesTranslatorFactory: MessagesTranslatorFactory, private readonly _base: ReadonlyDeep<FileTranslation>, private readonly _locales: ReadonlyDeep<FileTranslation[]>) {
+	constructor(
+		private readonly _messagesTranslatorFactory: MessagesTranslatorFactory,
+		private readonly _base: ReadonlyDeep<FileTranslation>,
+		private readonly _locales: ReadonlyDeep<FileTranslation[]>,
+	) {
 		// NOTE: ensure the base language isn't translated onto itself.
-		assert(this._locales.every((locale) => locale.language !== this._base.language));
+		assert.ok(this._locales.every((locale) => locale.language !== this._base.language));
 	}
 
 	async _translateLocale(baseWithMessages: ReadonlyDeep<BaseMessages>, locale: ReadonlyDeep<FileTranslation>): Promise<void> {

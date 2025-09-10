@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,14 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	jsonClone,
-} from "@talkie/shared-application-helpers/basic.mjs";
 import type IConfiguration from "@talkie/shared-interfaces/iconfiguration.mjs";
-import {
-	type IMetadataManager,
-	type SystemType,
-} from "@talkie/shared-interfaces/imetadata-manager.mjs";
 import type {
 	JsonArray,
 	JsonObject,
@@ -34,11 +27,22 @@ import type {
 } from "type-fest";
 
 import {
+	jsonClone,
+} from "@talkie/shared-application-helpers/basic.mjs";
+import {
+	type IMetadataManager,
+	type SystemType,
+} from "@talkie/shared-interfaces/imetadata-manager.mjs";
+
+import {
 	type ConfigurationObject,
 } from "../data/configuration/configuration.mjs";
 
 export default class Configuration implements IConfiguration {
-	private static _resolvePath<T extends JsonValue, D extends JsonObject>(object: Readonly<D>, path: string): Readonly<T> | Readonly<JsonObject> | Readonly<JsonArray> | string | number | boolean | null {
+	private static _resolvePath<T extends JsonValue, D extends JsonObject>(
+		object: Readonly<D>,
+		path: string,
+	): Readonly<T> | Readonly<JsonObject> | Readonly<JsonArray> | string | number | boolean | null {
 		// TODO: use a library, like lodash.get().
 		// NOTE: doesn't handle arrays nor properties of "any" non-object objects.
 		if (!object || typeof object !== "object") {
@@ -60,7 +64,7 @@ export default class Configuration implements IConfiguration {
 		if (part in object) {
 			const value = object[part];
 
-			if (value !== undefined && (Object.prototype).hasOwnProperty.call(object, part)) {
+			if (value !== undefined && Object.hasOwn(object, part)) {
 				if (parts.length === 0) {
 					return value as JsonValue;
 				}
@@ -93,9 +97,9 @@ export default class Configuration implements IConfiguration {
 		const customValue = Configuration._resolvePath(this.configurationObject, path);
 
 		const value = systemValue
-						?? sharedValue
-						?? customValue
-						?? null;
+			?? sharedValue
+			?? customValue
+			?? null;
 
 		if (!value) {
 			throw new Error(`Invalid value for ${(JSON.stringify(systemType))} on ${JSON.stringify(path)}: ${JSON.stringify(value)}`);

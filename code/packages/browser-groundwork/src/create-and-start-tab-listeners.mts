@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,16 +19,17 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type OnTabEventHandlers from "@talkie/browser-bricks/on-tab-event-handlers.mjs";
-import {
-	loggedPromiseCallback,
-	type PromiseFunction,
-} from "@talkie/shared-application/promise-logging.mjs";
 import type {
 	ReadonlyDeep,
 } from "type-fest";
 import type {
 	Tabs,
 } from "webextension-polyfill";
+
+import {
+	loggedPromiseCallback,
+	type PromiseFunction,
+} from "@talkie/shared-application/promise-logging.mjs";
 
 export interface TabChangeListeners {
 	onTabRemovedListener: PromiseFunction<void>;

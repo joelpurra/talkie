@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,8 +34,14 @@ import chromeSelectiveSendResponseMessageHandler from "./chrome-selective-send-r
 // https://issues.chromium.org/issues/40753031
 // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
 // NOTE: handling the workaround in the "bound" handler.
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export default function chromeAsyncSelectiveSendResponseMessageHandlerWrapper(this: MessageBusCallback, rawMessage: unknown, _sender: Runtime.MessageSender, sendResponse: (response: unknown) => void): true {
+
+export default function chromeAsyncSelectiveSendResponseMessageHandlerWrapper(
+	this: MessageBusCallback,
+	rawMessage: unknown,
+	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+	_sender: Runtime.MessageSender,
+	sendResponse: (response: unknown) => void,
+): true {
 	// HACK: passing the original callback as the context, to avoid having to define the callback/wrapper types.
 	// eslint-disable-next-line unicorn/no-this-assignment, @typescript-eslint/no-this-alias
 	const callback: MessageBusCallback = this;

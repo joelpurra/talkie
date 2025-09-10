@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,12 +17,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
+import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
+
 import {
 	logDebug,
 	logError,
 	logInfo,
 } from "@talkie/shared-application-helpers/log.mjs";
-import type IStorageProvider from "@talkie/split-environment-interfaces/istorage-provider.mjs";
 
 interface MigrationCounts {
 	chromeStorageLocal: {
@@ -74,7 +75,11 @@ export default class StorageBackendMigrator {
 			const chromeStorageLocalCount = await this.toStorageProvider.count();
 			const windowLocalStorageCount = await this.fromStorageProvider.count();
 
-			void logDebug(this.constructor.name, "migrateIfNecessary()", `The chrome.storage.local contains data (${chromeStorageLocalCount} keys). Aborting window.localStorage data migration (${windowLocalStorageCount} keys).`);
+			void logDebug(
+				this.constructor.name,
+				"migrateIfNecessary()",
+				`The chrome.storage.local contains data (${chromeStorageLocalCount} keys). Aborting window.localStorage data migration (${windowLocalStorageCount} keys).`,
+			);
 
 			return;
 		}

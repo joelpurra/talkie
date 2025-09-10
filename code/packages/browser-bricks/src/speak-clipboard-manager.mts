@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,6 +19,13 @@ along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import type ReadClipboardPermissionManager from "@talkie/browser-shared/read-clipboard-permission-manager.mjs";
+import type {
+	IMessageBusProviderGetter,
+} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
+
+import type SpeakerPageManager from "./speaker-page-manager.mjs";
+
 import {
 	bespeak,
 } from "@talkie/shared-application/message-bus/message-bus-listener-helpers.mjs";
@@ -28,12 +35,6 @@ import {
 import {
 	type IPremiumManager,
 } from "@talkie/shared-interfaces/ipremium-manager.mjs";
-import type {
-	IMessageBusProviderGetter,
-} from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
-import type ITranslatorProvider from "@talkie/split-environment-interfaces/itranslator-provider.mjs";
-
-import type SpeakerPageManager from "./speaker-page-manager.mjs";
 
 export default class SpeakClipboardManager {
 	// eslint-disable-next-line max-params
@@ -84,10 +85,6 @@ export default class SpeakClipboardManager {
 					text = await this.translator.translate("readClipboardNeedsBrowserSupport");
 
 					break;
-				}
-
-				default: {
-					throw new Error("What even is that?");
 				}
 			}
 		} else {

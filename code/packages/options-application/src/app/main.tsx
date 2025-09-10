@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,24 @@ import type {
 	OsType,
 	SystemType,
 } from "@talkie/shared-interfaces/imetadata-manager.mjs";
+import type {
+	ClassNameProp,
+	TalkieStyletronComponent,
+} from "@talkie/shared-ui/styled/types.js";
+import type {
+	StyleObject,
+} from "styletron-react";
+import type {
+	ReadonlyDeep,
+} from "type-fest";
+
+import type {
+	NavLink,
+} from "../components/navigation/nav-container-types.mjs";
+import type {
+	actions,
+} from "../slices/index.mjs";
+
 import passSelectedTextToBackground from "@talkie/shared-ui/hocs/pass-selected-text-to-background.js";
 import translateAttribute, {
 	type TranslateProps,
@@ -31,23 +49,10 @@ import {
 	talkieStyled,
 	withTalkieStyleDeep,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
-import type {
-	ClassNameProp,
-	TalkieStyletronComponent,
-} from "@talkie/shared-ui/styled/types.js";
 import React from "react";
-import type {
-	StyleObject,
-} from "styletron-react";
-import type {
-	ReadonlyDeep,
-} from "type-fest";
 
 import Loading from "../components/loading.js";
 import NavContainer from "../components/navigation/nav-container.js";
-import type {
-	NavLink,
-} from "../components/navigation/nav-container-types.mjs";
 import TabContents from "../components/navigation/tab-contents.js";
 import AboutContainer from "../containers/about-container.js";
 import FeaturesContainer from "../containers/features-container.js";
@@ -55,9 +60,7 @@ import SettingsContainer from "../containers/settings-container.js";
 import StatusContainer from "../containers/status-container.js";
 import VoicesContainer from "../containers/voices/voices-container.js";
 import WelcomeContainer from "../containers/welcome-container.js";
-import type {
-	actions,
-} from "../slices/index.mjs";
+
 import Footer, {
 	type FooterStateProps,
 } from "./footer.js";

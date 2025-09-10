@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ import type {
 	StyleObject,
 } from "styletron-react";
 
-// eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const margins: <TLength extends (Globals | "auto" | (string & {}) | 0)>(margin: TLength) => StyleObject = <TLength,>(length: TLength) => ({
 	marginBottom: length as Property.MarginBottom<TLength>,
 	marginLeft: length as Property.MarginLeft<TLength>,
@@ -34,7 +34,7 @@ export const margins: <TLength extends (Globals | "auto" | (string & {}) | 0)>(m
 	marginTop: length as Property.MarginTop<TLength>,
 });
 
-// eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const paddings: <TLength extends (Globals | "auto" | (string & {}) | 0)>(padding: TLength) => StyleObject = <TLength,>(length: TLength) => ({
 	paddingBottom: length as Property.PaddingBottom<TLength>,
 	paddingLeft: length as Property.PaddingLeft<TLength>,

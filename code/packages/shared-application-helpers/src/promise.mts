@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import {
 	singleDefinedValue,
 } from "./basic.mjs";
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const promiseFunctionSeries = async <T,>(promiseFunctions: Readonly<Array<(state?: T) => Promisable<T>>>, state?: T): Promise<T> => {
 	if (promiseFunctions.length === 0) {
 		throw new TypeError("Empty promiseFunctions.");
@@ -63,7 +63,7 @@ export function isPromiseTimeout(error: unknown): error is PromiseTimeout {
 	return isErrorInstanceWithName(error, "PromiseTimeout");
 }
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, milliseconds: number): Promise<T> => {
 	// NOTE: executing in both browser and node.js environments, but timeout/interval objects differ.
 	// https://nodejs.org/api/timers.html#timers_class_timeout
@@ -72,6 +72,7 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, millisec
 	let timeoutId: any | null;
 
 	// NOTE: using promise objects for the race.
+	/* eslint-disable promise/prefer-await-to-then */
 	const timeoutPromise = new Promise<void>((resolve) => {
 		timeoutId = setTimeout(
 			() => {
@@ -85,6 +86,7 @@ export const promiseTimeout = async <T,>(promise: Readonly<Promise<T>>, millisec
 
 			throw timeoutError;
 		});
+	/* eslint-enable promise/prefer-await-to-then */
 
 	try {
 		return await Promise.race([
@@ -103,7 +105,7 @@ export const promiseDelay = async (milliseconds: number): Promise<void> =>
 		setTimeout(resolve, milliseconds);
 	});
 
-// eslint-disable-next-line @typescript-eslint/comma-dangle
+// eslint-disable-next-line @stylistic/comma-dangle
 export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: number): Promise<T> =>
 	new Promise<T>((resolve, reject) => {
 		// NOTE: the timeout id is automatically cleared when it ends.
@@ -112,6 +114,7 @@ export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: nu
 				try {
 					resolve(fn());
 				} catch (error: unknown) {
+					// eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
 					reject(error);
 				}
 			},
@@ -119,7 +122,7 @@ export const promiseSleep = async <T,>(fn: () => Promisable<T>, milliseconds: nu
 		);
 	});
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @stylistic/comma-dangle
 export const promiseAtMostDefinedValues = async <T,>(atMost: number, promises: Array<Promise<T | void>>): Promise<Array<T | void>> => {
 	// TODO: async repeated Promise.race() until Promise<T | void> the first defined response, then (silently?) fail if there is a second (or more, but fail early) non-undefined responses?
 	const elements = await Promise.all(promises);
@@ -127,7 +130,7 @@ export const promiseAtMostDefinedValues = async <T,>(atMost: number, promises: A
 	return atMostDefinedValues(atMost, elements);
 };
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/comma-dangle
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types, @stylistic/comma-dangle
 export const promiseSingleDefinedValue = async <T,>(promises: Array<Promise<T | void>>): Promise<T | void> => {
 	// TODO: async repeated Promise.race() until Promise<T | void> the first defined response, then (silently?) fail if there is a second (or more, but fail early) non-undefined responses?
 	const elements = await Promise.all(promises);

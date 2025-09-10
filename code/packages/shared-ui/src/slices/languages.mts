@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,29 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import toolkit from "@reduxjs/toolkit";
 import type {
 	TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
+
+import type {
+	IApiAsyncThunkConfig,
+} from "./slices-types.mjs";
+
+import toolkit from "@reduxjs/toolkit";
 
 import {
 	getNavigatorLanguage,
 	getNavigatorLanguages,
 } from "../utils/navigator-languages.mjs";
-import type {
-	IApiAsyncThunkConfig,
-} from "./slices-types.mjs";
 
 const {
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createAsyncThunk,
-	// eslint-disable-next-line import/no-named-as-default-member
+
 	createSlice,
 } = toolkit;
 
 export interface LanguagesState {
 	navigatorLanguage: string | null;
-	navigatorLanguages: Readonly<string[]>;
+	navigatorLanguages: readonly string[];
 	translatedLanguages: TalkieLocale[];
 	translationLocale: TalkieLocale;
 }
@@ -62,7 +64,7 @@ export const loadNavigatorLanguage = createAsyncThunk<string | null, void, IApiA
 	async () => getNavigatorLanguage(),
 );
 
-export const loadNavigatorLanguages = createAsyncThunk<Readonly<string[]>, void, IApiAsyncThunkConfig>(
+export const loadNavigatorLanguages = createAsyncThunk<readonly string[], void, IApiAsyncThunkConfig>(
 	`${prefix}/loadNavigatorLanguages`,
 	// TODO: convert to synchronous action?
 	async () => getNavigatorLanguages(),

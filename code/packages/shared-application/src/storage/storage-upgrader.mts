@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,15 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-	logDebug,
-	logError,
-} from "@talkie/shared-application-helpers/log.mjs";
 import type {
 	JsonValue,
 } from "type-fest";
 
 import type StorageHelper from "./storage-helper.mjs";
+
+import {
+	logDebug,
+	logError,
+} from "@talkie/shared-application-helpers/log.mjs";
+
 import {
 	allKnownStorageFormatVersions,
 	allKnownStorageKeys,
@@ -122,10 +124,6 @@ export default class StorageUpgrader {
 				upgrader = await this._createIdentityUpgrader(fromStorageFormatVersion, toStorageFormatVersion);
 
 				break;
-			}
-
-			default: {
-				throw new Error("Unable to handle unknown upgrader type.");
 			}
 		}
 
@@ -284,7 +282,7 @@ export default class StorageUpgrader {
 			if (firstInitializedUpgradePath && firstInitializedUpgradePath.length >= 2) {
 				let previous = firstInitializedUpgradePath[0] ?? null;
 
-				for await (const next of firstInitializedUpgradePath.slice(1)) {
+				for (const next of firstInitializedUpgradePath.slice(1)) {
 					if (!previous) {
 						throw new RangeError(`Unexpected empty element "previous": ${JSON.stringify(previous, null, 0)}.`);
 					}
@@ -293,6 +291,7 @@ export default class StorageUpgrader {
 						throw new RangeError(`Unexpected empty element "next": ${JSON.stringify(next, null, 0)}.`);
 					}
 
+					// eslint-disable-next-line no-await-in-loop
 					await this._upgrade(previous, next);
 
 					previous = next;

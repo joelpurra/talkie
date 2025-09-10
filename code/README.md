@@ -81,7 +81,7 @@ cd code
 git clean --interactive -x -d :/
 
 # Install (exact) package dependencies and local development tools.
-npm clean‐install
+npm clean-install
 
 # Optionally reset local nx cache.
 npx nx reset
@@ -163,7 +163,7 @@ npm run --silent watch
 
 ### Linting
 
-Primarily using [XO](https://github.com/xojs/xo) for Typescript code linting, with some modified style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vscode-linter-xo](https://github.com/xojs/vscode-linter-xo).
+Primarily using [ESLint](https://eslint.org/) for Typescript code linting, with modified [XO](https://github.com/xojs/xo) style rules. For lint fixes in [VSCodium](https://vscodium.com/), install and configure [vs-code-prettier-eslint](https://github.com/idahogurl/vs-code-prettier-eslint).
 
 ```shell
 # Fix linting issues before committing.
@@ -337,4 +337,4 @@ npm run --silent publish:amo
 
 ---
 
-<a href="https://joelpurra.com/projects/talkie/"><img src="./packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).
+<a href="https://joelpurra.com/projects/talkie/"><img src="./packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png" alt="Talkie play button" width="16" height="16" border="0" />Talkie</a> Copyright &copy; 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 [Joel Purra](https://joelpurra.com/). Released under [GNU General Public License version 3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).

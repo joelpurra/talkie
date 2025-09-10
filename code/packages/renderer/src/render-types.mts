@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ import type {
 	Action,
 	Reducer,
 } from "@reduxjs/toolkit";
+
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -36,11 +37,11 @@ export type ReactHtmlTemplateLocalsVariables = (data: Readonly<{
 
 export interface IRenderReactHtml<S, A extends Action, P> {
 	rootReducer: Reducer<S, A>;
-	customPrerenderedActionsToDispatch: Readonly<A[]>;
+	customPrerenderedActionsToDispatch: readonly A[];
 	/**
 	 * @deprecated Post-render actions have no effect when pre-rendering html on the server-side.
 	 */
-	customPostrenderActionsToDispatch: Readonly<A[]>;
+	customPostrenderActionsToDispatch: readonly A[];
 	reactHtmlTemplatePath: Readonly<URL>;
 	ChildComponent: React.ComponentType<P>;
 }

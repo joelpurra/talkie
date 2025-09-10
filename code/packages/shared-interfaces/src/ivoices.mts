@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -39,15 +39,17 @@ export interface IVoiceNameAndRateAndPitch extends IVoiceName {
 
 export interface MutableSafeVoiceObject extends JsonObject {
 	isSafeVoiceObject: true;
-	default: boolean;
+	"default": boolean;
 	lang: string;
 	localService: boolean;
 	name: string;
 	voiceUri: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeVoiceObject extends Readonly<MutableSafeVoiceObject> {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeVoiceObjects extends Readonly<SafeVoiceObject[]> {}
 
 export interface MutableSafeUtteranceObject extends JsonObject {
@@ -59,8 +61,10 @@ export interface MutableSafeUtteranceObject extends JsonObject {
 	volume: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeUtteranceObject extends Readonly<MutableSafeUtteranceObject> {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeUtteranceObjects extends Readonly<SafeUtteranceObject[]> {}
 
 export interface MutableSpeechSynthesisEventObject extends JsonObject {
@@ -71,6 +75,8 @@ export interface MutableSpeechSynthesisEventObject extends JsonObject {
 	utterance: SafeUtteranceObject;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeSpeechSynthesisEventObject extends Readonly<MutableSpeechSynthesisEventObject> {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SafeSpeechSynthesisEventObjects extends Readonly<SafeSpeechSynthesisEventObject[]> {}

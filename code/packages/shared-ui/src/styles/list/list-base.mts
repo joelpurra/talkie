@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ export const dd: StyleObject = {
 
 const sharedInlineList: StyleObject = {
 	// https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns
-	listStyleType: "'\\200B'",
+	listStyleType: String.raw`'\200B'`,
 	marginBottom: "0.25em",
 	marginTop: "0.25em",
 	paddingBottom: 0,
@@ -61,7 +61,7 @@ export const inlineOl: StyleObject = sharedInlineList;
 export const inlineLi: StyleObject = {
 	display: "inline-block",
 	// https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns
-	listStyleType: "'\\200B'",
+	listStyleType: String.raw`'\200B'`,
 	marginBottom: "0.25em",
 	marginLeft: 0,
 	marginRight: 0,

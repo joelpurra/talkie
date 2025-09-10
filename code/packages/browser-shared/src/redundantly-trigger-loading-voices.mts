@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ const redundantlyTriggerLoadingVoices: () => Promise<SpeechSynthesisVoice[]> = a
 // NOTE: the background context in Firefox on Linux does not load voices (or at least pass the loaded array) on the first (welcome) page load, at least if there are thousands of voices.
 // NOTE: the above occurs is particularly noticeable during testing with temporary browser profiles, and can thus be assumed to occur on first installs (or cold boots?) for at least some end-users.
 	try {
-		return window.speechSynthesis.getVoices();
+		return globalThis.speechSynthesis.getVoices();
 	} catch (error) {
 		// NOTE: log but ignore errors; this is a "hidden" execution with the sole purpose of triggering side-effects.
 

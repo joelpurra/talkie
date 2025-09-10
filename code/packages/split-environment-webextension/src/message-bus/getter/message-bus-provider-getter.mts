@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,17 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// eslint-disable-next-line import/no-unassigned-import
-import "../../browser-specific/global-window-talkie-shared-context.mjs";
-
-import InternalMessageBusProvider from "@talkie/shared-application/message-bus/internal-message-bus-provider.mjs";
-import SameContextMessageBusEventProvider from "@talkie/shared-application/message-bus/same-context-message-bus-event-provider.mjs";
-import SplitContextMessageBusProvider from "@talkie/shared-application/message-bus/split-context-message-bus-provider.mjs";
 import type {
 	IMessageBusEventProvider,
 	IMessageBusProvider,
 	IMessageBusProviderGetter,
 } from "@talkie/split-environment-interfaces/imessage-bus-provider.mjs";
+
+import InternalMessageBusProvider from "@talkie/shared-application/message-bus/internal-message-bus-provider.mjs";
+import SameContextMessageBusEventProvider from "@talkie/shared-application/message-bus/same-context-message-bus-event-provider.mjs";
+import SplitContextMessageBusProvider from "@talkie/shared-application/message-bus/split-context-message-bus-provider.mjs";
+
+// eslint-disable-next-line import-x/no-unassigned-import
+import "../../browser-specific/global-window-talkie-shared-context.mjs";
 
 export default class MessageBusProviderGetter implements IMessageBusProviderGetter {
 	private readonly _messageBusProviderPromise: Promise<IMessageBusProvider>;

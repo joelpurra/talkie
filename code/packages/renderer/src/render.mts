@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ import type {
 	Action,
 	Reducer,
 } from "@reduxjs/toolkit";
+
 import {
 	type TalkieLocale,
 } from "@talkie/shared-interfaces/italkie-locale.mjs";
@@ -38,8 +39,8 @@ import compileHtmlTemplate from "./compile-html-template.mjs";
 import getDependencies from "./get-dependencies.mjs";
 import renderReactHtml from "./render-react-html.mjs";
 
-const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
-	const serverSideDefaults: Readonly<A[]> = [
+const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDispatch: readonly A[]): readonly A[] => {
+	const serverSideDefaults: readonly A[] = [
 		// NOTE: currently attempts to match "synchronous usage" when hydrating the state in the browser.
 		// NOTE: don't want to keep track of when to load these, preemptively loading.
 		actions.metadata.loadIsPremiumEdition() as unknown as A,
@@ -57,8 +58,8 @@ const getPrerenderActionsToDispatch = <A extends Action>(prerenderedActionsToDis
 	return allActionsToDispatch;
 };
 
-const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDispatch: Readonly<A[]>): Readonly<A[]> => {
-	const serverSideDefaults: Readonly<A[]> = [];
+const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDispatch: readonly A[]): readonly A[] => {
+	const serverSideDefaults: readonly A[] = [];
 
 	const allActionsToDispatch: Array<Readonly<A>> = [
 		...serverSideDefaults,
@@ -71,8 +72,8 @@ const getPostrenderActionsToDispatch = <A extends Action>(postrenderActionsToDis
 const EMPTY_INITIAL_STATE = undefined;
 
 const render = async <S, A extends Action, P>(rootReducer: Reducer<S, A>,
-	customPrerenderedActionsToDispatch: Readonly<A[]>,
-	customPostrenderActionsToDispatch: Readonly<A[]>,
+	customPrerenderedActionsToDispatch: readonly A[],
+	customPostrenderActionsToDispatch: readonly A[],
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	reactHtmlTemplatePath: Readonly<URL>,
 	// eslint-disable-next-line max-params, @typescript-eslint/prefer-readonly-parameter-types

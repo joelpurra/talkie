@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,14 +24,14 @@ import type {
 
 export type StorageKey = string;
 export type StorageFormatVersion =
-| "v1.0.0"
-| "v1.1.0"
-| "v1.2.0"
-| "v1.3.0"
-| "v1.4.0"
-| "v1.5.0"
-| "v1.6.0"
-| "v1.7.0";
+	| "v1.0.0"
+	| "v1.1.0"
+	| "v1.2.0"
+	| "v1.3.0"
+	| "v1.4.0"
+	| "v1.5.0"
+	| "v1.6.0"
+	| "v1.7.0";
 
 export interface IStorageMetadata extends JsonObject {
 	"upgraded-at": number;
