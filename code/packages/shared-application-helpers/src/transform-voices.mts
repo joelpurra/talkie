@@ -23,6 +23,10 @@ import {
 	type IVoiceNameAndLanguage,
 } from "@talkie/shared-interfaces/ivoices.mjs";
 
+import {
+	logError,
+} from "./log.mjs";
+
 // TODO: create type alias for generic language strings?
 // TODO: use parser which checks codes, regions, etcetera against BCP47.
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang
@@ -240,7 +244,31 @@ export const getVoiceForVoiceNameFromVoices = <T extends IVoiceNameAndLanguage>(
 	const matchingVoices = voices.filter((voice) => voice.name === voiceName);
 
 	if (matchingVoices.length !== 1) {
-		throw new Error(`Mismatching number of voices found: ${matchingVoices.length}`);
+		// NOTE: having multiple voices with the same name may be an issue; degrading error throwing to logging to avoid unhandled crashes.
+		// TODO: investigate detectable differences between voices, in particular on a macos systems.
+		// - Is the issue related to macos allowing easy, one-click voice quality upgrades from the system voice settings?
+		// - Are both low-/high-quality instances are kept and included in the voice list?
+		// - Is the voice list name duplication instantaneous at upgrade time?
+		// - Does the name collision persist after rebooting?
+		// TODO: differentiate between voices, even if they have the same name.
+		// - Add a unique identifier to the name, perhaps based on voiceURI?
+		//   https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/voiceURI
+		// - If differences are detectable, label applicable voices as low-/high-quality?
+		// - If differences are detectable, automatically select the high-quality voice if there is a collision?
+		// TODO: investigate if the voice array order is consistent.
+		// - If consistent, which index should be chosen by default?
+		// - If differences are detectable, can the list be sorted for consistency?
+		// TODO: either fix names for uniqueness, or propagate the name collision error/warning to the user interface.
+		void logError(
+			"getVoiceForVoiceNameFromVoices",
+			"Mismatching number of voices found for voice by name.",
+			matchingVoices.length,
+			voiceName,
+			matchingVoices.length > 0
+				? "Returning the first matching voice for consistency."
+				: "There were no voice matches by name.",
+			matchingVoices,
+		);
 	}
 
 	const firstVoice = matchingVoices[0];
