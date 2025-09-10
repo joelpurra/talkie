@@ -67,24 +67,24 @@
   "action": {
     "default_title": "__MSG_buttonDefaultTitle_Static__",
     "default_icon": {
-      "16": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-16x16.png",
-      "32": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png",
-      "48": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-48x48.png",
-      "64": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-64x64.png",
-      "128": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-128x128.png",
-      "256": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-256x256.png",
-      "512": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-512x512.png",
-      "1024": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-1024x1024.png"
+      "16": "packages/shared-resources/src/resources/icon/free/icon-play/icon-16x16.png",
+      "32": "packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png",
+      "48": "packages/shared-resources/src/resources/icon/free/icon-play/icon-48x48.png",
+      "64": "packages/shared-resources/src/resources/icon/free/icon-play/icon-64x64.png",
+      "128": "packages/shared-resources/src/resources/icon/free/icon-play/icon-128x128.png",
+      "256": "packages/shared-resources/src/resources/icon/free/icon-play/icon-256x256.png",
+      "512": "packages/shared-resources/src/resources/icon/free/icon-play/icon-512x512.png",
+      "1024": "packages/shared-resources/src/resources/icon/free/icon-play/icon-1024x1024.png"
     }
   },
   "icons": {
-    "16": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-16x16.png",
-    "32": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png",
-    "48": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-48x48.png",
-    "64": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-64x64.png",
-    "128": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-128x128.png",
-    "256": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-256x256.png",
-    "512": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-512x512.png",
-    "1024": "./packages/shared-resources/src/resources/icon/free/icon-play/icon-1024x1024.png"
+    "16": "packages/shared-resources/src/resources/icon/free/icon-play/icon-16x16.png",
+    "32": "packages/shared-resources/src/resources/icon/free/icon-play/icon-32x32.png",
+    "48": "packages/shared-resources/src/resources/icon/free/icon-play/icon-48x48.png",
+    "64": "packages/shared-resources/src/resources/icon/free/icon-play/icon-64x64.png",
+    "128": "packages/shared-resources/src/resources/icon/free/icon-play/icon-128x128.png",
+    "256": "packages/shared-resources/src/resources/icon/free/icon-play/icon-256x256.png",
+    "512": "packages/shared-resources/src/resources/icon/free/icon-play/icon-512x512.png",
+    "1024": "packages/shared-resources/src/resources/icon/free/icon-play/icon-1024x1024.png"
   }
 }
