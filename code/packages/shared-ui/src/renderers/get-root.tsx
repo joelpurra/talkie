@@ -54,7 +54,7 @@ const getRoot = async <S, A extends Action, P>(
 		<Root
 			configuration={configuration}
 			messageBusProviderGetter={messageBusProviderGetter}
-			store={store as unknown as Store<unknown>}
+			store={store}
 			styletron={styletron}
 			translator={translatorProvider}
 		>

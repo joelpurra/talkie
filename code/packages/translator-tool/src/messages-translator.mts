@@ -103,7 +103,7 @@ export default class MessagesTranslator {
 
 				const localeMessage = localeMessages[baseKey];
 
-				if (!localeMessage || localeMessage.original !== baseMessage.message) {
+				if (localeMessage?.original !== baseMessage.message) {
 					untranslated[baseKey] = baseMessage;
 				}
 

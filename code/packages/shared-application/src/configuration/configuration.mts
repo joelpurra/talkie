@@ -66,7 +66,7 @@ export default class Configuration implements IConfiguration {
 
 			if (value !== undefined && Object.hasOwn(object, part)) {
 				if (parts.length === 0) {
-					return value as JsonValue;
+					return value;
 				}
 
 				// NOTE: cast to any to let the recursive call handle type errors.

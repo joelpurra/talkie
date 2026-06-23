@@ -47,6 +47,6 @@ const compileEjs = async (templatePath: Readonly<URL>): Promise<ClientFunction> 
 };
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const compileHtmlTemplate = async (templatePath: Readonly<URL>): Promise<ReactHtmlTemplateLocalsVariables> => compileEjs(templatePath) as unknown as ReactHtmlTemplateLocalsVariables;
+const compileHtmlTemplate = async (templatePath: Readonly<URL>): Promise<ReactHtmlTemplateLocalsVariables> => compileEjs(templatePath);
 
 export default compileHtmlTemplate;

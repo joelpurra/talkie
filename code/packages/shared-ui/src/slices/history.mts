@@ -117,7 +117,7 @@ export const historySlice = createSlice({
 	name: prefix,
 	reducers: {
 		setMostRecent(state, action: PayloadAction<Readonly<SpeakingHistoryEntry> | null>) {
-			state.mostRecent = action.payload as SpeakingHistoryEntry | null;
+			state.mostRecent = action.payload;
 		},
 		setSpeakingHistory(state, action: PayloadAction<readonly SpeakingHistoryEntry[]>) {
 			state.speakingHistory = action.payload as SpeakingHistoryEntry[];

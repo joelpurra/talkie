@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type {
-	ReadonlyDeep,
-} from "type-fest";
-
 import {
 	type ChildrenRequiredProps,
 } from "@talkie/shared-ui/types.mjs";
@@ -47,7 +43,7 @@ export default class TabContents<P extends TabContentsProps & ChildrenRequiredPr
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	handleClick(event: Readonly<React.MouseEvent>): false | undefined {
 		// TODO: use an api call which has handleBubbledLinkClick?
-		return handleBubbledLinkClick(this.props.onLinkClick, event as ReadonlyDeep<React.MouseEvent>);
+		return handleBubbledLinkClick(this.props.onLinkClick, event);
 	}
 
 	override render(): React.ReactNode {

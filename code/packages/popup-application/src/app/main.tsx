@@ -80,7 +80,7 @@ class Main<P extends MainStateProps & MainDispatchProps & ClassNameProp> extends
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 	handleCheckLinkClick(event: Readonly<React.MouseEvent>): false | undefined {
 		// TODO: use an api call which has handleBubbledLinkClick?
-		return handleBubbledLinkClick(this.handleLinkClick, event as ReadonlyDeep<React.MouseEvent>);
+		return handleBubbledLinkClick(this.handleLinkClick, event);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

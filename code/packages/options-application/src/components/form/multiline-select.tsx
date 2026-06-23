@@ -18,10 +18,6 @@ You should have received a copy of the GNU General Public License
 along with Talkie.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import type {
-	ReadonlyDeep,
-} from "type-fest";
-
 import {
 	talkieStyled,
 } from "@talkie/shared-ui/styled/talkie-styled.mjs";
@@ -67,13 +63,13 @@ class MultilineSelect<P extends MultilineSelectProps & ClassNameProp & ChildrenR
 		if (this.selectRef.current) {
 			this.props.onChange(target.value);
 
-			scrollIntoViewIfNeeded(this.selectRef.current as ReadonlyDeep<HTMLSelectElement>);
+			scrollIntoViewIfNeeded(this.selectRef.current);
 		}
 	}
 
 	override componentDidMount(): void {
 		if (this.selectRef.current) {
-			scrollIntoViewIfNeeded(this.selectRef.current as ReadonlyDeep<HTMLSelectElement>);
+			scrollIntoViewIfNeeded(this.selectRef.current);
 		}
 	}
 
