@@ -10,9 +10,9 @@
     "type-fest"
   ],
   "dependencies": {
-    "@talkie/shared-application-helpers": "*",
-    "@talkie/shared-interfaces": "*",
-    "@talkie/split-environment-interfaces": "*"
+    "@talkie/shared-application-helpers": "0.0.0",
+    "@talkie/shared-interfaces": "0.0.0",
+    "@talkie/split-environment-interfaces": "0.0.0"
   },
   "devDependencies": {
     "@types/jsonfile": "^6.1.4",

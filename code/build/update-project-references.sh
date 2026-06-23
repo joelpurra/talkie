@@ -87,7 +87,7 @@ declare -r JQ_UPDATE_TALKIE_DEPENDENCIES='
 		$d
 		| map(
 			{
-				("@talkie/\(.)"): "*"
+				("@talkie/\(.)"): "0.0.0"
 			}
 		)
 		| add

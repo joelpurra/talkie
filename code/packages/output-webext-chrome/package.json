@@ -7,9 +7,9 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
-    "@talkie/all-renderer": "*",
-    "@talkie/browser-serviceworker": "*",
-    "@talkie/output-webext": "*"
+    "@talkie/all-renderer": "0.0.0",
+    "@talkie/browser-serviceworker": "0.0.0",
+    "@talkie/output-webext": "0.0.0"
   },
   "devDependencies": {
     "chrome-webstore-manager": "^0.5.0",

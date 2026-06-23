@@ -10,11 +10,11 @@
     "talkie-all-renderer": "./dist/esm/all-renderer.mjs"
   },
   "dependencies": {
-    "@talkie/options-renderer": "*",
-    "@talkie/popup-renderer": "*",
-    "@talkie/renderer": "*",
-    "@talkie/shared-interfaces": "*",
-    "@talkie/shared-locales": "*",
+    "@talkie/options-renderer": "0.0.0",
+    "@talkie/popup-renderer": "0.0.0",
+    "@talkie/renderer": "0.0.0",
+    "@talkie/shared-interfaces": "0.0.0",
+    "@talkie/shared-locales": "0.0.0",
     "mkdirp": "^3.0.1"
   },
   "devDependencies": {
