@@ -154,7 +154,8 @@ export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		(object, voice) => ({
 			...object,
-			[voice.lang]: object[voice.lang] ?? [
+			[voice.lang]: [
+				...(object[voice.lang] ?? []),
 				voice,
 			],
 		}),
@@ -173,7 +174,8 @@ export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voi
 
 			return ({
 				...object,
-				[group]: object[group] ?? [
+				[group]: [
+					...(object[group] ?? []),
 					voice,
 				],
 			});

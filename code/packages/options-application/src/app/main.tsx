@@ -281,7 +281,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				<layoutBase.main>
 					<TabContents
 						// NOTE: used when prerendering the static per-language template.
-						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
+						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 14800+ voices.
 						activeNavigationTabId={activeNavigationTabId}
 						id="fallback-tab"
 						onLinkClick={this.handleLinkClick}

@@ -40,7 +40,7 @@ export const createSafeVoiceObjectFromSpeechSynthesisVoice = (speechSynthesisVoi
 	"default": speechSynthesisVoice.default === true,
 	isSafeVoiceObject: true,
 
-	// NOTE: would prefer not to transform the language here, but the 8611 (!) voices (on my system) with mislabeled BCP47 languages in firefox requires a fix.
+	// NOTE: would prefer not to transform the language here, but the 14805 (!) voices (on my system) with mislabeled BCP47 languages in firefox requires a fix.
 	// NOTE: this means that there is no longer a 1-to-1 mapping between the "raw" SpeechSynthesisVoice#lang and SafeVoiceObject#lang. Each comparison must take this transformation into account.
 	lang: String(getLanguageFromBcp47(speechSynthesisVoice.lang)),
 
