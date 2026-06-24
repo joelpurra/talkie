@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -117,7 +117,7 @@ export const historySlice = createSlice({
 	name: prefix,
 	reducers: {
 		setMostRecent(state, action: PayloadAction<Readonly<SpeakingHistoryEntry> | null>) {
-			state.mostRecent = action.payload as SpeakingHistoryEntry | null;
+			state.mostRecent = action.payload;
 		},
 		setSpeakingHistory(state, action: PayloadAction<readonly SpeakingHistoryEntry[]>) {
 			state.speakingHistory = action.payload as SpeakingHistoryEntry[];

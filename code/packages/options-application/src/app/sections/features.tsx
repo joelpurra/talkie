@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ import {
 } from "@talkie/shared-ui/styled/types.js";
 import React from "react";
 
+import EditionSection from "../../components/section/edition-section.js";
 import FreeSection from "../../components/section/free-section.js";
 import PremiumSection from "../../components/section/premium-section.js";
 import {
@@ -96,6 +97,7 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 			configure,
 		} = this.props as P;
 
+		// TODO: localize alt texts.
 		const cwsAltText = "Talkie is available for installation from the Chrome Web Store";
 		const amoAltText = "Talkie is available for installation from Mozilla Addons";
 
@@ -109,22 +111,6 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 					<p>
 						{translateSync("frontend_featuresEditions")}
 					</p>
-
-					<Discretional
-						enabled={!isPremiumEdition}
-					>
-						<p>
-							{translateSync("frontend_featuresEdition_Free")}
-						</p>
-					</Discretional>
-
-					<Discretional
-						enabled={isPremiumEdition}
-					>
-						<p>
-							{translateSync("frontend_featuresEdition_Premium")}
-						</p>
-					</Discretional>
 
 					<FreeSection
 						headingLink={false}
@@ -211,6 +197,26 @@ class Features<P extends FeaturesProps & TranslateProps & ConfigureProps> extend
 						isPremiumEdition={isPremiumEdition}
 						onChange={storeIsPremiumEdition}
 					/>
+
+					<EditionSection
+						isPremiumEdition={isPremiumEdition}
+						headingLink={false}
+						mode="p"
+					>
+						<p>
+							<Discretional
+								enabled={!isPremiumEdition}
+							>
+								{translateSync("frontend_featuresEdition_Free")}
+							</Discretional>
+
+							<Discretional
+								enabled={isPremiumEdition}
+							>
+								{translateSync("frontend_featuresEdition_Premium")}
+							</Discretional>
+						</p>
+					</EditionSection>
 				</section>
 			</>
 		);

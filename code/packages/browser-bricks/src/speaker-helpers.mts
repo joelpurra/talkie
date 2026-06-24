@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,32 +35,36 @@ import {
 } from "type-fest";
 
 export const createSafeVoiceObjectFromSpeechSynthesisVoice = (speechSynthesisVoice: ReadonlyDeep<SpeechSynthesisVoice>): SafeVoiceObject => ({
-	"default": speechSynthesisVoice.default,
+	// NOTE: explicitly creating "safe" copies of each individual voice property because the browser's SpeechSynthesisVoice is a "special" browser object (which may not transfer properly between different javascript engine "security domains" or similar).
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
+	"default": speechSynthesisVoice.default === true,
 	isSafeVoiceObject: true,
 
-	// NOTE: would prefer not to transform the language here, but the 8611 (!) voices (on my system) with mislabeled BCP47 languages in firefox requires a fix.
+	// NOTE: would prefer not to transform the language here, but the 14805 (!) voices (on my system) with mislabeled BCP47 languages in firefox requires a fix.
 	// NOTE: this means that there is no longer a 1-to-1 mapping between the "raw" SpeechSynthesisVoice#lang and SafeVoiceObject#lang. Each comparison must take this transformation into account.
-	lang: getLanguageFromBcp47(speechSynthesisVoice.lang),
+	lang: String(getLanguageFromBcp47(speechSynthesisVoice.lang)),
 
-	localService: speechSynthesisVoice.localService,
-	name: speechSynthesisVoice.name,
-	voiceUri: speechSynthesisVoice.voiceURI,
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
+	localService: speechSynthesisVoice.localService === true,
+	name: String(speechSynthesisVoice.name),
+	voiceUri: String(speechSynthesisVoice.voiceURI),
 });
 
 export const createSafeUtteranceObjectFromSpeechSynthesisUtterance = (speechSynthesisUtterance: ReadonlyDeep<SpeechSynthesisUtterance>): SafeUtteranceObject => ({
-	lang: speechSynthesisUtterance.lang,
-	pitch: speechSynthesisUtterance.pitch,
-	rate: speechSynthesisUtterance.rate,
-	text: speechSynthesisUtterance.text,
+	// NOTE: explicitly creating "safe" copies of each individual voice property because the browser's SpeechSynthesisUtterance is a "special" browser object (which may not transfer properly between different javascript engine "security domains" or similar).
+	lang: String(speechSynthesisUtterance.lang),
+	pitch: speechSynthesisUtterance.pitch + 0,
+	rate: speechSynthesisUtterance.rate + 0,
+	text: String(speechSynthesisUtterance.text),
 	voice: speechSynthesisUtterance.voice ? createSafeVoiceObjectFromSpeechSynthesisVoice(speechSynthesisUtterance.voice) : null,
-	volume: speechSynthesisUtterance.volume,
+	volume: speechSynthesisUtterance.volume + 0,
 });
 
 export const createSafeSpeechSynthesisEventObjectFromSpeechSynthesisEvent = (speechSynthesisEvent: ReadonlyDeep<SpeechSynthesisEvent>): SafeSpeechSynthesisEventObject => ({
-	charIndex: speechSynthesisEvent.charIndex,
-	charLength: speechSynthesisEvent.charLength,
-	elapsedTime: speechSynthesisEvent.elapsedTime,
-	name: speechSynthesisEvent.name,
+	charIndex: speechSynthesisEvent.charIndex + 0,
+	charLength: speechSynthesisEvent.charLength + 0,
+	elapsedTime: speechSynthesisEvent.elapsedTime + 0,
+	name: String(speechSynthesisEvent.name),
 	utterance: createSafeUtteranceObjectFromSpeechSynthesisUtterance(speechSynthesisEvent.utterance),
 });
 

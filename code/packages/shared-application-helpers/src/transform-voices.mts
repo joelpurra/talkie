@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -154,7 +154,8 @@ export const getVoicesByLanguageFromVoices = <T extends IVoiceLanguage>(voices: 
 		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 		(object, voice) => ({
 			...object,
-			[voice.lang]: object[voice.lang] ?? [
+			[voice.lang]: [
+				...(object[voice.lang] ?? []),
 				voice,
 			],
 		}),
@@ -173,7 +174,8 @@ export const getVoicesByLanguageGroupFromVoices = <T extends IVoiceLanguage>(voi
 
 			return ({
 				...object,
-				[group]: object[group] ?? [
+				[group]: [
+					...(object[group] ?? []),
 					voice,
 				],
 			});

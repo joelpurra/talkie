@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -281,7 +281,7 @@ class Main<P extends MainProps> extends React.PureComponent<P> {
 				<layoutBase.main>
 					<TabContents
 						// NOTE: used when prerendering the static per-language template.
-						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 8000+ voices.
+						// NOTE: may be briefly visible when loading the options page, in particular when debugging on Firefox on Ubuntu with 14800+ voices.
 						activeNavigationTabId={activeNavigationTabId}
 						id="fallback-tab"
 						onLinkClick={this.handleLinkClick}

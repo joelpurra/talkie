@@ -7,9 +7,9 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
-    "@talkie/browser-localeredirect": "*",
-    "@talkie/popup-application": "*",
-    "@talkie/renderer": "*"
+    "@talkie/browser-localeredirect": "0.0.0",
+    "@talkie/popup-application": "0.0.0",
+    "@talkie/renderer": "0.0.0"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7",

@@ -7,8 +7,8 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
-    "@talkie/shared-interfaces": "*",
-    "@talkie/translator-tool": "*"
+    "@talkie/shared-interfaces": "0.0.0",
+    "@talkie/translator-tool": "0.0.0"
   },
   "deveDependencies": {
     "mkdirp": "^3.0.1"

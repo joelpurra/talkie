@@ -7,9 +7,9 @@
     "url": "https://joelpurra.com/"
   },
   "dependencies": {
-    "@talkie/all-renderer": "*",
-    "@talkie/browser-background": "*",
-    "@talkie/output-webext": "*"
+    "@talkie/all-renderer": "0.0.0",
+    "@talkie/browser-background": "0.0.0",
+    "@talkie/output-webext": "0.0.0"
   },
   "devDependencies": {
     "mkdirp": "^3.0.1"

@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ const getRoot = async <S, A extends Action, P>(
 		<Root
 			configuration={configuration}
 			messageBusProviderGetter={messageBusProviderGetter}
-			store={store as unknown as Store<unknown>}
+			store={store}
 			styletron={styletron}
 			translator={translatorProvider}
 		>

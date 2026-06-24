@@ -14,13 +14,13 @@
     "type-fest"
   ],
   "dependencies": {
-    "@talkie/browser-shared": "*",
-    "@talkie/shared-application": "*",
-    "@talkie/shared-application-helpers": "*",
-    "@talkie/shared-interfaces": "*",
-    "@talkie/shared-locales": "*",
-    "@talkie/shared-ui": "*",
-    "@talkie/split-environment-interfaces": "*"
+    "@talkie/browser-shared": "0.0.0",
+    "@talkie/shared-application": "0.0.0",
+    "@talkie/shared-application-helpers": "0.0.0",
+    "@talkie/shared-interfaces": "0.0.0",
+    "@talkie/shared-locales": "0.0.0",
+    "@talkie/shared-ui": "0.0.0",
+    "@talkie/split-environment-interfaces": "0.0.0"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7",

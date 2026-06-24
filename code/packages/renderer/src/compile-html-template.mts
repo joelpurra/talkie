@@ -2,7 +2,7 @@
 This file is part of Talkie -- text-to-speech browser extension button.
 <https://joelpurra.com/projects/talkie/>
 
-Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Joel Purra <https://joelpurra.com/>
+Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Joel Purra <https://joelpurra.com/>
 
 Talkie is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -47,6 +47,6 @@ const compileEjs = async (templatePath: Readonly<URL>): Promise<ClientFunction> 
 };
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const compileHtmlTemplate = async (templatePath: Readonly<URL>): Promise<ReactHtmlTemplateLocalsVariables> => compileEjs(templatePath) as unknown as ReactHtmlTemplateLocalsVariables;
+const compileHtmlTemplate = async (templatePath: Readonly<URL>): Promise<ReactHtmlTemplateLocalsVariables> => compileEjs(templatePath);
 
 export default compileHtmlTemplate;

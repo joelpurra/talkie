@@ -1,4 +1,12 @@
 {
-  "filter": "^(?!@talkie/).",
-  "semverRange": "^"
+  "semverGroups": [
+    {
+      "range": "=0.0.0",
+      "dependencies": ["@talkie/**"]
+    },
+    {
+      "range": "^",
+      "dependencies": ["!@talkie/**"]
+    }
+  ]
 }

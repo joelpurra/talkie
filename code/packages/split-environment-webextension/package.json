@@ -10,10 +10,10 @@
     "type-fest"
   ],
   "dependencies": {
-    "@talkie/shared-application": "*",
-    "@talkie/shared-application-helpers": "*",
-    "@talkie/shared-interfaces": "*",
-    "@talkie/split-environment-interfaces": "*"
+    "@talkie/shared-application": "0.0.0",
+    "@talkie/shared-application-helpers": "0.0.0",
+    "@talkie/shared-interfaces": "0.0.0",
+    "@talkie/split-environment-interfaces": "0.0.0"
   },
   "devDependencies": {
     "@types/styletron-engine-atomic": "^1.1.4",
